@@ -15,146 +15,146 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigOpenid {
     /**
-     * @return The ID of the OpenID Connect client configured in your IdP. Required.
+     * @return The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
      * 
      */
     private String clientId;
     /**
-     * @return The client secret of the OpenID Connect client configured in your IdP. Required.
+     * @return The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
      * 
      */
     private String clientSecret;
     /**
-     * @return The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     * @return The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      * 
      */
     private String connectUrl;
     /**
-     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
      * 
      */
     private Boolean enabled;
     /**
-     * @return HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     * @return HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
      * 
      */
     private @Nullable String header;
     /**
-     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &lt;token&gt;. Optional. Default is Authorization.
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &lt;token&gt;. Optional. Default is Authorization. Example: `preferred_username`.
      * 
      */
     private @Nullable String jwtHeader;
     /**
-     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
      * 
      */
     private @Nullable String jwtUrlParameter;
     /**
-     * @return The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     * @return The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
      * 
      */
     private @Nullable Integer refreshRateLimitCount;
     /**
-     * @return The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     * @return The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
      * 
      */
     private @Nullable Integer refreshRateLimitTimeWindowMs;
     /**
-     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
      * 
      */
     private @Nullable String rolesKey;
     /**
-     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
      * 
      */
     private @Nullable String scope;
     /**
-     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
      * 
      */
     private @Nullable String subjectKey;
 
     private GetOpenSearchOpensearchUserConfigOpenid() {}
     /**
-     * @return The ID of the OpenID Connect client configured in your IdP. Required.
+     * @return The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return The client secret of the OpenID Connect client configured in your IdP. Required.
+     * @return The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
      * 
      */
     public String clientSecret() {
         return this.clientSecret;
     }
     /**
-     * @return The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     * @return The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      * 
      */
     public String connectUrl() {
         return this.connectUrl;
     }
     /**
-     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     * @return HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
      * 
      */
     public Optional<String> header() {
         return Optional.ofNullable(this.header);
     }
     /**
-     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &lt;token&gt;. Optional. Default is Authorization.
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &lt;token&gt;. Optional. Default is Authorization. Example: `preferred_username`.
      * 
      */
     public Optional<String> jwtHeader() {
         return Optional.ofNullable(this.jwtHeader);
     }
     /**
-     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
      * 
      */
     public Optional<String> jwtUrlParameter() {
         return Optional.ofNullable(this.jwtUrlParameter);
     }
     /**
-     * @return The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     * @return The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
      * 
      */
     public Optional<Integer> refreshRateLimitCount() {
         return Optional.ofNullable(this.refreshRateLimitCount);
     }
     /**
-     * @return The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     * @return The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
      * 
      */
     public Optional<Integer> refreshRateLimitTimeWindowMs() {
         return Optional.ofNullable(this.refreshRateLimitTimeWindowMs);
     }
     /**
-     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
      * 
      */
     public Optional<String> rolesKey() {
         return Optional.ofNullable(this.rolesKey);
     }
     /**
-     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
      * 
      */
     public Optional<String> scope() {
         return Optional.ofNullable(this.scope);
     }
     /**
-     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
      * 
      */
     public Optional<String> subjectKey() {

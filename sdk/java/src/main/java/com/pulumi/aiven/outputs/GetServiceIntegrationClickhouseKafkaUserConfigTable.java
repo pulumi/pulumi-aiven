@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      * 
      */
     private @Nullable String autoOffsetReset;
@@ -27,52 +27,52 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private List<GetServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
     /**
-     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
      * 
      */
     private String dataFormat;
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
      * 
      */
     private @Nullable String dateTimeInputFormat;
     /**
-     * @return Kafka consumers group. The default value is `clickhouse`.
+     * @return Kafka consumers group. Default: `clickhouse`.
      * 
      */
     private String groupName;
     /**
-     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
      * 
      */
     private @Nullable String handleErrorMode;
     /**
-     * @return Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * @return Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
      * 
      */
     private @Nullable Integer maxBlockSize;
     /**
-     * @return The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * @return The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
      * 
      */
     private @Nullable Integer maxRowsPerMessage;
     /**
-     * @return Name of the table.
+     * @return Name of the table. Example: `events`.
      * 
      */
     private String name;
     /**
-     * @return The number of consumers per table per replica. The default value is `1`.
+     * @return The number of consumers per table per replica. Default: `1`.
      * 
      */
     private @Nullable Integer numConsumers;
     /**
-     * @return Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * @return Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
      * 
      */
     private @Nullable Integer pollMaxBatchSize;
     /**
-     * @return Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * @return Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
     private @Nullable Integer skipBrokenMessages;
@@ -84,7 +84,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
 
     private GetServiceIntegrationClickhouseKafkaUserConfigTable() {}
     /**
-     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      * 
      */
     public Optional<String> autoOffsetReset() {
@@ -98,70 +98,70 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return this.columns;
     }
     /**
-     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
      * 
      */
     public String dataFormat() {
         return this.dataFormat;
     }
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
      * 
      */
     public Optional<String> dateTimeInputFormat() {
         return Optional.ofNullable(this.dateTimeInputFormat);
     }
     /**
-     * @return Kafka consumers group. The default value is `clickhouse`.
+     * @return Kafka consumers group. Default: `clickhouse`.
      * 
      */
     public String groupName() {
         return this.groupName;
     }
     /**
-     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
      * 
      */
     public Optional<String> handleErrorMode() {
         return Optional.ofNullable(this.handleErrorMode);
     }
     /**
-     * @return Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * @return Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
      * 
      */
     public Optional<Integer> maxBlockSize() {
         return Optional.ofNullable(this.maxBlockSize);
     }
     /**
-     * @return The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * @return The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
      * 
      */
     public Optional<Integer> maxRowsPerMessage() {
         return Optional.ofNullable(this.maxRowsPerMessage);
     }
     /**
-     * @return Name of the table.
+     * @return Name of the table. Example: `events`.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The number of consumers per table per replica. The default value is `1`.
+     * @return The number of consumers per table per replica. Default: `1`.
      * 
      */
     public Optional<Integer> numConsumers() {
         return Optional.ofNullable(this.numConsumers);
     }
     /**
-     * @return Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * @return Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
      * 
      */
     public Optional<Integer> pollMaxBatchSize() {
         return Optional.ofNullable(this.pollMaxBatchSize);
     }
     /**
-     * @return Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * @return Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
     public Optional<Integer> skipBrokenMessages() {

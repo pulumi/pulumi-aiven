@@ -28,12 +28,12 @@ public final class GetCassandraCassandraUserConfig {
     @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     private @Nullable Integer backupHour;
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     private @Nullable Integer backupMinute;
@@ -48,17 +48,17 @@ public final class GetCassandraCassandraUserConfig {
      */
     private @Nullable String cassandraVersion;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -77,7 +77,7 @@ public final class GetCassandraCassandraUserConfig {
      */
     private @Nullable GetCassandraCassandraUserConfigPrivateAccess privateAccess;
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     private @Nullable String projectToForkFrom;
@@ -92,12 +92,12 @@ public final class GetCassandraCassandraUserConfig {
      */
     private @Nullable Boolean serviceLog;
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * @return When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
      * 
      */
     private @Nullable String serviceToJoinWith;
@@ -120,14 +120,14 @@ public final class GetCassandraCassandraUserConfig {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     public Optional<Integer> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     public Optional<Integer> backupMinute() {
@@ -148,21 +148,21 @@ public final class GetCassandraCassandraUserConfig {
         return Optional.ofNullable(this.cassandraVersion);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<GetCassandraCassandraUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -187,7 +187,7 @@ public final class GetCassandraCassandraUserConfig {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<String> projectToForkFrom() {
@@ -208,14 +208,14 @@ public final class GetCassandraCassandraUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * @return When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
      * 
      */
     public Optional<String> serviceToJoinWith() {

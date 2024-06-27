@@ -8,6 +8,7 @@ import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectArg
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPublicAccessArgs;
+import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigSecretProviderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -46,14 +47,14 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -61,14 +62,14 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -76,7 +77,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -87,7 +88,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -158,6 +159,13 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.publicAccess);
     }
 
+    @Import(name="secretProviders")
+    private @Nullable Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>> secretProviders;
+
+    public Optional<Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>>> secretProviders() {
+        return Optional.ofNullable(this.secretProviders);
+    }
+
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      * 
@@ -199,6 +207,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         this.privateAccess = $.privateAccess;
         this.privatelinkAccess = $.privatelinkAccess;
         this.publicAccess = $.publicAccess;
+        this.secretProviders = $.secretProviders;
         this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
     }
@@ -251,7 +260,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -262,7 +271,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -272,7 +281,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -282,7 +291,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -293,7 +302,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -303,7 +312,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -313,7 +322,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -328,7 +337,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -342,7 +351,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -437,6 +446,19 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          */
         public Builder publicAccess(KafkaConnectKafkaConnectUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
+        }
+
+        public Builder secretProviders(@Nullable Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>> secretProviders) {
+            $.secretProviders = secretProviders;
+            return this;
+        }
+
+        public Builder secretProviders(List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs> secretProviders) {
+            return secretProviders(Output.of(secretProviders));
+        }
+
+        public Builder secretProviders(KafkaConnectKafkaConnectUserConfigSecretProviderArgs... secretProviders) {
+            return secretProviders(List.of(secretProviders));
         }
 
         /**

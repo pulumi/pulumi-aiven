@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
     /**
-     * @return Enable or disable OpenSearch Dashboards. The default value is `true`.
+     * @return Enable or disable OpenSearch Dashboards. Default: `true`.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max_old_space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     * @return Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max_old_space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
      * 
      */
     private @Nullable Integer maxOldSpaceSize;
     /**
-     * @return Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     * @return Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      * 
      */
     private @Nullable Integer opensearchRequestTimeout;
 
     private GetOpenSearchOpensearchUserConfigOpensearchDashboards() {}
     /**
-     * @return Enable or disable OpenSearch Dashboards. The default value is `true`.
+     * @return Enable or disable OpenSearch Dashboards. Default: `true`.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max_old_space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     * @return Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max_old_space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
      * 
      */
     public Optional<Integer> maxOldSpaceSize() {
         return Optional.ofNullable(this.maxOldSpaceSize);
     }
     /**
-     * @return Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     * @return Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      * 
      */
     public Optional<Integer> opensearchRequestTimeout() {

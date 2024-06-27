@@ -42,7 +42,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable String alertingErrorOrTimeout;
     /**
-     * @return Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     * @return Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
      * 
      */
     private @Nullable Integer alertingMaxAnnotationsToKeep;
@@ -87,12 +87,12 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable GrafanaGrafanaUserConfigAuthGoogle authGoogle;
     /**
-     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      * 
      */
     private @Nullable String cookieSamesite;
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     private @Nullable String customDomain;
@@ -102,22 +102,22 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean dashboardPreviewsEnabled;
     /**
-     * @return Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     * @return Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      * 
      */
     private @Nullable String dashboardsMinRefreshInterval;
     /**
-     * @return Dashboard versions to keep per dashboard.
+     * @return Dashboard versions to keep per dashboard. Example: `20`.
      * 
      */
     private @Nullable Integer dashboardsVersionsToKeep;
     /**
-     * @return Send &#39;X-Grafana-User&#39; header to data source.
+     * @return Send `X-Grafana-User` header to data source.
      * 
      */
     private @Nullable Boolean dataproxySendUserHeader;
     /**
-     * @return Timeout for data proxy requests in seconds.
+     * @return Timeout for data proxy requests in seconds. Example: `30`.
      * 
      */
     private @Nullable Integer dataproxyTimeout;
@@ -142,22 +142,22 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable GrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
     /**
-     * @return Google Analytics ID.
+     * @return Google Analytics ID. Example: `UA-123456-4`.
      * 
      */
     private @Nullable String googleAnalyticsUaId;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -186,7 +186,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable GrafanaGrafanaUserConfigPrivatelinkAccess privatelinkAccess;
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     private @Nullable String projectToForkFrom;
@@ -196,7 +196,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable GrafanaGrafanaUserConfigPublicAccess publicAccess;
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     private @Nullable String recoveryBasebackupName;
@@ -206,7 +206,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean serviceLog;
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String serviceToForkFrom;
@@ -264,7 +264,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.alertingErrorOrTimeout);
     }
     /**
-     * @return Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     * @return Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
      * 
      */
     public Optional<Integer> alertingMaxAnnotationsToKeep() {
@@ -327,14 +327,14 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.authGoogle);
     }
     /**
-     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      * 
      */
     public Optional<String> cookieSamesite() {
         return Optional.ofNullable(this.cookieSamesite);
     }
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     public Optional<String> customDomain() {
@@ -348,28 +348,28 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.dashboardPreviewsEnabled);
     }
     /**
-     * @return Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     * @return Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      * 
      */
     public Optional<String> dashboardsMinRefreshInterval() {
         return Optional.ofNullable(this.dashboardsMinRefreshInterval);
     }
     /**
-     * @return Dashboard versions to keep per dashboard.
+     * @return Dashboard versions to keep per dashboard. Example: `20`.
      * 
      */
     public Optional<Integer> dashboardsVersionsToKeep() {
         return Optional.ofNullable(this.dashboardsVersionsToKeep);
     }
     /**
-     * @return Send &#39;X-Grafana-User&#39; header to data source.
+     * @return Send `X-Grafana-User` header to data source.
      * 
      */
     public Optional<Boolean> dataproxySendUserHeader() {
         return Optional.ofNullable(this.dataproxySendUserHeader);
     }
     /**
-     * @return Timeout for data proxy requests in seconds.
+     * @return Timeout for data proxy requests in seconds. Example: `30`.
      * 
      */
     public Optional<Integer> dataproxyTimeout() {
@@ -404,28 +404,28 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.externalImageStorage);
     }
     /**
-     * @return Google Analytics ID.
+     * @return Google Analytics ID. Example: `UA-123456-4`.
      * 
      */
     public Optional<String> googleAnalyticsUaId() {
         return Optional.ofNullable(this.googleAnalyticsUaId);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -464,7 +464,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.privatelinkAccess);
     }
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<String> projectToForkFrom() {
@@ -478,7 +478,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     public Optional<String> recoveryBasebackupName() {
@@ -492,7 +492,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> serviceToForkFrom() {

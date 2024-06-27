@@ -18,14 +18,14 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     public static final OpenSearchOpensearchUserConfigSamlArgs Empty = new OpenSearchOpensearchUserConfigSamlArgs();
 
     /**
-     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
+     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
+     * @return Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
      * 
      */
     public Output<Boolean> enabled() {
@@ -33,14 +33,14 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     }
 
     /**
-     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
      * 
      */
     @Import(name="idpEntityId", required=true)
     private Output<String> idpEntityId;
 
     /**
-     * @return The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     * @return The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
      * 
      */
     public Output<String> idpEntityId() {
@@ -48,14 +48,14 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     }
 
     /**
-     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      * 
      */
     @Import(name="idpMetadataUrl", required=true)
     private Output<String> idpMetadataUrl;
 
     /**
-     * @return The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     * @return The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      * 
      */
     public Output<String> idpMetadataUrl() {
@@ -63,14 +63,20 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     }
 
     /**
-     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     @Import(name="idpPemtrustedcasContent")
     private @Nullable Output<String> idpPemtrustedcasContent;
 
     /**
-     * @return This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     * @return This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<Output<String>> idpPemtrustedcasContent() {
@@ -78,14 +84,14 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     }
 
     /**
-     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
+     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
      * 
      */
     @Import(name="rolesKey")
     private @Nullable Output<String> rolesKey;
 
     /**
-     * @return Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
+     * @return Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
      * 
      */
     public Optional<Output<String>> rolesKey() {
@@ -93,14 +99,14 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     }
 
     /**
-     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
      * 
      */
     @Import(name="spEntityId", required=true)
     private Output<String> spEntityId;
 
     /**
-     * @return The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     * @return The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
      * 
      */
     public Output<String> spEntityId() {
@@ -108,14 +114,14 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     }
 
     /**
-     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
+     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
      * 
      */
     @Import(name="subjectKey")
     private @Nullable Output<String> subjectKey;
 
     /**
-     * @return Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
+     * @return Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
      * 
      */
     public Optional<Output<String>> subjectKey() {
@@ -153,7 +159,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param enabled Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
+         * @param enabled Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
          * 
          * @return builder
          * 
@@ -164,7 +170,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param enabled Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
+         * @param enabled Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
          * 
          * @return builder
          * 
@@ -174,7 +180,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param idpEntityId The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+         * @param idpEntityId The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
          * 
          * @return builder
          * 
@@ -185,7 +191,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param idpEntityId The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+         * @param idpEntityId The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
          * 
          * @return builder
          * 
@@ -195,7 +201,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param idpMetadataUrl The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+         * @param idpMetadataUrl The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
          * 
          * @return builder
          * 
@@ -206,7 +212,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param idpMetadataUrl The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+         * @param idpMetadataUrl The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
          * 
          * @return builder
          * 
@@ -216,7 +222,10 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param idpPemtrustedcasContent This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+         * @param idpPemtrustedcasContent This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -227,7 +236,10 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param idpPemtrustedcasContent This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+         * @param idpPemtrustedcasContent This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -237,7 +249,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param rolesKey Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
+         * @param rolesKey Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
          * 
          * @return builder
          * 
@@ -248,7 +260,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param rolesKey Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
+         * @param rolesKey Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
          * 
          * @return builder
          * 
@@ -258,7 +270,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param spEntityId The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+         * @param spEntityId The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
          * 
          * @return builder
          * 
@@ -269,7 +281,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param spEntityId The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+         * @param spEntityId The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
          * 
          * @return builder
          * 
@@ -279,7 +291,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param subjectKey Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
+         * @param subjectKey Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
          * 
          * @return builder
          * 
@@ -290,7 +302,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param subjectKey Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
+         * @param subjectKey Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
          * 
          * @return builder
          * 

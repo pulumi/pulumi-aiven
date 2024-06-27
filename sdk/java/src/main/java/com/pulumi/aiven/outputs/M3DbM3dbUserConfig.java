@@ -26,22 +26,22 @@ public final class M3DbM3dbUserConfig {
      */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     private @Nullable String customDomain;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<M3DbM3dbUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -85,7 +85,7 @@ public final class M3DbM3dbUserConfig {
      */
     private @Nullable M3DbM3dbUserConfigPrivateAccess privateAccess;
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     private @Nullable String projectToForkFrom;
@@ -105,7 +105,7 @@ public final class M3DbM3dbUserConfig {
      */
     private @Nullable Boolean serviceLog;
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String serviceToForkFrom;
@@ -124,28 +124,28 @@ public final class M3DbM3dbUserConfig {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<M3DbM3dbUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -205,7 +205,7 @@ public final class M3DbM3dbUserConfig {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<String> projectToForkFrom() {
@@ -233,7 +233,7 @@ public final class M3DbM3dbUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> serviceToForkFrom() {

@@ -14,22 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class M3DbM3dbUserConfigLimits {
     /**
-     * @return The maximum number of blocks that can be read in a given lookback period.
+     * @return The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
      * 
      */
     private @Nullable Integer maxRecentlyQueriedSeriesBlocks;
     /**
-     * @return The maximum number of disk bytes that can be read in a given lookback period.
+     * @return The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
      * 
      */
     private @Nullable Integer maxRecentlyQueriedSeriesDiskBytesRead;
     /**
-     * @return The lookback period for &#39;max*recently*queried*series*blocks&#39; and &#39;max*recently*queried*series*disk*bytes*read&#39;.
+     * @return The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
      * 
      */
     private @Nullable String maxRecentlyQueriedSeriesLookback;
     /**
-     * @return The maximum number of docs fetched in single query.
+     * @return The maximum number of docs fetched in single query. Example: `100000`.
      * 
      */
     private @Nullable Integer queryDocs;
@@ -39,35 +39,35 @@ public final class M3DbM3dbUserConfigLimits {
      */
     private @Nullable Boolean queryRequireExhaustive;
     /**
-     * @return The maximum number of series fetched in single query.
+     * @return The maximum number of series fetched in single query. Example: `100000`.
      * 
      */
     private @Nullable Integer querySeries;
 
     private M3DbM3dbUserConfigLimits() {}
     /**
-     * @return The maximum number of blocks that can be read in a given lookback period.
+     * @return The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
      * 
      */
     public Optional<Integer> maxRecentlyQueriedSeriesBlocks() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesBlocks);
     }
     /**
-     * @return The maximum number of disk bytes that can be read in a given lookback period.
+     * @return The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
      * 
      */
     public Optional<Integer> maxRecentlyQueriedSeriesDiskBytesRead() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesDiskBytesRead);
     }
     /**
-     * @return The lookback period for &#39;max*recently*queried*series*blocks&#39; and &#39;max*recently*queried*series*disk*bytes*read&#39;.
+     * @return The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
      * 
      */
     public Optional<String> maxRecentlyQueriedSeriesLookback() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesLookback);
     }
     /**
-     * @return The maximum number of docs fetched in single query.
+     * @return The maximum number of docs fetched in single query. Example: `100000`.
      * 
      */
     public Optional<Integer> queryDocs() {
@@ -81,7 +81,7 @@ public final class M3DbM3dbUserConfigLimits {
         return Optional.ofNullable(this.queryRequireExhaustive);
     }
     /**
-     * @return The maximum number of series fetched in single query.
+     * @return The maximum number of series fetched in single query. Example: `100000`.
      * 
      */
     public Optional<Integer> querySeries() {

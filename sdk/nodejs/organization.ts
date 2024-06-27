@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
+ * Creates and manages an [organization](https://aiven.io/docs/platform/concepts/orgs-units-projects).
  *
  * ## Example Usage
  *

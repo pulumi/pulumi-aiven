@@ -20,12 +20,12 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Boolean autoCreateTopicsEnable;
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
      * 
      */
     private @Nullable String compressionType;
     /**
-     * @return Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * @return Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
      * 
      */
     private @Nullable Integer connectionsMaxIdleMs;
@@ -35,22 +35,22 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer defaultReplicationFactor;
     /**
-     * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
      * 
      */
     private @Nullable Integer groupInitialRebalanceDelayMs;
     /**
-     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
      * 
      */
     private @Nullable Integer groupMaxSessionTimeoutMs;
     /**
-     * @return The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * @return The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
      * 
      */
     private @Nullable Integer groupMinSessionTimeoutMs;
     /**
-     * @return How long are delete records retained?
+     * @return How long are delete records retained? Example: `86400000`.
      * 
      */
     private @Nullable Integer logCleanerDeleteRetentionMs;
@@ -60,7 +60,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer logCleanerMaxCompactionLagMs;
     /**
-     * @return Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * @return Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
      * 
      */
     private @Nullable Double logCleanerMinCleanableRatio;
@@ -75,7 +75,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable String logCleanupPolicy;
     /**
-     * @return The number of messages accumulated on a log partition before messages are flushed to disk.
+     * @return The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
      * 
      */
     private @Nullable Integer logFlushIntervalMessages;
@@ -85,12 +85,12 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer logFlushIntervalMs;
     /**
-     * @return The interval with which Kafka adds an entry to the offset index.
+     * @return The interval with which Kafka adds an entry to the offset index. Example: `4096`.
      * 
      */
     private @Nullable Integer logIndexIntervalBytes;
     /**
-     * @return The maximum size in bytes of the offset index.
+     * @return The maximum size in bytes of the offset index. Example: `10485760`.
      * 
      */
     private @Nullable Integer logIndexSizeMaxBytes;
@@ -155,7 +155,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer logSegmentBytes;
     /**
-     * @return The amount of time to wait before deleting a file from the filesystem.
+     * @return The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
      * 
      */
     private @Nullable Integer logSegmentDeleteDelayMs;
@@ -165,17 +165,17 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer maxConnectionsPerIp;
     /**
-     * @return The maximum number of incremental fetch sessions that the broker will maintain.
+     * @return The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
      * 
      */
     private @Nullable Integer maxIncrementalFetchSessionCacheSlots;
     /**
-     * @return The maximum size of message that the server can receive.
+     * @return The maximum size of message that the server can receive. Example: `1048588`.
      * 
      */
     private @Nullable Integer messageMaxBytes;
     /**
-     * @return When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * @return When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
      * 
      */
     private @Nullable Integer minInsyncReplicas;
@@ -185,7 +185,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer numPartitions;
     /**
-     * @return Log retention window in minutes for offsets topic.
+     * @return Log retention window in minutes for offsets topic. Example: `10080`.
      * 
      */
     private @Nullable Integer offsetsRetentionMinutes;
@@ -254,14 +254,14 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.autoCreateTopicsEnable);
     }
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
      * 
      */
     public Optional<String> compressionType() {
         return Optional.ofNullable(this.compressionType);
     }
     /**
-     * @return Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * @return Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
      * 
      */
     public Optional<Integer> connectionsMaxIdleMs() {
@@ -275,28 +275,28 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.defaultReplicationFactor);
     }
     /**
-     * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
      * 
      */
     public Optional<Integer> groupInitialRebalanceDelayMs() {
         return Optional.ofNullable(this.groupInitialRebalanceDelayMs);
     }
     /**
-     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
      * 
      */
     public Optional<Integer> groupMaxSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMaxSessionTimeoutMs);
     }
     /**
-     * @return The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * @return The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
      * 
      */
     public Optional<Integer> groupMinSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMinSessionTimeoutMs);
     }
     /**
-     * @return How long are delete records retained?
+     * @return How long are delete records retained? Example: `86400000`.
      * 
      */
     public Optional<Integer> logCleanerDeleteRetentionMs() {
@@ -310,7 +310,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logCleanerMaxCompactionLagMs);
     }
     /**
-     * @return Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * @return Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
      * 
      */
     public Optional<Double> logCleanerMinCleanableRatio() {
@@ -331,7 +331,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logCleanupPolicy);
     }
     /**
-     * @return The number of messages accumulated on a log partition before messages are flushed to disk.
+     * @return The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
      * 
      */
     public Optional<Integer> logFlushIntervalMessages() {
@@ -345,14 +345,14 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logFlushIntervalMs);
     }
     /**
-     * @return The interval with which Kafka adds an entry to the offset index.
+     * @return The interval with which Kafka adds an entry to the offset index. Example: `4096`.
      * 
      */
     public Optional<Integer> logIndexIntervalBytes() {
         return Optional.ofNullable(this.logIndexIntervalBytes);
     }
     /**
-     * @return The maximum size in bytes of the offset index.
+     * @return The maximum size in bytes of the offset index. Example: `10485760`.
      * 
      */
     public Optional<Integer> logIndexSizeMaxBytes() {
@@ -443,7 +443,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logSegmentBytes);
     }
     /**
-     * @return The amount of time to wait before deleting a file from the filesystem.
+     * @return The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
      * 
      */
     public Optional<Integer> logSegmentDeleteDelayMs() {
@@ -457,21 +457,21 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.maxConnectionsPerIp);
     }
     /**
-     * @return The maximum number of incremental fetch sessions that the broker will maintain.
+     * @return The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
      * 
      */
     public Optional<Integer> maxIncrementalFetchSessionCacheSlots() {
         return Optional.ofNullable(this.maxIncrementalFetchSessionCacheSlots);
     }
     /**
-     * @return The maximum size of message that the server can receive.
+     * @return The maximum size of message that the server can receive. Example: `1048588`.
      * 
      */
     public Optional<Integer> messageMaxBytes() {
         return Optional.ofNullable(this.messageMaxBytes);
     }
     /**
-     * @return When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * @return When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
      * 
      */
     public Optional<Integer> minInsyncReplicas() {
@@ -485,7 +485,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.numPartitions);
     }
     /**
-     * @return Log retention window in minutes for offsets topic.
+     * @return Log retention window in minutes for offsets topic. Example: `10080`.
      * 
      */
     public Optional<Integer> offsetsRetentionMinutes() {

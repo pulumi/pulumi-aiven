@@ -15,14 +15,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
     public static final ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs Empty = new ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs();
 
     /**
-     * AWS access key. Required permissions are cloudwatch:PutMetricData.
+     * AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return AWS access key. Required permissions are cloudwatch:PutMetricData.
+     * @return AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public Output<String> accessKey() {
@@ -30,14 +30,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
     }
 
     /**
-     * AWS CloudWatch Metrics Namespace.
+     * AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return AWS CloudWatch Metrics Namespace.
+     * @return AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
      * 
      */
     public Output<String> namespace() {
@@ -45,14 +45,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
     }
 
     /**
-     * AWS region.
+     * AWS region. Example: `us-east-1`.
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return AWS region.
+     * @return AWS region. Example: `us-east-1`.
      * 
      */
     public Output<String> region() {
@@ -60,14 +60,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
     }
 
     /**
-     * AWS secret key.
+     * AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return AWS secret key.
+     * @return AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public Output<String> secretKey() {
@@ -102,7 +102,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData.
+         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData.
+         * @param accessKey AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param namespace AWS CloudWatch Metrics Namespace.
+         * @param namespace AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param namespace AWS CloudWatch Metrics Namespace.
+         * @param namespace AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param region AWS region.
+         * @param region AWS region. Example: `us-east-1`.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param region AWS region.
+         * @param region AWS region. Example: `us-east-1`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param secretKey AWS secret key.
+         * @param secretKey AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCon
         }
 
         /**
-         * @param secretKey AWS secret key.
+         * @param secretKey AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 

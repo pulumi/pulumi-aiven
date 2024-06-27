@@ -17,14 +17,14 @@ public final class M3DbM3dbUserConfigIpFilterObjectArgs extends com.pulumi.resou
     public static final M3DbM3dbUserConfigIpFilterObjectArgs Empty = new M3DbM3dbUserConfigIpFilterObjectArgs();
 
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description for IP filter list entry.
+     * @return Description for IP filter list entry. Example: `Production service IP range`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class M3DbM3dbUserConfigIpFilterObjectArgs extends com.pulumi.resou
     }
 
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return CIDR address block.
+     * @return CIDR address block. Example: `10.20.0.0/16`.
      * 
      */
     public Output<String> network() {
@@ -72,7 +72,7 @@ public final class M3DbM3dbUserConfigIpFilterObjectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param description Description for IP filter list entry.
+         * @param description Description for IP filter list entry. Example: `Production service IP range`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class M3DbM3dbUserConfigIpFilterObjectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param description Description for IP filter list entry.
+         * @param description Description for IP filter list entry. Example: `Production service IP range`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class M3DbM3dbUserConfigIpFilterObjectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param network CIDR address block.
+         * @param network CIDR address block. Example: `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class M3DbM3dbUserConfigIpFilterObjectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param network CIDR address block.
+         * @param network CIDR address block. Example: `10.20.0.0/16`.
          * 
          * @return builder
          * 

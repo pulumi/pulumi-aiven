@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPglookoutGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+        /// Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
         /// </summary>
         [Input("maxFailoverReplicationTimeLag")]
         public Input<int>? MaxFailoverReplicationTimeLag { get; set; }

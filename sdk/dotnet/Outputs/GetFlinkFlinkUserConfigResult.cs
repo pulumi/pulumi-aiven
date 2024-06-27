@@ -22,19 +22,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? FlinkVersion;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlinkFlinkUserConfigIpFilterObjectResult> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+        /// Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
         /// </summary>
         public readonly int? NumberOfTaskSlots;
         /// <summary>

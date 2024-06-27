@@ -17,14 +17,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
     public static final ServiceIntegrationKafkaMirrormakerUserConfigArgs Empty = new ServiceIntegrationKafkaMirrormakerUserConfigArgs();
 
     /**
-     * The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
+     * The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
      * 
      */
     @Import(name="clusterAlias")
     private @Nullable Output<String> clusterAlias;
 
     /**
-     * @return The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
+     * @return The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
      * 
      */
     public Optional<Output<String>> clusterAlias() {
@@ -72,7 +72,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
         }
 
         /**
-         * @param clusterAlias The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
+         * @param clusterAlias The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
         }
 
         /**
-         * @param clusterAlias The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
+         * @param clusterAlias The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
          * 
          * @return builder
          * 

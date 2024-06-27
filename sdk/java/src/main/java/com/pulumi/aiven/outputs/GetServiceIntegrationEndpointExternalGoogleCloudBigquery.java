@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceIntegrationEndpointExternalGoogleCloudBigquery {
     /**
-     * @return GCP project id.
+     * @return GCP project id. Example: `snappy-photon-12345`.
      * 
      */
     private String projectId;
     /**
-     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
      * 
      */
     private String serviceAccountCredentials;
 
     private GetServiceIntegrationEndpointExternalGoogleCloudBigquery() {}
     /**
-     * @return GCP project id.
+     * @return GCP project id. Example: `snappy-photon-12345`.
      * 
      */
     public String projectId() {
         return this.projectId;
     }
     /**
-     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
      * 
      */
     public String serviceAccountCredentials() {

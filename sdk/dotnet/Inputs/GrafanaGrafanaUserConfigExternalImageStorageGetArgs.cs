@@ -12,14 +12,24 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigExternalImageStorageGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
-        /// </summary>
         [Input("accessKey", required: true)]
-        public Input<string> AccessKey { get; set; } = null!;
+        private Input<string>? _accessKey;
 
         /// <summary>
-        /// Bucket URL for S3.
+        /// S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
+        /// </summary>
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
         /// </summary>
         [Input("bucketUrl", required: true)]
         public Input<string> BucketUrl { get; set; } = null!;
@@ -30,11 +40,21 @@ namespace Pulumi.Aiven.Inputs
         [Input("provider", required: true)]
         public Input<string> Provider { get; set; } = null!;
 
-        /// <summary>
-        /// S3 secret key.
-        /// </summary>
         [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        private Input<string>? _secretKey;
+
+        /// <summary>
+        /// S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+        /// </summary>
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public GrafanaGrafanaUserConfigExternalImageStorageGetArgs()
         {

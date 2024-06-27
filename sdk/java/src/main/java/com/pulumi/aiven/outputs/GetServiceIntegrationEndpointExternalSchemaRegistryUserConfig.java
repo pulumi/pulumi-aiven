@@ -18,17 +18,17 @@ public final class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig
      */
     private String authentication;
     /**
-     * @return Basic authentication password.
+     * @return Basic authentication password. Example: `Zm9vYg==`.
      * 
      */
     private @Nullable String basicAuthPassword;
     /**
-     * @return Basic authentication user name.
+     * @return Basic authentication user name. Example: `avnadmin`.
      * 
      */
     private @Nullable String basicAuthUsername;
     /**
-     * @return Schema Registry URL.
+     * @return Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
      * 
      */
     private String url;
@@ -42,21 +42,21 @@ public final class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig
         return this.authentication;
     }
     /**
-     * @return Basic authentication password.
+     * @return Basic authentication password. Example: `Zm9vYg==`.
      * 
      */
     public Optional<String> basicAuthPassword() {
         return Optional.ofNullable(this.basicAuthPassword);
     }
     /**
-     * @return Basic authentication user name.
+     * @return Basic authentication user name. Example: `avnadmin`.
      * 
      */
     public Optional<String> basicAuthUsername() {
         return Optional.ofNullable(this.basicAuthUsername);
     }
     /**
-     * @return Schema Registry URL.
+     * @return Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
      * 
      */
     public String url() {

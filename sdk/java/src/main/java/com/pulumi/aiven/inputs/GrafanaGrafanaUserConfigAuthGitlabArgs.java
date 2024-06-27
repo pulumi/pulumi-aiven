@@ -49,14 +49,14 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
     }
 
     /**
-     * API URL. This only needs to be set when using self hosted GitLab.
+     * API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
      * 
      */
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
     /**
-     * @return API URL. This only needs to be set when using self hosted GitLab.
+     * @return API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
      * 
      */
     public Optional<Output<String>> apiUrl() {
@@ -64,14 +64,14 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
     }
 
     /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab.
+     * Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
      * 
      */
     @Import(name="authUrl")
     private @Nullable Output<String> authUrl;
 
     /**
-     * @return Authorization URL. This only needs to be set when using self hosted GitLab.
+     * @return Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
      * 
      */
     public Optional<Output<String>> authUrl() {
@@ -79,14 +79,14 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
     }
 
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     public Output<String> clientId() {
@@ -94,14 +94,14 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
     }
 
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     public Output<String> clientSecret() {
@@ -109,14 +109,14 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
     }
 
     /**
-     * Token URL. This only needs to be set when using self hosted GitLab.
+     * Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
      * 
      */
     @Import(name="tokenUrl")
     private @Nullable Output<String> tokenUrl;
 
     /**
-     * @return Token URL. This only needs to be set when using self hosted GitLab.
+     * @return Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
      * 
      */
     public Optional<Output<String>> tokenUrl() {
@@ -206,7 +206,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param apiUrl API URL. This only needs to be set when using self hosted GitLab.
+         * @param apiUrl API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param apiUrl API URL. This only needs to be set when using self hosted GitLab.
+         * @param apiUrl API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param authUrl Authorization URL. This only needs to be set when using self hosted GitLab.
+         * @param authUrl Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param authUrl Authorization URL. This only needs to be set when using self hosted GitLab.
+         * @param authUrl Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientId Client ID from provider.
+         * @param clientId Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientId Client ID from provider.
+         * @param clientId Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientSecret Client secret from provider.
+         * @param clientSecret Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientSecret Client secret from provider.
+         * @param clientSecret Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param tokenUrl Token URL. This only needs to be set when using self hosted GitLab.
+         * @param tokenUrl Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         /**
-         * @param tokenUrl Token URL. This only needs to be set when using self hosted GitLab.
+         * @param tokenUrl Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
          * 
          * @return builder
          * 

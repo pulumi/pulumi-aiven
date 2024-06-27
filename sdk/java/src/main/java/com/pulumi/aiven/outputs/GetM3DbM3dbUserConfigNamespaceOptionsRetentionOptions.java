@@ -12,62 +12,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
     /**
-     * @return Controls how long we wait before expiring stale data.
+     * @return Controls how long we wait before expiring stale data. Example: `5m`.
      * 
      */
     private @Nullable String blockDataExpiryDuration;
     /**
-     * @return Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * @return Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
      * 
      */
     private @Nullable String blocksizeDuration;
     /**
-     * @return Controls how far into the future writes to the namespace will be accepted.
+     * @return Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
      * 
      */
     private @Nullable String bufferFutureDuration;
     /**
-     * @return Controls how far into the past writes to the namespace will be accepted.
+     * @return Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
      * 
      */
     private @Nullable String bufferPastDuration;
     /**
-     * @return Controls the duration of time that M3DB will retain data for the namespace.
+     * @return Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
      * 
      */
     private @Nullable String retentionPeriodDuration;
 
     private GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions() {}
     /**
-     * @return Controls how long we wait before expiring stale data.
+     * @return Controls how long we wait before expiring stale data. Example: `5m`.
      * 
      */
     public Optional<String> blockDataExpiryDuration() {
         return Optional.ofNullable(this.blockDataExpiryDuration);
     }
     /**
-     * @return Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * @return Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
      * 
      */
     public Optional<String> blocksizeDuration() {
         return Optional.ofNullable(this.blocksizeDuration);
     }
     /**
-     * @return Controls how far into the future writes to the namespace will be accepted.
+     * @return Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
      * 
      */
     public Optional<String> bufferFutureDuration() {
         return Optional.ofNullable(this.bufferFutureDuration);
     }
     /**
-     * @return Controls how far into the past writes to the namespace will be accepted.
+     * @return Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
      * 
      */
     public Optional<String> bufferPastDuration() {
         return Optional.ofNullable(this.bufferPastDuration);
     }
     /**
-     * @return Controls the duration of time that M3DB will retain data for the namespace.
+     * @return Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
      * 
      */
     public Optional<String> retentionPeriodDuration() {

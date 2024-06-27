@@ -182,14 +182,14 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
     }
 
     /**
-     * Truncates digest text from perf*events*statements into this many characters.
+     * Truncates digest text from perf*events*statements into this many characters. Example: `120`.
      * 
      */
     @Import(name="perfEventsStatementsDigestTextLimit")
     private @Nullable Output<Integer> perfEventsStatementsDigestTextLimit;
 
     /**
-     * @return Truncates digest text from perf*events*statements into this many characters.
+     * @return Truncates digest text from perf*events*statements into this many characters. Example: `120`.
      * 
      */
     public Optional<Output<Integer>> perfEventsStatementsDigestTextLimit() {
@@ -197,14 +197,14 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
     }
 
     /**
-     * Limits metrics from perf*events*statements.
+     * Limits metrics from perf*events*statements. Example: `250`.
      * 
      */
     @Import(name="perfEventsStatementsLimit")
     private @Nullable Output<Integer> perfEventsStatementsLimit;
 
     /**
-     * @return Limits metrics from perf*events*statements.
+     * @return Limits metrics from perf*events*statements. Example: `250`.
      * 
      */
     public Optional<Output<Integer>> perfEventsStatementsLimit() {
@@ -212,14 +212,14 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
     }
 
     /**
-     * Only include perf*events*statements whose last seen is less than this many seconds.
+     * Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      * 
      */
     @Import(name="perfEventsStatementsTimeLimit")
     private @Nullable Output<Integer> perfEventsStatementsTimeLimit;
 
     /**
-     * @return Only include perf*events*statements whose last seen is less than this many seconds.
+     * @return Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      * 
      */
     public Optional<Output<Integer>> perfEventsStatementsTimeLimit() {
@@ -495,7 +495,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param perfEventsStatementsDigestTextLimit Truncates digest text from perf*events*statements into this many characters.
+         * @param perfEventsStatementsDigestTextLimit Truncates digest text from perf*events*statements into this many characters. Example: `120`.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param perfEventsStatementsDigestTextLimit Truncates digest text from perf*events*statements into this many characters.
+         * @param perfEventsStatementsDigestTextLimit Truncates digest text from perf*events*statements into this many characters. Example: `120`.
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param perfEventsStatementsLimit Limits metrics from perf*events*statements.
+         * @param perfEventsStatementsLimit Limits metrics from perf*events*statements. Example: `250`.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param perfEventsStatementsLimit Limits metrics from perf*events*statements.
+         * @param perfEventsStatementsLimit Limits metrics from perf*events*statements. Example: `250`.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param perfEventsStatementsTimeLimit Only include perf*events*statements whose last seen is less than this many seconds.
+         * @param perfEventsStatementsTimeLimit Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param perfEventsStatementsTimeLimit Only include perf*events*statements whose last seen is less than this many seconds.
+         * @param perfEventsStatementsTimeLimit Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
          * 
          * @return builder
          * 

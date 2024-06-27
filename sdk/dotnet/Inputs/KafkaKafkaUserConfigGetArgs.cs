@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? AivenKafkaTopicMessages { get; set; }
 
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.KafkaKafkaUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public InputList<Inputs.KafkaKafkaUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilterStrings;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public InputList<string> IpFilterStrings
         {
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
@@ -80,7 +80,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsGetArgs>? KafkaAuthenticationMethods { get; set; }
 
         /// <summary>
-        /// Enable Kafka Connect service. The default value is `false`.
+        /// Enable Kafka Connect service. Default: `false`.
         /// </summary>
         [Input("kafkaConnect")]
         public Input<bool>? KafkaConnect { get; set; }
@@ -91,8 +91,16 @@ namespace Pulumi.Aiven.Inputs
         [Input("kafkaConnectConfig")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaConnectConfigGetArgs>? KafkaConnectConfig { get; set; }
 
+        [Input("kafkaConnectSecretProviders")]
+        private InputList<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderGetArgs>? _kafkaConnectSecretProviders;
+        public InputList<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderGetArgs> KafkaConnectSecretProviders
+        {
+            get => _kafkaConnectSecretProviders ?? (_kafkaConnectSecretProviders = new InputList<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderGetArgs>());
+            set => _kafkaConnectSecretProviders = value;
+        }
+
         /// <summary>
-        /// Enable Kafka-REST service. The default value is `false`.
+        /// Enable Kafka-REST service. Default: `false`.
         /// </summary>
         [Input("kafkaRest")]
         public Input<bool>? KafkaRest { get; set; }
@@ -116,6 +124,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? KafkaVersion { get; set; }
 
         /// <summary>
+        /// Use Letsencrypt CA for Kafka SASL via Privatelink.
+        /// </summary>
+        [Input("letsencryptSaslPrivatelink")]
+        public Input<bool>? LetsencryptSaslPrivatelink { get; set; }
+
+        /// <summary>
         /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
@@ -134,7 +148,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Enable Schema-Registry service. The default value is `false`.
+        /// Enable Schema-Registry service. Default: `false`.
         /// </summary>
         [Input("schemaRegistry")]
         public Input<bool>? SchemaRegistry { get; set; }

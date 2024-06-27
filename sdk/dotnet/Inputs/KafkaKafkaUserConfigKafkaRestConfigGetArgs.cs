@@ -13,61 +13,61 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigKafkaRestConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.
+        /// If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
         /// </summary>
         [Input("consumerEnableAutoCommit")]
         public Input<bool>? ConsumerEnableAutoCommit { get; set; }
 
         /// <summary>
-        /// Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+        /// Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
         /// </summary>
         [Input("consumerRequestMaxBytes")]
         public Input<int>? ConsumerRequestMaxBytes { get; set; }
 
         /// <summary>
-        /// Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+        /// Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
         /// </summary>
         [Input("consumerRequestTimeoutMs")]
         public Input<int>? ConsumerRequestTimeoutMs { get; set; }
 
         /// <summary>
-        /// Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+        /// Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
         /// </summary>
         [Input("nameStrategy")]
         public Input<string>? NameStrategy { get; set; }
 
         /// <summary>
-        /// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+        /// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
         /// </summary>
         [Input("nameStrategyValidation")]
         public Input<bool>? NameStrategyValidation { get; set; }
 
         /// <summary>
-        /// Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+        /// Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
         /// </summary>
         [Input("producerAcks")]
         public Input<string>? ProducerAcks { get; set; }
 
         /// <summary>
-        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }
 
         /// <summary>
-        /// Wait for up to the given delay to allow batching records together. The default value is `0`.
+        /// Wait for up to the given delay to allow batching records together. Default: `0`.
         /// </summary>
         [Input("producerLingerMs")]
         public Input<int>? ProducerLingerMs { get; set; }
 
         /// <summary>
-        /// The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+        /// The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
         /// </summary>
         [Input("producerMaxRequestSize")]
         public Input<int>? ProducerMaxRequestSize { get; set; }
 
         /// <summary>
-        /// Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+        /// Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
         /// </summary>
         [Input("simpleconsumerPoolSizeMax")]
         public Input<int>? SimpleconsumerPoolSizeMax { get; set; }

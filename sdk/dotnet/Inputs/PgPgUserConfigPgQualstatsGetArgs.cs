@@ -13,31 +13,31 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPgQualstatsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable / Disable pg_qualstats. The default value is `false`.
+        /// Enable / Disable pg_qualstats. Default: `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Error estimation num threshold to save quals. The default value is `0`.
+        /// Error estimation num threshold to save quals. Default: `0`.
         /// </summary>
         [Input("minErrEstimateNum")]
         public Input<int>? MinErrEstimateNum { get; set; }
 
         /// <summary>
-        /// Error estimation ratio threshold to save quals. The default value is `0`.
+        /// Error estimation ratio threshold to save quals. Default: `0`.
         /// </summary>
         [Input("minErrEstimateRatio")]
         public Input<int>? MinErrEstimateRatio { get; set; }
 
         /// <summary>
-        /// Enable / Disable pg_qualstats constants tracking. The default value is `true`.
+        /// Enable / Disable pg_qualstats constants tracking. Default: `true`.
         /// </summary>
         [Input("trackConstants")]
         public Input<bool>? TrackConstants { get; set; }
 
         /// <summary>
-        /// Track quals on system catalogs too. The default value is `false`.
+        /// Track quals on system catalogs too. Default: `false`.
         /// </summary>
         [Input("trackPgCatalog")]
         public Input<bool>? TrackPgCatalog { get; set; }

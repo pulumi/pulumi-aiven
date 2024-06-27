@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs> IpFilterObjects
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilterStrings;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public InputList<string> IpFilterStrings
         {
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
@@ -78,6 +78,14 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPublicAccessArgs>? PublicAccess { get; set; }
+
+        [Input("secretProviders")]
+        private InputList<Inputs.KafkaConnectKafkaConnectUserConfigSecretProviderArgs>? _secretProviders;
+        public InputList<Inputs.KafkaConnectKafkaConnectUserConfigSecretProviderArgs> SecretProviders
+        {
+            get => _secretProviders ?? (_secretProviders = new InputList<Inputs.KafkaConnectKafkaConnectUserConfigSecretProviderArgs>());
+            set => _secretProviders = value;
+        }
 
         /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.

@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3AggregatorM3aggregatorUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public InputList<Inputs.M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs> IpFilterObjects
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilterStrings;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public InputList<string> IpFilterStrings
         {
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters

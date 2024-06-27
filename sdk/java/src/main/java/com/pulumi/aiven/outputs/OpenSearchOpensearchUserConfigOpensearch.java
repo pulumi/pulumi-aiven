@@ -31,7 +31,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners authFailureListeners;
     /**
-     * @return Controls the number of shards allowed in the cluster per data node.
+     * @return Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      * 
      */
     private @Nullable Integer clusterMaxShardsPerNode;
@@ -41,22 +41,22 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
     /**
-     * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+     * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      * 
      */
     private @Nullable String emailSenderName;
     /**
-     * @return Sender password for Opensearch alerts to authenticate with SMTP server.
+     * @return Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
      * 
      */
     private @Nullable String emailSenderPassword;
     /**
-     * @return Sender username for Opensearch alerts.
+     * @return Sender username for Opensearch alerts. Example: `jane{@literal @}example.com`.
      * 
      */
     private @Nullable String emailSenderUsername;
     /**
-     * @return Enable/Disable security audit. The default value is `false`.
+     * @return Enable/Disable security audit. Default: `false`.
      * 
      */
     private @Nullable Boolean enableSecurityAudit;
@@ -66,12 +66,12 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer httpMaxContentLength;
     /**
-     * @return The max size of allowed headers, in bytes.
+     * @return The max size of allowed headers, in bytes. Example: `8192`.
      * 
      */
     private @Nullable Integer httpMaxHeaderSize;
     /**
-     * @return The max length of an HTTP URL, in bytes.
+     * @return The max length of an HTTP URL, in bytes. Example: `4096`.
      * 
      */
     private @Nullable Integer httpMaxInitialLineLength;
@@ -116,32 +116,32 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer indicesRecoveryMaxConcurrentFileChunks;
     /**
-     * @return Specifies whether ISM is enabled or not. The default value is `true`.
+     * @return Specifies whether ISM is enabled or not. Default: `true`.
      * 
      */
     private @Nullable Boolean ismEnabled;
     /**
-     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
      * 
      */
     private @Nullable Boolean ismHistoryEnabled;
     /**
-     * @return The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * @return The maximum age before rolling over the audit history index in hours. Default: `24`.
      * 
      */
     private @Nullable Integer ismHistoryMaxAge;
     /**
-     * @return The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * @return The maximum number of documents before rolling over the audit history index. Default: `2500000`.
      * 
      */
     private @Nullable Integer ismHistoryMaxDocs;
     /**
-     * @return The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * @return The time between rollover checks for the audit history index in hours. Default: `8`.
      * 
      */
     private @Nullable Integer ismHistoryRolloverCheckPeriod;
     /**
-     * @return How long audit history indices are kept in days. The default value is `30`.
+     * @return How long audit history indices are kept in days. Default: `30`.
      * 
      */
     private @Nullable Integer ismHistoryRolloverRetentionPeriod;
@@ -161,12 +161,12 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable List<String> reindexRemoteWhitelists;
     /**
-     * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      * 
      */
     private @Nullable String scriptMaxCompilationsRate;
     /**
-     * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
      */
     private @Nullable Integer searchMaxBuckets;
@@ -249,7 +249,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.authFailureListeners);
     }
     /**
-     * @return Controls the number of shards allowed in the cluster per data node.
+     * @return Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      * 
      */
     public Optional<Integer> clusterMaxShardsPerNode() {
@@ -263,28 +263,28 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
     }
     /**
-     * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+     * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      * 
      */
     public Optional<String> emailSenderName() {
         return Optional.ofNullable(this.emailSenderName);
     }
     /**
-     * @return Sender password for Opensearch alerts to authenticate with SMTP server.
+     * @return Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
      * 
      */
     public Optional<String> emailSenderPassword() {
         return Optional.ofNullable(this.emailSenderPassword);
     }
     /**
-     * @return Sender username for Opensearch alerts.
+     * @return Sender username for Opensearch alerts. Example: `jane{@literal @}example.com`.
      * 
      */
     public Optional<String> emailSenderUsername() {
         return Optional.ofNullable(this.emailSenderUsername);
     }
     /**
-     * @return Enable/Disable security audit. The default value is `false`.
+     * @return Enable/Disable security audit. Default: `false`.
      * 
      */
     public Optional<Boolean> enableSecurityAudit() {
@@ -298,14 +298,14 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.httpMaxContentLength);
     }
     /**
-     * @return The max size of allowed headers, in bytes.
+     * @return The max size of allowed headers, in bytes. Example: `8192`.
      * 
      */
     public Optional<Integer> httpMaxHeaderSize() {
         return Optional.ofNullable(this.httpMaxHeaderSize);
     }
     /**
-     * @return The max length of an HTTP URL, in bytes.
+     * @return The max length of an HTTP URL, in bytes. Example: `4096`.
      * 
      */
     public Optional<Integer> httpMaxInitialLineLength() {
@@ -368,42 +368,42 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.indicesRecoveryMaxConcurrentFileChunks);
     }
     /**
-     * @return Specifies whether ISM is enabled or not. The default value is `true`.
+     * @return Specifies whether ISM is enabled or not. Default: `true`.
      * 
      */
     public Optional<Boolean> ismEnabled() {
         return Optional.ofNullable(this.ismEnabled);
     }
     /**
-     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
      * 
      */
     public Optional<Boolean> ismHistoryEnabled() {
         return Optional.ofNullable(this.ismHistoryEnabled);
     }
     /**
-     * @return The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * @return The maximum age before rolling over the audit history index in hours. Default: `24`.
      * 
      */
     public Optional<Integer> ismHistoryMaxAge() {
         return Optional.ofNullable(this.ismHistoryMaxAge);
     }
     /**
-     * @return The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * @return The maximum number of documents before rolling over the audit history index. Default: `2500000`.
      * 
      */
     public Optional<Integer> ismHistoryMaxDocs() {
         return Optional.ofNullable(this.ismHistoryMaxDocs);
     }
     /**
-     * @return The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * @return The time between rollover checks for the audit history index in hours. Default: `8`.
      * 
      */
     public Optional<Integer> ismHistoryRolloverCheckPeriod() {
         return Optional.ofNullable(this.ismHistoryRolloverCheckPeriod);
     }
     /**
-     * @return How long audit history indices are kept in days. The default value is `30`.
+     * @return How long audit history indices are kept in days. Default: `30`.
      * 
      */
     public Optional<Integer> ismHistoryRolloverRetentionPeriod() {
@@ -431,14 +431,14 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return this.reindexRemoteWhitelists == null ? List.of() : this.reindexRemoteWhitelists;
     }
     /**
-     * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      * 
      */
     public Optional<String> scriptMaxCompilationsRate() {
         return Optional.ofNullable(this.scriptMaxCompilationsRate);
     }
     /**
-     * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
      */
     public Optional<Integer> searchMaxBuckets() {

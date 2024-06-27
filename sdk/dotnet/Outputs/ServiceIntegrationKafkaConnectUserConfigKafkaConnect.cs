@@ -14,19 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationKafkaConnectUserConfigKafkaConnect
     {
         /// <summary>
-        /// The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+        /// The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
         /// </summary>
         public readonly string? ConfigStorageTopic;
         /// <summary>
-        /// A unique string that identifies the Connect cluster group this worker belongs to.
+        /// A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
         /// </summary>
         public readonly string? GroupId;
         /// <summary>
-        /// The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+        /// The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
         /// </summary>
         public readonly string? OffsetStorageTopic;
         /// <summary>
-        /// The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+        /// The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
         /// </summary>
         public readonly string? StatusStorageTopic;
 

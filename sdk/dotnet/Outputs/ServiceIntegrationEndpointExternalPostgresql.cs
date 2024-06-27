@@ -14,39 +14,47 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointExternalPostgresql
     {
         /// <summary>
-        /// Default database.
+        /// Default database. Example: `testdb`.
         /// </summary>
         public readonly string? DefaultDatabase;
         /// <summary>
-        /// Hostname or IP address of the server.
+        /// Hostname or IP address of the server. Example: `my.server.com`.
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Password.
+        /// Password. Example: `jjKk45Nnd`.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Port number of the server.
+        /// Port number of the server. Example: `5432`.
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// Client certificate.
+        /// Client certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         public readonly string? SslClientCertificate;
         /// <summary>
-        /// Client key.
+        /// Client key. Example: `-----BEGIN PRIVATE KEY-----
+        /// ...
+        /// -----END PRIVATE KEY-----`.
         /// </summary>
         public readonly string? SslClientKey;
         /// <summary>
-        /// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+        /// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         /// </summary>
         public readonly string? SslMode;
         /// <summary>
-        /// SSL Root Cert.
+        /// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         public readonly string? SslRootCert;
         /// <summary>
-        /// User name.
+        /// User name. Example: `myname`.
         /// </summary>
         public readonly string Username;
 

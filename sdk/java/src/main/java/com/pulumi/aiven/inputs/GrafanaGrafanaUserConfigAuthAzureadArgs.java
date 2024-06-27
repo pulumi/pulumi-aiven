@@ -64,14 +64,14 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
     }
 
     /**
-     * Authorization URL.
+     * Authorization URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/authorize`.
      * 
      */
     @Import(name="authUrl", required=true)
     private Output<String> authUrl;
 
     /**
-     * @return Authorization URL.
+     * @return Authorization URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/authorize`.
      * 
      */
     public Output<String> authUrl() {
@@ -79,14 +79,14 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
     }
 
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     public Output<String> clientId() {
@@ -94,14 +94,14 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
     }
 
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     public Output<String> clientSecret() {
@@ -109,14 +109,14 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
     }
 
     /**
-     * Token URL.
+     * Token URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/token`.
      * 
      */
     @Import(name="tokenUrl", required=true)
     private Output<String> tokenUrl;
 
     /**
-     * @return Token URL.
+     * @return Token URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/token`.
      * 
      */
     public Output<String> tokenUrl() {
@@ -237,7 +237,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         /**
-         * @param authUrl Authorization URL.
+         * @param authUrl Authorization URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/authorize`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         /**
-         * @param authUrl Authorization URL.
+         * @param authUrl Authorization URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/authorize`.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         /**
-         * @param clientId Client ID from provider.
+         * @param clientId Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         /**
-         * @param clientId Client ID from provider.
+         * @param clientId Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         /**
-         * @param clientSecret Client secret from provider.
+         * @param clientSecret Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         /**
-         * @param clientSecret Client secret from provider.
+         * @param clientSecret Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         /**
-         * @param tokenUrl Token URL.
+         * @param tokenUrl Token URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/token`.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         /**
-         * @param tokenUrl Token URL.
+         * @param tokenUrl Token URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/token`.
          * 
          * @return builder
          * 

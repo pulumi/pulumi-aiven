@@ -43,11 +43,11 @@ export interface CassandraCassandraUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: pulumi.Input<number>;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: pulumi.Input<number>;
     /**
@@ -59,15 +59,15 @@ export interface CassandraCassandraUserConfig {
      */
     cassandraVersion?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.CassandraCassandraUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -81,7 +81,7 @@ export interface CassandraCassandraUserConfig {
      */
     privateAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPrivateAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -93,11 +93,11 @@ export interface CassandraCassandraUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
-     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
      */
     serviceToJoinWith?: pulumi.Input<string>;
     /**
@@ -108,26 +108,26 @@ export interface CassandraCassandraUserConfig {
 
 export interface CassandraCassandraUserConfigCassandra {
     /**
-     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
      */
     batchSizeFailThresholdInKb?: pulumi.Input<number>;
     /**
-     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
      */
     batchSizeWarnThresholdInKb?: pulumi.Input<number>;
     /**
-     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: pulumi.Input<string>;
 }
 
 export interface CassandraCassandraUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
@@ -225,15 +225,15 @@ export interface ClickhouseClickhouseUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.ClickhouseClickhouseUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -247,7 +247,7 @@ export interface ClickhouseClickhouseUserConfig {
      */
     privatelinkAccess?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigPrivatelinkAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -259,7 +259,7 @@ export interface ClickhouseClickhouseUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
@@ -270,11 +270,11 @@ export interface ClickhouseClickhouseUserConfig {
 
 export interface ClickhouseClickhouseUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
@@ -486,27 +486,27 @@ export interface DragonflyDragonfly {
 
 export interface DragonflyDragonflyUserConfig {
     /**
-     * Evict entries when getting close to maxmemory limit. The default value is `false`.
+     * Evict entries when getting close to maxmemory limit. Default: `false`.
      */
     cacheMode?: pulumi.Input<boolean>;
     /**
-     * Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+     * Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     dragonflyPersistence?: pulumi.Input<string>;
     /**
-     * Require SSL to access Dragonfly. The default value is `true`.
+     * Require SSL to access Dragonfly. Default: `true`.
      */
     dragonflySsl?: pulumi.Input<boolean>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.DragonflyDragonflyUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -524,7 +524,7 @@ export interface DragonflyDragonflyUserConfig {
      */
     privatelinkAccess?: pulumi.Input<inputs.DragonflyDragonflyUserConfigPrivatelinkAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -532,7 +532,7 @@ export interface DragonflyDragonflyUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.DragonflyDragonflyUserConfigPublicAccess>;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
@@ -540,7 +540,7 @@ export interface DragonflyDragonflyUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
@@ -551,26 +551,26 @@ export interface DragonflyDragonflyUserConfig {
 
 export interface DragonflyDragonflyUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
 
 export interface DragonflyDragonflyUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: pulumi.Input<string>;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: pulumi.Input<string>;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: pulumi.Input<string>;
     /**
@@ -578,19 +578,19 @@ export interface DragonflyDragonflyUserConfigMigration {
      */
     method?: pulumi.Input<string>;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: pulumi.Input<string>;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: pulumi.Input<number>;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: pulumi.Input<boolean>;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: pulumi.Input<string>;
 }
@@ -733,21 +733,21 @@ export interface FlinkFlinkUserConfig {
      */
     flinkVersion?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.FlinkFlinkUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
      */
     numberOfTaskSlots?: pulumi.Input<number>;
     /**
@@ -766,11 +766,11 @@ export interface FlinkFlinkUserConfig {
 
 export interface FlinkFlinkUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
@@ -871,7 +871,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     alertingErrorOrTimeout?: pulumi.Input<string>;
     /**
-     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
      */
     alertingMaxAnnotationsToKeep?: pulumi.Input<number>;
     /**
@@ -907,11 +907,11 @@ export interface GrafanaGrafanaUserConfig {
      */
     authGoogle?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGoogle>;
     /**
-     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      */
     cookieSamesite?: pulumi.Input<string>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -919,19 +919,19 @@ export interface GrafanaGrafanaUserConfig {
      */
     dashboardPreviewsEnabled?: pulumi.Input<boolean>;
     /**
-     * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      */
     dashboardsMinRefreshInterval?: pulumi.Input<string>;
     /**
-     * Dashboard versions to keep per dashboard.
+     * Dashboard versions to keep per dashboard. Example: `20`.
      */
     dashboardsVersionsToKeep?: pulumi.Input<number>;
     /**
-     * Send 'X-Grafana-User' header to data source.
+     * Send `X-Grafana-User` header to data source.
      */
     dataproxySendUserHeader?: pulumi.Input<boolean>;
     /**
-     * Timeout for data proxy requests in seconds.
+     * Timeout for data proxy requests in seconds. Example: `30`.
      */
     dataproxyTimeout?: pulumi.Input<number>;
     /**
@@ -951,19 +951,19 @@ export interface GrafanaGrafanaUserConfig {
      */
     externalImageStorage?: pulumi.Input<inputs.GrafanaGrafanaUserConfigExternalImageStorage>;
     /**
-     * Google Analytics ID.
+     * Google Analytics ID. Example: `UA-123456-4`.
      */
     googleAnalyticsUaId?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.GrafanaGrafanaUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -985,7 +985,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     privatelinkAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPrivatelinkAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -993,7 +993,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPublicAccess>;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
@@ -1001,7 +1001,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
@@ -1044,19 +1044,19 @@ export interface GrafanaGrafanaUserConfigAuthAzuread {
      */
     allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Authorization URL.
+     * Authorization URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/authorize`.
      */
     authUrl: pulumi.Input<string>;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: pulumi.Input<string>;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: pulumi.Input<string>;
     /**
-     * Token URL.
+     * Token URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/token`.
      */
     tokenUrl: pulumi.Input<string>;
 }
@@ -1075,11 +1075,11 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
      */
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * API URL.
+     * API URL. Example: `https://yourprovider.com/api`.
      */
     apiUrl: pulumi.Input<string>;
     /**
-     * Authorization URL.
+     * Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
      */
     authUrl: pulumi.Input<string>;
     /**
@@ -1087,15 +1087,15 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
      */
     autoLogin?: pulumi.Input<boolean>;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: pulumi.Input<string>;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: pulumi.Input<string>;
     /**
-     * Name of the OAuth integration.
+     * Name of the OAuth integration. Example: `My authentication`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -1103,7 +1103,7 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Token URL.
+     * Token URL. Example: `https://yourprovider.com/oauth/token`.
      */
     tokenUrl: pulumi.Input<string>;
 }
@@ -1122,11 +1122,11 @@ export interface GrafanaGrafanaUserConfigAuthGithub {
      */
     autoLogin?: pulumi.Input<boolean>;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: pulumi.Input<string>;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: pulumi.Input<string>;
     /**
@@ -1149,23 +1149,23 @@ export interface GrafanaGrafanaUserConfigAuthGitlab {
      */
     allowedGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * API URL. This only needs to be set when using self hosted GitLab.
+     * API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
      */
     apiUrl?: pulumi.Input<string>;
     /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab.
+     * Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
      */
     authUrl?: pulumi.Input<string>;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: pulumi.Input<string>;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: pulumi.Input<string>;
     /**
-     * Token URL. This only needs to be set when using self hosted GitLab.
+     * Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
      */
     tokenUrl?: pulumi.Input<string>;
 }
@@ -1180,57 +1180,57 @@ export interface GrafanaGrafanaUserConfigAuthGoogle {
      */
     allowedDomains: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: pulumi.Input<string>;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigDateFormats {
     /**
-     * Default time zone for user preferences. Value 'browser' uses browser local time zone.
+     * Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
      */
     defaultTimezone?: pulumi.Input<string>;
     /**
-     * Moment.js style format string for cases where full date is shown.
+     * Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
      */
     fullDate?: pulumi.Input<string>;
     /**
-     * Moment.js style format string used when a time requiring day accuracy is shown.
+     * Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
      */
     intervalDay?: pulumi.Input<string>;
     /**
-     * Moment.js style format string used when a time requiring hour accuracy is shown.
+     * Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
      */
     intervalHour?: pulumi.Input<string>;
     /**
-     * Moment.js style format string used when a time requiring minute accuracy is shown.
+     * Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
      */
     intervalMinute?: pulumi.Input<string>;
     /**
-     * Moment.js style format string used when a time requiring month accuracy is shown.
+     * Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
      */
     intervalMonth?: pulumi.Input<string>;
     /**
-     * Moment.js style format string used when a time requiring second accuracy is shown.
+     * Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
      */
     intervalSecond?: pulumi.Input<string>;
     /**
-     * Moment.js style format string used when a time requiring year accuracy is shown.
+     * Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
      */
     intervalYear?: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigExternalImageStorage {
     /**
-     * S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
      */
     accessKey: pulumi.Input<string>;
     /**
-     * Bucket URL for S3.
+     * Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
      */
     bucketUrl: pulumi.Input<string>;
     /**
@@ -1238,18 +1238,18 @@ export interface GrafanaGrafanaUserConfigExternalImageStorage {
      */
     provider: pulumi.Input<string>;
     /**
-     * S3 secret key.
+     * S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      */
     secretKey: pulumi.Input<string>;
 }
 
 export interface GrafanaGrafanaUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
@@ -1277,7 +1277,7 @@ export interface GrafanaGrafanaUserConfigPublicAccess {
 
 export interface GrafanaGrafanaUserConfigSmtpServer {
     /**
-     * Address used for sending emails.
+     * Address used for sending emails. Example: `yourgrafanauser@yourdomain.example.com`.
      */
     fromAddress: pulumi.Input<string>;
     /**
@@ -1285,15 +1285,15 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
      */
     fromName?: pulumi.Input<string>;
     /**
-     * Server hostname or IP.
+     * Server hostname or IP. Example: `smtp.example.com`.
      */
     host: pulumi.Input<string>;
     /**
-     * Password for SMTP authentication.
+     * Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
      */
     password?: pulumi.Input<string>;
     /**
-     * SMTP server port.
+     * SMTP server port. Example: `25`.
      */
     port: pulumi.Input<number>;
     /**
@@ -1305,7 +1305,7 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
      */
     starttlsPolicy?: pulumi.Input<string>;
     /**
-     * Username for SMTP authentication.
+     * Username for SMTP authentication. Example: `smtpuser`.
      */
     username?: pulumi.Input<string>;
 }
@@ -1401,7 +1401,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -1409,15 +1409,15 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     influxdb?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigInfluxdb>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.InfluxDbInfluxdbUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -1431,7 +1431,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     privatelinkAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -1439,7 +1439,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPublicAccess>;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
@@ -1447,7 +1447,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
@@ -1489,11 +1489,11 @@ export interface InfluxDbInfluxdbUserConfigInfluxdb {
 
 export interface InfluxDbInfluxdbUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
@@ -1626,15 +1626,15 @@ export interface KafkaConnectKafkaConnectUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -1655,6 +1655,7 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPublicAccess>;
+    secretProviders?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProvider>[]>;
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
@@ -1667,11 +1668,11 @@ export interface KafkaConnectKafkaConnectUserConfig {
 
 export interface KafkaConnectKafkaConnectUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
@@ -1686,7 +1687,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerAutoOffsetReset?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
      */
     consumerFetchMaxBytes?: pulumi.Input<number>;
     /**
@@ -1694,7 +1695,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
      */
     consumerMaxPartitionFetchBytes?: pulumi.Input<number>;
     /**
@@ -1714,7 +1715,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     offsetFlushTimeoutMs?: pulumi.Input<number>;
     /**
-     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: pulumi.Input<number>;
     /**
@@ -1722,15 +1723,15 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
-     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
      */
     producerLingerMs?: pulumi.Input<number>;
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
      */
     producerMaxRequestSize?: pulumi.Input<number>;
     /**
@@ -1778,6 +1779,59 @@ export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
      * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: pulumi.Input<boolean>;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigSecretProvider {
+    /**
+     * AWS config for Secret Provider
+     */
+    aws?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProviderAws>;
+    /**
+     * Name of the secret provider. Used to reference secrets in connector config.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Vault Config for Secret Provider
+     */
+    vault?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProviderVault>;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigSecretProviderAws {
+    /**
+     * Access key used to authenticate with aws.
+     */
+    accessKey?: pulumi.Input<string>;
+    /**
+     * Enum: `credentials`. Auth method of the vault secret provider.
+     */
+    authMethod: pulumi.Input<string>;
+    /**
+     * Region used to lookup secrets with AWS SecretManager.
+     */
+    region: pulumi.Input<string>;
+    /**
+     * Secret key used to authenticate with aws.
+     */
+    secretKey?: pulumi.Input<string>;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigSecretProviderVault {
+    /**
+     * Address of the Vault server.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * Enum: `token`. Auth method of the vault secret provider.
+     */
+    authMethod: pulumi.Input<string>;
+    /**
+     * Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
+     */
+    engineVersion?: pulumi.Input<number>;
+    /**
+     * Token used to authenticate with vault and auth method `token`.
+     */
+    token?: pulumi.Input<string>;
 }
 
 export interface KafkaConnectServiceIntegration {
@@ -1859,19 +1913,19 @@ export interface KafkaKafkaUserConfig {
      */
     aivenKafkaTopicMessages?: pulumi.Input<boolean>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -1885,15 +1939,16 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaAuthenticationMethods?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaAuthenticationMethods>;
     /**
-     * Enable Kafka Connect service. The default value is `false`.
+     * Enable Kafka Connect service. Default: `false`.
      */
     kafkaConnect?: pulumi.Input<boolean>;
     /**
      * Kafka Connect configuration values
      */
     kafkaConnectConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectConfig>;
+    kafkaConnectSecretProviders?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProvider>[]>;
     /**
-     * Enable Kafka-REST service. The default value is `false`.
+     * Enable Kafka-REST service. Default: `false`.
      */
     kafkaRest?: pulumi.Input<boolean>;
     /**
@@ -1909,6 +1964,10 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
+     * Use Letsencrypt CA for Kafka SASL via Privatelink.
+     */
+    letsencryptSaslPrivatelink?: pulumi.Input<boolean>;
+    /**
      * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPrivateAccess>;
@@ -1921,7 +1980,7 @@ export interface KafkaKafkaUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPublicAccess>;
     /**
-     * Enable Schema-Registry service. The default value is `false`.
+     * Enable Schema-Registry service. Default: `false`.
      */
     schemaRegistry?: pulumi.Input<boolean>;
     /**
@@ -1944,11 +2003,11 @@ export interface KafkaKafkaUserConfig {
 
 export interface KafkaKafkaUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
@@ -1959,11 +2018,11 @@ export interface KafkaKafkaUserConfigKafka {
      */
     autoCreateTopicsEnable?: pulumi.Input<boolean>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
      */
     compressionType?: pulumi.Input<string>;
     /**
-     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
      */
     connectionsMaxIdleMs?: pulumi.Input<number>;
     /**
@@ -1971,19 +2030,19 @@ export interface KafkaKafkaUserConfigKafka {
      */
     defaultReplicationFactor?: pulumi.Input<number>;
     /**
-     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
      */
     groupInitialRebalanceDelayMs?: pulumi.Input<number>;
     /**
-     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
      */
     groupMaxSessionTimeoutMs?: pulumi.Input<number>;
     /**
-     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
      */
     groupMinSessionTimeoutMs?: pulumi.Input<number>;
     /**
-     * How long are delete records retained?
+     * How long are delete records retained? Example: `86400000`.
      */
     logCleanerDeleteRetentionMs?: pulumi.Input<number>;
     /**
@@ -1991,7 +2050,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logCleanerMaxCompactionLagMs?: pulumi.Input<number>;
     /**
-     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
      */
     logCleanerMinCleanableRatio?: pulumi.Input<number>;
     /**
@@ -2003,7 +2062,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logCleanupPolicy?: pulumi.Input<string>;
     /**
-     * The number of messages accumulated on a log partition before messages are flushed to disk.
+     * The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
      */
     logFlushIntervalMessages?: pulumi.Input<number>;
     /**
@@ -2011,11 +2070,11 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logFlushIntervalMs?: pulumi.Input<number>;
     /**
-     * The interval with which Kafka adds an entry to the offset index.
+     * The interval with which Kafka adds an entry to the offset index. Example: `4096`.
      */
     logIndexIntervalBytes?: pulumi.Input<number>;
     /**
-     * The maximum size in bytes of the offset index.
+     * The maximum size in bytes of the offset index. Example: `10485760`.
      */
     logIndexSizeMaxBytes?: pulumi.Input<number>;
     /**
@@ -2067,7 +2126,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logSegmentBytes?: pulumi.Input<number>;
     /**
-     * The amount of time to wait before deleting a file from the filesystem.
+     * The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
      */
     logSegmentDeleteDelayMs?: pulumi.Input<number>;
     /**
@@ -2075,15 +2134,15 @@ export interface KafkaKafkaUserConfigKafka {
      */
     maxConnectionsPerIp?: pulumi.Input<number>;
     /**
-     * The maximum number of incremental fetch sessions that the broker will maintain.
+     * The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
      */
     maxIncrementalFetchSessionCacheSlots?: pulumi.Input<number>;
     /**
-     * The maximum size of message that the server can receive.
+     * The maximum size of message that the server can receive. Example: `1048588`.
      */
     messageMaxBytes?: pulumi.Input<number>;
     /**
-     * When a producer sets acks to 'all' (or '-1'), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
      */
     minInsyncReplicas?: pulumi.Input<number>;
     /**
@@ -2091,7 +2150,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     numPartitions?: pulumi.Input<number>;
     /**
-     * Log retention window in minutes for offsets topic.
+     * Log retention window in minutes for offsets topic. Example: `10080`.
      */
     offsetsRetentionMinutes?: pulumi.Input<number>;
     /**
@@ -2142,11 +2201,11 @@ export interface KafkaKafkaUserConfigKafka {
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
     /**
-     * Enable certificate/SSL authentication. The default value is `true`.
+     * Enable certificate/SSL authentication. Default: `true`.
      */
     certificate?: pulumi.Input<boolean>;
     /**
-     * Enable SASL authentication. The default value is `false`.
+     * Enable SASL authentication. Default: `false`.
      */
     sasl?: pulumi.Input<boolean>;
 }
@@ -2161,7 +2220,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerAutoOffsetReset?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
      */
     consumerFetchMaxBytes?: pulumi.Input<number>;
     /**
@@ -2169,7 +2228,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
      */
     consumerMaxPartitionFetchBytes?: pulumi.Input<number>;
     /**
@@ -2189,7 +2248,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     offsetFlushTimeoutMs?: pulumi.Input<number>;
     /**
-     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: pulumi.Input<number>;
     /**
@@ -2197,15 +2256,15 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
-     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
      */
     producerLingerMs?: pulumi.Input<number>;
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
      */
     producerMaxRequestSize?: pulumi.Input<number>;
     /**
@@ -2218,45 +2277,98 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
     sessionTimeoutMs?: pulumi.Input<number>;
 }
 
+export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
+    /**
+     * AWS config for Secret Provider
+     */
+    aws?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws>;
+    /**
+     * Name of the secret provider. Used to reference secrets in connector config.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Vault Config for Secret Provider
+     */
+    vault?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault>;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectSecretProviderAws {
+    /**
+     * Access key used to authenticate with aws.
+     */
+    accessKey?: pulumi.Input<string>;
+    /**
+     * Enum: `credentials`. Auth method of the vault secret provider.
+     */
+    authMethod: pulumi.Input<string>;
+    /**
+     * Region used to lookup secrets with AWS SecretManager.
+     */
+    region: pulumi.Input<string>;
+    /**
+     * Secret key used to authenticate with aws.
+     */
+    secretKey?: pulumi.Input<string>;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
+    /**
+     * Address of the Vault server.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * Enum: `token`. Auth method of the vault secret provider.
+     */
+    authMethod: pulumi.Input<string>;
+    /**
+     * Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
+     */
+    engineVersion?: pulumi.Input<number>;
+    /**
+     * Token used to authenticate with vault and auth method `token`.
+     */
+    token?: pulumi.Input<string>;
+}
+
 export interface KafkaKafkaUserConfigKafkaRestConfig {
     /**
-     * If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.
+     * If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
      */
     consumerEnableAutoCommit?: pulumi.Input<boolean>;
     /**
-     * Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     * Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
      */
     consumerRequestMaxBytes?: pulumi.Input<number>;
     /**
-     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
      */
     consumerRequestTimeoutMs?: pulumi.Input<number>;
     /**
-     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
      */
     nameStrategy?: pulumi.Input<string>;
     /**
-     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
      */
     nameStrategyValidation?: pulumi.Input<boolean>;
     /**
-     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
      */
     producerAcks?: pulumi.Input<string>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
-     * Wait for up to the given delay to allow batching records together. The default value is `0`.
+     * Wait for up to the given delay to allow batching records together. Default: `0`.
      */
     producerLingerMs?: pulumi.Input<number>;
     /**
-     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
      */
     producerMaxRequestSize?: pulumi.Input<number>;
     /**
-     * Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     * Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
      */
     simpleconsumerPoolSizeMax?: pulumi.Input<number>;
 }
@@ -2360,7 +2472,7 @@ export interface KafkaKafkaUserConfigTieredStorage {
 
 export interface KafkaKafkaUserConfigTieredStorageLocalCache {
     /**
-     * Local cache size in bytes.
+     * Local cache size in bytes. Example: `1073741824`.
      *
      * @deprecated This property is deprecated.
      */
@@ -2410,15 +2522,15 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -2439,11 +2551,11 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
@@ -2454,23 +2566,23 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     emitCheckpointsEnabled?: pulumi.Input<boolean>;
     /**
-     * Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
      */
     emitCheckpointsIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
      */
     groups?: pulumi.Input<string>;
     /**
-     * Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
      */
     groupsExclude?: pulumi.Input<string>;
     /**
-     * How out-of-sync a remote partition can be before it is resynced.
+     * How out-of-sync a remote partition can be before it is resynced. Example: `100`.
      */
     offsetLagMax?: pulumi.Input<number>;
     /**
-     * Whether to periodically check for new consumer groups. Defaults to 'true'.
+     * Whether to periodically check for new consumer groups. Defaults to `true`.
      */
     refreshGroupsEnabled?: pulumi.Input<boolean>;
     /**
@@ -2478,7 +2590,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     refreshGroupsIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Whether to periodically check for new topics and partitions. Defaults to 'true'.
+     * Whether to periodically check for new topics and partitions. Defaults to `true`.
      */
     refreshTopicsEnabled?: pulumi.Input<boolean>;
     /**
@@ -2490,7 +2602,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     syncGroupOffsetsEnabled?: pulumi.Input<boolean>;
     /**
-     * Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
      */
     syncGroupOffsetsIntervalSeconds?: pulumi.Input<number>;
     /**
@@ -2498,7 +2610,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     syncTopicConfigsEnabled?: pulumi.Input<boolean>;
     /**
-     * 'tasks.max' is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
      */
     tasksMaxPerCpu?: pulumi.Input<number>;
 }
@@ -2733,19 +2845,19 @@ export interface M3AggregatorM3aggregator {
 
 export interface M3AggregatorM3aggregatorUserConfig {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3AggregatorM3aggregatorUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -2770,11 +2882,11 @@ export interface M3AggregatorM3aggregatorUserConfig {
 
 export interface M3AggregatorM3aggregatorUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
@@ -2876,19 +2988,19 @@ export interface M3DbM3dbUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -2922,7 +3034,7 @@ export interface M3DbM3dbUserConfig {
      */
     privateAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPrivateAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -2938,7 +3050,7 @@ export interface M3DbM3dbUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
@@ -2949,30 +3061,30 @@ export interface M3DbM3dbUserConfig {
 
 export interface M3DbM3dbUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
 
 export interface M3DbM3dbUserConfigLimits {
     /**
-     * The maximum number of blocks that can be read in a given lookback period.
+     * The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
      */
     maxRecentlyQueriedSeriesBlocks?: pulumi.Input<number>;
     /**
-     * The maximum number of disk bytes that can be read in a given lookback period.
+     * The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
      */
     maxRecentlyQueriedSeriesDiskBytesRead?: pulumi.Input<number>;
     /**
-     * The lookback period for 'max*recently*queried*series*blocks' and 'max*recently*queried*series*disk*bytes*read'.
+     * The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
      */
     maxRecentlyQueriedSeriesLookback?: pulumi.Input<string>;
     /**
-     * The maximum number of docs fetched in single query.
+     * The maximum number of docs fetched in single query. Example: `100000`.
      */
     queryDocs?: pulumi.Input<number>;
     /**
@@ -2980,7 +3092,7 @@ export interface M3DbM3dbUserConfigLimits {
      */
     queryRequireExhaustive?: pulumi.Input<boolean>;
     /**
-     * The maximum number of series fetched in single query.
+     * The maximum number of series fetched in single query. Example: `100000`.
      */
     querySeries?: pulumi.Input<number>;
 }
@@ -3005,7 +3117,7 @@ export interface M3DbM3dbUserConfigM3TagOptions {
 
 export interface M3DbM3dbUserConfigNamespace {
     /**
-     * The name of the namespace.
+     * The name of the namespace. Example: `default`.
      */
     name: pulumi.Input<string>;
     /**
@@ -3013,7 +3125,7 @@ export interface M3DbM3dbUserConfigNamespace {
      */
     options?: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptions>;
     /**
-     * The resolution for an aggregated namespace.
+     * The resolution for an aggregated namespace. Example: `30s`.
      */
     resolution?: pulumi.Input<string>;
     /**
@@ -3039,23 +3151,23 @@ export interface M3DbM3dbUserConfigNamespaceOptions {
 
 export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
     /**
-     * Controls how long we wait before expiring stale data.
+     * Controls how long we wait before expiring stale data. Example: `5m`.
      */
     blockDataExpiryDuration?: pulumi.Input<string>;
     /**
-     * Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
      */
     blocksizeDuration?: pulumi.Input<string>;
     /**
-     * Controls how far into the future writes to the namespace will be accepted.
+     * Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
      */
     bufferFutureDuration?: pulumi.Input<string>;
     /**
-     * Controls how far into the past writes to the namespace will be accepted.
+     * Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
      */
     bufferPastDuration?: pulumi.Input<string>;
     /**
-     * Controls the duration of time that M3DB will retain data for the namespace.
+     * Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
      */
     retentionPeriodDuration?: pulumi.Input<string>;
 }
@@ -3091,11 +3203,11 @@ export interface M3DbM3dbUserConfigRulesMapping {
      */
     drop?: pulumi.Input<boolean>;
     /**
-     * Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
      */
     filter: pulumi.Input<string>;
     /**
-     * The (optional) name of the rule.
+     * The (optional) name of the rule. Example: `important disk metrics`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -3120,22 +3232,22 @@ export interface M3DbM3dbUserConfigRulesMapping {
 
 export interface M3DbM3dbUserConfigRulesMappingNamespacesObject {
     /**
-     * The resolution for the matching namespace.
+     * The resolution for the matching namespace. Example: `30s`.
      */
     resolution: pulumi.Input<string>;
     /**
-     * The retention period of the matching namespace.
+     * The retention period of the matching namespace. Example: `48h`.
      */
     retention?: pulumi.Input<string>;
 }
 
 export interface M3DbM3dbUserConfigRulesMappingTag {
     /**
-     * Name of the tag.
+     * Name of the tag. Example: `myTag`.
      */
     name: pulumi.Input<string>;
     /**
-     * Value of the tag.
+     * Value of the tag. Example: `myValue`.
      */
     value: pulumi.Input<string>;
 }
@@ -3264,31 +3376,31 @@ export interface MySqlMysqlUserConfig {
      */
     adminPassword?: pulumi.Input<string>;
     /**
-     * Custom username for admin user. This must be set only when a new service is being created.
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      */
     adminUsername?: pulumi.Input<string>;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: pulumi.Input<number>;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: pulumi.Input<number>;
     /**
-     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
      */
     binlogRetentionPeriod?: pulumi.Input<number>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.MySqlMysqlUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -3314,7 +3426,7 @@ export interface MySqlMysqlUserConfig {
      */
     privatelinkAccess?: pulumi.Input<inputs.MySqlMysqlUserConfigPrivatelinkAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -3322,7 +3434,7 @@ export interface MySqlMysqlUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.MySqlMysqlUserConfigPublicAccess>;
     /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      */
     recoveryTargetTime?: pulumi.Input<string>;
     /**
@@ -3330,7 +3442,7 @@ export interface MySqlMysqlUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
@@ -3341,26 +3453,26 @@ export interface MySqlMysqlUserConfig {
 
 export interface MySqlMysqlUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: pulumi.Input<string>;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: pulumi.Input<string>;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: pulumi.Input<string>;
     /**
@@ -3368,66 +3480,66 @@ export interface MySqlMysqlUserConfigMigration {
      */
     method?: pulumi.Input<string>;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: pulumi.Input<string>;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: pulumi.Input<number>;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: pulumi.Input<boolean>;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: pulumi.Input<string>;
 }
 
 export interface MySqlMysqlUserConfigMysql {
     /**
-     * The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+     * The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
      */
     connectTimeout?: pulumi.Input<number>;
     /**
-     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
      */
     defaultTimeZone?: pulumi.Input<string>;
     /**
-     * The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+     * The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
      */
     groupConcatMaxLen?: pulumi.Input<number>;
     /**
-     * The time, in seconds, before cached statistics expire.
+     * The time, in seconds, before cached statistics expire. Example: `86400`.
      */
     informationSchemaStatsExpiry?: pulumi.Input<number>;
     /**
-     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      */
     innodbChangeBufferMaxSize?: pulumi.Input<number>;
     /**
-     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
      */
     innodbFlushNeighbors?: pulumi.Input<number>;
     /**
-     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
      */
     innodbFtMinTokenSize?: pulumi.Input<number>;
     /**
-     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      */
     innodbFtServerStopwordTable?: pulumi.Input<string>;
     /**
-     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
      */
     innodbLockWaitTimeout?: pulumi.Input<number>;
     /**
-     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
      */
     innodbLogBufferSize?: pulumi.Input<number>;
     /**
-     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
      */
     innodbOnlineAlterLogMaxSize?: pulumi.Input<number>;
     /**
@@ -3435,7 +3547,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbPrintAllDeadlocks?: pulumi.Input<boolean>;
     /**
-     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      */
     innodbReadIoThreads?: pulumi.Input<number>;
     /**
@@ -3443,15 +3555,15 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbRollbackOnTimeout?: pulumi.Input<boolean>;
     /**
-     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
      */
     innodbThreadConcurrency?: pulumi.Input<number>;
     /**
-     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      */
     innodbWriteIoThreads?: pulumi.Input<number>;
     /**
-     * The number of seconds the server waits for activity on an interactive connection before closing it.
+     * The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
      */
     interactiveTimeout?: pulumi.Input<number>;
     /**
@@ -3459,27 +3571,27 @@ export interface MySqlMysqlUserConfigMysql {
      */
     internalTmpMemStorageEngine?: pulumi.Input<string>;
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
      */
     longQueryTime?: pulumi.Input<number>;
     /**
-     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
      */
     maxAllowedPacket?: pulumi.Input<number>;
     /**
-     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
      */
     maxHeapTableSize?: pulumi.Input<number>;
     /**
-     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
      */
     netBufferLength?: pulumi.Input<number>;
     /**
-     * The number of seconds to wait for more data from a connection before aborting the read.
+     * The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
      */
     netReadTimeout?: pulumi.Input<number>;
     /**
-     * The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
      */
     netWriteTimeout?: pulumi.Input<number>;
     /**
@@ -3487,11 +3599,11 @@ export interface MySqlMysqlUserConfigMysql {
      */
     slowQueryLog?: pulumi.Input<boolean>;
     /**
-     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
      */
     sortBufferSize?: pulumi.Input<number>;
     /**
-     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
      */
     sqlMode?: pulumi.Input<string>;
     /**
@@ -3499,11 +3611,11 @@ export interface MySqlMysqlUserConfigMysql {
      */
     sqlRequirePrimaryKey?: pulumi.Input<boolean>;
     /**
-     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
      */
     tmpTableSize?: pulumi.Input<number>;
     /**
-     * The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
      */
     waitTimeout?: pulumi.Input<number>;
 }
@@ -3646,7 +3758,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -3662,15 +3774,15 @@ export interface OpenSearchOpensearchUserConfig {
      */
     indexTemplate?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigIndexTemplate>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearchUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -3680,7 +3792,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     keepIndexRefreshInterval?: pulumi.Input<boolean>;
     /**
-     * Use indexPatterns instead. The default value is `0`.
+     * Use indexPatterns instead. Default: `0`.
      */
     maxIndexCount?: pulumi.Input<number>;
     /**
@@ -3708,7 +3820,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     privatelinkAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPrivatelinkAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -3716,7 +3828,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPublicAccess>;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
@@ -3728,7 +3840,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
@@ -3739,92 +3851,92 @@ export interface OpenSearchOpensearchUserConfig {
 
 export interface OpenSearchOpensearchUserConfigIndexPattern {
     /**
-     * Maximum number of indexes to keep.
+     * Maximum number of indexes to keep. Example: `3`.
      */
     maxIndexCount: pulumi.Input<number>;
     /**
-     * fnmatch pattern.
+     * fnmatch pattern. Example: `logs_*_foo_*`.
      */
     pattern: pulumi.Input<string>;
     /**
-     * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. The default value is `creationDate`.
+     * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. Default: `creationDate`.
      */
     sortingAlgorithm?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexTemplate {
     /**
-     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
      */
     mappingNestedObjectsLimit?: pulumi.Input<number>;
     /**
-     * The number of replicas each primary shard has.
+     * The number of replicas each primary shard has. Example: `1`.
      */
     numberOfReplicas?: pulumi.Input<number>;
     /**
-     * The number of primary shards that an index should have.
+     * The number of primary shards that an index should have. Example: `1`.
      */
     numberOfShards?: pulumi.Input<number>;
 }
 
 export interface OpenSearchOpensearchUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpenid {
     /**
-     * The ID of the OpenID Connect client configured in your IdP. Required.
+     * The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
      */
     clientId: pulumi.Input<string>;
     /**
-     * The client secret of the OpenID Connect client configured in your IdP. Required.
+     * The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
      */
     clientSecret: pulumi.Input<string>;
     /**
-     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      */
     connectUrl: pulumi.Input<string>;
     /**
-     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     * HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
      */
     header?: pulumi.Input<string>;
     /**
-     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
      */
     jwtHeader?: pulumi.Input<string>;
     /**
-     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferredUsername`.
      */
     jwtUrlParameter?: pulumi.Input<string>;
     /**
-     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
      */
     refreshRateLimitCount?: pulumi.Input<number>;
     /**
-     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
      */
     refreshRateLimitTimeWindowMs?: pulumi.Input<number>;
     /**
-     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
      */
     rolesKey?: pulumi.Input<string>;
     /**
-     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
      */
     scope?: pulumi.Input<string>;
     /**
-     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional.
+     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional. Example: `preferredUsername`.
      */
     subjectKey?: pulumi.Input<string>;
 }
@@ -3843,7 +3955,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     authFailureListeners?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners>;
     /**
-     * Controls the number of shards allowed in the cluster per data node.
+     * Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      */
     clusterMaxShardsPerNode?: pulumi.Input<number>;
     /**
@@ -3851,19 +3963,19 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number>;
     /**
-     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      */
     emailSenderName?: pulumi.Input<string>;
     /**
-     * Sender password for Opensearch alerts to authenticate with SMTP server.
+     * Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
      */
     emailSenderPassword?: pulumi.Input<string>;
     /**
-     * Sender username for Opensearch alerts.
+     * Sender username for Opensearch alerts. Example: `jane@example.com`.
      */
     emailSenderUsername?: pulumi.Input<string>;
     /**
-     * Enable/Disable security audit. The default value is `false`.
+     * Enable/Disable security audit. Default: `false`.
      */
     enableSecurityAudit?: pulumi.Input<boolean>;
     /**
@@ -3871,11 +3983,11 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     httpMaxContentLength?: pulumi.Input<number>;
     /**
-     * The max size of allowed headers, in bytes.
+     * The max size of allowed headers, in bytes. Example: `8192`.
      */
     httpMaxHeaderSize?: pulumi.Input<number>;
     /**
-     * The max length of an HTTP URL, in bytes.
+     * The max length of an HTTP URL, in bytes. Example: `4096`.
      */
     httpMaxInitialLineLength?: pulumi.Input<number>;
     /**
@@ -3911,27 +4023,27 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     indicesRecoveryMaxConcurrentFileChunks?: pulumi.Input<number>;
     /**
-     * Specifies whether ISM is enabled or not. The default value is `true`.
+     * Specifies whether ISM is enabled or not. Default: `true`.
      */
     ismEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
      */
     ismHistoryEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * The maximum age before rolling over the audit history index in hours. Default: `24`.
      */
     ismHistoryMaxAge?: pulumi.Input<number>;
     /**
-     * The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * The maximum number of documents before rolling over the audit history index. Default: `2500000`.
      */
     ismHistoryMaxDocs?: pulumi.Input<number>;
     /**
-     * The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * The time between rollover checks for the audit history index in hours. Default: `8`.
      */
     ismHistoryRolloverCheckPeriod?: pulumi.Input<number>;
     /**
-     * How long audit history indices are kept in days. The default value is `30`.
+     * How long audit history indices are kept in days. Default: `30`.
      */
     ismHistoryRolloverRetentionPeriod?: pulumi.Input<number>;
     /**
@@ -3947,11 +4059,11 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      */
     scriptMaxCompilationsRate?: pulumi.Input<string>;
     /**
-     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      */
     searchMaxBuckets?: pulumi.Input<number>;
     /**
@@ -4010,7 +4122,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
 
 export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
     /**
-     * The number of login attempts allowed before login is blocked.
+     * The number of login attempts allowed before login is blocked. Example: `10`.
      */
     allowedTries?: pulumi.Input<number>;
     /**
@@ -4018,19 +4130,19 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     authenticationBackend?: pulumi.Input<string>;
     /**
-     * The duration of time that login remains blocked after a failed login.
+     * The duration of time that login remains blocked after a failed login. Example: `600`.
      */
     blockExpirySeconds?: pulumi.Input<number>;
     /**
-     * internal*authentication*backend*limiting.max*blocked_clients.
+     * internal*authentication*backend*limiting.max*blocked_clients. Example: `100000`.
      */
     maxBlockedClients?: pulumi.Input<number>;
     /**
-     * The maximum number of tracked IP addresses that have failed login.
+     * The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      */
     maxTrackedClients?: pulumi.Input<number>;
     /**
-     * The window of time in which the value for `allowedTries` is enforced.
+     * The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      */
     timeWindowSeconds?: pulumi.Input<number>;
     /**
@@ -4041,23 +4153,23 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
 
 export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
     /**
-     * The number of login attempts allowed before login is blocked.
+     * The number of login attempts allowed before login is blocked. Example: `10`.
      */
     allowedTries?: pulumi.Input<number>;
     /**
-     * The duration of time that login remains blocked after a failed login.
+     * The duration of time that login remains blocked after a failed login. Example: `600`.
      */
     blockExpirySeconds?: pulumi.Input<number>;
     /**
-     * The maximum number of blocked IP addresses.
+     * The maximum number of blocked IP addresses. Example: `100000`.
      */
     maxBlockedClients?: pulumi.Input<number>;
     /**
-     * The maximum number of tracked IP addresses that have failed login.
+     * The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      */
     maxTrackedClients?: pulumi.Input<number>;
     /**
-     * The window of time in which the value for `allowedTries` is enforced.
+     * The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      */
     timeWindowSeconds?: pulumi.Input<number>;
     /**
@@ -4068,15 +4180,15 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
     /**
-     * Enable or disable OpenSearch Dashboards. The default value is `true`.
+     * Enable or disable OpenSearch Dashboards. Default: `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
      */
     maxOldSpaceSize?: pulumi.Input<number>;
     /**
-     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: pulumi.Input<number>;
 }
@@ -4128,31 +4240,34 @@ export interface OpenSearchOpensearchUserConfigPublicAccess {
 
 export interface OpenSearchOpensearchUserConfigSaml {
     /**
-     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
+     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
      */
     idpEntityId: pulumi.Input<string>;
     /**
-     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      */
     idpMetadataUrl: pulumi.Input<string>;
     /**
-     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     idpPemtrustedcasContent?: pulumi.Input<string>;
     /**
-     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
+     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
      */
     rolesKey?: pulumi.Input<string>;
     /**
-     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
      */
     spEntityId: pulumi.Input<string>;
     /**
-     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
+     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
      */
     subjectKey?: pulumi.Input<string>;
 }
@@ -4374,15 +4489,15 @@ export interface PgPgUserConfig {
      */
     adminPassword?: pulumi.Input<string>;
     /**
-     * Custom username for admin user. This must be set only when a new service is being created.
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      */
     adminUsername?: pulumi.Input<string>;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: pulumi.Input<number>;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: pulumi.Input<number>;
     /**
@@ -4390,15 +4505,15 @@ export interface PgPgUserConfig {
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.PgPgUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -4422,11 +4537,11 @@ export interface PgPgUserConfig {
      */
     pgReadReplica?: pulumi.Input<boolean>;
     /**
-     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     pgServiceToForkFrom?: pulumi.Input<string>;
     /**
-     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
      */
     pgStatMonitorEnable?: pulumi.Input<boolean>;
     /**
@@ -4435,6 +4550,8 @@ export interface PgPgUserConfig {
     pgVersion?: pulumi.Input<string>;
     /**
      * System-wide settings for the pgaudit extension
+     *
+     * @deprecated This property is deprecated.
      */
     pgaudit?: pulumi.Input<inputs.PgPgUserConfigPgaudit>;
     /**
@@ -4454,7 +4571,7 @@ export interface PgPgUserConfig {
      */
     privatelinkAccess?: pulumi.Input<inputs.PgPgUserConfigPrivatelinkAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -4462,7 +4579,7 @@ export interface PgPgUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.PgPgUserConfigPublicAccess>;
     /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      */
     recoveryTargetTime?: pulumi.Input<string>;
     /**
@@ -4470,11 +4587,11 @@ export interface PgPgUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Example: `41.5`.
      */
     sharedBuffersPercentage?: pulumi.Input<number>;
     /**
@@ -4494,33 +4611,33 @@ export interface PgPgUserConfig {
      */
     variant?: pulumi.Input<string>;
     /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
      */
     workMem?: pulumi.Input<number>;
 }
 
 export interface PgPgUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: pulumi.Input<string>;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: pulumi.Input<string>;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: pulumi.Input<string>;
     /**
@@ -4528,19 +4645,19 @@ export interface PgPgUserConfigMigration {
      */
     method?: pulumi.Input<string>;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: pulumi.Input<string>;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: pulumi.Input<number>;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: pulumi.Input<boolean>;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: pulumi.Input<string>;
 }
@@ -4555,7 +4672,7 @@ export interface PgPgUserConfigPg {
      */
     autovacuumAnalyzeThreshold?: pulumi.Input<number>;
     /**
-     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
      */
     autovacuumFreezeMaxAge?: pulumi.Input<number>;
     /**
@@ -4583,23 +4700,23 @@ export interface PgPgUserConfigPg {
      */
     autovacuumVacuumThreshold?: pulumi.Input<number>;
     /**
-     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
      */
     bgwriterDelay?: pulumi.Input<number>;
     /**
-     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
      */
     bgwriterFlushAfter?: pulumi.Input<number>;
     /**
-     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
      */
     bgwriterLruMaxpages?: pulumi.Input<number>;
     /**
-     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
      */
     bgwriterLruMultiplier?: pulumi.Input<number>;
     /**
-     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
      */
     deadlockTimeout?: pulumi.Input<number>;
     /**
@@ -4691,11 +4808,11 @@ export interface PgPgUserConfigPg {
      */
     maxWorkerProcesses?: pulumi.Input<number>;
     /**
-     * Sets the time interval to run pg_partman's scheduled tasks.
+     * Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
      */
     pgPartmanBgwDotInterval?: pulumi.Input<number>;
     /**
-     * Controls which role to use for pg_partman's scheduled background tasks.
+     * Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
      */
     pgPartmanBgwDotRole?: pulumi.Input<string>;
     /**
@@ -4703,7 +4820,7 @@ export interface PgPgUserConfigPg {
      */
     pgStatMonitorDotPgsmEnableQueryPlan?: pulumi.Input<boolean>;
     /**
-     * Sets the maximum number of buckets.
+     * Sets the maximum number of buckets. Example: `10`.
      */
     pgStatMonitorDotPgsmMaxBuckets?: pulumi.Input<number>;
     /**
@@ -4711,15 +4828,15 @@ export interface PgPgUserConfigPg {
      */
     pgStatStatementsDotTrack?: pulumi.Input<string>;
     /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
      */
     tempFileLimit?: pulumi.Input<number>;
     /**
-     * PostgreSQL service timezone.
+     * PostgreSQL service timezone. Example: `Europe/Helsinki`.
      */
     timezone?: pulumi.Input<string>;
     /**
-     * Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
      */
     trackActivityQuerySize?: pulumi.Input<number>;
     /**
@@ -4735,42 +4852,42 @@ export interface PgPgUserConfigPg {
      */
     trackIoTiming?: pulumi.Input<string>;
     /**
-     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
      */
     walSenderTimeout?: pulumi.Input<number>;
     /**
-     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      */
     walWriterDelay?: pulumi.Input<number>;
 }
 
 export interface PgPgUserConfigPgQualstats {
     /**
-     * Enable / Disable pg_qualstats. The default value is `false`.
+     * Enable / Disable pg_qualstats. Default: `false`.
      *
      * @deprecated This property is deprecated.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Error estimation num threshold to save quals. The default value is `0`.
+     * Error estimation num threshold to save quals. Default: `0`.
      *
      * @deprecated This property is deprecated.
      */
     minErrEstimateNum?: pulumi.Input<number>;
     /**
-     * Error estimation ratio threshold to save quals. The default value is `0`.
+     * Error estimation ratio threshold to save quals. Default: `0`.
      *
      * @deprecated This property is deprecated.
      */
     minErrEstimateRatio?: pulumi.Input<number>;
     /**
-     * Enable / Disable pgQualstats constants tracking. The default value is `true`.
+     * Enable / Disable pgQualstats constants tracking. Default: `true`.
      *
      * @deprecated This property is deprecated.
      */
     trackConstants?: pulumi.Input<boolean>;
     /**
-     * Track quals on system catalogs too. The default value is `false`.
+     * Track quals on system catalogs too. Default: `false`.
      *
      * @deprecated This property is deprecated.
      */
@@ -4779,78 +4896,106 @@ export interface PgPgUserConfigPgQualstats {
 
 export interface PgPgUserConfigPgaudit {
     /**
-     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     featureEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     logCatalog?: pulumi.Input<boolean>;
     /**
-     * Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+     * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logClient?: pulumi.Input<boolean>;
     /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+     *
+     * @deprecated This property is deprecated.
      */
     logLevel?: pulumi.Input<string>;
     /**
-     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     *
+     * @deprecated This property is deprecated.
      */
     logMaxStringLength?: pulumi.Input<number>;
     /**
-     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     logNestedStatements?: pulumi.Input<boolean>;
     /**
-     * Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+     * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logParameter?: pulumi.Input<boolean>;
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. The default value is `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     *
+     * @deprecated This property is deprecated.
      */
     logParameterMaxSize?: pulumi.Input<number>;
     /**
-     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logRelation?: pulumi.Input<boolean>;
     /**
-     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logRows?: pulumi.Input<boolean>;
     /**
-     * Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+     * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     logStatement?: pulumi.Input<boolean>;
     /**
-     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logStatementOnce?: pulumi.Input<boolean>;
     /**
      * Specifies which classes of statements will be logged by session audit logging.
+     *
+     * @deprecated This property is deprecated.
      */
     logs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies the master role to use for object audit logging.
+     *
+     * @deprecated This property is deprecated.
      */
     role?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPgbouncer {
     /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
      */
     autodbIdleTimeout?: pulumi.Input<number>;
     /**
-     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
      */
     autodbMaxDbConnections?: pulumi.Input<number>;
     /**
-     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
+     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
      */
     autodbPoolMode?: pulumi.Input<string>;
     /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
+     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
      */
     autodbPoolSize?: pulumi.Input<number>;
     /**
@@ -4858,26 +5003,26 @@ export interface PgPgUserConfigPgbouncer {
      */
     ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
      */
     minPoolSize?: pulumi.Input<number>;
     /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
      */
     serverIdleTimeout?: pulumi.Input<number>;
     /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
      */
     serverLifetime?: pulumi.Input<number>;
     /**
-     * Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
+     * Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
      */
     serverResetQueryAlways?: pulumi.Input<boolean>;
 }
 
 export interface PgPgUserConfigPglookout {
     /**
-     * Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+     * Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
      */
     maxFailoverReplicationTimeLag?: pulumi.Input<number>;
 }
@@ -4929,7 +5074,7 @@ export interface PgPgUserConfigPublicAccess {
 
 export interface PgPgUserConfigTimescaledb {
     /**
-     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
+     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
      */
     maxBackgroundWorkers?: pulumi.Input<number>;
 }
@@ -5034,15 +5179,15 @@ export interface RedisRedisUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.RedisRedisUserConfigIpFilterObject>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -5060,7 +5205,7 @@ export interface RedisRedisUserConfig {
      */
     privatelinkAccess?: pulumi.Input<inputs.RedisRedisUserConfigPrivatelinkAccess>;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
@@ -5068,7 +5213,7 @@ export interface RedisRedisUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.RedisRedisUserConfigPublicAccess>;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
@@ -5076,19 +5221,19 @@ export interface RedisRedisUserConfig {
      */
     redisAclChannelsDefault?: pulumi.Input<string>;
     /**
-     * Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+     * Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
      */
     redisIoThreads?: pulumi.Input<number>;
     /**
-     * LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
      */
     redisLfuDecayTime?: pulumi.Input<number>;
     /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
      */
     redisLfuLogFactor?: pulumi.Input<number>;
     /**
-     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
      */
     redisMaxmemoryPolicy?: pulumi.Input<string>;
     /**
@@ -5096,23 +5241,23 @@ export interface RedisRedisUserConfig {
      */
     redisNotifyKeyspaceEvents?: pulumi.Input<string>;
     /**
-     * Set number of Redis databases. Changing this will cause a restart of the Redis service.
+     * Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
      */
     redisNumberOfDatabases?: pulumi.Input<number>;
     /**
-     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     redisPersistence?: pulumi.Input<string>;
     /**
-     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
      */
     redisPubsubClientOutputBufferLimit?: pulumi.Input<number>;
     /**
-     * Require SSL to access Redis. The default value is `true`.
+     * Require SSL to access Redis. Default: `true`.
      */
     redisSsl?: pulumi.Input<boolean>;
     /**
-     * Redis idle connection timeout in seconds. The default value is `300`.
+     * Redis idle connection timeout in seconds. Default: `300`.
      */
     redisTimeout?: pulumi.Input<number>;
     /**
@@ -5124,7 +5269,7 @@ export interface RedisRedisUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
@@ -5135,26 +5280,26 @@ export interface RedisRedisUserConfig {
 
 export interface RedisRedisUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: pulumi.Input<string>;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
 }
 
 export interface RedisRedisUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: pulumi.Input<string>;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: pulumi.Input<string>;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: pulumi.Input<string>;
     /**
@@ -5162,19 +5307,19 @@ export interface RedisRedisUserConfigMigration {
      */
     method?: pulumi.Input<string>;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: pulumi.Input<string>;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: pulumi.Input<number>;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: pulumi.Input<boolean>;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: pulumi.Input<string>;
 }
@@ -5250,7 +5395,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfig {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      */
     autoOffsetReset?: pulumi.Input<string>;
     /**
@@ -5258,43 +5403,43 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     columns: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn>[]>;
     /**
-     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
      */
     dataFormat: pulumi.Input<string>;
     /**
-     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. The default value is `basic`.
+     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
      */
     dateTimeInputFormat?: pulumi.Input<string>;
     /**
-     * Kafka consumers group. The default value is `clickhouse`.
+     * Kafka consumers group. Default: `clickhouse`.
      */
     groupName: pulumi.Input<string>;
     /**
-     * Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+     * Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
      */
     handleErrorMode?: pulumi.Input<string>;
     /**
-     * Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
      */
     maxBlockSize?: pulumi.Input<number>;
     /**
-     * The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
      */
     maxRowsPerMessage?: pulumi.Input<number>;
     /**
-     * Name of the table.
+     * Name of the table. Example: `events`.
      */
     name: pulumi.Input<string>;
     /**
-     * The number of consumers per table per replica. The default value is `1`.
+     * The number of consumers per table per replica. Default: `1`.
      */
     numConsumers?: pulumi.Input<number>;
     /**
-     * Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
      */
     pollMaxBatchSize?: pulumi.Input<number>;
     /**
-     * Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      */
     skipBrokenMessages?: pulumi.Input<number>;
     /**
@@ -5305,18 +5450,18 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
     /**
-     * Column name.
+     * Column name. Example: `key`.
      */
     name: pulumi.Input<string>;
     /**
-     * Column type.
+     * Column type. Example: `UInt64`.
      */
     type: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
     /**
-     * Name of the topic.
+     * Name of the topic. Example: `topicName`.
      */
     name: pulumi.Input<string>;
 }
@@ -5330,11 +5475,11 @@ export interface ServiceIntegrationClickhousePostgresqlUserConfig {
 
 export interface ServiceIntegrationClickhousePostgresqlUserConfigDatabase {
     /**
-     * PostgreSQL database to expose. The default value is `defaultdb`.
+     * PostgreSQL database to expose. Default: `defaultdb`.
      */
     database?: pulumi.Input<string>;
     /**
-     * PostgreSQL schema to expose. The default value is `public`.
+     * PostgreSQL schema to expose. Default: `public`.
      */
     schema?: pulumi.Input<string>;
 }
@@ -5373,9 +5518,13 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     kafkaCustomMetrics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Maximum number of JMX metrics to send.
+     * Maximum number of JMX metrics to send. Example: `2000`.
      */
     maxJmxMetrics?: pulumi.Input<number>;
+    /**
+     * List of custom metrics.
+     */
+    mirrormakerCustomMetrics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Datadog Opensearch Options
      */
@@ -5388,11 +5537,11 @@ export interface ServiceIntegrationDatadogUserConfig {
 
 export interface ServiceIntegrationDatadogUserConfigDatadogTag {
     /**
-     * Optional tag explanation.
+     * Optional tag explanation. Example: `Used to tag primary replica metrics`.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      */
     tag: pulumi.Input<string>;
 }
@@ -5418,14 +5567,14 @@ export interface ServiceIntegrationDatadogUserConfigOpensearch {
 
 export interface ServiceIntegrationDatadogUserConfigRedis {
     /**
-     * Enable commandStats option in the agent's configuration. The default value is `false`.
+     * Enable commandStats option in the agent's configuration. Default: `false`.
      */
     commandStatsEnabled?: pulumi.Input<boolean>;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {
     /**
-     * Datadog API key.
+     * Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
      */
     datadogApiKey: pulumi.Input<string>;
     /**
@@ -5437,15 +5586,15 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     disableConsumerStats?: pulumi.Input<boolean>;
     /**
-     * Number of separate instances to fetch kafka consumer statistics with.
+     * Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      */
     kafkaConsumerCheckInstances?: pulumi.Input<number>;
     /**
-     * Number of seconds that datadog will wait to get consumer statistics from brokers.
+     * Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
      */
     kafkaConsumerStatsTimeout?: pulumi.Input<number>;
     /**
-     * Maximum number of partition contexts to send.
+     * Maximum number of partition contexts to send. Example: `32000`.
      */
     maxPartitionContexts?: pulumi.Input<number>;
     /**
@@ -5456,105 +5605,108 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
 
 export interface ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     /**
-     * Optional tag explanation.
+     * Optional tag explanation. Example: `Used to tag primary replica metrics`.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      */
     tag: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
-     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
      */
     accessKey: pulumi.Input<string>;
     /**
-     * AWS CloudWatch log group name.
+     * AWS CloudWatch log group name. Example: `my-log-group`.
      */
     logGroupName?: pulumi.Input<string>;
     /**
-     * AWS region.
+     * AWS region. Example: `us-east-1`.
      */
     region: pulumi.Input<string>;
     /**
-     * AWS secret key.
+     * AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      */
     secretKey: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * AWS access key. Required permissions are cloudwatch:PutMetricData.
+     * AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
      */
     accessKey: pulumi.Input<string>;
     /**
-     * AWS CloudWatch Metrics Namespace.
+     * AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
      */
     namespace: pulumi.Input<string>;
     /**
-     * AWS region.
+     * AWS region. Example: `us-east-1`.
      */
     region: pulumi.Input<string>;
     /**
-     * AWS secret key.
+     * AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      */
     secretKey: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     ca?: pulumi.Input<string>;
     /**
-     * Maximum number of days of logs to keep. The default value is `3`.
+     * Maximum number of days of logs to keep. Default: `3`.
      */
     indexDaysMax?: pulumi.Input<number>;
     /**
-     * Elasticsearch index prefix. The default value is `logs`.
+     * Elasticsearch index prefix. Default: `logs`.
      */
     indexPrefix: pulumi.Input<string>;
     /**
-     * Elasticsearch request timeout limit. The default value is `10.0`.
+     * Elasticsearch request timeout limit. Default: `10.0`.
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Elasticsearch connection URL.
+     * Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
      */
     url: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudBigquery {
     /**
-     * GCP project id.
+     * GCP project id. Example: `snappy-photon-12345`.
      */
     projectId: pulumi.Input<string>;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
      */
     serviceAccountCredentials: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     /**
-     * Google Cloud Logging log id.
+     * Google Cloud Logging log id. Example: `syslog`.
      */
     logId: pulumi.Input<string>;
     /**
-     * GCP project id.
+     * GCP project id. Example: `snappy-photon-12345`.
      */
     projectId: pulumi.Input<string>;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
      */
     serviceAccountCredentials: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
-     * Bootstrap servers.
+     * Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
      */
     bootstrapServers: pulumi.Input<string>;
     /**
@@ -5562,11 +5714,11 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     saslMechanism?: pulumi.Input<string>;
     /**
-     * Password for SASL PLAIN mechanism in the Kafka server.
+     * Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      */
     saslPlainPassword?: pulumi.Input<string>;
     /**
-     * Username for SASL PLAIN mechanism in the Kafka server.
+     * Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      */
     saslPlainUsername?: pulumi.Input<string>;
     /**
@@ -5574,15 +5726,24 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     securityProtocol: pulumi.Input<string>;
     /**
-     * PEM-encoded CA certificate.
+     * PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslCaCert?: pulumi.Input<string>;
     /**
-     * PEM-encoded client certificate.
+     * PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslClientCert?: pulumi.Input<string>;
     /**
-     * PEM-encoded client key.
+     * PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      */
     sslClientKey?: pulumi.Input<string>;
     /**
@@ -5593,62 +5754,73 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
 
 export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     ca?: pulumi.Input<string>;
     /**
-     * Maximum number of days of logs to keep. The default value is `3`.
+     * Maximum number of days of logs to keep. Default: `3`.
      */
     indexDaysMax?: pulumi.Input<number>;
     /**
-     * OpenSearch index prefix. The default value is `logs`.
+     * OpenSearch index prefix. Default: `logs`.
      */
     indexPrefix: pulumi.Input<string>;
     /**
-     * OpenSearch request timeout limit. The default value is `10.0`.
+     * OpenSearch request timeout limit. Default: `10.0`.
      */
     timeout?: pulumi.Input<number>;
     /**
-     * OpenSearch connection URL.
+     * OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
      */
     url: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalPostgresql {
     /**
-     * Default database.
+     * Default database. Example: `testdb`.
      */
     defaultDatabase?: pulumi.Input<string>;
     /**
-     * Hostname or IP address of the server.
+     * Hostname or IP address of the server. Example: `my.server.com`.
      */
     host: pulumi.Input<string>;
     /**
-     * Password.
+     * Password. Example: `jjKk45Nnd`.
      */
     password?: pulumi.Input<string>;
     /**
-     * Port number of the server.
+     * Port number of the server. Example: `5432`.
      */
     port: pulumi.Input<number>;
     /**
-     * Client certificate.
+     * Client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslClientCertificate?: pulumi.Input<string>;
     /**
-     * Client key.
+     * Client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----`.
      */
     sslClientKey?: pulumi.Input<string>;
     /**
-     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      */
     sslMode?: pulumi.Input<string>;
     /**
-     * SSL Root Cert.
+     * SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslRootCert?: pulumi.Input<string>;
     /**
-     * User name.
+     * User name. Example: `myname`.
      */
     username: pulumi.Input<string>;
 }
@@ -5659,80 +5831,89 @@ export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
      */
     authentication: pulumi.Input<string>;
     /**
-     * Basic authentication password.
+     * Basic authentication password. Example: `Zm9vYg==`.
      */
     basicAuthPassword?: pulumi.Input<string>;
     /**
-     * Basic authentication user name.
+     * Basic authentication user name. Example: `avnadmin`.
      */
     basicAuthUsername?: pulumi.Input<string>;
     /**
-     * Schema Registry URL.
+     * Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
      */
     url: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointJolokiaUserConfig {
     /**
-     * Jolokia basic authentication password.
+     * Jolokia basic authentication password. Example: `yhfBNFii4C`.
      */
     basicAuthPassword?: pulumi.Input<string>;
     /**
-     * Jolokia basic authentication username.
+     * Jolokia basic authentication username. Example: `jol48k51`.
      */
     basicAuthUsername?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointPrometheusUserConfig {
     /**
-     * Prometheus basic authentication password.
+     * Prometheus basic authentication password. Example: `fhyFNBjj3R`.
      */
     basicAuthPassword?: pulumi.Input<string>;
     /**
-     * Prometheus basic authentication username.
+     * Prometheus basic authentication username. Example: `prom4851`.
      */
     basicAuthUsername?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     ca?: pulumi.Input<string>;
     /**
-     * PEM encoded client certificate.
+     * PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     cert?: pulumi.Input<string>;
     /**
-     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
      */
     format: pulumi.Input<string>;
     /**
-     * PEM encoded client key.
+     * PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      */
     key?: pulumi.Input<string>;
     /**
-     * Custom syslog message format.
+     * Custom syslog message format. Example: `<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
      */
     logline?: pulumi.Input<string>;
     /**
-     * Rsyslog max message size. The default value is `8192`.
+     * Rsyslog max message size. Default: `8192`.
      */
     maxMessageSize?: pulumi.Input<number>;
     /**
-     * Rsyslog server port. The default value is `514`.
+     * Rsyslog server port. Default: `514`.
      */
     port: pulumi.Input<number>;
     /**
-     * Structured data block for log message.
+     * Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
      */
     sd?: pulumi.Input<string>;
     /**
-     * Rsyslog server IP address or hostname.
+     * Rsyslog server IP address or hostname. Example: `logs.example.com`.
      */
     server: pulumi.Input<string>;
     /**
-     * Require TLS. The default value is `true`.
+     * Require TLS. Default: `true`.
      */
     tls: pulumi.Input<boolean>;
 }
@@ -5757,22 +5938,22 @@ export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
     /**
-     * Identifier of a value in the metric.
+     * Identifier of a value in the metric. Example: `used`.
      */
     field: pulumi.Input<string>;
     /**
-     * Identifier of the metric.
+     * Identifier of the metric. Example: `java.lang:Memory`.
      */
     metric: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
     /**
-     * Identifier of a value in the metric.
+     * Identifier of a value in the metric. Example: `used`.
      */
     field: pulumi.Input<string>;
     /**
-     * Identifier of the metric.
+     * Identifier of the metric. Example: `java.lang:Memory`.
      */
     metric: pulumi.Input<string>;
 }
@@ -5800,26 +5981,26 @@ export interface ServiceIntegrationKafkaConnectUserConfig {
 
 export interface ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
     /**
-     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
      */
     configStorageTopic?: pulumi.Input<string>;
     /**
-     * A unique string that identifies the Connect cluster group this worker belongs to.
+     * A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
      */
     offsetStorageTopic?: pulumi.Input<string>;
     /**
-     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
      */
     statusStorageTopic?: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationKafkaLogsUserConfig {
     /**
-     * Topic name.
+     * Topic name. Example: `mytopic`.
      */
     kafkaTopic: pulumi.Input<string>;
     /**
@@ -5830,7 +6011,7 @@ export interface ServiceIntegrationKafkaLogsUserConfig {
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfig {
     /**
-     * The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, '.', '_', and '-'.
+     * The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
      */
     clusterAlias?: pulumi.Input<string>;
     /**
@@ -5841,38 +6022,46 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfig {
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
     /**
-     * The minimum amount of data the server should return for a fetch request.
+     * Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+     */
+    consumerAutoOffsetReset?: pulumi.Input<string>;
+    /**
+     * The minimum amount of data the server should return for a fetch request. Example: `1024`.
      */
     consumerFetchMinBytes?: pulumi.Input<number>;
     /**
-     * The batch size in bytes producer will attempt to collect before publishing to broker.
+     * Set consumer max.poll.records. The default is 500. Example: `500`.
+     */
+    consumerMaxPollRecords?: pulumi.Input<number>;
+    /**
+     * The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
      */
     producerBatchSize?: pulumi.Input<number>;
     /**
-     * The amount of bytes producer can use for buffering data before publishing to broker.
+     * The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
-     * The linger time (ms) for waiting new data to arrive for publishing.
+     * The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
      */
     producerLingerMs?: pulumi.Input<number>;
     /**
-     * The maximum request size in bytes.
+     * The maximum request size in bytes. Example: `1048576`.
      */
     producerMaxRequestSize?: pulumi.Input<number>;
 }
 
 export interface ServiceIntegrationLogsUserConfig {
     /**
-     * Elasticsearch index retention limit. The default value is `3`.
+     * Elasticsearch index retention limit. Default: `3`.
      */
     elasticsearchIndexDaysMax?: pulumi.Input<number>;
     /**
-     * Elasticsearch index prefix. The default value is `logs`.
+     * Elasticsearch index prefix. Default: `logs`.
      */
     elasticsearchIndexPrefix?: pulumi.Input<string>;
     /**
@@ -5883,7 +6072,7 @@ export interface ServiceIntegrationLogsUserConfig {
 
 export interface ServiceIntegrationMetricsUserConfig {
     /**
-     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     database?: pulumi.Input<string>;
     /**
@@ -5891,7 +6080,7 @@ export interface ServiceIntegrationMetricsUserConfig {
      */
     retentionDays?: pulumi.Input<number>;
     /**
-     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metricsReader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     roUsername?: pulumi.Input<string>;
     /**
@@ -5899,7 +6088,7 @@ export interface ServiceIntegrationMetricsUserConfig {
      */
     sourceMysql?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfigSourceMysql>;
     /**
-     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metricsWriter`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     username?: pulumi.Input<string>;
 }
@@ -5957,15 +6146,15 @@ export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
      */
     gatherTableSchema?: pulumi.Input<boolean>;
     /**
-     * Truncates digest text from perf*events*statements into this many characters.
+     * Truncates digest text from perf*events*statements into this many characters. Example: `120`.
      */
     perfEventsStatementsDigestTextLimit?: pulumi.Input<number>;
     /**
-     * Limits metrics from perf*events*statements.
+     * Limits metrics from perf*events*statements. Example: `250`.
      */
     perfEventsStatementsLimit?: pulumi.Input<number>;
     /**
-     * Only include perf*events*statements whose last seen is less than this many seconds.
+     * Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: pulumi.Input<number>;
 }
@@ -6030,15 +6219,15 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      */
     gatherTableSchema?: pulumi.Input<boolean>;
     /**
-     * Truncates digest text from perf*events*statements into this many characters.
+     * Truncates digest text from perf*events*statements into this many characters. Example: `120`.
      */
     perfEventsStatementsDigestTextLimit?: pulumi.Input<number>;
     /**
-     * Limits metrics from perf*events*statements.
+     * Limits metrics from perf*events*statements. Example: `250`.
      */
     perfEventsStatementsLimit?: pulumi.Input<number>;
     /**
-     * Only include perf*events*statements whose last seen is less than this many seconds.
+     * Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: pulumi.Input<number>;
 }

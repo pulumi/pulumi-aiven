@@ -19,14 +19,20 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     public static final ServiceIntegrationEndpointRsyslogUserConfigArgs Empty = new ServiceIntegrationEndpointRsyslogUserConfigArgs();
 
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     @Import(name="ca")
     private @Nullable Output<String> ca;
 
     /**
-     * @return PEM encoded CA certificate.
+     * @return PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<Output<String>> ca() {
@@ -34,14 +40,20 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * PEM encoded client certificate.
+     * PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     @Import(name="cert")
     private @Nullable Output<String> cert;
 
     /**
-     * @return PEM encoded client certificate.
+     * @return PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<Output<String>> cert() {
@@ -49,14 +61,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
      * 
      */
     @Import(name="format", required=true)
     private Output<String> format;
 
     /**
-     * @return Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+     * @return Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
      * 
      */
     public Output<String> format() {
@@ -64,14 +76,20 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * PEM encoded client key.
+     * PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return PEM encoded client key.
+     * @return PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      * 
      */
     public Optional<Output<String>> key() {
@@ -79,14 +97,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * Custom syslog message format.
+     * Custom syslog message format. Example: `&lt;%pri%&gt;%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
      * 
      */
     @Import(name="logline")
     private @Nullable Output<String> logline;
 
     /**
-     * @return Custom syslog message format.
+     * @return Custom syslog message format. Example: `&lt;%pri%&gt;%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
      * 
      */
     public Optional<Output<String>> logline() {
@@ -94,14 +112,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * Rsyslog max message size. The default value is `8192`.
+     * Rsyslog max message size. Default: `8192`.
      * 
      */
     @Import(name="maxMessageSize")
     private @Nullable Output<Integer> maxMessageSize;
 
     /**
-     * @return Rsyslog max message size. The default value is `8192`.
+     * @return Rsyslog max message size. Default: `8192`.
      * 
      */
     public Optional<Output<Integer>> maxMessageSize() {
@@ -109,14 +127,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * Rsyslog server port. The default value is `514`.
+     * Rsyslog server port. Default: `514`.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return Rsyslog server port. The default value is `514`.
+     * @return Rsyslog server port. Default: `514`.
      * 
      */
     public Output<Integer> port() {
@@ -124,14 +142,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * Structured data block for log message.
+     * Structured data block for log message. Example: `TOKEN tag=&#34;LiteralValue&#34;`.
      * 
      */
     @Import(name="sd")
     private @Nullable Output<String> sd;
 
     /**
-     * @return Structured data block for log message.
+     * @return Structured data block for log message. Example: `TOKEN tag=&#34;LiteralValue&#34;`.
      * 
      */
     public Optional<Output<String>> sd() {
@@ -139,14 +157,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * Rsyslog server IP address or hostname.
+     * Rsyslog server IP address or hostname. Example: `logs.example.com`.
      * 
      */
     @Import(name="server", required=true)
     private Output<String> server;
 
     /**
-     * @return Rsyslog server IP address or hostname.
+     * @return Rsyslog server IP address or hostname. Example: `logs.example.com`.
      * 
      */
     public Output<String> server() {
@@ -154,14 +172,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * Require TLS. The default value is `true`.
+     * Require TLS. Default: `true`.
      * 
      */
     @Import(name="tls", required=true)
     private Output<Boolean> tls;
 
     /**
-     * @return Require TLS. The default value is `true`.
+     * @return Require TLS. Default: `true`.
      * 
      */
     public Output<Boolean> tls() {
@@ -202,7 +220,10 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param ca PEM encoded CA certificate.
+         * @param ca PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -213,7 +234,10 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param ca PEM encoded CA certificate.
+         * @param ca PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -223,7 +247,10 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param cert PEM encoded client certificate.
+         * @param cert PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -234,7 +261,10 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param cert PEM encoded client certificate.
+         * @param cert PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -244,7 +274,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param format Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+         * @param format Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
          * 
          * @return builder
          * 
@@ -255,7 +285,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param format Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+         * @param format Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
          * 
          * @return builder
          * 
@@ -265,7 +295,10 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param key PEM encoded client key.
+         * @param key PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+         * ...
+         * -----END PRIVATE KEY-----
+         * `.
          * 
          * @return builder
          * 
@@ -276,7 +309,10 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param key PEM encoded client key.
+         * @param key PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+         * ...
+         * -----END PRIVATE KEY-----
+         * `.
          * 
          * @return builder
          * 
@@ -286,7 +322,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param logline Custom syslog message format.
+         * @param logline Custom syslog message format. Example: `&lt;%pri%&gt;%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
          * 
          * @return builder
          * 
@@ -297,7 +333,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param logline Custom syslog message format.
+         * @param logline Custom syslog message format. Example: `&lt;%pri%&gt;%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
          * 
          * @return builder
          * 
@@ -307,7 +343,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param maxMessageSize Rsyslog max message size. The default value is `8192`.
+         * @param maxMessageSize Rsyslog max message size. Default: `8192`.
          * 
          * @return builder
          * 
@@ -318,7 +354,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param maxMessageSize Rsyslog max message size. The default value is `8192`.
+         * @param maxMessageSize Rsyslog max message size. Default: `8192`.
          * 
          * @return builder
          * 
@@ -328,7 +364,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param port Rsyslog server port. The default value is `514`.
+         * @param port Rsyslog server port. Default: `514`.
          * 
          * @return builder
          * 
@@ -339,7 +375,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param port Rsyslog server port. The default value is `514`.
+         * @param port Rsyslog server port. Default: `514`.
          * 
          * @return builder
          * 
@@ -349,7 +385,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param sd Structured data block for log message.
+         * @param sd Structured data block for log message. Example: `TOKEN tag=&#34;LiteralValue&#34;`.
          * 
          * @return builder
          * 
@@ -360,7 +396,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param sd Structured data block for log message.
+         * @param sd Structured data block for log message. Example: `TOKEN tag=&#34;LiteralValue&#34;`.
          * 
          * @return builder
          * 
@@ -370,7 +406,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param server Rsyslog server IP address or hostname.
+         * @param server Rsyslog server IP address or hostname. Example: `logs.example.com`.
          * 
          * @return builder
          * 
@@ -381,7 +417,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param server Rsyslog server IP address or hostname.
+         * @param server Rsyslog server IP address or hostname. Example: `logs.example.com`.
          * 
          * @return builder
          * 
@@ -391,7 +427,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param tls Require TLS. The default value is `true`.
+         * @param tls Require TLS. Default: `true`.
          * 
          * @return builder
          * 
@@ -402,7 +438,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param tls Require TLS. The default value is `true`.
+         * @param tls Require TLS. Default: `true`.
          * 
          * @return builder
          * 

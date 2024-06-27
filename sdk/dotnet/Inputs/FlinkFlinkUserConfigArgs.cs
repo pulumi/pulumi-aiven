@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.FlinkFlinkUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public InputList<Inputs.FlinkFlinkUserConfigIpFilterObjectArgs> IpFilterObjects
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilterStrings;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public InputList<string> IpFilterStrings
         {
@@ -52,7 +52,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+        /// Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
         /// </summary>
         [Input("numberOfTaskSlots")]
         public Input<int>? NumberOfTaskSlots { get; set; }

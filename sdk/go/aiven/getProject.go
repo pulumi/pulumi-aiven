@@ -74,7 +74,7 @@ type LookupProjectResult struct {
 	EstimatedBalance string `pulumi:"estimatedBalance"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId string `pulumi:"parentId"`
 	// The payment type used for this project. For example,`card`.
 	PaymentMethod string `pulumi:"paymentMethod"`
@@ -171,7 +171,7 @@ func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupProjectResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.ParentId }).(pulumi.StringOutput)
 }

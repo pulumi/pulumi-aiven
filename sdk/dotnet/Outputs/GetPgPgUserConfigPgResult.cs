@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AutovacuumAnalyzeThreshold;
         /// <summary>
-        /// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+        /// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
         /// </summary>
         public readonly int? AutovacuumFreezeMaxAge;
         /// <summary>
@@ -50,23 +50,23 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AutovacuumVacuumThreshold;
         /// <summary>
-        /// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        /// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
         /// </summary>
         public readonly int? BgwriterDelay;
         /// <summary>
-        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
         /// </summary>
         public readonly int? BgwriterFlushAfter;
         /// <summary>
-        /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
         /// </summary>
         public readonly int? BgwriterLruMaxpages;
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
         /// </summary>
         public readonly double? BgwriterLruMultiplier;
         /// <summary>
-        /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
         /// </summary>
         public readonly int? DeadlockTimeout;
         /// <summary>
@@ -158,11 +158,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxWorkerProcesses;
         /// <summary>
-        /// Sets the time interval to run pg_partman's scheduled tasks.
+        /// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
         /// </summary>
         public readonly int? PgPartmanBgwDotInterval;
         /// <summary>
-        /// Controls which role to use for pg_partman's scheduled background tasks.
+        /// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
         /// </summary>
         public readonly string? PgPartmanBgwDotRole;
         /// <summary>
@@ -170,7 +170,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? PgStatMonitorDotPgsmEnableQueryPlan;
         /// <summary>
-        /// Sets the maximum number of buckets.
+        /// Sets the maximum number of buckets. Example: `10`.
         /// </summary>
         public readonly int? PgStatMonitorDotPgsmMaxBuckets;
         /// <summary>
@@ -178,15 +178,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? PgStatStatementsDotTrack;
         /// <summary>
-        /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        /// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
         /// </summary>
         public readonly int? TempFileLimit;
         /// <summary>
-        /// PostgreSQL service timezone.
+        /// PostgreSQL service timezone. Example: `Europe/Helsinki`.
         /// </summary>
         public readonly string? Timezone;
         /// <summary>
-        /// Specifies the number of bytes reserved to track the currently executing command for each active session.
+        /// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
         /// </summary>
         public readonly int? TrackActivityQuerySize;
         /// <summary>
@@ -202,11 +202,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? TrackIoTiming;
         /// <summary>
-        /// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        /// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
         /// </summary>
         public readonly int? WalSenderTimeout;
         /// <summary>
-        /// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        /// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
         /// </summary>
         public readonly int? WalWriterDelay;
 

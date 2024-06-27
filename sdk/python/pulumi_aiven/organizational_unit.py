@@ -147,7 +147,7 @@ class OrganizationalUnit(pulumi.CustomResource):
                  parent_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/projects_accounts_access) in an Aiven organization.
+        Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) in an Aiven organization.
 
         ## Example Usage
 
@@ -178,7 +178,7 @@ class OrganizationalUnit(pulumi.CustomResource):
                  args: OrganizationalUnitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/projects_accounts_access) in an Aiven organization.
+        Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) in an Aiven organization.
 
         ## Example Usage
 

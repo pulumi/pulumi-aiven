@@ -14,23 +14,26 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult
     {
         /// <summary>
-        /// PEM encoded CA certificate.
+        /// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         public readonly string? Ca;
         /// <summary>
-        /// Maximum number of days of logs to keep. The default value is `3`.
+        /// Maximum number of days of logs to keep. Default: `3`.
         /// </summary>
         public readonly int? IndexDaysMax;
         /// <summary>
-        /// OpenSearch index prefix. The default value is `logs`.
+        /// OpenSearch index prefix. Default: `logs`.
         /// </summary>
         public readonly string IndexPrefix;
         /// <summary>
-        /// OpenSearch request timeout limit. The default value is `10.0`.
+        /// OpenSearch request timeout limit. Default: `10.0`.
         /// </summary>
         public readonly double? Timeout;
         /// <summary>
-        /// OpenSearch connection URL.
+        /// OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
         /// </summary>
         public readonly string Url;
 

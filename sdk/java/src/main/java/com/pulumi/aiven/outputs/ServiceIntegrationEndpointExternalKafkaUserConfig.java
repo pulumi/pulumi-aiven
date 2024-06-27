@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
-     * @return Bootstrap servers.
+     * @return Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
      * 
      */
     private String bootstrapServers;
@@ -23,12 +23,12 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     private @Nullable String saslMechanism;
     /**
-     * @return Password for SASL PLAIN mechanism in the Kafka server.
+     * @return Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      * 
      */
     private @Nullable String saslPlainPassword;
     /**
-     * @return Username for SASL PLAIN mechanism in the Kafka server.
+     * @return Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      * 
      */
     private @Nullable String saslPlainUsername;
@@ -38,17 +38,26 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     private String securityProtocol;
     /**
-     * @return PEM-encoded CA certificate.
+     * @return PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     private @Nullable String sslCaCert;
     /**
-     * @return PEM-encoded client certificate.
+     * @return PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     private @Nullable String sslClientCert;
     /**
-     * @return PEM-encoded client key.
+     * @return PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      * 
      */
     private @Nullable String sslClientKey;
@@ -60,7 +69,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
 
     private ServiceIntegrationEndpointExternalKafkaUserConfig() {}
     /**
-     * @return Bootstrap servers.
+     * @return Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
      * 
      */
     public String bootstrapServers() {
@@ -74,14 +83,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
         return Optional.ofNullable(this.saslMechanism);
     }
     /**
-     * @return Password for SASL PLAIN mechanism in the Kafka server.
+     * @return Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      * 
      */
     public Optional<String> saslPlainPassword() {
         return Optional.ofNullable(this.saslPlainPassword);
     }
     /**
-     * @return Username for SASL PLAIN mechanism in the Kafka server.
+     * @return Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      * 
      */
     public Optional<String> saslPlainUsername() {
@@ -95,21 +104,30 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
         return this.securityProtocol;
     }
     /**
-     * @return PEM-encoded CA certificate.
+     * @return PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<String> sslCaCert() {
         return Optional.ofNullable(this.sslCaCert);
     }
     /**
-     * @return PEM-encoded client certificate.
+     * @return PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<String> sslClientCert() {
         return Optional.ofNullable(this.sslClientCert);
     }
     /**
-     * @return PEM-encoded client key.
+     * @return PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      * 
      */
     public Optional<String> sslClientKey() {

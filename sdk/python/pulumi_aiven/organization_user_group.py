@@ -179,7 +179,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates and manages a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) in an organization.
+        Creates and manages a [user group](https://aiven.io/docs/platform/howto/list-groups) in an organization.
 
         ## Example Usage
 
@@ -212,7 +212,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
                  args: OrganizationUserGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) in an organization.
+        Creates and manages a [user group](https://aiven.io/docs/platform/howto/list-groups) in an organization.
 
         ## Example Usage
 

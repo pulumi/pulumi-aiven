@@ -32,14 +32,14 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
     }
 
     /**
-     * Basic authentication password.
+     * Basic authentication password. Example: `Zm9vYg==`.
      * 
      */
     @Import(name="basicAuthPassword")
     private @Nullable Output<String> basicAuthPassword;
 
     /**
-     * @return Basic authentication password.
+     * @return Basic authentication password. Example: `Zm9vYg==`.
      * 
      */
     public Optional<Output<String>> basicAuthPassword() {
@@ -47,14 +47,14 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
     }
 
     /**
-     * Basic authentication user name.
+     * Basic authentication user name. Example: `avnadmin`.
      * 
      */
     @Import(name="basicAuthUsername")
     private @Nullable Output<String> basicAuthUsername;
 
     /**
-     * @return Basic authentication user name.
+     * @return Basic authentication user name. Example: `avnadmin`.
      * 
      */
     public Optional<Output<String>> basicAuthUsername() {
@@ -62,14 +62,14 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
     }
 
     /**
-     * Schema Registry URL.
+     * Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Schema Registry URL.
+     * @return Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
      * 
      */
     public Output<String> url() {
@@ -125,7 +125,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param basicAuthPassword Basic authentication password.
+         * @param basicAuthPassword Basic authentication password. Example: `Zm9vYg==`.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param basicAuthPassword Basic authentication password.
+         * @param basicAuthPassword Basic authentication password. Example: `Zm9vYg==`.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param basicAuthUsername Basic authentication user name.
+         * @param basicAuthUsername Basic authentication user name. Example: `avnadmin`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param basicAuthUsername Basic authentication user name.
+         * @param basicAuthUsername Basic authentication user name. Example: `avnadmin`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param url Schema Registry URL.
+         * @param url Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param url Schema Registry URL.
+         * @param url Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
          * 
          * @return builder
          * 

@@ -25,7 +25,7 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable Integer autovacuumAnalyzeThreshold;
     /**
-     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
      * 
      */
     private @Nullable Integer autovacuumFreezeMaxAge;
@@ -60,27 +60,27 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable Integer autovacuumVacuumThreshold;
     /**
-     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
      * 
      */
     private @Nullable Integer bgwriterDelay;
     /**
-     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
      * 
      */
     private @Nullable Integer bgwriterFlushAfter;
     /**
-     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
      * 
      */
     private @Nullable Integer bgwriterLruMaxpages;
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
      * 
      */
     private @Nullable Double bgwriterLruMultiplier;
     /**
-     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
      * 
      */
     private @Nullable Integer deadlockTimeout;
@@ -195,12 +195,12 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable Integer maxWorkerProcesses;
     /**
-     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
      * 
      */
     private @Nullable Integer pgPartmanBgwDotInterval;
     /**
-     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks. Example: `myrolename`.
      * 
      */
     private @Nullable String pgPartmanBgwDotRole;
@@ -210,7 +210,7 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan;
     /**
-     * @return Sets the maximum number of buckets.
+     * @return Sets the maximum number of buckets. Example: `10`.
      * 
      */
     private @Nullable Integer pgStatMonitorDotPgsmMaxBuckets;
@@ -220,17 +220,17 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable String pgStatStatementsDotTrack;
     /**
-     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
      * 
      */
     private @Nullable Integer tempFileLimit;
     /**
-     * @return PostgreSQL service timezone.
+     * @return PostgreSQL service timezone. Example: `Europe/Helsinki`.
      * 
      */
     private @Nullable String timezone;
     /**
-     * @return Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * @return Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
      * 
      */
     private @Nullable Integer trackActivityQuerySize;
@@ -250,12 +250,12 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable String trackIoTiming;
     /**
-     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
      * 
      */
     private @Nullable Integer walSenderTimeout;
     /**
-     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      * 
      */
     private @Nullable Integer walWriterDelay;
@@ -276,7 +276,7 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.autovacuumAnalyzeThreshold);
     }
     /**
-     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
      * 
      */
     public Optional<Integer> autovacuumFreezeMaxAge() {
@@ -325,35 +325,35 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.autovacuumVacuumThreshold);
     }
     /**
-     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
      * 
      */
     public Optional<Integer> bgwriterDelay() {
         return Optional.ofNullable(this.bgwriterDelay);
     }
     /**
-     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
      * 
      */
     public Optional<Integer> bgwriterFlushAfter() {
         return Optional.ofNullable(this.bgwriterFlushAfter);
     }
     /**
-     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
      * 
      */
     public Optional<Integer> bgwriterLruMaxpages() {
         return Optional.ofNullable(this.bgwriterLruMaxpages);
     }
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
      * 
      */
     public Optional<Double> bgwriterLruMultiplier() {
         return Optional.ofNullable(this.bgwriterLruMultiplier);
     }
     /**
-     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
      * 
      */
     public Optional<Integer> deadlockTimeout() {
@@ -514,14 +514,14 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.maxWorkerProcesses);
     }
     /**
-     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
      * 
      */
     public Optional<Integer> pgPartmanBgwDotInterval() {
         return Optional.ofNullable(this.pgPartmanBgwDotInterval);
     }
     /**
-     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks. Example: `myrolename`.
      * 
      */
     public Optional<String> pgPartmanBgwDotRole() {
@@ -535,7 +535,7 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.pgStatMonitorDotPgsmEnableQueryPlan);
     }
     /**
-     * @return Sets the maximum number of buckets.
+     * @return Sets the maximum number of buckets. Example: `10`.
      * 
      */
     public Optional<Integer> pgStatMonitorDotPgsmMaxBuckets() {
@@ -549,21 +549,21 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.pgStatStatementsDotTrack);
     }
     /**
-     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
      * 
      */
     public Optional<Integer> tempFileLimit() {
         return Optional.ofNullable(this.tempFileLimit);
     }
     /**
-     * @return PostgreSQL service timezone.
+     * @return PostgreSQL service timezone. Example: `Europe/Helsinki`.
      * 
      */
     public Optional<String> timezone() {
         return Optional.ofNullable(this.timezone);
     }
     /**
-     * @return Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * @return Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
      * 
      */
     public Optional<Integer> trackActivityQuerySize() {
@@ -591,14 +591,14 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.trackIoTiming);
     }
     /**
-     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
      * 
      */
     public Optional<Integer> walSenderTimeout() {
         return Optional.ofNullable(this.walSenderTimeout);
     }
     /**
-     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      * 
      */
     public Optional<Integer> walWriterDelay() {

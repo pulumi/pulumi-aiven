@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationKafkaMirrormakerUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, '.', '_', and '-'.
+        /// The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
         /// </summary>
         [Input("clusterAlias")]
         public Input<string>? ClusterAlias { get; set; }

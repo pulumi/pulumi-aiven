@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable or disable OpenSearch Dashboards. The default value is `true`.
+        /// Enable or disable OpenSearch Dashboards. Default: `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+        /// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
         /// </summary>
         [Input("maxOldSpaceSize")]
         public Input<int>? MaxOldSpaceSize { get; set; }
 
         /// <summary>
-        /// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+        /// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
         /// </summary>
         [Input("opensearchRequestTimeout")]
         public Input<int>? OpensearchRequestTimeout { get; set; }

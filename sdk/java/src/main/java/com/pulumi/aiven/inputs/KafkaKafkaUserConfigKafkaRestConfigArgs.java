@@ -18,14 +18,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     public static final KafkaKafkaUserConfigKafkaRestConfigArgs Empty = new KafkaKafkaUserConfigKafkaRestConfigArgs();
 
     /**
-     * If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+     * If true the consumer&#39;s offset will be periodically committed to Kafka in the background. Default: `true`.
      * 
      */
     @Import(name="consumerEnableAutoCommit")
     private @Nullable Output<Boolean> consumerEnableAutoCommit;
 
     /**
-     * @return If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+     * @return If true the consumer&#39;s offset will be periodically committed to Kafka in the background. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> consumerEnableAutoCommit() {
@@ -33,14 +33,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     * Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
      * 
      */
     @Import(name="consumerRequestMaxBytes")
     private @Nullable Output<Integer> consumerRequestMaxBytes;
 
     /**
-     * @return Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     * @return Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
      * 
      */
     public Optional<Output<Integer>> consumerRequestMaxBytes() {
@@ -48,14 +48,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
      * 
      */
     @Import(name="consumerRequestTimeoutMs")
     private @Nullable Output<Integer> consumerRequestTimeoutMs;
 
     /**
-     * @return Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * @return Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
      * 
      */
     public Optional<Output<Integer>> consumerRequestTimeoutMs() {
@@ -63,14 +63,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
      * 
      */
     @Import(name="nameStrategy")
     private @Nullable Output<String> nameStrategy;
 
     /**
-     * @return Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * @return Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
      * 
      */
     public Optional<Output<String>> nameStrategy() {
@@ -78,14 +78,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
      * 
      */
     @Import(name="nameStrategyValidation")
     private @Nullable Output<Boolean> nameStrategyValidation;
 
     /**
-     * @return If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * @return If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> nameStrategyValidation() {
@@ -93,14 +93,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
      * 
      */
     @Import(name="producerAcks")
     private @Nullable Output<String> producerAcks;
 
     /**
-     * @return Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * @return Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
      * 
      */
     public Optional<Output<String>> producerAcks() {
@@ -108,14 +108,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     @Import(name="producerCompressionType")
     private @Nullable Output<String> producerCompressionType;
 
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     public Optional<Output<String>> producerCompressionType() {
@@ -123,14 +123,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Wait for up to the given delay to allow batching records together. The default value is `0`.
+     * Wait for up to the given delay to allow batching records together. Default: `0`.
      * 
      */
     @Import(name="producerLingerMs")
     private @Nullable Output<Integer> producerLingerMs;
 
     /**
-     * @return Wait for up to the given delay to allow batching records together. The default value is `0`.
+     * @return Wait for up to the given delay to allow batching records together. Default: `0`.
      * 
      */
     public Optional<Output<Integer>> producerLingerMs() {
@@ -138,14 +138,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
      * 
      */
     @Import(name="producerMaxRequestSize")
     private @Nullable Output<Integer> producerMaxRequestSize;
 
     /**
-     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
      * 
      */
     public Optional<Output<Integer>> producerMaxRequestSize() {
@@ -153,14 +153,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     * Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
      * 
      */
     @Import(name="simpleconsumerPoolSizeMax")
     private @Nullable Output<Integer> simpleconsumerPoolSizeMax;
 
     /**
-     * @return Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     * @return Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
      * 
      */
     public Optional<Output<Integer>> simpleconsumerPoolSizeMax() {
@@ -201,7 +201,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerEnableAutoCommit If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+         * @param consumerEnableAutoCommit If true the consumer&#39;s offset will be periodically committed to Kafka in the background. Default: `true`.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerEnableAutoCommit If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+         * @param consumerEnableAutoCommit If true the consumer&#39;s offset will be periodically committed to Kafka in the background. Default: `true`.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+         * @param consumerRequestMaxBytes Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerRequestTimeoutMs Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+         * @param consumerRequestTimeoutMs Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerRequestTimeoutMs Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+         * @param consumerRequestTimeoutMs Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param nameStrategy Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+         * @param nameStrategy Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param nameStrategy Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+         * @param nameStrategy Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param nameStrategyValidation If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+         * @param nameStrategyValidation If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param nameStrategyValidation If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+         * @param nameStrategyValidation If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerAcks Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+         * @param producerAcks Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerAcks Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+         * @param producerAcks Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerLingerMs Wait for up to the given delay to allow batching records together. The default value is `0`.
+         * @param producerLingerMs Wait for up to the given delay to allow batching records together. Default: `0`.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerLingerMs Wait for up to the given delay to allow batching records together. The default value is `0`.
+         * @param producerLingerMs Wait for up to the given delay to allow batching records together. Default: `0`.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param simpleconsumerPoolSizeMax Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+         * @param simpleconsumerPoolSizeMax Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param simpleconsumerPoolSizeMax Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+         * @param simpleconsumerPoolSizeMax Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
          * 
          * @return builder
          * 

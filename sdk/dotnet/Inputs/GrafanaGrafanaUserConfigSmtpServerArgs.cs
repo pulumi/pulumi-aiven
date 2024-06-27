@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GrafanaGrafanaUserConfigSmtpServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Address used for sending emails.
+        /// Address used for sending emails. Example: `yourgrafanauser@yourdomain.example.com`.
         /// </summary>
         [Input("fromAddress", required: true)]
         public Input<string> FromAddress { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? FromName { get; set; }
 
         /// <summary>
-        /// Server hostname or IP.
+        /// Server hostname or IP. Example: `smtp.example.com`.
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Password for SMTP authentication.
+        /// Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
         /// </summary>
         public Input<string>? Password
         {
@@ -47,7 +47,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// SMTP server port.
+        /// SMTP server port. Example: `25`.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? StarttlsPolicy { get; set; }
 
         /// <summary>
-        /// Username for SMTP authentication.
+        /// Username for SMTP authentication. Example: `smtpuser`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

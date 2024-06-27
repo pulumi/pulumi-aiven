@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class DragonflyDragonflyUserConfigMigration
     {
         /// <summary>
-        /// Database name for bootstrapping the initial connection.
+        /// Database name for bootstrapping the initial connection. Example: `defaultdb`.
         /// </summary>
         public readonly string? Dbname;
         /// <summary>
-        /// Hostname or IP address of the server where to migrate data from.
+        /// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+        /// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
         /// </summary>
         public readonly string? IgnoreDbs;
         /// <summary>
@@ -30,19 +30,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// Password for authentication with the server where to migrate data from.
+        /// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Port number of the server where to migrate data from.
+        /// Port number of the server where to migrate data from. Example: `1234`.
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// The server where to migrate data from is secured with SSL. The default value is `true`.
+        /// The server where to migrate data from is secured with SSL. Default: `true`.
         /// </summary>
         public readonly bool? Ssl;
         /// <summary>
-        /// User name for authentication with the server where to migrate data from.
+        /// User name for authentication with the server where to migrate data from. Example: `myname`.
         /// </summary>
         public readonly string? Username;
 

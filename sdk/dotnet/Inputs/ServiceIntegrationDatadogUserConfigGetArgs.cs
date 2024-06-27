@@ -97,10 +97,22 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Maximum number of JMX metrics to send.
+        /// Maximum number of JMX metrics to send. Example: `2000`.
         /// </summary>
         [Input("maxJmxMetrics")]
         public Input<int>? MaxJmxMetrics { get; set; }
+
+        [Input("mirrormakerCustomMetrics")]
+        private InputList<string>? _mirrormakerCustomMetrics;
+
+        /// <summary>
+        /// List of custom metrics.
+        /// </summary>
+        public InputList<string> MirrormakerCustomMetrics
+        {
+            get => _mirrormakerCustomMetrics ?? (_mirrormakerCustomMetrics = new InputList<string>());
+            set => _mirrormakerCustomMetrics = value;
+        }
 
         /// <summary>
         /// Datadog Opensearch Options

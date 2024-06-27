@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GrafanaGrafanaUserConfigSmtpServer {
     /**
-     * @return Address used for sending emails.
+     * @return Address used for sending emails. Example: `yourgrafanauser{@literal @}yourdomain.example.com`.
      * 
      */
     private String fromAddress;
@@ -25,17 +25,17 @@ public final class GrafanaGrafanaUserConfigSmtpServer {
      */
     private @Nullable String fromName;
     /**
-     * @return Server hostname or IP.
+     * @return Server hostname or IP. Example: `smtp.example.com`.
      * 
      */
     private String host;
     /**
-     * @return Password for SMTP authentication.
+     * @return Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
      * 
      */
     private @Nullable String password;
     /**
-     * @return SMTP server port.
+     * @return SMTP server port. Example: `25`.
      * 
      */
     private Integer port;
@@ -50,14 +50,14 @@ public final class GrafanaGrafanaUserConfigSmtpServer {
      */
     private @Nullable String starttlsPolicy;
     /**
-     * @return Username for SMTP authentication.
+     * @return Username for SMTP authentication. Example: `smtpuser`.
      * 
      */
     private @Nullable String username;
 
     private GrafanaGrafanaUserConfigSmtpServer() {}
     /**
-     * @return Address used for sending emails.
+     * @return Address used for sending emails. Example: `yourgrafanauser{@literal @}yourdomain.example.com`.
      * 
      */
     public String fromAddress() {
@@ -71,21 +71,21 @@ public final class GrafanaGrafanaUserConfigSmtpServer {
         return Optional.ofNullable(this.fromName);
     }
     /**
-     * @return Server hostname or IP.
+     * @return Server hostname or IP. Example: `smtp.example.com`.
      * 
      */
     public String host() {
         return this.host;
     }
     /**
-     * @return Password for SMTP authentication.
+     * @return Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return SMTP server port.
+     * @return SMTP server port. Example: `25`.
      * 
      */
     public Integer port() {
@@ -106,7 +106,7 @@ public final class GrafanaGrafanaUserConfigSmtpServer {
         return Optional.ofNullable(this.starttlsPolicy);
     }
     /**
-     * @return Username for SMTP authentication.
+     * @return Username for SMTP authentication. Example: `smtpuser`.
      * 
      */
     public Optional<String> username() {

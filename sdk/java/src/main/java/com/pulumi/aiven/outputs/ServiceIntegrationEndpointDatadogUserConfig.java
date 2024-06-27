@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointDatadogUserConfig {
     /**
-     * @return Datadog API key.
+     * @return Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
      * 
      */
     private String datadogApiKey;
@@ -32,17 +32,17 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
      */
     private @Nullable Boolean disableConsumerStats;
     /**
-     * @return Number of separate instances to fetch kafka consumer statistics with.
+     * @return Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      * 
      */
     private @Nullable Integer kafkaConsumerCheckInstances;
     /**
-     * @return Number of seconds that datadog will wait to get consumer statistics from brokers.
+     * @return Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
      * 
      */
     private @Nullable Integer kafkaConsumerStatsTimeout;
     /**
-     * @return Maximum number of partition contexts to send.
+     * @return Maximum number of partition contexts to send. Example: `32000`.
      * 
      */
     private @Nullable Integer maxPartitionContexts;
@@ -54,7 +54,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
 
     private ServiceIntegrationEndpointDatadogUserConfig() {}
     /**
-     * @return Datadog API key.
+     * @return Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
      * 
      */
     public String datadogApiKey() {
@@ -75,21 +75,21 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         return Optional.ofNullable(this.disableConsumerStats);
     }
     /**
-     * @return Number of separate instances to fetch kafka consumer statistics with.
+     * @return Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      * 
      */
     public Optional<Integer> kafkaConsumerCheckInstances() {
         return Optional.ofNullable(this.kafkaConsumerCheckInstances);
     }
     /**
-     * @return Number of seconds that datadog will wait to get consumer statistics from brokers.
+     * @return Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
      * 
      */
     public Optional<Integer> kafkaConsumerStatsTimeout() {
         return Optional.ofNullable(this.kafkaConsumerStatsTimeout);
     }
     /**
-     * @return Maximum number of partition contexts to send.
+     * @return Maximum number of partition contexts to send. Example: `32000`.
      * 
      */
     public Optional<Integer> maxPartitionContexts() {

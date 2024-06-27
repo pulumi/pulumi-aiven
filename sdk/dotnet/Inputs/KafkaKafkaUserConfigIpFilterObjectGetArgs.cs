@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigIpFilterObjectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description for IP filter list entry.
+        /// Description for IP filter list entry. Example: `Production service IP range`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// CIDR address block.
+        /// CIDR address block. Example: `10.20.0.0/16`.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;

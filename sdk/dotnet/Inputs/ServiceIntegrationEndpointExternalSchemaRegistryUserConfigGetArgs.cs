@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _basicAuthPassword;
 
         /// <summary>
-        /// Basic authentication password.
+        /// Basic authentication password. Example: `Zm9vYg==`.
         /// </summary>
         public Input<string>? BasicAuthPassword
         {
@@ -35,13 +35,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Basic authentication user name.
+        /// Basic authentication user name. Example: `avnadmin`.
         /// </summary>
         [Input("basicAuthUsername")]
         public Input<string>? BasicAuthUsername { get; set; }
 
         /// <summary>
-        /// Schema Registry URL.
+        /// Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

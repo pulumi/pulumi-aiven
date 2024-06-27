@@ -15,17 +15,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDragonflyDragonflyUserConfigMigration {
     /**
-     * @return Database name for bootstrapping the initial connection.
+     * @return Database name for bootstrapping the initial connection. Example: `defaultdb`.
      * 
      */
     private @Nullable String dbname;
     /**
-     * @return Hostname or IP address of the server where to migrate data from.
+     * @return Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      * 
      */
     private String host;
     /**
-     * @return Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * @return Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      * 
      */
     private @Nullable String ignoreDbs;
@@ -35,43 +35,43 @@ public final class GetDragonflyDragonflyUserConfigMigration {
      */
     private @Nullable String method;
     /**
-     * @return Password for authentication with the server where to migrate data from.
+     * @return Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      * 
      */
     private @Nullable String password;
     /**
-     * @return Port number of the server where to migrate data from.
+     * @return Port number of the server where to migrate data from. Example: `1234`.
      * 
      */
     private Integer port;
     /**
-     * @return The server where to migrate data from is secured with SSL. The default value is `true`.
+     * @return The server where to migrate data from is secured with SSL. Default: `true`.
      * 
      */
     private @Nullable Boolean ssl;
     /**
-     * @return User name for authentication with the server where to migrate data from.
+     * @return User name for authentication with the server where to migrate data from. Example: `myname`.
      * 
      */
     private @Nullable String username;
 
     private GetDragonflyDragonflyUserConfigMigration() {}
     /**
-     * @return Database name for bootstrapping the initial connection.
+     * @return Database name for bootstrapping the initial connection. Example: `defaultdb`.
      * 
      */
     public Optional<String> dbname() {
         return Optional.ofNullable(this.dbname);
     }
     /**
-     * @return Hostname or IP address of the server where to migrate data from.
+     * @return Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      * 
      */
     public String host() {
         return this.host;
     }
     /**
-     * @return Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * @return Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      * 
      */
     public Optional<String> ignoreDbs() {
@@ -85,28 +85,28 @@ public final class GetDragonflyDragonflyUserConfigMigration {
         return Optional.ofNullable(this.method);
     }
     /**
-     * @return Password for authentication with the server where to migrate data from.
+     * @return Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Port number of the server where to migrate data from.
+     * @return Port number of the server where to migrate data from. Example: `1234`.
      * 
      */
     public Integer port() {
         return this.port;
     }
     /**
-     * @return The server where to migrate data from is secured with SSL. The default value is `true`.
+     * @return The server where to migrate data from is secured with SSL. Default: `true`.
      * 
      */
     public Optional<Boolean> ssl() {
         return Optional.ofNullable(this.ssl);
     }
     /**
-     * @return User name for authentication with the server where to migrate data from.
+     * @return User name for authentication with the server where to migrate data from. Example: `myname`.
      * 
      */
     public Optional<String> username() {

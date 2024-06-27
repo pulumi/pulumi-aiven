@@ -19,32 +19,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DragonflyDragonflyUserConfig {
     /**
-     * @return Evict entries when getting close to maxmemory limit. The default value is `false`.
+     * @return Evict entries when getting close to maxmemory limit. Default: `false`.
      * 
      */
     private @Nullable Boolean cacheMode;
     /**
-     * @return Enum: `off`, `rdb`, `dfs`. When persistence is &#39;rdb&#39; or &#39;dfs&#39;, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     private @Nullable String dragonflyPersistence;
     /**
-     * @return Require SSL to access Dragonfly. The default value is `true`.
+     * @return Require SSL to access Dragonfly. Default: `true`.
      * 
      */
     private @Nullable Boolean dragonflySsl;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<DragonflyDragonflyUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -68,7 +68,7 @@ public final class DragonflyDragonflyUserConfig {
      */
     private @Nullable DragonflyDragonflyUserConfigPrivatelinkAccess privatelinkAccess;
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     private @Nullable String projectToForkFrom;
@@ -78,7 +78,7 @@ public final class DragonflyDragonflyUserConfig {
      */
     private @Nullable DragonflyDragonflyUserConfigPublicAccess publicAccess;
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     private @Nullable String recoveryBasebackupName;
@@ -88,7 +88,7 @@ public final class DragonflyDragonflyUserConfig {
      */
     private @Nullable Boolean serviceLog;
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String serviceToForkFrom;
@@ -100,42 +100,42 @@ public final class DragonflyDragonflyUserConfig {
 
     private DragonflyDragonflyUserConfig() {}
     /**
-     * @return Evict entries when getting close to maxmemory limit. The default value is `false`.
+     * @return Evict entries when getting close to maxmemory limit. Default: `false`.
      * 
      */
     public Optional<Boolean> cacheMode() {
         return Optional.ofNullable(this.cacheMode);
     }
     /**
-     * @return Enum: `off`, `rdb`, `dfs`. When persistence is &#39;rdb&#39; or &#39;dfs&#39;, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     public Optional<String> dragonflyPersistence() {
         return Optional.ofNullable(this.dragonflyPersistence);
     }
     /**
-     * @return Require SSL to access Dragonfly. The default value is `true`.
+     * @return Require SSL to access Dragonfly. Default: `true`.
      * 
      */
     public Optional<Boolean> dragonflySsl() {
         return Optional.ofNullable(this.dragonflySsl);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<DragonflyDragonflyUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -167,7 +167,7 @@ public final class DragonflyDragonflyUserConfig {
         return Optional.ofNullable(this.privatelinkAccess);
     }
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<String> projectToForkFrom() {
@@ -181,7 +181,7 @@ public final class DragonflyDragonflyUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     public Optional<String> recoveryBasebackupName() {
@@ -195,7 +195,7 @@ public final class DragonflyDragonflyUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> serviceToForkFrom() {

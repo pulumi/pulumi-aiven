@@ -49,14 +49,14 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
     }
 
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     public Output<String> clientId() {
@@ -64,14 +64,14 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
     }
 
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     public Output<String> clientSecret() {
@@ -158,7 +158,7 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientId Client ID from provider.
+         * @param clientId Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientId Client ID from provider.
+         * @param clientId Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientSecret Client secret from provider.
+         * @param clientSecret Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientSecret Client secret from provider.
+         * @param clientSecret Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
          * 
          * @return builder
          * 

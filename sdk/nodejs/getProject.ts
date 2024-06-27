@@ -79,7 +79,7 @@ export interface GetProjectResult {
      */
     readonly id: string;
     /**
-     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly parentId: string;
     /**

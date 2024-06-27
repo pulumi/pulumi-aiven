@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Adds and manages users in a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups).
+// Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups).
 //
 // ## Example Usage
 //

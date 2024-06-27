@@ -22,19 +22,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? AivenKafkaTopicMessages;
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.KafkaKafkaUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -46,15 +46,16 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods? KafkaAuthenticationMethods;
         /// <summary>
-        /// Enable Kafka Connect service. The default value is `false`.
+        /// Enable Kafka Connect service. Default: `false`.
         /// </summary>
         public readonly bool? KafkaConnect;
         /// <summary>
         /// Kafka Connect configuration values
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectConfig? KafkaConnectConfig;
+        public readonly ImmutableArray<Outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider> KafkaConnectSecretProviders;
         /// <summary>
-        /// Enable Kafka-REST service. The default value is `false`.
+        /// Enable Kafka-REST service. Default: `false`.
         /// </summary>
         public readonly bool? KafkaRest;
         /// <summary>
@@ -70,6 +71,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? KafkaVersion;
         /// <summary>
+        /// Use Letsencrypt CA for Kafka SASL via Privatelink.
+        /// </summary>
+        public readonly bool? LetsencryptSaslPrivatelink;
+        /// <summary>
         /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPrivateAccess? PrivateAccess;
@@ -82,7 +87,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Enable Schema-Registry service. The default value is `false`.
+        /// Enable Schema-Registry service. Default: `false`.
         /// </summary>
         public readonly bool? SchemaRegistry;
         /// <summary>
@@ -124,6 +129,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaKafkaUserConfigKafkaConnectConfig? kafkaConnectConfig,
 
+            ImmutableArray<Outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders,
+
             bool? kafkaRest,
 
             bool? kafkaRestAuthorization,
@@ -131,6 +138,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.KafkaKafkaUserConfigKafkaRestConfig? kafkaRestConfig,
 
             string? kafkaVersion,
+
+            bool? letsencryptSaslPrivatelink,
 
             Outputs.KafkaKafkaUserConfigPrivateAccess? privateAccess,
 
@@ -158,10 +167,12 @@ namespace Pulumi.Aiven.Outputs
             KafkaAuthenticationMethods = kafkaAuthenticationMethods;
             KafkaConnect = kafkaConnect;
             KafkaConnectConfig = kafkaConnectConfig;
+            KafkaConnectSecretProviders = kafkaConnectSecretProviders;
             KafkaRest = kafkaRest;
             KafkaRestAuthorization = kafkaRestAuthorization;
             KafkaRestConfig = kafkaRestConfig;
             KafkaVersion = kafkaVersion;
+            LetsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;

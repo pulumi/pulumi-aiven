@@ -13,74 +13,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
     /**
-     * @return The minimum amount of data the server should return for a fetch request.
+     * @return Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+     * 
+     */
+    private @Nullable String consumerAutoOffsetReset;
+    /**
+     * @return The minimum amount of data the server should return for a fetch request. Example: `1024`.
      * 
      */
     private @Nullable Integer consumerFetchMinBytes;
     /**
-     * @return The batch size in bytes producer will attempt to collect before publishing to broker.
+     * @return Set consumer max.poll.records. The default is 500. Example: `500`.
+     * 
+     */
+    private @Nullable Integer consumerMaxPollRecords;
+    /**
+     * @return The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
      * 
      */
     private @Nullable Integer producerBatchSize;
     /**
-     * @return The amount of bytes producer can use for buffering data before publishing to broker.
+     * @return The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
      * 
      */
     private @Nullable Integer producerBufferMemory;
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     private @Nullable String producerCompressionType;
     /**
-     * @return The linger time (ms) for waiting new data to arrive for publishing.
+     * @return The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
      * 
      */
     private @Nullable Integer producerLingerMs;
     /**
-     * @return The maximum request size in bytes.
+     * @return The maximum request size in bytes. Example: `1048576`.
      * 
      */
     private @Nullable Integer producerMaxRequestSize;
 
     private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker() {}
     /**
-     * @return The minimum amount of data the server should return for a fetch request.
+     * @return Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+     * 
+     */
+    public Optional<String> consumerAutoOffsetReset() {
+        return Optional.ofNullable(this.consumerAutoOffsetReset);
+    }
+    /**
+     * @return The minimum amount of data the server should return for a fetch request. Example: `1024`.
      * 
      */
     public Optional<Integer> consumerFetchMinBytes() {
         return Optional.ofNullable(this.consumerFetchMinBytes);
     }
     /**
-     * @return The batch size in bytes producer will attempt to collect before publishing to broker.
+     * @return Set consumer max.poll.records. The default is 500. Example: `500`.
+     * 
+     */
+    public Optional<Integer> consumerMaxPollRecords() {
+        return Optional.ofNullable(this.consumerMaxPollRecords);
+    }
+    /**
+     * @return The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
      * 
      */
     public Optional<Integer> producerBatchSize() {
         return Optional.ofNullable(this.producerBatchSize);
     }
     /**
-     * @return The amount of bytes producer can use for buffering data before publishing to broker.
+     * @return The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
      * 
      */
     public Optional<Integer> producerBufferMemory() {
         return Optional.ofNullable(this.producerBufferMemory);
     }
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     public Optional<String> producerCompressionType() {
         return Optional.ofNullable(this.producerCompressionType);
     }
     /**
-     * @return The linger time (ms) for waiting new data to arrive for publishing.
+     * @return The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
      * 
      */
     public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
     /**
-     * @return The maximum request size in bytes.
+     * @return The maximum request size in bytes. Example: `1048576`.
      * 
      */
     public Optional<Integer> producerMaxRequestSize() {
@@ -96,7 +120,9 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String consumerAutoOffsetReset;
         private @Nullable Integer consumerFetchMinBytes;
+        private @Nullable Integer consumerMaxPollRecords;
         private @Nullable Integer producerBatchSize;
         private @Nullable Integer producerBufferMemory;
         private @Nullable String producerCompressionType;
@@ -105,7 +131,9 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
         public Builder() {}
         public Builder(ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.consumerAutoOffsetReset = defaults.consumerAutoOffsetReset;
     	      this.consumerFetchMinBytes = defaults.consumerFetchMinBytes;
+    	      this.consumerMaxPollRecords = defaults.consumerMaxPollRecords;
     	      this.producerBatchSize = defaults.producerBatchSize;
     	      this.producerBufferMemory = defaults.producerBufferMemory;
     	      this.producerCompressionType = defaults.producerCompressionType;
@@ -114,9 +142,21 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
         }
 
         @CustomType.Setter
+        public Builder consumerAutoOffsetReset(@Nullable String consumerAutoOffsetReset) {
+
+            this.consumerAutoOffsetReset = consumerAutoOffsetReset;
+            return this;
+        }
+        @CustomType.Setter
         public Builder consumerFetchMinBytes(@Nullable Integer consumerFetchMinBytes) {
 
             this.consumerFetchMinBytes = consumerFetchMinBytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder consumerMaxPollRecords(@Nullable Integer consumerMaxPollRecords) {
+
+            this.consumerMaxPollRecords = consumerMaxPollRecords;
             return this;
         }
         @CustomType.Setter
@@ -151,7 +191,9 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
         }
         public ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker build() {
             final var _resultValue = new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker();
+            _resultValue.consumerAutoOffsetReset = consumerAutoOffsetReset;
             _resultValue.consumerFetchMinBytes = consumerFetchMinBytes;
+            _resultValue.consumerMaxPollRecords = consumerMaxPollRecords;
             _resultValue.producerBatchSize = producerBatchSize;
             _resultValue.producerBufferMemory = producerBufferMemory;
             _resultValue.producerCompressionType = producerCompressionType;

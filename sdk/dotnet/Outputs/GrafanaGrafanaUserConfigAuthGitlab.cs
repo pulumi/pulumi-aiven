@@ -22,23 +22,23 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedGroups;
         /// <summary>
-        /// API URL. This only needs to be set when using self hosted GitLab.
+        /// API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
         /// </summary>
         public readonly string? ApiUrl;
         /// <summary>
-        /// Authorization URL. This only needs to be set when using self hosted GitLab.
+        /// Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
         /// </summary>
         public readonly string? AuthUrl;
         /// <summary>
-        /// Client ID from provider.
+        /// Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
         /// </summary>
         public readonly string ClientId;
         /// <summary>
-        /// Client secret from provider.
+        /// Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
         /// </summary>
         public readonly string ClientSecret;
         /// <summary>
-        /// Token URL. This only needs to be set when using self hosted GitLab.
+        /// Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
         /// </summary>
         public readonly string? TokenUrl;
 

@@ -16,14 +16,14 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
     public static final KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs Empty = new KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs();
 
     /**
-     * Enable certificate/SSL authentication. The default value is `true`.
+     * Enable certificate/SSL authentication. Default: `true`.
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<Boolean> certificate;
 
     /**
-     * @return Enable certificate/SSL authentication. The default value is `true`.
+     * @return Enable certificate/SSL authentication. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> certificate() {
@@ -31,14 +31,14 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
     }
 
     /**
-     * Enable SASL authentication. The default value is `false`.
+     * Enable SASL authentication. Default: `false`.
      * 
      */
     @Import(name="sasl")
     private @Nullable Output<Boolean> sasl;
 
     /**
-     * @return Enable SASL authentication. The default value is `false`.
+     * @return Enable SASL authentication. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> sasl() {
@@ -71,7 +71,7 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
         }
 
         /**
-         * @param certificate Enable certificate/SSL authentication. The default value is `true`.
+         * @param certificate Enable certificate/SSL authentication. Default: `true`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
         }
 
         /**
-         * @param certificate Enable certificate/SSL authentication. The default value is `true`.
+         * @param certificate Enable certificate/SSL authentication. Default: `true`.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
         }
 
         /**
-         * @param sasl Enable SASL authentication. The default value is `false`.
+         * @param sasl Enable SASL authentication. Default: `false`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs extends co
         }
 
         /**
-         * @param sasl Enable SASL authentication. The default value is `false`.
+         * @param sasl Enable SASL authentication. Default: `false`.
          * 
          * @return builder
          * 

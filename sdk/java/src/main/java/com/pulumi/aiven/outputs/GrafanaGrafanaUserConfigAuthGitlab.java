@@ -25,27 +25,27 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
      */
     private List<String> allowedGroups;
     /**
-     * @return API URL. This only needs to be set when using self hosted GitLab.
+     * @return API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
      * 
      */
     private @Nullable String apiUrl;
     /**
-     * @return Authorization URL. This only needs to be set when using self hosted GitLab.
+     * @return Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
      * 
      */
     private @Nullable String authUrl;
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     private String clientId;
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     private String clientSecret;
     /**
-     * @return Token URL. This only needs to be set when using self hosted GitLab.
+     * @return Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
      * 
      */
     private @Nullable String tokenUrl;
@@ -66,35 +66,35 @@ public final class GrafanaGrafanaUserConfigAuthGitlab {
         return this.allowedGroups;
     }
     /**
-     * @return API URL. This only needs to be set when using self hosted GitLab.
+     * @return API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
      * 
      */
     public Optional<String> apiUrl() {
         return Optional.ofNullable(this.apiUrl);
     }
     /**
-     * @return Authorization URL. This only needs to be set when using self hosted GitLab.
+     * @return Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
      * 
      */
     public Optional<String> authUrl() {
         return Optional.ofNullable(this.authUrl);
     }
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     public String clientSecret() {
         return this.clientSecret;
     }
     /**
-     * @return Token URL. This only needs to be set when using self hosted GitLab.
+     * @return Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
      * 
      */
     public Optional<String> tokenUrl() {

@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric
     {
         /// <summary>
-        /// Identifier of a value in the metric.
+        /// Identifier of a value in the metric. Example: `used`.
         /// </summary>
         public readonly string Field;
         /// <summary>
-        /// Identifier of the metric.
+        /// Identifier of the metric. Example: `java.lang:Memory`.
         /// </summary>
         public readonly string Metric;
 

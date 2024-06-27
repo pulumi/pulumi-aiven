@@ -64,14 +64,14 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
     }
 
     /**
-     * API URL.
+     * API URL. Example: `https://yourprovider.com/api`.
      * 
      */
     @Import(name="apiUrl", required=true)
     private Output<String> apiUrl;
 
     /**
-     * @return API URL.
+     * @return API URL. Example: `https://yourprovider.com/api`.
      * 
      */
     public Output<String> apiUrl() {
@@ -79,14 +79,14 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
     }
 
     /**
-     * Authorization URL.
+     * Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
      * 
      */
     @Import(name="authUrl", required=true)
     private Output<String> authUrl;
 
     /**
-     * @return Authorization URL.
+     * @return Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
      * 
      */
     public Output<String> authUrl() {
@@ -109,14 +109,14 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
     }
 
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     public Output<String> clientId() {
@@ -124,14 +124,14 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
     }
 
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     public Output<String> clientSecret() {
@@ -139,14 +139,14 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
     }
 
     /**
-     * Name of the OAuth integration.
+     * Name of the OAuth integration. Example: `My authentication`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the OAuth integration.
+     * @return Name of the OAuth integration. Example: `My authentication`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -169,14 +169,14 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
     }
 
     /**
-     * Token URL.
+     * Token URL. Example: `https://yourprovider.com/oauth/token`.
      * 
      */
     @Import(name="tokenUrl", required=true)
     private Output<String> tokenUrl;
 
     /**
-     * @return Token URL.
+     * @return Token URL. Example: `https://yourprovider.com/oauth/token`.
      * 
      */
     public Output<String> tokenUrl() {
@@ -301,7 +301,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param apiUrl API URL.
+         * @param apiUrl API URL. Example: `https://yourprovider.com/api`.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param apiUrl API URL.
+         * @param apiUrl API URL. Example: `https://yourprovider.com/api`.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param authUrl Authorization URL.
+         * @param authUrl Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param authUrl Authorization URL.
+         * @param authUrl Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param clientId Client ID from provider.
+         * @param clientId Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param clientId Client ID from provider.
+         * @param clientId Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param clientSecret Client secret from provider.
+         * @param clientSecret Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param clientSecret Client secret from provider.
+         * @param clientSecret Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param name Name of the OAuth integration.
+         * @param name Name of the OAuth integration. Example: `My authentication`.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param name Name of the OAuth integration.
+         * @param name Name of the OAuth integration. Example: `My authentication`.
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param tokenUrl Token URL.
+         * @param tokenUrl Token URL. Example: `https://yourprovider.com/oauth/token`.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         /**
-         * @param tokenUrl Token URL.
+         * @param tokenUrl Token URL. Example: `https://yourprovider.com/oauth/token`.
          * 
          * @return builder
          * 

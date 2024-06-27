@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetPgPgUserConfigPglookoutResult
     {
         /// <summary>
-        /// Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+        /// Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
         /// </summary>
         public readonly int? MaxFailoverReplicationTimeLag;
 

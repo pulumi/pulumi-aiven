@@ -18,11 +18,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         /// </summary>
         public readonly int? BackupHour;
         /// <summary>
-        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
@@ -34,15 +34,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CassandraVersion;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.CassandraCassandraUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ServiceLog;
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+        /// When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
         /// </summary>
         public readonly string? ServiceToJoinWith;
         /// <summary>

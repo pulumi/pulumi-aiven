@@ -19,14 +19,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     public static final PgPgUserConfigMigrationArgs Empty = new PgPgUserConfigMigrationArgs();
 
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      * 
      */
     @Import(name="dbname")
     private @Nullable Output<String> dbname;
 
     /**
-     * @return Database name for bootstrapping the initial connection.
+     * @return Database name for bootstrapping the initial connection. Example: `defaultdb`.
      * 
      */
     public Optional<Output<String>> dbname() {
@@ -34,14 +34,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      * 
      */
     @Import(name="host", required=true)
     private Output<String> host;
 
     /**
-     * @return Hostname or IP address of the server where to migrate data from.
+     * @return Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      * 
      */
     public Output<String> host() {
@@ -49,14 +49,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      * 
      */
     @Import(name="ignoreDbs")
     private @Nullable Output<String> ignoreDbs;
 
     /**
-     * @return Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * @return Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      * 
      */
     public Optional<Output<String>> ignoreDbs() {
@@ -79,14 +79,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password for authentication with the server where to migrate data from.
+     * @return Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -94,14 +94,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return Port number of the server where to migrate data from.
+     * @return Port number of the server where to migrate data from. Example: `1234`.
      * 
      */
     public Output<Integer> port() {
@@ -109,14 +109,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      * 
      */
     @Import(name="ssl")
     private @Nullable Output<Boolean> ssl;
 
     /**
-     * @return The server where to migrate data from is secured with SSL. The default value is `true`.
+     * @return The server where to migrate data from is secured with SSL. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> ssl() {
@@ -124,14 +124,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return User name for authentication with the server where to migrate data from.
+     * @return User name for authentication with the server where to migrate data from. Example: `myname`.
      * 
      */
     public Optional<Output<String>> username() {
@@ -170,7 +170,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dbname Database name for bootstrapping the initial connection.
+         * @param dbname Database name for bootstrapping the initial connection. Example: `defaultdb`.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dbname Database name for bootstrapping the initial connection.
+         * @param dbname Database name for bootstrapping the initial connection. Example: `defaultdb`.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param host Hostname or IP address of the server where to migrate data from.
+         * @param host Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param host Hostname or IP address of the server where to migrate data from.
+         * @param host Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ignoreDbs Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+         * @param ignoreDbs Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ignoreDbs Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+         * @param ignoreDbs Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param password Password for authentication with the server where to migrate data from.
+         * @param password Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param password Password for authentication with the server where to migrate data from.
+         * @param password Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param port Port number of the server where to migrate data from.
+         * @param port Port number of the server where to migrate data from. Example: `1234`.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param port Port number of the server where to migrate data from.
+         * @param port Port number of the server where to migrate data from. Example: `1234`.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ssl The server where to migrate data from is secured with SSL. The default value is `true`.
+         * @param ssl The server where to migrate data from is secured with SSL. Default: `true`.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ssl The server where to migrate data from is secured with SSL. The default value is `true`.
+         * @param ssl The server where to migrate data from is secured with SSL. Default: `true`.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param username User name for authentication with the server where to migrate data from.
+         * @param username User name for authentication with the server where to migrate data from. Example: `myname`.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param username User name for authentication with the server where to migrate data from.
+         * @param username User name for authentication with the server where to migrate data from. Example: `myname`.
          * 
          * @return builder
          * 

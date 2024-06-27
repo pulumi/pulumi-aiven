@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class DragonflyDragonflyUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Evict entries when getting close to maxmemory limit. The default value is `false`.
+        /// Evict entries when getting close to maxmemory limit. Default: `false`.
         /// </summary>
         [Input("cacheMode")]
         public Input<bool>? CacheMode { get; set; }
 
         /// <summary>
-        /// Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+        /// Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         /// </summary>
         [Input("dragonflyPersistence")]
         public Input<string>? DragonflyPersistence { get; set; }
 
         /// <summary>
-        /// Require SSL to access Dragonfly. The default value is `true`.
+        /// Require SSL to access Dragonfly. Default: `true`.
         /// </summary>
         [Input("dragonflySsl")]
         public Input<bool>? DragonflySsl { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.DragonflyDragonflyUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public InputList<Inputs.DragonflyDragonflyUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilterStrings;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public InputList<string> IpFilterStrings
         {
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.DragonflyDragonflyUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -98,7 +98,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.DragonflyDragonflyUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Name of the basebackup to restore in forked service.
+        /// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
         /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
@@ -110,7 +110,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }

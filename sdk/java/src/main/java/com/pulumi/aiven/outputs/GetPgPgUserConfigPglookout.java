@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPgPgUserConfigPglookout {
     /**
-     * @return Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+     * @return Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
      * 
      */
     private @Nullable Integer maxFailoverReplicationTimeLag;
 
     private GetPgPgUserConfigPglookout() {}
     /**
-     * @return Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+     * @return Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
      * 
      */
     public Optional<Integer> maxFailoverReplicationTimeLag() {

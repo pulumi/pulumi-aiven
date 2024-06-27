@@ -30,22 +30,22 @@ public final class GrafanaGrafanaUserConfigAuthAzuread {
      */
     private @Nullable List<String> allowedGroups;
     /**
-     * @return Authorization URL.
+     * @return Authorization URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/authorize`.
      * 
      */
     private String authUrl;
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     private String clientId;
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     private String clientSecret;
     /**
-     * @return Token URL.
+     * @return Token URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/token`.
      * 
      */
     private String tokenUrl;
@@ -73,28 +73,28 @@ public final class GrafanaGrafanaUserConfigAuthAzuread {
         return this.allowedGroups == null ? List.of() : this.allowedGroups;
     }
     /**
-     * @return Authorization URL.
+     * @return Authorization URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/authorize`.
      * 
      */
     public String authUrl() {
         return this.authUrl;
     }
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     public String clientSecret() {
         return this.clientSecret;
     }
     /**
-     * @return Token URL.
+     * @return Token URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/token`.
      * 
      */
     public String tokenUrl() {

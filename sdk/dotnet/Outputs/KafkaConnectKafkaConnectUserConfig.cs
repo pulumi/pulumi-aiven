@@ -18,15 +18,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -45,6 +45,7 @@ namespace Pulumi.Aiven.Outputs
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? PublicAccess;
+        public readonly ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigSecretProvider> SecretProviders;
         /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
@@ -72,6 +73,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? publicAccess,
 
+            ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders,
+
             bool? serviceLog,
 
             bool? staticIps)
@@ -84,6 +87,7 @@ namespace Pulumi.Aiven.Outputs
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
+            SecretProviders = secretProviders;
             ServiceLog = serviceLog;
             StaticIps = staticIps;
         }

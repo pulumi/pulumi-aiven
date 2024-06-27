@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.RedisRedisUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public InputList<Inputs.RedisRedisUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilterStrings;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public InputList<string> IpFilterStrings
         {
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.RedisRedisUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.RedisRedisUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Name of the basebackup to restore in forked service.
+        /// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
         /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
@@ -98,25 +98,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RedisAclChannelsDefault { get; set; }
 
         /// <summary>
-        /// Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+        /// Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
         /// </summary>
         [Input("redisIoThreads")]
         public Input<int>? RedisIoThreads { get; set; }
 
         /// <summary>
-        /// LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+        /// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
         /// </summary>
         [Input("redisLfuDecayTime")]
         public Input<int>? RedisLfuDecayTime { get; set; }
 
         /// <summary>
-        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
         /// </summary>
         [Input("redisLfuLogFactor")]
         public Input<int>? RedisLfuLogFactor { get; set; }
 
         /// <summary>
-        /// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+        /// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
         /// </summary>
         [Input("redisMaxmemoryPolicy")]
         public Input<string>? RedisMaxmemoryPolicy { get; set; }
@@ -128,31 +128,31 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RedisNotifyKeyspaceEvents { get; set; }
 
         /// <summary>
-        /// Set number of Redis databases. Changing this will cause a restart of the Redis service.
+        /// Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
         /// </summary>
         [Input("redisNumberOfDatabases")]
         public Input<int>? RedisNumberOfDatabases { get; set; }
 
         /// <summary>
-        /// Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+        /// Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         /// </summary>
         [Input("redisPersistence")]
         public Input<string>? RedisPersistence { get; set; }
 
         /// <summary>
-        /// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+        /// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
         /// </summary>
         [Input("redisPubsubClientOutputBufferLimit")]
         public Input<int>? RedisPubsubClientOutputBufferLimit { get; set; }
 
         /// <summary>
-        /// Require SSL to access Redis. The default value is `true`.
+        /// Require SSL to access Redis. Default: `true`.
         /// </summary>
         [Input("redisSsl")]
         public Input<bool>? RedisSsl { get; set; }
 
         /// <summary>
-        /// Redis idle connection timeout in seconds. The default value is `300`.
+        /// Redis idle connection timeout in seconds. Default: `300`.
         /// </summary>
         [Input("redisTimeout")]
         public Input<int>? RedisTimeout { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }

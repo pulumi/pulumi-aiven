@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigIndexPattern {
     /**
-     * @return Maximum number of indexes to keep.
+     * @return Maximum number of indexes to keep. Example: `3`.
      * 
      */
     private Integer maxIndexCount;
     /**
-     * @return fnmatch pattern.
+     * @return fnmatch pattern. Example: `logs_*_foo_*`.
      * 
      */
     private String pattern;
     /**
-     * @return Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
+     * @return Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
      * 
      */
     private @Nullable String sortingAlgorithm;
 
     private GetOpenSearchOpensearchUserConfigIndexPattern() {}
     /**
-     * @return Maximum number of indexes to keep.
+     * @return Maximum number of indexes to keep. Example: `3`.
      * 
      */
     public Integer maxIndexCount() {
         return this.maxIndexCount;
     }
     /**
-     * @return fnmatch pattern.
+     * @return fnmatch pattern. Example: `logs_*_foo_*`.
      * 
      */
     public String pattern() {
         return this.pattern;
     }
     /**
-     * @return Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
+     * @return Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
      * 
      */
     public Optional<String> sortingAlgorithm() {

@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AlertingErrorOrTimeout { get; set; }
 
         /// <summary>
-        /// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+        /// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
         /// </summary>
         [Input("alertingMaxAnnotationsToKeep")]
         public Input<int>? AlertingMaxAnnotationsToKeep { get; set; }
@@ -85,13 +85,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.GrafanaGrafanaUserConfigAuthGoogleGetArgs>? AuthGoogle { get; set; }
 
         /// <summary>
-        /// Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        /// Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
         /// </summary>
         [Input("cookieSamesite")]
         public Input<string>? CookieSamesite { get; set; }
 
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
@@ -103,25 +103,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? DashboardPreviewsEnabled { get; set; }
 
         /// <summary>
-        /// Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+        /// Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
         /// </summary>
         [Input("dashboardsMinRefreshInterval")]
         public Input<string>? DashboardsMinRefreshInterval { get; set; }
 
         /// <summary>
-        /// Dashboard versions to keep per dashboard.
+        /// Dashboard versions to keep per dashboard. Example: `20`.
         /// </summary>
         [Input("dashboardsVersionsToKeep")]
         public Input<int>? DashboardsVersionsToKeep { get; set; }
 
         /// <summary>
-        /// Send 'X-Grafana-User' header to data source.
+        /// Send `X-Grafana-User` header to data source.
         /// </summary>
         [Input("dataproxySendUserHeader")]
         public Input<bool>? DataproxySendUserHeader { get; set; }
 
         /// <summary>
-        /// Timeout for data proxy requests in seconds.
+        /// Timeout for data proxy requests in seconds. Example: `30`.
         /// </summary>
         [Input("dataproxyTimeout")]
         public Input<int>? DataproxyTimeout { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.GrafanaGrafanaUserConfigExternalImageStorageGetArgs>? ExternalImageStorage { get; set; }
 
         /// <summary>
-        /// Google Analytics ID.
+        /// Google Analytics ID. Example: `UA-123456-4`.
         /// </summary>
         [Input("googleAnalyticsUaId")]
         public Input<string>? GoogleAnalyticsUaId { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.GrafanaGrafanaUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public InputList<Inputs.GrafanaGrafanaUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -172,7 +172,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilterStrings;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public InputList<string> IpFilterStrings
         {
@@ -184,7 +184,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
@@ -218,7 +218,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.GrafanaGrafanaUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -230,7 +230,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.GrafanaGrafanaUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Name of the basebackup to restore in forked service.
+        /// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
         /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }

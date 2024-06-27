@@ -61,14 +61,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Custom username for admin user. This must be set only when a new service is being created.
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      * 
      */
     @Import(name="adminUsername")
     private @Nullable Output<String> adminUsername;
 
     /**
-     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * @return Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      * 
      */
     public Optional<Output<String>> adminUsername() {
@@ -76,14 +76,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     @Import(name="backupHour")
     private @Nullable Output<Integer> backupHour;
 
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     public Optional<Output<Integer>> backupHour() {
@@ -91,14 +91,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     @Import(name="backupMinute")
     private @Nullable Output<Integer> backupMinute;
 
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     public Optional<Output<Integer>> backupMinute() {
@@ -121,14 +121,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<PgPgUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<PgPgUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -136,14 +136,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -151,7 +151,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -162,7 +162,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -242,14 +242,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     @Import(name="pgServiceToForkFrom")
     private @Nullable Output<String> pgServiceToForkFrom;
 
     /**
-     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<Output<String>> pgServiceToForkFrom() {
@@ -257,14 +257,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
      * 
      */
     @Import(name="pgStatMonitorEnable")
     private @Nullable Output<Boolean> pgStatMonitorEnable;
 
     /**
-     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> pgStatMonitorEnable() {
@@ -289,14 +289,22 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * System-wide settings for the pgaudit extension
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="pgaudit")
     private @Nullable Output<PgPgUserConfigPgauditArgs> pgaudit;
 
     /**
      * @return System-wide settings for the pgaudit extension
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<PgPgUserConfigPgauditArgs>> pgaudit() {
         return Optional.ofNullable(this.pgaudit);
     }
@@ -362,14 +370,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<Output<String>> projectToForkFrom() {
@@ -392,14 +400,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      * 
      */
     @Import(name="recoveryTargetTime")
     private @Nullable Output<String> recoveryTargetTime;
 
     /**
-     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      * 
      */
     public Optional<Output<String>> recoveryTargetTime() {
@@ -422,14 +430,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<Output<String>> serviceToForkFrom() {
@@ -437,14 +445,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
      * 
      */
     @Import(name="sharedBuffersPercentage")
     private @Nullable Output<Double> sharedBuffersPercentage;
 
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
      * 
      */
     public Optional<Output<Double>> sharedBuffersPercentage() {
@@ -512,14 +520,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
      * 
      */
     @Import(name="workMem")
     private @Nullable Output<Integer> workMem;
 
     /**
-     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
      * 
      */
     public Optional<Output<Integer>> workMem() {
@@ -624,7 +632,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created.
+         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
          * 
          * @return builder
          * 
@@ -635,7 +643,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created.
+         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
          * 
          * @return builder
          * 
@@ -645,7 +653,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
          * 
          * @return builder
          * 
@@ -656,7 +664,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
          * 
          * @return builder
          * 
@@ -666,7 +674,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
          * 
          * @return builder
          * 
@@ -677,7 +685,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
          * 
          * @return builder
          * 
@@ -708,7 +716,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -719,7 +727,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -729,7 +737,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -739,7 +747,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -750,7 +758,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -760,7 +768,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -770,7 +778,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -785,7 +793,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -799,7 +807,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -905,7 +913,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgServiceToForkFrom Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+         * @param pgServiceToForkFrom Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -916,7 +924,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgServiceToForkFrom Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+         * @param pgServiceToForkFrom Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -926,7 +934,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
          * 
          * @return builder
          * 
@@ -937,7 +945,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+         * @param pgStatMonitorEnable Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
          * 
          * @return builder
          * 
@@ -972,7 +980,11 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder pgaudit(@Nullable Output<PgPgUserConfigPgauditArgs> pgaudit) {
             $.pgaudit = pgaudit;
             return this;
@@ -983,7 +995,11 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder pgaudit(PgPgUserConfigPgauditArgs pgaudit) {
             return pgaudit(Output.of(pgaudit));
         }
@@ -1073,7 +1089,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -1084,7 +1100,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -1115,7 +1131,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created.
+         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
          * 
          * @return builder
          * 
@@ -1126,7 +1142,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created.
+         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
          * 
          * @return builder
          * 
@@ -1157,7 +1173,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -1168,7 +1184,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -1178,7 +1194,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
          * 
          * @return builder
          * 
@@ -1189,7 +1205,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
          * 
          * @return builder
          * 
@@ -1283,7 +1299,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
          * 
          * @return builder
          * 
@@ -1294,7 +1310,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+         * @param workMem Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
          * 
          * @return builder
          * 

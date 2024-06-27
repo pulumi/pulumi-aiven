@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointDatadogUserConfig
     {
         /// <summary>
-        /// Datadog API key.
+        /// Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
         /// </summary>
         public readonly string DatadogApiKey;
         /// <summary>
@@ -26,15 +26,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? DisableConsumerStats;
         /// <summary>
-        /// Number of separate instances to fetch kafka consumer statistics with.
+        /// Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
         /// </summary>
         public readonly int? KafkaConsumerCheckInstances;
         /// <summary>
-        /// Number of seconds that datadog will wait to get consumer statistics from brokers.
+        /// Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
         /// </summary>
         public readonly int? KafkaConsumerStatsTimeout;
         /// <summary>
-        /// Maximum number of partition contexts to send.
+        /// Maximum number of partition contexts to send. Example: `32000`.
         /// </summary>
         public readonly int? MaxPartitionContexts;
         /// <summary>

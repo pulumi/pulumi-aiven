@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingResult
     {
         /// <summary>
-        /// The number of login attempts allowed before login is blocked.
+        /// The number of login attempts allowed before login is blocked. Example: `10`.
         /// </summary>
         public readonly int? AllowedTries;
         /// <summary>
@@ -22,19 +22,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AuthenticationBackend;
         /// <summary>
-        /// The duration of time that login remains blocked after a failed login.
+        /// The duration of time that login remains blocked after a failed login. Example: `600`.
         /// </summary>
         public readonly int? BlockExpirySeconds;
         /// <summary>
-        /// internal_authentication_backend_limiting.max_blocked_clients.
+        /// internal_authentication_backend_limiting.max_blocked_clients. Example: `100000`.
         /// </summary>
         public readonly int? MaxBlockedClients;
         /// <summary>
-        /// The maximum number of tracked IP addresses that have failed login.
+        /// The maximum number of tracked IP addresses that have failed login. Example: `100000`.
         /// </summary>
         public readonly int? MaxTrackedClients;
         /// <summary>
-        /// The window of time in which the value for `allowed_tries` is enforced.
+        /// The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
         /// </summary>
         public readonly int? TimeWindowSeconds;
         /// <summary>

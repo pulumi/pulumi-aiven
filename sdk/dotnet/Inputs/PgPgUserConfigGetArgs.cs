@@ -35,19 +35,19 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Custom username for admin user. This must be set only when a new service is being created.
+        /// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         /// </summary>
         [Input("adminUsername")]
         public Input<string>? AdminUsername { get; set; }
 
         /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         /// </summary>
         [Input("backupHour")]
         public Input<int>? BackupHour { get; set; }
 
         /// <summary>
-        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         /// </summary>
         [Input("backupMinute")]
         public Input<int>? BackupMinute { get; set; }
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.PgPgUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public InputList<Inputs.PgPgUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilterStrings;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public InputList<string> IpFilterStrings
         {
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
@@ -120,13 +120,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? PgReadReplica { get; set; }
 
         /// <summary>
-        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         [Input("pgServiceToForkFrom")]
         public Input<string>? PgServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+        /// Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
         /// </summary>
         [Input("pgStatMonitorEnable")]
         public Input<bool>? PgStatMonitorEnable { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.PgPgUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.PgPgUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Recovery target time when forking a service. This has effect only when a new service is being created.
+        /// Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
         /// </summary>
         [Input("recoveryTargetTime")]
         public Input<string>? RecoveryTargetTime { get; set; }
@@ -192,13 +192,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
         /// </summary>
         [Input("sharedBuffersPercentage")]
         public Input<double>? SharedBuffersPercentage { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Variant { get; set; }
 
         /// <summary>
-        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
         /// </summary>
         [Input("workMem")]
         public Input<int>? WorkMem { get; set; }

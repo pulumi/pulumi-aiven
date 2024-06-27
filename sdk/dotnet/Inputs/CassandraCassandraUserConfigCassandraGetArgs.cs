@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class CassandraCassandraUserConfigCassandraGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+        /// Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
         /// </summary>
         [Input("batchSizeFailThresholdInKb")]
         public Input<int>? BatchSizeFailThresholdInKb { get; set; }
 
         /// <summary>
-        /// Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+        /// Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
         /// </summary>
         [Input("batchSizeWarnThresholdInKb")]
         public Input<int>? BatchSizeWarnThresholdInKb { get; set; }
 
         /// <summary>
-        /// Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+        /// Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }

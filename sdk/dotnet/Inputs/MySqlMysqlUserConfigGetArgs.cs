@@ -35,25 +35,25 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Custom username for admin user. This must be set only when a new service is being created.
+        /// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         /// </summary>
         [Input("adminUsername")]
         public Input<string>? AdminUsername { get; set; }
 
         /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         /// </summary>
         [Input("backupHour")]
         public Input<int>? BackupHour { get; set; }
 
         /// <summary>
-        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         /// </summary>
         [Input("backupMinute")]
         public Input<int>? BackupMinute { get; set; }
 
         /// <summary>
-        /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+        /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
         /// </summary>
         [Input("binlogRetentionPeriod")]
         public Input<int>? BinlogRetentionPeriod { get; set; }
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.MySqlMysqlUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public InputList<Inputs.MySqlMysqlUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilterStrings;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public InputList<string> IpFilterStrings
         {
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _ipFilters;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.MySqlMysqlUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.MySqlMysqlUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// Recovery target time when forking a service. This has effect only when a new service is being created.
+        /// Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
         /// </summary>
         [Input("recoveryTargetTime")]
         public Input<string>? RecoveryTargetTime { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }

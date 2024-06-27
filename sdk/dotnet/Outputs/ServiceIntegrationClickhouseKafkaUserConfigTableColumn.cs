@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableColumn
     {
         /// <summary>
-        /// Column name.
+        /// Column name. Example: `key`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Column type.
+        /// Column type. Example: `UInt64`.
         /// </summary>
         public readonly string Type;
 

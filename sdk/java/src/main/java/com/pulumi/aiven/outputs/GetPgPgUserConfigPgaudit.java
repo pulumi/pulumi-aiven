@@ -15,172 +15,284 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPgPgUserConfigPgaudit {
     /**
-     * @return Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+     * @return Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean featureEnabled;
     /**
-     * @return Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+     * @return Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean logCatalog;
     /**
-     * @return Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+     * @return Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean logClient;
     /**
-     * @return Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
+     * @return Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable String logLevel;
     /**
-     * @return Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+     * @return Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Integer logMaxStringLength;
     /**
-     * @return This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+     * @return This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean logNestedStatements;
     /**
-     * @return Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+     * @return Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean logParameter;
     /**
-     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. The default value is `0`.
+     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Integer logParameterMaxSize;
     /**
-     * @return Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+     * @return Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean logRelation;
     /**
-     * @return Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+     * @return Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean logRows;
     /**
-     * @return Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+     * @return Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean logStatement;
     /**
-     * @return Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+     * @return Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean logStatementOnce;
     /**
      * @return Specifies which classes of statements will be logged by session audit logging.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable List<String> logs;
     /**
      * @return Specifies the master role to use for object audit logging.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable String role;
 
     private GetPgPgUserConfigPgaudit() {}
     /**
-     * @return Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+     * @return Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> featureEnabled() {
         return Optional.ofNullable(this.featureEnabled);
     }
     /**
-     * @return Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+     * @return Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> logCatalog() {
         return Optional.ofNullable(this.logCatalog);
     }
     /**
-     * @return Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+     * @return Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> logClient() {
         return Optional.ofNullable(this.logClient);
     }
     /**
-     * @return Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
+     * @return Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<String> logLevel() {
         return Optional.ofNullable(this.logLevel);
     }
     /**
-     * @return Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+     * @return Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Integer> logMaxStringLength() {
         return Optional.ofNullable(this.logMaxStringLength);
     }
     /**
-     * @return This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+     * @return This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> logNestedStatements() {
         return Optional.ofNullable(this.logNestedStatements);
     }
     /**
-     * @return Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+     * @return Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> logParameter() {
         return Optional.ofNullable(this.logParameter);
     }
     /**
-     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. The default value is `0`.
+     * @return Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Integer> logParameterMaxSize() {
         return Optional.ofNullable(this.logParameterMaxSize);
     }
     /**
-     * @return Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+     * @return Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> logRelation() {
         return Optional.ofNullable(this.logRelation);
     }
     /**
-     * @return Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+     * @return Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> logRows() {
         return Optional.ofNullable(this.logRows);
     }
     /**
-     * @return Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+     * @return Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> logStatement() {
         return Optional.ofNullable(this.logStatement);
     }
     /**
-     * @return Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+     * @return Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> logStatementOnce() {
         return Optional.ofNullable(this.logStatementOnce);
     }
     /**
      * @return Specifies which classes of statements will be logged by session audit logging.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public List<String> logs() {
         return this.logs == null ? List.of() : this.logs;
     }
     /**
      * @return Specifies the master role to use for object audit logging.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<String> role() {
         return Optional.ofNullable(this.role);
     }

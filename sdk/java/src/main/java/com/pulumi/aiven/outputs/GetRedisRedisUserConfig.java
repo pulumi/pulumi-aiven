@@ -25,17 +25,17 @@ public final class GetRedisRedisUserConfig {
      */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<GetRedisRedisUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -59,7 +59,7 @@ public final class GetRedisRedisUserConfig {
      */
     private @Nullable GetRedisRedisUserConfigPrivatelinkAccess privatelinkAccess;
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     private @Nullable String projectToForkFrom;
@@ -69,7 +69,7 @@ public final class GetRedisRedisUserConfig {
      */
     private @Nullable GetRedisRedisUserConfigPublicAccess publicAccess;
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     private @Nullable String recoveryBasebackupName;
@@ -79,22 +79,22 @@ public final class GetRedisRedisUserConfig {
      */
     private @Nullable String redisAclChannelsDefault;
     /**
-     * @return Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+     * @return Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
      * 
      */
     private @Nullable Integer redisIoThreads;
     /**
-     * @return LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+     * @return LFU maxmemory-policy counter decay time in minutes. Default: `1`.
      * 
      */
     private @Nullable Integer redisLfuDecayTime;
     /**
-     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
      * 
      */
     private @Nullable Integer redisLfuLogFactor;
     /**
-     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
      * 
      */
     private @Nullable String redisMaxmemoryPolicy;
@@ -104,27 +104,27 @@ public final class GetRedisRedisUserConfig {
      */
     private @Nullable String redisNotifyKeyspaceEvents;
     /**
-     * @return Set number of Redis databases. Changing this will cause a restart of the Redis service.
+     * @return Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
      * 
      */
     private @Nullable Integer redisNumberOfDatabases;
     /**
-     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     private @Nullable String redisPersistence;
     /**
-     * @return Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+     * @return Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
      * 
      */
     private @Nullable Integer redisPubsubClientOutputBufferLimit;
     /**
-     * @return Require SSL to access Redis. The default value is `true`.
+     * @return Require SSL to access Redis. Default: `true`.
      * 
      */
     private @Nullable Boolean redisSsl;
     /**
-     * @return Redis idle connection timeout in seconds. The default value is `300`.
+     * @return Redis idle connection timeout in seconds. Default: `300`.
      * 
      */
     private @Nullable Integer redisTimeout;
@@ -139,7 +139,7 @@ public final class GetRedisRedisUserConfig {
      */
     private @Nullable Boolean serviceLog;
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String serviceToForkFrom;
@@ -158,21 +158,21 @@ public final class GetRedisRedisUserConfig {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<GetRedisRedisUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -204,7 +204,7 @@ public final class GetRedisRedisUserConfig {
         return Optional.ofNullable(this.privatelinkAccess);
     }
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<String> projectToForkFrom() {
@@ -218,7 +218,7 @@ public final class GetRedisRedisUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     public Optional<String> recoveryBasebackupName() {
@@ -232,28 +232,28 @@ public final class GetRedisRedisUserConfig {
         return Optional.ofNullable(this.redisAclChannelsDefault);
     }
     /**
-     * @return Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+     * @return Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
      * 
      */
     public Optional<Integer> redisIoThreads() {
         return Optional.ofNullable(this.redisIoThreads);
     }
     /**
-     * @return LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+     * @return LFU maxmemory-policy counter decay time in minutes. Default: `1`.
      * 
      */
     public Optional<Integer> redisLfuDecayTime() {
         return Optional.ofNullable(this.redisLfuDecayTime);
     }
     /**
-     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
      * 
      */
     public Optional<Integer> redisLfuLogFactor() {
         return Optional.ofNullable(this.redisLfuLogFactor);
     }
     /**
-     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
      * 
      */
     public Optional<String> redisMaxmemoryPolicy() {
@@ -267,35 +267,35 @@ public final class GetRedisRedisUserConfig {
         return Optional.ofNullable(this.redisNotifyKeyspaceEvents);
     }
     /**
-     * @return Set number of Redis databases. Changing this will cause a restart of the Redis service.
+     * @return Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
      * 
      */
     public Optional<Integer> redisNumberOfDatabases() {
         return Optional.ofNullable(this.redisNumberOfDatabases);
     }
     /**
-     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     public Optional<String> redisPersistence() {
         return Optional.ofNullable(this.redisPersistence);
     }
     /**
-     * @return Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+     * @return Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
      * 
      */
     public Optional<Integer> redisPubsubClientOutputBufferLimit() {
         return Optional.ofNullable(this.redisPubsubClientOutputBufferLimit);
     }
     /**
-     * @return Require SSL to access Redis. The default value is `true`.
+     * @return Require SSL to access Redis. Default: `true`.
      * 
      */
     public Optional<Boolean> redisSsl() {
         return Optional.ofNullable(this.redisSsl);
     }
     /**
-     * @return Redis idle connection timeout in seconds. The default value is `300`.
+     * @return Redis idle connection timeout in seconds. Default: `300`.
      * 
      */
     public Optional<Integer> redisTimeout() {
@@ -316,7 +316,7 @@ public final class GetRedisRedisUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> serviceToForkFrom() {

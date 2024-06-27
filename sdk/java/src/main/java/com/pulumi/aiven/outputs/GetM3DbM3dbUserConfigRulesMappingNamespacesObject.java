@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetM3DbM3dbUserConfigRulesMappingNamespacesObject {
     /**
-     * @return The resolution for the matching namespace.
+     * @return The resolution for the matching namespace. Example: `30s`.
      * 
      */
     private String resolution;
     /**
-     * @return The retention period of the matching namespace.
+     * @return The retention period of the matching namespace. Example: `48h`.
      * 
      */
     private @Nullable String retention;
 
     private GetM3DbM3dbUserConfigRulesMappingNamespacesObject() {}
     /**
-     * @return The resolution for the matching namespace.
+     * @return The resolution for the matching namespace. Example: `30s`.
      * 
      */
     public String resolution() {
         return this.resolution;
     }
     /**
-     * @return The retention period of the matching namespace.
+     * @return The retention period of the matching namespace. Example: `48h`.
      * 
      */
     public Optional<String> retention() {

@@ -21,14 +21,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     public static final ServiceIntegrationClickhouseKafkaUserConfigTableArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigTableArgs();
 
     /**
-     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      * 
      */
     @Import(name="autoOffsetReset")
     private @Nullable Output<String> autoOffsetReset;
 
     /**
-     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      * 
      */
     public Optional<Output<String>> autoOffsetReset() {
@@ -51,14 +51,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
      * 
      */
     @Import(name="dataFormat", required=true)
     private Output<String> dataFormat;
 
     /**
-     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
      * 
      */
     public Output<String> dataFormat() {
@@ -66,14 +66,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+     * Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
      * 
      */
     @Import(name="dateTimeInputFormat")
     private @Nullable Output<String> dateTimeInputFormat;
 
     /**
-     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
      * 
      */
     public Optional<Output<String>> dateTimeInputFormat() {
@@ -81,14 +81,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Kafka consumers group. The default value is `clickhouse`.
+     * Kafka consumers group. Default: `clickhouse`.
      * 
      */
     @Import(name="groupName", required=true)
     private Output<String> groupName;
 
     /**
-     * @return Kafka consumers group. The default value is `clickhouse`.
+     * @return Kafka consumers group. Default: `clickhouse`.
      * 
      */
     public Output<String> groupName() {
@@ -96,14 +96,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+     * Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
      * 
      */
     @Import(name="handleErrorMode")
     private @Nullable Output<String> handleErrorMode;
 
     /**
-     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
      * 
      */
     public Optional<Output<String>> handleErrorMode() {
@@ -111,14 +111,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
      * 
      */
     @Import(name="maxBlockSize")
     private @Nullable Output<Integer> maxBlockSize;
 
     /**
-     * @return Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * @return Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
      * 
      */
     public Optional<Output<Integer>> maxBlockSize() {
@@ -126,14 +126,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
      * 
      */
     @Import(name="maxRowsPerMessage")
     private @Nullable Output<Integer> maxRowsPerMessage;
 
     /**
-     * @return The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * @return The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
      * 
      */
     public Optional<Output<Integer>> maxRowsPerMessage() {
@@ -141,14 +141,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Name of the table.
+     * Name of the table. Example: `events`.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the table.
+     * @return Name of the table. Example: `events`.
      * 
      */
     public Output<String> name() {
@@ -156,14 +156,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * The number of consumers per table per replica. The default value is `1`.
+     * The number of consumers per table per replica. Default: `1`.
      * 
      */
     @Import(name="numConsumers")
     private @Nullable Output<Integer> numConsumers;
 
     /**
-     * @return The number of consumers per table per replica. The default value is `1`.
+     * @return The number of consumers per table per replica. Default: `1`.
      * 
      */
     public Optional<Output<Integer>> numConsumers() {
@@ -171,14 +171,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
      * 
      */
     @Import(name="pollMaxBatchSize")
     private @Nullable Output<Integer> pollMaxBatchSize;
 
     /**
-     * @return Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * @return Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
      * 
      */
     public Optional<Output<Integer>> pollMaxBatchSize() {
@@ -186,14 +186,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
     @Import(name="skipBrokenMessages")
     private @Nullable Output<Integer> skipBrokenMessages;
 
     /**
-     * @return Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * @return Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
     public Optional<Output<Integer>> skipBrokenMessages() {
@@ -252,7 +252,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param autoOffsetReset Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+         * @param autoOffsetReset Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param autoOffsetReset Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+         * @param autoOffsetReset Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dataFormat Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+         * @param dataFormat Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dataFormat Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+         * @param dataFormat Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dateTimeInputFormat Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+         * @param dateTimeInputFormat Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dateTimeInputFormat Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+         * @param dateTimeInputFormat Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param groupName Kafka consumers group. The default value is `clickhouse`.
+         * @param groupName Kafka consumers group. Default: `clickhouse`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param groupName Kafka consumers group. The default value is `clickhouse`.
+         * @param groupName Kafka consumers group. Default: `clickhouse`.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param handleErrorMode Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+         * @param handleErrorMode Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param handleErrorMode Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+         * @param handleErrorMode Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param maxBlockSize Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+         * @param maxBlockSize Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param maxBlockSize Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+         * @param maxBlockSize Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param maxRowsPerMessage The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+         * @param maxRowsPerMessage The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param maxRowsPerMessage The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+         * @param maxRowsPerMessage The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param name Name of the table.
+         * @param name Name of the table. Example: `events`.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param name Name of the table.
+         * @param name Name of the table. Example: `events`.
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param numConsumers The number of consumers per table per replica. The default value is `1`.
+         * @param numConsumers The number of consumers per table per replica. Default: `1`.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param numConsumers The number of consumers per table per replica. The default value is `1`.
+         * @param numConsumers The number of consumers per table per replica. Default: `1`.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param pollMaxBatchSize Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+         * @param pollMaxBatchSize Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param pollMaxBatchSize Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+         * @param pollMaxBatchSize Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param skipBrokenMessages Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+         * @param skipBrokenMessages Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param skipBrokenMessages Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+         * @param skipBrokenMessages Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
          * 
          * @return builder
          * 

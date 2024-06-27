@@ -18,23 +18,23 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? EmitCheckpointsEnabled;
         /// <summary>
-        /// Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+        /// Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
         /// </summary>
         public readonly int? EmitCheckpointsIntervalSeconds;
         /// <summary>
-        /// Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+        /// Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
         /// </summary>
         public readonly string? Groups;
         /// <summary>
-        /// Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+        /// Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
         /// </summary>
         public readonly string? GroupsExclude;
         /// <summary>
-        /// How out-of-sync a remote partition can be before it is resynced.
+        /// How out-of-sync a remote partition can be before it is resynced. Example: `100`.
         /// </summary>
         public readonly int? OffsetLagMax;
         /// <summary>
-        /// Whether to periodically check for new consumer groups. Defaults to 'true'.
+        /// Whether to periodically check for new consumer groups. Defaults to `true`.
         /// </summary>
         public readonly bool? RefreshGroupsEnabled;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? RefreshGroupsIntervalSeconds;
         /// <summary>
-        /// Whether to periodically check for new topics and partitions. Defaults to 'true'.
+        /// Whether to periodically check for new topics and partitions. Defaults to `true`.
         /// </summary>
         public readonly bool? RefreshTopicsEnabled;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? SyncGroupOffsetsEnabled;
         /// <summary>
-        /// Frequency at which consumer group offsets are synced (default: 60, every minute).
+        /// Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
         /// </summary>
         public readonly int? SyncGroupOffsetsIntervalSeconds;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? SyncTopicConfigsEnabled;
         /// <summary>
-        /// 'tasks.max' is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+        /// `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
         /// </summary>
         public readonly int? TasksMaxPerCpu;
 

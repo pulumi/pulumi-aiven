@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable certificate/SSL authentication. The default value is `true`.
+        /// Enable certificate/SSL authentication. Default: `true`.
         /// </summary>
         [Input("certificate")]
         public Input<bool>? Certificate { get; set; }
 
         /// <summary>
-        /// Enable SASL authentication. The default value is `false`.
+        /// Enable SASL authentication. Default: `false`.
         /// </summary>
         [Input("sasl")]
         public Input<bool>? Sasl { get; set; }

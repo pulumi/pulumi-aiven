@@ -43,11 +43,11 @@ export interface CassandraCassandraUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: number;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
     /**
@@ -59,15 +59,15 @@ export interface CassandraCassandraUserConfig {
      */
     cassandraVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.CassandraCassandraUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -81,7 +81,7 @@ export interface CassandraCassandraUserConfig {
      */
     privateAccess?: outputs.CassandraCassandraUserConfigPrivateAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -93,11 +93,11 @@ export interface CassandraCassandraUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
-     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
      */
     serviceToJoinWith?: string;
     /**
@@ -108,26 +108,26 @@ export interface CassandraCassandraUserConfig {
 
 export interface CassandraCassandraUserConfigCassandra {
     /**
-     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
      */
     batchSizeFailThresholdInKb?: number;
     /**
-     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
      */
     batchSizeWarnThresholdInKb?: number;
     /**
-     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: string;
 }
 
 export interface CassandraCassandraUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -225,15 +225,15 @@ export interface ClickhouseClickhouseUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.ClickhouseClickhouseUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -247,7 +247,7 @@ export interface ClickhouseClickhouseUserConfig {
      */
     privatelinkAccess?: outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -259,7 +259,7 @@ export interface ClickhouseClickhouseUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -270,11 +270,11 @@ export interface ClickhouseClickhouseUserConfig {
 
 export interface ClickhouseClickhouseUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -486,27 +486,27 @@ export interface DragonflyDragonfly {
 
 export interface DragonflyDragonflyUserConfig {
     /**
-     * Evict entries when getting close to maxmemory limit. The default value is `false`.
+     * Evict entries when getting close to maxmemory limit. Default: `false`.
      */
     cacheMode?: boolean;
     /**
-     * Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+     * Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     dragonflyPersistence?: string;
     /**
-     * Require SSL to access Dragonfly. The default value is `true`.
+     * Require SSL to access Dragonfly. Default: `true`.
      */
     dragonflySsl?: boolean;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.DragonflyDragonflyUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -524,7 +524,7 @@ export interface DragonflyDragonflyUserConfig {
      */
     privatelinkAccess?: outputs.DragonflyDragonflyUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -532,7 +532,7 @@ export interface DragonflyDragonflyUserConfig {
      */
     publicAccess?: outputs.DragonflyDragonflyUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -540,7 +540,7 @@ export interface DragonflyDragonflyUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -551,26 +551,26 @@ export interface DragonflyDragonflyUserConfig {
 
 export interface DragonflyDragonflyUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface DragonflyDragonflyUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: string;
     /**
@@ -578,19 +578,19 @@ export interface DragonflyDragonflyUserConfigMigration {
      */
     method?: string;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: number;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: string;
 }
@@ -733,21 +733,21 @@ export interface FlinkFlinkUserConfig {
      */
     flinkVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.FlinkFlinkUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
-     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
      */
     numberOfTaskSlots?: number;
     /**
@@ -766,11 +766,11 @@ export interface FlinkFlinkUserConfig {
 
 export interface FlinkFlinkUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -853,11 +853,11 @@ export interface GetCassandaCassandraUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: number;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
     /**
@@ -869,15 +869,15 @@ export interface GetCassandaCassandraUserConfig {
      */
     cassandraVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetCassandaCassandraUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -891,7 +891,7 @@ export interface GetCassandaCassandraUserConfig {
      */
     privateAccess?: outputs.GetCassandaCassandraUserConfigPrivateAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -903,11 +903,11 @@ export interface GetCassandaCassandraUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
-     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
      */
     serviceToJoinWith?: string;
     /**
@@ -918,26 +918,26 @@ export interface GetCassandaCassandraUserConfig {
 
 export interface GetCassandaCassandraUserConfigCassandra {
     /**
-     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
      */
     batchSizeFailThresholdInKb?: number;
     /**
-     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
      */
     batchSizeWarnThresholdInKb?: number;
     /**
-     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: string;
 }
 
 export interface GetCassandaCassandraUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -1035,11 +1035,11 @@ export interface GetCassandraCassandraUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: number;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
     /**
@@ -1051,15 +1051,15 @@ export interface GetCassandraCassandraUserConfig {
      */
     cassandraVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetCassandraCassandraUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -1073,7 +1073,7 @@ export interface GetCassandraCassandraUserConfig {
      */
     privateAccess?: outputs.GetCassandraCassandraUserConfigPrivateAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -1085,11 +1085,11 @@ export interface GetCassandraCassandraUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
-     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
+     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
      */
     serviceToJoinWith?: string;
     /**
@@ -1100,26 +1100,26 @@ export interface GetCassandraCassandraUserConfig {
 
 export interface GetCassandraCassandraUserConfigCassandra {
     /**
-     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
      */
     batchSizeFailThresholdInKb?: number;
     /**
-     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
      */
     batchSizeWarnThresholdInKb?: number;
     /**
-     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: string;
 }
 
 export interface GetCassandraCassandraUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -1217,15 +1217,15 @@ export interface GetClickhouseClickhouseUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetClickhouseClickhouseUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -1239,7 +1239,7 @@ export interface GetClickhouseClickhouseUserConfig {
      */
     privatelinkAccess?: outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -1251,7 +1251,7 @@ export interface GetClickhouseClickhouseUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -1262,11 +1262,11 @@ export interface GetClickhouseClickhouseUserConfig {
 
 export interface GetClickhouseClickhouseUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -1448,27 +1448,27 @@ export interface GetDragonflyDragonfly {
 
 export interface GetDragonflyDragonflyUserConfig {
     /**
-     * Evict entries when getting close to maxmemory limit. The default value is `false`.
+     * Evict entries when getting close to maxmemory limit. Default: `false`.
      */
     cacheMode?: boolean;
     /**
-     * Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+     * Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     dragonflyPersistence?: string;
     /**
-     * Require SSL to access Dragonfly. The default value is `true`.
+     * Require SSL to access Dragonfly. Default: `true`.
      */
     dragonflySsl?: boolean;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetDragonflyDragonflyUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -1486,7 +1486,7 @@ export interface GetDragonflyDragonflyUserConfig {
      */
     privatelinkAccess?: outputs.GetDragonflyDragonflyUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -1494,7 +1494,7 @@ export interface GetDragonflyDragonflyUserConfig {
      */
     publicAccess?: outputs.GetDragonflyDragonflyUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -1502,7 +1502,7 @@ export interface GetDragonflyDragonflyUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -1513,26 +1513,26 @@ export interface GetDragonflyDragonflyUserConfig {
 
 export interface GetDragonflyDragonflyUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface GetDragonflyDragonflyUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: string;
     /**
@@ -1540,19 +1540,19 @@ export interface GetDragonflyDragonflyUserConfigMigration {
      */
     method?: string;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: number;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: string;
 }
@@ -1695,21 +1695,21 @@ export interface GetFlinkFlinkUserConfig {
      */
     flinkVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetFlinkFlinkUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
-     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
      */
     numberOfTaskSlots?: number;
     /**
@@ -1728,11 +1728,11 @@ export interface GetFlinkFlinkUserConfig {
 
 export interface GetFlinkFlinkUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -1833,7 +1833,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     alertingErrorOrTimeout?: string;
     /**
-     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
      */
     alertingMaxAnnotationsToKeep?: number;
     /**
@@ -1869,11 +1869,11 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     authGoogle?: outputs.GetGrafanaGrafanaUserConfigAuthGoogle;
     /**
-     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      */
     cookieSamesite?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
@@ -1881,19 +1881,19 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     dashboardPreviewsEnabled?: boolean;
     /**
-     * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      */
     dashboardsMinRefreshInterval?: string;
     /**
-     * Dashboard versions to keep per dashboard.
+     * Dashboard versions to keep per dashboard. Example: `20`.
      */
     dashboardsVersionsToKeep?: number;
     /**
-     * Send 'X-Grafana-User' header to data source.
+     * Send `X-Grafana-User` header to data source.
      */
     dataproxySendUserHeader?: boolean;
     /**
-     * Timeout for data proxy requests in seconds.
+     * Timeout for data proxy requests in seconds. Example: `30`.
      */
     dataproxyTimeout?: number;
     /**
@@ -1913,19 +1913,19 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     externalImageStorage?: outputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
     /**
-     * Google Analytics ID.
+     * Google Analytics ID. Example: `UA-123456-4`.
      */
     googleAnalyticsUaId?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetGrafanaGrafanaUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -1947,7 +1947,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     privatelinkAccess?: outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -1955,7 +1955,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     publicAccess?: outputs.GetGrafanaGrafanaUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -1963,7 +1963,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -2006,19 +2006,19 @@ export interface GetGrafanaGrafanaUserConfigAuthAzuread {
      */
     allowedGroups?: string[];
     /**
-     * Authorization URL.
+     * Authorization URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/authorize`.
      */
     authUrl: string;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
     /**
-     * Token URL.
+     * Token URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/token`.
      */
     tokenUrl: string;
 }
@@ -2037,11 +2037,11 @@ export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
      */
     allowedOrganizations?: string[];
     /**
-     * API URL.
+     * API URL. Example: `https://yourprovider.com/api`.
      */
     apiUrl: string;
     /**
-     * Authorization URL.
+     * Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
      */
     authUrl: string;
     /**
@@ -2049,15 +2049,15 @@ export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
      */
     autoLogin?: boolean;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
     /**
-     * Name of the OAuth integration.
+     * Name of the OAuth integration. Example: `My authentication`.
      */
     name?: string;
     /**
@@ -2065,7 +2065,7 @@ export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
      */
     scopes?: string[];
     /**
-     * Token URL.
+     * Token URL. Example: `https://yourprovider.com/oauth/token`.
      */
     tokenUrl: string;
 }
@@ -2084,11 +2084,11 @@ export interface GetGrafanaGrafanaUserConfigAuthGithub {
      */
     autoLogin?: boolean;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
     /**
@@ -2111,23 +2111,23 @@ export interface GetGrafanaGrafanaUserConfigAuthGitlab {
      */
     allowedGroups: string[];
     /**
-     * API URL. This only needs to be set when using self hosted GitLab.
+     * API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
      */
     apiUrl?: string;
     /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab.
+     * Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
      */
     authUrl?: string;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
     /**
-     * Token URL. This only needs to be set when using self hosted GitLab.
+     * Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
      */
     tokenUrl?: string;
 }
@@ -2142,57 +2142,57 @@ export interface GetGrafanaGrafanaUserConfigAuthGoogle {
      */
     allowedDomains: string[];
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigDateFormats {
     /**
-     * Default time zone for user preferences. Value 'browser' uses browser local time zone.
+     * Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
      */
     defaultTimezone?: string;
     /**
-     * Moment.js style format string for cases where full date is shown.
+     * Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
      */
     fullDate?: string;
     /**
-     * Moment.js style format string used when a time requiring day accuracy is shown.
+     * Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
      */
     intervalDay?: string;
     /**
-     * Moment.js style format string used when a time requiring hour accuracy is shown.
+     * Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
      */
     intervalHour?: string;
     /**
-     * Moment.js style format string used when a time requiring minute accuracy is shown.
+     * Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
      */
     intervalMinute?: string;
     /**
-     * Moment.js style format string used when a time requiring month accuracy is shown.
+     * Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
      */
     intervalMonth?: string;
     /**
-     * Moment.js style format string used when a time requiring second accuracy is shown.
+     * Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
      */
     intervalSecond?: string;
     /**
-     * Moment.js style format string used when a time requiring year accuracy is shown.
+     * Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
      */
     intervalYear?: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
     /**
-     * S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
      */
     accessKey: string;
     /**
-     * Bucket URL for S3.
+     * Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
      */
     bucketUrl: string;
     /**
@@ -2200,18 +2200,18 @@ export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
      */
     provider: string;
     /**
-     * S3 secret key.
+     * S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      */
     secretKey: string;
 }
 
 export interface GetGrafanaGrafanaUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -2239,7 +2239,7 @@ export interface GetGrafanaGrafanaUserConfigPublicAccess {
 
 export interface GetGrafanaGrafanaUserConfigSmtpServer {
     /**
-     * Address used for sending emails.
+     * Address used for sending emails. Example: `yourgrafanauser@yourdomain.example.com`.
      */
     fromAddress: string;
     /**
@@ -2247,15 +2247,15 @@ export interface GetGrafanaGrafanaUserConfigSmtpServer {
      */
     fromName?: string;
     /**
-     * Server hostname or IP.
+     * Server hostname or IP. Example: `smtp.example.com`.
      */
     host: string;
     /**
-     * Password for SMTP authentication.
+     * Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
      */
     password?: string;
     /**
-     * SMTP server port.
+     * SMTP server port. Example: `25`.
      */
     port: number;
     /**
@@ -2267,7 +2267,7 @@ export interface GetGrafanaGrafanaUserConfigSmtpServer {
      */
     starttlsPolicy?: string;
     /**
-     * Username for SMTP authentication.
+     * Username for SMTP authentication. Example: `smtpuser`.
      */
     username?: string;
 }
@@ -2363,7 +2363,7 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
@@ -2371,15 +2371,15 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     influxdb?: outputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetInfluxDbInfluxdbUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -2393,7 +2393,7 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     privatelinkAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -2401,7 +2401,7 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     publicAccess?: outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -2409,7 +2409,7 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -2451,11 +2451,11 @@ export interface GetInfluxDbInfluxdbUserConfigInfluxdb {
 
 export interface GetInfluxDbInfluxdbUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -2588,15 +2588,15 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -2617,6 +2617,7 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
+    secretProviders?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProvider[];
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
@@ -2629,11 +2630,11 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
 
 export interface GetKafkaConnectKafkaConnectUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -2648,7 +2649,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerAutoOffsetReset?: string;
     /**
-     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
      */
     consumerFetchMaxBytes?: number;
     /**
@@ -2656,7 +2657,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerIsolationLevel?: string;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
      */
     consumerMaxPartitionFetchBytes?: number;
     /**
@@ -2676,7 +2677,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     offsetFlushTimeoutMs?: number;
     /**
-     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: number;
     /**
@@ -2684,15 +2685,15 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerBufferMemory?: number;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
-     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
      */
     producerLingerMs?: number;
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
      */
     producerMaxRequestSize?: number;
     /**
@@ -2740,6 +2741,59 @@ export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
      * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: boolean;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigSecretProvider {
+    /**
+     * AWS config for Secret Provider
+     */
+    aws?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderAws;
+    /**
+     * Name of the secret provider. Used to reference secrets in connector config.
+     */
+    name: string;
+    /**
+     * Vault Config for Secret Provider
+     */
+    vault?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderVault;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigSecretProviderAws {
+    /**
+     * Access key used to authenticate with aws.
+     */
+    accessKey?: string;
+    /**
+     * Enum: `credentials`. Auth method of the vault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Region used to lookup secrets with AWS SecretManager.
+     */
+    region: string;
+    /**
+     * Secret key used to authenticate with aws.
+     */
+    secretKey?: string;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
+    /**
+     * Address of the Vault server.
+     */
+    address: string;
+    /**
+     * Enum: `token`. Auth method of the vault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
+     */
+    engineVersion?: number;
+    /**
+     * Token used to authenticate with vault and auth method `token`.
+     */
+    token?: string;
 }
 
 export interface GetKafkaConnectServiceIntegration {
@@ -2821,19 +2875,19 @@ export interface GetKafkaKafkaUserConfig {
      */
     aivenKafkaTopicMessages?: boolean;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetKafkaKafkaUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -2847,15 +2901,16 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaAuthenticationMethods?: outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
     /**
-     * Enable Kafka Connect service. The default value is `false`.
+     * Enable Kafka Connect service. Default: `false`.
      */
     kafkaConnect?: boolean;
     /**
      * Kafka Connect configuration values
      */
     kafkaConnectConfig?: outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
+    kafkaConnectSecretProviders?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProvider[];
     /**
-     * Enable Kafka-REST service. The default value is `false`.
+     * Enable Kafka-REST service. Default: `false`.
      */
     kafkaRest?: boolean;
     /**
@@ -2871,6 +2926,10 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaVersion?: string;
     /**
+     * Use Letsencrypt CA for Kafka SASL via Privatelink.
+     */
+    letsencryptSaslPrivatelink?: boolean;
+    /**
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetKafkaKafkaUserConfigPrivateAccess;
@@ -2883,7 +2942,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
     /**
-     * Enable Schema-Registry service. The default value is `false`.
+     * Enable Schema-Registry service. Default: `false`.
      */
     schemaRegistry?: boolean;
     /**
@@ -2906,11 +2965,11 @@ export interface GetKafkaKafkaUserConfig {
 
 export interface GetKafkaKafkaUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -2921,11 +2980,11 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     autoCreateTopicsEnable?: boolean;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
      */
     compressionType?: string;
     /**
-     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
      */
     connectionsMaxIdleMs?: number;
     /**
@@ -2933,19 +2992,19 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     defaultReplicationFactor?: number;
     /**
-     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
      */
     groupInitialRebalanceDelayMs?: number;
     /**
-     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
      */
     groupMaxSessionTimeoutMs?: number;
     /**
-     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
      */
     groupMinSessionTimeoutMs?: number;
     /**
-     * How long are delete records retained?
+     * How long are delete records retained? Example: `86400000`.
      */
     logCleanerDeleteRetentionMs?: number;
     /**
@@ -2953,7 +3012,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     logCleanerMaxCompactionLagMs?: number;
     /**
-     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
      */
     logCleanerMinCleanableRatio?: number;
     /**
@@ -2965,7 +3024,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     logCleanupPolicy?: string;
     /**
-     * The number of messages accumulated on a log partition before messages are flushed to disk.
+     * The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
      */
     logFlushIntervalMessages?: number;
     /**
@@ -2973,11 +3032,11 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     logFlushIntervalMs?: number;
     /**
-     * The interval with which Kafka adds an entry to the offset index.
+     * The interval with which Kafka adds an entry to the offset index. Example: `4096`.
      */
     logIndexIntervalBytes?: number;
     /**
-     * The maximum size in bytes of the offset index.
+     * The maximum size in bytes of the offset index. Example: `10485760`.
      */
     logIndexSizeMaxBytes?: number;
     /**
@@ -3029,7 +3088,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     logSegmentBytes?: number;
     /**
-     * The amount of time to wait before deleting a file from the filesystem.
+     * The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
      */
     logSegmentDeleteDelayMs?: number;
     /**
@@ -3037,15 +3096,15 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     maxConnectionsPerIp?: number;
     /**
-     * The maximum number of incremental fetch sessions that the broker will maintain.
+     * The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
      */
     maxIncrementalFetchSessionCacheSlots?: number;
     /**
-     * The maximum size of message that the server can receive.
+     * The maximum size of message that the server can receive. Example: `1048588`.
      */
     messageMaxBytes?: number;
     /**
-     * When a producer sets acks to 'all' (or '-1'), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
      */
     minInsyncReplicas?: number;
     /**
@@ -3053,7 +3112,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     numPartitions?: number;
     /**
-     * Log retention window in minutes for offsets topic.
+     * Log retention window in minutes for offsets topic. Example: `10080`.
      */
     offsetsRetentionMinutes?: number;
     /**
@@ -3104,11 +3163,11 @@ export interface GetKafkaKafkaUserConfigKafka {
 
 export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
     /**
-     * Enable certificate/SSL authentication. The default value is `true`.
+     * Enable certificate/SSL authentication. Default: `true`.
      */
     certificate?: boolean;
     /**
-     * Enable SASL authentication. The default value is `false`.
+     * Enable SASL authentication. Default: `false`.
      */
     sasl?: boolean;
 }
@@ -3123,7 +3182,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerAutoOffsetReset?: string;
     /**
-     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
      */
     consumerFetchMaxBytes?: number;
     /**
@@ -3131,7 +3190,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerIsolationLevel?: string;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
      */
     consumerMaxPartitionFetchBytes?: number;
     /**
@@ -3151,7 +3210,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     offsetFlushTimeoutMs?: number;
     /**
-     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: number;
     /**
@@ -3159,15 +3218,15 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerBufferMemory?: number;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
-     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
      */
     producerLingerMs?: number;
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
      */
     producerMaxRequestSize?: number;
     /**
@@ -3180,45 +3239,98 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
     sessionTimeoutMs?: number;
 }
 
+export interface GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
+    /**
+     * AWS config for Secret Provider
+     */
+    aws?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws;
+    /**
+     * Name of the secret provider. Used to reference secrets in connector config.
+     */
+    name: string;
+    /**
+     * Vault Config for Secret Provider
+     */
+    vault?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault;
+}
+
+export interface GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws {
+    /**
+     * Access key used to authenticate with aws.
+     */
+    accessKey?: string;
+    /**
+     * Enum: `credentials`. Auth method of the vault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Region used to lookup secrets with AWS SecretManager.
+     */
+    region: string;
+    /**
+     * Secret key used to authenticate with aws.
+     */
+    secretKey?: string;
+}
+
+export interface GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault {
+    /**
+     * Address of the Vault server.
+     */
+    address: string;
+    /**
+     * Enum: `token`. Auth method of the vault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
+     */
+    engineVersion?: number;
+    /**
+     * Token used to authenticate with vault and auth method `token`.
+     */
+    token?: string;
+}
+
 export interface GetKafkaKafkaUserConfigKafkaRestConfig {
     /**
-     * If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.
+     * If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
      */
     consumerEnableAutoCommit?: boolean;
     /**
-     * Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     * Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
      */
     consumerRequestMaxBytes?: number;
     /**
-     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
      */
     consumerRequestTimeoutMs?: number;
     /**
-     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
      */
     nameStrategy?: string;
     /**
-     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
      */
     nameStrategyValidation?: boolean;
     /**
-     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
      */
     producerAcks?: string;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
-     * Wait for up to the given delay to allow batching records together. The default value is `0`.
+     * Wait for up to the given delay to allow batching records together. Default: `0`.
      */
     producerLingerMs?: number;
     /**
-     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
      */
     producerMaxRequestSize?: number;
     /**
-     * Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     * Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
      */
     simpleconsumerPoolSizeMax?: number;
 }
@@ -3322,7 +3434,7 @@ export interface GetKafkaKafkaUserConfigTieredStorage {
 
 export interface GetKafkaKafkaUserConfigTieredStorageLocalCache {
     /**
-     * Local cache size in bytes.
+     * Local cache size in bytes. Example: `1073741824`.
      *
      * @deprecated This property is deprecated.
      */
@@ -3372,15 +3484,15 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -3401,11 +3513,11 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -3416,23 +3528,23 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     emitCheckpointsEnabled?: boolean;
     /**
-     * Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
      */
     emitCheckpointsIntervalSeconds?: number;
     /**
-     * Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
      */
     groups?: string;
     /**
-     * Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
      */
     groupsExclude?: string;
     /**
-     * How out-of-sync a remote partition can be before it is resynced.
+     * How out-of-sync a remote partition can be before it is resynced. Example: `100`.
      */
     offsetLagMax?: number;
     /**
-     * Whether to periodically check for new consumer groups. Defaults to 'true'.
+     * Whether to periodically check for new consumer groups. Defaults to `true`.
      */
     refreshGroupsEnabled?: boolean;
     /**
@@ -3440,7 +3552,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     refreshGroupsIntervalSeconds?: number;
     /**
-     * Whether to periodically check for new topics and partitions. Defaults to 'true'.
+     * Whether to periodically check for new topics and partitions. Defaults to `true`.
      */
     refreshTopicsEnabled?: boolean;
     /**
@@ -3452,7 +3564,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     syncGroupOffsetsEnabled?: boolean;
     /**
-     * Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
      */
     syncGroupOffsetsIntervalSeconds?: number;
     /**
@@ -3460,7 +3572,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     syncTopicConfigsEnabled?: boolean;
     /**
-     * 'tasks.max' is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
      */
     tasksMaxPerCpu?: number;
 }
@@ -3695,19 +3807,19 @@ export interface GetM3AggregatorM3aggregator {
 
 export interface GetM3AggregatorM3aggregatorUserConfig {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -3732,11 +3844,11 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
 
 export interface GetM3AggregatorM3aggregatorUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -3838,19 +3950,19 @@ export interface GetM3DbM3dbUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetM3DbM3dbUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -3884,7 +3996,7 @@ export interface GetM3DbM3dbUserConfig {
      */
     privateAccess?: outputs.GetM3DbM3dbUserConfigPrivateAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -3900,7 +4012,7 @@ export interface GetM3DbM3dbUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -3911,30 +4023,30 @@ export interface GetM3DbM3dbUserConfig {
 
 export interface GetM3DbM3dbUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface GetM3DbM3dbUserConfigLimits {
     /**
-     * The maximum number of blocks that can be read in a given lookback period.
+     * The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
      */
     maxRecentlyQueriedSeriesBlocks?: number;
     /**
-     * The maximum number of disk bytes that can be read in a given lookback period.
+     * The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
      */
     maxRecentlyQueriedSeriesDiskBytesRead?: number;
     /**
-     * The lookback period for 'max_recently_queried_series_blocks' and 'max_recently_queried_series_disk_bytes_read'.
+     * The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
      */
     maxRecentlyQueriedSeriesLookback?: string;
     /**
-     * The maximum number of docs fetched in single query.
+     * The maximum number of docs fetched in single query. Example: `100000`.
      */
     queryDocs?: number;
     /**
@@ -3942,7 +4054,7 @@ export interface GetM3DbM3dbUserConfigLimits {
      */
     queryRequireExhaustive?: boolean;
     /**
-     * The maximum number of series fetched in single query.
+     * The maximum number of series fetched in single query. Example: `100000`.
      */
     querySeries?: number;
 }
@@ -3967,7 +4079,7 @@ export interface GetM3DbM3dbUserConfigM3TagOptions {
 
 export interface GetM3DbM3dbUserConfigNamespace {
     /**
-     * The name of the namespace.
+     * The name of the namespace. Example: `default`.
      */
     name: string;
     /**
@@ -3975,7 +4087,7 @@ export interface GetM3DbM3dbUserConfigNamespace {
      */
     options?: outputs.GetM3DbM3dbUserConfigNamespaceOptions;
     /**
-     * The resolution for an aggregated namespace.
+     * The resolution for an aggregated namespace. Example: `30s`.
      */
     resolution?: string;
     /**
@@ -4001,23 +4113,23 @@ export interface GetM3DbM3dbUserConfigNamespaceOptions {
 
 export interface GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
     /**
-     * Controls how long we wait before expiring stale data.
+     * Controls how long we wait before expiring stale data. Example: `5m`.
      */
     blockDataExpiryDuration?: string;
     /**
-     * Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
      */
     blocksizeDuration?: string;
     /**
-     * Controls how far into the future writes to the namespace will be accepted.
+     * Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
      */
     bufferFutureDuration?: string;
     /**
-     * Controls how far into the past writes to the namespace will be accepted.
+     * Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
      */
     bufferPastDuration?: string;
     /**
-     * Controls the duration of time that M3DB will retain data for the namespace.
+     * Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
      */
     retentionPeriodDuration?: string;
 }
@@ -4053,11 +4165,11 @@ export interface GetM3DbM3dbUserConfigRulesMapping {
      */
     drop?: boolean;
     /**
-     * Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
      */
     filter: string;
     /**
-     * The (optional) name of the rule.
+     * The (optional) name of the rule. Example: `important disk metrics`.
      */
     name?: string;
     /**
@@ -4082,22 +4194,22 @@ export interface GetM3DbM3dbUserConfigRulesMapping {
 
 export interface GetM3DbM3dbUserConfigRulesMappingNamespacesObject {
     /**
-     * The resolution for the matching namespace.
+     * The resolution for the matching namespace. Example: `30s`.
      */
     resolution: string;
     /**
-     * The retention period of the matching namespace.
+     * The retention period of the matching namespace. Example: `48h`.
      */
     retention?: string;
 }
 
 export interface GetM3DbM3dbUserConfigRulesMappingTag {
     /**
-     * Name of the tag.
+     * Name of the tag. Example: `myTag`.
      */
     name: string;
     /**
-     * Value of the tag.
+     * Value of the tag. Example: `myValue`.
      */
     value: string;
 }
@@ -4226,31 +4338,31 @@ export interface GetMySqlMysqlUserConfig {
      */
     adminPassword?: string;
     /**
-     * Custom username for admin user. This must be set only when a new service is being created.
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      */
     adminUsername?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: number;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
     /**
-     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
      */
     binlogRetentionPeriod?: number;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetMySqlMysqlUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -4276,7 +4388,7 @@ export interface GetMySqlMysqlUserConfig {
      */
     privatelinkAccess?: outputs.GetMySqlMysqlUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -4284,7 +4396,7 @@ export interface GetMySqlMysqlUserConfig {
      */
     publicAccess?: outputs.GetMySqlMysqlUserConfigPublicAccess;
     /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      */
     recoveryTargetTime?: string;
     /**
@@ -4292,7 +4404,7 @@ export interface GetMySqlMysqlUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -4303,26 +4415,26 @@ export interface GetMySqlMysqlUserConfig {
 
 export interface GetMySqlMysqlUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface GetMySqlMysqlUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: string;
     /**
@@ -4330,66 +4442,66 @@ export interface GetMySqlMysqlUserConfigMigration {
      */
     method?: string;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: number;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: string;
 }
 
 export interface GetMySqlMysqlUserConfigMysql {
     /**
-     * The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+     * The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
      */
     connectTimeout?: number;
     /**
-     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
      */
     defaultTimeZone?: string;
     /**
-     * The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+     * The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
      */
     groupConcatMaxLen?: number;
     /**
-     * The time, in seconds, before cached statistics expire.
+     * The time, in seconds, before cached statistics expire. Example: `86400`.
      */
     informationSchemaStatsExpiry?: number;
     /**
-     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      */
     innodbChangeBufferMaxSize?: number;
     /**
-     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
      */
     innodbFlushNeighbors?: number;
     /**
-     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
      */
     innodbFtMinTokenSize?: number;
     /**
-     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      */
     innodbFtServerStopwordTable?: string;
     /**
-     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
      */
     innodbLockWaitTimeout?: number;
     /**
-     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
      */
     innodbLogBufferSize?: number;
     /**
-     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
      */
     innodbOnlineAlterLogMaxSize?: number;
     /**
@@ -4397,7 +4509,7 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     innodbPrintAllDeadlocks?: boolean;
     /**
-     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      */
     innodbReadIoThreads?: number;
     /**
@@ -4405,15 +4517,15 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     innodbRollbackOnTimeout?: boolean;
     /**
-     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
      */
     innodbThreadConcurrency?: number;
     /**
-     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      */
     innodbWriteIoThreads?: number;
     /**
-     * The number of seconds the server waits for activity on an interactive connection before closing it.
+     * The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
      */
     interactiveTimeout?: number;
     /**
@@ -4421,27 +4533,27 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     internalTmpMemStorageEngine?: string;
     /**
-     * The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Default is 10s.
+     * The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Default is 10s. Example: `10`.
      */
     longQueryTime?: number;
     /**
-     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
      */
     maxAllowedPacket?: number;
     /**
-     * Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
      */
     maxHeapTableSize?: number;
     /**
-     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
      */
     netBufferLength?: number;
     /**
-     * The number of seconds to wait for more data from a connection before aborting the read.
+     * The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
      */
     netReadTimeout?: number;
     /**
-     * The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
      */
     netWriteTimeout?: number;
     /**
@@ -4449,11 +4561,11 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     slowQueryLog?: boolean;
     /**
-     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
      */
     sortBufferSize?: number;
     /**
-     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
      */
     sqlMode?: string;
     /**
@@ -4461,11 +4573,11 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     sqlRequirePrimaryKey?: boolean;
     /**
-     * Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
      */
     tmpTableSize?: number;
     /**
-     * The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
      */
     waitTimeout?: number;
 }
@@ -4608,7 +4720,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
@@ -4624,15 +4736,15 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     indexTemplate?: outputs.GetOpenSearchOpensearchUserConfigIndexTemplate;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetOpenSearchOpensearchUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -4642,7 +4754,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     keepIndexRefreshInterval?: boolean;
     /**
-     * Use indexPatterns instead. The default value is `0`.
+     * Use indexPatterns instead. Default: `0`.
      */
     maxIndexCount?: number;
     /**
@@ -4670,7 +4782,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     privatelinkAccess?: outputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -4678,7 +4790,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     publicAccess?: outputs.GetOpenSearchOpensearchUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -4690,7 +4802,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -4701,92 +4813,92 @@ export interface GetOpenSearchOpensearchUserConfig {
 
 export interface GetOpenSearchOpensearchUserConfigIndexPattern {
     /**
-     * Maximum number of indexes to keep.
+     * Maximum number of indexes to keep. Example: `3`.
      */
     maxIndexCount: number;
     /**
-     * fnmatch pattern.
+     * fnmatch pattern. Example: `logs_*_foo_*`.
      */
     pattern: string;
     /**
-     * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. The default value is `creationDate`.
+     * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. Default: `creationDate`.
      */
     sortingAlgorithm?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigIndexTemplate {
     /**
-     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
      */
     mappingNestedObjectsLimit?: number;
     /**
-     * The number of replicas each primary shard has.
+     * The number of replicas each primary shard has. Example: `1`.
      */
     numberOfReplicas?: number;
     /**
-     * The number of primary shards that an index should have.
+     * The number of primary shards that an index should have. Example: `1`.
      */
     numberOfShards?: number;
 }
 
 export interface GetOpenSearchOpensearchUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpenid {
     /**
-     * The ID of the OpenID Connect client configured in your IdP. Required.
+     * The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
      */
     clientId: string;
     /**
-     * The client secret of the OpenID Connect client configured in your IdP. Required.
+     * The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
      */
     clientSecret: string;
     /**
-     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      */
     connectUrl: string;
     /**
-     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
      */
     enabled: boolean;
     /**
-     * HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     * HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
      */
     header?: string;
     /**
-     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer <token>. Optional. Default is Authorization.
+     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer <token>. Optional. Default is Authorization. Example: `preferredUsername`.
      */
     jwtHeader?: string;
     /**
-     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferredUsername`.
      */
     jwtUrlParameter?: string;
     /**
-     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
      */
     refreshRateLimitCount?: number;
     /**
-     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
      */
     refreshRateLimitTimeWindowMs?: number;
     /**
-     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
      */
     rolesKey?: string;
     /**
-     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
      */
     scope?: string;
     /**
-     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional.
+     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional. Example: `preferredUsername`.
      */
     subjectKey?: string;
 }
@@ -4805,7 +4917,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     authFailureListeners?: outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
     /**
-     * Controls the number of shards allowed in the cluster per data node.
+     * Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      */
     clusterMaxShardsPerNode?: number;
     /**
@@ -4813,19 +4925,19 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: number;
     /**
-     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      */
     emailSenderName?: string;
     /**
-     * Sender password for Opensearch alerts to authenticate with SMTP server.
+     * Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
      */
     emailSenderPassword?: string;
     /**
-     * Sender username for Opensearch alerts.
+     * Sender username for Opensearch alerts. Example: `jane@example.com`.
      */
     emailSenderUsername?: string;
     /**
-     * Enable/Disable security audit. The default value is `false`.
+     * Enable/Disable security audit. Default: `false`.
      */
     enableSecurityAudit?: boolean;
     /**
@@ -4833,11 +4945,11 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     httpMaxContentLength?: number;
     /**
-     * The max size of allowed headers, in bytes.
+     * The max size of allowed headers, in bytes. Example: `8192`.
      */
     httpMaxHeaderSize?: number;
     /**
-     * The max length of an HTTP URL, in bytes.
+     * The max length of an HTTP URL, in bytes. Example: `4096`.
      */
     httpMaxInitialLineLength?: number;
     /**
@@ -4873,27 +4985,27 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     indicesRecoveryMaxConcurrentFileChunks?: number;
     /**
-     * Specifies whether ISM is enabled or not. The default value is `true`.
+     * Specifies whether ISM is enabled or not. Default: `true`.
      */
     ismEnabled?: boolean;
     /**
-     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
      */
     ismHistoryEnabled?: boolean;
     /**
-     * The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * The maximum age before rolling over the audit history index in hours. Default: `24`.
      */
     ismHistoryMaxAge?: number;
     /**
-     * The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * The maximum number of documents before rolling over the audit history index. Default: `2500000`.
      */
     ismHistoryMaxDocs?: number;
     /**
-     * The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * The time between rollover checks for the audit history index in hours. Default: `8`.
      */
     ismHistoryRolloverCheckPeriod?: number;
     /**
-     * How long audit history indices are kept in days. The default value is `30`.
+     * How long audit history indices are kept in days. Default: `30`.
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
@@ -4909,11 +5021,11 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     reindexRemoteWhitelists?: string[];
     /**
-     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      */
     scriptMaxCompilationsRate?: string;
     /**
-     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      */
     searchMaxBuckets?: number;
     /**
@@ -4972,7 +5084,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
     /**
-     * The number of login attempts allowed before login is blocked.
+     * The number of login attempts allowed before login is blocked. Example: `10`.
      */
     allowedTries?: number;
     /**
@@ -4980,19 +5092,19 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
      */
     authenticationBackend?: string;
     /**
-     * The duration of time that login remains blocked after a failed login.
+     * The duration of time that login remains blocked after a failed login. Example: `600`.
      */
     blockExpirySeconds?: number;
     /**
-     * internal_authentication_backend_limiting.max_blocked_clients.
+     * internal_authentication_backend_limiting.max_blocked_clients. Example: `100000`.
      */
     maxBlockedClients?: number;
     /**
-     * The maximum number of tracked IP addresses that have failed login.
+     * The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      */
     maxTrackedClients?: number;
     /**
-     * The window of time in which the value for `allowedTries` is enforced.
+     * The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      */
     timeWindowSeconds?: number;
     /**
@@ -5003,23 +5115,23 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
     /**
-     * The number of login attempts allowed before login is blocked.
+     * The number of login attempts allowed before login is blocked. Example: `10`.
      */
     allowedTries?: number;
     /**
-     * The duration of time that login remains blocked after a failed login.
+     * The duration of time that login remains blocked after a failed login. Example: `600`.
      */
     blockExpirySeconds?: number;
     /**
-     * The maximum number of blocked IP addresses.
+     * The maximum number of blocked IP addresses. Example: `100000`.
      */
     maxBlockedClients?: number;
     /**
-     * The maximum number of tracked IP addresses that have failed login.
+     * The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      */
     maxTrackedClients?: number;
     /**
-     * The window of time in which the value for `allowedTries` is enforced.
+     * The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      */
     timeWindowSeconds?: number;
     /**
@@ -5030,15 +5142,15 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
     /**
-     * Enable or disable OpenSearch Dashboards. The default value is `true`.
+     * Enable or disable OpenSearch Dashboards. Default: `true`.
      */
     enabled?: boolean;
     /**
-     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
      */
     maxOldSpaceSize?: number;
     /**
-     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: number;
 }
@@ -5090,31 +5202,34 @@ export interface GetOpenSearchOpensearchUserConfigPublicAccess {
 
 export interface GetOpenSearchOpensearchUserConfigSaml {
     /**
-     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
+     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
      */
     enabled: boolean;
     /**
-     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
      */
     idpEntityId: string;
     /**
-     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      */
     idpMetadataUrl: string;
     /**
-     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     idpPemtrustedcasContent?: string;
     /**
-     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
+     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
      */
     rolesKey?: string;
     /**
-     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
      */
     spEntityId: string;
     /**
-     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
+     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
      */
     subjectKey?: string;
 }
@@ -5279,15 +5394,15 @@ export interface GetPgPgUserConfig {
      */
     adminPassword?: string;
     /**
-     * Custom username for admin user. This must be set only when a new service is being created.
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      */
     adminUsername?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: number;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
     /**
@@ -5295,15 +5410,15 @@ export interface GetPgPgUserConfig {
      */
     enableIpv6?: boolean;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetPgPgUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -5327,11 +5442,11 @@ export interface GetPgPgUserConfig {
      */
     pgReadReplica?: boolean;
     /**
-     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created.
+     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     pgServiceToForkFrom?: string;
     /**
-     * Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pgStatStatements results for utility commands are unreliable. The default value is `false`.
+     * Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
      */
     pgStatMonitorEnable?: boolean;
     /**
@@ -5340,6 +5455,8 @@ export interface GetPgPgUserConfig {
     pgVersion?: string;
     /**
      * System-wide settings for the pgaudit extension
+     *
+     * @deprecated This property is deprecated.
      */
     pgaudit?: outputs.GetPgPgUserConfigPgaudit;
     /**
@@ -5359,7 +5476,7 @@ export interface GetPgPgUserConfig {
      */
     privatelinkAccess?: outputs.GetPgPgUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -5367,7 +5484,7 @@ export interface GetPgPgUserConfig {
      */
     publicAccess?: outputs.GetPgPgUserConfigPublicAccess;
     /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      */
     recoveryTargetTime?: string;
     /**
@@ -5375,11 +5492,11 @@ export interface GetPgPgUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Example: `41.5`.
      */
     sharedBuffersPercentage?: number;
     /**
@@ -5399,33 +5516,33 @@ export interface GetPgPgUserConfig {
      */
     variant?: string;
     /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
      */
     workMem?: number;
 }
 
 export interface GetPgPgUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface GetPgPgUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: string;
     /**
@@ -5433,19 +5550,19 @@ export interface GetPgPgUserConfigMigration {
      */
     method?: string;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: number;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: string;
 }
@@ -5460,7 +5577,7 @@ export interface GetPgPgUserConfigPg {
      */
     autovacuumAnalyzeThreshold?: number;
     /**
-     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
      */
     autovacuumFreezeMaxAge?: number;
     /**
@@ -5488,23 +5605,23 @@ export interface GetPgPgUserConfigPg {
      */
     autovacuumVacuumThreshold?: number;
     /**
-     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
      */
     bgwriterDelay?: number;
     /**
-     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
      */
     bgwriterFlushAfter?: number;
     /**
-     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
      */
     bgwriterLruMaxpages?: number;
     /**
-     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
      */
     bgwriterLruMultiplier?: number;
     /**
-     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
      */
     deadlockTimeout?: number;
     /**
@@ -5596,11 +5713,11 @@ export interface GetPgPgUserConfigPg {
      */
     maxWorkerProcesses?: number;
     /**
-     * Sets the time interval to run pg_partman's scheduled tasks.
+     * Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
      */
     pgPartmanBgwDotInterval?: number;
     /**
-     * Controls which role to use for pg_partman's scheduled background tasks.
+     * Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
      */
     pgPartmanBgwDotRole?: string;
     /**
@@ -5608,7 +5725,7 @@ export interface GetPgPgUserConfigPg {
      */
     pgStatMonitorDotPgsmEnableQueryPlan?: boolean;
     /**
-     * Sets the maximum number of buckets.
+     * Sets the maximum number of buckets. Example: `10`.
      */
     pgStatMonitorDotPgsmMaxBuckets?: number;
     /**
@@ -5616,15 +5733,15 @@ export interface GetPgPgUserConfigPg {
      */
     pgStatStatementsDotTrack?: string;
     /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
      */
     tempFileLimit?: number;
     /**
-     * PostgreSQL service timezone.
+     * PostgreSQL service timezone. Example: `Europe/Helsinki`.
      */
     timezone?: string;
     /**
-     * Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
      */
     trackActivityQuerySize?: number;
     /**
@@ -5640,42 +5757,42 @@ export interface GetPgPgUserConfigPg {
      */
     trackIoTiming?: string;
     /**
-     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
      */
     walSenderTimeout?: number;
     /**
-     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      */
     walWriterDelay?: number;
 }
 
 export interface GetPgPgUserConfigPgQualstats {
     /**
-     * Enable / Disable pg_qualstats. The default value is `false`.
+     * Enable / Disable pg_qualstats. Default: `false`.
      *
      * @deprecated This property is deprecated.
      */
     enabled?: boolean;
     /**
-     * Error estimation num threshold to save quals. The default value is `0`.
+     * Error estimation num threshold to save quals. Default: `0`.
      *
      * @deprecated This property is deprecated.
      */
     minErrEstimateNum?: number;
     /**
-     * Error estimation ratio threshold to save quals. The default value is `0`.
+     * Error estimation ratio threshold to save quals. Default: `0`.
      *
      * @deprecated This property is deprecated.
      */
     minErrEstimateRatio?: number;
     /**
-     * Enable / Disable pgQualstats constants tracking. The default value is `true`.
+     * Enable / Disable pgQualstats constants tracking. Default: `true`.
      *
      * @deprecated This property is deprecated.
      */
     trackConstants?: boolean;
     /**
-     * Track quals on system catalogs too. The default value is `false`.
+     * Track quals on system catalogs too. Default: `false`.
      *
      * @deprecated This property is deprecated.
      */
@@ -5684,78 +5801,106 @@ export interface GetPgPgUserConfigPgQualstats {
 
 export interface GetPgPgUserConfigPgaudit {
     /**
-     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     featureEnabled?: boolean;
     /**
-     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     logCatalog?: boolean;
     /**
-     * Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+     * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logClient?: boolean;
     /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+     *
+     * @deprecated This property is deprecated.
      */
     logLevel?: string;
     /**
-     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     *
+     * @deprecated This property is deprecated.
      */
     logMaxStringLength?: number;
     /**
-     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     logNestedStatements?: boolean;
     /**
-     * Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+     * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logParameter?: boolean;
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. The default value is `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
+     *
+     * @deprecated This property is deprecated.
      */
     logParameterMaxSize?: number;
     /**
-     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logRelation?: boolean;
     /**
-     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logRows?: boolean;
     /**
-     * Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+     * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     logStatement?: boolean;
     /**
-     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logStatementOnce?: boolean;
     /**
      * Specifies which classes of statements will be logged by session audit logging.
+     *
+     * @deprecated This property is deprecated.
      */
     logs?: string[];
     /**
      * Specifies the master role to use for object audit logging.
+     *
+     * @deprecated This property is deprecated.
      */
     role?: string;
 }
 
 export interface GetPgPgUserConfigPgbouncer {
     /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
      */
     autodbIdleTimeout?: number;
     /**
-     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
      */
     autodbMaxDbConnections?: number;
     /**
-     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
+     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
      */
     autodbPoolMode?: string;
     /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
+     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
      */
     autodbPoolSize?: number;
     /**
@@ -5763,26 +5908,26 @@ export interface GetPgPgUserConfigPgbouncer {
      */
     ignoreStartupParameters?: string[];
     /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
      */
     minPoolSize?: number;
     /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
      */
     serverIdleTimeout?: number;
     /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
      */
     serverLifetime?: number;
     /**
-     * Run serverResetQuery (DISCARD ALL) in all pooling modes. The default value is `false`.
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
      */
     serverResetQueryAlways?: boolean;
 }
 
 export interface GetPgPgUserConfigPglookout {
     /**
-     * Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+     * Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
      */
     maxFailoverReplicationTimeLag?: number;
 }
@@ -5834,7 +5979,7 @@ export interface GetPgPgUserConfigPublicAccess {
 
 export interface GetPgPgUserConfigTimescaledb {
     /**
-     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
+     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
      */
     maxBackgroundWorkers?: number;
 }
@@ -5939,15 +6084,15 @@ export interface GetRedisRedisUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetRedisRedisUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -5965,7 +6110,7 @@ export interface GetRedisRedisUserConfig {
      */
     privatelinkAccess?: outputs.GetRedisRedisUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -5973,7 +6118,7 @@ export interface GetRedisRedisUserConfig {
      */
     publicAccess?: outputs.GetRedisRedisUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -5981,19 +6126,19 @@ export interface GetRedisRedisUserConfig {
      */
     redisAclChannelsDefault?: string;
     /**
-     * Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+     * Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
      */
     redisIoThreads?: number;
     /**
-     * LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
      */
     redisLfuDecayTime?: number;
     /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
      */
     redisLfuLogFactor?: number;
     /**
-     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
      */
     redisMaxmemoryPolicy?: string;
     /**
@@ -6001,23 +6146,23 @@ export interface GetRedisRedisUserConfig {
      */
     redisNotifyKeyspaceEvents?: string;
     /**
-     * Set number of Redis databases. Changing this will cause a restart of the Redis service.
+     * Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
      */
     redisNumberOfDatabases?: number;
     /**
-     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     redisPersistence?: string;
     /**
-     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
      */
     redisPubsubClientOutputBufferLimit?: number;
     /**
-     * Require SSL to access Redis. The default value is `true`.
+     * Require SSL to access Redis. Default: `true`.
      */
     redisSsl?: boolean;
     /**
-     * Redis idle connection timeout in seconds. The default value is `300`.
+     * Redis idle connection timeout in seconds. Default: `300`.
      */
     redisTimeout?: number;
     /**
@@ -6029,7 +6174,7 @@ export interface GetRedisRedisUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -6040,26 +6185,26 @@ export interface GetRedisRedisUserConfig {
 
 export interface GetRedisRedisUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface GetRedisRedisUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: string;
     /**
@@ -6067,19 +6212,19 @@ export interface GetRedisRedisUserConfigMigration {
      */
     method?: string;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: number;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: string;
 }
@@ -6155,7 +6300,7 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfig {
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      */
     autoOffsetReset?: string;
     /**
@@ -6163,43 +6308,43 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     columns: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
     /**
-     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
      */
     dataFormat: string;
     /**
-     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. The default value is `basic`.
+     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
      */
     dateTimeInputFormat?: string;
     /**
-     * Kafka consumers group. The default value is `clickhouse`.
+     * Kafka consumers group. Default: `clickhouse`.
      */
     groupName: string;
     /**
-     * Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+     * Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
      */
     handleErrorMode?: string;
     /**
-     * Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
      */
     maxBlockSize?: number;
     /**
-     * The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
      */
     maxRowsPerMessage?: number;
     /**
-     * Name of the table.
+     * Name of the table. Example: `events`.
      */
     name: string;
     /**
-     * The number of consumers per table per replica. The default value is `1`.
+     * The number of consumers per table per replica. Default: `1`.
      */
     numConsumers?: number;
     /**
-     * Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
      */
     pollMaxBatchSize?: number;
     /**
-     * Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      */
     skipBrokenMessages?: number;
     /**
@@ -6210,18 +6355,18 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTableColumn {
     /**
-     * Column name.
+     * Column name. Example: `key`.
      */
     name: string;
     /**
-     * Column type.
+     * Column type. Example: `UInt64`.
      */
     type: string;
 }
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTableTopic {
     /**
-     * Name of the topic.
+     * Name of the topic. Example: `topicName`.
      */
     name: string;
 }
@@ -6235,11 +6380,11 @@ export interface GetServiceIntegrationClickhousePostgresqlUserConfig {
 
 export interface GetServiceIntegrationClickhousePostgresqlUserConfigDatabase {
     /**
-     * PostgreSQL database to expose. The default value is `defaultdb`.
+     * PostgreSQL database to expose. Default: `defaultdb`.
      */
     database?: string;
     /**
-     * PostgreSQL schema to expose. The default value is `public`.
+     * PostgreSQL schema to expose. Default: `public`.
      */
     schema?: string;
 }
@@ -6278,9 +6423,13 @@ export interface GetServiceIntegrationDatadogUserConfig {
      */
     kafkaCustomMetrics?: string[];
     /**
-     * Maximum number of JMX metrics to send.
+     * Maximum number of JMX metrics to send. Example: `2000`.
      */
     maxJmxMetrics?: number;
+    /**
+     * List of custom metrics.
+     */
+    mirrormakerCustomMetrics?: string[];
     /**
      * Datadog Opensearch Options
      */
@@ -6293,11 +6442,11 @@ export interface GetServiceIntegrationDatadogUserConfig {
 
 export interface GetServiceIntegrationDatadogUserConfigDatadogTag {
     /**
-     * Optional tag explanation.
+     * Optional tag explanation. Example: `Used to tag primary replica metrics`.
      */
     comment?: string;
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      */
     tag: string;
 }
@@ -6323,14 +6472,14 @@ export interface GetServiceIntegrationDatadogUserConfigOpensearch {
 
 export interface GetServiceIntegrationDatadogUserConfigRedis {
     /**
-     * Enable commandStats option in the agent's configuration. The default value is `false`.
+     * Enable commandStats option in the agent's configuration. Default: `false`.
      */
     commandStatsEnabled?: boolean;
 }
 
 export interface GetServiceIntegrationEndpointDatadogUserConfig {
     /**
-     * Datadog API key.
+     * Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
      */
     datadogApiKey: string;
     /**
@@ -6342,15 +6491,15 @@ export interface GetServiceIntegrationEndpointDatadogUserConfig {
      */
     disableConsumerStats?: boolean;
     /**
-     * Number of separate instances to fetch kafka consumer statistics with.
+     * Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      */
     kafkaConsumerCheckInstances?: number;
     /**
-     * Number of seconds that datadog will wait to get consumer statistics from brokers.
+     * Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
      */
     kafkaConsumerStatsTimeout?: number;
     /**
-     * Maximum number of partition contexts to send.
+     * Maximum number of partition contexts to send. Example: `32000`.
      */
     maxPartitionContexts?: number;
     /**
@@ -6361,105 +6510,108 @@ export interface GetServiceIntegrationEndpointDatadogUserConfig {
 
 export interface GetServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     /**
-     * Optional tag explanation.
+     * Optional tag explanation. Example: `Used to tag primary replica metrics`.
      */
     comment?: string;
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      */
     tag: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
-     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
      */
     accessKey: string;
     /**
-     * AWS CloudWatch log group name.
+     * AWS CloudWatch log group name. Example: `my-log-group`.
      */
     logGroupName?: string;
     /**
-     * AWS region.
+     * AWS region. Example: `us-east-1`.
      */
     region: string;
     /**
-     * AWS secret key.
+     * AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      */
     secretKey: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * AWS access key. Required permissions are cloudwatch:PutMetricData.
+     * AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
      */
     accessKey: string;
     /**
-     * AWS CloudWatch Metrics Namespace.
+     * AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
      */
     namespace: string;
     /**
-     * AWS region.
+     * AWS region. Example: `us-east-1`.
      */
     region: string;
     /**
-     * AWS secret key.
+     * AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      */
     secretKey: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     ca?: string;
     /**
-     * Maximum number of days of logs to keep. The default value is `3`.
+     * Maximum number of days of logs to keep. Default: `3`.
      */
     indexDaysMax?: number;
     /**
-     * Elasticsearch index prefix. The default value is `logs`.
+     * Elasticsearch index prefix. Default: `logs`.
      */
     indexPrefix: string;
     /**
-     * Elasticsearch request timeout limit. The default value is `10.0`.
+     * Elasticsearch request timeout limit. Default: `10.0`.
      */
     timeout?: number;
     /**
-     * Elasticsearch connection URL.
+     * Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
      */
     url: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalGoogleCloudBigquery {
     /**
-     * GCP project id.
+     * GCP project id. Example: `snappy-photon-12345`.
      */
     projectId: string;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
      */
     serviceAccountCredentials: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     /**
-     * Google Cloud Logging log id.
+     * Google Cloud Logging log id. Example: `syslog`.
      */
     logId: string;
     /**
-     * GCP project id.
+     * GCP project id. Example: `snappy-photon-12345`.
      */
     projectId: string;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
      */
     serviceAccountCredentials: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
-     * Bootstrap servers.
+     * Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
      */
     bootstrapServers: string;
     /**
@@ -6467,11 +6619,11 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     saslMechanism?: string;
     /**
-     * Password for SASL PLAIN mechanism in the Kafka server.
+     * Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      */
     saslPlainPassword?: string;
     /**
-     * Username for SASL PLAIN mechanism in the Kafka server.
+     * Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      */
     saslPlainUsername?: string;
     /**
@@ -6479,15 +6631,24 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     securityProtocol: string;
     /**
-     * PEM-encoded CA certificate.
+     * PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslCaCert?: string;
     /**
-     * PEM-encoded client certificate.
+     * PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslClientCert?: string;
     /**
-     * PEM-encoded client key.
+     * PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      */
     sslClientKey?: string;
     /**
@@ -6498,62 +6659,73 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
 
 export interface GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     ca?: string;
     /**
-     * Maximum number of days of logs to keep. The default value is `3`.
+     * Maximum number of days of logs to keep. Default: `3`.
      */
     indexDaysMax?: number;
     /**
-     * OpenSearch index prefix. The default value is `logs`.
+     * OpenSearch index prefix. Default: `logs`.
      */
     indexPrefix: string;
     /**
-     * OpenSearch request timeout limit. The default value is `10.0`.
+     * OpenSearch request timeout limit. Default: `10.0`.
      */
     timeout?: number;
     /**
-     * OpenSearch connection URL.
+     * OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
      */
     url: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalPostgresql {
     /**
-     * Default database.
+     * Default database. Example: `testdb`.
      */
     defaultDatabase?: string;
     /**
-     * Hostname or IP address of the server.
+     * Hostname or IP address of the server. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Password.
+     * Password. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server.
+     * Port number of the server. Example: `5432`.
      */
     port: number;
     /**
-     * Client certificate.
+     * Client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslClientCertificate?: string;
     /**
-     * Client key.
+     * Client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----`.
      */
     sslClientKey?: string;
     /**
-     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      */
     sslMode?: string;
     /**
-     * SSL Root Cert.
+     * SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslRootCert?: string;
     /**
-     * User name.
+     * User name. Example: `myname`.
      */
     username: string;
 }
@@ -6564,80 +6736,89 @@ export interface GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
      */
     authentication: string;
     /**
-     * Basic authentication password.
+     * Basic authentication password. Example: `Zm9vYg==`.
      */
     basicAuthPassword?: string;
     /**
-     * Basic authentication user name.
+     * Basic authentication user name. Example: `avnadmin`.
      */
     basicAuthUsername?: string;
     /**
-     * Schema Registry URL.
+     * Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
      */
     url: string;
 }
 
 export interface GetServiceIntegrationEndpointJolokiaUserConfig {
     /**
-     * Jolokia basic authentication password.
+     * Jolokia basic authentication password. Example: `yhfBNFii4C`.
      */
     basicAuthPassword?: string;
     /**
-     * Jolokia basic authentication username.
+     * Jolokia basic authentication username. Example: `jol48k51`.
      */
     basicAuthUsername?: string;
 }
 
 export interface GetServiceIntegrationEndpointPrometheusUserConfig {
     /**
-     * Prometheus basic authentication password.
+     * Prometheus basic authentication password. Example: `fhyFNBjj3R`.
      */
     basicAuthPassword?: string;
     /**
-     * Prometheus basic authentication username.
+     * Prometheus basic authentication username. Example: `prom4851`.
      */
     basicAuthUsername?: string;
 }
 
 export interface GetServiceIntegrationEndpointRsyslogUserConfig {
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     ca?: string;
     /**
-     * PEM encoded client certificate.
+     * PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     cert?: string;
     /**
-     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
      */
     format: string;
     /**
-     * PEM encoded client key.
+     * PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      */
     key?: string;
     /**
-     * Custom syslog message format.
+     * Custom syslog message format. Example: `<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
      */
     logline?: string;
     /**
-     * Rsyslog max message size. The default value is `8192`.
+     * Rsyslog max message size. Default: `8192`.
      */
     maxMessageSize?: number;
     /**
-     * Rsyslog server port. The default value is `514`.
+     * Rsyslog server port. Default: `514`.
      */
     port: number;
     /**
-     * Structured data block for log message.
+     * Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
      */
     sd?: string;
     /**
-     * Rsyslog server IP address or hostname.
+     * Rsyslog server IP address or hostname. Example: `logs.example.com`.
      */
     server: string;
     /**
-     * Require TLS. The default value is `true`.
+     * Require TLS. Default: `true`.
      */
     tls: boolean;
 }
@@ -6662,22 +6843,22 @@ export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
 
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
     /**
-     * Identifier of a value in the metric.
+     * Identifier of a value in the metric. Example: `used`.
      */
     field: string;
     /**
-     * Identifier of the metric.
+     * Identifier of the metric. Example: `java.lang:Memory`.
      */
     metric: string;
 }
 
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
     /**
-     * Identifier of a value in the metric.
+     * Identifier of a value in the metric. Example: `used`.
      */
     field: string;
     /**
-     * Identifier of the metric.
+     * Identifier of the metric. Example: `java.lang:Memory`.
      */
     metric: string;
 }
@@ -6705,26 +6886,26 @@ export interface GetServiceIntegrationKafkaConnectUserConfig {
 
 export interface GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
     /**
-     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
      */
     configStorageTopic?: string;
     /**
-     * A unique string that identifies the Connect cluster group this worker belongs to.
+     * A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
      */
     groupId?: string;
     /**
-     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
      */
     offsetStorageTopic?: string;
     /**
-     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
      */
     statusStorageTopic?: string;
 }
 
 export interface GetServiceIntegrationKafkaLogsUserConfig {
     /**
-     * Topic name.
+     * Topic name. Example: `mytopic`.
      */
     kafkaTopic: string;
     /**
@@ -6735,7 +6916,7 @@ export interface GetServiceIntegrationKafkaLogsUserConfig {
 
 export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
     /**
-     * The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, '.', '_', and '-'.
+     * The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
      */
     clusterAlias?: string;
     /**
@@ -6746,38 +6927,46 @@ export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
 
 export interface GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
     /**
-     * The minimum amount of data the server should return for a fetch request.
+     * Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+     */
+    consumerAutoOffsetReset?: string;
+    /**
+     * The minimum amount of data the server should return for a fetch request. Example: `1024`.
      */
     consumerFetchMinBytes?: number;
     /**
-     * The batch size in bytes producer will attempt to collect before publishing to broker.
+     * Set consumer max.poll.records. The default is 500. Example: `500`.
+     */
+    consumerMaxPollRecords?: number;
+    /**
+     * The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
      */
     producerBatchSize?: number;
     /**
-     * The amount of bytes producer can use for buffering data before publishing to broker.
+     * The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
      */
     producerBufferMemory?: number;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
-     * The linger time (ms) for waiting new data to arrive for publishing.
+     * The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
      */
     producerLingerMs?: number;
     /**
-     * The maximum request size in bytes.
+     * The maximum request size in bytes. Example: `1048576`.
      */
     producerMaxRequestSize?: number;
 }
 
 export interface GetServiceIntegrationLogsUserConfig {
     /**
-     * Elasticsearch index retention limit. The default value is `3`.
+     * Elasticsearch index retention limit. Default: `3`.
      */
     elasticsearchIndexDaysMax?: number;
     /**
-     * Elasticsearch index prefix. The default value is `logs`.
+     * Elasticsearch index prefix. Default: `logs`.
      */
     elasticsearchIndexPrefix?: string;
     /**
@@ -6788,7 +6977,7 @@ export interface GetServiceIntegrationLogsUserConfig {
 
 export interface GetServiceIntegrationMetricsUserConfig {
     /**
-     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     database?: string;
     /**
@@ -6796,7 +6985,7 @@ export interface GetServiceIntegrationMetricsUserConfig {
      */
     retentionDays?: number;
     /**
-     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metricsReader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     roUsername?: string;
     /**
@@ -6804,7 +6993,7 @@ export interface GetServiceIntegrationMetricsUserConfig {
      */
     sourceMysql?: outputs.GetServiceIntegrationMetricsUserConfigSourceMysql;
     /**
-     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metricsWriter`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     username?: string;
 }
@@ -6862,15 +7051,15 @@ export interface GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
      */
     gatherTableSchema?: boolean;
     /**
-     * Truncates digest text from perfEventsStatements into this many characters.
+     * Truncates digest text from perfEventsStatements into this many characters. Example: `120`.
      */
     perfEventsStatementsDigestTextLimit?: number;
     /**
-     * Limits metrics from perf_events_statements.
+     * Limits metrics from perf_events_statements. Example: `250`.
      */
     perfEventsStatementsLimit?: number;
     /**
-     * Only include perfEventsStatements whose last seen is less than this many seconds.
+     * Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: number;
 }
@@ -6935,15 +7124,15 @@ export interface GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      */
     gatherTableSchema?: boolean;
     /**
-     * Truncates digest text from perfEventsStatements into this many characters.
+     * Truncates digest text from perfEventsStatements into this many characters. Example: `120`.
      */
     perfEventsStatementsDigestTextLimit?: number;
     /**
-     * Limits metrics from perf_events_statements.
+     * Limits metrics from perf_events_statements. Example: `250`.
      */
     perfEventsStatementsLimit?: number;
     /**
-     * Only include perfEventsStatements whose last seen is less than this many seconds.
+     * Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: number;
 }
@@ -7004,7 +7193,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     alertingErrorOrTimeout?: string;
     /**
-     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
      */
     alertingMaxAnnotationsToKeep?: number;
     /**
@@ -7040,11 +7229,11 @@ export interface GrafanaGrafanaUserConfig {
      */
     authGoogle?: outputs.GrafanaGrafanaUserConfigAuthGoogle;
     /**
-     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      */
     cookieSamesite?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
@@ -7052,19 +7241,19 @@ export interface GrafanaGrafanaUserConfig {
      */
     dashboardPreviewsEnabled?: boolean;
     /**
-     * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      */
     dashboardsMinRefreshInterval?: string;
     /**
-     * Dashboard versions to keep per dashboard.
+     * Dashboard versions to keep per dashboard. Example: `20`.
      */
     dashboardsVersionsToKeep?: number;
     /**
-     * Send 'X-Grafana-User' header to data source.
+     * Send `X-Grafana-User` header to data source.
      */
     dataproxySendUserHeader?: boolean;
     /**
-     * Timeout for data proxy requests in seconds.
+     * Timeout for data proxy requests in seconds. Example: `30`.
      */
     dataproxyTimeout?: number;
     /**
@@ -7084,19 +7273,19 @@ export interface GrafanaGrafanaUserConfig {
      */
     externalImageStorage?: outputs.GrafanaGrafanaUserConfigExternalImageStorage;
     /**
-     * Google Analytics ID.
+     * Google Analytics ID. Example: `UA-123456-4`.
      */
     googleAnalyticsUaId?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GrafanaGrafanaUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -7118,7 +7307,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     privatelinkAccess?: outputs.GrafanaGrafanaUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -7126,7 +7315,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     publicAccess?: outputs.GrafanaGrafanaUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -7134,7 +7323,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -7177,19 +7366,19 @@ export interface GrafanaGrafanaUserConfigAuthAzuread {
      */
     allowedGroups?: string[];
     /**
-     * Authorization URL.
+     * Authorization URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/authorize`.
      */
     authUrl: string;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
     /**
-     * Token URL.
+     * Token URL. Example: `https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/v2.0/token`.
      */
     tokenUrl: string;
 }
@@ -7208,11 +7397,11 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
      */
     allowedOrganizations?: string[];
     /**
-     * API URL.
+     * API URL. Example: `https://yourprovider.com/api`.
      */
     apiUrl: string;
     /**
-     * Authorization URL.
+     * Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
      */
     authUrl: string;
     /**
@@ -7220,15 +7409,15 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
      */
     autoLogin?: boolean;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
     /**
-     * Name of the OAuth integration.
+     * Name of the OAuth integration. Example: `My authentication`.
      */
     name?: string;
     /**
@@ -7236,7 +7425,7 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
      */
     scopes?: string[];
     /**
-     * Token URL.
+     * Token URL. Example: `https://yourprovider.com/oauth/token`.
      */
     tokenUrl: string;
 }
@@ -7255,11 +7444,11 @@ export interface GrafanaGrafanaUserConfigAuthGithub {
      */
     autoLogin?: boolean;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
     /**
@@ -7282,23 +7471,23 @@ export interface GrafanaGrafanaUserConfigAuthGitlab {
      */
     allowedGroups: string[];
     /**
-     * API URL. This only needs to be set when using self hosted GitLab.
+     * API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
      */
     apiUrl?: string;
     /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab.
+     * Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
      */
     authUrl?: string;
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
     /**
-     * Token URL. This only needs to be set when using self hosted GitLab.
+     * Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
      */
     tokenUrl?: string;
 }
@@ -7313,57 +7502,57 @@ export interface GrafanaGrafanaUserConfigAuthGoogle {
      */
     allowedDomains: string[];
     /**
-     * Client ID from provider.
+     * Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      */
     clientId: string;
     /**
-     * Client secret from provider.
+     * Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      */
     clientSecret: string;
 }
 
 export interface GrafanaGrafanaUserConfigDateFormats {
     /**
-     * Default time zone for user preferences. Value 'browser' uses browser local time zone.
+     * Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
      */
     defaultTimezone?: string;
     /**
-     * Moment.js style format string for cases where full date is shown.
+     * Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
      */
     fullDate?: string;
     /**
-     * Moment.js style format string used when a time requiring day accuracy is shown.
+     * Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
      */
     intervalDay?: string;
     /**
-     * Moment.js style format string used when a time requiring hour accuracy is shown.
+     * Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
      */
     intervalHour?: string;
     /**
-     * Moment.js style format string used when a time requiring minute accuracy is shown.
+     * Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
      */
     intervalMinute?: string;
     /**
-     * Moment.js style format string used when a time requiring month accuracy is shown.
+     * Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
      */
     intervalMonth?: string;
     /**
-     * Moment.js style format string used when a time requiring second accuracy is shown.
+     * Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
      */
     intervalSecond?: string;
     /**
-     * Moment.js style format string used when a time requiring year accuracy is shown.
+     * Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
      */
     intervalYear?: string;
 }
 
 export interface GrafanaGrafanaUserConfigExternalImageStorage {
     /**
-     * S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
      */
     accessKey: string;
     /**
-     * Bucket URL for S3.
+     * Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
      */
     bucketUrl: string;
     /**
@@ -7371,18 +7560,18 @@ export interface GrafanaGrafanaUserConfigExternalImageStorage {
      */
     provider: string;
     /**
-     * S3 secret key.
+     * S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      */
     secretKey: string;
 }
 
 export interface GrafanaGrafanaUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -7410,7 +7599,7 @@ export interface GrafanaGrafanaUserConfigPublicAccess {
 
 export interface GrafanaGrafanaUserConfigSmtpServer {
     /**
-     * Address used for sending emails.
+     * Address used for sending emails. Example: `yourgrafanauser@yourdomain.example.com`.
      */
     fromAddress: string;
     /**
@@ -7418,15 +7607,15 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
      */
     fromName?: string;
     /**
-     * Server hostname or IP.
+     * Server hostname or IP. Example: `smtp.example.com`.
      */
     host: string;
     /**
-     * Password for SMTP authentication.
+     * Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
      */
     password?: string;
     /**
-     * SMTP server port.
+     * SMTP server port. Example: `25`.
      */
     port: number;
     /**
@@ -7438,7 +7627,7 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
      */
     starttlsPolicy?: string;
     /**
-     * Username for SMTP authentication.
+     * Username for SMTP authentication. Example: `smtpuser`.
      */
     username?: string;
 }
@@ -7534,7 +7723,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
@@ -7542,15 +7731,15 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     influxdb?: outputs.InfluxDbInfluxdbUserConfigInfluxdb;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.InfluxDbInfluxdbUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -7564,7 +7753,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     privatelinkAccess?: outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -7572,7 +7761,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     publicAccess?: outputs.InfluxDbInfluxdbUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -7580,7 +7769,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -7622,11 +7811,11 @@ export interface InfluxDbInfluxdbUserConfigInfluxdb {
 
 export interface InfluxDbInfluxdbUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -7759,15 +7948,15 @@ export interface KafkaConnectKafkaConnectUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -7788,6 +7977,7 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
+    secretProviders?: outputs.KafkaConnectKafkaConnectUserConfigSecretProvider[];
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
@@ -7800,11 +7990,11 @@ export interface KafkaConnectKafkaConnectUserConfig {
 
 export interface KafkaConnectKafkaConnectUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -7819,7 +8009,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerAutoOffsetReset?: string;
     /**
-     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
      */
     consumerFetchMaxBytes?: number;
     /**
@@ -7827,7 +8017,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerIsolationLevel?: string;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
      */
     consumerMaxPartitionFetchBytes?: number;
     /**
@@ -7847,7 +8037,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     offsetFlushTimeoutMs?: number;
     /**
-     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: number;
     /**
@@ -7855,15 +8045,15 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerBufferMemory?: number;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
-     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
      */
     producerLingerMs?: number;
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
      */
     producerMaxRequestSize?: number;
     /**
@@ -7911,6 +8101,59 @@ export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
      * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: boolean;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigSecretProvider {
+    /**
+     * AWS config for Secret Provider
+     */
+    aws?: outputs.KafkaConnectKafkaConnectUserConfigSecretProviderAws;
+    /**
+     * Name of the secret provider. Used to reference secrets in connector config.
+     */
+    name: string;
+    /**
+     * Vault Config for Secret Provider
+     */
+    vault?: outputs.KafkaConnectKafkaConnectUserConfigSecretProviderVault;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigSecretProviderAws {
+    /**
+     * Access key used to authenticate with aws.
+     */
+    accessKey?: string;
+    /**
+     * Enum: `credentials`. Auth method of the vault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Region used to lookup secrets with AWS SecretManager.
+     */
+    region: string;
+    /**
+     * Secret key used to authenticate with aws.
+     */
+    secretKey?: string;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigSecretProviderVault {
+    /**
+     * Address of the Vault server.
+     */
+    address: string;
+    /**
+     * Enum: `token`. Auth method of the vault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
+     */
+    engineVersion?: number;
+    /**
+     * Token used to authenticate with vault and auth method `token`.
+     */
+    token?: string;
 }
 
 export interface KafkaConnectServiceIntegration {
@@ -7992,19 +8235,19 @@ export interface KafkaKafkaUserConfig {
      */
     aivenKafkaTopicMessages?: boolean;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.KafkaKafkaUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -8018,15 +8261,16 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaAuthenticationMethods?: outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
     /**
-     * Enable Kafka Connect service. The default value is `false`.
+     * Enable Kafka Connect service. Default: `false`.
      */
     kafkaConnect?: boolean;
     /**
      * Kafka Connect configuration values
      */
     kafkaConnectConfig?: outputs.KafkaKafkaUserConfigKafkaConnectConfig;
+    kafkaConnectSecretProviders?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider[];
     /**
-     * Enable Kafka-REST service. The default value is `false`.
+     * Enable Kafka-REST service. Default: `false`.
      */
     kafkaRest?: boolean;
     /**
@@ -8042,6 +8286,10 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaVersion?: string;
     /**
+     * Use Letsencrypt CA for Kafka SASL via Privatelink.
+     */
+    letsencryptSaslPrivatelink?: boolean;
+    /**
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.KafkaKafkaUserConfigPrivateAccess;
@@ -8054,7 +8302,7 @@ export interface KafkaKafkaUserConfig {
      */
     publicAccess?: outputs.KafkaKafkaUserConfigPublicAccess;
     /**
-     * Enable Schema-Registry service. The default value is `false`.
+     * Enable Schema-Registry service. Default: `false`.
      */
     schemaRegistry?: boolean;
     /**
@@ -8077,11 +8325,11 @@ export interface KafkaKafkaUserConfig {
 
 export interface KafkaKafkaUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -8092,11 +8340,11 @@ export interface KafkaKafkaUserConfigKafka {
      */
     autoCreateTopicsEnable?: boolean;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
      */
     compressionType?: string;
     /**
-     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
      */
     connectionsMaxIdleMs?: number;
     /**
@@ -8104,19 +8352,19 @@ export interface KafkaKafkaUserConfigKafka {
      */
     defaultReplicationFactor?: number;
     /**
-     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
      */
     groupInitialRebalanceDelayMs?: number;
     /**
-     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
      */
     groupMaxSessionTimeoutMs?: number;
     /**
-     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
      */
     groupMinSessionTimeoutMs?: number;
     /**
-     * How long are delete records retained?
+     * How long are delete records retained? Example: `86400000`.
      */
     logCleanerDeleteRetentionMs?: number;
     /**
@@ -8124,7 +8372,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logCleanerMaxCompactionLagMs?: number;
     /**
-     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
      */
     logCleanerMinCleanableRatio?: number;
     /**
@@ -8136,7 +8384,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logCleanupPolicy?: string;
     /**
-     * The number of messages accumulated on a log partition before messages are flushed to disk.
+     * The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
      */
     logFlushIntervalMessages?: number;
     /**
@@ -8144,11 +8392,11 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logFlushIntervalMs?: number;
     /**
-     * The interval with which Kafka adds an entry to the offset index.
+     * The interval with which Kafka adds an entry to the offset index. Example: `4096`.
      */
     logIndexIntervalBytes?: number;
     /**
-     * The maximum size in bytes of the offset index.
+     * The maximum size in bytes of the offset index. Example: `10485760`.
      */
     logIndexSizeMaxBytes?: number;
     /**
@@ -8200,7 +8448,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logSegmentBytes?: number;
     /**
-     * The amount of time to wait before deleting a file from the filesystem.
+     * The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
      */
     logSegmentDeleteDelayMs?: number;
     /**
@@ -8208,15 +8456,15 @@ export interface KafkaKafkaUserConfigKafka {
      */
     maxConnectionsPerIp?: number;
     /**
-     * The maximum number of incremental fetch sessions that the broker will maintain.
+     * The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
      */
     maxIncrementalFetchSessionCacheSlots?: number;
     /**
-     * The maximum size of message that the server can receive.
+     * The maximum size of message that the server can receive. Example: `1048588`.
      */
     messageMaxBytes?: number;
     /**
-     * When a producer sets acks to 'all' (or '-1'), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
      */
     minInsyncReplicas?: number;
     /**
@@ -8224,7 +8472,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     numPartitions?: number;
     /**
-     * Log retention window in minutes for offsets topic.
+     * Log retention window in minutes for offsets topic. Example: `10080`.
      */
     offsetsRetentionMinutes?: number;
     /**
@@ -8275,11 +8523,11 @@ export interface KafkaKafkaUserConfigKafka {
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
     /**
-     * Enable certificate/SSL authentication. The default value is `true`.
+     * Enable certificate/SSL authentication. Default: `true`.
      */
     certificate?: boolean;
     /**
-     * Enable SASL authentication. The default value is `false`.
+     * Enable SASL authentication. Default: `false`.
      */
     sasl?: boolean;
 }
@@ -8294,7 +8542,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerAutoOffsetReset?: string;
     /**
-     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
      */
     consumerFetchMaxBytes?: number;
     /**
@@ -8302,7 +8550,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerIsolationLevel?: string;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
      */
     consumerMaxPartitionFetchBytes?: number;
     /**
@@ -8322,7 +8570,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     offsetFlushTimeoutMs?: number;
     /**
-     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: number;
     /**
@@ -8330,15 +8578,15 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerBufferMemory?: number;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
-     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
      */
     producerLingerMs?: number;
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
      */
     producerMaxRequestSize?: number;
     /**
@@ -8351,45 +8599,98 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
     sessionTimeoutMs?: number;
 }
 
+export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
+    /**
+     * AWS config for Secret Provider
+     */
+    aws?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws;
+    /**
+     * Name of the secret provider. Used to reference secrets in connector config.
+     */
+    name: string;
+    /**
+     * Vault Config for Secret Provider
+     */
+    vault?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectSecretProviderAws {
+    /**
+     * Access key used to authenticate with aws.
+     */
+    accessKey?: string;
+    /**
+     * Enum: `credentials`. Auth method of the vault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Region used to lookup secrets with AWS SecretManager.
+     */
+    region: string;
+    /**
+     * Secret key used to authenticate with aws.
+     */
+    secretKey?: string;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
+    /**
+     * Address of the Vault server.
+     */
+    address: string;
+    /**
+     * Enum: `token`. Auth method of the vault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Enum: `1`, `2`, and newer. KV Secrets Engine version of the Vault server instance.
+     */
+    engineVersion?: number;
+    /**
+     * Token used to authenticate with vault and auth method `token`.
+     */
+    token?: string;
+}
+
 export interface KafkaKafkaUserConfigKafkaRestConfig {
     /**
-     * If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.
+     * If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
      */
     consumerEnableAutoCommit?: boolean;
     /**
-     * Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     * Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
      */
     consumerRequestMaxBytes?: number;
     /**
-     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
      */
     consumerRequestTimeoutMs?: number;
     /**
-     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
      */
     nameStrategy?: string;
     /**
-     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
      */
     nameStrategyValidation?: boolean;
     /**
-     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
      */
     producerAcks?: string;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
-     * Wait for up to the given delay to allow batching records together. The default value is `0`.
+     * Wait for up to the given delay to allow batching records together. Default: `0`.
      */
     producerLingerMs?: number;
     /**
-     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
      */
     producerMaxRequestSize?: number;
     /**
-     * Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     * Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
      */
     simpleconsumerPoolSizeMax?: number;
 }
@@ -8493,7 +8794,7 @@ export interface KafkaKafkaUserConfigTieredStorage {
 
 export interface KafkaKafkaUserConfigTieredStorageLocalCache {
     /**
-     * Local cache size in bytes.
+     * Local cache size in bytes. Example: `1073741824`.
      *
      * @deprecated This property is deprecated.
      */
@@ -8543,15 +8844,15 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -8572,11 +8873,11 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -8587,23 +8888,23 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     emitCheckpointsEnabled?: boolean;
     /**
-     * Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
      */
     emitCheckpointsIntervalSeconds?: number;
     /**
-     * Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
      */
     groups?: string;
     /**
-     * Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
      */
     groupsExclude?: string;
     /**
-     * How out-of-sync a remote partition can be before it is resynced.
+     * How out-of-sync a remote partition can be before it is resynced. Example: `100`.
      */
     offsetLagMax?: number;
     /**
-     * Whether to periodically check for new consumer groups. Defaults to 'true'.
+     * Whether to periodically check for new consumer groups. Defaults to `true`.
      */
     refreshGroupsEnabled?: boolean;
     /**
@@ -8611,7 +8912,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     refreshGroupsIntervalSeconds?: number;
     /**
-     * Whether to periodically check for new topics and partitions. Defaults to 'true'.
+     * Whether to periodically check for new topics and partitions. Defaults to `true`.
      */
     refreshTopicsEnabled?: boolean;
     /**
@@ -8623,7 +8924,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     syncGroupOffsetsEnabled?: boolean;
     /**
-     * Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
      */
     syncGroupOffsetsIntervalSeconds?: number;
     /**
@@ -8631,7 +8932,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     syncTopicConfigsEnabled?: boolean;
     /**
-     * 'tasks.max' is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
      */
     tasksMaxPerCpu?: number;
 }
@@ -8866,19 +9167,19 @@ export interface M3AggregatorM3aggregator {
 
 export interface M3AggregatorM3aggregatorUserConfig {
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -8903,11 +9204,11 @@ export interface M3AggregatorM3aggregatorUserConfig {
 
 export interface M3AggregatorM3aggregatorUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
@@ -9009,19 +9310,19 @@ export interface M3DbM3dbUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.M3DbM3dbUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -9055,7 +9356,7 @@ export interface M3DbM3dbUserConfig {
      */
     privateAccess?: outputs.M3DbM3dbUserConfigPrivateAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -9071,7 +9372,7 @@ export interface M3DbM3dbUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -9082,30 +9383,30 @@ export interface M3DbM3dbUserConfig {
 
 export interface M3DbM3dbUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface M3DbM3dbUserConfigLimits {
     /**
-     * The maximum number of blocks that can be read in a given lookback period.
+     * The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
      */
     maxRecentlyQueriedSeriesBlocks?: number;
     /**
-     * The maximum number of disk bytes that can be read in a given lookback period.
+     * The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
      */
     maxRecentlyQueriedSeriesDiskBytesRead?: number;
     /**
-     * The lookback period for 'max*recently*queried*series*blocks' and 'max*recently*queried*series*disk*bytes*read'.
+     * The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
      */
     maxRecentlyQueriedSeriesLookback?: string;
     /**
-     * The maximum number of docs fetched in single query.
+     * The maximum number of docs fetched in single query. Example: `100000`.
      */
     queryDocs?: number;
     /**
@@ -9113,7 +9414,7 @@ export interface M3DbM3dbUserConfigLimits {
      */
     queryRequireExhaustive?: boolean;
     /**
-     * The maximum number of series fetched in single query.
+     * The maximum number of series fetched in single query. Example: `100000`.
      */
     querySeries?: number;
 }
@@ -9138,7 +9439,7 @@ export interface M3DbM3dbUserConfigM3TagOptions {
 
 export interface M3DbM3dbUserConfigNamespace {
     /**
-     * The name of the namespace.
+     * The name of the namespace. Example: `default`.
      */
     name: string;
     /**
@@ -9146,7 +9447,7 @@ export interface M3DbM3dbUserConfigNamespace {
      */
     options?: outputs.M3DbM3dbUserConfigNamespaceOptions;
     /**
-     * The resolution for an aggregated namespace.
+     * The resolution for an aggregated namespace. Example: `30s`.
      */
     resolution?: string;
     /**
@@ -9172,23 +9473,23 @@ export interface M3DbM3dbUserConfigNamespaceOptions {
 
 export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
     /**
-     * Controls how long we wait before expiring stale data.
+     * Controls how long we wait before expiring stale data. Example: `5m`.
      */
     blockDataExpiryDuration?: string;
     /**
-     * Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
      */
     blocksizeDuration?: string;
     /**
-     * Controls how far into the future writes to the namespace will be accepted.
+     * Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
      */
     bufferFutureDuration?: string;
     /**
-     * Controls how far into the past writes to the namespace will be accepted.
+     * Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
      */
     bufferPastDuration?: string;
     /**
-     * Controls the duration of time that M3DB will retain data for the namespace.
+     * Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
      */
     retentionPeriodDuration?: string;
 }
@@ -9224,11 +9525,11 @@ export interface M3DbM3dbUserConfigRulesMapping {
      */
     drop?: boolean;
     /**
-     * Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
      */
     filter: string;
     /**
-     * The (optional) name of the rule.
+     * The (optional) name of the rule. Example: `important disk metrics`.
      */
     name?: string;
     /**
@@ -9253,22 +9554,22 @@ export interface M3DbM3dbUserConfigRulesMapping {
 
 export interface M3DbM3dbUserConfigRulesMappingNamespacesObject {
     /**
-     * The resolution for the matching namespace.
+     * The resolution for the matching namespace. Example: `30s`.
      */
     resolution: string;
     /**
-     * The retention period of the matching namespace.
+     * The retention period of the matching namespace. Example: `48h`.
      */
     retention?: string;
 }
 
 export interface M3DbM3dbUserConfigRulesMappingTag {
     /**
-     * Name of the tag.
+     * Name of the tag. Example: `myTag`.
      */
     name: string;
     /**
-     * Value of the tag.
+     * Value of the tag. Example: `myValue`.
      */
     value: string;
 }
@@ -9397,31 +9698,31 @@ export interface MySqlMysqlUserConfig {
      */
     adminPassword?: string;
     /**
-     * Custom username for admin user. This must be set only when a new service is being created.
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      */
     adminUsername?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: number;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
     /**
-     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
      */
     binlogRetentionPeriod?: number;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.MySqlMysqlUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -9447,7 +9748,7 @@ export interface MySqlMysqlUserConfig {
      */
     privatelinkAccess?: outputs.MySqlMysqlUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -9455,7 +9756,7 @@ export interface MySqlMysqlUserConfig {
      */
     publicAccess?: outputs.MySqlMysqlUserConfigPublicAccess;
     /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      */
     recoveryTargetTime?: string;
     /**
@@ -9463,7 +9764,7 @@ export interface MySqlMysqlUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -9474,26 +9775,26 @@ export interface MySqlMysqlUserConfig {
 
 export interface MySqlMysqlUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface MySqlMysqlUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: string;
     /**
@@ -9501,66 +9802,66 @@ export interface MySqlMysqlUserConfigMigration {
      */
     method?: string;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: number;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: string;
 }
 
 export interface MySqlMysqlUserConfigMysql {
     /**
-     * The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+     * The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
      */
     connectTimeout?: number;
     /**
-     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
      */
     defaultTimeZone?: string;
     /**
-     * The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+     * The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
      */
     groupConcatMaxLen?: number;
     /**
-     * The time, in seconds, before cached statistics expire.
+     * The time, in seconds, before cached statistics expire. Example: `86400`.
      */
     informationSchemaStatsExpiry?: number;
     /**
-     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      */
     innodbChangeBufferMaxSize?: number;
     /**
-     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
      */
     innodbFlushNeighbors?: number;
     /**
-     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
      */
     innodbFtMinTokenSize?: number;
     /**
-     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      */
     innodbFtServerStopwordTable?: string;
     /**
-     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
      */
     innodbLockWaitTimeout?: number;
     /**
-     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
      */
     innodbLogBufferSize?: number;
     /**
-     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
      */
     innodbOnlineAlterLogMaxSize?: number;
     /**
@@ -9568,7 +9869,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbPrintAllDeadlocks?: boolean;
     /**
-     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      */
     innodbReadIoThreads?: number;
     /**
@@ -9576,15 +9877,15 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbRollbackOnTimeout?: boolean;
     /**
-     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
      */
     innodbThreadConcurrency?: number;
     /**
-     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      */
     innodbWriteIoThreads?: number;
     /**
-     * The number of seconds the server waits for activity on an interactive connection before closing it.
+     * The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
      */
     interactiveTimeout?: number;
     /**
@@ -9592,27 +9893,27 @@ export interface MySqlMysqlUserConfigMysql {
      */
     internalTmpMemStorageEngine?: string;
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
      */
     longQueryTime?: number;
     /**
-     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
      */
     maxAllowedPacket?: number;
     /**
-     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
      */
     maxHeapTableSize?: number;
     /**
-     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
      */
     netBufferLength?: number;
     /**
-     * The number of seconds to wait for more data from a connection before aborting the read.
+     * The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
      */
     netReadTimeout?: number;
     /**
-     * The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
      */
     netWriteTimeout?: number;
     /**
@@ -9620,11 +9921,11 @@ export interface MySqlMysqlUserConfigMysql {
      */
     slowQueryLog?: boolean;
     /**
-     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
      */
     sortBufferSize?: number;
     /**
-     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
      */
     sqlMode?: string;
     /**
@@ -9632,11 +9933,11 @@ export interface MySqlMysqlUserConfigMysql {
      */
     sqlRequirePrimaryKey?: boolean;
     /**
-     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
      */
     tmpTableSize?: number;
     /**
-     * The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
      */
     waitTimeout?: number;
 }
@@ -9779,7 +10080,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
     customDomain?: string;
     /**
@@ -9795,15 +10096,15 @@ export interface OpenSearchOpensearchUserConfig {
      */
     indexTemplate?: outputs.OpenSearchOpensearchUserConfigIndexTemplate;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.OpenSearchOpensearchUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -9813,7 +10114,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     keepIndexRefreshInterval?: boolean;
     /**
-     * Use indexPatterns instead. The default value is `0`.
+     * Use indexPatterns instead. Default: `0`.
      */
     maxIndexCount?: number;
     /**
@@ -9841,7 +10142,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     privatelinkAccess?: outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -9849,7 +10150,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     publicAccess?: outputs.OpenSearchOpensearchUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -9861,7 +10162,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -9872,92 +10173,92 @@ export interface OpenSearchOpensearchUserConfig {
 
 export interface OpenSearchOpensearchUserConfigIndexPattern {
     /**
-     * Maximum number of indexes to keep.
+     * Maximum number of indexes to keep. Example: `3`.
      */
     maxIndexCount: number;
     /**
-     * fnmatch pattern.
+     * fnmatch pattern. Example: `logs_*_foo_*`.
      */
     pattern: string;
     /**
-     * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. The default value is `creationDate`.
+     * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. Default: `creationDate`.
      */
     sortingAlgorithm?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexTemplate {
     /**
-     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
      */
     mappingNestedObjectsLimit?: number;
     /**
-     * The number of replicas each primary shard has.
+     * The number of replicas each primary shard has. Example: `1`.
      */
     numberOfReplicas?: number;
     /**
-     * The number of primary shards that an index should have.
+     * The number of primary shards that an index should have. Example: `1`.
      */
     numberOfShards?: number;
 }
 
 export interface OpenSearchOpensearchUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpenid {
     /**
-     * The ID of the OpenID Connect client configured in your IdP. Required.
+     * The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
      */
     clientId: string;
     /**
-     * The client secret of the OpenID Connect client configured in your IdP. Required.
+     * The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
      */
     clientSecret: string;
     /**
-     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      */
     connectUrl: string;
     /**
-     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
      */
     enabled: boolean;
     /**
-     * HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     * HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
      */
     header?: string;
     /**
-     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
      */
     jwtHeader?: string;
     /**
-     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferredUsername`.
      */
     jwtUrlParameter?: string;
     /**
-     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
      */
     refreshRateLimitCount?: number;
     /**
-     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
      */
     refreshRateLimitTimeWindowMs?: number;
     /**
-     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
      */
     rolesKey?: string;
     /**
-     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
      */
     scope?: string;
     /**
-     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional.
+     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional. Example: `preferredUsername`.
      */
     subjectKey?: string;
 }
@@ -9976,7 +10277,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     authFailureListeners?: outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
     /**
-     * Controls the number of shards allowed in the cluster per data node.
+     * Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      */
     clusterMaxShardsPerNode?: number;
     /**
@@ -9984,19 +10285,19 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: number;
     /**
-     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      */
     emailSenderName?: string;
     /**
-     * Sender password for Opensearch alerts to authenticate with SMTP server.
+     * Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
      */
     emailSenderPassword?: string;
     /**
-     * Sender username for Opensearch alerts.
+     * Sender username for Opensearch alerts. Example: `jane@example.com`.
      */
     emailSenderUsername?: string;
     /**
-     * Enable/Disable security audit. The default value is `false`.
+     * Enable/Disable security audit. Default: `false`.
      */
     enableSecurityAudit?: boolean;
     /**
@@ -10004,11 +10305,11 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     httpMaxContentLength?: number;
     /**
-     * The max size of allowed headers, in bytes.
+     * The max size of allowed headers, in bytes. Example: `8192`.
      */
     httpMaxHeaderSize?: number;
     /**
-     * The max length of an HTTP URL, in bytes.
+     * The max length of an HTTP URL, in bytes. Example: `4096`.
      */
     httpMaxInitialLineLength?: number;
     /**
@@ -10044,27 +10345,27 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     indicesRecoveryMaxConcurrentFileChunks?: number;
     /**
-     * Specifies whether ISM is enabled or not. The default value is `true`.
+     * Specifies whether ISM is enabled or not. Default: `true`.
      */
     ismEnabled?: boolean;
     /**
-     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
      */
     ismHistoryEnabled?: boolean;
     /**
-     * The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * The maximum age before rolling over the audit history index in hours. Default: `24`.
      */
     ismHistoryMaxAge?: number;
     /**
-     * The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * The maximum number of documents before rolling over the audit history index. Default: `2500000`.
      */
     ismHistoryMaxDocs?: number;
     /**
-     * The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * The time between rollover checks for the audit history index in hours. Default: `8`.
      */
     ismHistoryRolloverCheckPeriod?: number;
     /**
-     * How long audit history indices are kept in days. The default value is `30`.
+     * How long audit history indices are kept in days. Default: `30`.
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
@@ -10080,11 +10381,11 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     reindexRemoteWhitelists?: string[];
     /**
-     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      */
     scriptMaxCompilationsRate?: string;
     /**
-     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      */
     searchMaxBuckets?: number;
     /**
@@ -10143,7 +10444,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
 
 export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
     /**
-     * The number of login attempts allowed before login is blocked.
+     * The number of login attempts allowed before login is blocked. Example: `10`.
      */
     allowedTries?: number;
     /**
@@ -10151,19 +10452,19 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     authenticationBackend?: string;
     /**
-     * The duration of time that login remains blocked after a failed login.
+     * The duration of time that login remains blocked after a failed login. Example: `600`.
      */
     blockExpirySeconds?: number;
     /**
-     * internal*authentication*backend*limiting.max*blocked_clients.
+     * internal*authentication*backend*limiting.max*blocked_clients. Example: `100000`.
      */
     maxBlockedClients?: number;
     /**
-     * The maximum number of tracked IP addresses that have failed login.
+     * The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      */
     maxTrackedClients?: number;
     /**
-     * The window of time in which the value for `allowedTries` is enforced.
+     * The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      */
     timeWindowSeconds?: number;
     /**
@@ -10174,23 +10475,23 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
 
 export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
     /**
-     * The number of login attempts allowed before login is blocked.
+     * The number of login attempts allowed before login is blocked. Example: `10`.
      */
     allowedTries?: number;
     /**
-     * The duration of time that login remains blocked after a failed login.
+     * The duration of time that login remains blocked after a failed login. Example: `600`.
      */
     blockExpirySeconds?: number;
     /**
-     * The maximum number of blocked IP addresses.
+     * The maximum number of blocked IP addresses. Example: `100000`.
      */
     maxBlockedClients?: number;
     /**
-     * The maximum number of tracked IP addresses that have failed login.
+     * The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      */
     maxTrackedClients?: number;
     /**
-     * The window of time in which the value for `allowedTries` is enforced.
+     * The window of time in which the value for `allowedTries` is enforced. Example: `3600`.
      */
     timeWindowSeconds?: number;
     /**
@@ -10201,15 +10502,15 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
     /**
-     * Enable or disable OpenSearch Dashboards. The default value is `true`.
+     * Enable or disable OpenSearch Dashboards. Default: `true`.
      */
     enabled?: boolean;
     /**
-     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
      */
     maxOldSpaceSize?: number;
     /**
-     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: number;
 }
@@ -10261,31 +10562,34 @@ export interface OpenSearchOpensearchUserConfigPublicAccess {
 
 export interface OpenSearchOpensearchUserConfigSaml {
     /**
-     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
+     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
      */
     enabled: boolean;
     /**
-     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+     * The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
      */
     idpEntityId: string;
     /**
-     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+     * The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      */
     idpMetadataUrl: string;
     /**
-     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+     * This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     idpPemtrustedcasContent?: string;
     /**
-     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
+     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
      */
     rolesKey?: string;
     /**
-     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+     * The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
      */
     spEntityId: string;
     /**
-     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
+     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
      */
     subjectKey?: string;
 }
@@ -10507,15 +10811,15 @@ export interface PgPgUserConfig {
      */
     adminPassword?: string;
     /**
-     * Custom username for admin user. This must be set only when a new service is being created.
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      */
     adminUsername?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      */
     backupHour?: number;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
     /**
@@ -10523,15 +10827,15 @@ export interface PgPgUserConfig {
      */
     enableIpv6?: boolean;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.PgPgUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -10555,11 +10859,11 @@ export interface PgPgUserConfig {
      */
     pgReadReplica?: boolean;
     /**
-     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     pgServiceToForkFrom?: string;
     /**
-     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+     * Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
      */
     pgStatMonitorEnable?: boolean;
     /**
@@ -10568,6 +10872,8 @@ export interface PgPgUserConfig {
     pgVersion?: string;
     /**
      * System-wide settings for the pgaudit extension
+     *
+     * @deprecated This property is deprecated.
      */
     pgaudit?: outputs.PgPgUserConfigPgaudit;
     /**
@@ -10587,7 +10893,7 @@ export interface PgPgUserConfig {
      */
     privatelinkAccess?: outputs.PgPgUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -10595,7 +10901,7 @@ export interface PgPgUserConfig {
      */
     publicAccess?: outputs.PgPgUserConfigPublicAccess;
     /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      */
     recoveryTargetTime?: string;
     /**
@@ -10603,11 +10909,11 @@ export interface PgPgUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Example: `41.5`.
      */
     sharedBuffersPercentage?: number;
     /**
@@ -10627,33 +10933,33 @@ export interface PgPgUserConfig {
      */
     variant?: string;
     /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
      */
     workMem?: number;
 }
 
 export interface PgPgUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface PgPgUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: string;
     /**
@@ -10661,19 +10967,19 @@ export interface PgPgUserConfigMigration {
      */
     method?: string;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: number;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: string;
 }
@@ -10688,7 +10994,7 @@ export interface PgPgUserConfigPg {
      */
     autovacuumAnalyzeThreshold?: number;
     /**
-     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
      */
     autovacuumFreezeMaxAge?: number;
     /**
@@ -10716,23 +11022,23 @@ export interface PgPgUserConfigPg {
      */
     autovacuumVacuumThreshold?: number;
     /**
-     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
      */
     bgwriterDelay?: number;
     /**
-     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
      */
     bgwriterFlushAfter?: number;
     /**
-     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
      */
     bgwriterLruMaxpages?: number;
     /**
-     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
      */
     bgwriterLruMultiplier?: number;
     /**
-     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
      */
     deadlockTimeout?: number;
     /**
@@ -10824,11 +11130,11 @@ export interface PgPgUserConfigPg {
      */
     maxWorkerProcesses?: number;
     /**
-     * Sets the time interval to run pg_partman's scheduled tasks.
+     * Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
      */
     pgPartmanBgwDotInterval?: number;
     /**
-     * Controls which role to use for pg_partman's scheduled background tasks.
+     * Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
      */
     pgPartmanBgwDotRole?: string;
     /**
@@ -10836,7 +11142,7 @@ export interface PgPgUserConfigPg {
      */
     pgStatMonitorDotPgsmEnableQueryPlan?: boolean;
     /**
-     * Sets the maximum number of buckets.
+     * Sets the maximum number of buckets. Example: `10`.
      */
     pgStatMonitorDotPgsmMaxBuckets?: number;
     /**
@@ -10844,15 +11150,15 @@ export interface PgPgUserConfigPg {
      */
     pgStatStatementsDotTrack?: string;
     /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
      */
     tempFileLimit?: number;
     /**
-     * PostgreSQL service timezone.
+     * PostgreSQL service timezone. Example: `Europe/Helsinki`.
      */
     timezone?: string;
     /**
-     * Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
      */
     trackActivityQuerySize?: number;
     /**
@@ -10868,42 +11174,42 @@ export interface PgPgUserConfigPg {
      */
     trackIoTiming?: string;
     /**
-     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
      */
     walSenderTimeout?: number;
     /**
-     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      */
     walWriterDelay?: number;
 }
 
 export interface PgPgUserConfigPgQualstats {
     /**
-     * Enable / Disable pg_qualstats. The default value is `false`.
+     * Enable / Disable pg_qualstats. Default: `false`.
      *
      * @deprecated This property is deprecated.
      */
     enabled?: boolean;
     /**
-     * Error estimation num threshold to save quals. The default value is `0`.
+     * Error estimation num threshold to save quals. Default: `0`.
      *
      * @deprecated This property is deprecated.
      */
     minErrEstimateNum?: number;
     /**
-     * Error estimation ratio threshold to save quals. The default value is `0`.
+     * Error estimation ratio threshold to save quals. Default: `0`.
      *
      * @deprecated This property is deprecated.
      */
     minErrEstimateRatio?: number;
     /**
-     * Enable / Disable pgQualstats constants tracking. The default value is `true`.
+     * Enable / Disable pgQualstats constants tracking. Default: `true`.
      *
      * @deprecated This property is deprecated.
      */
     trackConstants?: boolean;
     /**
-     * Track quals on system catalogs too. The default value is `false`.
+     * Track quals on system catalogs too. Default: `false`.
      *
      * @deprecated This property is deprecated.
      */
@@ -10912,78 +11218,106 @@ export interface PgPgUserConfigPgQualstats {
 
 export interface PgPgUserConfigPgaudit {
     /**
-     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     featureEnabled?: boolean;
     /**
-     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     logCatalog?: boolean;
     /**
-     * Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+     * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logClient?: boolean;
     /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+     *
+     * @deprecated This property is deprecated.
      */
     logLevel?: string;
     /**
-     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+     *
+     * @deprecated This property is deprecated.
      */
     logMaxStringLength?: number;
     /**
-     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     logNestedStatements?: boolean;
     /**
-     * Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+     * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logParameter?: boolean;
     /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. The default value is `0`.
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
+     *
+     * @deprecated This property is deprecated.
      */
     logParameterMaxSize?: number;
     /**
-     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logRelation?: boolean;
     /**
-     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logRows?: boolean;
     /**
-     * Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+     * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     logStatement?: boolean;
     /**
-     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     logStatementOnce?: boolean;
     /**
      * Specifies which classes of statements will be logged by session audit logging.
+     *
+     * @deprecated This property is deprecated.
      */
     logs?: string[];
     /**
      * Specifies the master role to use for object audit logging.
+     *
+     * @deprecated This property is deprecated.
      */
     role?: string;
 }
 
 export interface PgPgUserConfigPgbouncer {
     /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
      */
     autodbIdleTimeout?: number;
     /**
-     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
      */
     autodbMaxDbConnections?: number;
     /**
-     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
+     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
      */
     autodbPoolMode?: string;
     /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
+     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
      */
     autodbPoolSize?: number;
     /**
@@ -10991,26 +11325,26 @@ export interface PgPgUserConfigPgbouncer {
      */
     ignoreStartupParameters?: string[];
     /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
      */
     minPoolSize?: number;
     /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
      */
     serverIdleTimeout?: number;
     /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
      */
     serverLifetime?: number;
     /**
-     * Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
+     * Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
      */
     serverResetQueryAlways?: boolean;
 }
 
 export interface PgPgUserConfigPglookout {
     /**
-     * Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+     * Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
      */
     maxFailoverReplicationTimeLag?: number;
 }
@@ -11062,7 +11396,7 @@ export interface PgPgUserConfigPublicAccess {
 
 export interface PgPgUserConfigTimescaledb {
     /**
-     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
+     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
      */
     maxBackgroundWorkers?: number;
 }
@@ -11167,15 +11501,15 @@ export interface RedisRedisUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.RedisRedisUserConfigIpFilterObject[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      */
     ipFilterStrings?: string[];
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      *
      * @deprecated Deprecated. Use `ipFilterString` instead.
      */
@@ -11193,7 +11527,7 @@ export interface RedisRedisUserConfig {
      */
     privatelinkAccess?: outputs.RedisRedisUserConfigPrivatelinkAccess;
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      */
     projectToForkFrom?: string;
     /**
@@ -11201,7 +11535,7 @@ export interface RedisRedisUserConfig {
      */
     publicAccess?: outputs.RedisRedisUserConfigPublicAccess;
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
     /**
@@ -11209,19 +11543,19 @@ export interface RedisRedisUserConfig {
      */
     redisAclChannelsDefault?: string;
     /**
-     * Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+     * Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
      */
     redisIoThreads?: number;
     /**
-     * LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
      */
     redisLfuDecayTime?: number;
     /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
      */
     redisLfuLogFactor?: number;
     /**
-     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
      */
     redisMaxmemoryPolicy?: string;
     /**
@@ -11229,23 +11563,23 @@ export interface RedisRedisUserConfig {
      */
     redisNotifyKeyspaceEvents?: string;
     /**
-     * Set number of Redis databases. Changing this will cause a restart of the Redis service.
+     * Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
      */
     redisNumberOfDatabases?: number;
     /**
-     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     redisPersistence?: string;
     /**
-     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
      */
     redisPubsubClientOutputBufferLimit?: number;
     /**
-     * Require SSL to access Redis. The default value is `true`.
+     * Require SSL to access Redis. Default: `true`.
      */
     redisSsl?: boolean;
     /**
-     * Redis idle connection timeout in seconds. The default value is `300`.
+     * Redis idle connection timeout in seconds. Default: `300`.
      */
     redisTimeout?: number;
     /**
@@ -11257,7 +11591,7 @@ export interface RedisRedisUserConfig {
      */
     serviceLog?: boolean;
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
     /**
@@ -11268,26 +11602,26 @@ export interface RedisRedisUserConfig {
 
 export interface RedisRedisUserConfigIpFilterObject {
     /**
-     * Description for IP filter list entry.
+     * Description for IP filter list entry. Example: `Production service IP range`.
      */
     description?: string;
     /**
-     * CIDR address block.
+     * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
 }
 
 export interface RedisRedisUserConfigMigration {
     /**
-     * Database name for bootstrapping the initial connection.
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
      */
     dbname?: string;
     /**
-     * Hostname or IP address of the server where to migrate data from.
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
      */
     ignoreDbs?: string;
     /**
@@ -11295,19 +11629,19 @@ export interface RedisRedisUserConfigMigration {
      */
     method?: string;
     /**
-     * Password for authentication with the server where to migrate data from.
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server where to migrate data from.
+     * Port number of the server where to migrate data from. Example: `1234`.
      */
     port: number;
     /**
-     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * The server where to migrate data from is secured with SSL. Default: `true`.
      */
     ssl?: boolean;
     /**
-     * User name for authentication with the server where to migrate data from.
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
      */
     username?: string;
 }
@@ -11383,7 +11717,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfig {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      */
     autoOffsetReset?: string;
     /**
@@ -11391,43 +11725,43 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     columns: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
     /**
-     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
      */
     dataFormat: string;
     /**
-     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. The default value is `basic`.
+     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
      */
     dateTimeInputFormat?: string;
     /**
-     * Kafka consumers group. The default value is `clickhouse`.
+     * Kafka consumers group. Default: `clickhouse`.
      */
     groupName: string;
     /**
-     * Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+     * Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
      */
     handleErrorMode?: string;
     /**
-     * Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+     * Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
      */
     maxBlockSize?: number;
     /**
-     * The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+     * The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
      */
     maxRowsPerMessage?: number;
     /**
-     * Name of the table.
+     * Name of the table. Example: `events`.
      */
     name: string;
     /**
-     * The number of consumers per table per replica. The default value is `1`.
+     * The number of consumers per table per replica. Default: `1`.
      */
     numConsumers?: number;
     /**
-     * Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+     * Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
      */
     pollMaxBatchSize?: number;
     /**
-     * Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+     * Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      */
     skipBrokenMessages?: number;
     /**
@@ -11438,18 +11772,18 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
     /**
-     * Column name.
+     * Column name. Example: `key`.
      */
     name: string;
     /**
-     * Column type.
+     * Column type. Example: `UInt64`.
      */
     type: string;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
     /**
-     * Name of the topic.
+     * Name of the topic. Example: `topicName`.
      */
     name: string;
 }
@@ -11463,11 +11797,11 @@ export interface ServiceIntegrationClickhousePostgresqlUserConfig {
 
 export interface ServiceIntegrationClickhousePostgresqlUserConfigDatabase {
     /**
-     * PostgreSQL database to expose. The default value is `defaultdb`.
+     * PostgreSQL database to expose. Default: `defaultdb`.
      */
     database?: string;
     /**
-     * PostgreSQL schema to expose. The default value is `public`.
+     * PostgreSQL schema to expose. Default: `public`.
      */
     schema?: string;
 }
@@ -11506,9 +11840,13 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     kafkaCustomMetrics?: string[];
     /**
-     * Maximum number of JMX metrics to send.
+     * Maximum number of JMX metrics to send. Example: `2000`.
      */
     maxJmxMetrics?: number;
+    /**
+     * List of custom metrics.
+     */
+    mirrormakerCustomMetrics?: string[];
     /**
      * Datadog Opensearch Options
      */
@@ -11521,11 +11859,11 @@ export interface ServiceIntegrationDatadogUserConfig {
 
 export interface ServiceIntegrationDatadogUserConfigDatadogTag {
     /**
-     * Optional tag explanation.
+     * Optional tag explanation. Example: `Used to tag primary replica metrics`.
      */
     comment?: string;
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      */
     tag: string;
 }
@@ -11551,14 +11889,14 @@ export interface ServiceIntegrationDatadogUserConfigOpensearch {
 
 export interface ServiceIntegrationDatadogUserConfigRedis {
     /**
-     * Enable commandStats option in the agent's configuration. The default value is `false`.
+     * Enable commandStats option in the agent's configuration. Default: `false`.
      */
     commandStatsEnabled?: boolean;
 }
 
 export interface ServiceIntegrationEndpointDatadogUserConfig {
     /**
-     * Datadog API key.
+     * Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
      */
     datadogApiKey: string;
     /**
@@ -11570,15 +11908,15 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     disableConsumerStats?: boolean;
     /**
-     * Number of separate instances to fetch kafka consumer statistics with.
+     * Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      */
     kafkaConsumerCheckInstances?: number;
     /**
-     * Number of seconds that datadog will wait to get consumer statistics from brokers.
+     * Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
      */
     kafkaConsumerStatsTimeout?: number;
     /**
-     * Maximum number of partition contexts to send.
+     * Maximum number of partition contexts to send. Example: `32000`.
      */
     maxPartitionContexts?: number;
     /**
@@ -11589,105 +11927,108 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
 
 export interface ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     /**
-     * Optional tag explanation.
+     * Optional tag explanation. Example: `Used to tag primary replica metrics`.
      */
     comment?: string;
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      */
     tag: string;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
-     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
      */
     accessKey: string;
     /**
-     * AWS CloudWatch log group name.
+     * AWS CloudWatch log group name. Example: `my-log-group`.
      */
     logGroupName?: string;
     /**
-     * AWS region.
+     * AWS region. Example: `us-east-1`.
      */
     region: string;
     /**
-     * AWS secret key.
+     * AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      */
     secretKey: string;
 }
 
 export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * AWS access key. Required permissions are cloudwatch:PutMetricData.
+     * AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
      */
     accessKey: string;
     /**
-     * AWS CloudWatch Metrics Namespace.
+     * AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
      */
     namespace: string;
     /**
-     * AWS region.
+     * AWS region. Example: `us-east-1`.
      */
     region: string;
     /**
-     * AWS secret key.
+     * AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      */
     secretKey: string;
 }
 
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     ca?: string;
     /**
-     * Maximum number of days of logs to keep. The default value is `3`.
+     * Maximum number of days of logs to keep. Default: `3`.
      */
     indexDaysMax?: number;
     /**
-     * Elasticsearch index prefix. The default value is `logs`.
+     * Elasticsearch index prefix. Default: `logs`.
      */
     indexPrefix: string;
     /**
-     * Elasticsearch request timeout limit. The default value is `10.0`.
+     * Elasticsearch request timeout limit. Default: `10.0`.
      */
     timeout?: number;
     /**
-     * Elasticsearch connection URL.
+     * Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
      */
     url: string;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudBigquery {
     /**
-     * GCP project id.
+     * GCP project id. Example: `snappy-photon-12345`.
      */
     projectId: string;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
      */
     serviceAccountCredentials: string;
 }
 
 export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
     /**
-     * Google Cloud Logging log id.
+     * Google Cloud Logging log id. Example: `syslog`.
      */
     logId: string;
     /**
-     * GCP project id.
+     * GCP project id. Example: `snappy-photon-12345`.
      */
     projectId: string;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
      */
     serviceAccountCredentials: string;
 }
 
 export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
     /**
-     * Bootstrap servers.
+     * Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
      */
     bootstrapServers: string;
     /**
@@ -11695,11 +12036,11 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     saslMechanism?: string;
     /**
-     * Password for SASL PLAIN mechanism in the Kafka server.
+     * Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      */
     saslPlainPassword?: string;
     /**
-     * Username for SASL PLAIN mechanism in the Kafka server.
+     * Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      */
     saslPlainUsername?: string;
     /**
@@ -11707,15 +12048,24 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     securityProtocol: string;
     /**
-     * PEM-encoded CA certificate.
+     * PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslCaCert?: string;
     /**
-     * PEM-encoded client certificate.
+     * PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslClientCert?: string;
     /**
-     * PEM-encoded client key.
+     * PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      */
     sslClientKey?: string;
     /**
@@ -11726,62 +12076,73 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
 
 export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     ca?: string;
     /**
-     * Maximum number of days of logs to keep. The default value is `3`.
+     * Maximum number of days of logs to keep. Default: `3`.
      */
     indexDaysMax?: number;
     /**
-     * OpenSearch index prefix. The default value is `logs`.
+     * OpenSearch index prefix. Default: `logs`.
      */
     indexPrefix: string;
     /**
-     * OpenSearch request timeout limit. The default value is `10.0`.
+     * OpenSearch request timeout limit. Default: `10.0`.
      */
     timeout?: number;
     /**
-     * OpenSearch connection URL.
+     * OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
      */
     url: string;
 }
 
 export interface ServiceIntegrationEndpointExternalPostgresql {
     /**
-     * Default database.
+     * Default database. Example: `testdb`.
      */
     defaultDatabase?: string;
     /**
-     * Hostname or IP address of the server.
+     * Hostname or IP address of the server. Example: `my.server.com`.
      */
     host: string;
     /**
-     * Password.
+     * Password. Example: `jjKk45Nnd`.
      */
     password?: string;
     /**
-     * Port number of the server.
+     * Port number of the server. Example: `5432`.
      */
     port: number;
     /**
-     * Client certificate.
+     * Client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslClientCertificate?: string;
     /**
-     * Client key.
+     * Client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----`.
      */
     sslClientKey?: string;
     /**
-     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      */
     sslMode?: string;
     /**
-     * SSL Root Cert.
+     * SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     sslRootCert?: string;
     /**
-     * User name.
+     * User name. Example: `myname`.
      */
     username: string;
 }
@@ -11792,80 +12153,89 @@ export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
      */
     authentication: string;
     /**
-     * Basic authentication password.
+     * Basic authentication password. Example: `Zm9vYg==`.
      */
     basicAuthPassword?: string;
     /**
-     * Basic authentication user name.
+     * Basic authentication user name. Example: `avnadmin`.
      */
     basicAuthUsername?: string;
     /**
-     * Schema Registry URL.
+     * Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
      */
     url: string;
 }
 
 export interface ServiceIntegrationEndpointJolokiaUserConfig {
     /**
-     * Jolokia basic authentication password.
+     * Jolokia basic authentication password. Example: `yhfBNFii4C`.
      */
     basicAuthPassword?: string;
     /**
-     * Jolokia basic authentication username.
+     * Jolokia basic authentication username. Example: `jol48k51`.
      */
     basicAuthUsername?: string;
 }
 
 export interface ServiceIntegrationEndpointPrometheusUserConfig {
     /**
-     * Prometheus basic authentication password.
+     * Prometheus basic authentication password. Example: `fhyFNBjj3R`.
      */
     basicAuthPassword?: string;
     /**
-     * Prometheus basic authentication username.
+     * Prometheus basic authentication username. Example: `prom4851`.
      */
     basicAuthUsername?: string;
 }
 
 export interface ServiceIntegrationEndpointRsyslogUserConfig {
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     ca?: string;
     /**
-     * PEM encoded client certificate.
+     * PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      */
     cert?: string;
     /**
-     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
      */
     format: string;
     /**
-     * PEM encoded client key.
+     * PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      */
     key?: string;
     /**
-     * Custom syslog message format.
+     * Custom syslog message format. Example: `<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
      */
     logline?: string;
     /**
-     * Rsyslog max message size. The default value is `8192`.
+     * Rsyslog max message size. Default: `8192`.
      */
     maxMessageSize?: number;
     /**
-     * Rsyslog server port. The default value is `514`.
+     * Rsyslog server port. Default: `514`.
      */
     port: number;
     /**
-     * Structured data block for log message.
+     * Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
      */
     sd?: string;
     /**
-     * Rsyslog server IP address or hostname.
+     * Rsyslog server IP address or hostname. Example: `logs.example.com`.
      */
     server: string;
     /**
-     * Require TLS. The default value is `true`.
+     * Require TLS. Default: `true`.
      */
     tls: boolean;
 }
@@ -11890,22 +12260,22 @@ export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
     /**
-     * Identifier of a value in the metric.
+     * Identifier of a value in the metric. Example: `used`.
      */
     field: string;
     /**
-     * Identifier of the metric.
+     * Identifier of the metric. Example: `java.lang:Memory`.
      */
     metric: string;
 }
 
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
     /**
-     * Identifier of a value in the metric.
+     * Identifier of a value in the metric. Example: `used`.
      */
     field: string;
     /**
-     * Identifier of the metric.
+     * Identifier of the metric. Example: `java.lang:Memory`.
      */
     metric: string;
 }
@@ -11933,26 +12303,26 @@ export interface ServiceIntegrationKafkaConnectUserConfig {
 
 export interface ServiceIntegrationKafkaConnectUserConfigKafkaConnect {
     /**
-     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
      */
     configStorageTopic?: string;
     /**
-     * A unique string that identifies the Connect cluster group this worker belongs to.
+     * A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
      */
     groupId?: string;
     /**
-     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
      */
     offsetStorageTopic?: string;
     /**
-     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
      */
     statusStorageTopic?: string;
 }
 
 export interface ServiceIntegrationKafkaLogsUserConfig {
     /**
-     * Topic name.
+     * Topic name. Example: `mytopic`.
      */
     kafkaTopic: string;
     /**
@@ -11963,7 +12333,7 @@ export interface ServiceIntegrationKafkaLogsUserConfig {
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfig {
     /**
-     * The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, '.', '_', and '-'.
+     * The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
      */
     clusterAlias?: string;
     /**
@@ -11974,38 +12344,46 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfig {
 
 export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
     /**
-     * The minimum amount of data the server should return for a fetch request.
+     * Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+     */
+    consumerAutoOffsetReset?: string;
+    /**
+     * The minimum amount of data the server should return for a fetch request. Example: `1024`.
      */
     consumerFetchMinBytes?: number;
     /**
-     * The batch size in bytes producer will attempt to collect before publishing to broker.
+     * Set consumer max.poll.records. The default is 500. Example: `500`.
+     */
+    consumerMaxPollRecords?: number;
+    /**
+     * The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
      */
     producerBatchSize?: number;
     /**
-     * The amount of bytes producer can use for buffering data before publishing to broker.
+     * The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
      */
     producerBufferMemory?: number;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
-     * The linger time (ms) for waiting new data to arrive for publishing.
+     * The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
      */
     producerLingerMs?: number;
     /**
-     * The maximum request size in bytes.
+     * The maximum request size in bytes. Example: `1048576`.
      */
     producerMaxRequestSize?: number;
 }
 
 export interface ServiceIntegrationLogsUserConfig {
     /**
-     * Elasticsearch index retention limit. The default value is `3`.
+     * Elasticsearch index retention limit. Default: `3`.
      */
     elasticsearchIndexDaysMax?: number;
     /**
-     * Elasticsearch index prefix. The default value is `logs`.
+     * Elasticsearch index prefix. Default: `logs`.
      */
     elasticsearchIndexPrefix?: string;
     /**
@@ -12016,7 +12394,7 @@ export interface ServiceIntegrationLogsUserConfig {
 
 export interface ServiceIntegrationMetricsUserConfig {
     /**
-     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to 'metrics'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     database?: string;
     /**
@@ -12024,7 +12402,7 @@ export interface ServiceIntegrationMetricsUserConfig {
      */
     retentionDays?: number;
     /**
-     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to 'metrics_reader'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metricsReader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     roUsername?: string;
     /**
@@ -12032,7 +12410,7 @@ export interface ServiceIntegrationMetricsUserConfig {
      */
     sourceMysql?: outputs.ServiceIntegrationMetricsUserConfigSourceMysql;
     /**
-     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to 'metrics_writer'. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metricsWriter`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      */
     username?: string;
 }
@@ -12090,15 +12468,15 @@ export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
      */
     gatherTableSchema?: boolean;
     /**
-     * Truncates digest text from perf*events*statements into this many characters.
+     * Truncates digest text from perf*events*statements into this many characters. Example: `120`.
      */
     perfEventsStatementsDigestTextLimit?: number;
     /**
-     * Limits metrics from perf*events*statements.
+     * Limits metrics from perf*events*statements. Example: `250`.
      */
     perfEventsStatementsLimit?: number;
     /**
-     * Only include perf*events*statements whose last seen is less than this many seconds.
+     * Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: number;
 }
@@ -12163,15 +12541,15 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      */
     gatherTableSchema?: boolean;
     /**
-     * Truncates digest text from perf*events*statements into this many characters.
+     * Truncates digest text from perf*events*statements into this many characters. Example: `120`.
      */
     perfEventsStatementsDigestTextLimit?: number;
     /**
-     * Limits metrics from perf*events*statements.
+     * Limits metrics from perf*events*statements. Example: `250`.
      */
     perfEventsStatementsLimit?: number;
     /**
-     * Only include perf*events*statements whose last seen is less than this many seconds.
+     * Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: number;
 }

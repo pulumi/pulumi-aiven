@@ -22,15 +22,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdminPassword;
         /// <summary>
-        /// Custom username for admin user. This must be set only when a new service is being created.
+        /// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         /// </summary>
         public readonly string? AdminUsername;
         /// <summary>
-        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         /// </summary>
         public readonly int? BackupHour;
         /// <summary>
-        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
@@ -38,15 +38,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? EnableIpv6;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.PgPgUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? PgReadReplica;
         /// <summary>
-        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+        /// Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         public readonly string? PgServiceToForkFrom;
         /// <summary>
-        /// Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+        /// Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
         /// </summary>
         public readonly bool? PgStatMonitorEnable;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.PgPgUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.PgPgUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Recovery target time when forking a service. This has effect only when a new service is being created.
+        /// Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
         /// </summary>
         public readonly string? RecoveryTargetTime;
         /// <summary>
@@ -114,11 +114,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ServiceLog;
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
         /// </summary>
         public readonly double? SharedBuffersPercentage;
         /// <summary>
@@ -138,7 +138,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Variant;
         /// <summary>
-        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
         /// </summary>
         public readonly int? WorkMem;
 

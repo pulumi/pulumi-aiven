@@ -14,31 +14,34 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigSamlResult
     {
         /// <summary>
-        /// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
+        /// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
+        /// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
         /// </summary>
         public readonly string IdpEntityId;
         /// <summary>
-        /// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
+        /// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
         /// </summary>
         public readonly string IdpMetadataUrl;
         /// <summary>
-        /// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
+        /// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         public readonly string? IdpPemtrustedcasContent;
         /// <summary>
-        /// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
+        /// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
         /// </summary>
         public readonly string? RolesKey;
         /// <summary>
-        /// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
+        /// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
         /// </summary>
         public readonly string SpEntityId;
         /// <summary>
-        /// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
+        /// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
         /// </summary>
         public readonly string? SubjectKey;
 

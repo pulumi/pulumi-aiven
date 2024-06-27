@@ -16,7 +16,7 @@ public final class KafkaKafkaUserConfigTieredStorageLocalCacheArgs extends com.p
     public static final KafkaKafkaUserConfigTieredStorageLocalCacheArgs Empty = new KafkaKafkaUserConfigTieredStorageLocalCacheArgs();
 
     /**
-     * Local cache size in bytes.
+     * Local cache size in bytes. Example: `1073741824`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -27,7 +27,7 @@ public final class KafkaKafkaUserConfigTieredStorageLocalCacheArgs extends com.p
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Local cache size in bytes.
+     * @return Local cache size in bytes. Example: `1073741824`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -63,7 +63,7 @@ public final class KafkaKafkaUserConfigTieredStorageLocalCacheArgs extends com.p
         }
 
         /**
-         * @param size Local cache size in bytes.
+         * @param size Local cache size in bytes. Example: `1073741824`.
          * 
          * @return builder
          * 
@@ -78,7 +78,7 @@ public final class KafkaKafkaUserConfigTieredStorageLocalCacheArgs extends com.p
         }
 
         /**
-         * @param size Local cache size in bytes.
+         * @param size Local cache size in bytes. Example: `1073741824`.
          * 
          * @return builder
          * 

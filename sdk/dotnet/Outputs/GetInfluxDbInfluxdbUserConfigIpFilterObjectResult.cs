@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetInfluxDbInfluxdbUserConfigIpFilterObjectResult
     {
         /// <summary>
-        /// Description for IP filter list entry.
+        /// Description for IP filter list entry. Example: `Production service IP range`.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// CIDR address block.
+        /// CIDR address block. Example: `10.20.0.0/16`.
         /// </summary>
         public readonly string Network;
 

@@ -18,14 +18,14 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
     public static final ServiceIntegrationMetricsUserConfigArgs Empty = new ServiceIntegrationMetricsUserConfigArgs();
 
     /**
-     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
     @Import(name="database")
     private @Nullable Output<String> database;
 
     /**
-     * @return Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * @return Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
     public Optional<Output<String>> database() {
@@ -48,14 +48,14 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metrics_reader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
     @Import(name="roUsername")
     private @Nullable Output<String> roUsername;
 
     /**
-     * @return Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * @return Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metrics_reader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
     public Optional<Output<String>> roUsername() {
@@ -78,14 +78,14 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metrics_writer`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+     * @return Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metrics_writer`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
      * 
      */
     public Optional<Output<String>> username() {
@@ -121,7 +121,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param database Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * @param database Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param database Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to &#39;metrics&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * @param database Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param roUsername Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * @param roUsername Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metrics_reader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param roUsername Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to &#39;metrics_reader&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * @param roUsername Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metrics_reader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param username Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * @param username Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metrics_writer`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param username Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to &#39;metrics_writer&#39;. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+         * @param username Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metrics_writer`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
          * 
          * @return builder
          * 

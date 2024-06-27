@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationKafkaLogsUserConfig {
     /**
-     * @return Topic name.
+     * @return Topic name. Example: `mytopic`.
      * 
      */
     private String kafkaTopic;
@@ -25,7 +25,7 @@ public final class GetServiceIntegrationKafkaLogsUserConfig {
 
     private GetServiceIntegrationKafkaLogsUserConfig() {}
     /**
-     * @return Topic name.
+     * @return Topic name. Example: `mytopic`.
      * 
      */
     public String kafkaTopic() {

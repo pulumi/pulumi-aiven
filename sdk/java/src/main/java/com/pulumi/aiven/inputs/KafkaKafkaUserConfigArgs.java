@@ -7,6 +7,7 @@ import com.pulumi.aiven.inputs.KafkaKafkaUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectConfigArgs;
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaRestConfigArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPrivatelinkAccessArgs;
@@ -66,14 +67,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -81,14 +82,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<KafkaKafkaUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<KafkaKafkaUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -96,14 +97,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -111,7 +112,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -122,7 +123,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -164,14 +165,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enable Kafka Connect service. The default value is `false`.
+     * Enable Kafka Connect service. Default: `false`.
      * 
      */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Enable Kafka Connect service. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> kafkaConnect() {
@@ -193,15 +194,22 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.kafkaConnectConfig);
     }
 
+    @Import(name="kafkaConnectSecretProviders")
+    private @Nullable Output<List<KafkaKafkaUserConfigKafkaConnectSecretProviderArgs>> kafkaConnectSecretProviders;
+
+    public Optional<Output<List<KafkaKafkaUserConfigKafkaConnectSecretProviderArgs>>> kafkaConnectSecretProviders() {
+        return Optional.ofNullable(this.kafkaConnectSecretProviders);
+    }
+
     /**
-     * Enable Kafka-REST service. The default value is `false`.
+     * Enable Kafka-REST service. Default: `false`.
      * 
      */
     @Import(name="kafkaRest")
     private @Nullable Output<Boolean> kafkaRest;
 
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Enable Kafka-REST service. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> kafkaRest() {
@@ -254,6 +262,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * 
+     */
+    @Import(name="letsencryptSaslPrivatelink")
+    private @Nullable Output<Boolean> letsencryptSaslPrivatelink;
+
+    /**
+     * @return Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * 
+     */
+    public Optional<Output<Boolean>> letsencryptSaslPrivatelink() {
+        return Optional.ofNullable(this.letsencryptSaslPrivatelink);
+    }
+
+    /**
      * Allow access to selected service ports from private networks
      * 
      */
@@ -299,14 +322,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enable Schema-Registry service. The default value is `false`.
+     * Enable Schema-Registry service. Default: `false`.
      * 
      */
     @Import(name="schemaRegistry")
     private @Nullable Output<Boolean> schemaRegistry;
 
     /**
-     * @return Enable Schema-Registry service. The default value is `false`.
+     * @return Enable Schema-Registry service. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> schemaRegistry() {
@@ -386,10 +409,12 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.kafkaAuthenticationMethods = $.kafkaAuthenticationMethods;
         this.kafkaConnect = $.kafkaConnect;
         this.kafkaConnectConfig = $.kafkaConnectConfig;
+        this.kafkaConnectSecretProviders = $.kafkaConnectSecretProviders;
         this.kafkaRest = $.kafkaRest;
         this.kafkaRestAuthorization = $.kafkaRestAuthorization;
         this.kafkaRestConfig = $.kafkaRestConfig;
         this.kafkaVersion = $.kafkaVersion;
+        this.letsencryptSaslPrivatelink = $.letsencryptSaslPrivatelink;
         this.privateAccess = $.privateAccess;
         this.privatelinkAccess = $.privatelinkAccess;
         this.publicAccess = $.publicAccess;
@@ -469,7 +494,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -480,7 +505,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -490,7 +515,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -501,7 +526,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -511,7 +536,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -521,7 +546,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -532,7 +557,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -542,7 +567,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -552,7 +577,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -567,7 +592,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -581,7 +606,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -637,7 +662,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
+         * @param kafkaConnect Enable Kafka Connect service. Default: `false`.
          * 
          * @return builder
          * 
@@ -648,7 +673,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
+         * @param kafkaConnect Enable Kafka Connect service. Default: `false`.
          * 
          * @return builder
          * 
@@ -678,8 +703,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
             return kafkaConnectConfig(Output.of(kafkaConnectConfig));
         }
 
+        public Builder kafkaConnectSecretProviders(@Nullable Output<List<KafkaKafkaUserConfigKafkaConnectSecretProviderArgs>> kafkaConnectSecretProviders) {
+            $.kafkaConnectSecretProviders = kafkaConnectSecretProviders;
+            return this;
+        }
+
+        public Builder kafkaConnectSecretProviders(List<KafkaKafkaUserConfigKafkaConnectSecretProviderArgs> kafkaConnectSecretProviders) {
+            return kafkaConnectSecretProviders(Output.of(kafkaConnectSecretProviders));
+        }
+
+        public Builder kafkaConnectSecretProviders(KafkaKafkaUserConfigKafkaConnectSecretProviderArgs... kafkaConnectSecretProviders) {
+            return kafkaConnectSecretProviders(List.of(kafkaConnectSecretProviders));
+        }
+
         /**
-         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
+         * @param kafkaRest Enable Kafka-REST service. Default: `false`.
          * 
          * @return builder
          * 
@@ -690,7 +728,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
+         * @param kafkaRest Enable Kafka-REST service. Default: `false`.
          * 
          * @return builder
          * 
@@ -763,6 +801,27 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param letsencryptSaslPrivatelink Use Letsencrypt CA for Kafka SASL via Privatelink.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder letsencryptSaslPrivatelink(@Nullable Output<Boolean> letsencryptSaslPrivatelink) {
+            $.letsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
+            return this;
+        }
+
+        /**
+         * @param letsencryptSaslPrivatelink Use Letsencrypt CA for Kafka SASL via Privatelink.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder letsencryptSaslPrivatelink(Boolean letsencryptSaslPrivatelink) {
+            return letsencryptSaslPrivatelink(Output.of(letsencryptSaslPrivatelink));
+        }
+
+        /**
          * @param privateAccess Allow access to selected service ports from private networks
          * 
          * @return builder
@@ -826,7 +885,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param schemaRegistry Enable Schema-Registry service. The default value is `false`.
+         * @param schemaRegistry Enable Schema-Registry service. Default: `false`.
          * 
          * @return builder
          * 
@@ -837,7 +896,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param schemaRegistry Enable Schema-Registry service. The default value is `false`.
+         * @param schemaRegistry Enable Schema-Registry service. Default: `false`.
          * 
          * @return builder
          * 

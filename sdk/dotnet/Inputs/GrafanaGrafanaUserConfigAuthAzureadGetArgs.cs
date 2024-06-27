@@ -43,25 +43,25 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Authorization URL.
+        /// Authorization URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/authorize`.
         /// </summary>
         [Input("authUrl", required: true)]
         public Input<string> AuthUrl { get; set; } = null!;
 
         /// <summary>
-        /// Client ID from provider.
+        /// Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
         /// <summary>
-        /// Client secret from provider.
+        /// Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
         /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
         /// <summary>
-        /// Token URL.
+        /// Token URL. Example: `https://login.microsoftonline.com/&lt;AZURE_TENANT_ID&gt;/oauth2/v2.0/token`.
         /// </summary>
         [Input("tokenUrl", required: true)]
         public Input<string> TokenUrl { get; set; } = null!;

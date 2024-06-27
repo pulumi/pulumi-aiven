@@ -14,35 +14,35 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetGrafanaGrafanaUserConfigDateFormatsResult
     {
         /// <summary>
-        /// Default time zone for user preferences. Value 'browser' uses browser local time zone.
+        /// Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
         /// </summary>
         public readonly string? DefaultTimezone;
         /// <summary>
-        /// Moment.js style format string for cases where full date is shown.
+        /// Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
         /// </summary>
         public readonly string? FullDate;
         /// <summary>
-        /// Moment.js style format string used when a time requiring day accuracy is shown.
+        /// Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
         /// </summary>
         public readonly string? IntervalDay;
         /// <summary>
-        /// Moment.js style format string used when a time requiring hour accuracy is shown.
+        /// Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
         /// </summary>
         public readonly string? IntervalHour;
         /// <summary>
-        /// Moment.js style format string used when a time requiring minute accuracy is shown.
+        /// Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
         /// </summary>
         public readonly string? IntervalMinute;
         /// <summary>
-        /// Moment.js style format string used when a time requiring month accuracy is shown.
+        /// Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
         /// </summary>
         public readonly string? IntervalMonth;
         /// <summary>
-        /// Moment.js style format string used when a time requiring second accuracy is shown.
+        /// Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
         /// </summary>
         public readonly string? IntervalSecond;
         /// <summary>
-        /// Moment.js style format string used when a time requiring year accuracy is shown.
+        /// Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
         /// </summary>
         public readonly string? IntervalYear;
 

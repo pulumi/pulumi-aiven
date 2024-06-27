@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig
     {
         /// <summary>
-        /// Google Cloud Logging log id.
+        /// Google Cloud Logging log id. Example: `syslog`.
         /// </summary>
         public readonly string LogId;
         /// <summary>
-        /// GCP project id.
+        /// GCP project id. Example: `snappy-photon-12345`.
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+        /// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
         /// </summary>
         public readonly string ServiceAccountCredentials;
 

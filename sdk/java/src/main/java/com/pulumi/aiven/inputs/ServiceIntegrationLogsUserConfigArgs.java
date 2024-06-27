@@ -18,14 +18,14 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
     public static final ServiceIntegrationLogsUserConfigArgs Empty = new ServiceIntegrationLogsUserConfigArgs();
 
     /**
-     * Elasticsearch index retention limit. The default value is `3`.
+     * Elasticsearch index retention limit. Default: `3`.
      * 
      */
     @Import(name="elasticsearchIndexDaysMax")
     private @Nullable Output<Integer> elasticsearchIndexDaysMax;
 
     /**
-     * @return Elasticsearch index retention limit. The default value is `3`.
+     * @return Elasticsearch index retention limit. Default: `3`.
      * 
      */
     public Optional<Output<Integer>> elasticsearchIndexDaysMax() {
@@ -33,14 +33,14 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Elasticsearch index prefix. The default value is `logs`.
+     * Elasticsearch index prefix. Default: `logs`.
      * 
      */
     @Import(name="elasticsearchIndexPrefix")
     private @Nullable Output<String> elasticsearchIndexPrefix;
 
     /**
-     * @return Elasticsearch index prefix. The default value is `logs`.
+     * @return Elasticsearch index prefix. Default: `logs`.
      * 
      */
     public Optional<Output<String>> elasticsearchIndexPrefix() {
@@ -89,7 +89,7 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit. The default value is `3`.
+         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit. Default: `3`.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit. The default value is `3`.
+         * @param elasticsearchIndexDaysMax Elasticsearch index retention limit. Default: `3`.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param elasticsearchIndexPrefix Elasticsearch index prefix. The default value is `logs`.
+         * @param elasticsearchIndexPrefix Elasticsearch index prefix. Default: `logs`.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ServiceIntegrationLogsUserConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param elasticsearchIndexPrefix Elasticsearch index prefix. The default value is `logs`.
+         * @param elasticsearchIndexPrefix Elasticsearch index prefix. Default: `logs`.
          * 
          * @return builder
          * 

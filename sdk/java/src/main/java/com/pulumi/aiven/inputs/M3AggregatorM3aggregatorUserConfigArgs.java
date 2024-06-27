@@ -19,14 +19,14 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
     public static final M3AggregatorM3aggregatorUserConfigArgs Empty = new M3AggregatorM3aggregatorUserConfigArgs();
 
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -34,14 +34,14 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -49,14 +49,14 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -64,7 +64,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -75,7 +75,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -178,7 +178,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 

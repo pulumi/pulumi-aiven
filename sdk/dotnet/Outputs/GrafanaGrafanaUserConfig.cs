@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AlertingErrorOrTimeout;
         /// <summary>
-        /// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+        /// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
         /// </summary>
         public readonly int? AlertingMaxAnnotationsToKeep;
         /// <summary>
@@ -62,11 +62,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigAuthGoogle? AuthGoogle;
         /// <summary>
-        /// Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        /// Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
         /// </summary>
         public readonly string? CookieSamesite;
         /// <summary>
-        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
@@ -74,19 +74,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? DashboardPreviewsEnabled;
         /// <summary>
-        /// Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+        /// Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
         /// </summary>
         public readonly string? DashboardsMinRefreshInterval;
         /// <summary>
-        /// Dashboard versions to keep per dashboard.
+        /// Dashboard versions to keep per dashboard. Example: `20`.
         /// </summary>
         public readonly int? DashboardsVersionsToKeep;
         /// <summary>
-        /// Send 'X-Grafana-User' header to data source.
+        /// Send `X-Grafana-User` header to data source.
         /// </summary>
         public readonly bool? DataproxySendUserHeader;
         /// <summary>
-        /// Timeout for data proxy requests in seconds.
+        /// Timeout for data proxy requests in seconds. Example: `30`.
         /// </summary>
         public readonly int? DataproxyTimeout;
         /// <summary>
@@ -106,19 +106,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigExternalImageStorage? ExternalImageStorage;
         /// <summary>
-        /// Google Analytics ID.
+        /// Google Analytics ID. Example: `UA-123456-4`.
         /// </summary>
         public readonly string? GoogleAnalyticsUaId;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.GrafanaGrafanaUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -138,7 +138,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -146,7 +146,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// Name of the basebackup to restore in forked service.
+        /// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
@@ -154,7 +154,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ServiceLog;
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>

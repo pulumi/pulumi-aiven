@@ -31,31 +31,31 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// API URL. This only needs to be set when using self hosted GitLab.
+        /// API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
         /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
-        /// Authorization URL. This only needs to be set when using self hosted GitLab.
+        /// Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
         /// </summary>
         [Input("authUrl")]
         public Input<string>? AuthUrl { get; set; }
 
         /// <summary>
-        /// Client ID from provider.
+        /// Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
         /// <summary>
-        /// Client secret from provider.
+        /// Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
         /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
         /// <summary>
-        /// Token URL. This only needs to be set when using self hosted GitLab.
+        /// Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
         /// </summary>
         [Input("tokenUrl")]
         public Input<string>? TokenUrl { get; set; }

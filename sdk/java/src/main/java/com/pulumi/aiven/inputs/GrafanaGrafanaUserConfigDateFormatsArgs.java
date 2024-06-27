@@ -16,14 +16,14 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
     public static final GrafanaGrafanaUserConfigDateFormatsArgs Empty = new GrafanaGrafanaUserConfigDateFormatsArgs();
 
     /**
-     * Default time zone for user preferences. Value &#39;browser&#39; uses browser local time zone.
+     * Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
      * 
      */
     @Import(name="defaultTimezone")
     private @Nullable Output<String> defaultTimezone;
 
     /**
-     * @return Default time zone for user preferences. Value &#39;browser&#39; uses browser local time zone.
+     * @return Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
      * 
      */
     public Optional<Output<String>> defaultTimezone() {
@@ -31,14 +31,14 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
     }
 
     /**
-     * Moment.js style format string for cases where full date is shown.
+     * Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
      * 
      */
     @Import(name="fullDate")
     private @Nullable Output<String> fullDate;
 
     /**
-     * @return Moment.js style format string for cases where full date is shown.
+     * @return Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
      * 
      */
     public Optional<Output<String>> fullDate() {
@@ -46,14 +46,14 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
     }
 
     /**
-     * Moment.js style format string used when a time requiring day accuracy is shown.
+     * Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
      * 
      */
     @Import(name="intervalDay")
     private @Nullable Output<String> intervalDay;
 
     /**
-     * @return Moment.js style format string used when a time requiring day accuracy is shown.
+     * @return Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
      * 
      */
     public Optional<Output<String>> intervalDay() {
@@ -61,14 +61,14 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
     }
 
     /**
-     * Moment.js style format string used when a time requiring hour accuracy is shown.
+     * Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
      * 
      */
     @Import(name="intervalHour")
     private @Nullable Output<String> intervalHour;
 
     /**
-     * @return Moment.js style format string used when a time requiring hour accuracy is shown.
+     * @return Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
      * 
      */
     public Optional<Output<String>> intervalHour() {
@@ -76,14 +76,14 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
     }
 
     /**
-     * Moment.js style format string used when a time requiring minute accuracy is shown.
+     * Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
      * 
      */
     @Import(name="intervalMinute")
     private @Nullable Output<String> intervalMinute;
 
     /**
-     * @return Moment.js style format string used when a time requiring minute accuracy is shown.
+     * @return Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
      * 
      */
     public Optional<Output<String>> intervalMinute() {
@@ -91,14 +91,14 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
     }
 
     /**
-     * Moment.js style format string used when a time requiring month accuracy is shown.
+     * Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
      * 
      */
     @Import(name="intervalMonth")
     private @Nullable Output<String> intervalMonth;
 
     /**
-     * @return Moment.js style format string used when a time requiring month accuracy is shown.
+     * @return Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
      * 
      */
     public Optional<Output<String>> intervalMonth() {
@@ -106,14 +106,14 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
     }
 
     /**
-     * Moment.js style format string used when a time requiring second accuracy is shown.
+     * Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
      * 
      */
     @Import(name="intervalSecond")
     private @Nullable Output<String> intervalSecond;
 
     /**
-     * @return Moment.js style format string used when a time requiring second accuracy is shown.
+     * @return Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
      * 
      */
     public Optional<Output<String>> intervalSecond() {
@@ -121,14 +121,14 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
     }
 
     /**
-     * Moment.js style format string used when a time requiring year accuracy is shown.
+     * Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
      * 
      */
     @Import(name="intervalYear")
     private @Nullable Output<String> intervalYear;
 
     /**
-     * @return Moment.js style format string used when a time requiring year accuracy is shown.
+     * @return Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
      * 
      */
     public Optional<Output<String>> intervalYear() {
@@ -167,7 +167,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param defaultTimezone Default time zone for user preferences. Value &#39;browser&#39; uses browser local time zone.
+         * @param defaultTimezone Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param defaultTimezone Default time zone for user preferences. Value &#39;browser&#39; uses browser local time zone.
+         * @param defaultTimezone Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param fullDate Moment.js style format string for cases where full date is shown.
+         * @param fullDate Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param fullDate Moment.js style format string for cases where full date is shown.
+         * @param fullDate Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalDay Moment.js style format string used when a time requiring day accuracy is shown.
+         * @param intervalDay Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalDay Moment.js style format string used when a time requiring day accuracy is shown.
+         * @param intervalDay Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalHour Moment.js style format string used when a time requiring hour accuracy is shown.
+         * @param intervalHour Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalHour Moment.js style format string used when a time requiring hour accuracy is shown.
+         * @param intervalHour Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalMinute Moment.js style format string used when a time requiring minute accuracy is shown.
+         * @param intervalMinute Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalMinute Moment.js style format string used when a time requiring minute accuracy is shown.
+         * @param intervalMinute Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalMonth Moment.js style format string used when a time requiring month accuracy is shown.
+         * @param intervalMonth Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalMonth Moment.js style format string used when a time requiring month accuracy is shown.
+         * @param intervalMonth Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalSecond Moment.js style format string used when a time requiring second accuracy is shown.
+         * @param intervalSecond Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalSecond Moment.js style format string used when a time requiring second accuracy is shown.
+         * @param intervalSecond Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalYear Moment.js style format string used when a time requiring year accuracy is shown.
+         * @param intervalYear Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class GrafanaGrafanaUserConfigDateFormatsArgs extends com.pulumi.re
         }
 
         /**
-         * @param intervalYear Moment.js style format string used when a time requiring year accuracy is shown.
+         * @param intervalYear Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
          * 
          * @return builder
          * 

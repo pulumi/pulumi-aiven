@@ -157,7 +157,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationGroupProjectTimeoutsArgs']]] = None,
                  __props__=None):
         """
-        Adds and manages a [group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
+        Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
 
         ## Example Usage
 
@@ -201,7 +201,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
                  args: OrganizationGroupProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Adds and manages a [group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
+        Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
 
         ## Example Usage
 

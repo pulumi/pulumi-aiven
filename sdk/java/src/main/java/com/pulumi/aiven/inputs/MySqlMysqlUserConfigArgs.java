@@ -55,14 +55,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Custom username for admin user. This must be set only when a new service is being created.
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      * 
      */
     @Import(name="adminUsername")
     private @Nullable Output<String> adminUsername;
 
     /**
-     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * @return Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      * 
      */
     public Optional<Output<String>> adminUsername() {
@@ -70,14 +70,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     @Import(name="backupHour")
     private @Nullable Output<Integer> backupHour;
 
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     public Optional<Output<Integer>> backupHour() {
@@ -85,14 +85,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     @Import(name="backupMinute")
     private @Nullable Output<Integer> backupMinute;
 
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     public Optional<Output<Integer>> backupMinute() {
@@ -100,14 +100,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
      * 
      */
     @Import(name="binlogRetentionPeriod")
     private @Nullable Output<Integer> binlogRetentionPeriod;
 
     /**
-     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
      * 
      */
     public Optional<Output<Integer>> binlogRetentionPeriod() {
@@ -115,14 +115,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<MySqlMysqlUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<MySqlMysqlUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -130,14 +130,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -145,7 +145,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -156,7 +156,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -243,14 +243,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<Output<String>> projectToForkFrom() {
@@ -273,14 +273,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      * 
      */
     @Import(name="recoveryTargetTime")
     private @Nullable Output<String> recoveryTargetTime;
 
     /**
-     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      * 
      */
     public Optional<Output<String>> recoveryTargetTime() {
@@ -303,14 +303,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<Output<String>> serviceToForkFrom() {
@@ -418,7 +418,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created.
+         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created.
+         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param binlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+         * @param binlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param binlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+         * @param binlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -712,7 +712,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -723,7 +723,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -754,7 +754,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created.
+         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
          * 
          * @return builder
          * 
@@ -765,7 +765,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created.
+         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
          * 
          * @return builder
          * 
@@ -796,7 +796,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -807,7 +807,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 

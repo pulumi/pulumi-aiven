@@ -14,51 +14,51 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetPgPgUserConfigPgauditResult
     {
         /// <summary>
-        /// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+        /// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
         /// </summary>
         public readonly bool? FeatureEnabled;
         /// <summary>
-        /// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+        /// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
         /// </summary>
         public readonly bool? LogCatalog;
         /// <summary>
-        /// Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+        /// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
         /// </summary>
         public readonly bool? LogClient;
         /// <summary>
-        /// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
+        /// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
         /// </summary>
         public readonly string? LogLevel;
         /// <summary>
-        /// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+        /// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         /// </summary>
         public readonly int? LogMaxStringLength;
         /// <summary>
-        /// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+        /// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         /// </summary>
         public readonly bool? LogNestedStatements;
         /// <summary>
-        /// Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+        /// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
         /// </summary>
         public readonly bool? LogParameter;
         /// <summary>
-        /// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. The default value is `0`.
+        /// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with &lt;long param suppressed&gt;. Default: `0`.
         /// </summary>
         public readonly int? LogParameterMaxSize;
         /// <summary>
-        /// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+        /// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         /// </summary>
         public readonly bool? LogRelation;
         /// <summary>
-        /// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+        /// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
         /// </summary>
         public readonly bool? LogRows;
         /// <summary>
-        /// Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+        /// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
         /// </summary>
         public readonly bool? LogStatement;
         /// <summary>
-        /// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+        /// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         /// </summary>
         public readonly bool? LogStatementOnce;
         /// <summary>

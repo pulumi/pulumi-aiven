@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationKafkaLogsUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Topic name.
+        /// Topic name. Example: `mytopic`.
         /// </summary>
         [Input("kafkaTopic", required: true)]
         public Input<string> KafkaTopic { get; set; } = null!;

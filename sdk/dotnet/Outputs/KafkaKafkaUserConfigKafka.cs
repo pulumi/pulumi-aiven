@@ -18,11 +18,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? AutoCreateTopicsEnable;
         /// <summary>
-        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
         /// </summary>
         public readonly string? CompressionType;
         /// <summary>
-        /// Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+        /// Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
         /// </summary>
         public readonly int? ConnectionsMaxIdleMs;
         /// <summary>
@@ -30,19 +30,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? DefaultReplicationFactor;
         /// <summary>
-        /// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+        /// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
         /// </summary>
         public readonly int? GroupInitialRebalanceDelayMs;
         /// <summary>
-        /// The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+        /// The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
         /// </summary>
         public readonly int? GroupMaxSessionTimeoutMs;
         /// <summary>
-        /// The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+        /// The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
         /// </summary>
         public readonly int? GroupMinSessionTimeoutMs;
         /// <summary>
-        /// How long are delete records retained?
+        /// How long are delete records retained? Example: `86400000`.
         /// </summary>
         public readonly int? LogCleanerDeleteRetentionMs;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogCleanerMaxCompactionLagMs;
         /// <summary>
-        /// Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+        /// Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
         /// </summary>
         public readonly double? LogCleanerMinCleanableRatio;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? LogCleanupPolicy;
         /// <summary>
-        /// The number of messages accumulated on a log partition before messages are flushed to disk.
+        /// The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
         /// </summary>
         public readonly int? LogFlushIntervalMessages;
         /// <summary>
@@ -70,11 +70,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogFlushIntervalMs;
         /// <summary>
-        /// The interval with which Kafka adds an entry to the offset index.
+        /// The interval with which Kafka adds an entry to the offset index. Example: `4096`.
         /// </summary>
         public readonly int? LogIndexIntervalBytes;
         /// <summary>
-        /// The maximum size in bytes of the offset index.
+        /// The maximum size in bytes of the offset index. Example: `10485760`.
         /// </summary>
         public readonly int? LogIndexSizeMaxBytes;
         /// <summary>
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogSegmentBytes;
         /// <summary>
-        /// The amount of time to wait before deleting a file from the filesystem.
+        /// The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
         /// </summary>
         public readonly int? LogSegmentDeleteDelayMs;
         /// <summary>
@@ -134,15 +134,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxConnectionsPerIp;
         /// <summary>
-        /// The maximum number of incremental fetch sessions that the broker will maintain.
+        /// The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
         /// </summary>
         public readonly int? MaxIncrementalFetchSessionCacheSlots;
         /// <summary>
-        /// The maximum size of message that the server can receive.
+        /// The maximum size of message that the server can receive. Example: `1048588`.
         /// </summary>
         public readonly int? MessageMaxBytes;
         /// <summary>
-        /// When a producer sets acks to 'all' (or '-1'), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+        /// When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
         /// </summary>
         public readonly int? MinInsyncReplicas;
         /// <summary>
@@ -150,7 +150,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? NumPartitions;
         /// <summary>
-        /// Log retention window in minutes for offsets topic.
+        /// Log retention window in minutes for offsets topic. Example: `10080`.
         /// </summary>
         public readonly int? OffsetsRetentionMinutes;
         /// <summary>
