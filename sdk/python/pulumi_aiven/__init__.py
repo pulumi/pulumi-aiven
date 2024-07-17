@@ -97,6 +97,7 @@ from .get_redis_user import *
 from .get_service_component import *
 from .get_service_integration import *
 from .get_service_integration_endpoint import *
+from .get_thanos import *
 from .get_transit_gateway_vpc_attachment import *
 from .grafana import *
 from .influx_db import *
@@ -144,6 +145,7 @@ from .redis_user import *
 from .service_integration import *
 from .service_integration_endpoint import *
 from .static_ip import *
+from .thanos import *
 from .transit_gateway_vpc_attachment import *
 from ._inputs import *
 from . import outputs
@@ -732,6 +734,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/staticIp:StaticIp": "StaticIp"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/thanos",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/thanos:Thanos": "Thanos"
   }
  },
  {

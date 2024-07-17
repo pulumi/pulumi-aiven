@@ -17,6 +17,7 @@ package aiven
 import (
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"unicode"
 
@@ -71,6 +72,8 @@ func makeResource(mod string, res string) tokens.Type {
 func ref[T any](val T) *T { return &val }
 
 func Provider(ctx context.Context) tfbridge.ProviderInfo {
+	_ = os.Setenv("PROVIDER_AIVEN_ENABLE_BETA", "true")
+
 	p := pfbridge.MuxShimWithDisjointgPF(ctx,
 		shimv2.NewProvider(providerShim.NewProvider(version.Version)),
 		providerShim.NewPFProvider(version.Version))
@@ -137,6 +140,10 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_influxdb_database": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"aiven_influxdb_user":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"aiven_m3db_user":         {Tok: makeResource(mainMod, "M3dbUser")},
+
+			"aiven_thanos": {
+				Fields: map[string]*tfbridge.SchemaInfo{"thanos": {CSharpName: "ThanosServer"}},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"aiven_influxdb": {

@@ -465,6 +465,11 @@ export const getServiceIntegrationEndpoint: typeof import("./getServiceIntegrati
 export const getServiceIntegrationEndpointOutput: typeof import("./getServiceIntegrationEndpoint").getServiceIntegrationEndpointOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceIntegrationEndpoint","getServiceIntegrationEndpointOutput"], () => require("./getServiceIntegrationEndpoint"));
 
+export { GetThanosArgs, GetThanosResult, GetThanosOutputArgs } from "./getThanos";
+export const getThanos: typeof import("./getThanos").getThanos = null as any;
+export const getThanosOutput: typeof import("./getThanos").getThanosOutput = null as any;
+utilities.lazyLoad(exports, ["getThanos","getThanosOutput"], () => require("./getThanos"));
+
 export { GetTransitGatewayVpcAttachmentArgs, GetTransitGatewayVpcAttachmentResult, GetTransitGatewayVpcAttachmentOutputArgs } from "./getTransitGatewayVpcAttachment";
 export const getTransitGatewayVpcAttachment: typeof import("./getTransitGatewayVpcAttachment").getTransitGatewayVpcAttachment = null as any;
 export const getTransitGatewayVpcAttachmentOutput: typeof import("./getTransitGatewayVpcAttachment").getTransitGatewayVpcAttachmentOutput = null as any;
@@ -700,6 +705,11 @@ export type StaticIp = import("./staticIp").StaticIp;
 export const StaticIp: typeof import("./staticIp").StaticIp = null as any;
 utilities.lazyLoad(exports, ["StaticIp"], () => require("./staticIp"));
 
+export { ThanosArgs, ThanosState } from "./thanos";
+export type Thanos = import("./thanos").Thanos;
+export const Thanos: typeof import("./thanos").Thanos = null as any;
+utilities.lazyLoad(exports, ["Thanos"], () => require("./thanos"));
+
 export { TransitGatewayVpcAttachmentArgs, TransitGatewayVpcAttachmentState } from "./transitGatewayVpcAttachment";
 export type TransitGatewayVpcAttachment = import("./transitGatewayVpcAttachment").TransitGatewayVpcAttachment;
 export const TransitGatewayVpcAttachment: typeof import("./transitGatewayVpcAttachment").TransitGatewayVpcAttachment = null as any;
@@ -863,6 +873,8 @@ const _module = {
                 return new ServiceIntegrationEndpoint(name, <any>undefined, { urn })
             case "aiven:index/staticIp:StaticIp":
                 return new StaticIp(name, <any>undefined, { urn })
+            case "aiven:index/thanos:Thanos":
+                return new Thanos(name, <any>undefined, { urn })
             case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
                 return new TransitGatewayVpcAttachment(name, <any>undefined, { urn })
             default:
@@ -942,6 +954,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/redisUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegration", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegrationEndpoint", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/staticIp", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/thanos", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/transitGatewayVpcAttachment", _module)
 pulumi.runtime.registerResourcePackage("aiven", {
     version: utilities.getVersion(),

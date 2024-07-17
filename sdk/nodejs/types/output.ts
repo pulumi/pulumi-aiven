@@ -7137,6 +7137,213 @@ export interface GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
     perfEventsStatementsTimeLimit?: number;
 }
 
+export interface GetThanosComponent {
+    /**
+     * Service component name
+     */
+    component: string;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri: string;
+    /**
+     * Host name for connecting to the service component
+     */
+    host: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod: string;
+    /**
+     * Port number for connecting to the service component
+     */
+    port: number;
+    /**
+     * Network access route
+     */
+    route: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl: boolean;
+    /**
+     * DNS usage name
+     */
+    usage: string;
+}
+
+export interface GetThanosServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface GetThanosTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
+export interface GetThanosTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: string;
+}
+
+export interface GetThanosThano {
+    /**
+     * Query frontend URI.
+     */
+    queryFrontendUri: string;
+    /**
+     * Query URI.
+     */
+    queryUri: string;
+    /**
+     * Receiver ingesting remote write URI.
+     */
+    receiverIngestingRemoteWriteUri: string;
+    /**
+     * Receiver remote write URI.
+     */
+    receiverRemoteWriteUri: string;
+    /**
+     * Store URI.
+     */
+    storeUri: string;
+    /**
+     * Thanos server URIs.
+     */
+    uris: string[];
+}
+
+export interface GetThanosThanosUserConfig {
+    /**
+     * ThanosCompactor
+     */
+    compactor?: outputs.GetThanosThanosUserConfigCompactor;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilterObjects?: outputs.GetThanosThanosUserConfigIpFilterObject[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: string[];
+    /**
+     * After exceeding the limit a service alert is going to be raised (0 means not set).
+     */
+    objectStorageUsageAlertThresholdGb?: number;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.GetThanosThanosUserConfigPublicAccess;
+    /**
+     * ThanosQuery
+     */
+    query?: outputs.GetThanosThanosUserConfigQuery;
+    /**
+     * ThanosQueryFrontend
+     */
+    queryFrontend?: outputs.GetThanosThanosUserConfigQueryFrontend;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: boolean;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: boolean;
+}
+
+export interface GetThanosThanosUserConfigCompactor {
+    /**
+     * Retention time for data in days for each resolution (5m, 1h, raw).
+     */
+    retentionDays?: number;
+}
+
+export interface GetThanosThanosUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry. Example: `Production service IP range`.
+     */
+    description?: string;
+    /**
+     * CIDR address block. Example: `10.20.0.0/16`.
+     */
+    network: string;
+}
+
+export interface GetThanosThanosUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    compactor?: boolean;
+    /**
+     * Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    query?: boolean;
+    /**
+     * Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    queryFrontend?: boolean;
+    /**
+     * Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    receiverIngesting?: boolean;
+    /**
+     * Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    receiverRouting?: boolean;
+    /**
+     * Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    store?: boolean;
+}
+
+export interface GetThanosThanosUserConfigQuery {
+    /**
+     * Set the default evaluation interval for subqueries. Default: `1m`.
+     */
+    queryDefaultEvaluationInterval?: string;
+    /**
+     * The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+     */
+    queryLookbackDelta?: string;
+    /**
+     * The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+     */
+    queryMetadataDefaultTimeRange?: string;
+    /**
+     * Maximum time to process a query by the query node. Default: `2m`.
+     */
+    queryTimeout?: string;
+}
+
+export interface GetThanosThanosUserConfigQueryFrontend {
+    /**
+     * Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+     */
+    queryRangeAlignRangeWithStep?: boolean;
+}
+
 export interface GrafanaComponent {
     /**
      * Service component name
@@ -12552,5 +12759,212 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      * Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: number;
+}
+
+export interface ThanosComponent {
+    /**
+     * Service component name
+     */
+    component: string;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri: string;
+    /**
+     * Host name for connecting to the service component
+     */
+    host: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod: string;
+    /**
+     * Port number for connecting to the service component
+     */
+    port: number;
+    /**
+     * Network access route
+     */
+    route: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl: boolean;
+    /**
+     * DNS usage name
+     */
+    usage: string;
+}
+
+export interface ThanosServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface ThanosTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
+export interface ThanosTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: string;
+}
+
+export interface ThanosThanos {
+    /**
+     * Query frontend URI.
+     */
+    queryFrontendUri: string;
+    /**
+     * Query URI.
+     */
+    queryUri: string;
+    /**
+     * Receiver ingesting remote write URI.
+     */
+    receiverIngestingRemoteWriteUri: string;
+    /**
+     * Receiver remote write URI.
+     */
+    receiverRemoteWriteUri: string;
+    /**
+     * Store URI.
+     */
+    storeUri: string;
+    /**
+     * Thanos server URIs.
+     */
+    uris: string[];
+}
+
+export interface ThanosThanosUserConfig {
+    /**
+     * ThanosCompactor
+     */
+    compactor?: outputs.ThanosThanosUserConfigCompactor;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilterObjects?: outputs.ThanosThanosUserConfigIpFilterObject[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: string[];
+    /**
+     * After exceeding the limit a service alert is going to be raised (0 means not set).
+     */
+    objectStorageUsageAlertThresholdGb?: number;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.ThanosThanosUserConfigPublicAccess;
+    /**
+     * ThanosQuery
+     */
+    query?: outputs.ThanosThanosUserConfigQuery;
+    /**
+     * ThanosQueryFrontend
+     */
+    queryFrontend?: outputs.ThanosThanosUserConfigQueryFrontend;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: boolean;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: boolean;
+}
+
+export interface ThanosThanosUserConfigCompactor {
+    /**
+     * Retention time for data in days for each resolution (5m, 1h, raw).
+     */
+    retentionDays?: number;
+}
+
+export interface ThanosThanosUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry. Example: `Production service IP range`.
+     */
+    description?: string;
+    /**
+     * CIDR address block. Example: `10.20.0.0/16`.
+     */
+    network: string;
+}
+
+export interface ThanosThanosUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    compactor?: boolean;
+    /**
+     * Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    query?: boolean;
+    /**
+     * Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    queryFrontend?: boolean;
+    /**
+     * Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    receiverIngesting?: boolean;
+    /**
+     * Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    receiverRouting?: boolean;
+    /**
+     * Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    store?: boolean;
+}
+
+export interface ThanosThanosUserConfigQuery {
+    /**
+     * Set the default evaluation interval for subqueries. Default: `1m`.
+     */
+    queryDefaultEvaluationInterval?: string;
+    /**
+     * The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+     */
+    queryLookbackDelta?: string;
+    /**
+     * The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+     */
+    queryMetadataDefaultTimeRange?: string;
+    /**
+     * Maximum time to process a query by the query node. Default: `2m`.
+     */
+    queryTimeout?: string;
+}
+
+export interface ThanosThanosUserConfigQueryFrontend {
+    /**
+     * Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+     */
+    queryRangeAlignRangeWithStep?: boolean;
 }
 

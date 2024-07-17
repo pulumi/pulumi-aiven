@@ -6231,3 +6231,210 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      */
     perfEventsStatementsTimeLimit?: pulumi.Input<number>;
 }
+
+export interface ThanosComponent {
+    /**
+     * Service component name
+     */
+    component?: pulumi.Input<string>;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri?: pulumi.Input<string>;
+    /**
+     * Host name for connecting to the service component
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Port number for connecting to the service component
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Network access route
+     */
+    route?: pulumi.Input<string>;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl?: pulumi.Input<boolean>;
+    /**
+     * DNS usage name
+     */
+    usage?: pulumi.Input<string>;
+}
+
+export interface ThanosServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: pulumi.Input<string>;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: pulumi.Input<string>;
+}
+
+export interface ThanosTag {
+    /**
+     * Service tag key
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Service tag value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface ThanosTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface ThanosThanos {
+    /**
+     * Query frontend URI.
+     */
+    queryFrontendUri?: pulumi.Input<string>;
+    /**
+     * Query URI.
+     */
+    queryUri?: pulumi.Input<string>;
+    /**
+     * Receiver ingesting remote write URI.
+     */
+    receiverIngestingRemoteWriteUri?: pulumi.Input<string>;
+    /**
+     * Receiver remote write URI.
+     */
+    receiverRemoteWriteUri?: pulumi.Input<string>;
+    /**
+     * Store URI.
+     */
+    storeUri?: pulumi.Input<string>;
+    /**
+     * Thanos server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ThanosThanosUserConfig {
+    /**
+     * ThanosCompactor
+     */
+    compactor?: pulumi.Input<inputs.ThanosThanosUserConfigCompactor>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.ThanosThanosUserConfigIpFilterObject>[]>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     */
+    ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * After exceeding the limit a service alert is going to be raised (0 means not set).
+     */
+    objectStorageUsageAlertThresholdGb?: pulumi.Input<number>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: pulumi.Input<inputs.ThanosThanosUserConfigPublicAccess>;
+    /**
+     * ThanosQuery
+     */
+    query?: pulumi.Input<inputs.ThanosThanosUserConfigQuery>;
+    /**
+     * ThanosQueryFrontend
+     */
+    queryFrontend?: pulumi.Input<inputs.ThanosThanosUserConfigQueryFrontend>;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: pulumi.Input<boolean>;
+}
+
+export interface ThanosThanosUserConfigCompactor {
+    /**
+     * Retention time for data in days for each resolution (5m, 1h, raw).
+     */
+    retentionDays?: pulumi.Input<number>;
+}
+
+export interface ThanosThanosUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry. Example: `Production service IP range`.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * CIDR address block. Example: `10.20.0.0/16`.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface ThanosThanosUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    compactor?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    query?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    queryFrontend?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    receiverIngesting?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    receiverRouting?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    store?: pulumi.Input<boolean>;
+}
+
+export interface ThanosThanosUserConfigQuery {
+    /**
+     * Set the default evaluation interval for subqueries. Default: `1m`.
+     */
+    queryDefaultEvaluationInterval?: pulumi.Input<string>;
+    /**
+     * The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+     */
+    queryLookbackDelta?: pulumi.Input<string>;
+    /**
+     * The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+     */
+    queryMetadataDefaultTimeRange?: pulumi.Input<string>;
+    /**
+     * Maximum time to process a query by the query node. Default: `2m`.
+     */
+    queryTimeout?: pulumi.Input<string>;
+}
+
+export interface ThanosThanosUserConfigQueryFrontend {
+    /**
+     * Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+     */
+    queryRangeAlignRangeWithStep?: pulumi.Input<boolean>;
+}

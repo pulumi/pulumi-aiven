@@ -165,6 +165,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceIntegrationEndpoint{}
 	case "aiven:index/staticIp:StaticIp":
 		r = &StaticIp{}
+	case "aiven:index/thanos:Thanos":
+		r = &Thanos{}
 	case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
 		r = &TransitGatewayVpcAttachment{}
 	default:
@@ -556,6 +558,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/staticIp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/thanos",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

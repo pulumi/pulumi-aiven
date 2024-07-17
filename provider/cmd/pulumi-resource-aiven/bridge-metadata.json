@@ -1687,6 +1687,65 @@
                 "current": "aiven:index/staticIp:StaticIp",
                 "majorVersion": 6
             },
+            "aiven_thanos": {
+                "current": "aiven:index/thanos:Thanos",
+                "majorVersion": 6,
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
+                    },
+                    "thanos": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "thanos_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "compactor": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "query": {
+                                    "maxItemsOne": true
+                                },
+                                "query_frontend": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "aiven_transit_gateway_vpc_attachment": {
                 "current": "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment",
                 "majorVersion": 6,
@@ -3398,6 +3457,65 @@
                     }
                 }
             },
+            "aiven_thanos": {
+                "current": "aiven:index/getThanos:getThanos",
+                "majorVersion": 6,
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
+                    },
+                    "thanos": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "thanos_user_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "compactor": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "query": {
+                                    "maxItemsOne": true
+                                },
+                                "query_frontend": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "aiven_transit_gateway_vpc_attachment": {
                 "current": "aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment",
                 "majorVersion": 6,
@@ -3502,6 +3620,7 @@
             "aiven:index/serviceIntegration:ServiceIntegration": 0,
             "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint": 0,
             "aiven:index/staticIp:StaticIp": 0,
+            "aiven:index/thanos:Thanos": 0,
             "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": 0
         },
         "functions": {
@@ -3570,6 +3689,7 @@
             "aiven:index/getServiceComponent:getServiceComponent": 0,
             "aiven:index/getServiceIntegration:getServiceIntegration": 0,
             "aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint": 0,
+            "aiven:index/getThanos:getThanos": 0,
             "aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment": 0
         }
     },
