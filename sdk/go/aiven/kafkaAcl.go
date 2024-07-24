@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
+// Creates and manages an [access control list](https://aiven.io/docs/products/kafka/concepts/acl) (ACL) entry for an Aiven for Apache Kafka® service.
+//
+// ACL entries grant users rights to produce, consume, and manage Kafka topics.
 //
 // ## Example Usage
 //
@@ -28,12 +30,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaAcl(ctx, "mytestacl", &aiven.KafkaAclArgs{
-//				Project:     pulumi.Any(myproject.Project),
-//				ServiceName: pulumi.Any(myservice.ServiceName),
-//				Topic:       pulumi.String("<TOPIC_NAME_PATTERN>"),
+//			_, err := aiven.NewKafkaAcl(ctx, "example_acl", &aiven.KafkaAclArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleKafka.ServiceName),
+//				Topic:       pulumi.String("example-topic"),
 //				Permission:  pulumi.String("admin"),
-//				Username:    pulumi.String("<USERNAME_PATTERN>"),
+//				Username:    pulumi.String("example-user"),
 //			})
 //			if err != nil {
 //				return err
@@ -47,22 +49,22 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl PROJECT/SERVICE_NAME/ID
+// $ pulumi import aiven:index/kafkaAcl:KafkaAcl example_acl PROJECT/SERVICE_NAME/ID
 // ```
 type KafkaAcl struct {
 	pulumi.CustomResourceState
 
-	// Kafka ACL ID
+	// Kafka ACL ID.
 	AclId pulumi.StringOutput `pulumi:"aclId"`
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+	// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
 	Permission pulumi.StringOutput `pulumi:"permission"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Topics that the permissions apply to. Changing this property forces recreation of the resource.
 	Topic pulumi.StringOutput `pulumi:"topic"`
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Usernames to grant permissions to. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -111,32 +113,32 @@ func GetKafkaAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaAcl resources.
 type kafkaAclState struct {
-	// Kafka ACL ID
+	// Kafka ACL ID.
 	AclId *string `pulumi:"aclId"`
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+	// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
 	Permission *string `pulumi:"permission"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Topics that the permissions apply to. Changing this property forces recreation of the resource.
 	Topic *string `pulumi:"topic"`
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Usernames to grant permissions to. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type KafkaAclState struct {
-	// Kafka ACL ID
+	// Kafka ACL ID.
 	AclId pulumi.StringPtrInput
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+	// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
 	Permission pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Topics that the permissions apply to. Changing this property forces recreation of the resource.
 	Topic pulumi.StringPtrInput
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Usernames to grant permissions to. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -145,29 +147,29 @@ func (KafkaAclState) ElementType() reflect.Type {
 }
 
 type kafkaAclArgs struct {
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+	// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
 	Permission string `pulumi:"permission"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Topics that the permissions apply to. Changing this property forces recreation of the resource.
 	Topic string `pulumi:"topic"`
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Usernames to grant permissions to. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a KafkaAcl resource.
 type KafkaAclArgs struct {
-	// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+	// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
 	Permission pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Topics that the permissions apply to. Changing this property forces recreation of the resource.
 	Topic pulumi.StringInput
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Usernames to grant permissions to. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -258,12 +260,12 @@ func (o KafkaAclOutput) ToKafkaAclOutputWithContext(ctx context.Context) KafkaAc
 	return o
 }
 
-// Kafka ACL ID
+// Kafka ACL ID.
 func (o KafkaAclOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
 }
 
-// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
 func (o KafkaAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
 }
@@ -278,12 +280,12 @@ func (o KafkaAclOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+// Topics that the permissions apply to. Changing this property forces recreation of the resource.
 func (o KafkaAclOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }
 
-// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+// Usernames to grant permissions to. Changing this property forces recreation of the resource.
 func (o KafkaAclOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaAcl) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

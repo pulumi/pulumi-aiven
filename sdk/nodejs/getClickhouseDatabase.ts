@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+ * Gets information about a ClickHouse database.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const clickhouseDb = aiven.getClickhouseDatabase({
- *     project: ch.project,
- *     serviceName: ch.serviceName,
- *     name: "my-ch-db",
+ * const exampleClickhouseDb = aiven.getClickhouseDatabase({
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     name: "example-database",
  * });
  * ```
  */
@@ -35,7 +35,7 @@ export function getClickhouseDatabase(args: GetClickhouseDatabaseArgs, opts?: pu
  */
 export interface GetClickhouseDatabaseArgs {
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      */
     name: string;
     /**
@@ -57,7 +57,7 @@ export interface GetClickhouseDatabaseResult {
      */
     readonly id: string;
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      */
     readonly name: string;
     /**
@@ -71,7 +71,7 @@ export interface GetClickhouseDatabaseResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+ * Gets information about a ClickHouse database.
  *
  * ## Example Usage
  *
@@ -79,10 +79,10 @@ export interface GetClickhouseDatabaseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const clickhouseDb = aiven.getClickhouseDatabase({
- *     project: ch.project,
- *     serviceName: ch.serviceName,
- *     name: "my-ch-db",
+ * const exampleClickhouseDb = aiven.getClickhouseDatabase({
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     name: "example-database",
  * });
  * ```
  */
@@ -95,7 +95,7 @@ export function getClickhouseDatabaseOutput(args: GetClickhouseDatabaseOutputArg
  */
 export interface GetClickhouseDatabaseOutputArgs {
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      */
     name: pulumi.Input<string>;
     /**

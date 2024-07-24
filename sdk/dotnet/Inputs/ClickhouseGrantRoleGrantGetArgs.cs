@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ClickhouseGrantRoleGrantGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

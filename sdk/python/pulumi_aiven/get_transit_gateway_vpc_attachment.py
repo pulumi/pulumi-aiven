@@ -70,7 +70,7 @@ class GetTransitGatewayVpcAttachmentResult:
     @pulumi.getter(name="peerRegion")
     def peer_region(self) -> str:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         """
         return pulumi.get(self, "peer_region")
 

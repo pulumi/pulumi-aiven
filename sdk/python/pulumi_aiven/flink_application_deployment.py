@@ -23,13 +23,13 @@ class FlinkApplicationDeploymentArgs:
                  starting_savepoint: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FlinkApplicationDeployment resource.
-        :param pulumi.Input[str] application_id: Application ID
+        :param pulumi.Input[str] application_id: Application ID.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] version_id: ApplicationVersion ID
-        :param pulumi.Input[int] parallelism: Flink Job parallelism
-        :param pulumi.Input[bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails
-        :param pulumi.Input[str] starting_savepoint: Job savepoint
+        :param pulumi.Input[str] version_id: Application version ID.
+        :param pulumi.Input[int] parallelism: The number of parallel instances for the task.
+        :param pulumi.Input[bool] restart_enabled: Restart a Flink job if it fails.
+        :param pulumi.Input[str] starting_savepoint: The savepoint to deploy from.
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "project", project)
@@ -46,7 +46,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Input[str]:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -82,7 +82,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Input[str]:
         """
-        ApplicationVersion ID
+        Application version ID.
         """
         return pulumi.get(self, "version_id")
 
@@ -94,7 +94,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter
     def parallelism(self) -> Optional[pulumi.Input[int]]:
         """
-        Flink Job parallelism
+        The number of parallel instances for the task.
         """
         return pulumi.get(self, "parallelism")
 
@@ -106,7 +106,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="restartEnabled")
     def restart_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether a Flink Job is restarted in case it fails
+        Restart a Flink job if it fails.
         """
         return pulumi.get(self, "restart_enabled")
 
@@ -118,7 +118,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="startingSavepoint")
     def starting_savepoint(self) -> Optional[pulumi.Input[str]]:
         """
-        Job savepoint
+        The savepoint to deploy from.
         """
         return pulumi.get(self, "starting_savepoint")
 
@@ -141,15 +141,15 @@ class _FlinkApplicationDeploymentState:
                  version_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FlinkApplicationDeployment resources.
-        :param pulumi.Input[str] application_id: Application ID
-        :param pulumi.Input[str] created_at: Application deployment creation time
-        :param pulumi.Input[str] created_by: Application deployment creator
-        :param pulumi.Input[int] parallelism: Flink Job parallelism
+        :param pulumi.Input[str] application_id: Application ID.
+        :param pulumi.Input[str] created_at: Application deployment creation time.
+        :param pulumi.Input[str] created_by: The user who deployed the application.
+        :param pulumi.Input[int] parallelism: The number of parallel instances for the task.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails
+        :param pulumi.Input[bool] restart_enabled: Restart a Flink job if it fails.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] starting_savepoint: Job savepoint
-        :param pulumi.Input[str] version_id: ApplicationVersion ID
+        :param pulumi.Input[str] starting_savepoint: The savepoint to deploy from.
+        :param pulumi.Input[str] version_id: Application version ID.
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
@@ -174,7 +174,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -186,7 +186,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Application deployment creation time
+        Application deployment creation time.
         """
         return pulumi.get(self, "created_at")
 
@@ -198,7 +198,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
         """
-        Application deployment creator
+        The user who deployed the application.
         """
         return pulumi.get(self, "created_by")
 
@@ -210,7 +210,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter
     def parallelism(self) -> Optional[pulumi.Input[int]]:
         """
-        Flink Job parallelism
+        The number of parallel instances for the task.
         """
         return pulumi.get(self, "parallelism")
 
@@ -234,7 +234,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="restartEnabled")
     def restart_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether a Flink Job is restarted in case it fails
+        Restart a Flink job if it fails.
         """
         return pulumi.get(self, "restart_enabled")
 
@@ -258,7 +258,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="startingSavepoint")
     def starting_savepoint(self) -> Optional[pulumi.Input[str]]:
         """
-        Job savepoint
+        The savepoint to deploy from.
         """
         return pulumi.get(self, "starting_savepoint")
 
@@ -270,7 +270,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="versionId")
     def version_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ApplicationVersion ID
+        Application version ID.
         """
         return pulumi.get(self, "version_id")
 
@@ -293,7 +293,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                  version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+        Creates and manages the deployment of an Aiven for Apache Flink® application.
 
         ## Example Usage
 
@@ -301,28 +301,65 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        deployment = aiven.FlinkApplicationDeployment("deployment",
-            project=foo["project"],
-            service_name=foo_aiven_flink["serviceName"],
-            application_id=foo_app["applicationId"],
-            version_id=foo_app_version["applicationVersionId"])
+        example_app = aiven.FlinkApplication("example_app",
+            project=example_project["project"],
+            service_name="example-flink-service",
+            name="example-app")
+        main = aiven.FlinkApplicationVersion("main",
+            project=example_project["project"],
+            service_name=example_flink["serviceName"],
+            application_id=example_app.application_id,
+            statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
+            sinks=[aiven.FlinkApplicationVersionSinkArgs(
+                create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
+                shop STRING,
+                name STRING
+              ) WITH (
+                'connector' = 'kafka',
+                'properties.bootstrap.servers' = '',
+                'scan.startup.mode' = 'earliest-offset',
+                'topic' = 'sink_topic',
+                'value.format' = 'json'
+              )
+        \"\"\",
+                integration_id=flink_to_kafka["integrationId"],
+            )],
+            sources=[aiven.FlinkApplicationVersionSourceArgs(
+                create_table=\"\"\"      CREATE TABLE kafka_pizza (
+                shop STRING,
+                name STRING
+              ) WITH (
+                'connector' = 'kafka',
+                'properties.bootstrap.servers' = '',
+                'scan.startup.mode' = 'earliest-offset',
+                'topic' = 'source_topic',
+                'value.format' = 'json'
+              )
+        \"\"\",
+                integration_id=flink_to_kafka["integrationId"],
+            )])
+        main_flink_application_deployment = aiven.FlinkApplicationDeployment("main",
+            project=example_project["project"],
+            service_name=example_flink["serviceName"],
+            application_id=example_app.application_id,
+            version_id=main.application_version_id)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: Application ID
-        :param pulumi.Input[int] parallelism: Flink Job parallelism
+        :param pulumi.Input[str] application_id: Application ID.
+        :param pulumi.Input[int] parallelism: The number of parallel instances for the task.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails
+        :param pulumi.Input[bool] restart_enabled: Restart a Flink job if it fails.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] starting_savepoint: Job savepoint
-        :param pulumi.Input[str] version_id: ApplicationVersion ID
+        :param pulumi.Input[str] starting_savepoint: The savepoint to deploy from.
+        :param pulumi.Input[str] version_id: Application version ID.
         """
         ...
     @overload
@@ -331,7 +368,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                  args: FlinkApplicationDeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+        Creates and manages the deployment of an Aiven for Apache Flink® application.
 
         ## Example Usage
 
@@ -339,17 +376,54 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        deployment = aiven.FlinkApplicationDeployment("deployment",
-            project=foo["project"],
-            service_name=foo_aiven_flink["serviceName"],
-            application_id=foo_app["applicationId"],
-            version_id=foo_app_version["applicationVersionId"])
+        example_app = aiven.FlinkApplication("example_app",
+            project=example_project["project"],
+            service_name="example-flink-service",
+            name="example-app")
+        main = aiven.FlinkApplicationVersion("main",
+            project=example_project["project"],
+            service_name=example_flink["serviceName"],
+            application_id=example_app.application_id,
+            statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
+            sinks=[aiven.FlinkApplicationVersionSinkArgs(
+                create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
+                shop STRING,
+                name STRING
+              ) WITH (
+                'connector' = 'kafka',
+                'properties.bootstrap.servers' = '',
+                'scan.startup.mode' = 'earliest-offset',
+                'topic' = 'sink_topic',
+                'value.format' = 'json'
+              )
+        \"\"\",
+                integration_id=flink_to_kafka["integrationId"],
+            )],
+            sources=[aiven.FlinkApplicationVersionSourceArgs(
+                create_table=\"\"\"      CREATE TABLE kafka_pizza (
+                shop STRING,
+                name STRING
+              ) WITH (
+                'connector' = 'kafka',
+                'properties.bootstrap.servers' = '',
+                'scan.startup.mode' = 'earliest-offset',
+                'topic' = 'source_topic',
+                'value.format' = 'json'
+              )
+        \"\"\",
+                integration_id=flink_to_kafka["integrationId"],
+            )])
+        main_flink_application_deployment = aiven.FlinkApplicationDeployment("main",
+            project=example_project["project"],
+            service_name=example_flink["serviceName"],
+            application_id=example_app.application_id,
+            version_id=main.application_version_id)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -426,15 +500,15 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: Application ID
-        :param pulumi.Input[str] created_at: Application deployment creation time
-        :param pulumi.Input[str] created_by: Application deployment creator
-        :param pulumi.Input[int] parallelism: Flink Job parallelism
+        :param pulumi.Input[str] application_id: Application ID.
+        :param pulumi.Input[str] created_at: Application deployment creation time.
+        :param pulumi.Input[str] created_by: The user who deployed the application.
+        :param pulumi.Input[int] parallelism: The number of parallel instances for the task.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails
+        :param pulumi.Input[bool] restart_enabled: Restart a Flink job if it fails.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] starting_savepoint: Job savepoint
-        :param pulumi.Input[str] version_id: ApplicationVersion ID
+        :param pulumi.Input[str] starting_savepoint: The savepoint to deploy from.
+        :param pulumi.Input[str] version_id: Application version ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -455,7 +529,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -463,7 +537,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Application deployment creation time
+        Application deployment creation time.
         """
         return pulumi.get(self, "created_at")
 
@@ -471,7 +545,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[str]:
         """
-        Application deployment creator
+        The user who deployed the application.
         """
         return pulumi.get(self, "created_by")
 
@@ -479,7 +553,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter
     def parallelism(self) -> pulumi.Output[Optional[int]]:
         """
-        Flink Job parallelism
+        The number of parallel instances for the task.
         """
         return pulumi.get(self, "parallelism")
 
@@ -495,7 +569,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="restartEnabled")
     def restart_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether a Flink Job is restarted in case it fails
+        Restart a Flink job if it fails.
         """
         return pulumi.get(self, "restart_enabled")
 
@@ -511,7 +585,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="startingSavepoint")
     def starting_savepoint(self) -> pulumi.Output[Optional[str]]:
         """
-        Job savepoint
+        The savepoint to deploy from.
         """
         return pulumi.get(self, "starting_savepoint")
 
@@ -519,7 +593,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Output[str]:
         """
-        ApplicationVersion ID
+        Application version ID.
         """
         return pulumi.get(self, "version_id")
 

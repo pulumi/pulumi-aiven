@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka User data source provides information about the existing Aiven Kafka User.
+ * Gets information about an Aiven for Apache Kafka® service user.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getKafkaUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleServiceUser = aiven.getKafkaUser({
+ *     serviceName: exampleKafka.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-kafka-user",
  * });
  * ```
  */
@@ -43,7 +43,7 @@ export interface GetKafkaUserArgs {
      */
     serviceName: string;
     /**
-     * The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -53,11 +53,11 @@ export interface GetKafkaUserArgs {
  */
 export interface GetKafkaUserResult {
     /**
-     * Access certificate for the user
+     * Access certificate for the user.
      */
     readonly accessCert: string;
     /**
-     * Access certificate key for the user
+     * Access certificate key for the user.
      */
     readonly accessKey: string;
     /**
@@ -65,7 +65,7 @@ export interface GetKafkaUserResult {
      */
     readonly id: string;
     /**
-     * The password of the Kafka User.
+     * The Kafka service user's password.
      */
     readonly password: string;
     /**
@@ -77,16 +77,16 @@ export interface GetKafkaUserResult {
      */
     readonly serviceName: string;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     readonly type: string;
     /**
-     * The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
 /**
- * The Kafka User data source provides information about the existing Aiven Kafka User.
+ * Gets information about an Aiven for Apache Kafka® service user.
  *
  * ## Example Usage
  *
@@ -94,10 +94,10 @@ export interface GetKafkaUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getKafkaUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleServiceUser = aiven.getKafkaUser({
+ *     serviceName: exampleKafka.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-kafka-user",
  * });
  * ```
  */
@@ -118,7 +118,7 @@ export interface GetKafkaUserOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

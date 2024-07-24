@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Flink Application data source provides information about the existing Aiven Flink Application.
+ * Gets information about an Aiven for Apache Flink® application.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const app1 = aiven.getFlinkApplication({
- *     project: pr1.project,
- *     serviceName: "<SERVICE_NAME>",
- *     name: "<APPLICATION_NAME>",
+ * const exampleApp = aiven.getFlinkApplication({
+ *     project: exampleProject.project,
+ *     serviceName: "example-flink-service",
+ *     name: "example-app",
  * });
  * ```
  */
@@ -35,7 +35,7 @@ export function getFlinkApplication(args: GetFlinkApplicationArgs, opts?: pulumi
  */
 export interface GetFlinkApplicationArgs {
     /**
-     * Application name
+     * The name of the application.
      */
     name: string;
     /**
@@ -53,15 +53,15 @@ export interface GetFlinkApplicationArgs {
  */
 export interface GetFlinkApplicationResult {
     /**
-     * Application ID
+     * Application ID.
      */
     readonly applicationId: string;
     /**
-     * Application creation time
+     * Application creation time.
      */
     readonly createdAt: string;
     /**
-     * Application creator
+     * The user who created the application.
      */
     readonly createdBy: string;
     /**
@@ -69,7 +69,7 @@ export interface GetFlinkApplicationResult {
      */
     readonly id: string;
     /**
-     * Application name
+     * The name of the application.
      */
     readonly name: string;
     /**
@@ -81,16 +81,16 @@ export interface GetFlinkApplicationResult {
      */
     readonly serviceName: string;
     /**
-     * Application update time
+     * When the application was updated.
      */
     readonly updatedAt: string;
     /**
-     * Application updater
+     * The user who updated the application.
      */
     readonly updatedBy: string;
 }
 /**
- * The Flink Application data source provides information about the existing Aiven Flink Application.
+ * Gets information about an Aiven for Apache Flink® application.
  *
  * ## Example Usage
  *
@@ -98,10 +98,10 @@ export interface GetFlinkApplicationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const app1 = aiven.getFlinkApplication({
- *     project: pr1.project,
- *     serviceName: "<SERVICE_NAME>",
- *     name: "<APPLICATION_NAME>",
+ * const exampleApp = aiven.getFlinkApplication({
+ *     project: exampleProject.project,
+ *     serviceName: "example-flink-service",
+ *     name: "example-app",
  * });
  * ```
  */
@@ -114,7 +114,7 @@ export function getFlinkApplicationOutput(args: GetFlinkApplicationOutputArgs, o
  */
 export interface GetFlinkApplicationOutputArgs {
     /**
-     * Application name
+     * The name of the application.
      */
     name: pulumi.Input<string>;
     /**

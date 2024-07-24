@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+// Gets information about a ClickHouse database.
 //
 // ## Example Usage
 //
@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupClickhouseDatabase(ctx, &aiven.LookupClickhouseDatabaseArgs{
-//				Project:     ch.Project,
-//				ServiceName: ch.ServiceName,
-//				Name:        "my-ch-db",
+//				Project:     exampleProject.Project,
+//				ServiceName: exampleClickhouse.ServiceName,
+//				Name:        "example-database",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ func LookupClickhouseDatabase(ctx *pulumi.Context, args *LookupClickhouseDatabas
 
 // A collection of arguments for invoking getClickhouseDatabase.
 type LookupClickhouseDatabaseArgs struct {
-	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
 	Name string `pulumi:"name"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -64,7 +64,7 @@ type LookupClickhouseDatabaseArgs struct {
 type LookupClickhouseDatabaseResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
 	Name string `pulumi:"name"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -88,7 +88,7 @@ func LookupClickhouseDatabaseOutput(ctx *pulumi.Context, args LookupClickhouseDa
 
 // A collection of arguments for invoking getClickhouseDatabase.
 type LookupClickhouseDatabaseOutputArgs struct {
-	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+	// The name of the ClickHouse database. Changing this property forces recreation of the resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -120,7 +120,7 @@ func (o LookupClickhouseDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+// The name of the ClickHouse database. Changing this property forces recreation of the resource.
 func (o LookupClickhouseDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }

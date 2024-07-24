@@ -55,7 +55,7 @@ export interface GetKafkaTopicArgs {
  */
 export interface GetKafkaTopicResult {
     /**
-     * Kafka topic configuration.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      */
     readonly configs: outputs.GetKafkaTopicConfig[];
     /**
@@ -79,7 +79,7 @@ export interface GetKafkaTopicResult {
      */
     readonly serviceName: string;
     /**
-     * Tags for the Kafka topic.
+     * Tags for the topic.
      */
     readonly tags: outputs.GetKafkaTopicTag[];
     readonly terminationProtection: boolean;

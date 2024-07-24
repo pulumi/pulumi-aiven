@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
+ * Creates and manages a ClickHouse user.
  *
  * ## Example Usage
  *
@@ -13,17 +13,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const ch_user = new aiven.ClickhouseUser("ch-user", {
- *     project: myproject.project,
- *     serviceName: myservice.serviceName,
- *     username: "<USERNAME>",
+ * const exampleUser = new aiven.ClickhouseUser("example_user", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleService.serviceName,
+ *     username: "analyst",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
+ * $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  */
 export class ClickhouseUser extends pulumi.CustomResource {
@@ -55,7 +55,7 @@ export class ClickhouseUser extends pulumi.CustomResource {
     }
 
     /**
-     * The password of the clickhouse user.
+     * The password of the ClickHouse user.
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
@@ -63,7 +63,7 @@ export class ClickhouseUser extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Indicates if a clickhouse user is required
+     * Indicates if a ClickHouse user is required.
      */
     public /*out*/ readonly required!: pulumi.Output<boolean>;
     /**
@@ -71,11 +71,11 @@ export class ClickhouseUser extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
     /**
-     * UUID of the clickhouse user.
+     * UUID of the ClickHouse user.
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
 
@@ -128,7 +128,7 @@ export class ClickhouseUser extends pulumi.CustomResource {
  */
 export interface ClickhouseUserState {
     /**
-     * The password of the clickhouse user.
+     * The password of the ClickHouse user.
      */
     password?: pulumi.Input<string>;
     /**
@@ -136,7 +136,7 @@ export interface ClickhouseUserState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Indicates if a clickhouse user is required
+     * Indicates if a ClickHouse user is required.
      */
     required?: pulumi.Input<boolean>;
     /**
@@ -144,11 +144,11 @@ export interface ClickhouseUserState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
     /**
-     * UUID of the clickhouse user.
+     * UUID of the ClickHouse user.
      */
     uuid?: pulumi.Input<string>;
 }
@@ -166,7 +166,7 @@ export interface ClickhouseUserArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

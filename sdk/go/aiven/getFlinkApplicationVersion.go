@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+// Gets information about an Aiven for Apache Flink® application version.
 //
 // ## Example Usage
 //
@@ -28,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupFlinkApplicationVersion(ctx, &aiven.LookupFlinkApplicationVersionArgs{
-//				Project:              pr1.Project,
-//				ServiceName:          "<SERVICE_NAME>",
-//				ApplicationId:        "<APPLICATION_ID>",
-//				ApplicationVersionId: "<APPLICATION_VERSION_ID>",
+//				Project:              exampleProject.Project,
+//				ServiceName:          exampleFlink.ServiceName,
+//				ApplicationId:        exampleApp.ApplicationId,
+//				ApplicationVersionId: "d6e7f71c-cadf-49b5-a4ad-126c805fe684",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,9 +53,9 @@ func LookupFlinkApplicationVersion(ctx *pulumi.Context, args *LookupFlinkApplica
 
 // A collection of arguments for invoking getFlinkApplicationVersion.
 type LookupFlinkApplicationVersionArgs struct {
-	// Application ID
+	// Application ID.
 	ApplicationId string `pulumi:"applicationId"`
-	// Application version ID
+	// Application version ID.
 	ApplicationVersionId string `pulumi:"applicationVersionId"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -65,13 +65,13 @@ type LookupFlinkApplicationVersionArgs struct {
 
 // A collection of values returned by getFlinkApplicationVersion.
 type LookupFlinkApplicationVersionResult struct {
-	// Application ID
+	// Application ID.
 	ApplicationId string `pulumi:"applicationId"`
-	// Application version ID
+	// Application version ID.
 	ApplicationVersionId string `pulumi:"applicationVersionId"`
-	// Application version creation time
+	// Application version creation time.
 	CreatedAt string `pulumi:"createdAt"`
-	// Application version creator
+	// The user who created the application.
 	CreatedBy string `pulumi:"createdBy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -79,17 +79,17 @@ type LookupFlinkApplicationVersionResult struct {
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Application sink
+	// The sink table for the application.
 	Sink []GetFlinkApplicationVersionSink `pulumi:"sink"`
 	// Application sinks
 	Sinks []GetFlinkApplicationVersionSink `pulumi:"sinks"`
-	// Application source
+	// The source table for the application.
 	Source []GetFlinkApplicationVersionSource `pulumi:"source"`
 	// Application sources
 	Sources []GetFlinkApplicationVersionSource `pulumi:"sources"`
-	// Job SQL statement
+	// Job SQL statement.
 	Statement string `pulumi:"statement"`
-	// Application version number
+	// Application version number.
 	Version int `pulumi:"version"`
 }
 
@@ -108,9 +108,9 @@ func LookupFlinkApplicationVersionOutput(ctx *pulumi.Context, args LookupFlinkAp
 
 // A collection of arguments for invoking getFlinkApplicationVersion.
 type LookupFlinkApplicationVersionOutputArgs struct {
-	// Application ID
+	// Application ID.
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
-	// Application version ID
+	// Application version ID.
 	ApplicationVersionId pulumi.StringInput `pulumi:"applicationVersionId"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -137,22 +137,22 @@ func (o LookupFlinkApplicationVersionResultOutput) ToLookupFlinkApplicationVersi
 	return o
 }
 
-// Application ID
+// Application ID.
 func (o LookupFlinkApplicationVersionResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// Application version ID
+// Application version ID.
 func (o LookupFlinkApplicationVersionResultOutput) ApplicationVersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) string { return v.ApplicationVersionId }).(pulumi.StringOutput)
 }
 
-// Application version creation time
+// Application version creation time.
 func (o LookupFlinkApplicationVersionResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Application version creator
+// The user who created the application.
 func (o LookupFlinkApplicationVersionResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
@@ -172,7 +172,7 @@ func (o LookupFlinkApplicationVersionResultOutput) ServiceName() pulumi.StringOu
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Application sink
+// The sink table for the application.
 func (o LookupFlinkApplicationVersionResultOutput) Sink() GetFlinkApplicationVersionSinkArrayOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) []GetFlinkApplicationVersionSink { return v.Sink }).(GetFlinkApplicationVersionSinkArrayOutput)
 }
@@ -182,7 +182,7 @@ func (o LookupFlinkApplicationVersionResultOutput) Sinks() GetFlinkApplicationVe
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) []GetFlinkApplicationVersionSink { return v.Sinks }).(GetFlinkApplicationVersionSinkArrayOutput)
 }
 
-// Application source
+// The source table for the application.
 func (o LookupFlinkApplicationVersionResultOutput) Source() GetFlinkApplicationVersionSourceArrayOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) []GetFlinkApplicationVersionSource { return v.Source }).(GetFlinkApplicationVersionSourceArrayOutput)
 }
@@ -192,12 +192,12 @@ func (o LookupFlinkApplicationVersionResultOutput) Sources() GetFlinkApplication
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) []GetFlinkApplicationVersionSource { return v.Sources }).(GetFlinkApplicationVersionSourceArrayOutput)
 }
 
-// Job SQL statement
+// Job SQL statement.
 func (o LookupFlinkApplicationVersionResultOutput) Statement() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) string { return v.Statement }).(pulumi.StringOutput)
 }
 
-// Application version number
+// Application version number.
 func (o LookupFlinkApplicationVersionResultOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationVersionResult) int { return v.Version }).(pulumi.IntOutput)
 }

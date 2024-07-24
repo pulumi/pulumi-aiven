@@ -21,11 +21,11 @@ class KafkaAclArgs:
                  username: pulumi.Input[str]):
         """
         The set of arguments for constructing a KafkaAcl resource.
-        :param pulumi.Input[str] permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] permission: Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] topic: Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] topic: Topics that the permissions apply to. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: Usernames to grant permissions to. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "project", project)
@@ -37,7 +37,7 @@ class KafkaAclArgs:
     @pulumi.getter
     def permission(self) -> pulumi.Input[str]:
         """
-        Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission")
 
@@ -73,7 +73,7 @@ class KafkaAclArgs:
     @pulumi.getter
     def topic(self) -> pulumi.Input[str]:
         """
-        Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Topics that the permissions apply to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "topic")
 
@@ -85,7 +85,7 @@ class KafkaAclArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Usernames to grant permissions to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -105,12 +105,12 @@ class _KafkaAclState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KafkaAcl resources.
-        :param pulumi.Input[str] acl_id: Kafka ACL ID
-        :param pulumi.Input[str] permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] acl_id: Kafka ACL ID.
+        :param pulumi.Input[str] permission: Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] topic: Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] topic: Topics that the permissions apply to. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: Usernames to grant permissions to. Changing this property forces recreation of the resource.
         """
         if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
@@ -129,7 +129,7 @@ class _KafkaAclState:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka ACL ID
+        Kafka ACL ID.
         """
         return pulumi.get(self, "acl_id")
 
@@ -141,7 +141,7 @@ class _KafkaAclState:
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission")
 
@@ -177,7 +177,7 @@ class _KafkaAclState:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Topics that the permissions apply to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "topic")
 
@@ -189,7 +189,7 @@ class _KafkaAclState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Usernames to grant permissions to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -210,7 +210,9 @@ class KafkaAcl(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
+        Creates and manages an [access control list](https://aiven.io/docs/products/kafka/concepts/acl) (ACL) entry for an Aiven for Apache Kafka® service.
+
+        ACL entries grant users rights to produce, consume, and manage Kafka topics.
 
         ## Example Usage
 
@@ -218,27 +220,27 @@ class KafkaAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mytestacl = aiven.KafkaAcl("mytestacl",
-            project=myproject["project"],
-            service_name=myservice["serviceName"],
-            topic="<TOPIC_NAME_PATTERN>",
+        example_acl = aiven.KafkaAcl("example_acl",
+            project=example_project["project"],
+            service_name=example_kafka["serviceName"],
+            topic="example-topic",
             permission="admin",
-            username="<USERNAME_PATTERN>")
+            username="example-user")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl PROJECT/SERVICE_NAME/ID
+        $ pulumi import aiven:index/kafkaAcl:KafkaAcl example_acl PROJECT/SERVICE_NAME/ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] permission: Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] topic: Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] topic: Topics that the permissions apply to. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: Usernames to grant permissions to. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -247,7 +249,9 @@ class KafkaAcl(pulumi.CustomResource):
                  args: KafkaAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
+        Creates and manages an [access control list](https://aiven.io/docs/products/kafka/concepts/acl) (ACL) entry for an Aiven for Apache Kafka® service.
+
+        ACL entries grant users rights to produce, consume, and manage Kafka topics.
 
         ## Example Usage
 
@@ -255,18 +259,18 @@ class KafkaAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mytestacl = aiven.KafkaAcl("mytestacl",
-            project=myproject["project"],
-            service_name=myservice["serviceName"],
-            topic="<TOPIC_NAME_PATTERN>",
+        example_acl = aiven.KafkaAcl("example_acl",
+            project=example_project["project"],
+            service_name=example_kafka["serviceName"],
+            topic="example-topic",
             permission="admin",
-            username="<USERNAME_PATTERN>")
+            username="example-user")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl PROJECT/SERVICE_NAME/ID
+        $ pulumi import aiven:index/kafkaAcl:KafkaAcl example_acl PROJECT/SERVICE_NAME/ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -337,12 +341,12 @@ class KafkaAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_id: Kafka ACL ID
-        :param pulumi.Input[str] permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] acl_id: Kafka ACL ID.
+        :param pulumi.Input[str] permission: Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] topic: Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] topic: Topics that the permissions apply to. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: Usernames to grant permissions to. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -360,7 +364,7 @@ class KafkaAcl(pulumi.CustomResource):
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[str]:
         """
-        Kafka ACL ID
+        Kafka ACL ID.
         """
         return pulumi.get(self, "acl_id")
 
@@ -368,7 +372,7 @@ class KafkaAcl(pulumi.CustomResource):
     @pulumi.getter
     def permission(self) -> pulumi.Output[str]:
         """
-        Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission")
 
@@ -392,7 +396,7 @@ class KafkaAcl(pulumi.CustomResource):
     @pulumi.getter
     def topic(self) -> pulumi.Output[str]:
         """
-        Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Topics that the permissions apply to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "topic")
 
@@ -400,7 +404,7 @@ class KafkaAcl(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Usernames to grant permissions to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

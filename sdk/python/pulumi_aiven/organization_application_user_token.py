@@ -27,7 +27,7 @@ class OrganizationApplicationUserTokenArgs:
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
         :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Restricts the scopes for this token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "user_id", user_id)
@@ -104,7 +104,7 @@ class OrganizationApplicationUserTokenArgs:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Restricts the scopes for this token.
+        Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         """
         return pulumi.get(self, "scopes")
 
@@ -147,7 +147,7 @@ class _OrganizationApplicationUserTokenState:
         :param pulumi.Input[str] last_user_agent_human_readable: User agent of the last request made with this token in human-readable format.
         :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Restricts the scopes for this token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         :param pulumi.Input[str] token_prefix: Prefix of the token.
         :param pulumi.Input[str] user_id: The ID of the application user the token is created for.
         """
@@ -344,7 +344,7 @@ class _OrganizationApplicationUserTokenState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Restricts the scopes for this token.
+        Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         """
         return pulumi.get(self, "scopes")
 
@@ -419,7 +419,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
         :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Restricts the scopes for this token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         :param pulumi.Input[str] user_id: The ID of the application user the token is created for.
         """
         ...
@@ -550,7 +550,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.Input[str] last_user_agent_human_readable: User agent of the last request made with this token in human-readable format.
         :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Restricts the scopes for this token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         :param pulumi.Input[str] token_prefix: Prefix of the token.
         :param pulumi.Input[str] user_id: The ID of the application user the token is created for.
         """
@@ -684,7 +684,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Restricts the scopes for this token.
+        Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         """
         return pulumi.get(self, "scopes")
 

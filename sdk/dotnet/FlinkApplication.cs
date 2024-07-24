@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Flink Application resource allows the creation and management of Aiven Flink Applications.
+    /// Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
     /// 
     /// ## Example Usage
     /// 
@@ -22,11 +22,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Aiven.FlinkApplication("foo", new()
+    ///     var exampleApp = new Aiven.FlinkApplication("example_app", new()
     ///     {
-    ///         Project = fooAivenProject.Project,
-    ///         ServiceName = "flink-service-1",
-    ///         Name = "my-flink-app",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = "example-flink-service",
+    ///         Name = "example-app",
     ///     });
     /// 
     /// });
@@ -35,32 +35,32 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp PROJECT/SERVICE/APPLICATION_NAME
+    /// $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/flinkApplication:FlinkApplication")]
     public partial class FlinkApplication : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// Application creation time
+        /// Application creation time.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Application creator
+        /// The user who created the application.
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// Application name
+        /// The name of the application.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -78,13 +78,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Application update time
+        /// When the application was updated.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Application updater
+        /// The user who updated the application.
         /// </summary>
         [Output("updatedBy")]
         public Output<string> UpdatedBy { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Aiven
     public sealed class FlinkApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application name
+        /// The name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -162,25 +162,25 @@ namespace Pulumi.Aiven
     public sealed class FlinkApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Application creation time
+        /// Application creation time.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Application creator
+        /// The user who created the application.
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// Application name
+        /// The name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -198,13 +198,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Application update time
+        /// When the application was updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// Application updater
+        /// The user who updated the application.
         /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }

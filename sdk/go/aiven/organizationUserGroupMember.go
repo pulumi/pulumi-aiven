@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups).
+// Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups). You can add organization users and application users to groups.
+//
+// Groups are given access to projects using the `OrganizationGroupProject` resource.
 //
 // ## Example Usage
 //
@@ -65,7 +67,7 @@ type OrganizationUserGroupMember struct {
 	// The ID of the organization.
 	OrganizationId pulumi.StringOutput                          `pulumi:"organizationId"`
 	Timeouts       OrganizationUserGroupMemberTimeoutsPtrOutput `pulumi:"timeouts"`
-	// The ID of the organization user.
+	// The ID of the organization user or application user.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -115,7 +117,7 @@ type organizationUserGroupMemberState struct {
 	// The ID of the organization.
 	OrganizationId *string                              `pulumi:"organizationId"`
 	Timeouts       *OrganizationUserGroupMemberTimeouts `pulumi:"timeouts"`
-	// The ID of the organization user.
+	// The ID of the organization user or application user.
 	UserId *string `pulumi:"userId"`
 }
 
@@ -127,7 +129,7 @@ type OrganizationUserGroupMemberState struct {
 	// The ID of the organization.
 	OrganizationId pulumi.StringPtrInput
 	Timeouts       OrganizationUserGroupMemberTimeoutsPtrInput
-	// The ID of the organization user.
+	// The ID of the organization user or application user.
 	UserId pulumi.StringPtrInput
 }
 
@@ -141,7 +143,7 @@ type organizationUserGroupMemberArgs struct {
 	// The ID of the organization.
 	OrganizationId string                               `pulumi:"organizationId"`
 	Timeouts       *OrganizationUserGroupMemberTimeouts `pulumi:"timeouts"`
-	// The ID of the organization user.
+	// The ID of the organization user or application user.
 	UserId string `pulumi:"userId"`
 }
 
@@ -152,7 +154,7 @@ type OrganizationUserGroupMemberArgs struct {
 	// The ID of the organization.
 	OrganizationId pulumi.StringInput
 	Timeouts       OrganizationUserGroupMemberTimeoutsPtrInput
-	// The ID of the organization user.
+	// The ID of the organization user or application user.
 	UserId pulumi.StringInput
 }
 
@@ -262,7 +264,7 @@ func (o OrganizationUserGroupMemberOutput) Timeouts() OrganizationUserGroupMembe
 	return o.ApplyT(func(v *OrganizationUserGroupMember) OrganizationUserGroupMemberTimeoutsPtrOutput { return v.Timeouts }).(OrganizationUserGroupMemberTimeoutsPtrOutput)
 }
 
-// The ID of the organization user.
+// The ID of the organization user or application user.
 func (o OrganizationUserGroupMemberOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroupMember) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

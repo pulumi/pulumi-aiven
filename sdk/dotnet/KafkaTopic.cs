@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an Aiven for Apache Kafka® topic.
+    /// Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
     /// 
     /// ## Example Usage
     /// 
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
     public partial class KafkaTopic : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Kafka topic configuration.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         /// </summary>
         [Output("config")]
         public Output<Outputs.KafkaTopicConfig?> Config { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Tags for the Kafka topic.
+        /// Tags for the topic.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.KafkaTopicTag>> Tags { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka topic configuration.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         /// </summary>
         [Input("config")]
         public Input<Inputs.KafkaTopicConfigArgs>? Config { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaTopicTagArgs>? _tags;
 
         /// <summary>
-        /// Tags for the Kafka topic.
+        /// Tags for the topic.
         /// </summary>
         public InputList<Inputs.KafkaTopicTagArgs> Tags
         {
@@ -200,7 +200,7 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka topic configuration.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         /// </summary>
         [Input("config")]
         public Input<Inputs.KafkaTopicConfigGetArgs>? Config { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaTopicTagGetArgs>? _tags;
 
         /// <summary>
-        /// Tags for the Kafka topic.
+        /// Tags for the topic.
         /// </summary>
         public InputList<Inputs.KafkaTopicTagGetArgs> Tags
         {

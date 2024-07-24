@@ -169,6 +169,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Thanos{}
 	case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
 		r = &TransitGatewayVpcAttachment{}
+	case "aiven:index/valkey:Valkey":
+		r = &Valkey{}
+	case "aiven:index/valkeyUser:ValkeyUser":
+		r = &ValkeyUser{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -568,6 +572,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/transitGatewayVpcAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/valkey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/valkeyUser",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

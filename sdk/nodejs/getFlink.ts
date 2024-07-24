@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Flink data source provides information about the existing Aiven Flink service.
+ * Gets information about an Aiven for Apache Flink® service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const flink = aiven.getFlink({
- *     project: pr1.project,
- *     serviceName: "<SERVICE_NAME>",
+ * const exampleFlink = aiven.getFlink({
+ *     project: exampleProject.project,
+ *     serviceName: "example-flink-service",
  * });
  * ```
  */
@@ -85,7 +85,7 @@ export interface GetFlinkResult {
      */
     readonly flinkUserConfigs: outputs.GetFlinkFlinkUserConfig[];
     /**
-     * Flink server provided values
+     * Values provided by the Flink server.
      */
     readonly flinks: outputs.GetFlinkFlink[];
     /**
@@ -166,7 +166,7 @@ export interface GetFlinkResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The Flink data source provides information about the existing Aiven Flink service.
+ * Gets information about an Aiven for Apache Flink® service.
  *
  * ## Example Usage
  *
@@ -174,9 +174,9 @@ export interface GetFlinkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const flink = aiven.getFlink({
- *     project: pr1.project,
- *     serviceName: "<SERVICE_NAME>",
+ * const exampleFlink = aiven.getFlink({
+ *     project: exampleProject.project,
+ *     serviceName: "example-flink-service",
  * });
  * ```
  */

@@ -62,7 +62,7 @@ type LookupKafkaTopicArgs struct {
 
 // A collection of values returned by getKafkaTopic.
 type LookupKafkaTopicResult struct {
-	// Kafka topic configuration.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Configs []GetKafkaTopicConfig `pulumi:"configs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -74,7 +74,7 @@ type LookupKafkaTopicResult struct {
 	Replication int `pulumi:"replication"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Tags for the Kafka topic.
+	// Tags for the topic.
 	Tags                  []GetKafkaTopicTag `pulumi:"tags"`
 	TerminationProtection bool               `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
@@ -123,7 +123,7 @@ func (o LookupKafkaTopicResultOutput) ToLookupKafkaTopicResultOutputWithContext(
 	return o
 }
 
-// Kafka topic configuration.
+// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 func (o LookupKafkaTopicResultOutput) Configs() GetKafkaTopicConfigArrayOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) []GetKafkaTopicConfig { return v.Configs }).(GetKafkaTopicConfigArrayOutput)
 }
@@ -153,7 +153,7 @@ func (o LookupKafkaTopicResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Tags for the Kafka topic.
+// Tags for the topic.
 func (o LookupKafkaTopicResultOutput) Tags() GetKafkaTopicTagArrayOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) []GetKafkaTopicTag { return v.Tags }).(GetKafkaTopicTagArrayOutput)
 }

@@ -122,7 +122,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicResult
     {
         /// <summary>
-        /// Kafka topic configuration.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicConfigResult> Configs;
         /// <summary>
@@ -146,7 +146,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Tags for the Kafka topic.
+        /// Tags for the topic.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicTagResult> Tags;
         public readonly bool TerminationProtection;

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+ * Gets information about an ACL entry for an Aiven for Apache Kafka® service.
  *
  * ## Example Usage
  *
@@ -13,12 +13,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytestacl = aiven.getKafkaAcl({
- *     project: myproject.project,
- *     serviceName: mykafka.serviceName,
- *     topic: "<TOPIC_NAME_PATTERN>",
- *     permission: "<PERMISSON>",
- *     username: "<USERNAME_PATTERN>",
+ * const exampleAcl = aiven.getKafkaAcl({
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
+ *     topic: "example-topic",
+ *     permission: "admin",
+ *     username: "example-user",
  * });
  * ```
  */
@@ -39,7 +39,7 @@ export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetKafkaAclArgs {
     /**
-     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      */
     permission: string;
     /**
@@ -51,11 +51,11 @@ export interface GetKafkaAclArgs {
      */
     serviceName: string;
     /**
-     * Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
      */
     topic: string;
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -65,7 +65,7 @@ export interface GetKafkaAclArgs {
  */
 export interface GetKafkaAclResult {
     /**
-     * Kafka ACL ID
+     * Kafka ACL ID.
      */
     readonly aclId: string;
     /**
@@ -73,7 +73,7 @@ export interface GetKafkaAclResult {
      */
     readonly id: string;
     /**
-     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      */
     readonly permission: string;
     /**
@@ -85,16 +85,16 @@ export interface GetKafkaAclResult {
      */
     readonly serviceName: string;
     /**
-     * Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
      */
     readonly topic: string;
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
 /**
- * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+ * Gets information about an ACL entry for an Aiven for Apache Kafka® service.
  *
  * ## Example Usage
  *
@@ -102,12 +102,12 @@ export interface GetKafkaAclResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytestacl = aiven.getKafkaAcl({
- *     project: myproject.project,
- *     serviceName: mykafka.serviceName,
- *     topic: "<TOPIC_NAME_PATTERN>",
- *     permission: "<PERMISSON>",
- *     username: "<USERNAME_PATTERN>",
+ * const exampleAcl = aiven.getKafkaAcl({
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
+ *     topic: "example-topic",
+ *     permission: "admin",
+ *     username: "example-user",
  * });
  * ```
  */
@@ -120,7 +120,7 @@ export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.Inv
  */
 export interface GetKafkaAclOutputArgs {
     /**
-     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      */
     permission: pulumi.Input<string>;
     /**
@@ -132,11 +132,11 @@ export interface GetKafkaAclOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
      */
     topic: pulumi.Input<string>;
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

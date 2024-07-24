@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an Aiven for Apache Kafka® topic.
+ * Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
  *
  * ## Example Usage
  *
@@ -64,7 +64,7 @@ export class KafkaTopic extends pulumi.CustomResource {
     }
 
     /**
-     * Kafka topic configuration.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      */
     public readonly config!: pulumi.Output<outputs.KafkaTopicConfig | undefined>;
     /**
@@ -84,7 +84,7 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Tags for the Kafka topic.
+     * Tags for the topic.
      */
     public readonly tags!: pulumi.Output<outputs.KafkaTopicTag[] | undefined>;
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
@@ -150,7 +150,7 @@ export class KafkaTopic extends pulumi.CustomResource {
  */
 export interface KafkaTopicState {
     /**
-     * Kafka topic configuration.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
     /**
@@ -170,7 +170,7 @@ export interface KafkaTopicState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Tags for the Kafka topic.
+     * Tags for the topic.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     terminationProtection?: pulumi.Input<boolean>;
@@ -185,7 +185,7 @@ export interface KafkaTopicState {
  */
 export interface KafkaTopicArgs {
     /**
-     * Kafka topic configuration.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
     /**
@@ -205,7 +205,7 @@ export interface KafkaTopicArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Tags for the Kafka topic.
+     * Tags for the topic.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     terminationProtection?: pulumi.Input<boolean>;

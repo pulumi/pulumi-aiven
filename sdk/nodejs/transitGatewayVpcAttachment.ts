@@ -61,9 +61,7 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
      */
     public readonly peerCloudAccount!: pulumi.Output<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC)
-     *
-     * @deprecated This field is deprecated and will be removed in the next major release.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
      */
     public readonly peerRegion!: pulumi.Output<string | undefined>;
     /**
@@ -149,9 +147,7 @@ export interface TransitGatewayVpcAttachmentState {
      */
     peerCloudAccount?: pulumi.Input<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC)
-     *
-     * @deprecated This field is deprecated and will be removed in the next major release.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
      */
     peerRegion?: pulumi.Input<string>;
     /**
@@ -189,9 +185,7 @@ export interface TransitGatewayVpcAttachmentArgs {
      */
     peerCloudAccount: pulumi.Input<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC)
-     *
-     * @deprecated This field is deprecated and will be removed in the next major release.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
      */
     peerRegion?: pulumi.Input<string>;
     /**

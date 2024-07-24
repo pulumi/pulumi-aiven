@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _uris;
 
         /// <summary>
-        /// Clickhouse server URIs.
+        /// ClickHouse server URIs.
         /// </summary>
         public InputList<string> Uris
         {

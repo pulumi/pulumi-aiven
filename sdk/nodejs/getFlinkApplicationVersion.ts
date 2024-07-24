@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+ * Gets information about an Aiven for Apache Flink® application version.
  *
  * ## Example Usage
  *
@@ -15,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const app1 = aiven.getFlinkApplicationVersion({
- *     project: pr1.project,
- *     serviceName: "<SERVICE_NAME>",
- *     applicationId: "<APPLICATION_ID>",
- *     applicationVersionId: "<APPLICATION_VERSION_ID>",
+ * const main = aiven.getFlinkApplicationVersion({
+ *     project: exampleProject.project,
+ *     serviceName: exampleFlink.serviceName,
+ *     applicationId: exampleApp.applicationId,
+ *     applicationVersionId: "d6e7f71c-cadf-49b5-a4ad-126c805fe684",
  * });
  * ```
  */
@@ -39,11 +39,11 @@ export function getFlinkApplicationVersion(args: GetFlinkApplicationVersionArgs,
  */
 export interface GetFlinkApplicationVersionArgs {
     /**
-     * Application ID
+     * Application ID.
      */
     applicationId: string;
     /**
-     * Application version ID
+     * Application version ID.
      */
     applicationVersionId: string;
     /**
@@ -61,19 +61,19 @@ export interface GetFlinkApplicationVersionArgs {
  */
 export interface GetFlinkApplicationVersionResult {
     /**
-     * Application ID
+     * Application ID.
      */
     readonly applicationId: string;
     /**
-     * Application version ID
+     * Application version ID.
      */
     readonly applicationVersionId: string;
     /**
-     * Application version creation time
+     * Application version creation time.
      */
     readonly createdAt: string;
     /**
-     * Application version creator
+     * The user who created the application.
      */
     readonly createdBy: string;
     /**
@@ -89,7 +89,7 @@ export interface GetFlinkApplicationVersionResult {
      */
     readonly serviceName: string;
     /**
-     * Application sink
+     * The sink table for the application.
      */
     readonly sink: outputs.GetFlinkApplicationVersionSink[];
     /**
@@ -97,7 +97,7 @@ export interface GetFlinkApplicationVersionResult {
      */
     readonly sinks: outputs.GetFlinkApplicationVersionSink[];
     /**
-     * Application source
+     * The source table for the application.
      */
     readonly source: outputs.GetFlinkApplicationVersionSource[];
     /**
@@ -105,16 +105,16 @@ export interface GetFlinkApplicationVersionResult {
      */
     readonly sources: outputs.GetFlinkApplicationVersionSource[];
     /**
-     * Job SQL statement
+     * Job SQL statement.
      */
     readonly statement: string;
     /**
-     * Application version number
+     * Application version number.
      */
     readonly version: number;
 }
 /**
- * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+ * Gets information about an Aiven for Apache Flink® application version.
  *
  * ## Example Usage
  *
@@ -122,11 +122,11 @@ export interface GetFlinkApplicationVersionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const app1 = aiven.getFlinkApplicationVersion({
- *     project: pr1.project,
- *     serviceName: "<SERVICE_NAME>",
- *     applicationId: "<APPLICATION_ID>",
- *     applicationVersionId: "<APPLICATION_VERSION_ID>",
+ * const main = aiven.getFlinkApplicationVersion({
+ *     project: exampleProject.project,
+ *     serviceName: exampleFlink.serviceName,
+ *     applicationId: exampleApp.applicationId,
+ *     applicationVersionId: "d6e7f71c-cadf-49b5-a4ad-126c805fe684",
  * });
  * ```
  */
@@ -139,11 +139,11 @@ export function getFlinkApplicationVersionOutput(args: GetFlinkApplicationVersio
  */
 export interface GetFlinkApplicationVersionOutputArgs {
     /**
-     * Application ID
+     * Application ID.
      */
     applicationId: pulumi.Input<string>;
     /**
-     * Application version ID
+     * Application version ID.
      */
     applicationVersionId: pulumi.Input<string>;
     /**

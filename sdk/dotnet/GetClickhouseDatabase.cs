@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetClickhouseDatabase
     {
         /// <summary>
-        /// The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+        /// Gets information about a ClickHouse database.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var clickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
+        ///     var exampleClickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
         ///     {
-        ///         Project = ch.Project,
-        ///         ServiceName = ch.ServiceName,
-        ///         Name = "my-ch-db",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleClickhouse.ServiceName,
+        ///         Name = "example-database",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseDatabaseResult>("aiven:index/getClickhouseDatabase:getClickhouseDatabase", args ?? new GetClickhouseDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+        /// Gets information about a ClickHouse database.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var clickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
+        ///     var exampleClickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
         ///     {
-        ///         Project = ch.Project,
-        ///         ServiceName = ch.ServiceName,
-        ///         Name = "my-ch-db",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleClickhouse.ServiceName,
+        ///         Name = "example-database",
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Aiven
     public sealed class GetClickhouseDatabaseArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse database. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Aiven
     public sealed class GetClickhouseDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse database. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse database. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Name;
         /// <summary>

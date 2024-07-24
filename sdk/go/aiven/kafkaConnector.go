@@ -12,7 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
+// Creates and manages Aiven for Apache Kafka® [connectors](https://aiven.io/docs/products/kafka/kafka-connect/concepts/list-of-connector-plugins).
+// Source connectors let you import data from an external system into a Kafka topic. Sink connectors let you export data from a topic to an external system.
+//
+// You can use connectors with any Aiven for Apache Kafka® service that is integrated with an Aiven for Apache Kafka® Connect service.
 //
 // ## Example Usage
 //
@@ -28,18 +31,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaConnector(ctx, "kafka-os-con1", &aiven.KafkaConnectorArgs{
-//				Project:       pulumi.Any(kafka_con_project1.Project),
-//				ServiceName:   pulumi.Any(kafka_service1.ServiceName),
-//				ConnectorName: pulumi.String("kafka-os-con1"),
+//			_, err := aiven.NewKafkaConnector(ctx, "kafka-os-connector", &aiven.KafkaConnectorArgs{
+//				Project:       pulumi.Any(exampleProject.Project),
+//				ServiceName:   pulumi.Any(exampleKafka.ServiceName),
+//				ConnectorName: pulumi.String("kafka-opensearch-connector"),
 //				Config: pulumi.StringMap{
-//					"topics":              pulumi.Any(kafka_topic1.TopicName),
+//					"name":                pulumi.String("kafka-opensearch-connector"),
+//					"topics":              pulumi.Any(exampleTopic.TopicName),
 //					"connector.class":     pulumi.String("io.aiven.kafka.connect.opensearch.OpensearchSinkConnector"),
 //					"type.name":           pulumi.String("os-connector"),
-//					"name":                pulumi.String("kafka-os-con1"),
-//					"connection.url":      pulumi.Any(os_service1.ServiceUri),
-//					"connection.username": pulumi.Any(os_service1.ServiceUsername),
-//					"connection.password": pulumi.Any(os_service1.ServicePassword),
+//					"connection.url":      pulumi.Any(exampleOs.ServiceUri),
+//					"connection.username": pulumi.Any(exampleOs.ServiceUsername),
+//					"connection.password": pulumi.Any(exampleOs.ServicePassword),
 //				},
 //			})
 //			if err != nil {
@@ -54,14 +57,14 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
+// $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-connector PROJECT/SERVICE_NAME/CONNECTOR_NAME
 // ```
 type KafkaConnector struct {
 	pulumi.CustomResourceState
 
-	// The Kafka Connector configuration parameters.
+	// The Kafka connector configuration parameters.
 	Config pulumi.StringMapOutput `pulumi:"config"`
-	// The kafka connector name. Changing this property forces recreation of the resource.
+	// The Kafka connector name. Changing this property forces recreation of the resource.
 	ConnectorName pulumi.StringOutput `pulumi:"connectorName"`
 	// The Kafka connector author.
 	PluginAuthor pulumi.StringOutput `pulumi:"pluginAuthor"`
@@ -73,7 +76,7 @@ type KafkaConnector struct {
 	PluginTitle pulumi.StringOutput `pulumi:"pluginTitle"`
 	// The Kafka connector type.
 	PluginType pulumi.StringOutput `pulumi:"pluginType"`
-	// The version of the kafka connector.
+	// The version of the Kafka connector.
 	PluginVersion pulumi.StringOutput `pulumi:"pluginVersion"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -125,9 +128,9 @@ func GetKafkaConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaConnector resources.
 type kafkaConnectorState struct {
-	// The Kafka Connector configuration parameters.
+	// The Kafka connector configuration parameters.
 	Config map[string]string `pulumi:"config"`
-	// The kafka connector name. Changing this property forces recreation of the resource.
+	// The Kafka connector name. Changing this property forces recreation of the resource.
 	ConnectorName *string `pulumi:"connectorName"`
 	// The Kafka connector author.
 	PluginAuthor *string `pulumi:"pluginAuthor"`
@@ -139,7 +142,7 @@ type kafkaConnectorState struct {
 	PluginTitle *string `pulumi:"pluginTitle"`
 	// The Kafka connector type.
 	PluginType *string `pulumi:"pluginType"`
-	// The version of the kafka connector.
+	// The version of the Kafka connector.
 	PluginVersion *string `pulumi:"pluginVersion"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
@@ -150,9 +153,9 @@ type kafkaConnectorState struct {
 }
 
 type KafkaConnectorState struct {
-	// The Kafka Connector configuration parameters.
+	// The Kafka connector configuration parameters.
 	Config pulumi.StringMapInput
-	// The kafka connector name. Changing this property forces recreation of the resource.
+	// The Kafka connector name. Changing this property forces recreation of the resource.
 	ConnectorName pulumi.StringPtrInput
 	// The Kafka connector author.
 	PluginAuthor pulumi.StringPtrInput
@@ -164,7 +167,7 @@ type KafkaConnectorState struct {
 	PluginTitle pulumi.StringPtrInput
 	// The Kafka connector type.
 	PluginType pulumi.StringPtrInput
-	// The version of the kafka connector.
+	// The version of the Kafka connector.
 	PluginVersion pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
@@ -179,9 +182,9 @@ func (KafkaConnectorState) ElementType() reflect.Type {
 }
 
 type kafkaConnectorArgs struct {
-	// The Kafka Connector configuration parameters.
+	// The Kafka connector configuration parameters.
 	Config map[string]string `pulumi:"config"`
-	// The kafka connector name. Changing this property forces recreation of the resource.
+	// The Kafka connector name. Changing this property forces recreation of the resource.
 	ConnectorName string `pulumi:"connectorName"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -191,9 +194,9 @@ type kafkaConnectorArgs struct {
 
 // The set of arguments for constructing a KafkaConnector resource.
 type KafkaConnectorArgs struct {
-	// The Kafka Connector configuration parameters.
+	// The Kafka connector configuration parameters.
 	Config pulumi.StringMapInput
-	// The kafka connector name. Changing this property forces recreation of the resource.
+	// The Kafka connector name. Changing this property forces recreation of the resource.
 	ConnectorName pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
@@ -288,12 +291,12 @@ func (o KafkaConnectorOutput) ToKafkaConnectorOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The Kafka Connector configuration parameters.
+// The Kafka connector configuration parameters.
 func (o KafkaConnectorOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *KafkaConnector) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
 }
 
-// The kafka connector name. Changing this property forces recreation of the resource.
+// The Kafka connector name. Changing this property forces recreation of the resource.
 func (o KafkaConnectorOutput) ConnectorName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.ConnectorName }).(pulumi.StringOutput)
 }
@@ -323,7 +326,7 @@ func (o KafkaConnectorOutput) PluginType() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.PluginType }).(pulumi.StringOutput)
 }
 
-// The version of the kafka connector.
+// The version of the Kafka connector.
 func (o KafkaConnectorOutput) PluginVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.PluginVersion }).(pulumi.StringOutput)
 }

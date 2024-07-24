@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Clickhouse Grant resource allows the creation and management of Grants in Aiven Clickhouse services.
+    /// Creates and manages ClickHouse grants to give users and roles privileges to a ClickHouse service.
     /// 
-    /// Notes:
-    /// * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
-    /// * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
-    /// * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
+    /// **Note:**
+    /// * Users cannot have the same name as roles.
+    /// * To grant a privilege on all tables of a database, omit the table and only keep the database. Don't use `table="*"`.
+    /// * Changes first revoke all grants and then reissue the remaining grants for convergence.
     /// 
     /// ## Example Usage
     /// 
@@ -27,78 +27,71 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var clickhouse = new Aiven.Clickhouse("clickhouse", new()
+    ///     var exampleRole = new Aiven.ClickhouseRole("example_role", new()
     ///     {
-    ///         Project = aivenProjectName,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-8",
-    ///         ServiceName = "exapmle-clickhouse",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleClickhouse.ServiceName,
+    ///         Role = "example-role",
     ///     });
     /// 
-    ///     var demodb = new Aiven.ClickhouseDatabase("demodb", new()
+    ///     // Grant privileges to the example role.
+    ///     var rolePrivileges = new Aiven.ClickhouseGrant("role_privileges", new()
     ///     {
-    ///         Project = clickhouse.Project,
-    ///         ServiceName = clickhouse.ServiceName,
-    ///         Name = "demo",
-    ///     });
-    /// 
-    ///     var demo = new Aiven.ClickhouseRole("demo", new()
-    ///     {
-    ///         Project = clickhouse.Project,
-    ///         ServiceName = clickhouse.ServiceName,
-    ///         Role = "demo-role",
-    ///     });
-    /// 
-    ///     var demo_role_grant = new Aiven.ClickhouseGrant("demo-role-grant", new()
-    ///     {
-    ///         Project = clickhouse.Project,
-    ///         ServiceName = clickhouse.ServiceName,
-    ///         Role = demo.Role,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleClickhouse.ServiceName,
+    ///         Role = exampleRole.Role,
     ///         PrivilegeGrants = new[]
     ///         {
     ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
     ///             {
     ///                 Privilege = "INSERT",
-    ///                 Database = demodb.Name,
-    ///                 Table = "demo-table",
+    ///                 Database = exampleDb.Name,
+    ///                 Table = "example-table",
     ///             },
     ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
     ///             {
     ///                 Privilege = "SELECT",
-    ///                 Database = demodb.Name,
+    ///                 Database = exampleDb.Name,
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var demoClickhouseUser = new Aiven.ClickhouseUser("demo", new()
+    ///     // Grant the role to the user.
+    ///     var exampleUser = new Aiven.ClickhouseUser("example_user", new()
     ///     {
-    ///         Project = clickhouse.Project,
-    ///         ServiceName = clickhouse.ServiceName,
-    ///         Username = "demo-user",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleClickhouse.ServiceName,
+    ///         Username = "example-user",
     ///     });
     /// 
-    ///     var demo_user_grant = new Aiven.ClickhouseGrant("demo-user-grant", new()
+    ///     var userRoleAssignment = new Aiven.ClickhouseGrant("user_role_assignment", new()
     ///     {
-    ///         Project = clickhouse.Project,
-    ///         ServiceName = clickhouse.ServiceName,
-    ///         User = demoClickhouseUser.Username,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleClickhouse.ServiceName,
+    ///         User = exampleUser.Username,
     ///         RoleGrants = new[]
     ///         {
     ///             new Aiven.Inputs.ClickhouseGrantRoleGrantArgs
     ///             {
-    ///                 Role = demo.Role,
+    ///                 Role = exampleRole.Role,
     ///             },
     ///         },
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/clickhouseGrant:ClickhouseGrant example_grant PROJECT/SERVICE_NAME/ID
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseGrant:ClickhouseGrant")]
     public partial class ClickhouseGrant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        /// Grant privileges. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("privilegeGrants")]
         public Output<ImmutableArray<Outputs.ClickhouseGrantPrivilegeGrant>> PrivilegeGrants { get; private set; } = null!;
@@ -116,7 +109,7 @@ namespace Pulumi.Aiven
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration to grant a role. Changing this property forces recreation of the resource.
+        /// Grant roles. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("roleGrants")]
         public Output<ImmutableArray<Outputs.ClickhouseGrantRoleGrant>> RoleGrants { get; private set; } = null!;
@@ -183,7 +176,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseGrantPrivilegeGrantArgs>? _privilegeGrants;
 
         /// <summary>
-        /// Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        /// Grant privileges. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<Inputs.ClickhouseGrantPrivilegeGrantArgs> PrivilegeGrants
         {
@@ -207,7 +200,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseGrantRoleGrantArgs>? _roleGrants;
 
         /// <summary>
-        /// Configuration to grant a role. Changing this property forces recreation of the resource.
+        /// Grant roles. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<Inputs.ClickhouseGrantRoleGrantArgs> RoleGrants
         {
@@ -239,7 +232,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseGrantPrivilegeGrantGetArgs>? _privilegeGrants;
 
         /// <summary>
-        /// Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        /// Grant privileges. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<Inputs.ClickhouseGrantPrivilegeGrantGetArgs> PrivilegeGrants
         {
@@ -263,7 +256,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseGrantRoleGrantGetArgs>? _roleGrants;
 
         /// <summary>
-        /// Configuration to grant a role. Changing this property forces recreation of the resource.
+        /// Grant roles. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<Inputs.ClickhouseGrantRoleGrantGetArgs> RoleGrants
         {

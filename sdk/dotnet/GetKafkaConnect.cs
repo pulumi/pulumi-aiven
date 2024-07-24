@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetKafkaConnect
     {
         /// <summary>
-        /// The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+        /// Gets information about an Aiven for Apache Kafka® Connect service.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var kc1 = Aiven.GetKafkaConnect.Invoke(new()
+        ///     var exampleKafkaConnect = Aiven.GetKafkaConnect.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "my-kc1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-connect-service",
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+        /// Gets information about an Aiven for Apache Kafka® Connect service.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var kc1 = Aiven.GetKafkaConnect.Invoke(new()
+        ///     var exampleKafkaConnect = Aiven.GetKafkaConnect.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "my-kc1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-connect-service",
         ///     });
         /// 
         /// });

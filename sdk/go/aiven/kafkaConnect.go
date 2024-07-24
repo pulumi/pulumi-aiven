@@ -12,7 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
+// Creates and manages an [Aiven for Apache Kafka® Connect](https://aiven.io/docs/products/kafka/kafka-connect) service.
+// Kafka Connect lets you integrate an Aiven for Apache Kafka® service with external data sources using connectors.
+//
+// To set up and integrate Kafka Connect:
+// 1. Create a Kafka service in the same Aiven project using the `Kafka` resource.
+// 2. Create topics for importing and exporting data using `KafkaTopic`.
+// 3. Create the Kafka Connect service.
+// 4. Use the `ServiceIntegration` resource to integrate the Kafka and Kafka Connect services.
+// 5. Add source and sink connectors using `KafkaConnector` resource.
 //
 // ## Example Usage
 //
@@ -28,19 +36,45 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaConnect(ctx, "kc1", &aiven.KafkaConnectArgs{
-//				Project:               pulumi.Any(pr1.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("startup-4"),
-//				ServiceName:           pulumi.String("my-kc1"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
+//			// Create a Kafka service.
+//			exampleKafka, err := aiven.NewKafka(ctx, "example_kafka", &aiven.KafkaArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.String("example-kafka-service"),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				Plan:        pulumi.String("startup-2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a Kafka Connect service.
+//			exampleKafkaConnect, err := aiven.NewKafkaConnect(ctx, "example_kafka_connect", &aiven.KafkaConnectArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("example-connect-service"),
 //				KafkaConnectUserConfig: &aiven.KafkaConnectKafkaConnectUserConfigArgs{
 //					KafkaConnect: &aiven.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{
 //						ConsumerIsolationLevel: pulumi.String("read_committed"),
 //					},
 //					PublicAccess: &aiven.KafkaConnectKafkaConnectUserConfigPublicAccessArgs{
 //						KafkaConnect: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Integrate the Kafka and Kafka Connect services.
+//			_, err = aiven.NewServiceIntegration(ctx, "kafka_connect_integration", &aiven.ServiceIntegrationArgs{
+//				Project:                pulumi.Any(exampleProject.Project),
+//				IntegrationType:        pulumi.String("kafka_connect"),
+//				SourceServiceName:      exampleKafka.ServiceName,
+//				DestinationServiceName: exampleKafkaConnect.ServiceName,
+//				KafkaConnectUserConfig: &aiven.ServiceIntegrationKafkaConnectUserConfigArgs{
+//					KafkaConnect: &aiven.ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{
+//						GroupId:            pulumi.String("connect"),
+//						StatusStorageTopic: pulumi.String("__connect_status"),
+//						OffsetStorageTopic: pulumi.String("__connect_offsets"),
 //					},
 //				},
 //			})
@@ -56,7 +90,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/kafkaConnect:KafkaConnect kc1 project/service_name
+// $ pulumi import aiven:index/kafkaConnect:KafkaConnect example_kafka_connect PROJECT/SERVICE_NAME
 // ```
 type KafkaConnect struct {
 	pulumi.CustomResourceState

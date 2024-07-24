@@ -118,6 +118,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? IsmHistoryRolloverRetentionPeriod;
         /// <summary>
+        /// Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        /// </summary>
+        public readonly bool? KnnMemoryCircuitBreakerEnabled;
+        /// <summary>
+        /// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        /// </summary>
+        public readonly int? KnnMemoryCircuitBreakerLimit;
+        /// <summary>
         /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         /// </summary>
         public readonly bool? OverrideMainResponseVersion;
@@ -236,6 +244,10 @@ namespace Pulumi.Aiven.Outputs
 
             int? ismHistoryRolloverRetentionPeriod,
 
+            bool? knnMemoryCircuitBreakerEnabled,
+
+            int? knnMemoryCircuitBreakerLimit,
+
             bool? overrideMainResponseVersion,
 
             bool? pluginsAlertingFilterByBackendRoles,
@@ -294,6 +306,8 @@ namespace Pulumi.Aiven.Outputs
             IsmHistoryMaxDocs = ismHistoryMaxDocs;
             IsmHistoryRolloverCheckPeriod = ismHistoryRolloverCheckPeriod;
             IsmHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
+            KnnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
+            KnnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
             OverrideMainResponseVersion = overrideMainResponseVersion;
             PluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
             ReindexRemoteWhitelists = reindexRemoteWhitelists;

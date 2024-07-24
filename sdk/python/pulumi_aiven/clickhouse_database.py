@@ -22,7 +22,7 @@ class ClickhouseDatabaseArgs:
         The set of arguments for constructing a ClickhouseDatabase resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] name: The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -59,7 +59,7 @@ class ClickhouseDatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        The name of the ClickHouse database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -86,7 +86,7 @@ class _ClickhouseDatabaseState:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ClickhouseDatabase resources.
-        :param pulumi.Input[str] name: The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -103,7 +103,7 @@ class _ClickhouseDatabaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        The name of the ClickHouse database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -156,7 +156,10 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
+        Creates and manages an Aiven for ClickHouse® database.
+
+        > Tables cannot be created using Aiven Operator. To create a table,
+        use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
 
         ## Example Usage
 
@@ -164,21 +167,28 @@ class ClickhouseDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        clickhouse_db = aiven.ClickhouseDatabase("clickhouse_db",
-            project=ch["project"],
-            service_name=ch["serviceName"],
-            name="my-ch-db")
+        example_clickhouse = aiven.Clickhouse("example_clickhouse",
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="example-clickhouse-service",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
+        example_db = aiven.ClickhouseDatabase("example_db",
+            project=example_project["project"],
+            service_name=example_clickhouse.service_name,
+            name="example-database")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db PROJECT/SERVICE_NAME/NAME
+        $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase example_db PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -189,7 +199,10 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  args: ClickhouseDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
+        Creates and manages an Aiven for ClickHouse® database.
+
+        > Tables cannot be created using Aiven Operator. To create a table,
+        use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
 
         ## Example Usage
 
@@ -197,16 +210,23 @@ class ClickhouseDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        clickhouse_db = aiven.ClickhouseDatabase("clickhouse_db",
-            project=ch["project"],
-            service_name=ch["serviceName"],
-            name="my-ch-db")
+        example_clickhouse = aiven.Clickhouse("example_clickhouse",
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="example-clickhouse-service",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
+        example_db = aiven.ClickhouseDatabase("example_db",
+            project=example_project["project"],
+            service_name=example_clickhouse.service_name,
+            name="example-database")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db PROJECT/SERVICE_NAME/NAME
+        $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase example_db PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -266,7 +286,7 @@ class ClickhouseDatabase(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -284,7 +304,7 @@ class ClickhouseDatabase(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        The name of the ClickHouse database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 

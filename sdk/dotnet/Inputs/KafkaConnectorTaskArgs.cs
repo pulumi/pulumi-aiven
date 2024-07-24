@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Connector { get; set; }
 
         /// <summary>
-        /// The task id of the task.
+        /// The task ID of the task.
         /// </summary>
         [Input("task")]
         public Input<int>? Task { get; set; }

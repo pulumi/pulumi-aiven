@@ -26,13 +26,13 @@ class FlinkApplicationVersionArgs:
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None):
         """
         The set of arguments for constructing a FlinkApplicationVersion resource.
-        :param pulumi.Input[str] application_id: Application ID
+        :param pulumi.Input[str] application_id: Application ID.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] statement: Job SQL statement
-        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sink: Application sink
+        :param pulumi.Input[str] statement: Job SQL statement.
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sink: The sink table for the application.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sinks: Application sinks
-        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] source: Application source
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] source: The source table for the application.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] sources: Application sources
         """
         pulumi.set(__self__, "application_id", application_id)
@@ -58,7 +58,7 @@ class FlinkApplicationVersionArgs:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Input[str]:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -94,7 +94,7 @@ class FlinkApplicationVersionArgs:
     @pulumi.getter
     def statement(self) -> pulumi.Input[str]:
         """
-        Job SQL statement
+        Job SQL statement.
         """
         return pulumi.get(self, "statement")
 
@@ -106,7 +106,7 @@ class FlinkApplicationVersionArgs:
     @pulumi.getter
     def sink(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
         """
-        Application sink
+        The sink table for the application.
         """
         return pulumi.get(self, "sink")
 
@@ -131,7 +131,7 @@ class FlinkApplicationVersionArgs:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
         """
-        Application source
+        The source table for the application.
         """
         return pulumi.get(self, "source")
 
@@ -170,18 +170,18 @@ class _FlinkApplicationVersionState:
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering FlinkApplicationVersion resources.
-        :param pulumi.Input[str] application_id: Application ID
-        :param pulumi.Input[str] application_version_id: Application version ID
-        :param pulumi.Input[str] created_at: Application version creation time
-        :param pulumi.Input[str] created_by: Application version creator
+        :param pulumi.Input[str] application_id: Application ID.
+        :param pulumi.Input[str] application_version_id: Application version ID.
+        :param pulumi.Input[str] created_at: Application version creation time.
+        :param pulumi.Input[str] created_by: The user who created the application.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sink: Application sink
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sink: The sink table for the application.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]] sinks: Application sinks
-        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] source: Application source
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] source: The source table for the application.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]] sources: Application sources
-        :param pulumi.Input[str] statement: Job SQL statement
-        :param pulumi.Input[int] version: Application version number
+        :param pulumi.Input[str] statement: Job SQL statement.
+        :param pulumi.Input[int] version: Application version number.
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
@@ -218,7 +218,7 @@ class _FlinkApplicationVersionState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -230,7 +230,7 @@ class _FlinkApplicationVersionState:
     @pulumi.getter(name="applicationVersionId")
     def application_version_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Application version ID
+        Application version ID.
         """
         return pulumi.get(self, "application_version_id")
 
@@ -242,7 +242,7 @@ class _FlinkApplicationVersionState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Application version creation time
+        Application version creation time.
         """
         return pulumi.get(self, "created_at")
 
@@ -254,7 +254,7 @@ class _FlinkApplicationVersionState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
         """
-        Application version creator
+        The user who created the application.
         """
         return pulumi.get(self, "created_by")
 
@@ -290,7 +290,7 @@ class _FlinkApplicationVersionState:
     @pulumi.getter
     def sink(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
         """
-        Application sink
+        The sink table for the application.
         """
         return pulumi.get(self, "sink")
 
@@ -315,7 +315,7 @@ class _FlinkApplicationVersionState:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
         """
-        Application source
+        The source table for the application.
         """
         return pulumi.get(self, "source")
 
@@ -340,7 +340,7 @@ class _FlinkApplicationVersionState:
     @pulumi.getter
     def statement(self) -> Optional[pulumi.Input[str]]:
         """
-        Job SQL statement
+        Job SQL statement.
         """
         return pulumi.get(self, "statement")
 
@@ -352,7 +352,7 @@ class _FlinkApplicationVersionState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[int]]:
         """
-        Application version number
+        Application version number.
         """
         return pulumi.get(self, "version")
 
@@ -376,7 +376,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                  statement: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
+        Creates and manages an Aiven for Apache Flink® application version.
 
         ## Example Usage
 
@@ -384,10 +384,14 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.FlinkApplicationVersion("foo",
-            project=foo_aiven_project["project"],
-            service_name=foo_aiven_flink["serviceName"],
-            application_id=foo_aiven_flink_application["applicationId"],
+        example_app = aiven.FlinkApplication("example_app",
+            project=example_project["project"],
+            service_name="example-flink-service",
+            name="example-app")
+        main = aiven.FlinkApplicationVersion("main",
+            project=example_project["project"],
+            service_name=example_flink["serviceName"],
+            application_id=example_app.application_id,
             statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
             sinks=[aiven.FlinkApplicationVersionSinkArgs(
                 create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
@@ -422,19 +426,19 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id
+        $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: Application ID
+        :param pulumi.Input[str] application_id: Application ID.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sink: Application sink
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sink: The sink table for the application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sinks: Application sinks
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] source: Application source
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] source: The source table for the application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] sources: Application sources
-        :param pulumi.Input[str] statement: Job SQL statement
+        :param pulumi.Input[str] statement: Job SQL statement.
         """
         ...
     @overload
@@ -443,7 +447,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                  args: FlinkApplicationVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
+        Creates and manages an Aiven for Apache Flink® application version.
 
         ## Example Usage
 
@@ -451,10 +455,14 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.FlinkApplicationVersion("foo",
-            project=foo_aiven_project["project"],
-            service_name=foo_aiven_flink["serviceName"],
-            application_id=foo_aiven_flink_application["applicationId"],
+        example_app = aiven.FlinkApplication("example_app",
+            project=example_project["project"],
+            service_name="example-flink-service",
+            name="example-app")
+        main = aiven.FlinkApplicationVersion("main",
+            project=example_project["project"],
+            service_name=example_flink["serviceName"],
+            application_id=example_app.application_id,
             statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
             sinks=[aiven.FlinkApplicationVersionSinkArgs(
                 create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
@@ -489,7 +497,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id
+        $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -573,18 +581,18 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: Application ID
-        :param pulumi.Input[str] application_version_id: Application version ID
-        :param pulumi.Input[str] created_at: Application version creation time
-        :param pulumi.Input[str] created_by: Application version creator
+        :param pulumi.Input[str] application_id: Application ID.
+        :param pulumi.Input[str] application_version_id: Application version ID.
+        :param pulumi.Input[str] created_at: Application version creation time.
+        :param pulumi.Input[str] created_by: The user who created the application.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sink: Application sink
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sink: The sink table for the application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sinks: Application sinks
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] source: Application source
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] source: The source table for the application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] sources: Application sources
-        :param pulumi.Input[str] statement: Job SQL statement
-        :param pulumi.Input[int] version: Application version number
+        :param pulumi.Input[str] statement: Job SQL statement.
+        :param pulumi.Input[int] version: Application version number.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -608,7 +616,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -616,7 +624,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     @pulumi.getter(name="applicationVersionId")
     def application_version_id(self) -> pulumi.Output[str]:
         """
-        Application version ID
+        Application version ID.
         """
         return pulumi.get(self, "application_version_id")
 
@@ -624,7 +632,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Application version creation time
+        Application version creation time.
         """
         return pulumi.get(self, "created_at")
 
@@ -632,7 +640,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[str]:
         """
-        Application version creator
+        The user who created the application.
         """
         return pulumi.get(self, "created_by")
 
@@ -656,7 +664,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     @pulumi.getter
     def sink(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkApplicationVersionSink']]]:
         """
-        Application sink
+        The sink table for the application.
         """
         return pulumi.get(self, "sink")
 
@@ -673,7 +681,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     @pulumi.getter
     def source(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkApplicationVersionSource']]]:
         """
-        Application source
+        The source table for the application.
         """
         return pulumi.get(self, "source")
 
@@ -690,7 +698,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     @pulumi.getter
     def statement(self) -> pulumi.Output[str]:
         """
-        Job SQL statement
+        Job SQL statement.
         """
         return pulumi.get(self, "statement")
 
@@ -698,7 +706,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[int]:
         """
-        Application version number
+        Application version number.
         """
         return pulumi.get(self, "version")
 

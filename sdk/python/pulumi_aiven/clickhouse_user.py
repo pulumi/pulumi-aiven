@@ -21,7 +21,7 @@ class ClickhouseUserArgs:
         The set of arguments for constructing a ClickhouseUser resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -55,7 +55,7 @@ class ClickhouseUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        The name of the ClickHouse user. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -75,12 +75,12 @@ class _ClickhouseUserState:
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ClickhouseUser resources.
-        :param pulumi.Input[str] password: The password of the clickhouse user.
+        :param pulumi.Input[str] password: The password of the ClickHouse user.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] required: Indicates if a clickhouse user is required
+        :param pulumi.Input[bool] required: Indicates if a ClickHouse user is required.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] uuid: UUID of the clickhouse user.
+        :param pulumi.Input[str] username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] uuid: UUID of the ClickHouse user.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -99,7 +99,7 @@ class _ClickhouseUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the clickhouse user.
+        The password of the ClickHouse user.
         """
         return pulumi.get(self, "password")
 
@@ -123,7 +123,7 @@ class _ClickhouseUserState:
     @pulumi.getter
     def required(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates if a clickhouse user is required
+        Indicates if a ClickHouse user is required.
         """
         return pulumi.get(self, "required")
 
@@ -147,7 +147,7 @@ class _ClickhouseUserState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        The name of the ClickHouse user. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -159,7 +159,7 @@ class _ClickhouseUserState:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        UUID of the clickhouse user.
+        UUID of the ClickHouse user.
         """
         return pulumi.get(self, "uuid")
 
@@ -178,7 +178,7 @@ class ClickhouseUser(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
+        Creates and manages a ClickHouse user.
 
         ## Example Usage
 
@@ -186,23 +186,23 @@ class ClickhouseUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        ch_user = aiven.ClickhouseUser("ch-user",
-            project=myproject["project"],
-            service_name=myservice["serviceName"],
-            username="<USERNAME>")
+        example_user = aiven.ClickhouseUser("example_user",
+            project=example_project["project"],
+            service_name=example_service["serviceName"],
+            username="analyst")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
+        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USERNAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -211,7 +211,7 @@ class ClickhouseUser(pulumi.CustomResource):
                  args: ClickhouseUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
+        Creates and manages a ClickHouse user.
 
         ## Example Usage
 
@@ -219,16 +219,16 @@ class ClickhouseUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        ch_user = aiven.ClickhouseUser("ch-user",
-            project=myproject["project"],
-            service_name=myservice["serviceName"],
-            username="<USERNAME>")
+        example_user = aiven.ClickhouseUser("example_user",
+            project=example_project["project"],
+            service_name=example_service["serviceName"],
+            username="analyst")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
+        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USERNAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -295,12 +295,12 @@ class ClickhouseUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] password: The password of the clickhouse user.
+        :param pulumi.Input[str] password: The password of the ClickHouse user.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] required: Indicates if a clickhouse user is required
+        :param pulumi.Input[bool] required: Indicates if a ClickHouse user is required.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] uuid: UUID of the clickhouse user.
+        :param pulumi.Input[str] username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] uuid: UUID of the ClickHouse user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -318,7 +318,7 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        The password of the clickhouse user.
+        The password of the ClickHouse user.
         """
         return pulumi.get(self, "password")
 
@@ -334,7 +334,7 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter
     def required(self) -> pulumi.Output[bool]:
         """
-        Indicates if a clickhouse user is required
+        Indicates if a ClickHouse user is required.
         """
         return pulumi.get(self, "required")
 
@@ -350,7 +350,7 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        The name of the ClickHouse user. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -358,7 +358,7 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter
     def uuid(self) -> pulumi.Output[str]:
         """
-        UUID of the clickhouse user.
+        UUID of the ClickHouse user.
         """
         return pulumi.get(self, "uuid")
 

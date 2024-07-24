@@ -109,6 +109,8 @@
         "getServiceIntegrationEndpoint.ts",
         "getThanos.ts",
         "getTransitGatewayVpcAttachment.ts",
+        "getValkey.ts",
+        "getValkeyUser.ts",
         "grafana.ts",
         "index.ts",
         "influxDb.ts",
@@ -161,6 +163,8 @@
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "valkey.ts",
+        "valkeyUser.ts"
     ]
 }

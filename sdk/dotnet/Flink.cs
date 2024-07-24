@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Flink resource allows the creation and management of Aiven Flink services.
+    /// Creates and manages an [Aiven for Apache Flink® service](https://aiven.io/docs/products/flink/concepts/flink-features).
     /// 
     /// ## Example Usage
     /// 
@@ -22,17 +22,17 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var flink = new Aiven.Flink("flink", new()
+    ///     var exampleFlink = new Aiven.Flink("example_flink", new()
     ///     {
-    ///         Project = pr1.Project,
+    ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-4",
-    ///         ServiceName = "my-flink",
+    ///         ServiceName = "example-flink-service",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
     ///         FlinkUserConfig = new Aiven.Inputs.FlinkFlinkUserConfigArgs
     ///         {
-    ///             FlinkVersion = "1.16",
+    ///             FlinkVersion = "1.19",
     ///         },
     ///     });
     /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/flink:Flink flink PROJECT/SERVICE_NAME
+    /// $ pulumi import aiven:index/flink:Flink example_flink PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/flink:Flink")]
@@ -97,7 +97,7 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
 
         /// <summary>
-        /// Flink server provided values
+        /// Values provided by the Flink server.
         /// </summary>
         [Output("flink")]
         public Output<Outputs.FlinkFlink> FlinkDetails { get; private set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.FlinkFlinkArgs>? _flink;
 
         /// <summary>
-        /// Flink server provided values
+        /// Values provided by the Flink server.
         /// </summary>
         public Input<Inputs.FlinkFlinkArgs>? FlinkDetails
         {
@@ -464,7 +464,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.FlinkFlinkGetArgs>? _flink;
 
         /// <summary>
-        /// Flink server provided values
+        /// Values provided by the Flink server.
         /// </summary>
         public Input<Inputs.FlinkFlinkGetArgs>? FlinkDetails
         {

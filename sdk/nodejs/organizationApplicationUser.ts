@@ -5,7 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an organization application user. [Application users](https://aiven.io/docs/platform/howto/manage-application-users) can be used for programmatic access to the platform.
+ * Creates and manages an organization application user. [Application users](https://aiven.io/docs/platform/concepts/application-users) can be used for
+ * programmatic access to the platform.
+ *
+ * You give application users access to projects by adding them as members of a group using `aiven.OrganizationUserGroupMember`
+ * and assigning the group to a project with `aiven.OrganizationGroupProject`. You can give an application user access to all
+ * resources in your organization by setting `isSuperAdmin = true` .
  *
  * ## Example Usage
  *

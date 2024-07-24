@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetClickhouse
     {
         /// <summary>
-        /// The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+        /// Gets information about a ClickHouse service.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var clickhouse = Aiven.GetClickhouse.Invoke(new()
+        ///     var exampleClickhouse = Aiven.GetClickhouse.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-clickhouse-service",
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseResult>("aiven:index/getClickhouse:getClickhouse", args ?? new GetClickhouseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+        /// Gets information about a ClickHouse service.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var clickhouse = Aiven.GetClickhouse.Invoke(new()
+        ///     var exampleClickhouse = Aiven.GetClickhouse.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-clickhouse-service",
         ///     });
         /// 
         /// });
@@ -116,7 +116,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClickhouseClickhouseUserConfigResult> ClickhouseUserConfigs;
         /// <summary>
-        /// Clickhouse server provided values
+        /// Values provided by the ClickHouse server.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClickhouseClickhouseResult> Clickhouses;
         /// <summary>
@@ -176,7 +176,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceHost;
         /// <summary>
-        /// Service integrations to specify when creating a service. Not applied after initial service creation
+        /// Integrations with other services. Service integrations are only applied at service creation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClickhouseServiceIntegrationResult> ServiceIntegrations;
         /// <summary>

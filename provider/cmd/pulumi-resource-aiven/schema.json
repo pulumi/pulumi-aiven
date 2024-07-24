@@ -30907,6 +30907,11 @@
                 "valkey": {
                     "$ref": "#/types/aiven:index/ValkeyValkey:ValkeyValkey",
                     "description": "Valkey server provided values\n",
+                    "language": {
+                        "csharp": {
+                            "name": "ValkeyServer"
+                        }
+                    },
                     "secret": true
                 },
                 "valkeyUserConfig": {
@@ -31007,6 +31012,11 @@
                 "valkey": {
                     "$ref": "#/types/aiven:index/ValkeyValkey:ValkeyValkey",
                     "description": "Valkey server provided values\n",
+                    "language": {
+                        "csharp": {
+                            "name": "ValkeyServer"
+                        }
+                    },
                     "secret": true
                 },
                 "valkeyUserConfig": {
@@ -31149,6 +31159,11 @@
                     "valkey": {
                         "$ref": "#/types/aiven:index/ValkeyValkey:ValkeyValkey",
                         "description": "Valkey server provided values\n",
+                        "language": {
+                            "csharp": {
+                                "name": "ValkeyServer"
+                            }
+                        },
                         "secret": true
                     },
                     "valkeyUserConfig": {

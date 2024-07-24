@@ -475,6 +475,16 @@ export const getTransitGatewayVpcAttachment: typeof import("./getTransitGatewayV
 export const getTransitGatewayVpcAttachmentOutput: typeof import("./getTransitGatewayVpcAttachment").getTransitGatewayVpcAttachmentOutput = null as any;
 utilities.lazyLoad(exports, ["getTransitGatewayVpcAttachment","getTransitGatewayVpcAttachmentOutput"], () => require("./getTransitGatewayVpcAttachment"));
 
+export { GetValkeyArgs, GetValkeyResult, GetValkeyOutputArgs } from "./getValkey";
+export const getValkey: typeof import("./getValkey").getValkey = null as any;
+export const getValkeyOutput: typeof import("./getValkey").getValkeyOutput = null as any;
+utilities.lazyLoad(exports, ["getValkey","getValkeyOutput"], () => require("./getValkey"));
+
+export { GetValkeyUserArgs, GetValkeyUserResult, GetValkeyUserOutputArgs } from "./getValkeyUser";
+export const getValkeyUser: typeof import("./getValkeyUser").getValkeyUser = null as any;
+export const getValkeyUserOutput: typeof import("./getValkeyUser").getValkeyUserOutput = null as any;
+utilities.lazyLoad(exports, ["getValkeyUser","getValkeyUserOutput"], () => require("./getValkeyUser"));
+
 export { GrafanaArgs, GrafanaState } from "./grafana";
 export type Grafana = import("./grafana").Grafana;
 export const Grafana: typeof import("./grafana").Grafana = null as any;
@@ -715,6 +725,16 @@ export type TransitGatewayVpcAttachment = import("./transitGatewayVpcAttachment"
 export const TransitGatewayVpcAttachment: typeof import("./transitGatewayVpcAttachment").TransitGatewayVpcAttachment = null as any;
 utilities.lazyLoad(exports, ["TransitGatewayVpcAttachment"], () => require("./transitGatewayVpcAttachment"));
 
+export { ValkeyArgs, ValkeyState } from "./valkey";
+export type Valkey = import("./valkey").Valkey;
+export const Valkey: typeof import("./valkey").Valkey = null as any;
+utilities.lazyLoad(exports, ["Valkey"], () => require("./valkey"));
+
+export { ValkeyUserArgs, ValkeyUserState } from "./valkeyUser";
+export type ValkeyUser = import("./valkeyUser").ValkeyUser;
+export const ValkeyUser: typeof import("./valkeyUser").ValkeyUser = null as any;
+utilities.lazyLoad(exports, ["ValkeyUser"], () => require("./valkeyUser"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -877,6 +897,10 @@ const _module = {
                 return new Thanos(name, <any>undefined, { urn })
             case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
                 return new TransitGatewayVpcAttachment(name, <any>undefined, { urn })
+            case "aiven:index/valkey:Valkey":
+                return new Valkey(name, <any>undefined, { urn })
+            case "aiven:index/valkeyUser:ValkeyUser":
+                return new ValkeyUser(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -956,6 +980,8 @@ pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegrationEndpoint
 pulumi.runtime.registerResourceModule("aiven", "index/staticIp", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/thanos", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/transitGatewayVpcAttachment", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/valkey", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/valkeyUser", _module)
 pulumi.runtime.registerResourcePackage("aiven", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

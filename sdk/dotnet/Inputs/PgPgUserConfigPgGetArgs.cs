@@ -127,7 +127,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? LogErrorVerbosity { get; set; }
 
         /// <summary>
-        /// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+        /// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         /// </summary>
         [Input("logLinePrefix")]
         public Input<string>? LogLinePrefix { get; set; }

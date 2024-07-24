@@ -179,6 +179,18 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? IsmHistoryRolloverRetentionPeriod { get; set; }
 
         /// <summary>
+        /// Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        /// </summary>
+        [Input("knnMemoryCircuitBreakerEnabled")]
+        public Input<bool>? KnnMemoryCircuitBreakerEnabled { get; set; }
+
+        /// <summary>
+        /// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        /// </summary>
+        [Input("knnMemoryCircuitBreakerLimit")]
+        public Input<int>? KnnMemoryCircuitBreakerLimit { get; set; }
+
+        /// <summary>
         /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         /// </summary>
         [Input("overrideMainResponseVersion")]

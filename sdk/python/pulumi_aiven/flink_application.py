@@ -21,7 +21,7 @@ class FlinkApplicationArgs:
         The set of arguments for constructing a FlinkApplication resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] name: Application name
+        :param pulumi.Input[str] name: The name of the application.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -56,7 +56,7 @@ class FlinkApplicationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Application name
+        The name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -78,14 +78,14 @@ class _FlinkApplicationState:
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FlinkApplication resources.
-        :param pulumi.Input[str] application_id: Application ID
-        :param pulumi.Input[str] created_at: Application creation time
-        :param pulumi.Input[str] created_by: Application creator
-        :param pulumi.Input[str] name: Application name
+        :param pulumi.Input[str] application_id: Application ID.
+        :param pulumi.Input[str] created_at: Application creation time.
+        :param pulumi.Input[str] created_by: The user who created the application.
+        :param pulumi.Input[str] name: The name of the application.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] updated_at: Application update time
-        :param pulumi.Input[str] updated_by: Application updater
+        :param pulumi.Input[str] updated_at: When the application was updated.
+        :param pulumi.Input[str] updated_by: The user who updated the application.
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
@@ -108,7 +108,7 @@ class _FlinkApplicationState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -120,7 +120,7 @@ class _FlinkApplicationState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Application creation time
+        Application creation time.
         """
         return pulumi.get(self, "created_at")
 
@@ -132,7 +132,7 @@ class _FlinkApplicationState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
         """
-        Application creator
+        The user who created the application.
         """
         return pulumi.get(self, "created_by")
 
@@ -144,7 +144,7 @@ class _FlinkApplicationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Application name
+        The name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -180,7 +180,7 @@ class _FlinkApplicationState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
-        Application update time
+        When the application was updated.
         """
         return pulumi.get(self, "updated_at")
 
@@ -192,7 +192,7 @@ class _FlinkApplicationState:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[pulumi.Input[str]]:
         """
-        Application updater
+        The user who updated the application.
         """
         return pulumi.get(self, "updated_by")
 
@@ -211,7 +211,7 @@ class FlinkApplication(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Flink Application resource allows the creation and management of Aiven Flink Applications.
+        Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
 
         ## Example Usage
 
@@ -219,21 +219,21 @@ class FlinkApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.FlinkApplication("foo",
-            project=foo_aiven_project["project"],
-            service_name="flink-service-1",
-            name="my-flink-app")
+        example_app = aiven.FlinkApplication("example_app",
+            project=example_project["project"],
+            service_name="example-flink-service",
+            name="example-app")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp PROJECT/SERVICE/APPLICATION_NAME
+        $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_NAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Application name
+        :param pulumi.Input[str] name: The name of the application.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -244,7 +244,7 @@ class FlinkApplication(pulumi.CustomResource):
                  args: FlinkApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Flink Application resource allows the creation and management of Aiven Flink Applications.
+        Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
 
         ## Example Usage
 
@@ -252,16 +252,16 @@ class FlinkApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.FlinkApplication("foo",
-            project=foo_aiven_project["project"],
-            service_name="flink-service-1",
-            name="my-flink-app")
+        example_app = aiven.FlinkApplication("example_app",
+            project=example_project["project"],
+            service_name="example-flink-service",
+            name="example-app")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp PROJECT/SERVICE/APPLICATION_NAME
+        $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -328,14 +328,14 @@ class FlinkApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: Application ID
-        :param pulumi.Input[str] created_at: Application creation time
-        :param pulumi.Input[str] created_by: Application creator
-        :param pulumi.Input[str] name: Application name
+        :param pulumi.Input[str] application_id: Application ID.
+        :param pulumi.Input[str] created_at: Application creation time.
+        :param pulumi.Input[str] created_by: The user who created the application.
+        :param pulumi.Input[str] name: The name of the application.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] updated_at: Application update time
-        :param pulumi.Input[str] updated_by: Application updater
+        :param pulumi.Input[str] updated_at: When the application was updated.
+        :param pulumi.Input[str] updated_by: The user who updated the application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -355,7 +355,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -363,7 +363,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        Application creation time
+        Application creation time.
         """
         return pulumi.get(self, "created_at")
 
@@ -371,7 +371,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[str]:
         """
-        Application creator
+        The user who created the application.
         """
         return pulumi.get(self, "created_by")
 
@@ -379,7 +379,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Application name
+        The name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -403,7 +403,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
         """
-        Application update time
+        When the application was updated.
         """
         return pulumi.get(self, "updated_at")
 
@@ -411,7 +411,7 @@ class FlinkApplication(pulumi.CustomResource):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Output[str]:
         """
-        Application updater
+        The user who updated the application.
         """
         return pulumi.get(self, "updated_by")
 

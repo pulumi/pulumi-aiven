@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an Aiven for Apache Kafka® topic.
+// Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
 //
 // ## Example Usage
 //
@@ -57,7 +57,7 @@ import (
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 
-	// Kafka topic configuration.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config KafkaTopicConfigPtrOutput `pulumi:"config"`
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
@@ -67,7 +67,7 @@ type KafkaTopic struct {
 	Replication pulumi.IntOutput `pulumi:"replication"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Tags for the Kafka topic.
+	// Tags for the topic.
 	Tags                  KafkaTopicTagArrayOutput `pulumi:"tags"`
 	TerminationProtection pulumi.BoolPtrOutput     `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
@@ -119,7 +119,7 @@ func GetKafkaTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaTopic resources.
 type kafkaTopicState struct {
-	// Kafka topic configuration.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config *KafkaTopicConfig `pulumi:"config"`
 	// The number of partitions to create in the topic.
 	Partitions *int `pulumi:"partitions"`
@@ -129,7 +129,7 @@ type kafkaTopicState struct {
 	Replication *int `pulumi:"replication"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Tags for the Kafka topic.
+	// Tags for the topic.
 	Tags                  []KafkaTopicTag `pulumi:"tags"`
 	TerminationProtection *bool           `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
@@ -137,7 +137,7 @@ type kafkaTopicState struct {
 }
 
 type KafkaTopicState struct {
-	// Kafka topic configuration.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config KafkaTopicConfigPtrInput
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntPtrInput
@@ -147,7 +147,7 @@ type KafkaTopicState struct {
 	Replication pulumi.IntPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Tags for the Kafka topic.
+	// Tags for the topic.
 	Tags                  KafkaTopicTagArrayInput
 	TerminationProtection pulumi.BoolPtrInput
 	// The name of the topic. Changing this property forces recreation of the resource.
@@ -159,7 +159,7 @@ func (KafkaTopicState) ElementType() reflect.Type {
 }
 
 type kafkaTopicArgs struct {
-	// Kafka topic configuration.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config *KafkaTopicConfig `pulumi:"config"`
 	// The number of partitions to create in the topic.
 	Partitions int `pulumi:"partitions"`
@@ -169,7 +169,7 @@ type kafkaTopicArgs struct {
 	Replication int `pulumi:"replication"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Tags for the Kafka topic.
+	// Tags for the topic.
 	Tags                  []KafkaTopicTag `pulumi:"tags"`
 	TerminationProtection *bool           `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
@@ -178,7 +178,7 @@ type kafkaTopicArgs struct {
 
 // The set of arguments for constructing a KafkaTopic resource.
 type KafkaTopicArgs struct {
-	// Kafka topic configuration.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config KafkaTopicConfigPtrInput
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntInput
@@ -188,7 +188,7 @@ type KafkaTopicArgs struct {
 	Replication pulumi.IntInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Tags for the Kafka topic.
+	// Tags for the topic.
 	Tags                  KafkaTopicTagArrayInput
 	TerminationProtection pulumi.BoolPtrInput
 	// The name of the topic. Changing this property forces recreation of the resource.
@@ -282,7 +282,7 @@ func (o KafkaTopicOutput) ToKafkaTopicOutputWithContext(ctx context.Context) Kaf
 	return o
 }
 
-// Kafka topic configuration.
+// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 func (o KafkaTopicOutput) Config() KafkaTopicConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) KafkaTopicConfigPtrOutput { return v.Config }).(KafkaTopicConfigPtrOutput)
 }
@@ -307,7 +307,7 @@ func (o KafkaTopicOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Tags for the Kafka topic.
+// Tags for the topic.
 func (o KafkaTopicOutput) Tags() KafkaTopicTagArrayOutput {
 	return o.ApplyT(func(v *KafkaTopic) KafkaTopicTagArrayOutput { return v.Tags }).(KafkaTopicTagArrayOutput)
 }

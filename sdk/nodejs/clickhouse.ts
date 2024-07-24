@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Clickhouse resource allows the creation and management of Aiven Clickhouse services.
+ * Creates and manages an [Aiven for ClickHouse®](https://aiven.io/docs/products/clickhouse/concepts/features-overview) service.
  *
  * ## Example Usage
  *
@@ -15,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const clickhouse = new aiven.Clickhouse("clickhouse", {
- *     project: pr1.project,
+ * const exampleClickhouse = new aiven.Clickhouse("example_clickhouse", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "business-4",
- *     serviceName: "my-clickhouse",
+ *     serviceName: "example-clickhouse-service",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  * });
@@ -64,7 +64,7 @@ export class Clickhouse extends pulumi.CustomResource {
      */
     public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
     /**
-     * Clickhouse server provided values
+     * Values provided by the ClickHouse server.
      */
     public readonly clickhouse!: pulumi.Output<outputs.ClickhouseClickhouse>;
     /**
@@ -126,7 +126,7 @@ export class Clickhouse extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceHost!: pulumi.Output<string>;
     /**
-     * Service integrations to specify when creating a service. Not applied after initial service creation
+     * Integrations with other services. Service integrations are only applied at service creation.
      */
     public readonly serviceIntegrations!: pulumi.Output<outputs.ClickhouseServiceIntegration[] | undefined>;
     /**
@@ -271,7 +271,7 @@ export interface ClickhouseState {
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**
-     * Clickhouse server provided values
+     * Values provided by the ClickHouse server.
      */
     clickhouse?: pulumi.Input<inputs.ClickhouseClickhouse>;
     /**
@@ -333,7 +333,7 @@ export interface ClickhouseState {
      */
     serviceHost?: pulumi.Input<string>;
     /**
-     * Service integrations to specify when creating a service. Not applied after initial service creation
+     * Integrations with other services. Service integrations are only applied at service creation.
      */
     serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.ClickhouseServiceIntegration>[]>;
     /**
@@ -391,7 +391,7 @@ export interface ClickhouseArgs {
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**
-     * Clickhouse server provided values
+     * Values provided by the ClickHouse server.
      */
     clickhouse?: pulumi.Input<inputs.ClickhouseClickhouse>;
     /**
@@ -429,7 +429,7 @@ export interface ClickhouseArgs {
      */
     projectVpcId?: pulumi.Input<string>;
     /**
-     * Service integrations to specify when creating a service. Not applied after initial service creation
+     * Integrations with other services. Service integrations are only applied at service creation.
      */
     serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.ClickhouseServiceIntegration>[]>;
     /**
