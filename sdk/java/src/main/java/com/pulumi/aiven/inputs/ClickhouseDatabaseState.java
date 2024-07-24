@@ -17,14 +17,14 @@ public final class ClickhouseDatabaseState extends com.pulumi.resources.Resource
     public static final ClickhouseDatabaseState Empty = new ClickhouseDatabaseState();
 
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -96,7 +96,7 @@ public final class ClickhouseDatabaseState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the Clickhouse database. Changing this property forces recreation of the resource.
+         * @param name The name of the ClickHouse database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ClickhouseDatabaseState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the Clickhouse database. Changing this property forces recreation of the resource.
+         * @param name The name of the ClickHouse database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

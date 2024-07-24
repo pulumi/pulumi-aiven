@@ -130,7 +130,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string PeerCloudAccount;
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         /// </summary>
         public readonly string PeerRegion;
         /// <summary>

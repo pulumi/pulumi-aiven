@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Clickhouse Grant resource allows the creation and management of Grants in Aiven Clickhouse services.
+// Creates and manages ClickHouse grants to give users and roles privileges to a ClickHouse service.
 //
-// Notes:
-// * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
-// * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
-// * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
+// **Note:**
+// * Users cannot have the same name as roles.
+// * To grant a privilege on all tables of a database, omit the table and only keep the database. Don't use `table="*"`.
+// * Changes first revoke all grants and then reissue the remaining grants for convergence.
 //
 // ## Example Usage
 //
@@ -33,65 +33,50 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			clickhouse, err := aiven.NewClickhouse(ctx, "clickhouse", &aiven.ClickhouseArgs{
-//				Project:     pulumi.Any(aivenProjectName),
-//				CloudName:   pulumi.String("google-europe-west1"),
-//				Plan:        pulumi.String("startup-8"),
-//				ServiceName: pulumi.String("exapmle-clickhouse"),
+//			exampleRole, err := aiven.NewClickhouseRole(ctx, "example_role", &aiven.ClickhouseRoleArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleClickhouse.ServiceName),
+//				Role:        pulumi.String("example-role"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			demodb, err := aiven.NewClickhouseDatabase(ctx, "demodb", &aiven.ClickhouseDatabaseArgs{
-//				Project:     clickhouse.Project,
-//				ServiceName: clickhouse.ServiceName,
-//				Name:        pulumi.String("demo"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			demo, err := aiven.NewClickhouseRole(ctx, "demo", &aiven.ClickhouseRoleArgs{
-//				Project:     clickhouse.Project,
-//				ServiceName: clickhouse.ServiceName,
-//				Role:        pulumi.String("demo-role"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewClickhouseGrant(ctx, "demo-role-grant", &aiven.ClickhouseGrantArgs{
-//				Project:     clickhouse.Project,
-//				ServiceName: clickhouse.ServiceName,
-//				Role:        demo.Role,
+//			// Grant privileges to the example role.
+//			_, err = aiven.NewClickhouseGrant(ctx, "role_privileges", &aiven.ClickhouseGrantArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleClickhouse.ServiceName),
+//				Role:        exampleRole.Role,
 //				PrivilegeGrants: aiven.ClickhouseGrantPrivilegeGrantArray{
 //					&aiven.ClickhouseGrantPrivilegeGrantArgs{
 //						Privilege: pulumi.String("INSERT"),
-//						Database:  demodb.Name,
-//						Table:     pulumi.String("demo-table"),
+//						Database:  pulumi.Any(exampleDb.Name),
+//						Table:     pulumi.String("example-table"),
 //					},
 //					&aiven.ClickhouseGrantPrivilegeGrantArgs{
 //						Privilege: pulumi.String("SELECT"),
-//						Database:  demodb.Name,
+//						Database:  pulumi.Any(exampleDb.Name),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			demoClickhouseUser, err := aiven.NewClickhouseUser(ctx, "demo", &aiven.ClickhouseUserArgs{
-//				Project:     clickhouse.Project,
-//				ServiceName: clickhouse.ServiceName,
-//				Username:    pulumi.String("demo-user"),
+//			// Grant the role to the user.
+//			exampleUser, err := aiven.NewClickhouseUser(ctx, "example_user", &aiven.ClickhouseUserArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleClickhouse.ServiceName),
+//				Username:    pulumi.String("example-user"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aiven.NewClickhouseGrant(ctx, "demo-user-grant", &aiven.ClickhouseGrantArgs{
-//				Project:     clickhouse.Project,
-//				ServiceName: clickhouse.ServiceName,
-//				User:        demoClickhouseUser.Username,
+//			_, err = aiven.NewClickhouseGrant(ctx, "user_role_assignment", &aiven.ClickhouseGrantArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleClickhouse.ServiceName),
+//				User:        exampleUser.Username,
 //				RoleGrants: aiven.ClickhouseGrantRoleGrantArray{
 //					&aiven.ClickhouseGrantRoleGrantArgs{
-//						Role: demo.Role,
+//						Role: exampleRole.Role,
 //					},
 //				},
 //			})
@@ -103,16 +88,22 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import aiven:index/clickhouseGrant:ClickhouseGrant example_grant PROJECT/SERVICE_NAME/ID
+// ```
 type ClickhouseGrant struct {
 	pulumi.CustomResourceState
 
-	// Configuration to grant a privilege. Changing this property forces recreation of the resource.
+	// Grant privileges. Changing this property forces recreation of the resource.
 	PrivilegeGrants ClickhouseGrantPrivilegeGrantArrayOutput `pulumi:"privilegeGrants"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// Configuration to grant a role. Changing this property forces recreation of the resource.
+	// Grant roles. Changing this property forces recreation of the resource.
 	RoleGrants ClickhouseGrantRoleGrantArrayOutput `pulumi:"roleGrants"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -156,13 +147,13 @@ func GetClickhouseGrant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClickhouseGrant resources.
 type clickhouseGrantState struct {
-	// Configuration to grant a privilege. Changing this property forces recreation of the resource.
+	// Grant privileges. Changing this property forces recreation of the resource.
 	PrivilegeGrants []ClickhouseGrantPrivilegeGrant `pulumi:"privilegeGrants"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Role *string `pulumi:"role"`
-	// Configuration to grant a role. Changing this property forces recreation of the resource.
+	// Grant roles. Changing this property forces recreation of the resource.
 	RoleGrants []ClickhouseGrantRoleGrant `pulumi:"roleGrants"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
@@ -171,13 +162,13 @@ type clickhouseGrantState struct {
 }
 
 type ClickhouseGrantState struct {
-	// Configuration to grant a privilege. Changing this property forces recreation of the resource.
+	// Grant privileges. Changing this property forces recreation of the resource.
 	PrivilegeGrants ClickhouseGrantPrivilegeGrantArrayInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Role pulumi.StringPtrInput
-	// Configuration to grant a role. Changing this property forces recreation of the resource.
+	// Grant roles. Changing this property forces recreation of the resource.
 	RoleGrants ClickhouseGrantRoleGrantArrayInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
@@ -190,13 +181,13 @@ func (ClickhouseGrantState) ElementType() reflect.Type {
 }
 
 type clickhouseGrantArgs struct {
-	// Configuration to grant a privilege. Changing this property forces recreation of the resource.
+	// Grant privileges. Changing this property forces recreation of the resource.
 	PrivilegeGrants []ClickhouseGrantPrivilegeGrant `pulumi:"privilegeGrants"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Role *string `pulumi:"role"`
-	// Configuration to grant a role. Changing this property forces recreation of the resource.
+	// Grant roles. Changing this property forces recreation of the resource.
 	RoleGrants []ClickhouseGrantRoleGrant `pulumi:"roleGrants"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
@@ -206,13 +197,13 @@ type clickhouseGrantArgs struct {
 
 // The set of arguments for constructing a ClickhouseGrant resource.
 type ClickhouseGrantArgs struct {
-	// Configuration to grant a privilege. Changing this property forces recreation of the resource.
+	// Grant privileges. Changing this property forces recreation of the resource.
 	PrivilegeGrants ClickhouseGrantPrivilegeGrantArrayInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Role pulumi.StringPtrInput
-	// Configuration to grant a role. Changing this property forces recreation of the resource.
+	// Grant roles. Changing this property forces recreation of the resource.
 	RoleGrants ClickhouseGrantRoleGrantArrayInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
@@ -307,7 +298,7 @@ func (o ClickhouseGrantOutput) ToClickhouseGrantOutputWithContext(ctx context.Co
 	return o
 }
 
-// Configuration to grant a privilege. Changing this property forces recreation of the resource.
+// Grant privileges. Changing this property forces recreation of the resource.
 func (o ClickhouseGrantOutput) PrivilegeGrants() ClickhouseGrantPrivilegeGrantArrayOutput {
 	return o.ApplyT(func(v *ClickhouseGrant) ClickhouseGrantPrivilegeGrantArrayOutput { return v.PrivilegeGrants }).(ClickhouseGrantPrivilegeGrantArrayOutput)
 }
@@ -322,7 +313,7 @@ func (o ClickhouseGrantOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseGrant) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// Configuration to grant a role. Changing this property forces recreation of the resource.
+// Grant roles. Changing this property forces recreation of the resource.
 func (o ClickhouseGrantOutput) RoleGrants() ClickhouseGrantRoleGrantArrayOutput {
 	return o.ApplyT(func(v *ClickhouseGrant) ClickhouseGrantRoleGrantArrayOutput { return v.RoleGrants }).(ClickhouseGrantRoleGrantArrayOutput)
 }

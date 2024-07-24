@@ -39,14 +39,14 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Clickhouse server provided values
+     * Values provided by the ClickHouse server.
      * 
      */
     @Import(name="clickhouse")
     private @Nullable Output<ClickhouseClickhouseArgs> clickhouse;
 
     /**
-     * @return Clickhouse server provided values
+     * @return Values provided by the ClickHouse server.
      * 
      */
     public Optional<Output<ClickhouseClickhouseArgs>> clickhouse() {
@@ -182,14 +182,14 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service integrations to specify when creating a service. Not applied after initial service creation
+     * Integrations with other services. Service integrations are only applied at service creation.
      * 
      */
     @Import(name="serviceIntegrations")
     private @Nullable Output<List<ClickhouseServiceIntegrationArgs>> serviceIntegrations;
 
     /**
-     * @return Service integrations to specify when creating a service. Not applied after initial service creation
+     * @return Integrations with other services. Service integrations are only applied at service creation.
      * 
      */
     public Optional<Output<List<ClickhouseServiceIntegrationArgs>>> serviceIntegrations() {
@@ -332,7 +332,7 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clickhouse Clickhouse server provided values
+         * @param clickhouse Values provided by the ClickHouse server.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clickhouse Clickhouse server provided values
+         * @param clickhouse Values provided by the ClickHouse server.
          * 
          * @return builder
          * 
@@ -529,7 +529,7 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceIntegrations Service integrations to specify when creating a service. Not applied after initial service creation
+         * @param serviceIntegrations Integrations with other services. Service integrations are only applied at service creation.
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceIntegrations Service integrations to specify when creating a service. Not applied after initial service creation
+         * @param serviceIntegrations Integrations with other services. Service integrations are only applied at service creation.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceIntegrations Service integrations to specify when creating a service. Not applied after initial service creation
+         * @param serviceIntegrations Integrations with other services. Service integrations are only applied at service creation.
          * 
          * @return builder
          * 

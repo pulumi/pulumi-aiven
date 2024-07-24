@@ -17,7 +17,7 @@ public final class GetClickhouseDatabaseResult {
      */
     private String id;
     /**
-     * @return The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     private String name;
@@ -42,7 +42,7 @@ public final class GetClickhouseDatabaseResult {
         return this.id;
     }
     /**
-     * @return The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     public String name() {

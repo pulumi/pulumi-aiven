@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+// Gets information about an Aiven for Apache Kafka® Connect service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupKafkaConnect(ctx, &aiven.LookupKafkaConnectArgs{
-//				Project:     pr1.Project,
-//				ServiceName: "my-kc1",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-connect-service",
 //			}, nil)
 //			if err != nil {
 //				return err

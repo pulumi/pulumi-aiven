@@ -119,6 +119,14 @@ export interface CassandraCassandraUserConfigCassandra {
      * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: string;
+    /**
+     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     */
+    readRequestTimeoutInMs?: number;
+    /**
+     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     */
+    writeRequestTimeoutInMs?: number;
 }
 
 export interface CassandraCassandraUserConfigIpFilterObject {
@@ -212,7 +220,7 @@ export interface CassandraTechEmail {
 
 export interface ClickhouseClickhouse {
     /**
-     * Clickhouse server URIs.
+     * ClickHouse server URIs.
      */
     uris: string[];
 }
@@ -373,41 +381,41 @@ export interface ClickhouseComponent {
 
 export interface ClickhouseGrantPrivilegeGrant {
     /**
-     * The column that the grant refers to. Changing this property forces recreation of the resource.
+     * The column to grant access to. Changing this property forces recreation of the resource.
      */
     column?: string;
     /**
-     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     database: string;
     /**
-     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
+     * The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
      */
     privilege?: string;
     /**
-     * The table that the grant refers to. Changing this property forces recreation of the resource.
+     * The table to grant access to. Changing this property forces recreation of the resource.
      */
     table?: string;
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+     * Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
      */
     withGrant?: boolean;
 }
 
 export interface ClickhouseGrantRoleGrant {
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     role?: string;
 }
 
 export interface ClickhouseServiceIntegration {
     /**
-     * Type of the service integration. The only supported values at the moment are `clickhouseKafka` and `clickhousePostgresql`.
+     * Type of the service integration. Supported integrations are `clickhouseKafka` and `clickhousePostgresql`.
      */
     integrationType: string;
     /**
-     * Name of the source service
+     * Name of the source service.
      */
     sourceServiceName: string;
 }
@@ -716,7 +724,7 @@ export interface FlinkComponent {
 
 export interface FlinkFlink {
     /**
-     * Host and Port of a Flink server
+     * The host and port of a Flink server.
      */
     hostPorts: string[];
 }
@@ -929,6 +937,14 @@ export interface GetCassandaCassandraUserConfigCassandra {
      * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: string;
+    /**
+     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     */
+    readRequestTimeoutInMs?: number;
+    /**
+     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     */
+    writeRequestTimeoutInMs?: number;
 }
 
 export interface GetCassandaCassandraUserConfigIpFilterObject {
@@ -1111,6 +1127,14 @@ export interface GetCassandraCassandraUserConfigCassandra {
      * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: string;
+    /**
+     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     */
+    readRequestTimeoutInMs?: number;
+    /**
+     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     */
+    writeRequestTimeoutInMs?: number;
 }
 
 export interface GetCassandraCassandraUserConfigIpFilterObject {
@@ -1204,7 +1228,7 @@ export interface GetCassandraTechEmail {
 
 export interface GetClickhouseClickhouse {
     /**
-     * Clickhouse server URIs.
+     * ClickHouse server URIs.
      */
     uris: string[];
 }
@@ -1365,11 +1389,11 @@ export interface GetClickhouseComponent {
 
 export interface GetClickhouseServiceIntegration {
     /**
-     * Type of the service integration. The only supported values at the moment are `clickhouseKafka` and `clickhousePostgresql`.
+     * Type of the service integration. Supported integrations are `clickhouseKafka` and `clickhousePostgresql`.
      */
     integrationType: string;
     /**
-     * Name of the source service
+     * Name of the source service.
      */
     sourceServiceName: string;
 }
@@ -1678,7 +1702,7 @@ export interface GetFlinkComponent {
 
 export interface GetFlinkFlink {
     /**
-     * Host and Port of a Flink server
+     * The host and port of a Flink server.
      */
     hostPorts: string[];
 }
@@ -2831,7 +2855,7 @@ export interface GetKafkaConnectorTask {
      */
     connector: string;
     /**
-     * The task id of the task.
+     * The task ID of the task.
      */
     task: number;
 }
@@ -3750,11 +3774,11 @@ export interface GetKafkaTopicConfig {
 
 export interface GetKafkaTopicTag {
     /**
-     * Topic tag key. Maximum length: `64`.
+     * Tag key. Maximum length: `64`.
      */
     key: string;
     /**
-     * Topic tag value. Maximum length: `256`.
+     * Tag value. Maximum length: `256`.
      */
     value?: string;
 }
@@ -5009,6 +5033,14 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
+     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     */
+    knnMemoryCircuitBreakerEnabled?: boolean;
+    /**
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     */
+    knnMemoryCircuitBreakerLimit?: number;
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      */
     overrideMainResponseVersion?: boolean;
@@ -5645,7 +5677,7 @@ export interface GetPgPgUserConfigPg {
      */
     logErrorVerbosity?: string;
     /**
-     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
      */
     logLinePrefix?: string;
     /**
@@ -7344,6 +7376,269 @@ export interface GetThanosThanosUserConfigQueryFrontend {
     queryRangeAlignRangeWithStep?: boolean;
 }
 
+export interface GetValkeyComponent {
+    /**
+     * Service component name
+     */
+    component: string;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri: string;
+    /**
+     * Host name for connecting to the service component
+     */
+    host: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod: string;
+    /**
+     * Port number for connecting to the service component
+     */
+    port: number;
+    /**
+     * Network access route
+     */
+    route: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl: boolean;
+    /**
+     * DNS usage name
+     */
+    usage: string;
+}
+
+export interface GetValkeyServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface GetValkeyTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
+export interface GetValkeyTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: string;
+}
+
+export interface GetValkeyValkey {
+    /**
+     * Valkey password.
+     */
+    password: string;
+    /**
+     * Valkey replica server URI.
+     */
+    replicaUri: string;
+    /**
+     * Valkey slave server URIs.
+     */
+    slaveUris: string[];
+    /**
+     * Valkey server URIs.
+     */
+    uris: string[];
+}
+
+export interface GetValkeyValkeyUserConfig {
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     */
+    additionalBackupRegions?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilterObjects?: outputs.GetValkeyValkeyUserConfigIpFilterObject[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
+    migration?: outputs.GetValkeyValkeyUserConfigMigration;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: outputs.GetValkeyValkeyUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetValkeyValkeyUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.GetValkeyValkeyUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     */
+    recoveryBasebackupName?: string;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: boolean;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+     */
+    serviceToForkFrom?: string;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: boolean;
+    /**
+     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+     */
+    valkeyAclChannelsDefault?: string;
+    /**
+     * Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
+     */
+    valkeyIoThreads?: number;
+    /**
+     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+     */
+    valkeyLfuDecayTime?: number;
+    /**
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+     */
+    valkeyLfuLogFactor?: number;
+    /**
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+     */
+    valkeyMaxmemoryPolicy?: string;
+    /**
+     * Set notify-keyspace-events option.
+     */
+    valkeyNotifyKeyspaceEvents?: string;
+    /**
+     * Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
+     */
+    valkeyNumberOfDatabases?: number;
+    /**
+     * Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     */
+    valkeyPersistence?: string;
+    /**
+     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+     */
+    valkeyPubsubClientOutputBufferLimit?: number;
+    /**
+     * Require SSL to access Valkey. Default: `true`.
+     */
+    valkeySsl?: boolean;
+    /**
+     * Valkey idle connection timeout in seconds. Default: `300`.
+     */
+    valkeyTimeout?: number;
+}
+
+export interface GetValkeyValkeyUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry. Example: `Production service IP range`.
+     */
+    description?: string;
+    /**
+     * CIDR address block. Example: `10.20.0.0/16`.
+     */
+    network: string;
+}
+
+export interface GetValkeyValkeyUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
+     */
+    dbname?: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+     */
+    host: string;
+    /**
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+     */
+    ignoreDbs?: string;
+    /**
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     */
+    method?: string;
+    /**
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+     */
+    password?: string;
+    /**
+     * Port number of the server where to migrate data from. Example: `1234`.
+     */
+    port: number;
+    /**
+     * The server where to migrate data from is secured with SSL. Default: `true`.
+     */
+    ssl?: boolean;
+    /**
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
+     */
+    username?: string;
+}
+
+export interface GetValkeyValkeyUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    prometheus?: boolean;
+    /**
+     * Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    valkey?: boolean;
+}
+
+export interface GetValkeyValkeyUserConfigPrivatelinkAccess {
+    /**
+     * Enable prometheus.
+     */
+    prometheus?: boolean;
+    /**
+     * Enable valkey.
+     */
+    valkey?: boolean;
+}
+
+export interface GetValkeyValkeyUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: boolean;
+    /**
+     * Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    valkey?: boolean;
+}
+
 export interface GrafanaComponent {
     /**
      * Service component name
@@ -8398,7 +8693,7 @@ export interface KafkaConnectorTask {
      */
     connector: string;
     /**
-     * The task id of the task.
+     * The task ID of the task.
      */
     task: number;
 }
@@ -9317,11 +9612,11 @@ export interface KafkaTopicConfig {
 
 export interface KafkaTopicTag {
     /**
-     * Topic tag key. Maximum length: `64`.
+     * Tag key. Maximum length: `64`.
      */
     key: string;
     /**
-     * Topic tag value. Maximum length: `256`.
+     * Tag value. Maximum length: `256`.
      */
     value?: string;
 }
@@ -10576,6 +10871,14 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
+     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     */
+    knnMemoryCircuitBreakerEnabled?: boolean;
+    /**
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     */
+    knnMemoryCircuitBreakerLimit?: number;
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      */
     overrideMainResponseVersion?: boolean;
@@ -11269,7 +11572,7 @@ export interface PgPgUserConfigPg {
      */
     logErrorVerbosity?: string;
     /**
-     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
      */
     logLinePrefix?: string;
     /**
@@ -12966,5 +13269,268 @@ export interface ThanosThanosUserConfigQueryFrontend {
      * Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
      */
     queryRangeAlignRangeWithStep?: boolean;
+}
+
+export interface ValkeyComponent {
+    /**
+     * Service component name
+     */
+    component: string;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri: string;
+    /**
+     * Host name for connecting to the service component
+     */
+    host: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod: string;
+    /**
+     * Port number for connecting to the service component
+     */
+    port: number;
+    /**
+     * Network access route
+     */
+    route: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl: boolean;
+    /**
+     * DNS usage name
+     */
+    usage: string;
+}
+
+export interface ValkeyServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface ValkeyTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
+export interface ValkeyTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: string;
+}
+
+export interface ValkeyValkey {
+    /**
+     * Valkey password.
+     */
+    password: string;
+    /**
+     * Valkey replica server URI.
+     */
+    replicaUri: string;
+    /**
+     * Valkey slave server URIs.
+     */
+    slaveUris: string[];
+    /**
+     * Valkey server URIs.
+     */
+    uris: string[];
+}
+
+export interface ValkeyValkeyUserConfig {
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     */
+    additionalBackupRegions?: string;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilterObjects?: outputs.ValkeyValkeyUserConfigIpFilterObject[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
+    migration?: outputs.ValkeyValkeyUserConfigMigration;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: outputs.ValkeyValkeyUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.ValkeyValkeyUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.ValkeyValkeyUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     */
+    recoveryBasebackupName?: string;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: boolean;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+     */
+    serviceToForkFrom?: string;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: boolean;
+    /**
+     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+     */
+    valkeyAclChannelsDefault?: string;
+    /**
+     * Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
+     */
+    valkeyIoThreads?: number;
+    /**
+     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+     */
+    valkeyLfuDecayTime?: number;
+    /**
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+     */
+    valkeyLfuLogFactor?: number;
+    /**
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+     */
+    valkeyMaxmemoryPolicy?: string;
+    /**
+     * Set notify-keyspace-events option.
+     */
+    valkeyNotifyKeyspaceEvents?: string;
+    /**
+     * Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
+     */
+    valkeyNumberOfDatabases?: number;
+    /**
+     * Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     */
+    valkeyPersistence?: string;
+    /**
+     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+     */
+    valkeyPubsubClientOutputBufferLimit?: number;
+    /**
+     * Require SSL to access Valkey. Default: `true`.
+     */
+    valkeySsl?: boolean;
+    /**
+     * Valkey idle connection timeout in seconds. Default: `300`.
+     */
+    valkeyTimeout?: number;
+}
+
+export interface ValkeyValkeyUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry. Example: `Production service IP range`.
+     */
+    description?: string;
+    /**
+     * CIDR address block. Example: `10.20.0.0/16`.
+     */
+    network: string;
+}
+
+export interface ValkeyValkeyUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
+     */
+    dbname?: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+     */
+    host: string;
+    /**
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+     */
+    ignoreDbs?: string;
+    /**
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     */
+    method?: string;
+    /**
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+     */
+    password?: string;
+    /**
+     * Port number of the server where to migrate data from. Example: `1234`.
+     */
+    port: number;
+    /**
+     * The server where to migrate data from is secured with SSL. Default: `true`.
+     */
+    ssl?: boolean;
+    /**
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
+     */
+    username?: string;
+}
+
+export interface ValkeyValkeyUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    prometheus?: boolean;
+    /**
+     * Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    valkey?: boolean;
+}
+
+export interface ValkeyValkeyUserConfigPrivatelinkAccess {
+    /**
+     * Enable prometheus.
+     */
+    prometheus?: boolean;
+    /**
+     * Enable valkey.
+     */
+    valkey?: boolean;
+}
+
+export interface ValkeyValkeyUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: boolean;
+    /**
+     * Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    valkey?: boolean;
 }
 

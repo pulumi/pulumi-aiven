@@ -10,7 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
+    /// Creates and manages an Aiven for ClickHouse® database.
+    /// 
+    /// &gt; Tables cannot be created using Aiven Operator. To create a table,
+    /// use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
     /// 
     /// ## Example Usage
     /// 
@@ -22,11 +25,21 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var clickhouseDb = new Aiven.ClickhouseDatabase("clickhouse_db", new()
+    ///     var exampleClickhouse = new Aiven.Clickhouse("example_clickhouse", new()
     ///     {
-    ///         Project = ch.Project,
-    ///         ServiceName = ch.ServiceName,
-    ///         Name = "my-ch-db",
+    ///         Project = exampleProject.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "business-4",
+    ///         ServiceName = "example-clickhouse-service",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///     });
+    /// 
+    ///     var exampleDb = new Aiven.ClickhouseDatabase("example_db", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleClickhouse.ServiceName,
+    ///         Name = "example-database",
     ///     });
     /// 
     /// });
@@ -35,14 +48,14 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db PROJECT/SERVICE_NAME/NAME
+    /// $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase example_db PROJECT/SERVICE_NAME/DATABASE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseDatabase:ClickhouseDatabase")]
     public partial class ClickhouseDatabase : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse database. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -109,7 +122,7 @@ namespace Pulumi.Aiven
     public sealed class ClickhouseDatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse database. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -138,7 +151,7 @@ namespace Pulumi.Aiven
     public sealed class ClickhouseDatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse database. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

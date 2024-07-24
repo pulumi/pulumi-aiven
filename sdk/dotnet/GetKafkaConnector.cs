@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetKafkaConnector
     {
         /// <summary>
-        /// The Kafka connector data source provides information about the existing Aiven Kafka connector.
+        /// Gets information about an Aiven for Apache Kafka® connector.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var kafka_es_con1 = Aiven.GetKafkaConnector.Invoke(new()
+        ///     var kafka_os_connector = Aiven.GetKafkaConnector.Invoke(new()
         ///     {
-        ///         Project = kafka_con_project1.Project,
-        ///         ServiceName = kafka_service1.ServiceName,
-        ///         ConnectorName = "kafka-es-con1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///         ConnectorName = "kafka-opensearch-connector",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Kafka connector data source provides information about the existing Aiven Kafka connector.
+        /// Gets information about an Aiven for Apache Kafka® connector.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var kafka_es_con1 = Aiven.GetKafkaConnector.Invoke(new()
+        ///     var kafka_os_connector = Aiven.GetKafkaConnector.Invoke(new()
         ///     {
-        ///         Project = kafka_con_project1.Project,
-        ///         ServiceName = kafka_service1.ServiceName,
-        ///         ConnectorName = "kafka-es-con1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///         ConnectorName = "kafka-opensearch-connector",
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaConnectorArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The kafka connector name. Changing this property forces recreation of the resource.
+        /// The Kafka connector name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("connectorName", required: true)]
         public string ConnectorName { get; set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaConnectorInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The kafka connector name. Changing this property forces recreation of the resource.
+        /// The Kafka connector name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("connectorName", required: true)]
         public Input<string> ConnectorName { get; set; } = null!;
@@ -122,11 +122,11 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaConnectorResult
     {
         /// <summary>
-        /// The Kafka Connector configuration parameters.
+        /// The Kafka connector configuration parameters.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Config;
         /// <summary>
-        /// The kafka connector name. Changing this property forces recreation of the resource.
+        /// The Kafka connector name. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ConnectorName;
         /// <summary>
@@ -154,7 +154,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string PluginType;
         /// <summary>
-        /// The version of the kafka connector.
+        /// The version of the Kafka connector.
         /// </summary>
         public readonly string PluginVersion;
         /// <summary>

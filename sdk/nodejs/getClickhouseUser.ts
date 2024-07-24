@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+ * Gets information about a ClickHouse user.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const ch-user = aiven.getClickhouseUser({
- *     project: myproject.project,
- *     serviceName: myservice.serviceName,
- *     username: "<USERNAME>",
+ * const exampleUser = aiven.getClickhouseUser({
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     username: "analyst",
  * });
  * ```
  */
@@ -43,7 +43,7 @@ export interface GetClickhouseUserArgs {
      */
     serviceName: string;
     /**
-     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -57,7 +57,7 @@ export interface GetClickhouseUserResult {
      */
     readonly id: string;
     /**
-     * The password of the clickhouse user.
+     * The password of the ClickHouse user.
      */
     readonly password: string;
     /**
@@ -65,7 +65,7 @@ export interface GetClickhouseUserResult {
      */
     readonly project: string;
     /**
-     * Indicates if a clickhouse user is required
+     * Indicates if a ClickHouse user is required.
      */
     readonly required: boolean;
     /**
@@ -73,16 +73,16 @@ export interface GetClickhouseUserResult {
      */
     readonly serviceName: string;
     /**
-     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      */
     readonly username: string;
     /**
-     * UUID of the clickhouse user.
+     * UUID of the ClickHouse user.
      */
     readonly uuid: string;
 }
 /**
- * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+ * Gets information about a ClickHouse user.
  *
  * ## Example Usage
  *
@@ -90,10 +90,10 @@ export interface GetClickhouseUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const ch-user = aiven.getClickhouseUser({
- *     project: myproject.project,
- *     serviceName: myservice.serviceName,
- *     username: "<USERNAME>",
+ * const exampleUser = aiven.getClickhouseUser({
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     username: "analyst",
  * });
  * ```
  */
@@ -114,7 +114,7 @@ export interface GetClickhouseUserOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

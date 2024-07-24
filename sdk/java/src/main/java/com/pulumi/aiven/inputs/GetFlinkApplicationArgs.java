@@ -15,14 +15,14 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
     public static final GetFlinkApplicationArgs Empty = new GetFlinkApplicationArgs();
 
     /**
-     * Application name
+     * The name of the application.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Application name
+     * @return The name of the application.
      * 
      */
     public Output<String> name() {
@@ -86,7 +86,7 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name Application name
+         * @param name The name of the application.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetFlinkApplicationArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name Application name
+         * @param name The name of the application.
          * 
          * @return builder
          * 

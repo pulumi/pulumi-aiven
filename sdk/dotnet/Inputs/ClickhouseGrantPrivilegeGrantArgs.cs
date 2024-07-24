@@ -13,31 +13,31 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ClickhouseGrantPrivilegeGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The column that the grant refers to. Changing this property forces recreation of the resource.
+        /// The column to grant access to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("column")]
         public Input<string>? Column { get; set; }
 
         /// <summary>
-        /// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
+        /// The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
         /// </summary>
         [Input("privilege")]
         public Input<string>? Privilege { get; set; }
 
         /// <summary>
-        /// The table that the grant refers to. Changing this property forces recreation of the resource.
+        /// The table to grant access to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
 
         /// <summary>
-        /// If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+        /// Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("withGrant")]
         public Input<bool>? WithGrant { get; set; }

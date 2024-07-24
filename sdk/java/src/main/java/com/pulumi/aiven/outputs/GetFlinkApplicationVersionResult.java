@@ -15,22 +15,22 @@ import java.util.Objects;
 @CustomType
 public final class GetFlinkApplicationVersionResult {
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     private String applicationId;
     /**
-     * @return Application version ID
+     * @return Application version ID.
      * 
      */
     private String applicationVersionId;
     /**
-     * @return Application version creation time
+     * @return Application version creation time.
      * 
      */
     private String createdAt;
     /**
-     * @return Application version creator
+     * @return The user who created the application.
      * 
      */
     private String createdBy;
@@ -50,7 +50,7 @@ public final class GetFlinkApplicationVersionResult {
      */
     private String serviceName;
     /**
-     * @return Application sink
+     * @return The sink table for the application.
      * 
      */
     private List<GetFlinkApplicationVersionSink> sink;
@@ -60,7 +60,7 @@ public final class GetFlinkApplicationVersionResult {
      */
     private List<GetFlinkApplicationVersionSink> sinks;
     /**
-     * @return Application source
+     * @return The source table for the application.
      * 
      */
     private List<GetFlinkApplicationVersionSource> source;
@@ -70,40 +70,40 @@ public final class GetFlinkApplicationVersionResult {
      */
     private List<GetFlinkApplicationVersionSource> sources;
     /**
-     * @return Job SQL statement
+     * @return Job SQL statement.
      * 
      */
     private String statement;
     /**
-     * @return Application version number
+     * @return Application version number.
      * 
      */
     private Integer version;
 
     private GetFlinkApplicationVersionResult() {}
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public String applicationId() {
         return this.applicationId;
     }
     /**
-     * @return Application version ID
+     * @return Application version ID.
      * 
      */
     public String applicationVersionId() {
         return this.applicationVersionId;
     }
     /**
-     * @return Application version creation time
+     * @return Application version creation time.
      * 
      */
     public String createdAt() {
         return this.createdAt;
     }
     /**
-     * @return Application version creator
+     * @return The user who created the application.
      * 
      */
     public String createdBy() {
@@ -131,7 +131,7 @@ public final class GetFlinkApplicationVersionResult {
         return this.serviceName;
     }
     /**
-     * @return Application sink
+     * @return The sink table for the application.
      * 
      */
     public List<GetFlinkApplicationVersionSink> sink() {
@@ -145,7 +145,7 @@ public final class GetFlinkApplicationVersionResult {
         return this.sinks;
     }
     /**
-     * @return Application source
+     * @return The source table for the application.
      * 
      */
     public List<GetFlinkApplicationVersionSource> source() {
@@ -159,14 +159,14 @@ public final class GetFlinkApplicationVersionResult {
         return this.sources;
     }
     /**
-     * @return Job SQL statement
+     * @return Job SQL statement.
      * 
      */
     public String statement() {
         return this.statement;
     }
     /**
-     * @return Application version number
+     * @return Application version number.
      * 
      */
     public Integer version() {

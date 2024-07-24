@@ -16,7 +16,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
+ * Creates and manages an Aiven for ClickHouse® database.
+ * 
+ * &gt; Tables cannot be created using Aiven Operator. To create a table,
+ * use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
  * 
  * ## Example Usage
  * 
@@ -28,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Clickhouse;
+ * import com.pulumi.aiven.ClickhouseArgs;
  * import com.pulumi.aiven.ClickhouseDatabase;
  * import com.pulumi.aiven.ClickhouseDatabaseArgs;
  * import java.util.List;
@@ -43,10 +48,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var clickhouseDb = new ClickhouseDatabase("clickhouseDb", ClickhouseDatabaseArgs.builder()
- *             .project(ch.project())
- *             .serviceName(ch.serviceName())
- *             .name("my-ch-db")
+ *         var exampleClickhouse = new Clickhouse("exampleClickhouse", ClickhouseArgs.builder()
+ *             .project(exampleProject.project())
+ *             .cloudName("google-europe-west1")
+ *             .plan("business-4")
+ *             .serviceName("example-clickhouse-service")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
+ *             .build());
+ * 
+ *         var exampleDb = new ClickhouseDatabase("exampleDb", ClickhouseDatabaseArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleClickhouse.serviceName())
+ *             .name("example-database")
  *             .build());
  * 
  *     }
@@ -58,21 +72,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db PROJECT/SERVICE_NAME/NAME
+ * $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase example_db PROJECT/SERVICE_NAME/DATABASE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/clickhouseDatabase:ClickhouseDatabase")
 public class ClickhouseDatabase extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> name() {

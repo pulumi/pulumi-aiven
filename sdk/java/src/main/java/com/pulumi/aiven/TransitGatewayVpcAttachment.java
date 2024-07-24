@@ -83,18 +83,14 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
         return this.peerCloudAccount;
     }
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC)
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Export(name="peerRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
      * 
      */
     public Output<Optional<String>> peerRegion() {

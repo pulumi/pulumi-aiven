@@ -65,7 +65,7 @@ public final class GetFlinkResult {
      */
     private List<GetFlinkFlinkUserConfig> flinkUserConfigs;
     /**
-     * @return Flink server provided values
+     * @return Values provided by the Flink server.
      * 
      */
     private List<GetFlinkFlink> flinks;
@@ -230,7 +230,7 @@ public final class GetFlinkResult {
         return this.flinkUserConfigs;
     }
     /**
-     * @return Flink server provided values
+     * @return Values provided by the Flink server.
      * 
      */
     public List<GetFlinkFlink> flinks() {

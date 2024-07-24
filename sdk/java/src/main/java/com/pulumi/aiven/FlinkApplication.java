@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The Flink Application resource allows the creation and management of Aiven Flink Applications.
+ * Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
  * 
  * ## Example Usage
  * 
@@ -41,10 +41,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new FlinkApplication("foo", FlinkApplicationArgs.builder()
- *             .project(fooAivenProject.project())
- *             .serviceName("flink-service-1")
- *             .name("my-flink-app")
+ *         var exampleApp = new FlinkApplication("exampleApp", FlinkApplicationArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName("example-flink-service")
+ *             .name("example-app")
  *             .build());
  * 
  *     }
@@ -56,63 +56,63 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp PROJECT/SERVICE/APPLICATION_NAME
+ * $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/flinkApplication:FlinkApplication")
 public class FlinkApplication extends com.pulumi.resources.CustomResource {
     /**
-     * Application ID
+     * Application ID.
      * 
      */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public Output<String> applicationId() {
         return this.applicationId;
     }
     /**
-     * Application creation time
+     * Application creation time.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Application creation time
+     * @return Application creation time.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * Application creator
+     * The user who created the application.
      * 
      */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
-     * @return Application creator
+     * @return The user who created the application.
      * 
      */
     public Output<String> createdBy() {
         return this.createdBy;
     }
     /**
-     * Application name
+     * The name of the application.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Application name
+     * @return The name of the application.
      * 
      */
     public Output<String> name() {
@@ -147,28 +147,28 @@ public class FlinkApplication extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * Application update time
+     * When the application was updated.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return Application update time
+     * @return When the application was updated.
      * 
      */
     public Output<String> updatedAt() {
         return this.updatedAt;
     }
     /**
-     * Application updater
+     * The user who updated the application.
      * 
      */
     @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
     /**
-     * @return Application updater
+     * @return The user who updated the application.
      * 
      */
     public Output<String> updatedBy() {

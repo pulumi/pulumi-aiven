@@ -24,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Flink resource allows the creation and management of Aiven Flink services.
+ * Creates and manages an [Aiven for Apache Flink® service](https://aiven.io/docs/products/flink/concepts/flink-features).
  * 
  * ## Example Usage
  * 
@@ -52,15 +52,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var flink = new Flink("flink", FlinkArgs.builder()
- *             .project(pr1.project())
+ *         var exampleFlink = new Flink("exampleFlink", FlinkArgs.builder()
+ *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")
- *             .serviceName("my-flink")
+ *             .serviceName("example-flink-service")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .flinkUserConfig(FlinkFlinkUserConfigArgs.builder()
- *                 .flinkVersion(1.16)
+ *                 .flinkVersion(1.19)
  *                 .build())
  *             .build());
  * 
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/flink:Flink flink PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/flink:Flink example_flink PROJECT/SERVICE_NAME
  * ```
  * 
  */
@@ -196,14 +196,14 @@ public class Flink extends com.pulumi.resources.CustomResource {
         return this.diskSpaceUsed;
     }
     /**
-     * Flink server provided values
+     * Values provided by the Flink server.
      * 
      */
     @Export(name="flink", refs={FlinkFlink.class}, tree="[0]")
     private Output<FlinkFlink> flink;
 
     /**
-     * @return Flink server provided values
+     * @return Values provided by the Flink server.
      * 
      */
     public Output<FlinkFlink> flink() {

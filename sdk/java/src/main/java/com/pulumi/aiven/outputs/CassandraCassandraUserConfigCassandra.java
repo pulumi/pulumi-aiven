@@ -27,6 +27,16 @@ public final class CassandraCassandraUserConfigCassandra {
      * 
      */
     private @Nullable String datacenter;
+    /**
+     * @return How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     * 
+     */
+    private @Nullable Integer readRequestTimeoutInMs;
+    /**
+     * @return How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     * 
+     */
+    private @Nullable Integer writeRequestTimeoutInMs;
 
     private CassandraCassandraUserConfigCassandra() {}
     /**
@@ -50,6 +60,20 @@ public final class CassandraCassandraUserConfigCassandra {
     public Optional<String> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
+    /**
+     * @return How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     * 
+     */
+    public Optional<Integer> readRequestTimeoutInMs() {
+        return Optional.ofNullable(this.readRequestTimeoutInMs);
+    }
+    /**
+     * @return How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     * 
+     */
+    public Optional<Integer> writeRequestTimeoutInMs() {
+        return Optional.ofNullable(this.writeRequestTimeoutInMs);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +87,16 @@ public final class CassandraCassandraUserConfigCassandra {
         private @Nullable Integer batchSizeFailThresholdInKb;
         private @Nullable Integer batchSizeWarnThresholdInKb;
         private @Nullable String datacenter;
+        private @Nullable Integer readRequestTimeoutInMs;
+        private @Nullable Integer writeRequestTimeoutInMs;
         public Builder() {}
         public Builder(CassandraCassandraUserConfigCassandra defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.batchSizeFailThresholdInKb = defaults.batchSizeFailThresholdInKb;
     	      this.batchSizeWarnThresholdInKb = defaults.batchSizeWarnThresholdInKb;
     	      this.datacenter = defaults.datacenter;
+    	      this.readRequestTimeoutInMs = defaults.readRequestTimeoutInMs;
+    	      this.writeRequestTimeoutInMs = defaults.writeRequestTimeoutInMs;
         }
 
         @CustomType.Setter
@@ -89,11 +117,25 @@ public final class CassandraCassandraUserConfigCassandra {
             this.datacenter = datacenter;
             return this;
         }
+        @CustomType.Setter
+        public Builder readRequestTimeoutInMs(@Nullable Integer readRequestTimeoutInMs) {
+
+            this.readRequestTimeoutInMs = readRequestTimeoutInMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder writeRequestTimeoutInMs(@Nullable Integer writeRequestTimeoutInMs) {
+
+            this.writeRequestTimeoutInMs = writeRequestTimeoutInMs;
+            return this;
+        }
         public CassandraCassandraUserConfigCassandra build() {
             final var _resultValue = new CassandraCassandraUserConfigCassandra();
             _resultValue.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
             _resultValue.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
             _resultValue.datacenter = datacenter;
+            _resultValue.readRequestTimeoutInMs = readRequestTimeoutInMs;
+            _resultValue.writeRequestTimeoutInMs = writeRequestTimeoutInMs;
             return _resultValue;
         }
     }

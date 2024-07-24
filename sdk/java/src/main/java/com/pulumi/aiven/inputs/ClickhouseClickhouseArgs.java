@@ -17,14 +17,14 @@ public final class ClickhouseClickhouseArgs extends com.pulumi.resources.Resourc
     public static final ClickhouseClickhouseArgs Empty = new ClickhouseClickhouseArgs();
 
     /**
-     * Clickhouse server URIs.
+     * ClickHouse server URIs.
      * 
      */
     @Import(name="uris")
     private @Nullable Output<List<String>> uris;
 
     /**
-     * @return Clickhouse server URIs.
+     * @return ClickHouse server URIs.
      * 
      */
     public Optional<Output<List<String>>> uris() {
@@ -56,7 +56,7 @@ public final class ClickhouseClickhouseArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uris Clickhouse server URIs.
+         * @param uris ClickHouse server URIs.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ClickhouseClickhouseArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uris Clickhouse server URIs.
+         * @param uris ClickHouse server URIs.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ClickhouseClickhouseArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uris Clickhouse server URIs.
+         * @param uris ClickHouse server URIs.
          * 
          * @return builder
          * 

@@ -31,8 +31,8 @@ class KafkaTopicArgs:
         :param pulumi.Input[int] replication: The replication factor for the topic.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
-        :param pulumi.Input['KafkaTopicConfigArgs'] config: Kafka topic configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Tags for the Kafka topic.
+        :param pulumi.Input['KafkaTopicConfigArgs'] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Tags for the topic.
         """
         pulumi.set(__self__, "partitions", partitions)
         pulumi.set(__self__, "project", project)
@@ -110,7 +110,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['KafkaTopicConfigArgs']]:
         """
-        Kafka topic configuration.
+        [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         """
         return pulumi.get(self, "config")
 
@@ -122,7 +122,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
         """
-        Tags for the Kafka topic.
+        Tags for the topic.
         """
         return pulumi.get(self, "tags")
 
@@ -153,12 +153,12 @@ class _KafkaTopicState:
                  topic_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KafkaTopic resources.
-        :param pulumi.Input['KafkaTopicConfigArgs'] config: Kafka topic configuration.
+        :param pulumi.Input['KafkaTopicConfigArgs'] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Tags for the Kafka topic.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Tags for the topic.
         :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
         if config is not None:
@@ -182,7 +182,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['KafkaTopicConfigArgs']]:
         """
-        Kafka topic configuration.
+        [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         """
         return pulumi.get(self, "config")
 
@@ -242,7 +242,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
         """
-        Tags for the Kafka topic.
+        Tags for the topic.
         """
         return pulumi.get(self, "tags")
 
@@ -287,7 +287,7 @@ class KafkaTopic(pulumi.CustomResource):
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates and manages an Aiven for Apache Kafka® topic.
+        Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
 
         ## Example Usage
 
@@ -316,12 +316,12 @@ class KafkaTopic(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration.
+        :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Tags for the Kafka topic.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Tags for the topic.
         :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
         ...
@@ -331,7 +331,7 @@ class KafkaTopic(pulumi.CustomResource):
                  args: KafkaTopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an Aiven for Apache Kafka® topic.
+        Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
 
         ## Example Usage
 
@@ -433,12 +433,12 @@ class KafkaTopic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration.
+        :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Tags for the Kafka topic.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Tags for the topic.
         :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -459,7 +459,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.KafkaTopicConfig']]:
         """
-        Kafka topic configuration.
+        [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         """
         return pulumi.get(self, "config")
 
@@ -499,7 +499,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.KafkaTopicTag']]]:
         """
-        Tags for the Kafka topic.
+        Tags for the topic.
         """
         return pulumi.get(self, "tags")
 

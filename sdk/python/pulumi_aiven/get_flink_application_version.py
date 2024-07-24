@@ -67,7 +67,7 @@ class GetFlinkApplicationVersionResult:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -75,7 +75,7 @@ class GetFlinkApplicationVersionResult:
     @pulumi.getter(name="applicationVersionId")
     def application_version_id(self) -> str:
         """
-        Application version ID
+        Application version ID.
         """
         return pulumi.get(self, "application_version_id")
 
@@ -83,7 +83,7 @@ class GetFlinkApplicationVersionResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
         """
-        Application version creation time
+        Application version creation time.
         """
         return pulumi.get(self, "created_at")
 
@@ -91,7 +91,7 @@ class GetFlinkApplicationVersionResult:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
         """
-        Application version creator
+        The user who created the application.
         """
         return pulumi.get(self, "created_by")
 
@@ -123,7 +123,7 @@ class GetFlinkApplicationVersionResult:
     @pulumi.getter
     def sink(self) -> Sequence['outputs.GetFlinkApplicationVersionSinkResult']:
         """
-        Application sink
+        The sink table for the application.
         """
         return pulumi.get(self, "sink")
 
@@ -139,7 +139,7 @@ class GetFlinkApplicationVersionResult:
     @pulumi.getter
     def source(self) -> Sequence['outputs.GetFlinkApplicationVersionSourceResult']:
         """
-        Application source
+        The source table for the application.
         """
         return pulumi.get(self, "source")
 
@@ -155,7 +155,7 @@ class GetFlinkApplicationVersionResult:
     @pulumi.getter
     def statement(self) -> str:
         """
-        Job SQL statement
+        Job SQL statement.
         """
         return pulumi.get(self, "statement")
 
@@ -163,7 +163,7 @@ class GetFlinkApplicationVersionResult:
     @pulumi.getter
     def version(self) -> int:
         """
-        Application version number
+        Application version number.
         """
         return pulumi.get(self, "version")
 
@@ -195,7 +195,7 @@ def get_flink_application_version(application_id: Optional[str] = None,
                                   service_name: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlinkApplicationVersionResult:
     """
-    The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+    Gets information about an Aiven for Apache Flink® application version.
 
     ## Example Usage
 
@@ -203,15 +203,15 @@ def get_flink_application_version(application_id: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    app1 = aiven.get_flink_application_version(project=pr1["project"],
-        service_name="<SERVICE_NAME>",
-        application_id="<APPLICATION_ID>",
-        application_version_id="<APPLICATION_VERSION_ID>")
+    main = aiven.get_flink_application_version(project=example_project["project"],
+        service_name=example_flink["serviceName"],
+        application_id=example_app["applicationId"],
+        application_version_id="d6e7f71c-cadf-49b5-a4ad-126c805fe684")
     ```
 
 
-    :param str application_id: Application ID
-    :param str application_version_id: Application version ID
+    :param str application_id: Application ID.
+    :param str application_version_id: Application version ID.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
@@ -246,7 +246,7 @@ def get_flink_application_version_output(application_id: Optional[pulumi.Input[s
                                          service_name: Optional[pulumi.Input[str]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlinkApplicationVersionResult]:
     """
-    The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+    Gets information about an Aiven for Apache Flink® application version.
 
     ## Example Usage
 
@@ -254,15 +254,15 @@ def get_flink_application_version_output(application_id: Optional[pulumi.Input[s
     import pulumi
     import pulumi_aiven as aiven
 
-    app1 = aiven.get_flink_application_version(project=pr1["project"],
-        service_name="<SERVICE_NAME>",
-        application_id="<APPLICATION_ID>",
-        application_version_id="<APPLICATION_VERSION_ID>")
+    main = aiven.get_flink_application_version(project=example_project["project"],
+        service_name=example_flink["serviceName"],
+        application_id=example_app["applicationId"],
+        application_version_id="d6e7f71c-cadf-49b5-a4ad-126c805fe684")
     ```
 
 
-    :param str application_id: Application ID
-    :param str application_version_id: Application version ID
+    :param str application_id: Application ID.
+    :param str application_version_id: Application version ID.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """

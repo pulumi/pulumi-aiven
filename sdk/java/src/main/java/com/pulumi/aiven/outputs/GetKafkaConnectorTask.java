@@ -17,7 +17,7 @@ public final class GetKafkaConnectorTask {
      */
     private String connector;
     /**
-     * @return The task id of the task.
+     * @return The task ID of the task.
      * 
      */
     private Integer task;
@@ -31,7 +31,7 @@ public final class GetKafkaConnectorTask {
         return this.connector;
     }
     /**
-     * @return The task id of the task.
+     * @return The task ID of the task.
      * 
      */
     public Integer task() {

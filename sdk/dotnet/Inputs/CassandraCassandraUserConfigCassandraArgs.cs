@@ -30,6 +30,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
+        /// <summary>
+        /// How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        /// </summary>
+        [Input("readRequestTimeoutInMs")]
+        public Input<int>? ReadRequestTimeoutInMs { get; set; }
+
+        /// <summary>
+        /// How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+        /// </summary>
+        [Input("writeRequestTimeoutInMs")]
+        public Input<int>? WriteRequestTimeoutInMs { get; set; }
+
         public CassandraCassandraUserConfigCassandraArgs()
         {
         }

@@ -187,7 +187,7 @@ class GetFlinkResult:
     @pulumi.getter
     def flinks(self) -> Sequence['outputs.GetFlinkFlinkResult']:
         """
-        Flink server provided values
+        Values provided by the Flink server.
         """
         return pulumi.get(self, "flinks")
 
@@ -385,7 +385,7 @@ def get_flink(project: Optional[str] = None,
               service_name: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlinkResult:
     """
-    The Flink data source provides information about the existing Aiven Flink service.
+    Gets information about an Aiven for Apache Flink® service.
 
     ## Example Usage
 
@@ -393,8 +393,8 @@ def get_flink(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    flink = aiven.get_flink(project=pr1["project"],
-        service_name="<SERVICE_NAME>")
+    example_flink = aiven.get_flink(project=example_project["project"],
+        service_name="example-flink-service")
     ```
 
 
@@ -444,7 +444,7 @@ def get_flink_output(project: Optional[pulumi.Input[str]] = None,
                      service_name: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlinkResult]:
     """
-    The Flink data source provides information about the existing Aiven Flink service.
+    Gets information about an Aiven for Apache Flink® service.
 
     ## Example Usage
 
@@ -452,8 +452,8 @@ def get_flink_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    flink = aiven.get_flink(project=pr1["project"],
-        service_name="<SERVICE_NAME>")
+    example_flink = aiven.get_flink(project=example_project["project"],
+        service_name="example-flink-service")
     ```
 
 

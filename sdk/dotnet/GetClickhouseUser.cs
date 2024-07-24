@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetClickhouseUser
     {
         /// <summary>
-        /// The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+        /// Gets information about a ClickHouse user.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ch_user = Aiven.GetClickhouseUser.Invoke(new()
+        ///     var exampleUser = Aiven.GetClickhouseUser.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = myservice.ServiceName,
-        ///         Username = "&lt;USERNAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleClickhouse.ServiceName,
+        ///         Username = "analyst",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseUserResult>("aiven:index/getClickhouseUser:getClickhouseUser", args ?? new GetClickhouseUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+        /// Gets information about a ClickHouse user.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ch_user = Aiven.GetClickhouseUser.Invoke(new()
+        ///     var exampleUser = Aiven.GetClickhouseUser.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = myservice.ServiceName,
-        ///         Username = "&lt;USERNAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleClickhouse.ServiceName,
+        ///         Username = "analyst",
         ///     });
         /// 
         /// });
@@ -80,7 +80,7 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse user. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse user. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the clickhouse user.
+        /// The password of the ClickHouse user.
         /// </summary>
         public readonly string Password;
         /// <summary>
@@ -134,7 +134,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Indicates if a clickhouse user is required
+        /// Indicates if a ClickHouse user is required.
         /// </summary>
         public readonly bool Required;
         /// <summary>
@@ -142,11 +142,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse user. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Username;
         /// <summary>
-        /// UUID of the clickhouse user.
+        /// UUID of the ClickHouse user.
         /// </summary>
         public readonly string Uuid;
 

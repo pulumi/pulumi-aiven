@@ -80,14 +80,14 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
     }
 
     /**
-     * Restricts the scopes for this token.
+     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return Restricts the scopes for this token.
+     * @return Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -223,7 +223,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param scopes Restricts the scopes for this token.
+         * @param scopes Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param scopes Restricts the scopes for this token.
+         * @param scopes Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param scopes Restricts the scopes for this token.
+         * @param scopes Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
          * 
          * @return builder
          * 

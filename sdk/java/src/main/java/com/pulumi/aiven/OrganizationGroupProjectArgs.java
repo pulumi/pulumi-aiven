@@ -48,14 +48,14 @@ public final class OrganizationGroupProjectArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Role assigned to all users in the group for the project.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return Role assigned to all users in the group for the project.
+     * @return [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
      * 
      */
     public Output<String> role() {
@@ -139,7 +139,7 @@ public final class OrganizationGroupProjectArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param role Role assigned to all users in the group for the project.
+         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class OrganizationGroupProjectArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param role Role assigned to all users in the group for the project.
+         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
          * 
          * @return builder
          * 

@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetKafkaAcl
     {
         /// <summary>
-        /// The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+        /// Gets information about an ACL entry for an Aiven for Apache Kafka® service.
         /// 
         /// ## Example Usage
         /// 
@@ -24,13 +24,13 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mytestacl = Aiven.GetKafkaAcl.Invoke(new()
+        ///     var exampleAcl = Aiven.GetKafkaAcl.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = mykafka.ServiceName,
-        ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
-        ///         Permission = "&lt;PERMISSON&gt;",
-        ///         Username = "&lt;USERNAME_PATTERN&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Topic = "example-topic",
+        ///         Permission = "admin",
+        ///         Username = "example-user",
         ///     });
         /// 
         /// });
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaAclResult>("aiven:index/getKafkaAcl:getKafkaAcl", args ?? new GetKafkaAclArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+        /// Gets information about an ACL entry for an Aiven for Apache Kafka® service.
         /// 
         /// ## Example Usage
         /// 
@@ -52,13 +52,13 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mytestacl = Aiven.GetKafkaAcl.Invoke(new()
+        ///     var exampleAcl = Aiven.GetKafkaAcl.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = mykafka.ServiceName,
-        ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
-        ///         Permission = "&lt;PERMISSON&gt;",
-        ///         Username = "&lt;USERNAME_PATTERN&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Topic = "example-topic",
+        ///         Permission = "admin",
+        ///         Username = "example-user",
         ///     });
         /// 
         /// });
@@ -72,7 +72,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public string Permission { get; set; } = null!;
@@ -90,13 +90,13 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Topics that the permissions apply to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topic", required: true)]
         public string Topic { get; set; } = null!;
 
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Usernames to grant permissions to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
@@ -128,13 +128,13 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Topics that the permissions apply to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
 
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Usernames to grant permissions to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclResult
     {
         /// <summary>
-        /// Kafka ACL ID
+        /// Kafka ACL ID.
         /// </summary>
         public readonly string AclId;
         /// <summary>
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Permission;
         /// <summary>
@@ -170,11 +170,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Topics that the permissions apply to. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Topic;
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Usernames to grant permissions to. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Username;
 

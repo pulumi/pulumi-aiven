@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Connector;
         /// <summary>
-        /// The task id of the task.
+        /// The task ID of the task.
         /// </summary>
         public readonly int Task;
 

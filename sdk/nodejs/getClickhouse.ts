@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+ * Gets information about a ClickHouse service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const clickhouse = aiven.getClickhouse({
- *     project: pr1.project,
- *     serviceName: "<SERVICE_NAME>",
+ * const exampleClickhouse = aiven.getClickhouse({
+ *     project: exampleProject.project,
+ *     serviceName: "example-clickhouse-service",
  * });
  * ```
  */
@@ -57,7 +57,7 @@ export interface GetClickhouseResult {
      */
     readonly clickhouseUserConfigs: outputs.GetClickhouseClickhouseUserConfig[];
     /**
-     * Clickhouse server provided values
+     * Values provided by the ClickHouse server.
      */
     readonly clickhouses: outputs.GetClickhouseClickhouse[];
     /**
@@ -117,7 +117,7 @@ export interface GetClickhouseResult {
      */
     readonly serviceHost: string;
     /**
-     * Service integrations to specify when creating a service. Not applied after initial service creation
+     * Integrations with other services. Service integrations are only applied at service creation.
      */
     readonly serviceIntegrations: outputs.GetClickhouseServiceIntegration[];
     /**
@@ -166,7 +166,7 @@ export interface GetClickhouseResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+ * Gets information about a ClickHouse service.
  *
  * ## Example Usage
  *
@@ -174,9 +174,9 @@ export interface GetClickhouseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const clickhouse = aiven.getClickhouse({
- *     project: pr1.project,
- *     serviceName: "<SERVICE_NAME>",
+ * const exampleClickhouse = aiven.getClickhouse({
+ *     project: exampleProject.project,
+ *     serviceName: "example-clickhouse-service",
  * });
  * ```
  */

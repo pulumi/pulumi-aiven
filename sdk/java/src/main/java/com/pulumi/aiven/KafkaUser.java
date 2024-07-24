@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The Kafka User resource allows the creation and management of Aiven Kafka Users.
+ * Creates and manages an Aiven for Apache Kafka® service user.
  * 
  * ## Example Usage
  * 
@@ -42,11 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new KafkaUser("foo", KafkaUserArgs.builder()
- *             .serviceName(bar.serviceName())
- *             .project("my-project")
- *             .username("user-1")
- *             .password("Test$1234")
+ *         var exampleServiceUser = new KafkaUser("exampleServiceUser", KafkaUserArgs.builder()
+ *             .serviceName(exampleKafka.serviceName())
+ *             .project(exampleProject.project())
+ *             .username("example-kafka-user")
+ *             .password(serviceUserPw)
  *             .build());
  * 
  *     }
@@ -58,49 +58,49 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafkaUser:KafkaUser foo PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/kafkaUser:KafkaUser example_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/kafkaUser:KafkaUser")
 public class KafkaUser extends com.pulumi.resources.CustomResource {
     /**
-     * Access certificate for the user
+     * Access certificate for the user.
      * 
      */
     @Export(name="accessCert", refs={String.class}, tree="[0]")
     private Output<String> accessCert;
 
     /**
-     * @return Access certificate for the user
+     * @return Access certificate for the user.
      * 
      */
     public Output<String> accessCert() {
         return this.accessCert;
     }
     /**
-     * Access certificate key for the user
+     * Access certificate key for the user.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
-     * @return Access certificate key for the user
+     * @return Access certificate key for the user.
      * 
      */
     public Output<String> accessKey() {
         return this.accessKey;
     }
     /**
-     * The password of the Kafka User.
+     * The Kafka service user&#39;s password.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the Kafka User.
+     * @return The Kafka service user&#39;s password.
      * 
      */
     public Output<String> password() {
@@ -135,28 +135,28 @@ public class KafkaUser extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

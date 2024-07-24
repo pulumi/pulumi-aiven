@@ -55,14 +55,14 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the organization user.
+     * The ID of the organization user or application user.
      * 
      */
     @Import(name="userId", required=true)
     private Output<String> userId;
 
     /**
-     * @return The ID of the organization user.
+     * @return The ID of the organization user or application user.
      * 
      */
     public Output<String> userId() {
@@ -148,7 +148,7 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userId The ID of the organization user.
+         * @param userId The ID of the organization user or application user.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class OrganizationUserGroupMemberArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userId The ID of the organization user.
+         * @param userId The ID of the organization user or application user.
          * 
          * @return builder
          * 

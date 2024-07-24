@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+ * Gets information about an Aiven for Apache Kafka® Connect service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kc1 = aiven.getKafkaConnect({
- *     project: pr1.project,
- *     serviceName: "my-kc1",
+ * const exampleKafkaConnect = aiven.getKafkaConnect({
+ *     project: exampleProject.project,
+ *     serviceName: "example-connect-service",
  * });
  * ```
  */
@@ -162,7 +162,7 @@ export interface GetKafkaConnectResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+ * Gets information about an Aiven for Apache Kafka® Connect service.
  *
  * ## Example Usage
  *
@@ -170,9 +170,9 @@ export interface GetKafkaConnectResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kc1 = aiven.getKafkaConnect({
- *     project: pr1.project,
- *     serviceName: "my-kc1",
+ * const exampleKafkaConnect = aiven.getKafkaConnect({
+ *     project: exampleProject.project,
+ *     serviceName: "example-connect-service",
  * });
  * ```
  */

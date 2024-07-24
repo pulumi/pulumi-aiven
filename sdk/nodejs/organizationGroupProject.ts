@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
+ * Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as members of a project.
  *
  * ## Example Usage
  *
@@ -79,7 +79,7 @@ export class OrganizationGroupProject extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Role assigned to all users in the group for the project.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
      */
     public readonly role!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.OrganizationGroupProjectTimeouts | undefined>;
@@ -135,7 +135,7 @@ export interface OrganizationGroupProjectState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Role assigned to all users in the group for the project.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
      */
     role?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationGroupProjectTimeouts>;
@@ -154,7 +154,7 @@ export interface OrganizationGroupProjectArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Role assigned to all users in the group for the project.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
      */
     role: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationGroupProjectTimeouts>;

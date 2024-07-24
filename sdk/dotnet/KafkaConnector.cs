@@ -10,7 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
+    /// Creates and manages Aiven for Apache Kafka® [connectors](https://aiven.io/docs/products/kafka/kafka-connect/concepts/list-of-connector-plugins).
+    /// Source connectors let you import data from an external system into a Kafka topic. Sink connectors let you export data from a topic to an external system.
+    /// 
+    /// You can use connectors with any Aiven for Apache Kafka® service that is integrated with an Aiven for Apache Kafka® Connect service.
     /// 
     /// ## Example Usage
     /// 
@@ -22,20 +25,20 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var kafka_os_con1 = new Aiven.KafkaConnector("kafka-os-con1", new()
+    ///     var kafka_os_connector = new Aiven.KafkaConnector("kafka-os-connector", new()
     ///     {
-    ///         Project = kafka_con_project1.Project,
-    ///         ServiceName = kafka_service1.ServiceName,
-    ///         ConnectorName = "kafka-os-con1",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
+    ///         ConnectorName = "kafka-opensearch-connector",
     ///         Config = 
     ///         {
-    ///             { "topics", kafka_topic1.TopicName },
+    ///             { "name", "kafka-opensearch-connector" },
+    ///             { "topics", exampleTopic.TopicName },
     ///             { "connector.class", "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector" },
     ///             { "type.name", "os-connector" },
-    ///             { "name", "kafka-os-con1" },
-    ///             { "connection.url", os_service1.ServiceUri },
-    ///             { "connection.username", os_service1.ServiceUsername },
-    ///             { "connection.password", os_service1.ServicePassword },
+    ///             { "connection.url", exampleOs.ServiceUri },
+    ///             { "connection.username", exampleOs.ServiceUsername },
+    ///             { "connection.password", exampleOs.ServicePassword },
     ///         },
     ///     });
     /// 
@@ -45,20 +48,20 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
+    /// $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-connector PROJECT/SERVICE_NAME/CONNECTOR_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaConnector:KafkaConnector")]
     public partial class KafkaConnector : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Kafka Connector configuration parameters.
+        /// The Kafka connector configuration parameters.
         /// </summary>
         [Output("config")]
         public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The kafka connector name. Changing this property forces recreation of the resource.
+        /// The Kafka connector name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("connectorName")]
         public Output<string> ConnectorName { get; private set; } = null!;
@@ -94,7 +97,7 @@ namespace Pulumi.Aiven
         public Output<string> PluginType { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the kafka connector.
+        /// The version of the Kafka connector.
         /// </summary>
         [Output("pluginVersion")]
         public Output<string> PluginVersion { get; private set; } = null!;
@@ -167,7 +170,7 @@ namespace Pulumi.Aiven
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The Kafka Connector configuration parameters.
+        /// The Kafka connector configuration parameters.
         /// </summary>
         public InputMap<string> Config
         {
@@ -176,7 +179,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The kafka connector name. Changing this property forces recreation of the resource.
+        /// The Kafka connector name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("connectorName", required: true)]
         public Input<string> ConnectorName { get; set; } = null!;
@@ -205,7 +208,7 @@ namespace Pulumi.Aiven
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The Kafka Connector configuration parameters.
+        /// The Kafka connector configuration parameters.
         /// </summary>
         public InputMap<string> Config
         {
@@ -214,7 +217,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The kafka connector name. Changing this property forces recreation of the resource.
+        /// The Kafka connector name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("connectorName")]
         public Input<string>? ConnectorName { get; set; }
@@ -250,7 +253,7 @@ namespace Pulumi.Aiven
         public Input<string>? PluginType { get; set; }
 
         /// <summary>
-        /// The version of the kafka connector.
+        /// The version of the Kafka connector.
         /// </summary>
         [Input("pluginVersion")]
         public Input<string>? PluginVersion { get; set; }

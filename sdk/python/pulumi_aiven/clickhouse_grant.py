@@ -26,9 +26,9 @@ class ClickhouseGrantArgs:
         The set of arguments for constructing a ClickhouseGrant resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]] privilege_grants: Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]] role_grants: Configuration to grant a role. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]] role_grants: Grant roles. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "project", project)
@@ -70,7 +70,7 @@ class ClickhouseGrantArgs:
     @pulumi.getter(name="privilegeGrants")
     def privilege_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]:
         """
-        Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        Grant privileges. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "privilege_grants")
 
@@ -94,7 +94,7 @@ class ClickhouseGrantArgs:
     @pulumi.getter(name="roleGrants")
     def role_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]:
         """
-        Configuration to grant a role. Changing this property forces recreation of the resource.
+        Grant roles. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role_grants")
 
@@ -126,10 +126,10 @@ class _ClickhouseGrantState:
                  user: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ClickhouseGrant resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]] privilege_grants: Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]] role_grants: Configuration to grant a role. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]] role_grants: Grant roles. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -150,7 +150,7 @@ class _ClickhouseGrantState:
     @pulumi.getter(name="privilegeGrants")
     def privilege_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]:
         """
-        Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        Grant privileges. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "privilege_grants")
 
@@ -186,7 +186,7 @@ class _ClickhouseGrantState:
     @pulumi.getter(name="roleGrants")
     def role_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]:
         """
-        Configuration to grant a role. Changing this property forces recreation of the resource.
+        Grant roles. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role_grants")
 
@@ -232,12 +232,12 @@ class ClickhouseGrant(pulumi.CustomResource):
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Clickhouse Grant resource allows the creation and management of Grants in Aiven Clickhouse services.
+        Creates and manages ClickHouse grants to give users and roles privileges to a ClickHouse service.
 
-        Notes:
-        * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
-        * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
-        * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
+        **Note:**
+        * Users cannot have the same name as roles.
+        * To grant a privilege on all tables of a database, omit the table and only keep the database. Don't use `table="*"`.
+        * Changes first revoke all grants and then reissue the remaining grants for convergence.
 
         ## Example Usage
 
@@ -245,53 +245,52 @@ class ClickhouseGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        clickhouse = aiven.Clickhouse("clickhouse",
-            project=aiven_project_name,
-            cloud_name="google-europe-west1",
-            plan="startup-8",
-            service_name="exapmle-clickhouse")
-        demodb = aiven.ClickhouseDatabase("demodb",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            name="demo")
-        demo = aiven.ClickhouseRole("demo",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            role="demo-role")
-        demo_role_grant = aiven.ClickhouseGrant("demo-role-grant",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            role=demo.role,
+        example_role = aiven.ClickhouseRole("example_role",
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            role="example-role")
+        # Grant privileges to the example role.
+        role_privileges = aiven.ClickhouseGrant("role_privileges",
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            role=example_role.role,
             privilege_grants=[
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="INSERT",
-                    database=demodb.name,
-                    table="demo-table",
+                    database=example_db["name"],
+                    table="example-table",
                 ),
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="SELECT",
-                    database=demodb.name,
+                    database=example_db["name"],
                 ),
             ])
-        demo_clickhouse_user = aiven.ClickhouseUser("demo",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            username="demo-user")
-        demo_user_grant = aiven.ClickhouseGrant("demo-user-grant",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            user=demo_clickhouse_user.username,
+        # Grant the role to the user.
+        example_user = aiven.ClickhouseUser("example_user",
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            username="example-user")
+        user_role_assignment = aiven.ClickhouseGrant("user_role_assignment",
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            user=example_user.username,
             role_grants=[aiven.ClickhouseGrantRoleGrantArgs(
-                role=demo.role,
+                role=example_role.role,
             )])
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/clickhouseGrant:ClickhouseGrant example_grant PROJECT/SERVICE_NAME/ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]] privilege_grants: Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]] role_grants: Configuration to grant a role. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]] role_grants: Grant roles. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -302,12 +301,12 @@ class ClickhouseGrant(pulumi.CustomResource):
                  args: ClickhouseGrantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Clickhouse Grant resource allows the creation and management of Grants in Aiven Clickhouse services.
+        Creates and manages ClickHouse grants to give users and roles privileges to a ClickHouse service.
 
-        Notes:
-        * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
-        * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
-        * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
+        **Note:**
+        * Users cannot have the same name as roles.
+        * To grant a privilege on all tables of a database, omit the table and only keep the database. Don't use `table="*"`.
+        * Changes first revoke all grants and then reissue the remaining grants for convergence.
 
         ## Example Usage
 
@@ -315,45 +314,44 @@ class ClickhouseGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        clickhouse = aiven.Clickhouse("clickhouse",
-            project=aiven_project_name,
-            cloud_name="google-europe-west1",
-            plan="startup-8",
-            service_name="exapmle-clickhouse")
-        demodb = aiven.ClickhouseDatabase("demodb",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            name="demo")
-        demo = aiven.ClickhouseRole("demo",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            role="demo-role")
-        demo_role_grant = aiven.ClickhouseGrant("demo-role-grant",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            role=demo.role,
+        example_role = aiven.ClickhouseRole("example_role",
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            role="example-role")
+        # Grant privileges to the example role.
+        role_privileges = aiven.ClickhouseGrant("role_privileges",
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            role=example_role.role,
             privilege_grants=[
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="INSERT",
-                    database=demodb.name,
-                    table="demo-table",
+                    database=example_db["name"],
+                    table="example-table",
                 ),
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="SELECT",
-                    database=demodb.name,
+                    database=example_db["name"],
                 ),
             ])
-        demo_clickhouse_user = aiven.ClickhouseUser("demo",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            username="demo-user")
-        demo_user_grant = aiven.ClickhouseGrant("demo-user-grant",
-            project=clickhouse.project,
-            service_name=clickhouse.service_name,
-            user=demo_clickhouse_user.username,
+        # Grant the role to the user.
+        example_user = aiven.ClickhouseUser("example_user",
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            username="example-user")
+        user_role_assignment = aiven.ClickhouseGrant("user_role_assignment",
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            user=example_user.username,
             role_grants=[aiven.ClickhouseGrantRoleGrantArgs(
-                role=demo.role,
+                role=example_role.role,
             )])
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/clickhouseGrant:ClickhouseGrant example_grant PROJECT/SERVICE_NAME/ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -419,10 +417,10 @@ class ClickhouseGrant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]] privilege_grants: Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]] role_grants: Configuration to grant a role. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]] role_grants: Grant roles. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -442,7 +440,7 @@ class ClickhouseGrant(pulumi.CustomResource):
     @pulumi.getter(name="privilegeGrants")
     def privilege_grants(self) -> pulumi.Output[Optional[Sequence['outputs.ClickhouseGrantPrivilegeGrant']]]:
         """
-        Configuration to grant a privilege. Changing this property forces recreation of the resource.
+        Grant privileges. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "privilege_grants")
 
@@ -466,7 +464,7 @@ class ClickhouseGrant(pulumi.CustomResource):
     @pulumi.getter(name="roleGrants")
     def role_grants(self) -> pulumi.Output[Optional[Sequence['outputs.ClickhouseGrantRoleGrant']]]:
         """
-        Configuration to grant a role. Changing this property forces recreation of the resource.
+        Grant roles. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role_grants")
 

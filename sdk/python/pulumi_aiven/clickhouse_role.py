@@ -20,7 +20,7 @@ class ClickhouseRoleArgs:
         """
         The set of arguments for constructing a ClickhouseRole resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] role: The role that is to be created. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] role: The name of role. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "project", project)
@@ -43,7 +43,7 @@ class ClickhouseRoleArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        The role that is to be created. Changing this property forces recreation of the resource.
+        The name of role. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 
@@ -73,7 +73,7 @@ class _ClickhouseRoleState:
         """
         Input properties used for looking up and filtering ClickhouseRole resources.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] role: The role that is to be created. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] role: The name of role. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         if project is not None:
@@ -99,7 +99,7 @@ class _ClickhouseRoleState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role that is to be created. Changing this property forces recreation of the resource.
+        The name of role. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 
@@ -130,7 +130,7 @@ class ClickhouseRole(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
+        Creates and manages ClickHouse roles.
 
         ## Example Usage
 
@@ -138,29 +138,22 @@ class ClickhouseRole(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        bar = aiven.Clickhouse("bar",
-            project="example-project",
-            cloud_name="google-europe-west1",
-            plan="startup-8",
-            service_name="example-service",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo = aiven.ClickhouseRole("foo",
-            service_name=bar.service_name,
-            project=bar.project,
+        example_role = aiven.ClickhouseRole("example_role",
+            service_name=example_clickhouse["serviceName"],
+            project=example_project["project"],
             role="writer")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo PROJECT/SERVICE_NAME/ROLE
+        $ pulumi import aiven:index/clickhouseRole:ClickhouseRole example_role PROJECT/SERVICE_NAME/ROLE
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] role: The role that is to be created. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] role: The name of role. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
@@ -170,7 +163,7 @@ class ClickhouseRole(pulumi.CustomResource):
                  args: ClickhouseRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
+        Creates and manages ClickHouse roles.
 
         ## Example Usage
 
@@ -178,23 +171,16 @@ class ClickhouseRole(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        bar = aiven.Clickhouse("bar",
-            project="example-project",
-            cloud_name="google-europe-west1",
-            plan="startup-8",
-            service_name="example-service",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        foo = aiven.ClickhouseRole("foo",
-            service_name=bar.service_name,
-            project=bar.project,
+        example_role = aiven.ClickhouseRole("example_role",
+            service_name=example_clickhouse["serviceName"],
+            project=example_project["project"],
             role="writer")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo PROJECT/SERVICE_NAME/ROLE
+        $ pulumi import aiven:index/clickhouseRole:ClickhouseRole example_role PROJECT/SERVICE_NAME/ROLE
         ```
 
         :param str resource_name: The name of the resource.
@@ -254,7 +240,7 @@ class ClickhouseRole(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] role: The role that is to be created. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] role: The name of role. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -278,7 +264,7 @@ class ClickhouseRole(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         """
-        The role that is to be created. Changing this property forces recreation of the resource.
+        The name of role. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 

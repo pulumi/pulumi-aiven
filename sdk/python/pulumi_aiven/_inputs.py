@@ -270,6 +270,17 @@ __all__ = [
     'ThanosThanosUserConfigPublicAccessArgs',
     'ThanosThanosUserConfigQueryArgs',
     'ThanosThanosUserConfigQueryFrontendArgs',
+    'ValkeyComponentArgs',
+    'ValkeyServiceIntegrationArgs',
+    'ValkeyTagArgs',
+    'ValkeyTechEmailArgs',
+    'ValkeyValkeyArgs',
+    'ValkeyValkeyUserConfigArgs',
+    'ValkeyValkeyUserConfigIpFilterObjectArgs',
+    'ValkeyValkeyUserConfigMigrationArgs',
+    'ValkeyValkeyUserConfigPrivateAccessArgs',
+    'ValkeyValkeyUserConfigPrivatelinkAccessArgs',
+    'ValkeyValkeyUserConfigPublicAccessArgs',
 ]
 
 @pulumi.input_type
@@ -658,11 +669,15 @@ class CassandraCassandraUserConfigCassandraArgs:
     def __init__(__self__, *,
                  batch_size_fail_threshold_in_kb: Optional[pulumi.Input[int]] = None,
                  batch_size_warn_threshold_in_kb: Optional[pulumi.Input[int]] = None,
-                 datacenter: Optional[pulumi.Input[str]] = None):
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 read_request_timeout_in_ms: Optional[pulumi.Input[int]] = None,
+                 write_request_timeout_in_ms: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] batch_size_fail_threshold_in_kb: Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
         :param pulumi.Input[int] batch_size_warn_threshold_in_kb: Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
         :param pulumi.Input[str] datacenter: Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
+        :param pulumi.Input[int] read_request_timeout_in_ms: How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        :param pulumi.Input[int] write_request_timeout_in_ms: How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
         """
         if batch_size_fail_threshold_in_kb is not None:
             pulumi.set(__self__, "batch_size_fail_threshold_in_kb", batch_size_fail_threshold_in_kb)
@@ -670,6 +685,10 @@ class CassandraCassandraUserConfigCassandraArgs:
             pulumi.set(__self__, "batch_size_warn_threshold_in_kb", batch_size_warn_threshold_in_kb)
         if datacenter is not None:
             pulumi.set(__self__, "datacenter", datacenter)
+        if read_request_timeout_in_ms is not None:
+            pulumi.set(__self__, "read_request_timeout_in_ms", read_request_timeout_in_ms)
+        if write_request_timeout_in_ms is not None:
+            pulumi.set(__self__, "write_request_timeout_in_ms", write_request_timeout_in_ms)
 
     @property
     @pulumi.getter(name="batchSizeFailThresholdInKb")
@@ -706,6 +725,30 @@ class CassandraCassandraUserConfigCassandraArgs:
     @datacenter.setter
     def datacenter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter(name="readRequestTimeoutInMs")
+    def read_request_timeout_in_ms(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        """
+        return pulumi.get(self, "read_request_timeout_in_ms")
+
+    @read_request_timeout_in_ms.setter
+    def read_request_timeout_in_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "read_request_timeout_in_ms", value)
+
+    @property
+    @pulumi.getter(name="writeRequestTimeoutInMs")
+    def write_request_timeout_in_ms(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+        """
+        return pulumi.get(self, "write_request_timeout_in_ms")
+
+    @write_request_timeout_in_ms.setter
+    def write_request_timeout_in_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "write_request_timeout_in_ms", value)
 
 
 @pulumi.input_type
@@ -1028,7 +1071,7 @@ class ClickhouseClickhouseArgs:
     def __init__(__self__, *,
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: Clickhouse server URIs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: ClickHouse server URIs.
         """
         if uris is not None:
             pulumi.set(__self__, "uris", uris)
@@ -1037,7 +1080,7 @@ class ClickhouseClickhouseArgs:
     @pulumi.getter
     def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Clickhouse server URIs.
+        ClickHouse server URIs.
         """
         return pulumi.get(self, "uris")
 
@@ -1632,11 +1675,11 @@ class ClickhouseGrantPrivilegeGrantArgs:
                  table: Optional[pulumi.Input[str]] = None,
                  with_grant: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] database: The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] column: The column that the grant refers to. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] privilege: The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] table: The table that the grant refers to. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] with_grant: If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] database: The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] column: The column to grant access to. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] privilege: The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] table: The table to grant access to. Changing this property forces recreation of the resource.
+        :param pulumi.Input[bool] with_grant: Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "database", database)
         if column is not None:
@@ -1652,7 +1695,7 @@ class ClickhouseGrantPrivilegeGrantArgs:
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
         """
-        The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database")
 
@@ -1664,7 +1707,7 @@ class ClickhouseGrantPrivilegeGrantArgs:
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
-        The column that the grant refers to. Changing this property forces recreation of the resource.
+        The column to grant access to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "column")
 
@@ -1676,7 +1719,7 @@ class ClickhouseGrantPrivilegeGrantArgs:
     @pulumi.getter
     def privilege(self) -> Optional[pulumi.Input[str]]:
         """
-        The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
+        The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "privilege")
 
@@ -1688,7 +1731,7 @@ class ClickhouseGrantPrivilegeGrantArgs:
     @pulumi.getter
     def table(self) -> Optional[pulumi.Input[str]]:
         """
-        The table that the grant refers to. Changing this property forces recreation of the resource.
+        The table to grant access to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "table")
 
@@ -1700,7 +1743,7 @@ class ClickhouseGrantPrivilegeGrantArgs:
     @pulumi.getter(name="withGrant")
     def with_grant(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+        Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "with_grant")
 
@@ -1714,7 +1757,7 @@ class ClickhouseGrantRoleGrantArgs:
     def __init__(__self__, *,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] role: The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] role: The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         if role is not None:
             pulumi.set(__self__, "role", role)
@@ -1723,7 +1766,7 @@ class ClickhouseGrantRoleGrantArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 
@@ -1738,8 +1781,8 @@ class ClickhouseServiceIntegrationArgs:
                  integration_type: pulumi.Input[str],
                  source_service_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] integration_type: Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
-        :param pulumi.Input[str] source_service_name: Name of the source service
+        :param pulumi.Input[str] integration_type: Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
+        :param pulumi.Input[str] source_service_name: Name of the source service.
         """
         pulumi.set(__self__, "integration_type", integration_type)
         pulumi.set(__self__, "source_service_name", source_service_name)
@@ -1748,7 +1791,7 @@ class ClickhouseServiceIntegrationArgs:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Input[str]:
         """
-        Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
+        Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -1760,7 +1803,7 @@ class ClickhouseServiceIntegrationArgs:
     @pulumi.getter(name="sourceServiceName")
     def source_service_name(self) -> pulumi.Input[str]:
         """
-        Name of the source service
+        Name of the source service.
         """
         return pulumi.get(self, "source_service_name")
 
@@ -2885,7 +2928,7 @@ class FlinkFlinkArgs:
     def __init__(__self__, *,
                  host_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_ports: Host and Port of a Flink server
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_ports: The host and port of a Flink server.
         """
         if host_ports is not None:
             pulumi.set(__self__, "host_ports", host_ports)
@@ -2894,7 +2937,7 @@ class FlinkFlinkArgs:
     @pulumi.getter(name="hostPorts")
     def host_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Host and Port of a Flink server
+        The host and port of a Flink server.
         """
         return pulumi.get(self, "host_ports")
 
@@ -7160,7 +7203,7 @@ class KafkaConnectorTaskArgs:
                  task: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] connector: The name of the related connector.
-        :param pulumi.Input[int] task: The task id of the task.
+        :param pulumi.Input[int] task: The task ID of the task.
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
@@ -7183,7 +7226,7 @@ class KafkaConnectorTaskArgs:
     @pulumi.getter
     def task(self) -> Optional[pulumi.Input[int]]:
         """
-        The task id of the task.
+        The task ID of the task.
         """
         return pulumi.get(self, "task")
 
@@ -10674,8 +10717,8 @@ class KafkaTopicTagArgs:
                  key: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key: Topic tag key. Maximum length: `64`.
-        :param pulumi.Input[str] value: Topic tag value. Maximum length: `256`.
+        :param pulumi.Input[str] key: Tag key. Maximum length: `64`.
+        :param pulumi.Input[str] value: Tag value. Maximum length: `256`.
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -10685,7 +10728,7 @@ class KafkaTopicTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        Topic tag key. Maximum length: `64`.
+        Tag key. Maximum length: `64`.
         """
         return pulumi.get(self, "key")
 
@@ -10697,7 +10740,7 @@ class KafkaTopicTagArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Topic tag value. Maximum length: `256`.
+        Tag value. Maximum length: `256`.
         """
         return pulumi.get(self, "value")
 
@@ -15027,6 +15070,8 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  ism_history_max_docs: Optional[pulumi.Input[int]] = None,
                  ism_history_rollover_check_period: Optional[pulumi.Input[int]] = None,
                  ism_history_rollover_retention_period: Optional[pulumi.Input[int]] = None,
+                 knn_memory_circuit_breaker_enabled: Optional[pulumi.Input[bool]] = None,
+                 knn_memory_circuit_breaker_limit: Optional[pulumi.Input[int]] = None,
                  override_main_response_version: Optional[pulumi.Input[bool]] = None,
                  plugins_alerting_filter_by_backend_roles: Optional[pulumi.Input[bool]] = None,
                  reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -15070,6 +15115,8 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[int] ism_history_max_docs: The maximum number of documents before rolling over the audit history index. Default: `2500000`.
         :param pulumi.Input[int] ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Default: `8`.
         :param pulumi.Input[int] ism_history_rollover_retention_period: How long audit history indices are kept in days. Default: `30`.
+        :param pulumi.Input[bool] knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        :param pulumi.Input[int] knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
         :param pulumi.Input[bool] override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param pulumi.Input[bool] plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reindex_remote_whitelists: Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
@@ -15139,6 +15186,10 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "ism_history_rollover_check_period", ism_history_rollover_check_period)
         if ism_history_rollover_retention_period is not None:
             pulumi.set(__self__, "ism_history_rollover_retention_period", ism_history_rollover_retention_period)
+        if knn_memory_circuit_breaker_enabled is not None:
+            pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
+        if knn_memory_circuit_breaker_limit is not None:
+            pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
         if override_main_response_version is not None:
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if plugins_alerting_filter_by_backend_roles is not None:
@@ -15483,6 +15534,30 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @ism_history_rollover_retention_period.setter
     def ism_history_rollover_retention_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ism_history_rollover_retention_period", value)
+
+    @property
+    @pulumi.getter(name="knnMemoryCircuitBreakerEnabled")
+    def knn_memory_circuit_breaker_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        """
+        return pulumi.get(self, "knn_memory_circuit_breaker_enabled")
+
+    @knn_memory_circuit_breaker_enabled.setter
+    def knn_memory_circuit_breaker_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "knn_memory_circuit_breaker_enabled", value)
+
+    @property
+    @pulumi.getter(name="knnMemoryCircuitBreakerLimit")
+    def knn_memory_circuit_breaker_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        """
+        return pulumi.get(self, "knn_memory_circuit_breaker_limit")
+
+    @knn_memory_circuit_breaker_limit.setter
+    def knn_memory_circuit_breaker_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "knn_memory_circuit_breaker_limit", value)
 
     @property
     @pulumi.getter(name="overrideMainResponseVersion")
@@ -17827,7 +17902,7 @@ class PgPgUserConfigPgArgs:
         :param pulumi.Input[bool] jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param pulumi.Input[int] log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
         :param pulumi.Input[str] log_error_verbosity: Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-        :param pulumi.Input[str] log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+        :param pulumi.Input[str] log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         :param pulumi.Input[int] log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param pulumi.Input[int] log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
         :param pulumi.Input[int] max_files_per_process: PostgreSQL maximum number of files that can be open per process.
@@ -18189,7 +18264,7 @@ class PgPgUserConfigPgArgs:
     @pulumi.getter(name="logLinePrefix")
     def log_line_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         """
         return pulumi.get(self, "log_line_prefix")
 
@@ -24264,5 +24339,990 @@ class ThanosThanosUserConfigQueryFrontendArgs:
     @query_range_align_range_with_step.setter
     def query_range_align_range_with_step(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "query_range_align_range_with_step", value)
+
+
+@pulumi.input_type
+class ValkeyComponentArgs:
+    def __init__(__self__, *,
+                 component: Optional[pulumi.Input[str]] = None,
+                 connection_uri: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 kafka_authentication_method: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 route: Optional[pulumi.Input[str]] = None,
+                 ssl: Optional[pulumi.Input[bool]] = None,
+                 usage: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] component: Service component name
+        :param pulumi.Input[str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
+        :param pulumi.Input[str] host: Host name for connecting to the service component
+        :param pulumi.Input[str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[int] port: Port number for connecting to the service component
+        :param pulumi.Input[str] route: Network access route
+        :param pulumi.Input[bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+        :param pulumi.Input[str] usage: DNS usage name
+        """
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if connection_uri is not None:
+            pulumi.set(__self__, "connection_uri", connection_uri)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if kafka_authentication_method is not None:
+            pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route is not None:
+            pulumi.set(__self__, "route", route)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if usage is not None:
+            pulumi.set(__self__, "usage", usage)
+
+    @property
+    @pulumi.getter
+    def component(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service component name
+        """
+        return pulumi.get(self, "component")
+
+    @component.setter
+    def component(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "component", value)
+
+    @property
+    @pulumi.getter(name="connectionUri")
+    def connection_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Connection info for connecting to the service component. This is a combination of host and port.
+        """
+        return pulumi.get(self, "connection_uri")
+
+    @connection_uri.setter
+    def connection_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_uri", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name for connecting to the service component
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="kafkaAuthenticationMethod")
+    def kafka_authentication_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka authentication method. This is a value specific to the 'kafka' service component
+        """
+        return pulumi.get(self, "kafka_authentication_method")
+
+    @kafka_authentication_method.setter
+    def kafka_authentication_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number for connecting to the service component
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def route(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network access route
+        """
+        return pulumi.get(self, "route")
+
+    @route.setter
+    def route(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route", value)
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+        """
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ssl", value)
+
+    @property
+    @pulumi.getter
+    def usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        DNS usage name
+        """
+        return pulumi.get(self, "usage")
+
+    @usage.setter
+    def usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "usage", value)
+
+
+@pulumi.input_type
+class ValkeyServiceIntegrationArgs:
+    def __init__(__self__, *,
+                 integration_type: pulumi.Input[str],
+                 source_service_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_type: Type of the service integration. The only supported value at the moment is `read_replica`
+        :param pulumi.Input[str] source_service_name: Name of the source service
+        """
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> pulumi.Input[str]:
+        """
+        Type of the service integration. The only supported value at the moment is `read_replica`
+        """
+        return pulumi.get(self, "integration_type")
+
+    @integration_type.setter
+    def integration_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_type", value)
+
+    @property
+    @pulumi.getter(name="sourceServiceName")
+    def source_service_name(self) -> pulumi.Input[str]:
+        """
+        Name of the source service
+        """
+        return pulumi.get(self, "source_service_name")
+
+    @source_service_name.setter
+    def source_service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_service_name", value)
+
+
+@pulumi.input_type
+class ValkeyTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: Service tag key
+        :param pulumi.Input[str] value: Service tag value
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Service tag key
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Service tag value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ValkeyTechEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: An email address to contact for technical issues
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        An email address to contact for technical issues
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+@pulumi.input_type
+class ValkeyValkeyArgs:
+    def __init__(__self__, *,
+                 password: Optional[pulumi.Input[str]] = None,
+                 replica_uri: Optional[pulumi.Input[str]] = None,
+                 slave_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] password: Valkey password.
+        :param pulumi.Input[str] replica_uri: Valkey replica server URI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] slave_uris: Valkey slave server URIs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: Valkey server URIs.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if replica_uri is not None:
+            pulumi.set(__self__, "replica_uri", replica_uri)
+        if slave_uris is not None:
+            pulumi.set(__self__, "slave_uris", slave_uris)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valkey password.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="replicaUri")
+    def replica_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valkey replica server URI.
+        """
+        return pulumi.get(self, "replica_uri")
+
+    @replica_uri.setter
+    def replica_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replica_uri", value)
+
+    @property
+    @pulumi.getter(name="slaveUris")
+    def slave_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Valkey slave server URIs.
+        """
+        return pulumi.get(self, "slave_uris")
+
+    @slave_uris.setter
+    def slave_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "slave_uris", value)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Valkey server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+    @uris.setter
+    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "uris", value)
+
+
+@pulumi.input_type
+class ValkeyValkeyUserConfigArgs:
+    def __init__(__self__, *,
+                 additional_backup_regions: Optional[pulumi.Input[str]] = None,
+                 ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 migration: Optional[pulumi.Input['ValkeyValkeyUserConfigMigrationArgs']] = None,
+                 private_access: Optional[pulumi.Input['ValkeyValkeyUserConfigPrivateAccessArgs']] = None,
+                 privatelink_access: Optional[pulumi.Input['ValkeyValkeyUserConfigPrivatelinkAccessArgs']] = None,
+                 project_to_fork_from: Optional[pulumi.Input[str]] = None,
+                 public_access: Optional[pulumi.Input['ValkeyValkeyUserConfigPublicAccessArgs']] = None,
+                 recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
+                 service_log: Optional[pulumi.Input[bool]] = None,
+                 service_to_fork_from: Optional[pulumi.Input[str]] = None,
+                 static_ips: Optional[pulumi.Input[bool]] = None,
+                 valkey_acl_channels_default: Optional[pulumi.Input[str]] = None,
+                 valkey_io_threads: Optional[pulumi.Input[int]] = None,
+                 valkey_lfu_decay_time: Optional[pulumi.Input[int]] = None,
+                 valkey_lfu_log_factor: Optional[pulumi.Input[int]] = None,
+                 valkey_maxmemory_policy: Optional[pulumi.Input[str]] = None,
+                 valkey_notify_keyspace_events: Optional[pulumi.Input[str]] = None,
+                 valkey_number_of_databases: Optional[pulumi.Input[int]] = None,
+                 valkey_persistence: Optional[pulumi.Input[str]] = None,
+                 valkey_pubsub_client_output_buffer_limit: Optional[pulumi.Input[int]] = None,
+                 valkey_ssl: Optional[pulumi.Input[bool]] = None,
+                 valkey_timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        :param pulumi.Input['ValkeyValkeyUserConfigMigrationArgs'] migration: Migrate data from existing server
+        :param pulumi.Input['ValkeyValkeyUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
+        :param pulumi.Input['ValkeyValkeyUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
+        :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        :param pulumi.Input['ValkeyValkeyUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
+        :param pulumi.Input[str] recovery_basebackup_name: Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+        :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
+        :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        :param pulumi.Input[bool] static_ips: Use static public IP addresses.
+        :param pulumi.Input[str] valkey_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+        :param pulumi.Input[int] valkey_io_threads: Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
+        :param pulumi.Input[int] valkey_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+        :param pulumi.Input[int] valkey_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+        :param pulumi.Input[str] valkey_maxmemory_policy: Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+        :param pulumi.Input[str] valkey_notify_keyspace_events: Set notify-keyspace-events option.
+        :param pulumi.Input[int] valkey_number_of_databases: Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
+        :param pulumi.Input[str] valkey_persistence: Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        :param pulumi.Input[int] valkey_pubsub_client_output_buffer_limit: Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+        :param pulumi.Input[bool] valkey_ssl: Require SSL to access Valkey. Default: `true`.
+        :param pulumi.Input[int] valkey_timeout: Valkey idle connection timeout in seconds. Default: `300`.
+        """
+        if additional_backup_regions is not None:
+            pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
+        if ip_filter_objects is not None:
+            pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
+        if ip_filters is not None:
+            warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
+        if ip_filters is not None:
+            pulumi.set(__self__, "ip_filters", ip_filters)
+        if migration is not None:
+            pulumi.set(__self__, "migration", migration)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
+        if project_to_fork_from is not None:
+            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if service_log is not None:
+            pulumi.set(__self__, "service_log", service_log)
+        if service_to_fork_from is not None:
+            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
+        if valkey_acl_channels_default is not None:
+            pulumi.set(__self__, "valkey_acl_channels_default", valkey_acl_channels_default)
+        if valkey_io_threads is not None:
+            pulumi.set(__self__, "valkey_io_threads", valkey_io_threads)
+        if valkey_lfu_decay_time is not None:
+            pulumi.set(__self__, "valkey_lfu_decay_time", valkey_lfu_decay_time)
+        if valkey_lfu_log_factor is not None:
+            pulumi.set(__self__, "valkey_lfu_log_factor", valkey_lfu_log_factor)
+        if valkey_maxmemory_policy is not None:
+            pulumi.set(__self__, "valkey_maxmemory_policy", valkey_maxmemory_policy)
+        if valkey_notify_keyspace_events is not None:
+            pulumi.set(__self__, "valkey_notify_keyspace_events", valkey_notify_keyspace_events)
+        if valkey_number_of_databases is not None:
+            pulumi.set(__self__, "valkey_number_of_databases", valkey_number_of_databases)
+        if valkey_persistence is not None:
+            pulumi.set(__self__, "valkey_persistence", valkey_persistence)
+        if valkey_pubsub_client_output_buffer_limit is not None:
+            pulumi.set(__self__, "valkey_pubsub_client_output_buffer_limit", valkey_pubsub_client_output_buffer_limit)
+        if valkey_ssl is not None:
+            pulumi.set(__self__, "valkey_ssl", valkey_ssl)
+        if valkey_timeout is not None:
+            pulumi.set(__self__, "valkey_timeout", valkey_timeout)
+
+    @property
+    @pulumi.getter(name="additionalBackupRegions")
+    def additional_backup_regions(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional Cloud Regions for Backup Replication.
+        """
+        return pulumi.get(self, "additional_backup_regions")
+
+    @additional_backup_regions.setter
+    def additional_backup_regions(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_backup_regions", value)
+
+    @property
+    @pulumi.getter(name="ipFilterObjects")
+    def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgs']]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
+        return pulumi.get(self, "ip_filter_objects")
+
+    @ip_filter_objects.setter
+    def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgs']]]]):
+        pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        """
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
+
+    @property
+    @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
+    def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        """
+        return pulumi.get(self, "ip_filters")
+
+    @ip_filters.setter
+    def ip_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filters", value)
+
+    @property
+    @pulumi.getter
+    def migration(self) -> Optional[pulumi.Input['ValkeyValkeyUserConfigMigrationArgs']]:
+        """
+        Migrate data from existing server
+        """
+        return pulumi.get(self, "migration")
+
+    @migration.setter
+    def migration(self, value: Optional[pulumi.Input['ValkeyValkeyUserConfigMigrationArgs']]):
+        pulumi.set(self, "migration", value)
+
+    @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional[pulumi.Input['ValkeyValkeyUserConfigPrivateAccessArgs']]:
+        """
+        Allow access to selected service ports from private networks
+        """
+        return pulumi.get(self, "private_access")
+
+    @private_access.setter
+    def private_access(self, value: Optional[pulumi.Input['ValkeyValkeyUserConfigPrivateAccessArgs']]):
+        pulumi.set(self, "private_access", value)
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional[pulumi.Input['ValkeyValkeyUserConfigPrivatelinkAccessArgs']]:
+        """
+        Allow access to selected service components through Privatelink
+        """
+        return pulumi.get(self, "privatelink_access")
+
+    @privatelink_access.setter
+    def privatelink_access(self, value: Optional[pulumi.Input['ValkeyValkeyUserConfigPrivatelinkAccessArgs']]):
+        pulumi.set(self, "privatelink_access", value)
+
+    @property
+    @pulumi.getter(name="projectToForkFrom")
+    def project_to_fork_from(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+        """
+        return pulumi.get(self, "project_to_fork_from")
+
+    @project_to_fork_from.setter
+    def project_to_fork_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_to_fork_from", value)
+
+    @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional[pulumi.Input['ValkeyValkeyUserConfigPublicAccessArgs']]:
+        """
+        Allow access to selected service ports from the public Internet
+        """
+        return pulumi.get(self, "public_access")
+
+    @public_access.setter
+    def public_access(self, value: Optional[pulumi.Input['ValkeyValkeyUserConfigPublicAccessArgs']]):
+        pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+        """
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recovery_basebackup_name", value)
+
+    @property
+    @pulumi.getter(name="serviceLog")
+    def service_log(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Store logs for the service so that they are available in the HTTP API and console.
+        """
+        return pulumi.get(self, "service_log")
+
+    @service_log.setter
+    def service_log(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_log", value)
+
+    @property
+    @pulumi.getter(name="serviceToForkFrom")
+    def service_to_fork_from(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        """
+        return pulumi.get(self, "service_to_fork_from")
+
+    @service_to_fork_from.setter
+    def service_to_fork_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_to_fork_from", value)
+
+    @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use static public IP addresses.
+        """
+        return pulumi.get(self, "static_ips")
+
+    @static_ips.setter
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "static_ips", value)
+
+    @property
+    @pulumi.getter(name="valkeyAclChannelsDefault")
+    def valkey_acl_channels_default(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+        """
+        return pulumi.get(self, "valkey_acl_channels_default")
+
+    @valkey_acl_channels_default.setter
+    def valkey_acl_channels_default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "valkey_acl_channels_default", value)
+
+    @property
+    @pulumi.getter(name="valkeyIoThreads")
+    def valkey_io_threads(self) -> Optional[pulumi.Input[int]]:
+        """
+        Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
+        """
+        return pulumi.get(self, "valkey_io_threads")
+
+    @valkey_io_threads.setter
+    def valkey_io_threads(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "valkey_io_threads", value)
+
+    @property
+    @pulumi.getter(name="valkeyLfuDecayTime")
+    def valkey_lfu_decay_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+        """
+        return pulumi.get(self, "valkey_lfu_decay_time")
+
+    @valkey_lfu_decay_time.setter
+    def valkey_lfu_decay_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "valkey_lfu_decay_time", value)
+
+    @property
+    @pulumi.getter(name="valkeyLfuLogFactor")
+    def valkey_lfu_log_factor(self) -> Optional[pulumi.Input[int]]:
+        """
+        Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+        """
+        return pulumi.get(self, "valkey_lfu_log_factor")
+
+    @valkey_lfu_log_factor.setter
+    def valkey_lfu_log_factor(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "valkey_lfu_log_factor", value)
+
+    @property
+    @pulumi.getter(name="valkeyMaxmemoryPolicy")
+    def valkey_maxmemory_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+        """
+        return pulumi.get(self, "valkey_maxmemory_policy")
+
+    @valkey_maxmemory_policy.setter
+    def valkey_maxmemory_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "valkey_maxmemory_policy", value)
+
+    @property
+    @pulumi.getter(name="valkeyNotifyKeyspaceEvents")
+    def valkey_notify_keyspace_events(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set notify-keyspace-events option.
+        """
+        return pulumi.get(self, "valkey_notify_keyspace_events")
+
+    @valkey_notify_keyspace_events.setter
+    def valkey_notify_keyspace_events(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "valkey_notify_keyspace_events", value)
+
+    @property
+    @pulumi.getter(name="valkeyNumberOfDatabases")
+    def valkey_number_of_databases(self) -> Optional[pulumi.Input[int]]:
+        """
+        Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
+        """
+        return pulumi.get(self, "valkey_number_of_databases")
+
+    @valkey_number_of_databases.setter
+    def valkey_number_of_databases(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "valkey_number_of_databases", value)
+
+    @property
+    @pulumi.getter(name="valkeyPersistence")
+    def valkey_persistence(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        """
+        return pulumi.get(self, "valkey_persistence")
+
+    @valkey_persistence.setter
+    def valkey_persistence(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "valkey_persistence", value)
+
+    @property
+    @pulumi.getter(name="valkeyPubsubClientOutputBufferLimit")
+    def valkey_pubsub_client_output_buffer_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+        """
+        return pulumi.get(self, "valkey_pubsub_client_output_buffer_limit")
+
+    @valkey_pubsub_client_output_buffer_limit.setter
+    def valkey_pubsub_client_output_buffer_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "valkey_pubsub_client_output_buffer_limit", value)
+
+    @property
+    @pulumi.getter(name="valkeySsl")
+    def valkey_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Require SSL to access Valkey. Default: `true`.
+        """
+        return pulumi.get(self, "valkey_ssl")
+
+    @valkey_ssl.setter
+    def valkey_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "valkey_ssl", value)
+
+    @property
+    @pulumi.getter(name="valkeyTimeout")
+    def valkey_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Valkey idle connection timeout in seconds. Default: `300`.
+        """
+        return pulumi.get(self, "valkey_timeout")
+
+    @valkey_timeout.setter
+    def valkey_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "valkey_timeout", value)
+
+
+@pulumi.input_type
+class ValkeyValkeyUserConfigIpFilterObjectArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network: CIDR address block. Example: `10.20.0.0/16`.
+        :param pulumi.Input[str] description: Description for IP filter list entry. Example: `Production service IP range`.
+        """
+        pulumi.set(__self__, "network", network)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        CIDR address block. Example: `10.20.0.0/16`.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description for IP filter list entry. Example: `Production service IP range`.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ValkeyValkeyUserConfigMigrationArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 port: pulumi.Input[int],
+                 dbname: Optional[pulumi.Input[str]] = None,
+                 ignore_dbs: Optional[pulumi.Input[str]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 ssl: Optional[pulumi.Input[bool]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+        :param pulumi.Input[int] port: Port number of the server where to migrate data from. Example: `1234`.
+        :param pulumi.Input[str] dbname: Database name for bootstrapping the initial connection. Example: `defaultdb`.
+        :param pulumi.Input[str] ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+        :param pulumi.Input[str] method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        :param pulumi.Input[str] password: Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+        :param pulumi.Input[bool] ssl: The server where to migrate data from is secured with SSL. Default: `true`.
+        :param pulumi.Input[str] username: User name for authentication with the server where to migrate data from. Example: `myname`.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+        if dbname is not None:
+            pulumi.set(__self__, "dbname", dbname)
+        if ignore_dbs is not None:
+            pulumi.set(__self__, "ignore_dbs", ignore_dbs)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Port number of the server where to migrate data from. Example: `1234`.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def dbname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database name for bootstrapping the initial connection. Example: `defaultdb`.
+        """
+        return pulumi.get(self, "dbname")
+
+    @dbname.setter
+    def dbname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dbname", value)
+
+    @property
+    @pulumi.getter(name="ignoreDbs")
+    def ignore_dbs(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+        """
+        return pulumi.get(self, "ignore_dbs")
+
+    @ignore_dbs.setter
+    def ignore_dbs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ignore_dbs", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The server where to migrate data from is secured with SSL. Default: `true`.
+        """
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ssl", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name for authentication with the server where to migrate data from. Example: `myname`.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class ValkeyValkeyUserConfigPrivateAccessArgs:
+    def __init__(__self__, *,
+                 prometheus: Optional[pulumi.Input[bool]] = None,
+                 valkey: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param pulumi.Input[bool] valkey: Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+        if valkey is not None:
+            pulumi.set(__self__, "valkey", valkey)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        return pulumi.get(self, "prometheus")
+
+    @prometheus.setter
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prometheus", value)
+
+    @property
+    @pulumi.getter
+    def valkey(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        return pulumi.get(self, "valkey")
+
+    @valkey.setter
+    def valkey(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "valkey", value)
+
+
+@pulumi.input_type
+class ValkeyValkeyUserConfigPrivatelinkAccessArgs:
+    def __init__(__self__, *,
+                 prometheus: Optional[pulumi.Input[bool]] = None,
+                 valkey: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] prometheus: Enable prometheus.
+        :param pulumi.Input[bool] valkey: Enable valkey.
+        """
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+        if valkey is not None:
+            pulumi.set(__self__, "valkey", valkey)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable prometheus.
+        """
+        return pulumi.get(self, "prometheus")
+
+    @prometheus.setter
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prometheus", value)
+
+    @property
+    @pulumi.getter
+    def valkey(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable valkey.
+        """
+        return pulumi.get(self, "valkey")
+
+    @valkey.setter
+    def valkey(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "valkey", value)
+
+
+@pulumi.input_type
+class ValkeyValkeyUserConfigPublicAccessArgs:
+    def __init__(__self__, *,
+                 prometheus: Optional[pulumi.Input[bool]] = None,
+                 valkey: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] prometheus: Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param pulumi.Input[bool] valkey: Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        if prometheus is not None:
+            pulumi.set(__self__, "prometheus", prometheus)
+        if valkey is not None:
+            pulumi.set(__self__, "valkey", valkey)
+
+    @property
+    @pulumi.getter
+    def prometheus(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "prometheus")
+
+    @prometheus.setter
+    def prometheus(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prometheus", value)
+
+    @property
+    @pulumi.getter
+    def valkey(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "valkey")
+
+    @valkey.setter
+    def valkey(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "valkey", value)
 
 

@@ -40,7 +40,7 @@ class FlinkArgs:
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
-        :param pulumi.Input['FlinkFlinkArgs'] flink: Flink server provided values
+        :param pulumi.Input['FlinkFlinkArgs'] flink: Values provided by the Flink server.
         :param pulumi.Input['FlinkFlinkUserConfigArgs'] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -161,7 +161,7 @@ class FlinkArgs:
     @pulumi.getter
     def flink(self) -> Optional[pulumi.Input['FlinkFlinkArgs']]:
         """
-        Flink server provided values
+        Values provided by the Flink server.
         """
         return pulumi.get(self, "flink")
 
@@ -319,7 +319,7 @@ class _FlinkState:
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input['FlinkFlinkArgs'] flink: Flink server provided values
+        :param pulumi.Input['FlinkFlinkArgs'] flink: Values provided by the Flink server.
         :param pulumi.Input['FlinkFlinkUserConfigArgs'] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -501,7 +501,7 @@ class _FlinkState:
     @pulumi.getter
     def flink(self) -> Optional[pulumi.Input['FlinkFlinkArgs']]:
         """
-        Flink server provided values
+        Values provided by the Flink server.
         """
         return pulumi.get(self, "flink")
 
@@ -761,7 +761,7 @@ class Flink(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The Flink resource allows the creation and management of Aiven Flink services.
+        Creates and manages an [Aiven for Apache Flink® service](https://aiven.io/docs/products/flink/concepts/flink-features).
 
         ## Example Usage
 
@@ -769,22 +769,22 @@ class Flink(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        flink = aiven.Flink("flink",
-            project=pr1["project"],
+        example_flink = aiven.Flink("example_flink",
+            project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="business-4",
-            service_name="my-flink",
+            service_name="example-flink-service",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             flink_user_config=aiven.FlinkFlinkUserConfigArgs(
-                flink_version="1.16",
+                flink_version="1.19",
             ))
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flink:Flink flink PROJECT/SERVICE_NAME
+        $ pulumi import aiven:index/flink:Flink example_flink PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -792,7 +792,7 @@ class Flink(pulumi.CustomResource):
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
-        :param pulumi.Input[pulumi.InputType['FlinkFlinkArgs']] flink: Flink server provided values
+        :param pulumi.Input[pulumi.InputType['FlinkFlinkArgs']] flink: Values provided by the Flink server.
         :param pulumi.Input[pulumi.InputType['FlinkFlinkUserConfigArgs']] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -813,7 +813,7 @@ class Flink(pulumi.CustomResource):
                  args: FlinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Flink resource allows the creation and management of Aiven Flink services.
+        Creates and manages an [Aiven for Apache Flink® service](https://aiven.io/docs/products/flink/concepts/flink-features).
 
         ## Example Usage
 
@@ -821,22 +821,22 @@ class Flink(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        flink = aiven.Flink("flink",
-            project=pr1["project"],
+        example_flink = aiven.Flink("example_flink",
+            project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="business-4",
-            service_name="my-flink",
+            service_name="example-flink-service",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             flink_user_config=aiven.FlinkFlinkUserConfigArgs(
-                flink_version="1.16",
+                flink_version="1.19",
             ))
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flink:Flink flink PROJECT/SERVICE_NAME
+        $ pulumi import aiven:index/flink:Flink example_flink PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -968,7 +968,7 @@ class Flink(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input[pulumi.InputType['FlinkFlinkArgs']] flink: Flink server provided values
+        :param pulumi.Input[pulumi.InputType['FlinkFlinkArgs']] flink: Values provided by the Flink server.
         :param pulumi.Input[pulumi.InputType['FlinkFlinkUserConfigArgs']] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -1092,7 +1092,7 @@ class Flink(pulumi.CustomResource):
     @pulumi.getter
     def flink(self) -> pulumi.Output['outputs.FlinkFlink']:
         """
-        Flink server provided values
+        Values provided by the Flink server.
         """
         return pulumi.get(self, "flink")
 

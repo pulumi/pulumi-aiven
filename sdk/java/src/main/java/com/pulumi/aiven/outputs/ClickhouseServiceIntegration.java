@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class ClickhouseServiceIntegration {
     /**
-     * @return Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
+     * @return Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
      * 
      */
     private String integrationType;
     /**
-     * @return Name of the source service
+     * @return Name of the source service.
      * 
      */
     private String sourceServiceName;
 
     private ClickhouseServiceIntegration() {}
     /**
-     * @return Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
+     * @return Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
      * 
      */
     public String integrationType() {
         return this.integrationType;
     }
     /**
-     * @return Name of the source service
+     * @return Name of the source service.
      * 
      */
     public String sourceServiceName() {

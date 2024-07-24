@@ -7,12 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Clickhouse Grant resource allows the creation and management of Grants in Aiven Clickhouse services.
+ * Creates and manages ClickHouse grants to give users and roles privileges to a ClickHouse service.
  *
- * Notes:
- * * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
- * * To grant a privilege on all tables of a database, do not write table = "*". Instead, omit the table and only keep the database.
- * * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
+ * **Note:**
+ * * Users cannot have the same name as roles.
+ * * To grant a privilege on all tables of a database, omit the table and only keep the database. Don't use `table="*"`.
+ * * Changes first revoke all grants and then reissue the remaining grants for convergence.
  *
  * ## Example Usage
  *
@@ -20,51 +20,48 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const clickhouse = new aiven.Clickhouse("clickhouse", {
- *     project: aivenProjectName,
- *     cloudName: "google-europe-west1",
- *     plan: "startup-8",
- *     serviceName: "exapmle-clickhouse",
+ * const exampleRole = new aiven.ClickhouseRole("example_role", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     role: "example-role",
  * });
- * const demodb = new aiven.ClickhouseDatabase("demodb", {
- *     project: clickhouse.project,
- *     serviceName: clickhouse.serviceName,
- *     name: "demo",
- * });
- * const demo = new aiven.ClickhouseRole("demo", {
- *     project: clickhouse.project,
- *     serviceName: clickhouse.serviceName,
- *     role: "demo-role",
- * });
- * const demo_role_grant = new aiven.ClickhouseGrant("demo-role-grant", {
- *     project: clickhouse.project,
- *     serviceName: clickhouse.serviceName,
- *     role: demo.role,
+ * // Grant privileges to the example role.
+ * const rolePrivileges = new aiven.ClickhouseGrant("role_privileges", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     role: exampleRole.role,
  *     privilegeGrants: [
  *         {
  *             privilege: "INSERT",
- *             database: demodb.name,
- *             table: "demo-table",
+ *             database: exampleDb.name,
+ *             table: "example-table",
  *         },
  *         {
  *             privilege: "SELECT",
- *             database: demodb.name,
+ *             database: exampleDb.name,
  *         },
  *     ],
  * });
- * const demoClickhouseUser = new aiven.ClickhouseUser("demo", {
- *     project: clickhouse.project,
- *     serviceName: clickhouse.serviceName,
- *     username: "demo-user",
+ * // Grant the role to the user.
+ * const exampleUser = new aiven.ClickhouseUser("example_user", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     username: "example-user",
  * });
- * const demo_user_grant = new aiven.ClickhouseGrant("demo-user-grant", {
- *     project: clickhouse.project,
- *     serviceName: clickhouse.serviceName,
- *     user: demoClickhouseUser.username,
+ * const userRoleAssignment = new aiven.ClickhouseGrant("user_role_assignment", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     user: exampleUser.username,
  *     roleGrants: [{
- *         role: demo.role,
+ *         role: exampleRole.role,
  *     }],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/clickhouseGrant:ClickhouseGrant example_grant PROJECT/SERVICE_NAME/ID
  * ```
  */
 export class ClickhouseGrant extends pulumi.CustomResource {
@@ -96,7 +93,7 @@ export class ClickhouseGrant extends pulumi.CustomResource {
     }
 
     /**
-     * Configuration to grant a privilege. Changing this property forces recreation of the resource.
+     * Grant privileges. Changing this property forces recreation of the resource.
      */
     public readonly privilegeGrants!: pulumi.Output<outputs.ClickhouseGrantPrivilegeGrant[] | undefined>;
     /**
@@ -108,7 +105,7 @@ export class ClickhouseGrant extends pulumi.CustomResource {
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
-     * Configuration to grant a role. Changing this property forces recreation of the resource.
+     * Grant roles. Changing this property forces recreation of the resource.
      */
     public readonly roleGrants!: pulumi.Output<outputs.ClickhouseGrantRoleGrant[] | undefined>;
     /**
@@ -164,7 +161,7 @@ export class ClickhouseGrant extends pulumi.CustomResource {
  */
 export interface ClickhouseGrantState {
     /**
-     * Configuration to grant a privilege. Changing this property forces recreation of the resource.
+     * Grant privileges. Changing this property forces recreation of the resource.
      */
     privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[]>;
     /**
@@ -176,7 +173,7 @@ export interface ClickhouseGrantState {
      */
     role?: pulumi.Input<string>;
     /**
-     * Configuration to grant a role. Changing this property forces recreation of the resource.
+     * Grant roles. Changing this property forces recreation of the resource.
      */
     roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[]>;
     /**
@@ -194,7 +191,7 @@ export interface ClickhouseGrantState {
  */
 export interface ClickhouseGrantArgs {
     /**
-     * Configuration to grant a privilege. Changing this property forces recreation of the resource.
+     * Grant privileges. Changing this property forces recreation of the resource.
      */
     privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[]>;
     /**
@@ -206,7 +203,7 @@ export interface ClickhouseGrantArgs {
      */
     role?: pulumi.Input<string>;
     /**
-     * Configuration to grant a role. Changing this property forces recreation of the resource.
+     * Grant roles. Changing this property forces recreation of the resource.
      */
     roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[]>;
     /**

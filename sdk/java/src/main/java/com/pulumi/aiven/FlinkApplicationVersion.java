@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
+ * Creates and manages an Aiven for Apache Flink® application version.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.FlinkApplication;
+ * import com.pulumi.aiven.FlinkApplicationArgs;
  * import com.pulumi.aiven.FlinkApplicationVersion;
  * import com.pulumi.aiven.FlinkApplicationVersionArgs;
  * import com.pulumi.aiven.inputs.FlinkApplicationVersionSinkArgs;
@@ -48,10 +50,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new FlinkApplicationVersion("foo", FlinkApplicationVersionArgs.builder()
- *             .project(fooAivenProject.project())
- *             .serviceName(fooAivenFlink.serviceName())
- *             .applicationId(fooAivenFlinkApplication.applicationId())
+ *         var exampleApp = new FlinkApplication("exampleApp", FlinkApplicationArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName("example-flink-service")
+ *             .name("example-app")
+ *             .build());
+ * 
+ *         var main = new FlinkApplicationVersion("main", FlinkApplicationVersionArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleFlink.serviceName())
+ *             .applicationId(exampleApp.applicationId())
  *             .statement("""
  *     INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
  *             """)
@@ -96,63 +104,63 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id
+ * $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/flinkApplicationVersion:FlinkApplicationVersion")
 public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource {
     /**
-     * Application ID
+     * Application ID.
      * 
      */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public Output<String> applicationId() {
         return this.applicationId;
     }
     /**
-     * Application version ID
+     * Application version ID.
      * 
      */
     @Export(name="applicationVersionId", refs={String.class}, tree="[0]")
     private Output<String> applicationVersionId;
 
     /**
-     * @return Application version ID
+     * @return Application version ID.
      * 
      */
     public Output<String> applicationVersionId() {
         return this.applicationVersionId;
     }
     /**
-     * Application version creation time
+     * Application version creation time.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Application version creation time
+     * @return Application version creation time.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * Application version creator
+     * The user who created the application.
      * 
      */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
-     * @return Application version creator
+     * @return The user who created the application.
      * 
      */
     public Output<String> createdBy() {
@@ -187,14 +195,14 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
         return this.serviceName;
     }
     /**
-     * Application sink
+     * The sink table for the application.
      * 
      */
     @Export(name="sink", refs={List.class,FlinkApplicationVersionSink.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FlinkApplicationVersionSink>> sink;
 
     /**
-     * @return Application sink
+     * @return The sink table for the application.
      * 
      */
     public Output<Optional<List<FlinkApplicationVersionSink>>> sink() {
@@ -219,14 +227,14 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.sinks);
     }
     /**
-     * Application source
+     * The source table for the application.
      * 
      */
     @Export(name="source", refs={List.class,FlinkApplicationVersionSource.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FlinkApplicationVersionSource>> source;
 
     /**
-     * @return Application source
+     * @return The source table for the application.
      * 
      */
     public Output<Optional<List<FlinkApplicationVersionSource>>> source() {
@@ -251,28 +259,28 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.sources);
     }
     /**
-     * Job SQL statement
+     * Job SQL statement.
      * 
      */
     @Export(name="statement", refs={String.class}, tree="[0]")
     private Output<String> statement;
 
     /**
-     * @return Job SQL statement
+     * @return Job SQL statement.
      * 
      */
     public Output<String> statement() {
         return this.statement;
     }
     /**
-     * Application version number
+     * Application version number.
      * 
      */
     @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     /**
-     * @return Application version number
+     * @return Application version number.
      * 
      */
     public Output<Integer> version() {

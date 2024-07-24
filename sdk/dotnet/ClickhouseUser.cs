@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
+    /// Creates and manages a ClickHouse user.
     /// 
     /// ## Example Usage
     /// 
@@ -22,11 +22,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ch_user = new Aiven.ClickhouseUser("ch-user", new()
+    ///     var exampleUser = new Aiven.ClickhouseUser("example_user", new()
     ///     {
-    ///         Project = myproject.Project,
-    ///         ServiceName = myservice.ServiceName,
-    ///         Username = "&lt;USERNAME&gt;",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleService.ServiceName,
+    ///         Username = "analyst",
     ///     });
     /// 
     /// });
@@ -35,14 +35,14 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
+    /// $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USERNAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseUser:ClickhouseUser")]
     public partial class ClickhouseUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The password of the clickhouse user.
+        /// The password of the ClickHouse user.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if a clickhouse user is required
+        /// Indicates if a ClickHouse user is required.
         /// </summary>
         [Output("required")]
         public Output<bool> Required { get; private set; } = null!;
@@ -66,13 +66,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse user. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
 
         /// <summary>
-        /// UUID of the clickhouse user.
+        /// UUID of the ClickHouse user.
         /// </summary>
         [Output("uuid")]
         public Output<string> Uuid { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse user. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the clickhouse user.
+        /// The password of the ClickHouse user.
         /// </summary>
         public Input<string>? Password
         {
@@ -176,7 +176,7 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Indicates if a clickhouse user is required
+        /// Indicates if a ClickHouse user is required.
         /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
@@ -188,13 +188,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        /// The name of the ClickHouse user. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// UUID of the clickhouse user.
+        /// UUID of the ClickHouse user.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

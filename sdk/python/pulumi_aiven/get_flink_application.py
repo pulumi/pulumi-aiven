@@ -54,7 +54,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
         """
-        Application ID
+        Application ID.
         """
         return pulumi.get(self, "application_id")
 
@@ -62,7 +62,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
         """
-        Application creation time
+        Application creation time.
         """
         return pulumi.get(self, "created_at")
 
@@ -70,7 +70,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
         """
-        Application creator
+        The user who created the application.
         """
         return pulumi.get(self, "created_by")
 
@@ -86,7 +86,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Application name
+        The name of the application.
         """
         return pulumi.get(self, "name")
 
@@ -110,7 +110,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
         """
-        Application update time
+        When the application was updated.
         """
         return pulumi.get(self, "updated_at")
 
@@ -118,7 +118,7 @@ class GetFlinkApplicationResult:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
         """
-        Application updater
+        The user who updated the application.
         """
         return pulumi.get(self, "updated_by")
 
@@ -145,7 +145,7 @@ def get_flink_application(name: Optional[str] = None,
                           service_name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlinkApplicationResult:
     """
-    The Flink Application data source provides information about the existing Aiven Flink Application.
+    Gets information about an Aiven for Apache Flink® application.
 
     ## Example Usage
 
@@ -153,13 +153,13 @@ def get_flink_application(name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    app1 = aiven.get_flink_application(project=pr1["project"],
-        service_name="<SERVICE_NAME>",
-        name="<APPLICATION_NAME>")
+    example_app = aiven.get_flink_application(project=example_project["project"],
+        service_name="example-flink-service",
+        name="example-app")
     ```
 
 
-    :param str name: Application name
+    :param str name: The name of the application.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
@@ -188,7 +188,7 @@ def get_flink_application_output(name: Optional[pulumi.Input[str]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlinkApplicationResult]:
     """
-    The Flink Application data source provides information about the existing Aiven Flink Application.
+    Gets information about an Aiven for Apache Flink® application.
 
     ## Example Usage
 
@@ -196,13 +196,13 @@ def get_flink_application_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    app1 = aiven.get_flink_application(project=pr1["project"],
-        service_name="<SERVICE_NAME>",
-        name="<APPLICATION_NAME>")
+    example_app = aiven.get_flink_application(project=example_project["project"],
+        service_name="example-flink-service",
+        name="example-app")
     ```
 
 
-    :param str name: Application name
+    :param str name: The name of the application.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """

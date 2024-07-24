@@ -119,6 +119,14 @@ export interface CassandraCassandraUserConfigCassandra {
      * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: pulumi.Input<string>;
+    /**
+     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     */
+    readRequestTimeoutInMs?: pulumi.Input<number>;
+    /**
+     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     */
+    writeRequestTimeoutInMs?: pulumi.Input<number>;
 }
 
 export interface CassandraCassandraUserConfigIpFilterObject {
@@ -212,7 +220,7 @@ export interface CassandraTechEmail {
 
 export interface ClickhouseClickhouse {
     /**
-     * Clickhouse server URIs.
+     * ClickHouse server URIs.
      */
     uris?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -373,41 +381,41 @@ export interface ClickhouseComponent {
 
 export interface ClickhouseGrantPrivilegeGrant {
     /**
-     * The column that the grant refers to. Changing this property forces recreation of the resource.
+     * The column to grant access to. Changing this property forces recreation of the resource.
      */
     column?: pulumi.Input<string>;
     /**
-     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     database: pulumi.Input<string>;
     /**
-     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
+     * The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
      */
     privilege?: pulumi.Input<string>;
     /**
-     * The table that the grant refers to. Changing this property forces recreation of the resource.
+     * The table to grant access to. Changing this property forces recreation of the resource.
      */
     table?: pulumi.Input<string>;
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+     * Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
      */
     withGrant?: pulumi.Input<boolean>;
 }
 
 export interface ClickhouseGrantRoleGrant {
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
 }
 
 export interface ClickhouseServiceIntegration {
     /**
-     * Type of the service integration. The only supported values at the moment are `clickhouseKafka` and `clickhousePostgresql`.
+     * Type of the service integration. Supported integrations are `clickhouseKafka` and `clickhousePostgresql`.
      */
     integrationType: pulumi.Input<string>;
     /**
-     * Name of the source service
+     * Name of the source service.
      */
     sourceServiceName: pulumi.Input<string>;
 }
@@ -716,7 +724,7 @@ export interface FlinkComponent {
 
 export interface FlinkFlink {
     /**
-     * Host and Port of a Flink server
+     * The host and port of a Flink server.
      */
     hostPorts?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -1869,7 +1877,7 @@ export interface KafkaConnectorTask {
      */
     connector?: pulumi.Input<string>;
     /**
-     * The task id of the task.
+     * The task ID of the task.
      */
     task?: pulumi.Input<number>;
 }
@@ -2788,11 +2796,11 @@ export interface KafkaTopicConfig {
 
 export interface KafkaTopicTag {
     /**
-     * Topic tag key. Maximum length: `64`.
+     * Tag key. Maximum length: `64`.
      */
     key: pulumi.Input<string>;
     /**
-     * Topic tag value. Maximum length: `256`.
+     * Tag value. Maximum length: `256`.
      */
     value?: pulumi.Input<string>;
 }
@@ -4047,6 +4055,14 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     ismHistoryRolloverRetentionPeriod?: pulumi.Input<number>;
     /**
+     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     */
+    knnMemoryCircuitBreakerEnabled?: pulumi.Input<boolean>;
+    /**
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     */
+    knnMemoryCircuitBreakerLimit?: pulumi.Input<number>;
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      */
     overrideMainResponseVersion?: pulumi.Input<boolean>;
@@ -4740,7 +4756,7 @@ export interface PgPgUserConfigPg {
      */
     logErrorVerbosity?: pulumi.Input<string>;
     /**
-     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
      */
     logLinePrefix?: pulumi.Input<string>;
     /**
@@ -6437,4 +6453,267 @@ export interface ThanosThanosUserConfigQueryFrontend {
      * Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
      */
     queryRangeAlignRangeWithStep?: pulumi.Input<boolean>;
+}
+
+export interface ValkeyComponent {
+    /**
+     * Service component name
+     */
+    component?: pulumi.Input<string>;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri?: pulumi.Input<string>;
+    /**
+     * Host name for connecting to the service component
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Port number for connecting to the service component
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Network access route
+     */
+    route?: pulumi.Input<string>;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl?: pulumi.Input<boolean>;
+    /**
+     * DNS usage name
+     */
+    usage?: pulumi.Input<string>;
+}
+
+export interface ValkeyServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: pulumi.Input<string>;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: pulumi.Input<string>;
+}
+
+export interface ValkeyTag {
+    /**
+     * Service tag key
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Service tag value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface ValkeyTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface ValkeyValkey {
+    /**
+     * Valkey password.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Valkey replica server URI.
+     */
+    replicaUri?: pulumi.Input<string>;
+    /**
+     * Valkey slave server URIs.
+     */
+    slaveUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Valkey server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ValkeyValkeyUserConfig {
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     */
+    additionalBackupRegions?: pulumi.Input<string>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.ValkeyValkeyUserConfigIpFilterObject>[]>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     */
+    ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Migrate data from existing server
+     */
+    migration?: pulumi.Input<inputs.ValkeyValkeyUserConfigMigration>;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: pulumi.Input<inputs.ValkeyValkeyUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: pulumi.Input<inputs.ValkeyValkeyUserConfigPrivatelinkAccess>;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+     */
+    projectToForkFrom?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: pulumi.Input<inputs.ValkeyValkeyUserConfigPublicAccess>;
+    /**
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     */
+    recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+     */
+    serviceToForkFrom?: pulumi.Input<string>;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: pulumi.Input<boolean>;
+    /**
+     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+     */
+    valkeyAclChannelsDefault?: pulumi.Input<string>;
+    /**
+     * Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
+     */
+    valkeyIoThreads?: pulumi.Input<number>;
+    /**
+     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+     */
+    valkeyLfuDecayTime?: pulumi.Input<number>;
+    /**
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+     */
+    valkeyLfuLogFactor?: pulumi.Input<number>;
+    /**
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+     */
+    valkeyMaxmemoryPolicy?: pulumi.Input<string>;
+    /**
+     * Set notify-keyspace-events option.
+     */
+    valkeyNotifyKeyspaceEvents?: pulumi.Input<string>;
+    /**
+     * Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
+     */
+    valkeyNumberOfDatabases?: pulumi.Input<number>;
+    /**
+     * Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     */
+    valkeyPersistence?: pulumi.Input<string>;
+    /**
+     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+     */
+    valkeyPubsubClientOutputBufferLimit?: pulumi.Input<number>;
+    /**
+     * Require SSL to access Valkey. Default: `true`.
+     */
+    valkeySsl?: pulumi.Input<boolean>;
+    /**
+     * Valkey idle connection timeout in seconds. Default: `300`.
+     */
+    valkeyTimeout?: pulumi.Input<number>;
+}
+
+export interface ValkeyValkeyUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry. Example: `Production service IP range`.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * CIDR address block. Example: `10.20.0.0/16`.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface ValkeyValkeyUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
+     */
+    dbname?: pulumi.Input<string>;
+    /**
+     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+     */
+    ignoreDbs?: pulumi.Input<string>;
+    /**
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     */
+    method?: pulumi.Input<string>;
+    /**
+     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Port number of the server where to migrate data from. Example: `1234`.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The server where to migrate data from is secured with SSL. Default: `true`.
+     */
+    ssl?: pulumi.Input<boolean>;
+    /**
+     * User name for authentication with the server where to migrate data from. Example: `myname`.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface ValkeyValkeyUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    prometheus?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    valkey?: pulumi.Input<boolean>;
+}
+
+export interface ValkeyValkeyUserConfigPrivatelinkAccess {
+    /**
+     * Enable prometheus.
+     */
+    prometheus?: pulumi.Input<boolean>;
+    /**
+     * Enable valkey.
+     */
+    valkey?: pulumi.Input<boolean>;
+}
+
+export interface ValkeyValkeyUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    valkey?: pulumi.Input<boolean>;
 }

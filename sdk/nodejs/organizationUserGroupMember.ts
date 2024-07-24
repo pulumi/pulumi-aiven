@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups).
+ * Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups). You can add organization users and application users to groups.
+ *
+ * Groups are given access to projects using the `aiven.OrganizationGroupProject` resource.
  *
  * ## Example Usage
  *
@@ -75,7 +77,7 @@ export class OrganizationUserGroupMember extends pulumi.CustomResource {
     public readonly organizationId!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.OrganizationUserGroupMemberTimeouts | undefined>;
     /**
-     * The ID of the organization user.
+     * The ID of the organization user or application user.
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -137,7 +139,7 @@ export interface OrganizationUserGroupMemberState {
     organizationId?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationUserGroupMemberTimeouts>;
     /**
-     * The ID of the organization user.
+     * The ID of the organization user or application user.
      */
     userId?: pulumi.Input<string>;
 }
@@ -156,7 +158,7 @@ export interface OrganizationUserGroupMemberArgs {
     organizationId: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationUserGroupMemberTimeouts>;
     /**
-     * The ID of the organization user.
+     * The ID of the organization user or application user.
      */
     userId: pulumi.Input<string>;
 }

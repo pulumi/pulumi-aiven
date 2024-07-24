@@ -15,14 +15,14 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
     public static final GetClickhouseDatabaseArgs Empty = new GetClickhouseDatabaseArgs();
 
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> name() {
@@ -86,7 +86,7 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name The name of the Clickhouse database. Changing this property forces recreation of the resource.
+         * @param name The name of the ClickHouse database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetClickhouseDatabaseArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name The name of the Clickhouse database. Changing this property forces recreation of the resource.
+         * @param name The name of the ClickHouse database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

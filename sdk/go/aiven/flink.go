@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Flink resource allows the creation and management of Aiven Flink services.
+// Creates and manages an [Aiven for Apache Flink® service](https://aiven.io/docs/products/flink/concepts/flink-features).
 //
 // ## Example Usage
 //
@@ -28,15 +28,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewFlink(ctx, "flink", &aiven.FlinkArgs{
-//				Project:               pulumi.Any(pr1.Project),
+//			_, err := aiven.NewFlink(ctx, "example_flink", &aiven.FlinkArgs{
+//				Project:               pulumi.Any(exampleProject.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("my-flink"),
+//				ServiceName:           pulumi.String("example-flink-service"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
-//					FlinkVersion: pulumi.String("1.16"),
+//					FlinkVersion: pulumi.String("1.19"),
 //				},
 //			})
 //			if err != nil {
@@ -51,7 +51,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/flink:Flink flink PROJECT/SERVICE_NAME
+// $ pulumi import aiven:index/flink:Flink example_flink PROJECT/SERVICE_NAME
 // ```
 type Flink struct {
 	pulumi.CustomResourceState
@@ -74,7 +74,7 @@ type Flink struct {
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
-	// Flink server provided values
+	// Values provided by the Flink server.
 	Flink FlinkFlinkOutput `pulumi:"flink"`
 	// Flink user configurable settings
 	FlinkUserConfig FlinkFlinkUserConfigPtrOutput `pulumi:"flinkUserConfig"`
@@ -182,7 +182,7 @@ type flinkState struct {
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
-	// Flink server provided values
+	// Values provided by the Flink server.
 	Flink *FlinkFlink `pulumi:"flink"`
 	// Flink user configurable settings
 	FlinkUserConfig *FlinkFlinkUserConfig `pulumi:"flinkUserConfig"`
@@ -243,7 +243,7 @@ type FlinkState struct {
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
-	// Flink server provided values
+	// Values provided by the Flink server.
 	Flink FlinkFlinkPtrInput
 	// Flink user configurable settings
 	FlinkUserConfig FlinkFlinkUserConfigPtrInput
@@ -298,7 +298,7 @@ type flinkArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
-	// Flink server provided values
+	// Values provided by the Flink server.
 	Flink *FlinkFlink `pulumi:"flink"`
 	// Flink user configurable settings
 	FlinkUserConfig *FlinkFlinkUserConfig `pulumi:"flinkUserConfig"`
@@ -336,7 +336,7 @@ type FlinkArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
-	// Flink server provided values
+	// Values provided by the Flink server.
 	Flink FlinkFlinkPtrInput
 	// Flink user configurable settings
 	FlinkUserConfig FlinkFlinkUserConfigPtrInput
@@ -493,7 +493,7 @@ func (o FlinkOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Flink) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
 
-// Flink server provided values
+// Values provided by the Flink server.
 func (o FlinkOutput) Flink() FlinkFlinkOutput {
 	return o.ApplyT(func(v *Flink) FlinkFlinkOutput { return v.Flink }).(FlinkFlinkOutput)
 }

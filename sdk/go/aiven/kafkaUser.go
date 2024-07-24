@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Kafka User resource allows the creation and management of Aiven Kafka Users.
+// Creates and manages an Aiven for Apache Kafka® service user.
 //
 // ## Example Usage
 //
@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaUser(ctx, "foo", &aiven.KafkaUserArgs{
-//				ServiceName: pulumi.Any(bar.ServiceName),
-//				Project:     pulumi.String("my-project"),
-//				Username:    pulumi.String("user-1"),
-//				Password:    pulumi.String("Test$1234"),
+//			_, err := aiven.NewKafkaUser(ctx, "example_service_user", &aiven.KafkaUserArgs{
+//				ServiceName: pulumi.Any(exampleKafka.ServiceName),
+//				Project:     pulumi.Any(exampleProject.Project),
+//				Username:    pulumi.String("example-kafka-user"),
+//				Password:    pulumi.Any(serviceUserPw),
 //			})
 //			if err != nil {
 //				return err
@@ -46,24 +46,24 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/kafkaUser:KafkaUser foo PROJECT/SERVICE_NAME/USERNAME
+// $ pulumi import aiven:index/kafkaUser:KafkaUser example_user PROJECT/SERVICE_NAME/USERNAME
 // ```
 type KafkaUser struct {
 	pulumi.CustomResourceState
 
-	// Access certificate for the user
+	// Access certificate for the user.
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
-	// Access certificate key for the user
+	// Access certificate key for the user.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// The password of the Kafka User.
+	// The Kafka service user's password.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -115,36 +115,36 @@ func GetKafkaUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaUser resources.
 type kafkaUserState struct {
-	// Access certificate for the user
+	// Access certificate for the user.
 	AccessCert *string `pulumi:"accessCert"`
-	// Access certificate key for the user
+	// Access certificate key for the user.
 	AccessKey *string `pulumi:"accessKey"`
-	// The password of the Kafka User.
+	// The Kafka service user's password.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type *string `pulumi:"type"`
-	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type KafkaUserState struct {
-	// Access certificate for the user
+	// Access certificate for the user.
 	AccessCert pulumi.StringPtrInput
-	// Access certificate key for the user
+	// Access certificate key for the user.
 	AccessKey pulumi.StringPtrInput
-	// The password of the Kafka User.
+	// The Kafka service user's password.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringPtrInput
-	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -153,25 +153,25 @@ func (KafkaUserState) ElementType() reflect.Type {
 }
 
 type kafkaUserArgs struct {
-	// The password of the Kafka User.
+	// The Kafka service user's password.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a KafkaUser resource.
 type KafkaUserArgs struct {
-	// The password of the Kafka User.
+	// The Kafka service user's password.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -262,17 +262,17 @@ func (o KafkaUserOutput) ToKafkaUserOutputWithContext(ctx context.Context) Kafka
 	return o
 }
 
-// Access certificate for the user
+// Access certificate for the user.
 func (o KafkaUserOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user
+// Access certificate key for the user.
 func (o KafkaUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The password of the Kafka User.
+// The Kafka service user's password.
 func (o KafkaUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -287,12 +287,12 @@ func (o KafkaUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Type of the user account. Tells whether the user is the primary account or a regular account.
+// User account type, such as primary or regular account.
 func (o KafkaUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o KafkaUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

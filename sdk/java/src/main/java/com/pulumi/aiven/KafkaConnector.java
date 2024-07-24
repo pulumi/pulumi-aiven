@@ -17,7 +17,10 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
+ * Creates and manages Aiven for Apache Kafka® [connectors](https://aiven.io/docs/products/kafka/kafka-connect/concepts/list-of-connector-plugins).
+ * Source connectors let you import data from an external system into a Kafka topic. Sink connectors let you export data from a topic to an external system.
+ * 
+ * You can use connectors with any Aiven for Apache Kafka® service that is integrated with an Aiven for Apache Kafka® Connect service.
  * 
  * ## Example Usage
  * 
@@ -44,18 +47,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kafka_os_con1 = new KafkaConnector("kafka-os-con1", KafkaConnectorArgs.builder()
- *             .project(kafka_con_project1.project())
- *             .serviceName(kafka_service1.serviceName())
- *             .connectorName("kafka-os-con1")
+ *         var kafka_os_connector = new KafkaConnector("kafka-os-connector", KafkaConnectorArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleKafka.serviceName())
+ *             .connectorName("kafka-opensearch-connector")
  *             .config(Map.ofEntries(
- *                 Map.entry("topics", kafka_topic1.topicName()),
+ *                 Map.entry("name", "kafka-opensearch-connector"),
+ *                 Map.entry("topics", exampleTopic.topicName()),
  *                 Map.entry("connector.class", "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector"),
  *                 Map.entry("type.name", "os-connector"),
- *                 Map.entry("name", "kafka-os-con1"),
- *                 Map.entry("connection.url", os_service1.serviceUri()),
- *                 Map.entry("connection.username", os_service1.serviceUsername()),
- *                 Map.entry("connection.password", os_service1.servicePassword())
+ *                 Map.entry("connection.url", exampleOs.serviceUri()),
+ *                 Map.entry("connection.username", exampleOs.serviceUsername()),
+ *                 Map.entry("connection.password", exampleOs.servicePassword())
  *             ))
  *             .build());
  * 
@@ -68,35 +71,35 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
+ * $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-connector PROJECT/SERVICE_NAME/CONNECTOR_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/kafkaConnector:KafkaConnector")
 public class KafkaConnector extends com.pulumi.resources.CustomResource {
     /**
-     * The Kafka Connector configuration parameters.
+     * The Kafka connector configuration parameters.
      * 
      */
     @Export(name="config", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> config;
 
     /**
-     * @return The Kafka Connector configuration parameters.
+     * @return The Kafka connector configuration parameters.
      * 
      */
     public Output<Map<String,String>> config() {
         return this.config;
     }
     /**
-     * The kafka connector name. Changing this property forces recreation of the resource.
+     * The Kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="connectorName", refs={String.class}, tree="[0]")
     private Output<String> connectorName;
 
     /**
-     * @return The kafka connector name. Changing this property forces recreation of the resource.
+     * @return The Kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> connectorName() {
@@ -173,14 +176,14 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
         return this.pluginType;
     }
     /**
-     * The version of the kafka connector.
+     * The version of the Kafka connector.
      * 
      */
     @Export(name="pluginVersion", refs={String.class}, tree="[0]")
     private Output<String> pluginVersion;
 
     /**
-     * @return The version of the kafka connector.
+     * @return The version of the Kafka connector.
      * 
      */
     public Output<String> pluginVersion() {

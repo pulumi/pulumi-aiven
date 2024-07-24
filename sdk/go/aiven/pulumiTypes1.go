@@ -13,6 +13,1507 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetServiceIntegrationEndpointExternalKafkaUserConfig struct {
+	// Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
+	BootstrapServers string `pulumi:"bootstrapServers"`
+	// Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
+	SaslMechanism *string `pulumi:"saslMechanism"`
+	// Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+	SaslPlainPassword *string `pulumi:"saslPlainPassword"`
+	// Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+	SaslPlainUsername *string `pulumi:"saslPlainUsername"`
+	// Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+	SecurityProtocol string `pulumi:"securityProtocol"`
+	// PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslCaCert *string `pulumi:"sslCaCert"`
+	// PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslClientCert *string `pulumi:"sslClientCert"`
+	// PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+	// ...
+	// -----END PRIVATE KEY-----
+	// `.
+	SslClientKey *string `pulumi:"sslClientKey"`
+	// Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
+	SslEndpointIdentificationAlgorithm *string `pulumi:"sslEndpointIdentificationAlgorithm"`
+}
+
+// GetServiceIntegrationEndpointExternalKafkaUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalKafkaUserConfigArgs and GetServiceIntegrationEndpointExternalKafkaUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalKafkaUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalKafkaUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutput() GetServiceIntegrationEndpointExternalKafkaUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalKafkaUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalKafkaUserConfigArgs struct {
+	// Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
+	BootstrapServers pulumi.StringInput `pulumi:"bootstrapServers"`
+	// Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
+	SaslMechanism pulumi.StringPtrInput `pulumi:"saslMechanism"`
+	// Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+	SaslPlainPassword pulumi.StringPtrInput `pulumi:"saslPlainPassword"`
+	// Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+	SaslPlainUsername pulumi.StringPtrInput `pulumi:"saslPlainUsername"`
+	// Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+	SecurityProtocol pulumi.StringInput `pulumi:"securityProtocol"`
+	// PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslCaCert pulumi.StringPtrInput `pulumi:"sslCaCert"`
+	// PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslClientCert pulumi.StringPtrInput `pulumi:"sslClientCert"`
+	// PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+	// ...
+	// -----END PRIVATE KEY-----
+	// `.
+	SslClientKey pulumi.StringPtrInput `pulumi:"sslClientKey"`
+	// Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
+	SslEndpointIdentificationAlgorithm pulumi.StringPtrInput `pulumi:"sslEndpointIdentificationAlgorithm"`
+}
+
+func (GetServiceIntegrationEndpointExternalKafkaUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutput() GetServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalKafkaUserConfigArgs) ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalKafkaUserConfigArray and GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalKafkaUserConfigArray{ GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput() GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalKafkaUserConfigArray []GetServiceIntegrationEndpointExternalKafkaUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalKafkaUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalKafkaUserConfigArray) ToGetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput() GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalKafkaUserConfigArray) ToGetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalKafkaUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutput() GetServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) ToGetServiceIntegrationEndpointExternalKafkaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return o
+}
+
+// Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) BootstrapServers() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) string { return v.BootstrapServers }).(pulumi.StringOutput)
+}
+
+// Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslMechanism() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslMechanism }).(pulumi.StringPtrOutput)
+}
+
+// Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainPassword }).(pulumi.StringPtrOutput)
+}
+
+// Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SaslPlainUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SaslPlainUsername }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SecurityProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) string { return v.SecurityProtocol }).(pulumi.StringOutput)
+}
+
+// PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslCaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslCaCert }).(pulumi.StringPtrOutput)
+}
+
+// PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientCert }).(pulumi.StringPtrOutput)
+}
+
+// PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+// ...
+// -----END PRIVATE KEY-----
+// `.
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string { return v.SslClientKey }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigOutput) SslEndpointIdentificationAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalKafkaUserConfig) *string {
+		return v.SslEndpointIdentificationAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalKafkaUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput() GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalKafkaUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalKafkaUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalKafkaUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig struct {
+	// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	Ca *string `pulumi:"ca"`
+	// Maximum number of days of logs to keep. Default: `3`.
+	IndexDaysMax *int `pulumi:"indexDaysMax"`
+	// OpenSearch index prefix. Default: `logs`.
+	IndexPrefix string `pulumi:"indexPrefix"`
+	// OpenSearch request timeout limit. Default: `10.0`.
+	Timeout *float64 `pulumi:"timeout"`
+	// OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
+	Url string `pulumi:"url"`
+}
+
+// GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs and GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs struct {
+	// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	Ca pulumi.StringPtrInput `pulumi:"ca"`
+	// Maximum number of days of logs to keep. Default: `3`.
+	IndexDaysMax pulumi.IntPtrInput `pulumi:"indexDaysMax"`
+	// OpenSearch index prefix. Default: `logs`.
+	IndexPrefix pulumi.StringInput `pulumi:"indexPrefix"`
+	// OpenSearch request timeout limit. Default: `10.0`.
+	Timeout pulumi.Float64PtrInput `pulumi:"timeout"`
+	// OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs) ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs) ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArray and GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArray{ GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArray []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArray) ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArray) ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput {
+	return o
+}
+
+// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) Ca() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of days of logs to keep. Default: `3`.
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) IndexDaysMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig) *int { return v.IndexDaysMax }).(pulumi.IntPtrOutput)
+}
+
+// OpenSearch index prefix. Default: `logs`.
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) IndexPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig) string { return v.IndexPrefix }).(pulumi.StringOutput)
+}
+
+// OpenSearch request timeout limit. Default: `10.0`.
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) Timeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
+}
+
+// OpenSearch connection URL. Example: `https://user:passwd@logs.example.com/`.
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalPostgresql struct {
+	// Default database. Example: `testdb`.
+	DefaultDatabase *string `pulumi:"defaultDatabase"`
+	// Hostname or IP address of the server. Example: `my.server.com`.
+	Host string `pulumi:"host"`
+	// Password. Example: `jjKk45Nnd`.
+	Password *string `pulumi:"password"`
+	// Port number of the server. Example: `5432`.
+	Port int `pulumi:"port"`
+	// Client certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslClientCertificate *string `pulumi:"sslClientCertificate"`
+	// Client key. Example: `-----BEGIN PRIVATE KEY-----
+	// ...
+	// -----END PRIVATE KEY-----`.
+	SslClientKey *string `pulumi:"sslClientKey"`
+	// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+	SslMode *string `pulumi:"sslMode"`
+	// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslRootCert *string `pulumi:"sslRootCert"`
+	// User name. Example: `myname`.
+	Username string `pulumi:"username"`
+}
+
+// GetServiceIntegrationEndpointExternalPostgresqlInput is an input type that accepts GetServiceIntegrationEndpointExternalPostgresqlArgs and GetServiceIntegrationEndpointExternalPostgresqlOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalPostgresqlInput` via:
+//
+//	GetServiceIntegrationEndpointExternalPostgresqlArgs{...}
+type GetServiceIntegrationEndpointExternalPostgresqlInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalPostgresqlOutput() GetServiceIntegrationEndpointExternalPostgresqlOutput
+	ToGetServiceIntegrationEndpointExternalPostgresqlOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalPostgresqlOutput
+}
+
+type GetServiceIntegrationEndpointExternalPostgresqlArgs struct {
+	// Default database. Example: `testdb`.
+	DefaultDatabase pulumi.StringPtrInput `pulumi:"defaultDatabase"`
+	// Hostname or IP address of the server. Example: `my.server.com`.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Password. Example: `jjKk45Nnd`.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Port number of the server. Example: `5432`.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Client certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslClientCertificate pulumi.StringPtrInput `pulumi:"sslClientCertificate"`
+	// Client key. Example: `-----BEGIN PRIVATE KEY-----
+	// ...
+	// -----END PRIVATE KEY-----`.
+	SslClientKey pulumi.StringPtrInput `pulumi:"sslClientKey"`
+	// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
+	// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslRootCert pulumi.StringPtrInput `pulumi:"sslRootCert"`
+	// User name. Example: `myname`.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetServiceIntegrationEndpointExternalPostgresqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalPostgresqlArgs) ToGetServiceIntegrationEndpointExternalPostgresqlOutput() GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return i.ToGetServiceIntegrationEndpointExternalPostgresqlOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalPostgresqlArgs) ToGetServiceIntegrationEndpointExternalPostgresqlOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalPostgresqlOutput)
+}
+
+// GetServiceIntegrationEndpointExternalPostgresqlArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalPostgresqlArray and GetServiceIntegrationEndpointExternalPostgresqlArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalPostgresqlArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalPostgresqlArray{ GetServiceIntegrationEndpointExternalPostgresqlArgs{...} }
+type GetServiceIntegrationEndpointExternalPostgresqlArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutput() GetServiceIntegrationEndpointExternalPostgresqlArrayOutput
+	ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalPostgresqlArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalPostgresqlArray []GetServiceIntegrationEndpointExternalPostgresqlInput
+
+func (GetServiceIntegrationEndpointExternalPostgresqlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalPostgresqlArray) ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutput() GetServiceIntegrationEndpointExternalPostgresqlArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalPostgresqlArray) ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalPostgresqlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalPostgresqlArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalPostgresqlOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalPostgresqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) ToGetServiceIntegrationEndpointExternalPostgresqlOutput() GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) ToGetServiceIntegrationEndpointExternalPostgresqlOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return o
+}
+
+// Default database. Example: `testdb`.
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) DefaultDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.DefaultDatabase }).(pulumi.StringPtrOutput)
+}
+
+// Hostname or IP address of the server. Example: `my.server.com`.
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Password. Example: `jjKk45Nnd`.
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Port number of the server. Example: `5432`.
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Client certificate. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) SslClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.SslClientCertificate }).(pulumi.StringPtrOutput)
+}
+
+// Client key. Example: `-----BEGIN PRIVATE KEY-----
+// ...
+// -----END PRIVATE KEY-----`.
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) SslClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.SslClientKey }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.SslMode }).(pulumi.StringPtrOutput)
+}
+
+// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) SslRootCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) *string { return v.SslRootCert }).(pulumi.StringPtrOutput)
+}
+
+// User name. Example: `myname`.
+func (o GetServiceIntegrationEndpointExternalPostgresqlOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalPostgresql) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalPostgresqlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalPostgresqlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalPostgresql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlArrayOutput) ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutput() GetServiceIntegrationEndpointExternalPostgresqlArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlArrayOutput) ToGetServiceIntegrationEndpointExternalPostgresqlArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalPostgresqlArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalPostgresqlArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalPostgresqlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalPostgresql {
+		return vs[0].([]GetServiceIntegrationEndpointExternalPostgresql)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalPostgresqlOutput)
+}
+
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig struct {
+	// Enum: `none`, `basic`. Authentication method.
+	Authentication string `pulumi:"authentication"`
+	// Basic authentication password. Example: `Zm9vYg==`.
+	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	// Basic authentication user name. Example: `avnadmin`.
+	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
+	// Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
+	Url string `pulumi:"url"`
+}
+
+// GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs and GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs struct {
+	// Enum: `none`, `basic`. Authentication method.
+	Authentication pulumi.StringInput `pulumi:"authentication"`
+	// Basic authentication password. Example: `Zm9vYg==`.
+	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	// Basic authentication user name. Example: `avnadmin`.
+	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
+	// Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray and GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray{ GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray []GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return o
+}
+
+// Enum: `none`, `basic`. Authentication method.
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Authentication() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig) string { return v.Authentication }).(pulumi.StringOutput)
+}
+
+// Basic authentication password. Example: `Zm9vYg==`.
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
+		return v.BasicAuthPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Basic authentication user name. Example: `avnadmin`.
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig) *string {
+		return v.BasicAuthUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointJolokiaUserConfig struct {
+	// Jolokia basic authentication password. Example: `yhfBNFii4C`.
+	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	// Jolokia basic authentication username. Example: `jol48k51`.
+	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
+}
+
+// GetServiceIntegrationEndpointJolokiaUserConfigInput is an input type that accepts GetServiceIntegrationEndpointJolokiaUserConfigArgs and GetServiceIntegrationEndpointJolokiaUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointJolokiaUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointJolokiaUserConfigArgs{...}
+type GetServiceIntegrationEndpointJolokiaUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointJolokiaUserConfigOutput() GetServiceIntegrationEndpointJolokiaUserConfigOutput
+	ToGetServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointJolokiaUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointJolokiaUserConfigArgs struct {
+	// Jolokia basic authentication password. Example: `yhfBNFii4C`.
+	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	// Jolokia basic authentication username. Example: `jol48k51`.
+	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
+}
+
+func (GetServiceIntegrationEndpointJolokiaUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointJolokiaUserConfigArgs) ToGetServiceIntegrationEndpointJolokiaUserConfigOutput() GetServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointJolokiaUserConfigArgs) ToGetServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointJolokiaUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointJolokiaUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointJolokiaUserConfigArray and GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointJolokiaUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointJolokiaUserConfigArray{ GetServiceIntegrationEndpointJolokiaUserConfigArgs{...} }
+type GetServiceIntegrationEndpointJolokiaUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointJolokiaUserConfigArrayOutput() GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointJolokiaUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointJolokiaUserConfigArray []GetServiceIntegrationEndpointJolokiaUserConfigInput
+
+func (GetServiceIntegrationEndpointJolokiaUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointJolokiaUserConfigArray) ToGetServiceIntegrationEndpointJolokiaUserConfigArrayOutput() GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointJolokiaUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointJolokiaUserConfigArray) ToGetServiceIntegrationEndpointJolokiaUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointJolokiaUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointJolokiaUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointJolokiaUserConfigOutput) ToGetServiceIntegrationEndpointJolokiaUserConfigOutput() GetServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointJolokiaUserConfigOutput) ToGetServiceIntegrationEndpointJolokiaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return o
+}
+
+// Jolokia basic authentication password. Example: `yhfBNFii4C`.
+func (o GetServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
+}
+
+// Jolokia basic authentication username. Example: `jol48k51`.
+func (o GetServiceIntegrationEndpointJolokiaUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointJolokiaUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointJolokiaUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput) ToGetServiceIntegrationEndpointJolokiaUserConfigArrayOutput() GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput) ToGetServiceIntegrationEndpointJolokiaUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointJolokiaUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointJolokiaUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointJolokiaUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointJolokiaUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointPrometheusUserConfig struct {
+	// Prometheus basic authentication password. Example: `fhyFNBjj3R`.
+	BasicAuthPassword *string `pulumi:"basicAuthPassword"`
+	// Prometheus basic authentication username. Example: `prom4851`.
+	BasicAuthUsername *string `pulumi:"basicAuthUsername"`
+}
+
+// GetServiceIntegrationEndpointPrometheusUserConfigInput is an input type that accepts GetServiceIntegrationEndpointPrometheusUserConfigArgs and GetServiceIntegrationEndpointPrometheusUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointPrometheusUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointPrometheusUserConfigArgs{...}
+type GetServiceIntegrationEndpointPrometheusUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointPrometheusUserConfigOutput() GetServiceIntegrationEndpointPrometheusUserConfigOutput
+	ToGetServiceIntegrationEndpointPrometheusUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointPrometheusUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointPrometheusUserConfigArgs struct {
+	// Prometheus basic authentication password. Example: `fhyFNBjj3R`.
+	BasicAuthPassword pulumi.StringPtrInput `pulumi:"basicAuthPassword"`
+	// Prometheus basic authentication username. Example: `prom4851`.
+	BasicAuthUsername pulumi.StringPtrInput `pulumi:"basicAuthUsername"`
+}
+
+func (GetServiceIntegrationEndpointPrometheusUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointPrometheusUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointPrometheusUserConfigArgs) ToGetServiceIntegrationEndpointPrometheusUserConfigOutput() GetServiceIntegrationEndpointPrometheusUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointPrometheusUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointPrometheusUserConfigArgs) ToGetServiceIntegrationEndpointPrometheusUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointPrometheusUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointPrometheusUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointPrometheusUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointPrometheusUserConfigArray and GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointPrometheusUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointPrometheusUserConfigArray{ GetServiceIntegrationEndpointPrometheusUserConfigArgs{...} }
+type GetServiceIntegrationEndpointPrometheusUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointPrometheusUserConfigArrayOutput() GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointPrometheusUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointPrometheusUserConfigArray []GetServiceIntegrationEndpointPrometheusUserConfigInput
+
+func (GetServiceIntegrationEndpointPrometheusUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointPrometheusUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointPrometheusUserConfigArray) ToGetServiceIntegrationEndpointPrometheusUserConfigArrayOutput() GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointPrometheusUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointPrometheusUserConfigArray) ToGetServiceIntegrationEndpointPrometheusUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointPrometheusUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointPrometheusUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointPrometheusUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointPrometheusUserConfigOutput) ToGetServiceIntegrationEndpointPrometheusUserConfigOutput() GetServiceIntegrationEndpointPrometheusUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointPrometheusUserConfigOutput) ToGetServiceIntegrationEndpointPrometheusUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointPrometheusUserConfigOutput {
+	return o
+}
+
+// Prometheus basic authentication password. Example: `fhyFNBjj3R`.
+func (o GetServiceIntegrationEndpointPrometheusUserConfigOutput) BasicAuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointPrometheusUserConfig) *string { return v.BasicAuthPassword }).(pulumi.StringPtrOutput)
+}
+
+// Prometheus basic authentication username. Example: `prom4851`.
+func (o GetServiceIntegrationEndpointPrometheusUserConfigOutput) BasicAuthUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointPrometheusUserConfig) *string { return v.BasicAuthUsername }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointPrometheusUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput) ToGetServiceIntegrationEndpointPrometheusUserConfigArrayOutput() GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput) ToGetServiceIntegrationEndpointPrometheusUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointPrometheusUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointPrometheusUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointPrometheusUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointPrometheusUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointRsyslogUserConfig struct {
+	// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	Ca *string `pulumi:"ca"`
+	// PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	Cert *string `pulumi:"cert"`
+	// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+	Format string `pulumi:"format"`
+	// PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+	// ...
+	// -----END PRIVATE KEY-----
+	// `.
+	Key *string `pulumi:"key"`
+	// Custom syslog message format. Example: `<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
+	Logline *string `pulumi:"logline"`
+	// Rsyslog max message size. Default: `8192`.
+	MaxMessageSize *int `pulumi:"maxMessageSize"`
+	// Rsyslog server port. Default: `514`.
+	Port int `pulumi:"port"`
+	// Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
+	Sd *string `pulumi:"sd"`
+	// Rsyslog server IP address or hostname. Example: `logs.example.com`.
+	Server string `pulumi:"server"`
+	// Require TLS. Default: `true`.
+	Tls bool `pulumi:"tls"`
+}
+
+// GetServiceIntegrationEndpointRsyslogUserConfigInput is an input type that accepts GetServiceIntegrationEndpointRsyslogUserConfigArgs and GetServiceIntegrationEndpointRsyslogUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointRsyslogUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointRsyslogUserConfigArgs{...}
+type GetServiceIntegrationEndpointRsyslogUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointRsyslogUserConfigOutput() GetServiceIntegrationEndpointRsyslogUserConfigOutput
+	ToGetServiceIntegrationEndpointRsyslogUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointRsyslogUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointRsyslogUserConfigArgs struct {
+	// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	Ca pulumi.StringPtrInput `pulumi:"ca"`
+	// PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	Cert pulumi.StringPtrInput `pulumi:"cert"`
+	// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+	Format pulumi.StringInput `pulumi:"format"`
+	// PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+	// ...
+	// -----END PRIVATE KEY-----
+	// `.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Custom syslog message format. Example: `<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
+	Logline pulumi.StringPtrInput `pulumi:"logline"`
+	// Rsyslog max message size. Default: `8192`.
+	MaxMessageSize pulumi.IntPtrInput `pulumi:"maxMessageSize"`
+	// Rsyslog server port. Default: `514`.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
+	Sd pulumi.StringPtrInput `pulumi:"sd"`
+	// Rsyslog server IP address or hostname. Example: `logs.example.com`.
+	Server pulumi.StringInput `pulumi:"server"`
+	// Require TLS. Default: `true`.
+	Tls pulumi.BoolInput `pulumi:"tls"`
+}
+
+func (GetServiceIntegrationEndpointRsyslogUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointRsyslogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointRsyslogUserConfigArgs) ToGetServiceIntegrationEndpointRsyslogUserConfigOutput() GetServiceIntegrationEndpointRsyslogUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointRsyslogUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointRsyslogUserConfigArgs) ToGetServiceIntegrationEndpointRsyslogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointRsyslogUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointRsyslogUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointRsyslogUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointRsyslogUserConfigArray and GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointRsyslogUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointRsyslogUserConfigArray{ GetServiceIntegrationEndpointRsyslogUserConfigArgs{...} }
+type GetServiceIntegrationEndpointRsyslogUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointRsyslogUserConfigArrayOutput() GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointRsyslogUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointRsyslogUserConfigArray []GetServiceIntegrationEndpointRsyslogUserConfigInput
+
+func (GetServiceIntegrationEndpointRsyslogUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointRsyslogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointRsyslogUserConfigArray) ToGetServiceIntegrationEndpointRsyslogUserConfigArrayOutput() GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointRsyslogUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointRsyslogUserConfigArray) ToGetServiceIntegrationEndpointRsyslogUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointRsyslogUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointRsyslogUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointRsyslogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) ToGetServiceIntegrationEndpointRsyslogUserConfigOutput() GetServiceIntegrationEndpointRsyslogUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) ToGetServiceIntegrationEndpointRsyslogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointRsyslogUserConfigOutput {
+	return o
+}
+
+// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Ca() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
+}
+
+// PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Cert }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+// ...
+// -----END PRIVATE KEY-----
+// `.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Custom syslog message format. Example: `<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Logline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Logline }).(pulumi.StringPtrOutput)
+}
+
+// Rsyslog max message size. Default: `8192`.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) MaxMessageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *int { return v.MaxMessageSize }).(pulumi.IntPtrOutput)
+}
+
+// Rsyslog server port. Default: `514`.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Sd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Sd }).(pulumi.StringPtrOutput)
+}
+
+// Rsyslog server IP address or hostname. Example: `logs.example.com`.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) string { return v.Server }).(pulumi.StringOutput)
+}
+
+// Require TLS. Default: `true`.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Tls() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) bool { return v.Tls }).(pulumi.BoolOutput)
+}
+
+type GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointRsyslogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput) ToGetServiceIntegrationEndpointRsyslogUserConfigArrayOutput() GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput) ToGetServiceIntegrationEndpointRsyslogUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointRsyslogUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointRsyslogUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointRsyslogUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointRsyslogUserConfigOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig struct {
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields []string `pulumi:"selectedLogFields"`
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs and GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs struct {
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields pulumi.StringArrayInput `pulumi:"selectedLogFields"`
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArray and GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArray{ GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs{...} }
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArray []GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput
+
+func (GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArray) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArray) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+func (o GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig) []string { return v.SelectedLogFields }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput() GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+		return vs[0].([]GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig struct {
+	// Metrics to not send to AWS CloudWatch (takes precedence over extra_metrics)
+	DroppedMetrics []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric `pulumi:"droppedMetrics"`
+	// Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+	ExtraMetrics []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric `pulumi:"extraMetrics"`
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs struct {
+	// Metrics to not send to AWS CloudWatch (takes precedence over extra_metrics)
+	DroppedMetrics GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput `pulumi:"droppedMetrics"`
+	// Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+	ExtraMetrics GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput `pulumi:"extraMetrics"`
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput)
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray{ GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{...} }
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return o
+}
+
+// Metrics to not send to AWS CloudWatch (takes precedence over extra_metrics)
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) DroppedMetrics() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return v.DroppedMetrics
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+// Metrics to allow through to AWS CloudWatch (in addition to default metrics)
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput) ExtraMetrics() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig) []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return v.ExtraMetrics
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
+		return vs[0].([]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric struct {
+	// Identifier of a value in the metric. Example: `used`.
+	Field string `pulumi:"field"`
+	// Identifier of the metric. Example: `java.lang:Memory`.
+	Metric string `pulumi:"metric"`
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs struct {
+	// Identifier of a value in the metric. Example: `used`.
+	Field pulumi.StringInput `pulumi:"field"`
+	// Identifier of the metric. Example: `java.lang:Memory`.
+	Metric pulumi.StringInput `pulumi:"metric"`
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray{ GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{...} }
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return o
+}
+
+// Identifier of a value in the metric. Example: `used`.
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) string {
+		return v.Field
+	}).(pulumi.StringOutput)
+}
+
+// Identifier of the metric. Example: `java.lang:Memory`.
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric) string {
+		return v.Metric
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
+		return vs[0].([]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric struct {
+	// Identifier of a value in the metric. Example: `used`.
+	Field string `pulumi:"field"`
+	// Identifier of the metric. Example: `java.lang:Memory`.
+	Metric string `pulumi:"metric"`
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...}
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs struct {
+	// Identifier of a value in the metric. Example: `used`.
+	Field pulumi.StringInput `pulumi:"field"`
+	// Identifier of the metric. Example: `java.lang:Memory`.
+	Metric pulumi.StringInput `pulumi:"metric"`
+}
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
+}
+
+// GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput is an input type that accepts GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray and GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput` via:
+//
+//	GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray{ GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{...} }
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+	ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray []GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return i.ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return o
+}
+
+// Identifier of a value in the metric. Example: `used`.
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Identifier of the metric. Example: `java.lang:Memory`.
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput() GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) ToGetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric {
+		return vs[0].([]GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput)
+}
+
 type GetServiceIntegrationExternalElasticsearchLogsUserConfig struct {
 	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
 	SelectedLogFields []string `pulumi:"selectedLogFields"`
@@ -4028,7 +5529,1778 @@ func (o GetThanosThanosUserConfigQueryFrontendPtrOutput) QueryRangeAlignRangeWit
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetValkeyComponent struct {
+	// Service component name
+	Component string `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host string `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port int `pulumi:"port"`
+	// Network access route
+	Route string `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl bool `pulumi:"ssl"`
+	// DNS usage name
+	Usage string `pulumi:"usage"`
+}
+
+// GetValkeyComponentInput is an input type that accepts GetValkeyComponentArgs and GetValkeyComponentOutput values.
+// You can construct a concrete instance of `GetValkeyComponentInput` via:
+//
+//	GetValkeyComponentArgs{...}
+type GetValkeyComponentInput interface {
+	pulumi.Input
+
+	ToGetValkeyComponentOutput() GetValkeyComponentOutput
+	ToGetValkeyComponentOutputWithContext(context.Context) GetValkeyComponentOutput
+}
+
+type GetValkeyComponentArgs struct {
+	// Service component name
+	Component pulumi.StringInput `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri pulumi.StringInput `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host pulumi.StringInput `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port pulumi.IntInput `pulumi:"port"`
+	// Network access route
+	Route pulumi.StringInput `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl pulumi.BoolInput `pulumi:"ssl"`
+	// DNS usage name
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetValkeyComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyComponent)(nil)).Elem()
+}
+
+func (i GetValkeyComponentArgs) ToGetValkeyComponentOutput() GetValkeyComponentOutput {
+	return i.ToGetValkeyComponentOutputWithContext(context.Background())
+}
+
+func (i GetValkeyComponentArgs) ToGetValkeyComponentOutputWithContext(ctx context.Context) GetValkeyComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyComponentOutput)
+}
+
+// GetValkeyComponentArrayInput is an input type that accepts GetValkeyComponentArray and GetValkeyComponentArrayOutput values.
+// You can construct a concrete instance of `GetValkeyComponentArrayInput` via:
+//
+//	GetValkeyComponentArray{ GetValkeyComponentArgs{...} }
+type GetValkeyComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetValkeyComponentArrayOutput() GetValkeyComponentArrayOutput
+	ToGetValkeyComponentArrayOutputWithContext(context.Context) GetValkeyComponentArrayOutput
+}
+
+type GetValkeyComponentArray []GetValkeyComponentInput
+
+func (GetValkeyComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyComponent)(nil)).Elem()
+}
+
+func (i GetValkeyComponentArray) ToGetValkeyComponentArrayOutput() GetValkeyComponentArrayOutput {
+	return i.ToGetValkeyComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetValkeyComponentArray) ToGetValkeyComponentArrayOutputWithContext(ctx context.Context) GetValkeyComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyComponentArrayOutput)
+}
+
+type GetValkeyComponentOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyComponent)(nil)).Elem()
+}
+
+func (o GetValkeyComponentOutput) ToGetValkeyComponentOutput() GetValkeyComponentOutput {
+	return o
+}
+
+func (o GetValkeyComponentOutput) ToGetValkeyComponentOutputWithContext(ctx context.Context) GetValkeyComponentOutput {
+	return o
+}
+
+// Service component name
+func (o GetValkeyComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+// Connection info for connecting to the service component. This is a combination of host and port.
+func (o GetValkeyComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// Host name for connecting to the service component
+func (o GetValkeyComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Kafka authentication method. This is a value specific to the 'kafka' service component
+func (o GetValkeyComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Port number for connecting to the service component
+func (o GetValkeyComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Network access route
+func (o GetValkeyComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+func (o GetValkeyComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetValkeyComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+// DNS usage name
+func (o GetValkeyComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetValkeyComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyComponent)(nil)).Elem()
+}
+
+func (o GetValkeyComponentArrayOutput) ToGetValkeyComponentArrayOutput() GetValkeyComponentArrayOutput {
+	return o
+}
+
+func (o GetValkeyComponentArrayOutput) ToGetValkeyComponentArrayOutputWithContext(ctx context.Context) GetValkeyComponentArrayOutput {
+	return o
+}
+
+func (o GetValkeyComponentArrayOutput) Index(i pulumi.IntInput) GetValkeyComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetValkeyComponent {
+		return vs[0].([]GetValkeyComponent)[vs[1].(int)]
+	}).(GetValkeyComponentOutput)
+}
+
+type GetValkeyServiceIntegration struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetValkeyServiceIntegrationInput is an input type that accepts GetValkeyServiceIntegrationArgs and GetValkeyServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetValkeyServiceIntegrationInput` via:
+//
+//	GetValkeyServiceIntegrationArgs{...}
+type GetValkeyServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetValkeyServiceIntegrationOutput() GetValkeyServiceIntegrationOutput
+	ToGetValkeyServiceIntegrationOutputWithContext(context.Context) GetValkeyServiceIntegrationOutput
+}
+
+type GetValkeyServiceIntegrationArgs struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetValkeyServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyServiceIntegration)(nil)).Elem()
+}
+
+func (i GetValkeyServiceIntegrationArgs) ToGetValkeyServiceIntegrationOutput() GetValkeyServiceIntegrationOutput {
+	return i.ToGetValkeyServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetValkeyServiceIntegrationArgs) ToGetValkeyServiceIntegrationOutputWithContext(ctx context.Context) GetValkeyServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyServiceIntegrationOutput)
+}
+
+// GetValkeyServiceIntegrationArrayInput is an input type that accepts GetValkeyServiceIntegrationArray and GetValkeyServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetValkeyServiceIntegrationArrayInput` via:
+//
+//	GetValkeyServiceIntegrationArray{ GetValkeyServiceIntegrationArgs{...} }
+type GetValkeyServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetValkeyServiceIntegrationArrayOutput() GetValkeyServiceIntegrationArrayOutput
+	ToGetValkeyServiceIntegrationArrayOutputWithContext(context.Context) GetValkeyServiceIntegrationArrayOutput
+}
+
+type GetValkeyServiceIntegrationArray []GetValkeyServiceIntegrationInput
+
+func (GetValkeyServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyServiceIntegration)(nil)).Elem()
+}
+
+func (i GetValkeyServiceIntegrationArray) ToGetValkeyServiceIntegrationArrayOutput() GetValkeyServiceIntegrationArrayOutput {
+	return i.ToGetValkeyServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetValkeyServiceIntegrationArray) ToGetValkeyServiceIntegrationArrayOutputWithContext(ctx context.Context) GetValkeyServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyServiceIntegrationArrayOutput)
+}
+
+type GetValkeyServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyServiceIntegration)(nil)).Elem()
+}
+
+func (o GetValkeyServiceIntegrationOutput) ToGetValkeyServiceIntegrationOutput() GetValkeyServiceIntegrationOutput {
+	return o
+}
+
+func (o GetValkeyServiceIntegrationOutput) ToGetValkeyServiceIntegrationOutputWithContext(ctx context.Context) GetValkeyServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration. The only supported value at the moment is `readReplica`
+func (o GetValkeyServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetValkeyServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetValkeyServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyServiceIntegration)(nil)).Elem()
+}
+
+func (o GetValkeyServiceIntegrationArrayOutput) ToGetValkeyServiceIntegrationArrayOutput() GetValkeyServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetValkeyServiceIntegrationArrayOutput) ToGetValkeyServiceIntegrationArrayOutputWithContext(ctx context.Context) GetValkeyServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetValkeyServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetValkeyServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetValkeyServiceIntegration {
+		return vs[0].([]GetValkeyServiceIntegration)[vs[1].(int)]
+	}).(GetValkeyServiceIntegrationOutput)
+}
+
+type GetValkeyTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetValkeyTagInput is an input type that accepts GetValkeyTagArgs and GetValkeyTagOutput values.
+// You can construct a concrete instance of `GetValkeyTagInput` via:
+//
+//	GetValkeyTagArgs{...}
+type GetValkeyTagInput interface {
+	pulumi.Input
+
+	ToGetValkeyTagOutput() GetValkeyTagOutput
+	ToGetValkeyTagOutputWithContext(context.Context) GetValkeyTagOutput
+}
+
+type GetValkeyTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetValkeyTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyTag)(nil)).Elem()
+}
+
+func (i GetValkeyTagArgs) ToGetValkeyTagOutput() GetValkeyTagOutput {
+	return i.ToGetValkeyTagOutputWithContext(context.Background())
+}
+
+func (i GetValkeyTagArgs) ToGetValkeyTagOutputWithContext(ctx context.Context) GetValkeyTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyTagOutput)
+}
+
+// GetValkeyTagArrayInput is an input type that accepts GetValkeyTagArray and GetValkeyTagArrayOutput values.
+// You can construct a concrete instance of `GetValkeyTagArrayInput` via:
+//
+//	GetValkeyTagArray{ GetValkeyTagArgs{...} }
+type GetValkeyTagArrayInput interface {
+	pulumi.Input
+
+	ToGetValkeyTagArrayOutput() GetValkeyTagArrayOutput
+	ToGetValkeyTagArrayOutputWithContext(context.Context) GetValkeyTagArrayOutput
+}
+
+type GetValkeyTagArray []GetValkeyTagInput
+
+func (GetValkeyTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyTag)(nil)).Elem()
+}
+
+func (i GetValkeyTagArray) ToGetValkeyTagArrayOutput() GetValkeyTagArrayOutput {
+	return i.ToGetValkeyTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetValkeyTagArray) ToGetValkeyTagArrayOutputWithContext(ctx context.Context) GetValkeyTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyTagArrayOutput)
+}
+
+type GetValkeyTagOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyTag)(nil)).Elem()
+}
+
+func (o GetValkeyTagOutput) ToGetValkeyTagOutput() GetValkeyTagOutput {
+	return o
+}
+
+func (o GetValkeyTagOutput) ToGetValkeyTagOutputWithContext(ctx context.Context) GetValkeyTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetValkeyTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetValkeyTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetValkeyTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyTag)(nil)).Elem()
+}
+
+func (o GetValkeyTagArrayOutput) ToGetValkeyTagArrayOutput() GetValkeyTagArrayOutput {
+	return o
+}
+
+func (o GetValkeyTagArrayOutput) ToGetValkeyTagArrayOutputWithContext(ctx context.Context) GetValkeyTagArrayOutput {
+	return o
+}
+
+func (o GetValkeyTagArrayOutput) Index(i pulumi.IntInput) GetValkeyTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetValkeyTag {
+		return vs[0].([]GetValkeyTag)[vs[1].(int)]
+	}).(GetValkeyTagOutput)
+}
+
+type GetValkeyTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetValkeyTechEmailInput is an input type that accepts GetValkeyTechEmailArgs and GetValkeyTechEmailOutput values.
+// You can construct a concrete instance of `GetValkeyTechEmailInput` via:
+//
+//	GetValkeyTechEmailArgs{...}
+type GetValkeyTechEmailInput interface {
+	pulumi.Input
+
+	ToGetValkeyTechEmailOutput() GetValkeyTechEmailOutput
+	ToGetValkeyTechEmailOutputWithContext(context.Context) GetValkeyTechEmailOutput
+}
+
+type GetValkeyTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetValkeyTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyTechEmail)(nil)).Elem()
+}
+
+func (i GetValkeyTechEmailArgs) ToGetValkeyTechEmailOutput() GetValkeyTechEmailOutput {
+	return i.ToGetValkeyTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetValkeyTechEmailArgs) ToGetValkeyTechEmailOutputWithContext(ctx context.Context) GetValkeyTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyTechEmailOutput)
+}
+
+// GetValkeyTechEmailArrayInput is an input type that accepts GetValkeyTechEmailArray and GetValkeyTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetValkeyTechEmailArrayInput` via:
+//
+//	GetValkeyTechEmailArray{ GetValkeyTechEmailArgs{...} }
+type GetValkeyTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetValkeyTechEmailArrayOutput() GetValkeyTechEmailArrayOutput
+	ToGetValkeyTechEmailArrayOutputWithContext(context.Context) GetValkeyTechEmailArrayOutput
+}
+
+type GetValkeyTechEmailArray []GetValkeyTechEmailInput
+
+func (GetValkeyTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyTechEmail)(nil)).Elem()
+}
+
+func (i GetValkeyTechEmailArray) ToGetValkeyTechEmailArrayOutput() GetValkeyTechEmailArrayOutput {
+	return i.ToGetValkeyTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetValkeyTechEmailArray) ToGetValkeyTechEmailArrayOutputWithContext(ctx context.Context) GetValkeyTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyTechEmailArrayOutput)
+}
+
+type GetValkeyTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyTechEmail)(nil)).Elem()
+}
+
+func (o GetValkeyTechEmailOutput) ToGetValkeyTechEmailOutput() GetValkeyTechEmailOutput {
+	return o
+}
+
+func (o GetValkeyTechEmailOutput) ToGetValkeyTechEmailOutputWithContext(ctx context.Context) GetValkeyTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetValkeyTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetValkeyTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyTechEmail)(nil)).Elem()
+}
+
+func (o GetValkeyTechEmailArrayOutput) ToGetValkeyTechEmailArrayOutput() GetValkeyTechEmailArrayOutput {
+	return o
+}
+
+func (o GetValkeyTechEmailArrayOutput) ToGetValkeyTechEmailArrayOutputWithContext(ctx context.Context) GetValkeyTechEmailArrayOutput {
+	return o
+}
+
+func (o GetValkeyTechEmailArrayOutput) Index(i pulumi.IntInput) GetValkeyTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetValkeyTechEmail {
+		return vs[0].([]GetValkeyTechEmail)[vs[1].(int)]
+	}).(GetValkeyTechEmailOutput)
+}
+
+type GetValkeyValkey struct {
+	// Valkey password.
+	Password string `pulumi:"password"`
+	// Valkey replica server URI.
+	ReplicaUri string `pulumi:"replicaUri"`
+	// Valkey slave server URIs.
+	SlaveUris []string `pulumi:"slaveUris"`
+	// Valkey server URIs.
+	Uris []string `pulumi:"uris"`
+}
+
+// GetValkeyValkeyInput is an input type that accepts GetValkeyValkeyArgs and GetValkeyValkeyOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyInput` via:
+//
+//	GetValkeyValkeyArgs{...}
+type GetValkeyValkeyInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyOutput() GetValkeyValkeyOutput
+	ToGetValkeyValkeyOutputWithContext(context.Context) GetValkeyValkeyOutput
+}
+
+type GetValkeyValkeyArgs struct {
+	// Valkey password.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Valkey replica server URI.
+	ReplicaUri pulumi.StringInput `pulumi:"replicaUri"`
+	// Valkey slave server URIs.
+	SlaveUris pulumi.StringArrayInput `pulumi:"slaveUris"`
+	// Valkey server URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (GetValkeyValkeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkey)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyArgs) ToGetValkeyValkeyOutput() GetValkeyValkeyOutput {
+	return i.ToGetValkeyValkeyOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyArgs) ToGetValkeyValkeyOutputWithContext(ctx context.Context) GetValkeyValkeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyOutput)
+}
+
+// GetValkeyValkeyArrayInput is an input type that accepts GetValkeyValkeyArray and GetValkeyValkeyArrayOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyArrayInput` via:
+//
+//	GetValkeyValkeyArray{ GetValkeyValkeyArgs{...} }
+type GetValkeyValkeyArrayInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyArrayOutput() GetValkeyValkeyArrayOutput
+	ToGetValkeyValkeyArrayOutputWithContext(context.Context) GetValkeyValkeyArrayOutput
+}
+
+type GetValkeyValkeyArray []GetValkeyValkeyInput
+
+func (GetValkeyValkeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyValkey)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyArray) ToGetValkeyValkeyArrayOutput() GetValkeyValkeyArrayOutput {
+	return i.ToGetValkeyValkeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyArray) ToGetValkeyValkeyArrayOutputWithContext(ctx context.Context) GetValkeyValkeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyArrayOutput)
+}
+
+type GetValkeyValkeyOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkey)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyOutput) ToGetValkeyValkeyOutput() GetValkeyValkeyOutput {
+	return o
+}
+
+func (o GetValkeyValkeyOutput) ToGetValkeyValkeyOutputWithContext(ctx context.Context) GetValkeyValkeyOutput {
+	return o
+}
+
+// Valkey password.
+func (o GetValkeyValkeyOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyValkey) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Valkey replica server URI.
+func (o GetValkeyValkeyOutput) ReplicaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyValkey) string { return v.ReplicaUri }).(pulumi.StringOutput)
+}
+
+// Valkey slave server URIs.
+func (o GetValkeyValkeyOutput) SlaveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetValkeyValkey) []string { return v.SlaveUris }).(pulumi.StringArrayOutput)
+}
+
+// Valkey server URIs.
+func (o GetValkeyValkeyOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetValkeyValkey) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type GetValkeyValkeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyValkey)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyArrayOutput) ToGetValkeyValkeyArrayOutput() GetValkeyValkeyArrayOutput {
+	return o
+}
+
+func (o GetValkeyValkeyArrayOutput) ToGetValkeyValkeyArrayOutputWithContext(ctx context.Context) GetValkeyValkeyArrayOutput {
+	return o
+}
+
+func (o GetValkeyValkeyArrayOutput) Index(i pulumi.IntInput) GetValkeyValkeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetValkeyValkey {
+		return vs[0].([]GetValkeyValkey)[vs[1].(int)]
+	}).(GetValkeyValkeyOutput)
+}
+
+type GetValkeyValkeyUserConfig struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects []GetValkeyValkeyUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration *GetValkeyValkeyUserConfigMigration `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetValkeyValkeyUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *GetValkeyValkeyUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetValkeyValkeyUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
+	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+	ValkeyAclChannelsDefault *string `pulumi:"valkeyAclChannelsDefault"`
+	// Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
+	ValkeyIoThreads *int `pulumi:"valkeyIoThreads"`
+	// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+	ValkeyLfuDecayTime *int `pulumi:"valkeyLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+	ValkeyLfuLogFactor *int `pulumi:"valkeyLfuLogFactor"`
+	// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+	ValkeyMaxmemoryPolicy *string `pulumi:"valkeyMaxmemoryPolicy"`
+	// Set notify-keyspace-events option.
+	ValkeyNotifyKeyspaceEvents *string `pulumi:"valkeyNotifyKeyspaceEvents"`
+	// Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
+	ValkeyNumberOfDatabases *int `pulumi:"valkeyNumberOfDatabases"`
+	// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+	ValkeyPersistence *string `pulumi:"valkeyPersistence"`
+	// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+	ValkeyPubsubClientOutputBufferLimit *int `pulumi:"valkeyPubsubClientOutputBufferLimit"`
+	// Require SSL to access Valkey. Default: `true`.
+	ValkeySsl *bool `pulumi:"valkeySsl"`
+	// Valkey idle connection timeout in seconds. Default: `300`.
+	ValkeyTimeout *int `pulumi:"valkeyTimeout"`
+}
+
+// GetValkeyValkeyUserConfigInput is an input type that accepts GetValkeyValkeyUserConfigArgs and GetValkeyValkeyUserConfigOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigInput` via:
+//
+//	GetValkeyValkeyUserConfigArgs{...}
+type GetValkeyValkeyUserConfigInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigOutput() GetValkeyValkeyUserConfigOutput
+	ToGetValkeyValkeyUserConfigOutputWithContext(context.Context) GetValkeyValkeyUserConfigOutput
+}
+
+type GetValkeyValkeyUserConfigArgs struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects GetValkeyValkeyUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration GetValkeyValkeyUserConfigMigrationPtrInput `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetValkeyValkeyUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetValkeyValkeyUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+	ValkeyAclChannelsDefault pulumi.StringPtrInput `pulumi:"valkeyAclChannelsDefault"`
+	// Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
+	ValkeyIoThreads pulumi.IntPtrInput `pulumi:"valkeyIoThreads"`
+	// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+	ValkeyLfuDecayTime pulumi.IntPtrInput `pulumi:"valkeyLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+	ValkeyLfuLogFactor pulumi.IntPtrInput `pulumi:"valkeyLfuLogFactor"`
+	// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+	ValkeyMaxmemoryPolicy pulumi.StringPtrInput `pulumi:"valkeyMaxmemoryPolicy"`
+	// Set notify-keyspace-events option.
+	ValkeyNotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"valkeyNotifyKeyspaceEvents"`
+	// Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
+	ValkeyNumberOfDatabases pulumi.IntPtrInput `pulumi:"valkeyNumberOfDatabases"`
+	// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+	ValkeyPersistence pulumi.StringPtrInput `pulumi:"valkeyPersistence"`
+	// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+	ValkeyPubsubClientOutputBufferLimit pulumi.IntPtrInput `pulumi:"valkeyPubsubClientOutputBufferLimit"`
+	// Require SSL to access Valkey. Default: `true`.
+	ValkeySsl pulumi.BoolPtrInput `pulumi:"valkeySsl"`
+	// Valkey idle connection timeout in seconds. Default: `300`.
+	ValkeyTimeout pulumi.IntPtrInput `pulumi:"valkeyTimeout"`
+}
+
+func (GetValkeyValkeyUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfig)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyUserConfigArgs) ToGetValkeyValkeyUserConfigOutput() GetValkeyValkeyUserConfigOutput {
+	return i.ToGetValkeyValkeyUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigArgs) ToGetValkeyValkeyUserConfigOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigOutput)
+}
+
+// GetValkeyValkeyUserConfigArrayInput is an input type that accepts GetValkeyValkeyUserConfigArray and GetValkeyValkeyUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigArrayInput` via:
+//
+//	GetValkeyValkeyUserConfigArray{ GetValkeyValkeyUserConfigArgs{...} }
+type GetValkeyValkeyUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigArrayOutput() GetValkeyValkeyUserConfigArrayOutput
+	ToGetValkeyValkeyUserConfigArrayOutputWithContext(context.Context) GetValkeyValkeyUserConfigArrayOutput
+}
+
+type GetValkeyValkeyUserConfigArray []GetValkeyValkeyUserConfigInput
+
+func (GetValkeyValkeyUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyValkeyUserConfig)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyUserConfigArray) ToGetValkeyValkeyUserConfigArrayOutput() GetValkeyValkeyUserConfigArrayOutput {
+	return i.ToGetValkeyValkeyUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigArray) ToGetValkeyValkeyUserConfigArrayOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigArrayOutput)
+}
+
+type GetValkeyValkeyUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfig)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigOutput) ToGetValkeyValkeyUserConfigOutput() GetValkeyValkeyUserConfigOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigOutput) ToGetValkeyValkeyUserConfigOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigOutput {
+	return o
+}
+
+// Additional Cloud Regions for Backup Replication.
+func (o GetValkeyValkeyUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+func (o GetValkeyValkeyUserConfigOutput) IpFilterObjects() GetValkeyValkeyUserConfigIpFilterObjectArrayOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) []GetValkeyValkeyUserConfigIpFilterObject { return v.IpFilterObjects }).(GetValkeyValkeyUserConfigIpFilterObjectArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+func (o GetValkeyValkeyUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+//
+// Deprecated: Deprecated. Use `ipFilterString` instead.
+func (o GetValkeyValkeyUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// Migrate data from existing server
+func (o GetValkeyValkeyUserConfigOutput) Migration() GetValkeyValkeyUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *GetValkeyValkeyUserConfigMigration { return v.Migration }).(GetValkeyValkeyUserConfigMigrationPtrOutput)
+}
+
+// Allow access to selected service ports from private networks
+func (o GetValkeyValkeyUserConfigOutput) PrivateAccess() GetValkeyValkeyUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *GetValkeyValkeyUserConfigPrivateAccess { return v.PrivateAccess }).(GetValkeyValkeyUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink
+func (o GetValkeyValkeyUserConfigOutput) PrivatelinkAccess() GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *GetValkeyValkeyUserConfigPrivatelinkAccess {
+		return v.PrivatelinkAccess
+	}).(GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+func (o GetValkeyValkeyUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet
+func (o GetValkeyValkeyUserConfigOutput) PublicAccess() GetValkeyValkeyUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *GetValkeyValkeyUserConfigPublicAccess { return v.PublicAccess }).(GetValkeyValkeyUserConfigPublicAccessPtrOutput)
+}
+
+// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+func (o GetValkeyValkeyUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o GetValkeyValkeyUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+func (o GetValkeyValkeyUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o GetValkeyValkeyUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyAclChannelsDefault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ValkeyAclChannelsDefault }).(pulumi.StringPtrOutput)
+}
+
+// Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyIoThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyIoThreads }).(pulumi.IntPtrOutput)
+}
+
+// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyLfuDecayTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyLfuDecayTime }).(pulumi.IntPtrOutput)
+}
+
+// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyLfuLogFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyLfuLogFactor }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyMaxmemoryPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ValkeyMaxmemoryPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Set notify-keyspace-events option.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyNotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ValkeyNotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
+}
+
+// Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyNumberOfDatabases() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyNumberOfDatabases }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyPersistence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ValkeyPersistence }).(pulumi.StringPtrOutput)
+}
+
+// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyPubsubClientOutputBufferLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyPubsubClientOutputBufferLimit }).(pulumi.IntPtrOutput)
+}
+
+// Require SSL to access Valkey. Default: `true`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeySsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *bool { return v.ValkeySsl }).(pulumi.BoolPtrOutput)
+}
+
+// Valkey idle connection timeout in seconds. Default: `300`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyTimeout }).(pulumi.IntPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyValkeyUserConfig)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigArrayOutput) ToGetValkeyValkeyUserConfigArrayOutput() GetValkeyValkeyUserConfigArrayOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigArrayOutput) ToGetValkeyValkeyUserConfigArrayOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigArrayOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigArrayOutput) Index(i pulumi.IntInput) GetValkeyValkeyUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetValkeyValkeyUserConfig {
+		return vs[0].([]GetValkeyValkeyUserConfig)[vs[1].(int)]
+	}).(GetValkeyValkeyUserConfigOutput)
+}
+
+type GetValkeyValkeyUserConfigIpFilterObject struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description *string `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network string `pulumi:"network"`
+}
+
+// GetValkeyValkeyUserConfigIpFilterObjectInput is an input type that accepts GetValkeyValkeyUserConfigIpFilterObjectArgs and GetValkeyValkeyUserConfigIpFilterObjectOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigIpFilterObjectInput` via:
+//
+//	GetValkeyValkeyUserConfigIpFilterObjectArgs{...}
+type GetValkeyValkeyUserConfigIpFilterObjectInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigIpFilterObjectOutput() GetValkeyValkeyUserConfigIpFilterObjectOutput
+	ToGetValkeyValkeyUserConfigIpFilterObjectOutputWithContext(context.Context) GetValkeyValkeyUserConfigIpFilterObjectOutput
+}
+
+type GetValkeyValkeyUserConfigIpFilterObjectArgs struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetValkeyValkeyUserConfigIpFilterObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyUserConfigIpFilterObjectArgs) ToGetValkeyValkeyUserConfigIpFilterObjectOutput() GetValkeyValkeyUserConfigIpFilterObjectOutput {
+	return i.ToGetValkeyValkeyUserConfigIpFilterObjectOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigIpFilterObjectArgs) ToGetValkeyValkeyUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigIpFilterObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigIpFilterObjectOutput)
+}
+
+// GetValkeyValkeyUserConfigIpFilterObjectArrayInput is an input type that accepts GetValkeyValkeyUserConfigIpFilterObjectArray and GetValkeyValkeyUserConfigIpFilterObjectArrayOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigIpFilterObjectArrayInput` via:
+//
+//	GetValkeyValkeyUserConfigIpFilterObjectArray{ GetValkeyValkeyUserConfigIpFilterObjectArgs{...} }
+type GetValkeyValkeyUserConfigIpFilterObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigIpFilterObjectArrayOutput() GetValkeyValkeyUserConfigIpFilterObjectArrayOutput
+	ToGetValkeyValkeyUserConfigIpFilterObjectArrayOutputWithContext(context.Context) GetValkeyValkeyUserConfigIpFilterObjectArrayOutput
+}
+
+type GetValkeyValkeyUserConfigIpFilterObjectArray []GetValkeyValkeyUserConfigIpFilterObjectInput
+
+func (GetValkeyValkeyUserConfigIpFilterObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyValkeyUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyUserConfigIpFilterObjectArray) ToGetValkeyValkeyUserConfigIpFilterObjectArrayOutput() GetValkeyValkeyUserConfigIpFilterObjectArrayOutput {
+	return i.ToGetValkeyValkeyUserConfigIpFilterObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigIpFilterObjectArray) ToGetValkeyValkeyUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigIpFilterObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigIpFilterObjectArrayOutput)
+}
+
+type GetValkeyValkeyUserConfigIpFilterObjectOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigIpFilterObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigIpFilterObjectOutput) ToGetValkeyValkeyUserConfigIpFilterObjectOutput() GetValkeyValkeyUserConfigIpFilterObjectOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigIpFilterObjectOutput) ToGetValkeyValkeyUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigIpFilterObjectOutput {
+	return o
+}
+
+// Description for IP filter list entry. Example: `Production service IP range`.
+func (o GetValkeyValkeyUserConfigIpFilterObjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigIpFilterObject) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// CIDR address block. Example: `10.20.0.0/16`.
+func (o GetValkeyValkeyUserConfigIpFilterObjectOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigIpFilterObject) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetValkeyValkeyUserConfigIpFilterObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigIpFilterObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetValkeyValkeyUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigIpFilterObjectArrayOutput) ToGetValkeyValkeyUserConfigIpFilterObjectArrayOutput() GetValkeyValkeyUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigIpFilterObjectArrayOutput) ToGetValkeyValkeyUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigIpFilterObjectArrayOutput) Index(i pulumi.IntInput) GetValkeyValkeyUserConfigIpFilterObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetValkeyValkeyUserConfigIpFilterObject {
+		return vs[0].([]GetValkeyValkeyUserConfigIpFilterObject)[vs[1].(int)]
+	}).(GetValkeyValkeyUserConfigIpFilterObjectOutput)
+}
+
+type GetValkeyValkeyUserConfigMigration struct {
+	// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+	Dbname *string `pulumi:"dbname"`
+	// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+	Host string `pulumi:"host"`
+	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+	IgnoreDbs *string `pulumi:"ignoreDbs"`
+	// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+	Method *string `pulumi:"method"`
+	// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+	Password *string `pulumi:"password"`
+	// Port number of the server where to migrate data from. Example: `1234`.
+	Port int `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL. Default: `true`.
+	Ssl *bool `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from. Example: `myname`.
+	Username *string `pulumi:"username"`
+}
+
+// GetValkeyValkeyUserConfigMigrationInput is an input type that accepts GetValkeyValkeyUserConfigMigrationArgs and GetValkeyValkeyUserConfigMigrationOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigMigrationInput` via:
+//
+//	GetValkeyValkeyUserConfigMigrationArgs{...}
+type GetValkeyValkeyUserConfigMigrationInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigMigrationOutput() GetValkeyValkeyUserConfigMigrationOutput
+	ToGetValkeyValkeyUserConfigMigrationOutputWithContext(context.Context) GetValkeyValkeyUserConfigMigrationOutput
+}
+
+type GetValkeyValkeyUserConfigMigrationArgs struct {
+	// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+	IgnoreDbs pulumi.StringPtrInput `pulumi:"ignoreDbs"`
+	// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Port number of the server where to migrate data from. Example: `1234`.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL. Default: `true`.
+	Ssl pulumi.BoolPtrInput `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from. Example: `myname`.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetValkeyValkeyUserConfigMigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigMigration)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyUserConfigMigrationArgs) ToGetValkeyValkeyUserConfigMigrationOutput() GetValkeyValkeyUserConfigMigrationOutput {
+	return i.ToGetValkeyValkeyUserConfigMigrationOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigMigrationArgs) ToGetValkeyValkeyUserConfigMigrationOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigMigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigMigrationOutput)
+}
+
+func (i GetValkeyValkeyUserConfigMigrationArgs) ToGetValkeyValkeyUserConfigMigrationPtrOutput() GetValkeyValkeyUserConfigMigrationPtrOutput {
+	return i.ToGetValkeyValkeyUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigMigrationArgs) ToGetValkeyValkeyUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigMigrationOutput).ToGetValkeyValkeyUserConfigMigrationPtrOutputWithContext(ctx)
+}
+
+// GetValkeyValkeyUserConfigMigrationPtrInput is an input type that accepts GetValkeyValkeyUserConfigMigrationArgs, GetValkeyValkeyUserConfigMigrationPtr and GetValkeyValkeyUserConfigMigrationPtrOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigMigrationPtrInput` via:
+//
+//	        GetValkeyValkeyUserConfigMigrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetValkeyValkeyUserConfigMigrationPtrInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigMigrationPtrOutput() GetValkeyValkeyUserConfigMigrationPtrOutput
+	ToGetValkeyValkeyUserConfigMigrationPtrOutputWithContext(context.Context) GetValkeyValkeyUserConfigMigrationPtrOutput
+}
+
+type getValkeyValkeyUserConfigMigrationPtrType GetValkeyValkeyUserConfigMigrationArgs
+
+func GetValkeyValkeyUserConfigMigrationPtr(v *GetValkeyValkeyUserConfigMigrationArgs) GetValkeyValkeyUserConfigMigrationPtrInput {
+	return (*getValkeyValkeyUserConfigMigrationPtrType)(v)
+}
+
+func (*getValkeyValkeyUserConfigMigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyValkeyUserConfigMigration)(nil)).Elem()
+}
+
+func (i *getValkeyValkeyUserConfigMigrationPtrType) ToGetValkeyValkeyUserConfigMigrationPtrOutput() GetValkeyValkeyUserConfigMigrationPtrOutput {
+	return i.ToGetValkeyValkeyUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *getValkeyValkeyUserConfigMigrationPtrType) ToGetValkeyValkeyUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigMigrationPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigMigrationOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigMigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigMigrationOutput) ToGetValkeyValkeyUserConfigMigrationOutput() GetValkeyValkeyUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigMigrationOutput) ToGetValkeyValkeyUserConfigMigrationOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigMigrationOutput) ToGetValkeyValkeyUserConfigMigrationPtrOutput() GetValkeyValkeyUserConfigMigrationPtrOutput {
+	return o.ToGetValkeyValkeyUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (o GetValkeyValkeyUserConfigMigrationOutput) ToGetValkeyValkeyUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigMigrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetValkeyValkeyUserConfigMigration) *GetValkeyValkeyUserConfigMigration {
+		return &v
+	}).(GetValkeyValkeyUserConfigMigrationPtrOutput)
+}
+
+// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+func (o GetValkeyValkeyUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
+// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+func (o GetValkeyValkeyUserConfigMigrationOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+func (o GetValkeyValkeyUserConfigMigrationOutput) IgnoreDbs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) *string { return v.IgnoreDbs }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+func (o GetValkeyValkeyUserConfigMigrationOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+func (o GetValkeyValkeyUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Port number of the server where to migrate data from. Example: `1234`.
+func (o GetValkeyValkeyUserConfigMigrationOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The server where to migrate data from is secured with SSL. Default: `true`.
+func (o GetValkeyValkeyUserConfigMigrationOutput) Ssl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+}
+
+// User name for authentication with the server where to migrate data from. Example: `myname`.
+func (o GetValkeyValkeyUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigMigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigMigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyValkeyUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) ToGetValkeyValkeyUserConfigMigrationPtrOutput() GetValkeyValkeyUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) ToGetValkeyValkeyUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) Elem() GetValkeyValkeyUserConfigMigrationOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) GetValkeyValkeyUserConfigMigration {
+		if v != nil {
+			return *v
+		}
+		var ret GetValkeyValkeyUserConfigMigration
+		return ret
+	}).(GetValkeyValkeyUserConfigMigrationOutput)
+}
+
+// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) IgnoreDbs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreDbs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port number of the server where to migrate data from. Example: `1234`.
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The server where to migrate data from is secured with SSL. Default: `true`.
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) Ssl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// User name for authentication with the server where to migrate data from. Example: `myname`.
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigPrivateAccess struct {
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus *bool `pulumi:"prometheus"`
+	// Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Valkey *bool `pulumi:"valkey"`
+}
+
+// GetValkeyValkeyUserConfigPrivateAccessInput is an input type that accepts GetValkeyValkeyUserConfigPrivateAccessArgs and GetValkeyValkeyUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigPrivateAccessInput` via:
+//
+//	GetValkeyValkeyUserConfigPrivateAccessArgs{...}
+type GetValkeyValkeyUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigPrivateAccessOutput() GetValkeyValkeyUserConfigPrivateAccessOutput
+	ToGetValkeyValkeyUserConfigPrivateAccessOutputWithContext(context.Context) GetValkeyValkeyUserConfigPrivateAccessOutput
+}
+
+type GetValkeyValkeyUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Valkey pulumi.BoolPtrInput `pulumi:"valkey"`
+}
+
+func (GetValkeyValkeyUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyUserConfigPrivateAccessArgs) ToGetValkeyValkeyUserConfigPrivateAccessOutput() GetValkeyValkeyUserConfigPrivateAccessOutput {
+	return i.ToGetValkeyValkeyUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigPrivateAccessArgs) ToGetValkeyValkeyUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigPrivateAccessOutput)
+}
+
+func (i GetValkeyValkeyUserConfigPrivateAccessArgs) ToGetValkeyValkeyUserConfigPrivateAccessPtrOutput() GetValkeyValkeyUserConfigPrivateAccessPtrOutput {
+	return i.ToGetValkeyValkeyUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigPrivateAccessArgs) ToGetValkeyValkeyUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigPrivateAccessOutput).ToGetValkeyValkeyUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// GetValkeyValkeyUserConfigPrivateAccessPtrInput is an input type that accepts GetValkeyValkeyUserConfigPrivateAccessArgs, GetValkeyValkeyUserConfigPrivateAccessPtr and GetValkeyValkeyUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigPrivateAccessPtrInput` via:
+//
+//	        GetValkeyValkeyUserConfigPrivateAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetValkeyValkeyUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigPrivateAccessPtrOutput() GetValkeyValkeyUserConfigPrivateAccessPtrOutput
+	ToGetValkeyValkeyUserConfigPrivateAccessPtrOutputWithContext(context.Context) GetValkeyValkeyUserConfigPrivateAccessPtrOutput
+}
+
+type getValkeyValkeyUserConfigPrivateAccessPtrType GetValkeyValkeyUserConfigPrivateAccessArgs
+
+func GetValkeyValkeyUserConfigPrivateAccessPtr(v *GetValkeyValkeyUserConfigPrivateAccessArgs) GetValkeyValkeyUserConfigPrivateAccessPtrInput {
+	return (*getValkeyValkeyUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*getValkeyValkeyUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyValkeyUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *getValkeyValkeyUserConfigPrivateAccessPtrType) ToGetValkeyValkeyUserConfigPrivateAccessPtrOutput() GetValkeyValkeyUserConfigPrivateAccessPtrOutput {
+	return i.ToGetValkeyValkeyUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getValkeyValkeyUserConfigPrivateAccessPtrType) ToGetValkeyValkeyUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigPrivateAccessPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigPrivateAccessOutput) ToGetValkeyValkeyUserConfigPrivateAccessOutput() GetValkeyValkeyUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPrivateAccessOutput) ToGetValkeyValkeyUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPrivateAccessOutput) ToGetValkeyValkeyUserConfigPrivateAccessPtrOutput() GetValkeyValkeyUserConfigPrivateAccessPtrOutput {
+	return o.ToGetValkeyValkeyUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetValkeyValkeyUserConfigPrivateAccessOutput) ToGetValkeyValkeyUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivateAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetValkeyValkeyUserConfigPrivateAccess) *GetValkeyValkeyUserConfigPrivateAccess {
+		return &v
+	}).(GetValkeyValkeyUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetValkeyValkeyUserConfigPrivateAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigPrivateAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetValkeyValkeyUserConfigPrivateAccessOutput) Valkey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigPrivateAccess) *bool { return v.Valkey }).(pulumi.BoolPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyValkeyUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigPrivateAccessPtrOutput) ToGetValkeyValkeyUserConfigPrivateAccessPtrOutput() GetValkeyValkeyUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPrivateAccessPtrOutput) ToGetValkeyValkeyUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPrivateAccessPtrOutput) Elem() GetValkeyValkeyUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigPrivateAccess) GetValkeyValkeyUserConfigPrivateAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetValkeyValkeyUserConfigPrivateAccess
+		return ret
+	}).(GetValkeyValkeyUserConfigPrivateAccessOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetValkeyValkeyUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to valkey with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetValkeyValkeyUserConfigPrivateAccessPtrOutput) Valkey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Valkey
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigPrivatelinkAccess struct {
+	// Enable prometheus.
+	Prometheus *bool `pulumi:"prometheus"`
+	// Enable valkey.
+	Valkey *bool `pulumi:"valkey"`
+}
+
+// GetValkeyValkeyUserConfigPrivatelinkAccessInput is an input type that accepts GetValkeyValkeyUserConfigPrivatelinkAccessArgs and GetValkeyValkeyUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigPrivatelinkAccessInput` via:
+//
+//	GetValkeyValkeyUserConfigPrivatelinkAccessArgs{...}
+type GetValkeyValkeyUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigPrivatelinkAccessOutput() GetValkeyValkeyUserConfigPrivatelinkAccessOutput
+	ToGetValkeyValkeyUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetValkeyValkeyUserConfigPrivatelinkAccessOutput
+}
+
+type GetValkeyValkeyUserConfigPrivatelinkAccessArgs struct {
+	// Enable prometheus.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+	// Enable valkey.
+	Valkey pulumi.BoolPtrInput `pulumi:"valkey"`
+}
+
+func (GetValkeyValkeyUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyUserConfigPrivatelinkAccessArgs) ToGetValkeyValkeyUserConfigPrivatelinkAccessOutput() GetValkeyValkeyUserConfigPrivatelinkAccessOutput {
+	return i.ToGetValkeyValkeyUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigPrivatelinkAccessArgs) ToGetValkeyValkeyUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetValkeyValkeyUserConfigPrivatelinkAccessArgs) ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput() GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigPrivatelinkAccessArgs) ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigPrivatelinkAccessOutput).ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetValkeyValkeyUserConfigPrivatelinkAccessArgs, GetValkeyValkeyUserConfigPrivatelinkAccessPtr and GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput` via:
+//
+//	        GetValkeyValkeyUserConfigPrivatelinkAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput() GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput
+	ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getValkeyValkeyUserConfigPrivatelinkAccessPtrType GetValkeyValkeyUserConfigPrivatelinkAccessArgs
+
+func GetValkeyValkeyUserConfigPrivatelinkAccessPtr(v *GetValkeyValkeyUserConfigPrivatelinkAccessArgs) GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput {
+	return (*getValkeyValkeyUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getValkeyValkeyUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyValkeyUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getValkeyValkeyUserConfigPrivatelinkAccessPtrType) ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput() GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getValkeyValkeyUserConfigPrivatelinkAccessPtrType) ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessOutput) ToGetValkeyValkeyUserConfigPrivatelinkAccessOutput() GetValkeyValkeyUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessOutput) ToGetValkeyValkeyUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessOutput) ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput() GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessOutput) ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetValkeyValkeyUserConfigPrivatelinkAccess) *GetValkeyValkeyUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Enable prometheus.
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigPrivatelinkAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+// Enable valkey.
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessOutput) Valkey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigPrivatelinkAccess) *bool { return v.Valkey }).(pulumi.BoolPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyValkeyUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput) ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput() GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput) ToGetValkeyValkeyUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput) Elem() GetValkeyValkeyUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigPrivatelinkAccess) GetValkeyValkeyUserConfigPrivatelinkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetValkeyValkeyUserConfigPrivatelinkAccess
+		return ret
+	}).(GetValkeyValkeyUserConfigPrivatelinkAccessOutput)
+}
+
+// Enable prometheus.
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable valkey.
+func (o GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput) Valkey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Valkey
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigPublicAccess struct {
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *bool `pulumi:"prometheus"`
+	// Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+	Valkey *bool `pulumi:"valkey"`
+}
+
+// GetValkeyValkeyUserConfigPublicAccessInput is an input type that accepts GetValkeyValkeyUserConfigPublicAccessArgs and GetValkeyValkeyUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigPublicAccessInput` via:
+//
+//	GetValkeyValkeyUserConfigPublicAccessArgs{...}
+type GetValkeyValkeyUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigPublicAccessOutput() GetValkeyValkeyUserConfigPublicAccessOutput
+	ToGetValkeyValkeyUserConfigPublicAccessOutputWithContext(context.Context) GetValkeyValkeyUserConfigPublicAccessOutput
+}
+
+type GetValkeyValkeyUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+	Valkey pulumi.BoolPtrInput `pulumi:"valkey"`
+}
+
+func (GetValkeyValkeyUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetValkeyValkeyUserConfigPublicAccessArgs) ToGetValkeyValkeyUserConfigPublicAccessOutput() GetValkeyValkeyUserConfigPublicAccessOutput {
+	return i.ToGetValkeyValkeyUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigPublicAccessArgs) ToGetValkeyValkeyUserConfigPublicAccessOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigPublicAccessOutput)
+}
+
+func (i GetValkeyValkeyUserConfigPublicAccessArgs) ToGetValkeyValkeyUserConfigPublicAccessPtrOutput() GetValkeyValkeyUserConfigPublicAccessPtrOutput {
+	return i.ToGetValkeyValkeyUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetValkeyValkeyUserConfigPublicAccessArgs) ToGetValkeyValkeyUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigPublicAccessOutput).ToGetValkeyValkeyUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetValkeyValkeyUserConfigPublicAccessPtrInput is an input type that accepts GetValkeyValkeyUserConfigPublicAccessArgs, GetValkeyValkeyUserConfigPublicAccessPtr and GetValkeyValkeyUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetValkeyValkeyUserConfigPublicAccessPtrInput` via:
+//
+//	        GetValkeyValkeyUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetValkeyValkeyUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetValkeyValkeyUserConfigPublicAccessPtrOutput() GetValkeyValkeyUserConfigPublicAccessPtrOutput
+	ToGetValkeyValkeyUserConfigPublicAccessPtrOutputWithContext(context.Context) GetValkeyValkeyUserConfigPublicAccessPtrOutput
+}
+
+type getValkeyValkeyUserConfigPublicAccessPtrType GetValkeyValkeyUserConfigPublicAccessArgs
+
+func GetValkeyValkeyUserConfigPublicAccessPtr(v *GetValkeyValkeyUserConfigPublicAccessArgs) GetValkeyValkeyUserConfigPublicAccessPtrInput {
+	return (*getValkeyValkeyUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getValkeyValkeyUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyValkeyUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getValkeyValkeyUserConfigPublicAccessPtrType) ToGetValkeyValkeyUserConfigPublicAccessPtrOutput() GetValkeyValkeyUserConfigPublicAccessPtrOutput {
+	return i.ToGetValkeyValkeyUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getValkeyValkeyUserConfigPublicAccessPtrType) ToGetValkeyValkeyUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyValkeyUserConfigPublicAccessPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigPublicAccessOutput) ToGetValkeyValkeyUserConfigPublicAccessOutput() GetValkeyValkeyUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPublicAccessOutput) ToGetValkeyValkeyUserConfigPublicAccessOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPublicAccessOutput) ToGetValkeyValkeyUserConfigPublicAccessPtrOutput() GetValkeyValkeyUserConfigPublicAccessPtrOutput {
+	return o.ToGetValkeyValkeyUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetValkeyValkeyUserConfigPublicAccessOutput) ToGetValkeyValkeyUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetValkeyValkeyUserConfigPublicAccess) *GetValkeyValkeyUserConfigPublicAccess {
+		return &v
+	}).(GetValkeyValkeyUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetValkeyValkeyUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetValkeyValkeyUserConfigPublicAccessOutput) Valkey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigPublicAccess) *bool { return v.Valkey }).(pulumi.BoolPtrOutput)
+}
+
+type GetValkeyValkeyUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyValkeyUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyValkeyUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) ToGetValkeyValkeyUserConfigPublicAccessPtrOutput() GetValkeyValkeyUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) ToGetValkeyValkeyUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetValkeyValkeyUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Elem() GetValkeyValkeyUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigPublicAccess) GetValkeyValkeyUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetValkeyValkeyUserConfigPublicAccess
+		return ret
+	}).(GetValkeyValkeyUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to valkey from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Valkey
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalKafkaUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalPostgresqlInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalPostgresqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalPostgresqlArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalPostgresqlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointJolokiaUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointJolokiaUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointJolokiaUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointJolokiaUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointPrometheusUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointPrometheusUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointPrometheusUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointPrometheusUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointRsyslogUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointRsyslogUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointRsyslogUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointRsyslogUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayInput)(nil)).Elem(), GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalElasticsearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationExternalElasticsearchLogsUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalOpensearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationExternalOpensearchLogsUserConfigArgs{})
@@ -4079,6 +7351,50 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryPtrInput)(nil)).Elem(), GetThanosThanosUserConfigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryFrontendInput)(nil)).Elem(), GetThanosThanosUserConfigQueryFrontendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryFrontendPtrInput)(nil)).Elem(), GetThanosThanosUserConfigQueryFrontendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyComponentInput)(nil)).Elem(), GetValkeyComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyComponentArrayInput)(nil)).Elem(), GetValkeyComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyServiceIntegrationInput)(nil)).Elem(), GetValkeyServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyServiceIntegrationArrayInput)(nil)).Elem(), GetValkeyServiceIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyTagInput)(nil)).Elem(), GetValkeyTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyTagArrayInput)(nil)).Elem(), GetValkeyTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyTechEmailInput)(nil)).Elem(), GetValkeyTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyTechEmailArrayInput)(nil)).Elem(), GetValkeyTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyInput)(nil)).Elem(), GetValkeyValkeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyArrayInput)(nil)).Elem(), GetValkeyValkeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigInput)(nil)).Elem(), GetValkeyValkeyUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigArrayInput)(nil)).Elem(), GetValkeyValkeyUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigIpFilterObjectInput)(nil)).Elem(), GetValkeyValkeyUserConfigIpFilterObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetValkeyValkeyUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigMigrationInput)(nil)).Elem(), GetValkeyValkeyUserConfigMigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigMigrationPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigMigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivateAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivateAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalPostgresqlOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalPostgresqlArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointJolokiaUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointPrometheusUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointRsyslogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalOpensearchLogsUserConfigOutput{})
@@ -4129,4 +7445,26 @@ func init() {
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryPtrOutput{})
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryFrontendOutput{})
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryFrontendPtrOutput{})
+	pulumi.RegisterOutputType(GetValkeyComponentOutput{})
+	pulumi.RegisterOutputType(GetValkeyComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetValkeyServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetValkeyServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetValkeyTagOutput{})
+	pulumi.RegisterOutputType(GetValkeyTagArrayOutput{})
+	pulumi.RegisterOutputType(GetValkeyTechEmailOutput{})
+	pulumi.RegisterOutputType(GetValkeyTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyArrayOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigIpFilterObjectOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigMigrationOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigMigrationPtrOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigPrivatelinkAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigPublicAccessPtrOutput{})
 }

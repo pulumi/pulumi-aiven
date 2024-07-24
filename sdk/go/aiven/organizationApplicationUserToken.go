@@ -83,7 +83,7 @@ type OrganizationApplicationUserToken struct {
 	MaxAgeSeconds pulumi.IntPtrOutput `pulumi:"maxAgeSeconds"`
 	// The ID of the organization the application user belongs to.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// Restricts the scopes for this token.
+	// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Prefix of the token.
 	TokenPrefix pulumi.StringOutput `pulumi:"tokenPrefix"`
@@ -157,7 +157,7 @@ type organizationApplicationUserTokenState struct {
 	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
 	// The ID of the organization the application user belongs to.
 	OrganizationId *string `pulumi:"organizationId"`
-	// Restricts the scopes for this token.
+	// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
 	Scopes []string `pulumi:"scopes"`
 	// Prefix of the token.
 	TokenPrefix *string `pulumi:"tokenPrefix"`
@@ -192,7 +192,7 @@ type OrganizationApplicationUserTokenState struct {
 	MaxAgeSeconds pulumi.IntPtrInput
 	// The ID of the organization the application user belongs to.
 	OrganizationId pulumi.StringPtrInput
-	// Restricts the scopes for this token.
+	// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
 	Scopes pulumi.StringArrayInput
 	// Prefix of the token.
 	TokenPrefix pulumi.StringPtrInput
@@ -213,7 +213,7 @@ type organizationApplicationUserTokenArgs struct {
 	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
 	// The ID of the organization the application user belongs to.
 	OrganizationId string `pulumi:"organizationId"`
-	// Restricts the scopes for this token.
+	// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
 	Scopes []string `pulumi:"scopes"`
 	// The ID of the application user the token is created for.
 	UserId string `pulumi:"userId"`
@@ -229,7 +229,7 @@ type OrganizationApplicationUserTokenArgs struct {
 	MaxAgeSeconds pulumi.IntPtrInput
 	// The ID of the organization the application user belongs to.
 	OrganizationId pulumi.StringInput
-	// Restricts the scopes for this token.
+	// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
 	Scopes pulumi.StringArrayInput
 	// The ID of the application user the token is created for.
 	UserId pulumi.StringInput
@@ -387,7 +387,7 @@ func (o OrganizationApplicationUserTokenOutput) OrganizationId() pulumi.StringOu
 	return o.ApplyT(func(v *OrganizationApplicationUserToken) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Restricts the scopes for this token.
+// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
 func (o OrganizationApplicationUserTokenOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationApplicationUserToken) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

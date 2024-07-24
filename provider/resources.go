@@ -144,6 +144,9 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_thanos": {
 				Fields: map[string]*tfbridge.SchemaInfo{"thanos": {CSharpName: "ThanosServer"}},
 			},
+			"aiven_valkey": {
+				Fields: map[string]*tfbridge.SchemaInfo{"valkey": {CSharpName: "ValkeyServer"}},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"aiven_influxdb": {

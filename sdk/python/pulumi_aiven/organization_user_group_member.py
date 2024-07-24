@@ -24,7 +24,7 @@ class OrganizationUserGroupMemberArgs:
         The set of arguments for constructing a OrganizationUserGroupMember resource.
         :param pulumi.Input[str] group_id: The ID of the user group.
         :param pulumi.Input[str] organization_id: The ID of the organization.
-        :param pulumi.Input[str] user_id: The ID of the organization user.
+        :param pulumi.Input[str] user_id: The ID of the organization user or application user.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "organization_id", organization_id)
@@ -60,7 +60,7 @@ class OrganizationUserGroupMemberArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[str]:
         """
-        The ID of the organization user.
+        The ID of the organization user or application user.
         """
         return pulumi.get(self, "user_id")
 
@@ -91,7 +91,7 @@ class _OrganizationUserGroupMemberState:
         :param pulumi.Input[str] group_id: The ID of the user group.
         :param pulumi.Input[str] last_activity_time: Last activity time of the user group member.
         :param pulumi.Input[str] organization_id: The ID of the organization.
-        :param pulumi.Input[str] user_id: The ID of the organization user.
+        :param pulumi.Input[str] user_id: The ID of the organization user or application user.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -153,7 +153,7 @@ class _OrganizationUserGroupMemberState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the organization user.
+        The ID of the organization user or application user.
         """
         return pulumi.get(self, "user_id")
 
@@ -173,7 +173,9 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups).
+        Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups). You can add organization users and application users to groups.
+
+        Groups are given access to projects using the `OrganizationGroupProject` resource.
 
         ## Example Usage
 
@@ -201,7 +203,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The ID of the user group.
         :param pulumi.Input[str] organization_id: The ID of the organization.
-        :param pulumi.Input[str] user_id: The ID of the organization user.
+        :param pulumi.Input[str] user_id: The ID of the organization user or application user.
         """
         ...
     @overload
@@ -210,7 +212,9 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  args: OrganizationUserGroupMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups).
+        Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups). You can add organization users and application users to groups.
+
+        Groups are given access to projects using the `OrganizationGroupProject` resource.
 
         ## Example Usage
 
@@ -298,7 +302,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The ID of the user group.
         :param pulumi.Input[str] last_activity_time: Last activity time of the user group member.
         :param pulumi.Input[str] organization_id: The ID of the organization.
-        :param pulumi.Input[str] user_id: The ID of the organization user.
+        :param pulumi.Input[str] user_id: The ID of the organization user or application user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -344,7 +348,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        The ID of the organization user.
+        The ID of the organization user or application user.
         """
         return pulumi.get(self, "user_id")
 

@@ -19,14 +19,14 @@ public final class KafkaConnectorState extends com.pulumi.resources.ResourceArgs
     public static final KafkaConnectorState Empty = new KafkaConnectorState();
 
     /**
-     * The Kafka Connector configuration parameters.
+     * The Kafka connector configuration parameters.
      * 
      */
     @Import(name="config")
     private @Nullable Output<Map<String,String>> config;
 
     /**
-     * @return The Kafka Connector configuration parameters.
+     * @return The Kafka connector configuration parameters.
      * 
      */
     public Optional<Output<Map<String,String>>> config() {
@@ -34,14 +34,14 @@ public final class KafkaConnectorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The kafka connector name. Changing this property forces recreation of the resource.
+     * The Kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="connectorName")
     private @Nullable Output<String> connectorName;
 
     /**
-     * @return The kafka connector name. Changing this property forces recreation of the resource.
+     * @return The Kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> connectorName() {
@@ -124,14 +124,14 @@ public final class KafkaConnectorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The version of the kafka connector.
+     * The version of the Kafka connector.
      * 
      */
     @Import(name="pluginVersion")
     private @Nullable Output<String> pluginVersion;
 
     /**
-     * @return The version of the kafka connector.
+     * @return The version of the Kafka connector.
      * 
      */
     public Optional<Output<String>> pluginVersion() {
@@ -218,7 +218,7 @@ public final class KafkaConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param config The Kafka Connector configuration parameters.
+         * @param config The Kafka connector configuration parameters.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class KafkaConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param config The Kafka Connector configuration parameters.
+         * @param config The Kafka connector configuration parameters.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class KafkaConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connectorName The kafka connector name. Changing this property forces recreation of the resource.
+         * @param connectorName The Kafka connector name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class KafkaConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connectorName The kafka connector name. Changing this property forces recreation of the resource.
+         * @param connectorName The Kafka connector name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class KafkaConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pluginVersion The version of the kafka connector.
+         * @param pluginVersion The version of the Kafka connector.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class KafkaConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pluginVersion The version of the kafka connector.
+         * @param pluginVersion The version of the Kafka connector.
          * 
          * @return builder
          * 

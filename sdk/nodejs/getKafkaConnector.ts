@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka connector data source provides information about the existing Aiven Kafka connector.
+ * Gets information about an Aiven for Apache Kafka® connector.
  *
  * ## Example Usage
  *
@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kafka-es-con1 = aiven.getKafkaConnector({
- *     project: kafka_con_project1.project,
- *     serviceName: kafka_service1.serviceName,
- *     connectorName: "kafka-es-con1",
+ * const kafka-os-connector = aiven.getKafkaConnector({
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
+ *     connectorName: "kafka-opensearch-connector",
  * });
  * ```
  */
@@ -37,7 +37,7 @@ export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.Inv
  */
 export interface GetKafkaConnectorArgs {
     /**
-     * The kafka connector name. Changing this property forces recreation of the resource.
+     * The Kafka connector name. Changing this property forces recreation of the resource.
      */
     connectorName: string;
     /**
@@ -55,11 +55,11 @@ export interface GetKafkaConnectorArgs {
  */
 export interface GetKafkaConnectorResult {
     /**
-     * The Kafka Connector configuration parameters.
+     * The Kafka connector configuration parameters.
      */
     readonly config: {[key: string]: string};
     /**
-     * The kafka connector name. Changing this property forces recreation of the resource.
+     * The Kafka connector name. Changing this property forces recreation of the resource.
      */
     readonly connectorName: string;
     /**
@@ -87,7 +87,7 @@ export interface GetKafkaConnectorResult {
      */
     readonly pluginType: string;
     /**
-     * The version of the kafka connector.
+     * The version of the Kafka connector.
      */
     readonly pluginVersion: string;
     /**
@@ -104,7 +104,7 @@ export interface GetKafkaConnectorResult {
     readonly tasks: outputs.GetKafkaConnectorTask[];
 }
 /**
- * The Kafka connector data source provides information about the existing Aiven Kafka connector.
+ * Gets information about an Aiven for Apache Kafka® connector.
  *
  * ## Example Usage
  *
@@ -112,10 +112,10 @@ export interface GetKafkaConnectorResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kafka-es-con1 = aiven.getKafkaConnector({
- *     project: kafka_con_project1.project,
- *     serviceName: kafka_service1.serviceName,
- *     connectorName: "kafka-es-con1",
+ * const kafka-os-connector = aiven.getKafkaConnector({
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
+ *     connectorName: "kafka-opensearch-connector",
  * });
  * ```
  */
@@ -128,7 +128,7 @@ export function getKafkaConnectorOutput(args: GetKafkaConnectorOutputArgs, opts?
  */
 export interface GetKafkaConnectorOutputArgs {
     /**
-     * The kafka connector name. Changing this property forces recreation of the resource.
+     * The Kafka connector name. Changing this property forces recreation of the resource.
      */
     connectorName: pulumi.Input<string>;
     /**

@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
+ * Creates and manages ClickHouse roles.
  * 
  * ## Example Usage
  * 
@@ -26,8 +26,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.Clickhouse;
- * import com.pulumi.aiven.ClickhouseArgs;
  * import com.pulumi.aiven.ClickhouseRole;
  * import com.pulumi.aiven.ClickhouseRoleArgs;
  * import java.util.List;
@@ -43,18 +41,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Clickhouse("bar", ClickhouseArgs.builder()
- *             .project("example-project")
- *             .cloudName("google-europe-west1")
- *             .plan("startup-8")
- *             .serviceName("example-service")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
- *             .build());
- * 
- *         var foo = new ClickhouseRole("foo", ClickhouseRoleArgs.builder()
- *             .serviceName(bar.serviceName())
- *             .project(bar.project())
+ *         var exampleRole = new ClickhouseRole("exampleRole", ClickhouseRoleArgs.builder()
+ *             .serviceName(exampleClickhouse.serviceName())
+ *             .project(exampleProject.project())
  *             .role("writer")
  *             .build());
  * 
@@ -67,7 +56,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo PROJECT/SERVICE_NAME/ROLE
+ * $ pulumi import aiven:index/clickhouseRole:ClickhouseRole example_role PROJECT/SERVICE_NAME/ROLE
  * ```
  * 
  */
@@ -88,14 +77,14 @@ public class ClickhouseRole extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The role that is to be created. Changing this property forces recreation of the resource.
+     * The name of role. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
-     * @return The role that is to be created. Changing this property forces recreation of the resource.
+     * @return The name of role. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> role() {

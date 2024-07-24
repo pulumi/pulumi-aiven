@@ -14,14 +14,14 @@ public final class GetFlinkApplicationVersionPlainArgs extends com.pulumi.resour
     public static final GetFlinkApplicationVersionPlainArgs Empty = new GetFlinkApplicationVersionPlainArgs();
 
     /**
-     * Application ID
+     * Application ID.
      * 
      */
     @Import(name="applicationId", required=true)
     private String applicationId;
 
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public String applicationId() {
@@ -29,14 +29,14 @@ public final class GetFlinkApplicationVersionPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * Application version ID
+     * Application version ID.
      * 
      */
     @Import(name="applicationVersionId", required=true)
     private String applicationVersionId;
 
     /**
-     * @return Application version ID
+     * @return Application version ID.
      * 
      */
     public String applicationVersionId() {
@@ -101,7 +101,7 @@ public final class GetFlinkApplicationVersionPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param applicationId Application ID
+         * @param applicationId Application ID.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class GetFlinkApplicationVersionPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param applicationVersionId Application version ID
+         * @param applicationVersionId Application version ID.
          * 
          * @return builder
          * 

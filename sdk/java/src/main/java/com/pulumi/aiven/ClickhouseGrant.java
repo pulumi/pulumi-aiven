@@ -18,12 +18,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Clickhouse Grant resource allows the creation and management of Grants in Aiven Clickhouse services.
+ * Creates and manages ClickHouse grants to give users and roles privileges to a ClickHouse service.
  * 
- * Notes:
- * * Due to a ambiguity in the GRANT syntax in clickhouse you should not have users and roles with the same name. It is not clear if a grant refers to the user or the role.
- * * To grant a privilege on all tables of a database, do not write table = &#34;*&#34;. Instead, omit the table and only keep the database.
- * * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
+ * **Note:**
+ * * Users cannot have the same name as roles.
+ * * To grant a privilege on all tables of a database, omit the table and only keep the database. Don&#39;t use `table=&#34;*&#34;`.
+ * * Changes first revoke all grants and then reissue the remaining grants for convergence.
  * 
  * ## Example Usage
  * 
@@ -35,10 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.Clickhouse;
- * import com.pulumi.aiven.ClickhouseArgs;
- * import com.pulumi.aiven.ClickhouseDatabase;
- * import com.pulumi.aiven.ClickhouseDatabaseArgs;
  * import com.pulumi.aiven.ClickhouseRole;
  * import com.pulumi.aiven.ClickhouseRoleArgs;
  * import com.pulumi.aiven.ClickhouseGrant;
@@ -60,53 +56,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var clickhouse = new Clickhouse("clickhouse", ClickhouseArgs.builder()
- *             .project(aivenProjectName)
- *             .cloudName("google-europe-west1")
- *             .plan("startup-8")
- *             .serviceName("exapmle-clickhouse")
+ *         var exampleRole = new ClickhouseRole("exampleRole", ClickhouseRoleArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleClickhouse.serviceName())
+ *             .role("example-role")
  *             .build());
  * 
- *         var demodb = new ClickhouseDatabase("demodb", ClickhouseDatabaseArgs.builder()
- *             .project(clickhouse.project())
- *             .serviceName(clickhouse.serviceName())
- *             .name("demo")
- *             .build());
- * 
- *         var demo = new ClickhouseRole("demo", ClickhouseRoleArgs.builder()
- *             .project(clickhouse.project())
- *             .serviceName(clickhouse.serviceName())
- *             .role("demo-role")
- *             .build());
- * 
- *         var demo_role_grant = new ClickhouseGrant("demo-role-grant", ClickhouseGrantArgs.builder()
- *             .project(clickhouse.project())
- *             .serviceName(clickhouse.serviceName())
- *             .role(demo.role())
+ *         // Grant privileges to the example role.
+ *         var rolePrivileges = new ClickhouseGrant("rolePrivileges", ClickhouseGrantArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleClickhouse.serviceName())
+ *             .role(exampleRole.role())
  *             .privilegeGrants(            
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
  *                     .privilege("INSERT")
- *                     .database(demodb.name())
- *                     .table("demo-table")
+ *                     .database(exampleDb.name())
+ *                     .table("example-table")
  *                     .build(),
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
  *                     .privilege("SELECT")
- *                     .database(demodb.name())
+ *                     .database(exampleDb.name())
  *                     .build())
  *             .build());
  * 
- *         var demoClickhouseUser = new ClickhouseUser("demoClickhouseUser", ClickhouseUserArgs.builder()
- *             .project(clickhouse.project())
- *             .serviceName(clickhouse.serviceName())
- *             .username("demo-user")
+ *         // Grant the role to the user.
+ *         var exampleUser = new ClickhouseUser("exampleUser", ClickhouseUserArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleClickhouse.serviceName())
+ *             .username("example-user")
  *             .build());
  * 
- *         var demo_user_grant = new ClickhouseGrant("demo-user-grant", ClickhouseGrantArgs.builder()
- *             .project(clickhouse.project())
- *             .serviceName(clickhouse.serviceName())
- *             .user(demoClickhouseUser.username())
+ *         var userRoleAssignment = new ClickhouseGrant("userRoleAssignment", ClickhouseGrantArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleClickhouse.serviceName())
+ *             .user(exampleUser.username())
  *             .roleGrants(ClickhouseGrantRoleGrantArgs.builder()
- *                 .role(demo.role())
+ *                 .role(exampleRole.role())
  *                 .build())
  *             .build());
  * 
@@ -116,18 +101,24 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/clickhouseGrant:ClickhouseGrant example_grant PROJECT/SERVICE_NAME/ID
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/clickhouseGrant:ClickhouseGrant")
 public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
     /**
-     * Configuration to grant a privilege. Changing this property forces recreation of the resource.
+     * Grant privileges. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="privilegeGrants", refs={List.class,ClickhouseGrantPrivilegeGrant.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClickhouseGrantPrivilegeGrant>> privilegeGrants;
 
     /**
-     * @return Configuration to grant a privilege. Changing this property forces recreation of the resource.
+     * @return Grant privileges. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<ClickhouseGrantPrivilegeGrant>>> privilegeGrants() {
@@ -162,14 +153,14 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.role);
     }
     /**
-     * Configuration to grant a role. Changing this property forces recreation of the resource.
+     * Grant roles. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="roleGrants", refs={List.class,ClickhouseGrantRoleGrant.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClickhouseGrantRoleGrant>> roleGrants;
 
     /**
-     * @return Configuration to grant a role. Changing this property forces recreation of the resource.
+     * @return Grant roles. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<ClickhouseGrantRoleGrant>>> roleGrants() {

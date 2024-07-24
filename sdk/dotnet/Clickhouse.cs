@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Clickhouse resource allows the creation and management of Aiven Clickhouse services.
+    /// Creates and manages an [Aiven for ClickHouse®](https://aiven.io/docs/products/clickhouse/concepts/features-overview) service.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var clickhouse = new Aiven.Clickhouse("clickhouse", new()
+    ///     var exampleClickhouse = new Aiven.Clickhouse("example_clickhouse", new()
     ///     {
-    ///         Project = pr1.Project,
+    ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-4",
-    ///         ServiceName = "my-clickhouse",
+    ///         ServiceName = "example-clickhouse-service",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
     ///     });
@@ -51,7 +51,7 @@ namespace Pulumi.Aiven
         public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
 
         /// <summary>
-        /// Clickhouse server provided values
+        /// Values provided by the ClickHouse server.
         /// </summary>
         [Output("clickhouse")]
         public Output<Outputs.ClickhouseClickhouse> ClickhouseServer { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Aiven
         public Output<string> ServiceHost { get; private set; } = null!;
 
         /// <summary>
-        /// Service integrations to specify when creating a service. Not applied after initial service creation
+        /// Integrations with other services. Service integrations are only applied at service creation.
         /// </summary>
         [Output("serviceIntegrations")]
         public Output<ImmutableArray<Outputs.ClickhouseServiceIntegration>> ServiceIntegrations { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.ClickhouseClickhouseArgs>? _clickhouse;
 
         /// <summary>
-        /// Clickhouse server provided values
+        /// Values provided by the ClickHouse server.
         /// </summary>
         public Input<Inputs.ClickhouseClickhouseArgs>? ClickhouseServer
         {
@@ -338,7 +338,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseServiceIntegrationArgs>? _serviceIntegrations;
 
         /// <summary>
-        /// Service integrations to specify when creating a service. Not applied after initial service creation
+        /// Integrations with other services. Service integrations are only applied at service creation.
         /// </summary>
         public InputList<Inputs.ClickhouseServiceIntegrationArgs> ServiceIntegrations
         {
@@ -412,7 +412,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.ClickhouseClickhouseGetArgs>? _clickhouse;
 
         /// <summary>
-        /// Clickhouse server provided values
+        /// Values provided by the ClickHouse server.
         /// </summary>
         public Input<Inputs.ClickhouseClickhouseGetArgs>? ClickhouseServer
         {
@@ -518,7 +518,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseServiceIntegrationGetArgs>? _serviceIntegrations;
 
         /// <summary>
-        /// Service integrations to specify when creating a service. Not applied after initial service creation
+        /// Integrations with other services. Service integrations are only applied at service creation.
         /// </summary>
         public InputList<Inputs.ClickhouseServiceIntegrationGetArgs> ServiceIntegrations
         {

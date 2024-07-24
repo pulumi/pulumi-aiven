@@ -20,7 +20,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven for Apache Kafka® topic.
+ * Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
  * 
  * ## Example Usage
  * 
@@ -77,14 +77,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/kafkaTopic:KafkaTopic")
 public class KafkaTopic extends com.pulumi.resources.CustomResource {
     /**
-     * Kafka topic configuration.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      * 
      */
     @Export(name="config", refs={KafkaTopicConfig.class}, tree="[0]")
     private Output</* @Nullable */ KafkaTopicConfig> config;
 
     /**
-     * @return Kafka topic configuration.
+     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      * 
      */
     public Output<Optional<KafkaTopicConfig>> config() {
@@ -147,14 +147,14 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * Tags for the Kafka topic.
+     * Tags for the topic.
      * 
      */
     @Export(name="tags", refs={List.class,KafkaTopicTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KafkaTopicTag>> tags;
 
     /**
-     * @return Tags for the Kafka topic.
+     * @return Tags for the topic.
      * 
      */
     public Output<Optional<List<KafkaTopicTag>>> tags() {

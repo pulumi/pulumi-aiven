@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Flink Application resource allows the creation and management of Aiven Flink Applications.
+// Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
 //
 // ## Example Usage
 //
@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewFlinkApplication(ctx, "foo", &aiven.FlinkApplicationArgs{
-//				Project:     pulumi.Any(fooAivenProject.Project),
-//				ServiceName: pulumi.String("flink-service-1"),
-//				Name:        pulumi.String("my-flink-app"),
+//			_, err := aiven.NewFlinkApplication(ctx, "example_app", &aiven.FlinkApplicationArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.String("example-flink-service"),
+//				Name:        pulumi.String("example-app"),
 //			})
 //			if err != nil {
 //				return err
@@ -45,26 +45,26 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp PROJECT/SERVICE/APPLICATION_NAME
+// $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_NAME
 // ```
 type FlinkApplication struct {
 	pulumi.CustomResourceState
 
-	// Application ID
+	// Application ID.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// Application creation time
+	// Application creation time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Application creator
+	// The user who created the application.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// Application name
+	// The name of the application.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Application update time
+	// When the application was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Application updater
+	// The user who updated the application.
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 }
 
@@ -104,40 +104,40 @@ func GetFlinkApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FlinkApplication resources.
 type flinkApplicationState struct {
-	// Application ID
+	// Application ID.
 	ApplicationId *string `pulumi:"applicationId"`
-	// Application creation time
+	// Application creation time.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Application creator
+	// The user who created the application.
 	CreatedBy *string `pulumi:"createdBy"`
-	// Application name
+	// The name of the application.
 	Name *string `pulumi:"name"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Application update time
+	// When the application was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// Application updater
+	// The user who updated the application.
 	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 type FlinkApplicationState struct {
-	// Application ID
+	// Application ID.
 	ApplicationId pulumi.StringPtrInput
-	// Application creation time
+	// Application creation time.
 	CreatedAt pulumi.StringPtrInput
-	// Application creator
+	// The user who created the application.
 	CreatedBy pulumi.StringPtrInput
-	// Application name
+	// The name of the application.
 	Name pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Application update time
+	// When the application was updated.
 	UpdatedAt pulumi.StringPtrInput
-	// Application updater
+	// The user who updated the application.
 	UpdatedBy pulumi.StringPtrInput
 }
 
@@ -146,7 +146,7 @@ func (FlinkApplicationState) ElementType() reflect.Type {
 }
 
 type flinkApplicationArgs struct {
-	// Application name
+	// The name of the application.
 	Name *string `pulumi:"name"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -156,7 +156,7 @@ type flinkApplicationArgs struct {
 
 // The set of arguments for constructing a FlinkApplication resource.
 type FlinkApplicationArgs struct {
-	// Application name
+	// The name of the application.
 	Name pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
@@ -251,22 +251,22 @@ func (o FlinkApplicationOutput) ToFlinkApplicationOutputWithContext(ctx context.
 	return o
 }
 
-// Application ID
+// Application ID.
 func (o FlinkApplicationOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// Application creation time
+// Application creation time.
 func (o FlinkApplicationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Application creator
+// The user who created the application.
 func (o FlinkApplicationOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// Application name
+// The name of the application.
 func (o FlinkApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -281,12 +281,12 @@ func (o FlinkApplicationOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Application update time
+// When the application was updated.
 func (o FlinkApplicationOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Application updater
+// The user who updated the application.
 func (o FlinkApplicationOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }

@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class GetClickhouseClickhouse {
     /**
-     * @return Clickhouse server URIs.
+     * @return ClickHouse server URIs.
      * 
      */
     private List<String> uris;
 
     private GetClickhouseClickhouse() {}
     /**
-     * @return Clickhouse server URIs.
+     * @return ClickHouse server URIs.
      * 
      */
     public List<String> uris() {

@@ -17,7 +17,7 @@ public final class GetClickhouseUserResult {
      */
     private String id;
     /**
-     * @return The password of the clickhouse user.
+     * @return The password of the ClickHouse user.
      * 
      */
     private String password;
@@ -27,7 +27,7 @@ public final class GetClickhouseUserResult {
      */
     private String project;
     /**
-     * @return Indicates if a clickhouse user is required
+     * @return Indicates if a ClickHouse user is required.
      * 
      */
     private Boolean required;
@@ -37,12 +37,12 @@ public final class GetClickhouseUserResult {
      */
     private String serviceName;
     /**
-     * @return The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
     /**
-     * @return UUID of the clickhouse user.
+     * @return UUID of the ClickHouse user.
      * 
      */
     private String uuid;
@@ -56,7 +56,7 @@ public final class GetClickhouseUserResult {
         return this.id;
     }
     /**
-     * @return The password of the clickhouse user.
+     * @return The password of the ClickHouse user.
      * 
      */
     public String password() {
@@ -70,7 +70,7 @@ public final class GetClickhouseUserResult {
         return this.project;
     }
     /**
-     * @return Indicates if a clickhouse user is required
+     * @return Indicates if a ClickHouse user is required.
      * 
      */
     public Boolean required() {
@@ -84,14 +84,14 @@ public final class GetClickhouseUserResult {
         return this.serviceName;
     }
     /**
-     * @return The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {
         return this.username;
     }
     /**
-     * @return UUID of the clickhouse user.
+     * @return UUID of the ClickHouse user.
      * 
      */
     public String uuid() {

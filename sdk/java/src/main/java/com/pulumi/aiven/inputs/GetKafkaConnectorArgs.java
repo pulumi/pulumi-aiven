@@ -15,14 +15,14 @@ public final class GetKafkaConnectorArgs extends com.pulumi.resources.InvokeArgs
     public static final GetKafkaConnectorArgs Empty = new GetKafkaConnectorArgs();
 
     /**
-     * The kafka connector name. Changing this property forces recreation of the resource.
+     * The Kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="connectorName", required=true)
     private Output<String> connectorName;
 
     /**
-     * @return The kafka connector name. Changing this property forces recreation of the resource.
+     * @return The Kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> connectorName() {
@@ -86,7 +86,7 @@ public final class GetKafkaConnectorArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param connectorName The kafka connector name. Changing this property forces recreation of the resource.
+         * @param connectorName The Kafka connector name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetKafkaConnectorArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param connectorName The kafka connector name. Changing this property forces recreation of the resource.
+         * @param connectorName The Kafka connector name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

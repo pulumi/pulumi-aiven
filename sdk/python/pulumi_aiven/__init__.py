@@ -99,6 +99,8 @@ from .get_service_integration import *
 from .get_service_integration_endpoint import *
 from .get_thanos import *
 from .get_transit_gateway_vpc_attachment import *
+from .get_valkey import *
+from .get_valkey_user import *
 from .grafana import *
 from .influx_db import *
 from .influxdb_database import *
@@ -147,6 +149,8 @@ from .service_integration_endpoint import *
 from .static_ip import *
 from .thanos import *
 from .transit_gateway_vpc_attachment import *
+from .valkey import *
+from .valkey_user import *
 from ._inputs import *
 from . import outputs
 
@@ -750,6 +754,22 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": "TransitGatewayVpcAttachment"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/valkey",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/valkey:Valkey": "Valkey"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/valkeyUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/valkeyUser:ValkeyUser": "ValkeyUser"
   }
  }
 ]

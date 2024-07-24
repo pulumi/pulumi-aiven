@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Flink data source provides information about the existing Aiven Flink service.
+// Gets information about an Aiven for Apache Flink® service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupFlink(ctx, &aiven.LookupFlinkArgs{
-//				Project:     pr1.Project,
-//				ServiceName: "<SERVICE_NAME>",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-flink-service",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -77,7 +77,7 @@ type LookupFlinkResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// Flink user configurable settings
 	FlinkUserConfigs []GetFlinkFlinkUserConfig `pulumi:"flinkUserConfigs"`
-	// Flink server provided values
+	// Values provided by the Flink server.
 	Flinks []GetFlinkFlink `pulumi:"flinks"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -204,7 +204,7 @@ func (o LookupFlinkResultOutput) FlinkUserConfigs() GetFlinkFlinkUserConfigArray
 	return o.ApplyT(func(v LookupFlinkResult) []GetFlinkFlinkUserConfig { return v.FlinkUserConfigs }).(GetFlinkFlinkUserConfigArrayOutput)
 }
 
-// Flink server provided values
+// Values provided by the Flink server.
 func (o LookupFlinkResultOutput) Flinks() GetFlinkFlinkArrayOutput {
 	return o.ApplyT(func(v LookupFlinkResult) []GetFlinkFlink { return v.Flinks }).(GetFlinkFlinkArrayOutput)
 }

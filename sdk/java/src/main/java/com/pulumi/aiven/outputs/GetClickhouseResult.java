@@ -30,7 +30,7 @@ public final class GetClickhouseResult {
      */
     private List<GetClickhouseClickhouseUserConfig> clickhouseUserConfigs;
     /**
-     * @return Clickhouse server provided values
+     * @return Values provided by the ClickHouse server.
      * 
      */
     private List<GetClickhouseClickhouse> clickhouses;
@@ -105,7 +105,7 @@ public final class GetClickhouseResult {
      */
     private String serviceHost;
     /**
-     * @return Service integrations to specify when creating a service. Not applied after initial service creation
+     * @return Integrations with other services. Service integrations are only applied at service creation.
      * 
      */
     private List<GetClickhouseServiceIntegration> serviceIntegrations;
@@ -181,7 +181,7 @@ public final class GetClickhouseResult {
         return this.clickhouseUserConfigs;
     }
     /**
-     * @return Clickhouse server provided values
+     * @return Values provided by the ClickHouse server.
      * 
      */
     public List<GetClickhouseClickhouse> clickhouses() {
@@ -286,7 +286,7 @@ public final class GetClickhouseResult {
         return this.serviceHost;
     }
     /**
-     * @return Service integrations to specify when creating a service. Not applied after initial service creation
+     * @return Integrations with other services. Service integrations are only applied at service creation.
      * 
      */
     public List<GetClickhouseServiceIntegration> serviceIntegrations() {
