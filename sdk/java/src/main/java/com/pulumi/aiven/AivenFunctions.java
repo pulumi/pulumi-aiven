@@ -138,6 +138,10 @@ import com.pulumi.aiven.inputs.GetThanosArgs;
 import com.pulumi.aiven.inputs.GetThanosPlainArgs;
 import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentArgs;
 import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentPlainArgs;
+import com.pulumi.aiven.inputs.GetValkeyArgs;
+import com.pulumi.aiven.inputs.GetValkeyPlainArgs;
+import com.pulumi.aiven.inputs.GetValkeyUserArgs;
+import com.pulumi.aiven.inputs.GetValkeyUserPlainArgs;
 import com.pulumi.aiven.outputs.GetAccountAuthenticationResult;
 import com.pulumi.aiven.outputs.GetAccountResult;
 import com.pulumi.aiven.outputs.GetAccountTeamMemberResult;
@@ -205,6 +209,8 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointResult;
 import com.pulumi.aiven.outputs.GetServiceIntegrationResult;
 import com.pulumi.aiven.outputs.GetThanosResult;
 import com.pulumi.aiven.outputs.GetTransitGatewayVpcAttachmentResult;
+import com.pulumi.aiven.outputs.GetValkeyResult;
+import com.pulumi.aiven.outputs.GetValkeyUserResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -1941,7 +1947,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+     * Gets information about a ClickHouse service.
      * 
      * ## Example Usage
      * 
@@ -1968,9 +1974,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleClickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-clickhouse-service")
      *             .build());
      * 
      *     }
@@ -1984,7 +1990,7 @@ public final class AivenFunctions {
         return getClickhouse(args, InvokeOptions.Empty);
     }
     /**
-     * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+     * Gets information about a ClickHouse service.
      * 
      * ## Example Usage
      * 
@@ -2011,9 +2017,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleClickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-clickhouse-service")
      *             .build());
      * 
      *     }
@@ -2027,7 +2033,7 @@ public final class AivenFunctions {
         return getClickhousePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+     * Gets information about a ClickHouse service.
      * 
      * ## Example Usage
      * 
@@ -2054,9 +2060,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleClickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-clickhouse-service")
      *             .build());
      * 
      *     }
@@ -2070,7 +2076,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getClickhouse:getClickhouse", TypeShape.of(GetClickhouseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+     * Gets information about a ClickHouse service.
      * 
      * ## Example Usage
      * 
@@ -2097,9 +2103,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleClickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-clickhouse-service")
      *             .build());
      * 
      *     }
@@ -2113,7 +2119,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getClickhouse:getClickhouse", TypeShape.of(GetClickhouseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+     * Gets information about a ClickHouse database.
      * 
      * ## Example Usage
      * 
@@ -2140,10 +2146,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(ch.project())
-     *             .serviceName(ch.serviceName())
-     *             .name("my-ch-db")
+     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .name("example-database")
      *             .build());
      * 
      *     }
@@ -2157,7 +2163,7 @@ public final class AivenFunctions {
         return getClickhouseDatabase(args, InvokeOptions.Empty);
     }
     /**
-     * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+     * Gets information about a ClickHouse database.
      * 
      * ## Example Usage
      * 
@@ -2184,10 +2190,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(ch.project())
-     *             .serviceName(ch.serviceName())
-     *             .name("my-ch-db")
+     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .name("example-database")
      *             .build());
      * 
      *     }
@@ -2201,7 +2207,7 @@ public final class AivenFunctions {
         return getClickhouseDatabasePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+     * Gets information about a ClickHouse database.
      * 
      * ## Example Usage
      * 
@@ -2228,10 +2234,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(ch.project())
-     *             .serviceName(ch.serviceName())
-     *             .name("my-ch-db")
+     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .name("example-database")
      *             .build());
      * 
      *     }
@@ -2245,7 +2251,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getClickhouseDatabase:getClickhouseDatabase", TypeShape.of(GetClickhouseDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+     * Gets information about a ClickHouse database.
      * 
      * ## Example Usage
      * 
@@ -2272,10 +2278,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(ch.project())
-     *             .serviceName(ch.serviceName())
-     *             .name("my-ch-db")
+     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .name("example-database")
      *             .build());
      * 
      *     }
@@ -2289,7 +2295,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getClickhouseDatabase:getClickhouseDatabase", TypeShape.of(GetClickhouseDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+     * Gets information about a ClickHouse user.
      * 
      * ## Example Usage
      * 
@@ -2316,10 +2322,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(myservice.serviceName())
-     *             .username("<USERNAME>")
+     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .username("analyst")
      *             .build());
      * 
      *     }
@@ -2333,7 +2339,7 @@ public final class AivenFunctions {
         return getClickhouseUser(args, InvokeOptions.Empty);
     }
     /**
-     * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+     * Gets information about a ClickHouse user.
      * 
      * ## Example Usage
      * 
@@ -2360,10 +2366,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(myservice.serviceName())
-     *             .username("<USERNAME>")
+     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .username("analyst")
      *             .build());
      * 
      *     }
@@ -2377,7 +2383,7 @@ public final class AivenFunctions {
         return getClickhouseUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+     * Gets information about a ClickHouse user.
      * 
      * ## Example Usage
      * 
@@ -2404,10 +2410,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(myservice.serviceName())
-     *             .username("<USERNAME>")
+     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .username("analyst")
      *             .build());
      * 
      *     }
@@ -2421,7 +2427,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getClickhouseUser:getClickhouseUser", TypeShape.of(GetClickhouseUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+     * Gets information about a ClickHouse user.
      * 
      * ## Example Usage
      * 
@@ -2448,10 +2454,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(myservice.serviceName())
-     *             .username("<USERNAME>")
+     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .username("analyst")
      *             .build());
      * 
      *     }
@@ -2813,7 +2819,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getDragonfly:getDragonfly", TypeShape.of(GetDragonflyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Flink data source provides information about the existing Aiven Flink service.
+     * Gets information about an Aiven for Apache Flink® service.
      * 
      * ## Example Usage
      * 
@@ -2840,9 +2846,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleFlink = AivenFunctions.getFlink(GetFlinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
      *             .build());
      * 
      *     }
@@ -2856,7 +2862,7 @@ public final class AivenFunctions {
         return getFlink(args, InvokeOptions.Empty);
     }
     /**
-     * The Flink data source provides information about the existing Aiven Flink service.
+     * Gets information about an Aiven for Apache Flink® service.
      * 
      * ## Example Usage
      * 
@@ -2883,9 +2889,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleFlink = AivenFunctions.getFlink(GetFlinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
      *             .build());
      * 
      *     }
@@ -2899,7 +2905,7 @@ public final class AivenFunctions {
         return getFlinkPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Flink data source provides information about the existing Aiven Flink service.
+     * Gets information about an Aiven for Apache Flink® service.
      * 
      * ## Example Usage
      * 
@@ -2926,9 +2932,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleFlink = AivenFunctions.getFlink(GetFlinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
      *             .build());
      * 
      *     }
@@ -2942,7 +2948,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getFlink:getFlink", TypeShape.of(GetFlinkResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Flink data source provides information about the existing Aiven Flink service.
+     * Gets information about an Aiven for Apache Flink® service.
      * 
      * ## Example Usage
      * 
@@ -2969,9 +2975,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleFlink = AivenFunctions.getFlink(GetFlinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
      *             .build());
      * 
      *     }
@@ -2985,7 +2991,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getFlink:getFlink", TypeShape.of(GetFlinkResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Flink Application data source provides information about the existing Aiven Flink Application.
+     * Gets information about an Aiven for Apache Flink® application.
      * 
      * ## Example Usage
      * 
@@ -3012,10 +3018,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
-     *             .name("<APPLICATION_NAME>")
+     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
+     *             .name("example-app")
      *             .build());
      * 
      *     }
@@ -3029,7 +3035,7 @@ public final class AivenFunctions {
         return getFlinkApplication(args, InvokeOptions.Empty);
     }
     /**
-     * The Flink Application data source provides information about the existing Aiven Flink Application.
+     * Gets information about an Aiven for Apache Flink® application.
      * 
      * ## Example Usage
      * 
@@ -3056,10 +3062,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
-     *             .name("<APPLICATION_NAME>")
+     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
+     *             .name("example-app")
      *             .build());
      * 
      *     }
@@ -3073,7 +3079,7 @@ public final class AivenFunctions {
         return getFlinkApplicationPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Flink Application data source provides information about the existing Aiven Flink Application.
+     * Gets information about an Aiven for Apache Flink® application.
      * 
      * ## Example Usage
      * 
@@ -3100,10 +3106,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
-     *             .name("<APPLICATION_NAME>")
+     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
+     *             .name("example-app")
      *             .build());
      * 
      *     }
@@ -3117,7 +3123,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getFlinkApplication:getFlinkApplication", TypeShape.of(GetFlinkApplicationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Flink Application data source provides information about the existing Aiven Flink Application.
+     * Gets information about an Aiven for Apache Flink® application.
      * 
      * ## Example Usage
      * 
@@ -3144,10 +3150,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
-     *             .name("<APPLICATION_NAME>")
+     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
+     *             .name("example-app")
      *             .build());
      * 
      *     }
@@ -3161,7 +3167,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getFlinkApplication:getFlinkApplication", TypeShape.of(GetFlinkApplicationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+     * Gets information about an Aiven for Apache Flink® application version.
      * 
      * ## Example Usage
      * 
@@ -3188,11 +3194,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
-     *             .applicationId("<APPLICATION_ID>")
-     *             .applicationVersionId("<APPLICATION_VERSION_ID>")
+     *         final var main = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleFlink.serviceName())
+     *             .applicationId(exampleApp.applicationId())
+     *             .applicationVersionId("d6e7f71c-cadf-49b5-a4ad-126c805fe684")
      *             .build());
      * 
      *     }
@@ -3206,7 +3212,7 @@ public final class AivenFunctions {
         return getFlinkApplicationVersion(args, InvokeOptions.Empty);
     }
     /**
-     * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+     * Gets information about an Aiven for Apache Flink® application version.
      * 
      * ## Example Usage
      * 
@@ -3233,11 +3239,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
-     *             .applicationId("<APPLICATION_ID>")
-     *             .applicationVersionId("<APPLICATION_VERSION_ID>")
+     *         final var main = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleFlink.serviceName())
+     *             .applicationId(exampleApp.applicationId())
+     *             .applicationVersionId("d6e7f71c-cadf-49b5-a4ad-126c805fe684")
      *             .build());
      * 
      *     }
@@ -3251,7 +3257,7 @@ public final class AivenFunctions {
         return getFlinkApplicationVersionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+     * Gets information about an Aiven for Apache Flink® application version.
      * 
      * ## Example Usage
      * 
@@ -3278,11 +3284,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
-     *             .applicationId("<APPLICATION_ID>")
-     *             .applicationVersionId("<APPLICATION_VERSION_ID>")
+     *         final var main = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleFlink.serviceName())
+     *             .applicationId(exampleApp.applicationId())
+     *             .applicationVersionId("d6e7f71c-cadf-49b5-a4ad-126c805fe684")
      *             .build());
      * 
      *     }
@@ -3296,7 +3302,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", TypeShape.of(GetFlinkApplicationVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+     * Gets information about an Aiven for Apache Flink® application version.
      * 
      * ## Example Usage
      * 
@@ -3323,11 +3329,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("<SERVICE_NAME>")
-     *             .applicationId("<APPLICATION_ID>")
-     *             .applicationVersionId("<APPLICATION_VERSION_ID>")
+     *         final var main = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleFlink.serviceName())
+     *             .applicationId(exampleApp.applicationId())
+     *             .applicationVersionId("d6e7f71c-cadf-49b5-a4ad-126c805fe684")
      *             .build());
      * 
      *     }
@@ -4069,7 +4075,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafka:getKafka", TypeShape.of(GetKafkaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+     * Gets information about an ACL entry for an Aiven for Apache Kafka® service.
      * 
      * ## Example Usage
      * 
@@ -4096,12 +4102,12 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mykafka.serviceName())
-     *             .topic("<TOPIC_NAME_PATTERN>")
-     *             .permission("<PERMISSON>")
-     *             .username("<USERNAME_PATTERN>")
+     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topic("example-topic")
+     *             .permission("admin")
+     *             .username("example-user")
      *             .build());
      * 
      *     }
@@ -4115,7 +4121,7 @@ public final class AivenFunctions {
         return getKafkaAcl(args, InvokeOptions.Empty);
     }
     /**
-     * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+     * Gets information about an ACL entry for an Aiven for Apache Kafka® service.
      * 
      * ## Example Usage
      * 
@@ -4142,12 +4148,12 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mykafka.serviceName())
-     *             .topic("<TOPIC_NAME_PATTERN>")
-     *             .permission("<PERMISSON>")
-     *             .username("<USERNAME_PATTERN>")
+     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topic("example-topic")
+     *             .permission("admin")
+     *             .username("example-user")
      *             .build());
      * 
      *     }
@@ -4161,7 +4167,7 @@ public final class AivenFunctions {
         return getKafkaAclPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+     * Gets information about an ACL entry for an Aiven for Apache Kafka® service.
      * 
      * ## Example Usage
      * 
@@ -4188,12 +4194,12 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mykafka.serviceName())
-     *             .topic("<TOPIC_NAME_PATTERN>")
-     *             .permission("<PERMISSON>")
-     *             .username("<USERNAME_PATTERN>")
+     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topic("example-topic")
+     *             .permission("admin")
+     *             .username("example-user")
      *             .build());
      * 
      *     }
@@ -4207,7 +4213,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafkaAcl:getKafkaAcl", TypeShape.of(GetKafkaAclResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+     * Gets information about an ACL entry for an Aiven for Apache Kafka® service.
      * 
      * ## Example Usage
      * 
@@ -4234,12 +4240,12 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mykafka.serviceName())
-     *             .topic("<TOPIC_NAME_PATTERN>")
-     *             .permission("<PERMISSON>")
-     *             .username("<USERNAME_PATTERN>")
+     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topic("example-topic")
+     *             .permission("admin")
+     *             .username("example-user")
      *             .build());
      * 
      *     }
@@ -4253,7 +4259,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaAcl:getKafkaAcl", TypeShape.of(GetKafkaAclResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+     * Gets information about an Aiven for Apache Kafka® Connect service.
      * 
      * ## Example Usage
      * 
@@ -4280,9 +4286,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-kc1")
+     *         final var exampleKafkaConnect = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-connect-service")
      *             .build());
      * 
      *     }
@@ -4296,7 +4302,7 @@ public final class AivenFunctions {
         return getKafkaConnect(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+     * Gets information about an Aiven for Apache Kafka® Connect service.
      * 
      * ## Example Usage
      * 
@@ -4323,9 +4329,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-kc1")
+     *         final var exampleKafkaConnect = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-connect-service")
      *             .build());
      * 
      *     }
@@ -4339,7 +4345,7 @@ public final class AivenFunctions {
         return getKafkaConnectPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+     * Gets information about an Aiven for Apache Kafka® Connect service.
      * 
      * ## Example Usage
      * 
@@ -4366,9 +4372,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-kc1")
+     *         final var exampleKafkaConnect = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-connect-service")
      *             .build());
      * 
      *     }
@@ -4382,7 +4388,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafkaConnect:getKafkaConnect", TypeShape.of(GetKafkaConnectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+     * Gets information about an Aiven for Apache Kafka® Connect service.
      * 
      * ## Example Usage
      * 
@@ -4409,9 +4415,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-kc1")
+     *         final var exampleKafkaConnect = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-connect-service")
      *             .build());
      * 
      *     }
@@ -4425,7 +4431,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaConnect:getKafkaConnect", TypeShape.of(GetKafkaConnectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka connector data source provides information about the existing Aiven Kafka connector.
+     * Gets information about an Aiven for Apache Kafka® connector.
      * 
      * ## Example Usage
      * 
@@ -4452,10 +4458,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
-     *             .project(kafka_con_project1.project())
-     *             .serviceName(kafka_service1.serviceName())
-     *             .connectorName("kafka-es-con1")
+     *         final var kafka-os-connector = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .connectorName("kafka-opensearch-connector")
      *             .build());
      * 
      *     }
@@ -4469,7 +4475,7 @@ public final class AivenFunctions {
         return getKafkaConnector(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka connector data source provides information about the existing Aiven Kafka connector.
+     * Gets information about an Aiven for Apache Kafka® connector.
      * 
      * ## Example Usage
      * 
@@ -4496,10 +4502,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
-     *             .project(kafka_con_project1.project())
-     *             .serviceName(kafka_service1.serviceName())
-     *             .connectorName("kafka-es-con1")
+     *         final var kafka-os-connector = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .connectorName("kafka-opensearch-connector")
      *             .build());
      * 
      *     }
@@ -4513,7 +4519,7 @@ public final class AivenFunctions {
         return getKafkaConnectorPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka connector data source provides information about the existing Aiven Kafka connector.
+     * Gets information about an Aiven for Apache Kafka® connector.
      * 
      * ## Example Usage
      * 
@@ -4540,10 +4546,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
-     *             .project(kafka_con_project1.project())
-     *             .serviceName(kafka_service1.serviceName())
-     *             .connectorName("kafka-es-con1")
+     *         final var kafka-os-connector = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .connectorName("kafka-opensearch-connector")
      *             .build());
      * 
      *     }
@@ -4557,7 +4563,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafkaConnector:getKafkaConnector", TypeShape.of(GetKafkaConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka connector data source provides information about the existing Aiven Kafka connector.
+     * Gets information about an Aiven for Apache Kafka® connector.
      * 
      * ## Example Usage
      * 
@@ -4584,10 +4590,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
-     *             .project(kafka_con_project1.project())
-     *             .serviceName(kafka_service1.serviceName())
-     *             .connectorName("kafka-es-con1")
+     *         final var kafka-os-connector = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .connectorName("kafka-opensearch-connector")
      *             .build());
      * 
      *     }
@@ -5325,7 +5331,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaTopic:getKafkaTopic", TypeShape.of(GetKafkaTopicResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka User data source provides information about the existing Aiven Kafka User.
+     * Gets information about an Aiven for Apache Kafka® service user.
      * 
      * ## Example Usage
      * 
@@ -5352,10 +5358,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .serviceName(exampleKafka.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-kafka-user")
      *             .build());
      * 
      *     }
@@ -5369,7 +5375,7 @@ public final class AivenFunctions {
         return getKafkaUser(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka User data source provides information about the existing Aiven Kafka User.
+     * Gets information about an Aiven for Apache Kafka® service user.
      * 
      * ## Example Usage
      * 
@@ -5396,10 +5402,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .serviceName(exampleKafka.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-kafka-user")
      *             .build());
      * 
      *     }
@@ -5413,7 +5419,7 @@ public final class AivenFunctions {
         return getKafkaUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka User data source provides information about the existing Aiven Kafka User.
+     * Gets information about an Aiven for Apache Kafka® service user.
      * 
      * ## Example Usage
      * 
@@ -5440,10 +5446,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .serviceName(exampleKafka.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-kafka-user")
      *             .build());
      * 
      *     }
@@ -5457,7 +5463,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafkaUser:getKafkaUser", TypeShape.of(GetKafkaUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka User data source provides information about the existing Aiven Kafka User.
+     * Gets information about an Aiven for Apache Kafka® service user.
      * 
      * ## Example Usage
      * 
@@ -5484,10 +5490,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .serviceName(exampleKafka.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-kafka-user")
      *             .build());
      * 
      *     }
@@ -10621,5 +10627,229 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetTransitGatewayVpcAttachmentResult> getTransitGatewayVpcAttachmentPlain(GetTransitGatewayVpcAttachmentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", TypeShape.of(GetTransitGatewayVpcAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Valkey service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleValkey = AivenFunctions.getValkey(GetValkeyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-valkey-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetValkeyResult> getValkey(GetValkeyArgs args) {
+        return getValkey(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven for Valkey service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleValkey = AivenFunctions.getValkey(GetValkeyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-valkey-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetValkeyResult> getValkeyPlain(GetValkeyPlainArgs args) {
+        return getValkeyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven for Valkey service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleValkey = AivenFunctions.getValkey(GetValkeyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-valkey-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetValkeyResult> getValkey(GetValkeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getValkey:getValkey", TypeShape.of(GetValkeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Valkey service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleValkey = AivenFunctions.getValkey(GetValkeyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-valkey-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetValkeyResult> getValkeyPlain(GetValkeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getValkey:getValkey", TypeShape.of(GetValkeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetValkeyUserResult> getValkeyUser(GetValkeyUserArgs args) {
+        return getValkeyUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetValkeyUserResult> getValkeyUserPlain(GetValkeyUserPlainArgs args) {
+        return getValkeyUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetValkeyUserResult> getValkeyUser(GetValkeyUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getValkeyUser:getValkeyUser", TypeShape.of(GetValkeyUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetValkeyUserResult> getValkeyUserPlain(GetValkeyUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getValkeyUser:getValkeyUser", TypeShape.of(GetValkeyUserResult.class), args, Utilities.withVersion(options));
     }
 }

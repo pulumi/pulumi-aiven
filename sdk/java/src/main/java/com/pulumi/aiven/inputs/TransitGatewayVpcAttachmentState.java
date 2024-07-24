@@ -34,24 +34,16 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC)
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     @Import(name="peerRegion")
     private @Nullable Output<String> peerRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC)
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
     public Optional<Output<String>> peerRegion() {
         return Optional.ofNullable(this.peerRegion);
     }
@@ -199,30 +191,22 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC)
+         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in the next major release.
-         * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder peerRegion(@Nullable Output<String> peerRegion) {
             $.peerRegion = peerRegion;
             return this;
         }
 
         /**
-         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC)
+         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in the next major release.
-         * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release. */
         public Builder peerRegion(String peerRegion) {
             return peerRegion(Output.of(peerRegion));
         }

@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaTopicTag {
     /**
-     * @return Topic tag key. Maximum length: `64`.
+     * @return Tag key. Maximum length: `64`.
      * 
      */
     private String key;
     /**
-     * @return Topic tag value. Maximum length: `256`.
+     * @return Tag value. Maximum length: `256`.
      * 
      */
     private @Nullable String value;
 
     private KafkaTopicTag() {}
     /**
-     * @return Topic tag key. Maximum length: `64`.
+     * @return Tag key. Maximum length: `64`.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Topic tag value. Maximum length: `256`.
+     * @return Tag value. Maximum length: `256`.
      * 
      */
     public Optional<String> value() {

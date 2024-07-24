@@ -31,14 +31,14 @@ public final class ClickhouseRoleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The role that is to be created. Changing this property forces recreation of the resource.
+     * The name of role. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return The role that is to be created. Changing this property forces recreation of the resource.
+     * @return The name of role. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> role() {
@@ -108,7 +108,7 @@ public final class ClickhouseRoleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param role The role that is to be created. Changing this property forces recreation of the resource.
+         * @param role The name of role. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ClickhouseRoleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param role The role that is to be created. Changing this property forces recreation of the resource.
+         * @param role The name of role. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

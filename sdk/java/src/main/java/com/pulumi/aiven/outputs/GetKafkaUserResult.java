@@ -11,12 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaUserResult {
     /**
-     * @return Access certificate for the user
+     * @return Access certificate for the user.
      * 
      */
     private String accessCert;
     /**
-     * @return Access certificate key for the user
+     * @return Access certificate key for the user.
      * 
      */
     private String accessKey;
@@ -26,7 +26,7 @@ public final class GetKafkaUserResult {
      */
     private String id;
     /**
-     * @return The password of the Kafka User.
+     * @return The Kafka service user&#39;s password.
      * 
      */
     private String password;
@@ -41,26 +41,26 @@ public final class GetKafkaUserResult {
      */
     private String serviceName;
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     private String type;
     /**
-     * @return The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
 
     private GetKafkaUserResult() {}
     /**
-     * @return Access certificate for the user
+     * @return Access certificate for the user.
      * 
      */
     public String accessCert() {
         return this.accessCert;
     }
     /**
-     * @return Access certificate key for the user
+     * @return Access certificate key for the user.
      * 
      */
     public String accessKey() {
@@ -74,7 +74,7 @@ public final class GetKafkaUserResult {
         return this.id;
     }
     /**
-     * @return The password of the Kafka User.
+     * @return The Kafka service user&#39;s password.
      * 
      */
     public String password() {
@@ -95,14 +95,14 @@ public final class GetKafkaUserResult {
         return this.serviceName;
     }
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {

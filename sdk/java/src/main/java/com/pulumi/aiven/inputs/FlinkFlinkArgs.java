@@ -17,14 +17,14 @@ public final class FlinkFlinkArgs extends com.pulumi.resources.ResourceArgs {
     public static final FlinkFlinkArgs Empty = new FlinkFlinkArgs();
 
     /**
-     * Host and Port of a Flink server
+     * The host and port of a Flink server.
      * 
      */
     @Import(name="hostPorts")
     private @Nullable Output<List<String>> hostPorts;
 
     /**
-     * @return Host and Port of a Flink server
+     * @return The host and port of a Flink server.
      * 
      */
     public Optional<Output<List<String>>> hostPorts() {
@@ -56,7 +56,7 @@ public final class FlinkFlinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostPorts Host and Port of a Flink server
+         * @param hostPorts The host and port of a Flink server.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class FlinkFlinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostPorts Host and Port of a Flink server
+         * @param hostPorts The host and port of a Flink server.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class FlinkFlinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostPorts Host and Port of a Flink server
+         * @param hostPorts The host and port of a Flink server.
          * 
          * @return builder
          * 

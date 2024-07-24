@@ -209,7 +209,7 @@ namespace Pulumi.Aiven
         /// Valkey server provided values
         /// </summary>
         [Output("valkey")]
-        public Output<Outputs.ValkeyValkey> Valkey { get; private set; } = null!;
+        public Output<Outputs.ValkeyValkey> ValkeyServer { get; private set; } = null!;
 
         /// <summary>
         /// Valkey user configurable settings
@@ -383,7 +383,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Valkey server provided values
         /// </summary>
-        public Input<Inputs.ValkeyValkeyArgs>? Valkey
+        public Input<Inputs.ValkeyValkeyArgs>? ValkeyServer
         {
             get => _valkey;
             set
@@ -619,7 +619,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Valkey server provided values
         /// </summary>
-        public Input<Inputs.ValkeyValkeyGetArgs>? Valkey
+        public Input<Inputs.ValkeyValkeyGetArgs>? ValkeyServer
         {
             get => _valkey;
             set

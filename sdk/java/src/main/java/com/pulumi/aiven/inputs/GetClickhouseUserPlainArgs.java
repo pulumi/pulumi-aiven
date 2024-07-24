@@ -44,14 +44,14 @@ public final class GetClickhouseUserPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private String username;
 
     /**
-     * @return The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {
@@ -107,7 +107,7 @@ public final class GetClickhouseUserPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param username The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+         * @param username The name of the ClickHouse user. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

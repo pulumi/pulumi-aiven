@@ -16,7 +16,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaTopicResult {
     /**
-     * @return Kafka topic configuration.
+     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      * 
      */
     private List<GetKafkaTopicConfig> configs;
@@ -46,7 +46,7 @@ public final class GetKafkaTopicResult {
      */
     private String serviceName;
     /**
-     * @return Tags for the Kafka topic.
+     * @return Tags for the topic.
      * 
      */
     private List<GetKafkaTopicTag> tags;
@@ -59,7 +59,7 @@ public final class GetKafkaTopicResult {
 
     private GetKafkaTopicResult() {}
     /**
-     * @return Kafka topic configuration.
+     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      * 
      */
     public List<GetKafkaTopicConfig> configs() {
@@ -101,7 +101,7 @@ public final class GetKafkaTopicResult {
         return this.serviceName;
     }
     /**
-     * @return Tags for the Kafka topic.
+     * @return Tags for the topic.
      * 
      */
     public List<GetKafkaTopicTag> tags() {

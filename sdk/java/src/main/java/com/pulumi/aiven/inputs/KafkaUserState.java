@@ -16,14 +16,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     public static final KafkaUserState Empty = new KafkaUserState();
 
     /**
-     * Access certificate for the user
+     * Access certificate for the user.
      * 
      */
     @Import(name="accessCert")
     private @Nullable Output<String> accessCert;
 
     /**
-     * @return Access certificate for the user
+     * @return Access certificate for the user.
      * 
      */
     public Optional<Output<String>> accessCert() {
@@ -31,14 +31,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access certificate key for the user
+     * Access certificate key for the user.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return Access certificate key for the user
+     * @return Access certificate key for the user.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -46,14 +46,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the Kafka User.
+     * The Kafka service user&#39;s password.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the Kafka User.
+     * @return The Kafka service user&#39;s password.
      * 
      */
     public Optional<Output<String>> password() {
@@ -91,14 +91,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public Optional<Output<String>> type() {
@@ -106,14 +106,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -151,7 +151,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert Access certificate for the user
+         * @param accessCert Access certificate for the user.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert Access certificate for the user
+         * @param accessCert Access certificate for the user.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey Access certificate key for the user
+         * @param accessKey Access certificate key for the user.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey Access certificate key for the user
+         * @param accessKey Access certificate key for the user.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the Kafka User.
+         * @param password The Kafka service user&#39;s password.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the Kafka User.
+         * @param password The Kafka service user&#39;s password.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the user account. Tells whether the user is the primary account or a regular account.
+         * @param type User account type, such as primary or regular account.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the user account. Tells whether the user is the primary account or a regular account.
+         * @param type User account type, such as primary or regular account.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

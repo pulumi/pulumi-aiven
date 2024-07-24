@@ -14,14 +14,14 @@ public final class GetClickhouseDatabasePlainArgs extends com.pulumi.resources.I
     public static final GetClickhouseDatabasePlainArgs Empty = new GetClickhouseDatabasePlainArgs();
 
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse database. Changing this property forces recreation of the resource.
      * 
      */
     public String name() {
@@ -85,7 +85,7 @@ public final class GetClickhouseDatabasePlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param name The name of the Clickhouse database. Changing this property forces recreation of the resource.
+         * @param name The name of the ClickHouse database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

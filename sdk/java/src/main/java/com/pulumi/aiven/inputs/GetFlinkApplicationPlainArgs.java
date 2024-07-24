@@ -14,14 +14,14 @@ public final class GetFlinkApplicationPlainArgs extends com.pulumi.resources.Inv
     public static final GetFlinkApplicationPlainArgs Empty = new GetFlinkApplicationPlainArgs();
 
     /**
-     * Application name
+     * The name of the application.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return Application name
+     * @return The name of the application.
      * 
      */
     public String name() {
@@ -85,7 +85,7 @@ public final class GetFlinkApplicationPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param name Application name
+         * @param name The name of the application.
          * 
          * @return builder
          * 

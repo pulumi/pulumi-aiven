@@ -61,12 +61,44 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
         return Optional.ofNullable(this.datacenter);
     }
 
+    /**
+     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     * 
+     */
+    @Import(name="readRequestTimeoutInMs")
+    private @Nullable Output<Integer> readRequestTimeoutInMs;
+
+    /**
+     * @return How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     * 
+     */
+    public Optional<Output<Integer>> readRequestTimeoutInMs() {
+        return Optional.ofNullable(this.readRequestTimeoutInMs);
+    }
+
+    /**
+     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     * 
+     */
+    @Import(name="writeRequestTimeoutInMs")
+    private @Nullable Output<Integer> writeRequestTimeoutInMs;
+
+    /**
+     * @return How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     * 
+     */
+    public Optional<Output<Integer>> writeRequestTimeoutInMs() {
+        return Optional.ofNullable(this.writeRequestTimeoutInMs);
+    }
+
     private CassandraCassandraUserConfigCassandraArgs() {}
 
     private CassandraCassandraUserConfigCassandraArgs(CassandraCassandraUserConfigCassandraArgs $) {
         this.batchSizeFailThresholdInKb = $.batchSizeFailThresholdInKb;
         this.batchSizeWarnThresholdInKb = $.batchSizeWarnThresholdInKb;
         this.datacenter = $.datacenter;
+        this.readRequestTimeoutInMs = $.readRequestTimeoutInMs;
+        this.writeRequestTimeoutInMs = $.writeRequestTimeoutInMs;
     }
 
     public static Builder builder() {
@@ -148,6 +180,48 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
          */
         public Builder datacenter(String datacenter) {
             return datacenter(Output.of(datacenter));
+        }
+
+        /**
+         * @param readRequestTimeoutInMs How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readRequestTimeoutInMs(@Nullable Output<Integer> readRequestTimeoutInMs) {
+            $.readRequestTimeoutInMs = readRequestTimeoutInMs;
+            return this;
+        }
+
+        /**
+         * @param readRequestTimeoutInMs How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readRequestTimeoutInMs(Integer readRequestTimeoutInMs) {
+            return readRequestTimeoutInMs(Output.of(readRequestTimeoutInMs));
+        }
+
+        /**
+         * @param writeRequestTimeoutInMs How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writeRequestTimeoutInMs(@Nullable Output<Integer> writeRequestTimeoutInMs) {
+            $.writeRequestTimeoutInMs = writeRequestTimeoutInMs;
+            return this;
+        }
+
+        /**
+         * @param writeRequestTimeoutInMs How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writeRequestTimeoutInMs(Integer writeRequestTimeoutInMs) {
+            return writeRequestTimeoutInMs(Output.of(writeRequestTimeoutInMs));
         }
 
         public CassandraCassandraUserConfigCassandraArgs build() {

@@ -18,14 +18,14 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
     public static final FlinkApplicationDeploymentState Empty = new FlinkApplicationDeploymentState();
 
     /**
-     * Application ID
+     * Application ID.
      * 
      */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public Optional<Output<String>> applicationId() {
@@ -33,14 +33,14 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
     }
 
     /**
-     * Application deployment creation time
+     * Application deployment creation time.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Application deployment creation time
+     * @return Application deployment creation time.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -48,14 +48,14 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
     }
 
     /**
-     * Application deployment creator
+     * The user who deployed the application.
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
     /**
-     * @return Application deployment creator
+     * @return The user who deployed the application.
      * 
      */
     public Optional<Output<String>> createdBy() {
@@ -63,14 +63,14 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
     }
 
     /**
-     * Flink Job parallelism
+     * The number of parallel instances for the task.
      * 
      */
     @Import(name="parallelism")
     private @Nullable Output<Integer> parallelism;
 
     /**
-     * @return Flink Job parallelism
+     * @return The number of parallel instances for the task.
      * 
      */
     public Optional<Output<Integer>> parallelism() {
@@ -93,14 +93,14 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
     }
 
     /**
-     * Specifies whether a Flink Job is restarted in case it fails
+     * Restart a Flink job if it fails.
      * 
      */
     @Import(name="restartEnabled")
     private @Nullable Output<Boolean> restartEnabled;
 
     /**
-     * @return Specifies whether a Flink Job is restarted in case it fails
+     * @return Restart a Flink job if it fails.
      * 
      */
     public Optional<Output<Boolean>> restartEnabled() {
@@ -123,14 +123,14 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
     }
 
     /**
-     * Job savepoint
+     * The savepoint to deploy from.
      * 
      */
     @Import(name="startingSavepoint")
     private @Nullable Output<String> startingSavepoint;
 
     /**
-     * @return Job savepoint
+     * @return The savepoint to deploy from.
      * 
      */
     public Optional<Output<String>> startingSavepoint() {
@@ -138,14 +138,14 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
     }
 
     /**
-     * ApplicationVersion ID
+     * Application version ID.
      * 
      */
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
     /**
-     * @return ApplicationVersion ID
+     * @return Application version ID.
      * 
      */
     public Optional<Output<String>> versionId() {
@@ -185,7 +185,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param applicationId Application ID
+         * @param applicationId Application ID.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param applicationId Application ID
+         * @param applicationId Application ID.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param createdAt Application deployment creation time
+         * @param createdAt Application deployment creation time.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param createdAt Application deployment creation time
+         * @param createdAt Application deployment creation time.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param createdBy Application deployment creator
+         * @param createdBy The user who deployed the application.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param createdBy Application deployment creator
+         * @param createdBy The user who deployed the application.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param parallelism Flink Job parallelism
+         * @param parallelism The number of parallel instances for the task.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param parallelism Flink Job parallelism
+         * @param parallelism The number of parallel instances for the task.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param restartEnabled Specifies whether a Flink Job is restarted in case it fails
+         * @param restartEnabled Restart a Flink job if it fails.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param restartEnabled Specifies whether a Flink Job is restarted in case it fails
+         * @param restartEnabled Restart a Flink job if it fails.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param startingSavepoint Job savepoint
+         * @param startingSavepoint The savepoint to deploy from.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param startingSavepoint Job savepoint
+         * @param startingSavepoint The savepoint to deploy from.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param versionId ApplicationVersion ID
+         * @param versionId Application version ID.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param versionId ApplicationVersion ID
+         * @param versionId Application version ID.
          * 
          * @return builder
          * 

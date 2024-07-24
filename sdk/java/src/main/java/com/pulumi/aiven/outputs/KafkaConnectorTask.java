@@ -18,7 +18,7 @@ public final class KafkaConnectorTask {
      */
     private @Nullable String connector;
     /**
-     * @return The task id of the task.
+     * @return The task ID of the task.
      * 
      */
     private @Nullable Integer task;
@@ -32,7 +32,7 @@ public final class KafkaConnectorTask {
         return Optional.ofNullable(this.connector);
     }
     /**
-     * @return The task id of the task.
+     * @return The task ID of the task.
      * 
      */
     public Optional<Integer> task() {

@@ -146,6 +146,16 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer ismHistoryRolloverRetentionPeriod;
     /**
+     * @return Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * 
+     */
+    private @Nullable Boolean knnMemoryCircuitBreakerEnabled;
+    /**
+     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * 
+     */
+    private @Nullable Integer knnMemoryCircuitBreakerLimit;
+    /**
      * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      * 
      */
@@ -410,6 +420,20 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.ismHistoryRolloverRetentionPeriod);
     }
     /**
+     * @return Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * 
+     */
+    public Optional<Boolean> knnMemoryCircuitBreakerEnabled() {
+        return Optional.ofNullable(this.knnMemoryCircuitBreakerEnabled);
+    }
+    /**
+     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * 
+     */
+    public Optional<Integer> knnMemoryCircuitBreakerLimit() {
+        return Optional.ofNullable(this.knnMemoryCircuitBreakerLimit);
+    }
+    /**
      * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      * 
      */
@@ -557,6 +581,8 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Integer ismHistoryMaxDocs;
         private @Nullable Integer ismHistoryRolloverCheckPeriod;
         private @Nullable Integer ismHistoryRolloverRetentionPeriod;
+        private @Nullable Boolean knnMemoryCircuitBreakerEnabled;
+        private @Nullable Integer knnMemoryCircuitBreakerLimit;
         private @Nullable Boolean overrideMainResponseVersion;
         private @Nullable Boolean pluginsAlertingFilterByBackendRoles;
         private @Nullable List<String> reindexRemoteWhitelists;
@@ -602,6 +628,8 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     	      this.ismHistoryMaxDocs = defaults.ismHistoryMaxDocs;
     	      this.ismHistoryRolloverCheckPeriod = defaults.ismHistoryRolloverCheckPeriod;
     	      this.ismHistoryRolloverRetentionPeriod = defaults.ismHistoryRolloverRetentionPeriod;
+    	      this.knnMemoryCircuitBreakerEnabled = defaults.knnMemoryCircuitBreakerEnabled;
+    	      this.knnMemoryCircuitBreakerLimit = defaults.knnMemoryCircuitBreakerLimit;
     	      this.overrideMainResponseVersion = defaults.overrideMainResponseVersion;
     	      this.pluginsAlertingFilterByBackendRoles = defaults.pluginsAlertingFilterByBackendRoles;
     	      this.reindexRemoteWhitelists = defaults.reindexRemoteWhitelists;
@@ -777,6 +805,18 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder knnMemoryCircuitBreakerEnabled(@Nullable Boolean knnMemoryCircuitBreakerEnabled) {
+
+            this.knnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder knnMemoryCircuitBreakerLimit(@Nullable Integer knnMemoryCircuitBreakerLimit) {
+
+            this.knnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder overrideMainResponseVersion(@Nullable Boolean overrideMainResponseVersion) {
 
             this.overrideMainResponseVersion = overrideMainResponseVersion;
@@ -903,6 +943,8 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             _resultValue.ismHistoryMaxDocs = ismHistoryMaxDocs;
             _resultValue.ismHistoryRolloverCheckPeriod = ismHistoryRolloverCheckPeriod;
             _resultValue.ismHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
+            _resultValue.knnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
+            _resultValue.knnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
             _resultValue.overrideMainResponseVersion = overrideMainResponseVersion;
             _resultValue.pluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
             _resultValue.reindexRemoteWhitelists = reindexRemoteWhitelists;

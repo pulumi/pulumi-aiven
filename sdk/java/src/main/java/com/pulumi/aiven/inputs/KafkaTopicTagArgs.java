@@ -17,14 +17,14 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
     public static final KafkaTopicTagArgs Empty = new KafkaTopicTagArgs();
 
     /**
-     * Topic tag key. Maximum length: `64`.
+     * Tag key. Maximum length: `64`.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Topic tag key. Maximum length: `64`.
+     * @return Tag key. Maximum length: `64`.
      * 
      */
     public Output<String> key() {
@@ -32,14 +32,14 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Topic tag value. Maximum length: `256`.
+     * Tag value. Maximum length: `256`.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Topic tag value. Maximum length: `256`.
+     * @return Tag value. Maximum length: `256`.
      * 
      */
     public Optional<Output<String>> value() {
@@ -72,7 +72,7 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Topic tag key. Maximum length: `64`.
+         * @param key Tag key. Maximum length: `64`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Topic tag key. Maximum length: `64`.
+         * @param key Tag key. Maximum length: `64`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Topic tag value. Maximum length: `256`.
+         * @param value Tag value. Maximum length: `256`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Topic tag value. Maximum length: `256`.
+         * @param value Tag value. Maximum length: `256`.
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The Clickhouse User resource allows the creation and management of Aiven Clikhouse Users.
+ * Creates and manages a ClickHouse user.
  * 
  * ## Example Usage
  * 
@@ -43,10 +43,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ch_user = new ClickhouseUser("ch-user", ClickhouseUserArgs.builder()
- *             .project(myproject.project())
- *             .serviceName(myservice.serviceName())
- *             .username("<USERNAME>")
+ *         var exampleUser = new ClickhouseUser("exampleUser", ClickhouseUserArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleService.serviceName())
+ *             .username("analyst")
  *             .build());
  * 
  *     }
@@ -58,21 +58,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
+ * $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/clickhouseUser:ClickhouseUser")
 public class ClickhouseUser extends com.pulumi.resources.CustomResource {
     /**
-     * The password of the clickhouse user.
+     * The password of the ClickHouse user.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the clickhouse user.
+     * @return The password of the ClickHouse user.
      * 
      */
     public Output<String> password() {
@@ -93,14 +93,14 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Indicates if a clickhouse user is required
+     * Indicates if a ClickHouse user is required.
      * 
      */
     @Export(name="required", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> required;
 
     /**
-     * @return Indicates if a clickhouse user is required
+     * @return Indicates if a ClickHouse user is required.
      * 
      */
     public Output<Boolean> required() {
@@ -121,28 +121,28 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
         return this.username;
     }
     /**
-     * UUID of the clickhouse user.
+     * UUID of the ClickHouse user.
      * 
      */
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**
-     * @return UUID of the clickhouse user.
+     * @return UUID of the ClickHouse user.
      * 
      */
     public Output<String> uuid() {

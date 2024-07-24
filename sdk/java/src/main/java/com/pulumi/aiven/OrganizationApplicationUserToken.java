@@ -256,14 +256,14 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
         return this.organizationId;
     }
     /**
-     * Restricts the scopes for this token.
+     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> scopes;
 
     /**
-     * @return Restricts the scopes for this token.
+     * @return Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
      * 
      */
     public Output<Optional<List<String>>> scopes() {

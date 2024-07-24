@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FlinkFlink {
     /**
-     * @return Host and Port of a Flink server
+     * @return The host and port of a Flink server.
      * 
      */
     private @Nullable List<String> hostPorts;
 
     private FlinkFlink() {}
     /**
-     * @return Host and Port of a Flink server
+     * @return The host and port of a Flink server.
      * 
      */
     public List<String> hostPorts() {

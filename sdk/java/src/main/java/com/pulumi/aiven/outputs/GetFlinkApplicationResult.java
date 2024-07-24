@@ -11,17 +11,17 @@ import java.util.Objects;
 @CustomType
 public final class GetFlinkApplicationResult {
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     private String applicationId;
     /**
-     * @return Application creation time
+     * @return Application creation time.
      * 
      */
     private String createdAt;
     /**
-     * @return Application creator
+     * @return The user who created the application.
      * 
      */
     private String createdBy;
@@ -31,7 +31,7 @@ public final class GetFlinkApplicationResult {
      */
     private String id;
     /**
-     * @return Application name
+     * @return The name of the application.
      * 
      */
     private String name;
@@ -46,33 +46,33 @@ public final class GetFlinkApplicationResult {
      */
     private String serviceName;
     /**
-     * @return Application update time
+     * @return When the application was updated.
      * 
      */
     private String updatedAt;
     /**
-     * @return Application updater
+     * @return The user who updated the application.
      * 
      */
     private String updatedBy;
 
     private GetFlinkApplicationResult() {}
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public String applicationId() {
         return this.applicationId;
     }
     /**
-     * @return Application creation time
+     * @return Application creation time.
      * 
      */
     public String createdAt() {
         return this.createdAt;
     }
     /**
-     * @return Application creator
+     * @return The user who created the application.
      * 
      */
     public String createdBy() {
@@ -86,7 +86,7 @@ public final class GetFlinkApplicationResult {
         return this.id;
     }
     /**
-     * @return Application name
+     * @return The name of the application.
      * 
      */
     public String name() {
@@ -107,14 +107,14 @@ public final class GetFlinkApplicationResult {
         return this.serviceName;
     }
     /**
-     * @return Application update time
+     * @return When the application was updated.
      * 
      */
     public String updatedAt() {
         return this.updatedAt;
     }
     /**
-     * @return Application updater
+     * @return The user who updated the application.
      * 
      */
     public String updatedBy() {

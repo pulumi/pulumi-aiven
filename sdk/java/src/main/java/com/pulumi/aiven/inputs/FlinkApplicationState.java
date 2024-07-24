@@ -16,14 +16,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     public static final FlinkApplicationState Empty = new FlinkApplicationState();
 
     /**
-     * Application ID
+     * Application ID.
      * 
      */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public Optional<Output<String>> applicationId() {
@@ -31,14 +31,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Application creation time
+     * Application creation time.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Application creation time
+     * @return Application creation time.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -46,14 +46,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Application creator
+     * The user who created the application.
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
     /**
-     * @return Application creator
+     * @return The user who created the application.
      * 
      */
     public Optional<Output<String>> createdBy() {
@@ -61,14 +61,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Application name
+     * The name of the application.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Application name
+     * @return The name of the application.
      * 
      */
     public Optional<Output<String>> name() {
@@ -106,14 +106,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Application update time
+     * When the application was updated.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return Application update time
+     * @return When the application was updated.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -121,14 +121,14 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Application updater
+     * The user who updated the application.
      * 
      */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
     /**
-     * @return Application updater
+     * @return The user who updated the application.
      * 
      */
     public Optional<Output<String>> updatedBy() {
@@ -167,7 +167,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param applicationId Application ID
+         * @param applicationId Application ID.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param applicationId Application ID
+         * @param applicationId Application ID.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdAt Application creation time
+         * @param createdAt Application creation time.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdAt Application creation time
+         * @param createdAt Application creation time.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdBy Application creator
+         * @param createdBy The user who created the application.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdBy Application creator
+         * @param createdBy The user who created the application.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Application name
+         * @param name The name of the application.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Application name
+         * @param name The name of the application.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updatedAt Application update time
+         * @param updatedAt When the application was updated.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updatedAt Application update time
+         * @param updatedAt When the application was updated.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updatedBy Application updater
+         * @param updatedBy The user who updated the application.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class FlinkApplicationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updatedBy Application updater
+         * @param updatedBy The user who updated the application.
          * 
          * @return builder
          * 

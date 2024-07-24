@@ -14,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClickhouseGrantPrivilegeGrant {
     /**
-     * @return The column that the grant refers to. Changing this property forces recreation of the resource.
+     * @return The column to grant access to. Changing this property forces recreation of the resource.
      * 
      */
     private @Nullable String column;
     /**
-     * @return The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String database;
     /**
-     * @return The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. Changing this property forces recreation of the resource.
+     * @return The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
      * 
      */
     private @Nullable String privilege;
     /**
-     * @return The table that the grant refers to. Changing this property forces recreation of the resource.
+     * @return The table to grant access to. Changing this property forces recreation of the resource.
      * 
      */
     private @Nullable String table;
     /**
-     * @return If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+     * @return Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
      * 
      */
     private @Nullable Boolean withGrant;
 
     private ClickhouseGrantPrivilegeGrant() {}
     /**
-     * @return The column that the grant refers to. Changing this property forces recreation of the resource.
+     * @return The column to grant access to. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<String> column() {
         return Optional.ofNullable(this.column);
     }
     /**
-     * @return The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String database() {
         return this.database;
     }
     /**
-     * @return The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. Changing this property forces recreation of the resource.
+     * @return The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
      * 
      */
     public Optional<String> privilege() {
         return Optional.ofNullable(this.privilege);
     }
     /**
-     * @return The table that the grant refers to. Changing this property forces recreation of the resource.
+     * @return The table to grant access to. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<String> table() {
         return Optional.ofNullable(this.table);
     }
     /**
-     * @return If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+     * @return Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Boolean> withGrant() {
