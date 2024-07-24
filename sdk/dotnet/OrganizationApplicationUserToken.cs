@@ -126,7 +126,7 @@ namespace Pulumi.Aiven
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Restricts the scopes for this token.
+        /// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Restricts the scopes for this token.
+        /// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -335,7 +335,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Restricts the scopes for this token.
+        /// Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         /// </summary>
         public InputList<string> Scopes
         {

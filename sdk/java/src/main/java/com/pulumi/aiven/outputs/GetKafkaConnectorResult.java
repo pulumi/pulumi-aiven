@@ -14,12 +14,12 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaConnectorResult {
     /**
-     * @return The Kafka Connector configuration parameters.
+     * @return The Kafka connector configuration parameters.
      * 
      */
     private Map<String,String> config;
     /**
-     * @return The kafka connector name. Changing this property forces recreation of the resource.
+     * @return The Kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     private String connectorName;
@@ -54,7 +54,7 @@ public final class GetKafkaConnectorResult {
      */
     private String pluginType;
     /**
-     * @return The version of the kafka connector.
+     * @return The version of the Kafka connector.
      * 
      */
     private String pluginVersion;
@@ -76,14 +76,14 @@ public final class GetKafkaConnectorResult {
 
     private GetKafkaConnectorResult() {}
     /**
-     * @return The Kafka Connector configuration parameters.
+     * @return The Kafka connector configuration parameters.
      * 
      */
     public Map<String,String> config() {
         return this.config;
     }
     /**
-     * @return The kafka connector name. Changing this property forces recreation of the resource.
+     * @return The Kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     public String connectorName() {
@@ -132,7 +132,7 @@ public final class GetKafkaConnectorResult {
         return this.pluginType;
     }
     /**
-     * @return The version of the kafka connector.
+     * @return The version of the Kafka connector.
      * 
      */
     public String pluginVersion() {

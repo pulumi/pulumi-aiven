@@ -16,14 +16,14 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
     public static final KafkaAclState Empty = new KafkaAclState();
 
     /**
-     * Kafka ACL ID
+     * Kafka ACL ID.
      * 
      */
     @Import(name="aclId")
     private @Nullable Output<String> aclId;
 
     /**
-     * @return Kafka ACL ID
+     * @return Kafka ACL ID.
      * 
      */
     public Optional<Output<String>> aclId() {
@@ -31,14 +31,14 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="permission")
     private @Nullable Output<String> permission;
 
     /**
-     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * @return Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> permission() {
@@ -76,14 +76,14 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="topic")
     private @Nullable Output<String> topic;
 
     /**
-     * @return Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Topics that the permissions apply to. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> topic() {
@@ -91,14 +91,14 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Usernames to grant permissions to. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -135,7 +135,7 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclId Kafka ACL ID
+         * @param aclId Kafka ACL ID.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclId Kafka ACL ID
+         * @param aclId Kafka ACL ID.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permission Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+         * @param permission Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permission Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+         * @param permission Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+         * @param topic Topics that the permissions apply to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+         * @param topic Topics that the permissions apply to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+         * @param username Usernames to grant permissions to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class KafkaAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+         * @param username Usernames to grant permissions to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

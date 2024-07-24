@@ -14,7 +14,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
+ * Creates and manages an [access control list](https://aiven.io/docs/products/kafka/concepts/acl) (ACL) entry for an Aiven for Apache Kafka® service.
+ * 
+ * ACL entries grant users rights to produce, consume, and manage Kafka topics.
  * 
  * ## Example Usage
  * 
@@ -41,12 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytestacl = new KafkaAcl("mytestacl", KafkaAclArgs.builder()
- *             .project(myproject.project())
- *             .serviceName(myservice.serviceName())
- *             .topic("<TOPIC_NAME_PATTERN>")
+ *         var exampleAcl = new KafkaAcl("exampleAcl", KafkaAclArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleKafka.serviceName())
+ *             .topic("example-topic")
  *             .permission("admin")
- *             .username("<USERNAME_PATTERN>")
+ *             .username("example-user")
  *             .build());
  * 
  *     }
@@ -58,35 +60,35 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl PROJECT/SERVICE_NAME/ID
+ * $ pulumi import aiven:index/kafkaAcl:KafkaAcl example_acl PROJECT/SERVICE_NAME/ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/kafkaAcl:KafkaAcl")
 public class KafkaAcl extends com.pulumi.resources.CustomResource {
     /**
-     * Kafka ACL ID
+     * Kafka ACL ID.
      * 
      */
     @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 
     /**
-     * @return Kafka ACL ID
+     * @return Kafka ACL ID.
      * 
      */
     public Output<String> aclId() {
         return this.aclId;
     }
     /**
-     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
-     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * @return Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> permission() {
@@ -121,28 +123,28 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
 
     /**
-     * @return Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Topics that the permissions apply to. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> topic() {
         return this.topic;
     }
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Usernames to grant permissions to. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

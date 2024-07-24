@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+ * Creates and manages the deployment of an Aiven for Apache Flink® application.
  * 
  * ## Example Usage
  * 
@@ -29,6 +29,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.FlinkApplication;
+ * import com.pulumi.aiven.FlinkApplicationArgs;
+ * import com.pulumi.aiven.FlinkApplicationVersion;
+ * import com.pulumi.aiven.FlinkApplicationVersionArgs;
+ * import com.pulumi.aiven.inputs.FlinkApplicationVersionSinkArgs;
+ * import com.pulumi.aiven.inputs.FlinkApplicationVersionSourceArgs;
  * import com.pulumi.aiven.FlinkApplicationDeployment;
  * import com.pulumi.aiven.FlinkApplicationDeploymentArgs;
  * import java.util.List;
@@ -44,11 +50,56 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var deployment = new FlinkApplicationDeployment("deployment", FlinkApplicationDeploymentArgs.builder()
- *             .project(foo.project())
- *             .serviceName(fooAivenFlink.serviceName())
- *             .applicationId(fooApp.applicationId())
- *             .versionId(fooAppVersion.applicationVersionId())
+ *         var exampleApp = new FlinkApplication("exampleApp", FlinkApplicationArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName("example-flink-service")
+ *             .name("example-app")
+ *             .build());
+ * 
+ *         var main = new FlinkApplicationVersion("main", FlinkApplicationVersionArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleFlink.serviceName())
+ *             .applicationId(exampleApp.applicationId())
+ *             .statement("""
+ *     INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
+ *             """)
+ *             .sinks(FlinkApplicationVersionSinkArgs.builder()
+ *                 .createTable("""
+ *       CREATE TABLE kafka_known_pizza (
+ *         shop STRING,
+ *         name STRING
+ *       ) WITH (
+ *         'connector' = 'kafka',
+ *         'properties.bootstrap.servers' = '',
+ *         'scan.startup.mode' = 'earliest-offset',
+ *         'topic' = 'sink_topic',
+ *         'value.format' = 'json'
+ *       )
+ *                 """)
+ *                 .integrationId(flinkToKafka.integrationId())
+ *                 .build())
+ *             .sources(FlinkApplicationVersionSourceArgs.builder()
+ *                 .createTable("""
+ *       CREATE TABLE kafka_pizza (
+ *         shop STRING,
+ *         name STRING
+ *       ) WITH (
+ *         'connector' = 'kafka',
+ *         'properties.bootstrap.servers' = '',
+ *         'scan.startup.mode' = 'earliest-offset',
+ *         'topic' = 'source_topic',
+ *         'value.format' = 'json'
+ *       )
+ *                 """)
+ *                 .integrationId(flinkToKafka.integrationId())
+ *                 .build())
+ *             .build());
+ * 
+ *         var mainFlinkApplicationDeployment = new FlinkApplicationDeployment("mainFlinkApplicationDeployment", FlinkApplicationDeploymentArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleFlink.serviceName())
+ *             .applicationId(exampleApp.applicationId())
+ *             .versionId(main.applicationVersionId())
  *             .build());
  * 
  *     }
@@ -60,63 +111,63 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+ * $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment")
 public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResource {
     /**
-     * Application ID
+     * Application ID.
      * 
      */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public Output<String> applicationId() {
         return this.applicationId;
     }
     /**
-     * Application deployment creation time
+     * Application deployment creation time.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Application deployment creation time
+     * @return Application deployment creation time.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * Application deployment creator
+     * The user who deployed the application.
      * 
      */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
-     * @return Application deployment creator
+     * @return The user who deployed the application.
      * 
      */
     public Output<String> createdBy() {
         return this.createdBy;
     }
     /**
-     * Flink Job parallelism
+     * The number of parallel instances for the task.
      * 
      */
     @Export(name="parallelism", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> parallelism;
 
     /**
-     * @return Flink Job parallelism
+     * @return The number of parallel instances for the task.
      * 
      */
     public Output<Optional<Integer>> parallelism() {
@@ -137,14 +188,14 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
         return this.project;
     }
     /**
-     * Specifies whether a Flink Job is restarted in case it fails
+     * Restart a Flink job if it fails.
      * 
      */
     @Export(name="restartEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> restartEnabled;
 
     /**
-     * @return Specifies whether a Flink Job is restarted in case it fails
+     * @return Restart a Flink job if it fails.
      * 
      */
     public Output<Optional<Boolean>> restartEnabled() {
@@ -165,28 +216,28 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
         return this.serviceName;
     }
     /**
-     * Job savepoint
+     * The savepoint to deploy from.
      * 
      */
     @Export(name="startingSavepoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> startingSavepoint;
 
     /**
-     * @return Job savepoint
+     * @return The savepoint to deploy from.
      * 
      */
     public Output<Optional<String>> startingSavepoint() {
         return Codegen.optional(this.startingSavepoint);
     }
     /**
-     * ApplicationVersion ID
+     * Application version ID.
      * 
      */
     @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**
-     * @return ApplicationVersion ID
+     * @return Application version ID.
      * 
      */
     public Output<String> versionId() {

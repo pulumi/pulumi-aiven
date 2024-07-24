@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetFlinkApplication
     {
         /// <summary>
-        /// The Flink Application data source provides information about the existing Aiven Flink Application.
+        /// Gets information about an Aiven for Apache Flink® application.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app1 = Aiven.GetFlinkApplication.Invoke(new()
+        ///     var exampleApp = Aiven.GetFlinkApplication.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///         Name = "&lt;APPLICATION_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-flink-service",
+        ///         Name = "example-app",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlinkApplicationResult>("aiven:index/getFlinkApplication:getFlinkApplication", args ?? new GetFlinkApplicationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Flink Application data source provides information about the existing Aiven Flink Application.
+        /// Gets information about an Aiven for Apache Flink® application.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app1 = Aiven.GetFlinkApplication.Invoke(new()
+        ///     var exampleApp = Aiven.GetFlinkApplication.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///         Name = "&lt;APPLICATION_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-flink-service",
+        ///         Name = "example-app",
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Aiven
     public sealed class GetFlinkApplicationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Application name
+        /// The name of the application.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Aiven
     public sealed class GetFlinkApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Application name
+        /// The name of the application.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -122,15 +122,15 @@ namespace Pulumi.Aiven
     public sealed class GetFlinkApplicationResult
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         public readonly string ApplicationId;
         /// <summary>
-        /// Application creation time
+        /// Application creation time.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Application creator
+        /// The user who created the application.
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
@@ -138,7 +138,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Application name
+        /// The name of the application.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -150,11 +150,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Application update time
+        /// When the application was updated.
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
-        /// Application updater
+        /// The user who updated the application.
         /// </summary>
         public readonly string UpdatedBy;
 

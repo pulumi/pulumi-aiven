@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Flink Application resource allows the creation and management of Aiven Flink Applications.
+ * Creates and manages an [Aiven for Apache Flink® application](https://aiven.io/docs/products/flink/concepts/flink-applications).
  *
  * ## Example Usage
  *
@@ -13,17 +13,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = new aiven.FlinkApplication("foo", {
- *     project: fooAivenProject.project,
- *     serviceName: "flink-service-1",
- *     name: "my-flink-app",
+ * const exampleApp = new aiven.FlinkApplication("example_app", {
+ *     project: exampleProject.project,
+ *     serviceName: "example-flink-service",
+ *     name: "example-app",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp PROJECT/SERVICE/APPLICATION_NAME
+ * $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_NAME
  * ```
  */
 export class FlinkApplication extends pulumi.CustomResource {
@@ -55,19 +55,19 @@ export class FlinkApplication extends pulumi.CustomResource {
     }
 
     /**
-     * Application ID
+     * Application ID.
      */
     public /*out*/ readonly applicationId!: pulumi.Output<string>;
     /**
-     * Application creation time
+     * Application creation time.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Application creator
+     * The user who created the application.
      */
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
-     * Application name
+     * The name of the application.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -79,11 +79,11 @@ export class FlinkApplication extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Application update time
+     * When the application was updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * Application updater
+     * The user who updated the application.
      */
     public /*out*/ readonly updatedBy!: pulumi.Output<string>;
 
@@ -135,19 +135,19 @@ export class FlinkApplication extends pulumi.CustomResource {
  */
 export interface FlinkApplicationState {
     /**
-     * Application ID
+     * Application ID.
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * Application creation time
+     * Application creation time.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Application creator
+     * The user who created the application.
      */
     createdBy?: pulumi.Input<string>;
     /**
-     * Application name
+     * The name of the application.
      */
     name?: pulumi.Input<string>;
     /**
@@ -159,11 +159,11 @@ export interface FlinkApplicationState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Application update time
+     * When the application was updated.
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * Application updater
+     * The user who updated the application.
      */
     updatedBy?: pulumi.Input<string>;
 }
@@ -173,7 +173,7 @@ export interface FlinkApplicationState {
  */
 export interface FlinkApplicationArgs {
     /**
-     * Application name
+     * The name of the application.
      */
     name?: pulumi.Input<string>;
     /**

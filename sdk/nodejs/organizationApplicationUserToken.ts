@@ -111,7 +111,7 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * Restricts the scopes for this token.
+     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
      */
     public readonly scopes!: pulumi.Output<string[] | undefined>;
     /**
@@ -241,7 +241,7 @@ export interface OrganizationApplicationUserTokenState {
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * Restricts the scopes for this token.
+     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -275,7 +275,7 @@ export interface OrganizationApplicationUserTokenArgs {
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Restricts the scopes for this token.
+     * Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `staticIps`, and `user`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

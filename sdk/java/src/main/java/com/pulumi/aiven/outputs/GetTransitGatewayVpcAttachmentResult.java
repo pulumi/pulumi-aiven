@@ -24,7 +24,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
      */
     private String peerCloudAccount;
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
      * 
      */
     private String peerRegion;
@@ -75,7 +75,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
         return this.peerCloudAccount;
     }
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
      * 
      */
     public String peerRegion() {

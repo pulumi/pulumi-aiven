@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
+ * Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as members of a project.
  * 
  * ## Example Usage
  * 
@@ -116,14 +116,14 @@ public class OrganizationGroupProject extends com.pulumi.resources.CustomResourc
         return this.project;
     }
     /**
-     * Role assigned to all users in the group for the project.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
      * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
-     * @return Role assigned to all users in the group for the project.
+     * @return [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
      * 
      */
     public Output<String> role() {

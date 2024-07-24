@@ -5,7 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
+ * Creates and manages an Aiven for ClickHouse® database.
+ *
+ * > Tables cannot be created using Aiven Operator. To create a table,
+ * use the [Aiven Console or CLI](https://aiven.io/docs/products/clickhouse/howto/manage-databases-tables#create-a-table).
  *
  * ## Example Usage
  *
@@ -13,17 +16,25 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const clickhouseDb = new aiven.ClickhouseDatabase("clickhouse_db", {
- *     project: ch.project,
- *     serviceName: ch.serviceName,
- *     name: "my-ch-db",
+ * const exampleClickhouse = new aiven.Clickhouse("example_clickhouse", {
+ *     project: exampleProject.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "business-4",
+ *     serviceName: "example-clickhouse-service",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ * });
+ * const exampleDb = new aiven.ClickhouseDatabase("example_db", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     name: "example-database",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db PROJECT/SERVICE_NAME/NAME
+ * $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase example_db PROJECT/SERVICE_NAME/DATABASE_NAME
  * ```
  */
 export class ClickhouseDatabase extends pulumi.CustomResource {
@@ -55,7 +66,7 @@ export class ClickhouseDatabase extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -108,7 +119,7 @@ export class ClickhouseDatabase extends pulumi.CustomResource {
  */
 export interface ClickhouseDatabaseState {
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -127,7 +138,7 @@ export interface ClickhouseDatabaseState {
  */
 export interface ClickhouseDatabaseArgs {
     /**
-     * The name of the Clickhouse database. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse database. Changing this property forces recreation of the resource.
      */
     name?: pulumi.Input<string>;
     /**

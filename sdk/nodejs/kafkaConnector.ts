@@ -7,7 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka connectors resource allows the creation and management of Aiven Kafka connectors.
+ * Creates and manages Aiven for Apache Kafka® [connectors](https://aiven.io/docs/products/kafka/kafka-connect/concepts/list-of-connector-plugins).
+ * Source connectors let you import data from an external system into a Kafka topic. Sink connectors let you export data from a topic to an external system.
+ *
+ * You can use connectors with any Aiven for Apache Kafka® service that is integrated with an Aiven for Apache Kafka® Connect service.
  *
  * ## Example Usage
  *
@@ -15,18 +18,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kafka_os_con1 = new aiven.KafkaConnector("kafka-os-con1", {
- *     project: kafka_con_project1.project,
- *     serviceName: kafka_service1.serviceName,
- *     connectorName: "kafka-os-con1",
+ * const kafka_os_connector = new aiven.KafkaConnector("kafka-os-connector", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
+ *     connectorName: "kafka-opensearch-connector",
  *     config: {
- *         topics: kafka_topic1.topicName,
+ *         name: "kafka-opensearch-connector",
+ *         topics: exampleTopic.topicName,
  *         "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
  *         "type.name": "os-connector",
- *         name: "kafka-os-con1",
- *         "connection.url": os_service1.serviceUri,
- *         "connection.username": os_service1.serviceUsername,
- *         "connection.password": os_service1.servicePassword,
+ *         "connection.url": exampleOs.serviceUri,
+ *         "connection.username": exampleOs.serviceUsername,
+ *         "connection.password": exampleOs.servicePassword,
  *     },
  * });
  * ```
@@ -34,7 +37,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
+ * $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-connector PROJECT/SERVICE_NAME/CONNECTOR_NAME
  * ```
  */
 export class KafkaConnector extends pulumi.CustomResource {
@@ -66,11 +69,11 @@ export class KafkaConnector extends pulumi.CustomResource {
     }
 
     /**
-     * The Kafka Connector configuration parameters.
+     * The Kafka connector configuration parameters.
      */
     public readonly config!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The kafka connector name. Changing this property forces recreation of the resource.
+     * The Kafka connector name. Changing this property forces recreation of the resource.
      */
     public readonly connectorName!: pulumi.Output<string>;
     /**
@@ -94,7 +97,7 @@ export class KafkaConnector extends pulumi.CustomResource {
      */
     public /*out*/ readonly pluginType!: pulumi.Output<string>;
     /**
-     * The version of the kafka connector.
+     * The version of the Kafka connector.
      */
     public /*out*/ readonly pluginVersion!: pulumi.Output<string>;
     /**
@@ -170,11 +173,11 @@ export class KafkaConnector extends pulumi.CustomResource {
  */
 export interface KafkaConnectorState {
     /**
-     * The Kafka Connector configuration parameters.
+     * The Kafka connector configuration parameters.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The kafka connector name. Changing this property forces recreation of the resource.
+     * The Kafka connector name. Changing this property forces recreation of the resource.
      */
     connectorName?: pulumi.Input<string>;
     /**
@@ -198,7 +201,7 @@ export interface KafkaConnectorState {
      */
     pluginType?: pulumi.Input<string>;
     /**
-     * The version of the kafka connector.
+     * The version of the Kafka connector.
      */
     pluginVersion?: pulumi.Input<string>;
     /**
@@ -220,11 +223,11 @@ export interface KafkaConnectorState {
  */
 export interface KafkaConnectorArgs {
     /**
-     * The Kafka Connector configuration parameters.
+     * The Kafka connector configuration parameters.
      */
     config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The kafka connector name. Changing this property forces recreation of the resource.
+     * The Kafka connector name. Changing this property forces recreation of the resource.
      */
     connectorName: pulumi.Input<string>;
     /**

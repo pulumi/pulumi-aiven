@@ -21,14 +21,14 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
     public static final KafkaTopicState Empty = new KafkaTopicState();
 
     /**
-     * Kafka topic configuration.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      * 
      */
     @Import(name="config")
     private @Nullable Output<KafkaTopicConfigArgs> config;
 
     /**
-     * @return Kafka topic configuration.
+     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      * 
      */
     public Optional<Output<KafkaTopicConfigArgs>> config() {
@@ -96,14 +96,14 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags for the Kafka topic.
+     * Tags for the topic.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<KafkaTopicTagArgs>> tags;
 
     /**
-     * @return Tags for the Kafka topic.
+     * @return Tags for the topic.
      * 
      */
     public Optional<Output<List<KafkaTopicTagArgs>>> tags() {
@@ -164,7 +164,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config Kafka topic configuration.
+         * @param config [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config Kafka topic configuration.
+         * @param config [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for the Kafka topic.
+         * @param tags Tags for the topic.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for the Kafka topic.
+         * @param tags Tags for the topic.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for the Kafka topic.
+         * @param tags Tags for the topic.
          * 
          * @return builder
          * 

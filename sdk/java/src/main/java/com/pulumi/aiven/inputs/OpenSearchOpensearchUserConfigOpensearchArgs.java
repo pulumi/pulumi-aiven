@@ -410,6 +410,36 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * 
+     */
+    @Import(name="knnMemoryCircuitBreakerEnabled")
+    private @Nullable Output<Boolean> knnMemoryCircuitBreakerEnabled;
+
+    /**
+     * @return Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> knnMemoryCircuitBreakerEnabled() {
+        return Optional.ofNullable(this.knnMemoryCircuitBreakerEnabled);
+    }
+
+    /**
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * 
+     */
+    @Import(name="knnMemoryCircuitBreakerLimit")
+    private @Nullable Output<Integer> knnMemoryCircuitBreakerLimit;
+
+    /**
+     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * 
+     */
+    public Optional<Output<Integer>> knnMemoryCircuitBreakerLimit() {
+        return Optional.ofNullable(this.knnMemoryCircuitBreakerLimit);
+    }
+
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      * 
      */
@@ -678,6 +708,8 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.ismHistoryMaxDocs = $.ismHistoryMaxDocs;
         this.ismHistoryRolloverCheckPeriod = $.ismHistoryRolloverCheckPeriod;
         this.ismHistoryRolloverRetentionPeriod = $.ismHistoryRolloverRetentionPeriod;
+        this.knnMemoryCircuitBreakerEnabled = $.knnMemoryCircuitBreakerEnabled;
+        this.knnMemoryCircuitBreakerLimit = $.knnMemoryCircuitBreakerLimit;
         this.overrideMainResponseVersion = $.overrideMainResponseVersion;
         this.pluginsAlertingFilterByBackendRoles = $.pluginsAlertingFilterByBackendRoles;
         this.reindexRemoteWhitelists = $.reindexRemoteWhitelists;
@@ -1258,6 +1290,48 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder ismHistoryRolloverRetentionPeriod(Integer ismHistoryRolloverRetentionPeriod) {
             return ismHistoryRolloverRetentionPeriod(Output.of(ismHistoryRolloverRetentionPeriod));
+        }
+
+        /**
+         * @param knnMemoryCircuitBreakerEnabled Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnMemoryCircuitBreakerEnabled(@Nullable Output<Boolean> knnMemoryCircuitBreakerEnabled) {
+            $.knnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
+            return this;
+        }
+
+        /**
+         * @param knnMemoryCircuitBreakerEnabled Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnMemoryCircuitBreakerEnabled(Boolean knnMemoryCircuitBreakerEnabled) {
+            return knnMemoryCircuitBreakerEnabled(Output.of(knnMemoryCircuitBreakerEnabled));
+        }
+
+        /**
+         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnMemoryCircuitBreakerLimit(@Nullable Output<Integer> knnMemoryCircuitBreakerLimit) {
+            $.knnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
+            return this;
+        }
+
+        /**
+         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnMemoryCircuitBreakerLimit(Integer knnMemoryCircuitBreakerLimit) {
+            return knnMemoryCircuitBreakerLimit(Output.of(knnMemoryCircuitBreakerLimit));
         }
 
         /**

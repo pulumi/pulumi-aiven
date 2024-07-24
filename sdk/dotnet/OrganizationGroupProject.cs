@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
+    /// Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as members of a project.
     /// 
     /// ## Example Usage
     /// 
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Role assigned to all users in the group for the project.
+        /// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Role assigned to all users in the group for the project.
+        /// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Role assigned to all users in the group for the project.
+        /// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

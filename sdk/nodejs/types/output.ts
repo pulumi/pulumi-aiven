@@ -119,6 +119,14 @@ export interface CassandraCassandraUserConfigCassandra {
      * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: string;
+    /**
+     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     */
+    readRequestTimeoutInMs?: number;
+    /**
+     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     */
+    writeRequestTimeoutInMs?: number;
 }
 
 export interface CassandraCassandraUserConfigIpFilterObject {
@@ -212,7 +220,7 @@ export interface CassandraTechEmail {
 
 export interface ClickhouseClickhouse {
     /**
-     * Clickhouse server URIs.
+     * ClickHouse server URIs.
      */
     uris: string[];
 }
@@ -373,41 +381,41 @@ export interface ClickhouseComponent {
 
 export interface ClickhouseGrantPrivilegeGrant {
     /**
-     * The column that the grant refers to. Changing this property forces recreation of the resource.
+     * The column to grant access to. Changing this property forces recreation of the resource.
      */
     column?: string;
     /**
-     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     database: string;
     /**
-     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
+     * The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
      */
     privilege?: string;
     /**
-     * The table that the grant refers to. Changing this property forces recreation of the resource.
+     * The table to grant access to. Changing this property forces recreation of the resource.
      */
     table?: string;
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+     * Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
      */
     withGrant?: boolean;
 }
 
 export interface ClickhouseGrantRoleGrant {
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     role?: string;
 }
 
 export interface ClickhouseServiceIntegration {
     /**
-     * Type of the service integration. The only supported values at the moment are `clickhouseKafka` and `clickhousePostgresql`.
+     * Type of the service integration. Supported integrations are `clickhouseKafka` and `clickhousePostgresql`.
      */
     integrationType: string;
     /**
-     * Name of the source service
+     * Name of the source service.
      */
     sourceServiceName: string;
 }
@@ -716,7 +724,7 @@ export interface FlinkComponent {
 
 export interface FlinkFlink {
     /**
-     * Host and Port of a Flink server
+     * The host and port of a Flink server.
      */
     hostPorts: string[];
 }
@@ -929,6 +937,14 @@ export interface GetCassandaCassandraUserConfigCassandra {
      * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: string;
+    /**
+     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     */
+    readRequestTimeoutInMs?: number;
+    /**
+     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     */
+    writeRequestTimeoutInMs?: number;
 }
 
 export interface GetCassandaCassandraUserConfigIpFilterObject {
@@ -1111,6 +1127,14 @@ export interface GetCassandraCassandraUserConfigCassandra {
      * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: string;
+    /**
+     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     */
+    readRequestTimeoutInMs?: number;
+    /**
+     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     */
+    writeRequestTimeoutInMs?: number;
 }
 
 export interface GetCassandraCassandraUserConfigIpFilterObject {
@@ -1204,7 +1228,7 @@ export interface GetCassandraTechEmail {
 
 export interface GetClickhouseClickhouse {
     /**
-     * Clickhouse server URIs.
+     * ClickHouse server URIs.
      */
     uris: string[];
 }
@@ -1365,11 +1389,11 @@ export interface GetClickhouseComponent {
 
 export interface GetClickhouseServiceIntegration {
     /**
-     * Type of the service integration. The only supported values at the moment are `clickhouseKafka` and `clickhousePostgresql`.
+     * Type of the service integration. Supported integrations are `clickhouseKafka` and `clickhousePostgresql`.
      */
     integrationType: string;
     /**
-     * Name of the source service
+     * Name of the source service.
      */
     sourceServiceName: string;
 }
@@ -1678,7 +1702,7 @@ export interface GetFlinkComponent {
 
 export interface GetFlinkFlink {
     /**
-     * Host and Port of a Flink server
+     * The host and port of a Flink server.
      */
     hostPorts: string[];
 }
@@ -2831,7 +2855,7 @@ export interface GetKafkaConnectorTask {
      */
     connector: string;
     /**
-     * The task id of the task.
+     * The task ID of the task.
      */
     task: number;
 }
@@ -3750,11 +3774,11 @@ export interface GetKafkaTopicConfig {
 
 export interface GetKafkaTopicTag {
     /**
-     * Topic tag key. Maximum length: `64`.
+     * Tag key. Maximum length: `64`.
      */
     key: string;
     /**
-     * Topic tag value. Maximum length: `256`.
+     * Tag value. Maximum length: `256`.
      */
     value?: string;
 }
@@ -5009,6 +5033,14 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
+     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     */
+    knnMemoryCircuitBreakerEnabled?: boolean;
+    /**
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     */
+    knnMemoryCircuitBreakerLimit?: number;
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      */
     overrideMainResponseVersion?: boolean;
@@ -5645,7 +5677,7 @@ export interface GetPgPgUserConfigPg {
      */
     logErrorVerbosity?: string;
     /**
-     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
      */
     logLinePrefix?: string;
     /**
@@ -8191,7 +8223,7 @@ export interface KafkaConnectorTask {
      */
     connector: string;
     /**
-     * The task id of the task.
+     * The task ID of the task.
      */
     task: number;
 }
@@ -9110,11 +9142,11 @@ export interface KafkaTopicConfig {
 
 export interface KafkaTopicTag {
     /**
-     * Topic tag key. Maximum length: `64`.
+     * Tag key. Maximum length: `64`.
      */
     key: string;
     /**
-     * Topic tag value. Maximum length: `256`.
+     * Tag value. Maximum length: `256`.
      */
     value?: string;
 }
@@ -10369,6 +10401,14 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
+     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     */
+    knnMemoryCircuitBreakerEnabled?: boolean;
+    /**
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     */
+    knnMemoryCircuitBreakerLimit?: number;
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      */
     overrideMainResponseVersion?: boolean;
@@ -11062,7 +11102,7 @@ export interface PgPgUserConfigPg {
      */
     logErrorVerbosity?: string;
     /**
-     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
      */
     logLinePrefix?: string;
     /**

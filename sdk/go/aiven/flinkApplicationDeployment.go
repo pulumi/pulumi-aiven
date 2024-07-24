@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+// Creates and manages the deployment of an Aiven for Apache Flink® application.
 //
 // ## Example Usage
 //
@@ -28,11 +28,64 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewFlinkApplicationDeployment(ctx, "deployment", &aiven.FlinkApplicationDeploymentArgs{
-//				Project:       pulumi.Any(foo.Project),
-//				ServiceName:   pulumi.Any(fooAivenFlink.ServiceName),
-//				ApplicationId: pulumi.Any(fooApp.ApplicationId),
-//				VersionId:     pulumi.Any(fooAppVersion.ApplicationVersionId),
+//			exampleApp, err := aiven.NewFlinkApplication(ctx, "example_app", &aiven.FlinkApplicationArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.String("example-flink-service"),
+//				Name:        pulumi.String("example-app"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			main, err := aiven.NewFlinkApplicationVersion(ctx, "main", &aiven.FlinkApplicationVersionArgs{
+//				Project:       pulumi.Any(exampleProject.Project),
+//				ServiceName:   pulumi.Any(exampleFlink.ServiceName),
+//				ApplicationId: exampleApp.ApplicationId,
+//				Statement:     pulumi.String("    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\n"),
+//				Sinks: aiven.FlinkApplicationVersionSinkArray{
+//					&aiven.FlinkApplicationVersionSinkArgs{
+//						CreateTable: pulumi.String(`      CREATE TABLE kafka_known_pizza (
+//	        shop STRING,
+//	        name STRING
+//	      ) WITH (
+//	        'connector' = 'kafka',
+//	        'properties.bootstrap.servers' = '',
+//	        'scan.startup.mode' = 'earliest-offset',
+//	        'topic' = 'sink_topic',
+//	        'value.format' = 'json'
+//	      )
+//
+// `),
+//
+//						IntegrationId: pulumi.Any(flinkToKafka.IntegrationId),
+//					},
+//				},
+//				Sources: aiven.FlinkApplicationVersionSourceArray{
+//					&aiven.FlinkApplicationVersionSourceArgs{
+//						CreateTable: pulumi.String(`      CREATE TABLE kafka_pizza (
+//	        shop STRING,
+//	        name STRING
+//	      ) WITH (
+//	        'connector' = 'kafka',
+//	        'properties.bootstrap.servers' = '',
+//	        'scan.startup.mode' = 'earliest-offset',
+//	        'topic' = 'source_topic',
+//	        'value.format' = 'json'
+//	      )
+//
+// `),
+//
+//						IntegrationId: pulumi.Any(flinkToKafka.IntegrationId),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewFlinkApplicationDeployment(ctx, "main", &aiven.FlinkApplicationDeploymentArgs{
+//				Project:       pulumi.Any(exampleProject.Project),
+//				ServiceName:   pulumi.Any(exampleFlink.ServiceName),
+//				ApplicationId: exampleApp.ApplicationId,
+//				VersionId:     main.ApplicationVersionId,
 //			})
 //			if err != nil {
 //				return err
@@ -46,28 +99,28 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+// $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
 // ```
 type FlinkApplicationDeployment struct {
 	pulumi.CustomResourceState
 
-	// Application ID
+	// Application ID.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// Application deployment creation time
+	// Application deployment creation time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Application deployment creator
+	// The user who deployed the application.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// Flink Job parallelism
+	// The number of parallel instances for the task.
 	Parallelism pulumi.IntPtrOutput `pulumi:"parallelism"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies whether a Flink Job is restarted in case it fails
+	// Restart a Flink job if it fails.
 	RestartEnabled pulumi.BoolPtrOutput `pulumi:"restartEnabled"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Job savepoint
+	// The savepoint to deploy from.
 	StartingSavepoint pulumi.StringPtrOutput `pulumi:"startingSavepoint"`
-	// ApplicationVersion ID
+	// Application version ID.
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
 }
 
@@ -113,44 +166,44 @@ func GetFlinkApplicationDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FlinkApplicationDeployment resources.
 type flinkApplicationDeploymentState struct {
-	// Application ID
+	// Application ID.
 	ApplicationId *string `pulumi:"applicationId"`
-	// Application deployment creation time
+	// Application deployment creation time.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Application deployment creator
+	// The user who deployed the application.
 	CreatedBy *string `pulumi:"createdBy"`
-	// Flink Job parallelism
+	// The number of parallel instances for the task.
 	Parallelism *int `pulumi:"parallelism"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies whether a Flink Job is restarted in case it fails
+	// Restart a Flink job if it fails.
 	RestartEnabled *bool `pulumi:"restartEnabled"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Job savepoint
+	// The savepoint to deploy from.
 	StartingSavepoint *string `pulumi:"startingSavepoint"`
-	// ApplicationVersion ID
+	// Application version ID.
 	VersionId *string `pulumi:"versionId"`
 }
 
 type FlinkApplicationDeploymentState struct {
-	// Application ID
+	// Application ID.
 	ApplicationId pulumi.StringPtrInput
-	// Application deployment creation time
+	// Application deployment creation time.
 	CreatedAt pulumi.StringPtrInput
-	// Application deployment creator
+	// The user who deployed the application.
 	CreatedBy pulumi.StringPtrInput
-	// Flink Job parallelism
+	// The number of parallel instances for the task.
 	Parallelism pulumi.IntPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies whether a Flink Job is restarted in case it fails
+	// Restart a Flink job if it fails.
 	RestartEnabled pulumi.BoolPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Job savepoint
+	// The savepoint to deploy from.
 	StartingSavepoint pulumi.StringPtrInput
-	// ApplicationVersion ID
+	// Application version ID.
 	VersionId pulumi.StringPtrInput
 }
 
@@ -159,37 +212,37 @@ func (FlinkApplicationDeploymentState) ElementType() reflect.Type {
 }
 
 type flinkApplicationDeploymentArgs struct {
-	// Application ID
+	// Application ID.
 	ApplicationId string `pulumi:"applicationId"`
-	// Flink Job parallelism
+	// The number of parallel instances for the task.
 	Parallelism *int `pulumi:"parallelism"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies whether a Flink Job is restarted in case it fails
+	// Restart a Flink job if it fails.
 	RestartEnabled *bool `pulumi:"restartEnabled"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Job savepoint
+	// The savepoint to deploy from.
 	StartingSavepoint *string `pulumi:"startingSavepoint"`
-	// ApplicationVersion ID
+	// Application version ID.
 	VersionId string `pulumi:"versionId"`
 }
 
 // The set of arguments for constructing a FlinkApplicationDeployment resource.
 type FlinkApplicationDeploymentArgs struct {
-	// Application ID
+	// Application ID.
 	ApplicationId pulumi.StringInput
-	// Flink Job parallelism
+	// The number of parallel instances for the task.
 	Parallelism pulumi.IntPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies whether a Flink Job is restarted in case it fails
+	// Restart a Flink job if it fails.
 	RestartEnabled pulumi.BoolPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Job savepoint
+	// The savepoint to deploy from.
 	StartingSavepoint pulumi.StringPtrInput
-	// ApplicationVersion ID
+	// Application version ID.
 	VersionId pulumi.StringInput
 }
 
@@ -280,22 +333,22 @@ func (o FlinkApplicationDeploymentOutput) ToFlinkApplicationDeploymentOutputWith
 	return o
 }
 
-// Application ID
+// Application ID.
 func (o FlinkApplicationDeploymentOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// Application deployment creation time
+// Application deployment creation time.
 func (o FlinkApplicationDeploymentOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Application deployment creator
+// The user who deployed the application.
 func (o FlinkApplicationDeploymentOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// Flink Job parallelism
+// The number of parallel instances for the task.
 func (o FlinkApplicationDeploymentOutput) Parallelism() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.IntPtrOutput { return v.Parallelism }).(pulumi.IntPtrOutput)
 }
@@ -305,7 +358,7 @@ func (o FlinkApplicationDeploymentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies whether a Flink Job is restarted in case it fails
+// Restart a Flink job if it fails.
 func (o FlinkApplicationDeploymentOutput) RestartEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.BoolPtrOutput { return v.RestartEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -315,12 +368,12 @@ func (o FlinkApplicationDeploymentOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Job savepoint
+// The savepoint to deploy from.
 func (o FlinkApplicationDeploymentOutput) StartingSavepoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringPtrOutput { return v.StartingSavepoint }).(pulumi.StringPtrOutput)
 }
 
-// ApplicationVersion ID
+// Application version ID.
 func (o FlinkApplicationDeploymentOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
+    /// Creates and manages an Aiven for Apache Flink® application version.
     /// 
     /// ## Example Usage
     /// 
@@ -22,11 +22,18 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Aiven.FlinkApplicationVersion("foo", new()
+    ///     var exampleApp = new Aiven.FlinkApplication("example_app", new()
     ///     {
-    ///         Project = fooAivenProject.Project,
-    ///         ServiceName = fooAivenFlink.ServiceName,
-    ///         ApplicationId = fooAivenFlinkApplication.ApplicationId,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = "example-flink-service",
+    ///         Name = "example-app",
+    ///     });
+    /// 
+    ///     var main = new Aiven.FlinkApplicationVersion("main", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
+    ///         ApplicationId = exampleApp.ApplicationId,
     ///         Statement = @"    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
     /// ",
     ///         Sinks = new[]
@@ -73,32 +80,32 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id
+    /// $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/flinkApplicationVersion:FlinkApplicationVersion")]
     public partial class FlinkApplicationVersion : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// Application version ID
+        /// Application version ID.
         /// </summary>
         [Output("applicationVersionId")]
         public Output<string> ApplicationVersionId { get; private set; } = null!;
 
         /// <summary>
-        /// Application version creation time
+        /// Application version creation time.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Application version creator
+        /// The user who created the application.
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
@@ -116,7 +123,7 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Application sink
+        /// The sink table for the application.
         /// </summary>
         [Output("sink")]
         public Output<ImmutableArray<Outputs.FlinkApplicationVersionSink>> Sink { get; private set; } = null!;
@@ -128,7 +135,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.FlinkApplicationVersionSink>> Sinks { get; private set; } = null!;
 
         /// <summary>
-        /// Application source
+        /// The source table for the application.
         /// </summary>
         [Output("source")]
         public Output<ImmutableArray<Outputs.FlinkApplicationVersionSource>> Source { get; private set; } = null!;
@@ -140,13 +147,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.FlinkApplicationVersionSource>> Sources { get; private set; } = null!;
 
         /// <summary>
-        /// Job SQL statement
+        /// Job SQL statement.
         /// </summary>
         [Output("statement")]
         public Output<string> Statement { get; private set; } = null!;
 
         /// <summary>
-        /// Application version number
+        /// Application version number.
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
@@ -198,7 +205,7 @@ namespace Pulumi.Aiven
     public sealed class FlinkApplicationVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
@@ -219,7 +226,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.FlinkApplicationVersionSinkArgs>? _sink;
 
         /// <summary>
-        /// Application sink
+        /// The sink table for the application.
         /// </summary>
         public InputList<Inputs.FlinkApplicationVersionSinkArgs> Sink
         {
@@ -244,7 +251,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.FlinkApplicationVersionSourceArgs>? _source;
 
         /// <summary>
-        /// Application source
+        /// The source table for the application.
         /// </summary>
         public InputList<Inputs.FlinkApplicationVersionSourceArgs> Source
         {
@@ -266,7 +273,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Job SQL statement
+        /// Job SQL statement.
         /// </summary>
         [Input("statement", required: true)]
         public Input<string> Statement { get; set; } = null!;
@@ -280,25 +287,25 @@ namespace Pulumi.Aiven
     public sealed class FlinkApplicationVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Application version ID
+        /// Application version ID.
         /// </summary>
         [Input("applicationVersionId")]
         public Input<string>? ApplicationVersionId { get; set; }
 
         /// <summary>
-        /// Application version creation time
+        /// Application version creation time.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Application version creator
+        /// The user who created the application.
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
@@ -319,7 +326,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.FlinkApplicationVersionSinkGetArgs>? _sink;
 
         /// <summary>
-        /// Application sink
+        /// The sink table for the application.
         /// </summary>
         public InputList<Inputs.FlinkApplicationVersionSinkGetArgs> Sink
         {
@@ -344,7 +351,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.FlinkApplicationVersionSourceGetArgs>? _source;
 
         /// <summary>
-        /// Application source
+        /// The source table for the application.
         /// </summary>
         public InputList<Inputs.FlinkApplicationVersionSourceGetArgs> Source
         {
@@ -366,13 +373,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Job SQL statement
+        /// Job SQL statement.
         /// </summary>
         [Input("statement")]
         public Input<string>? Statement { get; set; }
 
         /// <summary>
-        /// Application version number
+        /// Application version number.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

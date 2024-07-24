@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetFlinkApplicationVersion
     {
         /// <summary>
-        /// The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+        /// Gets information about an Aiven for Apache Flink® application version.
         /// 
         /// ## Example Usage
         /// 
@@ -24,12 +24,12 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app1 = Aiven.GetFlinkApplicationVersion.Invoke(new()
+        ///     var main = Aiven.GetFlinkApplicationVersion.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///         ApplicationId = "&lt;APPLICATION_ID&gt;",
-        ///         ApplicationVersionId = "&lt;APPLICATION_VERSION_ID&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleFlink.ServiceName,
+        ///         ApplicationId = exampleApp.ApplicationId,
+        ///         ApplicationVersionId = "d6e7f71c-cadf-49b5-a4ad-126c805fe684",
         ///     });
         /// 
         /// });
@@ -39,7 +39,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlinkApplicationVersionResult>("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args ?? new GetFlinkApplicationVersionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
+        /// Gets information about an Aiven for Apache Flink® application version.
         /// 
         /// ## Example Usage
         /// 
@@ -51,12 +51,12 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app1 = Aiven.GetFlinkApplicationVersion.Invoke(new()
+        ///     var main = Aiven.GetFlinkApplicationVersion.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
-        ///         ApplicationId = "&lt;APPLICATION_ID&gt;",
-        ///         ApplicationVersionId = "&lt;APPLICATION_VERSION_ID&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleFlink.ServiceName,
+        ///         ApplicationId = exampleApp.ApplicationId,
+        ///         ApplicationVersionId = "d6e7f71c-cadf-49b5-a4ad-126c805fe684",
         ///     });
         /// 
         /// });
@@ -70,13 +70,13 @@ namespace Pulumi.Aiven
     public sealed class GetFlinkApplicationVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Input("applicationId", required: true)]
         public string ApplicationId { get; set; } = null!;
 
         /// <summary>
-        /// Application version ID
+        /// Application version ID.
         /// </summary>
         [Input("applicationVersionId", required: true)]
         public string ApplicationVersionId { get; set; } = null!;
@@ -102,13 +102,13 @@ namespace Pulumi.Aiven
     public sealed class GetFlinkApplicationVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
         /// <summary>
-        /// Application version ID
+        /// Application version ID.
         /// </summary>
         [Input("applicationVersionId", required: true)]
         public Input<string> ApplicationVersionId { get; set; } = null!;
@@ -136,19 +136,19 @@ namespace Pulumi.Aiven
     public sealed class GetFlinkApplicationVersionResult
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         public readonly string ApplicationId;
         /// <summary>
-        /// Application version ID
+        /// Application version ID.
         /// </summary>
         public readonly string ApplicationVersionId;
         /// <summary>
-        /// Application version creation time
+        /// Application version creation time.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Application version creator
+        /// The user who created the application.
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
@@ -164,7 +164,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Application sink
+        /// The sink table for the application.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlinkApplicationVersionSinkResult> Sink;
         /// <summary>
@@ -172,7 +172,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlinkApplicationVersionSinkResult> Sinks;
         /// <summary>
-        /// Application source
+        /// The source table for the application.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlinkApplicationVersionSourceResult> Source;
         /// <summary>
@@ -180,11 +180,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlinkApplicationVersionSourceResult> Sources;
         /// <summary>
-        /// Job SQL statement
+        /// Job SQL statement.
         /// </summary>
         public readonly string Statement;
         /// <summary>
-        /// Application version number
+        /// Application version number.
         /// </summary>
         public readonly int Version;
 

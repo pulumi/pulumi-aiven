@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _hostPorts;
 
         /// <summary>
-        /// Host and Port of a Flink server
+        /// The host and port of a Flink server.
         /// </summary>
         public InputList<string> HostPorts
         {

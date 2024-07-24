@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetFlink
     {
         /// <summary>
-        /// The Flink data source provides information about the existing Aiven Flink service.
+        /// Gets information about an Aiven for Apache Flink® service.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var flink = Aiven.GetFlink.Invoke(new()
+        ///     var exampleFlink = Aiven.GetFlink.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-flink-service",
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlinkResult>("aiven:index/getFlink:getFlink", args ?? new GetFlinkArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Flink data source provides information about the existing Aiven Flink service.
+        /// Gets information about an Aiven for Apache Flink® service.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var flink = Aiven.GetFlink.Invoke(new()
+        ///     var exampleFlink = Aiven.GetFlink.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-flink-service",
         ///     });
         /// 
         /// });
@@ -144,7 +144,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlinkFlinkUserConfigResult> FlinkUserConfigs;
         /// <summary>
-        /// Flink server provided values
+        /// Values provided by the Flink server.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlinkFlinkResult> Flinks;
         /// <summary>

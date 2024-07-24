@@ -17,14 +17,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     public static final ClickhouseUserState Empty = new ClickhouseUserState();
 
     /**
-     * The password of the clickhouse user.
+     * The password of the ClickHouse user.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the clickhouse user.
+     * @return The password of the ClickHouse user.
      * 
      */
     public Optional<Output<String>> password() {
@@ -47,14 +47,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Indicates if a clickhouse user is required
+     * Indicates if a ClickHouse user is required.
      * 
      */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
     /**
-     * @return Indicates if a clickhouse user is required
+     * @return Indicates if a ClickHouse user is required.
      * 
      */
     public Optional<Output<Boolean>> required() {
@@ -77,14 +77,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -92,14 +92,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * UUID of the clickhouse user.
+     * UUID of the ClickHouse user.
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return UUID of the clickhouse user.
+     * @return UUID of the ClickHouse user.
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -136,7 +136,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the clickhouse user.
+         * @param password The password of the ClickHouse user.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the clickhouse user.
+         * @param password The password of the ClickHouse user.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param required Indicates if a clickhouse user is required
+         * @param required Indicates if a ClickHouse user is required.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param required Indicates if a clickhouse user is required
+         * @param required Indicates if a ClickHouse user is required.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param username The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+         * @param username The name of the ClickHouse user. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param username The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+         * @param username The name of the ClickHouse user. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid UUID of the clickhouse user.
+         * @param uuid UUID of the ClickHouse user.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid UUID of the clickhouse user.
+         * @param uuid UUID of the ClickHouse user.
          * 
          * @return builder
          * 

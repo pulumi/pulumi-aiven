@@ -32,14 +32,14 @@ public final class KafkaConnectorTaskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The task id of the task.
+     * The task ID of the task.
      * 
      */
     @Import(name="task")
     private @Nullable Output<Integer> task;
 
     /**
-     * @return The task id of the task.
+     * @return The task ID of the task.
      * 
      */
     public Optional<Output<Integer>> task() {
@@ -93,7 +93,7 @@ public final class KafkaConnectorTaskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param task The task id of the task.
+         * @param task The task ID of the task.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class KafkaConnectorTaskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param task The task id of the task.
+         * @param task The task ID of the task.
          * 
          * @return builder
          * 

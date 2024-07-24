@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
+    /// Creates and manages ClickHouse roles.
     /// 
     /// ## Example Usage
     /// 
@@ -22,20 +22,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bar = new Aiven.Clickhouse("bar", new()
+    ///     var exampleRole = new Aiven.ClickhouseRole("example_role", new()
     ///     {
-    ///         Project = "example-project",
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-8",
-    ///         ServiceName = "example-service",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///     });
-    /// 
-    ///     var foo = new Aiven.ClickhouseRole("foo", new()
-    ///     {
-    ///         ServiceName = bar.ServiceName,
-    ///         Project = bar.Project,
+    ///         ServiceName = exampleClickhouse.ServiceName,
+    ///         Project = exampleProject.Project,
     ///         Role = "writer",
     ///     });
     /// 
@@ -45,7 +35,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo PROJECT/SERVICE_NAME/ROLE
+    /// $ pulumi import aiven:index/clickhouseRole:ClickhouseRole example_role PROJECT/SERVICE_NAME/ROLE
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseRole:ClickhouseRole")]
@@ -58,7 +48,7 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The role that is to be created. Changing this property forces recreation of the resource.
+        /// The name of role. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -122,7 +112,7 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The role that is to be created. Changing this property forces recreation of the resource.
+        /// The name of role. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -148,7 +138,7 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The role that is to be created. Changing this property forces recreation of the resource.
+        /// The name of role. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

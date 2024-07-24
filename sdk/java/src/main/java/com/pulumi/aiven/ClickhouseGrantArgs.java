@@ -20,14 +20,14 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
     public static final ClickhouseGrantArgs Empty = new ClickhouseGrantArgs();
 
     /**
-     * Configuration to grant a privilege. Changing this property forces recreation of the resource.
+     * Grant privileges. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="privilegeGrants")
     private @Nullable Output<List<ClickhouseGrantPrivilegeGrantArgs>> privilegeGrants;
 
     /**
-     * @return Configuration to grant a privilege. Changing this property forces recreation of the resource.
+     * @return Grant privileges. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<ClickhouseGrantPrivilegeGrantArgs>>> privilegeGrants() {
@@ -65,14 +65,14 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Configuration to grant a role. Changing this property forces recreation of the resource.
+     * Grant roles. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="roleGrants")
     private @Nullable Output<List<ClickhouseGrantRoleGrantArgs>> roleGrants;
 
     /**
-     * @return Configuration to grant a role. Changing this property forces recreation of the resource.
+     * @return Grant roles. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<ClickhouseGrantRoleGrantArgs>>> roleGrants() {
@@ -139,7 +139,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privilegeGrants Configuration to grant a privilege. Changing this property forces recreation of the resource.
+         * @param privilegeGrants Grant privileges. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privilegeGrants Configuration to grant a privilege. Changing this property forces recreation of the resource.
+         * @param privilegeGrants Grant privileges. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privilegeGrants Configuration to grant a privilege. Changing this property forces recreation of the resource.
+         * @param privilegeGrants Grant privileges. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param roleGrants Configuration to grant a role. Changing this property forces recreation of the resource.
+         * @param roleGrants Grant roles. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param roleGrants Configuration to grant a role. Changing this property forces recreation of the resource.
+         * @param roleGrants Grant roles. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param roleGrants Configuration to grant a role. Changing this property forces recreation of the resource.
+         * @param roleGrants Grant roles. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

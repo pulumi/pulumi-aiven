@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups).
+    /// Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups). You can add organization users and application users to groups.
+    /// 
+    /// Groups are given access to projects using the `aiven.OrganizationGroupProject` resource.
     /// 
     /// ## Example Usage
     /// 
@@ -70,7 +72,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.OrganizationUserGroupMemberTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the organization user.
+        /// The ID of the organization user or application user.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -137,7 +139,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.OrganizationUserGroupMemberTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The ID of the organization user.
+        /// The ID of the organization user or application user.
         /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
@@ -172,7 +174,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.OrganizationUserGroupMemberTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The ID of the organization user.
+        /// The ID of the organization user or application user.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

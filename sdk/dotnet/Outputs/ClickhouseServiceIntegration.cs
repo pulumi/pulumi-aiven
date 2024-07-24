@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ClickhouseServiceIntegration
     {
         /// <summary>
-        /// Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
+        /// Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
         /// </summary>
         public readonly string IntegrationType;
         /// <summary>
-        /// Name of the source service
+        /// Name of the source service.
         /// </summary>
         public readonly string SourceServiceName;
 

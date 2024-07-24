@@ -24,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Clickhouse resource allows the creation and management of Aiven Clickhouse services.
+ * Creates and manages an [Aiven for ClickHouse®](https://aiven.io/docs/products/clickhouse/concepts/features-overview) service.
  * 
  * ## Example Usage
  * 
@@ -51,11 +51,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var clickhouse = new Clickhouse("clickhouse", ClickhouseArgs.builder()
- *             .project(pr1.project())
+ *         var exampleClickhouse = new Clickhouse("exampleClickhouse", ClickhouseArgs.builder()
+ *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")
- *             .serviceName("my-clickhouse")
+ *             .serviceName("example-clickhouse-service")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .build());
@@ -90,14 +90,14 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.additionalDiskSpace);
     }
     /**
-     * Clickhouse server provided values
+     * Values provided by the ClickHouse server.
      * 
      */
     @Export(name="clickhouse", refs={ClickhouseClickhouse.class}, tree="[0]")
     private Output<ClickhouseClickhouse> clickhouse;
 
     /**
-     * @return Clickhouse server provided values
+     * @return Values provided by the ClickHouse server.
      * 
      */
     public Output<ClickhouseClickhouse> clickhouse() {
@@ -304,14 +304,14 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
         return this.serviceHost;
     }
     /**
-     * Service integrations to specify when creating a service. Not applied after initial service creation
+     * Integrations with other services. Service integrations are only applied at service creation.
      * 
      */
     @Export(name="serviceIntegrations", refs={List.class,ClickhouseServiceIntegration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClickhouseServiceIntegration>> serviceIntegrations;
 
     /**
-     * @return Service integrations to specify when creating a service. Not applied after initial service creation
+     * @return Integrations with other services. Service integrations are only applied at service creation.
      * 
      */
     public Output<Optional<List<ClickhouseServiceIntegration>>> serviceIntegrations() {

@@ -16,7 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups).
+ * Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups). You can add organization users and application users to groups.
+ * 
+ * Groups are given access to projects using the `aiven.OrganizationGroupProject` resource.
  * 
  * ## Example Usage
  * 
@@ -121,14 +123,14 @@ public class OrganizationUserGroupMember extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.timeouts);
     }
     /**
-     * The ID of the organization user.
+     * The ID of the organization user or application user.
      * 
      */
     @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
-     * @return The ID of the organization user.
+     * @return The ID of the organization user or application user.
      * 
      */
     public Output<String> userId() {

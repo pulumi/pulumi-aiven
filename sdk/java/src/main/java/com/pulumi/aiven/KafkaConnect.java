@@ -23,7 +23,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
+ * Creates and manages an [Aiven for Apache Kafka® Connect](https://aiven.io/docs/products/kafka/kafka-connect) service.
+ * Kafka Connect lets you integrate an Aiven for Apache Kafka® service with external data sources using connectors.
+ * 
+ * To set up and integrate Kafka Connect:
+ * 1. Create a Kafka service in the same Aiven project using the `aiven.Kafka` resource.
+ * 2. Create topics for importing and exporting data using `aiven.KafkaTopic`.
+ * 3. Create the Kafka Connect service.
+ * 4. Use the `aiven.ServiceIntegration` resource to integrate the Kafka and Kafka Connect services.
+ * 5. Add source and sink connectors using `aiven.KafkaConnector` resource.
  * 
  * ## Example Usage
  * 
@@ -35,11 +43,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Kafka;
+ * import com.pulumi.aiven.KafkaArgs;
  * import com.pulumi.aiven.KafkaConnect;
  * import com.pulumi.aiven.KafkaConnectArgs;
  * import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigArgs;
  * import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs;
  * import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPublicAccessArgs;
+ * import com.pulumi.aiven.ServiceIntegration;
+ * import com.pulumi.aiven.ServiceIntegrationArgs;
+ * import com.pulumi.aiven.inputs.ServiceIntegrationKafkaConnectUserConfigArgs;
+ * import com.pulumi.aiven.inputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,19 +67,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kc1 = new KafkaConnect("kc1", KafkaConnectArgs.builder()
- *             .project(pr1.project())
+ *         // Create a Kafka service.
+ *         var exampleKafka = new Kafka("exampleKafka", KafkaArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName("example-kafka-service")
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-2")
+ *             .build());
+ * 
+ *         // Create a Kafka Connect service.
+ *         var exampleKafkaConnect = new KafkaConnect("exampleKafkaConnect", KafkaConnectArgs.builder()
+ *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
- *             .serviceName("my-kc1")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
+ *             .serviceName("example-connect-service")
  *             .kafkaConnectUserConfig(KafkaConnectKafkaConnectUserConfigArgs.builder()
  *                 .kafkaConnect(KafkaConnectKafkaConnectUserConfigKafkaConnectArgs.builder()
  *                     .consumerIsolationLevel("read_committed")
  *                     .build())
  *                 .publicAccess(KafkaConnectKafkaConnectUserConfigPublicAccessArgs.builder()
  *                     .kafkaConnect(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         // Integrate the Kafka and Kafka Connect services.
+ *         var kafkaConnectIntegration = new ServiceIntegration("kafkaConnectIntegration", ServiceIntegrationArgs.builder()
+ *             .project(exampleProject.project())
+ *             .integrationType("kafka_connect")
+ *             .sourceServiceName(exampleKafka.serviceName())
+ *             .destinationServiceName(exampleKafkaConnect.serviceName())
+ *             .kafkaConnectUserConfig(ServiceIntegrationKafkaConnectUserConfigArgs.builder()
+ *                 .kafkaConnect(ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs.builder()
+ *                     .groupId("connect")
+ *                     .statusStorageTopic("__connect_status")
+ *                     .offsetStorageTopic("__connect_offsets")
  *                     .build())
  *                 .build())
  *             .build());
@@ -79,7 +115,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafkaConnect:KafkaConnect kc1 project/service_name
+ * $ pulumi import aiven:index/kafkaConnect:KafkaConnect example_kafka_connect PROJECT/SERVICE_NAME
  * ```
  * 
  */

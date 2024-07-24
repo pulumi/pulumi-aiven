@@ -55,7 +55,7 @@ class GetKafkaTopicResult:
     @pulumi.getter
     def configs(self) -> Sequence['outputs.GetKafkaTopicConfigResult']:
         """
-        Kafka topic configuration.
+        [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         """
         return pulumi.get(self, "configs")
 
@@ -103,7 +103,7 @@ class GetKafkaTopicResult:
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetKafkaTopicTagResult']:
         """
-        Tags for the Kafka topic.
+        Tags for the topic.
         """
         return pulumi.get(self, "tags")
 

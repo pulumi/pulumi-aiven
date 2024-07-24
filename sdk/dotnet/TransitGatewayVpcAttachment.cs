@@ -53,7 +53,7 @@ namespace Pulumi.Aiven
         public Output<string> PeerCloudAccount { get; private set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         /// </summary>
         [Output("peerRegion")]
         public Output<string?> PeerRegion { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Aiven
         public Input<string> PeerCloudAccount { get; set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.Aiven
         public Input<string>? PeerCloudAccount { get; set; }
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }

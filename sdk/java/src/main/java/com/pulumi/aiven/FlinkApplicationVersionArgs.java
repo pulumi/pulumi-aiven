@@ -20,14 +20,14 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
     public static final FlinkApplicationVersionArgs Empty = new FlinkApplicationVersionArgs();
 
     /**
-     * Application ID
+     * Application ID.
      * 
      */
     @Import(name="applicationId", required=true)
     private Output<String> applicationId;
 
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public Output<String> applicationId() {
@@ -65,14 +65,14 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Application sink
+     * The sink table for the application.
      * 
      */
     @Import(name="sink")
     private @Nullable Output<List<FlinkApplicationVersionSinkArgs>> sink;
 
     /**
-     * @return Application sink
+     * @return The sink table for the application.
      * 
      */
     public Optional<Output<List<FlinkApplicationVersionSinkArgs>>> sink() {
@@ -103,14 +103,14 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Application source
+     * The source table for the application.
      * 
      */
     @Import(name="source")
     private @Nullable Output<List<FlinkApplicationVersionSourceArgs>> source;
 
     /**
-     * @return Application source
+     * @return The source table for the application.
      * 
      */
     public Optional<Output<List<FlinkApplicationVersionSourceArgs>>> source() {
@@ -141,14 +141,14 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Job SQL statement
+     * Job SQL statement.
      * 
      */
     @Import(name="statement", required=true)
     private Output<String> statement;
 
     /**
-     * @return Job SQL statement
+     * @return Job SQL statement.
      * 
      */
     public Output<String> statement() {
@@ -187,7 +187,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param applicationId Application ID
+         * @param applicationId Application ID.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param applicationId Application ID
+         * @param applicationId Application ID.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sink Application sink
+         * @param sink The sink table for the application.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sink Application sink
+         * @param sink The sink table for the application.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sink Application sink
+         * @param sink The sink table for the application.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param source Application source
+         * @param source The source table for the application.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param source Application source
+         * @param source The source table for the application.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param source Application source
+         * @param source The source table for the application.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param statement Job SQL statement
+         * @param statement Job SQL statement.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class FlinkApplicationVersionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param statement Job SQL statement
+         * @param statement Job SQL statement.
          * 
          * @return builder
          * 

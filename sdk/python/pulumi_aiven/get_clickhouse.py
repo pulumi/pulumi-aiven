@@ -131,7 +131,7 @@ class GetClickhouseResult:
     @pulumi.getter
     def clickhouses(self) -> Sequence['outputs.GetClickhouseClickhouseResult']:
         """
-        Clickhouse server provided values
+        Values provided by the ClickHouse server.
         """
         return pulumi.get(self, "clickhouses")
 
@@ -251,7 +251,7 @@ class GetClickhouseResult:
     @pulumi.getter(name="serviceIntegrations")
     def service_integrations(self) -> Sequence['outputs.GetClickhouseServiceIntegrationResult']:
         """
-        Service integrations to specify when creating a service. Not applied after initial service creation
+        Integrations with other services. Service integrations are only applied at service creation.
         """
         return pulumi.get(self, "service_integrations")
 
@@ -385,7 +385,7 @@ def get_clickhouse(project: Optional[str] = None,
                    service_name: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClickhouseResult:
     """
-    The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+    Gets information about a ClickHouse service.
 
     ## Example Usage
 
@@ -393,8 +393,8 @@ def get_clickhouse(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse = aiven.get_clickhouse(project=pr1["project"],
-        service_name="<SERVICE_NAME>")
+    example_clickhouse = aiven.get_clickhouse(project=example_project["project"],
+        service_name="example-clickhouse-service")
     ```
 
 
@@ -444,7 +444,7 @@ def get_clickhouse_output(project: Optional[pulumi.Input[str]] = None,
                           service_name: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClickhouseResult]:
     """
-    The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+    Gets information about a ClickHouse service.
 
     ## Example Usage
 
@@ -452,8 +452,8 @@ def get_clickhouse_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse = aiven.get_clickhouse(project=pr1["project"],
-        service_name="<SERVICE_NAME>")
+    example_clickhouse = aiven.get_clickhouse(project=example_project["project"],
+        service_name="example-clickhouse-service")
     ```
 
 

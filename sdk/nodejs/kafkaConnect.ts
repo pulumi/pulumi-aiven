@@ -7,7 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
+ * Creates and manages an [Aiven for Apache Kafka® Connect](https://aiven.io/docs/products/kafka/kafka-connect) service.
+ * Kafka Connect lets you integrate an Aiven for Apache Kafka® service with external data sources using connectors.
+ *
+ * To set up and integrate Kafka Connect:
+ * 1. Create a Kafka service in the same Aiven project using the `aiven.Kafka` resource.
+ * 2. Create topics for importing and exporting data using `aiven.KafkaTopic`.
+ * 3. Create the Kafka Connect service.
+ * 4. Use the `aiven.ServiceIntegration` resource to integrate the Kafka and Kafka Connect services.
+ * 5. Add source and sink connectors using `aiven.KafkaConnector` resource.
  *
  * ## Example Usage
  *
@@ -15,13 +23,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kc1 = new aiven.KafkaConnect("kc1", {
- *     project: pr1.project,
+ * // Create a Kafka service.
+ * const exampleKafka = new aiven.Kafka("example_kafka", {
+ *     project: exampleProject.project,
+ *     serviceName: "example-kafka-service",
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-2",
+ * });
+ * // Create a Kafka Connect service.
+ * const exampleKafkaConnect = new aiven.KafkaConnect("example_kafka_connect", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-4",
- *     serviceName: "my-kc1",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
+ *     serviceName: "example-connect-service",
  *     kafkaConnectUserConfig: {
  *         kafkaConnect: {
  *             consumerIsolationLevel: "read_committed",
@@ -31,12 +45,26 @@ import * as utilities from "./utilities";
  *         },
  *     },
  * });
+ * // Integrate the Kafka and Kafka Connect services.
+ * const kafkaConnectIntegration = new aiven.ServiceIntegration("kafka_connect_integration", {
+ *     project: exampleProject.project,
+ *     integrationType: "kafka_connect",
+ *     sourceServiceName: exampleKafka.serviceName,
+ *     destinationServiceName: exampleKafkaConnect.serviceName,
+ *     kafkaConnectUserConfig: {
+ *         kafkaConnect: {
+ *             groupId: "connect",
+ *             statusStorageTopic: "__connect_status",
+ *             offsetStorageTopic: "__connect_offsets",
+ *         },
+ *     },
+ * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/kafkaConnect:KafkaConnect kc1 project/service_name
+ * $ pulumi import aiven:index/kafkaConnect:KafkaConnect example_kafka_connect PROJECT/SERVICE_NAME
  * ```
  */
 export class KafkaConnect extends pulumi.CustomResource {

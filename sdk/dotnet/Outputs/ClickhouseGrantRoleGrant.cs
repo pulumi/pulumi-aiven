@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ClickhouseGrantRoleGrant
     {
         /// <summary>
-        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string? Role;
 

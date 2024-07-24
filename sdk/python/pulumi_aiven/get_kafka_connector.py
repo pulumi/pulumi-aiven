@@ -64,7 +64,7 @@ class GetKafkaConnectorResult:
     @pulumi.getter
     def config(self) -> Mapping[str, str]:
         """
-        The Kafka Connector configuration parameters.
+        The Kafka connector configuration parameters.
         """
         return pulumi.get(self, "config")
 
@@ -72,7 +72,7 @@ class GetKafkaConnectorResult:
     @pulumi.getter(name="connectorName")
     def connector_name(self) -> str:
         """
-        The kafka connector name. Changing this property forces recreation of the resource.
+        The Kafka connector name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "connector_name")
 
@@ -128,7 +128,7 @@ class GetKafkaConnectorResult:
     @pulumi.getter(name="pluginVersion")
     def plugin_version(self) -> str:
         """
-        The version of the kafka connector.
+        The version of the Kafka connector.
         """
         return pulumi.get(self, "plugin_version")
 
@@ -182,7 +182,7 @@ def get_kafka_connector(connector_name: Optional[str] = None,
                         service_name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaConnectorResult:
     """
-    The Kafka connector data source provides information about the existing Aiven Kafka connector.
+    Gets information about an Aiven for Apache Kafka® connector.
 
     ## Example Usage
 
@@ -190,13 +190,13 @@ def get_kafka_connector(connector_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kafka_es_con1 = aiven.get_kafka_connector(project=kafka_con_project1["project"],
-        service_name=kafka_service1["serviceName"],
-        connector_name="kafka-es-con1")
+    kafka_os_connector = aiven.get_kafka_connector(project=example_project["project"],
+        service_name=example_kafka["serviceName"],
+        connector_name="kafka-opensearch-connector")
     ```
 
 
-    :param str connector_name: The kafka connector name. Changing this property forces recreation of the resource.
+    :param str connector_name: The Kafka connector name. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
@@ -228,7 +228,7 @@ def get_kafka_connector_output(connector_name: Optional[pulumi.Input[str]] = Non
                                service_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaConnectorResult]:
     """
-    The Kafka connector data source provides information about the existing Aiven Kafka connector.
+    Gets information about an Aiven for Apache Kafka® connector.
 
     ## Example Usage
 
@@ -236,13 +236,13 @@ def get_kafka_connector_output(connector_name: Optional[pulumi.Input[str]] = Non
     import pulumi
     import pulumi_aiven as aiven
 
-    kafka_es_con1 = aiven.get_kafka_connector(project=kafka_con_project1["project"],
-        service_name=kafka_service1["serviceName"],
-        connector_name="kafka-es-con1")
+    kafka_os_connector = aiven.get_kafka_connector(project=example_project["project"],
+        service_name=example_kafka["serviceName"],
+        connector_name="kafka-opensearch-connector")
     ```
 
 
-    :param str connector_name: The kafka connector name. Changing this property forces recreation of the resource.
+    :param str connector_name: The Kafka connector name. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """

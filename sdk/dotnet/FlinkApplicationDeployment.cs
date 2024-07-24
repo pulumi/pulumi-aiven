@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+    /// Creates and manages the deployment of an Aiven for Apache Flink® application.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,64 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var deployment = new Aiven.FlinkApplicationDeployment("deployment", new()
+    ///     var exampleApp = new Aiven.FlinkApplication("example_app", new()
     ///     {
-    ///         Project = foo.Project,
-    ///         ServiceName = fooAivenFlink.ServiceName,
-    ///         ApplicationId = fooApp.ApplicationId,
-    ///         VersionId = fooAppVersion.ApplicationVersionId,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = "example-flink-service",
+    ///         Name = "example-app",
+    ///     });
+    /// 
+    ///     var main = new Aiven.FlinkApplicationVersion("main", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
+    ///         ApplicationId = exampleApp.ApplicationId,
+    ///         Statement = @"    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
+    /// ",
+    ///         Sinks = new[]
+    ///         {
+    ///             new Aiven.Inputs.FlinkApplicationVersionSinkArgs
+    ///             {
+    ///                 CreateTable = @"      CREATE TABLE kafka_known_pizza (
+    ///         shop STRING,
+    ///         name STRING
+    ///       ) WITH (
+    ///         'connector' = 'kafka',
+    ///         'properties.bootstrap.servers' = '',
+    ///         'scan.startup.mode' = 'earliest-offset',
+    ///         'topic' = 'sink_topic',
+    ///         'value.format' = 'json'
+    ///       )
+    /// ",
+    ///                 IntegrationId = flinkToKafka.IntegrationId,
+    ///             },
+    ///         },
+    ///         Sources = new[]
+    ///         {
+    ///             new Aiven.Inputs.FlinkApplicationVersionSourceArgs
+    ///             {
+    ///                 CreateTable = @"      CREATE TABLE kafka_pizza (
+    ///         shop STRING,
+    ///         name STRING
+    ///       ) WITH (
+    ///         'connector' = 'kafka',
+    ///         'properties.bootstrap.servers' = '',
+    ///         'scan.startup.mode' = 'earliest-offset',
+    ///         'topic' = 'source_topic',
+    ///         'value.format' = 'json'
+    ///       )
+    /// ",
+    ///                 IntegrationId = flinkToKafka.IntegrationId,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var mainFlinkApplicationDeployment = new Aiven.FlinkApplicationDeployment("main", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
+    ///         ApplicationId = exampleApp.ApplicationId,
+    ///         VersionId = main.ApplicationVersionId,
     ///     });
     /// 
     /// });
@@ -36,32 +88,32 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+    /// $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment")]
     public partial class FlinkApplicationDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// Application deployment creation time
+        /// Application deployment creation time.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Application deployment creator
+        /// The user who deployed the application.
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// Flink Job parallelism
+        /// The number of parallel instances for the task.
         /// </summary>
         [Output("parallelism")]
         public Output<int?> Parallelism { get; private set; } = null!;
@@ -73,7 +125,7 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether a Flink Job is restarted in case it fails
+        /// Restart a Flink job if it fails.
         /// </summary>
         [Output("restartEnabled")]
         public Output<bool?> RestartEnabled { get; private set; } = null!;
@@ -85,13 +137,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Job savepoint
+        /// The savepoint to deploy from.
         /// </summary>
         [Output("startingSavepoint")]
         public Output<string?> StartingSavepoint { get; private set; } = null!;
 
         /// <summary>
-        /// ApplicationVersion ID
+        /// Application version ID.
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
@@ -143,13 +195,13 @@ namespace Pulumi.Aiven
     public sealed class FlinkApplicationDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
         /// <summary>
-        /// Flink Job parallelism
+        /// The number of parallel instances for the task.
         /// </summary>
         [Input("parallelism")]
         public Input<int>? Parallelism { get; set; }
@@ -161,7 +213,7 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether a Flink Job is restarted in case it fails
+        /// Restart a Flink job if it fails.
         /// </summary>
         [Input("restartEnabled")]
         public Input<bool>? RestartEnabled { get; set; }
@@ -173,13 +225,13 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Job savepoint
+        /// The savepoint to deploy from.
         /// </summary>
         [Input("startingSavepoint")]
         public Input<string>? StartingSavepoint { get; set; }
 
         /// <summary>
-        /// ApplicationVersion ID
+        /// Application version ID.
         /// </summary>
         [Input("versionId", required: true)]
         public Input<string> VersionId { get; set; } = null!;
@@ -193,25 +245,25 @@ namespace Pulumi.Aiven
     public sealed class FlinkApplicationDeploymentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application ID
+        /// Application ID.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Application deployment creation time
+        /// Application deployment creation time.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Application deployment creator
+        /// The user who deployed the application.
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// Flink Job parallelism
+        /// The number of parallel instances for the task.
         /// </summary>
         [Input("parallelism")]
         public Input<int>? Parallelism { get; set; }
@@ -223,7 +275,7 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies whether a Flink Job is restarted in case it fails
+        /// Restart a Flink job if it fails.
         /// </summary>
         [Input("restartEnabled")]
         public Input<bool>? RestartEnabled { get; set; }
@@ -235,13 +287,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Job savepoint
+        /// The savepoint to deploy from.
         /// </summary>
         [Input("startingSavepoint")]
         public Input<string>? StartingSavepoint { get; set; }
 
         /// <summary>
-        /// ApplicationVersion ID
+        /// Application version ID.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

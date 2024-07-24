@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ClickhouseClickhouse
     {
         /// <summary>
-        /// Clickhouse server URIs.
+        /// ClickHouse server URIs.
         /// </summary>
         public readonly ImmutableArray<string> Uris;
 

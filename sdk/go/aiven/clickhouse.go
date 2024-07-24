@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Clickhouse resource allows the creation and management of Aiven Clickhouse services.
+// Creates and manages an [Aiven for ClickHouse®](https://aiven.io/docs/products/clickhouse/concepts/features-overview) service.
 //
 // ## Example Usage
 //
@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewClickhouse(ctx, "clickhouse", &aiven.ClickhouseArgs{
-//				Project:               pulumi.Any(pr1.Project),
+//			_, err := aiven.NewClickhouse(ctx, "example_clickhouse", &aiven.ClickhouseArgs{
+//				Project:               pulumi.Any(exampleProject.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("my-clickhouse"),
+//				ServiceName:           pulumi.String("example-clickhouse-service"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //			})
@@ -55,7 +55,7 @@ type Clickhouse struct {
 
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
-	// Clickhouse server provided values
+	// Values provided by the ClickHouse server.
 	Clickhouse ClickhouseClickhouseOutput `pulumi:"clickhouse"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrOutput `pulumi:"clickhouseUserConfig"`
@@ -87,7 +87,7 @@ type Clickhouse struct {
 	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// Integrations with other services. Service integrations are only applied at service creation.
 	ServiceIntegrations ClickhouseServiceIntegrationArrayOutput `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -163,7 +163,7 @@ func GetClickhouse(ctx *pulumi.Context,
 type clickhouseState struct {
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
-	// Clickhouse server provided values
+	// Values provided by the ClickHouse server.
 	Clickhouse *ClickhouseClickhouse `pulumi:"clickhouse"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig *ClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
@@ -195,7 +195,7 @@ type clickhouseState struct {
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost *string `pulumi:"serviceHost"`
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// Integrations with other services. Service integrations are only applied at service creation.
 	ServiceIntegrations []ClickhouseServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName *string `pulumi:"serviceName"`
@@ -224,7 +224,7 @@ type clickhouseState struct {
 type ClickhouseState struct {
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace pulumi.StringPtrInput
-	// Clickhouse server provided values
+	// Values provided by the ClickHouse server.
 	Clickhouse ClickhouseClickhousePtrInput
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrInput
@@ -256,7 +256,7 @@ type ClickhouseState struct {
 	ProjectVpcId pulumi.StringPtrInput
 	// The hostname of the service.
 	ServiceHost pulumi.StringPtrInput
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// Integrations with other services. Service integrations are only applied at service creation.
 	ServiceIntegrations ClickhouseServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringPtrInput
@@ -289,7 +289,7 @@ func (ClickhouseState) ElementType() reflect.Type {
 type clickhouseArgs struct {
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
-	// Clickhouse server provided values
+	// Values provided by the ClickHouse server.
 	Clickhouse *ClickhouseClickhouse `pulumi:"clickhouse"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig *ClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
@@ -309,7 +309,7 @@ type clickhouseArgs struct {
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// Integrations with other services. Service integrations are only applied at service creation.
 	ServiceIntegrations []ClickhouseServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -327,7 +327,7 @@ type clickhouseArgs struct {
 type ClickhouseArgs struct {
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace pulumi.StringPtrInput
-	// Clickhouse server provided values
+	// Values provided by the ClickHouse server.
 	Clickhouse ClickhouseClickhousePtrInput
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrInput
@@ -347,7 +347,7 @@ type ClickhouseArgs struct {
 	Project pulumi.StringInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// Integrations with other services. Service integrations are only applied at service creation.
 	ServiceIntegrations ClickhouseServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
@@ -453,7 +453,7 @@ func (o ClickhouseOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Clickhouse) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
 }
 
-// Clickhouse server provided values
+// Values provided by the ClickHouse server.
 func (o ClickhouseOutput) Clickhouse() ClickhouseClickhouseOutput {
 	return o.ApplyT(func(v *Clickhouse) ClickhouseClickhouseOutput { return v.Clickhouse }).(ClickhouseClickhouseOutput)
 }
@@ -530,7 +530,7 @@ func (o ClickhouseOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v *Clickhouse) pulumi.StringOutput { return v.ServiceHost }).(pulumi.StringOutput)
 }
 
-// Service integrations to specify when creating a service. Not applied after initial service creation
+// Integrations with other services. Service integrations are only applied at service creation.
 func (o ClickhouseOutput) ServiceIntegrations() ClickhouseServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v *Clickhouse) ClickhouseServiceIntegrationArrayOutput { return v.ServiceIntegrations }).(ClickhouseServiceIntegrationArrayOutput)
 }

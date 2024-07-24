@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
+// Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as members of a project.
 //
 // ## Example Usage
 //
@@ -77,7 +77,7 @@ type OrganizationGroupProject struct {
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The project that the users in the group are members of.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Role assigned to all users in the group for the project.
+	// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
 	Role     pulumi.StringOutput                       `pulumi:"role"`
 	Timeouts OrganizationGroupProjectTimeoutsPtrOutput `pulumi:"timeouts"`
 }
@@ -125,7 +125,7 @@ type organizationGroupProjectState struct {
 	GroupId *string `pulumi:"groupId"`
 	// The project that the users in the group are members of.
 	Project *string `pulumi:"project"`
-	// Role assigned to all users in the group for the project.
+	// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
 	Role     *string                           `pulumi:"role"`
 	Timeouts *OrganizationGroupProjectTimeouts `pulumi:"timeouts"`
 }
@@ -135,7 +135,7 @@ type OrganizationGroupProjectState struct {
 	GroupId pulumi.StringPtrInput
 	// The project that the users in the group are members of.
 	Project pulumi.StringPtrInput
-	// Role assigned to all users in the group for the project.
+	// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
 	Role     pulumi.StringPtrInput
 	Timeouts OrganizationGroupProjectTimeoutsPtrInput
 }
@@ -149,7 +149,7 @@ type organizationGroupProjectArgs struct {
 	GroupId string `pulumi:"groupId"`
 	// The project that the users in the group are members of.
 	Project string `pulumi:"project"`
-	// Role assigned to all users in the group for the project.
+	// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
 	Role     string                            `pulumi:"role"`
 	Timeouts *OrganizationGroupProjectTimeouts `pulumi:"timeouts"`
 }
@@ -160,7 +160,7 @@ type OrganizationGroupProjectArgs struct {
 	GroupId pulumi.StringInput
 	// The project that the users in the group are members of.
 	Project pulumi.StringInput
-	// Role assigned to all users in the group for the project.
+	// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
 	Role     pulumi.StringInput
 	Timeouts OrganizationGroupProjectTimeoutsPtrInput
 }
@@ -262,7 +262,7 @@ func (o OrganizationGroupProjectOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationGroupProject) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Role assigned to all users in the group for the project.
+// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
 func (o OrganizationGroupProjectOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationGroupProject) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

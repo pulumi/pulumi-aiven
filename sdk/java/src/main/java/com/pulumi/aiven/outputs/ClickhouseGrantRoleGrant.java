@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClickhouseGrantRoleGrant {
     /**
-     * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private @Nullable String role;
 
     private ClickhouseGrantRoleGrant() {}
     /**
-     * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<String> role() {

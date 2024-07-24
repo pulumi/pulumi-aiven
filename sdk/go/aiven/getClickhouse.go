@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Clickhouse data source provides information about the existing Aiven Clickhouse service.
+// Gets information about a ClickHouse service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupClickhouse(ctx, &aiven.LookupClickhouseArgs{
-//				Project:     pr1.Project,
-//				ServiceName: "<SERVICE_NAME>",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-clickhouse-service",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -63,7 +63,7 @@ type LookupClickhouseResult struct {
 	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfigs []GetClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfigs"`
-	// Clickhouse server provided values
+	// Values provided by the ClickHouse server.
 	Clickhouses []GetClickhouseClickhouse `pulumi:"clickhouses"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName string `pulumi:"cloudName"`
@@ -93,7 +93,7 @@ type LookupClickhouseResult struct {
 	ProjectVpcId string `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost string `pulumi:"serviceHost"`
-	// Service integrations to specify when creating a service. Not applied after initial service creation
+	// Integrations with other services. Service integrations are only applied at service creation.
 	ServiceIntegrations []GetClickhouseServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -169,7 +169,7 @@ func (o LookupClickhouseResultOutput) ClickhouseUserConfigs() GetClickhouseClick
 	return o.ApplyT(func(v LookupClickhouseResult) []GetClickhouseClickhouseUserConfig { return v.ClickhouseUserConfigs }).(GetClickhouseClickhouseUserConfigArrayOutput)
 }
 
-// Clickhouse server provided values
+// Values provided by the ClickHouse server.
 func (o LookupClickhouseResultOutput) Clickhouses() GetClickhouseClickhouseArrayOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) []GetClickhouseClickhouse { return v.Clickhouses }).(GetClickhouseClickhouseArrayOutput)
 }
@@ -244,7 +244,7 @@ func (o LookupClickhouseResultOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) string { return v.ServiceHost }).(pulumi.StringOutput)
 }
 
-// Service integrations to specify when creating a service. Not applied after initial service creation
+// Integrations with other services. Service integrations are only applied at service creation.
 func (o LookupClickhouseResultOutput) ServiceIntegrations() GetClickhouseServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) []GetClickhouseServiceIntegration { return v.ServiceIntegrations }).(GetClickhouseServiceIntegrationArrayOutput)
 }

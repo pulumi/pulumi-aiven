@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services
+ * Creates and manages ClickHouse roles.
  *
  * ## Example Usage
  *
@@ -13,17 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const bar = new aiven.Clickhouse("bar", {
- *     project: "example-project",
- *     cloudName: "google-europe-west1",
- *     plan: "startup-8",
- *     serviceName: "example-service",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- * });
- * const foo = new aiven.ClickhouseRole("foo", {
- *     serviceName: bar.serviceName,
- *     project: bar.project,
+ * const exampleRole = new aiven.ClickhouseRole("example_role", {
+ *     serviceName: exampleClickhouse.serviceName,
+ *     project: exampleProject.project,
  *     role: "writer",
  * });
  * ```
@@ -31,7 +23,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo PROJECT/SERVICE_NAME/ROLE
+ * $ pulumi import aiven:index/clickhouseRole:ClickhouseRole example_role PROJECT/SERVICE_NAME/ROLE
  * ```
  */
 export class ClickhouseRole extends pulumi.CustomResource {
@@ -67,7 +59,7 @@ export class ClickhouseRole extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The role that is to be created. Changing this property forces recreation of the resource.
+     * The name of role. Changing this property forces recreation of the resource.
      */
     public readonly role!: pulumi.Output<string>;
     /**
@@ -120,7 +112,7 @@ export interface ClickhouseRoleState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The role that is to be created. Changing this property forces recreation of the resource.
+     * The name of role. Changing this property forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
     /**
@@ -138,7 +130,7 @@ export interface ClickhouseRoleArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The role that is to be created. Changing this property forces recreation of the resource.
+     * The name of role. Changing this property forces recreation of the resource.
      */
     role: pulumi.Input<string>;
     /**

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaAclResult {
     /**
-     * @return Kafka ACL ID
+     * @return Kafka ACL ID.
      * 
      */
     private String aclId;
@@ -21,7 +21,7 @@ public final class GetKafkaAclResult {
      */
     private String id;
     /**
-     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * @return Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     private String permission;
@@ -36,19 +36,19 @@ public final class GetKafkaAclResult {
      */
     private String serviceName;
     /**
-     * @return Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Topics that the permissions apply to. Changing this property forces recreation of the resource.
      * 
      */
     private String topic;
     /**
-     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Usernames to grant permissions to. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
 
     private GetKafkaAclResult() {}
     /**
-     * @return Kafka ACL ID
+     * @return Kafka ACL ID.
      * 
      */
     public String aclId() {
@@ -62,7 +62,7 @@ public final class GetKafkaAclResult {
         return this.id;
     }
     /**
-     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * @return Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     public String permission() {
@@ -83,14 +83,14 @@ public final class GetKafkaAclResult {
         return this.serviceName;
     }
     /**
-     * @return Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Topics that the permissions apply to. Changing this property forces recreation of the resource.
      * 
      */
     public String topic() {
         return this.topic;
     }
     /**
-     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Usernames to grant permissions to. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {

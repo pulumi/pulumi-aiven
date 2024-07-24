@@ -25,6 +25,14 @@ namespace Pulumi.Aiven.Outputs
         /// Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
         /// </summary>
         public readonly string? Datacenter;
+        /// <summary>
+        /// How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        /// </summary>
+        public readonly int? ReadRequestTimeoutInMs;
+        /// <summary>
+        /// How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+        /// </summary>
+        public readonly int? WriteRequestTimeoutInMs;
 
         [OutputConstructor]
         private GetCassandaCassandraUserConfigCassandraResult(
@@ -32,11 +40,17 @@ namespace Pulumi.Aiven.Outputs
 
             int? batchSizeWarnThresholdInKb,
 
-            string? datacenter)
+            string? datacenter,
+
+            int? readRequestTimeoutInMs,
+
+            int? writeRequestTimeoutInMs)
         {
             BatchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
             BatchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
             Datacenter = datacenter;
+            ReadRequestTimeoutInMs = readRequestTimeoutInMs;
+            WriteRequestTimeoutInMs = writeRequestTimeoutInMs;
         }
     }
 }

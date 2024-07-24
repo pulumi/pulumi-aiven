@@ -878,6 +878,10 @@ class CassandraCassandraUserConfigCassandra(dict):
             suggest = "batch_size_fail_threshold_in_kb"
         elif key == "batchSizeWarnThresholdInKb":
             suggest = "batch_size_warn_threshold_in_kb"
+        elif key == "readRequestTimeoutInMs":
+            suggest = "read_request_timeout_in_ms"
+        elif key == "writeRequestTimeoutInMs":
+            suggest = "write_request_timeout_in_ms"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CassandraCassandraUserConfigCassandra. Access the value via the '{suggest}' property getter instead.")
@@ -893,11 +897,15 @@ class CassandraCassandraUserConfigCassandra(dict):
     def __init__(__self__, *,
                  batch_size_fail_threshold_in_kb: Optional[int] = None,
                  batch_size_warn_threshold_in_kb: Optional[int] = None,
-                 datacenter: Optional[str] = None):
+                 datacenter: Optional[str] = None,
+                 read_request_timeout_in_ms: Optional[int] = None,
+                 write_request_timeout_in_ms: Optional[int] = None):
         """
         :param int batch_size_fail_threshold_in_kb: Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
         :param int batch_size_warn_threshold_in_kb: Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
         :param str datacenter: Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
+        :param int read_request_timeout_in_ms: How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        :param int write_request_timeout_in_ms: How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
         """
         if batch_size_fail_threshold_in_kb is not None:
             pulumi.set(__self__, "batch_size_fail_threshold_in_kb", batch_size_fail_threshold_in_kb)
@@ -905,6 +913,10 @@ class CassandraCassandraUserConfigCassandra(dict):
             pulumi.set(__self__, "batch_size_warn_threshold_in_kb", batch_size_warn_threshold_in_kb)
         if datacenter is not None:
             pulumi.set(__self__, "datacenter", datacenter)
+        if read_request_timeout_in_ms is not None:
+            pulumi.set(__self__, "read_request_timeout_in_ms", read_request_timeout_in_ms)
+        if write_request_timeout_in_ms is not None:
+            pulumi.set(__self__, "write_request_timeout_in_ms", write_request_timeout_in_ms)
 
     @property
     @pulumi.getter(name="batchSizeFailThresholdInKb")
@@ -929,6 +941,22 @@ class CassandraCassandraUserConfigCassandra(dict):
         Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
         """
         return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="readRequestTimeoutInMs")
+    def read_request_timeout_in_ms(self) -> Optional[int]:
+        """
+        How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        """
+        return pulumi.get(self, "read_request_timeout_in_ms")
+
+    @property
+    @pulumi.getter(name="writeRequestTimeoutInMs")
+    def write_request_timeout_in_ms(self) -> Optional[int]:
+        """
+        How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+        """
+        return pulumi.get(self, "write_request_timeout_in_ms")
 
 
 @pulumi.output_type
@@ -1221,7 +1249,7 @@ class ClickhouseClickhouse(dict):
     def __init__(__self__, *,
                  uris: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] uris: Clickhouse server URIs.
+        :param Sequence[str] uris: ClickHouse server URIs.
         """
         if uris is not None:
             pulumi.set(__self__, "uris", uris)
@@ -1230,7 +1258,7 @@ class ClickhouseClickhouse(dict):
     @pulumi.getter
     def uris(self) -> Optional[Sequence[str]]:
         """
-        Clickhouse server URIs.
+        ClickHouse server URIs.
         """
         return pulumi.get(self, "uris")
 
@@ -1813,11 +1841,11 @@ class ClickhouseGrantPrivilegeGrant(dict):
                  table: Optional[str] = None,
                  with_grant: Optional[bool] = None):
         """
-        :param str database: The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param str column: The column that the grant refers to. Changing this property forces recreation of the resource.
-        :param str privilege: The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
-        :param str table: The table that the grant refers to. Changing this property forces recreation of the resource.
-        :param bool with_grant: If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+        :param str database: The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param str column: The column to grant access to. Changing this property forces recreation of the resource.
+        :param str privilege: The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
+        :param str table: The table to grant access to. Changing this property forces recreation of the resource.
+        :param bool with_grant: Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "database", database)
         if column is not None:
@@ -1833,7 +1861,7 @@ class ClickhouseGrantPrivilegeGrant(dict):
     @pulumi.getter
     def database(self) -> str:
         """
-        The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database")
 
@@ -1841,7 +1869,7 @@ class ClickhouseGrantPrivilegeGrant(dict):
     @pulumi.getter
     def column(self) -> Optional[str]:
         """
-        The column that the grant refers to. Changing this property forces recreation of the resource.
+        The column to grant access to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "column")
 
@@ -1849,7 +1877,7 @@ class ClickhouseGrantPrivilegeGrant(dict):
     @pulumi.getter
     def privilege(self) -> Optional[str]:
         """
-        The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
+        The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "privilege")
 
@@ -1857,7 +1885,7 @@ class ClickhouseGrantPrivilegeGrant(dict):
     @pulumi.getter
     def table(self) -> Optional[str]:
         """
-        The table that the grant refers to. Changing this property forces recreation of the resource.
+        The table to grant access to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "table")
 
@@ -1865,7 +1893,7 @@ class ClickhouseGrantPrivilegeGrant(dict):
     @pulumi.getter(name="withGrant")
     def with_grant(self) -> Optional[bool]:
         """
-        If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+        Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "with_grant")
 
@@ -1875,7 +1903,7 @@ class ClickhouseGrantRoleGrant(dict):
     def __init__(__self__, *,
                  role: Optional[str] = None):
         """
-        :param str role: The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param str role: The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         if role is not None:
             pulumi.set(__self__, "role", role)
@@ -1884,7 +1912,7 @@ class ClickhouseGrantRoleGrant(dict):
     @pulumi.getter
     def role(self) -> Optional[str]:
         """
-        The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 
@@ -1914,8 +1942,8 @@ class ClickhouseServiceIntegration(dict):
                  integration_type: str,
                  source_service_name: str):
         """
-        :param str integration_type: Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
-        :param str source_service_name: Name of the source service
+        :param str integration_type: Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
+        :param str source_service_name: Name of the source service.
         """
         pulumi.set(__self__, "integration_type", integration_type)
         pulumi.set(__self__, "source_service_name", source_service_name)
@@ -1924,7 +1952,7 @@ class ClickhouseServiceIntegration(dict):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
+        Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -1932,7 +1960,7 @@ class ClickhouseServiceIntegration(dict):
     @pulumi.getter(name="sourceServiceName")
     def source_service_name(self) -> str:
         """
-        Name of the source service
+        Name of the source service.
         """
         return pulumi.get(self, "source_service_name")
 
@@ -2989,7 +3017,7 @@ class FlinkFlink(dict):
     def __init__(__self__, *,
                  host_ports: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] host_ports: Host and Port of a Flink server
+        :param Sequence[str] host_ports: The host and port of a Flink server.
         """
         if host_ports is not None:
             pulumi.set(__self__, "host_ports", host_ports)
@@ -2998,7 +3026,7 @@ class FlinkFlink(dict):
     @pulumi.getter(name="hostPorts")
     def host_ports(self) -> Optional[Sequence[str]]:
         """
-        Host and Port of a Flink server
+        The host and port of a Flink server.
         """
         return pulumi.get(self, "host_ports")
 
@@ -7019,7 +7047,7 @@ class KafkaConnectorTask(dict):
                  task: Optional[int] = None):
         """
         :param str connector: The name of the related connector.
-        :param int task: The task id of the task.
+        :param int task: The task ID of the task.
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
@@ -7038,7 +7066,7 @@ class KafkaConnectorTask(dict):
     @pulumi.getter
     def task(self) -> Optional[int]:
         """
-        The task id of the task.
+        The task ID of the task.
         """
         return pulumi.get(self, "task")
 
@@ -10290,8 +10318,8 @@ class KafkaTopicTag(dict):
                  key: str,
                  value: Optional[str] = None):
         """
-        :param str key: Topic tag key. Maximum length: `64`.
-        :param str value: Topic tag value. Maximum length: `256`.
+        :param str key: Tag key. Maximum length: `64`.
+        :param str value: Tag value. Maximum length: `256`.
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -10301,7 +10329,7 @@ class KafkaTopicTag(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Topic tag key. Maximum length: `64`.
+        Tag key. Maximum length: `64`.
         """
         return pulumi.get(self, "key")
 
@@ -10309,7 +10337,7 @@ class KafkaTopicTag(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Topic tag value. Maximum length: `256`.
+        Tag value. Maximum length: `256`.
         """
         return pulumi.get(self, "value")
 
@@ -14357,6 +14385,10 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             suggest = "ism_history_rollover_check_period"
         elif key == "ismHistoryRolloverRetentionPeriod":
             suggest = "ism_history_rollover_retention_period"
+        elif key == "knnMemoryCircuitBreakerEnabled":
+            suggest = "knn_memory_circuit_breaker_enabled"
+        elif key == "knnMemoryCircuitBreakerLimit":
+            suggest = "knn_memory_circuit_breaker_limit"
         elif key == "overrideMainResponseVersion":
             suggest = "override_main_response_version"
         elif key == "pluginsAlertingFilterByBackendRoles":
@@ -14428,6 +14460,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
                  ism_history_max_docs: Optional[int] = None,
                  ism_history_rollover_check_period: Optional[int] = None,
                  ism_history_rollover_retention_period: Optional[int] = None,
+                 knn_memory_circuit_breaker_enabled: Optional[bool] = None,
+                 knn_memory_circuit_breaker_limit: Optional[int] = None,
                  override_main_response_version: Optional[bool] = None,
                  plugins_alerting_filter_by_backend_roles: Optional[bool] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
@@ -14471,6 +14505,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         :param int ism_history_max_docs: The maximum number of documents before rolling over the audit history index. Default: `2500000`.
         :param int ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Default: `8`.
         :param int ism_history_rollover_retention_period: How long audit history indices are kept in days. Default: `30`.
+        :param bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        :param int knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
         :param bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
         :param Sequence[str] reindex_remote_whitelists: Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
@@ -14540,6 +14576,10 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             pulumi.set(__self__, "ism_history_rollover_check_period", ism_history_rollover_check_period)
         if ism_history_rollover_retention_period is not None:
             pulumi.set(__self__, "ism_history_rollover_retention_period", ism_history_rollover_retention_period)
+        if knn_memory_circuit_breaker_enabled is not None:
+            pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
+        if knn_memory_circuit_breaker_limit is not None:
+            pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
         if override_main_response_version is not None:
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if plugins_alerting_filter_by_backend_roles is not None:
@@ -14780,6 +14820,22 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         How long audit history indices are kept in days. Default: `30`.
         """
         return pulumi.get(self, "ism_history_rollover_retention_period")
+
+    @property
+    @pulumi.getter(name="knnMemoryCircuitBreakerEnabled")
+    def knn_memory_circuit_breaker_enabled(self) -> Optional[bool]:
+        """
+        Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        """
+        return pulumi.get(self, "knn_memory_circuit_breaker_enabled")
+
+    @property
+    @pulumi.getter(name="knnMemoryCircuitBreakerLimit")
+    def knn_memory_circuit_breaker_limit(self) -> Optional[int]:
+        """
+        Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        """
+        return pulumi.get(self, "knn_memory_circuit_breaker_limit")
 
     @property
     @pulumi.getter(name="overrideMainResponseVersion")
@@ -17004,7 +17060,7 @@ class PgPgUserConfigPg(dict):
         :param bool jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param int log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
         :param str log_error_verbosity: Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-        :param str log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+        :param str log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         :param int log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param int log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
         :param int max_files_per_process: PostgreSQL maximum number of files that can be open per process.
@@ -17290,7 +17346,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="logLinePrefix")
     def log_line_prefix(self) -> Optional[str]:
         """
-        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         """
         return pulumi.get(self, "log_line_prefix")
 
@@ -22607,11 +22663,15 @@ class GetCassandaCassandraUserConfigCassandraResult(dict):
     def __init__(__self__, *,
                  batch_size_fail_threshold_in_kb: Optional[int] = None,
                  batch_size_warn_threshold_in_kb: Optional[int] = None,
-                 datacenter: Optional[str] = None):
+                 datacenter: Optional[str] = None,
+                 read_request_timeout_in_ms: Optional[int] = None,
+                 write_request_timeout_in_ms: Optional[int] = None):
         """
         :param int batch_size_fail_threshold_in_kb: Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
         :param int batch_size_warn_threshold_in_kb: Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
         :param str datacenter: Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
+        :param int read_request_timeout_in_ms: How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        :param int write_request_timeout_in_ms: How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
         """
         if batch_size_fail_threshold_in_kb is not None:
             pulumi.set(__self__, "batch_size_fail_threshold_in_kb", batch_size_fail_threshold_in_kb)
@@ -22619,6 +22679,10 @@ class GetCassandaCassandraUserConfigCassandraResult(dict):
             pulumi.set(__self__, "batch_size_warn_threshold_in_kb", batch_size_warn_threshold_in_kb)
         if datacenter is not None:
             pulumi.set(__self__, "datacenter", datacenter)
+        if read_request_timeout_in_ms is not None:
+            pulumi.set(__self__, "read_request_timeout_in_ms", read_request_timeout_in_ms)
+        if write_request_timeout_in_ms is not None:
+            pulumi.set(__self__, "write_request_timeout_in_ms", write_request_timeout_in_ms)
 
     @property
     @pulumi.getter(name="batchSizeFailThresholdInKb")
@@ -22643,6 +22707,22 @@ class GetCassandaCassandraUserConfigCassandraResult(dict):
         Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
         """
         return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="readRequestTimeoutInMs")
+    def read_request_timeout_in_ms(self) -> Optional[int]:
+        """
+        How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        """
+        return pulumi.get(self, "read_request_timeout_in_ms")
+
+    @property
+    @pulumi.getter(name="writeRequestTimeoutInMs")
+    def write_request_timeout_in_ms(self) -> Optional[int]:
+        """
+        How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+        """
+        return pulumi.get(self, "write_request_timeout_in_ms")
 
 
 @pulumi.output_type
@@ -23108,11 +23188,15 @@ class GetCassandraCassandraUserConfigCassandraResult(dict):
     def __init__(__self__, *,
                  batch_size_fail_threshold_in_kb: Optional[int] = None,
                  batch_size_warn_threshold_in_kb: Optional[int] = None,
-                 datacenter: Optional[str] = None):
+                 datacenter: Optional[str] = None,
+                 read_request_timeout_in_ms: Optional[int] = None,
+                 write_request_timeout_in_ms: Optional[int] = None):
         """
         :param int batch_size_fail_threshold_in_kb: Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
         :param int batch_size_warn_threshold_in_kb: Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
         :param str datacenter: Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
+        :param int read_request_timeout_in_ms: How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        :param int write_request_timeout_in_ms: How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
         """
         if batch_size_fail_threshold_in_kb is not None:
             pulumi.set(__self__, "batch_size_fail_threshold_in_kb", batch_size_fail_threshold_in_kb)
@@ -23120,6 +23204,10 @@ class GetCassandraCassandraUserConfigCassandraResult(dict):
             pulumi.set(__self__, "batch_size_warn_threshold_in_kb", batch_size_warn_threshold_in_kb)
         if datacenter is not None:
             pulumi.set(__self__, "datacenter", datacenter)
+        if read_request_timeout_in_ms is not None:
+            pulumi.set(__self__, "read_request_timeout_in_ms", read_request_timeout_in_ms)
+        if write_request_timeout_in_ms is not None:
+            pulumi.set(__self__, "write_request_timeout_in_ms", write_request_timeout_in_ms)
 
     @property
     @pulumi.getter(name="batchSizeFailThresholdInKb")
@@ -23144,6 +23232,22 @@ class GetCassandraCassandraUserConfigCassandraResult(dict):
         Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
         """
         return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="readRequestTimeoutInMs")
+    def read_request_timeout_in_ms(self) -> Optional[int]:
+        """
+        How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+        """
+        return pulumi.get(self, "read_request_timeout_in_ms")
+
+    @property
+    @pulumi.getter(name="writeRequestTimeoutInMs")
+    def write_request_timeout_in_ms(self) -> Optional[int]:
+        """
+        How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+        """
+        return pulumi.get(self, "write_request_timeout_in_ms")
 
 
 @pulumi.output_type
@@ -23390,7 +23494,7 @@ class GetClickhouseClickhouseResult(dict):
     def __init__(__self__, *,
                  uris: Sequence[str]):
         """
-        :param Sequence[str] uris: Clickhouse server URIs.
+        :param Sequence[str] uris: ClickHouse server URIs.
         """
         pulumi.set(__self__, "uris", uris)
 
@@ -23398,7 +23502,7 @@ class GetClickhouseClickhouseResult(dict):
     @pulumi.getter
     def uris(self) -> Sequence[str]:
         """
-        Clickhouse server URIs.
+        ClickHouse server URIs.
         """
         return pulumi.get(self, "uris")
 
@@ -23840,8 +23944,8 @@ class GetClickhouseServiceIntegrationResult(dict):
                  integration_type: str,
                  source_service_name: str):
         """
-        :param str integration_type: Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
-        :param str source_service_name: Name of the source service
+        :param str integration_type: Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
+        :param str source_service_name: Name of the source service.
         """
         pulumi.set(__self__, "integration_type", integration_type)
         pulumi.set(__self__, "source_service_name", source_service_name)
@@ -23850,7 +23954,7 @@ class GetClickhouseServiceIntegrationResult(dict):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration. The only supported values at the moment are `clickhouse_kafka` and `clickhouse_postgresql`.
+        Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -23858,7 +23962,7 @@ class GetClickhouseServiceIntegrationResult(dict):
     @pulumi.getter(name="sourceServiceName")
     def source_service_name(self) -> str:
         """
-        Name of the source service
+        Name of the source service.
         """
         return pulumi.get(self, "source_service_name")
 
@@ -24704,7 +24808,7 @@ class GetFlinkFlinkResult(dict):
     def __init__(__self__, *,
                  host_ports: Sequence[str]):
         """
-        :param Sequence[str] host_ports: Host and Port of a Flink server
+        :param Sequence[str] host_ports: The host and port of a Flink server.
         """
         pulumi.set(__self__, "host_ports", host_ports)
 
@@ -24712,7 +24816,7 @@ class GetFlinkFlinkResult(dict):
     @pulumi.getter(name="hostPorts")
     def host_ports(self) -> Sequence[str]:
         """
-        Host and Port of a Flink server
+        The host and port of a Flink server.
         """
         return pulumi.get(self, "host_ports")
 
@@ -27932,7 +28036,7 @@ class GetKafkaConnectorTaskResult(dict):
                  task: int):
         """
         :param str connector: The name of the related connector.
-        :param int task: The task id of the task.
+        :param int task: The task ID of the task.
         """
         pulumi.set(__self__, "connector", connector)
         pulumi.set(__self__, "task", task)
@@ -27949,7 +28053,7 @@ class GetKafkaConnectorTaskResult(dict):
     @pulumi.getter
     def task(self) -> int:
         """
-        The task id of the task.
+        The task ID of the task.
         """
         return pulumi.get(self, "task")
 
@@ -30581,8 +30685,8 @@ class GetKafkaTopicTagResult(dict):
                  key: str,
                  value: Optional[str] = None):
         """
-        :param str key: Topic tag key. Maximum length: `64`.
-        :param str value: Topic tag value. Maximum length: `256`.
+        :param str key: Tag key. Maximum length: `64`.
+        :param str value: Tag value. Maximum length: `256`.
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -30592,7 +30696,7 @@ class GetKafkaTopicTagResult(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Topic tag key. Maximum length: `64`.
+        Tag key. Maximum length: `64`.
         """
         return pulumi.get(self, "key")
 
@@ -30600,7 +30704,7 @@ class GetKafkaTopicTagResult(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Topic tag value. Maximum length: `256`.
+        Tag value. Maximum length: `256`.
         """
         return pulumi.get(self, "value")
 
@@ -33859,6 +33963,8 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
                  ism_history_max_docs: Optional[int] = None,
                  ism_history_rollover_check_period: Optional[int] = None,
                  ism_history_rollover_retention_period: Optional[int] = None,
+                 knn_memory_circuit_breaker_enabled: Optional[bool] = None,
+                 knn_memory_circuit_breaker_limit: Optional[int] = None,
                  override_main_response_version: Optional[bool] = None,
                  plugins_alerting_filter_by_backend_roles: Optional[bool] = None,
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
@@ -33902,6 +34008,8 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         :param int ism_history_max_docs: The maximum number of documents before rolling over the audit history index. Default: `2500000`.
         :param int ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Default: `8`.
         :param int ism_history_rollover_retention_period: How long audit history indices are kept in days. Default: `30`.
+        :param bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        :param int knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
         :param bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
         :param Sequence[str] reindex_remote_whitelists: Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
@@ -33971,6 +34079,10 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
             pulumi.set(__self__, "ism_history_rollover_check_period", ism_history_rollover_check_period)
         if ism_history_rollover_retention_period is not None:
             pulumi.set(__self__, "ism_history_rollover_retention_period", ism_history_rollover_retention_period)
+        if knn_memory_circuit_breaker_enabled is not None:
+            pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
+        if knn_memory_circuit_breaker_limit is not None:
+            pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
         if override_main_response_version is not None:
             pulumi.set(__self__, "override_main_response_version", override_main_response_version)
         if plugins_alerting_filter_by_backend_roles is not None:
@@ -34211,6 +34323,22 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         How long audit history indices are kept in days. Default: `30`.
         """
         return pulumi.get(self, "ism_history_rollover_retention_period")
+
+    @property
+    @pulumi.getter(name="knnMemoryCircuitBreakerEnabled")
+    def knn_memory_circuit_breaker_enabled(self) -> Optional[bool]:
+        """
+        Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        """
+        return pulumi.get(self, "knn_memory_circuit_breaker_enabled")
+
+    @property
+    @pulumi.getter(name="knnMemoryCircuitBreakerLimit")
+    def knn_memory_circuit_breaker_limit(self) -> Optional[int]:
+        """
+        Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        """
+        return pulumi.get(self, "knn_memory_circuit_breaker_limit")
 
     @property
     @pulumi.getter(name="overrideMainResponseVersion")
@@ -35805,7 +35933,7 @@ class GetPgPgUserConfigPgResult(dict):
         :param bool jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param int log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
         :param str log_error_verbosity: Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-        :param str log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+        :param str log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         :param int log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param int log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
         :param int max_files_per_process: PostgreSQL maximum number of files that can be open per process.
@@ -36091,7 +36219,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="logLinePrefix")
     def log_line_prefix(self) -> Optional[str]:
         """
-        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         """
         return pulumi.get(self, "log_line_prefix")
 

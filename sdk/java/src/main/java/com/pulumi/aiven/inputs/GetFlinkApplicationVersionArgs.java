@@ -15,14 +15,14 @@ public final class GetFlinkApplicationVersionArgs extends com.pulumi.resources.I
     public static final GetFlinkApplicationVersionArgs Empty = new GetFlinkApplicationVersionArgs();
 
     /**
-     * Application ID
+     * Application ID.
      * 
      */
     @Import(name="applicationId", required=true)
     private Output<String> applicationId;
 
     /**
-     * @return Application ID
+     * @return Application ID.
      * 
      */
     public Output<String> applicationId() {
@@ -30,14 +30,14 @@ public final class GetFlinkApplicationVersionArgs extends com.pulumi.resources.I
     }
 
     /**
-     * Application version ID
+     * Application version ID.
      * 
      */
     @Import(name="applicationVersionId", required=true)
     private Output<String> applicationVersionId;
 
     /**
-     * @return Application version ID
+     * @return Application version ID.
      * 
      */
     public Output<String> applicationVersionId() {
@@ -102,7 +102,7 @@ public final class GetFlinkApplicationVersionArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param applicationId Application ID
+         * @param applicationId Application ID.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class GetFlinkApplicationVersionArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param applicationId Application ID
+         * @param applicationId Application ID.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class GetFlinkApplicationVersionArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param applicationVersionId Application version ID
+         * @param applicationVersionId Application version ID.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class GetFlinkApplicationVersionArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param applicationVersionId Application version ID
+         * @param applicationVersionId Application version ID.
          * 
          * @return builder
          * 

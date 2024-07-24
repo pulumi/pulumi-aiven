@@ -61,7 +61,7 @@ export interface GetTransitGatewayVpcAttachmentResult {
      */
     readonly peerCloudAccount: string;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC)
+     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
      */
     readonly peerRegion: string;
     /**

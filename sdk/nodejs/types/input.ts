@@ -119,6 +119,14 @@ export interface CassandraCassandraUserConfigCassandra {
      * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      */
     datacenter?: pulumi.Input<string>;
+    /**
+     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
+     */
+    readRequestTimeoutInMs?: pulumi.Input<number>;
+    /**
+     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
+     */
+    writeRequestTimeoutInMs?: pulumi.Input<number>;
 }
 
 export interface CassandraCassandraUserConfigIpFilterObject {
@@ -212,7 +220,7 @@ export interface CassandraTechEmail {
 
 export interface ClickhouseClickhouse {
     /**
-     * Clickhouse server URIs.
+     * ClickHouse server URIs.
      */
     uris?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -373,41 +381,41 @@ export interface ClickhouseComponent {
 
 export interface ClickhouseGrantPrivilegeGrant {
     /**
-     * The column that the grant refers to. Changing this property forces recreation of the resource.
+     * The column to grant access to. Changing this property forces recreation of the resource.
      */
     column?: pulumi.Input<string>;
     /**
-     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The database to grant access to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     database: pulumi.Input<string>;
     /**
-     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
+     * The privileges to grant. For example: `INSERT`, `SELECT`, `CREATE TABLE`. A complete list is available in the [ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/statements/grant). Changing this property forces recreation of the resource.
      */
     privilege?: pulumi.Input<string>;
     /**
-     * The table that the grant refers to. Changing this property forces recreation of the resource.
+     * The table to grant access to. Changing this property forces recreation of the resource.
      */
     table?: pulumi.Input<string>;
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
+     * Allow grantees to grant their privileges to other grantees. Changing this property forces recreation of the resource.
      */
     withGrant?: pulumi.Input<boolean>;
 }
 
 export interface ClickhouseGrantRoleGrant {
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The roles to grant. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
 }
 
 export interface ClickhouseServiceIntegration {
     /**
-     * Type of the service integration. The only supported values at the moment are `clickhouseKafka` and `clickhousePostgresql`.
+     * Type of the service integration. Supported integrations are `clickhouseKafka` and `clickhousePostgresql`.
      */
     integrationType: pulumi.Input<string>;
     /**
-     * Name of the source service
+     * Name of the source service.
      */
     sourceServiceName: pulumi.Input<string>;
 }
@@ -716,7 +724,7 @@ export interface FlinkComponent {
 
 export interface FlinkFlink {
     /**
-     * Host and Port of a Flink server
+     * The host and port of a Flink server.
      */
     hostPorts?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -1869,7 +1877,7 @@ export interface KafkaConnectorTask {
      */
     connector?: pulumi.Input<string>;
     /**
-     * The task id of the task.
+     * The task ID of the task.
      */
     task?: pulumi.Input<number>;
 }
@@ -2788,11 +2796,11 @@ export interface KafkaTopicConfig {
 
 export interface KafkaTopicTag {
     /**
-     * Topic tag key. Maximum length: `64`.
+     * Tag key. Maximum length: `64`.
      */
     key: pulumi.Input<string>;
     /**
-     * Topic tag value. Maximum length: `256`.
+     * Tag value. Maximum length: `256`.
      */
     value?: pulumi.Input<string>;
 }
@@ -4047,6 +4055,14 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     ismHistoryRolloverRetentionPeriod?: pulumi.Input<number>;
     /**
+     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     */
+    knnMemoryCircuitBreakerEnabled?: pulumi.Input<boolean>;
+    /**
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     */
+    knnMemoryCircuitBreakerLimit?: pulumi.Input<number>;
+    /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
      */
     overrideMainResponseVersion?: pulumi.Input<boolean>;
@@ -4740,7 +4756,7 @@ export interface PgPgUserConfigPg {
      */
     logErrorVerbosity?: pulumi.Input<string>;
     /**
-     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
      */
     logLinePrefix?: pulumi.Input<string>;
     /**

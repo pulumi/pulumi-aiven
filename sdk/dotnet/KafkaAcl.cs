@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
+    /// Creates and manages an [access control list](https://aiven.io/docs/products/kafka/concepts/acl) (ACL) entry for an Aiven for Apache Kafka® service.
+    /// 
+    /// ACL entries grant users rights to produce, consume, and manage Kafka topics.
     /// 
     /// ## Example Usage
     /// 
@@ -22,13 +24,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mytestacl = new Aiven.KafkaAcl("mytestacl", new()
+    ///     var exampleAcl = new Aiven.KafkaAcl("example_acl", new()
     ///     {
-    ///         Project = myproject.Project,
-    ///         ServiceName = myservice.ServiceName,
-    ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
+    ///         Topic = "example-topic",
     ///         Permission = "admin",
-    ///         Username = "&lt;USERNAME_PATTERN&gt;",
+    ///         Username = "example-user",
     ///     });
     /// 
     /// });
@@ -37,20 +39,20 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl PROJECT/SERVICE_NAME/ID
+    /// $ pulumi import aiven:index/kafkaAcl:KafkaAcl example_acl PROJECT/SERVICE_NAME/ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaAcl:KafkaAcl")]
     public partial class KafkaAcl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Kafka ACL ID
+        /// Kafka ACL ID.
         /// </summary>
         [Output("aclId")]
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
@@ -68,13 +70,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Topics that the permissions apply to. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
 
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Usernames to grant permissions to. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -126,7 +128,7 @@ namespace Pulumi.Aiven
     public sealed class KafkaAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
@@ -144,13 +146,13 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Topics that the permissions apply to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
 
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Usernames to grant permissions to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -164,13 +166,13 @@ namespace Pulumi.Aiven
     public sealed class KafkaAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka ACL ID
+        /// Kafka ACL ID.
         /// </summary>
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        /// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }
@@ -188,13 +190,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Topics that the permissions apply to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }
 
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Usernames to grant permissions to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

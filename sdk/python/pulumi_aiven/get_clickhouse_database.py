@@ -50,7 +50,7 @@ class GetClickhouseDatabaseResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the Clickhouse database. Changing this property forces recreation of the resource.
+        The name of the ClickHouse database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -94,7 +94,7 @@ def get_clickhouse_database(name: Optional[str] = None,
                             service_name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClickhouseDatabaseResult:
     """
-    The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+    Gets information about a ClickHouse database.
 
     ## Example Usage
 
@@ -102,13 +102,13 @@ def get_clickhouse_database(name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse_db = aiven.get_clickhouse_database(project=ch["project"],
-        service_name=ch["serviceName"],
-        name="my-ch-db")
+    example_clickhouse_db = aiven.get_clickhouse_database(project=example_project["project"],
+        service_name=example_clickhouse["serviceName"],
+        name="example-database")
     ```
 
 
-    :param str name: The name of the Clickhouse database. Changing this property forces recreation of the resource.
+    :param str name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
@@ -133,7 +133,7 @@ def get_clickhouse_database_output(name: Optional[pulumi.Input[str]] = None,
                                    service_name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClickhouseDatabaseResult]:
     """
-    The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
+    Gets information about a ClickHouse database.
 
     ## Example Usage
 
@@ -141,13 +141,13 @@ def get_clickhouse_database_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse_db = aiven.get_clickhouse_database(project=ch["project"],
-        service_name=ch["serviceName"],
-        name="my-ch-db")
+    example_clickhouse_db = aiven.get_clickhouse_database(project=example_project["project"],
+        service_name=example_clickhouse["serviceName"],
+        name="example-database")
     ```
 
 
-    :param str name: The name of the Clickhouse database. Changing this property forces recreation of the resource.
+    :param str name: The name of the ClickHouse database. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """

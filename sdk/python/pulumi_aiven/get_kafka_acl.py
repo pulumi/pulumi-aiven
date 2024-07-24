@@ -48,7 +48,7 @@ class GetKafkaAclResult:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> str:
         """
-        Kafka ACL ID
+        Kafka ACL ID.
         """
         return pulumi.get(self, "acl_id")
 
@@ -64,7 +64,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def permission(self) -> str:
         """
-        Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission")
 
@@ -88,7 +88,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def topic(self) -> str:
         """
-        Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Topics that the permissions apply to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "topic")
 
@@ -96,7 +96,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Usernames to grant permissions to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -123,7 +123,7 @@ def get_kafka_acl(permission: Optional[str] = None,
                   username: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaAclResult:
     """
-    The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+    Gets information about an ACL entry for an Aiven for Apache Kafka® service.
 
     ## Example Usage
 
@@ -131,19 +131,19 @@ def get_kafka_acl(permission: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestacl = aiven.get_kafka_acl(project=myproject["project"],
-        service_name=mykafka["serviceName"],
-        topic="<TOPIC_NAME_PATTERN>",
-        permission="<PERMISSON>",
-        username="<USERNAME_PATTERN>")
+    example_acl = aiven.get_kafka_acl(project=example_project["project"],
+        service_name=example_kafka["serviceName"],
+        topic="example-topic",
+        permission="admin",
+        username="example-user")
     ```
 
 
-    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+    :param str permission: Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str topic: Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
-    :param str username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+    :param str topic: Topics that the permissions apply to. Changing this property forces recreation of the resource.
+    :param str username: Usernames to grant permissions to. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['permission'] = permission
@@ -172,7 +172,7 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
                          username: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaAclResult]:
     """
-    The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
+    Gets information about an ACL entry for an Aiven for Apache Kafka® service.
 
     ## Example Usage
 
@@ -180,18 +180,18 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestacl = aiven.get_kafka_acl(project=myproject["project"],
-        service_name=mykafka["serviceName"],
-        topic="<TOPIC_NAME_PATTERN>",
-        permission="<PERMISSON>",
-        username="<USERNAME_PATTERN>")
+    example_acl = aiven.get_kafka_acl(project=example_project["project"],
+        service_name=example_kafka["serviceName"],
+        topic="example-topic",
+        permission="admin",
+        username="example-user")
     ```
 
 
-    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+    :param str permission: Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str topic: Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
-    :param str username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+    :param str topic: Topics that the permissions apply to. Changing this property forces recreation of the resource.
+    :param str username: Usernames to grant permissions to. Changing this property forces recreation of the resource.
     """
     ...

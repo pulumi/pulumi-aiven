@@ -10,7 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
+    /// Creates and manages an [Aiven for Apache Kafka® Connect](https://aiven.io/docs/products/kafka/kafka-connect) service.
+    /// Kafka Connect lets you integrate an Aiven for Apache Kafka® service with external data sources using connectors.
+    /// 
+    /// To set up and integrate Kafka Connect:
+    /// 1. Create a Kafka service in the same Aiven project using the `aiven.Kafka` resource.
+    /// 2. Create topics for importing and exporting data using `aiven.KafkaTopic`.
+    /// 3. Create the Kafka Connect service.
+    /// 4. Use the `aiven.ServiceIntegration` resource to integrate the Kafka and Kafka Connect services.
+    /// 5. Add source and sink connectors using `aiven.KafkaConnector` resource.
     /// 
     /// ## Example Usage
     /// 
@@ -22,14 +30,22 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var kc1 = new Aiven.KafkaConnect("kc1", new()
+    ///     // Create a Kafka service.
+    ///     var exampleKafka = new Aiven.Kafka("example_kafka", new()
     ///     {
-    ///         Project = pr1.Project,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = "example-kafka-service",
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-2",
+    ///     });
+    /// 
+    ///     // Create a Kafka Connect service.
+    ///     var exampleKafkaConnect = new Aiven.KafkaConnect("example_kafka_connect", new()
+    ///     {
+    ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
-    ///         ServiceName = "my-kc1",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
+    ///         ServiceName = "example-connect-service",
     ///         KafkaConnectUserConfig = new Aiven.Inputs.KafkaConnectKafkaConnectUserConfigArgs
     ///         {
     ///             KafkaConnect = new Aiven.Inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs
@@ -43,13 +59,31 @@ namespace Pulumi.Aiven
     ///         },
     ///     });
     /// 
+    ///     // Integrate the Kafka and Kafka Connect services.
+    ///     var kafkaConnectIntegration = new Aiven.ServiceIntegration("kafka_connect_integration", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         IntegrationType = "kafka_connect",
+    ///         SourceServiceName = exampleKafka.ServiceName,
+    ///         DestinationServiceName = exampleKafkaConnect.ServiceName,
+    ///         KafkaConnectUserConfig = new Aiven.Inputs.ServiceIntegrationKafkaConnectUserConfigArgs
+    ///         {
+    ///             KafkaConnect = new Aiven.Inputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs
+    ///             {
+    ///                 GroupId = "connect",
+    ///                 StatusStorageTopic = "__connect_status",
+    ///                 OffsetStorageTopic = "__connect_offsets",
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/kafkaConnect:KafkaConnect kc1 project/service_name
+    /// $ pulumi import aiven:index/kafkaConnect:KafkaConnect example_kafka_connect PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaConnect:KafkaConnect")]

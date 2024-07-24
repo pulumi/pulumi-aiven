@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClickhouseClickhouse {
     /**
-     * @return Clickhouse server URIs.
+     * @return ClickHouse server URIs.
      * 
      */
     private @Nullable List<String> uris;
 
     private ClickhouseClickhouse() {}
     /**
-     * @return Clickhouse server URIs.
+     * @return ClickHouse server URIs.
      * 
      */
     public List<String> uris() {

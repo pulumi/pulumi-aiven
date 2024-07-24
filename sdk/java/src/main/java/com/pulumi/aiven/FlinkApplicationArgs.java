@@ -17,14 +17,14 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
     public static final FlinkApplicationArgs Empty = new FlinkApplicationArgs();
 
     /**
-     * Application name
+     * The name of the application.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Application name
+     * @return The name of the application.
      * 
      */
     public Optional<Output<String>> name() {
@@ -88,7 +88,7 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Application name
+         * @param name The name of the application.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class FlinkApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Application name
+         * @param name The name of the application.
          * 
          * @return builder
          * 

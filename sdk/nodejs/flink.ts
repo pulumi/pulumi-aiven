@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Flink resource allows the creation and management of Aiven Flink services.
+ * Creates and manages an [Aiven for Apache Flink® service](https://aiven.io/docs/products/flink/concepts/flink-features).
  *
  * ## Example Usage
  *
@@ -15,15 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const flink = new aiven.Flink("flink", {
- *     project: pr1.project,
+ * const exampleFlink = new aiven.Flink("example_flink", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "business-4",
- *     serviceName: "my-flink",
+ *     serviceName: "example-flink-service",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     flinkUserConfig: {
- *         flinkVersion: "1.16",
+ *         flinkVersion: "1.19",
  *     },
  * });
  * ```
@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/flink:Flink flink PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/flink:Flink example_flink PROJECT/SERVICE_NAME
  * ```
  */
 export class Flink extends pulumi.CustomResource {
@@ -97,7 +97,7 @@ export class Flink extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
-     * Flink server provided values
+     * Values provided by the Flink server.
      */
     public readonly flink!: pulumi.Output<outputs.FlinkFlink>;
     /**
@@ -304,7 +304,7 @@ export interface FlinkState {
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
-     * Flink server provided values
+     * Values provided by the Flink server.
      */
     flink?: pulumi.Input<inputs.FlinkFlink>;
     /**
@@ -404,7 +404,7 @@ export interface FlinkArgs {
      */
     diskSpace?: pulumi.Input<string>;
     /**
-     * Flink server provided values
+     * Values provided by the Flink server.
      */
     flink?: pulumi.Input<inputs.FlinkFlink>;
     /**

@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl foo PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl foo PROJECT/SERVICE_NAME/ACL_ID
  * ```
  */
 export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {

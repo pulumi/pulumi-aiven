@@ -56,7 +56,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def password(self) -> str:
         """
-        The password of the clickhouse user.
+        The password of the ClickHouse user.
         """
         return pulumi.get(self, "password")
 
@@ -72,7 +72,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def required(self) -> bool:
         """
-        Indicates if a clickhouse user is required
+        Indicates if a ClickHouse user is required.
         """
         return pulumi.get(self, "required")
 
@@ -88,7 +88,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+        The name of the ClickHouse user. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -96,7 +96,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def uuid(self) -> str:
         """
-        UUID of the clickhouse user.
+        UUID of the ClickHouse user.
         """
         return pulumi.get(self, "uuid")
 
@@ -121,7 +121,7 @@ def get_clickhouse_user(project: Optional[str] = None,
                         username: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClickhouseUserResult:
     """
-    The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+    Gets information about a ClickHouse user.
 
     ## Example Usage
 
@@ -129,15 +129,15 @@ def get_clickhouse_user(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    ch_user = aiven.get_clickhouse_user(project=myproject["project"],
-        service_name=myservice["serviceName"],
-        username="<USERNAME>")
+    example_user = aiven.get_clickhouse_user(project=example_project["project"],
+        service_name=example_clickhouse["serviceName"],
+        username="analyst")
     ```
 
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+    :param str username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -162,7 +162,7 @@ def get_clickhouse_user_output(project: Optional[pulumi.Input[str]] = None,
                                username: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClickhouseUserResult]:
     """
-    The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
+    Gets information about a ClickHouse user.
 
     ## Example Usage
 
@@ -170,14 +170,14 @@ def get_clickhouse_user_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    ch_user = aiven.get_clickhouse_user(project=myproject["project"],
-        service_name=myservice["serviceName"],
-        username="<USERNAME>")
+    example_user = aiven.get_clickhouse_user(project=example_project["project"],
+        service_name=example_clickhouse["serviceName"],
+        username="analyst")
     ```
 
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
+    :param str username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
     """
     ...

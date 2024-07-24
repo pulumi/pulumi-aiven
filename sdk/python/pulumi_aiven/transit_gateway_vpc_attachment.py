@@ -25,15 +25,12 @@ class TransitGatewayVpcAttachmentArgs:
         :param pulumi.Input[str] peer_vpc: Transit gateway ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         """
         pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
         pulumi.set(__self__, "peer_vpc", peer_vpc)
         pulumi.set(__self__, "user_peer_network_cidrs", user_peer_network_cidrs)
         pulumi.set(__self__, "vpc_id", vpc_id)
-        if peer_region is not None:
-            warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
-            pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
         if peer_region is not None:
             pulumi.set(__self__, "peer_region", peer_region)
 
@@ -87,10 +84,9 @@ class TransitGatewayVpcAttachmentArgs:
 
     @property
     @pulumi.getter(name="peerRegion")
-    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def peer_region(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         """
         return pulumi.get(self, "peer_region")
 
@@ -113,7 +109,7 @@ class _TransitGatewayVpcAttachmentState:
         """
         Input properties used for looking up and filtering TransitGatewayVpcAttachment resources.
         :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         :param pulumi.Input[str] peer_vpc: Transit gateway ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
@@ -123,9 +119,6 @@ class _TransitGatewayVpcAttachmentState:
         """
         if peer_cloud_account is not None:
             pulumi.set(__self__, "peer_cloud_account", peer_cloud_account)
-        if peer_region is not None:
-            warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
-            pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
         if peer_region is not None:
             pulumi.set(__self__, "peer_region", peer_region)
         if peer_vpc is not None:
@@ -155,10 +148,9 @@ class _TransitGatewayVpcAttachmentState:
 
     @property
     @pulumi.getter(name="peerRegion")
-    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def peer_region(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         """
         return pulumi.get(self, "peer_region")
 
@@ -276,7 +268,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         :param pulumi.Input[str] peer_vpc: Transit gateway ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -381,7 +373,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        :param pulumi.Input[str] peer_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         :param pulumi.Input[str] peer_vpc: Transit gateway ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
@@ -413,10 +405,9 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerRegion")
-    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def peer_region(self) -> pulumi.Output[Optional[str]]:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC)
+        AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         """
         return pulumi.get(self, "peer_region")
 

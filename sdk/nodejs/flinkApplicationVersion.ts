@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
+ * Creates and manages an Aiven for Apache Flink® application version.
  *
  * ## Example Usage
  *
@@ -15,10 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = new aiven.FlinkApplicationVersion("foo", {
- *     project: fooAivenProject.project,
- *     serviceName: fooAivenFlink.serviceName,
- *     applicationId: fooAivenFlinkApplication.applicationId,
+ * const exampleApp = new aiven.FlinkApplication("example_app", {
+ *     project: exampleProject.project,
+ *     serviceName: "example-flink-service",
+ *     name: "example-app",
+ * });
+ * const main = new aiven.FlinkApplicationVersion("main", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleFlink.serviceName,
+ *     applicationId: exampleApp.applicationId,
  *     statement: "    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\n",
  *     sinks: [{
  *         createTable: `      CREATE TABLE kafka_known_pizza (
@@ -54,7 +59,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id
+ * $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID
  * ```
  */
 export class FlinkApplicationVersion extends pulumi.CustomResource {
@@ -86,19 +91,19 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
     }
 
     /**
-     * Application ID
+     * Application ID.
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
-     * Application version ID
+     * Application version ID.
      */
     public /*out*/ readonly applicationVersionId!: pulumi.Output<string>;
     /**
-     * Application version creation time
+     * Application version creation time.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Application version creator
+     * The user who created the application.
      */
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
@@ -110,7 +115,7 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Application sink
+     * The sink table for the application.
      */
     public readonly sink!: pulumi.Output<outputs.FlinkApplicationVersionSink[] | undefined>;
     /**
@@ -120,7 +125,7 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
      */
     public readonly sinks!: pulumi.Output<outputs.FlinkApplicationVersionSink[] | undefined>;
     /**
-     * Application source
+     * The source table for the application.
      */
     public readonly source!: pulumi.Output<outputs.FlinkApplicationVersionSource[] | undefined>;
     /**
@@ -130,11 +135,11 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
      */
     public readonly sources!: pulumi.Output<outputs.FlinkApplicationVersionSource[] | undefined>;
     /**
-     * Job SQL statement
+     * Job SQL statement.
      */
     public readonly statement!: pulumi.Output<string>;
     /**
-     * Application version number
+     * Application version number.
      */
     public /*out*/ readonly version!: pulumi.Output<number>;
 
@@ -200,19 +205,19 @@ export class FlinkApplicationVersion extends pulumi.CustomResource {
  */
 export interface FlinkApplicationVersionState {
     /**
-     * Application ID
+     * Application ID.
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * Application version ID
+     * Application version ID.
      */
     applicationVersionId?: pulumi.Input<string>;
     /**
-     * Application version creation time
+     * Application version creation time.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Application version creator
+     * The user who created the application.
      */
     createdBy?: pulumi.Input<string>;
     /**
@@ -224,7 +229,7 @@ export interface FlinkApplicationVersionState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Application sink
+     * The sink table for the application.
      */
     sink?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
     /**
@@ -234,7 +239,7 @@ export interface FlinkApplicationVersionState {
      */
     sinks?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
     /**
-     * Application source
+     * The source table for the application.
      */
     source?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
     /**
@@ -244,11 +249,11 @@ export interface FlinkApplicationVersionState {
      */
     sources?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
     /**
-     * Job SQL statement
+     * Job SQL statement.
      */
     statement?: pulumi.Input<string>;
     /**
-     * Application version number
+     * Application version number.
      */
     version?: pulumi.Input<number>;
 }
@@ -258,7 +263,7 @@ export interface FlinkApplicationVersionState {
  */
 export interface FlinkApplicationVersionArgs {
     /**
-     * Application ID
+     * Application ID.
      */
     applicationId: pulumi.Input<string>;
     /**
@@ -270,7 +275,7 @@ export interface FlinkApplicationVersionArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Application sink
+     * The sink table for the application.
      */
     sink?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
     /**
@@ -280,7 +285,7 @@ export interface FlinkApplicationVersionArgs {
      */
     sinks?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
     /**
-     * Application source
+     * The source table for the application.
      */
     source?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
     /**
@@ -290,7 +295,7 @@ export interface FlinkApplicationVersionArgs {
      */
     sources?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
     /**
-     * Job SQL statement
+     * Job SQL statement.
      */
     statement: pulumi.Input<string>;
 }

@@ -373,7 +373,7 @@ def get_kafka_connect(project: Optional[str] = None,
                       service_name: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaConnectResult:
     """
-    The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+    Gets information about an Aiven for Apache Kafka® Connect service.
 
     ## Example Usage
 
@@ -381,8 +381,8 @@ def get_kafka_connect(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kc1 = aiven.get_kafka_connect(project=pr1["project"],
-        service_name="my-kc1")
+    example_kafka_connect = aiven.get_kafka_connect(project=example_project["project"],
+        service_name="example-connect-service")
     ```
 
 
@@ -431,7 +431,7 @@ def get_kafka_connect_output(project: Optional[pulumi.Input[str]] = None,
                              service_name: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaConnectResult]:
     """
-    The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
+    Gets information about an Aiven for Apache Kafka® Connect service.
 
     ## Example Usage
 
@@ -439,8 +439,8 @@ def get_kafka_connect_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kc1 = aiven.get_kafka_connect(project=pr1["project"],
-        service_name="my-kc1")
+    example_kafka_connect = aiven.get_kafka_connect(project=example_project["project"],
+        service_name="example-connect-service")
     ```
 
 
