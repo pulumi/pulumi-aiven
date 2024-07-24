@@ -259,6 +259,17 @@ __all__ = [
     'ServiceIntegrationPrometheusUserConfigArgs',
     'ServiceIntegrationPrometheusUserConfigSourceMysqlArgs',
     'ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs',
+    'ThanosComponentArgs',
+    'ThanosServiceIntegrationArgs',
+    'ThanosTagArgs',
+    'ThanosTechEmailArgs',
+    'ThanosThanosArgs',
+    'ThanosThanosUserConfigArgs',
+    'ThanosThanosUserConfigCompactorArgs',
+    'ThanosThanosUserConfigIpFilterObjectArgs',
+    'ThanosThanosUserConfigPublicAccessArgs',
+    'ThanosThanosUserConfigQueryArgs',
+    'ThanosThanosUserConfigQueryFrontendArgs',
 ]
 
 @pulumi.input_type
@@ -23490,5 +23501,768 @@ class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs:
     @perf_events_statements_time_limit.setter
     def perf_events_statements_time_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "perf_events_statements_time_limit", value)
+
+
+@pulumi.input_type
+class ThanosComponentArgs:
+    def __init__(__self__, *,
+                 component: Optional[pulumi.Input[str]] = None,
+                 connection_uri: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 kafka_authentication_method: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 route: Optional[pulumi.Input[str]] = None,
+                 ssl: Optional[pulumi.Input[bool]] = None,
+                 usage: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] component: Service component name
+        :param pulumi.Input[str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
+        :param pulumi.Input[str] host: Host name for connecting to the service component
+        :param pulumi.Input[str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[int] port: Port number for connecting to the service component
+        :param pulumi.Input[str] route: Network access route
+        :param pulumi.Input[bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+        :param pulumi.Input[str] usage: DNS usage name
+        """
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if connection_uri is not None:
+            pulumi.set(__self__, "connection_uri", connection_uri)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if kafka_authentication_method is not None:
+            pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route is not None:
+            pulumi.set(__self__, "route", route)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if usage is not None:
+            pulumi.set(__self__, "usage", usage)
+
+    @property
+    @pulumi.getter
+    def component(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service component name
+        """
+        return pulumi.get(self, "component")
+
+    @component.setter
+    def component(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "component", value)
+
+    @property
+    @pulumi.getter(name="connectionUri")
+    def connection_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Connection info for connecting to the service component. This is a combination of host and port.
+        """
+        return pulumi.get(self, "connection_uri")
+
+    @connection_uri.setter
+    def connection_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_uri", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name for connecting to the service component
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="kafkaAuthenticationMethod")
+    def kafka_authentication_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kafka authentication method. This is a value specific to the 'kafka' service component
+        """
+        return pulumi.get(self, "kafka_authentication_method")
+
+    @kafka_authentication_method.setter
+    def kafka_authentication_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number for connecting to the service component
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def route(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network access route
+        """
+        return pulumi.get(self, "route")
+
+    @route.setter
+    def route(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route", value)
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+        """
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ssl", value)
+
+    @property
+    @pulumi.getter
+    def usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        DNS usage name
+        """
+        return pulumi.get(self, "usage")
+
+    @usage.setter
+    def usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "usage", value)
+
+
+@pulumi.input_type
+class ThanosServiceIntegrationArgs:
+    def __init__(__self__, *,
+                 integration_type: pulumi.Input[str],
+                 source_service_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] integration_type: Type of the service integration. The only supported value at the moment is `read_replica`
+        :param pulumi.Input[str] source_service_name: Name of the source service
+        """
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "source_service_name", source_service_name)
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> pulumi.Input[str]:
+        """
+        Type of the service integration. The only supported value at the moment is `read_replica`
+        """
+        return pulumi.get(self, "integration_type")
+
+    @integration_type.setter
+    def integration_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_type", value)
+
+    @property
+    @pulumi.getter(name="sourceServiceName")
+    def source_service_name(self) -> pulumi.Input[str]:
+        """
+        Name of the source service
+        """
+        return pulumi.get(self, "source_service_name")
+
+    @source_service_name.setter
+    def source_service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_service_name", value)
+
+
+@pulumi.input_type
+class ThanosTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: Service tag key
+        :param pulumi.Input[str] value: Service tag value
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Service tag key
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Service tag value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ThanosTechEmailArgs:
+    def __init__(__self__, *,
+                 email: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] email: An email address to contact for technical issues
+        """
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        An email address to contact for technical issues
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+
+@pulumi.input_type
+class ThanosThanosArgs:
+    def __init__(__self__, *,
+                 query_frontend_uri: Optional[pulumi.Input[str]] = None,
+                 query_uri: Optional[pulumi.Input[str]] = None,
+                 receiver_ingesting_remote_write_uri: Optional[pulumi.Input[str]] = None,
+                 receiver_remote_write_uri: Optional[pulumi.Input[str]] = None,
+                 store_uri: Optional[pulumi.Input[str]] = None,
+                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] query_frontend_uri: Query frontend URI.
+        :param pulumi.Input[str] query_uri: Query URI.
+        :param pulumi.Input[str] receiver_ingesting_remote_write_uri: Receiver ingesting remote write URI.
+        :param pulumi.Input[str] receiver_remote_write_uri: Receiver remote write URI.
+        :param pulumi.Input[str] store_uri: Store URI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: Thanos server URIs.
+        """
+        if query_frontend_uri is not None:
+            pulumi.set(__self__, "query_frontend_uri", query_frontend_uri)
+        if query_uri is not None:
+            pulumi.set(__self__, "query_uri", query_uri)
+        if receiver_ingesting_remote_write_uri is not None:
+            pulumi.set(__self__, "receiver_ingesting_remote_write_uri", receiver_ingesting_remote_write_uri)
+        if receiver_remote_write_uri is not None:
+            pulumi.set(__self__, "receiver_remote_write_uri", receiver_remote_write_uri)
+        if store_uri is not None:
+            pulumi.set(__self__, "store_uri", store_uri)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter(name="queryFrontendUri")
+    def query_frontend_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Query frontend URI.
+        """
+        return pulumi.get(self, "query_frontend_uri")
+
+    @query_frontend_uri.setter
+    def query_frontend_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_frontend_uri", value)
+
+    @property
+    @pulumi.getter(name="queryUri")
+    def query_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Query URI.
+        """
+        return pulumi.get(self, "query_uri")
+
+    @query_uri.setter
+    def query_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_uri", value)
+
+    @property
+    @pulumi.getter(name="receiverIngestingRemoteWriteUri")
+    def receiver_ingesting_remote_write_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Receiver ingesting remote write URI.
+        """
+        return pulumi.get(self, "receiver_ingesting_remote_write_uri")
+
+    @receiver_ingesting_remote_write_uri.setter
+    def receiver_ingesting_remote_write_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "receiver_ingesting_remote_write_uri", value)
+
+    @property
+    @pulumi.getter(name="receiverRemoteWriteUri")
+    def receiver_remote_write_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Receiver remote write URI.
+        """
+        return pulumi.get(self, "receiver_remote_write_uri")
+
+    @receiver_remote_write_uri.setter
+    def receiver_remote_write_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "receiver_remote_write_uri", value)
+
+    @property
+    @pulumi.getter(name="storeUri")
+    def store_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Store URI.
+        """
+        return pulumi.get(self, "store_uri")
+
+    @store_uri.setter
+    def store_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "store_uri", value)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Thanos server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+    @uris.setter
+    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "uris", value)
+
+
+@pulumi.input_type
+class ThanosThanosUserConfigArgs:
+    def __init__(__self__, *,
+                 compactor: Optional[pulumi.Input['ThanosThanosUserConfigCompactorArgs']] = None,
+                 ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['ThanosThanosUserConfigIpFilterObjectArgs']]]] = None,
+                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 object_storage_usage_alert_threshold_gb: Optional[pulumi.Input[int]] = None,
+                 public_access: Optional[pulumi.Input['ThanosThanosUserConfigPublicAccessArgs']] = None,
+                 query: Optional[pulumi.Input['ThanosThanosUserConfigQueryArgs']] = None,
+                 query_frontend: Optional[pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs']] = None,
+                 service_log: Optional[pulumi.Input[bool]] = None,
+                 static_ips: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input['ThanosThanosUserConfigCompactorArgs'] compactor: ThanosCompactor
+        :param pulumi.Input[Sequence[pulumi.Input['ThanosThanosUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        :param pulumi.Input[int] object_storage_usage_alert_threshold_gb: After exceeding the limit a service alert is going to be raised (0 means not set).
+        :param pulumi.Input['ThanosThanosUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
+        :param pulumi.Input['ThanosThanosUserConfigQueryArgs'] query: ThanosQuery
+        :param pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs'] query_frontend: ThanosQueryFrontend
+        :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
+        :param pulumi.Input[bool] static_ips: Use static public IP addresses.
+        """
+        if compactor is not None:
+            pulumi.set(__self__, "compactor", compactor)
+        if ip_filter_objects is not None:
+            pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
+        if ip_filter_strings is not None:
+            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
+        if ip_filters is not None:
+            warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
+        if ip_filters is not None:
+            pulumi.set(__self__, "ip_filters", ip_filters)
+        if object_storage_usage_alert_threshold_gb is not None:
+            pulumi.set(__self__, "object_storage_usage_alert_threshold_gb", object_storage_usage_alert_threshold_gb)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if query_frontend is not None:
+            pulumi.set(__self__, "query_frontend", query_frontend)
+        if service_log is not None:
+            pulumi.set(__self__, "service_log", service_log)
+        if static_ips is not None:
+            pulumi.set(__self__, "static_ips", static_ips)
+
+    @property
+    @pulumi.getter
+    def compactor(self) -> Optional[pulumi.Input['ThanosThanosUserConfigCompactorArgs']]:
+        """
+        ThanosCompactor
+        """
+        return pulumi.get(self, "compactor")
+
+    @compactor.setter
+    def compactor(self, value: Optional[pulumi.Input['ThanosThanosUserConfigCompactorArgs']]):
+        pulumi.set(self, "compactor", value)
+
+    @property
+    @pulumi.getter(name="ipFilterObjects")
+    def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ThanosThanosUserConfigIpFilterObjectArgs']]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+        """
+        return pulumi.get(self, "ip_filter_objects")
+
+    @ip_filter_objects.setter
+    def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ThanosThanosUserConfigIpFilterObjectArgs']]]]):
+        pulumi.set(self, "ip_filter_objects", value)
+
+    @property
+    @pulumi.getter(name="ipFilterStrings")
+    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        """
+        return pulumi.get(self, "ip_filter_strings")
+
+    @ip_filter_strings.setter
+    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filter_strings", value)
+
+    @property
+    @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
+    def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+        """
+        return pulumi.get(self, "ip_filters")
+
+    @ip_filters.setter
+    def ip_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_filters", value)
+
+    @property
+    @pulumi.getter(name="objectStorageUsageAlertThresholdGb")
+    def object_storage_usage_alert_threshold_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        After exceeding the limit a service alert is going to be raised (0 means not set).
+        """
+        return pulumi.get(self, "object_storage_usage_alert_threshold_gb")
+
+    @object_storage_usage_alert_threshold_gb.setter
+    def object_storage_usage_alert_threshold_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "object_storage_usage_alert_threshold_gb", value)
+
+    @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional[pulumi.Input['ThanosThanosUserConfigPublicAccessArgs']]:
+        """
+        Allow access to selected service ports from the public Internet
+        """
+        return pulumi.get(self, "public_access")
+
+    @public_access.setter
+    def public_access(self, value: Optional[pulumi.Input['ThanosThanosUserConfigPublicAccessArgs']]):
+        pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional[pulumi.Input['ThanosThanosUserConfigQueryArgs']]:
+        """
+        ThanosQuery
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: Optional[pulumi.Input['ThanosThanosUserConfigQueryArgs']]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="queryFrontend")
+    def query_frontend(self) -> Optional[pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs']]:
+        """
+        ThanosQueryFrontend
+        """
+        return pulumi.get(self, "query_frontend")
+
+    @query_frontend.setter
+    def query_frontend(self, value: Optional[pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs']]):
+        pulumi.set(self, "query_frontend", value)
+
+    @property
+    @pulumi.getter(name="serviceLog")
+    def service_log(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Store logs for the service so that they are available in the HTTP API and console.
+        """
+        return pulumi.get(self, "service_log")
+
+    @service_log.setter
+    def service_log(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_log", value)
+
+    @property
+    @pulumi.getter(name="staticIps")
+    def static_ips(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use static public IP addresses.
+        """
+        return pulumi.get(self, "static_ips")
+
+    @static_ips.setter
+    def static_ips(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "static_ips", value)
+
+
+@pulumi.input_type
+class ThanosThanosUserConfigCompactorArgs:
+    def __init__(__self__, *,
+                 retention_days: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] retention_days: Retention time for data in days for each resolution (5m, 1h, raw).
+        """
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention time for data in days for each resolution (5m, 1h, raw).
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_days", value)
+
+
+@pulumi.input_type
+class ThanosThanosUserConfigIpFilterObjectArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network: CIDR address block. Example: `10.20.0.0/16`.
+        :param pulumi.Input[str] description: Description for IP filter list entry. Example: `Production service IP range`.
+        """
+        pulumi.set(__self__, "network", network)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        CIDR address block. Example: `10.20.0.0/16`.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description for IP filter list entry. Example: `Production service IP range`.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ThanosThanosUserConfigPublicAccessArgs:
+    def __init__(__self__, *,
+                 compactor: Optional[pulumi.Input[bool]] = None,
+                 query: Optional[pulumi.Input[bool]] = None,
+                 query_frontend: Optional[pulumi.Input[bool]] = None,
+                 receiver_ingesting: Optional[pulumi.Input[bool]] = None,
+                 receiver_routing: Optional[pulumi.Input[bool]] = None,
+                 store: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] compactor: Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param pulumi.Input[bool] query: Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param pulumi.Input[bool] query_frontend: Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param pulumi.Input[bool] receiver_ingesting: Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param pulumi.Input[bool] receiver_routing: Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param pulumi.Input[bool] store: Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        if compactor is not None:
+            pulumi.set(__self__, "compactor", compactor)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if query_frontend is not None:
+            pulumi.set(__self__, "query_frontend", query_frontend)
+        if receiver_ingesting is not None:
+            pulumi.set(__self__, "receiver_ingesting", receiver_ingesting)
+        if receiver_routing is not None:
+            pulumi.set(__self__, "receiver_routing", receiver_routing)
+        if store is not None:
+            pulumi.set(__self__, "store", store)
+
+    @property
+    @pulumi.getter
+    def compactor(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "compactor")
+
+    @compactor.setter
+    def compactor(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "compactor", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="queryFrontend")
+    def query_frontend(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "query_frontend")
+
+    @query_frontend.setter
+    def query_frontend(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "query_frontend", value)
+
+    @property
+    @pulumi.getter(name="receiverIngesting")
+    def receiver_ingesting(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "receiver_ingesting")
+
+    @receiver_ingesting.setter
+    def receiver_ingesting(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "receiver_ingesting", value)
+
+    @property
+    @pulumi.getter(name="receiverRouting")
+    def receiver_routing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "receiver_routing")
+
+    @receiver_routing.setter
+    def receiver_routing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "receiver_routing", value)
+
+    @property
+    @pulumi.getter
+    def store(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "store")
+
+    @store.setter
+    def store(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "store", value)
+
+
+@pulumi.input_type
+class ThanosThanosUserConfigQueryArgs:
+    def __init__(__self__, *,
+                 query_default_evaluation_interval: Optional[pulumi.Input[str]] = None,
+                 query_lookback_delta: Optional[pulumi.Input[str]] = None,
+                 query_metadata_default_time_range: Optional[pulumi.Input[str]] = None,
+                 query_timeout: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] query_default_evaluation_interval: Set the default evaluation interval for subqueries. Default: `1m`.
+        :param pulumi.Input[str] query_lookback_delta: The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+        :param pulumi.Input[str] query_metadata_default_time_range: The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+        :param pulumi.Input[str] query_timeout: Maximum time to process a query by the query node. Default: `2m`.
+        """
+        if query_default_evaluation_interval is not None:
+            pulumi.set(__self__, "query_default_evaluation_interval", query_default_evaluation_interval)
+        if query_lookback_delta is not None:
+            pulumi.set(__self__, "query_lookback_delta", query_lookback_delta)
+        if query_metadata_default_time_range is not None:
+            pulumi.set(__self__, "query_metadata_default_time_range", query_metadata_default_time_range)
+        if query_timeout is not None:
+            pulumi.set(__self__, "query_timeout", query_timeout)
+
+    @property
+    @pulumi.getter(name="queryDefaultEvaluationInterval")
+    def query_default_evaluation_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the default evaluation interval for subqueries. Default: `1m`.
+        """
+        return pulumi.get(self, "query_default_evaluation_interval")
+
+    @query_default_evaluation_interval.setter
+    def query_default_evaluation_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_default_evaluation_interval", value)
+
+    @property
+    @pulumi.getter(name="queryLookbackDelta")
+    def query_lookback_delta(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+        """
+        return pulumi.get(self, "query_lookback_delta")
+
+    @query_lookback_delta.setter
+    def query_lookback_delta(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_lookback_delta", value)
+
+    @property
+    @pulumi.getter(name="queryMetadataDefaultTimeRange")
+    def query_metadata_default_time_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+        """
+        return pulumi.get(self, "query_metadata_default_time_range")
+
+    @query_metadata_default_time_range.setter
+    def query_metadata_default_time_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_metadata_default_time_range", value)
+
+    @property
+    @pulumi.getter(name="queryTimeout")
+    def query_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maximum time to process a query by the query node. Default: `2m`.
+        """
+        return pulumi.get(self, "query_timeout")
+
+    @query_timeout.setter
+    def query_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_timeout", value)
+
+
+@pulumi.input_type
+class ThanosThanosUserConfigQueryFrontendArgs:
+    def __init__(__self__, *,
+                 query_range_align_range_with_step: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] query_range_align_range_with_step: Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+        """
+        if query_range_align_range_with_step is not None:
+            pulumi.set(__self__, "query_range_align_range_with_step", query_range_align_range_with_step)
+
+    @property
+    @pulumi.getter(name="queryRangeAlignRangeWithStep")
+    def query_range_align_range_with_step(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+        """
+        return pulumi.get(self, "query_range_align_range_with_step")
+
+    @query_range_align_range_with_step.setter
+    def query_range_align_range_with_step(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "query_range_align_range_with_step", value)
 
 

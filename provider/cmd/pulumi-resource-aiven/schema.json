@@ -7905,6 +7905,291 @@
             },
             "type": "object"
         },
+        "aiven:index/ThanosComponent:ThanosComponent": {
+            "properties": {
+                "component": {
+                    "type": "string",
+                    "description": "Service component name\n"
+                },
+                "connectionUri": {
+                    "type": "string",
+                    "description": "Connection info for connecting to the service component. This is a combination of host and port.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Host name for connecting to the service component\n"
+                },
+                "kafkaAuthenticationMethod": {
+                    "type": "string",
+                    "description": "Kafka authentication method. This is a value specific to the 'kafka' service component\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number for connecting to the service component\n"
+                },
+                "route": {
+                    "type": "string",
+                    "description": "Network access route\n"
+                },
+                "ssl": {
+                    "type": "boolean",
+                    "description": "Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption\n"
+                },
+                "usage": {
+                    "type": "string",
+                    "description": "DNS usage name\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "component",
+                        "connectionUri",
+                        "host",
+                        "kafkaAuthenticationMethod",
+                        "port",
+                        "route",
+                        "ssl",
+                        "usage"
+                    ]
+                }
+            }
+        },
+        "aiven:index/ThanosServiceIntegration:ThanosServiceIntegration": {
+            "properties": {
+                "integrationType": {
+                    "type": "string",
+                    "description": "Type of the service integration. The only supported value at the moment is `read_replica`\n"
+                },
+                "sourceServiceName": {
+                    "type": "string",
+                    "description": "Name of the source service\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "integrationType",
+                "sourceServiceName"
+            ]
+        },
+        "aiven:index/ThanosTag:ThanosTag": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Service tag key\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Service tag value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ]
+        },
+        "aiven:index/ThanosTechEmail:ThanosTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address to contact for technical issues\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
+        "aiven:index/ThanosThanos:ThanosThanos": {
+            "properties": {
+                "queryFrontendUri": {
+                    "type": "string",
+                    "description": "Query frontend URI.\n",
+                    "secret": true
+                },
+                "queryUri": {
+                    "type": "string",
+                    "description": "Query URI.\n",
+                    "secret": true
+                },
+                "receiverIngestingRemoteWriteUri": {
+                    "type": "string",
+                    "description": "Receiver ingesting remote write URI.\n",
+                    "secret": true
+                },
+                "receiverRemoteWriteUri": {
+                    "type": "string",
+                    "description": "Receiver remote write URI.\n",
+                    "secret": true
+                },
+                "storeUri": {
+                    "type": "string",
+                    "description": "Store URI.\n",
+                    "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Thanos server URIs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "queryFrontendUri",
+                        "queryUri",
+                        "receiverIngestingRemoteWriteUri",
+                        "receiverRemoteWriteUri",
+                        "storeUri",
+                        "uris"
+                    ]
+                }
+            }
+        },
+        "aiven:index/ThanosThanosUserConfig:ThanosThanosUserConfig": {
+            "properties": {
+                "compactor": {
+                    "$ref": "#/types/aiven:index/ThanosThanosUserConfigCompactor:ThanosThanosUserConfigCompactor",
+                    "description": "ThanosCompactor\n"
+                },
+                "ipFilterObjects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ThanosThanosUserConfigIpFilterObject:ThanosThanosUserConfigIpFilterObject"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`\n"
+                },
+                "ipFilterStrings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.\n"
+                },
+                "ipFilters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.\n",
+                    "deprecationMessage": "Deprecated. Use `ip_filter_string` instead."
+                },
+                "objectStorageUsageAlertThresholdGb": {
+                    "type": "integer",
+                    "description": "After exceeding the limit a service alert is going to be raised (0 means not set).\n"
+                },
+                "publicAccess": {
+                    "$ref": "#/types/aiven:index/ThanosThanosUserConfigPublicAccess:ThanosThanosUserConfigPublicAccess",
+                    "description": "Allow access to selected service ports from the public Internet\n"
+                },
+                "query": {
+                    "$ref": "#/types/aiven:index/ThanosThanosUserConfigQuery:ThanosThanosUserConfigQuery",
+                    "description": "ThanosQuery\n"
+                },
+                "queryFrontend": {
+                    "$ref": "#/types/aiven:index/ThanosThanosUserConfigQueryFrontend:ThanosThanosUserConfigQueryFrontend",
+                    "description": "ThanosQueryFrontend\n"
+                },
+                "serviceLog": {
+                    "type": "boolean",
+                    "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
+                },
+                "staticIps": {
+                    "type": "boolean",
+                    "description": "Use static public IP addresses.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ThanosThanosUserConfigCompactor:ThanosThanosUserConfigCompactor": {
+            "properties": {
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "Retention time for data in days for each resolution (5m, 1h, raw).\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ThanosThanosUserConfigIpFilterObject:ThanosThanosUserConfigIpFilterObject": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description for IP filter list entry. Example: `Production service IP range`.\n"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "CIDR address block. Example: `10.20.0.0/16`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "network"
+            ]
+        },
+        "aiven:index/ThanosThanosUserConfigPublicAccess:ThanosThanosUserConfigPublicAccess": {
+            "properties": {
+                "compactor": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "query": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "queryFrontend": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "receiverIngesting": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "receiverRouting": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "store": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ThanosThanosUserConfigQuery:ThanosThanosUserConfigQuery": {
+            "properties": {
+                "queryDefaultEvaluationInterval": {
+                    "type": "string",
+                    "description": "Set the default evaluation interval for subqueries. Default: `1m`.\n"
+                },
+                "queryLookbackDelta": {
+                    "type": "string",
+                    "description": "The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.\n"
+                },
+                "queryMetadataDefaultTimeRange": {
+                    "type": "string",
+                    "description": "The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.\n"
+                },
+                "queryTimeout": {
+                    "type": "string",
+                    "description": "Maximum time to process a query by the query node. Default: `2m`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ThanosThanosUserConfigQueryFrontend:ThanosThanosUserConfigQueryFrontend": {
+            "properties": {
+                "queryRangeAlignRangeWithStep": {
+                    "type": "boolean",
+                    "description": "Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getAccountAuthenticationSamlFieldMapping:getAccountAuthenticationSamlFieldMapping": {
             "properties": {
                 "email": {
@@ -16443,6 +16728,313 @@
                 "perfEventsStatementsTimeLimit": {
                     "type": "integer",
                     "description": "Only include perf_events_statements whose last seen is less than this many seconds. Example: `86400`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getThanosComponent:getThanosComponent": {
+            "properties": {
+                "component": {
+                    "type": "string",
+                    "description": "Service component name\n"
+                },
+                "connectionUri": {
+                    "type": "string",
+                    "description": "Connection info for connecting to the service component. This is a combination of host and port.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Host name for connecting to the service component\n"
+                },
+                "kafkaAuthenticationMethod": {
+                    "type": "string",
+                    "description": "Kafka authentication method. This is a value specific to the 'kafka' service component\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number for connecting to the service component\n"
+                },
+                "route": {
+                    "type": "string",
+                    "description": "Network access route\n"
+                },
+                "ssl": {
+                    "type": "boolean",
+                    "description": "Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption\n"
+                },
+                "usage": {
+                    "type": "string",
+                    "description": "DNS usage name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "component",
+                "connectionUri",
+                "host",
+                "kafkaAuthenticationMethod",
+                "port",
+                "route",
+                "ssl",
+                "usage"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getThanosServiceIntegration:getThanosServiceIntegration": {
+            "properties": {
+                "integrationType": {
+                    "type": "string",
+                    "description": "Type of the service integration. The only supported value at the moment is `read_replica`\n"
+                },
+                "sourceServiceName": {
+                    "type": "string",
+                    "description": "Name of the source service\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "integrationType",
+                "sourceServiceName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getThanosTag:getThanosTag": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Service tag key\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Service tag value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getThanosTechEmail:getThanosTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address to contact for technical issues\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getThanosThano:getThanosThano": {
+            "properties": {
+                "queryFrontendUri": {
+                    "type": "string",
+                    "description": "Query frontend URI.\n",
+                    "secret": true
+                },
+                "queryUri": {
+                    "type": "string",
+                    "description": "Query URI.\n",
+                    "secret": true
+                },
+                "receiverIngestingRemoteWriteUri": {
+                    "type": "string",
+                    "description": "Receiver ingesting remote write URI.\n",
+                    "secret": true
+                },
+                "receiverRemoteWriteUri": {
+                    "type": "string",
+                    "description": "Receiver remote write URI.\n",
+                    "secret": true
+                },
+                "storeUri": {
+                    "type": "string",
+                    "description": "Store URI.\n",
+                    "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Thanos server URIs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "queryFrontendUri",
+                "queryUri",
+                "receiverIngestingRemoteWriteUri",
+                "receiverRemoteWriteUri",
+                "storeUri",
+                "uris"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getThanosThanosUserConfig:getThanosThanosUserConfig": {
+            "properties": {
+                "compactor": {
+                    "$ref": "#/types/aiven:index/getThanosThanosUserConfigCompactor:getThanosThanosUserConfigCompactor",
+                    "description": "ThanosCompactor\n"
+                },
+                "ipFilterObjects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getThanosThanosUserConfigIpFilterObject:getThanosThanosUserConfigIpFilterObject"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`\n"
+                },
+                "ipFilterStrings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.\n"
+                },
+                "ipFilters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.\n",
+                    "deprecationMessage": "Deprecated. Use `ip_filter_string` instead."
+                },
+                "objectStorageUsageAlertThresholdGb": {
+                    "type": "integer",
+                    "description": "After exceeding the limit a service alert is going to be raised (0 means not set).\n"
+                },
+                "publicAccess": {
+                    "$ref": "#/types/aiven:index/getThanosThanosUserConfigPublicAccess:getThanosThanosUserConfigPublicAccess",
+                    "description": "Allow access to selected service ports from the public Internet\n"
+                },
+                "query": {
+                    "$ref": "#/types/aiven:index/getThanosThanosUserConfigQuery:getThanosThanosUserConfigQuery",
+                    "description": "ThanosQuery\n"
+                },
+                "queryFrontend": {
+                    "$ref": "#/types/aiven:index/getThanosThanosUserConfigQueryFrontend:getThanosThanosUserConfigQueryFrontend",
+                    "description": "ThanosQueryFrontend\n"
+                },
+                "serviceLog": {
+                    "type": "boolean",
+                    "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
+                },
+                "staticIps": {
+                    "type": "boolean",
+                    "description": "Use static public IP addresses.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getThanosThanosUserConfigCompactor:getThanosThanosUserConfigCompactor": {
+            "properties": {
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "Retention time for data in days for each resolution (5m, 1h, raw).\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getThanosThanosUserConfigIpFilterObject:getThanosThanosUserConfigIpFilterObject": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description for IP filter list entry. Example: `Production service IP range`.\n"
+                },
+                "network": {
+                    "type": "string",
+                    "description": "CIDR address block. Example: `10.20.0.0/16`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "network"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getThanosThanosUserConfigPublicAccess:getThanosThanosUserConfigPublicAccess": {
+            "properties": {
+                "compactor": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "query": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "queryFrontend": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "receiverIngesting": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "receiverRouting": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "store": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getThanosThanosUserConfigQuery:getThanosThanosUserConfigQuery": {
+            "properties": {
+                "queryDefaultEvaluationInterval": {
+                    "type": "string",
+                    "description": "Set the default evaluation interval for subqueries. Default: `1m`.\n"
+                },
+                "queryLookbackDelta": {
+                    "type": "string",
+                    "description": "The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.\n"
+                },
+                "queryMetadataDefaultTimeRange": {
+                    "type": "string",
+                    "description": "The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.\n"
+                },
+                "queryTimeout": {
+                    "type": "string",
+                    "description": "Maximum time to process a query by the query node. Default: `2m`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getThanosThanosUserConfigQueryFrontend:getThanosThanosUserConfigQueryFrontend": {
+            "properties": {
+                "queryRangeAlignRangeWithStep": {
+                    "type": "boolean",
+                    "description": "Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.\n"
                 }
             },
             "type": "object"
@@ -28902,6 +29494,401 @@
                 "type": "object"
             }
         },
+        "aiven:index/thanos:Thanos": {
+            "description": "Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "properties": {
+                "additionalDiskSpace": {
+                    "type": "string",
+                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                },
+                "cloudName": {
+                    "type": "string",
+                    "description": "Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                },
+                "components": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ThanosComponent:ThanosComponent"
+                    },
+                    "description": "Service component information objects\n"
+                },
+                "diskSpace": {
+                    "type": "string",
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
+                },
+                "diskSpaceCap": {
+                    "type": "string",
+                    "description": "The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.\n"
+                },
+                "diskSpaceDefault": {
+                    "type": "string",
+                    "description": "The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`\n"
+                },
+                "diskSpaceStep": {
+                    "type": "string",
+                    "description": "The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.\n"
+                },
+                "diskSpaceUsed": {
+                    "type": "string",
+                    "description": "Disk space that service is currently using\n"
+                },
+                "maintenanceWindowDow": {
+                    "type": "string",
+                    "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                },
+                "maintenanceWindowTime": {
+                    "type": "string",
+                    "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
+                },
+                "plan": {
+                    "type": "string",
+                    "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                },
+                "projectVpcId": {
+                    "type": "string",
+                    "description": "Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.\n"
+                },
+                "serviceHost": {
+                    "type": "string",
+                    "description": "The hostname of the service.\n"
+                },
+                "serviceIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ThanosServiceIntegration:ThanosServiceIntegration"
+                    },
+                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.\n"
+                },
+                "servicePassword": {
+                    "type": "string",
+                    "description": "Password used for connecting to the service, if applicable\n",
+                    "secret": true
+                },
+                "servicePort": {
+                    "type": "integer",
+                    "description": "The port of the service\n"
+                },
+                "serviceType": {
+                    "type": "string",
+                    "description": "Aiven internal service type code\n"
+                },
+                "serviceUri": {
+                    "type": "string",
+                    "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.\n",
+                    "secret": true
+                },
+                "serviceUsername": {
+                    "type": "string",
+                    "description": "Username used for connecting to the service, if applicable\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`\n"
+                },
+                "staticIps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ThanosTag:ThanosTag"
+                    },
+                    "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ThanosTechEmail:ThanosTechEmail"
+                    },
+                    "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.\n"
+                },
+                "terminationProtection": {
+                    "type": "boolean",
+                    "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
+                },
+                "thanos": {
+                    "$ref": "#/types/aiven:index/ThanosThanos:ThanosThanos",
+                    "description": "Thanos server connection details.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "ThanosServer"
+                        }
+                    },
+                    "secret": true
+                },
+                "thanosUserConfig": {
+                    "$ref": "#/types/aiven:index/ThanosThanosUserConfig:ThanosThanosUserConfig",
+                    "description": "Thanos user configurable settings\n"
+                }
+            },
+            "required": [
+                "components",
+                "diskSpaceCap",
+                "diskSpaceDefault",
+                "diskSpaceStep",
+                "diskSpaceUsed",
+                "plan",
+                "project",
+                "serviceHost",
+                "serviceName",
+                "servicePassword",
+                "servicePort",
+                "serviceType",
+                "serviceUri",
+                "serviceUsername",
+                "state",
+                "thanos"
+            ],
+            "inputProperties": {
+                "additionalDiskSpace": {
+                    "type": "string",
+                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                },
+                "cloudName": {
+                    "type": "string",
+                    "description": "Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                },
+                "diskSpace": {
+                    "type": "string",
+                    "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
+                },
+                "maintenanceWindowDow": {
+                    "type": "string",
+                    "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                },
+                "maintenanceWindowTime": {
+                    "type": "string",
+                    "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
+                },
+                "plan": {
+                    "type": "string",
+                    "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectVpcId": {
+                    "type": "string",
+                    "description": "Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.\n"
+                },
+                "serviceIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ThanosServiceIntegration:ThanosServiceIntegration"
+                    },
+                    "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.\n",
+                    "willReplaceOnChanges": true
+                },
+                "staticIps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ThanosTag:ThanosTag"
+                    },
+                    "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ThanosTechEmail:ThanosTechEmail"
+                    },
+                    "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.\n"
+                },
+                "terminationProtection": {
+                    "type": "boolean",
+                    "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
+                },
+                "thanos": {
+                    "$ref": "#/types/aiven:index/ThanosThanos:ThanosThanos",
+                    "description": "Thanos server connection details.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "ThanosServer"
+                        }
+                    },
+                    "secret": true
+                },
+                "thanosUserConfig": {
+                    "$ref": "#/types/aiven:index/ThanosThanosUserConfig:ThanosThanosUserConfig",
+                    "description": "Thanos user configurable settings\n"
+                }
+            },
+            "requiredInputs": [
+                "plan",
+                "project",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Thanos resources.\n",
+                "properties": {
+                    "additionalDiskSpace": {
+                        "type": "string",
+                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    },
+                    "cloudName": {
+                        "type": "string",
+                        "description": "Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n"
+                    },
+                    "components": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/ThanosComponent:ThanosComponent"
+                        },
+                        "description": "Service component information objects\n"
+                    },
+                    "diskSpace": {
+                        "type": "string",
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
+                    },
+                    "diskSpaceCap": {
+                        "type": "string",
+                        "description": "The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.\n"
+                    },
+                    "diskSpaceDefault": {
+                        "type": "string",
+                        "description": "The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`\n"
+                    },
+                    "diskSpaceStep": {
+                        "type": "string",
+                        "description": "The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.\n"
+                    },
+                    "diskSpaceUsed": {
+                        "type": "string",
+                        "description": "Disk space that service is currently using\n"
+                    },
+                    "maintenanceWindowDow": {
+                        "type": "string",
+                        "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
+                    },
+                    "maintenanceWindowTime": {
+                        "type": "string",
+                        "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
+                    },
+                    "plan": {
+                        "type": "string",
+                        "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectVpcId": {
+                        "type": "string",
+                        "description": "Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.\n"
+                    },
+                    "serviceHost": {
+                        "type": "string",
+                        "description": "The hostname of the service.\n"
+                    },
+                    "serviceIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/ThanosServiceIntegration:ThanosServiceIntegration"
+                        },
+                        "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "servicePassword": {
+                        "type": "string",
+                        "description": "Password used for connecting to the service, if applicable\n",
+                        "secret": true
+                    },
+                    "servicePort": {
+                        "type": "integer",
+                        "description": "The port of the service\n"
+                    },
+                    "serviceType": {
+                        "type": "string",
+                        "description": "Aiven internal service type code\n"
+                    },
+                    "serviceUri": {
+                        "type": "string",
+                        "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.\n",
+                        "secret": true
+                    },
+                    "serviceUsername": {
+                        "type": "string",
+                        "description": "Username used for connecting to the service, if applicable\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`\n"
+                    },
+                    "staticIps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/ThanosTag:ThanosTag"
+                        },
+                        "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/ThanosTechEmail:ThanosTechEmail"
+                        },
+                        "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.\n"
+                    },
+                    "terminationProtection": {
+                        "type": "boolean",
+                        "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
+                    },
+                    "thanos": {
+                        "$ref": "#/types/aiven:index/ThanosThanos:ThanosThanos",
+                        "description": "Thanos server connection details.\n",
+                        "language": {
+                            "csharp": {
+                                "name": "ThanosServer"
+                            }
+                        },
+                        "secret": true
+                    },
+                    "thanosUserConfig": {
+                        "$ref": "#/types/aiven:index/ThanosThanosUserConfig:ThanosThanosUserConfig",
+                        "description": "Thanos user configurable settings\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": {
             "description": "The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst attachment = new aiven.TransitGatewayVpcAttachment(\"attachment\", {\n    vpcId: bar.id,\n    peerCloudAccount: \"\u003cPEER_ACCOUNT_ID\u003e\",\n    peerVpc: \"google-project1\",\n    peerRegion: \"aws-eu-west-1\",\n    userPeerNetworkCidrs: [\"10.0.0.0/24\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nattachment = aiven.TransitGatewayVpcAttachment(\"attachment\",\n    vpc_id=bar[\"id\"],\n    peer_cloud_account=\"\u003cPEER_ACCOUNT_ID\u003e\",\n    peer_vpc=\"google-project1\",\n    peer_region=\"aws-eu-west-1\",\n    user_peer_network_cidrs=[\"10.0.0.0/24\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var attachment = new Aiven.TransitGatewayVpcAttachment(\"attachment\", new()\n    {\n        VpcId = bar.Id,\n        PeerCloudAccount = \"\u003cPEER_ACCOUNT_ID\u003e\",\n        PeerVpc = \"google-project1\",\n        PeerRegion = \"aws-eu-west-1\",\n        UserPeerNetworkCidrs = new[]\n        {\n            \"10.0.0.0/24\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewTransitGatewayVpcAttachment(ctx, \"attachment\", \u0026aiven.TransitGatewayVpcAttachmentArgs{\n\t\t\tVpcId:            pulumi.Any(bar.Id),\n\t\t\tPeerCloudAccount: pulumi.String(\"\u003cPEER_ACCOUNT_ID\u003e\"),\n\t\t\tPeerVpc:          pulumi.String(\"google-project1\"),\n\t\t\tPeerRegion:       pulumi.String(\"aws-eu-west-1\"),\n\t\t\tUserPeerNetworkCidrs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"10.0.0.0/24\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.TransitGatewayVpcAttachment;\nimport com.pulumi.aiven.TransitGatewayVpcAttachmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var attachment = new TransitGatewayVpcAttachment(\"attachment\", TransitGatewayVpcAttachmentArgs.builder()\n            .vpcId(bar.id())\n            .peerCloudAccount(\"\u003cPEER_ACCOUNT_ID\u003e\")\n            .peerVpc(\"google-project1\")\n            .peerRegion(\"aws-eu-west-1\")\n            .userPeerNetworkCidrs(\"10.0.0.0/24\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  attachment:\n    type: aiven:TransitGatewayVpcAttachment\n    properties:\n      vpcId: ${bar.id}\n      peerCloudAccount: \u003cPEER_ACCOUNT_ID\u003e\n      peerVpc: google-project1\n      peerRegion: aws-eu-west-1\n      userPeerNetworkCidrs:\n        - 10.0.0.0/24\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC/PEER_REGION\n```\n\n",
             "properties": {
@@ -36043,6 +37030,204 @@
                     "project",
                     "prometheusUserConfigs",
                     "rsyslogUserConfigs",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getThanos:getThanos": {
+            "description": "Gets information about an Aiven for Thanos® service. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getThanos.\n",
+                "properties": {
+                    "project": {
+                        "type": "string",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "project",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getThanos.\n",
+                "properties": {
+                    "additionalDiskSpace": {
+                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "type": "string"
+                    },
+                    "cloudName": {
+                        "description": "Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n",
+                        "type": "string"
+                    },
+                    "components": {
+                        "description": "Service component information objects\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getThanosComponent:getThanosComponent"
+                        },
+                        "type": "array"
+                    },
+                    "diskSpace": {
+                        "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "type": "string"
+                    },
+                    "diskSpaceCap": {
+                        "description": "The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.\n",
+                        "type": "string"
+                    },
+                    "diskSpaceDefault": {
+                        "description": "The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`\n",
+                        "type": "string"
+                    },
+                    "diskSpaceStep": {
+                        "description": "The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.\n",
+                        "type": "string"
+                    },
+                    "diskSpaceUsed": {
+                        "description": "Disk space that service is currently using\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "maintenanceWindowDow": {
+                        "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
+                        "type": "string"
+                    },
+                    "maintenanceWindowTime": {
+                        "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n",
+                        "type": "string"
+                    },
+                    "plan": {
+                        "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n",
+                        "type": "string"
+                    },
+                    "project": {
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "projectVpcId": {
+                        "description": "Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.\n",
+                        "type": "string"
+                    },
+                    "serviceHost": {
+                        "description": "The hostname of the service.\n",
+                        "type": "string"
+                    },
+                    "serviceIntegrations": {
+                        "description": "Service integrations to specify when creating a service. Not applied after initial service creation\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getThanosServiceIntegration:getThanosServiceIntegration"
+                        },
+                        "type": "array"
+                    },
+                    "serviceName": {
+                        "description": "Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.\n",
+                        "type": "string"
+                    },
+                    "servicePassword": {
+                        "description": "Password used for connecting to the service, if applicable\n",
+                        "secret": true,
+                        "type": "string"
+                    },
+                    "servicePort": {
+                        "description": "The port of the service\n",
+                        "type": "integer"
+                    },
+                    "serviceType": {
+                        "description": "Aiven internal service type code\n",
+                        "type": "string"
+                    },
+                    "serviceUri": {
+                        "description": "URI for connecting to the service. Service specific info is under \"kafka\", \"pg\", etc.\n",
+                        "secret": true,
+                        "type": "string"
+                    },
+                    "serviceUsername": {
+                        "description": "Username used for connecting to the service, if applicable\n",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`\n",
+                        "type": "string"
+                    },
+                    "staticIps": {
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "tags": {
+                        "description": "Tags are key-value pairs that allow you to categorize services.\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getThanosTag:getThanosTag"
+                        },
+                        "type": "array"
+                    },
+                    "techEmails": {
+                        "description": "The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getThanosTechEmail:getThanosTechEmail"
+                        },
+                        "type": "array"
+                    },
+                    "terminationProtection": {
+                        "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n",
+                        "type": "boolean"
+                    },
+                    "thanos": {
+                        "description": "Thanos server connection details.\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getThanosThano:getThanosThano"
+                        },
+                        "secret": true,
+                        "type": "array"
+                    },
+                    "thanosUserConfigs": {
+                        "description": "Thanos user configurable settings\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getThanosThanosUserConfig:getThanosThanosUserConfig"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "additionalDiskSpace",
+                    "cloudName",
+                    "components",
+                    "diskSpace",
+                    "diskSpaceCap",
+                    "diskSpaceDefault",
+                    "diskSpaceStep",
+                    "diskSpaceUsed",
+                    "maintenanceWindowDow",
+                    "maintenanceWindowTime",
+                    "plan",
+                    "project",
+                    "projectVpcId",
+                    "serviceHost",
+                    "serviceIntegrations",
+                    "serviceName",
+                    "servicePassword",
+                    "servicePort",
+                    "serviceType",
+                    "serviceUri",
+                    "serviceUsername",
+                    "state",
+                    "staticIps",
+                    "tags",
+                    "techEmails",
+                    "terminationProtection",
+                    "thanos",
+                    "thanosUserConfigs",
                     "id"
                 ],
                 "type": "object"

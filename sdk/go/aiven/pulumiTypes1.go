@@ -13,6 +13,1778 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetServiceIntegrationExternalElasticsearchLogsUserConfig struct {
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields []string `pulumi:"selectedLogFields"`
+}
+
+// GetServiceIntegrationExternalElasticsearchLogsUserConfigInput is an input type that accepts GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs and GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalElasticsearchLogsUserConfigInput` via:
+//
+//	GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs{...}
+type GetServiceIntegrationExternalElasticsearchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutput() GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput
+	ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput
+}
+
+type GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs struct {
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields pulumi.StringArrayInput `pulumi:"selectedLogFields"`
+}
+
+func (GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutput() GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput)
+}
+
+// GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationExternalElasticsearchLogsUserConfigArray and GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationExternalElasticsearchLogsUserConfigArray{ GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs{...} }
+type GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput() GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput
+	ToGetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationExternalElasticsearchLogsUserConfigArray []GetServiceIntegrationExternalElasticsearchLogsUserConfigInput
+
+func (GetServiceIntegrationExternalElasticsearchLogsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalElasticsearchLogsUserConfigArray) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput() GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalElasticsearchLogsUserConfigArray) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutput() GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return o
+}
+
+// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+func (o GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalElasticsearchLogsUserConfig) []string { return v.SelectedLogFields }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput() GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput) ToGetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalElasticsearchLogsUserConfig {
+		return vs[0].([]GetServiceIntegrationExternalElasticsearchLogsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationExternalOpensearchLogsUserConfig struct {
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields []string `pulumi:"selectedLogFields"`
+}
+
+// GetServiceIntegrationExternalOpensearchLogsUserConfigInput is an input type that accepts GetServiceIntegrationExternalOpensearchLogsUserConfigArgs and GetServiceIntegrationExternalOpensearchLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalOpensearchLogsUserConfigInput` via:
+//
+//	GetServiceIntegrationExternalOpensearchLogsUserConfigArgs{...}
+type GetServiceIntegrationExternalOpensearchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalOpensearchLogsUserConfigOutput() GetServiceIntegrationExternalOpensearchLogsUserConfigOutput
+	ToGetServiceIntegrationExternalOpensearchLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationExternalOpensearchLogsUserConfigOutput
+}
+
+type GetServiceIntegrationExternalOpensearchLogsUserConfigArgs struct {
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields pulumi.StringArrayInput `pulumi:"selectedLogFields"`
+}
+
+func (GetServiceIntegrationExternalOpensearchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalOpensearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalOpensearchLogsUserConfigArgs) ToGetServiceIntegrationExternalOpensearchLogsUserConfigOutput() GetServiceIntegrationExternalOpensearchLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationExternalOpensearchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalOpensearchLogsUserConfigArgs) ToGetServiceIntegrationExternalOpensearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalOpensearchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalOpensearchLogsUserConfigOutput)
+}
+
+// GetServiceIntegrationExternalOpensearchLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationExternalOpensearchLogsUserConfigArray and GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationExternalOpensearchLogsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationExternalOpensearchLogsUserConfigArray{ GetServiceIntegrationExternalOpensearchLogsUserConfigArgs{...} }
+type GetServiceIntegrationExternalOpensearchLogsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput() GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput
+	ToGetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationExternalOpensearchLogsUserConfigArray []GetServiceIntegrationExternalOpensearchLogsUserConfigInput
+
+func (GetServiceIntegrationExternalOpensearchLogsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalOpensearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationExternalOpensearchLogsUserConfigArray) ToGetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput() GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationExternalOpensearchLogsUserConfigArray) ToGetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationExternalOpensearchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalOpensearchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationExternalOpensearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalOpensearchLogsUserConfigOutput) ToGetServiceIntegrationExternalOpensearchLogsUserConfigOutput() GetServiceIntegrationExternalOpensearchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalOpensearchLogsUserConfigOutput) ToGetServiceIntegrationExternalOpensearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationExternalOpensearchLogsUserConfigOutput {
+	return o
+}
+
+// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+func (o GetServiceIntegrationExternalOpensearchLogsUserConfigOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationExternalOpensearchLogsUserConfig) []string { return v.SelectedLogFields }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationExternalOpensearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput) ToGetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput() GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput) ToGetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationExternalOpensearchLogsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationExternalOpensearchLogsUserConfig {
+		return vs[0].([]GetServiceIntegrationExternalOpensearchLogsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationExternalOpensearchLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfig struct {
+	// Kafka Connect service configuration values
+	KafkaConnect *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
+}
+
+// GetServiceIntegrationKafkaConnectUserConfigInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigArgs and GetServiceIntegrationKafkaConnectUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigInput` via:
+//
+//	GetServiceIntegrationKafkaConnectUserConfigArgs{...}
+type GetServiceIntegrationKafkaConnectUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaConnectUserConfigOutput() GetServiceIntegrationKafkaConnectUserConfigOutput
+	ToGetServiceIntegrationKafkaConnectUserConfigOutputWithContext(context.Context) GetServiceIntegrationKafkaConnectUserConfigOutput
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigArgs struct {
+	// Kafka Connect service configuration values
+	KafkaConnect GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput `pulumi:"kafkaConnect"`
+}
+
+func (GetServiceIntegrationKafkaConnectUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigArgs) ToGetServiceIntegrationKafkaConnectUserConfigOutput() GetServiceIntegrationKafkaConnectUserConfigOutput {
+	return i.ToGetServiceIntegrationKafkaConnectUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigArgs) ToGetServiceIntegrationKafkaConnectUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaConnectUserConfigOutput)
+}
+
+// GetServiceIntegrationKafkaConnectUserConfigArrayInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigArray and GetServiceIntegrationKafkaConnectUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationKafkaConnectUserConfigArray{ GetServiceIntegrationKafkaConnectUserConfigArgs{...} }
+type GetServiceIntegrationKafkaConnectUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaConnectUserConfigArrayOutput() GetServiceIntegrationKafkaConnectUserConfigArrayOutput
+	ToGetServiceIntegrationKafkaConnectUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationKafkaConnectUserConfigArrayOutput
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigArray []GetServiceIntegrationKafkaConnectUserConfigInput
+
+func (GetServiceIntegrationKafkaConnectUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigArray) ToGetServiceIntegrationKafkaConnectUserConfigArrayOutput() GetServiceIntegrationKafkaConnectUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationKafkaConnectUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigArray) ToGetServiceIntegrationKafkaConnectUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaConnectUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaConnectUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigOutput) ToGetServiceIntegrationKafkaConnectUserConfigOutput() GetServiceIntegrationKafkaConnectUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigOutput) ToGetServiceIntegrationKafkaConnectUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigOutput {
+	return o
+}
+
+// Kafka Connect service configuration values
+func (o GetServiceIntegrationKafkaConnectUserConfigOutput) KafkaConnect() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfig) *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		return v.KafkaConnect
+	}).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaConnectUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationKafkaConnectUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigArrayOutput) ToGetServiceIntegrationKafkaConnectUserConfigArrayOutput() GetServiceIntegrationKafkaConnectUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigArrayOutput) ToGetServiceIntegrationKafkaConnectUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationKafkaConnectUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationKafkaConnectUserConfig {
+		return vs[0].([]GetServiceIntegrationKafkaConnectUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationKafkaConnectUserConfigOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnect struct {
+	// The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
+	ConfigStorageTopic *string `pulumi:"configStorageTopic"`
+	// A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
+	GroupId *string `pulumi:"groupId"`
+	// The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
+	OffsetStorageTopic *string `pulumi:"offsetStorageTopic"`
+	// The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
+	StatusStorageTopic *string `pulumi:"statusStorageTopic"`
+}
+
+// GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs and GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput` via:
+//
+//	GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput
+	ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs struct {
+	// The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
+	ConfigStorageTopic pulumi.StringPtrInput `pulumi:"configStorageTopic"`
+	// A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
+	OffsetStorageTopic pulumi.StringPtrInput `pulumi:"offsetStorageTopic"`
+	// The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
+	StatusStorageTopic pulumi.StringPtrInput `pulumi:"statusStorageTopic"`
+}
+
+func (GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return i.ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput)
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return i.ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput).ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput is an input type that accepts GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs, GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr and GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput` via:
+//
+//	        GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput
+	ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput
+}
+
+type getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs
+
+func GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtr(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput {
+	return (*getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType)(v)
+}
+
+func (*getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return i.ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrType) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		return &v
+	}).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput)
+}
+
+// The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) ConfigStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.ConfigStorageTopic }).(pulumi.StringPtrOutput)
+}
+
+// A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) OffsetStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.OffsetStorageTopic }).(pulumi.StringPtrOutput)
+}
+
+// The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput) StatusStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string { return v.StatusStorageTopic }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationKafkaConnectUserConfigKafkaConnect)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ToGetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) Elem() GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) GetServiceIntegrationKafkaConnectUserConfigKafkaConnect {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceIntegrationKafkaConnectUserConfigKafkaConnect
+		return ret
+	}).(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput)
+}
+
+// The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) ConfigStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigStorageTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+// A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) OffsetStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetStorageTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
+func (o GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput) StatusStorageTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StatusStorageTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationKafkaLogsUserConfig struct {
+	// Topic name. Example: `mytopic`.
+	KafkaTopic string `pulumi:"kafkaTopic"`
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields []string `pulumi:"selectedLogFields"`
+}
+
+// GetServiceIntegrationKafkaLogsUserConfigInput is an input type that accepts GetServiceIntegrationKafkaLogsUserConfigArgs and GetServiceIntegrationKafkaLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaLogsUserConfigInput` via:
+//
+//	GetServiceIntegrationKafkaLogsUserConfigArgs{...}
+type GetServiceIntegrationKafkaLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaLogsUserConfigOutput() GetServiceIntegrationKafkaLogsUserConfigOutput
+	ToGetServiceIntegrationKafkaLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationKafkaLogsUserConfigOutput
+}
+
+type GetServiceIntegrationKafkaLogsUserConfigArgs struct {
+	// Topic name. Example: `mytopic`.
+	KafkaTopic pulumi.StringInput `pulumi:"kafkaTopic"`
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields pulumi.StringArrayInput `pulumi:"selectedLogFields"`
+}
+
+func (GetServiceIntegrationKafkaLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaLogsUserConfigArgs) ToGetServiceIntegrationKafkaLogsUserConfigOutput() GetServiceIntegrationKafkaLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationKafkaLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaLogsUserConfigArgs) ToGetServiceIntegrationKafkaLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaLogsUserConfigOutput)
+}
+
+// GetServiceIntegrationKafkaLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationKafkaLogsUserConfigArray and GetServiceIntegrationKafkaLogsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaLogsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationKafkaLogsUserConfigArray{ GetServiceIntegrationKafkaLogsUserConfigArgs{...} }
+type GetServiceIntegrationKafkaLogsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaLogsUserConfigArrayOutput() GetServiceIntegrationKafkaLogsUserConfigArrayOutput
+	ToGetServiceIntegrationKafkaLogsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationKafkaLogsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationKafkaLogsUserConfigArray []GetServiceIntegrationKafkaLogsUserConfigInput
+
+func (GetServiceIntegrationKafkaLogsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaLogsUserConfigArray) ToGetServiceIntegrationKafkaLogsUserConfigArrayOutput() GetServiceIntegrationKafkaLogsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationKafkaLogsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaLogsUserConfigArray) ToGetServiceIntegrationKafkaLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaLogsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaLogsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationKafkaLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaLogsUserConfigOutput) ToGetServiceIntegrationKafkaLogsUserConfigOutput() GetServiceIntegrationKafkaLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaLogsUserConfigOutput) ToGetServiceIntegrationKafkaLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaLogsUserConfigOutput {
+	return o
+}
+
+// Topic name. Example: `mytopic`.
+func (o GetServiceIntegrationKafkaLogsUserConfigOutput) KafkaTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaLogsUserConfig) string { return v.KafkaTopic }).(pulumi.StringOutput)
+}
+
+// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+func (o GetServiceIntegrationKafkaLogsUserConfigOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaLogsUserConfig) []string { return v.SelectedLogFields }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceIntegrationKafkaLogsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaLogsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationKafkaLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaLogsUserConfigArrayOutput) ToGetServiceIntegrationKafkaLogsUserConfigArrayOutput() GetServiceIntegrationKafkaLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaLogsUserConfigArrayOutput) ToGetServiceIntegrationKafkaLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaLogsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationKafkaLogsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationKafkaLogsUserConfig {
+		return vs[0].([]GetServiceIntegrationKafkaLogsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationKafkaLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfig struct {
+	// The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
+	ClusterAlias *string `pulumi:"clusterAlias"`
+	// Kafka MirrorMaker configuration values
+	KafkaMirrormaker *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
+}
+
+// GetServiceIntegrationKafkaMirrormakerUserConfigInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigArgs and GetServiceIntegrationKafkaMirrormakerUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigInput` via:
+//
+//	GetServiceIntegrationKafkaMirrormakerUserConfigArgs{...}
+type GetServiceIntegrationKafkaMirrormakerUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigOutput() GetServiceIntegrationKafkaMirrormakerUserConfigOutput
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigOutput
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigArgs struct {
+	// The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
+	ClusterAlias pulumi.StringPtrInput `pulumi:"clusterAlias"`
+	// Kafka MirrorMaker configuration values
+	KafkaMirrormaker GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
+}
+
+func (GetServiceIntegrationKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigArgs) ToGetServiceIntegrationKafkaMirrormakerUserConfigOutput() GetServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return i.ToGetServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigArgs) ToGetServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaMirrormakerUserConfigOutput)
+}
+
+// GetServiceIntegrationKafkaMirrormakerUserConfigArrayInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigArray and GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationKafkaMirrormakerUserConfigArray{ GetServiceIntegrationKafkaMirrormakerUserConfigArgs{...} }
+type GetServiceIntegrationKafkaMirrormakerUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput() GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigArray []GetServiceIntegrationKafkaMirrormakerUserConfigInput
+
+func (GetServiceIntegrationKafkaMirrormakerUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigArray) ToGetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput() GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationKafkaMirrormakerUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigArray) ToGetServiceIntegrationKafkaMirrormakerUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaMirrormakerUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigOutput() GetServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+// The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigOutput) ClusterAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfig) *string { return v.ClusterAlias }).(pulumi.StringPtrOutput)
+}
+
+// Kafka MirrorMaker configuration values
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfig) *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return v.KafkaMirrormaker
+	}).(GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput() GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationKafkaMirrormakerUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationKafkaMirrormakerUserConfig {
+		return vs[0].([]GetServiceIntegrationKafkaMirrormakerUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationKafkaMirrormakerUserConfigOutput)
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker struct {
+	// Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
+	// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+	ConsumerFetchMinBytes *int `pulumi:"consumerFetchMinBytes"`
+	// Set consumer max.poll.records. The default is 500. Example: `500`.
+	ConsumerMaxPollRecords *int `pulumi:"consumerMaxPollRecords"`
+	// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+	ProducerBatchSize *int `pulumi:"producerBatchSize"`
+	// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+	ProducerBufferMemory *int `pulumi:"producerBufferMemory"`
+	// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+	ProducerCompressionType *string `pulumi:"producerCompressionType"`
+	// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+	ProducerLingerMs *int `pulumi:"producerLingerMs"`
+	// The maximum request size in bytes. Example: `1048576`.
+	ProducerMaxRequestSize *int `pulumi:"producerMaxRequestSize"`
+}
+
+// GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
+//
+//	GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
+	// Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
+	// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+	ConsumerFetchMinBytes pulumi.IntPtrInput `pulumi:"consumerFetchMinBytes"`
+	// Set consumer max.poll.records. The default is 500. Example: `500`.
+	ConsumerMaxPollRecords pulumi.IntPtrInput `pulumi:"consumerMaxPollRecords"`
+	// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+	ProducerBatchSize pulumi.IntPtrInput `pulumi:"producerBatchSize"`
+	// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+	ProducerBufferMemory pulumi.IntPtrInput `pulumi:"producerBufferMemory"`
+	// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+	ProducerCompressionType pulumi.StringPtrInput `pulumi:"producerCompressionType"`
+	// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+	ProducerLingerMs pulumi.IntPtrInput `pulumi:"producerLingerMs"`
+	// The maximum request size in bytes. Example: `1048576`.
+	ProducerMaxRequestSize pulumi.IntPtrInput `pulumi:"producerMaxRequestSize"`
+}
+
+func (GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return i.ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return i.ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput).ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs, GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtr and GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
+//
+//	        GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
+	ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
+}
+
+type getServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrType GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs
+
+func GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtr(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput {
+	return (*getServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrType)(v)
+}
+
+func (*getServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return i.ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return &v
+	}).(GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+// Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.ConsumerAutoOffsetReset
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerFetchMinBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.ConsumerFetchMinBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set consumer max.poll.records. The default is 500. Example: `500`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.ConsumerMaxPollRecords
+	}).(pulumi.IntPtrOutput)
+}
+
+// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerBatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.ProducerBatchSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerBufferMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.ProducerBufferMemory
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerCompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		return v.ProducerCompressionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerLingerMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.ProducerLingerMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum request size in bytes. Example: `1048576`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.ProducerMaxRequestSize
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ToGetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Elem() GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker
+		return ret
+	}).(GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+// Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerAutoOffsetReset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerAutoOffsetReset
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerFetchMinBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMinBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set consumer max.poll.records. The default is 500. Example: `500`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerMaxPollRecords
+	}).(pulumi.IntPtrOutput)
+}
+
+// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerBatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerBatchSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerBufferMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerBufferMemory
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerCompressionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerCompressionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerLingerMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerLingerMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum request size in bytes. Example: `1048576`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerMaxRequestSize
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetServiceIntegrationLogsUserConfig struct {
+	// Elasticsearch index retention limit. Default: `3`.
+	ElasticsearchIndexDaysMax *int `pulumi:"elasticsearchIndexDaysMax"`
+	// Elasticsearch index prefix. Default: `logs`.
+	ElasticsearchIndexPrefix *string `pulumi:"elasticsearchIndexPrefix"`
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields []string `pulumi:"selectedLogFields"`
+}
+
+// GetServiceIntegrationLogsUserConfigInput is an input type that accepts GetServiceIntegrationLogsUserConfigArgs and GetServiceIntegrationLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationLogsUserConfigInput` via:
+//
+//	GetServiceIntegrationLogsUserConfigArgs{...}
+type GetServiceIntegrationLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationLogsUserConfigOutput() GetServiceIntegrationLogsUserConfigOutput
+	ToGetServiceIntegrationLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationLogsUserConfigOutput
+}
+
+type GetServiceIntegrationLogsUserConfigArgs struct {
+	// Elasticsearch index retention limit. Default: `3`.
+	ElasticsearchIndexDaysMax pulumi.IntPtrInput `pulumi:"elasticsearchIndexDaysMax"`
+	// Elasticsearch index prefix. Default: `logs`.
+	ElasticsearchIndexPrefix pulumi.StringPtrInput `pulumi:"elasticsearchIndexPrefix"`
+	// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+	SelectedLogFields pulumi.StringArrayInput `pulumi:"selectedLogFields"`
+}
+
+func (GetServiceIntegrationLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationLogsUserConfigArgs) ToGetServiceIntegrationLogsUserConfigOutput() GetServiceIntegrationLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationLogsUserConfigArgs) ToGetServiceIntegrationLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationLogsUserConfigOutput)
+}
+
+// GetServiceIntegrationLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationLogsUserConfigArray and GetServiceIntegrationLogsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationLogsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationLogsUserConfigArray{ GetServiceIntegrationLogsUserConfigArgs{...} }
+type GetServiceIntegrationLogsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationLogsUserConfigArrayOutput() GetServiceIntegrationLogsUserConfigArrayOutput
+	ToGetServiceIntegrationLogsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationLogsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationLogsUserConfigArray []GetServiceIntegrationLogsUserConfigInput
+
+func (GetServiceIntegrationLogsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationLogsUserConfigArray) ToGetServiceIntegrationLogsUserConfigArrayOutput() GetServiceIntegrationLogsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationLogsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationLogsUserConfigArray) ToGetServiceIntegrationLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationLogsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationLogsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationLogsUserConfigOutput) ToGetServiceIntegrationLogsUserConfigOutput() GetServiceIntegrationLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationLogsUserConfigOutput) ToGetServiceIntegrationLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationLogsUserConfigOutput {
+	return o
+}
+
+// Elasticsearch index retention limit. Default: `3`.
+func (o GetServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexDaysMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationLogsUserConfig) *int { return v.ElasticsearchIndexDaysMax }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch index prefix. Default: `logs`.
+func (o GetServiceIntegrationLogsUserConfigOutput) ElasticsearchIndexPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationLogsUserConfig) *string { return v.ElasticsearchIndexPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+func (o GetServiceIntegrationLogsUserConfigOutput) SelectedLogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationLogsUserConfig) []string { return v.SelectedLogFields }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceIntegrationLogsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationLogsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationLogsUserConfigArrayOutput) ToGetServiceIntegrationLogsUserConfigArrayOutput() GetServiceIntegrationLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationLogsUserConfigArrayOutput) ToGetServiceIntegrationLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationLogsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationLogsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationLogsUserConfig {
+		return vs[0].([]GetServiceIntegrationLogsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfig struct {
+	// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	Database *string `pulumi:"database"`
+	// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metricsReader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	RoUsername *string `pulumi:"roUsername"`
+	// Configuration options for metrics where source service is MySQL
+	SourceMysql *GetServiceIntegrationMetricsUserConfigSourceMysql `pulumi:"sourceMysql"`
+	// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metricsWriter`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	Username *string `pulumi:"username"`
+}
+
+// GetServiceIntegrationMetricsUserConfigInput is an input type that accepts GetServiceIntegrationMetricsUserConfigArgs and GetServiceIntegrationMetricsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigInput` via:
+//
+//	GetServiceIntegrationMetricsUserConfigArgs{...}
+type GetServiceIntegrationMetricsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigOutput() GetServiceIntegrationMetricsUserConfigOutput
+	ToGetServiceIntegrationMetricsUserConfigOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigOutput
+}
+
+type GetServiceIntegrationMetricsUserConfigArgs struct {
+	// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
+	// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metricsReader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	RoUsername pulumi.StringPtrInput `pulumi:"roUsername"`
+	// Configuration options for metrics where source service is MySQL
+	SourceMysql GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput `pulumi:"sourceMysql"`
+	// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metricsWriter`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetServiceIntegrationMetricsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationMetricsUserConfigArgs) ToGetServiceIntegrationMetricsUserConfigOutput() GetServiceIntegrationMetricsUserConfigOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigArgs) ToGetServiceIntegrationMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigOutput)
+}
+
+// GetServiceIntegrationMetricsUserConfigArrayInput is an input type that accepts GetServiceIntegrationMetricsUserConfigArray and GetServiceIntegrationMetricsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationMetricsUserConfigArray{ GetServiceIntegrationMetricsUserConfigArgs{...} }
+type GetServiceIntegrationMetricsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigArrayOutput() GetServiceIntegrationMetricsUserConfigArrayOutput
+	ToGetServiceIntegrationMetricsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationMetricsUserConfigArray []GetServiceIntegrationMetricsUserConfigInput
+
+func (GetServiceIntegrationMetricsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationMetricsUserConfigArray) ToGetServiceIntegrationMetricsUserConfigArrayOutput() GetServiceIntegrationMetricsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigArray) ToGetServiceIntegrationMetricsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigOutput) ToGetServiceIntegrationMetricsUserConfigOutput() GetServiceIntegrationMetricsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigOutput) ToGetServiceIntegrationMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigOutput {
+	return o
+}
+
+// Name of the database where to store metric datapoints. Only affects PostgreSQL destinations. Defaults to `metrics`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+func (o GetServiceIntegrationMetricsUserConfigOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// Number of days to keep old metrics. Only affects PostgreSQL destinations. Set to 0 for no automatic cleanup. Defaults to 30 days.
+func (o GetServiceIntegrationMetricsUserConfigOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metricsReader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+func (o GetServiceIntegrationMetricsUserConfigOutput) RoUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *string { return v.RoUsername }).(pulumi.StringPtrOutput)
+}
+
+// Configuration options for metrics where source service is MySQL
+func (o GetServiceIntegrationMetricsUserConfigOutput) SourceMysql() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *GetServiceIntegrationMetricsUserConfigSourceMysql {
+		return v.SourceMysql
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+
+// Name of the user used to write metrics. Only affects PostgreSQL destinations. Defaults to `metricsWriter`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
+func (o GetServiceIntegrationMetricsUserConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationMetricsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigArrayOutput) ToGetServiceIntegrationMetricsUserConfigArrayOutput() GetServiceIntegrationMetricsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigArrayOutput) ToGetServiceIntegrationMetricsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationMetricsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationMetricsUserConfig {
+		return vs[0].([]GetServiceIntegrationMetricsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationMetricsUserConfigOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysql struct {
+	// Configuration options for Telegraf MySQL input plugin
+	Telegraf *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf `pulumi:"telegraf"`
+}
+
+// GetServiceIntegrationMetricsUserConfigSourceMysqlInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlArgs and GetServiceIntegrationMetricsUserConfigSourceMysqlOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlInput` via:
+//
+//	GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+type GetServiceIntegrationMetricsUserConfigSourceMysqlInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlOutput
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlOutput
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlArgs struct {
+	// Configuration options for Telegraf MySQL input plugin
+	Telegraf GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput `pulumi:"telegraf"`
+}
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlOutput)
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlOutput).ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlArgs, GetServiceIntegrationMetricsUserConfigSourceMysqlPtr and GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput` via:
+//
+//	        GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput
+}
+
+type getServiceIntegrationMetricsUserConfigSourceMysqlPtrType GetServiceIntegrationMetricsUserConfigSourceMysqlArgs
+
+func GetServiceIntegrationMetricsUserConfigSourceMysqlPtr(v *GetServiceIntegrationMetricsUserConfigSourceMysqlArgs) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput {
+	return (*getServiceIntegrationMetricsUserConfigSourceMysqlPtrType)(v)
+}
+
+func (*getServiceIntegrationMetricsUserConfigSourceMysqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationMetricsUserConfigSourceMysqlPtrType) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationMetricsUserConfigSourceMysqlPtrType) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceIntegrationMetricsUserConfigSourceMysql) *GetServiceIntegrationMetricsUserConfigSourceMysql {
+		return &v
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput)
+}
+
+// Configuration options for Telegraf MySQL input plugin
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlOutput) Telegraf() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysql) *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		return v.Telegraf
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationMetricsUserConfigSourceMysql)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) Elem() GetServiceIntegrationMetricsUserConfigSourceMysqlOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysql) GetServiceIntegrationMetricsUserConfigSourceMysql {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceIntegrationMetricsUserConfigSourceMysql
+		return ret
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlOutput)
+}
+
+// Configuration options for Telegraf MySQL input plugin
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput) Telegraf() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysql) *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		if v == nil {
+			return nil
+		}
+		return v.Telegraf
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf struct {
+	// Gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS.
+	GatherEventWaits *bool `pulumi:"gatherEventWaits"`
+	// Gather metrics from PERFORMANCE_SCHEMA.FILE_SUMMARY_BY_EVENT_NAME.
+	GatherFileEventsStats *bool `pulumi:"gatherFileEventsStats"`
+	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE.
+	GatherIndexIoWaits *bool `pulumi:"gatherIndexIoWaits"`
+	// Gather autoIncrement columns and max values from information schema.
+	GatherInfoSchemaAutoInc *bool `pulumi:"gatherInfoSchemaAutoInc"`
+	// Gather metrics from INFORMATION_SCHEMA.INNODB_METRICS.
+	GatherInnodbMetrics *bool `pulumi:"gatherInnodbMetrics"`
+	// Gather metrics from PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_DIGEST.
+	GatherPerfEventsStatements *bool `pulumi:"gatherPerfEventsStatements"`
+	// Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+	GatherProcessList *bool `pulumi:"gatherProcessList"`
+	// Gather metrics from SHOW SLAVE STATUS command output.
+	GatherSlaveStatus *bool `pulumi:"gatherSlaveStatus"`
+	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
+	GatherTableIoWaits *bool `pulumi:"gatherTableIoWaits"`
+	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_LOCK_WAITS.
+	GatherTableLockWaits *bool `pulumi:"gatherTableLockWaits"`
+	// Gather metrics from INFORMATION_SCHEMA.TABLES.
+	GatherTableSchema *bool `pulumi:"gatherTableSchema"`
+	// Truncates digest text from perfEventsStatements into this many characters. Example: `120`.
+	PerfEventsStatementsDigestTextLimit *int `pulumi:"perfEventsStatementsDigestTextLimit"`
+	// Limits metrics from perf_events_statements. Example: `250`.
+	PerfEventsStatementsLimit *int `pulumi:"perfEventsStatementsLimit"`
+	// Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
+	PerfEventsStatementsTimeLimit *int `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+// GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs and GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput` via:
+//
+//	GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs struct {
+	// Gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS.
+	GatherEventWaits pulumi.BoolPtrInput `pulumi:"gatherEventWaits"`
+	// Gather metrics from PERFORMANCE_SCHEMA.FILE_SUMMARY_BY_EVENT_NAME.
+	GatherFileEventsStats pulumi.BoolPtrInput `pulumi:"gatherFileEventsStats"`
+	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE.
+	GatherIndexIoWaits pulumi.BoolPtrInput `pulumi:"gatherIndexIoWaits"`
+	// Gather autoIncrement columns and max values from information schema.
+	GatherInfoSchemaAutoInc pulumi.BoolPtrInput `pulumi:"gatherInfoSchemaAutoInc"`
+	// Gather metrics from INFORMATION_SCHEMA.INNODB_METRICS.
+	GatherInnodbMetrics pulumi.BoolPtrInput `pulumi:"gatherInnodbMetrics"`
+	// Gather metrics from PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_DIGEST.
+	GatherPerfEventsStatements pulumi.BoolPtrInput `pulumi:"gatherPerfEventsStatements"`
+	// Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+	GatherProcessList pulumi.BoolPtrInput `pulumi:"gatherProcessList"`
+	// Gather metrics from SHOW SLAVE STATUS command output.
+	GatherSlaveStatus pulumi.BoolPtrInput `pulumi:"gatherSlaveStatus"`
+	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
+	GatherTableIoWaits pulumi.BoolPtrInput `pulumi:"gatherTableIoWaits"`
+	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_LOCK_WAITS.
+	GatherTableLockWaits pulumi.BoolPtrInput `pulumi:"gatherTableLockWaits"`
+	// Gather metrics from INFORMATION_SCHEMA.TABLES.
+	GatherTableSchema pulumi.BoolPtrInput `pulumi:"gatherTableSchema"`
+	// Truncates digest text from perfEventsStatements into this many characters. Example: `120`.
+	PerfEventsStatementsDigestTextLimit pulumi.IntPtrInput `pulumi:"perfEventsStatementsDigestTextLimit"`
+	// Limits metrics from perf_events_statements. Example: `250`.
+	PerfEventsStatementsLimit pulumi.IntPtrInput `pulumi:"perfEventsStatementsLimit"`
+	// Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
+	PerfEventsStatementsTimeLimit pulumi.IntPtrInput `pulumi:"perfEventsStatementsTimeLimit"`
+}
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput)
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput).ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput is an input type that accepts GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs, GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtr and GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput` via:
+//
+//	        GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput
+	ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput
+}
+
+type getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs
+
+func GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtr(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput {
+	return (*getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType)(v)
+}
+
+func (*getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return i.ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrType) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		return &v
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherEventWaits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherEventWaits }).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.FILE_SUMMARY_BY_EVENT_NAME.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherFileEventsStats() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		return v.GatherFileEventsStats
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherIndexIoWaits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherIndexIoWaits }).(pulumi.BoolPtrOutput)
+}
+
+// Gather autoIncrement columns and max values from information schema.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherInfoSchemaAutoInc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from INFORMATION_SCHEMA.INNODB_METRICS.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherInnodbMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherInnodbMetrics }).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_DIGEST.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherPerfEventsStatements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		return v.GatherPerfEventsStatements
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherProcessList() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherProcessList }).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from SHOW SLAVE STATUS command output.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherSlaveStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherSlaveStatus }).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherTableIoWaits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherTableIoWaits }).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.TABLE_LOCK_WAITS.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherTableLockWaits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherTableLockWaits }).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from INFORMATION_SCHEMA.TABLES.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherTableSchema }).(pulumi.BoolPtrOutput)
+}
+
+// Truncates digest text from perfEventsStatements into this many characters. Example: `120`.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsDigestTextLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *int {
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limits metrics from perf_events_statements. Example: `250`.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *int {
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) PerfEventsStatementsTimeLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *int {
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) ToGetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutputWithContext(ctx context.Context) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) Elem() GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf
+		return ret
+	}).(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherEventWaits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherEventWaits
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.FILE_SUMMARY_BY_EVENT_NAME.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherFileEventsStats() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherFileEventsStats
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherIndexIoWaits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherIndexIoWaits
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather autoIncrement columns and max values from information schema.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherInfoSchemaAutoInc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInfoSchemaAutoInc
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from INFORMATION_SCHEMA.INNODB_METRICS.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherInnodbMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherInnodbMetrics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_DIGEST.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherPerfEventsStatements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherPerfEventsStatements
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherProcessList() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherProcessList
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from SHOW SLAVE STATUS command output.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherSlaveStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherSlaveStatus
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherTableIoWaits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableIoWaits
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from PERFORMANCE_SCHEMA.TABLE_LOCK_WAITS.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherTableLockWaits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableLockWaits
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from INFORMATION_SCHEMA.TABLES.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherTableSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Truncates digest text from perfEventsStatements into this many characters. Example: `120`.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsDigestTextLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsDigestTextLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limits metrics from perf_events_statements. Example: `250`.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) PerfEventsStatementsTimeLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerfEventsStatementsTimeLimit
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetServiceIntegrationPrometheusUserConfig struct {
 	// Configuration options for metrics where source service is MySQL
 	SourceMysql *GetServiceIntegrationPrometheusUserConfigSourceMysql `pulumi:"sourceMysql"`
@@ -655,17 +2427,1706 @@ func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) P
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetThanosComponent struct {
+	// Service component name
+	Component string `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host string `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port int `pulumi:"port"`
+	// Network access route
+	Route string `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl bool `pulumi:"ssl"`
+	// DNS usage name
+	Usage string `pulumi:"usage"`
+}
+
+// GetThanosComponentInput is an input type that accepts GetThanosComponentArgs and GetThanosComponentOutput values.
+// You can construct a concrete instance of `GetThanosComponentInput` via:
+//
+//	GetThanosComponentArgs{...}
+type GetThanosComponentInput interface {
+	pulumi.Input
+
+	ToGetThanosComponentOutput() GetThanosComponentOutput
+	ToGetThanosComponentOutputWithContext(context.Context) GetThanosComponentOutput
+}
+
+type GetThanosComponentArgs struct {
+	// Service component name
+	Component pulumi.StringInput `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri pulumi.StringInput `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host pulumi.StringInput `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port pulumi.IntInput `pulumi:"port"`
+	// Network access route
+	Route pulumi.StringInput `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl pulumi.BoolInput `pulumi:"ssl"`
+	// DNS usage name
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetThanosComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosComponent)(nil)).Elem()
+}
+
+func (i GetThanosComponentArgs) ToGetThanosComponentOutput() GetThanosComponentOutput {
+	return i.ToGetThanosComponentOutputWithContext(context.Background())
+}
+
+func (i GetThanosComponentArgs) ToGetThanosComponentOutputWithContext(ctx context.Context) GetThanosComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosComponentOutput)
+}
+
+// GetThanosComponentArrayInput is an input type that accepts GetThanosComponentArray and GetThanosComponentArrayOutput values.
+// You can construct a concrete instance of `GetThanosComponentArrayInput` via:
+//
+//	GetThanosComponentArray{ GetThanosComponentArgs{...} }
+type GetThanosComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetThanosComponentArrayOutput() GetThanosComponentArrayOutput
+	ToGetThanosComponentArrayOutputWithContext(context.Context) GetThanosComponentArrayOutput
+}
+
+type GetThanosComponentArray []GetThanosComponentInput
+
+func (GetThanosComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosComponent)(nil)).Elem()
+}
+
+func (i GetThanosComponentArray) ToGetThanosComponentArrayOutput() GetThanosComponentArrayOutput {
+	return i.ToGetThanosComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetThanosComponentArray) ToGetThanosComponentArrayOutputWithContext(ctx context.Context) GetThanosComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosComponentArrayOutput)
+}
+
+type GetThanosComponentOutput struct{ *pulumi.OutputState }
+
+func (GetThanosComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosComponent)(nil)).Elem()
+}
+
+func (o GetThanosComponentOutput) ToGetThanosComponentOutput() GetThanosComponentOutput {
+	return o
+}
+
+func (o GetThanosComponentOutput) ToGetThanosComponentOutputWithContext(ctx context.Context) GetThanosComponentOutput {
+	return o
+}
+
+// Service component name
+func (o GetThanosComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+// Connection info for connecting to the service component. This is a combination of host and port.
+func (o GetThanosComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// Host name for connecting to the service component
+func (o GetThanosComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Kafka authentication method. This is a value specific to the 'kafka' service component
+func (o GetThanosComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Port number for connecting to the service component
+func (o GetThanosComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetThanosComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Network access route
+func (o GetThanosComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+func (o GetThanosComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetThanosComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+// DNS usage name
+func (o GetThanosComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetThanosComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetThanosComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosComponent)(nil)).Elem()
+}
+
+func (o GetThanosComponentArrayOutput) ToGetThanosComponentArrayOutput() GetThanosComponentArrayOutput {
+	return o
+}
+
+func (o GetThanosComponentArrayOutput) ToGetThanosComponentArrayOutputWithContext(ctx context.Context) GetThanosComponentArrayOutput {
+	return o
+}
+
+func (o GetThanosComponentArrayOutput) Index(i pulumi.IntInput) GetThanosComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetThanosComponent {
+		return vs[0].([]GetThanosComponent)[vs[1].(int)]
+	}).(GetThanosComponentOutput)
+}
+
+type GetThanosServiceIntegration struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetThanosServiceIntegrationInput is an input type that accepts GetThanosServiceIntegrationArgs and GetThanosServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetThanosServiceIntegrationInput` via:
+//
+//	GetThanosServiceIntegrationArgs{...}
+type GetThanosServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetThanosServiceIntegrationOutput() GetThanosServiceIntegrationOutput
+	ToGetThanosServiceIntegrationOutputWithContext(context.Context) GetThanosServiceIntegrationOutput
+}
+
+type GetThanosServiceIntegrationArgs struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetThanosServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosServiceIntegration)(nil)).Elem()
+}
+
+func (i GetThanosServiceIntegrationArgs) ToGetThanosServiceIntegrationOutput() GetThanosServiceIntegrationOutput {
+	return i.ToGetThanosServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetThanosServiceIntegrationArgs) ToGetThanosServiceIntegrationOutputWithContext(ctx context.Context) GetThanosServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosServiceIntegrationOutput)
+}
+
+// GetThanosServiceIntegrationArrayInput is an input type that accepts GetThanosServiceIntegrationArray and GetThanosServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetThanosServiceIntegrationArrayInput` via:
+//
+//	GetThanosServiceIntegrationArray{ GetThanosServiceIntegrationArgs{...} }
+type GetThanosServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetThanosServiceIntegrationArrayOutput() GetThanosServiceIntegrationArrayOutput
+	ToGetThanosServiceIntegrationArrayOutputWithContext(context.Context) GetThanosServiceIntegrationArrayOutput
+}
+
+type GetThanosServiceIntegrationArray []GetThanosServiceIntegrationInput
+
+func (GetThanosServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosServiceIntegration)(nil)).Elem()
+}
+
+func (i GetThanosServiceIntegrationArray) ToGetThanosServiceIntegrationArrayOutput() GetThanosServiceIntegrationArrayOutput {
+	return i.ToGetThanosServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetThanosServiceIntegrationArray) ToGetThanosServiceIntegrationArrayOutputWithContext(ctx context.Context) GetThanosServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosServiceIntegrationArrayOutput)
+}
+
+type GetThanosServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetThanosServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosServiceIntegration)(nil)).Elem()
+}
+
+func (o GetThanosServiceIntegrationOutput) ToGetThanosServiceIntegrationOutput() GetThanosServiceIntegrationOutput {
+	return o
+}
+
+func (o GetThanosServiceIntegrationOutput) ToGetThanosServiceIntegrationOutputWithContext(ctx context.Context) GetThanosServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration. The only supported value at the moment is `readReplica`
+func (o GetThanosServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetThanosServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetThanosServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetThanosServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosServiceIntegration)(nil)).Elem()
+}
+
+func (o GetThanosServiceIntegrationArrayOutput) ToGetThanosServiceIntegrationArrayOutput() GetThanosServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetThanosServiceIntegrationArrayOutput) ToGetThanosServiceIntegrationArrayOutputWithContext(ctx context.Context) GetThanosServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetThanosServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetThanosServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetThanosServiceIntegration {
+		return vs[0].([]GetThanosServiceIntegration)[vs[1].(int)]
+	}).(GetThanosServiceIntegrationOutput)
+}
+
+type GetThanosTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetThanosTagInput is an input type that accepts GetThanosTagArgs and GetThanosTagOutput values.
+// You can construct a concrete instance of `GetThanosTagInput` via:
+//
+//	GetThanosTagArgs{...}
+type GetThanosTagInput interface {
+	pulumi.Input
+
+	ToGetThanosTagOutput() GetThanosTagOutput
+	ToGetThanosTagOutputWithContext(context.Context) GetThanosTagOutput
+}
+
+type GetThanosTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetThanosTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosTag)(nil)).Elem()
+}
+
+func (i GetThanosTagArgs) ToGetThanosTagOutput() GetThanosTagOutput {
+	return i.ToGetThanosTagOutputWithContext(context.Background())
+}
+
+func (i GetThanosTagArgs) ToGetThanosTagOutputWithContext(ctx context.Context) GetThanosTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosTagOutput)
+}
+
+// GetThanosTagArrayInput is an input type that accepts GetThanosTagArray and GetThanosTagArrayOutput values.
+// You can construct a concrete instance of `GetThanosTagArrayInput` via:
+//
+//	GetThanosTagArray{ GetThanosTagArgs{...} }
+type GetThanosTagArrayInput interface {
+	pulumi.Input
+
+	ToGetThanosTagArrayOutput() GetThanosTagArrayOutput
+	ToGetThanosTagArrayOutputWithContext(context.Context) GetThanosTagArrayOutput
+}
+
+type GetThanosTagArray []GetThanosTagInput
+
+func (GetThanosTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosTag)(nil)).Elem()
+}
+
+func (i GetThanosTagArray) ToGetThanosTagArrayOutput() GetThanosTagArrayOutput {
+	return i.ToGetThanosTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetThanosTagArray) ToGetThanosTagArrayOutputWithContext(ctx context.Context) GetThanosTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosTagArrayOutput)
+}
+
+type GetThanosTagOutput struct{ *pulumi.OutputState }
+
+func (GetThanosTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosTag)(nil)).Elem()
+}
+
+func (o GetThanosTagOutput) ToGetThanosTagOutput() GetThanosTagOutput {
+	return o
+}
+
+func (o GetThanosTagOutput) ToGetThanosTagOutputWithContext(ctx context.Context) GetThanosTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetThanosTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetThanosTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetThanosTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetThanosTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosTag)(nil)).Elem()
+}
+
+func (o GetThanosTagArrayOutput) ToGetThanosTagArrayOutput() GetThanosTagArrayOutput {
+	return o
+}
+
+func (o GetThanosTagArrayOutput) ToGetThanosTagArrayOutputWithContext(ctx context.Context) GetThanosTagArrayOutput {
+	return o
+}
+
+func (o GetThanosTagArrayOutput) Index(i pulumi.IntInput) GetThanosTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetThanosTag {
+		return vs[0].([]GetThanosTag)[vs[1].(int)]
+	}).(GetThanosTagOutput)
+}
+
+type GetThanosTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetThanosTechEmailInput is an input type that accepts GetThanosTechEmailArgs and GetThanosTechEmailOutput values.
+// You can construct a concrete instance of `GetThanosTechEmailInput` via:
+//
+//	GetThanosTechEmailArgs{...}
+type GetThanosTechEmailInput interface {
+	pulumi.Input
+
+	ToGetThanosTechEmailOutput() GetThanosTechEmailOutput
+	ToGetThanosTechEmailOutputWithContext(context.Context) GetThanosTechEmailOutput
+}
+
+type GetThanosTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetThanosTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosTechEmail)(nil)).Elem()
+}
+
+func (i GetThanosTechEmailArgs) ToGetThanosTechEmailOutput() GetThanosTechEmailOutput {
+	return i.ToGetThanosTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetThanosTechEmailArgs) ToGetThanosTechEmailOutputWithContext(ctx context.Context) GetThanosTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosTechEmailOutput)
+}
+
+// GetThanosTechEmailArrayInput is an input type that accepts GetThanosTechEmailArray and GetThanosTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetThanosTechEmailArrayInput` via:
+//
+//	GetThanosTechEmailArray{ GetThanosTechEmailArgs{...} }
+type GetThanosTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetThanosTechEmailArrayOutput() GetThanosTechEmailArrayOutput
+	ToGetThanosTechEmailArrayOutputWithContext(context.Context) GetThanosTechEmailArrayOutput
+}
+
+type GetThanosTechEmailArray []GetThanosTechEmailInput
+
+func (GetThanosTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosTechEmail)(nil)).Elem()
+}
+
+func (i GetThanosTechEmailArray) ToGetThanosTechEmailArrayOutput() GetThanosTechEmailArrayOutput {
+	return i.ToGetThanosTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetThanosTechEmailArray) ToGetThanosTechEmailArrayOutputWithContext(ctx context.Context) GetThanosTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosTechEmailArrayOutput)
+}
+
+type GetThanosTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetThanosTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosTechEmail)(nil)).Elem()
+}
+
+func (o GetThanosTechEmailOutput) ToGetThanosTechEmailOutput() GetThanosTechEmailOutput {
+	return o
+}
+
+func (o GetThanosTechEmailOutput) ToGetThanosTechEmailOutputWithContext(ctx context.Context) GetThanosTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetThanosTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetThanosTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetThanosTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosTechEmail)(nil)).Elem()
+}
+
+func (o GetThanosTechEmailArrayOutput) ToGetThanosTechEmailArrayOutput() GetThanosTechEmailArrayOutput {
+	return o
+}
+
+func (o GetThanosTechEmailArrayOutput) ToGetThanosTechEmailArrayOutputWithContext(ctx context.Context) GetThanosTechEmailArrayOutput {
+	return o
+}
+
+func (o GetThanosTechEmailArrayOutput) Index(i pulumi.IntInput) GetThanosTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetThanosTechEmail {
+		return vs[0].([]GetThanosTechEmail)[vs[1].(int)]
+	}).(GetThanosTechEmailOutput)
+}
+
+type GetThanosThano struct {
+	// Query frontend URI.
+	QueryFrontendUri string `pulumi:"queryFrontendUri"`
+	// Query URI.
+	QueryUri string `pulumi:"queryUri"`
+	// Receiver ingesting remote write URI.
+	ReceiverIngestingRemoteWriteUri string `pulumi:"receiverIngestingRemoteWriteUri"`
+	// Receiver remote write URI.
+	ReceiverRemoteWriteUri string `pulumi:"receiverRemoteWriteUri"`
+	// Store URI.
+	StoreUri string `pulumi:"storeUri"`
+	// Thanos server URIs.
+	Uris []string `pulumi:"uris"`
+}
+
+// GetThanosThanoInput is an input type that accepts GetThanosThanoArgs and GetThanosThanoOutput values.
+// You can construct a concrete instance of `GetThanosThanoInput` via:
+//
+//	GetThanosThanoArgs{...}
+type GetThanosThanoInput interface {
+	pulumi.Input
+
+	ToGetThanosThanoOutput() GetThanosThanoOutput
+	ToGetThanosThanoOutputWithContext(context.Context) GetThanosThanoOutput
+}
+
+type GetThanosThanoArgs struct {
+	// Query frontend URI.
+	QueryFrontendUri pulumi.StringInput `pulumi:"queryFrontendUri"`
+	// Query URI.
+	QueryUri pulumi.StringInput `pulumi:"queryUri"`
+	// Receiver ingesting remote write URI.
+	ReceiverIngestingRemoteWriteUri pulumi.StringInput `pulumi:"receiverIngestingRemoteWriteUri"`
+	// Receiver remote write URI.
+	ReceiverRemoteWriteUri pulumi.StringInput `pulumi:"receiverRemoteWriteUri"`
+	// Store URI.
+	StoreUri pulumi.StringInput `pulumi:"storeUri"`
+	// Thanos server URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (GetThanosThanoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThano)(nil)).Elem()
+}
+
+func (i GetThanosThanoArgs) ToGetThanosThanoOutput() GetThanosThanoOutput {
+	return i.ToGetThanosThanoOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanoArgs) ToGetThanosThanoOutputWithContext(ctx context.Context) GetThanosThanoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanoOutput)
+}
+
+// GetThanosThanoArrayInput is an input type that accepts GetThanosThanoArray and GetThanosThanoArrayOutput values.
+// You can construct a concrete instance of `GetThanosThanoArrayInput` via:
+//
+//	GetThanosThanoArray{ GetThanosThanoArgs{...} }
+type GetThanosThanoArrayInput interface {
+	pulumi.Input
+
+	ToGetThanosThanoArrayOutput() GetThanosThanoArrayOutput
+	ToGetThanosThanoArrayOutputWithContext(context.Context) GetThanosThanoArrayOutput
+}
+
+type GetThanosThanoArray []GetThanosThanoInput
+
+func (GetThanosThanoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosThano)(nil)).Elem()
+}
+
+func (i GetThanosThanoArray) ToGetThanosThanoArrayOutput() GetThanosThanoArrayOutput {
+	return i.ToGetThanosThanoArrayOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanoArray) ToGetThanosThanoArrayOutputWithContext(ctx context.Context) GetThanosThanoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanoArrayOutput)
+}
+
+type GetThanosThanoOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThano)(nil)).Elem()
+}
+
+func (o GetThanosThanoOutput) ToGetThanosThanoOutput() GetThanosThanoOutput {
+	return o
+}
+
+func (o GetThanosThanoOutput) ToGetThanosThanoOutputWithContext(ctx context.Context) GetThanosThanoOutput {
+	return o
+}
+
+// Query frontend URI.
+func (o GetThanosThanoOutput) QueryFrontendUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosThano) string { return v.QueryFrontendUri }).(pulumi.StringOutput)
+}
+
+// Query URI.
+func (o GetThanosThanoOutput) QueryUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosThano) string { return v.QueryUri }).(pulumi.StringOutput)
+}
+
+// Receiver ingesting remote write URI.
+func (o GetThanosThanoOutput) ReceiverIngestingRemoteWriteUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosThano) string { return v.ReceiverIngestingRemoteWriteUri }).(pulumi.StringOutput)
+}
+
+// Receiver remote write URI.
+func (o GetThanosThanoOutput) ReceiverRemoteWriteUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosThano) string { return v.ReceiverRemoteWriteUri }).(pulumi.StringOutput)
+}
+
+// Store URI.
+func (o GetThanosThanoOutput) StoreUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosThano) string { return v.StoreUri }).(pulumi.StringOutput)
+}
+
+// Thanos server URIs.
+func (o GetThanosThanoOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetThanosThano) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type GetThanosThanoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosThano)(nil)).Elem()
+}
+
+func (o GetThanosThanoArrayOutput) ToGetThanosThanoArrayOutput() GetThanosThanoArrayOutput {
+	return o
+}
+
+func (o GetThanosThanoArrayOutput) ToGetThanosThanoArrayOutputWithContext(ctx context.Context) GetThanosThanoArrayOutput {
+	return o
+}
+
+func (o GetThanosThanoArrayOutput) Index(i pulumi.IntInput) GetThanosThanoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetThanosThano {
+		return vs[0].([]GetThanosThano)[vs[1].(int)]
+	}).(GetThanosThanoOutput)
+}
+
+type GetThanosThanosUserConfig struct {
+	// ThanosCompactor
+	Compactor *GetThanosThanosUserConfigCompactor `pulumi:"compactor"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects []GetThanosThanosUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters []string `pulumi:"ipFilters"`
+	// After exceeding the limit a service alert is going to be raised (0 means not set).
+	ObjectStorageUsageAlertThresholdGb *int `pulumi:"objectStorageUsageAlertThresholdGb"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetThanosThanosUserConfigPublicAccess `pulumi:"publicAccess"`
+	// ThanosQuery
+	Query *GetThanosThanosUserConfigQuery `pulumi:"query"`
+	// ThanosQueryFrontend
+	QueryFrontend *GetThanosThanosUserConfigQueryFrontend `pulumi:"queryFrontend"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
+}
+
+// GetThanosThanosUserConfigInput is an input type that accepts GetThanosThanosUserConfigArgs and GetThanosThanosUserConfigOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigInput` via:
+//
+//	GetThanosThanosUserConfigArgs{...}
+type GetThanosThanosUserConfigInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigOutput() GetThanosThanosUserConfigOutput
+	ToGetThanosThanosUserConfigOutputWithContext(context.Context) GetThanosThanosUserConfigOutput
+}
+
+type GetThanosThanosUserConfigArgs struct {
+	// ThanosCompactor
+	Compactor GetThanosThanosUserConfigCompactorPtrInput `pulumi:"compactor"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects GetThanosThanosUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// After exceeding the limit a service alert is going to be raised (0 means not set).
+	ObjectStorageUsageAlertThresholdGb pulumi.IntPtrInput `pulumi:"objectStorageUsageAlertThresholdGb"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetThanosThanosUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// ThanosQuery
+	Query GetThanosThanosUserConfigQueryPtrInput `pulumi:"query"`
+	// ThanosQueryFrontend
+	QueryFrontend GetThanosThanosUserConfigQueryFrontendPtrInput `pulumi:"queryFrontend"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+}
+
+func (GetThanosThanosUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfig)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigArgs) ToGetThanosThanosUserConfigOutput() GetThanosThanosUserConfigOutput {
+	return i.ToGetThanosThanosUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigArgs) ToGetThanosThanosUserConfigOutputWithContext(ctx context.Context) GetThanosThanosUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigOutput)
+}
+
+// GetThanosThanosUserConfigArrayInput is an input type that accepts GetThanosThanosUserConfigArray and GetThanosThanosUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigArrayInput` via:
+//
+//	GetThanosThanosUserConfigArray{ GetThanosThanosUserConfigArgs{...} }
+type GetThanosThanosUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigArrayOutput() GetThanosThanosUserConfigArrayOutput
+	ToGetThanosThanosUserConfigArrayOutputWithContext(context.Context) GetThanosThanosUserConfigArrayOutput
+}
+
+type GetThanosThanosUserConfigArray []GetThanosThanosUserConfigInput
+
+func (GetThanosThanosUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosThanosUserConfig)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigArray) ToGetThanosThanosUserConfigArrayOutput() GetThanosThanosUserConfigArrayOutput {
+	return i.ToGetThanosThanosUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigArray) ToGetThanosThanosUserConfigArrayOutputWithContext(ctx context.Context) GetThanosThanosUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigArrayOutput)
+}
+
+type GetThanosThanosUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfig)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigOutput) ToGetThanosThanosUserConfigOutput() GetThanosThanosUserConfigOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigOutput) ToGetThanosThanosUserConfigOutputWithContext(ctx context.Context) GetThanosThanosUserConfigOutput {
+	return o
+}
+
+// ThanosCompactor
+func (o GetThanosThanosUserConfigOutput) Compactor() GetThanosThanosUserConfigCompactorPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigCompactor { return v.Compactor }).(GetThanosThanosUserConfigCompactorPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+func (o GetThanosThanosUserConfigOutput) IpFilterObjects() GetThanosThanosUserConfigIpFilterObjectArrayOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) []GetThanosThanosUserConfigIpFilterObject { return v.IpFilterObjects }).(GetThanosThanosUserConfigIpFilterObjectArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+func (o GetThanosThanosUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+//
+// Deprecated: Deprecated. Use `ipFilterString` instead.
+func (o GetThanosThanosUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// After exceeding the limit a service alert is going to be raised (0 means not set).
+func (o GetThanosThanosUserConfigOutput) ObjectStorageUsageAlertThresholdGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) *int { return v.ObjectStorageUsageAlertThresholdGb }).(pulumi.IntPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet
+func (o GetThanosThanosUserConfigOutput) PublicAccess() GetThanosThanosUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigPublicAccess { return v.PublicAccess }).(GetThanosThanosUserConfigPublicAccessPtrOutput)
+}
+
+// ThanosQuery
+func (o GetThanosThanosUserConfigOutput) Query() GetThanosThanosUserConfigQueryPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigQuery { return v.Query }).(GetThanosThanosUserConfigQueryPtrOutput)
+}
+
+// ThanosQueryFrontend
+func (o GetThanosThanosUserConfigOutput) QueryFrontend() GetThanosThanosUserConfigQueryFrontendPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigQueryFrontend { return v.QueryFrontend }).(GetThanosThanosUserConfigQueryFrontendPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o GetThanosThanosUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o GetThanosThanosUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+type GetThanosThanosUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosThanosUserConfig)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigArrayOutput) ToGetThanosThanosUserConfigArrayOutput() GetThanosThanosUserConfigArrayOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigArrayOutput) ToGetThanosThanosUserConfigArrayOutputWithContext(ctx context.Context) GetThanosThanosUserConfigArrayOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigArrayOutput) Index(i pulumi.IntInput) GetThanosThanosUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetThanosThanosUserConfig {
+		return vs[0].([]GetThanosThanosUserConfig)[vs[1].(int)]
+	}).(GetThanosThanosUserConfigOutput)
+}
+
+type GetThanosThanosUserConfigCompactor struct {
+	// Retention time for data in days for each resolution (5m, 1h, raw).
+	RetentionDays *int `pulumi:"retentionDays"`
+}
+
+// GetThanosThanosUserConfigCompactorInput is an input type that accepts GetThanosThanosUserConfigCompactorArgs and GetThanosThanosUserConfigCompactorOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigCompactorInput` via:
+//
+//	GetThanosThanosUserConfigCompactorArgs{...}
+type GetThanosThanosUserConfigCompactorInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigCompactorOutput() GetThanosThanosUserConfigCompactorOutput
+	ToGetThanosThanosUserConfigCompactorOutputWithContext(context.Context) GetThanosThanosUserConfigCompactorOutput
+}
+
+type GetThanosThanosUserConfigCompactorArgs struct {
+	// Retention time for data in days for each resolution (5m, 1h, raw).
+	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
+}
+
+func (GetThanosThanosUserConfigCompactorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigCompactor)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigCompactorArgs) ToGetThanosThanosUserConfigCompactorOutput() GetThanosThanosUserConfigCompactorOutput {
+	return i.ToGetThanosThanosUserConfigCompactorOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigCompactorArgs) ToGetThanosThanosUserConfigCompactorOutputWithContext(ctx context.Context) GetThanosThanosUserConfigCompactorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigCompactorOutput)
+}
+
+func (i GetThanosThanosUserConfigCompactorArgs) ToGetThanosThanosUserConfigCompactorPtrOutput() GetThanosThanosUserConfigCompactorPtrOutput {
+	return i.ToGetThanosThanosUserConfigCompactorPtrOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigCompactorArgs) ToGetThanosThanosUserConfigCompactorPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigCompactorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigCompactorOutput).ToGetThanosThanosUserConfigCompactorPtrOutputWithContext(ctx)
+}
+
+// GetThanosThanosUserConfigCompactorPtrInput is an input type that accepts GetThanosThanosUserConfigCompactorArgs, GetThanosThanosUserConfigCompactorPtr and GetThanosThanosUserConfigCompactorPtrOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigCompactorPtrInput` via:
+//
+//	        GetThanosThanosUserConfigCompactorArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetThanosThanosUserConfigCompactorPtrInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigCompactorPtrOutput() GetThanosThanosUserConfigCompactorPtrOutput
+	ToGetThanosThanosUserConfigCompactorPtrOutputWithContext(context.Context) GetThanosThanosUserConfigCompactorPtrOutput
+}
+
+type getThanosThanosUserConfigCompactorPtrType GetThanosThanosUserConfigCompactorArgs
+
+func GetThanosThanosUserConfigCompactorPtr(v *GetThanosThanosUserConfigCompactorArgs) GetThanosThanosUserConfigCompactorPtrInput {
+	return (*getThanosThanosUserConfigCompactorPtrType)(v)
+}
+
+func (*getThanosThanosUserConfigCompactorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigCompactor)(nil)).Elem()
+}
+
+func (i *getThanosThanosUserConfigCompactorPtrType) ToGetThanosThanosUserConfigCompactorPtrOutput() GetThanosThanosUserConfigCompactorPtrOutput {
+	return i.ToGetThanosThanosUserConfigCompactorPtrOutputWithContext(context.Background())
+}
+
+func (i *getThanosThanosUserConfigCompactorPtrType) ToGetThanosThanosUserConfigCompactorPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigCompactorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigCompactorPtrOutput)
+}
+
+type GetThanosThanosUserConfigCompactorOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigCompactorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigCompactor)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigCompactorOutput) ToGetThanosThanosUserConfigCompactorOutput() GetThanosThanosUserConfigCompactorOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigCompactorOutput) ToGetThanosThanosUserConfigCompactorOutputWithContext(ctx context.Context) GetThanosThanosUserConfigCompactorOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigCompactorOutput) ToGetThanosThanosUserConfigCompactorPtrOutput() GetThanosThanosUserConfigCompactorPtrOutput {
+	return o.ToGetThanosThanosUserConfigCompactorPtrOutputWithContext(context.Background())
+}
+
+func (o GetThanosThanosUserConfigCompactorOutput) ToGetThanosThanosUserConfigCompactorPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigCompactorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetThanosThanosUserConfigCompactor) *GetThanosThanosUserConfigCompactor {
+		return &v
+	}).(GetThanosThanosUserConfigCompactorPtrOutput)
+}
+
+// Retention time for data in days for each resolution (5m, 1h, raw).
+func (o GetThanosThanosUserConfigCompactorOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigCompactor) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+type GetThanosThanosUserConfigCompactorPtrOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigCompactorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigCompactor)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigCompactorPtrOutput) ToGetThanosThanosUserConfigCompactorPtrOutput() GetThanosThanosUserConfigCompactorPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigCompactorPtrOutput) ToGetThanosThanosUserConfigCompactorPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigCompactorPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigCompactorPtrOutput) Elem() GetThanosThanosUserConfigCompactorOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigCompactor) GetThanosThanosUserConfigCompactor {
+		if v != nil {
+			return *v
+		}
+		var ret GetThanosThanosUserConfigCompactor
+		return ret
+	}).(GetThanosThanosUserConfigCompactorOutput)
+}
+
+// Retention time for data in days for each resolution (5m, 1h, raw).
+func (o GetThanosThanosUserConfigCompactorPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigCompactor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetThanosThanosUserConfigIpFilterObject struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description *string `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network string `pulumi:"network"`
+}
+
+// GetThanosThanosUserConfigIpFilterObjectInput is an input type that accepts GetThanosThanosUserConfigIpFilterObjectArgs and GetThanosThanosUserConfigIpFilterObjectOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigIpFilterObjectInput` via:
+//
+//	GetThanosThanosUserConfigIpFilterObjectArgs{...}
+type GetThanosThanosUserConfigIpFilterObjectInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigIpFilterObjectOutput() GetThanosThanosUserConfigIpFilterObjectOutput
+	ToGetThanosThanosUserConfigIpFilterObjectOutputWithContext(context.Context) GetThanosThanosUserConfigIpFilterObjectOutput
+}
+
+type GetThanosThanosUserConfigIpFilterObjectArgs struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetThanosThanosUserConfigIpFilterObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigIpFilterObjectArgs) ToGetThanosThanosUserConfigIpFilterObjectOutput() GetThanosThanosUserConfigIpFilterObjectOutput {
+	return i.ToGetThanosThanosUserConfigIpFilterObjectOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigIpFilterObjectArgs) ToGetThanosThanosUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetThanosThanosUserConfigIpFilterObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigIpFilterObjectOutput)
+}
+
+// GetThanosThanosUserConfigIpFilterObjectArrayInput is an input type that accepts GetThanosThanosUserConfigIpFilterObjectArray and GetThanosThanosUserConfigIpFilterObjectArrayOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigIpFilterObjectArrayInput` via:
+//
+//	GetThanosThanosUserConfigIpFilterObjectArray{ GetThanosThanosUserConfigIpFilterObjectArgs{...} }
+type GetThanosThanosUserConfigIpFilterObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigIpFilterObjectArrayOutput() GetThanosThanosUserConfigIpFilterObjectArrayOutput
+	ToGetThanosThanosUserConfigIpFilterObjectArrayOutputWithContext(context.Context) GetThanosThanosUserConfigIpFilterObjectArrayOutput
+}
+
+type GetThanosThanosUserConfigIpFilterObjectArray []GetThanosThanosUserConfigIpFilterObjectInput
+
+func (GetThanosThanosUserConfigIpFilterObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosThanosUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigIpFilterObjectArray) ToGetThanosThanosUserConfigIpFilterObjectArrayOutput() GetThanosThanosUserConfigIpFilterObjectArrayOutput {
+	return i.ToGetThanosThanosUserConfigIpFilterObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigIpFilterObjectArray) ToGetThanosThanosUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetThanosThanosUserConfigIpFilterObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigIpFilterObjectArrayOutput)
+}
+
+type GetThanosThanosUserConfigIpFilterObjectOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigIpFilterObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigIpFilterObjectOutput) ToGetThanosThanosUserConfigIpFilterObjectOutput() GetThanosThanosUserConfigIpFilterObjectOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigIpFilterObjectOutput) ToGetThanosThanosUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetThanosThanosUserConfigIpFilterObjectOutput {
+	return o
+}
+
+// Description for IP filter list entry. Example: `Production service IP range`.
+func (o GetThanosThanosUserConfigIpFilterObjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigIpFilterObject) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// CIDR address block. Example: `10.20.0.0/16`.
+func (o GetThanosThanosUserConfigIpFilterObjectOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigIpFilterObject) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetThanosThanosUserConfigIpFilterObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigIpFilterObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetThanosThanosUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigIpFilterObjectArrayOutput) ToGetThanosThanosUserConfigIpFilterObjectArrayOutput() GetThanosThanosUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigIpFilterObjectArrayOutput) ToGetThanosThanosUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetThanosThanosUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigIpFilterObjectArrayOutput) Index(i pulumi.IntInput) GetThanosThanosUserConfigIpFilterObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetThanosThanosUserConfigIpFilterObject {
+		return vs[0].([]GetThanosThanosUserConfigIpFilterObject)[vs[1].(int)]
+	}).(GetThanosThanosUserConfigIpFilterObjectOutput)
+}
+
+type GetThanosThanosUserConfigPublicAccess struct {
+	// Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+	Compactor *bool `pulumi:"compactor"`
+	// Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+	Query *bool `pulumi:"query"`
+	// Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
+	QueryFrontend *bool `pulumi:"queryFrontend"`
+	// Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
+	ReceiverIngesting *bool `pulumi:"receiverIngesting"`
+	// Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
+	ReceiverRouting *bool `pulumi:"receiverRouting"`
+	// Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+	Store *bool `pulumi:"store"`
+}
+
+// GetThanosThanosUserConfigPublicAccessInput is an input type that accepts GetThanosThanosUserConfigPublicAccessArgs and GetThanosThanosUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigPublicAccessInput` via:
+//
+//	GetThanosThanosUserConfigPublicAccessArgs{...}
+type GetThanosThanosUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigPublicAccessOutput() GetThanosThanosUserConfigPublicAccessOutput
+	ToGetThanosThanosUserConfigPublicAccessOutputWithContext(context.Context) GetThanosThanosUserConfigPublicAccessOutput
+}
+
+type GetThanosThanosUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+	Compactor pulumi.BoolPtrInput `pulumi:"compactor"`
+	// Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+	Query pulumi.BoolPtrInput `pulumi:"query"`
+	// Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
+	QueryFrontend pulumi.BoolPtrInput `pulumi:"queryFrontend"`
+	// Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
+	ReceiverIngesting pulumi.BoolPtrInput `pulumi:"receiverIngesting"`
+	// Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
+	ReceiverRouting pulumi.BoolPtrInput `pulumi:"receiverRouting"`
+	// Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+	Store pulumi.BoolPtrInput `pulumi:"store"`
+}
+
+func (GetThanosThanosUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigPublicAccessArgs) ToGetThanosThanosUserConfigPublicAccessOutput() GetThanosThanosUserConfigPublicAccessOutput {
+	return i.ToGetThanosThanosUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigPublicAccessArgs) ToGetThanosThanosUserConfigPublicAccessOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigPublicAccessOutput)
+}
+
+func (i GetThanosThanosUserConfigPublicAccessArgs) ToGetThanosThanosUserConfigPublicAccessPtrOutput() GetThanosThanosUserConfigPublicAccessPtrOutput {
+	return i.ToGetThanosThanosUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigPublicAccessArgs) ToGetThanosThanosUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigPublicAccessOutput).ToGetThanosThanosUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetThanosThanosUserConfigPublicAccessPtrInput is an input type that accepts GetThanosThanosUserConfigPublicAccessArgs, GetThanosThanosUserConfigPublicAccessPtr and GetThanosThanosUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigPublicAccessPtrInput` via:
+//
+//	        GetThanosThanosUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetThanosThanosUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigPublicAccessPtrOutput() GetThanosThanosUserConfigPublicAccessPtrOutput
+	ToGetThanosThanosUserConfigPublicAccessPtrOutputWithContext(context.Context) GetThanosThanosUserConfigPublicAccessPtrOutput
+}
+
+type getThanosThanosUserConfigPublicAccessPtrType GetThanosThanosUserConfigPublicAccessArgs
+
+func GetThanosThanosUserConfigPublicAccessPtr(v *GetThanosThanosUserConfigPublicAccessArgs) GetThanosThanosUserConfigPublicAccessPtrInput {
+	return (*getThanosThanosUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getThanosThanosUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getThanosThanosUserConfigPublicAccessPtrType) ToGetThanosThanosUserConfigPublicAccessPtrOutput() GetThanosThanosUserConfigPublicAccessPtrOutput {
+	return i.ToGetThanosThanosUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getThanosThanosUserConfigPublicAccessPtrType) ToGetThanosThanosUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigPublicAccessPtrOutput)
+}
+
+type GetThanosThanosUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigPublicAccessOutput) ToGetThanosThanosUserConfigPublicAccessOutput() GetThanosThanosUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPublicAccessOutput) ToGetThanosThanosUserConfigPublicAccessOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPublicAccessOutput) ToGetThanosThanosUserConfigPublicAccessPtrOutput() GetThanosThanosUserConfigPublicAccessPtrOutput {
+	return o.ToGetThanosThanosUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetThanosThanosUserConfigPublicAccessOutput) ToGetThanosThanosUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetThanosThanosUserConfigPublicAccess) *GetThanosThanosUserConfigPublicAccess {
+		return &v
+	}).(GetThanosThanosUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessOutput) Compactor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPublicAccess) *bool { return v.Compactor }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessOutput) Query() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPublicAccess) *bool { return v.Query }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessOutput) QueryFrontend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPublicAccess) *bool { return v.QueryFrontend }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessOutput) ReceiverIngesting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPublicAccess) *bool { return v.ReceiverIngesting }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessOutput) ReceiverRouting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPublicAccess) *bool { return v.ReceiverRouting }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessOutput) Store() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPublicAccess) *bool { return v.Store }).(pulumi.BoolPtrOutput)
+}
+
+type GetThanosThanosUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) ToGetThanosThanosUserConfigPublicAccessPtrOutput() GetThanosThanosUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) ToGetThanosThanosUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) Elem() GetThanosThanosUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPublicAccess) GetThanosThanosUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetThanosThanosUserConfigPublicAccess
+		return ret
+	}).(GetThanosThanosUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) Compactor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Compactor
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to query from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) Query() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to queryFrontend from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) QueryFrontend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFrontend
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to receiverIngesting from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) ReceiverIngesting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReceiverIngesting
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) ReceiverRouting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReceiverRouting
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) Store() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Store
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetThanosThanosUserConfigQuery struct {
+	// Set the default evaluation interval for subqueries. Default: `1m`.
+	QueryDefaultEvaluationInterval *string `pulumi:"queryDefaultEvaluationInterval"`
+	// The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+	QueryLookbackDelta *string `pulumi:"queryLookbackDelta"`
+	// The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+	QueryMetadataDefaultTimeRange *string `pulumi:"queryMetadataDefaultTimeRange"`
+	// Maximum time to process a query by the query node. Default: `2m`.
+	QueryTimeout *string `pulumi:"queryTimeout"`
+}
+
+// GetThanosThanosUserConfigQueryInput is an input type that accepts GetThanosThanosUserConfigQueryArgs and GetThanosThanosUserConfigQueryOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigQueryInput` via:
+//
+//	GetThanosThanosUserConfigQueryArgs{...}
+type GetThanosThanosUserConfigQueryInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigQueryOutput() GetThanosThanosUserConfigQueryOutput
+	ToGetThanosThanosUserConfigQueryOutputWithContext(context.Context) GetThanosThanosUserConfigQueryOutput
+}
+
+type GetThanosThanosUserConfigQueryArgs struct {
+	// Set the default evaluation interval for subqueries. Default: `1m`.
+	QueryDefaultEvaluationInterval pulumi.StringPtrInput `pulumi:"queryDefaultEvaluationInterval"`
+	// The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+	QueryLookbackDelta pulumi.StringPtrInput `pulumi:"queryLookbackDelta"`
+	// The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+	QueryMetadataDefaultTimeRange pulumi.StringPtrInput `pulumi:"queryMetadataDefaultTimeRange"`
+	// Maximum time to process a query by the query node. Default: `2m`.
+	QueryTimeout pulumi.StringPtrInput `pulumi:"queryTimeout"`
+}
+
+func (GetThanosThanosUserConfigQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigQuery)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigQueryArgs) ToGetThanosThanosUserConfigQueryOutput() GetThanosThanosUserConfigQueryOutput {
+	return i.ToGetThanosThanosUserConfigQueryOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigQueryArgs) ToGetThanosThanosUserConfigQueryOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigQueryOutput)
+}
+
+func (i GetThanosThanosUserConfigQueryArgs) ToGetThanosThanosUserConfigQueryPtrOutput() GetThanosThanosUserConfigQueryPtrOutput {
+	return i.ToGetThanosThanosUserConfigQueryPtrOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigQueryArgs) ToGetThanosThanosUserConfigQueryPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigQueryOutput).ToGetThanosThanosUserConfigQueryPtrOutputWithContext(ctx)
+}
+
+// GetThanosThanosUserConfigQueryPtrInput is an input type that accepts GetThanosThanosUserConfigQueryArgs, GetThanosThanosUserConfigQueryPtr and GetThanosThanosUserConfigQueryPtrOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigQueryPtrInput` via:
+//
+//	        GetThanosThanosUserConfigQueryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetThanosThanosUserConfigQueryPtrInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigQueryPtrOutput() GetThanosThanosUserConfigQueryPtrOutput
+	ToGetThanosThanosUserConfigQueryPtrOutputWithContext(context.Context) GetThanosThanosUserConfigQueryPtrOutput
+}
+
+type getThanosThanosUserConfigQueryPtrType GetThanosThanosUserConfigQueryArgs
+
+func GetThanosThanosUserConfigQueryPtr(v *GetThanosThanosUserConfigQueryArgs) GetThanosThanosUserConfigQueryPtrInput {
+	return (*getThanosThanosUserConfigQueryPtrType)(v)
+}
+
+func (*getThanosThanosUserConfigQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigQuery)(nil)).Elem()
+}
+
+func (i *getThanosThanosUserConfigQueryPtrType) ToGetThanosThanosUserConfigQueryPtrOutput() GetThanosThanosUserConfigQueryPtrOutput {
+	return i.ToGetThanosThanosUserConfigQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *getThanosThanosUserConfigQueryPtrType) ToGetThanosThanosUserConfigQueryPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigQueryPtrOutput)
+}
+
+type GetThanosThanosUserConfigQueryOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigQuery)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigQueryOutput) ToGetThanosThanosUserConfigQueryOutput() GetThanosThanosUserConfigQueryOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigQueryOutput) ToGetThanosThanosUserConfigQueryOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigQueryOutput) ToGetThanosThanosUserConfigQueryPtrOutput() GetThanosThanosUserConfigQueryPtrOutput {
+	return o.ToGetThanosThanosUserConfigQueryPtrOutputWithContext(context.Background())
+}
+
+func (o GetThanosThanosUserConfigQueryOutput) ToGetThanosThanosUserConfigQueryPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetThanosThanosUserConfigQuery) *GetThanosThanosUserConfigQuery {
+		return &v
+	}).(GetThanosThanosUserConfigQueryPtrOutput)
+}
+
+// Set the default evaluation interval for subqueries. Default: `1m`.
+func (o GetThanosThanosUserConfigQueryOutput) QueryDefaultEvaluationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigQuery) *string { return v.QueryDefaultEvaluationInterval }).(pulumi.StringPtrOutput)
+}
+
+// The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+func (o GetThanosThanosUserConfigQueryOutput) QueryLookbackDelta() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigQuery) *string { return v.QueryLookbackDelta }).(pulumi.StringPtrOutput)
+}
+
+// The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+func (o GetThanosThanosUserConfigQueryOutput) QueryMetadataDefaultTimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigQuery) *string { return v.QueryMetadataDefaultTimeRange }).(pulumi.StringPtrOutput)
+}
+
+// Maximum time to process a query by the query node. Default: `2m`.
+func (o GetThanosThanosUserConfigQueryOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigQuery) *string { return v.QueryTimeout }).(pulumi.StringPtrOutput)
+}
+
+type GetThanosThanosUserConfigQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigQuery)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigQueryPtrOutput) ToGetThanosThanosUserConfigQueryPtrOutput() GetThanosThanosUserConfigQueryPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigQueryPtrOutput) ToGetThanosThanosUserConfigQueryPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigQueryPtrOutput) Elem() GetThanosThanosUserConfigQueryOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigQuery) GetThanosThanosUserConfigQuery {
+		if v != nil {
+			return *v
+		}
+		var ret GetThanosThanosUserConfigQuery
+		return ret
+	}).(GetThanosThanosUserConfigQueryOutput)
+}
+
+// Set the default evaluation interval for subqueries. Default: `1m`.
+func (o GetThanosThanosUserConfigQueryPtrOutput) QueryDefaultEvaluationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryDefaultEvaluationInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
+func (o GetThanosThanosUserConfigQueryPtrOutput) QueryLookbackDelta() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryLookbackDelta
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
+func (o GetThanosThanosUserConfigQueryPtrOutput) QueryMetadataDefaultTimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryMetadataDefaultTimeRange
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum time to process a query by the query node. Default: `2m`.
+func (o GetThanosThanosUserConfigQueryPtrOutput) QueryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetThanosThanosUserConfigQueryFrontend struct {
+	// Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+	QueryRangeAlignRangeWithStep *bool `pulumi:"queryRangeAlignRangeWithStep"`
+}
+
+// GetThanosThanosUserConfigQueryFrontendInput is an input type that accepts GetThanosThanosUserConfigQueryFrontendArgs and GetThanosThanosUserConfigQueryFrontendOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigQueryFrontendInput` via:
+//
+//	GetThanosThanosUserConfigQueryFrontendArgs{...}
+type GetThanosThanosUserConfigQueryFrontendInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigQueryFrontendOutput() GetThanosThanosUserConfigQueryFrontendOutput
+	ToGetThanosThanosUserConfigQueryFrontendOutputWithContext(context.Context) GetThanosThanosUserConfigQueryFrontendOutput
+}
+
+type GetThanosThanosUserConfigQueryFrontendArgs struct {
+	// Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+	QueryRangeAlignRangeWithStep pulumi.BoolPtrInput `pulumi:"queryRangeAlignRangeWithStep"`
+}
+
+func (GetThanosThanosUserConfigQueryFrontendArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigQueryFrontend)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigQueryFrontendArgs) ToGetThanosThanosUserConfigQueryFrontendOutput() GetThanosThanosUserConfigQueryFrontendOutput {
+	return i.ToGetThanosThanosUserConfigQueryFrontendOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigQueryFrontendArgs) ToGetThanosThanosUserConfigQueryFrontendOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryFrontendOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigQueryFrontendOutput)
+}
+
+func (i GetThanosThanosUserConfigQueryFrontendArgs) ToGetThanosThanosUserConfigQueryFrontendPtrOutput() GetThanosThanosUserConfigQueryFrontendPtrOutput {
+	return i.ToGetThanosThanosUserConfigQueryFrontendPtrOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigQueryFrontendArgs) ToGetThanosThanosUserConfigQueryFrontendPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryFrontendPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigQueryFrontendOutput).ToGetThanosThanosUserConfigQueryFrontendPtrOutputWithContext(ctx)
+}
+
+// GetThanosThanosUserConfigQueryFrontendPtrInput is an input type that accepts GetThanosThanosUserConfigQueryFrontendArgs, GetThanosThanosUserConfigQueryFrontendPtr and GetThanosThanosUserConfigQueryFrontendPtrOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigQueryFrontendPtrInput` via:
+//
+//	        GetThanosThanosUserConfigQueryFrontendArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetThanosThanosUserConfigQueryFrontendPtrInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigQueryFrontendPtrOutput() GetThanosThanosUserConfigQueryFrontendPtrOutput
+	ToGetThanosThanosUserConfigQueryFrontendPtrOutputWithContext(context.Context) GetThanosThanosUserConfigQueryFrontendPtrOutput
+}
+
+type getThanosThanosUserConfigQueryFrontendPtrType GetThanosThanosUserConfigQueryFrontendArgs
+
+func GetThanosThanosUserConfigQueryFrontendPtr(v *GetThanosThanosUserConfigQueryFrontendArgs) GetThanosThanosUserConfigQueryFrontendPtrInput {
+	return (*getThanosThanosUserConfigQueryFrontendPtrType)(v)
+}
+
+func (*getThanosThanosUserConfigQueryFrontendPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigQueryFrontend)(nil)).Elem()
+}
+
+func (i *getThanosThanosUserConfigQueryFrontendPtrType) ToGetThanosThanosUserConfigQueryFrontendPtrOutput() GetThanosThanosUserConfigQueryFrontendPtrOutput {
+	return i.ToGetThanosThanosUserConfigQueryFrontendPtrOutputWithContext(context.Background())
+}
+
+func (i *getThanosThanosUserConfigQueryFrontendPtrType) ToGetThanosThanosUserConfigQueryFrontendPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryFrontendPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigQueryFrontendPtrOutput)
+}
+
+type GetThanosThanosUserConfigQueryFrontendOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigQueryFrontendOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigQueryFrontend)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigQueryFrontendOutput) ToGetThanosThanosUserConfigQueryFrontendOutput() GetThanosThanosUserConfigQueryFrontendOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigQueryFrontendOutput) ToGetThanosThanosUserConfigQueryFrontendOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryFrontendOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigQueryFrontendOutput) ToGetThanosThanosUserConfigQueryFrontendPtrOutput() GetThanosThanosUserConfigQueryFrontendPtrOutput {
+	return o.ToGetThanosThanosUserConfigQueryFrontendPtrOutputWithContext(context.Background())
+}
+
+func (o GetThanosThanosUserConfigQueryFrontendOutput) ToGetThanosThanosUserConfigQueryFrontendPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryFrontendPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetThanosThanosUserConfigQueryFrontend) *GetThanosThanosUserConfigQueryFrontend {
+		return &v
+	}).(GetThanosThanosUserConfigQueryFrontendPtrOutput)
+}
+
+// Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+func (o GetThanosThanosUserConfigQueryFrontendOutput) QueryRangeAlignRangeWithStep() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigQueryFrontend) *bool { return v.QueryRangeAlignRangeWithStep }).(pulumi.BoolPtrOutput)
+}
+
+type GetThanosThanosUserConfigQueryFrontendPtrOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigQueryFrontendPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigQueryFrontend)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigQueryFrontendPtrOutput) ToGetThanosThanosUserConfigQueryFrontendPtrOutput() GetThanosThanosUserConfigQueryFrontendPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigQueryFrontendPtrOutput) ToGetThanosThanosUserConfigQueryFrontendPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigQueryFrontendPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigQueryFrontendPtrOutput) Elem() GetThanosThanosUserConfigQueryFrontendOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigQueryFrontend) GetThanosThanosUserConfigQueryFrontend {
+		if v != nil {
+			return *v
+		}
+		var ret GetThanosThanosUserConfigQueryFrontend
+		return ret
+	}).(GetThanosThanosUserConfigQueryFrontendOutput)
+}
+
+// Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
+func (o GetThanosThanosUserConfigQueryFrontendPtrOutput) QueryRangeAlignRangeWithStep() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigQueryFrontend) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryRangeAlignRangeWithStep
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalElasticsearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationExternalElasticsearchLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationExternalElasticsearchLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalOpensearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationExternalOpensearchLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalOpensearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationExternalOpensearchLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationKafkaLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationKafkaLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfigInput)(nil)).Elem(), GetServiceIntegrationKafkaMirrormakerUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationKafkaMirrormakerUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput)(nil)).Elem(), GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput)(nil)).Elem(), GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigInput)(nil)).Elem(), GetServiceIntegrationMetricsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationMetricsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlInput)(nil)).Elem(), GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlPtrInput)(nil)).Elem(), GetServiceIntegrationMetricsUserConfigSourceMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafInput)(nil)).Elem(), GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrInput)(nil)).Elem(), GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosComponentInput)(nil)).Elem(), GetThanosComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosComponentArrayInput)(nil)).Elem(), GetThanosComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosServiceIntegrationInput)(nil)).Elem(), GetThanosServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosServiceIntegrationArrayInput)(nil)).Elem(), GetThanosServiceIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosTagInput)(nil)).Elem(), GetThanosTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosTagArrayInput)(nil)).Elem(), GetThanosTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosTechEmailInput)(nil)).Elem(), GetThanosTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosTechEmailArrayInput)(nil)).Elem(), GetThanosTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanoInput)(nil)).Elem(), GetThanosThanoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanoArrayInput)(nil)).Elem(), GetThanosThanoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigInput)(nil)).Elem(), GetThanosThanosUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigArrayInput)(nil)).Elem(), GetThanosThanosUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigCompactorInput)(nil)).Elem(), GetThanosThanosUserConfigCompactorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigCompactorPtrInput)(nil)).Elem(), GetThanosThanosUserConfigCompactorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigIpFilterObjectInput)(nil)).Elem(), GetThanosThanosUserConfigIpFilterObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetThanosThanosUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigPublicAccessInput)(nil)).Elem(), GetThanosThanosUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigPublicAccessPtrInput)(nil)).Elem(), GetThanosThanosUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryInput)(nil)).Elem(), GetThanosThanosUserConfigQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryPtrInput)(nil)).Elem(), GetThanosThanosUserConfigQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryFrontendInput)(nil)).Elem(), GetThanosThanosUserConfigQueryFrontendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryFrontendPtrInput)(nil)).Elem(), GetThanosThanosUserConfigQueryFrontendArgs{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalElasticsearchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalOpensearchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaMirrormakerUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigSourceMysqlOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigSourceMysqlPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput{})
+	pulumi.RegisterOutputType(GetThanosComponentOutput{})
+	pulumi.RegisterOutputType(GetThanosComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetThanosServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetThanosServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetThanosTagOutput{})
+	pulumi.RegisterOutputType(GetThanosTagArrayOutput{})
+	pulumi.RegisterOutputType(GetThanosTechEmailOutput{})
+	pulumi.RegisterOutputType(GetThanosTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetThanosThanoOutput{})
+	pulumi.RegisterOutputType(GetThanosThanoArrayOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigCompactorOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigCompactorPtrOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigIpFilterObjectOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryPtrOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryFrontendOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryFrontendPtrOutput{})
 }

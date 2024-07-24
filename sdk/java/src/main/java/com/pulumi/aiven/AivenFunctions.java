@@ -134,6 +134,8 @@ import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointArgs;
 import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointPlainArgs;
 import com.pulumi.aiven.inputs.GetServiceIntegrationPlainArgs;
+import com.pulumi.aiven.inputs.GetThanosArgs;
+import com.pulumi.aiven.inputs.GetThanosPlainArgs;
 import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentArgs;
 import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentPlainArgs;
 import com.pulumi.aiven.outputs.GetAccountAuthenticationResult;
@@ -201,6 +203,7 @@ import com.pulumi.aiven.outputs.GetRedisUserResult;
 import com.pulumi.aiven.outputs.GetServiceComponentResult;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointResult;
 import com.pulumi.aiven.outputs.GetServiceIntegrationResult;
+import com.pulumi.aiven.outputs.GetThanosResult;
 import com.pulumi.aiven.outputs.GetTransitGatewayVpcAttachmentResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -10402,6 +10405,46 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetServiceIntegrationEndpointResult> getServiceIntegrationEndpointPlain(GetServiceIntegrationEndpointPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", TypeShape.of(GetServiceIntegrationEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Thanos® service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetThanosResult> getThanos(GetThanosArgs args) {
+        return getThanos(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven for Thanos® service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetThanosResult> getThanosPlain(GetThanosPlainArgs args) {
+        return getThanosPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven for Thanos® service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetThanosResult> getThanos(GetThanosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getThanos:getThanos", TypeShape.of(GetThanosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Thanos® service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetThanosResult> getThanosPlain(GetThanosPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getThanos:getThanos", TypeShape.of(GetThanosResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
