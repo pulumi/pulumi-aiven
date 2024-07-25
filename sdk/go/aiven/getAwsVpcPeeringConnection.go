@@ -36,12 +36,12 @@ import (
 //				return err
 //			}
 //			_ = exampleVpc.ID().ApplyT(func(id string) (aiven.GetAwsVpcPeeringConnectionResult, error) {
-//				return aiven.LookupAwsVpcPeeringConnectionOutput(ctx, aiven.GetAwsVpcPeeringConnectionOutputArgs{
+//				return aiven.GetAwsVpcPeeringConnectionResult(interface{}(aiven.LookupAwsVpcPeeringConnectionOutput(ctx, aiven.GetAwsVpcPeeringConnectionOutputArgs{
 //					VpcId:        id,
 //					AwsAccountId: awsId,
 //					AwsVpcId:     "vpc-1a2b3c4d5e6f7g8h9",
 //					AwsVpcRegion: "aws-us-east-2",
-//				}, nil), nil
+//				}, nil))), nil
 //			}).(aiven.GetAwsVpcPeeringConnectionResultOutput)
 //			return nil
 //		})
