@@ -123,11 +123,18 @@ public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OpenSearchAclRule(String name, OpenSearchAclRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/openSearchAclRule:OpenSearchAclRule", name, args == null ? OpenSearchAclRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/openSearchAclRule:OpenSearchAclRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OpenSearchAclRule(String name, Output<String> id, @Nullable OpenSearchAclRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/openSearchAclRule:OpenSearchAclRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OpenSearchAclRuleArgs makeArgs(OpenSearchAclRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OpenSearchAclRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

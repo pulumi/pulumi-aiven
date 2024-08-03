@@ -135,11 +135,18 @@ public class MysqlDatabase extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MysqlDatabase(String name, MysqlDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/mysqlDatabase:MysqlDatabase", name, args == null ? MysqlDatabaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/mysqlDatabase:MysqlDatabase", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MysqlDatabase(String name, Output<String> id, @Nullable MysqlDatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/mysqlDatabase:MysqlDatabase", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MysqlDatabaseArgs makeArgs(MysqlDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MysqlDatabaseArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

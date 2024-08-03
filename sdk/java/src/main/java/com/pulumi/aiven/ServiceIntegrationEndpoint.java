@@ -295,11 +295,18 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public ServiceIntegrationEndpoint(String name, ServiceIntegrationEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, args == null ? ServiceIntegrationEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServiceIntegrationEndpoint(String name, Output<String> id, @Nullable ServiceIntegrationEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceIntegrationEndpointArgs makeArgs(ServiceIntegrationEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceIntegrationEndpointArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

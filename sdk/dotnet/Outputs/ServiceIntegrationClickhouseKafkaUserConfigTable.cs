@@ -58,9 +58,17 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? PollMaxBatchSize;
         /// <summary>
+        /// Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
+        /// </summary>
+        public readonly int? PollMaxTimeoutMs;
+        /// <summary>
         /// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
         /// </summary>
         public readonly int? SkipBrokenMessages;
+        /// <summary>
+        /// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+        /// </summary>
+        public readonly bool? ThreadPerConsumer;
         /// <summary>
         /// Kafka topics
         /// </summary>
@@ -90,7 +98,11 @@ namespace Pulumi.Aiven.Outputs
 
             int? pollMaxBatchSize,
 
+            int? pollMaxTimeoutMs,
+
             int? skipBrokenMessages,
+
+            bool? threadPerConsumer,
 
             ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics)
         {
@@ -105,7 +117,9 @@ namespace Pulumi.Aiven.Outputs
             Name = name;
             NumConsumers = numConsumers;
             PollMaxBatchSize = pollMaxBatchSize;
+            PollMaxTimeoutMs = pollMaxTimeoutMs;
             SkipBrokenMessages = skipBrokenMessages;
+            ThreadPerConsumer = threadPerConsumer;
             Topics = topics;
         }
     }

@@ -169,11 +169,18 @@ public class OrganizationUserGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationUserGroup(String name, OrganizationUserGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationUserGroup:OrganizationUserGroup", name, args == null ? OrganizationUserGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/organizationUserGroup:OrganizationUserGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationUserGroup(String name, Output<String> id, @Nullable OrganizationUserGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/organizationUserGroup:OrganizationUserGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationUserGroupArgs makeArgs(OrganizationUserGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationUserGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

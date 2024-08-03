@@ -30,6 +30,11 @@ public final class DragonflyDragonflyUserConfigMigration {
      */
     private @Nullable String ignoreDbs;
     /**
+     * @return Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+     * 
+     */
+    private @Nullable String ignoreRoles;
+    /**
      * @return Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
@@ -76,6 +81,13 @@ public final class DragonflyDragonflyUserConfigMigration {
      */
     public Optional<String> ignoreDbs() {
         return Optional.ofNullable(this.ignoreDbs);
+    }
+    /**
+     * @return Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+     * 
+     */
+    public Optional<String> ignoreRoles() {
+        return Optional.ofNullable(this.ignoreRoles);
     }
     /**
      * @return Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
@@ -125,6 +137,7 @@ public final class DragonflyDragonflyUserConfigMigration {
         private @Nullable String dbname;
         private String host;
         private @Nullable String ignoreDbs;
+        private @Nullable String ignoreRoles;
         private @Nullable String method;
         private @Nullable String password;
         private Integer port;
@@ -136,6 +149,7 @@ public final class DragonflyDragonflyUserConfigMigration {
     	      this.dbname = defaults.dbname;
     	      this.host = defaults.host;
     	      this.ignoreDbs = defaults.ignoreDbs;
+    	      this.ignoreRoles = defaults.ignoreRoles;
     	      this.method = defaults.method;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
@@ -161,6 +175,12 @@ public final class DragonflyDragonflyUserConfigMigration {
         public Builder ignoreDbs(@Nullable String ignoreDbs) {
 
             this.ignoreDbs = ignoreDbs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ignoreRoles(@Nullable String ignoreRoles) {
+
+            this.ignoreRoles = ignoreRoles;
             return this;
         }
         @CustomType.Setter
@@ -200,6 +220,7 @@ public final class DragonflyDragonflyUserConfigMigration {
             _resultValue.dbname = dbname;
             _resultValue.host = host;
             _resultValue.ignoreDbs = ignoreDbs;
+            _resultValue.ignoreRoles = ignoreRoles;
             _resultValue.method = method;
             _resultValue.password = password;
             _resultValue.port = port;

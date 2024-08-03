@@ -387,11 +387,18 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ServiceIntegration(String name, ServiceIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/serviceIntegration:ServiceIntegration", name, args == null ? ServiceIntegrationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/serviceIntegration:ServiceIntegration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServiceIntegration(String name, Output<String> id, @Nullable ServiceIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/serviceIntegration:ServiceIntegration", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceIntegrationArgs makeArgs(ServiceIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceIntegrationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

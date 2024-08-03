@@ -8,6 +8,7 @@ import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigTableT
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -186,6 +187,21 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
+     * Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
+     * 
+     */
+    @Import(name="pollMaxTimeoutMs")
+    private @Nullable Output<Integer> pollMaxTimeoutMs;
+
+    /**
+     * @return Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
+     * 
+     */
+    public Optional<Output<Integer>> pollMaxTimeoutMs() {
+        return Optional.ofNullable(this.pollMaxTimeoutMs);
+    }
+
+    /**
      * Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
@@ -198,6 +214,21 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
      */
     public Optional<Output<Integer>> skipBrokenMessages() {
         return Optional.ofNullable(this.skipBrokenMessages);
+    }
+
+    /**
+     * Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+     * 
+     */
+    @Import(name="threadPerConsumer")
+    private @Nullable Output<Boolean> threadPerConsumer;
+
+    /**
+     * @return Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> threadPerConsumer() {
+        return Optional.ofNullable(this.threadPerConsumer);
     }
 
     /**
@@ -229,7 +260,9 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         this.name = $.name;
         this.numConsumers = $.numConsumers;
         this.pollMaxBatchSize = $.pollMaxBatchSize;
+        this.pollMaxTimeoutMs = $.pollMaxTimeoutMs;
         this.skipBrokenMessages = $.skipBrokenMessages;
+        this.threadPerConsumer = $.threadPerConsumer;
         this.topics = $.topics;
     }
 
@@ -493,6 +526,27 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
+         * @param pollMaxTimeoutMs Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pollMaxTimeoutMs(@Nullable Output<Integer> pollMaxTimeoutMs) {
+            $.pollMaxTimeoutMs = pollMaxTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param pollMaxTimeoutMs Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pollMaxTimeoutMs(Integer pollMaxTimeoutMs) {
+            return pollMaxTimeoutMs(Output.of(pollMaxTimeoutMs));
+        }
+
+        /**
          * @param skipBrokenMessages Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
          * 
          * @return builder
@@ -511,6 +565,27 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
          */
         public Builder skipBrokenMessages(Integer skipBrokenMessages) {
             return skipBrokenMessages(Output.of(skipBrokenMessages));
+        }
+
+        /**
+         * @param threadPerConsumer Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder threadPerConsumer(@Nullable Output<Boolean> threadPerConsumer) {
+            $.threadPerConsumer = threadPerConsumer;
+            return this;
+        }
+
+        /**
+         * @param threadPerConsumer Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder threadPerConsumer(Boolean threadPerConsumer) {
+            return threadPerConsumer(Output.of(threadPerConsumer));
         }
 
         /**

@@ -451,11 +451,18 @@ public class Thanos extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Thanos(String name, ThanosArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/thanos:Thanos", name, args == null ? ThanosArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/thanos:Thanos", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Thanos(String name, Output<String> id, @Nullable ThanosState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/thanos:Thanos", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ThanosArgs makeArgs(ThanosArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ThanosArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

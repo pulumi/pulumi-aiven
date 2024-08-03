@@ -14,187 +14,187 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaKafkaUserConfigKafkaResult
     {
         /// <summary>
-        /// Enable auto creation of topics.
+        /// Enable auto-creation of topics. (Default: true).
         /// </summary>
         public readonly bool? AutoCreateTopicsEnable;
         /// <summary>
-        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
         /// </summary>
         public readonly string? CompressionType;
         /// <summary>
-        /// Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
+        /// Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
         /// </summary>
         public readonly int? ConnectionsMaxIdleMs;
         /// <summary>
-        /// Replication factor for autocreated topics.
+        /// Replication factor for auto-created topics (Default: 3).
         /// </summary>
         public readonly int? DefaultReplicationFactor;
         /// <summary>
-        /// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
+        /// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
         /// </summary>
         public readonly int? GroupInitialRebalanceDelayMs;
         /// <summary>
-        /// The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
+        /// The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
         /// </summary>
         public readonly int? GroupMaxSessionTimeoutMs;
         /// <summary>
-        /// The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
+        /// The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
         /// </summary>
         public readonly int? GroupMinSessionTimeoutMs;
         /// <summary>
-        /// How long are delete records retained? Example: `86400000`.
+        /// How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
         /// </summary>
         public readonly int? LogCleanerDeleteRetentionMs;
         /// <summary>
-        /// The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
+        /// The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
         /// </summary>
         public readonly int? LogCleanerMaxCompactionLagMs;
         /// <summary>
-        /// Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
+        /// Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
         /// </summary>
         public readonly double? LogCleanerMinCleanableRatio;
         /// <summary>
-        /// The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+        /// The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).
         /// </summary>
         public readonly int? LogCleanerMinCompactionLagMs;
         /// <summary>
-        /// Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
+        /// Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
         /// </summary>
         public readonly string? LogCleanupPolicy;
         /// <summary>
-        /// The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
+        /// The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
         /// </summary>
         public readonly int? LogFlushIntervalMessages;
         /// <summary>
-        /// The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+        /// The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).
         /// </summary>
         public readonly int? LogFlushIntervalMs;
         /// <summary>
-        /// The interval with which Kafka adds an entry to the offset index. Example: `4096`.
+        /// The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.
         /// </summary>
         public readonly int? LogIndexIntervalBytes;
         /// <summary>
-        /// The maximum size in bytes of the offset index. Example: `10485760`.
+        /// The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
         /// </summary>
         public readonly int? LogIndexSizeMaxBytes;
         /// <summary>
-        /// The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+        /// The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value. (Default: -2).
         /// </summary>
         public readonly int? LogLocalRetentionBytes;
         /// <summary>
-        /// The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+        /// The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value. (Default: -2).
         /// </summary>
         public readonly int? LogLocalRetentionMs;
         /// <summary>
-        /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
+        /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
         /// </summary>
         public readonly bool? LogMessageDownconversionEnable;
         /// <summary>
-        /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
+        /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
         /// </summary>
         public readonly int? LogMessageTimestampDifferenceMaxMs;
         /// <summary>
-        /// Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
+        /// Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).
         /// </summary>
         public readonly string? LogMessageTimestampType;
         /// <summary>
-        /// Should pre allocate file when create new segment?
+        /// Should pre allocate file when create new segment? (Default: false).
         /// </summary>
         public readonly bool? LogPreallocate;
         /// <summary>
-        /// The maximum size of the log before deleting messages.
+        /// The maximum size of the log before deleting messages (Default: -1).
         /// </summary>
         public readonly int? LogRetentionBytes;
         /// <summary>
-        /// The number of hours to keep a log file before deleting it.
+        /// The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
         /// </summary>
         public readonly int? LogRetentionHours;
         /// <summary>
-        /// The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+        /// The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied. (Default: null, log.retention.hours applies).
         /// </summary>
         public readonly int? LogRetentionMs;
         /// <summary>
-        /// The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+        /// The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used (Default: null).
         /// </summary>
         public readonly int? LogRollJitterMs;
         /// <summary>
-        /// The maximum time before a new log segment is rolled out (in milliseconds).
+        /// The maximum time before a new log segment is rolled out (in milliseconds). (Default: null, log.roll.hours applies (Default: 168, 7 days)).
         /// </summary>
         public readonly int? LogRollMs;
         /// <summary>
-        /// The maximum size of a single log file.
+        /// The maximum size of a single log file (Default: 1073741824 bytes (1 gibibyte)).
         /// </summary>
         public readonly int? LogSegmentBytes;
         /// <summary>
-        /// The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
+        /// The amount of time to wait before deleting a file from the filesystem (Default: 60000 ms (1 minute)). Example: `60000`.
         /// </summary>
         public readonly int? LogSegmentDeleteDelayMs;
         /// <summary>
-        /// The maximum number of connections allowed from each ip address (defaults to 2147483647).
+        /// The maximum number of connections allowed from each ip address (Default: 2147483647).
         /// </summary>
         public readonly int? MaxConnectionsPerIp;
         /// <summary>
-        /// The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
+        /// The maximum number of incremental fetch sessions that the broker will maintain. (Default: 1000). Example: `1000`.
         /// </summary>
         public readonly int? MaxIncrementalFetchSessionCacheSlots;
         /// <summary>
-        /// The maximum size of message that the server can receive. Example: `1048588`.
+        /// The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
         /// </summary>
         public readonly int? MessageMaxBytes;
         /// <summary>
-        /// When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
+        /// When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.
         /// </summary>
         public readonly int? MinInsyncReplicas;
         /// <summary>
-        /// Number of partitions for autocreated topics.
+        /// Number of partitions for auto-created topics (Default: 1).
         /// </summary>
         public readonly int? NumPartitions;
         /// <summary>
-        /// Log retention window in minutes for offsets topic. Example: `10080`.
+        /// Log retention window in minutes for offsets topic (Default: 10080 minutes (7 days)). Example: `10080`.
         /// </summary>
         public readonly int? OffsetsRetentionMinutes;
         /// <summary>
-        /// The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
+        /// The purge interval (in number of requests) of the producer request purgatory (Default: 1000).
         /// </summary>
         public readonly int? ProducerPurgatoryPurgeIntervalRequests;
         /// <summary>
-        /// The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
+        /// The number of bytes of messages to attempt to fetch for each partition . This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. (Default: 1048576 bytes (1 mebibytes)).
         /// </summary>
         public readonly int? ReplicaFetchMaxBytes;
         /// <summary>
-        /// Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+        /// Maximum bytes expected for the entire fetch response. Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum. (Default: 10485760 bytes (10 mebibytes)).
         /// </summary>
         public readonly int? ReplicaFetchResponseMaxBytes;
         /// <summary>
-        /// The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+        /// The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences. (Default: null).
         /// </summary>
         public readonly string? SaslOauthbearerExpectedAudience;
         /// <summary>
-        /// Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+        /// Optional setting for the broker to use to verify that the JWT was created by the expected issuer.(Default: null).
         /// </summary>
         public readonly string? SaslOauthbearerExpectedIssuer;
         /// <summary>
-        /// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
+        /// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. (Default: null).
         /// </summary>
         public readonly string? SaslOauthbearerJwksEndpointUrl;
         /// <summary>
-        /// Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+        /// Name of the scope from which to extract the subject claim from the JWT.(Default: sub).
         /// </summary>
         public readonly string? SaslOauthbearerSubClaimName;
         /// <summary>
-        /// The maximum number of bytes in a socket request (defaults to 104857600).
+        /// The maximum number of bytes in a socket request (Default: 104857600 bytes).
         /// </summary>
         public readonly int? SocketRequestMaxBytes;
         /// <summary>
-        /// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+        /// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
         /// </summary>
         public readonly bool? TransactionPartitionVerificationEnable;
         /// <summary>
-        /// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+        /// The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
         /// </summary>
         public readonly int? TransactionRemoveExpiredTransactionCleanupIntervalMs;
         /// <summary>
-        /// The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+        /// The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
         /// </summary>
         public readonly int? TransactionStateLogSegmentBytes;
 

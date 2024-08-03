@@ -31,6 +31,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? IgnoreDbs { get; set; }
 
         /// <summary>
+        /// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+        /// </summary>
+        [Input("ignoreRoles")]
+        public Input<string>? IgnoreRoles { get; set; }
+
+        /// <summary>
         /// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         /// </summary>
         [Input("method")]

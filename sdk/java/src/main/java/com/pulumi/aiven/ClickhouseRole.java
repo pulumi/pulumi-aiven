@@ -127,11 +127,18 @@ public class ClickhouseRole extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ClickhouseRole(String name, ClickhouseRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/clickhouseRole:ClickhouseRole", name, args == null ? ClickhouseRoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/clickhouseRole:ClickhouseRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ClickhouseRole(String name, Output<String> id, @Nullable ClickhouseRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/clickhouseRole:ClickhouseRole", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ClickhouseRoleArgs makeArgs(ClickhouseRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClickhouseRoleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

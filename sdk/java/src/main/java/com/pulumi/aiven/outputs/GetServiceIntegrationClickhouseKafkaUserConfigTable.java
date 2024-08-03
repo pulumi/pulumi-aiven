@@ -7,6 +7,7 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfigTa
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableTopic;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -72,10 +73,20 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable Integer pollMaxBatchSize;
     /**
+     * @return Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream_flush_interval_ms server setting by default (500ms). Default: `0`.
+     * 
+     */
+    private @Nullable Integer pollMaxTimeoutMs;
+    /**
      * @return Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
     private @Nullable Integer skipBrokenMessages;
+    /**
+     * @return Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean threadPerConsumer;
     /**
      * @return Kafka topics
      * 
@@ -161,11 +172,25 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return Optional.ofNullable(this.pollMaxBatchSize);
     }
     /**
+     * @return Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream_flush_interval_ms server setting by default (500ms). Default: `0`.
+     * 
+     */
+    public Optional<Integer> pollMaxTimeoutMs() {
+        return Optional.ofNullable(this.pollMaxTimeoutMs);
+    }
+    /**
      * @return Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
      * 
      */
     public Optional<Integer> skipBrokenMessages() {
         return Optional.ofNullable(this.skipBrokenMessages);
+    }
+    /**
+     * @return Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> threadPerConsumer() {
+        return Optional.ofNullable(this.threadPerConsumer);
     }
     /**
      * @return Kafka topics
@@ -195,7 +220,9 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         private String name;
         private @Nullable Integer numConsumers;
         private @Nullable Integer pollMaxBatchSize;
+        private @Nullable Integer pollMaxTimeoutMs;
         private @Nullable Integer skipBrokenMessages;
+        private @Nullable Boolean threadPerConsumer;
         private List<GetServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
         public Builder() {}
         public Builder(GetServiceIntegrationClickhouseKafkaUserConfigTable defaults) {
@@ -211,7 +238,9 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
     	      this.name = defaults.name;
     	      this.numConsumers = defaults.numConsumers;
     	      this.pollMaxBatchSize = defaults.pollMaxBatchSize;
+    	      this.pollMaxTimeoutMs = defaults.pollMaxTimeoutMs;
     	      this.skipBrokenMessages = defaults.skipBrokenMessages;
+    	      this.threadPerConsumer = defaults.threadPerConsumer;
     	      this.topics = defaults.topics;
         }
 
@@ -293,9 +322,21 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
             return this;
         }
         @CustomType.Setter
+        public Builder pollMaxTimeoutMs(@Nullable Integer pollMaxTimeoutMs) {
+
+            this.pollMaxTimeoutMs = pollMaxTimeoutMs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder skipBrokenMessages(@Nullable Integer skipBrokenMessages) {
 
             this.skipBrokenMessages = skipBrokenMessages;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder threadPerConsumer(@Nullable Boolean threadPerConsumer) {
+
+            this.threadPerConsumer = threadPerConsumer;
             return this;
         }
         @CustomType.Setter
@@ -322,7 +363,9 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
             _resultValue.name = name;
             _resultValue.numConsumers = numConsumers;
             _resultValue.pollMaxBatchSize = pollMaxBatchSize;
+            _resultValue.pollMaxTimeoutMs = pollMaxTimeoutMs;
             _resultValue.skipBrokenMessages = skipBrokenMessages;
+            _resultValue.threadPerConsumer = threadPerConsumer;
             _resultValue.topics = topics;
             return _resultValue;
         }

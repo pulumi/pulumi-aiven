@@ -507,11 +507,18 @@ public class MySql extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MySql(String name, MySqlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/mySql:MySql", name, args == null ? MySqlArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/mySql:MySql", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MySql(String name, Output<String> id, @Nullable MySqlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/mySql:MySql", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MySqlArgs makeArgs(MySqlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MySqlArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

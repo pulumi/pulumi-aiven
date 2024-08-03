@@ -40,6 +40,11 @@ public final class PgPgUserConfigPgbouncer {
      */
     private @Nullable List<String> ignoreStartupParameters;
     /**
+     * @return PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+     * 
+     */
+    private @Nullable Integer maxPreparedStatements;
+    /**
      * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
      * 
      */
@@ -97,6 +102,13 @@ public final class PgPgUserConfigPgbouncer {
         return this.ignoreStartupParameters == null ? List.of() : this.ignoreStartupParameters;
     }
     /**
+     * @return PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+     * 
+     */
+    public Optional<Integer> maxPreparedStatements() {
+        return Optional.ofNullable(this.maxPreparedStatements);
+    }
+    /**
      * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
      * 
      */
@@ -139,6 +151,7 @@ public final class PgPgUserConfigPgbouncer {
         private @Nullable String autodbPoolMode;
         private @Nullable Integer autodbPoolSize;
         private @Nullable List<String> ignoreStartupParameters;
+        private @Nullable Integer maxPreparedStatements;
         private @Nullable Integer minPoolSize;
         private @Nullable Integer serverIdleTimeout;
         private @Nullable Integer serverLifetime;
@@ -151,6 +164,7 @@ public final class PgPgUserConfigPgbouncer {
     	      this.autodbPoolMode = defaults.autodbPoolMode;
     	      this.autodbPoolSize = defaults.autodbPoolSize;
     	      this.ignoreStartupParameters = defaults.ignoreStartupParameters;
+    	      this.maxPreparedStatements = defaults.maxPreparedStatements;
     	      this.minPoolSize = defaults.minPoolSize;
     	      this.serverIdleTimeout = defaults.serverIdleTimeout;
     	      this.serverLifetime = defaults.serverLifetime;
@@ -191,6 +205,12 @@ public final class PgPgUserConfigPgbouncer {
             return ignoreStartupParameters(List.of(ignoreStartupParameters));
         }
         @CustomType.Setter
+        public Builder maxPreparedStatements(@Nullable Integer maxPreparedStatements) {
+
+            this.maxPreparedStatements = maxPreparedStatements;
+            return this;
+        }
+        @CustomType.Setter
         public Builder minPoolSize(@Nullable Integer minPoolSize) {
 
             this.minPoolSize = minPoolSize;
@@ -221,6 +241,7 @@ public final class PgPgUserConfigPgbouncer {
             _resultValue.autodbPoolMode = autodbPoolMode;
             _resultValue.autodbPoolSize = autodbPoolSize;
             _resultValue.ignoreStartupParameters = ignoreStartupParameters;
+            _resultValue.maxPreparedStatements = maxPreparedStatements;
             _resultValue.minPoolSize = minPoolSize;
             _resultValue.serverIdleTimeout = serverIdleTimeout;
             _resultValue.serverLifetime = serverLifetime;

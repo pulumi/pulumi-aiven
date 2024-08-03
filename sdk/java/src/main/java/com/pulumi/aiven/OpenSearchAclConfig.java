@@ -167,11 +167,18 @@ public class OpenSearchAclConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OpenSearchAclConfig(String name, OpenSearchAclConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/openSearchAclConfig:OpenSearchAclConfig", name, args == null ? OpenSearchAclConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/openSearchAclConfig:OpenSearchAclConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OpenSearchAclConfig(String name, Output<String> id, @Nullable OpenSearchAclConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/openSearchAclConfig:OpenSearchAclConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OpenSearchAclConfigArgs makeArgs(OpenSearchAclConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OpenSearchAclConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

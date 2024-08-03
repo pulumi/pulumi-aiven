@@ -94,6 +94,21 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+     * 
+     */
+    @Import(name="maxPreparedStatements")
+    private @Nullable Output<Integer> maxPreparedStatements;
+
+    /**
+     * @return PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+     * 
+     */
+    public Optional<Output<Integer>> maxPreparedStatements() {
+        return Optional.ofNullable(this.maxPreparedStatements);
+    }
+
+    /**
      * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
      * 
      */
@@ -161,6 +176,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         this.autodbPoolMode = $.autodbPoolMode;
         this.autodbPoolSize = $.autodbPoolSize;
         this.ignoreStartupParameters = $.ignoreStartupParameters;
+        this.maxPreparedStatements = $.maxPreparedStatements;
         this.minPoolSize = $.minPoolSize;
         this.serverIdleTimeout = $.serverIdleTimeout;
         this.serverLifetime = $.serverLifetime;
@@ -298,6 +314,27 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
          */
         public Builder ignoreStartupParameters(String... ignoreStartupParameters) {
             return ignoreStartupParameters(List.of(ignoreStartupParameters));
+        }
+
+        /**
+         * @param maxPreparedStatements PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxPreparedStatements(@Nullable Output<Integer> maxPreparedStatements) {
+            $.maxPreparedStatements = maxPreparedStatements;
+            return this;
+        }
+
+        /**
+         * @param maxPreparedStatements PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxPreparedStatements(Integer maxPreparedStatements) {
+            return maxPreparedStatements(Output.of(maxPreparedStatements));
         }
 
         /**

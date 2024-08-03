@@ -309,11 +309,18 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public FlinkApplicationVersion(String name, FlinkApplicationVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/flinkApplicationVersion:FlinkApplicationVersion", name, args == null ? FlinkApplicationVersionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/flinkApplicationVersion:FlinkApplicationVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FlinkApplicationVersion(String name, Output<String> id, @Nullable FlinkApplicationVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/flinkApplicationVersion:FlinkApplicationVersion", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FlinkApplicationVersionArgs makeArgs(FlinkApplicationVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FlinkApplicationVersionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

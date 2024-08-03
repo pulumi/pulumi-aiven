@@ -30,6 +30,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
+        /// <summary>
+        /// Enable follower fetching
+        /// </summary>
+        [Input("followerFetching")]
+        public Input<Inputs.KafkaKafkaUserConfigFollowerFetchingGetArgs>? FollowerFetching { get; set; }
+
         [Input("ipFilterObjects")]
         private InputList<Inputs.KafkaKafkaUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 

@@ -196,11 +196,18 @@ public class OpensearchSecurityPluginConfig extends com.pulumi.resources.CustomR
      * @param options A bag of options that control this resource's behavior.
      */
     public OpensearchSecurityPluginConfig(String name, OpensearchSecurityPluginConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig", name, args == null ? OpensearchSecurityPluginConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OpensearchSecurityPluginConfig(String name, Output<String> id, @Nullable OpensearchSecurityPluginConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OpensearchSecurityPluginConfigArgs makeArgs(OpensearchSecurityPluginConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OpensearchSecurityPluginConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

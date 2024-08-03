@@ -203,11 +203,18 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KafkaSchema(String name, KafkaSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaSchema:KafkaSchema", name, args == null ? KafkaSchemaArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/kafkaSchema:KafkaSchema", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KafkaSchema(String name, Output<String> id, @Nullable KafkaSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/kafkaSchema:KafkaSchema", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KafkaSchemaArgs makeArgs(KafkaSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KafkaSchemaArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

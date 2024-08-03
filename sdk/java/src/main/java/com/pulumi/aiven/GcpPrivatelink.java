@@ -154,11 +154,18 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GcpPrivatelink(String name, GcpPrivatelinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/gcpPrivatelink:GcpPrivatelink", name, args == null ? GcpPrivatelinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/gcpPrivatelink:GcpPrivatelink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GcpPrivatelink(String name, Output<String> id, @Nullable GcpPrivatelinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/gcpPrivatelink:GcpPrivatelink", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GcpPrivatelinkArgs makeArgs(GcpPrivatelinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GcpPrivatelinkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
