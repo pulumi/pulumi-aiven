@@ -320,11 +320,18 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationApplicationUserToken(String name, OrganizationApplicationUserTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken", name, args == null ? OrganizationApplicationUserTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationApplicationUserToken(String name, Output<String> id, @Nullable OrganizationApplicationUserTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationApplicationUserTokenArgs makeArgs(OrganizationApplicationUserTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationApplicationUserTokenArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

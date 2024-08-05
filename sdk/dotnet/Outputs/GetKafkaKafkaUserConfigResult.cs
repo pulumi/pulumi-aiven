@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
+        /// Enable follower fetching
+        /// </summary>
+        public readonly Outputs.GetKafkaKafkaUserConfigFollowerFetchingResult? FollowerFetching;
+        /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaKafkaUserConfigIpFilterObjectResult> IpFilterObjects;
@@ -115,6 +119,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? customDomain,
 
+            Outputs.GetKafkaKafkaUserConfigFollowerFetchingResult? followerFetching,
+
             ImmutableArray<Outputs.GetKafkaKafkaUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilterStrings,
@@ -160,6 +166,7 @@ namespace Pulumi.Aiven.Outputs
             AdditionalBackupRegions = additionalBackupRegions;
             AivenKafkaTopicMessages = aivenKafkaTopicMessages;
             CustomDomain = customDomain;
+            FollowerFetching = followerFetching;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;

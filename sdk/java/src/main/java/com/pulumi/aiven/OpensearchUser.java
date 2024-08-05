@@ -157,11 +157,18 @@ public class OpensearchUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OpensearchUser(String name, OpensearchUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/opensearchUser:OpensearchUser", name, args == null ? OpensearchUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/opensearchUser:OpensearchUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OpensearchUser(String name, Output<String> id, @Nullable OpensearchUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/opensearchUser:OpensearchUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OpensearchUserArgs makeArgs(OpensearchUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OpensearchUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

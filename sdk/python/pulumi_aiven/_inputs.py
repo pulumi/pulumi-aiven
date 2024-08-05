@@ -100,6 +100,7 @@ __all__ = [
     'KafkaConnectorTaskArgs',
     'KafkaKafkaArgs',
     'KafkaKafkaUserConfigArgs',
+    'KafkaKafkaUserConfigFollowerFetchingArgs',
     'KafkaKafkaUserConfigIpFilterObjectArgs',
     'KafkaKafkaUserConfigKafkaArgs',
     'KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs',
@@ -2373,6 +2374,7 @@ class DragonflyDragonflyUserConfigMigrationArgs:
                  port: pulumi.Input[int],
                  dbname: Optional[pulumi.Input[str]] = None,
                  ignore_dbs: Optional[pulumi.Input[str]] = None,
+                 ignore_roles: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  ssl: Optional[pulumi.Input[bool]] = None,
@@ -2382,6 +2384,7 @@ class DragonflyDragonflyUserConfigMigrationArgs:
         :param pulumi.Input[int] port: Port number of the server where to migrate data from. Example: `1234`.
         :param pulumi.Input[str] dbname: Database name for bootstrapping the initial connection. Example: `defaultdb`.
         :param pulumi.Input[str] ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+        :param pulumi.Input[str] ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param pulumi.Input[str] method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param pulumi.Input[str] password: Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
         :param pulumi.Input[bool] ssl: The server where to migrate data from is secured with SSL. Default: `true`.
@@ -2393,6 +2396,8 @@ class DragonflyDragonflyUserConfigMigrationArgs:
             pulumi.set(__self__, "dbname", dbname)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
+        if ignore_roles is not None:
+            pulumi.set(__self__, "ignore_roles", ignore_roles)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if password is not None:
@@ -2449,6 +2454,18 @@ class DragonflyDragonflyUserConfigMigrationArgs:
     @ignore_dbs.setter
     def ignore_dbs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ignore_dbs", value)
+
+    @property
+    @pulumi.getter(name="ignoreRoles")
+    def ignore_roles(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+        """
+        return pulumi.get(self, "ignore_roles")
+
+    @ignore_roles.setter
+    def ignore_roles(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ignore_roles", value)
 
     @property
     @pulumi.getter
@@ -7344,6 +7361,7 @@ class KafkaKafkaUserConfigArgs:
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  aiven_kafka_topic_messages: Optional[pulumi.Input[bool]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
+                 follower_fetching: Optional[pulumi.Input['KafkaKafkaUserConfigFollowerFetchingArgs']] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -7369,6 +7387,7 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[bool] aiven_kafka_topic_messages: Allow access to read Kafka topic messages in the Aiven Console and REST API.
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+        :param pulumi.Input['KafkaKafkaUserConfigFollowerFetchingArgs'] follower_fetching: Enable follower fetching
         :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -7399,6 +7418,8 @@ class KafkaKafkaUserConfigArgs:
             pulumi.set(__self__, "aiven_kafka_topic_messages", aiven_kafka_topic_messages)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
+        if follower_fetching is not None:
+            pulumi.set(__self__, "follower_fetching", follower_fetching)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -7481,6 +7502,18 @@ class KafkaKafkaUserConfigArgs:
     @custom_domain.setter
     def custom_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_domain", value)
+
+    @property
+    @pulumi.getter(name="followerFetching")
+    def follower_fetching(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigFollowerFetchingArgs']]:
+        """
+        Enable follower fetching
+        """
+        return pulumi.get(self, "follower_fetching")
+
+    @follower_fetching.setter
+    def follower_fetching(self, value: Optional[pulumi.Input['KafkaKafkaUserConfigFollowerFetchingArgs']]):
+        pulumi.set(self, "follower_fetching", value)
 
     @property
     @pulumi.getter(name="ipFilterObjects")
@@ -7734,6 +7767,29 @@ class KafkaKafkaUserConfigArgs:
 
 
 @pulumi.input_type
+class KafkaKafkaUserConfigFollowerFetchingArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether to enable the follower fetching functionality.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the follower fetching functionality.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class KafkaKafkaUserConfigIpFilterObjectArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
@@ -7821,52 +7877,52 @@ class KafkaKafkaUserConfigKafkaArgs:
                  transaction_remove_expired_transaction_cleanup_interval_ms: Optional[pulumi.Input[int]] = None,
                  transaction_state_log_segment_bytes: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[bool] auto_create_topics_enable: Enable auto creation of topics.
-        :param pulumi.Input[str] compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
-        :param pulumi.Input[int] connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
-        :param pulumi.Input[int] default_replication_factor: Replication factor for autocreated topics.
-        :param pulumi.Input[int] group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
-        :param pulumi.Input[int] group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
-        :param pulumi.Input[int] group_min_session_timeout_ms: The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
-        :param pulumi.Input[int] log_cleaner_delete_retention_ms: How long are delete records retained? Example: `86400000`.
-        :param pulumi.Input[int] log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
-        :param pulumi.Input[float] log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
-        :param pulumi.Input[int] log_cleaner_min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
-        :param pulumi.Input[str] log_cleanup_policy: Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
-        :param pulumi.Input[int] log_flush_interval_messages: The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
-        :param pulumi.Input[int] log_flush_interval_ms: The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
-        :param pulumi.Input[int] log_index_interval_bytes: The interval with which Kafka adds an entry to the offset index. Example: `4096`.
-        :param pulumi.Input[int] log_index_size_max_bytes: The maximum size in bytes of the offset index. Example: `10485760`.
-        :param pulumi.Input[int] log_local_retention_bytes: The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
-        :param pulumi.Input[int] log_local_retention_ms: The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
-        :param pulumi.Input[bool] log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
-        :param pulumi.Input[int] log_message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
-        :param pulumi.Input[str] log_message_timestamp_type: Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
-        :param pulumi.Input[bool] log_preallocate: Should pre allocate file when create new segment?
-        :param pulumi.Input[int] log_retention_bytes: The maximum size of the log before deleting messages.
-        :param pulumi.Input[int] log_retention_hours: The number of hours to keep a log file before deleting it.
-        :param pulumi.Input[int] log_retention_ms: The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
-        :param pulumi.Input[int] log_roll_jitter_ms: The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
-        :param pulumi.Input[int] log_roll_ms: The maximum time before a new log segment is rolled out (in milliseconds).
-        :param pulumi.Input[int] log_segment_bytes: The maximum size of a single log file.
-        :param pulumi.Input[int] log_segment_delete_delay_ms: The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
-        :param pulumi.Input[int] max_connections_per_ip: The maximum number of connections allowed from each ip address (defaults to 2147483647).
-        :param pulumi.Input[int] max_incremental_fetch_session_cache_slots: The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
-        :param pulumi.Input[int] message_max_bytes: The maximum size of message that the server can receive. Example: `1048588`.
-        :param pulumi.Input[int] min_insync_replicas: When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
-        :param pulumi.Input[int] num_partitions: Number of partitions for autocreated topics.
-        :param pulumi.Input[int] offsets_retention_minutes: Log retention window in minutes for offsets topic. Example: `10080`.
-        :param pulumi.Input[int] producer_purgatory_purge_interval_requests: The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
-        :param pulumi.Input[int] replica_fetch_max_bytes: The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
-        :param pulumi.Input[int] replica_fetch_response_max_bytes: Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
-        :param pulumi.Input[str] sasl_oauthbearer_expected_audience: The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
-        :param pulumi.Input[str] sasl_oauthbearer_expected_issuer: Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
-        :param pulumi.Input[str] sasl_oauthbearer_jwks_endpoint_url: OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
-        :param pulumi.Input[str] sasl_oauthbearer_sub_claim_name: Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
-        :param pulumi.Input[int] socket_request_max_bytes: The maximum number of bytes in a socket request (defaults to 104857600).
-        :param pulumi.Input[bool] transaction_partition_verification_enable: Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
-        :param pulumi.Input[int] transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
-        :param pulumi.Input[int] transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+        :param pulumi.Input[bool] auto_create_topics_enable: Enable auto-creation of topics. (Default: true).
+        :param pulumi.Input[str] compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+        :param pulumi.Input[int] connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
+        :param pulumi.Input[int] default_replication_factor: Replication factor for auto-created topics (Default: 3).
+        :param pulumi.Input[int] group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
+        :param pulumi.Input[int] group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
+        :param pulumi.Input[int] group_min_session_timeout_ms: The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
+        :param pulumi.Input[int] log_cleaner_delete_retention_ms: How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
+        :param pulumi.Input[int] log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
+        :param pulumi.Input[float] log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
+        :param pulumi.Input[int] log_cleaner_min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).
+        :param pulumi.Input[str] log_cleanup_policy: Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+        :param pulumi.Input[int] log_flush_interval_messages: The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+        :param pulumi.Input[int] log_flush_interval_ms: The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).
+        :param pulumi.Input[int] log_index_interval_bytes: The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.
+        :param pulumi.Input[int] log_index_size_max_bytes: The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
+        :param pulumi.Input[int] log_local_retention_bytes: The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value. (Default: -2).
+        :param pulumi.Input[int] log_local_retention_ms: The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value. (Default: -2).
+        :param pulumi.Input[bool] log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
+        :param pulumi.Input[int] log_message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
+        :param pulumi.Input[str] log_message_timestamp_type: Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).
+        :param pulumi.Input[bool] log_preallocate: Should pre allocate file when create new segment? (Default: false).
+        :param pulumi.Input[int] log_retention_bytes: The maximum size of the log before deleting messages (Default: -1).
+        :param pulumi.Input[int] log_retention_hours: The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
+        :param pulumi.Input[int] log_retention_ms: The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied. (Default: null, log.retention.hours applies).
+        :param pulumi.Input[int] log_roll_jitter_ms: The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used (Default: null).
+        :param pulumi.Input[int] log_roll_ms: The maximum time before a new log segment is rolled out (in milliseconds). (Default: null, log.roll.hours applies (Default: 168, 7 days)).
+        :param pulumi.Input[int] log_segment_bytes: The maximum size of a single log file (Default: 1073741824 bytes (1 gibibyte)).
+        :param pulumi.Input[int] log_segment_delete_delay_ms: The amount of time to wait before deleting a file from the filesystem (Default: 60000 ms (1 minute)). Example: `60000`.
+        :param pulumi.Input[int] max_connections_per_ip: The maximum number of connections allowed from each ip address (Default: 2147483647).
+        :param pulumi.Input[int] max_incremental_fetch_session_cache_slots: The maximum number of incremental fetch sessions that the broker will maintain. (Default: 1000). Example: `1000`.
+        :param pulumi.Input[int] message_max_bytes: The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
+        :param pulumi.Input[int] min_insync_replicas: When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.
+        :param pulumi.Input[int] num_partitions: Number of partitions for auto-created topics (Default: 1).
+        :param pulumi.Input[int] offsets_retention_minutes: Log retention window in minutes for offsets topic (Default: 10080 minutes (7 days)). Example: `10080`.
+        :param pulumi.Input[int] producer_purgatory_purge_interval_requests: The purge interval (in number of requests) of the producer request purgatory (Default: 1000).
+        :param pulumi.Input[int] replica_fetch_max_bytes: The number of bytes of messages to attempt to fetch for each partition . This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. (Default: 1048576 bytes (1 mebibytes)).
+        :param pulumi.Input[int] replica_fetch_response_max_bytes: Maximum bytes expected for the entire fetch response. Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum. (Default: 10485760 bytes (10 mebibytes)).
+        :param pulumi.Input[str] sasl_oauthbearer_expected_audience: The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences. (Default: null).
+        :param pulumi.Input[str] sasl_oauthbearer_expected_issuer: Optional setting for the broker to use to verify that the JWT was created by the expected issuer.(Default: null).
+        :param pulumi.Input[str] sasl_oauthbearer_jwks_endpoint_url: OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. (Default: null).
+        :param pulumi.Input[str] sasl_oauthbearer_sub_claim_name: Name of the scope from which to extract the subject claim from the JWT.(Default: sub).
+        :param pulumi.Input[int] socket_request_max_bytes: The maximum number of bytes in a socket request (Default: 104857600 bytes).
+        :param pulumi.Input[bool] transaction_partition_verification_enable: Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+        :param pulumi.Input[int] transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
+        :param pulumi.Input[int] transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
         """
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
@@ -7965,7 +8021,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="autoCreateTopicsEnable")
     def auto_create_topics_enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable auto creation of topics.
+        Enable auto-creation of topics. (Default: true).
         """
         return pulumi.get(self, "auto_create_topics_enable")
 
@@ -7977,7 +8033,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
         """
         return pulumi.get(self, "compression_type")
 
@@ -7989,7 +8045,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="connectionsMaxIdleMs")
     def connections_max_idle_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
+        Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
         """
         return pulumi.get(self, "connections_max_idle_ms")
 
@@ -8001,7 +8057,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="defaultReplicationFactor")
     def default_replication_factor(self) -> Optional[pulumi.Input[int]]:
         """
-        Replication factor for autocreated topics.
+        Replication factor for auto-created topics (Default: 3).
         """
         return pulumi.get(self, "default_replication_factor")
 
@@ -8013,7 +8069,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="groupInitialRebalanceDelayMs")
     def group_initial_rebalance_delay_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
+        The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
         """
         return pulumi.get(self, "group_initial_rebalance_delay_ms")
 
@@ -8025,7 +8081,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="groupMaxSessionTimeoutMs")
     def group_max_session_timeout_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
+        The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.
         """
         return pulumi.get(self, "group_max_session_timeout_ms")
 
@@ -8037,7 +8093,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="groupMinSessionTimeoutMs")
     def group_min_session_timeout_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
+        The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
         """
         return pulumi.get(self, "group_min_session_timeout_ms")
 
@@ -8049,7 +8105,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
     def log_cleaner_delete_retention_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        How long are delete records retained? Example: `86400000`.
+        How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.
         """
         return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
@@ -8061,7 +8117,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logCleanerMaxCompactionLagMs")
     def log_cleaner_max_compaction_lag_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
+        The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
         """
         return pulumi.get(self, "log_cleaner_max_compaction_lag_ms")
 
@@ -8073,7 +8129,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logCleanerMinCleanableRatio")
     def log_cleaner_min_cleanable_ratio(self) -> Optional[pulumi.Input[float]]:
         """
-        Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
+        Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
         """
         return pulumi.get(self, "log_cleaner_min_cleanable_ratio")
 
@@ -8085,7 +8141,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logCleanerMinCompactionLagMs")
     def log_cleaner_min_compaction_lag_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+        The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).
         """
         return pulumi.get(self, "log_cleaner_min_compaction_lag_ms")
 
@@ -8097,7 +8153,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logCleanupPolicy")
     def log_cleanup_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
+        Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
         """
         return pulumi.get(self, "log_cleanup_policy")
 
@@ -8109,7 +8165,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logFlushIntervalMessages")
     def log_flush_interval_messages(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
+        The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
         """
         return pulumi.get(self, "log_flush_interval_messages")
 
@@ -8121,7 +8177,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logFlushIntervalMs")
     def log_flush_interval_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+        The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).
         """
         return pulumi.get(self, "log_flush_interval_ms")
 
@@ -8133,7 +8189,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logIndexIntervalBytes")
     def log_index_interval_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The interval with which Kafka adds an entry to the offset index. Example: `4096`.
+        The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.
         """
         return pulumi.get(self, "log_index_interval_bytes")
 
@@ -8145,7 +8201,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logIndexSizeMaxBytes")
     def log_index_size_max_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum size in bytes of the offset index. Example: `10485760`.
+        The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
         """
         return pulumi.get(self, "log_index_size_max_bytes")
 
@@ -8157,7 +8213,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logLocalRetentionBytes")
     def log_local_retention_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+        The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value. (Default: -2).
         """
         return pulumi.get(self, "log_local_retention_bytes")
 
@@ -8169,7 +8225,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logLocalRetentionMs")
     def log_local_retention_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+        The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value. (Default: -2).
         """
         return pulumi.get(self, "log_local_retention_ms")
 
@@ -8181,7 +8237,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logMessageDownconversionEnable")
     def log_message_downconversion_enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
+        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).
         """
         return pulumi.get(self, "log_message_downconversion_enable")
 
@@ -8193,7 +8249,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
     def log_message_timestamp_difference_max_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).
         """
         return pulumi.get(self, "log_message_timestamp_difference_max_ms")
 
@@ -8205,7 +8261,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logMessageTimestampType")
     def log_message_timestamp_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
+        Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).
         """
         return pulumi.get(self, "log_message_timestamp_type")
 
@@ -8217,7 +8273,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logPreallocate")
     def log_preallocate(self) -> Optional[pulumi.Input[bool]]:
         """
-        Should pre allocate file when create new segment?
+        Should pre allocate file when create new segment? (Default: false).
         """
         return pulumi.get(self, "log_preallocate")
 
@@ -8229,7 +8285,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logRetentionBytes")
     def log_retention_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum size of the log before deleting messages.
+        The maximum size of the log before deleting messages (Default: -1).
         """
         return pulumi.get(self, "log_retention_bytes")
 
@@ -8241,7 +8297,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logRetentionHours")
     def log_retention_hours(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of hours to keep a log file before deleting it.
+        The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).
         """
         return pulumi.get(self, "log_retention_hours")
 
@@ -8253,7 +8309,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logRetentionMs")
     def log_retention_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+        The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied. (Default: null, log.retention.hours applies).
         """
         return pulumi.get(self, "log_retention_ms")
 
@@ -8265,7 +8321,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logRollJitterMs")
     def log_roll_jitter_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+        The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used (Default: null).
         """
         return pulumi.get(self, "log_roll_jitter_ms")
 
@@ -8277,7 +8333,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logRollMs")
     def log_roll_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum time before a new log segment is rolled out (in milliseconds).
+        The maximum time before a new log segment is rolled out (in milliseconds). (Default: null, log.roll.hours applies (Default: 168, 7 days)).
         """
         return pulumi.get(self, "log_roll_ms")
 
@@ -8289,7 +8345,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logSegmentBytes")
     def log_segment_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum size of a single log file.
+        The maximum size of a single log file (Default: 1073741824 bytes (1 gibibyte)).
         """
         return pulumi.get(self, "log_segment_bytes")
 
@@ -8301,7 +8357,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logSegmentDeleteDelayMs")
     def log_segment_delete_delay_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
+        The amount of time to wait before deleting a file from the filesystem (Default: 60000 ms (1 minute)). Example: `60000`.
         """
         return pulumi.get(self, "log_segment_delete_delay_ms")
 
@@ -8313,7 +8369,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="maxConnectionsPerIp")
     def max_connections_per_ip(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of connections allowed from each ip address (defaults to 2147483647).
+        The maximum number of connections allowed from each ip address (Default: 2147483647).
         """
         return pulumi.get(self, "max_connections_per_ip")
 
@@ -8325,7 +8381,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="maxIncrementalFetchSessionCacheSlots")
     def max_incremental_fetch_session_cache_slots(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
+        The maximum number of incremental fetch sessions that the broker will maintain. (Default: 1000). Example: `1000`.
         """
         return pulumi.get(self, "max_incremental_fetch_session_cache_slots")
 
@@ -8337,7 +8393,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="messageMaxBytes")
     def message_max_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum size of message that the server can receive. Example: `1048588`.
+        The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.
         """
         return pulumi.get(self, "message_max_bytes")
 
@@ -8349,7 +8405,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
+        When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.
         """
         return pulumi.get(self, "min_insync_replicas")
 
@@ -8361,7 +8417,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="numPartitions")
     def num_partitions(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of partitions for autocreated topics.
+        Number of partitions for auto-created topics (Default: 1).
         """
         return pulumi.get(self, "num_partitions")
 
@@ -8373,7 +8429,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="offsetsRetentionMinutes")
     def offsets_retention_minutes(self) -> Optional[pulumi.Input[int]]:
         """
-        Log retention window in minutes for offsets topic. Example: `10080`.
+        Log retention window in minutes for offsets topic (Default: 10080 minutes (7 days)). Example: `10080`.
         """
         return pulumi.get(self, "offsets_retention_minutes")
 
@@ -8385,7 +8441,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="producerPurgatoryPurgeIntervalRequests")
     def producer_purgatory_purge_interval_requests(self) -> Optional[pulumi.Input[int]]:
         """
-        The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
+        The purge interval (in number of requests) of the producer request purgatory (Default: 1000).
         """
         return pulumi.get(self, "producer_purgatory_purge_interval_requests")
 
@@ -8397,7 +8453,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="replicaFetchMaxBytes")
     def replica_fetch_max_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
+        The number of bytes of messages to attempt to fetch for each partition . This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. (Default: 1048576 bytes (1 mebibytes)).
         """
         return pulumi.get(self, "replica_fetch_max_bytes")
 
@@ -8409,7 +8465,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="replicaFetchResponseMaxBytes")
     def replica_fetch_response_max_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+        Maximum bytes expected for the entire fetch response. Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum. (Default: 10485760 bytes (10 mebibytes)).
         """
         return pulumi.get(self, "replica_fetch_response_max_bytes")
 
@@ -8421,7 +8477,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="saslOauthbearerExpectedAudience")
     def sasl_oauthbearer_expected_audience(self) -> Optional[pulumi.Input[str]]:
         """
-        The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+        The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences. (Default: null).
         """
         return pulumi.get(self, "sasl_oauthbearer_expected_audience")
 
@@ -8433,7 +8489,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="saslOauthbearerExpectedIssuer")
     def sasl_oauthbearer_expected_issuer(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+        Optional setting for the broker to use to verify that the JWT was created by the expected issuer.(Default: null).
         """
         return pulumi.get(self, "sasl_oauthbearer_expected_issuer")
 
@@ -8445,7 +8501,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="saslOauthbearerJwksEndpointUrl")
     def sasl_oauthbearer_jwks_endpoint_url(self) -> Optional[pulumi.Input[str]]:
         """
-        OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
+        OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. (Default: null).
         """
         return pulumi.get(self, "sasl_oauthbearer_jwks_endpoint_url")
 
@@ -8457,7 +8513,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="saslOauthbearerSubClaimName")
     def sasl_oauthbearer_sub_claim_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+        Name of the scope from which to extract the subject claim from the JWT.(Default: sub).
         """
         return pulumi.get(self, "sasl_oauthbearer_sub_claim_name")
 
@@ -8469,7 +8525,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="socketRequestMaxBytes")
     def socket_request_max_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of bytes in a socket request (defaults to 104857600).
+        The maximum number of bytes in a socket request (Default: 104857600 bytes).
         """
         return pulumi.get(self, "socket_request_max_bytes")
 
@@ -8481,7 +8537,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="transactionPartitionVerificationEnable")
     def transaction_partition_verification_enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+        Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
         """
         return pulumi.get(self, "transaction_partition_verification_enable")
 
@@ -8493,7 +8549,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="transactionRemoveExpiredTransactionCleanupIntervalMs")
     def transaction_remove_expired_transaction_cleanup_interval_ms(self) -> Optional[pulumi.Input[int]]:
         """
-        The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+        The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
         """
         return pulumi.get(self, "transaction_remove_expired_transaction_cleanup_interval_ms")
 
@@ -8505,7 +8561,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="transactionStateLogSegmentBytes")
     def transaction_state_log_segment_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+        The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
         """
         return pulumi.get(self, "transaction_state_log_segment_bytes")
 
@@ -13225,6 +13281,7 @@ class MySqlMysqlUserConfigMigrationArgs:
                  port: pulumi.Input[int],
                  dbname: Optional[pulumi.Input[str]] = None,
                  ignore_dbs: Optional[pulumi.Input[str]] = None,
+                 ignore_roles: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  ssl: Optional[pulumi.Input[bool]] = None,
@@ -13234,6 +13291,7 @@ class MySqlMysqlUserConfigMigrationArgs:
         :param pulumi.Input[int] port: Port number of the server where to migrate data from. Example: `1234`.
         :param pulumi.Input[str] dbname: Database name for bootstrapping the initial connection. Example: `defaultdb`.
         :param pulumi.Input[str] ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+        :param pulumi.Input[str] ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param pulumi.Input[str] method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param pulumi.Input[str] password: Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
         :param pulumi.Input[bool] ssl: The server where to migrate data from is secured with SSL. Default: `true`.
@@ -13245,6 +13303,8 @@ class MySqlMysqlUserConfigMigrationArgs:
             pulumi.set(__self__, "dbname", dbname)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
+        if ignore_roles is not None:
+            pulumi.set(__self__, "ignore_roles", ignore_roles)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if password is not None:
@@ -13301,6 +13361,18 @@ class MySqlMysqlUserConfigMigrationArgs:
     @ignore_dbs.setter
     def ignore_dbs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ignore_dbs", value)
+
+    @property
+    @pulumi.getter(name="ignoreRoles")
+    def ignore_roles(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+        """
+        return pulumi.get(self, "ignore_roles")
+
+    @ignore_roles.setter
+    def ignore_roles(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ignore_roles", value)
 
     @property
     @pulumi.getter
@@ -17704,6 +17776,7 @@ class PgPgUserConfigMigrationArgs:
                  port: pulumi.Input[int],
                  dbname: Optional[pulumi.Input[str]] = None,
                  ignore_dbs: Optional[pulumi.Input[str]] = None,
+                 ignore_roles: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  ssl: Optional[pulumi.Input[bool]] = None,
@@ -17713,6 +17786,7 @@ class PgPgUserConfigMigrationArgs:
         :param pulumi.Input[int] port: Port number of the server where to migrate data from. Example: `1234`.
         :param pulumi.Input[str] dbname: Database name for bootstrapping the initial connection. Example: `defaultdb`.
         :param pulumi.Input[str] ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+        :param pulumi.Input[str] ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param pulumi.Input[str] method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param pulumi.Input[str] password: Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
         :param pulumi.Input[bool] ssl: The server where to migrate data from is secured with SSL. Default: `true`.
@@ -17724,6 +17798,8 @@ class PgPgUserConfigMigrationArgs:
             pulumi.set(__self__, "dbname", dbname)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
+        if ignore_roles is not None:
+            pulumi.set(__self__, "ignore_roles", ignore_roles)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if password is not None:
@@ -17780,6 +17856,18 @@ class PgPgUserConfigMigrationArgs:
     @ignore_dbs.setter
     def ignore_dbs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ignore_dbs", value)
+
+    @property
+    @pulumi.getter(name="ignoreRoles")
+    def ignore_roles(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+        """
+        return pulumi.get(self, "ignore_roles")
+
+    @ignore_roles.setter
+    def ignore_roles(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ignore_roles", value)
 
     @property
     @pulumi.getter
@@ -19023,6 +19111,7 @@ class PgPgUserConfigPgbouncerArgs:
                  autodb_pool_mode: Optional[pulumi.Input[str]] = None,
                  autodb_pool_size: Optional[pulumi.Input[int]] = None,
                  ignore_startup_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_prepared_statements: Optional[pulumi.Input[int]] = None,
                  min_pool_size: Optional[pulumi.Input[int]] = None,
                  server_idle_timeout: Optional[pulumi.Input[int]] = None,
                  server_lifetime: Optional[pulumi.Input[int]] = None,
@@ -19033,6 +19122,7 @@ class PgPgUserConfigPgbouncerArgs:
         :param pulumi.Input[str] autodb_pool_mode: Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
         :param pulumi.Input[int] autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
+        :param pulumi.Input[int] max_prepared_statements: PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
         :param pulumi.Input[int] min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
         :param pulumi.Input[int] server_idle_timeout: If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
         :param pulumi.Input[int] server_lifetime: The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
@@ -19048,6 +19138,8 @@ class PgPgUserConfigPgbouncerArgs:
             pulumi.set(__self__, "autodb_pool_size", autodb_pool_size)
         if ignore_startup_parameters is not None:
             pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
+        if max_prepared_statements is not None:
+            pulumi.set(__self__, "max_prepared_statements", max_prepared_statements)
         if min_pool_size is not None:
             pulumi.set(__self__, "min_pool_size", min_pool_size)
         if server_idle_timeout is not None:
@@ -19116,6 +19208,18 @@ class PgPgUserConfigPgbouncerArgs:
     @ignore_startup_parameters.setter
     def ignore_startup_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ignore_startup_parameters", value)
+
+    @property
+    @pulumi.getter(name="maxPreparedStatements")
+    def max_prepared_statements(self) -> Optional[pulumi.Input[int]]:
+        """
+        PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+        """
+        return pulumi.get(self, "max_prepared_statements")
+
+    @max_prepared_statements.setter
+    def max_prepared_statements(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_prepared_statements", value)
 
     @property
     @pulumi.getter(name="minPoolSize")
@@ -20172,6 +20276,7 @@ class RedisRedisUserConfigMigrationArgs:
                  port: pulumi.Input[int],
                  dbname: Optional[pulumi.Input[str]] = None,
                  ignore_dbs: Optional[pulumi.Input[str]] = None,
+                 ignore_roles: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  ssl: Optional[pulumi.Input[bool]] = None,
@@ -20181,6 +20286,7 @@ class RedisRedisUserConfigMigrationArgs:
         :param pulumi.Input[int] port: Port number of the server where to migrate data from. Example: `1234`.
         :param pulumi.Input[str] dbname: Database name for bootstrapping the initial connection. Example: `defaultdb`.
         :param pulumi.Input[str] ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+        :param pulumi.Input[str] ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param pulumi.Input[str] method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param pulumi.Input[str] password: Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
         :param pulumi.Input[bool] ssl: The server where to migrate data from is secured with SSL. Default: `true`.
@@ -20192,6 +20298,8 @@ class RedisRedisUserConfigMigrationArgs:
             pulumi.set(__self__, "dbname", dbname)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
+        if ignore_roles is not None:
+            pulumi.set(__self__, "ignore_roles", ignore_roles)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if password is not None:
@@ -20248,6 +20356,18 @@ class RedisRedisUserConfigMigrationArgs:
     @ignore_dbs.setter
     def ignore_dbs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ignore_dbs", value)
+
+    @property
+    @pulumi.getter(name="ignoreRoles")
+    def ignore_roles(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+        """
+        return pulumi.get(self, "ignore_roles")
+
+    @ignore_roles.setter
+    def ignore_roles(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ignore_roles", value)
 
     @property
     @pulumi.getter
@@ -20549,7 +20669,9 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
                  max_rows_per_message: Optional[pulumi.Input[int]] = None,
                  num_consumers: Optional[pulumi.Input[int]] = None,
                  poll_max_batch_size: Optional[pulumi.Input[int]] = None,
-                 skip_broken_messages: Optional[pulumi.Input[int]] = None):
+                 poll_max_timeout_ms: Optional[pulumi.Input[int]] = None,
+                 skip_broken_messages: Optional[pulumi.Input[int]] = None,
+                 thread_per_consumer: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs']]] columns: Table columns
         :param pulumi.Input[str] data_format: Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
@@ -20563,7 +20685,9 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
         :param pulumi.Input[int] max_rows_per_message: The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
         :param pulumi.Input[int] num_consumers: The number of consumers per table per replica. Default: `1`.
         :param pulumi.Input[int] poll_max_batch_size: Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+        :param pulumi.Input[int] poll_max_timeout_ms: Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
         :param pulumi.Input[int] skip_broken_messages: Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+        :param pulumi.Input[bool] thread_per_consumer: Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
         """
         pulumi.set(__self__, "columns", columns)
         pulumi.set(__self__, "data_format", data_format)
@@ -20584,8 +20708,12 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
             pulumi.set(__self__, "num_consumers", num_consumers)
         if poll_max_batch_size is not None:
             pulumi.set(__self__, "poll_max_batch_size", poll_max_batch_size)
+        if poll_max_timeout_ms is not None:
+            pulumi.set(__self__, "poll_max_timeout_ms", poll_max_timeout_ms)
         if skip_broken_messages is not None:
             pulumi.set(__self__, "skip_broken_messages", skip_broken_messages)
+        if thread_per_consumer is not None:
+            pulumi.set(__self__, "thread_per_consumer", thread_per_consumer)
 
     @property
     @pulumi.getter
@@ -20732,6 +20860,18 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
         pulumi.set(self, "poll_max_batch_size", value)
 
     @property
+    @pulumi.getter(name="pollMaxTimeoutMs")
+    def poll_max_timeout_ms(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.
+        """
+        return pulumi.get(self, "poll_max_timeout_ms")
+
+    @poll_max_timeout_ms.setter
+    def poll_max_timeout_ms(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "poll_max_timeout_ms", value)
+
+    @property
     @pulumi.getter(name="skipBrokenMessages")
     def skip_broken_messages(self) -> Optional[pulumi.Input[int]]:
         """
@@ -20742,6 +20882,18 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
     @skip_broken_messages.setter
     def skip_broken_messages(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "skip_broken_messages", value)
+
+    @property
+    @pulumi.getter(name="threadPerConsumer")
+    def thread_per_consumer(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+        """
+        return pulumi.get(self, "thread_per_consumer")
+
+    @thread_per_consumer.setter
+    def thread_per_consumer(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "thread_per_consumer", value)
 
 
 @pulumi.input_type
@@ -25083,6 +25235,7 @@ class ValkeyValkeyUserConfigMigrationArgs:
                  port: pulumi.Input[int],
                  dbname: Optional[pulumi.Input[str]] = None,
                  ignore_dbs: Optional[pulumi.Input[str]] = None,
+                 ignore_roles: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  ssl: Optional[pulumi.Input[bool]] = None,
@@ -25092,6 +25245,7 @@ class ValkeyValkeyUserConfigMigrationArgs:
         :param pulumi.Input[int] port: Port number of the server where to migrate data from. Example: `1234`.
         :param pulumi.Input[str] dbname: Database name for bootstrapping the initial connection. Example: `defaultdb`.
         :param pulumi.Input[str] ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+        :param pulumi.Input[str] ignore_roles: Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
         :param pulumi.Input[str] method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param pulumi.Input[str] password: Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
         :param pulumi.Input[bool] ssl: The server where to migrate data from is secured with SSL. Default: `true`.
@@ -25103,6 +25257,8 @@ class ValkeyValkeyUserConfigMigrationArgs:
             pulumi.set(__self__, "dbname", dbname)
         if ignore_dbs is not None:
             pulumi.set(__self__, "ignore_dbs", ignore_dbs)
+        if ignore_roles is not None:
+            pulumi.set(__self__, "ignore_roles", ignore_roles)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if password is not None:
@@ -25159,6 +25315,18 @@ class ValkeyValkeyUserConfigMigrationArgs:
     @ignore_dbs.setter
     def ignore_dbs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ignore_dbs", value)
+
+    @property
+    @pulumi.getter(name="ignoreRoles")
+    def ignore_roles(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+        """
+        return pulumi.get(self, "ignore_roles")
+
+    @ignore_roles.setter
+    def ignore_roles(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ignore_roles", value)
 
     @property
     @pulumi.getter

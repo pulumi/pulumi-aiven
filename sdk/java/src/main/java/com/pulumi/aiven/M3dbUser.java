@@ -157,11 +157,18 @@ public class M3dbUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public M3dbUser(String name, M3dbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/m3dbUser:M3dbUser", name, args == null ? M3dbUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/m3dbUser:M3dbUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private M3dbUser(String name, Output<String> id, @Nullable M3dbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/m3dbUser:M3dbUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static M3dbUserArgs makeArgs(M3dbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? M3dbUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

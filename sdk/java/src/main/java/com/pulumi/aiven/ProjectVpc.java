@@ -141,11 +141,18 @@ public class ProjectVpc extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ProjectVpc(String name, ProjectVpcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/projectVpc:ProjectVpc", name, args == null ? ProjectVpcArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/projectVpc:ProjectVpc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ProjectVpc(String name, Output<String> id, @Nullable ProjectVpcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/projectVpc:ProjectVpc", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ProjectVpcArgs makeArgs(ProjectVpcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectVpcArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

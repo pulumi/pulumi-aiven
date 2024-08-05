@@ -494,11 +494,18 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Clickhouse(String name, ClickhouseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/clickhouse:Clickhouse", name, args == null ? ClickhouseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/clickhouse:Clickhouse", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Clickhouse(String name, Output<String> id, @Nullable ClickhouseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/clickhouse:Clickhouse", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ClickhouseArgs makeArgs(ClickhouseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClickhouseArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

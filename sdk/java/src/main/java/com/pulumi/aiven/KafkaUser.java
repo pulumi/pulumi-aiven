@@ -185,11 +185,18 @@ public class KafkaUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KafkaUser(String name, KafkaUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaUser:KafkaUser", name, args == null ? KafkaUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/kafkaUser:KafkaUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KafkaUser(String name, Output<String> id, @Nullable KafkaUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/kafkaUser:KafkaUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KafkaUserArgs makeArgs(KafkaUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KafkaUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -254,11 +254,18 @@ public class KafkaConnector extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KafkaConnector(String name, KafkaConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaConnector:KafkaConnector", name, args == null ? KafkaConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/kafkaConnector:KafkaConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KafkaConnector(String name, Output<String> id, @Nullable KafkaConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/kafkaConnector:KafkaConnector", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KafkaConnectorArgs makeArgs(KafkaConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KafkaConnectorArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

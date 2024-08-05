@@ -498,11 +498,18 @@ public class Flink extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Flink(String name, FlinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/flink:Flink", name, args == null ? FlinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/flink:Flink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Flink(String name, Output<String> id, @Nullable FlinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/flink:Flink", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FlinkArgs makeArgs(FlinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FlinkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

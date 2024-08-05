@@ -502,11 +502,18 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Cassandra(String name, CassandraArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/cassandra:Cassandra", name, args == null ? CassandraArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/cassandra:Cassandra", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Cassandra(String name, Output<String> id, @Nullable CassandraState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/cassandra:Cassandra", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CassandraArgs makeArgs(CassandraArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CassandraArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

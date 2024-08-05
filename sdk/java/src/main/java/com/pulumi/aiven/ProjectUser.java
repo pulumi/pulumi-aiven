@@ -142,11 +142,18 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ProjectUser(String name, ProjectUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/projectUser:ProjectUser", name, args == null ? ProjectUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/projectUser:ProjectUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ProjectUser(String name, Output<String> id, @Nullable ProjectUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/projectUser:ProjectUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ProjectUserArgs makeArgs(ProjectUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

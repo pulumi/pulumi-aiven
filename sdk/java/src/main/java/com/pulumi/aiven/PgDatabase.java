@@ -163,11 +163,18 @@ public class PgDatabase extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PgDatabase(String name, PgDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/pgDatabase:PgDatabase", name, args == null ? PgDatabaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/pgDatabase:PgDatabase", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PgDatabase(String name, Output<String> id, @Nullable PgDatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/pgDatabase:PgDatabase", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PgDatabaseArgs makeArgs(PgDatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PgDatabaseArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

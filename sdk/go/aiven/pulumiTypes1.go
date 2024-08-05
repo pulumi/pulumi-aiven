@@ -13,6 +13,231 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetServiceIntegrationEndpointExternalGoogleCloudBigquery struct {
+	// GCP project id. Example: `snappy-photon-12345`.
+	ProjectId string `pulumi:"projectId"`
+	// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
+	ServiceAccountCredentials string `pulumi:"serviceAccountCredentials"`
+}
+
+// GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput is an input type that accepts GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs and GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput` via:
+//
+//	GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{...}
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput
+	ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs struct {
+	// GCP project id. Example: `snappy-photon-12345`.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
+	ServiceAccountCredentials pulumi.StringInput `pulumi:"serviceAccountCredentials"`
+}
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return i.ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput)
+}
+
+// GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray and GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray{ GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{...} }
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput
+	ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray []GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return o
+}
+
+// GCP project id. Example: `snappy-photon-12345`.
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudBigquery) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput) ServiceAccountCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudBigquery) string {
+		return v.ServiceAccountCredentials
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalGoogleCloudBigquery)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalGoogleCloudBigquery {
+		return vs[0].([]GetServiceIntegrationEndpointExternalGoogleCloudBigquery)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput)
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig struct {
+	// Google Cloud Logging log id. Example: `syslog`.
+	LogId string `pulumi:"logId"`
+	// GCP project id. Example: `snappy-photon-12345`.
+	ProjectId string `pulumi:"projectId"`
+	// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
+	ServiceAccountCredentials string `pulumi:"serviceAccountCredentials"`
+}
+
+// GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs and GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs struct {
+	// Google Cloud Logging log id. Example: `syslog`.
+	LogId pulumi.StringInput `pulumi:"logId"`
+	// GCP project id. Example: `snappy-photon-12345`.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
+	ServiceAccountCredentials pulumi.StringInput `pulumi:"serviceAccountCredentials"`
+}
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray and GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray{ GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray []GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return o
+}
+
+// Google Cloud Logging log id. Example: `syslog`.
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) LogId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) string { return v.LogId }).(pulumi.StringOutput)
+}
+
+// GCP project id. Example: `snappy-photon-12345`.
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput) ServiceAccountCredentials() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig) string {
+		return v.ServiceAccountCredentials
+	}).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput)
+}
+
 type GetServiceIntegrationEndpointExternalKafkaUserConfig struct {
 	// Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
 	BootstrapServers string `pulumi:"bootstrapServers"`
@@ -6547,6 +6772,8 @@ type GetValkeyValkeyUserConfigMigration struct {
 	Host string `pulumi:"host"`
 	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
 	IgnoreDbs *string `pulumi:"ignoreDbs"`
+	// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+	IgnoreRoles *string `pulumi:"ignoreRoles"`
 	// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
 	Method *string `pulumi:"method"`
 	// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
@@ -6577,6 +6804,8 @@ type GetValkeyValkeyUserConfigMigrationArgs struct {
 	Host pulumi.StringInput `pulumi:"host"`
 	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
 	IgnoreDbs pulumi.StringPtrInput `pulumi:"ignoreDbs"`
+	// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+	IgnoreRoles pulumi.StringPtrInput `pulumi:"ignoreRoles"`
 	// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
 	Method pulumi.StringPtrInput `pulumi:"method"`
 	// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
@@ -6681,6 +6910,11 @@ func (o GetValkeyValkeyUserConfigMigrationOutput) IgnoreDbs() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) *string { return v.IgnoreDbs }).(pulumi.StringPtrOutput)
 }
 
+// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+func (o GetValkeyValkeyUserConfigMigrationOutput) IgnoreRoles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) *string { return v.IgnoreRoles }).(pulumi.StringPtrOutput)
+}
+
 // Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
 func (o GetValkeyValkeyUserConfigMigrationOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfigMigration) *string { return v.Method }).(pulumi.StringPtrOutput)
@@ -6757,6 +6991,16 @@ func (o GetValkeyValkeyUserConfigMigrationPtrOutput) IgnoreDbs() pulumi.StringPt
 			return nil
 		}
 		return v.IgnoreDbs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+func (o GetValkeyValkeyUserConfigMigrationPtrOutput) IgnoreRoles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetValkeyValkeyUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreRoles
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7279,6 +7523,10 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalKafkaUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs{})
@@ -7373,6 +7621,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput{})

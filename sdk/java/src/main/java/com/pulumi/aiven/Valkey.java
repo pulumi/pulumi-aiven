@@ -499,11 +499,18 @@ public class Valkey extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Valkey(String name, ValkeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/valkey:Valkey", name, args == null ? ValkeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/valkey:Valkey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Valkey(String name, Output<String> id, @Nullable ValkeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/valkey:Valkey", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ValkeyArgs makeArgs(ValkeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ValkeyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

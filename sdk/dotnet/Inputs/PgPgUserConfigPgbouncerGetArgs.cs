@@ -49,6 +49,12 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
+        /// PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+        /// </summary>
+        [Input("maxPreparedStatements")]
+        public Input<int>? MaxPreparedStatements { get; set; }
+
+        /// <summary>
         /// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
         /// </summary>
         [Input("minPoolSize")]

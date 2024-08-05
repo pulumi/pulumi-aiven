@@ -156,11 +156,18 @@ public class AwsPrivatelink extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AwsPrivatelink(String name, AwsPrivatelinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/awsPrivatelink:AwsPrivatelink", name, args == null ? AwsPrivatelinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/awsPrivatelink:AwsPrivatelink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AwsPrivatelink(String name, Output<String> id, @Nullable AwsPrivatelinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/awsPrivatelink:AwsPrivatelink", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AwsPrivatelinkArgs makeArgs(AwsPrivatelinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AwsPrivatelinkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

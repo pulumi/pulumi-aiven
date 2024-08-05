@@ -161,11 +161,18 @@ public class OrganizationApplicationUser extends com.pulumi.resources.CustomReso
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationApplicationUser(String name, OrganizationApplicationUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationApplicationUser:OrganizationApplicationUser", name, args == null ? OrganizationApplicationUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/organizationApplicationUser:OrganizationApplicationUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationApplicationUser(String name, Output<String> id, @Nullable OrganizationApplicationUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/organizationApplicationUser:OrganizationApplicationUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationApplicationUserArgs makeArgs(OrganizationApplicationUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationApplicationUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

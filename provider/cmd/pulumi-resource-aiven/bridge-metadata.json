@@ -595,6 +595,9 @@
                                 "additional_backup_regions": {
                                     "maxItemsOne": true
                                 },
+                                "follower_fetching": {
+                                    "maxItemsOne": true
+                                },
                                 "ip_filter": {
                                     "maxItemsOne": false
                                 },
@@ -2463,6 +2466,9 @@
                         "elem": {
                             "fields": {
                                 "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "follower_fetching": {
                                     "maxItemsOne": true
                                 },
                                 "ip_filter": {

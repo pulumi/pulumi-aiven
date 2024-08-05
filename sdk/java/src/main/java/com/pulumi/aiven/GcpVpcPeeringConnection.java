@@ -171,11 +171,18 @@ public class GcpVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public GcpVpcPeeringConnection(String name, GcpVpcPeeringConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection", name, args == null ? GcpVpcPeeringConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GcpVpcPeeringConnection(String name, Output<String> id, @Nullable GcpVpcPeeringConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GcpVpcPeeringConnectionArgs makeArgs(GcpVpcPeeringConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GcpVpcPeeringConnectionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

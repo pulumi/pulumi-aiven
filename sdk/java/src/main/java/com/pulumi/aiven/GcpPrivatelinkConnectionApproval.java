@@ -169,11 +169,18 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
      * @param options A bag of options that control this resource's behavior.
      */
     public GcpPrivatelinkConnectionApproval(String name, GcpPrivatelinkConnectionApprovalArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval", name, args == null ? GcpPrivatelinkConnectionApprovalArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GcpPrivatelinkConnectionApproval(String name, Output<String> id, @Nullable GcpPrivatelinkConnectionApprovalState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GcpPrivatelinkConnectionApprovalArgs makeArgs(GcpPrivatelinkConnectionApprovalArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GcpPrivatelinkConnectionApprovalArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

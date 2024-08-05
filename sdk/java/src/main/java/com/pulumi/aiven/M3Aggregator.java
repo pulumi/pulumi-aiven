@@ -498,11 +498,18 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public M3Aggregator(String name, M3AggregatorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/m3Aggregator:M3Aggregator", name, args == null ? M3AggregatorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/m3Aggregator:M3Aggregator", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private M3Aggregator(String name, Output<String> id, @Nullable M3AggregatorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/m3Aggregator:M3Aggregator", name, state, makeResourceOptions(options, id));
+    }
+
+    private static M3AggregatorArgs makeArgs(M3AggregatorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? M3AggregatorArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

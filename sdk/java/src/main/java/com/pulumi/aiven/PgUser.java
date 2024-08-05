@@ -201,11 +201,18 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PgUser(String name, PgUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/pgUser:PgUser", name, args == null ? PgUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/pgUser:PgUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PgUser(String name, Output<String> id, @Nullable PgUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/pgUser:PgUser", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PgUserArgs makeArgs(PgUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PgUserArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

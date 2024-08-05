@@ -166,11 +166,18 @@ public class AccountTeamProject extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccountTeamProject(String name, AccountTeamProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/accountTeamProject:AccountTeamProject", name, args == null ? AccountTeamProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("aiven:index/accountTeamProject:AccountTeamProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccountTeamProject(String name, Output<String> id, @Nullable AccountTeamProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("aiven:index/accountTeamProject:AccountTeamProject", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccountTeamProjectArgs makeArgs(AccountTeamProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccountTeamProjectArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

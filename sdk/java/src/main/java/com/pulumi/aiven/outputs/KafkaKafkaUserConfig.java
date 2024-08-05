@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.KafkaKafkaUserConfigFollowerFetching;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafka;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
@@ -43,6 +44,11 @@ public final class KafkaKafkaUserConfig {
      * 
      */
     private @Nullable String customDomain;
+    /**
+     * @return Enable follower fetching
+     * 
+     */
+    private @Nullable KafkaKafkaUserConfigFollowerFetching followerFetching;
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
@@ -174,6 +180,13 @@ public final class KafkaKafkaUserConfig {
      */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
+    }
+    /**
+     * @return Enable follower fetching
+     * 
+     */
+    public Optional<KafkaKafkaUserConfigFollowerFetching> followerFetching() {
+        return Optional.ofNullable(this.followerFetching);
     }
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -335,6 +348,7 @@ public final class KafkaKafkaUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable Boolean aivenKafkaTopicMessages;
         private @Nullable String customDomain;
+        private @Nullable KafkaKafkaUserConfigFollowerFetching followerFetching;
         private @Nullable List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
@@ -362,6 +376,7 @@ public final class KafkaKafkaUserConfig {
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.aivenKafkaTopicMessages = defaults.aivenKafkaTopicMessages;
     	      this.customDomain = defaults.customDomain;
+    	      this.followerFetching = defaults.followerFetching;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
@@ -401,6 +416,12 @@ public final class KafkaKafkaUserConfig {
         public Builder customDomain(@Nullable String customDomain) {
 
             this.customDomain = customDomain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder followerFetching(@Nullable KafkaKafkaUserConfigFollowerFetching followerFetching) {
+
+            this.followerFetching = followerFetching;
             return this;
         }
         @CustomType.Setter
@@ -546,6 +567,7 @@ public final class KafkaKafkaUserConfig {
             _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.aivenKafkaTopicMessages = aivenKafkaTopicMessages;
             _resultValue.customDomain = customDomain;
+            _resultValue.followerFetching = followerFetching;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;

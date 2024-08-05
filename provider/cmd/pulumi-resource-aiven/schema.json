@@ -843,6 +843,10 @@
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
                 },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
+                },
                 "method": {
                     "type": "string",
                     "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
@@ -2644,6 +2648,10 @@
                     "type": "string",
                     "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
                 },
+                "followerFetching": {
+                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfigFollowerFetching:KafkaKafkaUserConfigFollowerFetching",
+                    "description": "Enable follower fetching\n"
+                },
                 "ipFilterObjects": {
                     "type": "array",
                     "items": {
@@ -2743,6 +2751,15 @@
             },
             "type": "object"
         },
+        "aiven:index/KafkaKafkaUserConfigFollowerFetching:KafkaKafkaUserConfigFollowerFetching": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable the follower fetching functionality.\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/KafkaKafkaUserConfigIpFilterObject:KafkaKafkaUserConfigIpFilterObject": {
             "properties": {
                 "description": {
@@ -2763,187 +2780,187 @@
             "properties": {
                 "autoCreateTopicsEnable": {
                     "type": "boolean",
-                    "description": "Enable auto creation of topics.\n"
+                    "description": "Enable auto-creation of topics. (Default: true).\n"
                 },
                 "compressionType": {
                     "type": "string",
-                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).\n"
                 },
                 "connectionsMaxIdleMs": {
                     "type": "integer",
-                    "description": "Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.\n"
+                    "description": "Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.\n"
                 },
                 "defaultReplicationFactor": {
                     "type": "integer",
-                    "description": "Replication factor for autocreated topics.\n"
+                    "description": "Replication factor for auto-created topics (Default: 3).\n"
                 },
                 "groupInitialRebalanceDelayMs": {
                     "type": "integer",
-                    "description": "The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.\n"
+                    "description": "The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.\n"
                 },
                 "groupMaxSessionTimeoutMs": {
                     "type": "integer",
-                    "description": "The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.\n"
+                    "description": "The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.\n"
                 },
                 "groupMinSessionTimeoutMs": {
                     "type": "integer",
-                    "description": "The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.\n"
+                    "description": "The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.\n"
                 },
                 "logCleanerDeleteRetentionMs": {
                     "type": "integer",
-                    "description": "How long are delete records retained? Example: `86400000`.\n"
+                    "description": "How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.\n"
                 },
                 "logCleanerMaxCompactionLagMs": {
                     "type": "integer",
-                    "description": "The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.\n"
+                    "description": "The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).\n"
                 },
                 "logCleanerMinCleanableRatio": {
                     "type": "number",
-                    "description": "Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.\n"
+                    "description": "Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.\n"
                 },
                 "logCleanerMinCompactionLagMs": {
                     "type": "integer",
-                    "description": "The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.\n"
+                    "description": "The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).\n"
                 },
                 "logCleanupPolicy": {
                     "type": "string",
-                    "description": "Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.\n"
+                    "description": "Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).\n"
                 },
                 "logFlushIntervalMessages": {
                     "type": "integer",
-                    "description": "The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.\n"
+                    "description": "The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.\n"
                 },
                 "logFlushIntervalMs": {
                     "type": "integer",
-                    "description": "The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.\n"
+                    "description": "The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).\n"
                 },
                 "logIndexIntervalBytes": {
                     "type": "integer",
-                    "description": "The interval with which Kafka adds an entry to the offset index. Example: `4096`.\n"
+                    "description": "The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.\n"
                 },
                 "logIndexSizeMaxBytes": {
                     "type": "integer",
-                    "description": "The maximum size in bytes of the offset index. Example: `10485760`.\n"
+                    "description": "The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.\n"
                 },
                 "logLocalRetentionBytes": {
                     "type": "integer",
-                    "description": "The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.\n"
+                    "description": "The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value. (Default: -2).\n"
                 },
                 "logLocalRetentionMs": {
                     "type": "integer",
-                    "description": "The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.\n"
+                    "description": "The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value. (Default: -2).\n"
                 },
                 "logMessageDownconversionEnable": {
                     "type": "boolean",
-                    "description": "This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.\n"
+                    "description": "This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).\n"
                 },
                 "logMessageTimestampDifferenceMaxMs": {
                     "type": "integer",
-                    "description": "The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.\n"
+                    "description": "The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).\n"
                 },
                 "logMessageTimestampType": {
                     "type": "string",
-                    "description": "Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.\n"
+                    "description": "Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).\n"
                 },
                 "logPreallocate": {
                     "type": "boolean",
-                    "description": "Should pre allocate file when create new segment?\n"
+                    "description": "Should pre allocate file when create new segment? (Default: false).\n"
                 },
                 "logRetentionBytes": {
                     "type": "integer",
-                    "description": "The maximum size of the log before deleting messages.\n"
+                    "description": "The maximum size of the log before deleting messages (Default: -1).\n"
                 },
                 "logRetentionHours": {
                     "type": "integer",
-                    "description": "The number of hours to keep a log file before deleting it.\n"
+                    "description": "The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).\n"
                 },
                 "logRetentionMs": {
                     "type": "integer",
-                    "description": "The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.\n"
+                    "description": "The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied. (Default: null, log.retention.hours applies).\n"
                 },
                 "logRollJitterMs": {
                     "type": "integer",
-                    "description": "The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.\n"
+                    "description": "The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used (Default: null).\n"
                 },
                 "logRollMs": {
                     "type": "integer",
-                    "description": "The maximum time before a new log segment is rolled out (in milliseconds).\n"
+                    "description": "The maximum time before a new log segment is rolled out (in milliseconds). (Default: null, log.roll.hours applies (Default: 168, 7 days)).\n"
                 },
                 "logSegmentBytes": {
                     "type": "integer",
-                    "description": "The maximum size of a single log file.\n"
+                    "description": "The maximum size of a single log file (Default: 1073741824 bytes (1 gibibyte)).\n"
                 },
                 "logSegmentDeleteDelayMs": {
                     "type": "integer",
-                    "description": "The amount of time to wait before deleting a file from the filesystem. Example: `60000`.\n"
+                    "description": "The amount of time to wait before deleting a file from the filesystem (Default: 60000 ms (1 minute)). Example: `60000`.\n"
                 },
                 "maxConnectionsPerIp": {
                     "type": "integer",
-                    "description": "The maximum number of connections allowed from each ip address (defaults to 2147483647).\n"
+                    "description": "The maximum number of connections allowed from each ip address (Default: 2147483647).\n"
                 },
                 "maxIncrementalFetchSessionCacheSlots": {
                     "type": "integer",
-                    "description": "The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.\n"
+                    "description": "The maximum number of incremental fetch sessions that the broker will maintain. (Default: 1000). Example: `1000`.\n"
                 },
                 "messageMaxBytes": {
                     "type": "integer",
-                    "description": "The maximum size of message that the server can receive. Example: `1048588`.\n"
+                    "description": "The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.\n"
                 },
                 "minInsyncReplicas": {
                     "type": "integer",
-                    "description": "When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.\n"
+                    "description": "When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.\n"
                 },
                 "numPartitions": {
                     "type": "integer",
-                    "description": "Number of partitions for autocreated topics.\n"
+                    "description": "Number of partitions for auto-created topics (Default: 1).\n"
                 },
                 "offsetsRetentionMinutes": {
                     "type": "integer",
-                    "description": "Log retention window in minutes for offsets topic. Example: `10080`.\n"
+                    "description": "Log retention window in minutes for offsets topic (Default: 10080 minutes (7 days)). Example: `10080`.\n"
                 },
                 "producerPurgatoryPurgeIntervalRequests": {
                     "type": "integer",
-                    "description": "The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).\n"
+                    "description": "The purge interval (in number of requests) of the producer request purgatory (Default: 1000).\n"
                 },
                 "replicaFetchMaxBytes": {
                     "type": "integer",
-                    "description": "The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.\n"
+                    "description": "The number of bytes of messages to attempt to fetch for each partition . This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. (Default: 1048576 bytes (1 mebibytes)).\n"
                 },
                 "replicaFetchResponseMaxBytes": {
                     "type": "integer",
-                    "description": "Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.\n"
+                    "description": "Maximum bytes expected for the entire fetch response. Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum. (Default: 10485760 bytes (10 mebibytes)).\n"
                 },
                 "saslOauthbearerExpectedAudience": {
                     "type": "string",
-                    "description": "The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.\n"
+                    "description": "The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences. (Default: null).\n"
                 },
                 "saslOauthbearerExpectedIssuer": {
                     "type": "string",
-                    "description": "Optional setting for the broker to use to verify that the JWT was created by the expected issuer.\n"
+                    "description": "Optional setting for the broker to use to verify that the JWT was created by the expected issuer.(Default: null).\n"
                 },
                 "saslOauthbearerJwksEndpointUrl": {
                     "type": "string",
-                    "description": "OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.\n"
+                    "description": "OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. (Default: null).\n"
                 },
                 "saslOauthbearerSubClaimName": {
                     "type": "string",
-                    "description": "Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.\n"
+                    "description": "Name of the scope from which to extract the subject claim from the JWT.(Default: sub).\n"
                 },
                 "socketRequestMaxBytes": {
                     "type": "integer",
-                    "description": "The maximum number of bytes in a socket request (defaults to 104857600).\n"
+                    "description": "The maximum number of bytes in a socket request (Default: 104857600 bytes).\n"
                 },
                 "transactionPartitionVerificationEnable": {
                     "type": "boolean",
-                    "description": "Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.\n"
+                    "description": "Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).\n"
                 },
                 "transactionRemoveExpiredTransactionCleanupIntervalMs": {
                     "type": "integer",
-                    "description": "The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).\n"
+                    "description": "The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.\n"
                 },
                 "transactionStateLogSegmentBytes": {
                     "type": "integer",
-                    "description": "The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).\n"
+                    "description": "The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.\n"
                 }
             },
             "type": "object"
@@ -4600,6 +4617,10 @@
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
                 },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
+                },
                 "method": {
                     "type": "string",
                     "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
@@ -6013,6 +6034,10 @@
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
                 },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
+                },
                 "method": {
                     "type": "string",
                     "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
@@ -6374,6 +6399,10 @@
                         "type": "string"
                     },
                     "description": "List of parameters to ignore when given in startup packet.\n"
+                },
+                "maxPreparedStatements": {
+                    "type": "integer",
+                    "description": "PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.\n"
                 },
                 "minPoolSize": {
                     "type": "integer",
@@ -6762,6 +6791,10 @@
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
                 },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
+                },
                 "method": {
                     "type": "string",
                     "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
@@ -6936,9 +6969,17 @@
                     "type": "integer",
                     "description": "Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.\n"
                 },
+                "pollMaxTimeoutMs": {
+                    "type": "integer",
+                    "description": "Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream*flush*interval_ms server setting by default (500ms). Default: `0`.\n"
+                },
                 "skipBrokenMessages": {
                     "type": "integer",
                     "description": "Skip at least this number of broken messages from Kafka topic per block. Default: `0`.\n"
+                },
+                "threadPerConsumer": {
+                    "type": "boolean",
+                    "description": "Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.\n"
                 },
                 "topics": {
                     "type": "array",
@@ -8484,6 +8525,10 @@
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
                 },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
+                },
                 "method": {
                     "type": "string",
                     "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
@@ -9607,6 +9652,10 @@
                 "ignoreDbs": {
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
+                },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
                 },
                 "method": {
                     "type": "string",
@@ -11570,6 +11619,10 @@
                     "type": "string",
                     "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
                 },
+                "followerFetching": {
+                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigFollowerFetching:getKafkaKafkaUserConfigFollowerFetching",
+                    "description": "Enable follower fetching\n"
+                },
                 "ipFilterObjects": {
                     "type": "array",
                     "items": {
@@ -11669,6 +11722,15 @@
             },
             "type": "object"
         },
+        "aiven:index/getKafkaKafkaUserConfigFollowerFetching:getKafkaKafkaUserConfigFollowerFetching": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable the follower fetching functionality.\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getKafkaKafkaUserConfigIpFilterObject:getKafkaKafkaUserConfigIpFilterObject": {
             "properties": {
                 "description": {
@@ -11694,187 +11756,187 @@
             "properties": {
                 "autoCreateTopicsEnable": {
                     "type": "boolean",
-                    "description": "Enable auto creation of topics.\n"
+                    "description": "Enable auto-creation of topics. (Default: true).\n"
                 },
                 "compressionType": {
                     "type": "string",
-                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).\n"
                 },
                 "connectionsMaxIdleMs": {
                     "type": "integer",
-                    "description": "Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.\n"
+                    "description": "Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.\n"
                 },
                 "defaultReplicationFactor": {
                     "type": "integer",
-                    "description": "Replication factor for autocreated topics.\n"
+                    "description": "Replication factor for auto-created topics (Default: 3).\n"
                 },
                 "groupInitialRebalanceDelayMs": {
                     "type": "integer",
-                    "description": "The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.\n"
+                    "description": "The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.\n"
                 },
                 "groupMaxSessionTimeoutMs": {
                     "type": "integer",
-                    "description": "The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.\n"
+                    "description": "The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes). Example: `1800000`.\n"
                 },
                 "groupMinSessionTimeoutMs": {
                     "type": "integer",
-                    "description": "The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.\n"
+                    "description": "The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.\n"
                 },
                 "logCleanerDeleteRetentionMs": {
                     "type": "integer",
-                    "description": "How long are delete records retained? Example: `86400000`.\n"
+                    "description": "How long are delete records retained? (Default: 86400000 (1 day)). Example: `86400000`.\n"
                 },
                 "logCleanerMaxCompactionLagMs": {
                     "type": "integer",
-                    "description": "The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.\n"
+                    "description": "The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).\n"
                 },
                 "logCleanerMinCleanableRatio": {
                     "type": "number",
-                    "description": "Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.\n"
+                    "description": "Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.\n"
                 },
                 "logCleanerMinCompactionLagMs": {
                     "type": "integer",
-                    "description": "The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.\n"
+                    "description": "The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).\n"
                 },
                 "logCleanupPolicy": {
                     "type": "string",
-                    "description": "Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.\n"
+                    "description": "Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).\n"
                 },
                 "logFlushIntervalMessages": {
                     "type": "integer",
-                    "description": "The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.\n"
+                    "description": "The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.\n"
                 },
                 "logFlushIntervalMs": {
                     "type": "integer",
-                    "description": "The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.\n"
+                    "description": "The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).\n"
                 },
                 "logIndexIntervalBytes": {
                     "type": "integer",
-                    "description": "The interval with which Kafka adds an entry to the offset index. Example: `4096`.\n"
+                    "description": "The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.\n"
                 },
                 "logIndexSizeMaxBytes": {
                     "type": "integer",
-                    "description": "The maximum size in bytes of the offset index. Example: `10485760`.\n"
+                    "description": "The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.\n"
                 },
                 "logLocalRetentionBytes": {
                     "type": "integer",
-                    "description": "The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.\n"
+                    "description": "The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value. (Default: -2).\n"
                 },
                 "logLocalRetentionMs": {
                     "type": "integer",
-                    "description": "The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.\n"
+                    "description": "The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value. (Default: -2).\n"
                 },
                 "logMessageDownconversionEnable": {
                     "type": "boolean",
-                    "description": "This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.\n"
+                    "description": "This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. (Default: true).\n"
                 },
                 "logMessageTimestampDifferenceMaxMs": {
                     "type": "integer",
-                    "description": "The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.\n"
+                    "description": "The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message (Default: 9223372036854775807 (Long.MAX_VALUE)).\n"
                 },
                 "logMessageTimestampType": {
                     "type": "string",
-                    "description": "Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.\n"
+                    "description": "Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time. (Default: CreateTime).\n"
                 },
                 "logPreallocate": {
                     "type": "boolean",
-                    "description": "Should pre allocate file when create new segment?\n"
+                    "description": "Should pre allocate file when create new segment? (Default: false).\n"
                 },
                 "logRetentionBytes": {
                     "type": "integer",
-                    "description": "The maximum size of the log before deleting messages.\n"
+                    "description": "The maximum size of the log before deleting messages (Default: -1).\n"
                 },
                 "logRetentionHours": {
                     "type": "integer",
-                    "description": "The number of hours to keep a log file before deleting it.\n"
+                    "description": "The number of hours to keep a log file before deleting it (Default: 168 hours (1 week)).\n"
                 },
                 "logRetentionMs": {
                     "type": "integer",
-                    "description": "The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.\n"
+                    "description": "The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied. (Default: null, log.retention.hours applies).\n"
                 },
                 "logRollJitterMs": {
                     "type": "integer",
-                    "description": "The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.\n"
+                    "description": "The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used (Default: null).\n"
                 },
                 "logRollMs": {
                     "type": "integer",
-                    "description": "The maximum time before a new log segment is rolled out (in milliseconds).\n"
+                    "description": "The maximum time before a new log segment is rolled out (in milliseconds). (Default: null, log.roll.hours applies (Default: 168, 7 days)).\n"
                 },
                 "logSegmentBytes": {
                     "type": "integer",
-                    "description": "The maximum size of a single log file.\n"
+                    "description": "The maximum size of a single log file (Default: 1073741824 bytes (1 gibibyte)).\n"
                 },
                 "logSegmentDeleteDelayMs": {
                     "type": "integer",
-                    "description": "The amount of time to wait before deleting a file from the filesystem. Example: `60000`.\n"
+                    "description": "The amount of time to wait before deleting a file from the filesystem (Default: 60000 ms (1 minute)). Example: `60000`.\n"
                 },
                 "maxConnectionsPerIp": {
                     "type": "integer",
-                    "description": "The maximum number of connections allowed from each ip address (defaults to 2147483647).\n"
+                    "description": "The maximum number of connections allowed from each ip address (Default: 2147483647).\n"
                 },
                 "maxIncrementalFetchSessionCacheSlots": {
                     "type": "integer",
-                    "description": "The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.\n"
+                    "description": "The maximum number of incremental fetch sessions that the broker will maintain. (Default: 1000). Example: `1000`.\n"
                 },
                 "messageMaxBytes": {
                     "type": "integer",
-                    "description": "The maximum size of message that the server can receive. Example: `1048588`.\n"
+                    "description": "The maximum size of message that the server can receive. (Default: 1048588 bytes (1 mebibyte + 12 bytes)). Example: `1048588`.\n"
                 },
                 "minInsyncReplicas": {
                     "type": "integer",
-                    "description": "When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.\n"
+                    "description": "When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. (Default: 1). Example: `1`.\n"
                 },
                 "numPartitions": {
                     "type": "integer",
-                    "description": "Number of partitions for autocreated topics.\n"
+                    "description": "Number of partitions for auto-created topics (Default: 1).\n"
                 },
                 "offsetsRetentionMinutes": {
                     "type": "integer",
-                    "description": "Log retention window in minutes for offsets topic. Example: `10080`.\n"
+                    "description": "Log retention window in minutes for offsets topic (Default: 10080 minutes (7 days)). Example: `10080`.\n"
                 },
                 "producerPurgatoryPurgeIntervalRequests": {
                     "type": "integer",
-                    "description": "The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).\n"
+                    "description": "The purge interval (in number of requests) of the producer request purgatory (Default: 1000).\n"
                 },
                 "replicaFetchMaxBytes": {
                     "type": "integer",
-                    "description": "The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.\n"
+                    "description": "The number of bytes of messages to attempt to fetch for each partition . This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. (Default: 1048576 bytes (1 mebibytes)).\n"
                 },
                 "replicaFetchResponseMaxBytes": {
                     "type": "integer",
-                    "description": "Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.\n"
+                    "description": "Maximum bytes expected for the entire fetch response. Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum. (Default: 10485760 bytes (10 mebibytes)).\n"
                 },
                 "saslOauthbearerExpectedAudience": {
                     "type": "string",
-                    "description": "The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.\n"
+                    "description": "The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences. (Default: null).\n"
                 },
                 "saslOauthbearerExpectedIssuer": {
                     "type": "string",
-                    "description": "Optional setting for the broker to use to verify that the JWT was created by the expected issuer.\n"
+                    "description": "Optional setting for the broker to use to verify that the JWT was created by the expected issuer.(Default: null).\n"
                 },
                 "saslOauthbearerJwksEndpointUrl": {
                     "type": "string",
-                    "description": "OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.\n"
+                    "description": "OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. (Default: null).\n"
                 },
                 "saslOauthbearerSubClaimName": {
                     "type": "string",
-                    "description": "Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.\n"
+                    "description": "Name of the scope from which to extract the subject claim from the JWT.(Default: sub).\n"
                 },
                 "socketRequestMaxBytes": {
                     "type": "integer",
-                    "description": "The maximum number of bytes in a socket request (defaults to 104857600).\n"
+                    "description": "The maximum number of bytes in a socket request (Default: 104857600 bytes).\n"
                 },
                 "transactionPartitionVerificationEnable": {
                     "type": "boolean",
-                    "description": "Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.\n"
+                    "description": "Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).\n"
                 },
                 "transactionRemoveExpiredTransactionCleanupIntervalMs": {
                     "type": "integer",
-                    "description": "The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).\n"
+                    "description": "The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.\n"
                 },
                 "transactionStateLogSegmentBytes": {
                     "type": "integer",
-                    "description": "The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).\n"
+                    "description": "The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.\n"
                 }
             },
             "type": "object"
@@ -13657,6 +13719,10 @@
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
                 },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
+                },
                 "method": {
                     "type": "string",
                     "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
@@ -15064,6 +15130,10 @@
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
                 },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
+                },
                 "method": {
                     "type": "string",
                     "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
@@ -15430,6 +15500,10 @@
                         "type": "string"
                     },
                     "description": "List of parameters to ignore when given in startup packet.\n"
+                },
+                "maxPreparedStatements": {
+                    "type": "integer",
+                    "description": "PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.\n"
                 },
                 "minPoolSize": {
                     "type": "integer",
@@ -15843,6 +15917,10 @@
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
                 },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
+                },
                 "method": {
                     "type": "string",
                     "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
@@ -16037,9 +16115,17 @@
                     "type": "integer",
                     "description": "Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.\n"
                 },
+                "pollMaxTimeoutMs": {
+                    "type": "integer",
+                    "description": "Timeout in milliseconds for a single poll from Kafka. Takes the value of the stream_flush_interval_ms server setting by default (500ms). Default: `0`.\n"
+                },
                 "skipBrokenMessages": {
                     "type": "integer",
                     "description": "Skip at least this number of broken messages from Kafka topic per block. Default: `0`.\n"
+                },
+                "threadPerConsumer": {
+                    "type": "boolean",
+                    "description": "Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.\n"
                 },
                 "topics": {
                     "type": "array",
@@ -17721,6 +17807,10 @@
                 "ignoreDbs": {
                     "type": "string",
                     "description": "Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.\n"
+                },
+                "ignoreRoles": {
+                    "type": "string",
+                    "description": "Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.\n"
                 },
                 "method": {
                     "type": "string",

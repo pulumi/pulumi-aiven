@@ -64,6 +64,21 @@ public final class RedisRedisUserConfigMigrationArgs extends com.pulumi.resource
     }
 
     /**
+     * Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+     * 
+     */
+    @Import(name="ignoreRoles")
+    private @Nullable Output<String> ignoreRoles;
+
+    /**
+     * @return Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+     * 
+     */
+    public Optional<Output<String>> ignoreRoles() {
+        return Optional.ofNullable(this.ignoreRoles);
+    }
+
+    /**
      * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
@@ -144,6 +159,7 @@ public final class RedisRedisUserConfigMigrationArgs extends com.pulumi.resource
         this.dbname = $.dbname;
         this.host = $.host;
         this.ignoreDbs = $.ignoreDbs;
+        this.ignoreRoles = $.ignoreRoles;
         this.method = $.method;
         this.password = $.password;
         this.port = $.port;
@@ -230,6 +246,27 @@ public final class RedisRedisUserConfigMigrationArgs extends com.pulumi.resource
          */
         public Builder ignoreDbs(String ignoreDbs) {
             return ignoreDbs(Output.of(ignoreDbs));
+        }
+
+        /**
+         * @param ignoreRoles Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreRoles(@Nullable Output<String> ignoreRoles) {
+            $.ignoreRoles = ignoreRoles;
+            return this;
+        }
+
+        /**
+         * @param ignoreRoles Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreRoles(String ignoreRoles) {
+            return ignoreRoles(Output.of(ignoreRoles));
         }
 
         /**

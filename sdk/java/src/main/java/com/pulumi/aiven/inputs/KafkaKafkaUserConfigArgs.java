@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigFollowerFetchingArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs;
@@ -79,6 +80,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> customDomain() {
         return Optional.ofNullable(this.customDomain);
+    }
+
+    /**
+     * Enable follower fetching
+     * 
+     */
+    @Import(name="followerFetching")
+    private @Nullable Output<KafkaKafkaUserConfigFollowerFetchingArgs> followerFetching;
+
+    /**
+     * @return Enable follower fetching
+     * 
+     */
+    public Optional<Output<KafkaKafkaUserConfigFollowerFetchingArgs>> followerFetching() {
+        return Optional.ofNullable(this.followerFetching);
     }
 
     /**
@@ -402,6 +418,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.aivenKafkaTopicMessages = $.aivenKafkaTopicMessages;
         this.customDomain = $.customDomain;
+        this.followerFetching = $.followerFetching;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
@@ -512,6 +529,27 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder customDomain(String customDomain) {
             return customDomain(Output.of(customDomain));
+        }
+
+        /**
+         * @param followerFetching Enable follower fetching
+         * 
+         * @return builder
+         * 
+         */
+        public Builder followerFetching(@Nullable Output<KafkaKafkaUserConfigFollowerFetchingArgs> followerFetching) {
+            $.followerFetching = followerFetching;
+            return this;
+        }
+
+        /**
+         * @param followerFetching Enable follower fetching
+         * 
+         * @return builder
+         * 
+         */
+        public Builder followerFetching(KafkaKafkaUserConfigFollowerFetchingArgs followerFetching) {
+            return followerFetching(Output.of(followerFetching));
         }
 
         /**
