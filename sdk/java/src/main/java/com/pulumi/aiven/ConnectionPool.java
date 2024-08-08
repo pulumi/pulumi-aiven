@@ -186,7 +186,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConnectionPool(String name) {
+    public ConnectionPool(java.lang.String name) {
         this(name, ConnectionPoolArgs.Empty);
     }
     /**
@@ -194,7 +194,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConnectionPool(String name, ConnectionPoolArgs args) {
+    public ConnectionPool(java.lang.String name, ConnectionPoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -203,12 +203,12 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConnectionPool(String name, ConnectionPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/connectionPool:ConnectionPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ConnectionPool(java.lang.String name, ConnectionPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/connectionPool:ConnectionPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConnectionPool(String name, Output<String> id, @Nullable ConnectionPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/connectionPool:ConnectionPool", name, state, makeResourceOptions(options, id));
+    private ConnectionPool(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/connectionPool:ConnectionPool", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConnectionPoolArgs makeArgs(ConnectionPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -218,7 +218,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
         return args == null ? ConnectionPoolArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -237,7 +237,7 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConnectionPool get(String name, Output<String> id, @Nullable ConnectionPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConnectionPool get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectionPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConnectionPool(name, id, state, options);
     }
 }

@@ -484,7 +484,7 @@ public class M3Db extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public M3Db(String name) {
+    public M3Db(java.lang.String name) {
         this(name, M3DbArgs.Empty);
     }
     /**
@@ -492,7 +492,7 @@ public class M3Db extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public M3Db(String name, M3DbArgs args) {
+    public M3Db(java.lang.String name, M3DbArgs args) {
         this(name, args, null);
     }
     /**
@@ -501,12 +501,12 @@ public class M3Db extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public M3Db(String name, M3DbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/m3Db:M3Db", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public M3Db(java.lang.String name, M3DbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/m3Db:M3Db", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private M3Db(String name, Output<String> id, @Nullable M3DbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/m3Db:M3Db", name, state, makeResourceOptions(options, id));
+    private M3Db(java.lang.String name, Output<java.lang.String> id, @Nullable M3DbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/m3Db:M3Db", name, state, makeResourceOptions(options, id), false);
     }
 
     private static M3DbArgs makeArgs(M3DbArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -516,7 +516,7 @@ public class M3Db extends com.pulumi.resources.CustomResource {
         return args == null ? M3DbArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -537,7 +537,7 @@ public class M3Db extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static M3Db get(String name, Output<String> id, @Nullable M3DbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static M3Db get(java.lang.String name, Output<java.lang.String> id, @Nullable M3DbState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new M3Db(name, id, state, options);
     }
 }

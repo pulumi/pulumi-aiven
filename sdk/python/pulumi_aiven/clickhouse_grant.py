@@ -224,10 +224,10 @@ class ClickhouseGrant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]]] = None,
+                 privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 role_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]]] = None,
+                 role_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -255,15 +255,15 @@ class ClickhouseGrant(pulumi.CustomResource):
             service_name=example_clickhouse["serviceName"],
             role=example_role.role,
             privilege_grants=[
-                aiven.ClickhouseGrantPrivilegeGrantArgs(
-                    privilege="INSERT",
-                    database=example_db["name"],
-                    table="example-table",
-                ),
-                aiven.ClickhouseGrantPrivilegeGrantArgs(
-                    privilege="SELECT",
-                    database=example_db["name"],
-                ),
+                {
+                    "privilege": "INSERT",
+                    "database": example_db["name"],
+                    "table": "example-table",
+                },
+                {
+                    "privilege": "SELECT",
+                    "database": example_db["name"],
+                },
             ])
         # Grant the role to the user.
         example_user = aiven.ClickhouseUser("example_user",
@@ -274,9 +274,9 @@ class ClickhouseGrant(pulumi.CustomResource):
             project=example_project["project"],
             service_name=example_clickhouse["serviceName"],
             user=example_user.username,
-            role_grants=[aiven.ClickhouseGrantRoleGrantArgs(
-                role=example_role.role,
-            )])
+            role_grants=[{
+                "role": example_role.role,
+            }])
         ```
 
         ## Import
@@ -287,10 +287,10 @@ class ClickhouseGrant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]] role_grants: Grant roles. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]] role_grants: Grant roles. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -324,15 +324,15 @@ class ClickhouseGrant(pulumi.CustomResource):
             service_name=example_clickhouse["serviceName"],
             role=example_role.role,
             privilege_grants=[
-                aiven.ClickhouseGrantPrivilegeGrantArgs(
-                    privilege="INSERT",
-                    database=example_db["name"],
-                    table="example-table",
-                ),
-                aiven.ClickhouseGrantPrivilegeGrantArgs(
-                    privilege="SELECT",
-                    database=example_db["name"],
-                ),
+                {
+                    "privilege": "INSERT",
+                    "database": example_db["name"],
+                    "table": "example-table",
+                },
+                {
+                    "privilege": "SELECT",
+                    "database": example_db["name"],
+                },
             ])
         # Grant the role to the user.
         example_user = aiven.ClickhouseUser("example_user",
@@ -343,9 +343,9 @@ class ClickhouseGrant(pulumi.CustomResource):
             project=example_project["project"],
             service_name=example_clickhouse["serviceName"],
             user=example_user.username,
-            role_grants=[aiven.ClickhouseGrantRoleGrantArgs(
-                role=example_role.role,
-            )])
+            role_grants=[{
+                "role": example_role.role,
+            }])
         ```
 
         ## Import
@@ -369,10 +369,10 @@ class ClickhouseGrant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]]] = None,
+                 privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 role_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]]] = None,
+                 role_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -404,10 +404,10 @@ class ClickhouseGrant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]]] = None,
+            privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
-            role_grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]]] = None,
+            role_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'ClickhouseGrant':
         """
@@ -417,10 +417,10 @@ class ClickhouseGrant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]] privilege_grants: Grant privileges. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]] role_grants: Grant roles. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]] role_grants: Grant roles. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
