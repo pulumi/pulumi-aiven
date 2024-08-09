@@ -140,7 +140,7 @@ public class OrganizationGroupProject extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationGroupProject(String name) {
+    public OrganizationGroupProject(java.lang.String name) {
         this(name, OrganizationGroupProjectArgs.Empty);
     }
     /**
@@ -148,7 +148,7 @@ public class OrganizationGroupProject extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationGroupProject(String name, OrganizationGroupProjectArgs args) {
+    public OrganizationGroupProject(java.lang.String name, OrganizationGroupProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -157,12 +157,12 @@ public class OrganizationGroupProject extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationGroupProject(String name, OrganizationGroupProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationGroupProject:OrganizationGroupProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OrganizationGroupProject(java.lang.String name, OrganizationGroupProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationGroupProject:OrganizationGroupProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationGroupProject(String name, Output<String> id, @Nullable OrganizationGroupProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationGroupProject:OrganizationGroupProject", name, state, makeResourceOptions(options, id));
+    private OrganizationGroupProject(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationGroupProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationGroupProject:OrganizationGroupProject", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OrganizationGroupProjectArgs makeArgs(OrganizationGroupProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -172,7 +172,7 @@ public class OrganizationGroupProject extends com.pulumi.resources.CustomResourc
         return args == null ? OrganizationGroupProjectArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -188,7 +188,7 @@ public class OrganizationGroupProject extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationGroupProject get(String name, Output<String> id, @Nullable OrganizationGroupProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationGroupProject get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationGroupProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationGroupProject(name, id, state, options);
     }
 }

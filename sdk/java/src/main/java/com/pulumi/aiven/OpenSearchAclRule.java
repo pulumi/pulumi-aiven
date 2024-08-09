@@ -105,7 +105,7 @@ public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OpenSearchAclRule(String name) {
+    public OpenSearchAclRule(java.lang.String name) {
         this(name, OpenSearchAclRuleArgs.Empty);
     }
     /**
@@ -113,7 +113,7 @@ public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OpenSearchAclRule(String name, OpenSearchAclRuleArgs args) {
+    public OpenSearchAclRule(java.lang.String name, OpenSearchAclRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -122,12 +122,12 @@ public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OpenSearchAclRule(String name, OpenSearchAclRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/openSearchAclRule:OpenSearchAclRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OpenSearchAclRule(java.lang.String name, OpenSearchAclRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/openSearchAclRule:OpenSearchAclRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OpenSearchAclRule(String name, Output<String> id, @Nullable OpenSearchAclRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/openSearchAclRule:OpenSearchAclRule", name, state, makeResourceOptions(options, id));
+    private OpenSearchAclRule(java.lang.String name, Output<java.lang.String> id, @Nullable OpenSearchAclRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/openSearchAclRule:OpenSearchAclRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OpenSearchAclRuleArgs makeArgs(OpenSearchAclRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -137,7 +137,7 @@ public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
         return args == null ? OpenSearchAclRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -153,7 +153,7 @@ public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OpenSearchAclRule get(String name, Output<String> id, @Nullable OpenSearchAclRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OpenSearchAclRule get(java.lang.String name, Output<java.lang.String> id, @Nullable OpenSearchAclRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OpenSearchAclRule(name, id, state, options);
     }
 }

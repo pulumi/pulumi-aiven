@@ -176,7 +176,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AwsVpcPeeringConnection(String name) {
+    public AwsVpcPeeringConnection(java.lang.String name) {
         this(name, AwsVpcPeeringConnectionArgs.Empty);
     }
     /**
@@ -184,7 +184,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AwsVpcPeeringConnection(String name, AwsVpcPeeringConnectionArgs args) {
+    public AwsVpcPeeringConnection(java.lang.String name, AwsVpcPeeringConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -193,12 +193,12 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AwsVpcPeeringConnection(String name, AwsVpcPeeringConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AwsVpcPeeringConnection(java.lang.String name, AwsVpcPeeringConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AwsVpcPeeringConnection(String name, Output<String> id, @Nullable AwsVpcPeeringConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection", name, state, makeResourceOptions(options, id));
+    private AwsVpcPeeringConnection(java.lang.String name, Output<java.lang.String> id, @Nullable AwsVpcPeeringConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AwsVpcPeeringConnectionArgs makeArgs(AwsVpcPeeringConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -208,7 +208,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
         return args == null ? AwsVpcPeeringConnectionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -224,7 +224,7 @@ public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AwsVpcPeeringConnection get(String name, Output<String> id, @Nullable AwsVpcPeeringConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AwsVpcPeeringConnection get(java.lang.String name, Output<java.lang.String> id, @Nullable AwsVpcPeeringConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AwsVpcPeeringConnection(name, id, state, options);
     }
 }

@@ -125,7 +125,7 @@ public class InfluxdbUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InfluxdbUser(String name) {
+    public InfluxdbUser(java.lang.String name) {
         this(name, InfluxdbUserArgs.Empty);
     }
     /**
@@ -133,7 +133,7 @@ public class InfluxdbUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InfluxdbUser(String name, InfluxdbUserArgs args) {
+    public InfluxdbUser(java.lang.String name, InfluxdbUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -142,12 +142,12 @@ public class InfluxdbUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InfluxdbUser(String name, InfluxdbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/influxdbUser:InfluxdbUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InfluxdbUser(java.lang.String name, InfluxdbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/influxdbUser:InfluxdbUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InfluxdbUser(String name, Output<String> id, @Nullable InfluxdbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/influxdbUser:InfluxdbUser", name, state, makeResourceOptions(options, id));
+    private InfluxdbUser(java.lang.String name, Output<java.lang.String> id, @Nullable InfluxdbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/influxdbUser:InfluxdbUser", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InfluxdbUserArgs makeArgs(InfluxdbUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -157,7 +157,7 @@ public class InfluxdbUser extends com.pulumi.resources.CustomResource {
         return args == null ? InfluxdbUserArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -178,7 +178,7 @@ public class InfluxdbUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InfluxdbUser get(String name, Output<String> id, @Nullable InfluxdbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InfluxdbUser get(java.lang.String name, Output<java.lang.String> id, @Nullable InfluxdbUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InfluxdbUser(name, id, state, options);
     }
 }

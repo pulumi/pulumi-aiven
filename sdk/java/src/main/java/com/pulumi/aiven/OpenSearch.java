@@ -490,7 +490,7 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OpenSearch(String name) {
+    public OpenSearch(java.lang.String name) {
         this(name, OpenSearchArgs.Empty);
     }
     /**
@@ -498,7 +498,7 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OpenSearch(String name, OpenSearchArgs args) {
+    public OpenSearch(java.lang.String name, OpenSearchArgs args) {
         this(name, args, null);
     }
     /**
@@ -507,12 +507,12 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OpenSearch(String name, OpenSearchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/openSearch:OpenSearch", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OpenSearch(java.lang.String name, OpenSearchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/openSearch:OpenSearch", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OpenSearch(String name, Output<String> id, @Nullable OpenSearchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/openSearch:OpenSearch", name, state, makeResourceOptions(options, id));
+    private OpenSearch(java.lang.String name, Output<java.lang.String> id, @Nullable OpenSearchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/openSearch:OpenSearch", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OpenSearchArgs makeArgs(OpenSearchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -522,7 +522,7 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
         return args == null ? OpenSearchArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -543,7 +543,7 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OpenSearch get(String name, Output<String> id, @Nullable OpenSearchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OpenSearch get(java.lang.String name, Output<java.lang.String> id, @Nullable OpenSearchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OpenSearch(name, id, state, options);
     }
 }

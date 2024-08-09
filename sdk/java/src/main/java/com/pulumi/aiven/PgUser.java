@@ -183,7 +183,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PgUser(String name) {
+    public PgUser(java.lang.String name) {
         this(name, PgUserArgs.Empty);
     }
     /**
@@ -191,7 +191,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PgUser(String name, PgUserArgs args) {
+    public PgUser(java.lang.String name, PgUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -200,12 +200,12 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PgUser(String name, PgUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/pgUser:PgUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PgUser(java.lang.String name, PgUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/pgUser:PgUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PgUser(String name, Output<String> id, @Nullable PgUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/pgUser:PgUser", name, state, makeResourceOptions(options, id));
+    private PgUser(java.lang.String name, Output<java.lang.String> id, @Nullable PgUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/pgUser:PgUser", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PgUserArgs makeArgs(PgUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -215,7 +215,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
         return args == null ? PgUserArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -236,7 +236,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PgUser get(String name, Output<String> id, @Nullable PgUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PgUser get(java.lang.String name, Output<java.lang.String> id, @Nullable PgUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PgUser(name, id, state, options);
     }
 }
