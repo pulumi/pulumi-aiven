@@ -480,7 +480,7 @@ public class Flink extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Flink(String name) {
+    public Flink(java.lang.String name) {
         this(name, FlinkArgs.Empty);
     }
     /**
@@ -488,7 +488,7 @@ public class Flink extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Flink(String name, FlinkArgs args) {
+    public Flink(java.lang.String name, FlinkArgs args) {
         this(name, args, null);
     }
     /**
@@ -497,12 +497,12 @@ public class Flink extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Flink(String name, FlinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/flink:Flink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Flink(java.lang.String name, FlinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/flink:Flink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Flink(String name, Output<String> id, @Nullable FlinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/flink:Flink", name, state, makeResourceOptions(options, id));
+    private Flink(java.lang.String name, Output<java.lang.String> id, @Nullable FlinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/flink:Flink", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FlinkArgs makeArgs(FlinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -512,7 +512,7 @@ public class Flink extends com.pulumi.resources.CustomResource {
         return args == null ? FlinkArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -533,7 +533,7 @@ public class Flink extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Flink get(String name, Output<String> id, @Nullable FlinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Flink get(java.lang.String name, Output<java.lang.String> id, @Nullable FlinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Flink(name, id, state, options);
     }
 }

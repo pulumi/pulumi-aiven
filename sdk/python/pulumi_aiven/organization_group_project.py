@@ -154,7 +154,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
                  group_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationGroupProjectTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as members of a project.
@@ -250,7 +250,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
                  group_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationGroupProjectTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -283,7 +283,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
             group_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationGroupProjectTimeoutsArgs']]] = None) -> 'OrganizationGroupProject':
+            timeouts: Optional[pulumi.Input[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict']]] = None) -> 'OrganizationGroupProject':
         """
         Get an existing OrganizationGroupProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

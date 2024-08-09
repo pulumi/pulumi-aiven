@@ -302,7 +302,7 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationApplicationUserToken(String name) {
+    public OrganizationApplicationUserToken(java.lang.String name) {
         this(name, OrganizationApplicationUserTokenArgs.Empty);
     }
     /**
@@ -310,7 +310,7 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationApplicationUserToken(String name, OrganizationApplicationUserTokenArgs args) {
+    public OrganizationApplicationUserToken(java.lang.String name, OrganizationApplicationUserTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -319,12 +319,12 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationApplicationUserToken(String name, OrganizationApplicationUserTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OrganizationApplicationUserToken(java.lang.String name, OrganizationApplicationUserTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationApplicationUserToken(String name, Output<String> id, @Nullable OrganizationApplicationUserTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken", name, state, makeResourceOptions(options, id));
+    private OrganizationApplicationUserToken(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationApplicationUserTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OrganizationApplicationUserTokenArgs makeArgs(OrganizationApplicationUserTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -334,7 +334,7 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
         return args == null ? OrganizationApplicationUserTokenArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -353,7 +353,7 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationApplicationUserToken get(String name, Output<String> id, @Nullable OrganizationApplicationUserTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationApplicationUserToken get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationApplicationUserTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationApplicationUserToken(name, id, state, options);
     }
 }

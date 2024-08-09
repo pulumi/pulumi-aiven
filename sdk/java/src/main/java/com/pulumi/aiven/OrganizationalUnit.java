@@ -136,7 +136,7 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationalUnit(String name) {
+    public OrganizationalUnit(java.lang.String name) {
         this(name, OrganizationalUnitArgs.Empty);
     }
     /**
@@ -144,7 +144,7 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationalUnit(String name, OrganizationalUnitArgs args) {
+    public OrganizationalUnit(java.lang.String name, OrganizationalUnitArgs args) {
         this(name, args, null);
     }
     /**
@@ -153,12 +153,12 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationalUnit(String name, OrganizationalUnitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationalUnit:OrganizationalUnit", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OrganizationalUnit(java.lang.String name, OrganizationalUnitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationalUnit:OrganizationalUnit", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationalUnit(String name, Output<String> id, @Nullable OrganizationalUnitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationalUnit:OrganizationalUnit", name, state, makeResourceOptions(options, id));
+    private OrganizationalUnit(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationalUnitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationalUnit:OrganizationalUnit", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OrganizationalUnitArgs makeArgs(OrganizationalUnitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -168,7 +168,7 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
         return args == null ? OrganizationalUnitArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -184,7 +184,7 @@ public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationalUnit get(String name, Output<String> id, @Nullable OrganizationalUnitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationalUnit get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationalUnitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationalUnit(name, id, state, options);
     }
 }

@@ -27,7 +27,7 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
      */
     private @Nullable Boolean drop;
     /**
-     * @return Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*{@literal /}sda`.
+     * @return Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
      * 
      */
     private String filter;
@@ -77,7 +77,7 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
         return Optional.ofNullable(this.drop);
     }
     /**
-     * @return Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*{@literal /}sda`.
+     * @return Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
      * 
      */
     public String filter() {

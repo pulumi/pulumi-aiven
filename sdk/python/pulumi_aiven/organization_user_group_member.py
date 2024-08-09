@@ -169,7 +169,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationUserGroupMemberTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict']]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -255,7 +255,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationUserGroupMemberTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict']]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -290,7 +290,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
             group_id: Optional[pulumi.Input[str]] = None,
             last_activity_time: Optional[pulumi.Input[str]] = None,
             organization_id: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationUserGroupMemberTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict']]] = None,
             user_id: Optional[pulumi.Input[str]] = None) -> 'OrganizationUserGroupMember':
         """
         Get an existing OrganizationUserGroupMember resource's state with the given name, id, and optional extra

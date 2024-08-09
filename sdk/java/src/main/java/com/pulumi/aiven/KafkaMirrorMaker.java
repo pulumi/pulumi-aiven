@@ -469,7 +469,7 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KafkaMirrorMaker(String name) {
+    public KafkaMirrorMaker(java.lang.String name) {
         this(name, KafkaMirrorMakerArgs.Empty);
     }
     /**
@@ -477,7 +477,7 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KafkaMirrorMaker(String name, KafkaMirrorMakerArgs args) {
+    public KafkaMirrorMaker(java.lang.String name, KafkaMirrorMakerArgs args) {
         this(name, args, null);
     }
     /**
@@ -486,12 +486,12 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KafkaMirrorMaker(String name, KafkaMirrorMakerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaMirrorMaker:KafkaMirrorMaker", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KafkaMirrorMaker(java.lang.String name, KafkaMirrorMakerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/kafkaMirrorMaker:KafkaMirrorMaker", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KafkaMirrorMaker(String name, Output<String> id, @Nullable KafkaMirrorMakerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaMirrorMaker:KafkaMirrorMaker", name, state, makeResourceOptions(options, id));
+    private KafkaMirrorMaker(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaMirrorMakerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/kafkaMirrorMaker:KafkaMirrorMaker", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KafkaMirrorMakerArgs makeArgs(KafkaMirrorMakerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -501,7 +501,7 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
         return args == null ? KafkaMirrorMakerArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -521,7 +521,7 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KafkaMirrorMaker get(String name, Output<String> id, @Nullable KafkaMirrorMakerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KafkaMirrorMaker get(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaMirrorMakerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KafkaMirrorMaker(name, id, state, options);
     }
 }

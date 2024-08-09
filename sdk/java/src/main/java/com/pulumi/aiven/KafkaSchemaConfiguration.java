@@ -110,7 +110,7 @@ public class KafkaSchemaConfiguration extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KafkaSchemaConfiguration(String name) {
+    public KafkaSchemaConfiguration(java.lang.String name) {
         this(name, KafkaSchemaConfigurationArgs.Empty);
     }
     /**
@@ -118,7 +118,7 @@ public class KafkaSchemaConfiguration extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KafkaSchemaConfiguration(String name, KafkaSchemaConfigurationArgs args) {
+    public KafkaSchemaConfiguration(java.lang.String name, KafkaSchemaConfigurationArgs args) {
         this(name, args, null);
     }
     /**
@@ -127,12 +127,12 @@ public class KafkaSchemaConfiguration extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KafkaSchemaConfiguration(String name, KafkaSchemaConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KafkaSchemaConfiguration(java.lang.String name, KafkaSchemaConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KafkaSchemaConfiguration(String name, Output<String> id, @Nullable KafkaSchemaConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration", name, state, makeResourceOptions(options, id));
+    private KafkaSchemaConfiguration(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaSchemaConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KafkaSchemaConfigurationArgs makeArgs(KafkaSchemaConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -142,7 +142,7 @@ public class KafkaSchemaConfiguration extends com.pulumi.resources.CustomResourc
         return args == null ? KafkaSchemaConfigurationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -158,7 +158,7 @@ public class KafkaSchemaConfiguration extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KafkaSchemaConfiguration get(String name, Output<String> id, @Nullable KafkaSchemaConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KafkaSchemaConfiguration get(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaSchemaConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KafkaSchemaConfiguration(name, id, state, options);
     }
 }

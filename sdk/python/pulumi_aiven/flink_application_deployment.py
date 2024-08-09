@@ -310,8 +310,8 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
             service_name=example_flink["serviceName"],
             application_id=example_app.application_id,
             statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
-            sinks=[aiven.FlinkApplicationVersionSinkArgs(
-                create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
+            sinks=[{
+                "create_table": \"\"\"      CREATE TABLE kafka_known_pizza (
                 shop STRING,
                 name STRING
               ) WITH (
@@ -322,10 +322,10 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                 'value.format' = 'json'
               )
         \"\"\",
-                integration_id=flink_to_kafka["integrationId"],
-            )],
-            sources=[aiven.FlinkApplicationVersionSourceArgs(
-                create_table=\"\"\"      CREATE TABLE kafka_pizza (
+                "integration_id": flink_to_kafka["integrationId"],
+            }],
+            sources=[{
+                "create_table": \"\"\"      CREATE TABLE kafka_pizza (
                 shop STRING,
                 name STRING
               ) WITH (
@@ -336,8 +336,8 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                 'value.format' = 'json'
               )
         \"\"\",
-                integration_id=flink_to_kafka["integrationId"],
-            )])
+                "integration_id": flink_to_kafka["integrationId"],
+            }])
         main_flink_application_deployment = aiven.FlinkApplicationDeployment("main",
             project=example_project["project"],
             service_name=example_flink["serviceName"],
@@ -385,8 +385,8 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
             service_name=example_flink["serviceName"],
             application_id=example_app.application_id,
             statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
-            sinks=[aiven.FlinkApplicationVersionSinkArgs(
-                create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
+            sinks=[{
+                "create_table": \"\"\"      CREATE TABLE kafka_known_pizza (
                 shop STRING,
                 name STRING
               ) WITH (
@@ -397,10 +397,10 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                 'value.format' = 'json'
               )
         \"\"\",
-                integration_id=flink_to_kafka["integrationId"],
-            )],
-            sources=[aiven.FlinkApplicationVersionSourceArgs(
-                create_table=\"\"\"      CREATE TABLE kafka_pizza (
+                "integration_id": flink_to_kafka["integrationId"],
+            }],
+            sources=[{
+                "create_table": \"\"\"      CREATE TABLE kafka_pizza (
                 shop STRING,
                 name STRING
               ) WITH (
@@ -411,8 +411,8 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                 'value.format' = 'json'
               )
         \"\"\",
-                integration_id=flink_to_kafka["integrationId"],
-            )])
+                "integration_id": flink_to_kafka["integrationId"],
+            }])
         main_flink_application_deployment = aiven.FlinkApplicationDeployment("main",
             project=example_project["project"],
             service_name=example_flink["serviceName"],

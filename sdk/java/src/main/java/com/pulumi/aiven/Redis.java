@@ -484,7 +484,7 @@ public class Redis extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Redis(String name) {
+    public Redis(java.lang.String name) {
         this(name, RedisArgs.Empty);
     }
     /**
@@ -492,7 +492,7 @@ public class Redis extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Redis(String name, RedisArgs args) {
+    public Redis(java.lang.String name, RedisArgs args) {
         this(name, args, null);
     }
     /**
@@ -501,12 +501,12 @@ public class Redis extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Redis(String name, RedisArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/redis:Redis", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Redis(java.lang.String name, RedisArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/redis:Redis", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Redis(String name, Output<String> id, @Nullable RedisState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/redis:Redis", name, state, makeResourceOptions(options, id));
+    private Redis(java.lang.String name, Output<java.lang.String> id, @Nullable RedisState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/redis:Redis", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RedisArgs makeArgs(RedisArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -516,7 +516,7 @@ public class Redis extends com.pulumi.resources.CustomResource {
         return args == null ? RedisArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -537,7 +537,7 @@ public class Redis extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Redis get(String name, Output<String> id, @Nullable RedisState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Redis get(java.lang.String name, Output<java.lang.String> id, @Nullable RedisState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Redis(name, id, state, options);
     }
 }

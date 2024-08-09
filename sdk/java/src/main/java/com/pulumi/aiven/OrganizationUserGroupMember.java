@@ -141,7 +141,7 @@ public class OrganizationUserGroupMember extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrganizationUserGroupMember(String name) {
+    public OrganizationUserGroupMember(java.lang.String name) {
         this(name, OrganizationUserGroupMemberArgs.Empty);
     }
     /**
@@ -149,7 +149,7 @@ public class OrganizationUserGroupMember extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrganizationUserGroupMember(String name, OrganizationUserGroupMemberArgs args) {
+    public OrganizationUserGroupMember(java.lang.String name, OrganizationUserGroupMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -158,12 +158,12 @@ public class OrganizationUserGroupMember extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrganizationUserGroupMember(String name, OrganizationUserGroupMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationUserGroupMember:OrganizationUserGroupMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OrganizationUserGroupMember(java.lang.String name, OrganizationUserGroupMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationUserGroupMember:OrganizationUserGroupMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrganizationUserGroupMember(String name, Output<String> id, @Nullable OrganizationUserGroupMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/organizationUserGroupMember:OrganizationUserGroupMember", name, state, makeResourceOptions(options, id));
+    private OrganizationUserGroupMember(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationUserGroupMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/organizationUserGroupMember:OrganizationUserGroupMember", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OrganizationUserGroupMemberArgs makeArgs(OrganizationUserGroupMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -173,7 +173,7 @@ public class OrganizationUserGroupMember extends com.pulumi.resources.CustomReso
         return args == null ? OrganizationUserGroupMemberArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -189,7 +189,7 @@ public class OrganizationUserGroupMember extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrganizationUserGroupMember get(String name, Output<String> id, @Nullable OrganizationUserGroupMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrganizationUserGroupMember get(java.lang.String name, Output<java.lang.String> id, @Nullable OrganizationUserGroupMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrganizationUserGroupMember(name, id, state, options);
     }
 }

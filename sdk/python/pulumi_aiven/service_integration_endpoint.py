@@ -559,44 +559,44 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']]] = None,
+                 datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointDatadogUserConfigArgs', 'ServiceIntegrationEndpointDatadogUserConfigArgsDict']]] = None,
                  endpoint_name: Optional[pulumi.Input[str]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
-                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
-                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
-                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
-                 external_google_cloud_bigquery: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]] = None,
-                 external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
-                 external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
-                 external_opensearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']]] = None,
-                 external_postgresql: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']]] = None,
-                 external_schema_registry_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]] = None,
-                 jolokia_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']]] = None,
+                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
+                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']]] = None,
+                 external_google_cloud_bigquery: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']]] = None,
+                 external_google_cloud_logging_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs', 'ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgsDict']]] = None,
+                 external_kafka_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalKafkaUserConfigArgs', 'ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict']]] = None,
+                 external_opensearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict']]] = None,
+                 external_postgresql: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalPostgresqlArgs', 'ServiceIntegrationEndpointExternalPostgresqlArgsDict']]] = None,
+                 external_schema_registry_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs', 'ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict']]] = None,
+                 jolokia_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointJolokiaUserConfigArgs', 'ServiceIntegrationEndpointJolokiaUserConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
-                 rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']]] = None,
+                 prometheus_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointPrometheusUserConfigArgs', 'ServiceIntegrationEndpointPrometheusUserConfigArgsDict']]] = None,
+                 rsyslog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointRsyslogUserConfigArgs', 'ServiceIntegrationEndpointRsyslogUserConfigArgsDict']]] = None,
                  __props__=None):
         """
         The Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointDatadogUserConfigArgs', 'ServiceIntegrationEndpointDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
         :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: ExternalGoogleCloudLogging user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: ExternalKafka user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']] external_postgresql: ExternalPostgresql user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] external_schema_registry_user_config: ExternalSchemaRegistry user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']] jolokia_user_config: Jolokia user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs', 'ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgsDict']] external_google_cloud_logging_user_config: ExternalGoogleCloudLogging user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalKafkaUserConfigArgs', 'ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict']] external_kafka_user_config: ExternalKafka user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalPostgresqlArgs', 'ServiceIntegrationEndpointExternalPostgresqlArgsDict']] external_postgresql: ExternalPostgresql user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs', 'ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict']] external_schema_registry_user_config: ExternalSchemaRegistry user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointJolokiaUserConfigArgs', 'ServiceIntegrationEndpointJolokiaUserConfigArgsDict']] jolokia_user_config: Jolokia user configurable settings
         :param pulumi.Input[str] project: Project the service integration endpoint belongs to
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']] prometheus_user_config: Prometheus user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']] rsyslog_user_config: Rsyslog user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointPrometheusUserConfigArgs', 'ServiceIntegrationEndpointPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointRsyslogUserConfigArgs', 'ServiceIntegrationEndpointRsyslogUserConfigArgsDict']] rsyslog_user_config: Rsyslog user configurable settings
         """
         ...
     @overload
@@ -622,22 +622,22 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']]] = None,
+                 datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointDatadogUserConfigArgs', 'ServiceIntegrationEndpointDatadogUserConfigArgsDict']]] = None,
                  endpoint_name: Optional[pulumi.Input[str]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
-                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
-                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
-                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
-                 external_google_cloud_bigquery: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]] = None,
-                 external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
-                 external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
-                 external_opensearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']]] = None,
-                 external_postgresql: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']]] = None,
-                 external_schema_registry_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]] = None,
-                 jolokia_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']]] = None,
+                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
+                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']]] = None,
+                 external_google_cloud_bigquery: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']]] = None,
+                 external_google_cloud_logging_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs', 'ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgsDict']]] = None,
+                 external_kafka_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalKafkaUserConfigArgs', 'ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict']]] = None,
+                 external_opensearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict']]] = None,
+                 external_postgresql: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalPostgresqlArgs', 'ServiceIntegrationEndpointExternalPostgresqlArgsDict']]] = None,
+                 external_schema_registry_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs', 'ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict']]] = None,
+                 jolokia_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointJolokiaUserConfigArgs', 'ServiceIntegrationEndpointJolokiaUserConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
-                 rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']]] = None,
+                 prometheus_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointPrometheusUserConfigArgs', 'ServiceIntegrationEndpointPrometheusUserConfigArgsDict']]] = None,
+                 rsyslog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointRsyslogUserConfigArgs', 'ServiceIntegrationEndpointRsyslogUserConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -680,23 +680,23 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']]] = None,
+            datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointDatadogUserConfigArgs', 'ServiceIntegrationEndpointDatadogUserConfigArgsDict']]] = None,
             endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint_name: Optional[pulumi.Input[str]] = None,
             endpoint_type: Optional[pulumi.Input[str]] = None,
-            external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
-            external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
-            external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
-            external_google_cloud_bigquery: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]] = None,
-            external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
-            external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
-            external_opensearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']]] = None,
-            external_postgresql: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']]] = None,
-            external_schema_registry_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]] = None,
-            jolokia_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']]] = None,
+            external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
+            external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
+            external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']]] = None,
+            external_google_cloud_bigquery: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']]] = None,
+            external_google_cloud_logging_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs', 'ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgsDict']]] = None,
+            external_kafka_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalKafkaUserConfigArgs', 'ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict']]] = None,
+            external_opensearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict']]] = None,
+            external_postgresql: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalPostgresqlArgs', 'ServiceIntegrationEndpointExternalPostgresqlArgsDict']]] = None,
+            external_schema_registry_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs', 'ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict']]] = None,
+            jolokia_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointJolokiaUserConfigArgs', 'ServiceIntegrationEndpointJolokiaUserConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']]] = None,
-            rsyslog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']]] = None) -> 'ServiceIntegrationEndpoint':
+            prometheus_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointPrometheusUserConfigArgs', 'ServiceIntegrationEndpointPrometheusUserConfigArgsDict']]] = None,
+            rsyslog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointRsyslogUserConfigArgs', 'ServiceIntegrationEndpointRsyslogUserConfigArgsDict']]] = None) -> 'ServiceIntegrationEndpoint':
         """
         Get an existing ServiceIntegrationEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -704,23 +704,23 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointDatadogUserConfigArgs', 'ServiceIntegrationEndpointDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] endpoint_config: Integration endpoint specific backend configuration
         :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
         :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: ExternalGoogleCloudLogging user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: ExternalKafka user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']] external_postgresql: ExternalPostgresql user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] external_schema_registry_user_config: ExternalSchemaRegistry user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']] jolokia_user_config: Jolokia user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs', 'ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgsDict']] external_google_cloud_logging_user_config: ExternalGoogleCloudLogging user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalKafkaUserConfigArgs', 'ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict']] external_kafka_user_config: ExternalKafka user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalPostgresqlArgs', 'ServiceIntegrationEndpointExternalPostgresqlArgsDict']] external_postgresql: ExternalPostgresql user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs', 'ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict']] external_schema_registry_user_config: ExternalSchemaRegistry user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointJolokiaUserConfigArgs', 'ServiceIntegrationEndpointJolokiaUserConfigArgsDict']] jolokia_user_config: Jolokia user configurable settings
         :param pulumi.Input[str] project: Project the service integration endpoint belongs to
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointPrometheusUserConfigArgs']] prometheus_user_config: Prometheus user configurable settings
-        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointRsyslogUserConfigArgs']] rsyslog_user_config: Rsyslog user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointPrometheusUserConfigArgs', 'ServiceIntegrationEndpointPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationEndpointRsyslogUserConfigArgs', 'ServiceIntegrationEndpointRsyslogUserConfigArgsDict']] rsyslog_user_config: Rsyslog user configurable settings
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

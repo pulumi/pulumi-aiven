@@ -369,10 +369,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 sink: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
-                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
-                 source: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
+                 sink: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+                 source: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
                  statement: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -393,8 +393,8 @@ class FlinkApplicationVersion(pulumi.CustomResource):
             service_name=example_flink["serviceName"],
             application_id=example_app.application_id,
             statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
-            sinks=[aiven.FlinkApplicationVersionSinkArgs(
-                create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
+            sinks=[{
+                "create_table": \"\"\"      CREATE TABLE kafka_known_pizza (
                 shop STRING,
                 name STRING
               ) WITH (
@@ -405,10 +405,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                 'value.format' = 'json'
               )
         \"\"\",
-                integration_id=flink_to_kafka["integrationId"],
-            )],
-            sources=[aiven.FlinkApplicationVersionSourceArgs(
-                create_table=\"\"\"      CREATE TABLE kafka_pizza (
+                "integration_id": flink_to_kafka["integrationId"],
+            }],
+            sources=[{
+                "create_table": \"\"\"      CREATE TABLE kafka_pizza (
                 shop STRING,
                 name STRING
               ) WITH (
@@ -419,8 +419,8 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                 'value.format' = 'json'
               )
         \"\"\",
-                integration_id=flink_to_kafka["integrationId"],
-            )])
+                "integration_id": flink_to_kafka["integrationId"],
+            }])
         ```
 
         ## Import
@@ -434,10 +434,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         :param pulumi.Input[str] application_id: Application ID.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sink: The sink table for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sinks: Application sinks
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] source: The source table for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] sources: Application sources
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]] sink: The sink table for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]] sinks: Application sinks
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]] source: The source table for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]] sources: Application sources
         :param pulumi.Input[str] statement: Job SQL statement.
         """
         ...
@@ -464,8 +464,8 @@ class FlinkApplicationVersion(pulumi.CustomResource):
             service_name=example_flink["serviceName"],
             application_id=example_app.application_id,
             statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
-            sinks=[aiven.FlinkApplicationVersionSinkArgs(
-                create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
+            sinks=[{
+                "create_table": \"\"\"      CREATE TABLE kafka_known_pizza (
                 shop STRING,
                 name STRING
               ) WITH (
@@ -476,10 +476,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                 'value.format' = 'json'
               )
         \"\"\",
-                integration_id=flink_to_kafka["integrationId"],
-            )],
-            sources=[aiven.FlinkApplicationVersionSourceArgs(
-                create_table=\"\"\"      CREATE TABLE kafka_pizza (
+                "integration_id": flink_to_kafka["integrationId"],
+            }],
+            sources=[{
+                "create_table": \"\"\"      CREATE TABLE kafka_pizza (
                 shop STRING,
                 name STRING
               ) WITH (
@@ -490,8 +490,8 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                 'value.format' = 'json'
               )
         \"\"\",
-                integration_id=flink_to_kafka["integrationId"],
-            )])
+                "integration_id": flink_to_kafka["integrationId"],
+            }])
         ```
 
         ## Import
@@ -518,10 +518,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 sink: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
-                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
-                 source: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
+                 sink: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+                 source: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
                  statement: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -568,10 +568,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
             created_by: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
-            sink: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
-            sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]]] = None,
-            source: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]]] = None,
+            sink: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+            sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+            source: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
             statement: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[int]] = None) -> 'FlinkApplicationVersion':
         """
@@ -587,10 +587,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         :param pulumi.Input[str] created_by: The user who created the application.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sink: The sink table for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSinkArgs']]]] sinks: Application sinks
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] source: The source table for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkApplicationVersionSourceArgs']]]] sources: Application sources
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]] sink: The sink table for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]] sinks: Application sinks
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]] source: The source table for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]] sources: Application sources
         :param pulumi.Input[str] statement: Job SQL statement.
         :param pulumi.Input[int] version: Application version number.
         """

@@ -448,7 +448,7 @@ class Project(pulumi.CustomResource):
                  default_cloud: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -481,7 +481,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] default_cloud: Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
         :param pulumi.Input[str] parent_id: Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] project: The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize projects.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         """
@@ -533,7 +533,7 @@ class Project(pulumi.CustomResource):
                  default_cloud: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_source_project_billing_group: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -584,7 +584,7 @@ class Project(pulumi.CustomResource):
             parent_id: Optional[pulumi.Input[str]] = None,
             payment_method: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]]] = None,
             technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             use_source_project_billing_group: Optional[pulumi.Input[bool]] = None) -> 'Project':
         """
@@ -605,7 +605,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] parent_id: Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] payment_method: The payment type used for this project. For example,`card`.
         :param pulumi.Input[str] project: The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize projects.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
         """

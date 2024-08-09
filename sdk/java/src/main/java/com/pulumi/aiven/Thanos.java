@@ -433,7 +433,7 @@ public class Thanos extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Thanos(String name) {
+    public Thanos(java.lang.String name) {
         this(name, ThanosArgs.Empty);
     }
     /**
@@ -441,7 +441,7 @@ public class Thanos extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Thanos(String name, ThanosArgs args) {
+    public Thanos(java.lang.String name, ThanosArgs args) {
         this(name, args, null);
     }
     /**
@@ -450,12 +450,12 @@ public class Thanos extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Thanos(String name, ThanosArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/thanos:Thanos", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Thanos(java.lang.String name, ThanosArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/thanos:Thanos", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Thanos(String name, Output<String> id, @Nullable ThanosState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/thanos:Thanos", name, state, makeResourceOptions(options, id));
+    private Thanos(java.lang.String name, Output<java.lang.String> id, @Nullable ThanosState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/thanos:Thanos", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ThanosArgs makeArgs(ThanosArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -465,7 +465,7 @@ public class Thanos extends com.pulumi.resources.CustomResource {
         return args == null ? ThanosArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -486,7 +486,7 @@ public class Thanos extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Thanos get(String name, Output<String> id, @Nullable ThanosState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Thanos get(java.lang.String name, Output<java.lang.String> id, @Nullable ThanosState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Thanos(name, id, state, options);
     }
 }

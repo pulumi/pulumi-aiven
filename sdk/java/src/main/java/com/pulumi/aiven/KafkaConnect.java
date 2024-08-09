@@ -508,7 +508,7 @@ public class KafkaConnect extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KafkaConnect(String name) {
+    public KafkaConnect(java.lang.String name) {
         this(name, KafkaConnectArgs.Empty);
     }
     /**
@@ -516,7 +516,7 @@ public class KafkaConnect extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KafkaConnect(String name, KafkaConnectArgs args) {
+    public KafkaConnect(java.lang.String name, KafkaConnectArgs args) {
         this(name, args, null);
     }
     /**
@@ -525,12 +525,12 @@ public class KafkaConnect extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KafkaConnect(String name, KafkaConnectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaConnect:KafkaConnect", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KafkaConnect(java.lang.String name, KafkaConnectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/kafkaConnect:KafkaConnect", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KafkaConnect(String name, Output<String> id, @Nullable KafkaConnectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaConnect:KafkaConnect", name, state, makeResourceOptions(options, id));
+    private KafkaConnect(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaConnectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/kafkaConnect:KafkaConnect", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KafkaConnectArgs makeArgs(KafkaConnectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -540,7 +540,7 @@ public class KafkaConnect extends com.pulumi.resources.CustomResource {
         return args == null ? KafkaConnectArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -560,7 +560,7 @@ public class KafkaConnect extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KafkaConnect get(String name, Output<String> id, @Nullable KafkaConnectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KafkaConnect get(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaConnectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KafkaConnect(name, id, state, options);
     }
 }

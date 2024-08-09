@@ -295,7 +295,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MirrorMakerReplicationFlow(String name) {
+    public MirrorMakerReplicationFlow(java.lang.String name) {
         this(name, MirrorMakerReplicationFlowArgs.Empty);
     }
     /**
@@ -303,7 +303,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MirrorMakerReplicationFlow(String name, MirrorMakerReplicationFlowArgs args) {
+    public MirrorMakerReplicationFlow(java.lang.String name, MirrorMakerReplicationFlowArgs args) {
         this(name, args, null);
     }
     /**
@@ -312,12 +312,12 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MirrorMakerReplicationFlow(String name, MirrorMakerReplicationFlowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MirrorMakerReplicationFlow(java.lang.String name, MirrorMakerReplicationFlowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MirrorMakerReplicationFlow(String name, Output<String> id, @Nullable MirrorMakerReplicationFlowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow", name, state, makeResourceOptions(options, id));
+    private MirrorMakerReplicationFlow(java.lang.String name, Output<java.lang.String> id, @Nullable MirrorMakerReplicationFlowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MirrorMakerReplicationFlowArgs makeArgs(MirrorMakerReplicationFlowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -327,7 +327,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
         return args == null ? MirrorMakerReplicationFlowArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -343,7 +343,7 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MirrorMakerReplicationFlow get(String name, Output<String> id, @Nullable MirrorMakerReplicationFlowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MirrorMakerReplicationFlow get(java.lang.String name, Output<java.lang.String> id, @Nullable MirrorMakerReplicationFlowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MirrorMakerReplicationFlow(name, id, state, options);
     }
 }

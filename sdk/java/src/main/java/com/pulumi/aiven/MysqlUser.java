@@ -182,7 +182,7 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MysqlUser(String name) {
+    public MysqlUser(java.lang.String name) {
         this(name, MysqlUserArgs.Empty);
     }
     /**
@@ -190,7 +190,7 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MysqlUser(String name, MysqlUserArgs args) {
+    public MysqlUser(java.lang.String name, MysqlUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -199,12 +199,12 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MysqlUser(String name, MysqlUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/mysqlUser:MysqlUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MysqlUser(java.lang.String name, MysqlUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/mysqlUser:MysqlUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MysqlUser(String name, Output<String> id, @Nullable MysqlUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/mysqlUser:MysqlUser", name, state, makeResourceOptions(options, id));
+    private MysqlUser(java.lang.String name, Output<java.lang.String> id, @Nullable MysqlUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/mysqlUser:MysqlUser", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MysqlUserArgs makeArgs(MysqlUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -214,7 +214,7 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
         return args == null ? MysqlUserArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -235,7 +235,7 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MysqlUser get(String name, Output<String> id, @Nullable MysqlUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MysqlUser get(java.lang.String name, Output<java.lang.String> id, @Nullable MysqlUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MysqlUser(name, id, state, options);
     }
 }

@@ -199,7 +199,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClickhouseGrant(String name) {
+    public ClickhouseGrant(java.lang.String name) {
         this(name, ClickhouseGrantArgs.Empty);
     }
     /**
@@ -207,7 +207,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClickhouseGrant(String name, ClickhouseGrantArgs args) {
+    public ClickhouseGrant(java.lang.String name, ClickhouseGrantArgs args) {
         this(name, args, null);
     }
     /**
@@ -216,12 +216,12 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClickhouseGrant(String name, ClickhouseGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/clickhouseGrant:ClickhouseGrant", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ClickhouseGrant(java.lang.String name, ClickhouseGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/clickhouseGrant:ClickhouseGrant", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClickhouseGrant(String name, Output<String> id, @Nullable ClickhouseGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/clickhouseGrant:ClickhouseGrant", name, state, makeResourceOptions(options, id));
+    private ClickhouseGrant(java.lang.String name, Output<java.lang.String> id, @Nullable ClickhouseGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/clickhouseGrant:ClickhouseGrant", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ClickhouseGrantArgs makeArgs(ClickhouseGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -231,7 +231,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
         return args == null ? ClickhouseGrantArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -247,7 +247,7 @@ public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClickhouseGrant get(String name, Output<String> id, @Nullable ClickhouseGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClickhouseGrant get(java.lang.String name, Output<java.lang.String> id, @Nullable ClickhouseGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClickhouseGrant(name, id, state, options);
     }
 }

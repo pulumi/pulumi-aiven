@@ -185,7 +185,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitGatewayVpcAttachment(String name) {
+    public TransitGatewayVpcAttachment(java.lang.String name) {
         this(name, TransitGatewayVpcAttachmentArgs.Empty);
     }
     /**
@@ -193,7 +193,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitGatewayVpcAttachment(String name, TransitGatewayVpcAttachmentArgs args) {
+    public TransitGatewayVpcAttachment(java.lang.String name, TransitGatewayVpcAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -202,12 +202,12 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitGatewayVpcAttachment(String name, TransitGatewayVpcAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TransitGatewayVpcAttachment(java.lang.String name, TransitGatewayVpcAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitGatewayVpcAttachment(String name, Output<String> id, @Nullable TransitGatewayVpcAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment", name, state, makeResourceOptions(options, id));
+    private TransitGatewayVpcAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable TransitGatewayVpcAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TransitGatewayVpcAttachmentArgs makeArgs(TransitGatewayVpcAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -217,7 +217,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
         return args == null ? TransitGatewayVpcAttachmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -233,7 +233,7 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitGatewayVpcAttachment get(String name, Output<String> id, @Nullable TransitGatewayVpcAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitGatewayVpcAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitGatewayVpcAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitGatewayVpcAttachment(name, id, state, options);
     }
 }

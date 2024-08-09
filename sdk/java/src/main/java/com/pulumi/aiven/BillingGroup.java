@@ -291,7 +291,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BillingGroup(String name) {
+    public BillingGroup(java.lang.String name) {
         this(name, BillingGroupArgs.Empty);
     }
     /**
@@ -299,7 +299,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BillingGroup(String name, @Nullable BillingGroupArgs args) {
+    public BillingGroup(java.lang.String name, @Nullable BillingGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -308,12 +308,12 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BillingGroup(String name, @Nullable BillingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/billingGroup:BillingGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public BillingGroup(java.lang.String name, @Nullable BillingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/billingGroup:BillingGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BillingGroup(String name, Output<String> id, @Nullable BillingGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/billingGroup:BillingGroup", name, state, makeResourceOptions(options, id));
+    private BillingGroup(java.lang.String name, Output<java.lang.String> id, @Nullable BillingGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/billingGroup:BillingGroup", name, state, makeResourceOptions(options, id), false);
     }
 
     private static BillingGroupArgs makeArgs(@Nullable BillingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -323,7 +323,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
         return args == null ? BillingGroupArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -339,7 +339,7 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BillingGroup get(String name, Output<String> id, @Nullable BillingGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BillingGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable BillingGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BillingGroup(name, id, state, options);
     }
 }

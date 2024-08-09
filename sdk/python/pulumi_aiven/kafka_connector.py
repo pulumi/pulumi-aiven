@@ -421,7 +421,7 @@ class KafkaConnector(pulumi.CustomResource):
             plugin_version: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
-            tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]]] = None) -> 'KafkaConnector':
+            tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KafkaConnectorTaskArgs', 'KafkaConnectorTaskArgsDict']]]]] = None) -> 'KafkaConnector':
         """
         Get an existing KafkaConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -439,7 +439,7 @@ class KafkaConnector(pulumi.CustomResource):
         :param pulumi.Input[str] plugin_version: The version of the Kafka connector.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaConnectorTaskArgs']]]] tasks: List of tasks of a connector.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaConnectorTaskArgs', 'KafkaConnectorTaskArgsDict']]]] tasks: List of tasks of a connector.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

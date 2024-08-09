@@ -748,16 +748,16 @@ class MySql(pulumi.CustomResource):
                  disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]] = None,
-                 mysql_user_config: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']]] = None,
+                 mysql: Optional[pulumi.Input[Union['MySqlMysqlArgs', 'MySqlMysqlArgsDict']]] = None,
+                 mysql_user_config: Optional[pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]]] = None,
+                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlServiceIntegrationArgs', 'MySqlServiceIntegrationArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]]] = None,
-                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlTagArgs', 'MySqlTagArgsDict']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlTechEmailArgs', 'MySqlTechEmailArgsDict']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -776,16 +776,16 @@ class MySql(pulumi.CustomResource):
             service_name="my-mysql1",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
-            mysql_user_config=aiven.MySqlMysqlUserConfigArgs(
-                mysql_version="8",
-                mysql=aiven.MySqlMysqlUserConfigMysqlArgs(
-                    sql_mode="ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
-                    sql_require_primary_key=True,
-                ),
-                public_access=aiven.MySqlMysqlUserConfigPublicAccessArgs(
-                    mysql=True,
-                ),
-            ))
+            mysql_user_config={
+                "mysql_version": "8",
+                "mysql": {
+                    "sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
+                    "sql_require_primary_key": True,
+                },
+                "public_access": {
+                    "mysql": True,
+                },
+            })
         ```
 
         ## Import
@@ -801,16 +801,16 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['MySqlMysqlArgs']] mysql: MySQL specific server provided values
-        :param pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[Union['MySqlMysqlArgs', 'MySqlMysqlArgsDict']] mysql: MySQL specific server provided values
+        :param pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']] mysql_user_config: Mysql user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MySqlServiceIntegrationArgs', 'MySqlServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MySqlTagArgs', 'MySqlTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MySqlTechEmailArgs', 'MySqlTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
@@ -835,16 +835,16 @@ class MySql(pulumi.CustomResource):
             service_name="my-mysql1",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
-            mysql_user_config=aiven.MySqlMysqlUserConfigArgs(
-                mysql_version="8",
-                mysql=aiven.MySqlMysqlUserConfigMysqlArgs(
-                    sql_mode="ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
-                    sql_require_primary_key=True,
-                ),
-                public_access=aiven.MySqlMysqlUserConfigPublicAccessArgs(
-                    mysql=True,
-                ),
-            ))
+            mysql_user_config={
+                "mysql_version": "8",
+                "mysql": {
+                    "sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
+                    "sql_require_primary_key": True,
+                },
+                "public_access": {
+                    "mysql": True,
+                },
+            })
         ```
 
         ## Import
@@ -873,16 +873,16 @@ class MySql(pulumi.CustomResource):
                  disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]] = None,
-                 mysql_user_config: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']]] = None,
+                 mysql: Optional[pulumi.Input[Union['MySqlMysqlArgs', 'MySqlMysqlArgsDict']]] = None,
+                 mysql_user_config: Optional[pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]]] = None,
+                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlServiceIntegrationArgs', 'MySqlServiceIntegrationArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]]] = None,
-                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlTagArgs', 'MySqlTagArgsDict']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlTechEmailArgs', 'MySqlTechEmailArgsDict']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -941,7 +941,7 @@ class MySql(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_disk_space: Optional[pulumi.Input[str]] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
-            components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlComponentArgs']]]]] = None,
+            components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlComponentArgs', 'MySqlComponentArgsDict']]]]] = None,
             disk_space: Optional[pulumi.Input[str]] = None,
             disk_space_cap: Optional[pulumi.Input[str]] = None,
             disk_space_default: Optional[pulumi.Input[str]] = None,
@@ -949,13 +949,13 @@ class MySql(pulumi.CustomResource):
             disk_space_used: Optional[pulumi.Input[str]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
-            mysql: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]] = None,
-            mysql_user_config: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']]] = None,
+            mysql: Optional[pulumi.Input[Union['MySqlMysqlArgs', 'MySqlMysqlArgsDict']]] = None,
+            mysql_user_config: Optional[pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']]] = None,
             plan: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             project_vpc_id: Optional[pulumi.Input[str]] = None,
             service_host: Optional[pulumi.Input[str]] = None,
-            service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]]] = None,
+            service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlServiceIntegrationArgs', 'MySqlServiceIntegrationArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             service_password: Optional[pulumi.Input[str]] = None,
             service_port: Optional[pulumi.Input[int]] = None,
@@ -964,8 +964,8 @@ class MySql(pulumi.CustomResource):
             service_username: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]]] = None,
-            tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlTagArgs', 'MySqlTagArgsDict']]]]] = None,
+            tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MySqlTechEmailArgs', 'MySqlTechEmailArgsDict']]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'MySql':
         """
         Get an existing MySql resource's state with the given name, id, and optional extra
@@ -976,7 +976,7 @@ class MySql(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlComponentArgs']]]] components: Service component information objects
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MySqlComponentArgs', 'MySqlComponentArgsDict']]]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
@@ -984,13 +984,13 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[pulumi.InputType['MySqlMysqlArgs']] mysql: MySQL specific server provided values
-        :param pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[Union['MySqlMysqlArgs', 'MySqlMysqlArgsDict']] mysql: MySQL specific server provided values
+        :param pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']] mysql_user_config: Mysql user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[str] service_host: The hostname of the service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MySqlServiceIntegrationArgs', 'MySqlServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
         :param pulumi.Input[int] service_port: The port of the service
@@ -999,8 +999,8 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MySqlTagArgs', 'MySqlTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MySqlTechEmailArgs', 'MySqlTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
