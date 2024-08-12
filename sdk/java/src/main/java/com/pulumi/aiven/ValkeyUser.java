@@ -155,7 +155,7 @@ public class ValkeyUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ValkeyUser(String name) {
+    public ValkeyUser(java.lang.String name) {
         this(name, ValkeyUserArgs.Empty);
     }
     /**
@@ -163,7 +163,7 @@ public class ValkeyUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ValkeyUser(String name, ValkeyUserArgs args) {
+    public ValkeyUser(java.lang.String name, ValkeyUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -172,12 +172,12 @@ public class ValkeyUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ValkeyUser(String name, ValkeyUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/valkeyUser:ValkeyUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ValkeyUser(java.lang.String name, ValkeyUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/valkeyUser:ValkeyUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ValkeyUser(String name, Output<String> id, @Nullable ValkeyUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/valkeyUser:ValkeyUser", name, state, makeResourceOptions(options, id));
+    private ValkeyUser(java.lang.String name, Output<java.lang.String> id, @Nullable ValkeyUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/valkeyUser:ValkeyUser", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ValkeyUserArgs makeArgs(ValkeyUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -187,7 +187,7 @@ public class ValkeyUser extends com.pulumi.resources.CustomResource {
         return args == null ? ValkeyUserArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -206,7 +206,7 @@ public class ValkeyUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ValkeyUser get(String name, Output<String> id, @Nullable ValkeyUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ValkeyUser get(java.lang.String name, Output<java.lang.String> id, @Nullable ValkeyUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ValkeyUser(name, id, state, options);
     }
 }

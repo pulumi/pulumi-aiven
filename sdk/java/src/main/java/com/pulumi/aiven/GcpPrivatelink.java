@@ -136,7 +136,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GcpPrivatelink(String name) {
+    public GcpPrivatelink(java.lang.String name) {
         this(name, GcpPrivatelinkArgs.Empty);
     }
     /**
@@ -144,7 +144,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GcpPrivatelink(String name, GcpPrivatelinkArgs args) {
+    public GcpPrivatelink(java.lang.String name, GcpPrivatelinkArgs args) {
         this(name, args, null);
     }
     /**
@@ -153,12 +153,12 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GcpPrivatelink(String name, GcpPrivatelinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/gcpPrivatelink:GcpPrivatelink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public GcpPrivatelink(java.lang.String name, GcpPrivatelinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/gcpPrivatelink:GcpPrivatelink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GcpPrivatelink(String name, Output<String> id, @Nullable GcpPrivatelinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/gcpPrivatelink:GcpPrivatelink", name, state, makeResourceOptions(options, id));
+    private GcpPrivatelink(java.lang.String name, Output<java.lang.String> id, @Nullable GcpPrivatelinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/gcpPrivatelink:GcpPrivatelink", name, state, makeResourceOptions(options, id), false);
     }
 
     private static GcpPrivatelinkArgs makeArgs(GcpPrivatelinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -168,7 +168,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
         return args == null ? GcpPrivatelinkArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -184,7 +184,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GcpPrivatelink get(String name, Output<String> id, @Nullable GcpPrivatelinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GcpPrivatelink get(java.lang.String name, Output<java.lang.String> id, @Nullable GcpPrivatelinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GcpPrivatelink(name, id, state, options);
     }
 }

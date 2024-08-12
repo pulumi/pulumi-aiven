@@ -184,14 +184,14 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
             cloud_name=region,
             plan=plan,
             static_ips=[sip.static_ip_address_id for sip in static_ips],
-            pg_user_config=aiven.PgPgUserConfigArgs(
-                pg_version="13",
-                static_ips=True,
-                privatelink_access=aiven.PgPgUserConfigPrivatelinkAccessArgs(
-                    pg=True,
-                    pgbouncer=True,
-                ),
-            ))
+            pg_user_config={
+                "pg_version": "13",
+                "static_ips": True,
+                "privatelink_access": {
+                    "pg": True,
+                    "pgbouncer": True,
+                },
+            })
         privatelink = aiven.AzurePrivatelink("privatelink",
             project=aiven_project_id,
             service_name=default.name,
@@ -254,14 +254,14 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
             cloud_name=region,
             plan=plan,
             static_ips=[sip.static_ip_address_id for sip in static_ips],
-            pg_user_config=aiven.PgPgUserConfigArgs(
-                pg_version="13",
-                static_ips=True,
-                privatelink_access=aiven.PgPgUserConfigPrivatelinkAccessArgs(
-                    pg=True,
-                    pgbouncer=True,
-                ),
-            ))
+            pg_user_config={
+                "pg_version": "13",
+                "static_ips": True,
+                "privatelink_access": {
+                    "pg": True,
+                    "pgbouncer": True,
+                },
+            })
         privatelink = aiven.AzurePrivatelink("privatelink",
             project=aiven_project_id,
             service_name=default.name,

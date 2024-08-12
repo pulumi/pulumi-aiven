@@ -51,14 +51,14 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
     }
 
     /**
-     * Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*{@literal /}sda`.
+     * Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
      * 
      */
     @Import(name="filter", required=true)
     private Output<String> filter;
 
     /**
-     * @return Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*{@literal /}sda`.
+     * @return Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
      * 
      */
     public Output<String> filter() {
@@ -232,7 +232,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param filter Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*{@literal /}sda`.
+         * @param filter Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param filter Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*{@literal /}sda`.
+         * @param filter Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
          * 
          * @return builder
          * 

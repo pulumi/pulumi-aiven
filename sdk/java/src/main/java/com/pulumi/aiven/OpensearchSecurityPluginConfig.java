@@ -178,7 +178,7 @@ public class OpensearchSecurityPluginConfig extends com.pulumi.resources.CustomR
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OpensearchSecurityPluginConfig(String name) {
+    public OpensearchSecurityPluginConfig(java.lang.String name) {
         this(name, OpensearchSecurityPluginConfigArgs.Empty);
     }
     /**
@@ -186,7 +186,7 @@ public class OpensearchSecurityPluginConfig extends com.pulumi.resources.CustomR
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OpensearchSecurityPluginConfig(String name, OpensearchSecurityPluginConfigArgs args) {
+    public OpensearchSecurityPluginConfig(java.lang.String name, OpensearchSecurityPluginConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,12 +195,12 @@ public class OpensearchSecurityPluginConfig extends com.pulumi.resources.CustomR
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OpensearchSecurityPluginConfig(String name, OpensearchSecurityPluginConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OpensearchSecurityPluginConfig(java.lang.String name, OpensearchSecurityPluginConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OpensearchSecurityPluginConfig(String name, Output<String> id, @Nullable OpensearchSecurityPluginConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig", name, state, makeResourceOptions(options, id));
+    private OpensearchSecurityPluginConfig(java.lang.String name, Output<java.lang.String> id, @Nullable OpensearchSecurityPluginConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OpensearchSecurityPluginConfigArgs makeArgs(OpensearchSecurityPluginConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -210,7 +210,7 @@ public class OpensearchSecurityPluginConfig extends com.pulumi.resources.CustomR
         return args == null ? OpensearchSecurityPluginConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -229,7 +229,7 @@ public class OpensearchSecurityPluginConfig extends com.pulumi.resources.CustomR
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OpensearchSecurityPluginConfig get(String name, Output<String> id, @Nullable OpensearchSecurityPluginConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OpensearchSecurityPluginConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable OpensearchSecurityPluginConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OpensearchSecurityPluginConfig(name, id, state, options);
     }
 }

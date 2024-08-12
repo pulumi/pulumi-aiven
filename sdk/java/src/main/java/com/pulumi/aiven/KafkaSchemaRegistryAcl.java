@@ -153,7 +153,7 @@ public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KafkaSchemaRegistryAcl(String name) {
+    public KafkaSchemaRegistryAcl(java.lang.String name) {
         this(name, KafkaSchemaRegistryAclArgs.Empty);
     }
     /**
@@ -161,7 +161,7 @@ public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KafkaSchemaRegistryAcl(String name, KafkaSchemaRegistryAclArgs args) {
+    public KafkaSchemaRegistryAcl(java.lang.String name, KafkaSchemaRegistryAclArgs args) {
         this(name, args, null);
     }
     /**
@@ -170,12 +170,12 @@ public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KafkaSchemaRegistryAcl(String name, KafkaSchemaRegistryAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KafkaSchemaRegistryAcl(java.lang.String name, KafkaSchemaRegistryAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KafkaSchemaRegistryAcl(String name, Output<String> id, @Nullable KafkaSchemaRegistryAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl", name, state, makeResourceOptions(options, id));
+    private KafkaSchemaRegistryAcl(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaSchemaRegistryAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KafkaSchemaRegistryAclArgs makeArgs(KafkaSchemaRegistryAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -185,7 +185,7 @@ public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource 
         return args == null ? KafkaSchemaRegistryAclArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -201,7 +201,7 @@ public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KafkaSchemaRegistryAcl get(String name, Output<String> id, @Nullable KafkaSchemaRegistryAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KafkaSchemaRegistryAcl get(java.lang.String name, Output<java.lang.String> id, @Nullable KafkaSchemaRegistryAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KafkaSchemaRegistryAcl(name, id, state, options);
     }
 }

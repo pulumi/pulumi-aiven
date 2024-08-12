@@ -277,7 +277,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceIntegrationEndpoint(String name) {
+    public ServiceIntegrationEndpoint(java.lang.String name) {
         this(name, ServiceIntegrationEndpointArgs.Empty);
     }
     /**
@@ -285,7 +285,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceIntegrationEndpoint(String name, ServiceIntegrationEndpointArgs args) {
+    public ServiceIntegrationEndpoint(java.lang.String name, ServiceIntegrationEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -294,12 +294,12 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceIntegrationEndpoint(String name, ServiceIntegrationEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ServiceIntegrationEndpoint(java.lang.String name, ServiceIntegrationEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceIntegrationEndpoint(String name, Output<String> id, @Nullable ServiceIntegrationEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, state, makeResourceOptions(options, id));
+    private ServiceIntegrationEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceIntegrationEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ServiceIntegrationEndpointArgs makeArgs(ServiceIntegrationEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -309,7 +309,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return args == null ? ServiceIntegrationEndpointArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -325,7 +325,7 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceIntegrationEndpoint get(String name, Output<String> id, @Nullable ServiceIntegrationEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceIntegrationEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceIntegrationEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceIntegrationEndpoint(name, id, state, options);
     }
 }
