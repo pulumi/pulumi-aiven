@@ -834,18 +834,18 @@ class InfluxDb(pulumi.CustomResource):
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
-                 influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']]] = None,
-                 influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']]]]] = None,
+                 influxdb_user_config: Optional[pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']]] = None,
+                 influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbInfluxdbArgs', 'InfluxDbInfluxdbArgsDict']]]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbServiceIntegrationArgs']]]]] = None,
+                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbServiceIntegrationArgs', 'InfluxDbServiceIntegrationArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]]] = None,
-                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTagArgs', 'InfluxDbTagArgsDict']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTechEmailArgs', 'InfluxDbTechEmailArgsDict']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -862,8 +862,8 @@ class InfluxDb(pulumi.CustomResource):
                AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
-        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']] influxdb_user_config: Influxdb user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']]]] influxdbs: InfluxDB server provided values
+        :param pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbInfluxdbArgs', 'InfluxDbInfluxdbArgsDict']]]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
@@ -878,13 +878,13 @@ class InfluxDb(pulumi.CustomResource):
                value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
                as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
                servers so the operation can take significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbServiceIntegrationArgs', 'InfluxDbServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
                service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTagArgs', 'InfluxDbTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTechEmailArgs', 'InfluxDbTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
                important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
@@ -916,18 +916,18 @@ class InfluxDb(pulumi.CustomResource):
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
-                 influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']]] = None,
-                 influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']]]]] = None,
+                 influxdb_user_config: Optional[pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']]] = None,
+                 influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbInfluxdbArgs', 'InfluxDbInfluxdbArgsDict']]]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
-                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbServiceIntegrationArgs']]]]] = None,
+                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbServiceIntegrationArgs', 'InfluxDbServiceIntegrationArgsDict']]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]]] = None,
-                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTagArgs', 'InfluxDbTagArgsDict']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTechEmailArgs', 'InfluxDbTechEmailArgsDict']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -986,21 +986,21 @@ class InfluxDb(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_disk_space: Optional[pulumi.Input[str]] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
-            components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbComponentArgs']]]]] = None,
+            components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbComponentArgs', 'InfluxDbComponentArgsDict']]]]] = None,
             disk_space: Optional[pulumi.Input[str]] = None,
             disk_space_cap: Optional[pulumi.Input[str]] = None,
             disk_space_default: Optional[pulumi.Input[str]] = None,
             disk_space_step: Optional[pulumi.Input[str]] = None,
             disk_space_used: Optional[pulumi.Input[str]] = None,
-            influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']]] = None,
-            influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']]]]] = None,
+            influxdb_user_config: Optional[pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']]] = None,
+            influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbInfluxdbArgs', 'InfluxDbInfluxdbArgsDict']]]]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
             plan: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             project_vpc_id: Optional[pulumi.Input[str]] = None,
             service_host: Optional[pulumi.Input[str]] = None,
-            service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbServiceIntegrationArgs']]]]] = None,
+            service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbServiceIntegrationArgs', 'InfluxDbServiceIntegrationArgsDict']]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             service_password: Optional[pulumi.Input[str]] = None,
             service_port: Optional[pulumi.Input[int]] = None,
@@ -1009,8 +1009,8 @@ class InfluxDb(pulumi.CustomResource):
             service_username: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]]] = None,
-            tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTagArgs', 'InfluxDbTagArgsDict']]]]] = None,
+            tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTechEmailArgs', 'InfluxDbTechEmailArgsDict']]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'InfluxDb':
         """
         Get an existing InfluxDb resource's state with the given name, id, and optional extra
@@ -1027,7 +1027,7 @@ class InfluxDb(pulumi.CustomResource):
                are documented on each Cloud provider's own support articles, like [here for
                Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
                AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbComponentArgs']]]] components: Service component information objects
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbComponentArgs', 'InfluxDbComponentArgsDict']]]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
         :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
@@ -1036,8 +1036,8 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the
                project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']] influxdb_user_config: Influxdb user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']]]] influxdbs: InfluxDB server provided values
+        :param pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbInfluxdbArgs', 'InfluxDbInfluxdbArgsDict']]]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
@@ -1053,7 +1053,7 @@ class InfluxDb(pulumi.CustomResource):
                as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
                servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[str] service_host: The hostname of the service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbServiceIntegrationArgs', 'InfluxDbServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
                service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
@@ -1064,8 +1064,8 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTagArgs', 'InfluxDbTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTechEmailArgs', 'InfluxDbTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
                important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
