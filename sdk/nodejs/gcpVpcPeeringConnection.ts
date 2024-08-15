@@ -73,7 +73,7 @@ export class GcpVpcPeeringConnection extends pulumi.CustomResource {
     /**
      * State-specific help or error information.
      */
-    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: string}>;
     /**
      * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */
@@ -144,7 +144,7 @@ export interface GcpVpcPeeringConnectionState {
     /**
      * State-specific help or error information.
      */
-    stateInfo?: pulumi.Input<{[key: string]: any}>;
+    stateInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */

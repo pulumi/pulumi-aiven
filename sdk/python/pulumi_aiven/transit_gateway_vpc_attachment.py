@@ -103,7 +103,7 @@ class _TransitGatewayVpcAttachmentState:
                  peer_vpc: Optional[pulumi.Input[str]] = None,
                  peering_connection_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
@@ -113,7 +113,7 @@ class _TransitGatewayVpcAttachmentState:
         :param pulumi.Input[str] peer_vpc: Transit gateway ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] state_info: State-specific help or error information
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -196,14 +196,14 @@ class _TransitGatewayVpcAttachmentState:
 
     @property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def state_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         State-specific help or error information
         """
         return pulumi.get(self, "state_info")
 
     @state_info.setter
-    def state_info(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def state_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "state_info", value)
 
     @property
@@ -362,7 +362,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
             peer_vpc: Optional[pulumi.Input[str]] = None,
             peering_connection_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'TransitGatewayVpcAttachment':
         """
@@ -377,7 +377,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] peer_vpc: Transit gateway ID. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] peering_connection_id: Cloud provider identifier for the peering connection if available
         :param pulumi.Input[str] state: State of the peering connection
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] state_info: State-specific help or error information
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_peer_network_cidrs: List of private IPv4 ranges to route through the peering connection
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -437,7 +437,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> pulumi.Output[Mapping[str, Any]]:
+    def state_info(self) -> pulumi.Output[Mapping[str, str]]:
         """
         State-specific help or error information
         """

@@ -5,7 +5,6 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -46,7 +45,7 @@ public final class GetAwsVpcPeeringConnectionResult {
      * @return State-specific help or error information.
      * 
      */
-    private Map<String,Object> stateInfo;
+    private Map<String,String> stateInfo;
     /**
      * @return The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
@@ -100,7 +99,7 @@ public final class GetAwsVpcPeeringConnectionResult {
      * @return State-specific help or error information.
      * 
      */
-    public Map<String,Object> stateInfo() {
+    public Map<String,String> stateInfo() {
         return this.stateInfo;
     }
     /**
@@ -126,7 +125,7 @@ public final class GetAwsVpcPeeringConnectionResult {
         private String awsVpcRegion;
         private String id;
         private String state;
-        private Map<String,Object> stateInfo;
+        private Map<String,String> stateInfo;
         private String vpcId;
         public Builder() {}
         public Builder(GetAwsVpcPeeringConnectionResult defaults) {
@@ -190,7 +189,7 @@ public final class GetAwsVpcPeeringConnectionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder stateInfo(Map<String,Object> stateInfo) {
+        public Builder stateInfo(Map<String,String> stateInfo) {
             if (stateInfo == null) {
               throw new MissingRequiredPropertyException("GetAwsVpcPeeringConnectionResult", "stateInfo");
             }

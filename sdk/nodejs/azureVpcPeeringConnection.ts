@@ -89,7 +89,7 @@ export class AzureVpcPeeringConnection extends pulumi.CustomResource {
     /**
      * State-specific help or error information.
      */
-    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the Azure VNet. Changing this property forces recreation of the resource.
      */
@@ -187,7 +187,7 @@ export interface AzureVpcPeeringConnectionState {
     /**
      * State-specific help or error information.
      */
-    stateInfo?: pulumi.Input<{[key: string]: any}>;
+    stateInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Azure VNet. Changing this property forces recreation of the resource.
      */

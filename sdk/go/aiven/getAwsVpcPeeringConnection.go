@@ -85,7 +85,7 @@ type LookupAwsVpcPeeringConnectionResult struct {
 	// The state of the peering connection.
 	State string `pulumi:"state"`
 	// State-specific help or error information.
-	StateInfo map[string]interface{} `pulumi:"stateInfo"`
+	StateInfo map[string]string `pulumi:"stateInfo"`
 	// The ID of the Aiven VPC. Changing this property forces recreation of the resource.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -165,8 +165,8 @@ func (o LookupAwsVpcPeeringConnectionResultOutput) State() pulumi.StringOutput {
 }
 
 // State-specific help or error information.
-func (o LookupAwsVpcPeeringConnectionResultOutput) StateInfo() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) map[string]interface{} { return v.StateInfo }).(pulumi.MapOutput)
+func (o LookupAwsVpcPeeringConnectionResultOutput) StateInfo() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAwsVpcPeeringConnectionResult) map[string]string { return v.StateInfo }).(pulumi.StringMapOutput)
 }
 
 // The ID of the Aiven VPC. Changing this property forces recreation of the resource.

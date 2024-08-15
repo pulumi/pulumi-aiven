@@ -75,7 +75,7 @@ type LookupTransitGatewayVpcAttachmentResult struct {
 	// State of the peering connection
 	State string `pulumi:"state"`
 	// State-specific help or error information
-	StateInfo map[string]interface{} `pulumi:"stateInfo"`
+	StateInfo map[string]string `pulumi:"stateInfo"`
 	// List of private IPv4 ranges to route through the peering connection
 	UserPeerNetworkCidrs []string `pulumi:"userPeerNetworkCidrs"`
 	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -155,8 +155,8 @@ func (o LookupTransitGatewayVpcAttachmentResultOutput) State() pulumi.StringOutp
 }
 
 // State-specific help or error information
-func (o LookupTransitGatewayVpcAttachmentResultOutput) StateInfo() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) map[string]interface{} { return v.StateInfo }).(pulumi.MapOutput)
+func (o LookupTransitGatewayVpcAttachmentResultOutput) StateInfo() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) map[string]string { return v.StateInfo }).(pulumi.StringMapOutput)
 }
 
 // List of private IPv4 ranges to route through the peering connection
