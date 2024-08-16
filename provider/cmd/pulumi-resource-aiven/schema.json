@@ -18579,7 +18579,7 @@
                 "stateInfo": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "State-specific help or error information.\n"
                 },
@@ -18654,7 +18654,7 @@
                     "stateInfo": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "State-specific help or error information.\n"
                     },
@@ -18884,7 +18884,7 @@
                 "stateInfo": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "State-specific help or error information.\n"
                 },
@@ -18982,7 +18982,7 @@
                     "stateInfo": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "State-specific help or error information.\n"
                     },
@@ -22043,7 +22043,7 @@
                 "stateInfo": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "State-specific help or error information.\n"
                 },
@@ -22106,7 +22106,7 @@
                     "stateInfo": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "State-specific help or error information.\n"
                     },
@@ -30760,7 +30760,7 @@
                 "stateInfo": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "State-specific help or error information\n"
                 },
@@ -30849,7 +30849,7 @@
                     "stateInfo": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "State-specific help or error information\n"
                     },
@@ -31952,7 +31952,7 @@
                     },
                     "stateInfo": {
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "State-specific help or error information.\n",
                         "type": "object"
@@ -32120,7 +32120,7 @@
                     },
                     "stateInfo": {
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "State-specific help or error information.\n",
                         "type": "object"
@@ -33844,7 +33844,7 @@
                     },
                     "stateInfo": {
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "State-specific help or error information.\n",
                         "type": "object"
@@ -38708,7 +38708,7 @@
                     },
                     "stateInfo": {
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "State-specific help or error information\n",
                         "type": "object"
