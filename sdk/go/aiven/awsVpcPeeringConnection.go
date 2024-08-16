@@ -70,7 +70,7 @@ type AwsVpcPeeringConnection struct {
 	// The state of the peering connection.
 	State pulumi.StringOutput `pulumi:"state"`
 	// State-specific help or error information.
-	StateInfo pulumi.MapOutput `pulumi:"stateInfo"`
+	StateInfo pulumi.StringMapOutput `pulumi:"stateInfo"`
 	// The ID of the Aiven VPC. Changing this property forces recreation of the resource.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -128,7 +128,7 @@ type awsVpcPeeringConnectionState struct {
 	// The state of the peering connection.
 	State *string `pulumi:"state"`
 	// State-specific help or error information.
-	StateInfo map[string]interface{} `pulumi:"stateInfo"`
+	StateInfo map[string]string `pulumi:"stateInfo"`
 	// The ID of the Aiven VPC. Changing this property forces recreation of the resource.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -145,7 +145,7 @@ type AwsVpcPeeringConnectionState struct {
 	// The state of the peering connection.
 	State pulumi.StringPtrInput
 	// State-specific help or error information.
-	StateInfo pulumi.MapInput
+	StateInfo pulumi.StringMapInput
 	// The ID of the Aiven VPC. Changing this property forces recreation of the resource.
 	VpcId pulumi.StringPtrInput
 }
@@ -290,8 +290,8 @@ func (o AwsVpcPeeringConnectionOutput) State() pulumi.StringOutput {
 }
 
 // State-specific help or error information.
-func (o AwsVpcPeeringConnectionOutput) StateInfo() pulumi.MapOutput {
-	return o.ApplyT(func(v *AwsVpcPeeringConnection) pulumi.MapOutput { return v.StateInfo }).(pulumi.MapOutput)
+func (o AwsVpcPeeringConnectionOutput) StateInfo() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AwsVpcPeeringConnection) pulumi.StringMapOutput { return v.StateInfo }).(pulumi.StringMapOutput)
 }
 
 // The ID of the Aiven VPC. Changing this property forces recreation of the resource.

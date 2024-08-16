@@ -65,7 +65,7 @@ type TransitGatewayVpcAttachment struct {
 	// State of the peering connection
 	State pulumi.StringOutput `pulumi:"state"`
 	// State-specific help or error information
-	StateInfo pulumi.MapOutput `pulumi:"stateInfo"`
+	StateInfo pulumi.StringMapOutput `pulumi:"stateInfo"`
 	// List of private IPv4 ranges to route through the peering connection
 	UserPeerNetworkCidrs pulumi.StringArrayOutput `pulumi:"userPeerNetworkCidrs"`
 	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -125,7 +125,7 @@ type transitGatewayVpcAttachmentState struct {
 	// State of the peering connection
 	State *string `pulumi:"state"`
 	// State-specific help or error information
-	StateInfo map[string]interface{} `pulumi:"stateInfo"`
+	StateInfo map[string]string `pulumi:"stateInfo"`
 	// List of private IPv4 ranges to route through the peering connection
 	UserPeerNetworkCidrs []string `pulumi:"userPeerNetworkCidrs"`
 	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -144,7 +144,7 @@ type TransitGatewayVpcAttachmentState struct {
 	// State of the peering connection
 	State pulumi.StringPtrInput
 	// State-specific help or error information
-	StateInfo pulumi.MapInput
+	StateInfo pulumi.StringMapInput
 	// List of private IPv4 ranges to route through the peering connection
 	UserPeerNetworkCidrs pulumi.StringArrayInput
 	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -295,8 +295,8 @@ func (o TransitGatewayVpcAttachmentOutput) State() pulumi.StringOutput {
 }
 
 // State-specific help or error information
-func (o TransitGatewayVpcAttachmentOutput) StateInfo() pulumi.MapOutput {
-	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.MapOutput { return v.StateInfo }).(pulumi.MapOutput)
+func (o TransitGatewayVpcAttachmentOutput) StateInfo() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachment) pulumi.StringMapOutput { return v.StateInfo }).(pulumi.StringMapOutput)
 }
 
 // List of private IPv4 ranges to route through the peering connection

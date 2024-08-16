@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -142,14 +141,14 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
      * State-specific help or error information
      * 
      */
-    @Export(name="stateInfo", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> stateInfo;
+    @Export(name="stateInfo", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> stateInfo;
 
     /**
      * @return State-specific help or error information
      * 
      */
-    public Output<Map<String,Object>> stateInfo() {
+    public Output<Map<String,String>> stateInfo() {
         return this.stateInfo;
     }
     /**

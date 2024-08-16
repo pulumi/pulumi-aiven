@@ -71,7 +71,7 @@ class _GcpVpcPeeringConnectionState:
                  peer_vpc: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GcpVpcPeeringConnection resources.
@@ -79,7 +79,7 @@ class _GcpVpcPeeringConnectionState:
         :param pulumi.Input[str] peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] self_link: Computed Google Cloud network peering link.
         :param pulumi.Input[str] state: State of the peering connection.
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] state_info: State-specific help or error information.
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         """
         if gcp_project_id is not None:
@@ -145,14 +145,14 @@ class _GcpVpcPeeringConnectionState:
 
     @property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def state_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         State-specific help or error information.
         """
         return pulumi.get(self, "state_info")
 
     @state_info.setter
-    def state_info(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def state_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "state_info", value)
 
     @property
@@ -284,7 +284,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
             peer_vpc: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'GcpVpcPeeringConnection':
         """
         Get an existing GcpVpcPeeringConnection resource's state with the given name, id, and optional extra
@@ -297,7 +297,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         :param pulumi.Input[str] peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] self_link: Computed Google Cloud network peering link.
         :param pulumi.Input[str] state: State of the peering connection.
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] state_info: State-specific help or error information.
         :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -346,7 +346,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> pulumi.Output[Mapping[str, Any]]:
+    def state_info(self) -> pulumi.Output[Mapping[str, str]]:
         """
         State-specific help or error information.
         """

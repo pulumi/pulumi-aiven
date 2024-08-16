@@ -87,7 +87,7 @@ class _AwsVpcPeeringConnectionState:
                  aws_vpc_peering_connection_id: Optional[pulumi.Input[str]] = None,
                  aws_vpc_region: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AwsVpcPeeringConnection resources.
@@ -96,7 +96,7 @@ class _AwsVpcPeeringConnectionState:
         :param pulumi.Input[str] aws_vpc_peering_connection_id: The ID of the AWS VPC peering connection.
         :param pulumi.Input[str] aws_vpc_region: The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] state: The state of the peering connection.
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] state_info: State-specific help or error information.
         :param pulumi.Input[str] vpc_id: The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         if aws_account_id is not None:
@@ -176,14 +176,14 @@ class _AwsVpcPeeringConnectionState:
 
     @property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def state_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         State-specific help or error information.
         """
         return pulumi.get(self, "state_info")
 
     @state_info.setter
-    def state_info(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def state_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "state_info", value)
 
     @property
@@ -332,7 +332,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
             aws_vpc_peering_connection_id: Optional[pulumi.Input[str]] = None,
             aws_vpc_region: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            state_info: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'AwsVpcPeeringConnection':
         """
         Get an existing AwsVpcPeeringConnection resource's state with the given name, id, and optional extra
@@ -346,7 +346,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         :param pulumi.Input[str] aws_vpc_peering_connection_id: The ID of the AWS VPC peering connection.
         :param pulumi.Input[str] aws_vpc_region: The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] state: The state of the peering connection.
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] state_info: State-specific help or error information.
         :param pulumi.Input[str] vpc_id: The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -404,7 +404,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> pulumi.Output[Mapping[str, Any]]:
+    def state_info(self) -> pulumi.Output[Mapping[str, str]]:
         """
         State-specific help or error information.
         """

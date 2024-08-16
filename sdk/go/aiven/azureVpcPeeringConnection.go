@@ -74,7 +74,7 @@ type AzureVpcPeeringConnection struct {
 	// State of the peering connection
 	State pulumi.StringOutput `pulumi:"state"`
 	// State-specific help or error information.
-	StateInfo pulumi.MapOutput `pulumi:"stateInfo"`
+	StateInfo pulumi.StringMapOutput `pulumi:"stateInfo"`
 	// The name of the Azure VNet. Changing this property forces recreation of the resource.
 	VnetName pulumi.StringOutput `pulumi:"vnetName"`
 	// The ID of the Aiven VPC. Changing this property forces recreation of the resource.
@@ -142,7 +142,7 @@ type azureVpcPeeringConnectionState struct {
 	// State of the peering connection
 	State *string `pulumi:"state"`
 	// State-specific help or error information.
-	StateInfo map[string]interface{} `pulumi:"stateInfo"`
+	StateInfo map[string]string `pulumi:"stateInfo"`
 	// The name of the Azure VNet. Changing this property forces recreation of the resource.
 	VnetName *string `pulumi:"vnetName"`
 	// The ID of the Aiven VPC. Changing this property forces recreation of the resource.
@@ -163,7 +163,7 @@ type AzureVpcPeeringConnectionState struct {
 	// State of the peering connection
 	State pulumi.StringPtrInput
 	// State-specific help or error information.
-	StateInfo pulumi.MapInput
+	StateInfo pulumi.StringMapInput
 	// The name of the Azure VNet. Changing this property forces recreation of the resource.
 	VnetName pulumi.StringPtrInput
 	// The ID of the Aiven VPC. Changing this property forces recreation of the resource.
@@ -323,8 +323,8 @@ func (o AzureVpcPeeringConnectionOutput) State() pulumi.StringOutput {
 }
 
 // State-specific help or error information.
-func (o AzureVpcPeeringConnectionOutput) StateInfo() pulumi.MapOutput {
-	return o.ApplyT(func(v *AzureVpcPeeringConnection) pulumi.MapOutput { return v.StateInfo }).(pulumi.MapOutput)
+func (o AzureVpcPeeringConnectionOutput) StateInfo() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AzureVpcPeeringConnection) pulumi.StringMapOutput { return v.StateInfo }).(pulumi.StringMapOutput)
 }
 
 // The name of the Azure VNet. Changing this property forces recreation of the resource.
