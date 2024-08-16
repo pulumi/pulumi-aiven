@@ -148,7 +148,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// State-specific help or error information
         /// </summary>
-        public readonly ImmutableDictionary<string, object> StateInfo;
+        public readonly ImmutableDictionary<string, string> StateInfo;
         /// <summary>
         /// List of private IPv4 ranges to route through the peering connection
         /// </summary>
@@ -172,7 +172,7 @@ namespace Pulumi.Aiven
 
             string state,
 
-            ImmutableDictionary<string, object> stateInfo,
+            ImmutableDictionary<string, string> stateInfo,
 
             ImmutableArray<string> userPeerNetworkCidrs,
 

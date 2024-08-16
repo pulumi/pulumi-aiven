@@ -86,7 +86,7 @@ class GetGcpVpcPeeringConnectionResult:
 
     @property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> Mapping[str, Any]:
+    def state_info(self) -> Mapping[str, str]:
         """
         State-specific help or error information.
         """

@@ -79,7 +79,7 @@ export interface GetTransitGatewayVpcAttachmentResult {
     /**
      * State-specific help or error information
      */
-    readonly stateInfo: {[key: string]: any};
+    readonly stateInfo: {[key: string]: string};
     /**
      * List of private IPv4 ranges to route through the peering connection
      */

@@ -194,7 +194,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// State-specific help or error information.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> StateInfo;
+        public readonly ImmutableDictionary<string, string> StateInfo;
         /// <summary>
         /// The name of the Azure VNet. Changing this property forces recreation of the resource.
         /// </summary>
@@ -220,7 +220,7 @@ namespace Pulumi.Aiven
 
             string state,
 
-            ImmutableDictionary<string, object> stateInfo,
+            ImmutableDictionary<string, string> stateInfo,
 
             string vnetName,
 

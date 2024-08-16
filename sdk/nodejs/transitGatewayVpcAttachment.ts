@@ -79,7 +79,7 @@ export class TransitGatewayVpcAttachment extends pulumi.CustomResource {
     /**
      * State-specific help or error information
      */
-    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: string}>;
     /**
      * List of private IPv4 ranges to route through the peering connection
      */
@@ -165,7 +165,7 @@ export interface TransitGatewayVpcAttachmentState {
     /**
      * State-specific help or error information
      */
-    stateInfo?: pulumi.Input<{[key: string]: any}>;
+    stateInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * List of private IPv4 ranges to route through the peering connection
      */

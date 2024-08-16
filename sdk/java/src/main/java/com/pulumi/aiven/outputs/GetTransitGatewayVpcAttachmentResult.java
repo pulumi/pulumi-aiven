@@ -5,7 +5,6 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +46,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
      * @return State-specific help or error information
      * 
      */
-    private Map<String,Object> stateInfo;
+    private Map<String,String> stateInfo;
     /**
      * @return List of private IPv4 ranges to route through the peering connection
      * 
@@ -106,7 +105,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
      * @return State-specific help or error information
      * 
      */
-    public Map<String,Object> stateInfo() {
+    public Map<String,String> stateInfo() {
         return this.stateInfo;
     }
     /**
@@ -139,7 +138,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
         private String peerVpc;
         private String peeringConnectionId;
         private String state;
-        private Map<String,Object> stateInfo;
+        private Map<String,String> stateInfo;
         private List<String> userPeerNetworkCidrs;
         private String vpcId;
         public Builder() {}
@@ -205,7 +204,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder stateInfo(Map<String,Object> stateInfo) {
+        public Builder stateInfo(Map<String,String> stateInfo) {
             if (stateInfo == null) {
               throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "stateInfo");
             }

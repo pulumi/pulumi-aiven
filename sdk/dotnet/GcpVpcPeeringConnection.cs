@@ -69,7 +69,7 @@ namespace Pulumi.Aiven
         /// State-specific help or error information.
         /// </summary>
         [Output("stateInfo")]
-        public Output<ImmutableDictionary<string, object>> StateInfo { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> StateInfo { get; private set; } = null!;
 
         /// <summary>
         /// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
@@ -174,14 +174,14 @@ namespace Pulumi.Aiven
         public Input<string>? State { get; set; }
 
         [Input("stateInfo")]
-        private InputMap<object>? _stateInfo;
+        private InputMap<string>? _stateInfo;
 
         /// <summary>
         /// State-specific help or error information.
         /// </summary>
-        public InputMap<object> StateInfo
+        public InputMap<string> StateInfo
         {
-            get => _stateInfo ?? (_stateInfo = new InputMap<object>());
+            get => _stateInfo ?? (_stateInfo = new InputMap<string>());
             set => _stateInfo = value;
         }
 

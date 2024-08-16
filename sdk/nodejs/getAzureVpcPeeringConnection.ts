@@ -101,7 +101,7 @@ export interface GetAzureVpcPeeringConnectionResult {
     /**
      * State-specific help or error information.
      */
-    readonly stateInfo: {[key: string]: any};
+    readonly stateInfo: {[key: string]: string};
     /**
      * The name of the Azure VNet. Changing this property forces recreation of the resource.
      */

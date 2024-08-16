@@ -5,7 +5,6 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -98,13 +97,13 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
      * 
      */
     @Import(name="stateInfo")
-    private @Nullable Output<Map<String,Object>> stateInfo;
+    private @Nullable Output<Map<String,String>> stateInfo;
 
     /**
      * @return State-specific help or error information
      * 
      */
-    public Optional<Output<Map<String,Object>>> stateInfo() {
+    public Optional<Output<Map<String,String>>> stateInfo() {
         return Optional.ofNullable(this.stateInfo);
     }
 
@@ -280,7 +279,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder stateInfo(@Nullable Output<Map<String,Object>> stateInfo) {
+        public Builder stateInfo(@Nullable Output<Map<String,String>> stateInfo) {
             $.stateInfo = stateInfo;
             return this;
         }
@@ -291,7 +290,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder stateInfo(Map<String,Object> stateInfo) {
+        public Builder stateInfo(Map<String,String> stateInfo) {
             return stateInfo(Output.of(stateInfo));
         }
 

@@ -86,7 +86,7 @@ type LookupAzureVpcPeeringConnectionResult struct {
 	// State of the peering connection
 	State string `pulumi:"state"`
 	// State-specific help or error information.
-	StateInfo map[string]interface{} `pulumi:"stateInfo"`
+	StateInfo map[string]string `pulumi:"stateInfo"`
 	// The name of the Azure VNet. Changing this property forces recreation of the resource.
 	VnetName string `pulumi:"vnetName"`
 	// The ID of the Aiven VPC. Changing this property forces recreation of the resource.
@@ -177,8 +177,8 @@ func (o LookupAzureVpcPeeringConnectionResultOutput) State() pulumi.StringOutput
 }
 
 // State-specific help or error information.
-func (o LookupAzureVpcPeeringConnectionResultOutput) StateInfo() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupAzureVpcPeeringConnectionResult) map[string]interface{} { return v.StateInfo }).(pulumi.MapOutput)
+func (o LookupAzureVpcPeeringConnectionResultOutput) StateInfo() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAzureVpcPeeringConnectionResult) map[string]string { return v.StateInfo }).(pulumi.StringMapOutput)
 }
 
 // The name of the Azure VNet. Changing this property forces recreation of the resource.

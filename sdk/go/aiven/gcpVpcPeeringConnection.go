@@ -59,7 +59,7 @@ type GcpVpcPeeringConnection struct {
 	// State of the peering connection.
 	State pulumi.StringOutput `pulumi:"state"`
 	// State-specific help or error information.
-	StateInfo pulumi.MapOutput `pulumi:"stateInfo"`
+	StateInfo pulumi.StringMapOutput `pulumi:"stateInfo"`
 	// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -112,7 +112,7 @@ type gcpVpcPeeringConnectionState struct {
 	// State of the peering connection.
 	State *string `pulumi:"state"`
 	// State-specific help or error information.
-	StateInfo map[string]interface{} `pulumi:"stateInfo"`
+	StateInfo map[string]string `pulumi:"stateInfo"`
 	// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -127,7 +127,7 @@ type GcpVpcPeeringConnectionState struct {
 	// State of the peering connection.
 	State pulumi.StringPtrInput
 	// State-specific help or error information.
-	StateInfo pulumi.MapInput
+	StateInfo pulumi.StringMapInput
 	// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
 	VpcId pulumi.StringPtrInput
 }
@@ -263,8 +263,8 @@ func (o GcpVpcPeeringConnectionOutput) State() pulumi.StringOutput {
 }
 
 // State-specific help or error information.
-func (o GcpVpcPeeringConnectionOutput) StateInfo() pulumi.MapOutput {
-	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.MapOutput { return v.StateInfo }).(pulumi.MapOutput)
+func (o GcpVpcPeeringConnectionOutput) StateInfo() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.StringMapOutput { return v.StateInfo }).(pulumi.StringMapOutput)
 }
 
 // The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
