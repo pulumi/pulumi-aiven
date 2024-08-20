@@ -632,6 +632,9 @@
                                 "kafka_rest_config": {
                                     "maxItemsOne": true
                                 },
+                                "kafka_sasl_mechanisms": {
+                                    "maxItemsOne": true
+                                },
                                 "private_access": {
                                     "maxItemsOne": true
                                 },
@@ -1107,8 +1110,17 @@
                                 "additional_backup_regions": {
                                     "maxItemsOne": true
                                 },
+                                "azure_migration": {
+                                    "maxItemsOne": true
+                                },
+                                "gcs_migration": {
+                                    "maxItemsOne": true
+                                },
                                 "index_patterns": {
                                     "maxItemsOne": false
+                                },
+                                "index_rollup": {
+                                    "maxItemsOne": true
                                 },
                                 "index_template": {
                                     "maxItemsOne": true
@@ -1158,6 +1170,9 @@
                                     "maxItemsOne": true
                                 },
                                 "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "s3_migration": {
                                     "maxItemsOne": true
                                 },
                                 "saml": {
@@ -2505,6 +2520,9 @@
                                 "kafka_rest_config": {
                                     "maxItemsOne": true
                                 },
+                                "kafka_sasl_mechanisms": {
+                                    "maxItemsOne": true
+                                },
                                 "private_access": {
                                     "maxItemsOne": true
                                 },
@@ -2980,8 +2998,17 @@
                                 "additional_backup_regions": {
                                     "maxItemsOne": true
                                 },
+                                "azure_migration": {
+                                    "maxItemsOne": true
+                                },
+                                "gcs_migration": {
+                                    "maxItemsOne": true
+                                },
                                 "index_patterns": {
                                     "maxItemsOne": false
+                                },
+                                "index_rollup": {
+                                    "maxItemsOne": true
                                 },
                                 "index_template": {
                                     "maxItemsOne": true
@@ -3031,6 +3058,9 @@
                                     "maxItemsOne": true
                                 },
                                 "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "s3_migration": {
                                     "maxItemsOne": true
                                 },
                                 "saml": {
