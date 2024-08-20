@@ -221,7 +221,7 @@ class PgDatabase(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
+        Creates and manages a database in an Aiven for PostgreSQL® service.
 
         ## Example Usage
 
@@ -229,16 +229,16 @@ class PgDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mydatabase = aiven.PgDatabase("mydatabase",
-            project=myproject["project"],
-            service_name=mypg["serviceName"],
-            database_name="<DATABASE_NAME>")
+        main = aiven.PgDatabase("main",
+            project=example_project["project"],
+            service_name=example_postgres["serviceName"],
+            database_name="example-database")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+        $ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -256,7 +256,7 @@ class PgDatabase(pulumi.CustomResource):
                  args: PgDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
+        Creates and manages a database in an Aiven for PostgreSQL® service.
 
         ## Example Usage
 
@@ -264,16 +264,16 @@ class PgDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mydatabase = aiven.PgDatabase("mydatabase",
-            project=myproject["project"],
-            service_name=mypg["serviceName"],
-            database_name="<DATABASE_NAME>")
+        main = aiven.PgDatabase("main",
+            project=example_project["project"],
+            service_name=example_postgres["serviceName"],
+            database_name="example-database")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+        $ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.

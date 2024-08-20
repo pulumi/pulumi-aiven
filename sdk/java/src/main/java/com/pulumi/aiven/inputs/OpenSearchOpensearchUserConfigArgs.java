@@ -3,7 +3,10 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigAzureMigrationArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigGcsMigrationArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexPatternArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexRollupArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIndexTemplateArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpenidArgs;
@@ -12,6 +15,7 @@ import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchDashboard
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigPublicAccessArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigS3MigrationArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigSamlArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -41,6 +45,13 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
      */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+
+    @Import(name="azureMigration")
+    private @Nullable Output<OpenSearchOpensearchUserConfigAzureMigrationArgs> azureMigration;
+
+    public Optional<Output<OpenSearchOpensearchUserConfigAzureMigrationArgs>> azureMigration() {
+        return Optional.ofNullable(this.azureMigration);
     }
 
     /**
@@ -73,6 +84,13 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
 
+    @Import(name="gcsMigration")
+    private @Nullable Output<OpenSearchOpensearchUserConfigGcsMigrationArgs> gcsMigration;
+
+    public Optional<Output<OpenSearchOpensearchUserConfigGcsMigrationArgs>> gcsMigration() {
+        return Optional.ofNullable(this.gcsMigration);
+    }
+
     /**
      * Index patterns
      * 
@@ -86,6 +104,21 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
      */
     public Optional<Output<List<OpenSearchOpensearchUserConfigIndexPatternArgs>>> indexPatterns() {
         return Optional.ofNullable(this.indexPatterns);
+    }
+
+    /**
+     * Index rollup settings
+     * 
+     */
+    @Import(name="indexRollup")
+    private @Nullable Output<OpenSearchOpensearchUserConfigIndexRollupArgs> indexRollup;
+
+    /**
+     * @return Index rollup settings
+     * 
+     */
+    public Optional<Output<OpenSearchOpensearchUserConfigIndexRollupArgs>> indexRollup() {
+        return Optional.ofNullable(this.indexRollup);
     }
 
     /**
@@ -321,6 +354,13 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
 
+    @Import(name="s3Migration")
+    private @Nullable Output<OpenSearchOpensearchUserConfigS3MigrationArgs> s3Migration;
+
+    public Optional<Output<OpenSearchOpensearchUserConfigS3MigrationArgs>> s3Migration() {
+        return Optional.ofNullable(this.s3Migration);
+    }
+
     /**
      * OpenSearch SAML configuration
      * 
@@ -385,9 +425,12 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
 
     private OpenSearchOpensearchUserConfigArgs(OpenSearchOpensearchUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
+        this.azureMigration = $.azureMigration;
         this.customDomain = $.customDomain;
         this.disableReplicationFactorAdjustment = $.disableReplicationFactorAdjustment;
+        this.gcsMigration = $.gcsMigration;
         this.indexPatterns = $.indexPatterns;
+        this.indexRollup = $.indexRollup;
         this.indexTemplate = $.indexTemplate;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
@@ -403,6 +446,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
         this.recoveryBasebackupName = $.recoveryBasebackupName;
+        this.s3Migration = $.s3Migration;
         this.saml = $.saml;
         this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
@@ -448,6 +492,15 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
+        public Builder azureMigration(@Nullable Output<OpenSearchOpensearchUserConfigAzureMigrationArgs> azureMigration) {
+            $.azureMigration = azureMigration;
+            return this;
+        }
+
+        public Builder azureMigration(OpenSearchOpensearchUserConfigAzureMigrationArgs azureMigration) {
+            return azureMigration(Output.of(azureMigration));
+        }
+
         /**
          * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
          * 
@@ -490,6 +543,15 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
             return disableReplicationFactorAdjustment(Output.of(disableReplicationFactorAdjustment));
         }
 
+        public Builder gcsMigration(@Nullable Output<OpenSearchOpensearchUserConfigGcsMigrationArgs> gcsMigration) {
+            $.gcsMigration = gcsMigration;
+            return this;
+        }
+
+        public Builder gcsMigration(OpenSearchOpensearchUserConfigGcsMigrationArgs gcsMigration) {
+            return gcsMigration(Output.of(gcsMigration));
+        }
+
         /**
          * @param indexPatterns Index patterns
          * 
@@ -519,6 +581,27 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          */
         public Builder indexPatterns(OpenSearchOpensearchUserConfigIndexPatternArgs... indexPatterns) {
             return indexPatterns(List.of(indexPatterns));
+        }
+
+        /**
+         * @param indexRollup Index rollup settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexRollup(@Nullable Output<OpenSearchOpensearchUserConfigIndexRollupArgs> indexRollup) {
+            $.indexRollup = indexRollup;
+            return this;
+        }
+
+        /**
+         * @param indexRollup Index rollup settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexRollup(OpenSearchOpensearchUserConfigIndexRollupArgs indexRollup) {
+            return indexRollup(Output.of(indexRollup));
         }
 
         /**
@@ -876,6 +959,15 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          */
         public Builder recoveryBasebackupName(String recoveryBasebackupName) {
             return recoveryBasebackupName(Output.of(recoveryBasebackupName));
+        }
+
+        public Builder s3Migration(@Nullable Output<OpenSearchOpensearchUserConfigS3MigrationArgs> s3Migration) {
+            $.s3Migration = s3Migration;
+            return this;
+        }
+
+        public Builder s3Migration(OpenSearchOpensearchUserConfigS3MigrationArgs s3Migration) {
+            return s3Migration(Output.of(s3Migration));
         }
 
         /**

@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfigOpenid {
     /**
-     * @return The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * @return The ID of the OpenID Connect client configured in your IdP. Required.
      * 
      */
     private String clientId;
     /**
-     * @return The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * @return The client secret of the OpenID Connect client configured in your IdP. Required.
      * 
      */
     private String clientSecret;
@@ -65,7 +65,7 @@ public final class OpenSearchOpensearchUserConfigOpenid {
      */
     private @Nullable String rolesKey;
     /**
-     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
      * 
      */
     private @Nullable String scope;
@@ -77,14 +77,14 @@ public final class OpenSearchOpensearchUserConfigOpenid {
 
     private OpenSearchOpensearchUserConfigOpenid() {}
     /**
-     * @return The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * @return The ID of the OpenID Connect client configured in your IdP. Required.
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * @return The client secret of the OpenID Connect client configured in your IdP. Required.
      * 
      */
     public String clientSecret() {
@@ -147,7 +147,7 @@ public final class OpenSearchOpensearchUserConfigOpenid {
         return Optional.ofNullable(this.rolesKey);
     }
     /**
-     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
      * 
      */
     public Optional<String> scope() {

@@ -44,8 +44,9 @@ class InfluxDbArgs:
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
                service so name should be picked based on intended service usage rather than current attributes.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-               reducing will result in the service rebalancing.
+        :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+               service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+               service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
                created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
                provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
@@ -152,8 +153,9 @@ class InfluxDbArgs:
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-        reducing will result in the service rebalancing.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+        service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+        service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -353,8 +355,9 @@ class _InfluxDbState:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering InfluxDb resources.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-               reducing will result in the service rebalancing.
+        :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+               service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+               service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
                created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
                provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
@@ -469,8 +472,9 @@ class _InfluxDbState:
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-        reducing will result in the service rebalancing.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+        service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+        service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -852,8 +856,9 @@ class InfluxDb(pulumi.CustomResource):
         Create a InfluxDb resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-               reducing will result in the service rebalancing.
+        :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+               service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+               service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
                created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
                provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
@@ -1019,8 +1024,9 @@ class InfluxDb(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-               reducing will result in the service rebalancing.
+        :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+               service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+               service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
                created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
                provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
@@ -1109,8 +1115,9 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-        reducing will result in the service rebalancing.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+        service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+        service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
         return pulumi.get(self, "additional_disk_space")
 

@@ -56,7 +56,7 @@ type ProjectVpc struct {
 	NetworkCidr pulumi.StringOutput `pulumi:"networkCidr"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -105,7 +105,7 @@ type projectVpcState struct {
 	NetworkCidr *string `pulumi:"networkCidr"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
 	State *string `pulumi:"state"`
 }
 
@@ -116,7 +116,7 @@ type ProjectVpcState struct {
 	NetworkCidr pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
 	State pulumi.StringPtrInput
 }
 
@@ -245,7 +245,7 @@ func (o ProjectVpcOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
 func (o ProjectVpcOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

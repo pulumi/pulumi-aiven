@@ -18,14 +18,14 @@ public final class PgUserArgs extends com.pulumi.resources.ResourceArgs {
     public static final PgUserArgs Empty = new PgUserArgs();
 
     /**
-     * The password of the PG User (not applicable for all services).
+     * The password of the service user.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the PG User (not applicable for all services).
+     * @return The password of the service user.
      * 
      */
     public Optional<Output<String>> password() {
@@ -33,14 +33,14 @@ public final class PgUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines whether replication is allowed.
+     * Allows replication.
      * 
      */
     @Import(name="pgAllowReplication")
     private @Nullable Output<Boolean> pgAllowReplication;
 
     /**
-     * @return Defines whether replication is allowed.
+     * @return Allows replication.
      * 
      */
     public Optional<Output<Boolean>> pgAllowReplication() {
@@ -78,14 +78,14 @@ public final class PgUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
@@ -121,7 +121,7 @@ public final class PgUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the PG User (not applicable for all services).
+         * @param password The password of the service user.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class PgUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the PG User (not applicable for all services).
+         * @param password The password of the service user.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class PgUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgAllowReplication Defines whether replication is allowed.
+         * @param pgAllowReplication Allows replication.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class PgUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgAllowReplication Defines whether replication is allowed.
+         * @param pgAllowReplication Allows replication.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class PgUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class PgUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

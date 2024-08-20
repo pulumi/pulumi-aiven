@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The PG User resource allows the creation and management of Aiven PG Users.
+// Creates and manages an Aiven for PostgreSQL® service user.
 //
 // ## Example Usage
 //
@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewPgUser(ctx, "foo", &aiven.PgUserArgs{
-//				ServiceName: pulumi.Any(bar.ServiceName),
-//				Project:     pulumi.String("my-project"),
-//				Username:    pulumi.String("user-1"),
-//				Password:    pulumi.String("Test$1234"),
+//			_, err := aiven.NewPgUser(ctx, "example_user", &aiven.PgUserArgs{
+//				ServiceName: pulumi.Any(examplePostgres.ServiceName),
+//				Project:     pulumi.Any(exampleProject.Project),
+//				Username:    pulumi.String("example-service-user"),
+//				Password:    pulumi.Any(serviceUserPassword),
 //			})
 //			if err != nil {
 //				return err
@@ -46,26 +46,26 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/pgUser:PgUser user PROJECT/SERVICE_NAME/USERNAME
+// $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
 // ```
 type PgUser struct {
 	pulumi.CustomResourceState
 
-	// Access certificate for the user
+	// The access certificate for the servie user.
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
-	// Access certificate key for the user
+	// The access certificate key for the service user.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// The password of the PG User (not applicable for all services).
+	// The password of the service user.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Defines whether replication is allowed.
+	// Allows replication.
 	PgAllowReplication pulumi.BoolPtrOutput `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// The service user account type, either primary or regular.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -117,40 +117,40 @@ func GetPgUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PgUser resources.
 type pgUserState struct {
-	// Access certificate for the user
+	// The access certificate for the servie user.
 	AccessCert *string `pulumi:"accessCert"`
-	// Access certificate key for the user
+	// The access certificate key for the service user.
 	AccessKey *string `pulumi:"accessKey"`
-	// The password of the PG User (not applicable for all services).
+	// The password of the service user.
 	Password *string `pulumi:"password"`
-	// Defines whether replication is allowed.
+	// Allows replication.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// The service user account type, either primary or regular.
 	Type *string `pulumi:"type"`
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type PgUserState struct {
-	// Access certificate for the user
+	// The access certificate for the servie user.
 	AccessCert pulumi.StringPtrInput
-	// Access certificate key for the user
+	// The access certificate key for the service user.
 	AccessKey pulumi.StringPtrInput
-	// The password of the PG User (not applicable for all services).
+	// The password of the service user.
 	Password pulumi.StringPtrInput
-	// Defines whether replication is allowed.
+	// Allows replication.
 	PgAllowReplication pulumi.BoolPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// The service user account type, either primary or regular.
 	Type pulumi.StringPtrInput
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -159,29 +159,29 @@ func (PgUserState) ElementType() reflect.Type {
 }
 
 type pgUserArgs struct {
-	// The password of the PG User (not applicable for all services).
+	// The password of the service user.
 	Password *string `pulumi:"password"`
-	// Defines whether replication is allowed.
+	// Allows replication.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a PgUser resource.
 type PgUserArgs struct {
-	// The password of the PG User (not applicable for all services).
+	// The password of the service user.
 	Password pulumi.StringPtrInput
-	// Defines whether replication is allowed.
+	// Allows replication.
 	PgAllowReplication pulumi.BoolPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -272,22 +272,22 @@ func (o PgUserOutput) ToPgUserOutputWithContext(ctx context.Context) PgUserOutpu
 	return o
 }
 
-// Access certificate for the user
+// The access certificate for the servie user.
 func (o PgUserOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user
+// The access certificate key for the service user.
 func (o PgUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The password of the PG User (not applicable for all services).
+// The password of the service user.
 func (o PgUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Defines whether replication is allowed.
+// Allows replication.
 func (o PgUserOutput) PgAllowReplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.BoolPtrOutput { return v.PgAllowReplication }).(pulumi.BoolPtrOutput)
 }
@@ -302,12 +302,12 @@ func (o PgUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Type of the user account. Tells whether the user is the primary account or a regular account.
+// The service user account type, either primary or regular.
 func (o PgUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o PgUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

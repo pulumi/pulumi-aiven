@@ -14,27 +14,27 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgParam
     {
         /// <summary>
-        /// Primary PostgreSQL database name
+        /// Primary PostgreSQL database name.
         /// </summary>
         public readonly string? DatabaseName;
         /// <summary>
-        /// PostgreSQL host IP or name
+        /// PostgreSQL host IP or name.
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// PostgreSQL admin user password
+        /// PostgreSQL admin user password.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// PostgreSQL port
+        /// PostgreSQL port.
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// PostgreSQL sslmode setting (currently always "require")
+        /// PostgreSQL SSL mode setting.
         /// </summary>
         public readonly string? Sslmode;
         /// <summary>
-        /// PostgreSQL admin user name
+        /// PostgreSQL admin user name.
         /// </summary>
         public readonly string? User;
 

@@ -74,7 +74,7 @@ class GetAccountTeamProjectResult:
     @pulumi.getter(name="teamType")
     def team_type(self) -> str:
         """
-        The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.
+        The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.
         """
         return pulumi.get(self, "team_type")
 

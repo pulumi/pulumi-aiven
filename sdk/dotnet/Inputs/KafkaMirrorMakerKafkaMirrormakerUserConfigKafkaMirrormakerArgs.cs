@@ -13,6 +13,12 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+        /// </summary>
+        [Input("adminTimeoutMs")]
+        public Input<int>? AdminTimeoutMs { get; set; }
+
+        /// <summary>
         /// Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
         /// </summary>
         [Input("emitCheckpointsEnabled")]

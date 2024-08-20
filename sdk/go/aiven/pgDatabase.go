@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
+// Creates and manages a database in an Aiven for PostgreSQL® service.
 //
 // ## Example Usage
 //
@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewPgDatabase(ctx, "mydatabase", &aiven.PgDatabaseArgs{
-//				Project:      pulumi.Any(myproject.Project),
-//				ServiceName:  pulumi.Any(mypg.ServiceName),
-//				DatabaseName: pulumi.String("<DATABASE_NAME>"),
+//			_, err := aiven.NewPgDatabase(ctx, "main", &aiven.PgDatabaseArgs{
+//				Project:      pulumi.Any(exampleProject.Project),
+//				ServiceName:  pulumi.Any(examplePostgres.ServiceName),
+//				DatabaseName: pulumi.String("example-database"),
 //			})
 //			if err != nil {
 //				return err
@@ -45,7 +45,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+// $ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME
 // ```
 type PgDatabase struct {
 	pulumi.CustomResourceState

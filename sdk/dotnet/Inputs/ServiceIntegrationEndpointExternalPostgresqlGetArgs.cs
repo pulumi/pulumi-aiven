@@ -55,13 +55,23 @@ namespace Pulumi.Aiven.Inputs
         [Input("sslClientCertificate")]
         public Input<string>? SslClientCertificate { get; set; }
 
+        [Input("sslClientKey")]
+        private Input<string>? _sslClientKey;
+
         /// <summary>
         /// Client key. Example: `-----BEGIN PRIVATE KEY-----
         /// ...
         /// -----END PRIVATE KEY-----`.
         /// </summary>
-        [Input("sslClientKey")]
-        public Input<string>? SslClientKey { get; set; }
+        public Input<string>? SslClientKey
+        {
+            get => _sslClientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslClientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.

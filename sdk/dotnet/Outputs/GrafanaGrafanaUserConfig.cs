@@ -181,6 +181,10 @@ namespace Pulumi.Aiven.Outputs
         /// Users with view-only permission can edit but not save dashboards.
         /// </summary>
         public readonly bool? ViewersCanEdit;
+        /// <summary>
+        /// Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+        /// </summary>
+        public readonly bool? Wal;
 
         [OutputConstructor]
         private GrafanaGrafanaUserConfig(
@@ -266,7 +270,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? userAutoAssignOrgRole,
 
-            bool? viewersCanEdit)
+            bool? viewersCanEdit,
+
+            bool? wal)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             AlertingEnabled = alertingEnabled;
@@ -310,6 +316,7 @@ namespace Pulumi.Aiven.Outputs
             UserAutoAssignOrg = userAutoAssignOrg;
             UserAutoAssignOrgRole = userAutoAssignOrgRole;
             ViewersCanEdit = viewersCanEdit;
+            Wal = wal;
         }
     }
 }

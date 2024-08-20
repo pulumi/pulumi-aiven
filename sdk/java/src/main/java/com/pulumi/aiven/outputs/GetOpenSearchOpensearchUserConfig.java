@@ -3,7 +3,10 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigAzureMigration;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigGcsMigration;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigIndexPattern;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigIndexRollup;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigIndexTemplate;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpenid;
@@ -12,6 +15,7 @@ import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchDashb
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigPublicAccess;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigS3Migration;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigSaml;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -29,6 +33,7 @@ public final class GetOpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable String additionalBackupRegions;
+    private @Nullable GetOpenSearchOpensearchUserConfigAzureMigration azureMigration;
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
@@ -39,11 +44,17 @@ public final class GetOpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable Boolean disableReplicationFactorAdjustment;
+    private @Nullable GetOpenSearchOpensearchUserConfigGcsMigration gcsMigration;
     /**
      * @return Index patterns
      * 
      */
     private @Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
+    /**
+     * @return Index rollup settings
+     * 
+     */
+    private @Nullable GetOpenSearchOpensearchUserConfigIndexRollup indexRollup;
     /**
      * @return Template settings for all new indexes
      * 
@@ -123,6 +134,7 @@ public final class GetOpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable String recoveryBasebackupName;
+    private @Nullable GetOpenSearchOpensearchUserConfigS3Migration s3Migration;
     /**
      * @return OpenSearch SAML configuration
      * 
@@ -152,6 +164,9 @@ public final class GetOpenSearchOpensearchUserConfig {
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
+    public Optional<GetOpenSearchOpensearchUserConfigAzureMigration> azureMigration() {
+        return Optional.ofNullable(this.azureMigration);
+    }
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
@@ -166,12 +181,22 @@ public final class GetOpenSearchOpensearchUserConfig {
     public Optional<Boolean> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
+    public Optional<GetOpenSearchOpensearchUserConfigGcsMigration> gcsMigration() {
+        return Optional.ofNullable(this.gcsMigration);
+    }
     /**
      * @return Index patterns
      * 
      */
     public List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns() {
         return this.indexPatterns == null ? List.of() : this.indexPatterns;
+    }
+    /**
+     * @return Index rollup settings
+     * 
+     */
+    public Optional<GetOpenSearchOpensearchUserConfigIndexRollup> indexRollup() {
+        return Optional.ofNullable(this.indexRollup);
     }
     /**
      * @return Template settings for all new indexes
@@ -282,6 +307,9 @@ public final class GetOpenSearchOpensearchUserConfig {
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
+    public Optional<GetOpenSearchOpensearchUserConfigS3Migration> s3Migration() {
+        return Optional.ofNullable(this.s3Migration);
+    }
     /**
      * @return OpenSearch SAML configuration
      * 
@@ -321,9 +349,12 @@ public final class GetOpenSearchOpensearchUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
+        private @Nullable GetOpenSearchOpensearchUserConfigAzureMigration azureMigration;
         private @Nullable String customDomain;
         private @Nullable Boolean disableReplicationFactorAdjustment;
+        private @Nullable GetOpenSearchOpensearchUserConfigGcsMigration gcsMigration;
         private @Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
+        private @Nullable GetOpenSearchOpensearchUserConfigIndexRollup indexRollup;
         private @Nullable GetOpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
         private @Nullable List<GetOpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -339,6 +370,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable GetOpenSearchOpensearchUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
+        private @Nullable GetOpenSearchOpensearchUserConfigS3Migration s3Migration;
         private @Nullable GetOpenSearchOpensearchUserConfigSaml saml;
         private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
@@ -347,9 +379,12 @@ public final class GetOpenSearchOpensearchUserConfig {
         public Builder(GetOpenSearchOpensearchUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.azureMigration = defaults.azureMigration;
     	      this.customDomain = defaults.customDomain;
     	      this.disableReplicationFactorAdjustment = defaults.disableReplicationFactorAdjustment;
+    	      this.gcsMigration = defaults.gcsMigration;
     	      this.indexPatterns = defaults.indexPatterns;
+    	      this.indexRollup = defaults.indexRollup;
     	      this.indexTemplate = defaults.indexTemplate;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -365,6 +400,7 @@ public final class GetOpenSearchOpensearchUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryBasebackupName = defaults.recoveryBasebackupName;
+    	      this.s3Migration = defaults.s3Migration;
     	      this.saml = defaults.saml;
     	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
@@ -375,6 +411,12 @@ public final class GetOpenSearchOpensearchUserConfig {
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
 
             this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder azureMigration(@Nullable GetOpenSearchOpensearchUserConfigAzureMigration azureMigration) {
+
+            this.azureMigration = azureMigration;
             return this;
         }
         @CustomType.Setter
@@ -390,6 +432,12 @@ public final class GetOpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder gcsMigration(@Nullable GetOpenSearchOpensearchUserConfigGcsMigration gcsMigration) {
+
+            this.gcsMigration = gcsMigration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder indexPatterns(@Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns) {
 
             this.indexPatterns = indexPatterns;
@@ -397,6 +445,12 @@ public final class GetOpenSearchOpensearchUserConfig {
         }
         public Builder indexPatterns(GetOpenSearchOpensearchUserConfigIndexPattern... indexPatterns) {
             return indexPatterns(List.of(indexPatterns));
+        }
+        @CustomType.Setter
+        public Builder indexRollup(@Nullable GetOpenSearchOpensearchUserConfigIndexRollup indexRollup) {
+
+            this.indexRollup = indexRollup;
+            return this;
         }
         @CustomType.Setter
         public Builder indexTemplate(@Nullable GetOpenSearchOpensearchUserConfigIndexTemplate indexTemplate) {
@@ -498,6 +552,12 @@ public final class GetOpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder s3Migration(@Nullable GetOpenSearchOpensearchUserConfigS3Migration s3Migration) {
+
+            this.s3Migration = s3Migration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder saml(@Nullable GetOpenSearchOpensearchUserConfigSaml saml) {
 
             this.saml = saml;
@@ -524,9 +584,12 @@ public final class GetOpenSearchOpensearchUserConfig {
         public GetOpenSearchOpensearchUserConfig build() {
             final var _resultValue = new GetOpenSearchOpensearchUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.azureMigration = azureMigration;
             _resultValue.customDomain = customDomain;
             _resultValue.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
+            _resultValue.gcsMigration = gcsMigration;
             _resultValue.indexPatterns = indexPatterns;
+            _resultValue.indexRollup = indexRollup;
             _resultValue.indexTemplate = indexTemplate;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
@@ -542,6 +605,7 @@ public final class GetOpenSearchOpensearchUserConfig {
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
             _resultValue.recoveryBasebackupName = recoveryBasebackupName;
+            _resultValue.s3Migration = s3Migration;
             _resultValue.saml = saml;
             _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;

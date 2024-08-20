@@ -61,14 +61,14 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * @return State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -166,7 +166,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+         * @param state State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+         * @param state State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
          * 
          * @return builder
          * 

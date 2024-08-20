@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfigOpenid
     {
         /// <summary>
-        /// The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+        /// The ID of the OpenID Connect client configured in your IdP. Required.
         /// </summary>
         public readonly string ClientId;
         /// <summary>
-        /// The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+        /// The client secret of the OpenID Connect client configured in your IdP. Required.
         /// </summary>
         public readonly string ClientSecret;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RolesKey;
         /// <summary>
-        /// The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+        /// The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
         /// </summary>
         public readonly string? Scope;
         /// <summary>

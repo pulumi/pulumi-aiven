@@ -33,7 +33,7 @@ public final class GetProjectVpcResult {
      */
     private @Nullable String project;
     /**
-     * @return State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * @return State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     private String state;
@@ -73,7 +73,7 @@ public final class GetProjectVpcResult {
         return Optional.ofNullable(this.project);
     }
     /**
-     * @return State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * @return State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     public String state() {

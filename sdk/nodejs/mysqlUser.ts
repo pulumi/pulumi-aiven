@@ -64,7 +64,7 @@ export class MysqlUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
-     * Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+     * Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
      */
     public readonly authentication!: pulumi.Output<string | undefined>;
     /**
@@ -149,7 +149,7 @@ export interface MysqlUserState {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+     * Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
      */
     authentication?: pulumi.Input<string>;
     /**
@@ -179,7 +179,7 @@ export interface MysqlUserState {
  */
 export interface MysqlUserArgs {
     /**
-     * Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+     * Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
      */
     authentication?: pulumi.Input<string>;
     /**

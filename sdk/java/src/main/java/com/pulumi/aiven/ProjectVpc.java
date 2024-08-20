@@ -105,14 +105,14 @@ public class ProjectVpc extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * @return State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     public Output<String> state() {

@@ -71,7 +71,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? EmailSenderUsername { get; set; }
 
         /// <summary>
-        /// Enable/Disable security audit. Default: `false`.
+        /// Enable/Disable security audit.
         /// </summary>
         [Input("enableSecurityAudit")]
         public Input<bool>? EnableSecurityAudit { get; set; }
@@ -143,49 +143,49 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? IndicesRecoveryMaxConcurrentFileChunks { get; set; }
 
         /// <summary>
-        /// Specifies whether ISM is enabled or not. Default: `true`.
+        /// Specifies whether ISM is enabled or not.
         /// </summary>
         [Input("ismEnabled")]
         public Input<bool>? IsmEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
         /// </summary>
         [Input("ismHistoryEnabled")]
         public Input<bool>? IsmHistoryEnabled { get; set; }
 
         /// <summary>
-        /// The maximum age before rolling over the audit history index in hours. Default: `24`.
+        /// The maximum age before rolling over the audit history index in hours. Example: `24`.
         /// </summary>
         [Input("ismHistoryMaxAge")]
         public Input<int>? IsmHistoryMaxAge { get; set; }
 
         /// <summary>
-        /// The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+        /// The maximum number of documents before rolling over the audit history index. Example: `2500000`.
         /// </summary>
         [Input("ismHistoryMaxDocs")]
         public Input<int>? IsmHistoryMaxDocs { get; set; }
 
         /// <summary>
-        /// The time between rollover checks for the audit history index in hours. Default: `8`.
+        /// The time between rollover checks for the audit history index in hours. Example: `8`.
         /// </summary>
         [Input("ismHistoryRolloverCheckPeriod")]
         public Input<int>? IsmHistoryRolloverCheckPeriod { get; set; }
 
         /// <summary>
-        /// How long audit history indices are kept in days. Default: `30`.
+        /// How long audit history indices are kept in days. Example: `30`.
         /// </summary>
         [Input("ismHistoryRolloverRetentionPeriod")]
         public Input<int>? IsmHistoryRolloverRetentionPeriod { get; set; }
 
         /// <summary>
-        /// Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        /// Enable or disable KNN memory circuit breaker. Defaults to true.
         /// </summary>
         [Input("knnMemoryCircuitBreakerEnabled")]
         public Input<bool>? KnnMemoryCircuitBreakerEnabled { get; set; }
 
         /// <summary>
-        /// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        /// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
         /// </summary>
         [Input("knnMemoryCircuitBreakerLimit")]
         public Input<int>? KnnMemoryCircuitBreakerLimit { get; set; }

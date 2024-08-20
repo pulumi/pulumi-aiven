@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The PG User resource allows the creation and management of Aiven PG Users.
+    /// Creates and manages an Aiven for PostgreSQL® service user.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Aiven.PgUser("foo", new()
+    ///     var exampleUser = new Aiven.PgUser("example_user", new()
     ///     {
-    ///         ServiceName = bar.ServiceName,
-    ///         Project = "my-project",
-    ///         Username = "user-1",
-    ///         Password = "Test$1234",
+    ///         ServiceName = examplePostgres.ServiceName,
+    ///         Project = exampleProject.Project,
+    ///         Username = "example-service-user",
+    ///         Password = serviceUserPassword,
     ///     });
     /// 
     /// });
@@ -36,32 +36,32 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/pgUser:PgUser user PROJECT/SERVICE_NAME/USERNAME
+    /// $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/pgUser:PgUser")]
     public partial class PgUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access certificate for the user
+        /// The access certificate for the servie user.
         /// </summary>
         [Output("accessCert")]
         public Output<string> AccessCert { get; private set; } = null!;
 
         /// <summary>
-        /// Access certificate key for the user
+        /// The access certificate key for the service user.
         /// </summary>
         [Output("accessKey")]
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the PG User (not applicable for all services).
+        /// The password of the service user.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Defines whether replication is allowed.
+        /// Allows replication.
         /// </summary>
         [Output("pgAllowReplication")]
         public Output<bool?> PgAllowReplication { get; private set; } = null!;
@@ -79,13 +79,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// The service user account type, either primary or regular.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the PG User (not applicable for all services).
+        /// The password of the service user.
         /// </summary>
         public Input<string>? Password
         {
@@ -159,7 +159,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Defines whether replication is allowed.
+        /// Allows replication.
         /// </summary>
         [Input("pgAllowReplication")]
         public Input<bool>? PgAllowReplication { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessCert;
 
         /// <summary>
-        /// Access certificate for the user
+        /// The access certificate for the servie user.
         /// </summary>
         public Input<string>? AccessCert
         {
@@ -210,7 +210,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// Access certificate key for the user
+        /// The access certificate key for the service user.
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -226,7 +226,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the PG User (not applicable for all services).
+        /// The password of the service user.
         /// </summary>
         public Input<string>? Password
         {
@@ -239,7 +239,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Defines whether replication is allowed.
+        /// Allows replication.
         /// </summary>
         [Input("pgAllowReplication")]
         public Input<bool>? PgAllowReplication { get; set; }
@@ -257,13 +257,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// The service user account type, either primary or regular.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

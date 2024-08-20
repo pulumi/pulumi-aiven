@@ -70,7 +70,7 @@ class GetMysqlUserResult:
     @pulumi.getter
     def authentication(self) -> str:
         """
-        Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+        Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
         """
         return pulumi.get(self, "authentication")
 

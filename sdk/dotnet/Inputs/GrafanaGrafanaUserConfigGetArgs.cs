@@ -283,6 +283,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("viewersCanEdit")]
         public Input<bool>? ViewersCanEdit { get; set; }
 
+        /// <summary>
+        /// Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+        /// </summary>
+        [Input("wal")]
+        public Input<bool>? Wal { get; set; }
+
         public GrafanaGrafanaUserConfigGetArgs()
         {
         }

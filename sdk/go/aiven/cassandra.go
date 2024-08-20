@@ -59,7 +59,7 @@ import (
 type Cassandra struct {
 	pulumi.CustomResourceState
 
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
 	// Cassandra server provided values
 	Cassandra CassandraCassandraOutput `pulumi:"cassandra"`
@@ -167,7 +167,7 @@ func GetCassandra(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cassandra resources.
 type cassandraState struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Cassandra server provided values
 	Cassandra *CassandraCassandra `pulumi:"cassandra"`
@@ -228,7 +228,7 @@ type cassandraState struct {
 }
 
 type CassandraState struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Cassandra server provided values
 	Cassandra CassandraCassandraPtrInput
@@ -293,7 +293,7 @@ func (CassandraState) ElementType() reflect.Type {
 }
 
 type cassandraArgs struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Cassandra server provided values
 	Cassandra *CassandraCassandra `pulumi:"cassandra"`
@@ -331,7 +331,7 @@ type cassandraArgs struct {
 
 // The set of arguments for constructing a Cassandra resource.
 type CassandraArgs struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Cassandra server provided values
 	Cassandra CassandraCassandraPtrInput
@@ -454,7 +454,7 @@ func (o CassandraOutput) ToCassandraOutputWithContext(ctx context.Context) Cassa
 	return o
 }
 
-// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 func (o CassandraOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cassandra) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
 }

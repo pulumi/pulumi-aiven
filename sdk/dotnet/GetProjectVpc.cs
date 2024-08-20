@@ -136,7 +136,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string? Project;
         /// <summary>
-        /// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+        /// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         /// </summary>
         public readonly string State;
         /// <summary>

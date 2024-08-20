@@ -240,6 +240,11 @@ public final class GrafanaGrafanaUserConfig {
      * 
      */
     private @Nullable Boolean viewersCanEdit;
+    /**
+     * @return Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+     * 
+     */
+    private @Nullable Boolean wal;
 
     private GrafanaGrafanaUserConfig() {}
     /**
@@ -540,6 +545,13 @@ public final class GrafanaGrafanaUserConfig {
     public Optional<Boolean> viewersCanEdit() {
         return Optional.ofNullable(this.viewersCanEdit);
     }
+    /**
+     * @return Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+     * 
+     */
+    public Optional<Boolean> wal() {
+        return Optional.ofNullable(this.wal);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -592,6 +604,7 @@ public final class GrafanaGrafanaUserConfig {
         private @Nullable Boolean userAutoAssignOrg;
         private @Nullable String userAutoAssignOrgRole;
         private @Nullable Boolean viewersCanEdit;
+        private @Nullable Boolean wal;
         public Builder() {}
         public Builder(GrafanaGrafanaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -637,6 +650,7 @@ public final class GrafanaGrafanaUserConfig {
     	      this.userAutoAssignOrg = defaults.userAutoAssignOrg;
     	      this.userAutoAssignOrgRole = defaults.userAutoAssignOrgRole;
     	      this.viewersCanEdit = defaults.viewersCanEdit;
+    	      this.wal = defaults.wal;
         }
 
         @CustomType.Setter
@@ -900,6 +914,12 @@ public final class GrafanaGrafanaUserConfig {
             this.viewersCanEdit = viewersCanEdit;
             return this;
         }
+        @CustomType.Setter
+        public Builder wal(@Nullable Boolean wal) {
+
+            this.wal = wal;
+            return this;
+        }
         public GrafanaGrafanaUserConfig build() {
             final var _resultValue = new GrafanaGrafanaUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
@@ -944,6 +964,7 @@ public final class GrafanaGrafanaUserConfig {
             _resultValue.userAutoAssignOrg = userAutoAssignOrg;
             _resultValue.userAutoAssignOrgRole = userAutoAssignOrgRole;
             _resultValue.viewersCanEdit = viewersCanEdit;
+            _resultValue.wal = wal;
             return _resultValue;
         }
     }

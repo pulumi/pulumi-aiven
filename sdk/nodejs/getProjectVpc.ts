@@ -69,7 +69,7 @@ export interface GetProjectVpcResult {
      */
     readonly project?: string;
     /**
-     * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
     readonly state: string;
     /**

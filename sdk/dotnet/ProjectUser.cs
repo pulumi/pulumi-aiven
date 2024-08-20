@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Project membership type. The possible values are `admin`, `developer` and `operator`.
+        /// Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         /// </summary>
         [Output("memberType")]
         public Output<string> MemberType { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Aiven
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Project membership type. The possible values are `admin`, `developer` and `operator`.
+        /// Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         /// </summary>
         [Input("memberType", required: true)]
         public Input<string> MemberType { get; set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Aiven
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Project membership type. The possible values are `admin`, `developer` and `operator`.
+        /// Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         /// </summary>
         [Input("memberType")]
         public Input<string>? MemberType { get; set; }

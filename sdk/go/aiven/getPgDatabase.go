@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+// Gets information about a database in an Aiven for PostgreSQL® service.
 //
 // ## Example Usage
 //
@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupPgDatabase(ctx, &aiven.LookupPgDatabaseArgs{
-//				Project:      myproject.Project,
-//				ServiceName:  mypg.ServiceName,
-//				DatabaseName: "<DATABASE_NAME>",
+//				Project:      exampleProject.Project,
+//				ServiceName:  examplePostgres.ServiceName,
+//				DatabaseName: "example-database",
 //			}, nil)
 //			if err != nil {
 //				return err

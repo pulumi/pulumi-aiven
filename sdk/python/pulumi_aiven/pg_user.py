@@ -23,9 +23,9 @@ class PgUserArgs:
         The set of arguments for constructing a PgUser resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] password: The password of the PG User (not applicable for all services).
-        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed.
+        :param pulumi.Input[str] username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] password: The password of the service user.
+        :param pulumi.Input[bool] pg_allow_replication: Allows replication.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -63,7 +63,7 @@ class PgUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -75,7 +75,7 @@ class PgUserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the PG User (not applicable for all services).
+        The password of the service user.
         """
         return pulumi.get(self, "password")
 
@@ -87,7 +87,7 @@ class PgUserArgs:
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether replication is allowed.
+        Allows replication.
         """
         return pulumi.get(self, "pg_allow_replication")
 
@@ -109,14 +109,14 @@ class _PgUserState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PgUser resources.
-        :param pulumi.Input[str] access_cert: Access certificate for the user
-        :param pulumi.Input[str] access_key: Access certificate key for the user
-        :param pulumi.Input[str] password: The password of the PG User (not applicable for all services).
-        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed.
+        :param pulumi.Input[str] access_cert: The access certificate for the servie user.
+        :param pulumi.Input[str] access_key: The access certificate key for the service user.
+        :param pulumi.Input[str] password: The password of the service user.
+        :param pulumi.Input[bool] pg_allow_replication: Allows replication.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] type: The service user account type, either primary or regular.
+        :param pulumi.Input[str] username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         if access_cert is not None:
             pulumi.set(__self__, "access_cert", access_cert)
@@ -139,7 +139,7 @@ class _PgUserState:
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        Access certificate for the user
+        The access certificate for the servie user.
         """
         return pulumi.get(self, "access_cert")
 
@@ -151,7 +151,7 @@ class _PgUserState:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Access certificate key for the user
+        The access certificate key for the service user.
         """
         return pulumi.get(self, "access_key")
 
@@ -163,7 +163,7 @@ class _PgUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the PG User (not applicable for all services).
+        The password of the service user.
         """
         return pulumi.get(self, "password")
 
@@ -175,7 +175,7 @@ class _PgUserState:
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether replication is allowed.
+        Allows replication.
         """
         return pulumi.get(self, "pg_allow_replication")
 
@@ -211,7 +211,7 @@ class _PgUserState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        The service user account type, either primary or regular.
         """
         return pulumi.get(self, "type")
 
@@ -223,7 +223,7 @@ class _PgUserState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -244,7 +244,7 @@ class PgUser(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The PG User resource allows the creation and management of Aiven PG Users.
+        Creates and manages an Aiven for PostgreSQL® service user.
 
         ## Example Usage
 
@@ -252,26 +252,26 @@ class PgUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.PgUser("foo",
-            service_name=bar["serviceName"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
+        example_user = aiven.PgUser("example_user",
+            service_name=example_postgres["serviceName"],
+            project=example_project["project"],
+            username="example-service-user",
+            password=service_user_password)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/pgUser:PgUser user PROJECT/SERVICE_NAME/USERNAME
+        $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] password: The password of the PG User (not applicable for all services).
-        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed.
+        :param pulumi.Input[str] password: The password of the service user.
+        :param pulumi.Input[bool] pg_allow_replication: Allows replication.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -280,7 +280,7 @@ class PgUser(pulumi.CustomResource):
                  args: PgUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The PG User resource allows the creation and management of Aiven PG Users.
+        Creates and manages an Aiven for PostgreSQL® service user.
 
         ## Example Usage
 
@@ -288,17 +288,17 @@ class PgUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.PgUser("foo",
-            service_name=bar["serviceName"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
+        example_user = aiven.PgUser("example_user",
+            service_name=example_postgres["serviceName"],
+            project=example_project["project"],
+            username="example-service-user",
+            password=service_user_password)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/pgUser:PgUser user PROJECT/SERVICE_NAME/USERNAME
+        $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -371,14 +371,14 @@ class PgUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_cert: Access certificate for the user
-        :param pulumi.Input[str] access_key: Access certificate key for the user
-        :param pulumi.Input[str] password: The password of the PG User (not applicable for all services).
-        :param pulumi.Input[bool] pg_allow_replication: Defines whether replication is allowed.
+        :param pulumi.Input[str] access_cert: The access certificate for the servie user.
+        :param pulumi.Input[str] access_key: The access certificate key for the service user.
+        :param pulumi.Input[str] password: The password of the service user.
+        :param pulumi.Input[bool] pg_allow_replication: Allows replication.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] type: The service user account type, either primary or regular.
+        :param pulumi.Input[str] username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -398,7 +398,7 @@ class PgUser(pulumi.CustomResource):
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> pulumi.Output[str]:
         """
-        Access certificate for the user
+        The access certificate for the servie user.
         """
         return pulumi.get(self, "access_cert")
 
@@ -406,7 +406,7 @@ class PgUser(pulumi.CustomResource):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[str]:
         """
-        Access certificate key for the user
+        The access certificate key for the service user.
         """
         return pulumi.get(self, "access_key")
 
@@ -414,7 +414,7 @@ class PgUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        The password of the PG User (not applicable for all services).
+        The password of the service user.
         """
         return pulumi.get(self, "password")
 
@@ -422,7 +422,7 @@ class PgUser(pulumi.CustomResource):
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> pulumi.Output[Optional[bool]]:
         """
-        Defines whether replication is allowed.
+        Allows replication.
         """
         return pulumi.get(self, "pg_allow_replication")
 
@@ -446,7 +446,7 @@ class PgUser(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        The service user account type, either primary or regular.
         """
         return pulumi.get(self, "type")
 
@@ -454,7 +454,7 @@ class PgUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

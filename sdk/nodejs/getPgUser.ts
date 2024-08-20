@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The PG User data source provides information about the existing Aiven PG User.
+ * Gets information about an Aiven for PostgreSQL® service user.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getPgUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleUser = aiven.getPgUser({
+ *     serviceName: examplePostgres.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-service-user",
  * });
  * ```
  */
@@ -43,7 +43,7 @@ export interface GetPgUserArgs {
      */
     serviceName: string;
     /**
-     * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -53,11 +53,11 @@ export interface GetPgUserArgs {
  */
 export interface GetPgUserResult {
     /**
-     * Access certificate for the user
+     * The access certificate for the servie user.
      */
     readonly accessCert: string;
     /**
-     * Access certificate key for the user
+     * The access certificate key for the service user.
      */
     readonly accessKey: string;
     /**
@@ -65,11 +65,11 @@ export interface GetPgUserResult {
      */
     readonly id: string;
     /**
-     * The password of the PG User (not applicable for all services).
+     * The password of the service user.
      */
     readonly password: string;
     /**
-     * Defines whether replication is allowed.
+     * Allows replication.
      */
     readonly pgAllowReplication: boolean;
     /**
@@ -81,16 +81,16 @@ export interface GetPgUserResult {
      */
     readonly serviceName: string;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * The service user account type, either primary or regular.
      */
     readonly type: string;
     /**
-     * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
 /**
- * The PG User data source provides information about the existing Aiven PG User.
+ * Gets information about an Aiven for PostgreSQL® service user.
  *
  * ## Example Usage
  *
@@ -98,10 +98,10 @@ export interface GetPgUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getPgUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleUser = aiven.getPgUser({
+ *     serviceName: examplePostgres.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-service-user",
  * });
  * ```
  */
@@ -122,7 +122,7 @@ export interface GetPgUserOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

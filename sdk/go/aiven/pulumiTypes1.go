@@ -13,6 +13,1402 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetServiceIntegrationClickhousePostgresqlUserConfigDatabase struct {
+	// PostgreSQL database to expose. Default: `defaultdb`.
+	Database *string `pulumi:"database"`
+	// PostgreSQL schema to expose. Default: `public`.
+	Schema *string `pulumi:"schema"`
+}
+
+// GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseInput is an input type that accepts GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs and GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseInput` via:
+//
+//	GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs{...}
+type GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput() GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput
+	ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutputWithContext(context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput
+}
+
+type GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs struct {
+	// PostgreSQL database to expose. Default: `defaultdb`.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// PostgreSQL schema to expose. Default: `public`.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+}
+
+func (GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfigDatabase)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs) ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput() GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput {
+	return i.ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs) ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutputWithContext(ctx context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput)
+}
+
+// GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayInput is an input type that accepts GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArray and GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayInput` via:
+//
+//	GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArray{ GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs{...} }
+type GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput() GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput
+	ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutputWithContext(context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput
+}
+
+type GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArray []GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseInput
+
+func (GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhousePostgresqlUserConfigDatabase)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArray) ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput() GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput {
+	return i.ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArray) ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput)
+}
+
+type GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfigDatabase)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput) ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput() GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput) ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutputWithContext(ctx context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput {
+	return o
+}
+
+// PostgreSQL database to expose. Default: `defaultdb`.
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhousePostgresqlUserConfigDatabase) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL schema to expose. Default: `public`.
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhousePostgresqlUserConfigDatabase) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhousePostgresqlUserConfigDatabase)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput) ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput() GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput) ToGetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationClickhousePostgresqlUserConfigDatabase {
+		return vs[0].([]GetServiceIntegrationClickhousePostgresqlUserConfigDatabase)[vs[1].(int)]
+	}).(GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfig struct {
+	// Enable Datadog Database Monitoring.
+	DatadogDbmEnabled *bool `pulumi:"datadogDbmEnabled"`
+	// Enable Datadog PgBouncer Metric Tracking.
+	DatadogPgbouncerEnabled *bool `pulumi:"datadogPgbouncerEnabled"`
+	// Custom tags provided by user
+	DatadogTags []GetServiceIntegrationDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
+	// List of custom metrics.
+	ExcludeConsumerGroups []string `pulumi:"excludeConsumerGroups"`
+	// List of topics to exclude.
+	ExcludeTopics []string `pulumi:"excludeTopics"`
+	// List of custom metrics.
+	IncludeConsumerGroups []string `pulumi:"includeConsumerGroups"`
+	// List of topics to include.
+	IncludeTopics []string `pulumi:"includeTopics"`
+	// List of custom metrics.
+	KafkaCustomMetrics []string `pulumi:"kafkaCustomMetrics"`
+	// Maximum number of JMX metrics to send. Example: `2000`.
+	MaxJmxMetrics *int `pulumi:"maxJmxMetrics"`
+	// List of custom metrics.
+	MirrormakerCustomMetrics []string `pulumi:"mirrormakerCustomMetrics"`
+	// Datadog Opensearch Options
+	Opensearch *GetServiceIntegrationDatadogUserConfigOpensearch `pulumi:"opensearch"`
+	// Datadog Redis Options
+	Redis *GetServiceIntegrationDatadogUserConfigRedis `pulumi:"redis"`
+}
+
+// GetServiceIntegrationDatadogUserConfigInput is an input type that accepts GetServiceIntegrationDatadogUserConfigArgs and GetServiceIntegrationDatadogUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigInput` via:
+//
+//	GetServiceIntegrationDatadogUserConfigArgs{...}
+type GetServiceIntegrationDatadogUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigOutput() GetServiceIntegrationDatadogUserConfigOutput
+	ToGetServiceIntegrationDatadogUserConfigOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigArgs struct {
+	// Enable Datadog Database Monitoring.
+	DatadogDbmEnabled pulumi.BoolPtrInput `pulumi:"datadogDbmEnabled"`
+	// Enable Datadog PgBouncer Metric Tracking.
+	DatadogPgbouncerEnabled pulumi.BoolPtrInput `pulumi:"datadogPgbouncerEnabled"`
+	// Custom tags provided by user
+	DatadogTags GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
+	// List of custom metrics.
+	ExcludeConsumerGroups pulumi.StringArrayInput `pulumi:"excludeConsumerGroups"`
+	// List of topics to exclude.
+	ExcludeTopics pulumi.StringArrayInput `pulumi:"excludeTopics"`
+	// List of custom metrics.
+	IncludeConsumerGroups pulumi.StringArrayInput `pulumi:"includeConsumerGroups"`
+	// List of topics to include.
+	IncludeTopics pulumi.StringArrayInput `pulumi:"includeTopics"`
+	// List of custom metrics.
+	KafkaCustomMetrics pulumi.StringArrayInput `pulumi:"kafkaCustomMetrics"`
+	// Maximum number of JMX metrics to send. Example: `2000`.
+	MaxJmxMetrics pulumi.IntPtrInput `pulumi:"maxJmxMetrics"`
+	// List of custom metrics.
+	MirrormakerCustomMetrics pulumi.StringArrayInput `pulumi:"mirrormakerCustomMetrics"`
+	// Datadog Opensearch Options
+	Opensearch GetServiceIntegrationDatadogUserConfigOpensearchPtrInput `pulumi:"opensearch"`
+	// Datadog Redis Options
+	Redis GetServiceIntegrationDatadogUserConfigRedisPtrInput `pulumi:"redis"`
+}
+
+func (GetServiceIntegrationDatadogUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigArgs) ToGetServiceIntegrationDatadogUserConfigOutput() GetServiceIntegrationDatadogUserConfigOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigArgs) ToGetServiceIntegrationDatadogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigOutput)
+}
+
+// GetServiceIntegrationDatadogUserConfigArrayInput is an input type that accepts GetServiceIntegrationDatadogUserConfigArray and GetServiceIntegrationDatadogUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationDatadogUserConfigArray{ GetServiceIntegrationDatadogUserConfigArgs{...} }
+type GetServiceIntegrationDatadogUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigArrayOutput() GetServiceIntegrationDatadogUserConfigArrayOutput
+	ToGetServiceIntegrationDatadogUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigArrayOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigArray []GetServiceIntegrationDatadogUserConfigInput
+
+func (GetServiceIntegrationDatadogUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigArray) ToGetServiceIntegrationDatadogUserConfigArrayOutput() GetServiceIntegrationDatadogUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigArray) ToGetServiceIntegrationDatadogUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) ToGetServiceIntegrationDatadogUserConfigOutput() GetServiceIntegrationDatadogUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOutput) ToGetServiceIntegrationDatadogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOutput {
+	return o
+}
+
+// Enable Datadog Database Monitoring.
+func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogDbmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *bool { return v.DatadogDbmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enable Datadog PgBouncer Metric Tracking.
+func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogPgbouncerEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *bool { return v.DatadogPgbouncerEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Custom tags provided by user
+func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogTags() GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []GetServiceIntegrationDatadogUserConfigDatadogTag {
+		return v.DatadogTags
+	}).(GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput)
+}
+
+// List of custom metrics.
+func (o GetServiceIntegrationDatadogUserConfigOutput) ExcludeConsumerGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.ExcludeConsumerGroups }).(pulumi.StringArrayOutput)
+}
+
+// List of topics to exclude.
+func (o GetServiceIntegrationDatadogUserConfigOutput) ExcludeTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.ExcludeTopics }).(pulumi.StringArrayOutput)
+}
+
+// List of custom metrics.
+func (o GetServiceIntegrationDatadogUserConfigOutput) IncludeConsumerGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.IncludeConsumerGroups }).(pulumi.StringArrayOutput)
+}
+
+// List of topics to include.
+func (o GetServiceIntegrationDatadogUserConfigOutput) IncludeTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.IncludeTopics }).(pulumi.StringArrayOutput)
+}
+
+// List of custom metrics.
+func (o GetServiceIntegrationDatadogUserConfigOutput) KafkaCustomMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.KafkaCustomMetrics }).(pulumi.StringArrayOutput)
+}
+
+// Maximum number of JMX metrics to send. Example: `2000`.
+func (o GetServiceIntegrationDatadogUserConfigOutput) MaxJmxMetrics() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *int { return v.MaxJmxMetrics }).(pulumi.IntPtrOutput)
+}
+
+// List of custom metrics.
+func (o GetServiceIntegrationDatadogUserConfigOutput) MirrormakerCustomMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []string { return v.MirrormakerCustomMetrics }).(pulumi.StringArrayOutput)
+}
+
+// Datadog Opensearch Options
+func (o GetServiceIntegrationDatadogUserConfigOutput) Opensearch() GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *GetServiceIntegrationDatadogUserConfigOpensearch {
+		return v.Opensearch
+	}).(GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput)
+}
+
+// Datadog Redis Options
+func (o GetServiceIntegrationDatadogUserConfigOutput) Redis() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *GetServiceIntegrationDatadogUserConfigRedis {
+		return v.Redis
+	}).(GetServiceIntegrationDatadogUserConfigRedisPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationDatadogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigArrayOutput) ToGetServiceIntegrationDatadogUserConfigArrayOutput() GetServiceIntegrationDatadogUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigArrayOutput) ToGetServiceIntegrationDatadogUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationDatadogUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationDatadogUserConfig {
+		return vs[0].([]GetServiceIntegrationDatadogUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationDatadogUserConfigOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogTag struct {
+	// Optional tag explanation. Example: `Used to tag primary replica metrics`.
+	Comment *string `pulumi:"comment"`
+	// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+	Tag string `pulumi:"tag"`
+}
+
+// GetServiceIntegrationDatadogUserConfigDatadogTagInput is an input type that accepts GetServiceIntegrationDatadogUserConfigDatadogTagArgs and GetServiceIntegrationDatadogUserConfigDatadogTagOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigDatadogTagInput` via:
+//
+//	GetServiceIntegrationDatadogUserConfigDatadogTagArgs{...}
+type GetServiceIntegrationDatadogUserConfigDatadogTagInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigDatadogTagOutput() GetServiceIntegrationDatadogUserConfigDatadogTagOutput
+	ToGetServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogTagArgs struct {
+	// Optional tag explanation. Example: `Used to tag primary replica metrics`.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+	Tag pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetServiceIntegrationDatadogUserConfigDatadogTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogTagArgs) ToGetServiceIntegrationDatadogUserConfigDatadogTagOutput() GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogTagArgs) ToGetServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigDatadogTagOutput)
+}
+
+// GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput is an input type that accepts GetServiceIntegrationDatadogUserConfigDatadogTagArray and GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput` via:
+//
+//	GetServiceIntegrationDatadogUserConfigDatadogTagArray{ GetServiceIntegrationDatadogUserConfigDatadogTagArgs{...} }
+type GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput
+	ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogTagArray []GetServiceIntegrationDatadogUserConfigDatadogTagInput
+
+func (GetServiceIntegrationDatadogUserConfigDatadogTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogTagArray) ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogTagArray) ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogTagOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigDatadogTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagOutput) ToGetServiceIntegrationDatadogUserConfigDatadogTagOutput() GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagOutput) ToGetServiceIntegrationDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+// Optional tag explanation. Example: `Used to tag primary replica metrics`.
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigDatadogTag) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigDatadogTag) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) ToGetServiceIntegrationDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationDatadogUserConfigDatadogTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationDatadogUserConfigDatadogTag {
+		return vs[0].([]GetServiceIntegrationDatadogUserConfigDatadogTag)[vs[1].(int)]
+	}).(GetServiceIntegrationDatadogUserConfigDatadogTagOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigOpensearch struct {
+	// Enable Datadog Opensearch Cluster Monitoring.
+	ClusterStatsEnabled *bool `pulumi:"clusterStatsEnabled"`
+	// Enable Datadog Opensearch Index Monitoring.
+	IndexStatsEnabled *bool `pulumi:"indexStatsEnabled"`
+	// Enable Datadog Opensearch Pending Task Monitoring.
+	PendingTaskStatsEnabled *bool `pulumi:"pendingTaskStatsEnabled"`
+	// Enable Datadog Opensearch Primary Shard Monitoring.
+	PshardStatsEnabled *bool `pulumi:"pshardStatsEnabled"`
+}
+
+// GetServiceIntegrationDatadogUserConfigOpensearchInput is an input type that accepts GetServiceIntegrationDatadogUserConfigOpensearchArgs and GetServiceIntegrationDatadogUserConfigOpensearchOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigOpensearchInput` via:
+//
+//	GetServiceIntegrationDatadogUserConfigOpensearchArgs{...}
+type GetServiceIntegrationDatadogUserConfigOpensearchInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigOpensearchOutput() GetServiceIntegrationDatadogUserConfigOpensearchOutput
+	ToGetServiceIntegrationDatadogUserConfigOpensearchOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigOpensearchOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigOpensearchArgs struct {
+	// Enable Datadog Opensearch Cluster Monitoring.
+	ClusterStatsEnabled pulumi.BoolPtrInput `pulumi:"clusterStatsEnabled"`
+	// Enable Datadog Opensearch Index Monitoring.
+	IndexStatsEnabled pulumi.BoolPtrInput `pulumi:"indexStatsEnabled"`
+	// Enable Datadog Opensearch Pending Task Monitoring.
+	PendingTaskStatsEnabled pulumi.BoolPtrInput `pulumi:"pendingTaskStatsEnabled"`
+	// Enable Datadog Opensearch Primary Shard Monitoring.
+	PshardStatsEnabled pulumi.BoolPtrInput `pulumi:"pshardStatsEnabled"`
+}
+
+func (GetServiceIntegrationDatadogUserConfigOpensearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigOpensearch)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigOpensearchArgs) ToGetServiceIntegrationDatadogUserConfigOpensearchOutput() GetServiceIntegrationDatadogUserConfigOpensearchOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigOpensearchOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigOpensearchArgs) ToGetServiceIntegrationDatadogUserConfigOpensearchOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOpensearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigOpensearchOutput)
+}
+
+func (i GetServiceIntegrationDatadogUserConfigOpensearchArgs) ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutput() GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigOpensearchArgs) ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigOpensearchOutput).ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationDatadogUserConfigOpensearchPtrInput is an input type that accepts GetServiceIntegrationDatadogUserConfigOpensearchArgs, GetServiceIntegrationDatadogUserConfigOpensearchPtr and GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigOpensearchPtrInput` via:
+//
+//	        GetServiceIntegrationDatadogUserConfigOpensearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceIntegrationDatadogUserConfigOpensearchPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutput() GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput
+	ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput
+}
+
+type getServiceIntegrationDatadogUserConfigOpensearchPtrType GetServiceIntegrationDatadogUserConfigOpensearchArgs
+
+func GetServiceIntegrationDatadogUserConfigOpensearchPtr(v *GetServiceIntegrationDatadogUserConfigOpensearchArgs) GetServiceIntegrationDatadogUserConfigOpensearchPtrInput {
+	return (*getServiceIntegrationDatadogUserConfigOpensearchPtrType)(v)
+}
+
+func (*getServiceIntegrationDatadogUserConfigOpensearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationDatadogUserConfigOpensearch)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationDatadogUserConfigOpensearchPtrType) ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutput() GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationDatadogUserConfigOpensearchPtrType) ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigOpensearchOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigOpensearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigOpensearch)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOpensearchOutput) ToGetServiceIntegrationDatadogUserConfigOpensearchOutput() GetServiceIntegrationDatadogUserConfigOpensearchOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOpensearchOutput) ToGetServiceIntegrationDatadogUserConfigOpensearchOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOpensearchOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOpensearchOutput) ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutput() GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
+	return o.ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOpensearchOutput) ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceIntegrationDatadogUserConfigOpensearch) *GetServiceIntegrationDatadogUserConfigOpensearch {
+		return &v
+	}).(GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput)
+}
+
+// Enable Datadog Opensearch Cluster Monitoring.
+func (o GetServiceIntegrationDatadogUserConfigOpensearchOutput) ClusterStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigOpensearch) *bool { return v.ClusterStatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enable Datadog Opensearch Index Monitoring.
+func (o GetServiceIntegrationDatadogUserConfigOpensearchOutput) IndexStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigOpensearch) *bool { return v.IndexStatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enable Datadog Opensearch Pending Task Monitoring.
+func (o GetServiceIntegrationDatadogUserConfigOpensearchOutput) PendingTaskStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigOpensearch) *bool { return v.PendingTaskStatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enable Datadog Opensearch Primary Shard Monitoring.
+func (o GetServiceIntegrationDatadogUserConfigOpensearchOutput) PshardStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigOpensearch) *bool { return v.PshardStatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationDatadogUserConfigOpensearch)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput) ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutput() GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput) ToGetServiceIntegrationDatadogUserConfigOpensearchPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput) Elem() GetServiceIntegrationDatadogUserConfigOpensearchOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationDatadogUserConfigOpensearch) GetServiceIntegrationDatadogUserConfigOpensearch {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceIntegrationDatadogUserConfigOpensearch
+		return ret
+	}).(GetServiceIntegrationDatadogUserConfigOpensearchOutput)
+}
+
+// Enable Datadog Opensearch Cluster Monitoring.
+func (o GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput) ClusterStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationDatadogUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterStatsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable Datadog Opensearch Index Monitoring.
+func (o GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput) IndexStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationDatadogUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IndexStatsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable Datadog Opensearch Pending Task Monitoring.
+func (o GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput) PendingTaskStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationDatadogUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PendingTaskStatsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable Datadog Opensearch Primary Shard Monitoring.
+func (o GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput) PshardStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationDatadogUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PshardStatsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigRedis struct {
+	// Enable commandStats option in the agent's configuration. Default: `false`.
+	CommandStatsEnabled *bool `pulumi:"commandStatsEnabled"`
+}
+
+// GetServiceIntegrationDatadogUserConfigRedisInput is an input type that accepts GetServiceIntegrationDatadogUserConfigRedisArgs and GetServiceIntegrationDatadogUserConfigRedisOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigRedisInput` via:
+//
+//	GetServiceIntegrationDatadogUserConfigRedisArgs{...}
+type GetServiceIntegrationDatadogUserConfigRedisInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigRedisOutput() GetServiceIntegrationDatadogUserConfigRedisOutput
+	ToGetServiceIntegrationDatadogUserConfigRedisOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigRedisOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigRedisArgs struct {
+	// Enable commandStats option in the agent's configuration. Default: `false`.
+	CommandStatsEnabled pulumi.BoolPtrInput `pulumi:"commandStatsEnabled"`
+}
+
+func (GetServiceIntegrationDatadogUserConfigRedisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigRedisArgs) ToGetServiceIntegrationDatadogUserConfigRedisOutput() GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigRedisOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigRedisArgs) ToGetServiceIntegrationDatadogUserConfigRedisOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigRedisOutput)
+}
+
+func (i GetServiceIntegrationDatadogUserConfigRedisArgs) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigRedisArgs) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigRedisOutput).ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx)
+}
+
+// GetServiceIntegrationDatadogUserConfigRedisPtrInput is an input type that accepts GetServiceIntegrationDatadogUserConfigRedisArgs, GetServiceIntegrationDatadogUserConfigRedisPtr and GetServiceIntegrationDatadogUserConfigRedisPtrOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigRedisPtrInput` via:
+//
+//	        GetServiceIntegrationDatadogUserConfigRedisArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceIntegrationDatadogUserConfigRedisPtrInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput
+	ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput
+}
+
+type getServiceIntegrationDatadogUserConfigRedisPtrType GetServiceIntegrationDatadogUserConfigRedisArgs
+
+func GetServiceIntegrationDatadogUserConfigRedisPtr(v *GetServiceIntegrationDatadogUserConfigRedisArgs) GetServiceIntegrationDatadogUserConfigRedisPtrInput {
+	return (*getServiceIntegrationDatadogUserConfigRedisPtrType)(v)
+}
+
+func (*getServiceIntegrationDatadogUserConfigRedisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (i *getServiceIntegrationDatadogUserConfigRedisPtrType) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceIntegrationDatadogUserConfigRedisPtrType) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigRedisPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigRedisOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigRedisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) ToGetServiceIntegrationDatadogUserConfigRedisOutput() GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) ToGetServiceIntegrationDatadogUserConfigRedisOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceIntegrationDatadogUserConfigRedis) *GetServiceIntegrationDatadogUserConfigRedis {
+		return &v
+	}).(GetServiceIntegrationDatadogUserConfigRedisPtrOutput)
+}
+
+// Enable commandStats option in the agent's configuration. Default: `false`.
+func (o GetServiceIntegrationDatadogUserConfigRedisOutput) CommandStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigRedis) *bool { return v.CommandStatsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigRedisPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigRedisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceIntegrationDatadogUserConfigRedis)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisPtrOutput) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutput() GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisPtrOutput) ToGetServiceIntegrationDatadogUserConfigRedisPtrOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigRedisPtrOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigRedisPtrOutput) Elem() GetServiceIntegrationDatadogUserConfigRedisOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationDatadogUserConfigRedis) GetServiceIntegrationDatadogUserConfigRedis {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceIntegrationDatadogUserConfigRedis
+		return ret
+	}).(GetServiceIntegrationDatadogUserConfigRedisOutput)
+}
+
+// Enable commandStats option in the agent's configuration. Default: `false`.
+func (o GetServiceIntegrationDatadogUserConfigRedisPtrOutput) CommandStatsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationDatadogUserConfigRedis) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CommandStatsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfig struct {
+	// Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
+	DatadogApiKey string `pulumi:"datadogApiKey"`
+	// Custom tags provided by user
+	DatadogTags []GetServiceIntegrationEndpointDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
+	// Disable consumer group metrics.
+	DisableConsumerStats *bool `pulumi:"disableConsumerStats"`
+	// Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
+	KafkaConsumerCheckInstances *int `pulumi:"kafkaConsumerCheckInstances"`
+	// Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
+	KafkaConsumerStatsTimeout *int `pulumi:"kafkaConsumerStatsTimeout"`
+	// Maximum number of partition contexts to send. Example: `32000`.
+	MaxPartitionContexts *int `pulumi:"maxPartitionContexts"`
+	// Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+	Site *string `pulumi:"site"`
+}
+
+// GetServiceIntegrationEndpointDatadogUserConfigInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigArgs and GetServiceIntegrationEndpointDatadogUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointDatadogUserConfigArgs{...}
+type GetServiceIntegrationEndpointDatadogUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointDatadogUserConfigOutput() GetServiceIntegrationEndpointDatadogUserConfigOutput
+	ToGetServiceIntegrationEndpointDatadogUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointDatadogUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigArgs struct {
+	// Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
+	DatadogApiKey pulumi.StringInput `pulumi:"datadogApiKey"`
+	// Custom tags provided by user
+	DatadogTags GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
+	// Disable consumer group metrics.
+	DisableConsumerStats pulumi.BoolPtrInput `pulumi:"disableConsumerStats"`
+	// Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
+	KafkaConsumerCheckInstances pulumi.IntPtrInput `pulumi:"kafkaConsumerCheckInstances"`
+	// Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
+	KafkaConsumerStatsTimeout pulumi.IntPtrInput `pulumi:"kafkaConsumerStatsTimeout"`
+	// Maximum number of partition contexts to send. Example: `32000`.
+	MaxPartitionContexts pulumi.IntPtrInput `pulumi:"maxPartitionContexts"`
+	// Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+	Site pulumi.StringPtrInput `pulumi:"site"`
+}
+
+func (GetServiceIntegrationEndpointDatadogUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigArgs) ToGetServiceIntegrationEndpointDatadogUserConfigOutput() GetServiceIntegrationEndpointDatadogUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointDatadogUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigArgs) ToGetServiceIntegrationEndpointDatadogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointDatadogUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointDatadogUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigArray and GetServiceIntegrationEndpointDatadogUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointDatadogUserConfigArray{ GetServiceIntegrationEndpointDatadogUserConfigArgs{...} }
+type GetServiceIntegrationEndpointDatadogUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointDatadogUserConfigArrayOutput() GetServiceIntegrationEndpointDatadogUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointDatadogUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointDatadogUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigArray []GetServiceIntegrationEndpointDatadogUserConfigInput
+
+func (GetServiceIntegrationEndpointDatadogUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointDatadogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigArray) ToGetServiceIntegrationEndpointDatadogUserConfigArrayOutput() GetServiceIntegrationEndpointDatadogUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointDatadogUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigArray) ToGetServiceIntegrationEndpointDatadogUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointDatadogUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointDatadogUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) ToGetServiceIntegrationEndpointDatadogUserConfigOutput() GetServiceIntegrationEndpointDatadogUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) ToGetServiceIntegrationEndpointDatadogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigOutput {
+	return o
+}
+
+// Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) DatadogApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) string { return v.DatadogApiKey }).(pulumi.StringOutput)
+}
+
+// Custom tags provided by user
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) DatadogTags() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) []GetServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+		return v.DatadogTags
+	}).(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
+}
+
+// Disable consumer group metrics.
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) DisableConsumerStats() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *bool { return v.DisableConsumerStats }).(pulumi.BoolPtrOutput)
+}
+
+// Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) KafkaConsumerCheckInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *int { return v.KafkaConsumerCheckInstances }).(pulumi.IntPtrOutput)
+}
+
+// Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) KafkaConsumerStatsTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *int { return v.KafkaConsumerStatsTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of partition contexts to send. Example: `32000`.
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) MaxPartitionContexts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *int { return v.MaxPartitionContexts }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) Site() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *string { return v.Site }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointDatadogUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointDatadogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigArrayOutput) ToGetServiceIntegrationEndpointDatadogUserConfigArrayOutput() GetServiceIntegrationEndpointDatadogUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigArrayOutput) ToGetServiceIntegrationEndpointDatadogUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointDatadogUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointDatadogUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointDatadogUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointDatadogUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTag struct {
+	// Optional tag explanation. Example: `Used to tag primary replica metrics`.
+	Comment *string `pulumi:"comment"`
+	// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+	Tag string `pulumi:"tag"`
+}
+
+// GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs and GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput` via:
+//
+//	GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...}
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput
+	ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs struct {
+	// Optional tag explanation. Example: `Used to tag primary replica metrics`.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+	Tag pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return i.ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput)
+}
+
+// GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput is an input type that accepts GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray and GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput` via:
+//
+//	GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray{ GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{...} }
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput
+	ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray []GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput
+
+func (GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return i.ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput)
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return o
+}
+
+// Optional tag explanation. Example: `Used to tag primary replica metrics`.
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfigDatadogTag) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfigDatadogTag) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput() GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) ToGetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointDatadogUserConfigDatadogTag {
+		return vs[0].([]GetServiceIntegrationEndpointDatadogUserConfigDatadogTag)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig struct {
+	// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
+	AccessKey string `pulumi:"accessKey"`
+	// AWS CloudWatch log group name. Example: `my-log-group`.
+	LogGroupName *string `pulumi:"logGroupName"`
+	// AWS region. Example: `us-east-1`.
+	Region string `pulumi:"region"`
+	// AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+	SecretKey string `pulumi:"secretKey"`
+}
+
+// GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs and GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs struct {
+	// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// AWS CloudWatch log group name. Example: `my-log-group`.
+	LogGroupName pulumi.StringPtrInput `pulumi:"logGroupName"`
+	// AWS region. Example: `us-east-1`.
+	Region pulumi.StringInput `pulumi:"region"`
+	// AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+}
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray and GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray{ GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray []GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return o
+}
+
+// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// AWS CloudWatch log group name. Example: `my-log-group`.
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) LogGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) *string {
+		return v.LogGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS region. Example: `us-east-1`.
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig struct {
+	// AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
+	AccessKey string `pulumi:"accessKey"`
+	// AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
+	Namespace string `pulumi:"namespace"`
+	// AWS region. Example: `us-east-1`.
+	Region string `pulumi:"region"`
+	// AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+	SecretKey string `pulumi:"secretKey"`
+}
+
+// GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs and GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs struct {
+	// AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// AWS region. Example: `us-east-1`.
+	Region pulumi.StringInput `pulumi:"region"`
+	// AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+}
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs) ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs) ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray and GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray{ GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray []GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray) ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray) ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput {
+	return o
+}
+
+// AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// AWS region. Example: `us-east-1`.
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
+	// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	Ca *string `pulumi:"ca"`
+	// Maximum number of days of logs to keep. Default: `3`.
+	IndexDaysMax *int `pulumi:"indexDaysMax"`
+	// Elasticsearch index prefix. Default: `logs`.
+	IndexPrefix string `pulumi:"indexPrefix"`
+	// Elasticsearch request timeout limit. Default: `10.0`.
+	Timeout *float64 `pulumi:"timeout"`
+	// Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
+	Url string `pulumi:"url"`
+}
+
+// GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs and GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs struct {
+	// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	Ca pulumi.StringPtrInput `pulumi:"ca"`
+	// Maximum number of days of logs to keep. Default: `3`.
+	IndexDaysMax pulumi.IntPtrInput `pulumi:"indexDaysMax"`
+	// Elasticsearch index prefix. Default: `logs`.
+	IndexPrefix pulumi.StringInput `pulumi:"indexPrefix"`
+	// Elasticsearch request timeout limit. Default: `10.0`.
+	Timeout pulumi.Float64PtrInput `pulumi:"timeout"`
+	// Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs) ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray and GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray{ GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray []GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray) ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray) ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput() GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput {
+	return o
+}
+
+// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Ca() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *string { return v.Ca }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of days of logs to keep. Default: `3`.
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexDaysMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *int { return v.IndexDaysMax }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch index prefix. Default: `logs`.
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) IndexPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) string { return v.IndexPrefix }).(pulumi.StringOutput)
+}
+
+// Elasticsearch request timeout limit. Default: `10.0`.
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Timeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) *float64 { return v.Timeout }).(pulumi.Float64PtrOutput)
+}
+
+// Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput() GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput)
+}
+
 type GetServiceIntegrationEndpointExternalGoogleCloudBigquery struct {
 	// GCP project id. Example: `snappy-photon-12345`.
 	ProjectId string `pulumi:"projectId"`
@@ -7523,6 +8919,26 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseInput)(nil)).Elem(), GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayInput)(nil)).Elem(), GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogTagInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigDatadogTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigDatadogTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigOpensearchInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigOpensearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigOpensearchPtrInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigOpensearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigRedisInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigRedisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigRedisPtrInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigRedisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointDatadogUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointDatadogUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigDatadogTagInput)(nil)).Elem(), GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs{})
@@ -7621,6 +9037,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigDatadogTagOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOpensearchOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOpensearchPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigRedisOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigRedisPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigOutput{})

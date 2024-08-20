@@ -124,6 +124,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigKafkaRestConfigArgs>? KafkaRestConfig { get; set; }
 
         /// <summary>
+        /// Kafka SASL mechanisms
+        /// </summary>
+        [Input("kafkaSaslMechanisms")]
+        public Input<Inputs.KafkaKafkaUserConfigKafkaSaslMechanismsArgs>? KafkaSaslMechanisms { get; set; }
+
+        /// <summary>
         /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
         /// </summary>
         [Input("kafkaVersion")]

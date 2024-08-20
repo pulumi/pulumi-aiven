@@ -21,7 +21,7 @@ public final class GetMysqlUserResult {
      */
     private String accessKey;
     /**
-     * @return Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+     * @return Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
      * 
      */
     private String authentication;
@@ -72,7 +72,7 @@ public final class GetMysqlUserResult {
         return this.accessKey;
     }
     /**
-     * @return Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+     * @return Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
      * 
      */
     public String authentication() {

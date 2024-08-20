@@ -59,7 +59,7 @@ export interface GetProjectUserResult {
      */
     readonly id: string;
     /**
-     * Project membership type. The possible values are `admin`, `developer` and `operator`.
+     * Project membership type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
      */
     readonly memberType: string;
     /**

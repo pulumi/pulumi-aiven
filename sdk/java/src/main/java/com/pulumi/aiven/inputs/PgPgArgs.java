@@ -19,14 +19,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     public static final PgPgArgs Empty = new PgPgArgs();
 
     /**
-     * Bouncer connection details
+     * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
      */
     @Import(name="bouncer")
     private @Nullable Output<String> bouncer;
 
     /**
-     * @return Bouncer connection details
+     * @return PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
      */
     public Optional<Output<String>> bouncer() {
@@ -34,14 +34,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Primary PostgreSQL database name
+     * Primary PostgreSQL database name.
      * 
      */
     @Import(name="dbname")
     private @Nullable Output<String> dbname;
 
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     public Optional<Output<String>> dbname() {
@@ -49,14 +49,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL master node host IP or name
+     * PostgreSQL primary node host IP or name.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return PostgreSQL master node host IP or name
+     * @return PostgreSQL primary node host IP or name.
      * 
      */
     public Optional<Output<String>> host() {
@@ -64,14 +64,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection limit
+     * The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
      * 
      */
     @Import(name="maxConnections")
     private @Nullable Output<Integer> maxConnections;
 
     /**
-     * @return Connection limit
+     * @return The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
      * 
      */
     public Optional<Output<Integer>> maxConnections() {
@@ -79,14 +79,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL connection parameters
+     * PostgreSQL connection parameters.
      * 
      */
     @Import(name="params")
     private @Nullable Output<List<PgPgParamArgs>> params;
 
     /**
-     * @return PostgreSQL connection parameters
+     * @return PostgreSQL connection parameters.
      * 
      */
     public Optional<Output<List<PgPgParamArgs>>> params() {
@@ -94,14 +94,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL admin user password
+     * PostgreSQL admin user password.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     public Optional<Output<String>> password() {
@@ -109,14 +109,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL port
+     * PostgreSQL port.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -124,14 +124,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL replica URI for services with a replica
+     * PostgreSQL replica URI for services with a replica.
      * 
      */
     @Import(name="replicaUri")
     private @Nullable Output<String> replicaUri;
 
     /**
-     * @return PostgreSQL replica URI for services with a replica
+     * @return PostgreSQL replica URI for services with a replica.
      * 
      */
     public Optional<Output<String>> replicaUri() {
@@ -139,14 +139,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * PostgreSQL SSL mode setting.
      * 
      */
     @Import(name="sslmode")
     private @Nullable Output<String> sslmode;
 
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     public Optional<Output<String>> sslmode() {
@@ -154,14 +154,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL standby connection URIs
+     * PostgreSQL standby connection URIs.
      * 
      */
     @Import(name="standbyUris")
     private @Nullable Output<List<String>> standbyUris;
 
     /**
-     * @return PostgreSQL standby connection URIs
+     * @return PostgreSQL standby connection URIs.
      * 
      */
     public Optional<Output<List<String>>> standbyUris() {
@@ -169,14 +169,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL syncing connection URIs
+     * PostgreSQL syncing connection URIs.
      * 
      */
     @Import(name="syncingUris")
     private @Nullable Output<List<String>> syncingUris;
 
     /**
-     * @return PostgreSQL syncing connection URIs
+     * @return PostgreSQL syncing connection URIs.
      * 
      */
     public Optional<Output<List<String>>> syncingUris() {
@@ -184,14 +184,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL master connection URI
+     * PostgreSQL primary connection URI.
      * 
      */
     @Import(name="uri")
     private @Nullable Output<String> uri;
 
     /**
-     * @return PostgreSQL master connection URI
+     * @return PostgreSQL primary connection URI.
      * 
      */
     public Optional<Output<String>> uri() {
@@ -199,14 +199,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL master connection URIs
+     * PostgreSQL primary connection URIs.
      * 
      */
     @Import(name="uris")
     private @Nullable Output<List<String>> uris;
 
     /**
-     * @return PostgreSQL master connection URIs
+     * @return PostgreSQL primary connection URIs.
      * 
      */
     public Optional<Output<List<String>>> uris() {
@@ -214,14 +214,14 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL admin user name
+     * PostgreSQL admin user name.
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     public Optional<Output<String>> user() {
@@ -266,7 +266,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bouncer Bouncer connection details
+         * @param bouncer PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bouncer Bouncer connection details
+         * @param bouncer PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbname Primary PostgreSQL database name
+         * @param dbname Primary PostgreSQL database name.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbname Primary PostgreSQL database name
+         * @param dbname Primary PostgreSQL database name.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host PostgreSQL master node host IP or name
+         * @param host PostgreSQL primary node host IP or name.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host PostgreSQL master node host IP or name
+         * @param host PostgreSQL primary node host IP or name.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxConnections Connection limit
+         * @param maxConnections The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxConnections Connection limit
+         * @param maxConnections The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param params PostgreSQL connection parameters
+         * @param params PostgreSQL connection parameters.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param params PostgreSQL connection parameters
+         * @param params PostgreSQL connection parameters.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param params PostgreSQL connection parameters
+         * @param params PostgreSQL connection parameters.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password PostgreSQL admin user password
+         * @param password PostgreSQL admin user password.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password PostgreSQL admin user password
+         * @param password PostgreSQL admin user password.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port PostgreSQL port
+         * @param port PostgreSQL port.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port PostgreSQL port
+         * @param port PostgreSQL port.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaUri PostgreSQL replica URI for services with a replica
+         * @param replicaUri PostgreSQL replica URI for services with a replica.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaUri PostgreSQL replica URI for services with a replica
+         * @param replicaUri PostgreSQL replica URI for services with a replica.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslmode PostgreSQL sslmode setting (currently always &#34;require&#34;)
+         * @param sslmode PostgreSQL SSL mode setting.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslmode PostgreSQL sslmode setting (currently always &#34;require&#34;)
+         * @param sslmode PostgreSQL SSL mode setting.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param standbyUris PostgreSQL standby connection URIs
+         * @param standbyUris PostgreSQL standby connection URIs.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param standbyUris PostgreSQL standby connection URIs
+         * @param standbyUris PostgreSQL standby connection URIs.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param standbyUris PostgreSQL standby connection URIs
+         * @param standbyUris PostgreSQL standby connection URIs.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncingUris PostgreSQL syncing connection URIs
+         * @param syncingUris PostgreSQL syncing connection URIs.
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncingUris PostgreSQL syncing connection URIs
+         * @param syncingUris PostgreSQL syncing connection URIs.
          * 
          * @return builder
          * 
@@ -517,7 +517,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncingUris PostgreSQL syncing connection URIs
+         * @param syncingUris PostgreSQL syncing connection URIs.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uri PostgreSQL master connection URI
+         * @param uri PostgreSQL primary connection URI.
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uri PostgreSQL master connection URI
+         * @param uri PostgreSQL primary connection URI.
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uris PostgreSQL master connection URIs
+         * @param uris PostgreSQL primary connection URIs.
          * 
          * @return builder
          * 
@@ -559,7 +559,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uris PostgreSQL master connection URIs
+         * @param uris PostgreSQL primary connection URIs.
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uris PostgreSQL master connection URIs
+         * @param uris PostgreSQL primary connection URIs.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param user PostgreSQL admin user name
+         * @param user PostgreSQL admin user name.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param user PostgreSQL admin user name
+         * @param user PostgreSQL admin user name.
          * 
          * @return builder
          * 

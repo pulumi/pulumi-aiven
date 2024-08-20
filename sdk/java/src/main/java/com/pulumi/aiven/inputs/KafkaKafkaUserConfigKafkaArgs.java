@@ -664,14 +664,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+     * Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
      * 
      */
     @Import(name="transactionPartitionVerificationEnable")
     private @Nullable Output<Boolean> transactionPartitionVerificationEnable;
 
     /**
-     * @return Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+     * @return Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
      * 
      */
     public Optional<Output<Boolean>> transactionPartitionVerificationEnable() {
@@ -1681,7 +1681,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param transactionPartitionVerificationEnable Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+         * @param transactionPartitionVerificationEnable Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
          * 
          * @return builder
          * 
@@ -1692,7 +1692,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param transactionPartitionVerificationEnable Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+         * @param transactionPartitionVerificationEnable Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
          * 
          * @return builder
          * 

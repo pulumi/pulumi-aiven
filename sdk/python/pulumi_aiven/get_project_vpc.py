@@ -77,7 +77,7 @@ class GetProjectVpcResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+        State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         return pulumi.get(self, "state")
 

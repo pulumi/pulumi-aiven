@@ -17,14 +17,14 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
     public static final PgPgParamArgs Empty = new PgPgParamArgs();
 
     /**
-     * Primary PostgreSQL database name
+     * Primary PostgreSQL database name.
      * 
      */
     @Import(name="databaseName")
     private @Nullable Output<String> databaseName;
 
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     public Optional<Output<String>> databaseName() {
@@ -32,14 +32,14 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL host IP or name
+     * PostgreSQL host IP or name.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return PostgreSQL host IP or name
+     * @return PostgreSQL host IP or name.
      * 
      */
     public Optional<Output<String>> host() {
@@ -47,14 +47,14 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL admin user password
+     * PostgreSQL admin user password.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     public Optional<Output<String>> password() {
@@ -62,14 +62,14 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL port
+     * PostgreSQL port.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -77,14 +77,14 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * PostgreSQL SSL mode setting.
      * 
      */
     @Import(name="sslmode")
     private @Nullable Output<String> sslmode;
 
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     public Optional<Output<String>> sslmode() {
@@ -92,14 +92,14 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL admin user name
+     * PostgreSQL admin user name.
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     public Optional<Output<String>> user() {
@@ -136,7 +136,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName Primary PostgreSQL database name
+         * @param databaseName Primary PostgreSQL database name.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName Primary PostgreSQL database name
+         * @param databaseName Primary PostgreSQL database name.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host PostgreSQL host IP or name
+         * @param host PostgreSQL host IP or name.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host PostgreSQL host IP or name
+         * @param host PostgreSQL host IP or name.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password PostgreSQL admin user password
+         * @param password PostgreSQL admin user password.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password PostgreSQL admin user password
+         * @param password PostgreSQL admin user password.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port PostgreSQL port
+         * @param port PostgreSQL port.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param port PostgreSQL port
+         * @param port PostgreSQL port.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslmode PostgreSQL sslmode setting (currently always &#34;require&#34;)
+         * @param sslmode PostgreSQL SSL mode setting.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslmode PostgreSQL sslmode setting (currently always &#34;require&#34;)
+         * @param sslmode PostgreSQL SSL mode setting.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param user PostgreSQL admin user name
+         * @param user PostgreSQL admin user name.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class PgPgParamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param user PostgreSQL admin user name
+         * @param user PostgreSQL admin user name.
          * 
          * @return builder
          * 

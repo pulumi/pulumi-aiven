@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
+    /// Creates and manages a database in an Aiven for PostgreSQL® service.
     /// 
     /// ## Example Usage
     /// 
@@ -22,11 +22,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydatabase = new Aiven.PgDatabase("mydatabase", new()
+    ///     var main = new Aiven.PgDatabase("main", new()
     ///     {
-    ///         Project = myproject.Project,
-    ///         ServiceName = mypg.ServiceName,
-    ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = examplePostgres.ServiceName,
+    ///         DatabaseName = "example-database",
     ///     });
     /// 
     /// });
@@ -35,7 +35,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+    /// $ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/pgDatabase:PgDatabase")]

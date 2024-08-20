@@ -54,7 +54,7 @@ class GetPgUserResult:
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> str:
         """
-        Access certificate for the user
+        The access certificate for the servie user.
         """
         return pulumi.get(self, "access_cert")
 
@@ -62,7 +62,7 @@ class GetPgUserResult:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> str:
         """
-        Access certificate key for the user
+        The access certificate key for the service user.
         """
         return pulumi.get(self, "access_key")
 
@@ -78,7 +78,7 @@ class GetPgUserResult:
     @pulumi.getter
     def password(self) -> str:
         """
-        The password of the PG User (not applicable for all services).
+        The password of the service user.
         """
         return pulumi.get(self, "password")
 
@@ -86,7 +86,7 @@ class GetPgUserResult:
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> bool:
         """
-        Defines whether replication is allowed.
+        Allows replication.
         """
         return pulumi.get(self, "pg_allow_replication")
 
@@ -110,7 +110,7 @@ class GetPgUserResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        The service user account type, either primary or regular.
         """
         return pulumi.get(self, "type")
 
@@ -118,7 +118,7 @@ class GetPgUserResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -145,7 +145,7 @@ def get_pg_user(project: Optional[str] = None,
                 username: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPgUserResult:
     """
-    The PG User data source provides information about the existing Aiven PG User.
+    Gets information about an Aiven for PostgreSQL® service user.
 
     ## Example Usage
 
@@ -153,15 +153,15 @@ def get_pg_user(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_pg_user(service_name="my-service",
-        project="my-project",
-        username="user1")
+    example_user = aiven.get_pg_user(service_name=example_postgres["serviceName"],
+        project=example_project["project"],
+        username="example-service-user")
     ```
 
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -188,7 +188,7 @@ def get_pg_user_output(project: Optional[pulumi.Input[str]] = None,
                        username: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPgUserResult]:
     """
-    The PG User data source provides information about the existing Aiven PG User.
+    Gets information about an Aiven for PostgreSQL® service user.
 
     ## Example Usage
 
@@ -196,14 +196,14 @@ def get_pg_user_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_pg_user(service_name="my-service",
-        project="my-project",
-        username="user1")
+    example_user = aiven.get_pg_user(service_name=example_postgres["serviceName"],
+        project=example_project["project"],
+        username="example-service-user")
     ```
 
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     ...

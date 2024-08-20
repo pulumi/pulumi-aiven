@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     /**
+     * @return Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+     * 
+     */
+    private @Nullable Integer adminTimeoutMs;
+    /**
      * @return Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
      * 
      */
@@ -80,6 +85,13 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     private @Nullable Integer tasksMaxPerCpu;
 
     private KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker() {}
+    /**
+     * @return Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+     * 
+     */
+    public Optional<Integer> adminTimeoutMs() {
+        return Optional.ofNullable(this.adminTimeoutMs);
+    }
     /**
      * @return Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
      * 
@@ -181,6 +193,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer adminTimeoutMs;
         private @Nullable Boolean emitCheckpointsEnabled;
         private @Nullable Integer emitCheckpointsIntervalSeconds;
         private @Nullable String groups;
@@ -197,6 +210,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
         public Builder() {}
         public Builder(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.adminTimeoutMs = defaults.adminTimeoutMs;
     	      this.emitCheckpointsEnabled = defaults.emitCheckpointsEnabled;
     	      this.emitCheckpointsIntervalSeconds = defaults.emitCheckpointsIntervalSeconds;
     	      this.groups = defaults.groups;
@@ -212,6 +226,12 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     	      this.tasksMaxPerCpu = defaults.tasksMaxPerCpu;
         }
 
+        @CustomType.Setter
+        public Builder adminTimeoutMs(@Nullable Integer adminTimeoutMs) {
+
+            this.adminTimeoutMs = adminTimeoutMs;
+            return this;
+        }
         @CustomType.Setter
         public Builder emitCheckpointsEnabled(@Nullable Boolean emitCheckpointsEnabled) {
 
@@ -292,6 +312,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
         }
         public KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker build() {
             final var _resultValue = new KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker();
+            _resultValue.adminTimeoutMs = adminTimeoutMs;
             _resultValue.emitCheckpointsEnabled = emitCheckpointsEnabled;
             _resultValue.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
             _resultValue.groups = groups;

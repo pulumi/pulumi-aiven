@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The PG User resource allows the creation and management of Aiven PG Users.
+ * Creates and manages an Aiven for PostgreSQL® service user.
  *
  * ## Example Usage
  *
@@ -13,18 +13,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = new aiven.PgUser("foo", {
- *     serviceName: bar.serviceName,
- *     project: "my-project",
- *     username: "user-1",
- *     password: "Test$1234",
+ * const exampleUser = new aiven.PgUser("example_user", {
+ *     serviceName: examplePostgres.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-service-user",
+ *     password: serviceUserPassword,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/pgUser:PgUser user PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  */
 export class PgUser extends pulumi.CustomResource {
@@ -56,19 +56,19 @@ export class PgUser extends pulumi.CustomResource {
     }
 
     /**
-     * Access certificate for the user
+     * The access certificate for the servie user.
      */
     public /*out*/ readonly accessCert!: pulumi.Output<string>;
     /**
-     * Access certificate key for the user
+     * The access certificate key for the service user.
      */
     public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
-     * The password of the PG User (not applicable for all services).
+     * The password of the service user.
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * Defines whether replication is allowed.
+     * Allows replication.
      */
     public readonly pgAllowReplication!: pulumi.Output<boolean | undefined>;
     /**
@@ -80,11 +80,11 @@ export class PgUser extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * The service user account type, either primary or regular.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -141,19 +141,19 @@ export class PgUser extends pulumi.CustomResource {
  */
 export interface PgUserState {
     /**
-     * Access certificate for the user
+     * The access certificate for the servie user.
      */
     accessCert?: pulumi.Input<string>;
     /**
-     * Access certificate key for the user
+     * The access certificate key for the service user.
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The password of the PG User (not applicable for all services).
+     * The password of the service user.
      */
     password?: pulumi.Input<string>;
     /**
-     * Defines whether replication is allowed.
+     * Allows replication.
      */
     pgAllowReplication?: pulumi.Input<boolean>;
     /**
@@ -165,11 +165,11 @@ export interface PgUserState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * The service user account type, either primary or regular.
      */
     type?: pulumi.Input<string>;
     /**
-     * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -179,11 +179,11 @@ export interface PgUserState {
  */
 export interface PgUserArgs {
     /**
-     * The password of the PG User (not applicable for all services).
+     * The password of the service user.
      */
     password?: pulumi.Input<string>;
     /**
-     * Defines whether replication is allowed.
+     * Allows replication.
      */
     pgAllowReplication?: pulumi.Input<boolean>;
     /**
@@ -195,7 +195,7 @@ export interface PgUserArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

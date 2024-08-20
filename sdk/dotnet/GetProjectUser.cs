@@ -120,7 +120,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Project membership type. The possible values are `admin`, `developer` and `operator`.
+        /// Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         /// </summary>
         public readonly string MemberType;
         /// <summary>

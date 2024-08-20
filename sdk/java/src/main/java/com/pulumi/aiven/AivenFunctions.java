@@ -8399,7 +8399,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationalUnit:getOrganizationalUnit", TypeShape.of(GetOrganizationalUnitResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The PG data source provides information about the existing Aiven PostgreSQL service.
+     * Gets information about an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -8426,9 +8426,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-pg1")
+     *         final var examplePostgres = AivenFunctions.getPg(GetPgArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-postgres-service")
      *             .build());
      * 
      *     }
@@ -8442,7 +8442,7 @@ public final class AivenFunctions {
         return getPg(args, InvokeOptions.Empty);
     }
     /**
-     * The PG data source provides information about the existing Aiven PostgreSQL service.
+     * Gets information about an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -8469,9 +8469,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-pg1")
+     *         final var examplePostgres = AivenFunctions.getPg(GetPgArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-postgres-service")
      *             .build());
      * 
      *     }
@@ -8485,7 +8485,7 @@ public final class AivenFunctions {
         return getPgPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The PG data source provides information about the existing Aiven PostgreSQL service.
+     * Gets information about an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -8512,9 +8512,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-pg1")
+     *         final var examplePostgres = AivenFunctions.getPg(GetPgArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-postgres-service")
      *             .build());
      * 
      *     }
@@ -8528,7 +8528,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getPg:getPg", TypeShape.of(GetPgResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The PG data source provides information about the existing Aiven PostgreSQL service.
+     * Gets information about an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -8555,9 +8555,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-pg1")
+     *         final var examplePostgres = AivenFunctions.getPg(GetPgArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-postgres-service")
      *             .build());
      * 
      *     }
@@ -8571,7 +8571,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getPg:getPg", TypeShape.of(GetPgResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+     * Gets information about a database in an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -8598,10 +8598,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mypg.serviceName())
-     *             .databaseName("<DATABASE_NAME>")
+     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .databaseName("example-database")
      *             .build());
      * 
      *     }
@@ -8615,7 +8615,7 @@ public final class AivenFunctions {
         return getPgDatabase(args, InvokeOptions.Empty);
     }
     /**
-     * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+     * Gets information about a database in an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -8642,10 +8642,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mypg.serviceName())
-     *             .databaseName("<DATABASE_NAME>")
+     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .databaseName("example-database")
      *             .build());
      * 
      *     }
@@ -8659,7 +8659,7 @@ public final class AivenFunctions {
         return getPgDatabasePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+     * Gets information about a database in an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -8686,10 +8686,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mypg.serviceName())
-     *             .databaseName("<DATABASE_NAME>")
+     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .databaseName("example-database")
      *             .build());
      * 
      *     }
@@ -8703,7 +8703,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getPgDatabase:getPgDatabase", TypeShape.of(GetPgDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+     * Gets information about a database in an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -8730,10 +8730,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mypg.serviceName())
-     *             .databaseName("<DATABASE_NAME>")
+     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .databaseName("example-database")
      *             .build());
      * 
      *     }
@@ -8747,7 +8747,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getPgDatabase:getPgDatabase", TypeShape.of(GetPgDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The PG User data source provides information about the existing Aiven PG User.
+     * Gets information about an Aiven for PostgreSQL® service user.
      * 
      * ## Example Usage
      * 
@@ -8774,10 +8774,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .serviceName(examplePostgres.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-service-user")
      *             .build());
      * 
      *     }
@@ -8791,7 +8791,7 @@ public final class AivenFunctions {
         return getPgUser(args, InvokeOptions.Empty);
     }
     /**
-     * The PG User data source provides information about the existing Aiven PG User.
+     * Gets information about an Aiven for PostgreSQL® service user.
      * 
      * ## Example Usage
      * 
@@ -8818,10 +8818,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .serviceName(examplePostgres.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-service-user")
      *             .build());
      * 
      *     }
@@ -8835,7 +8835,7 @@ public final class AivenFunctions {
         return getPgUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The PG User data source provides information about the existing Aiven PG User.
+     * Gets information about an Aiven for PostgreSQL® service user.
      * 
      * ## Example Usage
      * 
@@ -8862,10 +8862,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .serviceName(examplePostgres.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-service-user")
      *             .build());
      * 
      *     }
@@ -8879,7 +8879,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getPgUser:getPgUser", TypeShape.of(GetPgUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The PG User data source provides information about the existing Aiven PG User.
+     * Gets information about an Aiven for PostgreSQL® service user.
      * 
      * ## Example Usage
      * 
@@ -8906,10 +8906,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .serviceName(examplePostgres.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-service-user")
      *             .build());
      * 
      *     }

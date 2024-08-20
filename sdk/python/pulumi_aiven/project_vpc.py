@@ -76,7 +76,7 @@ class _ProjectVpcState:
         :param pulumi.Input[str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] state: State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+        :param pulumi.Input[str] state: State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
@@ -127,7 +127,7 @@ class _ProjectVpcState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+        State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         return pulumi.get(self, "state")
 
@@ -260,7 +260,7 @@ class ProjectVpc(pulumi.CustomResource):
         :param pulumi.Input[str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] state: State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+        :param pulumi.Input[str] state: State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -300,7 +300,7 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+        State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         return pulumi.get(self, "state")
 

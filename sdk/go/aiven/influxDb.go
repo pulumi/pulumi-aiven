@@ -15,8 +15,9 @@ import (
 type InfluxDb struct {
 	pulumi.CustomResourceState
 
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+	// service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+	// service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
 	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
@@ -146,8 +147,9 @@ func GetInfluxDb(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InfluxDb resources.
 type influxDbState struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+	// service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+	// service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
 	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
@@ -230,8 +232,9 @@ type influxDbState struct {
 }
 
 type InfluxDbState struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+	// service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+	// service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
 	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
@@ -318,8 +321,9 @@ func (InfluxDbState) ElementType() reflect.Type {
 }
 
 type influxDbArgs struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+	// service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+	// service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
 	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
@@ -377,8 +381,9 @@ type influxDbArgs struct {
 
 // The set of arguments for constructing a InfluxDb resource.
 type InfluxDbArgs struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+	// service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+	// service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
 	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
@@ -521,8 +526,9 @@ func (o InfluxDbOutput) ToInfluxDbOutputWithContext(ctx context.Context) InfluxD
 	return o
 }
 
-// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-// reducing will result in the service rebalancing.
+// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
+// service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
+// service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 func (o InfluxDbOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
 }

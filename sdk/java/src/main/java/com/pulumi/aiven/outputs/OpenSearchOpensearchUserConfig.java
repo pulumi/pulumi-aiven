@@ -3,7 +3,10 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigAzureMigration;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigGcsMigration;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIndexPattern;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIndexRollup;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIndexTemplate;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpenid;
@@ -12,6 +15,7 @@ import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchDashboar
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigPublicAccess;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigS3Migration;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigSaml;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -29,6 +33,7 @@ public final class OpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable String additionalBackupRegions;
+    private @Nullable OpenSearchOpensearchUserConfigAzureMigration azureMigration;
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
@@ -39,11 +44,17 @@ public final class OpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable Boolean disableReplicationFactorAdjustment;
+    private @Nullable OpenSearchOpensearchUserConfigGcsMigration gcsMigration;
     /**
      * @return Index patterns
      * 
      */
     private @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
+    /**
+     * @return Index rollup settings
+     * 
+     */
+    private @Nullable OpenSearchOpensearchUserConfigIndexRollup indexRollup;
     /**
      * @return Template settings for all new indexes
      * 
@@ -123,6 +134,7 @@ public final class OpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable String recoveryBasebackupName;
+    private @Nullable OpenSearchOpensearchUserConfigS3Migration s3Migration;
     /**
      * @return OpenSearch SAML configuration
      * 
@@ -152,6 +164,9 @@ public final class OpenSearchOpensearchUserConfig {
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
+    public Optional<OpenSearchOpensearchUserConfigAzureMigration> azureMigration() {
+        return Optional.ofNullable(this.azureMigration);
+    }
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
@@ -166,12 +181,22 @@ public final class OpenSearchOpensearchUserConfig {
     public Optional<Boolean> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
+    public Optional<OpenSearchOpensearchUserConfigGcsMigration> gcsMigration() {
+        return Optional.ofNullable(this.gcsMigration);
+    }
     /**
      * @return Index patterns
      * 
      */
     public List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns() {
         return this.indexPatterns == null ? List.of() : this.indexPatterns;
+    }
+    /**
+     * @return Index rollup settings
+     * 
+     */
+    public Optional<OpenSearchOpensearchUserConfigIndexRollup> indexRollup() {
+        return Optional.ofNullable(this.indexRollup);
     }
     /**
      * @return Template settings for all new indexes
@@ -282,6 +307,9 @@ public final class OpenSearchOpensearchUserConfig {
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
+    public Optional<OpenSearchOpensearchUserConfigS3Migration> s3Migration() {
+        return Optional.ofNullable(this.s3Migration);
+    }
     /**
      * @return OpenSearch SAML configuration
      * 
@@ -321,9 +349,12 @@ public final class OpenSearchOpensearchUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
+        private @Nullable OpenSearchOpensearchUserConfigAzureMigration azureMigration;
         private @Nullable String customDomain;
         private @Nullable Boolean disableReplicationFactorAdjustment;
+        private @Nullable OpenSearchOpensearchUserConfigGcsMigration gcsMigration;
         private @Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
+        private @Nullable OpenSearchOpensearchUserConfigIndexRollup indexRollup;
         private @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
         private @Nullable List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -339,6 +370,7 @@ public final class OpenSearchOpensearchUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
+        private @Nullable OpenSearchOpensearchUserConfigS3Migration s3Migration;
         private @Nullable OpenSearchOpensearchUserConfigSaml saml;
         private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
@@ -347,9 +379,12 @@ public final class OpenSearchOpensearchUserConfig {
         public Builder(OpenSearchOpensearchUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.azureMigration = defaults.azureMigration;
     	      this.customDomain = defaults.customDomain;
     	      this.disableReplicationFactorAdjustment = defaults.disableReplicationFactorAdjustment;
+    	      this.gcsMigration = defaults.gcsMigration;
     	      this.indexPatterns = defaults.indexPatterns;
+    	      this.indexRollup = defaults.indexRollup;
     	      this.indexTemplate = defaults.indexTemplate;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -365,6 +400,7 @@ public final class OpenSearchOpensearchUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryBasebackupName = defaults.recoveryBasebackupName;
+    	      this.s3Migration = defaults.s3Migration;
     	      this.saml = defaults.saml;
     	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
@@ -375,6 +411,12 @@ public final class OpenSearchOpensearchUserConfig {
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
 
             this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder azureMigration(@Nullable OpenSearchOpensearchUserConfigAzureMigration azureMigration) {
+
+            this.azureMigration = azureMigration;
             return this;
         }
         @CustomType.Setter
@@ -390,6 +432,12 @@ public final class OpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder gcsMigration(@Nullable OpenSearchOpensearchUserConfigGcsMigration gcsMigration) {
+
+            this.gcsMigration = gcsMigration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder indexPatterns(@Nullable List<OpenSearchOpensearchUserConfigIndexPattern> indexPatterns) {
 
             this.indexPatterns = indexPatterns;
@@ -397,6 +445,12 @@ public final class OpenSearchOpensearchUserConfig {
         }
         public Builder indexPatterns(OpenSearchOpensearchUserConfigIndexPattern... indexPatterns) {
             return indexPatterns(List.of(indexPatterns));
+        }
+        @CustomType.Setter
+        public Builder indexRollup(@Nullable OpenSearchOpensearchUserConfigIndexRollup indexRollup) {
+
+            this.indexRollup = indexRollup;
+            return this;
         }
         @CustomType.Setter
         public Builder indexTemplate(@Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate) {
@@ -498,6 +552,12 @@ public final class OpenSearchOpensearchUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder s3Migration(@Nullable OpenSearchOpensearchUserConfigS3Migration s3Migration) {
+
+            this.s3Migration = s3Migration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder saml(@Nullable OpenSearchOpensearchUserConfigSaml saml) {
 
             this.saml = saml;
@@ -524,9 +584,12 @@ public final class OpenSearchOpensearchUserConfig {
         public OpenSearchOpensearchUserConfig build() {
             final var _resultValue = new OpenSearchOpensearchUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.azureMigration = azureMigration;
             _resultValue.customDomain = customDomain;
             _resultValue.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
+            _resultValue.gcsMigration = gcsMigration;
             _resultValue.indexPatterns = indexPatterns;
+            _resultValue.indexRollup = indexRollup;
             _resultValue.indexTemplate = indexTemplate;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
@@ -542,6 +605,7 @@ public final class OpenSearchOpensearchUserConfig {
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
             _resultValue.recoveryBasebackupName = recoveryBasebackupName;
+            _resultValue.s3Migration = s3Migration;
             _resultValue.saml = saml;
             _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;

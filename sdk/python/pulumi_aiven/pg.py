@@ -36,12 +36,12 @@ class PgArgs:
         The set of arguments for constructing a Pg resource.
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input['PgPgArgs'] pg: PostgreSQL specific server provided values
+        :param pulumi.Input['PgPgArgs'] pg: Values provided by the PostgreSQL server.
         :param pulumi.Input['PgPgUserConfigArgs'] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['PgServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
@@ -113,7 +113,7 @@ class PgArgs:
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -174,7 +174,7 @@ class PgArgs:
     @pulumi.getter
     def pg(self) -> Optional[pulumi.Input['PgPgArgs']]:
         """
-        PostgreSQL specific server provided values
+        Values provided by the PostgreSQL server.
         """
         return pulumi.get(self, "pg")
 
@@ -312,7 +312,7 @@ class _PgState:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Pg resources.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['PgComponentArgs']]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -322,7 +322,7 @@ class _PgState:
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input['PgPgArgs'] pg: PostgreSQL specific server provided values
+        :param pulumi.Input['PgPgArgs'] pg: Values provided by the PostgreSQL server.
         :param pulumi.Input['PgPgUserConfigArgs'] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -405,7 +405,7 @@ class _PgState:
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -526,7 +526,7 @@ class _PgState:
     @pulumi.getter
     def pg(self) -> Optional[pulumi.Input['PgPgArgs']]:
         """
-        PostgreSQL specific server provided values
+        Values provided by the PostgreSQL server.
         """
         return pulumi.get(self, "pg")
 
@@ -762,22 +762,22 @@ class Pg(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The PG resource allows the creation and management of Aiven PostgreSQL services.
+        Creates and manages an Aiven for PostgreSQL® service.
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/pg:Pg pg PROJECT/SERVICE_NAME
+        $ pulumi import aiven:index/pg:Pg example_postgres PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[Union['PgPgArgs', 'PgPgArgsDict']] pg: PostgreSQL specific server provided values
+        :param pulumi.Input[Union['PgPgArgs', 'PgPgArgsDict']] pg: Values provided by the PostgreSQL server.
         :param pulumi.Input[Union['PgPgUserConfigArgs', 'PgPgUserConfigArgsDict']] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -796,12 +796,12 @@ class Pg(pulumi.CustomResource):
                  args: PgArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The PG resource allows the creation and management of Aiven PostgreSQL services.
+        Creates and manages an Aiven for PostgreSQL® service.
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/pg:Pg pg PROJECT/SERVICE_NAME
+        $ pulumi import aiven:index/pg:Pg example_postgres PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -923,7 +923,7 @@ class Pg(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[Union['PgComponentArgs', 'PgComponentArgsDict']]]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -933,7 +933,7 @@ class Pg(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[Union['PgPgArgs', 'PgPgArgsDict']] pg: PostgreSQL specific server provided values
+        :param pulumi.Input[Union['PgPgArgs', 'PgPgArgsDict']] pg: Values provided by the PostgreSQL server.
         :param pulumi.Input[Union['PgPgUserConfigArgs', 'PgPgUserConfigArgsDict']] pg_user_config: Pg user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -990,7 +990,7 @@ class Pg(pulumi.CustomResource):
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -1071,7 +1071,7 @@ class Pg(pulumi.CustomResource):
     @pulumi.getter
     def pg(self) -> pulumi.Output['outputs.PgPg']:
         """
-        PostgreSQL specific server provided values
+        Values provided by the PostgreSQL server.
         """
         return pulumi.get(self, "pg")
 

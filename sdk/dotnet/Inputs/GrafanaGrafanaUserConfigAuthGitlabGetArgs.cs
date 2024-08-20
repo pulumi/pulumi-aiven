@@ -48,11 +48,21 @@ namespace Pulumi.Aiven.Inputs
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
+        [Input("clientSecret", required: true)]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
         /// </summary>
-        [Input("clientSecret", required: true)]
-        public Input<string> ClientSecret { get; set; } = null!;
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.

@@ -20,7 +20,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPgResult {
     /**
-     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      * 
      */
     private String additionalDiskSpace;
@@ -80,7 +80,7 @@ public final class GetPgResult {
      */
     private List<GetPgPgUserConfig> pgUserConfigs;
     /**
-     * @return PostgreSQL specific server provided values
+     * @return Values provided by the PostgreSQL server.
      * 
      */
     private List<GetPgPg> pgs;
@@ -167,7 +167,7 @@ public final class GetPgResult {
 
     private GetPgResult() {}
     /**
-     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      * 
      */
     public String additionalDiskSpace() {
@@ -251,7 +251,7 @@ public final class GetPgResult {
         return this.pgUserConfigs;
     }
     /**
-     * @return PostgreSQL specific server provided values
+     * @return Values provided by the PostgreSQL server.
      * 
      */
     public List<GetPgPg> pgs() {
