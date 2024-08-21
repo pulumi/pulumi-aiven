@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgParamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Primary PostgreSQL database name
+        /// Primary PostgreSQL database name.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// PostgreSQL host IP or name
+        /// PostgreSQL host IP or name.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// PostgreSQL admin user password
+        /// PostgreSQL admin user password.
         /// </summary>
         public Input<string>? Password
         {
@@ -41,19 +41,19 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// PostgreSQL port
+        /// PostgreSQL port.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// PostgreSQL sslmode setting (currently always "require")
+        /// PostgreSQL SSL mode setting.
         /// </summary>
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }
 
         /// <summary>
-        /// PostgreSQL admin user name
+        /// PostgreSQL admin user name.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }

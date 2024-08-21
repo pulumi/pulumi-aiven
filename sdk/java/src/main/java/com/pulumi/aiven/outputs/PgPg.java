@@ -15,170 +15,170 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PgPg {
     /**
-     * @return Bouncer connection details
+     * @return PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
      */
     private @Nullable String bouncer;
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     private @Nullable String dbname;
     /**
-     * @return PostgreSQL master node host IP or name
+     * @return PostgreSQL primary node host IP or name.
      * 
      */
     private @Nullable String host;
     /**
-     * @return Connection limit
+     * @return The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
      * 
      */
     private @Nullable Integer maxConnections;
     /**
-     * @return PostgreSQL connection parameters
+     * @return PostgreSQL connection parameters.
      * 
      */
     private @Nullable List<PgPgParam> params;
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     private @Nullable String password;
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return PostgreSQL replica URI for services with a replica
+     * @return PostgreSQL replica URI for services with a replica.
      * 
      */
     private @Nullable String replicaUri;
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     private @Nullable String sslmode;
     /**
-     * @return PostgreSQL standby connection URIs
+     * @return PostgreSQL standby connection URIs.
      * 
      */
     private @Nullable List<String> standbyUris;
     /**
-     * @return PostgreSQL syncing connection URIs
+     * @return PostgreSQL syncing connection URIs.
      * 
      */
     private @Nullable List<String> syncingUris;
     /**
-     * @return PostgreSQL master connection URI
+     * @return PostgreSQL primary connection URI.
      * 
      */
     private @Nullable String uri;
     /**
-     * @return PostgreSQL master connection URIs
+     * @return PostgreSQL primary connection URIs.
      * 
      */
     private @Nullable List<String> uris;
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     private @Nullable String user;
 
     private PgPg() {}
     /**
-     * @return Bouncer connection details
+     * @return PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
      */
     public Optional<String> bouncer() {
         return Optional.ofNullable(this.bouncer);
     }
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     public Optional<String> dbname() {
         return Optional.ofNullable(this.dbname);
     }
     /**
-     * @return PostgreSQL master node host IP or name
+     * @return PostgreSQL primary node host IP or name.
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return Connection limit
+     * @return The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
      * 
      */
     public Optional<Integer> maxConnections() {
         return Optional.ofNullable(this.maxConnections);
     }
     /**
-     * @return PostgreSQL connection parameters
+     * @return PostgreSQL connection parameters.
      * 
      */
     public List<PgPgParam> params() {
         return this.params == null ? List.of() : this.params;
     }
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return PostgreSQL replica URI for services with a replica
+     * @return PostgreSQL replica URI for services with a replica.
      * 
      */
     public Optional<String> replicaUri() {
         return Optional.ofNullable(this.replicaUri);
     }
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     public Optional<String> sslmode() {
         return Optional.ofNullable(this.sslmode);
     }
     /**
-     * @return PostgreSQL standby connection URIs
+     * @return PostgreSQL standby connection URIs.
      * 
      */
     public List<String> standbyUris() {
         return this.standbyUris == null ? List.of() : this.standbyUris;
     }
     /**
-     * @return PostgreSQL syncing connection URIs
+     * @return PostgreSQL syncing connection URIs.
      * 
      */
     public List<String> syncingUris() {
         return this.syncingUris == null ? List.of() : this.syncingUris;
     }
     /**
-     * @return PostgreSQL master connection URI
+     * @return PostgreSQL primary connection URI.
      * 
      */
     public Optional<String> uri() {
         return Optional.ofNullable(this.uri);
     }
     /**
-     * @return PostgreSQL master connection URIs
+     * @return PostgreSQL primary connection URIs.
      * 
      */
     public List<String> uris() {
         return this.uris == null ? List.of() : this.uris;
     }
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     public Optional<String> user() {

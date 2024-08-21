@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The PG data source provides information about the existing Aiven PostgreSQL service.
+// Gets information about an Aiven for PostgreSQL® service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupPg(ctx, &aiven.LookupPgArgs{
-//				Project:     pr1.Project,
-//				ServiceName: "my-pg1",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-postgres-service",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ type LookupPgArgs struct {
 
 // A collection of values returned by getPg.
 type LookupPgResult struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName string `pulumi:"cloudName"`
@@ -83,7 +83,7 @@ type LookupPgResult struct {
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Pg user configurable settings
 	PgUserConfigs []GetPgPgUserConfig `pulumi:"pgUserConfigs"`
-	// PostgreSQL specific server provided values
+	// Values provided by the PostgreSQL server.
 	Pgs []GetPgPg `pulumi:"pgs"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
@@ -159,7 +159,7 @@ func (o LookupPgResultOutput) ToLookupPgResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 func (o LookupPgResultOutput) AdditionalDiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgResult) string { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
@@ -219,7 +219,7 @@ func (o LookupPgResultOutput) PgUserConfigs() GetPgPgUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupPgResult) []GetPgPgUserConfig { return v.PgUserConfigs }).(GetPgPgUserConfigArrayOutput)
 }
 
-// PostgreSQL specific server provided values
+// Values provided by the PostgreSQL server.
 func (o LookupPgResultOutput) Pgs() GetPgPgArrayOutput {
 	return o.ApplyT(func(v LookupPgResult) []GetPgPg { return v.Pgs }).(GetPgPgArrayOutput)
 }

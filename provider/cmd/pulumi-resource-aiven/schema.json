@@ -1445,6 +1445,10 @@
                 "viewersCanEdit": {
                     "type": "boolean",
                     "description": "Users with view-only permission can edit but not save dashboards.\n"
+                },
+                "wal": {
+                    "type": "boolean",
+                    "description": "Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).\n"
                 }
             },
             "type": "object"
@@ -1479,7 +1483,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 },
                 "tokenUrl": {
                     "type": "string",
@@ -1532,7 +1537,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 },
                 "name": {
                     "type": "string",
@@ -1582,7 +1588,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 },
                 "skipOrgRoleSync": {
                     "type": "boolean",
@@ -1629,7 +1636,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 },
                 "tokenUrl": {
                     "type": "string",
@@ -1662,7 +1670,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -2708,6 +2717,10 @@
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigKafkaRestConfig:KafkaKafkaUserConfigKafkaRestConfig",
                     "description": "Kafka REST configuration\n"
                 },
+                "kafkaSaslMechanisms": {
+                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfigKafkaSaslMechanisms:KafkaKafkaUserConfigKafkaSaslMechanisms",
+                    "description": "Kafka SASL mechanisms\n"
+                },
                 "kafkaVersion": {
                     "type": "string",
                     "description": "Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.\n"
@@ -2952,7 +2965,7 @@
                 },
                 "transactionPartitionVerificationEnable": {
                     "type": "boolean",
-                    "description": "Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).\n"
+                    "description": "Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).\n"
                 },
                 "transactionRemoveExpiredTransactionCleanupIntervalMs": {
                     "type": "integer",
@@ -3161,6 +3174,23 @@
                 "simpleconsumerPoolSizeMax": {
                     "type": "integer",
                     "description": "Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/KafkaKafkaUserConfigKafkaSaslMechanisms:KafkaKafkaUserConfigKafkaSaslMechanisms": {
+            "properties": {
+                "plain": {
+                    "type": "boolean",
+                    "description": "Enable PLAIN mechanism. Default: `true`.\n"
+                },
+                "scramSha256": {
+                    "type": "boolean",
+                    "description": "Enable SCRAM-SHA-256 mechanism. Default: `true`.\n"
+                },
+                "scramSha512": {
+                    "type": "boolean",
+                    "description": "Enable SCRAM-SHA-512 mechanism. Default: `true`.\n"
                 }
             },
             "type": "object"
@@ -3394,6 +3424,10 @@
         },
         "aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker": {
             "properties": {
+                "adminTimeoutMs": {
+                    "type": "integer",
+                    "description": "Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).\n"
+                },
                 "emitCheckpointsEnabled": {
                     "type": "boolean",
                     "description": "Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).\n"
@@ -4969,6 +5003,9 @@
                     "type": "string",
                     "description": "Additional Cloud Regions for Backup Replication.\n"
                 },
+                "azureMigration": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigAzureMigration:OpenSearchOpensearchUserConfigAzureMigration"
+                },
                 "customDomain": {
                     "type": "string",
                     "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
@@ -4977,12 +5014,19 @@
                     "type": "boolean",
                     "description": "Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.\n"
                 },
+                "gcsMigration": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigGcsMigration:OpenSearchOpensearchUserConfigGcsMigration"
+                },
                 "indexPatterns": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigIndexPattern:OpenSearchOpensearchUserConfigIndexPattern"
                     },
                     "description": "Index patterns\n"
+                },
+                "indexRollup": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigIndexRollup:OpenSearchOpensearchUserConfigIndexRollup",
+                    "description": "Index rollup settings\n"
                 },
                 "indexTemplate": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigIndexTemplate:OpenSearchOpensearchUserConfigIndexTemplate",
@@ -5055,6 +5099,9 @@
                     "type": "string",
                     "description": "Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.\n"
                 },
+                "s3Migration": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigS3Migration:OpenSearchOpensearchUserConfigS3Migration"
+                },
                 "saml": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigSaml:OpenSearchOpensearchUserConfigSaml",
                     "description": "OpenSearch SAML configuration\n"
@@ -5074,6 +5121,88 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigAzureMigration:OpenSearchOpensearchUserConfigAzureMigration": {
+            "properties": {
+                "account": {
+                    "type": "string",
+                    "description": "Azure account name.\n"
+                },
+                "basePath": {
+                    "type": "string",
+                    "description": "The path to the repository data within its container. The value of this setting should not start or end with a /.\n"
+                },
+                "chunkSize": {
+                    "type": "string",
+                    "description": "Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.\n"
+                },
+                "compress": {
+                    "type": "boolean",
+                    "description": "When set to true metadata files are stored in compressed format.\n"
+                },
+                "container": {
+                    "type": "string",
+                    "description": "Azure container name.\n"
+                },
+                "endpointSuffix": {
+                    "type": "string",
+                    "description": "Defines the DNS suffix for Azure Storage endpoints.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Azure account secret key. One of key or sas_token should be specified.\n"
+                },
+                "sasToken": {
+                    "type": "string",
+                    "description": "A shared access signatures (SAS) token. One of key or sas_token should be specified.\n"
+                },
+                "snapshotName": {
+                    "type": "string",
+                    "description": "The snapshot name to restore from.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "account",
+                "basePath",
+                "container",
+                "snapshotName"
+            ]
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigGcsMigration:OpenSearchOpensearchUserConfigGcsMigration": {
+            "properties": {
+                "basePath": {
+                    "type": "string",
+                    "description": "The path to the repository data within its container. The value of this setting should not start or end with a /.\n"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "The path to the repository data within its container.\n"
+                },
+                "chunkSize": {
+                    "type": "string",
+                    "description": "Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.\n"
+                },
+                "compress": {
+                    "type": "boolean",
+                    "description": "When set to true metadata files are stored in compressed format.\n"
+                },
+                "credentials": {
+                    "type": "string",
+                    "description": "Google Cloud Storage credentials file content.\n"
+                },
+                "snapshotName": {
+                    "type": "string",
+                    "description": "The snapshot name to restore from.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basePath",
+                "bucket",
+                "credentials",
+                "snapshotName"
+            ]
         },
         "aiven:index/OpenSearchOpensearchUserConfigIndexPattern:OpenSearchOpensearchUserConfigIndexPattern": {
             "properties": {
@@ -5095,6 +5224,31 @@
                 "maxIndexCount",
                 "pattern"
             ]
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigIndexRollup:OpenSearchOpensearchUserConfigIndexRollup": {
+            "properties": {
+                "rollupDashboardsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.\n"
+                },
+                "rollupEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the rollup plugin is enabled. Defaults to true.\n"
+                },
+                "rollupSearchBackoffCount": {
+                    "type": "integer",
+                    "description": "How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.\n"
+                },
+                "rollupSearchBackoffMillis": {
+                    "type": "integer",
+                    "description": "The backoff time between retries for failed rollup jobs. Defaults to 1000ms.\n"
+                },
+                "rollupSearchSearchAllJobs": {
+                    "type": "boolean",
+                    "description": "Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.\n"
+                }
+            },
+            "type": "object"
         },
         "aiven:index/OpenSearchOpensearchUserConfigIndexTemplate:OpenSearchOpensearchUserConfigIndexTemplate": {
             "properties": {
@@ -5133,11 +5287,12 @@
             "properties": {
                 "clientId": {
                     "type": "string",
-                    "description": "The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.\n"
+                    "description": "The ID of the OpenID Connect client configured in your IdP. Required.\n"
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.\n"
+                    "description": "The client secret of the OpenID Connect client configured in your IdP. Required.\n",
+                    "secret": true
                 },
                 "connectUrl": {
                     "type": "string",
@@ -5173,7 +5328,7 @@
                 },
                 "scope": {
                     "type": "string",
-                    "description": "The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.\n"
+                    "description": "The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.\n"
                 },
                 "subjectKey": {
                     "type": "string",
@@ -5225,7 +5380,7 @@
                 },
                 "enableSecurityAudit": {
                     "type": "boolean",
-                    "description": "Enable/Disable security audit. Default: `false`.\n"
+                    "description": "Enable/Disable security audit.\n"
                 },
                 "httpMaxContentLength": {
                     "type": "integer",
@@ -5273,35 +5428,35 @@
                 },
                 "ismEnabled": {
                     "type": "boolean",
-                    "description": "Specifies whether ISM is enabled or not. Default: `true`.\n"
+                    "description": "Specifies whether ISM is enabled or not.\n"
                 },
                 "ismHistoryEnabled": {
                     "type": "boolean",
-                    "description": "Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.\n"
+                    "description": "Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.\n"
                 },
                 "ismHistoryMaxAge": {
                     "type": "integer",
-                    "description": "The maximum age before rolling over the audit history index in hours. Default: `24`.\n"
+                    "description": "The maximum age before rolling over the audit history index in hours. Example: `24`.\n"
                 },
                 "ismHistoryMaxDocs": {
                     "type": "integer",
-                    "description": "The maximum number of documents before rolling over the audit history index. Default: `2500000`.\n"
+                    "description": "The maximum number of documents before rolling over the audit history index. Example: `2500000`.\n"
                 },
                 "ismHistoryRolloverCheckPeriod": {
                     "type": "integer",
-                    "description": "The time between rollover checks for the audit history index in hours. Default: `8`.\n"
+                    "description": "The time between rollover checks for the audit history index in hours. Example: `8`.\n"
                 },
                 "ismHistoryRolloverRetentionPeriod": {
                     "type": "integer",
-                    "description": "How long audit history indices are kept in days. Default: `30`.\n"
+                    "description": "How long audit history indices are kept in days. Example: `30`.\n"
                 },
                 "knnMemoryCircuitBreakerEnabled": {
                     "type": "boolean",
-                    "description": "Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.\n"
+                    "description": "Enable or disable KNN memory circuit breaker. Defaults to true.\n"
                 },
                 "knnMemoryCircuitBreakerLimit": {
                     "type": "integer",
-                    "description": "Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.\n"
+                    "description": "Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.\n"
                 },
                 "overrideMainResponseVersion": {
                     "type": "boolean",
@@ -5515,6 +5670,61 @@
             },
             "type": "object"
         },
+        "aiven:index/OpenSearchOpensearchUserConfigS3Migration:OpenSearchOpensearchUserConfigS3Migration": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "description": "AWS Access key.\n",
+                    "secret": true
+                },
+                "basePath": {
+                    "type": "string",
+                    "description": "The path to the repository data within its container. The value of this setting should not start or end with a /.\n"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "S3 bucket name.\n"
+                },
+                "chunkSize": {
+                    "type": "string",
+                    "description": "Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.\n"
+                },
+                "compress": {
+                    "type": "boolean",
+                    "description": "When set to true metadata files are stored in compressed format.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "S3 region.\n"
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "AWS secret key.\n",
+                    "secret": true
+                },
+                "serverSideEncryption": {
+                    "type": "boolean",
+                    "description": "When set to true files are encrypted on server side.\n"
+                },
+                "snapshotName": {
+                    "type": "string",
+                    "description": "The snapshot name to restore from.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessKey",
+                "basePath",
+                "bucket",
+                "region",
+                "secretKey",
+                "snapshotName"
+            ]
+        },
         "aiven:index/OpenSearchOpensearchUserConfigSaml:OpenSearchOpensearchUserConfigSaml": {
             "properties": {
                 "enabled": {
@@ -5718,62 +5928,62 @@
             "properties": {
                 "bouncer": {
                     "type": "string",
-                    "description": "Bouncer connection details\n"
+                    "description": "PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).\n"
                 },
                 "dbname": {
                     "type": "string",
-                    "description": "Primary PostgreSQL database name\n"
+                    "description": "Primary PostgreSQL database name.\n"
                 },
                 "host": {
                     "type": "string",
-                    "description": "PostgreSQL master node host IP or name\n"
+                    "description": "PostgreSQL primary node host IP or name.\n"
                 },
                 "maxConnections": {
                     "type": "integer",
-                    "description": "Connection limit\n"
+                    "description": "The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.\n"
                 },
                 "params": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/PgPgParam:PgPgParam"
                     },
-                    "description": "PostgreSQL connection parameters\n"
+                    "description": "PostgreSQL connection parameters.\n"
                 },
                 "password": {
                     "type": "string",
-                    "description": "PostgreSQL admin user password\n",
+                    "description": "PostgreSQL admin user password.\n",
                     "secret": true
                 },
                 "port": {
                     "type": "integer",
-                    "description": "PostgreSQL port\n"
+                    "description": "PostgreSQL port.\n"
                 },
                 "replicaUri": {
                     "type": "string",
-                    "description": "PostgreSQL replica URI for services with a replica\n",
+                    "description": "PostgreSQL replica URI for services with a replica.\n",
                     "secret": true
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "PostgreSQL sslmode setting (currently always \"require\")\n"
+                    "description": "PostgreSQL SSL mode setting.\n"
                 },
                 "standbyUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL standby connection URIs\n"
+                    "description": "PostgreSQL standby connection URIs.\n"
                 },
                 "syncingUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL syncing connection URIs\n"
+                    "description": "PostgreSQL syncing connection URIs.\n"
                 },
                 "uri": {
                     "type": "string",
-                    "description": "PostgreSQL master connection URI\n",
+                    "description": "PostgreSQL primary connection URI.\n",
                     "secret": true
                 },
                 "uris": {
@@ -5781,11 +5991,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL master connection URIs\n"
+                    "description": "PostgreSQL primary connection URIs.\n"
                 },
                 "user": {
                     "type": "string",
-                    "description": "PostgreSQL admin user name\n"
+                    "description": "PostgreSQL admin user name.\n"
                 }
             },
             "type": "object",
@@ -5814,28 +6024,28 @@
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "Primary PostgreSQL database name\n"
+                    "description": "Primary PostgreSQL database name.\n"
                 },
                 "host": {
                     "type": "string",
-                    "description": "PostgreSQL host IP or name\n"
+                    "description": "PostgreSQL host IP or name.\n"
                 },
                 "password": {
                     "type": "string",
-                    "description": "PostgreSQL admin user password\n",
+                    "description": "PostgreSQL admin user password.\n",
                     "secret": true
                 },
                 "port": {
                     "type": "integer",
-                    "description": "PostgreSQL port\n"
+                    "description": "PostgreSQL port.\n"
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "PostgreSQL sslmode setting (currently always \"require\")\n"
+                    "description": "PostgreSQL SSL mode setting.\n"
                 },
                 "user": {
                     "type": "string",
-                    "description": "PostgreSQL admin user name\n"
+                    "description": "PostgreSQL admin user name.\n"
                 }
             },
             "type": "object",
@@ -7453,7 +7663,8 @@
                 },
                 "sslClientKey": {
                     "type": "string",
-                    "description": "Client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----`.\n"
+                    "description": "Client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----`.\n",
+                    "secret": true
                 },
                 "sslMode": {
                     "type": "string",
@@ -10302,6 +10513,10 @@
                 "viewersCanEdit": {
                     "type": "boolean",
                     "description": "Users with view-only permission can edit but not save dashboards.\n"
+                },
+                "wal": {
+                    "type": "boolean",
+                    "description": "Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).\n"
                 }
             },
             "type": "object"
@@ -10336,7 +10551,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 },
                 "tokenUrl": {
                     "type": "string",
@@ -10394,7 +10610,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 },
                 "name": {
                     "type": "string",
@@ -10449,7 +10666,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 },
                 "skipOrgRoleSync": {
                     "type": "boolean",
@@ -10501,7 +10719,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 },
                 "tokenUrl": {
                     "type": "string",
@@ -10539,7 +10758,8 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n"
+                    "description": "Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -11679,6 +11899,10 @@
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafkaRestConfig:getKafkaKafkaUserConfigKafkaRestConfig",
                     "description": "Kafka REST configuration\n"
                 },
+                "kafkaSaslMechanisms": {
+                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafkaSaslMechanisms:getKafkaKafkaUserConfigKafkaSaslMechanisms",
+                    "description": "Kafka SASL mechanisms\n"
+                },
                 "kafkaVersion": {
                     "type": "string",
                     "description": "Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.\n"
@@ -11928,7 +12152,7 @@
                 },
                 "transactionPartitionVerificationEnable": {
                     "type": "boolean",
-                    "description": "Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).\n"
+                    "description": "Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).\n"
                 },
                 "transactionRemoveExpiredTransactionCleanupIntervalMs": {
                     "type": "integer",
@@ -12152,6 +12376,23 @@
                 "simpleconsumerPoolSizeMax": {
                     "type": "integer",
                     "description": "Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getKafkaKafkaUserConfigKafkaSaslMechanisms:getKafkaKafkaUserConfigKafkaSaslMechanisms": {
+            "properties": {
+                "plain": {
+                    "type": "boolean",
+                    "description": "Enable PLAIN mechanism. Default: `true`.\n"
+                },
+                "scramSha256": {
+                    "type": "boolean",
+                    "description": "Enable SCRAM-SHA-256 mechanism. Default: `true`.\n"
+                },
+                "scramSha512": {
+                    "type": "boolean",
+                    "description": "Enable SCRAM-SHA-512 mechanism. Default: `true`.\n"
                 }
             },
             "type": "object"
@@ -12391,6 +12632,10 @@
         },
         "aiven:index/getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker": {
             "properties": {
+                "adminTimeoutMs": {
+                    "type": "integer",
+                    "description": "Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).\n"
+                },
                 "emitCheckpointsEnabled": {
                     "type": "boolean",
                     "description": "Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).\n"
@@ -14093,6 +14338,9 @@
                     "type": "string",
                     "description": "Additional Cloud Regions for Backup Replication.\n"
                 },
+                "azureMigration": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigAzureMigration:getOpenSearchOpensearchUserConfigAzureMigration"
+                },
                 "customDomain": {
                     "type": "string",
                     "description": "Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.\n"
@@ -14101,12 +14349,19 @@
                     "type": "boolean",
                     "description": "Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.\n"
                 },
+                "gcsMigration": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigGcsMigration:getOpenSearchOpensearchUserConfigGcsMigration"
+                },
                 "indexPatterns": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigIndexPattern:getOpenSearchOpensearchUserConfigIndexPattern"
                     },
                     "description": "Index patterns\n"
+                },
+                "indexRollup": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigIndexRollup:getOpenSearchOpensearchUserConfigIndexRollup",
+                    "description": "Index rollup settings\n"
                 },
                 "indexTemplate": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigIndexTemplate:getOpenSearchOpensearchUserConfigIndexTemplate",
@@ -14178,6 +14433,9 @@
                     "type": "string",
                     "description": "Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.\n"
                 },
+                "s3Migration": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigS3Migration:getOpenSearchOpensearchUserConfigS3Migration"
+                },
                 "saml": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigSaml:getOpenSearchOpensearchUserConfigSaml",
                     "description": "OpenSearch SAML configuration\n"
@@ -14196,6 +14454,98 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigAzureMigration:getOpenSearchOpensearchUserConfigAzureMigration": {
+            "properties": {
+                "account": {
+                    "type": "string",
+                    "description": "Azure account name.\n"
+                },
+                "basePath": {
+                    "type": "string",
+                    "description": "The path to the repository data within its container. The value of this setting should not start or end with a /.\n"
+                },
+                "chunkSize": {
+                    "type": "string",
+                    "description": "Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.\n"
+                },
+                "compress": {
+                    "type": "boolean",
+                    "description": "When set to true metadata files are stored in compressed format.\n"
+                },
+                "container": {
+                    "type": "string",
+                    "description": "Azure container name.\n"
+                },
+                "endpointSuffix": {
+                    "type": "string",
+                    "description": "Defines the DNS suffix for Azure Storage endpoints.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Azure account secret key. One of key or sas_token should be specified.\n"
+                },
+                "sasToken": {
+                    "type": "string",
+                    "description": "A shared access signatures (SAS) token. One of key or sas_token should be specified.\n"
+                },
+                "snapshotName": {
+                    "type": "string",
+                    "description": "The snapshot name to restore from.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "account",
+                "basePath",
+                "container",
+                "snapshotName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigGcsMigration:getOpenSearchOpensearchUserConfigGcsMigration": {
+            "properties": {
+                "basePath": {
+                    "type": "string",
+                    "description": "The path to the repository data within its container. The value of this setting should not start or end with a /.\n"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "The path to the repository data within its container.\n"
+                },
+                "chunkSize": {
+                    "type": "string",
+                    "description": "Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.\n"
+                },
+                "compress": {
+                    "type": "boolean",
+                    "description": "When set to true metadata files are stored in compressed format.\n"
+                },
+                "credentials": {
+                    "type": "string",
+                    "description": "Google Cloud Storage credentials file content.\n"
+                },
+                "snapshotName": {
+                    "type": "string",
+                    "description": "The snapshot name to restore from.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "basePath",
+                "bucket",
+                "credentials",
+                "snapshotName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getOpenSearchOpensearchUserConfigIndexPattern:getOpenSearchOpensearchUserConfigIndexPattern": {
             "properties": {
@@ -14222,6 +14572,31 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigIndexRollup:getOpenSearchOpensearchUserConfigIndexRollup": {
+            "properties": {
+                "rollupDashboardsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.\n"
+                },
+                "rollupEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the rollup plugin is enabled. Defaults to true.\n"
+                },
+                "rollupSearchBackoffCount": {
+                    "type": "integer",
+                    "description": "How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.\n"
+                },
+                "rollupSearchBackoffMillis": {
+                    "type": "integer",
+                    "description": "The backoff time between retries for failed rollup jobs. Defaults to 1000ms.\n"
+                },
+                "rollupSearchSearchAllJobs": {
+                    "type": "boolean",
+                    "description": "Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.\n"
+                }
+            },
+            "type": "object"
         },
         "aiven:index/getOpenSearchOpensearchUserConfigIndexTemplate:getOpenSearchOpensearchUserConfigIndexTemplate": {
             "properties": {
@@ -14265,11 +14640,12 @@
             "properties": {
                 "clientId": {
                     "type": "string",
-                    "description": "The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.\n"
+                    "description": "The ID of the OpenID Connect client configured in your IdP. Required.\n"
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.\n"
+                    "description": "The client secret of the OpenID Connect client configured in your IdP. Required.\n",
+                    "secret": true
                 },
                 "connectUrl": {
                     "type": "string",
@@ -14305,7 +14681,7 @@
                 },
                 "scope": {
                     "type": "string",
-                    "description": "The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.\n"
+                    "description": "The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.\n"
                 },
                 "subjectKey": {
                     "type": "string",
@@ -14362,7 +14738,7 @@
                 },
                 "enableSecurityAudit": {
                     "type": "boolean",
-                    "description": "Enable/Disable security audit. Default: `false`.\n"
+                    "description": "Enable/Disable security audit.\n"
                 },
                 "httpMaxContentLength": {
                     "type": "integer",
@@ -14410,35 +14786,35 @@
                 },
                 "ismEnabled": {
                     "type": "boolean",
-                    "description": "Specifies whether ISM is enabled or not. Default: `true`.\n"
+                    "description": "Specifies whether ISM is enabled or not.\n"
                 },
                 "ismHistoryEnabled": {
                     "type": "boolean",
-                    "description": "Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.\n"
+                    "description": "Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.\n"
                 },
                 "ismHistoryMaxAge": {
                     "type": "integer",
-                    "description": "The maximum age before rolling over the audit history index in hours. Default: `24`.\n"
+                    "description": "The maximum age before rolling over the audit history index in hours. Example: `24`.\n"
                 },
                 "ismHistoryMaxDocs": {
                     "type": "integer",
-                    "description": "The maximum number of documents before rolling over the audit history index. Default: `2500000`.\n"
+                    "description": "The maximum number of documents before rolling over the audit history index. Example: `2500000`.\n"
                 },
                 "ismHistoryRolloverCheckPeriod": {
                     "type": "integer",
-                    "description": "The time between rollover checks for the audit history index in hours. Default: `8`.\n"
+                    "description": "The time between rollover checks for the audit history index in hours. Example: `8`.\n"
                 },
                 "ismHistoryRolloverRetentionPeriod": {
                     "type": "integer",
-                    "description": "How long audit history indices are kept in days. Default: `30`.\n"
+                    "description": "How long audit history indices are kept in days. Example: `30`.\n"
                 },
                 "knnMemoryCircuitBreakerEnabled": {
                     "type": "boolean",
-                    "description": "Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.\n"
+                    "description": "Enable or disable KNN memory circuit breaker. Defaults to true.\n"
                 },
                 "knnMemoryCircuitBreakerLimit": {
                     "type": "integer",
-                    "description": "Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.\n"
+                    "description": "Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.\n"
                 },
                 "overrideMainResponseVersion": {
                     "type": "boolean",
@@ -14652,6 +15028,66 @@
             },
             "type": "object"
         },
+        "aiven:index/getOpenSearchOpensearchUserConfigS3Migration:getOpenSearchOpensearchUserConfigS3Migration": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "description": "AWS Access key.\n",
+                    "secret": true
+                },
+                "basePath": {
+                    "type": "string",
+                    "description": "The path to the repository data within its container. The value of this setting should not start or end with a /.\n"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "S3 bucket name.\n"
+                },
+                "chunkSize": {
+                    "type": "string",
+                    "description": "Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.\n"
+                },
+                "compress": {
+                    "type": "boolean",
+                    "description": "When set to true metadata files are stored in compressed format.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "S3 region.\n"
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "AWS secret key.\n",
+                    "secret": true
+                },
+                "serverSideEncryption": {
+                    "type": "boolean",
+                    "description": "When set to true files are encrypted on server side.\n"
+                },
+                "snapshotName": {
+                    "type": "string",
+                    "description": "The snapshot name to restore from.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessKey",
+                "basePath",
+                "bucket",
+                "region",
+                "secretKey",
+                "snapshotName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getOpenSearchOpensearchUserConfigSaml:getOpenSearchOpensearchUserConfigSaml": {
             "properties": {
                 "enabled": {
@@ -14813,62 +15249,62 @@
             "properties": {
                 "bouncer": {
                     "type": "string",
-                    "description": "Bouncer connection details\n"
+                    "description": "PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).\n"
                 },
                 "dbname": {
                     "type": "string",
-                    "description": "Primary PostgreSQL database name\n"
+                    "description": "Primary PostgreSQL database name.\n"
                 },
                 "host": {
                     "type": "string",
-                    "description": "PostgreSQL master node host IP or name\n"
+                    "description": "PostgreSQL primary node host IP or name.\n"
                 },
                 "maxConnections": {
                     "type": "integer",
-                    "description": "Connection limit\n"
+                    "description": "The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.\n"
                 },
                 "params": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/getPgPgParam:getPgPgParam"
                     },
-                    "description": "PostgreSQL connection parameters\n"
+                    "description": "PostgreSQL connection parameters.\n"
                 },
                 "password": {
                     "type": "string",
-                    "description": "PostgreSQL admin user password\n",
+                    "description": "PostgreSQL admin user password.\n",
                     "secret": true
                 },
                 "port": {
                     "type": "integer",
-                    "description": "PostgreSQL port\n"
+                    "description": "PostgreSQL port.\n"
                 },
                 "replicaUri": {
                     "type": "string",
-                    "description": "PostgreSQL replica URI for services with a replica\n",
+                    "description": "PostgreSQL replica URI for services with a replica.\n",
                     "secret": true
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "PostgreSQL sslmode setting (currently always \"require\")\n"
+                    "description": "PostgreSQL SSL mode setting.\n"
                 },
                 "standbyUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL standby connection URIs\n"
+                    "description": "PostgreSQL standby connection URIs.\n"
                 },
                 "syncingUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL syncing connection URIs\n"
+                    "description": "PostgreSQL syncing connection URIs.\n"
                 },
                 "uri": {
                     "type": "string",
-                    "description": "PostgreSQL master connection URI\n",
+                    "description": "PostgreSQL primary connection URI.\n",
                     "secret": true
                 },
                 "uris": {
@@ -14876,11 +15312,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL master connection URIs\n"
+                    "description": "PostgreSQL primary connection URIs.\n"
                 },
                 "user": {
                     "type": "string",
-                    "description": "PostgreSQL admin user name\n"
+                    "description": "PostgreSQL admin user name.\n"
                 }
             },
             "type": "object",
@@ -14910,28 +15346,28 @@
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "Primary PostgreSQL database name\n"
+                    "description": "Primary PostgreSQL database name.\n"
                 },
                 "host": {
                     "type": "string",
-                    "description": "PostgreSQL host IP or name\n"
+                    "description": "PostgreSQL host IP or name.\n"
                 },
                 "password": {
                     "type": "string",
-                    "description": "PostgreSQL admin user password\n",
+                    "description": "PostgreSQL admin user password.\n",
                     "secret": true
                 },
                 "port": {
                     "type": "integer",
-                    "description": "PostgreSQL port\n"
+                    "description": "PostgreSQL port.\n"
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "PostgreSQL sslmode setting (currently always \"require\")\n"
+                    "description": "PostgreSQL SSL mode setting.\n"
                 },
                 "user": {
                     "type": "string",
-                    "description": "PostgreSQL admin user name\n"
+                    "description": "PostgreSQL admin user name.\n"
                 }
             },
             "type": "object",
@@ -16664,7 +17100,8 @@
                 },
                 "sslClientKey": {
                     "type": "string",
-                    "description": "Client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----`.\n"
+                    "description": "Client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----`.\n",
+                    "secret": true
                 },
                 "sslMode": {
                     "type": "string",
@@ -18411,7 +18848,7 @@
                 },
                 "teamType": {
                     "type": "string",
-                    "description": "The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
+                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.\n"
                 }
             },
             "required": [
@@ -18433,7 +18870,7 @@
                 },
                 "teamType": {
                     "type": "string",
-                    "description": "The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
+                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.\n"
                 }
             },
             "requiredInputs": [
@@ -18457,7 +18894,7 @@
                     },
                     "teamType": {
                         "type": "string",
-                        "description": "The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
+                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.\n"
                     }
                 },
                 "type": "object"
@@ -19222,7 +19659,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cassandra": {
                     "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra",
@@ -19378,7 +19815,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cassandra": {
                     "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra",
@@ -19472,7 +19909,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cassandra": {
                         "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra",
@@ -19729,7 +20166,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "clickhouse": {
                     "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse",
@@ -19885,7 +20322,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "clickhouse": {
                     "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse",
@@ -19979,7 +20416,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "clickhouse": {
                         "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse",
@@ -20607,7 +21044,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -20763,7 +21200,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -20857,7 +21294,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -21002,7 +21439,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -21158,7 +21595,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -21252,7 +21689,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -22124,7 +22561,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -22280,7 +22717,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -22373,7 +22810,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -22517,7 +22954,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,\nreducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your\nservice. The maximum value depends on the service type and cloud provider. Removing additional storage causes the\nservice nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -22671,7 +23108,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,\nreducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your\nservice. The maximum value depends on the service type and cloud provider. Removing additional storage causes the\nservice nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -22763,7 +23200,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,\nreducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your\nservice. The maximum value depends on the service type and cloud provider. Removing additional storage causes the\nservice nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -23090,7 +23527,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -23258,7 +23695,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -23365,7 +23802,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -23629,7 +24066,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -23774,7 +24211,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -23858,7 +24295,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -24150,7 +24587,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -24295,7 +24732,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -24379,7 +24816,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -25042,7 +25479,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -25193,7 +25630,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -25282,7 +25719,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -25422,7 +25859,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -25573,7 +26010,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -25662,7 +26099,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -26134,7 +26571,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -26285,7 +26722,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -26374,7 +26811,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -26598,7 +27035,7 @@
                 },
                 "authentication": {
                     "type": "string",
-                    "description": "Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.\n"
+                    "description": "Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.\n"
                 },
                 "password": {
                     "type": "string",
@@ -26634,7 +27071,7 @@
             "inputProperties": {
                 "authentication": {
                     "type": "string",
-                    "description": "Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.\n"
+                    "description": "Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.\n"
                 },
                 "password": {
                     "type": "string",
@@ -26677,7 +27114,7 @@
                     },
                     "authentication": {
                         "type": "string",
-                        "description": "Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.\n"
+                        "description": "Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.\n"
                     },
                     "password": {
                         "type": "string",
@@ -26712,7 +27149,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -26866,7 +27303,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -26958,7 +27395,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -28187,11 +28624,11 @@
             }
         },
         "aiven:index/pg:Pg": {
-            "description": "The PG resource allows the creation and management of Aiven PostgreSQL services.\n\n## Import\n\n```sh\n$ pulumi import aiven:index/pg:Pg pg PROJECT/SERVICE_NAME\n```\n\n",
+            "description": "Creates and manages an Aiven for PostgreSQL® service.\n\n## Import\n\n```sh\n$ pulumi import aiven:index/pg:Pg example_postgres PROJECT/SERVICE_NAME\n```\n\n",
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -28235,7 +28672,7 @@
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPg:PgPg",
-                    "description": "PostgreSQL specific server provided values\n",
+                    "description": "Values provided by the PostgreSQL server.\n",
                     "language": {
                         "csharp": {
                             "name": "PgServer"
@@ -28347,7 +28784,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -28368,7 +28805,7 @@
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPg:PgPg",
-                    "description": "PostgreSQL specific server provided values\n",
+                    "description": "Values provided by the PostgreSQL server.\n",
                     "language": {
                         "csharp": {
                             "name": "PgServer"
@@ -28440,7 +28877,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -28484,7 +28921,7 @@
                     },
                     "pg": {
                         "$ref": "#/types/aiven:index/PgPg:PgPg",
-                        "description": "PostgreSQL specific server provided values\n",
+                        "description": "Values provided by the PostgreSQL server.\n",
                         "language": {
                             "csharp": {
                                 "name": "PgServer"
@@ -28581,7 +29018,7 @@
             }
         },
         "aiven:index/pgDatabase:PgDatabase": {
-            "description": "The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst mydatabase = new aiven.PgDatabase(\"mydatabase\", {\n    project: myproject.project,\n    serviceName: mypg.serviceName,\n    databaseName: \"\u003cDATABASE_NAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmydatabase = aiven.PgDatabase(\"mydatabase\",\n    project=myproject[\"project\"],\n    service_name=mypg[\"serviceName\"],\n    database_name=\"\u003cDATABASE_NAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mydatabase = new Aiven.PgDatabase(\"mydatabase\", new()\n    {\n        Project = myproject.Project,\n        ServiceName = mypg.ServiceName,\n        DatabaseName = \"\u003cDATABASE_NAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewPgDatabase(ctx, \"mydatabase\", \u0026aiven.PgDatabaseArgs{\n\t\t\tProject:      pulumi.Any(myproject.Project),\n\t\t\tServiceName:  pulumi.Any(mypg.ServiceName),\n\t\t\tDatabaseName: pulumi.String(\"\u003cDATABASE_NAME\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.PgDatabase;\nimport com.pulumi.aiven.PgDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mydatabase = new PgDatabase(\"mydatabase\", PgDatabaseArgs.builder()\n            .project(myproject.project())\n            .serviceName(mypg.serviceName())\n            .databaseName(\"\u003cDATABASE_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mydatabase:\n    type: aiven:PgDatabase\n    properties:\n      project: ${myproject.project}\n      serviceName: ${mypg.serviceName}\n      databaseName: \u003cDATABASE_NAME\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME\n```\n\n",
+            "description": "Creates and manages a database in an Aiven for PostgreSQL® service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = new aiven.PgDatabase(\"main\", {\n    project: exampleProject.project,\n    serviceName: examplePostgres.serviceName,\n    databaseName: \"example-database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.PgDatabase(\"main\",\n    project=example_project[\"project\"],\n    service_name=example_postgres[\"serviceName\"],\n    database_name=\"example-database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Aiven.PgDatabase(\"main\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = examplePostgres.ServiceName,\n        DatabaseName = \"example-database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewPgDatabase(ctx, \"main\", \u0026aiven.PgDatabaseArgs{\n\t\t\tProject:      pulumi.Any(exampleProject.Project),\n\t\t\tServiceName:  pulumi.Any(examplePostgres.ServiceName),\n\t\t\tDatabaseName: pulumi.String(\"example-database\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.PgDatabase;\nimport com.pulumi.aiven.PgDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new PgDatabase(\"main\", PgDatabaseArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(examplePostgres.serviceName())\n            .databaseName(\"example-database\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: aiven:PgDatabase\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${examplePostgres.serviceName}\n      databaseName: example-database\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME\n```\n\n",
             "properties": {
                 "databaseName": {
                     "type": "string",
@@ -28683,26 +29120,26 @@
             }
         },
         "aiven:index/pgUser:PgUser": {
-            "description": "The PG User resource allows the creation and management of Aiven PG Users.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.PgUser(\"foo\", {\n    serviceName: bar.serviceName,\n    project: \"my-project\",\n    username: \"user-1\",\n    password: \"Test$1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.PgUser(\"foo\",\n    service_name=bar[\"serviceName\"],\n    project=\"my-project\",\n    username=\"user-1\",\n    password=\"Test$1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.PgUser(\"foo\", new()\n    {\n        ServiceName = bar.ServiceName,\n        Project = \"my-project\",\n        Username = \"user-1\",\n        Password = \"Test$1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewPgUser(ctx, \"foo\", \u0026aiven.PgUserArgs{\n\t\t\tServiceName: pulumi.Any(bar.ServiceName),\n\t\t\tProject:     pulumi.String(\"my-project\"),\n\t\t\tUsername:    pulumi.String(\"user-1\"),\n\t\t\tPassword:    pulumi.String(\"Test$1234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.PgUser;\nimport com.pulumi.aiven.PgUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new PgUser(\"foo\", PgUserArgs.builder()\n            .serviceName(bar.serviceName())\n            .project(\"my-project\")\n            .username(\"user-1\")\n            .password(\"Test$1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:PgUser\n    properties:\n      serviceName: ${bar.serviceName}\n      project: my-project\n      username: user-1\n      password: Test$1234\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/pgUser:PgUser user PROJECT/SERVICE_NAME/USERNAME\n```\n\n",
+            "description": "Creates and manages an Aiven for PostgreSQL® service user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleUser = new aiven.PgUser(\"example_user\", {\n    serviceName: examplePostgres.serviceName,\n    project: exampleProject.project,\n    username: \"example-service-user\",\n    password: serviceUserPassword,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_user = aiven.PgUser(\"example_user\",\n    service_name=example_postgres[\"serviceName\"],\n    project=example_project[\"project\"],\n    username=\"example-service-user\",\n    password=service_user_password)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = new Aiven.PgUser(\"example_user\", new()\n    {\n        ServiceName = examplePostgres.ServiceName,\n        Project = exampleProject.Project,\n        Username = \"example-service-user\",\n        Password = serviceUserPassword,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewPgUser(ctx, \"example_user\", \u0026aiven.PgUserArgs{\n\t\t\tServiceName: pulumi.Any(examplePostgres.ServiceName),\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tUsername:    pulumi.String(\"example-service-user\"),\n\t\t\tPassword:    pulumi.Any(serviceUserPassword),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.PgUser;\nimport com.pulumi.aiven.PgUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleUser = new PgUser(\"exampleUser\", PgUserArgs.builder()\n            .serviceName(examplePostgres.serviceName())\n            .project(exampleProject.project())\n            .username(\"example-service-user\")\n            .password(serviceUserPassword)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleUser:\n    type: aiven:PgUser\n    name: example_user\n    properties:\n      serviceName: ${examplePostgres.serviceName}\n      project: ${exampleProject.project}\n      username: example-service-user\n      password: ${serviceUserPassword}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME\n```\n\n",
             "properties": {
                 "accessCert": {
                     "type": "string",
-                    "description": "Access certificate for the user\n",
+                    "description": "The access certificate for the servie user.\n",
                     "secret": true
                 },
                 "accessKey": {
                     "type": "string",
-                    "description": "Access certificate key for the user\n",
+                    "description": "The access certificate key for the service user.\n",
                     "secret": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password of the PG User (not applicable for all services).\n",
+                    "description": "The password of the service user.\n",
                     "secret": true
                 },
                 "pgAllowReplication": {
                     "type": "boolean",
-                    "description": "Defines whether replication is allowed.\n"
+                    "description": "Allows replication.\n"
                 },
                 "project": {
                     "type": "string",
@@ -28714,11 +29151,11 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the user account. Tells whether the user is the primary account or a regular account.\n"
+                    "description": "The service user account type, either primary or regular.\n"
                 },
                 "username": {
                     "type": "string",
-                    "description": "The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 }
             },
             "required": [
@@ -28733,12 +29170,12 @@
             "inputProperties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the PG User (not applicable for all services).\n",
+                    "description": "The password of the service user.\n",
                     "secret": true
                 },
                 "pgAllowReplication": {
                     "type": "boolean",
-                    "description": "Defines whether replication is allowed.\n"
+                    "description": "Allows replication.\n"
                 },
                 "project": {
                     "type": "string",
@@ -28752,7 +29189,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -28766,22 +29203,22 @@
                 "properties": {
                     "accessCert": {
                         "type": "string",
-                        "description": "Access certificate for the user\n",
+                        "description": "The access certificate for the servie user.\n",
                         "secret": true
                     },
                     "accessKey": {
                         "type": "string",
-                        "description": "Access certificate key for the user\n",
+                        "description": "The access certificate key for the service user.\n",
                         "secret": true
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password of the PG User (not applicable for all services).\n",
+                        "description": "The password of the service user.\n",
                         "secret": true
                     },
                     "pgAllowReplication": {
                         "type": "boolean",
-                        "description": "Defines whether replication is allowed.\n"
+                        "description": "Allows replication.\n"
                     },
                     "project": {
                         "type": "string",
@@ -28795,11 +29232,11 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of the user account. Tells whether the user is the primary account or a regular account.\n"
+                        "description": "The service user account type, either primary or regular.\n"
                     },
                     "username": {
                         "type": "string",
-                        "description": "The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -29038,7 +29475,7 @@
                 },
                 "memberType": {
                     "type": "string",
-                    "description": "Project membership type. The possible values are `admin`, `developer` and `operator`.\n"
+                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
                 },
                 "project": {
                     "type": "string",
@@ -29059,7 +29496,7 @@
                 },
                 "memberType": {
                     "type": "string",
-                    "description": "Project membership type. The possible values are `admin`, `developer` and `operator`.\n"
+                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
                 },
                 "project": {
                     "type": "string",
@@ -29086,7 +29523,7 @@
                     },
                     "memberType": {
                         "type": "string",
-                        "description": "Project membership type. The possible values are `admin`, `developer` and `operator`.\n"
+                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
                     },
                     "project": {
                         "type": "string",
@@ -29114,7 +29551,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.\n"
+                    "description": "State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.\n"
                 }
             },
             "required": [
@@ -29165,7 +29602,7 @@
                     },
                     "state": {
                         "type": "string",
-                        "description": "State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.\n"
+                        "description": "State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.\n"
                     }
                 },
                 "type": "object"
@@ -29176,7 +29613,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -29332,7 +29769,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -29426,7 +29863,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -29793,7 +30230,7 @@
                 },
                 "integrationType": {
                     "type": "string",
-                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
+                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig",
@@ -29878,7 +30315,7 @@
                 },
                 "integrationType": {
                     "type": "string",
-                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
+                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
                     "willReplaceOnChanges": true
                 },
                 "kafkaConnectUserConfig": {
@@ -29972,7 +30409,7 @@
                     },
                     "integrationType": {
                         "type": "string",
-                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
+                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
                         "willReplaceOnChanges": true
                     },
                     "kafkaConnectUserConfig": {
@@ -30344,7 +30781,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -30500,7 +30937,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -30594,7 +31031,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -30874,7 +31311,7 @@
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -31030,7 +31467,7 @@
             "inputProperties": {
                 "additionalDiskSpace": {
                     "type": "string",
-                    "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -31124,7 +31561,7 @@
                 "properties": {
                     "additionalDiskSpace": {
                         "type": "string",
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -31817,7 +32254,7 @@
                         "type": "string"
                     },
                     "teamType": {
-                        "description": "The Account team project type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n",
+                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.\n",
                         "type": "string"
                     }
                 },
@@ -32289,7 +32726,7 @@
                 "description": "A collection of values returned by getCassanda.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cassandraUserConfigs": {
@@ -32487,7 +32924,7 @@
                 "description": "A collection of values returned by getCassandra.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cassandraUserConfigs": {
@@ -32762,7 +33199,7 @@
                 "description": "A collection of values returned by getClickhouse.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "clickhouseUserConfigs": {
@@ -33168,7 +33605,7 @@
                 "description": "A collection of values returned by getDragonfly.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -33366,7 +33803,7 @@
                 "description": "A collection of values returned by getFlink.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -33890,7 +34327,7 @@
                 "description": "A collection of values returned by getGrafana.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -34372,7 +34809,7 @@
                 "description": "A collection of values returned by getKafka.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -34659,7 +35096,7 @@
                 "description": "A collection of values returned by getKafkaConnect.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -34948,7 +35385,7 @@
                 "description": "A collection of values returned by getKafkaMirrorMaker.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -35520,7 +35957,7 @@
                 "description": "A collection of values returned by getM3Aggregator.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -35718,7 +36155,7 @@
                 "description": "A collection of values returned by getM3Db.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -36109,7 +36546,7 @@
                 "description": "A collection of values returned by getMySql.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -36380,7 +36817,7 @@
                         "type": "string"
                     },
                     "authentication": {
-                        "description": "Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.\n",
+                        "description": "Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.\n",
                         "type": "string"
                     },
                     "id": {
@@ -36447,7 +36884,7 @@
                 "description": "A collection of values returned by getOpenSearch.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -37160,7 +37597,7 @@
             }
         },
         "aiven:index/getPg:getPg": {
-            "description": "The PG data source provides information about the existing Aiven PostgreSQL service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst pg = aiven.getPg({\n    project: pr1.project,\n    serviceName: \"my-pg1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\npg = aiven.get_pg(project=pr1[\"project\"],\n    service_name=\"my-pg1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pg = Aiven.GetPg.Invoke(new()\n    {\n        Project = pr1.Project,\n        ServiceName = \"my-pg1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupPg(ctx, \u0026aiven.LookupPgArgs{\n\t\t\tProject:     pr1.Project,\n\t\t\tServiceName: \"my-pg1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetPgArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var pg = AivenFunctions.getPg(GetPgArgs.builder()\n            .project(pr1.project())\n            .serviceName(\"my-pg1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  pg:\n    fn::invoke:\n      Function: aiven:getPg\n      Arguments:\n        project: ${pr1.project}\n        serviceName: my-pg1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Gets information about an Aiven for PostgreSQL® service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst examplePostgres = aiven.getPg({\n    project: exampleProject.project,\n    serviceName: \"example-postgres-service\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_postgres = aiven.get_pg(project=example_project[\"project\"],\n    service_name=\"example-postgres-service\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePostgres = Aiven.GetPg.Invoke(new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = \"example-postgres-service\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupPg(ctx, \u0026aiven.LookupPgArgs{\n\t\t\tProject:     exampleProject.Project,\n\t\t\tServiceName: \"example-postgres-service\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetPgArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var examplePostgres = AivenFunctions.getPg(GetPgArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(\"example-postgres-service\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  examplePostgres:\n    fn::invoke:\n      Function: aiven:getPg\n      Arguments:\n        project: ${exampleProject.project}\n        serviceName: example-postgres-service\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPg.\n",
                 "properties": {
@@ -37183,7 +37620,7 @@
                 "description": "A collection of values returned by getPg.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -37237,7 +37674,7 @@
                         "type": "array"
                     },
                     "pgs": {
-                        "description": "PostgreSQL specific server provided values\n",
+                        "description": "Values provided by the PostgreSQL server.\n",
                         "items": {
                             "$ref": "#/types/aiven:index/getPgPg:getPgPg"
                         },
@@ -37358,7 +37795,7 @@
             }
         },
         "aiven:index/getPgDatabase:getPgDatabase": {
-            "description": "The PG Database data source provides information about the existing Aiven PostgreSQL Database.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst mydatabase = aiven.getPgDatabase({\n    project: myproject.project,\n    serviceName: mypg.serviceName,\n    databaseName: \"\u003cDATABASE_NAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmydatabase = aiven.get_pg_database(project=myproject[\"project\"],\n    service_name=mypg[\"serviceName\"],\n    database_name=\"\u003cDATABASE_NAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mydatabase = Aiven.GetPgDatabase.Invoke(new()\n    {\n        Project = myproject.Project,\n        ServiceName = mypg.ServiceName,\n        DatabaseName = \"\u003cDATABASE_NAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupPgDatabase(ctx, \u0026aiven.LookupPgDatabaseArgs{\n\t\t\tProject:      myproject.Project,\n\t\t\tServiceName:  mypg.ServiceName,\n\t\t\tDatabaseName: \"\u003cDATABASE_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetPgDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()\n            .project(myproject.project())\n            .serviceName(mypg.serviceName())\n            .databaseName(\"\u003cDATABASE_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  mydatabase:\n    fn::invoke:\n      Function: aiven:getPgDatabase\n      Arguments:\n        project: ${myproject.project}\n        serviceName: ${mypg.serviceName}\n        databaseName: \u003cDATABASE_NAME\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Gets information about a database in an Aiven for PostgreSQL® service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = aiven.getPgDatabase({\n    project: exampleProject.project,\n    serviceName: examplePostgres.serviceName,\n    databaseName: \"example-database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.get_pg_database(project=example_project[\"project\"],\n    service_name=example_postgres[\"serviceName\"],\n    database_name=\"example-database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = Aiven.GetPgDatabase.Invoke(new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = examplePostgres.ServiceName,\n        DatabaseName = \"example-database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupPgDatabase(ctx, \u0026aiven.LookupPgDatabaseArgs{\n\t\t\tProject:      exampleProject.Project,\n\t\t\tServiceName:  examplePostgres.ServiceName,\n\t\t\tDatabaseName: \"example-database\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetPgDatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(examplePostgres.serviceName())\n            .databaseName(\"example-database\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  main:\n    fn::invoke:\n      Function: aiven:getPgDatabase\n      Arguments:\n        project: ${exampleProject.project}\n        serviceName: ${examplePostgres.serviceName}\n        databaseName: example-database\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPgDatabase.\n",
                 "properties": {
@@ -37426,7 +37863,7 @@
             }
         },
         "aiven:index/getPgUser:getPgUser": {
-            "description": "The PG User data source provides information about the existing Aiven PG User.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst user = aiven.getPgUser({\n    serviceName: \"my-service\",\n    project: \"my-project\",\n    username: \"user1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nuser = aiven.get_pg_user(service_name=\"my-service\",\n    project=\"my-project\",\n    username=\"user1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = Aiven.GetPgUser.Invoke(new()\n    {\n        ServiceName = \"my-service\",\n        Project = \"my-project\",\n        Username = \"user1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupPgUser(ctx, \u0026aiven.LookupPgUserArgs{\n\t\t\tServiceName: \"my-service\",\n\t\t\tProject:     \"my-project\",\n\t\t\tUsername:    \"user1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetPgUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()\n            .serviceName(\"my-service\")\n            .project(\"my-project\")\n            .username(\"user1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  user:\n    fn::invoke:\n      Function: aiven:getPgUser\n      Arguments:\n        serviceName: my-service\n        project: my-project\n        username: user1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Gets information about an Aiven for PostgreSQL® service user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleUser = aiven.getPgUser({\n    serviceName: examplePostgres.serviceName,\n    project: exampleProject.project,\n    username: \"example-service-user\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_user = aiven.get_pg_user(service_name=example_postgres[\"serviceName\"],\n    project=example_project[\"project\"],\n    username=\"example-service-user\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = Aiven.GetPgUser.Invoke(new()\n    {\n        ServiceName = examplePostgres.ServiceName,\n        Project = exampleProject.Project,\n        Username = \"example-service-user\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupPgUser(ctx, \u0026aiven.LookupPgUserArgs{\n\t\t\tServiceName: examplePostgres.ServiceName,\n\t\t\tProject:     exampleProject.Project,\n\t\t\tUsername:    \"example-service-user\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetPgUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()\n            .serviceName(examplePostgres.serviceName())\n            .project(exampleProject.project())\n            .username(\"example-service-user\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  exampleUser:\n    fn::invoke:\n      Function: aiven:getPgUser\n      Arguments:\n        serviceName: ${examplePostgres.serviceName}\n        project: ${exampleProject.project}\n        username: example-service-user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPgUser.\n",
                 "properties": {
@@ -37440,7 +37877,7 @@
                     },
                     "username": {
                         "type": "string",
-                        "description": "The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                        "description": "The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -37454,12 +37891,12 @@
                 "description": "A collection of values returned by getPgUser.\n",
                 "properties": {
                     "accessCert": {
-                        "description": "Access certificate for the user\n",
+                        "description": "The access certificate for the servie user.\n",
                         "secret": true,
                         "type": "string"
                     },
                     "accessKey": {
-                        "description": "Access certificate key for the user\n",
+                        "description": "The access certificate key for the service user.\n",
                         "secret": true,
                         "type": "string"
                     },
@@ -37468,12 +37905,12 @@
                         "type": "string"
                     },
                     "password": {
-                        "description": "The password of the PG User (not applicable for all services).\n",
+                        "description": "The password of the service user.\n",
                         "secret": true,
                         "type": "string"
                     },
                     "pgAllowReplication": {
-                        "description": "Defines whether replication is allowed.\n",
+                        "description": "Allows replication.\n",
                         "type": "boolean"
                     },
                     "project": {
@@ -37485,11 +37922,11 @@
                         "type": "string"
                     },
                     "type": {
-                        "description": "Type of the user account. Tells whether the user is the primary account or a regular account.\n",
+                        "description": "The service user account type, either primary or regular.\n",
                         "type": "string"
                     },
                     "username": {
-                        "description": "The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "type": "string"
                     }
                 },
@@ -37649,7 +38086,7 @@
                         "type": "string"
                     },
                     "memberType": {
-                        "description": "Project membership type. The possible values are `admin`, `developer` and `operator`.\n",
+                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n",
                         "type": "string"
                     },
                     "project": {
@@ -37707,7 +38144,7 @@
                         "type": "string"
                     },
                     "state": {
-                        "description": "State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.\n",
+                        "description": "State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.\n",
                         "type": "string"
                     },
                     "vpcId": {
@@ -37747,7 +38184,7 @@
                 "description": "A collection of values returned by getRedis.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -38123,7 +38560,7 @@
                     },
                     "integrationType": {
                         "type": "string",
-                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
+                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
                     },
                     "project": {
                         "type": "string",
@@ -38211,7 +38648,7 @@
                         "type": "string"
                     },
                     "integrationType": {
-                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
+                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
                         "type": "string"
                     },
                     "kafkaConnectUserConfigs": {
@@ -38480,7 +38917,7 @@
                 "description": "A collection of values returned by getThanos.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {
@@ -38763,7 +39200,7 @@
                 "description": "A collection of values returned by getValkey.\n",
                 "properties": {
                     "additionalDiskSpace": {
-                        "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
+                        "description": "Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.\n",
                         "type": "string"
                     },
                     "cloudName": {

@@ -140,14 +140,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Enable/Disable security audit. Default: `false`.
+     * Enable/Disable security audit.
      * 
      */
     @Import(name="enableSecurityAudit")
     private @Nullable Output<Boolean> enableSecurityAudit;
 
     /**
-     * @return Enable/Disable security audit. Default: `false`.
+     * @return Enable/Disable security audit.
      * 
      */
     public Optional<Output<Boolean>> enableSecurityAudit() {
@@ -320,14 +320,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Specifies whether ISM is enabled or not. Default: `true`.
+     * Specifies whether ISM is enabled or not.
      * 
      */
     @Import(name="ismEnabled")
     private @Nullable Output<Boolean> ismEnabled;
 
     /**
-     * @return Specifies whether ISM is enabled or not. Default: `true`.
+     * @return Specifies whether ISM is enabled or not.
      * 
      */
     public Optional<Output<Boolean>> ismEnabled() {
@@ -335,14 +335,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
      * 
      */
     @Import(name="ismHistoryEnabled")
     private @Nullable Output<Boolean> ismHistoryEnabled;
 
     /**
-     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
      * 
      */
     public Optional<Output<Boolean>> ismHistoryEnabled() {
@@ -350,14 +350,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * The maximum age before rolling over the audit history index in hours. Default: `24`.
+     * The maximum age before rolling over the audit history index in hours. Example: `24`.
      * 
      */
     @Import(name="ismHistoryMaxAge")
     private @Nullable Output<Integer> ismHistoryMaxAge;
 
     /**
-     * @return The maximum age before rolling over the audit history index in hours. Default: `24`.
+     * @return The maximum age before rolling over the audit history index in hours. Example: `24`.
      * 
      */
     public Optional<Output<Integer>> ismHistoryMaxAge() {
@@ -365,14 +365,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+     * The maximum number of documents before rolling over the audit history index. Example: `2500000`.
      * 
      */
     @Import(name="ismHistoryMaxDocs")
     private @Nullable Output<Integer> ismHistoryMaxDocs;
 
     /**
-     * @return The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+     * @return The maximum number of documents before rolling over the audit history index. Example: `2500000`.
      * 
      */
     public Optional<Output<Integer>> ismHistoryMaxDocs() {
@@ -380,14 +380,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * The time between rollover checks for the audit history index in hours. Default: `8`.
+     * The time between rollover checks for the audit history index in hours. Example: `8`.
      * 
      */
     @Import(name="ismHistoryRolloverCheckPeriod")
     private @Nullable Output<Integer> ismHistoryRolloverCheckPeriod;
 
     /**
-     * @return The time between rollover checks for the audit history index in hours. Default: `8`.
+     * @return The time between rollover checks for the audit history index in hours. Example: `8`.
      * 
      */
     public Optional<Output<Integer>> ismHistoryRolloverCheckPeriod() {
@@ -395,14 +395,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * How long audit history indices are kept in days. Default: `30`.
+     * How long audit history indices are kept in days. Example: `30`.
      * 
      */
     @Import(name="ismHistoryRolloverRetentionPeriod")
     private @Nullable Output<Integer> ismHistoryRolloverRetentionPeriod;
 
     /**
-     * @return How long audit history indices are kept in days. Default: `30`.
+     * @return How long audit history indices are kept in days. Example: `30`.
      * 
      */
     public Optional<Output<Integer>> ismHistoryRolloverRetentionPeriod() {
@@ -410,14 +410,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * Enable or disable KNN memory circuit breaker. Defaults to true.
      * 
      */
     @Import(name="knnMemoryCircuitBreakerEnabled")
     private @Nullable Output<Boolean> knnMemoryCircuitBreakerEnabled;
 
     /**
-     * @return Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * @return Enable or disable KNN memory circuit breaker. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> knnMemoryCircuitBreakerEnabled() {
@@ -425,14 +425,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
      * 
      */
     @Import(name="knnMemoryCircuitBreakerLimit")
     private @Nullable Output<Integer> knnMemoryCircuitBreakerLimit;
 
     /**
-     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
      * 
      */
     public Optional<Output<Integer>> knnMemoryCircuitBreakerLimit() {
@@ -915,7 +915,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param enableSecurityAudit Enable/Disable security audit. Default: `false`.
+         * @param enableSecurityAudit Enable/Disable security audit.
          * 
          * @return builder
          * 
@@ -926,7 +926,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param enableSecurityAudit Enable/Disable security audit. Default: `false`.
+         * @param enableSecurityAudit Enable/Disable security audit.
          * 
          * @return builder
          * 
@@ -1167,7 +1167,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismEnabled Specifies whether ISM is enabled or not. Default: `true`.
+         * @param ismEnabled Specifies whether ISM is enabled or not.
          * 
          * @return builder
          * 
@@ -1178,7 +1178,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismEnabled Specifies whether ISM is enabled or not. Default: `true`.
+         * @param ismEnabled Specifies whether ISM is enabled or not.
          * 
          * @return builder
          * 
@@ -1188,7 +1188,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
          * 
          * @return builder
          * 
@@ -1199,7 +1199,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
          * 
          * @return builder
          * 
@@ -1209,7 +1209,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. Default: `24`.
+         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. Example: `24`.
          * 
          * @return builder
          * 
@@ -1220,7 +1220,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. Default: `24`.
+         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. Example: `24`.
          * 
          * @return builder
          * 
@@ -1230,7 +1230,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. Example: `2500000`.
          * 
          * @return builder
          * 
@@ -1241,7 +1241,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. Example: `2500000`.
          * 
          * @return builder
          * 
@@ -1251,7 +1251,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. Default: `8`.
+         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. Example: `8`.
          * 
          * @return builder
          * 
@@ -1262,7 +1262,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. Default: `8`.
+         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. Example: `8`.
          * 
          * @return builder
          * 
@@ -1272,7 +1272,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. Default: `30`.
+         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. Example: `30`.
          * 
          * @return builder
          * 
@@ -1283,7 +1283,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. Default: `30`.
+         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. Example: `30`.
          * 
          * @return builder
          * 
@@ -1293,7 +1293,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param knnMemoryCircuitBreakerEnabled Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+         * @param knnMemoryCircuitBreakerEnabled Enable or disable KNN memory circuit breaker. Defaults to true.
          * 
          * @return builder
          * 
@@ -1304,7 +1304,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param knnMemoryCircuitBreakerEnabled Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+         * @param knnMemoryCircuitBreakerEnabled Enable or disable KNN memory circuit breaker. Defaults to true.
          * 
          * @return builder
          * 
@@ -1314,7 +1314,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
          * 
          * @return builder
          * 
@@ -1325,7 +1325,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+         * @param knnMemoryCircuitBreakerLimit Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
          * 
          * @return builder
          * 

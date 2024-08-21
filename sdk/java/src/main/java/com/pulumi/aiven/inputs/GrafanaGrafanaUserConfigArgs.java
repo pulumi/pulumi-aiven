@@ -668,6 +668,21 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.viewersCanEdit);
     }
 
+    /**
+     * Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+     * 
+     */
+    @Import(name="wal")
+    private @Nullable Output<Boolean> wal;
+
+    /**
+     * @return Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+     * 
+     */
+    public Optional<Output<Boolean>> wal() {
+        return Optional.ofNullable(this.wal);
+    }
+
     private GrafanaGrafanaUserConfigArgs() {}
 
     private GrafanaGrafanaUserConfigArgs(GrafanaGrafanaUserConfigArgs $) {
@@ -713,6 +728,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         this.userAutoAssignOrg = $.userAutoAssignOrg;
         this.userAutoAssignOrgRole = $.userAutoAssignOrgRole;
         this.viewersCanEdit = $.viewersCanEdit;
+        this.wal = $.wal;
     }
 
     public static Builder builder() {
@@ -1655,6 +1671,27 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          */
         public Builder viewersCanEdit(Boolean viewersCanEdit) {
             return viewersCanEdit(Output.of(viewersCanEdit));
+        }
+
+        /**
+         * @param wal Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wal(@Nullable Output<Boolean> wal) {
+            $.wal = wal;
+            return this;
+        }
+
+        /**
+         * @param wal Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wal(Boolean wal) {
+            return wal(Output.of(wal));
         }
 
         public GrafanaGrafanaUserConfigArgs build() {

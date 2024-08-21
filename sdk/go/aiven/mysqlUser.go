@@ -55,7 +55,7 @@ type MysqlUser struct {
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
 	// Access certificate key for the user
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+	// Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrOutput `pulumi:"authentication"`
 	// The password of the MySQL User ( not applicable for all services ).
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -121,7 +121,7 @@ type mysqlUserState struct {
 	AccessCert *string `pulumi:"accessCert"`
 	// Access certificate key for the user
 	AccessKey *string `pulumi:"accessKey"`
-	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+	// Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
 	// The password of the MySQL User ( not applicable for all services ).
 	Password *string `pulumi:"password"`
@@ -140,7 +140,7 @@ type MysqlUserState struct {
 	AccessCert pulumi.StringPtrInput
 	// Access certificate key for the user
 	AccessKey pulumi.StringPtrInput
-	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+	// Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
 	// The password of the MySQL User ( not applicable for all services ).
 	Password pulumi.StringPtrInput
@@ -159,7 +159,7 @@ func (MysqlUserState) ElementType() reflect.Type {
 }
 
 type mysqlUserArgs struct {
-	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+	// Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
 	// The password of the MySQL User ( not applicable for all services ).
 	Password *string `pulumi:"password"`
@@ -173,7 +173,7 @@ type mysqlUserArgs struct {
 
 // The set of arguments for constructing a MysqlUser resource.
 type MysqlUserArgs struct {
-	// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+	// Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
 	// The password of the MySQL User ( not applicable for all services ).
 	Password pulumi.StringPtrInput
@@ -282,7 +282,7 @@ func (o MysqlUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// Authentication details. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
+// Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
 func (o MysqlUserOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringPtrOutput { return v.Authentication }).(pulumi.StringPtrOutput)
 }

@@ -14,170 +14,170 @@ import java.util.Objects;
 @CustomType
 public final class GetPgPg {
     /**
-     * @return Bouncer connection details
+     * @return PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
      */
     private String bouncer;
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     private String dbname;
     /**
-     * @return PostgreSQL master node host IP or name
+     * @return PostgreSQL primary node host IP or name.
      * 
      */
     private String host;
     /**
-     * @return Connection limit
+     * @return The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
      * 
      */
     private Integer maxConnections;
     /**
-     * @return PostgreSQL connection parameters
+     * @return PostgreSQL connection parameters.
      * 
      */
     private List<GetPgPgParam> params;
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     private String password;
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     private Integer port;
     /**
-     * @return PostgreSQL replica URI for services with a replica
+     * @return PostgreSQL replica URI for services with a replica.
      * 
      */
     private String replicaUri;
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     private String sslmode;
     /**
-     * @return PostgreSQL standby connection URIs
+     * @return PostgreSQL standby connection URIs.
      * 
      */
     private List<String> standbyUris;
     /**
-     * @return PostgreSQL syncing connection URIs
+     * @return PostgreSQL syncing connection URIs.
      * 
      */
     private List<String> syncingUris;
     /**
-     * @return PostgreSQL master connection URI
+     * @return PostgreSQL primary connection URI.
      * 
      */
     private String uri;
     /**
-     * @return PostgreSQL master connection URIs
+     * @return PostgreSQL primary connection URIs.
      * 
      */
     private List<String> uris;
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     private String user;
 
     private GetPgPg() {}
     /**
-     * @return Bouncer connection details
+     * @return PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
      */
     public String bouncer() {
         return this.bouncer;
     }
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     public String dbname() {
         return this.dbname;
     }
     /**
-     * @return PostgreSQL master node host IP or name
+     * @return PostgreSQL primary node host IP or name.
      * 
      */
     public String host() {
         return this.host;
     }
     /**
-     * @return Connection limit
+     * @return The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
      * 
      */
     public Integer maxConnections() {
         return this.maxConnections;
     }
     /**
-     * @return PostgreSQL connection parameters
+     * @return PostgreSQL connection parameters.
      * 
      */
     public List<GetPgPgParam> params() {
         return this.params;
     }
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     public Integer port() {
         return this.port;
     }
     /**
-     * @return PostgreSQL replica URI for services with a replica
+     * @return PostgreSQL replica URI for services with a replica.
      * 
      */
     public String replicaUri() {
         return this.replicaUri;
     }
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     public String sslmode() {
         return this.sslmode;
     }
     /**
-     * @return PostgreSQL standby connection URIs
+     * @return PostgreSQL standby connection URIs.
      * 
      */
     public List<String> standbyUris() {
         return this.standbyUris;
     }
     /**
-     * @return PostgreSQL syncing connection URIs
+     * @return PostgreSQL syncing connection URIs.
      * 
      */
     public List<String> syncingUris() {
         return this.syncingUris;
     }
     /**
-     * @return PostgreSQL master connection URI
+     * @return PostgreSQL primary connection URI.
      * 
      */
     public String uri() {
         return this.uri;
     }
     /**
-     * @return PostgreSQL master connection URIs
+     * @return PostgreSQL primary connection URIs.
      * 
      */
     public List<String> uris() {
         return this.uris;
     }
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     public String user() {

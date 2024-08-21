@@ -24,14 +24,14 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
     public static final PgArgs Empty = new PgArgs();
 
     /**
-     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      * 
      */
     @Import(name="additionalDiskSpace")
     private @Nullable Output<String> additionalDiskSpace;
 
     /**
-     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      * 
      */
     public Optional<Output<String>> additionalDiskSpace() {
@@ -107,14 +107,14 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * PostgreSQL specific server provided values
+     * Values provided by the PostgreSQL server.
      * 
      */
     @Import(name="pg")
     private @Nullable Output<PgPgArgs> pg;
 
     /**
-     * @return PostgreSQL specific server provided values
+     * @return Values provided by the PostgreSQL server.
      * 
      */
     public Optional<Output<PgPgArgs>> pg() {
@@ -311,7 +311,7 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalDiskSpace Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalDiskSpace Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pg PostgreSQL specific server provided values
+         * @param pg Values provided by the PostgreSQL server.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pg PostgreSQL specific server provided values
+         * @param pg Values provided by the PostgreSQL server.
          * 
          * @return builder
          * 

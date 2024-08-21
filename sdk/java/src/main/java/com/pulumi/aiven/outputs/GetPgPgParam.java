@@ -12,74 +12,74 @@ import java.util.Objects;
 @CustomType
 public final class GetPgPgParam {
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     private String databaseName;
     /**
-     * @return PostgreSQL host IP or name
+     * @return PostgreSQL host IP or name.
      * 
      */
     private String host;
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     private String password;
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     private Integer port;
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     private String sslmode;
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     private String user;
 
     private GetPgPgParam() {}
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     public String databaseName() {
         return this.databaseName;
     }
     /**
-     * @return PostgreSQL host IP or name
+     * @return PostgreSQL host IP or name.
      * 
      */
     public String host() {
         return this.host;
     }
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     public Integer port() {
         return this.port;
     }
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     public String sslmode() {
         return this.sslmode;
     }
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     public String user() {

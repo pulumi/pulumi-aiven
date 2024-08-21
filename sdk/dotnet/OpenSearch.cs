@@ -59,7 +59,7 @@ namespace Pulumi.Aiven
     public partial class OpenSearch : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         /// </summary>
         [Output("additionalDiskSpace")]
         public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
@@ -279,7 +279,7 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
@@ -417,7 +417,7 @@ namespace Pulumi.Aiven
     public sealed class OpenSearchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }

@@ -13,25 +13,25 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bouncer connection details
+        /// PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
         /// </summary>
         [Input("bouncer")]
         public Input<string>? Bouncer { get; set; }
 
         /// <summary>
-        /// Primary PostgreSQL database name
+        /// Primary PostgreSQL database name.
         /// </summary>
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
 
         /// <summary>
-        /// PostgreSQL master node host IP or name
+        /// PostgreSQL primary node host IP or name.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Connection limit
+        /// The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
         /// </summary>
         [Input("maxConnections")]
         public Input<int>? MaxConnections { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.PgPgParamGetArgs>? _params;
 
         /// <summary>
-        /// PostgreSQL connection parameters
+        /// PostgreSQL connection parameters.
         /// </summary>
         public InputList<Inputs.PgPgParamGetArgs> Params
         {
@@ -52,7 +52,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// PostgreSQL admin user password
+        /// PostgreSQL admin user password.
         /// </summary>
         public Input<string>? Password
         {
@@ -65,7 +65,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// PostgreSQL port
+        /// PostgreSQL port.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _replicaUri;
 
         /// <summary>
-        /// PostgreSQL replica URI for services with a replica
+        /// PostgreSQL replica URI for services with a replica.
         /// </summary>
         public Input<string>? ReplicaUri
         {
@@ -87,7 +87,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// PostgreSQL sslmode setting (currently always "require")
+        /// PostgreSQL SSL mode setting.
         /// </summary>
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _standbyUris;
 
         /// <summary>
-        /// PostgreSQL standby connection URIs
+        /// PostgreSQL standby connection URIs.
         /// </summary>
         public InputList<string> StandbyUris
         {
@@ -108,7 +108,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _syncingUris;
 
         /// <summary>
-        /// PostgreSQL syncing connection URIs
+        /// PostgreSQL syncing connection URIs.
         /// </summary>
         public InputList<string> SyncingUris
         {
@@ -120,7 +120,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _uri;
 
         /// <summary>
-        /// PostgreSQL master connection URI
+        /// PostgreSQL primary connection URI.
         /// </summary>
         public Input<string>? Uri
         {
@@ -136,7 +136,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _uris;
 
         /// <summary>
-        /// PostgreSQL master connection URIs
+        /// PostgreSQL primary connection URIs.
         /// </summary>
         public InputList<string> Uris
         {
@@ -145,7 +145,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// PostgreSQL admin user name
+        /// PostgreSQL admin user name.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }

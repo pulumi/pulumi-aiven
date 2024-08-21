@@ -2022,6 +2022,10 @@ export interface GetGrafanaGrafanaUserConfig {
      * Users with view-only permission can edit but not save dashboards.
      */
     viewersCanEdit?: boolean;
+    /**
+     * Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+     */
+    wal?: boolean;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthAzuread {
@@ -2958,6 +2962,10 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaRestConfig?: outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
     /**
+     * Kafka SASL mechanisms
+     */
+    kafkaSaslMechanisms?: outputs.GetKafkaKafkaUserConfigKafkaSaslMechanisms;
+    /**
      * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
@@ -3191,7 +3199,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     socketRequestMaxBytes?: number;
     /**
-     * Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+     * Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
      */
     transactionPartitionVerificationEnable?: boolean;
     /**
@@ -3376,6 +3384,21 @@ export interface GetKafkaKafkaUserConfigKafkaRestConfig {
      * Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
      */
     simpleconsumerPoolSizeMax?: number;
+}
+
+export interface GetKafkaKafkaUserConfigKafkaSaslMechanisms {
+    /**
+     * Enable PLAIN mechanism. Default: `true`.
+     */
+    plain?: boolean;
+    /**
+     * Enable SCRAM-SHA-256 mechanism. Default: `true`.
+     */
+    scramSha256?: boolean;
+    /**
+     * Enable SCRAM-SHA-512 mechanism. Default: `true`.
+     */
+    scramSha512?: boolean;
 }
 
 export interface GetKafkaKafkaUserConfigPrivateAccess {
@@ -3566,6 +3589,10 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
 }
 
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+     */
+    adminTimeoutMs?: number;
     /**
      * Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
      */
@@ -4766,6 +4793,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
+    azureMigration?: outputs.GetOpenSearchOpensearchUserConfigAzureMigration;
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
@@ -4774,10 +4802,15 @@ export interface GetOpenSearchOpensearchUserConfig {
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      */
     disableReplicationFactorAdjustment?: boolean;
+    gcsMigration?: outputs.GetOpenSearchOpensearchUserConfigGcsMigration;
     /**
      * Index patterns
      */
     indexPatterns?: outputs.GetOpenSearchOpensearchUserConfigIndexPattern[];
+    /**
+     * Index rollup settings
+     */
+    indexRollup?: outputs.GetOpenSearchOpensearchUserConfigIndexRollup;
     /**
      * Template settings for all new indexes
      */
@@ -4840,6 +4873,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
+    s3Migration?: outputs.GetOpenSearchOpensearchUserConfigS3Migration;
     /**
      * OpenSearch SAML configuration
      */
@@ -4858,6 +4892,72 @@ export interface GetOpenSearchOpensearchUserConfig {
     staticIps?: boolean;
 }
 
+export interface GetOpenSearchOpensearchUserConfigAzureMigration {
+    /**
+     * Azure account name.
+     */
+    account: string;
+    /**
+     * The path to the repository data within its container. The value of this setting should not start or end with a /.
+     */
+    basePath: string;
+    /**
+     * Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+     */
+    chunkSize?: string;
+    /**
+     * When set to true metadata files are stored in compressed format.
+     */
+    compress?: boolean;
+    /**
+     * Azure container name.
+     */
+    container: string;
+    /**
+     * Defines the DNS suffix for Azure Storage endpoints.
+     */
+    endpointSuffix?: string;
+    /**
+     * Azure account secret key. One of key or sasToken should be specified.
+     */
+    key?: string;
+    /**
+     * A shared access signatures (SAS) token. One of key or sasToken should be specified.
+     */
+    sasToken?: string;
+    /**
+     * The snapshot name to restore from.
+     */
+    snapshotName: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigGcsMigration {
+    /**
+     * The path to the repository data within its container. The value of this setting should not start or end with a /.
+     */
+    basePath: string;
+    /**
+     * The path to the repository data within its container.
+     */
+    bucket: string;
+    /**
+     * Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+     */
+    chunkSize?: string;
+    /**
+     * When set to true metadata files are stored in compressed format.
+     */
+    compress?: boolean;
+    /**
+     * Google Cloud Storage credentials file content.
+     */
+    credentials: string;
+    /**
+     * The snapshot name to restore from.
+     */
+    snapshotName: string;
+}
+
 export interface GetOpenSearchOpensearchUserConfigIndexPattern {
     /**
      * Maximum number of indexes to keep. Example: `3`.
@@ -4871,6 +4971,29 @@ export interface GetOpenSearchOpensearchUserConfigIndexPattern {
      * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. Default: `creationDate`.
      */
     sortingAlgorithm?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigIndexRollup {
+    /**
+     * Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.
+     */
+    rollupDashboardsEnabled?: boolean;
+    /**
+     * Whether the rollup plugin is enabled. Defaults to true.
+     */
+    rollupEnabled?: boolean;
+    /**
+     * How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.
+     */
+    rollupSearchBackoffCount?: number;
+    /**
+     * The backoff time between retries for failed rollup jobs. Defaults to 1000ms.
+     */
+    rollupSearchBackoffMillis?: number;
+    /**
+     * Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.
+     */
+    rollupSearchSearchAllJobs?: boolean;
 }
 
 export interface GetOpenSearchOpensearchUserConfigIndexTemplate {
@@ -4901,11 +5024,11 @@ export interface GetOpenSearchOpensearchUserConfigIpFilterObject {
 
 export interface GetOpenSearchOpensearchUserConfigOpenid {
     /**
-     * The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * The ID of the OpenID Connect client configured in your IdP. Required.
      */
     clientId: string;
     /**
-     * The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * The client secret of the OpenID Connect client configured in your IdP. Required.
      */
     clientSecret: string;
     /**
@@ -4941,7 +5064,7 @@ export interface GetOpenSearchOpensearchUserConfigOpenid {
      */
     rolesKey?: string;
     /**
-     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
      */
     scope?: string;
     /**
@@ -4984,7 +5107,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     emailSenderUsername?: string;
     /**
-     * Enable/Disable security audit. Default: `false`.
+     * Enable/Disable security audit.
      */
     enableSecurityAudit?: boolean;
     /**
@@ -5032,35 +5155,35 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     indicesRecoveryMaxConcurrentFileChunks?: number;
     /**
-     * Specifies whether ISM is enabled or not. Default: `true`.
+     * Specifies whether ISM is enabled or not.
      */
     ismEnabled?: boolean;
     /**
-     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
      */
     ismHistoryEnabled?: boolean;
     /**
-     * The maximum age before rolling over the audit history index in hours. Default: `24`.
+     * The maximum age before rolling over the audit history index in hours. Example: `24`.
      */
     ismHistoryMaxAge?: number;
     /**
-     * The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+     * The maximum number of documents before rolling over the audit history index. Example: `2500000`.
      */
     ismHistoryMaxDocs?: number;
     /**
-     * The time between rollover checks for the audit history index in hours. Default: `8`.
+     * The time between rollover checks for the audit history index in hours. Example: `8`.
      */
     ismHistoryRolloverCheckPeriod?: number;
     /**
-     * How long audit history indices are kept in days. Default: `30`.
+     * How long audit history indices are kept in days. Example: `30`.
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
-     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * Enable or disable KNN memory circuit breaker. Defaults to true.
      */
     knnMemoryCircuitBreakerEnabled?: boolean;
     /**
-     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
      */
     knnMemoryCircuitBreakerLimit?: number;
     /**
@@ -5255,6 +5378,49 @@ export interface GetOpenSearchOpensearchUserConfigPublicAccess {
     prometheus?: boolean;
 }
 
+export interface GetOpenSearchOpensearchUserConfigS3Migration {
+    /**
+     * AWS Access key.
+     */
+    accessKey: string;
+    /**
+     * The path to the repository data within its container. The value of this setting should not start or end with a /.
+     */
+    basePath: string;
+    /**
+     * S3 bucket name.
+     */
+    bucket: string;
+    /**
+     * Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+     */
+    chunkSize?: string;
+    /**
+     * When set to true metadata files are stored in compressed format.
+     */
+    compress?: boolean;
+    /**
+     * The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+     */
+    endpoint?: string;
+    /**
+     * S3 region.
+     */
+    region: string;
+    /**
+     * AWS secret key.
+     */
+    secretKey: string;
+    /**
+     * When set to true files are encrypted on server side.
+     */
+    serverSideEncryption?: boolean;
+    /**
+     * The snapshot name to restore from.
+     */
+    snapshotName: string;
+}
+
 export interface GetOpenSearchOpensearchUserConfigSaml {
     /**
      * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
@@ -5355,86 +5521,86 @@ export interface GetPgComponent {
 
 export interface GetPgPg {
     /**
-     * Bouncer connection details
+     * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      */
     bouncer: string;
     /**
-     * Primary PostgreSQL database name
+     * Primary PostgreSQL database name.
      */
     dbname: string;
     /**
-     * PostgreSQL master node host IP or name
+     * PostgreSQL primary node host IP or name.
      */
     host: string;
     /**
-     * Connection limit
+     * The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
      */
     maxConnections: number;
     /**
-     * PostgreSQL connection parameters
+     * PostgreSQL connection parameters.
      */
     params: outputs.GetPgPgParam[];
     /**
-     * PostgreSQL admin user password
+     * PostgreSQL admin user password.
      */
     password: string;
     /**
-     * PostgreSQL port
+     * PostgreSQL port.
      */
     port: number;
     /**
-     * PostgreSQL replica URI for services with a replica
+     * PostgreSQL replica URI for services with a replica.
      */
     replicaUri: string;
     /**
-     * PostgreSQL sslmode setting (currently always "require")
+     * PostgreSQL SSL mode setting.
      */
     sslmode: string;
     /**
-     * PostgreSQL standby connection URIs
+     * PostgreSQL standby connection URIs.
      */
     standbyUris: string[];
     /**
-     * PostgreSQL syncing connection URIs
+     * PostgreSQL syncing connection URIs.
      */
     syncingUris: string[];
     /**
-     * PostgreSQL master connection URI
+     * PostgreSQL primary connection URI.
      */
     uri: string;
     /**
-     * PostgreSQL master connection URIs
+     * PostgreSQL primary connection URIs.
      */
     uris: string[];
     /**
-     * PostgreSQL admin user name
+     * PostgreSQL admin user name.
      */
     user: string;
 }
 
 export interface GetPgPgParam {
     /**
-     * Primary PostgreSQL database name
+     * Primary PostgreSQL database name.
      */
     databaseName: string;
     /**
-     * PostgreSQL host IP or name
+     * PostgreSQL host IP or name.
      */
     host: string;
     /**
-     * PostgreSQL admin user password
+     * PostgreSQL admin user password.
      */
     password: string;
     /**
-     * PostgreSQL port
+     * PostgreSQL port.
      */
     port: number;
     /**
-     * PostgreSQL sslmode setting (currently always "require")
+     * PostgreSQL SSL mode setting.
      */
     sslmode: string;
     /**
-     * PostgreSQL admin user name
+     * PostgreSQL admin user name.
      */
     user: string;
 }
@@ -7899,6 +8065,10 @@ export interface GrafanaGrafanaUserConfig {
      * Users with view-only permission can edit but not save dashboards.
      */
     viewersCanEdit?: boolean;
+    /**
+     * Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+     */
+    wal?: boolean;
 }
 
 export interface GrafanaGrafanaUserConfigAuthAzuread {
@@ -8835,6 +9005,10 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaRestConfig?: outputs.KafkaKafkaUserConfigKafkaRestConfig;
     /**
+     * Kafka SASL mechanisms
+     */
+    kafkaSaslMechanisms?: outputs.KafkaKafkaUserConfigKafkaSaslMechanisms;
+    /**
      * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
@@ -9068,7 +9242,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     socketRequestMaxBytes?: number;
     /**
-     * Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+     * Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
      */
     transactionPartitionVerificationEnable?: boolean;
     /**
@@ -9253,6 +9427,21 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      * Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
      */
     simpleconsumerPoolSizeMax?: number;
+}
+
+export interface KafkaKafkaUserConfigKafkaSaslMechanisms {
+    /**
+     * Enable PLAIN mechanism. Default: `true`.
+     */
+    plain?: boolean;
+    /**
+     * Enable SCRAM-SHA-256 mechanism. Default: `true`.
+     */
+    scramSha256?: boolean;
+    /**
+     * Enable SCRAM-SHA-512 mechanism. Default: `true`.
+     */
+    scramSha512?: boolean;
 }
 
 export interface KafkaKafkaUserConfigPrivateAccess {
@@ -9443,6 +9632,10 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
 }
 
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+     */
+    adminTimeoutMs?: number;
     /**
      * Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
      */
@@ -10643,6 +10836,7 @@ export interface OpenSearchOpensearchUserConfig {
      * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
+    azureMigration?: outputs.OpenSearchOpensearchUserConfigAzureMigration;
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      */
@@ -10651,10 +10845,15 @@ export interface OpenSearchOpensearchUserConfig {
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      */
     disableReplicationFactorAdjustment?: boolean;
+    gcsMigration?: outputs.OpenSearchOpensearchUserConfigGcsMigration;
     /**
      * Index patterns
      */
     indexPatterns?: outputs.OpenSearchOpensearchUserConfigIndexPattern[];
+    /**
+     * Index rollup settings
+     */
+    indexRollup?: outputs.OpenSearchOpensearchUserConfigIndexRollup;
     /**
      * Template settings for all new indexes
      */
@@ -10717,6 +10916,7 @@ export interface OpenSearchOpensearchUserConfig {
      * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
+    s3Migration?: outputs.OpenSearchOpensearchUserConfigS3Migration;
     /**
      * OpenSearch SAML configuration
      */
@@ -10735,6 +10935,72 @@ export interface OpenSearchOpensearchUserConfig {
     staticIps?: boolean;
 }
 
+export interface OpenSearchOpensearchUserConfigAzureMigration {
+    /**
+     * Azure account name.
+     */
+    account: string;
+    /**
+     * The path to the repository data within its container. The value of this setting should not start or end with a /.
+     */
+    basePath: string;
+    /**
+     * Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+     */
+    chunkSize?: string;
+    /**
+     * When set to true metadata files are stored in compressed format.
+     */
+    compress?: boolean;
+    /**
+     * Azure container name.
+     */
+    container: string;
+    /**
+     * Defines the DNS suffix for Azure Storage endpoints.
+     */
+    endpointSuffix?: string;
+    /**
+     * Azure account secret key. One of key or sasToken should be specified.
+     */
+    key?: string;
+    /**
+     * A shared access signatures (SAS) token. One of key or sasToken should be specified.
+     */
+    sasToken?: string;
+    /**
+     * The snapshot name to restore from.
+     */
+    snapshotName: string;
+}
+
+export interface OpenSearchOpensearchUserConfigGcsMigration {
+    /**
+     * The path to the repository data within its container. The value of this setting should not start or end with a /.
+     */
+    basePath: string;
+    /**
+     * The path to the repository data within its container.
+     */
+    bucket: string;
+    /**
+     * Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+     */
+    chunkSize?: string;
+    /**
+     * When set to true metadata files are stored in compressed format.
+     */
+    compress?: boolean;
+    /**
+     * Google Cloud Storage credentials file content.
+     */
+    credentials: string;
+    /**
+     * The snapshot name to restore from.
+     */
+    snapshotName: string;
+}
+
 export interface OpenSearchOpensearchUserConfigIndexPattern {
     /**
      * Maximum number of indexes to keep. Example: `3`.
@@ -10748,6 +11014,29 @@ export interface OpenSearchOpensearchUserConfigIndexPattern {
      * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. Default: `creationDate`.
      */
     sortingAlgorithm?: string;
+}
+
+export interface OpenSearchOpensearchUserConfigIndexRollup {
+    /**
+     * Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.
+     */
+    rollupDashboardsEnabled?: boolean;
+    /**
+     * Whether the rollup plugin is enabled. Defaults to true.
+     */
+    rollupEnabled?: boolean;
+    /**
+     * How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.
+     */
+    rollupSearchBackoffCount?: number;
+    /**
+     * The backoff time between retries for failed rollup jobs. Defaults to 1000ms.
+     */
+    rollupSearchBackoffMillis?: number;
+    /**
+     * Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.
+     */
+    rollupSearchSearchAllJobs?: boolean;
 }
 
 export interface OpenSearchOpensearchUserConfigIndexTemplate {
@@ -10778,11 +11067,11 @@ export interface OpenSearchOpensearchUserConfigIpFilterObject {
 
 export interface OpenSearchOpensearchUserConfigOpenid {
     /**
-     * The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * The ID of the OpenID Connect client configured in your IdP. Required.
      */
     clientId: string;
     /**
-     * The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * The client secret of the OpenID Connect client configured in your IdP. Required.
      */
     clientSecret: string;
     /**
@@ -10818,7 +11107,7 @@ export interface OpenSearchOpensearchUserConfigOpenid {
      */
     rolesKey?: string;
     /**
-     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
      */
     scope?: string;
     /**
@@ -10861,7 +11150,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     emailSenderUsername?: string;
     /**
-     * Enable/Disable security audit. Default: `false`.
+     * Enable/Disable security audit.
      */
     enableSecurityAudit?: boolean;
     /**
@@ -10909,35 +11198,35 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     indicesRecoveryMaxConcurrentFileChunks?: number;
     /**
-     * Specifies whether ISM is enabled or not. Default: `true`.
+     * Specifies whether ISM is enabled or not.
      */
     ismEnabled?: boolean;
     /**
-     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
      */
     ismHistoryEnabled?: boolean;
     /**
-     * The maximum age before rolling over the audit history index in hours. Default: `24`.
+     * The maximum age before rolling over the audit history index in hours. Example: `24`.
      */
     ismHistoryMaxAge?: number;
     /**
-     * The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+     * The maximum number of documents before rolling over the audit history index. Example: `2500000`.
      */
     ismHistoryMaxDocs?: number;
     /**
-     * The time between rollover checks for the audit history index in hours. Default: `8`.
+     * The time between rollover checks for the audit history index in hours. Example: `8`.
      */
     ismHistoryRolloverCheckPeriod?: number;
     /**
-     * How long audit history indices are kept in days. Default: `30`.
+     * How long audit history indices are kept in days. Example: `30`.
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
-     * Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * Enable or disable KNN memory circuit breaker. Defaults to true.
      */
     knnMemoryCircuitBreakerEnabled?: boolean;
     /**
-     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
      */
     knnMemoryCircuitBreakerLimit?: number;
     /**
@@ -11132,6 +11421,49 @@ export interface OpenSearchOpensearchUserConfigPublicAccess {
     prometheus?: boolean;
 }
 
+export interface OpenSearchOpensearchUserConfigS3Migration {
+    /**
+     * AWS Access key.
+     */
+    accessKey: string;
+    /**
+     * The path to the repository data within its container. The value of this setting should not start or end with a /.
+     */
+    basePath: string;
+    /**
+     * S3 bucket name.
+     */
+    bucket: string;
+    /**
+     * Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+     */
+    chunkSize?: string;
+    /**
+     * When set to true metadata files are stored in compressed format.
+     */
+    compress?: boolean;
+    /**
+     * The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+     */
+    endpoint?: string;
+    /**
+     * S3 region.
+     */
+    region: string;
+    /**
+     * AWS secret key.
+     */
+    secretKey: string;
+    /**
+     * When set to true files are encrypted on server side.
+     */
+    serverSideEncryption?: boolean;
+    /**
+     * The snapshot name to restore from.
+     */
+    snapshotName: string;
+}
+
 export interface OpenSearchOpensearchUserConfigSaml {
     /**
      * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
@@ -11289,86 +11621,86 @@ export interface PgComponent {
 
 export interface PgPg {
     /**
-     * Bouncer connection details
+     * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      */
     bouncer: string;
     /**
-     * Primary PostgreSQL database name
+     * Primary PostgreSQL database name.
      */
     dbname: string;
     /**
-     * PostgreSQL master node host IP or name
+     * PostgreSQL primary node host IP or name.
      */
     host: string;
     /**
-     * Connection limit
+     * The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
      */
     maxConnections: number;
     /**
-     * PostgreSQL connection parameters
+     * PostgreSQL connection parameters.
      */
     params: outputs.PgPgParam[];
     /**
-     * PostgreSQL admin user password
+     * PostgreSQL admin user password.
      */
     password: string;
     /**
-     * PostgreSQL port
+     * PostgreSQL port.
      */
     port: number;
     /**
-     * PostgreSQL replica URI for services with a replica
+     * PostgreSQL replica URI for services with a replica.
      */
     replicaUri: string;
     /**
-     * PostgreSQL sslmode setting (currently always "require")
+     * PostgreSQL SSL mode setting.
      */
     sslmode: string;
     /**
-     * PostgreSQL standby connection URIs
+     * PostgreSQL standby connection URIs.
      */
     standbyUris: string[];
     /**
-     * PostgreSQL syncing connection URIs
+     * PostgreSQL syncing connection URIs.
      */
     syncingUris: string[];
     /**
-     * PostgreSQL master connection URI
+     * PostgreSQL primary connection URI.
      */
     uri: string;
     /**
-     * PostgreSQL master connection URIs
+     * PostgreSQL primary connection URIs.
      */
     uris: string[];
     /**
-     * PostgreSQL admin user name
+     * PostgreSQL admin user name.
      */
     user: string;
 }
 
 export interface PgPgParam {
     /**
-     * Primary PostgreSQL database name
+     * Primary PostgreSQL database name.
      */
     databaseName: string;
     /**
-     * PostgreSQL host IP or name
+     * PostgreSQL host IP or name.
      */
     host: string;
     /**
-     * PostgreSQL admin user password
+     * PostgreSQL admin user password.
      */
     password: string;
     /**
-     * PostgreSQL port
+     * PostgreSQL port.
      */
     port: number;
     /**
-     * PostgreSQL sslmode setting (currently always "require")
+     * PostgreSQL SSL mode setting.
      */
     sslmode: string;
     /**
-     * PostgreSQL admin user name
+     * PostgreSQL admin user name.
      */
     user: string;
 }

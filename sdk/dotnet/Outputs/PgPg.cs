@@ -14,59 +14,59 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPg
     {
         /// <summary>
-        /// Bouncer connection details
+        /// PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
         /// </summary>
         public readonly string? Bouncer;
         /// <summary>
-        /// Primary PostgreSQL database name
+        /// Primary PostgreSQL database name.
         /// </summary>
         public readonly string? Dbname;
         /// <summary>
-        /// PostgreSQL master node host IP or name
+        /// PostgreSQL primary node host IP or name.
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// Connection limit
+        /// The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
         /// </summary>
         public readonly int? MaxConnections;
         /// <summary>
-        /// PostgreSQL connection parameters
+        /// PostgreSQL connection parameters.
         /// </summary>
         public readonly ImmutableArray<Outputs.PgPgParam> Params;
         /// <summary>
-        /// PostgreSQL admin user password
+        /// PostgreSQL admin user password.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// PostgreSQL port
+        /// PostgreSQL port.
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// PostgreSQL replica URI for services with a replica
+        /// PostgreSQL replica URI for services with a replica.
         /// </summary>
         public readonly string? ReplicaUri;
         /// <summary>
-        /// PostgreSQL sslmode setting (currently always "require")
+        /// PostgreSQL SSL mode setting.
         /// </summary>
         public readonly string? Sslmode;
         /// <summary>
-        /// PostgreSQL standby connection URIs
+        /// PostgreSQL standby connection URIs.
         /// </summary>
         public readonly ImmutableArray<string> StandbyUris;
         /// <summary>
-        /// PostgreSQL syncing connection URIs
+        /// PostgreSQL syncing connection URIs.
         /// </summary>
         public readonly ImmutableArray<string> SyncingUris;
         /// <summary>
-        /// PostgreSQL master connection URI
+        /// PostgreSQL primary connection URI.
         /// </summary>
         public readonly string? Uri;
         /// <summary>
-        /// PostgreSQL master connection URIs
+        /// PostgreSQL primary connection URIs.
         /// </summary>
         public readonly ImmutableArray<string> Uris;
         /// <summary>
-        /// PostgreSQL admin user name
+        /// PostgreSQL admin user name.
         /// </summary>
         public readonly string? User;
 

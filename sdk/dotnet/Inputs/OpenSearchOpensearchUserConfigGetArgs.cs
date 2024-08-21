@@ -18,6 +18,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
 
+        [Input("azureMigration")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigAzureMigrationGetArgs>? AzureMigration { get; set; }
+
         /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         /// </summary>
@@ -30,6 +33,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("disableReplicationFactorAdjustment")]
         public Input<bool>? DisableReplicationFactorAdjustment { get; set; }
 
+        [Input("gcsMigration")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigGcsMigrationGetArgs>? GcsMigration { get; set; }
+
         [Input("indexPatterns")]
         private InputList<Inputs.OpenSearchOpensearchUserConfigIndexPatternGetArgs>? _indexPatterns;
 
@@ -41,6 +47,12 @@ namespace Pulumi.Aiven.Inputs
             get => _indexPatterns ?? (_indexPatterns = new InputList<Inputs.OpenSearchOpensearchUserConfigIndexPatternGetArgs>());
             set => _indexPatterns = value;
         }
+
+        /// <summary>
+        /// Index rollup settings
+        /// </summary>
+        [Input("indexRollup")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigIndexRollupGetArgs>? IndexRollup { get; set; }
 
         /// <summary>
         /// Template settings for all new indexes
@@ -150,6 +162,9 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
+
+        [Input("s3Migration")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigS3MigrationGetArgs>? S3Migration { get; set; }
 
         /// <summary>
         /// OpenSearch SAML configuration

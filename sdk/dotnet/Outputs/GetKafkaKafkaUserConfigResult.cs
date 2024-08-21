@@ -71,6 +71,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult? KafkaRestConfig;
         /// <summary>
+        /// Kafka SASL mechanisms
+        /// </summary>
+        public readonly Outputs.GetKafkaKafkaUserConfigKafkaSaslMechanismsResult? KafkaSaslMechanisms;
+        /// <summary>
         /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
         /// </summary>
         public readonly string? KafkaVersion;
@@ -143,6 +147,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult? kafkaRestConfig,
 
+            Outputs.GetKafkaKafkaUserConfigKafkaSaslMechanismsResult? kafkaSaslMechanisms,
+
             string? kafkaVersion,
 
             bool? letsencryptSaslPrivatelink,
@@ -178,6 +184,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaRest = kafkaRest;
             KafkaRestAuthorization = kafkaRestAuthorization;
             KafkaRestConfig = kafkaRestConfig;
+            KafkaSaslMechanisms = kafkaSaslMechanisms;
             KafkaVersion = kafkaVersion;
             LetsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
             PrivateAccess = privateAccess;

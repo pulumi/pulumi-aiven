@@ -118,7 +118,7 @@ def get_pg_database(database_name: Optional[str] = None,
                     service_name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPgDatabaseResult:
     """
-    The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+    Gets information about a database in an Aiven for PostgreSQL® service.
 
     ## Example Usage
 
@@ -126,9 +126,9 @@ def get_pg_database(database_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mydatabase = aiven.get_pg_database(project=myproject["project"],
-        service_name=mypg["serviceName"],
-        database_name="<DATABASE_NAME>")
+    main = aiven.get_pg_database(project=example_project["project"],
+        service_name=example_postgres["serviceName"],
+        database_name="example-database")
     ```
 
 
@@ -159,7 +159,7 @@ def get_pg_database_output(database_name: Optional[pulumi.Input[str]] = None,
                            service_name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPgDatabaseResult]:
     """
-    The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+    Gets information about a database in an Aiven for PostgreSQL® service.
 
     ## Example Usage
 
@@ -167,9 +167,9 @@ def get_pg_database_output(database_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mydatabase = aiven.get_pg_database(project=myproject["project"],
-        service_name=mypg["serviceName"],
-        database_name="<DATABASE_NAME>")
+    main = aiven.get_pg_database(project=example_project["project"],
+        service_name=example_postgres["serviceName"],
+        database_name="example-database")
     ```
 
 

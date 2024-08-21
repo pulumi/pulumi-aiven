@@ -271,7 +271,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? SocketRequestMaxBytes { get; set; }
 
         /// <summary>
-        /// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+        /// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
         /// </summary>
         [Input("transactionPartitionVerificationEnable")]
         public Input<bool>? TransactionPartitionVerificationEnable { get; set; }

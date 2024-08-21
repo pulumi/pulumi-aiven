@@ -17,6 +17,7 @@ namespace Pulumi.Aiven.Outputs
         /// Additional Cloud Regions for Backup Replication.
         /// </summary>
         public readonly string? AdditionalBackupRegions;
+        public readonly Outputs.OpenSearchOpensearchUserConfigAzureMigration? AzureMigration;
         /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         /// </summary>
@@ -25,10 +26,15 @@ namespace Pulumi.Aiven.Outputs
         /// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
         /// </summary>
         public readonly bool? DisableReplicationFactorAdjustment;
+        public readonly Outputs.OpenSearchOpensearchUserConfigGcsMigration? GcsMigration;
         /// <summary>
         /// Index patterns
         /// </summary>
         public readonly ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIndexPattern> IndexPatterns;
+        /// <summary>
+        /// Index rollup settings
+        /// </summary>
+        public readonly Outputs.OpenSearchOpensearchUserConfigIndexRollup? IndexRollup;
         /// <summary>
         /// Template settings for all new indexes
         /// </summary>
@@ -89,6 +95,7 @@ namespace Pulumi.Aiven.Outputs
         /// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
         /// </summary>
         public readonly string? RecoveryBasebackupName;
+        public readonly Outputs.OpenSearchOpensearchUserConfigS3Migration? S3Migration;
         /// <summary>
         /// OpenSearch SAML configuration
         /// </summary>
@@ -110,11 +117,17 @@ namespace Pulumi.Aiven.Outputs
         private OpenSearchOpensearchUserConfig(
             string? additionalBackupRegions,
 
+            Outputs.OpenSearchOpensearchUserConfigAzureMigration? azureMigration,
+
             string? customDomain,
 
             bool? disableReplicationFactorAdjustment,
 
+            Outputs.OpenSearchOpensearchUserConfigGcsMigration? gcsMigration,
+
             ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIndexPattern> indexPatterns,
+
+            Outputs.OpenSearchOpensearchUserConfigIndexRollup? indexRollup,
 
             Outputs.OpenSearchOpensearchUserConfigIndexTemplate? indexTemplate,
 
@@ -146,6 +159,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            Outputs.OpenSearchOpensearchUserConfigS3Migration? s3Migration,
+
             Outputs.OpenSearchOpensearchUserConfigSaml? saml,
 
             bool? serviceLog,
@@ -155,9 +170,12 @@ namespace Pulumi.Aiven.Outputs
             bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
+            AzureMigration = azureMigration;
             CustomDomain = customDomain;
             DisableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
+            GcsMigration = gcsMigration;
             IndexPatterns = indexPatterns;
+            IndexRollup = indexRollup;
             IndexTemplate = indexTemplate;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
@@ -173,6 +191,7 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            S3Migration = s3Migration;
             Saml = saml;
             ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;

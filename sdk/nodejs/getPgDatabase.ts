@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+ * Gets information about a database in an Aiven for PostgreSQL® service.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mydatabase = aiven.getPgDatabase({
- *     project: myproject.project,
- *     serviceName: mypg.serviceName,
- *     databaseName: "<DATABASE_NAME>",
+ * const main = aiven.getPgDatabase({
+ *     project: exampleProject.project,
+ *     serviceName: examplePostgres.serviceName,
+ *     databaseName: "example-database",
  * });
  * ```
  */
@@ -79,7 +79,7 @@ export interface GetPgDatabaseResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+ * Gets information about a database in an Aiven for PostgreSQL® service.
  *
  * ## Example Usage
  *
@@ -87,10 +87,10 @@ export interface GetPgDatabaseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mydatabase = aiven.getPgDatabase({
- *     project: myproject.project,
- *     serviceName: mypg.serviceName,
- *     databaseName: "<DATABASE_NAME>",
+ * const main = aiven.getPgDatabase({
+ *     project: exampleProject.project,
+ *     serviceName: examplePostgres.serviceName,
+ *     databaseName: "example-database",
  * });
  * ```
  */

@@ -17,14 +17,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     public static final PgUserState Empty = new PgUserState();
 
     /**
-     * Access certificate for the user
+     * The access certificate for the servie user.
      * 
      */
     @Import(name="accessCert")
     private @Nullable Output<String> accessCert;
 
     /**
-     * @return Access certificate for the user
+     * @return The access certificate for the servie user.
      * 
      */
     public Optional<Output<String>> accessCert() {
@@ -32,14 +32,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access certificate key for the user
+     * The access certificate key for the service user.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return Access certificate key for the user
+     * @return The access certificate key for the service user.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -47,14 +47,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the PG User (not applicable for all services).
+     * The password of the service user.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the PG User (not applicable for all services).
+     * @return The password of the service user.
      * 
      */
     public Optional<Output<String>> password() {
@@ -62,14 +62,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines whether replication is allowed.
+     * Allows replication.
      * 
      */
     @Import(name="pgAllowReplication")
     private @Nullable Output<Boolean> pgAllowReplication;
 
     /**
-     * @return Defines whether replication is allowed.
+     * @return Allows replication.
      * 
      */
     public Optional<Output<Boolean>> pgAllowReplication() {
@@ -107,14 +107,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * The service user account type, either primary or regular.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return The service user account type, either primary or regular.
      * 
      */
     public Optional<Output<String>> type() {
@@ -122,14 +122,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -168,7 +168,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert Access certificate for the user
+         * @param accessCert The access certificate for the servie user.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert Access certificate for the user
+         * @param accessCert The access certificate for the servie user.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey Access certificate key for the user
+         * @param accessKey The access certificate key for the service user.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey Access certificate key for the user
+         * @param accessKey The access certificate key for the service user.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the PG User (not applicable for all services).
+         * @param password The password of the service user.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the PG User (not applicable for all services).
+         * @param password The password of the service user.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgAllowReplication Defines whether replication is allowed.
+         * @param pgAllowReplication Allows replication.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgAllowReplication Defines whether replication is allowed.
+         * @param pgAllowReplication Allows replication.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the user account. Tells whether the user is the primary account or a regular account.
+         * @param type The service user account type, either primary or regular.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the user account. Tells whether the user is the primary account or a regular account.
+         * @param type The service user account type, either primary or regular.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -18,6 +18,21 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     public static final KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs Empty = new KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs();
 
     /**
+     * Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+     * 
+     */
+    @Import(name="adminTimeoutMs")
+    private @Nullable Output<Integer> adminTimeoutMs;
+
+    /**
+     * @return Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+     * 
+     */
+    public Optional<Output<Integer>> adminTimeoutMs() {
+        return Optional.ofNullable(this.adminTimeoutMs);
+    }
+
+    /**
      * Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
      * 
      */
@@ -215,6 +230,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     private KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs() {}
 
     private KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs $) {
+        this.adminTimeoutMs = $.adminTimeoutMs;
         this.emitCheckpointsEnabled = $.emitCheckpointsEnabled;
         this.emitCheckpointsIntervalSeconds = $.emitCheckpointsIntervalSeconds;
         this.groups = $.groups;
@@ -246,6 +262,27 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
 
         public Builder(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs defaults) {
             $ = new KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param adminTimeoutMs Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminTimeoutMs(@Nullable Output<Integer> adminTimeoutMs) {
+            $.adminTimeoutMs = adminTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param adminTimeoutMs Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminTimeoutMs(Integer adminTimeoutMs) {
+            return adminTimeoutMs(Output.of(adminTimeoutMs));
         }
 
         /**

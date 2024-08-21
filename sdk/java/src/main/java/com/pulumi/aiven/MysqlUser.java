@@ -94,14 +94,14 @@ public class MysqlUser extends com.pulumi.resources.CustomResource {
         return this.accessKey;
     }
     /**
-     * Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+     * Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
      * 
      */
     @Export(name="authentication", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authentication;
 
     /**
-     * @return Authentication details. The possible values are `caching_sha2_password` and `mysql_native_password`.
+     * @return Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
      * 
      */
     public Output<Optional<String>> authentication() {

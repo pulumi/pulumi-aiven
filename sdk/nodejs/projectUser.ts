@@ -63,7 +63,7 @@ export class ProjectUser extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * Project membership type. The possible values are `admin`, `developer` and `operator`.
+     * Project membership type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
      */
     public readonly memberType!: pulumi.Output<string>;
     /**
@@ -122,7 +122,7 @@ export interface ProjectUserState {
      */
     email?: pulumi.Input<string>;
     /**
-     * Project membership type. The possible values are `admin`, `developer` and `operator`.
+     * Project membership type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
      */
     memberType?: pulumi.Input<string>;
     /**
@@ -140,7 +140,7 @@ export interface ProjectUserArgs {
      */
     email: pulumi.Input<string>;
     /**
-     * Project membership type. The possible values are `admin`, `developer` and `operator`.
+     * Project membership type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
      */
     memberType: pulumi.Input<string>;
     /**

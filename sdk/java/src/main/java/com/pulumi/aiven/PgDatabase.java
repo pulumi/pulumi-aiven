@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The PG Database resource allows the creation and management of Aiven PostgreSQL Databases.
+ * Creates and manages a database in an Aiven for PostgreSQL® service.
  * 
  * ## Example Usage
  * 
@@ -43,10 +43,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mydatabase = new PgDatabase("mydatabase", PgDatabaseArgs.builder()
- *             .project(myproject.project())
- *             .serviceName(mypg.serviceName())
- *             .databaseName("<DATABASE_NAME>")
+ *         var main = new PgDatabase("main", PgDatabaseArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(examplePostgres.serviceName())
+ *             .databaseName("example-database")
  *             .build());
  * 
  *     }
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+ * $ pulumi import aiven:index/pgDatabase:PgDatabase main PROJECT/SERVICE_NAME/DATABASE_NAME
  * ```
  * 
  */

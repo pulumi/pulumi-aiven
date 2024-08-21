@@ -115,7 +115,7 @@ class GetPgResult:
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> str:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -211,7 +211,7 @@ class GetPgResult:
     @pulumi.getter
     def pgs(self) -> Sequence['outputs.GetPgPgResult']:
         """
-        PostgreSQL specific server provided values
+        Values provided by the PostgreSQL server.
         """
         return pulumi.get(self, "pgs")
 
@@ -385,7 +385,7 @@ def get_pg(project: Optional[str] = None,
            service_name: Optional[str] = None,
            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPgResult:
     """
-    The PG data source provides information about the existing Aiven PostgreSQL service.
+    Gets information about an Aiven for PostgreSQL® service.
 
     ## Example Usage
 
@@ -393,8 +393,8 @@ def get_pg(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    pg = aiven.get_pg(project=pr1["project"],
-        service_name="my-pg1")
+    example_postgres = aiven.get_pg(project=example_project["project"],
+        service_name="example-postgres-service")
     ```
 
 
@@ -444,7 +444,7 @@ def get_pg_output(project: Optional[pulumi.Input[str]] = None,
                   service_name: Optional[pulumi.Input[str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPgResult]:
     """
-    The PG data source provides information about the existing Aiven PostgreSQL service.
+    Gets information about an Aiven for PostgreSQL® service.
 
     ## Example Usage
 
@@ -452,8 +452,8 @@ def get_pg_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    pg = aiven.get_pg(project=pr1["project"],
-        service_name="my-pg1")
+    example_postgres = aiven.get_pg(project=example_project["project"],
+        service_name="example-postgres-service")
     ```
 
 

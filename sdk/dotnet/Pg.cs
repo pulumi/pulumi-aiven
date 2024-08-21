@@ -10,19 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The PG resource allows the creation and management of Aiven PostgreSQL services.
+    /// Creates and manages an Aiven for PostgreSQL® service.
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/pg:Pg pg PROJECT/SERVICE_NAME
+    /// $ pulumi import aiven:index/pg:Pg example_postgres PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/pg:Pg")]
     public partial class Pg : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         /// </summary>
         [Output("additionalDiskSpace")]
         public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// PostgreSQL specific server provided values
+        /// Values provided by the PostgreSQL server.
         /// </summary>
         [Output("pg")]
         public Output<Outputs.PgPg> PgServer { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.Aiven
     public sealed class PgArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.PgPgArgs>? _pg;
 
         /// <summary>
-        /// PostgreSQL specific server provided values
+        /// Values provided by the PostgreSQL server.
         /// </summary>
         public Input<Inputs.PgPgArgs>? PgServer
         {
@@ -380,7 +380,7 @@ namespace Pulumi.Aiven
     public sealed class PgState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
@@ -449,7 +449,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.PgPgGetArgs>? _pg;
 
         /// <summary>
-        /// PostgreSQL specific server provided values
+        /// Values provided by the PostgreSQL server.
         /// </summary>
         public Input<Inputs.PgPgGetArgs>? PgServer
         {

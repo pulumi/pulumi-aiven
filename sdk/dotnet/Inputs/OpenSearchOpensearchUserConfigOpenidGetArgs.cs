@@ -13,16 +13,26 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigOpenidGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+        /// The ID of the OpenID Connect client configured in your IdP. Required.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
-        /// <summary>
-        /// The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
-        /// </summary>
         [Input("clientSecret", required: true)]
-        public Input<string> ClientSecret { get; set; } = null!;
+        private Input<string>? _clientSecret;
+
+        /// <summary>
+        /// The client secret of the OpenID Connect client configured in your IdP. Required.
+        /// </summary>
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
@@ -73,7 +83,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RolesKey { get; set; }
 
         /// <summary>
-        /// The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+        /// The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

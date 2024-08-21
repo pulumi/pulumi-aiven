@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The PG User resource allows the creation and management of Aiven PG Users.
+ * Creates and manages an Aiven for PostgreSQL® service user.
  * 
  * ## Example Usage
  * 
@@ -44,11 +44,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new PgUser("foo", PgUserArgs.builder()
- *             .serviceName(bar.serviceName())
- *             .project("my-project")
- *             .username("user-1")
- *             .password("Test$1234")
+ *         var exampleUser = new PgUser("exampleUser", PgUserArgs.builder()
+ *             .serviceName(examplePostgres.serviceName())
+ *             .project(exampleProject.project())
+ *             .username("example-service-user")
+ *             .password(serviceUserPassword)
  *             .build());
  * 
  *     }
@@ -60,63 +60,63 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/pgUser:PgUser user PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/pgUser:PgUser example_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/pgUser:PgUser")
 public class PgUser extends com.pulumi.resources.CustomResource {
     /**
-     * Access certificate for the user
+     * The access certificate for the servie user.
      * 
      */
     @Export(name="accessCert", refs={String.class}, tree="[0]")
     private Output<String> accessCert;
 
     /**
-     * @return Access certificate for the user
+     * @return The access certificate for the servie user.
      * 
      */
     public Output<String> accessCert() {
         return this.accessCert;
     }
     /**
-     * Access certificate key for the user
+     * The access certificate key for the service user.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
-     * @return Access certificate key for the user
+     * @return The access certificate key for the service user.
      * 
      */
     public Output<String> accessKey() {
         return this.accessKey;
     }
     /**
-     * The password of the PG User (not applicable for all services).
+     * The password of the service user.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the PG User (not applicable for all services).
+     * @return The password of the service user.
      * 
      */
     public Output<String> password() {
         return this.password;
     }
     /**
-     * Defines whether replication is allowed.
+     * Allows replication.
      * 
      */
     @Export(name="pgAllowReplication", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> pgAllowReplication;
 
     /**
-     * @return Defines whether replication is allowed.
+     * @return Allows replication.
      * 
      */
     public Output<Optional<Boolean>> pgAllowReplication() {
@@ -151,28 +151,28 @@ public class PgUser extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * The service user account type, either primary or regular.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return The service user account type, either primary or regular.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

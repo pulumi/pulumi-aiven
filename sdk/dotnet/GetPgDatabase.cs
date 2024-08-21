@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetPgDatabase
     {
         /// <summary>
-        /// The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+        /// Gets information about a database in an Aiven for PostgreSQL® service.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydatabase = Aiven.GetPgDatabase.Invoke(new()
+        ///     var main = Aiven.GetPgDatabase.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = mypg.ServiceName,
-        ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = examplePostgres.ServiceName,
+        ///         DatabaseName = "example-database",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The PG Database data source provides information about the existing Aiven PostgreSQL Database.
+        /// Gets information about a database in an Aiven for PostgreSQL® service.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydatabase = Aiven.GetPgDatabase.Invoke(new()
+        ///     var main = Aiven.GetPgDatabase.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = mypg.ServiceName,
-        ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = examplePostgres.ServiceName,
+        ///         DatabaseName = "example-database",
         ///     });
         /// 
         /// });

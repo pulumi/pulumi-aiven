@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The PG data source provides information about the existing Aiven PostgreSQL service.
+ * Gets information about an Aiven for PostgreSQL® service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const pg = aiven.getPg({
- *     project: pr1.project,
- *     serviceName: "my-pg1",
+ * const examplePostgres = aiven.getPg({
+ *     project: exampleProject.project,
+ *     serviceName: "example-postgres-service",
  * });
  * ```
  */
@@ -49,7 +49,7 @@ export interface GetPgArgs {
  */
 export interface GetPgResult {
     /**
-     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      */
     readonly additionalDiskSpace: string;
     /**
@@ -97,7 +97,7 @@ export interface GetPgResult {
      */
     readonly pgUserConfigs: outputs.GetPgPgUserConfig[];
     /**
-     * PostgreSQL specific server provided values
+     * Values provided by the PostgreSQL server.
      */
     readonly pgs: outputs.GetPgPg[];
     /**
@@ -166,7 +166,7 @@ export interface GetPgResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The PG data source provides information about the existing Aiven PostgreSQL service.
+ * Gets information about an Aiven for PostgreSQL® service.
  *
  * ## Example Usage
  *
@@ -174,9 +174,9 @@ export interface GetPgResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const pg = aiven.getPg({
- *     project: pr1.project,
- *     serviceName: "my-pg1",
+ * const examplePostgres = aiven.getPg({
+ *     project: exampleProject.project,
+ *     serviceName: "example-postgres-service",
  * });
  * ```
  */

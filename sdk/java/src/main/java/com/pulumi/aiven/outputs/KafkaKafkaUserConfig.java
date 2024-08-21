@@ -10,6 +10,7 @@ import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectConfig;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectSecretProvider;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaRestConfig;
+import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaSaslMechanisms;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPublicAccess;
@@ -104,6 +105,11 @@ public final class KafkaKafkaUserConfig {
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
+    /**
+     * @return Kafka SASL mechanisms
+     * 
+     */
+    private @Nullable KafkaKafkaUserConfigKafkaSaslMechanisms kafkaSaslMechanisms;
     /**
      * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
      * 
@@ -266,6 +272,13 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaRestConfig);
     }
     /**
+     * @return Kafka SASL mechanisms
+     * 
+     */
+    public Optional<KafkaKafkaUserConfigKafkaSaslMechanisms> kafkaSaslMechanisms() {
+        return Optional.ofNullable(this.kafkaSaslMechanisms);
+    }
+    /**
      * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
      * 
      */
@@ -360,6 +373,7 @@ public final class KafkaKafkaUserConfig {
         private @Nullable Boolean kafkaRest;
         private @Nullable Boolean kafkaRestAuthorization;
         private @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
+        private @Nullable KafkaKafkaUserConfigKafkaSaslMechanisms kafkaSaslMechanisms;
         private @Nullable String kafkaVersion;
         private @Nullable Boolean letsencryptSaslPrivatelink;
         private @Nullable KafkaKafkaUserConfigPrivateAccess privateAccess;
@@ -388,6 +402,7 @@ public final class KafkaKafkaUserConfig {
     	      this.kafkaRest = defaults.kafkaRest;
     	      this.kafkaRestAuthorization = defaults.kafkaRestAuthorization;
     	      this.kafkaRestConfig = defaults.kafkaRestConfig;
+    	      this.kafkaSaslMechanisms = defaults.kafkaSaslMechanisms;
     	      this.kafkaVersion = defaults.kafkaVersion;
     	      this.letsencryptSaslPrivatelink = defaults.letsencryptSaslPrivatelink;
     	      this.privateAccess = defaults.privateAccess;
@@ -503,6 +518,12 @@ public final class KafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder kafkaSaslMechanisms(@Nullable KafkaKafkaUserConfigKafkaSaslMechanisms kafkaSaslMechanisms) {
+
+            this.kafkaSaslMechanisms = kafkaSaslMechanisms;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kafkaVersion(@Nullable String kafkaVersion) {
 
             this.kafkaVersion = kafkaVersion;
@@ -579,6 +600,7 @@ public final class KafkaKafkaUserConfig {
             _resultValue.kafkaRest = kafkaRest;
             _resultValue.kafkaRestAuthorization = kafkaRestAuthorization;
             _resultValue.kafkaRestConfig = kafkaRestConfig;
+            _resultValue.kafkaSaslMechanisms = kafkaSaslMechanisms;
             _resultValue.kafkaVersion = kafkaVersion;
             _resultValue.letsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
             _resultValue.privateAccess = privateAccess;

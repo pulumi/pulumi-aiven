@@ -10,6 +10,7 @@ import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArg
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectConfigArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaRestConfigArgs;
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaSaslMechanismsArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPublicAccessArgs;
@@ -263,6 +264,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Kafka SASL mechanisms
+     * 
+     */
+    @Import(name="kafkaSaslMechanisms")
+    private @Nullable Output<KafkaKafkaUserConfigKafkaSaslMechanismsArgs> kafkaSaslMechanisms;
+
+    /**
+     * @return Kafka SASL mechanisms
+     * 
+     */
+    public Optional<Output<KafkaKafkaUserConfigKafkaSaslMechanismsArgs>> kafkaSaslMechanisms() {
+        return Optional.ofNullable(this.kafkaSaslMechanisms);
+    }
+
+    /**
      * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
      * 
      */
@@ -430,6 +446,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.kafkaRest = $.kafkaRest;
         this.kafkaRestAuthorization = $.kafkaRestAuthorization;
         this.kafkaRestConfig = $.kafkaRestConfig;
+        this.kafkaSaslMechanisms = $.kafkaSaslMechanisms;
         this.kafkaVersion = $.kafkaVersion;
         this.letsencryptSaslPrivatelink = $.letsencryptSaslPrivatelink;
         this.privateAccess = $.privateAccess;
@@ -815,6 +832,27 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder kafkaRestConfig(KafkaKafkaUserConfigKafkaRestConfigArgs kafkaRestConfig) {
             return kafkaRestConfig(Output.of(kafkaRestConfig));
+        }
+
+        /**
+         * @param kafkaSaslMechanisms Kafka SASL mechanisms
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaSaslMechanisms(@Nullable Output<KafkaKafkaUserConfigKafkaSaslMechanismsArgs> kafkaSaslMechanisms) {
+            $.kafkaSaslMechanisms = kafkaSaslMechanisms;
+            return this;
+        }
+
+        /**
+         * @param kafkaSaslMechanisms Kafka SASL mechanisms
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaSaslMechanisms(KafkaKafkaUserConfigKafkaSaslMechanismsArgs kafkaSaslMechanisms) {
+            return kafkaSaslMechanisms(Output.of(kafkaSaslMechanisms));
         }
 
         /**

@@ -30,14 +30,14 @@ public final class ProjectUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project membership type. The possible values are `admin`, `developer` and `operator`.
+     * Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
      * 
      */
     @Import(name="memberType", required=true)
     private Output<String> memberType;
 
     /**
-     * @return Project membership type. The possible values are `admin`, `developer` and `operator`.
+     * @return Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
      * 
      */
     public Output<String> memberType() {
@@ -107,7 +107,7 @@ public final class ProjectUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberType Project membership type. The possible values are `admin`, `developer` and `operator`.
+         * @param memberType Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class ProjectUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberType Project membership type. The possible values are `admin`, `developer` and `operator`.
+         * @param memberType Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
          * 
          * @return builder
          * 

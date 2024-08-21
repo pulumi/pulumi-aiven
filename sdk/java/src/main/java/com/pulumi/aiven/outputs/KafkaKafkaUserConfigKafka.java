@@ -230,7 +230,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer socketRequestMaxBytes;
     /**
-     * @return Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+     * @return Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
      * 
      */
     private @Nullable Boolean transactionPartitionVerificationEnable;
@@ -548,7 +548,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.socketRequestMaxBytes);
     }
     /**
-     * @return Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+     * @return Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
      * 
      */
     public Optional<Boolean> transactionPartitionVerificationEnable() {

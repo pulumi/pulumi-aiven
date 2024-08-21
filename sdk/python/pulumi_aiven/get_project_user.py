@@ -66,7 +66,7 @@ class GetProjectUserResult:
     @pulumi.getter(name="memberType")
     def member_type(self) -> str:
         """
-        Project membership type. The possible values are `admin`, `developer` and `operator`.
+        Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
         """
         return pulumi.get(self, "member_type")
 

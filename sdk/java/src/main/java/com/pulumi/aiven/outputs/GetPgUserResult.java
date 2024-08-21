@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetPgUserResult {
     /**
-     * @return Access certificate for the user
+     * @return The access certificate for the servie user.
      * 
      */
     private String accessCert;
     /**
-     * @return Access certificate key for the user
+     * @return The access certificate key for the service user.
      * 
      */
     private String accessKey;
@@ -27,12 +27,12 @@ public final class GetPgUserResult {
      */
     private String id;
     /**
-     * @return The password of the PG User (not applicable for all services).
+     * @return The password of the service user.
      * 
      */
     private String password;
     /**
-     * @return Defines whether replication is allowed.
+     * @return Allows replication.
      * 
      */
     private Boolean pgAllowReplication;
@@ -47,26 +47,26 @@ public final class GetPgUserResult {
      */
     private String serviceName;
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return The service user account type, either primary or regular.
      * 
      */
     private String type;
     /**
-     * @return The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
 
     private GetPgUserResult() {}
     /**
-     * @return Access certificate for the user
+     * @return The access certificate for the servie user.
      * 
      */
     public String accessCert() {
         return this.accessCert;
     }
     /**
-     * @return Access certificate key for the user
+     * @return The access certificate key for the service user.
      * 
      */
     public String accessKey() {
@@ -80,14 +80,14 @@ public final class GetPgUserResult {
         return this.id;
     }
     /**
-     * @return The password of the PG User (not applicable for all services).
+     * @return The password of the service user.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return Defines whether replication is allowed.
+     * @return Allows replication.
      * 
      */
     public Boolean pgAllowReplication() {
@@ -108,14 +108,14 @@ public final class GetPgUserResult {
         return this.serviceName;
     }
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return The service user account type, either primary or regular.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return The actual name of the PG User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {

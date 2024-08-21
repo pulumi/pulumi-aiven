@@ -186,7 +186,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? SocketRequestMaxBytes;
         /// <summary>
-        /// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+        /// Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
         /// </summary>
         public readonly bool? TransactionPartitionVerificationEnable;
         /// <summary>

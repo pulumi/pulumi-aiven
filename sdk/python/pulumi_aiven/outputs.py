@@ -110,6 +110,7 @@ __all__ = [
     'KafkaKafkaUserConfigKafkaConnectSecretProviderAws',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderVault',
     'KafkaKafkaUserConfigKafkaRestConfig',
+    'KafkaKafkaUserConfigKafkaSaslMechanisms',
     'KafkaKafkaUserConfigPrivateAccess',
     'KafkaKafkaUserConfigPrivatelinkAccess',
     'KafkaKafkaUserConfigPublicAccess',
@@ -170,7 +171,10 @@ __all__ = [
     'OpenSearchComponent',
     'OpenSearchOpensearch',
     'OpenSearchOpensearchUserConfig',
+    'OpenSearchOpensearchUserConfigAzureMigration',
+    'OpenSearchOpensearchUserConfigGcsMigration',
     'OpenSearchOpensearchUserConfigIndexPattern',
+    'OpenSearchOpensearchUserConfigIndexRollup',
     'OpenSearchOpensearchUserConfigIndexTemplate',
     'OpenSearchOpensearchUserConfigIpFilterObject',
     'OpenSearchOpensearchUserConfigOpenid',
@@ -182,6 +186,7 @@ __all__ = [
     'OpenSearchOpensearchUserConfigPrivateAccess',
     'OpenSearchOpensearchUserConfigPrivatelinkAccess',
     'OpenSearchOpensearchUserConfigPublicAccess',
+    'OpenSearchOpensearchUserConfigS3Migration',
     'OpenSearchOpensearchUserConfigSaml',
     'OpenSearchServiceIntegration',
     'OpenSearchTag',
@@ -390,6 +395,7 @@ __all__ = [
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult',
     'GetKafkaKafkaUserConfigKafkaRestConfigResult',
+    'GetKafkaKafkaUserConfigKafkaSaslMechanismsResult',
     'GetKafkaKafkaUserConfigPrivateAccessResult',
     'GetKafkaKafkaUserConfigPrivatelinkAccessResult',
     'GetKafkaKafkaUserConfigPublicAccessResult',
@@ -450,7 +456,10 @@ __all__ = [
     'GetOpenSearchComponentResult',
     'GetOpenSearchOpensearchResult',
     'GetOpenSearchOpensearchUserConfigResult',
+    'GetOpenSearchOpensearchUserConfigAzureMigrationResult',
+    'GetOpenSearchOpensearchUserConfigGcsMigrationResult',
     'GetOpenSearchOpensearchUserConfigIndexPatternResult',
+    'GetOpenSearchOpensearchUserConfigIndexRollupResult',
     'GetOpenSearchOpensearchUserConfigIndexTemplateResult',
     'GetOpenSearchOpensearchUserConfigIpFilterObjectResult',
     'GetOpenSearchOpensearchUserConfigOpenidResult',
@@ -462,6 +471,7 @@ __all__ = [
     'GetOpenSearchOpensearchUserConfigPrivateAccessResult',
     'GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult',
     'GetOpenSearchOpensearchUserConfigPublicAccessResult',
+    'GetOpenSearchOpensearchUserConfigS3MigrationResult',
     'GetOpenSearchOpensearchUserConfigSamlResult',
     'GetOpenSearchServiceIntegrationResult',
     'GetOpenSearchTagResult',
@@ -3681,7 +3691,8 @@ class GrafanaGrafanaUserConfig(dict):
                  unified_alerting_enabled: Optional[bool] = None,
                  user_auto_assign_org: Optional[bool] = None,
                  user_auto_assign_org_role: Optional[str] = None,
-                 viewers_can_edit: Optional[bool] = None):
+                 viewers_can_edit: Optional[bool] = None,
+                 wal: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param bool alerting_enabled: Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
@@ -3725,6 +3736,7 @@ class GrafanaGrafanaUserConfig(dict):
         :param bool user_auto_assign_org: Auto-assign new users on signup to main organization. Defaults to false.
         :param str user_auto_assign_org_role: Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
         :param bool viewers_can_edit: Users with view-only permission can edit but not save dashboards.
+        :param bool wal: Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -3810,6 +3822,8 @@ class GrafanaGrafanaUserConfig(dict):
             pulumi.set(__self__, "user_auto_assign_org_role", user_auto_assign_org_role)
         if viewers_can_edit is not None:
             pulumi.set(__self__, "viewers_can_edit", viewers_can_edit)
+        if wal is not None:
+            pulumi.set(__self__, "wal", wal)
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
@@ -4147,6 +4161,14 @@ class GrafanaGrafanaUserConfig(dict):
         Users with view-only permission can edit but not save dashboards.
         """
         return pulumi.get(self, "viewers_can_edit")
+
+    @property
+    @pulumi.getter
+    def wal(self) -> Optional[bool]:
+        """
+        Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+        """
+        return pulumi.get(self, "wal")
 
 
 @pulumi.output_type
@@ -7268,6 +7290,8 @@ class KafkaKafkaUserConfig(dict):
             suggest = "kafka_rest_authorization"
         elif key == "kafkaRestConfig":
             suggest = "kafka_rest_config"
+        elif key == "kafkaSaslMechanisms":
+            suggest = "kafka_sasl_mechanisms"
         elif key == "kafkaVersion":
             suggest = "kafka_version"
         elif key == "letsencryptSaslPrivatelink":
@@ -7316,6 +7340,7 @@ class KafkaKafkaUserConfig(dict):
                  kafka_rest: Optional[bool] = None,
                  kafka_rest_authorization: Optional[bool] = None,
                  kafka_rest_config: Optional['outputs.KafkaKafkaUserConfigKafkaRestConfig'] = None,
+                 kafka_sasl_mechanisms: Optional['outputs.KafkaKafkaUserConfigKafkaSaslMechanisms'] = None,
                  kafka_version: Optional[str] = None,
                  letsencrypt_sasl_privatelink: Optional[bool] = None,
                  private_access: Optional['outputs.KafkaKafkaUserConfigPrivateAccess'] = None,
@@ -7341,6 +7366,7 @@ class KafkaKafkaUserConfig(dict):
         :param bool kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
+        :param 'KafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
         :param str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
         :param bool letsencrypt_sasl_privatelink: Use Letsencrypt CA for Kafka SASL via Privatelink.
         :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
@@ -7382,6 +7408,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "kafka_rest_authorization", kafka_rest_authorization)
         if kafka_rest_config is not None:
             pulumi.set(__self__, "kafka_rest_config", kafka_rest_config)
+        if kafka_sasl_mechanisms is not None:
+            pulumi.set(__self__, "kafka_sasl_mechanisms", kafka_sasl_mechanisms)
         if kafka_version is not None:
             pulumi.set(__self__, "kafka_version", kafka_version)
         if letsencrypt_sasl_privatelink is not None:
@@ -7521,6 +7549,14 @@ class KafkaKafkaUserConfig(dict):
         Kafka REST configuration
         """
         return pulumi.get(self, "kafka_rest_config")
+
+    @property
+    @pulumi.getter(name="kafkaSaslMechanisms")
+    def kafka_sasl_mechanisms(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaSaslMechanisms']:
+        """
+        Kafka SASL mechanisms
+        """
+        return pulumi.get(self, "kafka_sasl_mechanisms")
 
     @property
     @pulumi.getter(name="kafkaVersion")
@@ -7852,7 +7888,7 @@ class KafkaKafkaUserConfigKafka(dict):
         :param str sasl_oauthbearer_jwks_endpoint_url: OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. (Default: null).
         :param str sasl_oauthbearer_sub_claim_name: Name of the scope from which to extract the subject claim from the JWT.(Default: sub).
         :param int socket_request_max_bytes: The maximum number of bytes in a socket request (Default: 104857600 bytes).
-        :param bool transaction_partition_verification_enable: Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+        :param bool transaction_partition_verification_enable: Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
         :param int transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
         :param int transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
         """
@@ -8297,7 +8333,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="transactionPartitionVerificationEnable")
     def transaction_partition_verification_enable(self) -> Optional[bool]:
         """
-        Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+        Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
         """
         return pulumi.get(self, "transaction_partition_verification_enable")
 
@@ -8943,6 +8979,68 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
         """
         return pulumi.get(self, "simpleconsumer_pool_size_max")
+
+
+@pulumi.output_type
+class KafkaKafkaUserConfigKafkaSaslMechanisms(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scramSha256":
+            suggest = "scram_sha256"
+        elif key == "scramSha512":
+            suggest = "scram_sha512"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigKafkaSaslMechanisms. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigKafkaSaslMechanisms.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigKafkaSaslMechanisms.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 plain: Optional[bool] = None,
+                 scram_sha256: Optional[bool] = None,
+                 scram_sha512: Optional[bool] = None):
+        """
+        :param bool plain: Enable PLAIN mechanism. Default: `true`.
+        :param bool scram_sha256: Enable SCRAM-SHA-256 mechanism. Default: `true`.
+        :param bool scram_sha512: Enable SCRAM-SHA-512 mechanism. Default: `true`.
+        """
+        if plain is not None:
+            pulumi.set(__self__, "plain", plain)
+        if scram_sha256 is not None:
+            pulumi.set(__self__, "scram_sha256", scram_sha256)
+        if scram_sha512 is not None:
+            pulumi.set(__self__, "scram_sha512", scram_sha512)
+
+    @property
+    @pulumi.getter
+    def plain(self) -> Optional[bool]:
+        """
+        Enable PLAIN mechanism. Default: `true`.
+        """
+        return pulumi.get(self, "plain")
+
+    @property
+    @pulumi.getter(name="scramSha256")
+    def scram_sha256(self) -> Optional[bool]:
+        """
+        Enable SCRAM-SHA-256 mechanism. Default: `true`.
+        """
+        return pulumi.get(self, "scram_sha256")
+
+    @property
+    @pulumi.getter(name="scramSha512")
+    def scram_sha512(self) -> Optional[bool]:
+        """
+        Enable SCRAM-SHA-512 mechanism. Default: `true`.
+        """
+        return pulumi.get(self, "scram_sha512")
 
 
 @pulumi.output_type
@@ -9619,7 +9717,9 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "emitCheckpointsEnabled":
+        if key == "adminTimeoutMs":
+            suggest = "admin_timeout_ms"
+        elif key == "emitCheckpointsEnabled":
             suggest = "emit_checkpoints_enabled"
         elif key == "emitCheckpointsIntervalSeconds":
             suggest = "emit_checkpoints_interval_seconds"
@@ -9656,6 +9756,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 admin_timeout_ms: Optional[int] = None,
                  emit_checkpoints_enabled: Optional[bool] = None,
                  emit_checkpoints_interval_seconds: Optional[int] = None,
                  groups: Optional[str] = None,
@@ -9670,6 +9771,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
                  sync_topic_configs_enabled: Optional[bool] = None,
                  tasks_max_per_cpu: Optional[int] = None):
         """
+        :param int admin_timeout_ms: Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
         :param bool emit_checkpoints_enabled: Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
         :param int emit_checkpoints_interval_seconds: Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
         :param str groups: Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
@@ -9684,6 +9786,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
         :param bool sync_topic_configs_enabled: Whether to periodically configure remote topics to match their corresponding upstream topics.
         :param int tasks_max_per_cpu: `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
         """
+        if admin_timeout_ms is not None:
+            pulumi.set(__self__, "admin_timeout_ms", admin_timeout_ms)
         if emit_checkpoints_enabled is not None:
             pulumi.set(__self__, "emit_checkpoints_enabled", emit_checkpoints_enabled)
         if emit_checkpoints_interval_seconds is not None:
@@ -9710,6 +9814,14 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
             pulumi.set(__self__, "sync_topic_configs_enabled", sync_topic_configs_enabled)
         if tasks_max_per_cpu is not None:
             pulumi.set(__self__, "tasks_max_per_cpu", tasks_max_per_cpu)
+
+    @property
+    @pulumi.getter(name="adminTimeoutMs")
+    def admin_timeout_ms(self) -> Optional[int]:
+        """
+        Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+        """
+        return pulumi.get(self, "admin_timeout_ms")
 
     @property
     @pulumi.getter(name="emitCheckpointsEnabled")
@@ -13769,12 +13881,18 @@ class OpenSearchOpensearchUserConfig(dict):
         suggest = None
         if key == "additionalBackupRegions":
             suggest = "additional_backup_regions"
+        elif key == "azureMigration":
+            suggest = "azure_migration"
         elif key == "customDomain":
             suggest = "custom_domain"
         elif key == "disableReplicationFactorAdjustment":
             suggest = "disable_replication_factor_adjustment"
+        elif key == "gcsMigration":
+            suggest = "gcs_migration"
         elif key == "indexPatterns":
             suggest = "index_patterns"
+        elif key == "indexRollup":
+            suggest = "index_rollup"
         elif key == "indexTemplate":
             suggest = "index_template"
         elif key == "ipFilterObjects":
@@ -13801,6 +13919,8 @@ class OpenSearchOpensearchUserConfig(dict):
             suggest = "public_access"
         elif key == "recoveryBasebackupName":
             suggest = "recovery_basebackup_name"
+        elif key == "s3Migration":
+            suggest = "s3_migration"
         elif key == "serviceLog":
             suggest = "service_log"
         elif key == "serviceToForkFrom":
@@ -13821,9 +13941,12 @@ class OpenSearchOpensearchUserConfig(dict):
 
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
+                 azure_migration: Optional['outputs.OpenSearchOpensearchUserConfigAzureMigration'] = None,
                  custom_domain: Optional[str] = None,
                  disable_replication_factor_adjustment: Optional[bool] = None,
+                 gcs_migration: Optional['outputs.OpenSearchOpensearchUserConfigGcsMigration'] = None,
                  index_patterns: Optional[Sequence['outputs.OpenSearchOpensearchUserConfigIndexPattern']] = None,
+                 index_rollup: Optional['outputs.OpenSearchOpensearchUserConfigIndexRollup'] = None,
                  index_template: Optional['outputs.OpenSearchOpensearchUserConfigIndexTemplate'] = None,
                  ip_filter_objects: Optional[Sequence['outputs.OpenSearchOpensearchUserConfigIpFilterObject']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
@@ -13839,6 +13962,7 @@ class OpenSearchOpensearchUserConfig(dict):
                  project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.OpenSearchOpensearchUserConfigPublicAccess'] = None,
                  recovery_basebackup_name: Optional[str] = None,
+                 s3_migration: Optional['outputs.OpenSearchOpensearchUserConfigS3Migration'] = None,
                  saml: Optional['outputs.OpenSearchOpensearchUserConfigSaml'] = None,
                  service_log: Optional[bool] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -13848,6 +13972,7 @@ class OpenSearchOpensearchUserConfig(dict):
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         :param bool disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
         :param Sequence['OpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns
+        :param 'OpenSearchOpensearchUserConfigIndexRollupArgs' index_rollup: Index rollup settings
         :param 'OpenSearchOpensearchUserConfigIndexTemplateArgs' index_template: Template settings for all new indexes
         :param Sequence['OpenSearchOpensearchUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -13870,12 +13995,18 @@ class OpenSearchOpensearchUserConfig(dict):
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
+        if azure_migration is not None:
+            pulumi.set(__self__, "azure_migration", azure_migration)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if disable_replication_factor_adjustment is not None:
             pulumi.set(__self__, "disable_replication_factor_adjustment", disable_replication_factor_adjustment)
+        if gcs_migration is not None:
+            pulumi.set(__self__, "gcs_migration", gcs_migration)
         if index_patterns is not None:
             pulumi.set(__self__, "index_patterns", index_patterns)
+        if index_rollup is not None:
+            pulumi.set(__self__, "index_rollup", index_rollup)
         if index_template is not None:
             pulumi.set(__self__, "index_template", index_template)
         if ip_filter_objects is not None:
@@ -13906,6 +14037,8 @@ class OpenSearchOpensearchUserConfig(dict):
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if s3_migration is not None:
+            pulumi.set(__self__, "s3_migration", s3_migration)
         if saml is not None:
             pulumi.set(__self__, "saml", saml)
         if service_log is not None:
@@ -13924,6 +14057,11 @@ class OpenSearchOpensearchUserConfig(dict):
         return pulumi.get(self, "additional_backup_regions")
 
     @property
+    @pulumi.getter(name="azureMigration")
+    def azure_migration(self) -> Optional['outputs.OpenSearchOpensearchUserConfigAzureMigration']:
+        return pulumi.get(self, "azure_migration")
+
+    @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
         """
@@ -13940,12 +14078,25 @@ class OpenSearchOpensearchUserConfig(dict):
         return pulumi.get(self, "disable_replication_factor_adjustment")
 
     @property
+    @pulumi.getter(name="gcsMigration")
+    def gcs_migration(self) -> Optional['outputs.OpenSearchOpensearchUserConfigGcsMigration']:
+        return pulumi.get(self, "gcs_migration")
+
+    @property
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[Sequence['outputs.OpenSearchOpensearchUserConfigIndexPattern']]:
         """
         Index patterns
         """
         return pulumi.get(self, "index_patterns")
+
+    @property
+    @pulumi.getter(name="indexRollup")
+    def index_rollup(self) -> Optional['outputs.OpenSearchOpensearchUserConfigIndexRollup']:
+        """
+        Index rollup settings
+        """
+        return pulumi.get(self, "index_rollup")
 
     @property
     @pulumi.getter(name="indexTemplate")
@@ -14069,6 +14220,11 @@ class OpenSearchOpensearchUserConfig(dict):
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
+    @pulumi.getter(name="s3Migration")
+    def s3_migration(self) -> Optional['outputs.OpenSearchOpensearchUserConfigS3Migration']:
+        return pulumi.get(self, "s3_migration")
+
+    @property
     @pulumi.getter
     def saml(self) -> Optional['outputs.OpenSearchOpensearchUserConfigSaml']:
         """
@@ -14099,6 +14255,238 @@ class OpenSearchOpensearchUserConfig(dict):
         Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigAzureMigration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basePath":
+            suggest = "base_path"
+        elif key == "snapshotName":
+            suggest = "snapshot_name"
+        elif key == "chunkSize":
+            suggest = "chunk_size"
+        elif key == "endpointSuffix":
+            suggest = "endpoint_suffix"
+        elif key == "sasToken":
+            suggest = "sas_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigAzureMigration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigAzureMigration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigAzureMigration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account: str,
+                 base_path: str,
+                 container: str,
+                 snapshot_name: str,
+                 chunk_size: Optional[str] = None,
+                 compress: Optional[bool] = None,
+                 endpoint_suffix: Optional[str] = None,
+                 key: Optional[str] = None,
+                 sas_token: Optional[str] = None):
+        """
+        :param str account: Azure account name.
+        :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
+        :param str container: Azure container name.
+        :param str snapshot_name: The snapshot name to restore from.
+        :param str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        :param bool compress: When set to true metadata files are stored in compressed format.
+        :param str endpoint_suffix: Defines the DNS suffix for Azure Storage endpoints.
+        :param str key: Azure account secret key. One of key or sas_token should be specified.
+        :param str sas_token: A shared access signatures (SAS) token. One of key or sas_token should be specified.
+        """
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "base_path", base_path)
+        pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if chunk_size is not None:
+            pulumi.set(__self__, "chunk_size", chunk_size)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if endpoint_suffix is not None:
+            pulumi.set(__self__, "endpoint_suffix", endpoint_suffix)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if sas_token is not None:
+            pulumi.set(__self__, "sas_token", sas_token)
+
+    @property
+    @pulumi.getter
+    def account(self) -> str:
+        """
+        Azure account name.
+        """
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> str:
+        """
+        The path to the repository data within its container. The value of this setting should not start or end with a /.
+        """
+        return pulumi.get(self, "base_path")
+
+    @property
+    @pulumi.getter
+    def container(self) -> str:
+        """
+        Azure container name.
+        """
+        return pulumi.get(self, "container")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        """
+        The snapshot name to restore from.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> Optional[str]:
+        """
+        Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[bool]:
+        """
+        When set to true metadata files are stored in compressed format.
+        """
+        return pulumi.get(self, "compress")
+
+    @property
+    @pulumi.getter(name="endpointSuffix")
+    def endpoint_suffix(self) -> Optional[str]:
+        """
+        Defines the DNS suffix for Azure Storage endpoints.
+        """
+        return pulumi.get(self, "endpoint_suffix")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Azure account secret key. One of key or sas_token should be specified.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="sasToken")
+    def sas_token(self) -> Optional[str]:
+        """
+        A shared access signatures (SAS) token. One of key or sas_token should be specified.
+        """
+        return pulumi.get(self, "sas_token")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigGcsMigration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basePath":
+            suggest = "base_path"
+        elif key == "snapshotName":
+            suggest = "snapshot_name"
+        elif key == "chunkSize":
+            suggest = "chunk_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigGcsMigration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigGcsMigration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigGcsMigration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_path: str,
+                 bucket: str,
+                 credentials: str,
+                 snapshot_name: str,
+                 chunk_size: Optional[str] = None,
+                 compress: Optional[bool] = None):
+        """
+        :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
+        :param str bucket: The path to the repository data within its container.
+        :param str credentials: Google Cloud Storage credentials file content.
+        :param str snapshot_name: The snapshot name to restore from.
+        :param str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        :param bool compress: When set to true metadata files are stored in compressed format.
+        """
+        pulumi.set(__self__, "base_path", base_path)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "credentials", credentials)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if chunk_size is not None:
+            pulumi.set(__self__, "chunk_size", chunk_size)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+
+    @property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> str:
+        """
+        The path to the repository data within its container. The value of this setting should not start or end with a /.
+        """
+        return pulumi.get(self, "base_path")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The path to the repository data within its container.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> str:
+        """
+        Google Cloud Storage credentials file content.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        """
+        The snapshot name to restore from.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> Optional[str]:
+        """
+        Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[bool]:
+        """
+        When set to true metadata files are stored in compressed format.
+        """
+        return pulumi.get(self, "compress")
 
 
 @pulumi.output_type
@@ -14159,6 +14547,98 @@ class OpenSearchOpensearchUserConfigIndexPattern(dict):
         Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
         """
         return pulumi.get(self, "sorting_algorithm")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigIndexRollup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rollupDashboardsEnabled":
+            suggest = "rollup_dashboards_enabled"
+        elif key == "rollupEnabled":
+            suggest = "rollup_enabled"
+        elif key == "rollupSearchBackoffCount":
+            suggest = "rollup_search_backoff_count"
+        elif key == "rollupSearchBackoffMillis":
+            suggest = "rollup_search_backoff_millis"
+        elif key == "rollupSearchSearchAllJobs":
+            suggest = "rollup_search_search_all_jobs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigIndexRollup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigIndexRollup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigIndexRollup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rollup_dashboards_enabled: Optional[bool] = None,
+                 rollup_enabled: Optional[bool] = None,
+                 rollup_search_backoff_count: Optional[int] = None,
+                 rollup_search_backoff_millis: Optional[int] = None,
+                 rollup_search_search_all_jobs: Optional[bool] = None):
+        """
+        :param bool rollup_dashboards_enabled: Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.
+        :param bool rollup_enabled: Whether the rollup plugin is enabled. Defaults to true.
+        :param int rollup_search_backoff_count: How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.
+        :param int rollup_search_backoff_millis: The backoff time between retries for failed rollup jobs. Defaults to 1000ms.
+        :param bool rollup_search_search_all_jobs: Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.
+        """
+        if rollup_dashboards_enabled is not None:
+            pulumi.set(__self__, "rollup_dashboards_enabled", rollup_dashboards_enabled)
+        if rollup_enabled is not None:
+            pulumi.set(__self__, "rollup_enabled", rollup_enabled)
+        if rollup_search_backoff_count is not None:
+            pulumi.set(__self__, "rollup_search_backoff_count", rollup_search_backoff_count)
+        if rollup_search_backoff_millis is not None:
+            pulumi.set(__self__, "rollup_search_backoff_millis", rollup_search_backoff_millis)
+        if rollup_search_search_all_jobs is not None:
+            pulumi.set(__self__, "rollup_search_search_all_jobs", rollup_search_search_all_jobs)
+
+    @property
+    @pulumi.getter(name="rollupDashboardsEnabled")
+    def rollup_dashboards_enabled(self) -> Optional[bool]:
+        """
+        Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.
+        """
+        return pulumi.get(self, "rollup_dashboards_enabled")
+
+    @property
+    @pulumi.getter(name="rollupEnabled")
+    def rollup_enabled(self) -> Optional[bool]:
+        """
+        Whether the rollup plugin is enabled. Defaults to true.
+        """
+        return pulumi.get(self, "rollup_enabled")
+
+    @property
+    @pulumi.getter(name="rollupSearchBackoffCount")
+    def rollup_search_backoff_count(self) -> Optional[int]:
+        """
+        How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.
+        """
+        return pulumi.get(self, "rollup_search_backoff_count")
+
+    @property
+    @pulumi.getter(name="rollupSearchBackoffMillis")
+    def rollup_search_backoff_millis(self) -> Optional[int]:
+        """
+        The backoff time between retries for failed rollup jobs. Defaults to 1000ms.
+        """
+        return pulumi.get(self, "rollup_search_backoff_millis")
+
+    @property
+    @pulumi.getter(name="rollupSearchSearchAllJobs")
+    def rollup_search_search_all_jobs(self) -> Optional[bool]:
+        """
+        Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.
+        """
+        return pulumi.get(self, "rollup_search_search_all_jobs")
 
 
 @pulumi.output_type
@@ -14304,8 +14784,8 @@ class OpenSearchOpensearchUserConfigOpenid(dict):
                  scope: Optional[str] = None,
                  subject_key: Optional[str] = None):
         """
-        :param str client_id: The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
-        :param str client_secret: The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+        :param str client_id: The ID of the OpenID Connect client configured in your IdP. Required.
+        :param str client_secret: The client secret of the OpenID Connect client configured in your IdP. Required.
         :param str connect_url: The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
         :param bool enabled: Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
         :param str header: HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
@@ -14314,7 +14794,7 @@ class OpenSearchOpensearchUserConfigOpenid(dict):
         :param int refresh_rate_limit_count: The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
         :param int refresh_rate_limit_time_window_ms: The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
         :param str roles_key: The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
-        :param str scope: The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+        :param str scope: The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
         :param str subject_key: The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -14342,7 +14822,7 @@ class OpenSearchOpensearchUserConfigOpenid(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
         """
-        The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+        The ID of the OpenID Connect client configured in your IdP. Required.
         """
         return pulumi.get(self, "client_id")
 
@@ -14350,7 +14830,7 @@ class OpenSearchOpensearchUserConfigOpenid(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> str:
         """
-        The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+        The client secret of the OpenID Connect client configured in your IdP. Required.
         """
         return pulumi.get(self, "client_secret")
 
@@ -14422,7 +14902,7 @@ class OpenSearchOpensearchUserConfigOpenid(dict):
     @pulumi.getter
     def scope(self) -> Optional[str]:
         """
-        The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+        The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
         """
         return pulumi.get(self, "scope")
 
@@ -14594,7 +15074,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         :param str email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         :param str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param str email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
-        :param bool enable_security_audit: Enable/Disable security audit. Default: `false`.
+        :param bool enable_security_audit: Enable/Disable security audit.
         :param int http_max_content_length: Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         :param int http_max_header_size: The max size of allowed headers, in bytes. Example: `8192`.
         :param int http_max_initial_line_length: The max length of an HTTP URL, in bytes. Example: `4096`.
@@ -14606,14 +15086,14 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         :param int indices_query_bool_max_clause_count: Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
         :param int indices_recovery_max_bytes_per_sec: Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
         :param int indices_recovery_max_concurrent_file_chunks: Number of file chunks sent in parallel for each recovery. Defaults to 2.
-        :param bool ism_enabled: Specifies whether ISM is enabled or not. Default: `true`.
-        :param bool ism_history_enabled: Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
-        :param int ism_history_max_age: The maximum age before rolling over the audit history index in hours. Default: `24`.
-        :param int ism_history_max_docs: The maximum number of documents before rolling over the audit history index. Default: `2500000`.
-        :param int ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Default: `8`.
-        :param int ism_history_rollover_retention_period: How long audit history indices are kept in days. Default: `30`.
-        :param bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
-        :param int knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        :param bool ism_enabled: Specifies whether ISM is enabled or not.
+        :param bool ism_history_enabled: Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
+        :param int ism_history_max_age: The maximum age before rolling over the audit history index in hours. Example: `24`.
+        :param int ism_history_max_docs: The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+        :param int ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Example: `8`.
+        :param int ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
+        :param bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
+        :param int knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
         :param bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
         :param Sequence[str] reindex_remote_whitelists: Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
@@ -14788,7 +15268,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="enableSecurityAudit")
     def enable_security_audit(self) -> Optional[bool]:
         """
-        Enable/Disable security audit. Default: `false`.
+        Enable/Disable security audit.
         """
         return pulumi.get(self, "enable_security_audit")
 
@@ -14884,7 +15364,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="ismEnabled")
     def ism_enabled(self) -> Optional[bool]:
         """
-        Specifies whether ISM is enabled or not. Default: `true`.
+        Specifies whether ISM is enabled or not.
         """
         return pulumi.get(self, "ism_enabled")
 
@@ -14892,7 +15372,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="ismHistoryEnabled")
     def ism_history_enabled(self) -> Optional[bool]:
         """
-        Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+        Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
         """
         return pulumi.get(self, "ism_history_enabled")
 
@@ -14900,7 +15380,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="ismHistoryMaxAge")
     def ism_history_max_age(self) -> Optional[int]:
         """
-        The maximum age before rolling over the audit history index in hours. Default: `24`.
+        The maximum age before rolling over the audit history index in hours. Example: `24`.
         """
         return pulumi.get(self, "ism_history_max_age")
 
@@ -14908,7 +15388,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="ismHistoryMaxDocs")
     def ism_history_max_docs(self) -> Optional[int]:
         """
-        The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+        The maximum number of documents before rolling over the audit history index. Example: `2500000`.
         """
         return pulumi.get(self, "ism_history_max_docs")
 
@@ -14916,7 +15396,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="ismHistoryRolloverCheckPeriod")
     def ism_history_rollover_check_period(self) -> Optional[int]:
         """
-        The time between rollover checks for the audit history index in hours. Default: `8`.
+        The time between rollover checks for the audit history index in hours. Example: `8`.
         """
         return pulumi.get(self, "ism_history_rollover_check_period")
 
@@ -14924,7 +15404,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="ismHistoryRolloverRetentionPeriod")
     def ism_history_rollover_retention_period(self) -> Optional[int]:
         """
-        How long audit history indices are kept in days. Default: `30`.
+        How long audit history indices are kept in days. Example: `30`.
         """
         return pulumi.get(self, "ism_history_rollover_retention_period")
 
@@ -14932,7 +15412,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="knnMemoryCircuitBreakerEnabled")
     def knn_memory_circuit_breaker_enabled(self) -> Optional[bool]:
         """
-        Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        Enable or disable KNN memory circuit breaker. Defaults to true.
         """
         return pulumi.get(self, "knn_memory_circuit_breaker_enabled")
 
@@ -14940,7 +15420,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="knnMemoryCircuitBreakerLimit")
     def knn_memory_circuit_breaker_limit(self) -> Optional[int]:
         """
-        Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
         """
         return pulumi.get(self, "knn_memory_circuit_breaker_limit")
 
@@ -15584,6 +16064,154 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
 
 
 @pulumi.output_type
+class OpenSearchOpensearchUserConfigS3Migration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "basePath":
+            suggest = "base_path"
+        elif key == "secretKey":
+            suggest = "secret_key"
+        elif key == "snapshotName":
+            suggest = "snapshot_name"
+        elif key == "chunkSize":
+            suggest = "chunk_size"
+        elif key == "serverSideEncryption":
+            suggest = "server_side_encryption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigS3Migration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigS3Migration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigS3Migration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key: str,
+                 base_path: str,
+                 bucket: str,
+                 region: str,
+                 secret_key: str,
+                 snapshot_name: str,
+                 chunk_size: Optional[str] = None,
+                 compress: Optional[bool] = None,
+                 endpoint: Optional[str] = None,
+                 server_side_encryption: Optional[bool] = None):
+        """
+        :param str access_key: AWS Access key.
+        :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
+        :param str bucket: S3 bucket name.
+        :param str region: S3 region.
+        :param str secret_key: AWS secret key.
+        :param str snapshot_name: The snapshot name to restore from.
+        :param str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        :param bool compress: When set to true metadata files are stored in compressed format.
+        :param str endpoint: The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+        :param bool server_side_encryption: When set to true files are encrypted on server side.
+        """
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "base_path", base_path)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "secret_key", secret_key)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if chunk_size is not None:
+            pulumi.set(__self__, "chunk_size", chunk_size)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if server_side_encryption is not None:
+            pulumi.set(__self__, "server_side_encryption", server_side_encryption)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        """
+        AWS Access key.
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> str:
+        """
+        The path to the repository data within its container. The value of this setting should not start or end with a /.
+        """
+        return pulumi.get(self, "base_path")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        S3 bucket name.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        S3 region.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> str:
+        """
+        AWS secret key.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        """
+        The snapshot name to restore from.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> Optional[str]:
+        """
+        Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[bool]:
+        """
+        When set to true metadata files are stored in compressed format.
+        """
+        return pulumi.get(self, "compress")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="serverSideEncryption")
+    def server_side_encryption(self) -> Optional[bool]:
+        """
+        When set to true files are encrypted on server side.
+        """
+        return pulumi.get(self, "server_side_encryption")
+
+
+@pulumi.output_type
 class OpenSearchOpensearchUserConfigSaml(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16126,20 +16754,20 @@ class PgPg(dict):
                  uris: Optional[Sequence[str]] = None,
                  user: Optional[str] = None):
         """
-        :param str bouncer: Bouncer connection details
-        :param str dbname: Primary PostgreSQL database name
-        :param str host: PostgreSQL master node host IP or name
-        :param int max_connections: Connection limit
-        :param Sequence['PgPgParamArgs'] params: PostgreSQL connection parameters
-        :param str password: PostgreSQL admin user password
-        :param int port: PostgreSQL port
-        :param str replica_uri: PostgreSQL replica URI for services with a replica
-        :param str sslmode: PostgreSQL sslmode setting (currently always "require")
-        :param Sequence[str] standby_uris: PostgreSQL standby connection URIs
-        :param Sequence[str] syncing_uris: PostgreSQL syncing connection URIs
-        :param str uri: PostgreSQL master connection URI
-        :param Sequence[str] uris: PostgreSQL master connection URIs
-        :param str user: PostgreSQL admin user name
+        :param str bouncer: PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+        :param str dbname: Primary PostgreSQL database name.
+        :param str host: PostgreSQL primary node host IP or name.
+        :param int max_connections: The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
+        :param Sequence['PgPgParamArgs'] params: PostgreSQL connection parameters.
+        :param str password: PostgreSQL admin user password.
+        :param int port: PostgreSQL port.
+        :param str replica_uri: PostgreSQL replica URI for services with a replica.
+        :param str sslmode: PostgreSQL SSL mode setting.
+        :param Sequence[str] standby_uris: PostgreSQL standby connection URIs.
+        :param Sequence[str] syncing_uris: PostgreSQL syncing connection URIs.
+        :param str uri: PostgreSQL primary connection URI.
+        :param Sequence[str] uris: PostgreSQL primary connection URIs.
+        :param str user: PostgreSQL admin user name.
         """
         if bouncer is not None:
             pulumi.set(__self__, "bouncer", bouncer)
@@ -16174,7 +16802,7 @@ class PgPg(dict):
     @pulumi.getter
     def bouncer(self) -> Optional[str]:
         """
-        Bouncer connection details
+        PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
         """
         return pulumi.get(self, "bouncer")
 
@@ -16182,7 +16810,7 @@ class PgPg(dict):
     @pulumi.getter
     def dbname(self) -> Optional[str]:
         """
-        Primary PostgreSQL database name
+        Primary PostgreSQL database name.
         """
         return pulumi.get(self, "dbname")
 
@@ -16190,7 +16818,7 @@ class PgPg(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        PostgreSQL master node host IP or name
+        PostgreSQL primary node host IP or name.
         """
         return pulumi.get(self, "host")
 
@@ -16198,7 +16826,7 @@ class PgPg(dict):
     @pulumi.getter(name="maxConnections")
     def max_connections(self) -> Optional[int]:
         """
-        Connection limit
+        The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
         """
         return pulumi.get(self, "max_connections")
 
@@ -16206,7 +16834,7 @@ class PgPg(dict):
     @pulumi.getter
     def params(self) -> Optional[Sequence['outputs.PgPgParam']]:
         """
-        PostgreSQL connection parameters
+        PostgreSQL connection parameters.
         """
         return pulumi.get(self, "params")
 
@@ -16214,7 +16842,7 @@ class PgPg(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        PostgreSQL admin user password
+        PostgreSQL admin user password.
         """
         return pulumi.get(self, "password")
 
@@ -16222,7 +16850,7 @@ class PgPg(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        PostgreSQL port
+        PostgreSQL port.
         """
         return pulumi.get(self, "port")
 
@@ -16230,7 +16858,7 @@ class PgPg(dict):
     @pulumi.getter(name="replicaUri")
     def replica_uri(self) -> Optional[str]:
         """
-        PostgreSQL replica URI for services with a replica
+        PostgreSQL replica URI for services with a replica.
         """
         return pulumi.get(self, "replica_uri")
 
@@ -16238,7 +16866,7 @@ class PgPg(dict):
     @pulumi.getter
     def sslmode(self) -> Optional[str]:
         """
-        PostgreSQL sslmode setting (currently always "require")
+        PostgreSQL SSL mode setting.
         """
         return pulumi.get(self, "sslmode")
 
@@ -16246,7 +16874,7 @@ class PgPg(dict):
     @pulumi.getter(name="standbyUris")
     def standby_uris(self) -> Optional[Sequence[str]]:
         """
-        PostgreSQL standby connection URIs
+        PostgreSQL standby connection URIs.
         """
         return pulumi.get(self, "standby_uris")
 
@@ -16254,7 +16882,7 @@ class PgPg(dict):
     @pulumi.getter(name="syncingUris")
     def syncing_uris(self) -> Optional[Sequence[str]]:
         """
-        PostgreSQL syncing connection URIs
+        PostgreSQL syncing connection URIs.
         """
         return pulumi.get(self, "syncing_uris")
 
@@ -16262,7 +16890,7 @@ class PgPg(dict):
     @pulumi.getter
     def uri(self) -> Optional[str]:
         """
-        PostgreSQL master connection URI
+        PostgreSQL primary connection URI.
         """
         return pulumi.get(self, "uri")
 
@@ -16270,7 +16898,7 @@ class PgPg(dict):
     @pulumi.getter
     def uris(self) -> Optional[Sequence[str]]:
         """
-        PostgreSQL master connection URIs
+        PostgreSQL primary connection URIs.
         """
         return pulumi.get(self, "uris")
 
@@ -16278,7 +16906,7 @@ class PgPg(dict):
     @pulumi.getter
     def user(self) -> Optional[str]:
         """
-        PostgreSQL admin user name
+        PostgreSQL admin user name.
         """
         return pulumi.get(self, "user")
 
@@ -16310,12 +16938,12 @@ class PgPgParam(dict):
                  sslmode: Optional[str] = None,
                  user: Optional[str] = None):
         """
-        :param str database_name: Primary PostgreSQL database name
-        :param str host: PostgreSQL host IP or name
-        :param str password: PostgreSQL admin user password
-        :param int port: PostgreSQL port
-        :param str sslmode: PostgreSQL sslmode setting (currently always "require")
-        :param str user: PostgreSQL admin user name
+        :param str database_name: Primary PostgreSQL database name.
+        :param str host: PostgreSQL host IP or name.
+        :param str password: PostgreSQL admin user password.
+        :param int port: PostgreSQL port.
+        :param str sslmode: PostgreSQL SSL mode setting.
+        :param str user: PostgreSQL admin user name.
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -16334,7 +16962,7 @@ class PgPgParam(dict):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[str]:
         """
-        Primary PostgreSQL database name
+        Primary PostgreSQL database name.
         """
         return pulumi.get(self, "database_name")
 
@@ -16342,7 +16970,7 @@ class PgPgParam(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        PostgreSQL host IP or name
+        PostgreSQL host IP or name.
         """
         return pulumi.get(self, "host")
 
@@ -16350,7 +16978,7 @@ class PgPgParam(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        PostgreSQL admin user password
+        PostgreSQL admin user password.
         """
         return pulumi.get(self, "password")
 
@@ -16358,7 +16986,7 @@ class PgPgParam(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        PostgreSQL port
+        PostgreSQL port.
         """
         return pulumi.get(self, "port")
 
@@ -16366,7 +16994,7 @@ class PgPgParam(dict):
     @pulumi.getter
     def sslmode(self) -> Optional[str]:
         """
-        PostgreSQL sslmode setting (currently always "require")
+        PostgreSQL SSL mode setting.
         """
         return pulumi.get(self, "sslmode")
 
@@ -16374,7 +17002,7 @@ class PgPgParam(dict):
     @pulumi.getter
     def user(self) -> Optional[str]:
         """
-        PostgreSQL admin user name
+        PostgreSQL admin user name.
         """
         return pulumi.get(self, "user")
 
@@ -27084,7 +27712,8 @@ class GetGrafanaGrafanaUserConfigResult(dict):
                  unified_alerting_enabled: Optional[bool] = None,
                  user_auto_assign_org: Optional[bool] = None,
                  user_auto_assign_org_role: Optional[str] = None,
-                 viewers_can_edit: Optional[bool] = None):
+                 viewers_can_edit: Optional[bool] = None,
+                 wal: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param bool alerting_enabled: Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
@@ -27128,6 +27757,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         :param bool user_auto_assign_org: Auto-assign new users on signup to main organization. Defaults to false.
         :param str user_auto_assign_org_role: Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
         :param bool viewers_can_edit: Users with view-only permission can edit but not save dashboards.
+        :param bool wal: Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -27213,6 +27843,8 @@ class GetGrafanaGrafanaUserConfigResult(dict):
             pulumi.set(__self__, "user_auto_assign_org_role", user_auto_assign_org_role)
         if viewers_can_edit is not None:
             pulumi.set(__self__, "viewers_can_edit", viewers_can_edit)
+        if wal is not None:
+            pulumi.set(__self__, "wal", wal)
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
@@ -27550,6 +28182,14 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         Users with view-only permission can edit but not save dashboards.
         """
         return pulumi.get(self, "viewers_can_edit")
+
+    @property
+    @pulumi.getter
+    def wal(self) -> Optional[bool]:
+        """
+        Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
+        """
+        return pulumi.get(self, "wal")
 
 
 @pulumi.output_type
@@ -30001,6 +30641,7 @@ class GetKafkaKafkaUserConfigResult(dict):
                  kafka_rest: Optional[bool] = None,
                  kafka_rest_authorization: Optional[bool] = None,
                  kafka_rest_config: Optional['outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult'] = None,
+                 kafka_sasl_mechanisms: Optional['outputs.GetKafkaKafkaUserConfigKafkaSaslMechanismsResult'] = None,
                  kafka_version: Optional[str] = None,
                  letsencrypt_sasl_privatelink: Optional[bool] = None,
                  private_access: Optional['outputs.GetKafkaKafkaUserConfigPrivateAccessResult'] = None,
@@ -30026,6 +30667,7 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param bool kafka_rest: Enable Kafka-REST service. Default: `false`.
         :param bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
+        :param 'GetKafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
         :param str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
         :param bool letsencrypt_sasl_privatelink: Use Letsencrypt CA for Kafka SASL via Privatelink.
         :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
@@ -30067,6 +30709,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "kafka_rest_authorization", kafka_rest_authorization)
         if kafka_rest_config is not None:
             pulumi.set(__self__, "kafka_rest_config", kafka_rest_config)
+        if kafka_sasl_mechanisms is not None:
+            pulumi.set(__self__, "kafka_sasl_mechanisms", kafka_sasl_mechanisms)
         if kafka_version is not None:
             pulumi.set(__self__, "kafka_version", kafka_version)
         if letsencrypt_sasl_privatelink is not None:
@@ -30206,6 +30850,14 @@ class GetKafkaKafkaUserConfigResult(dict):
         Kafka REST configuration
         """
         return pulumi.get(self, "kafka_rest_config")
+
+    @property
+    @pulumi.getter(name="kafkaSaslMechanisms")
+    def kafka_sasl_mechanisms(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaSaslMechanismsResult']:
+        """
+        Kafka SASL mechanisms
+        """
+        return pulumi.get(self, "kafka_sasl_mechanisms")
 
     @property
     @pulumi.getter(name="kafkaVersion")
@@ -30430,7 +31082,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param str sasl_oauthbearer_jwks_endpoint_url: OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. (Default: null).
         :param str sasl_oauthbearer_sub_claim_name: Name of the scope from which to extract the subject claim from the JWT.(Default: sub).
         :param int socket_request_max_bytes: The maximum number of bytes in a socket request (Default: 104857600 bytes).
-        :param bool transaction_partition_verification_enable: Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+        :param bool transaction_partition_verification_enable: Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
         :param int transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)). Example: `3600000`.
         :param int transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)). Example: `104857600`.
         """
@@ -30875,7 +31527,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="transactionPartitionVerificationEnable")
     def transaction_partition_verification_enable(self) -> Optional[bool]:
         """
-        Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: false).
+        Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition. (Default: true).
         """
         return pulumi.get(self, "transaction_partition_verification_enable")
 
@@ -31402,6 +32054,49 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
 
 
 @pulumi.output_type
+class GetKafkaKafkaUserConfigKafkaSaslMechanismsResult(dict):
+    def __init__(__self__, *,
+                 plain: Optional[bool] = None,
+                 scram_sha256: Optional[bool] = None,
+                 scram_sha512: Optional[bool] = None):
+        """
+        :param bool plain: Enable PLAIN mechanism. Default: `true`.
+        :param bool scram_sha256: Enable SCRAM-SHA-256 mechanism. Default: `true`.
+        :param bool scram_sha512: Enable SCRAM-SHA-512 mechanism. Default: `true`.
+        """
+        if plain is not None:
+            pulumi.set(__self__, "plain", plain)
+        if scram_sha256 is not None:
+            pulumi.set(__self__, "scram_sha256", scram_sha256)
+        if scram_sha512 is not None:
+            pulumi.set(__self__, "scram_sha512", scram_sha512)
+
+    @property
+    @pulumi.getter
+    def plain(self) -> Optional[bool]:
+        """
+        Enable PLAIN mechanism. Default: `true`.
+        """
+        return pulumi.get(self, "plain")
+
+    @property
+    @pulumi.getter(name="scramSha256")
+    def scram_sha256(self) -> Optional[bool]:
+        """
+        Enable SCRAM-SHA-256 mechanism. Default: `true`.
+        """
+        return pulumi.get(self, "scram_sha256")
+
+    @property
+    @pulumi.getter(name="scramSha512")
+    def scram_sha512(self) -> Optional[bool]:
+        """
+        Enable SCRAM-SHA-512 mechanism. Default: `true`.
+        """
+        return pulumi.get(self, "scram_sha512")
+
+
+@pulumi.output_type
 class GetKafkaKafkaUserConfigPrivateAccessResult(dict):
     def __init__(__self__, *,
                  kafka: Optional[bool] = None,
@@ -31918,6 +32613,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectResult(dict):
 @pulumi.output_type
 class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
     def __init__(__self__, *,
+                 admin_timeout_ms: Optional[int] = None,
                  emit_checkpoints_enabled: Optional[bool] = None,
                  emit_checkpoints_interval_seconds: Optional[int] = None,
                  groups: Optional[str] = None,
@@ -31932,6 +32628,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
                  sync_topic_configs_enabled: Optional[bool] = None,
                  tasks_max_per_cpu: Optional[int] = None):
         """
+        :param int admin_timeout_ms: Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
         :param bool emit_checkpoints_enabled: Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
         :param int emit_checkpoints_interval_seconds: Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
         :param str groups: Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
@@ -31946,6 +32643,8 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
         :param bool sync_topic_configs_enabled: Whether to periodically configure remote topics to match their corresponding upstream topics.
         :param int tasks_max_per_cpu: `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
         """
+        if admin_timeout_ms is not None:
+            pulumi.set(__self__, "admin_timeout_ms", admin_timeout_ms)
         if emit_checkpoints_enabled is not None:
             pulumi.set(__self__, "emit_checkpoints_enabled", emit_checkpoints_enabled)
         if emit_checkpoints_interval_seconds is not None:
@@ -31972,6 +32671,14 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
             pulumi.set(__self__, "sync_topic_configs_enabled", sync_topic_configs_enabled)
         if tasks_max_per_cpu is not None:
             pulumi.set(__self__, "tasks_max_per_cpu", tasks_max_per_cpu)
+
+    @property
+    @pulumi.getter(name="adminTimeoutMs")
+    def admin_timeout_ms(self) -> Optional[int]:
+        """
+        Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+        """
+        return pulumi.get(self, "admin_timeout_ms")
 
     @property
     @pulumi.getter(name="emitCheckpointsEnabled")
@@ -35288,9 +35995,12 @@ class GetOpenSearchOpensearchResult(dict):
 class GetOpenSearchOpensearchUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
+                 azure_migration: Optional['outputs.GetOpenSearchOpensearchUserConfigAzureMigrationResult'] = None,
                  custom_domain: Optional[str] = None,
                  disable_replication_factor_adjustment: Optional[bool] = None,
+                 gcs_migration: Optional['outputs.GetOpenSearchOpensearchUserConfigGcsMigrationResult'] = None,
                  index_patterns: Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult']] = None,
+                 index_rollup: Optional['outputs.GetOpenSearchOpensearchUserConfigIndexRollupResult'] = None,
                  index_template: Optional['outputs.GetOpenSearchOpensearchUserConfigIndexTemplateResult'] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
@@ -35306,6 +36016,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
                  project_to_fork_from: Optional[str] = None,
                  public_access: Optional['outputs.GetOpenSearchOpensearchUserConfigPublicAccessResult'] = None,
                  recovery_basebackup_name: Optional[str] = None,
+                 s3_migration: Optional['outputs.GetOpenSearchOpensearchUserConfigS3MigrationResult'] = None,
                  saml: Optional['outputs.GetOpenSearchOpensearchUserConfigSamlResult'] = None,
                  service_log: Optional[bool] = None,
                  service_to_fork_from: Optional[str] = None,
@@ -35315,6 +36026,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         :param bool disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
         :param Sequence['GetOpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns
+        :param 'GetOpenSearchOpensearchUserConfigIndexRollupArgs' index_rollup: Index rollup settings
         :param 'GetOpenSearchOpensearchUserConfigIndexTemplateArgs' index_template: Template settings for all new indexes
         :param Sequence['GetOpenSearchOpensearchUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -35337,12 +36049,18 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
+        if azure_migration is not None:
+            pulumi.set(__self__, "azure_migration", azure_migration)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if disable_replication_factor_adjustment is not None:
             pulumi.set(__self__, "disable_replication_factor_adjustment", disable_replication_factor_adjustment)
+        if gcs_migration is not None:
+            pulumi.set(__self__, "gcs_migration", gcs_migration)
         if index_patterns is not None:
             pulumi.set(__self__, "index_patterns", index_patterns)
+        if index_rollup is not None:
+            pulumi.set(__self__, "index_rollup", index_rollup)
         if index_template is not None:
             pulumi.set(__self__, "index_template", index_template)
         if ip_filter_objects is not None:
@@ -35373,6 +36091,8 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if s3_migration is not None:
+            pulumi.set(__self__, "s3_migration", s3_migration)
         if saml is not None:
             pulumi.set(__self__, "saml", saml)
         if service_log is not None:
@@ -35391,6 +36111,11 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         return pulumi.get(self, "additional_backup_regions")
 
     @property
+    @pulumi.getter(name="azureMigration")
+    def azure_migration(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigAzureMigrationResult']:
+        return pulumi.get(self, "azure_migration")
+
+    @property
     @pulumi.getter(name="customDomain")
     def custom_domain(self) -> Optional[str]:
         """
@@ -35407,12 +36132,25 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         return pulumi.get(self, "disable_replication_factor_adjustment")
 
     @property
+    @pulumi.getter(name="gcsMigration")
+    def gcs_migration(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigGcsMigrationResult']:
+        return pulumi.get(self, "gcs_migration")
+
+    @property
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult']]:
         """
         Index patterns
         """
         return pulumi.get(self, "index_patterns")
+
+    @property
+    @pulumi.getter(name="indexRollup")
+    def index_rollup(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigIndexRollupResult']:
+        """
+        Index rollup settings
+        """
+        return pulumi.get(self, "index_rollup")
 
     @property
     @pulumi.getter(name="indexTemplate")
@@ -35536,6 +36274,11 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         return pulumi.get(self, "recovery_basebackup_name")
 
     @property
+    @pulumi.getter(name="s3Migration")
+    def s3_migration(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigS3MigrationResult']:
+        return pulumi.get(self, "s3_migration")
+
+    @property
     @pulumi.getter
     def saml(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigSamlResult']:
         """
@@ -35566,6 +36309,192 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         Use static public IP addresses.
         """
         return pulumi.get(self, "static_ips")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
+    def __init__(__self__, *,
+                 account: str,
+                 base_path: str,
+                 container: str,
+                 snapshot_name: str,
+                 chunk_size: Optional[str] = None,
+                 compress: Optional[bool] = None,
+                 endpoint_suffix: Optional[str] = None,
+                 key: Optional[str] = None,
+                 sas_token: Optional[str] = None):
+        """
+        :param str account: Azure account name.
+        :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
+        :param str container: Azure container name.
+        :param str snapshot_name: The snapshot name to restore from.
+        :param str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        :param bool compress: When set to true metadata files are stored in compressed format.
+        :param str endpoint_suffix: Defines the DNS suffix for Azure Storage endpoints.
+        :param str key: Azure account secret key. One of key or sas_token should be specified.
+        :param str sas_token: A shared access signatures (SAS) token. One of key or sas_token should be specified.
+        """
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "base_path", base_path)
+        pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if chunk_size is not None:
+            pulumi.set(__self__, "chunk_size", chunk_size)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if endpoint_suffix is not None:
+            pulumi.set(__self__, "endpoint_suffix", endpoint_suffix)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if sas_token is not None:
+            pulumi.set(__self__, "sas_token", sas_token)
+
+    @property
+    @pulumi.getter
+    def account(self) -> str:
+        """
+        Azure account name.
+        """
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> str:
+        """
+        The path to the repository data within its container. The value of this setting should not start or end with a /.
+        """
+        return pulumi.get(self, "base_path")
+
+    @property
+    @pulumi.getter
+    def container(self) -> str:
+        """
+        Azure container name.
+        """
+        return pulumi.get(self, "container")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        """
+        The snapshot name to restore from.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> Optional[str]:
+        """
+        Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[bool]:
+        """
+        When set to true metadata files are stored in compressed format.
+        """
+        return pulumi.get(self, "compress")
+
+    @property
+    @pulumi.getter(name="endpointSuffix")
+    def endpoint_suffix(self) -> Optional[str]:
+        """
+        Defines the DNS suffix for Azure Storage endpoints.
+        """
+        return pulumi.get(self, "endpoint_suffix")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Azure account secret key. One of key or sas_token should be specified.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="sasToken")
+    def sas_token(self) -> Optional[str]:
+        """
+        A shared access signatures (SAS) token. One of key or sas_token should be specified.
+        """
+        return pulumi.get(self, "sas_token")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigGcsMigrationResult(dict):
+    def __init__(__self__, *,
+                 base_path: str,
+                 bucket: str,
+                 credentials: str,
+                 snapshot_name: str,
+                 chunk_size: Optional[str] = None,
+                 compress: Optional[bool] = None):
+        """
+        :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
+        :param str bucket: The path to the repository data within its container.
+        :param str credentials: Google Cloud Storage credentials file content.
+        :param str snapshot_name: The snapshot name to restore from.
+        :param str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        :param bool compress: When set to true metadata files are stored in compressed format.
+        """
+        pulumi.set(__self__, "base_path", base_path)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "credentials", credentials)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if chunk_size is not None:
+            pulumi.set(__self__, "chunk_size", chunk_size)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+
+    @property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> str:
+        """
+        The path to the repository data within its container. The value of this setting should not start or end with a /.
+        """
+        return pulumi.get(self, "base_path")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The path to the repository data within its container.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> str:
+        """
+        Google Cloud Storage credentials file content.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        """
+        The snapshot name to restore from.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> Optional[str]:
+        """
+        Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[bool]:
+        """
+        When set to true metadata files are stored in compressed format.
+        """
+        return pulumi.get(self, "compress")
 
 
 @pulumi.output_type
@@ -35607,6 +36536,73 @@ class GetOpenSearchOpensearchUserConfigIndexPatternResult(dict):
         Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
         """
         return pulumi.get(self, "sorting_algorithm")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigIndexRollupResult(dict):
+    def __init__(__self__, *,
+                 rollup_dashboards_enabled: Optional[bool] = None,
+                 rollup_enabled: Optional[bool] = None,
+                 rollup_search_backoff_count: Optional[int] = None,
+                 rollup_search_backoff_millis: Optional[int] = None,
+                 rollup_search_search_all_jobs: Optional[bool] = None):
+        """
+        :param bool rollup_dashboards_enabled: Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.
+        :param bool rollup_enabled: Whether the rollup plugin is enabled. Defaults to true.
+        :param int rollup_search_backoff_count: How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.
+        :param int rollup_search_backoff_millis: The backoff time between retries for failed rollup jobs. Defaults to 1000ms.
+        :param bool rollup_search_search_all_jobs: Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.
+        """
+        if rollup_dashboards_enabled is not None:
+            pulumi.set(__self__, "rollup_dashboards_enabled", rollup_dashboards_enabled)
+        if rollup_enabled is not None:
+            pulumi.set(__self__, "rollup_enabled", rollup_enabled)
+        if rollup_search_backoff_count is not None:
+            pulumi.set(__self__, "rollup_search_backoff_count", rollup_search_backoff_count)
+        if rollup_search_backoff_millis is not None:
+            pulumi.set(__self__, "rollup_search_backoff_millis", rollup_search_backoff_millis)
+        if rollup_search_search_all_jobs is not None:
+            pulumi.set(__self__, "rollup_search_search_all_jobs", rollup_search_search_all_jobs)
+
+    @property
+    @pulumi.getter(name="rollupDashboardsEnabled")
+    def rollup_dashboards_enabled(self) -> Optional[bool]:
+        """
+        Whether rollups are enabled in OpenSearch Dashboards. Defaults to true.
+        """
+        return pulumi.get(self, "rollup_dashboards_enabled")
+
+    @property
+    @pulumi.getter(name="rollupEnabled")
+    def rollup_enabled(self) -> Optional[bool]:
+        """
+        Whether the rollup plugin is enabled. Defaults to true.
+        """
+        return pulumi.get(self, "rollup_enabled")
+
+    @property
+    @pulumi.getter(name="rollupSearchBackoffCount")
+    def rollup_search_backoff_count(self) -> Optional[int]:
+        """
+        How many retries the plugin should attempt for failed rollup jobs. Defaults to 5.
+        """
+        return pulumi.get(self, "rollup_search_backoff_count")
+
+    @property
+    @pulumi.getter(name="rollupSearchBackoffMillis")
+    def rollup_search_backoff_millis(self) -> Optional[int]:
+        """
+        The backoff time between retries for failed rollup jobs. Defaults to 1000ms.
+        """
+        return pulumi.get(self, "rollup_search_backoff_millis")
+
+    @property
+    @pulumi.getter(name="rollupSearchSearchAllJobs")
+    def rollup_search_search_all_jobs(self) -> Optional[bool]:
+        """
+        Whether OpenSearch should return all jobs that match all specified search terms. If disabled, OpenSearch returns just one, as opposed to all, of the jobs that matches the search terms. Defaults to false.
+        """
+        return pulumi.get(self, "rollup_search_search_all_jobs")
 
 
 @pulumi.output_type
@@ -35698,8 +36694,8 @@ class GetOpenSearchOpensearchUserConfigOpenidResult(dict):
                  scope: Optional[str] = None,
                  subject_key: Optional[str] = None):
         """
-        :param str client_id: The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
-        :param str client_secret: The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+        :param str client_id: The ID of the OpenID Connect client configured in your IdP. Required.
+        :param str client_secret: The client secret of the OpenID Connect client configured in your IdP. Required.
         :param str connect_url: The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
         :param bool enabled: Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
         :param str header: HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
@@ -35708,7 +36704,7 @@ class GetOpenSearchOpensearchUserConfigOpenidResult(dict):
         :param int refresh_rate_limit_count: The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
         :param int refresh_rate_limit_time_window_ms: The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
         :param str roles_key: The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
-        :param str scope: The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+        :param str scope: The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
         :param str subject_key: The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -35736,7 +36732,7 @@ class GetOpenSearchOpensearchUserConfigOpenidResult(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
         """
-        The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+        The ID of the OpenID Connect client configured in your IdP. Required.
         """
         return pulumi.get(self, "client_id")
 
@@ -35744,7 +36740,7 @@ class GetOpenSearchOpensearchUserConfigOpenidResult(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> str:
         """
-        The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+        The client secret of the OpenID Connect client configured in your IdP. Required.
         """
         return pulumi.get(self, "client_secret")
 
@@ -35816,7 +36812,7 @@ class GetOpenSearchOpensearchUserConfigOpenidResult(dict):
     @pulumi.getter
     def scope(self) -> Optional[str]:
         """
-        The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+        The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
         """
         return pulumi.get(self, "scope")
 
@@ -35885,7 +36881,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         :param str email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         :param str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param str email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
-        :param bool enable_security_audit: Enable/Disable security audit. Default: `false`.
+        :param bool enable_security_audit: Enable/Disable security audit.
         :param int http_max_content_length: Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         :param int http_max_header_size: The max size of allowed headers, in bytes. Example: `8192`.
         :param int http_max_initial_line_length: The max length of an HTTP URL, in bytes. Example: `4096`.
@@ -35897,14 +36893,14 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         :param int indices_query_bool_max_clause_count: Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
         :param int indices_recovery_max_bytes_per_sec: Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
         :param int indices_recovery_max_concurrent_file_chunks: Number of file chunks sent in parallel for each recovery. Defaults to 2.
-        :param bool ism_enabled: Specifies whether ISM is enabled or not. Default: `true`.
-        :param bool ism_history_enabled: Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
-        :param int ism_history_max_age: The maximum age before rolling over the audit history index in hours. Default: `24`.
-        :param int ism_history_max_docs: The maximum number of documents before rolling over the audit history index. Default: `2500000`.
-        :param int ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Default: `8`.
-        :param int ism_history_rollover_retention_period: How long audit history indices are kept in days. Default: `30`.
-        :param bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
-        :param int knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        :param bool ism_enabled: Specifies whether ISM is enabled or not.
+        :param bool ism_history_enabled: Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
+        :param int ism_history_max_age: The maximum age before rolling over the audit history index in hours. Example: `24`.
+        :param int ism_history_max_docs: The maximum number of documents before rolling over the audit history index. Example: `2500000`.
+        :param int ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Example: `8`.
+        :param int ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
+        :param bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
+        :param int knn_memory_circuit_breaker_limit: Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
         :param bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         :param bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
         :param Sequence[str] reindex_remote_whitelists: Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
@@ -36079,7 +37075,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="enableSecurityAudit")
     def enable_security_audit(self) -> Optional[bool]:
         """
-        Enable/Disable security audit. Default: `false`.
+        Enable/Disable security audit.
         """
         return pulumi.get(self, "enable_security_audit")
 
@@ -36175,7 +37171,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="ismEnabled")
     def ism_enabled(self) -> Optional[bool]:
         """
-        Specifies whether ISM is enabled or not. Default: `true`.
+        Specifies whether ISM is enabled or not.
         """
         return pulumi.get(self, "ism_enabled")
 
@@ -36183,7 +37179,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="ismHistoryEnabled")
     def ism_history_enabled(self) -> Optional[bool]:
         """
-        Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+        Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
         """
         return pulumi.get(self, "ism_history_enabled")
 
@@ -36191,7 +37187,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="ismHistoryMaxAge")
     def ism_history_max_age(self) -> Optional[int]:
         """
-        The maximum age before rolling over the audit history index in hours. Default: `24`.
+        The maximum age before rolling over the audit history index in hours. Example: `24`.
         """
         return pulumi.get(self, "ism_history_max_age")
 
@@ -36199,7 +37195,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="ismHistoryMaxDocs")
     def ism_history_max_docs(self) -> Optional[int]:
         """
-        The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+        The maximum number of documents before rolling over the audit history index. Example: `2500000`.
         """
         return pulumi.get(self, "ism_history_max_docs")
 
@@ -36207,7 +37203,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="ismHistoryRolloverCheckPeriod")
     def ism_history_rollover_check_period(self) -> Optional[int]:
         """
-        The time between rollover checks for the audit history index in hours. Default: `8`.
+        The time between rollover checks for the audit history index in hours. Example: `8`.
         """
         return pulumi.get(self, "ism_history_rollover_check_period")
 
@@ -36215,7 +37211,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="ismHistoryRolloverRetentionPeriod")
     def ism_history_rollover_retention_period(self) -> Optional[int]:
         """
-        How long audit history indices are kept in days. Default: `30`.
+        How long audit history indices are kept in days. Example: `30`.
         """
         return pulumi.get(self, "ism_history_rollover_retention_period")
 
@@ -36223,7 +37219,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="knnMemoryCircuitBreakerEnabled")
     def knn_memory_circuit_breaker_enabled(self) -> Optional[bool]:
         """
-        Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        Enable or disable KNN memory circuit breaker. Defaults to true.
         """
         return pulumi.get(self, "knn_memory_circuit_breaker_enabled")
 
@@ -36231,7 +37227,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="knnMemoryCircuitBreakerLimit")
     def knn_memory_circuit_breaker_limit(self) -> Optional[int]:
         """
-        Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
         """
         return pulumi.get(self, "knn_memory_circuit_breaker_limit")
 
@@ -36734,6 +37730,127 @@ class GetOpenSearchOpensearchUserConfigPublicAccessResult(dict):
 
 
 @pulumi.output_type
+class GetOpenSearchOpensearchUserConfigS3MigrationResult(dict):
+    def __init__(__self__, *,
+                 access_key: str,
+                 base_path: str,
+                 bucket: str,
+                 region: str,
+                 secret_key: str,
+                 snapshot_name: str,
+                 chunk_size: Optional[str] = None,
+                 compress: Optional[bool] = None,
+                 endpoint: Optional[str] = None,
+                 server_side_encryption: Optional[bool] = None):
+        """
+        :param str access_key: AWS Access key.
+        :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
+        :param str bucket: S3 bucket name.
+        :param str region: S3 region.
+        :param str secret_key: AWS secret key.
+        :param str snapshot_name: The snapshot name to restore from.
+        :param str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        :param bool compress: When set to true metadata files are stored in compressed format.
+        :param str endpoint: The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+        :param bool server_side_encryption: When set to true files are encrypted on server side.
+        """
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "base_path", base_path)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "secret_key", secret_key)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if chunk_size is not None:
+            pulumi.set(__self__, "chunk_size", chunk_size)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if server_side_encryption is not None:
+            pulumi.set(__self__, "server_side_encryption", server_side_encryption)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        """
+        AWS Access key.
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> str:
+        """
+        The path to the repository data within its container. The value of this setting should not start or end with a /.
+        """
+        return pulumi.get(self, "base_path")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        S3 bucket name.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        S3 region.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> str:
+        """
+        AWS secret key.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        """
+        The snapshot name to restore from.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> Optional[str]:
+        """
+        Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[bool]:
+        """
+        When set to true metadata files are stored in compressed format.
+        """
+        return pulumi.get(self, "compress")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="serverSideEncryption")
+    def server_side_encryption(self) -> Optional[bool]:
+        """
+        When set to true files are encrypted on server side.
+        """
+        return pulumi.get(self, "server_side_encryption")
+
+
+@pulumi.output_type
 class GetOpenSearchOpensearchUserConfigSamlResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
@@ -37015,20 +38132,20 @@ class GetPgPgResult(dict):
                  uris: Sequence[str],
                  user: str):
         """
-        :param str bouncer: Bouncer connection details
-        :param str dbname: Primary PostgreSQL database name
-        :param str host: PostgreSQL master node host IP or name
-        :param int max_connections: Connection limit
-        :param Sequence['GetPgPgParamArgs'] params: PostgreSQL connection parameters
-        :param str password: PostgreSQL admin user password
-        :param int port: PostgreSQL port
-        :param str replica_uri: PostgreSQL replica URI for services with a replica
-        :param str sslmode: PostgreSQL sslmode setting (currently always "require")
-        :param Sequence[str] standby_uris: PostgreSQL standby connection URIs
-        :param Sequence[str] syncing_uris: PostgreSQL syncing connection URIs
-        :param str uri: PostgreSQL master connection URI
-        :param Sequence[str] uris: PostgreSQL master connection URIs
-        :param str user: PostgreSQL admin user name
+        :param str bouncer: PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+        :param str dbname: Primary PostgreSQL database name.
+        :param str host: PostgreSQL primary node host IP or name.
+        :param int max_connections: The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
+        :param Sequence['GetPgPgParamArgs'] params: PostgreSQL connection parameters.
+        :param str password: PostgreSQL admin user password.
+        :param int port: PostgreSQL port.
+        :param str replica_uri: PostgreSQL replica URI for services with a replica.
+        :param str sslmode: PostgreSQL SSL mode setting.
+        :param Sequence[str] standby_uris: PostgreSQL standby connection URIs.
+        :param Sequence[str] syncing_uris: PostgreSQL syncing connection URIs.
+        :param str uri: PostgreSQL primary connection URI.
+        :param Sequence[str] uris: PostgreSQL primary connection URIs.
+        :param str user: PostgreSQL admin user name.
         """
         pulumi.set(__self__, "bouncer", bouncer)
         pulumi.set(__self__, "dbname", dbname)
@@ -37049,7 +38166,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def bouncer(self) -> str:
         """
-        Bouncer connection details
+        PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
         """
         return pulumi.get(self, "bouncer")
 
@@ -37057,7 +38174,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def dbname(self) -> str:
         """
-        Primary PostgreSQL database name
+        Primary PostgreSQL database name.
         """
         return pulumi.get(self, "dbname")
 
@@ -37065,7 +38182,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        PostgreSQL master node host IP or name
+        PostgreSQL primary node host IP or name.
         """
         return pulumi.get(self, "host")
 
@@ -37073,7 +38190,7 @@ class GetPgPgResult(dict):
     @pulumi.getter(name="maxConnections")
     def max_connections(self) -> int:
         """
-        Connection limit
+        The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
         """
         return pulumi.get(self, "max_connections")
 
@@ -37081,7 +38198,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def params(self) -> Sequence['outputs.GetPgPgParamResult']:
         """
-        PostgreSQL connection parameters
+        PostgreSQL connection parameters.
         """
         return pulumi.get(self, "params")
 
@@ -37089,7 +38206,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        PostgreSQL admin user password
+        PostgreSQL admin user password.
         """
         return pulumi.get(self, "password")
 
@@ -37097,7 +38214,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        PostgreSQL port
+        PostgreSQL port.
         """
         return pulumi.get(self, "port")
 
@@ -37105,7 +38222,7 @@ class GetPgPgResult(dict):
     @pulumi.getter(name="replicaUri")
     def replica_uri(self) -> str:
         """
-        PostgreSQL replica URI for services with a replica
+        PostgreSQL replica URI for services with a replica.
         """
         return pulumi.get(self, "replica_uri")
 
@@ -37113,7 +38230,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def sslmode(self) -> str:
         """
-        PostgreSQL sslmode setting (currently always "require")
+        PostgreSQL SSL mode setting.
         """
         return pulumi.get(self, "sslmode")
 
@@ -37121,7 +38238,7 @@ class GetPgPgResult(dict):
     @pulumi.getter(name="standbyUris")
     def standby_uris(self) -> Sequence[str]:
         """
-        PostgreSQL standby connection URIs
+        PostgreSQL standby connection URIs.
         """
         return pulumi.get(self, "standby_uris")
 
@@ -37129,7 +38246,7 @@ class GetPgPgResult(dict):
     @pulumi.getter(name="syncingUris")
     def syncing_uris(self) -> Sequence[str]:
         """
-        PostgreSQL syncing connection URIs
+        PostgreSQL syncing connection URIs.
         """
         return pulumi.get(self, "syncing_uris")
 
@@ -37137,7 +38254,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        PostgreSQL master connection URI
+        PostgreSQL primary connection URI.
         """
         return pulumi.get(self, "uri")
 
@@ -37145,7 +38262,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def uris(self) -> Sequence[str]:
         """
-        PostgreSQL master connection URIs
+        PostgreSQL primary connection URIs.
         """
         return pulumi.get(self, "uris")
 
@@ -37153,7 +38270,7 @@ class GetPgPgResult(dict):
     @pulumi.getter
     def user(self) -> str:
         """
-        PostgreSQL admin user name
+        PostgreSQL admin user name.
         """
         return pulumi.get(self, "user")
 
@@ -37168,12 +38285,12 @@ class GetPgPgParamResult(dict):
                  sslmode: str,
                  user: str):
         """
-        :param str database_name: Primary PostgreSQL database name
-        :param str host: PostgreSQL host IP or name
-        :param str password: PostgreSQL admin user password
-        :param int port: PostgreSQL port
-        :param str sslmode: PostgreSQL sslmode setting (currently always "require")
-        :param str user: PostgreSQL admin user name
+        :param str database_name: Primary PostgreSQL database name.
+        :param str host: PostgreSQL host IP or name.
+        :param str password: PostgreSQL admin user password.
+        :param int port: PostgreSQL port.
+        :param str sslmode: PostgreSQL SSL mode setting.
+        :param str user: PostgreSQL admin user name.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "host", host)
@@ -37186,7 +38303,7 @@ class GetPgPgParamResult(dict):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
         """
-        Primary PostgreSQL database name
+        Primary PostgreSQL database name.
         """
         return pulumi.get(self, "database_name")
 
@@ -37194,7 +38311,7 @@ class GetPgPgParamResult(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        PostgreSQL host IP or name
+        PostgreSQL host IP or name.
         """
         return pulumi.get(self, "host")
 
@@ -37202,7 +38319,7 @@ class GetPgPgParamResult(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        PostgreSQL admin user password
+        PostgreSQL admin user password.
         """
         return pulumi.get(self, "password")
 
@@ -37210,7 +38327,7 @@ class GetPgPgParamResult(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        PostgreSQL port
+        PostgreSQL port.
         """
         return pulumi.get(self, "port")
 
@@ -37218,7 +38335,7 @@ class GetPgPgParamResult(dict):
     @pulumi.getter
     def sslmode(self) -> str:
         """
-        PostgreSQL sslmode setting (currently always "require")
+        PostgreSQL SSL mode setting.
         """
         return pulumi.get(self, "sslmode")
 
@@ -37226,7 +38343,7 @@ class GetPgPgParamResult(dict):
     @pulumi.getter
     def user(self) -> str:
         """
-        PostgreSQL admin user name
+        PostgreSQL admin user name.
         """
         return pulumi.get(self, "user")
 

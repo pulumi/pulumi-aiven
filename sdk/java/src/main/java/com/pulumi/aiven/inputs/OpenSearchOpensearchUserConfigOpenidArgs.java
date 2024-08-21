@@ -19,14 +19,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     public static final OpenSearchOpensearchUserConfigOpenidArgs Empty = new OpenSearchOpensearchUserConfigOpenidArgs();
 
     /**
-     * The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * The ID of the OpenID Connect client configured in your IdP. Required.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * @return The ID of the OpenID Connect client configured in your IdP. Required.
      * 
      */
     public Output<String> clientId() {
@@ -34,14 +34,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * The client secret of the OpenID Connect client configured in your IdP. Required.
      * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
-     * @return The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+     * @return The client secret of the OpenID Connect client configured in your IdP. Required.
      * 
      */
     public Output<String> clientSecret() {
@@ -169,14 +169,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -234,7 +234,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
+         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
+         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
+         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
          * 
          * @return builder
          * 

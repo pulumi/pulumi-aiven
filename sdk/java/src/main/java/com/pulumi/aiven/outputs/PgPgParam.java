@@ -13,74 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PgPgParam {
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     private @Nullable String databaseName;
     /**
-     * @return PostgreSQL host IP or name
+     * @return PostgreSQL host IP or name.
      * 
      */
     private @Nullable String host;
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     private @Nullable String password;
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     private @Nullable String sslmode;
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     private @Nullable String user;
 
     private PgPgParam() {}
     /**
-     * @return Primary PostgreSQL database name
+     * @return Primary PostgreSQL database name.
      * 
      */
     public Optional<String> databaseName() {
         return Optional.ofNullable(this.databaseName);
     }
     /**
-     * @return PostgreSQL host IP or name
+     * @return PostgreSQL host IP or name.
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return PostgreSQL admin user password
+     * @return PostgreSQL admin user password.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return PostgreSQL port
+     * @return PostgreSQL port.
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * @return PostgreSQL SSL mode setting.
      * 
      */
     public Optional<String> sslmode() {
         return Optional.ofNullable(this.sslmode);
     }
     /**
-     * @return PostgreSQL admin user name
+     * @return PostgreSQL admin user name.
      * 
      */
     public Optional<String> user() {

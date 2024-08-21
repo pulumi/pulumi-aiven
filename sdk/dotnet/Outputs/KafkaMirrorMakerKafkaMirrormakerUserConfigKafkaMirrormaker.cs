@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
     {
         /// <summary>
+        /// Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+        /// </summary>
+        public readonly int? AdminTimeoutMs;
+        /// <summary>
         /// Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
         /// </summary>
         public readonly bool? EmitCheckpointsEnabled;
@@ -68,6 +72,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(
+            int? adminTimeoutMs,
+
             bool? emitCheckpointsEnabled,
 
             int? emitCheckpointsIntervalSeconds,
@@ -94,6 +100,7 @@ namespace Pulumi.Aiven.Outputs
 
             int? tasksMaxPerCpu)
         {
+            AdminTimeoutMs = adminTimeoutMs;
             EmitCheckpointsEnabled = emitCheckpointsEnabled;
             EmitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
             Groups = groups;

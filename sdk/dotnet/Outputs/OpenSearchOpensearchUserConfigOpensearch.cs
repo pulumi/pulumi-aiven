@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? EmailSenderUsername;
         /// <summary>
-        /// Enable/Disable security audit. Default: `false`.
+        /// Enable/Disable security audit.
         /// </summary>
         public readonly bool? EnableSecurityAudit;
         /// <summary>
@@ -94,35 +94,35 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? IndicesRecoveryMaxConcurrentFileChunks;
         /// <summary>
-        /// Specifies whether ISM is enabled or not. Default: `true`.
+        /// Specifies whether ISM is enabled or not.
         /// </summary>
         public readonly bool? IsmEnabled;
         /// <summary>
-        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
         /// </summary>
         public readonly bool? IsmHistoryEnabled;
         /// <summary>
-        /// The maximum age before rolling over the audit history index in hours. Default: `24`.
+        /// The maximum age before rolling over the audit history index in hours. Example: `24`.
         /// </summary>
         public readonly int? IsmHistoryMaxAge;
         /// <summary>
-        /// The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+        /// The maximum number of documents before rolling over the audit history index. Example: `2500000`.
         /// </summary>
         public readonly int? IsmHistoryMaxDocs;
         /// <summary>
-        /// The time between rollover checks for the audit history index in hours. Default: `8`.
+        /// The time between rollover checks for the audit history index in hours. Example: `8`.
         /// </summary>
         public readonly int? IsmHistoryRolloverCheckPeriod;
         /// <summary>
-        /// How long audit history indices are kept in days. Default: `30`.
+        /// How long audit history indices are kept in days. Example: `30`.
         /// </summary>
         public readonly int? IsmHistoryRolloverRetentionPeriod;
         /// <summary>
-        /// Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+        /// Enable or disable KNN memory circuit breaker. Defaults to true.
         /// </summary>
         public readonly bool? KnnMemoryCircuitBreakerEnabled;
         /// <summary>
-        /// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+        /// Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
         /// </summary>
         public readonly int? KnnMemoryCircuitBreakerLimit;
         /// <summary>

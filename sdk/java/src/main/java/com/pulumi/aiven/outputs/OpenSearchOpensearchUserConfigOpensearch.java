@@ -56,7 +56,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable String emailSenderUsername;
     /**
-     * @return Enable/Disable security audit. Default: `false`.
+     * @return Enable/Disable security audit.
      * 
      */
     private @Nullable Boolean enableSecurityAudit;
@@ -116,42 +116,42 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer indicesRecoveryMaxConcurrentFileChunks;
     /**
-     * @return Specifies whether ISM is enabled or not. Default: `true`.
+     * @return Specifies whether ISM is enabled or not.
      * 
      */
     private @Nullable Boolean ismEnabled;
     /**
-     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
      * 
      */
     private @Nullable Boolean ismHistoryEnabled;
     /**
-     * @return The maximum age before rolling over the audit history index in hours. Default: `24`.
+     * @return The maximum age before rolling over the audit history index in hours. Example: `24`.
      * 
      */
     private @Nullable Integer ismHistoryMaxAge;
     /**
-     * @return The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+     * @return The maximum number of documents before rolling over the audit history index. Example: `2500000`.
      * 
      */
     private @Nullable Integer ismHistoryMaxDocs;
     /**
-     * @return The time between rollover checks for the audit history index in hours. Default: `8`.
+     * @return The time between rollover checks for the audit history index in hours. Example: `8`.
      * 
      */
     private @Nullable Integer ismHistoryRolloverCheckPeriod;
     /**
-     * @return How long audit history indices are kept in days. Default: `30`.
+     * @return How long audit history indices are kept in days. Example: `30`.
      * 
      */
     private @Nullable Integer ismHistoryRolloverRetentionPeriod;
     /**
-     * @return Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * @return Enable or disable KNN memory circuit breaker. Defaults to true.
      * 
      */
     private @Nullable Boolean knnMemoryCircuitBreakerEnabled;
     /**
-     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
      * 
      */
     private @Nullable Integer knnMemoryCircuitBreakerLimit;
@@ -294,7 +294,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.emailSenderUsername);
     }
     /**
-     * @return Enable/Disable security audit. Default: `false`.
+     * @return Enable/Disable security audit.
      * 
      */
     public Optional<Boolean> enableSecurityAudit() {
@@ -378,56 +378,56 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.indicesRecoveryMaxConcurrentFileChunks);
     }
     /**
-     * @return Specifies whether ISM is enabled or not. Default: `true`.
+     * @return Specifies whether ISM is enabled or not.
      * 
      */
     public Optional<Boolean> ismEnabled() {
         return Optional.ofNullable(this.ismEnabled);
     }
     /**
-     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
+     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document.
      * 
      */
     public Optional<Boolean> ismHistoryEnabled() {
         return Optional.ofNullable(this.ismHistoryEnabled);
     }
     /**
-     * @return The maximum age before rolling over the audit history index in hours. Default: `24`.
+     * @return The maximum age before rolling over the audit history index in hours. Example: `24`.
      * 
      */
     public Optional<Integer> ismHistoryMaxAge() {
         return Optional.ofNullable(this.ismHistoryMaxAge);
     }
     /**
-     * @return The maximum number of documents before rolling over the audit history index. Default: `2500000`.
+     * @return The maximum number of documents before rolling over the audit history index. Example: `2500000`.
      * 
      */
     public Optional<Integer> ismHistoryMaxDocs() {
         return Optional.ofNullable(this.ismHistoryMaxDocs);
     }
     /**
-     * @return The time between rollover checks for the audit history index in hours. Default: `8`.
+     * @return The time between rollover checks for the audit history index in hours. Example: `8`.
      * 
      */
     public Optional<Integer> ismHistoryRolloverCheckPeriod() {
         return Optional.ofNullable(this.ismHistoryRolloverCheckPeriod);
     }
     /**
-     * @return How long audit history indices are kept in days. Default: `30`.
+     * @return How long audit history indices are kept in days. Example: `30`.
      * 
      */
     public Optional<Integer> ismHistoryRolloverRetentionPeriod() {
         return Optional.ofNullable(this.ismHistoryRolloverRetentionPeriod);
     }
     /**
-     * @return Enable or disable KNN memory circuit breaker. Defaults to true. Default: `true`.
+     * @return Enable or disable KNN memory circuit breaker. Defaults to true.
      * 
      */
     public Optional<Boolean> knnMemoryCircuitBreakerEnabled() {
         return Optional.ofNullable(this.knnMemoryCircuitBreakerEnabled);
     }
     /**
-     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size. Default: `50`.
+     * @return Maximum amount of memory that can be used for KNN index. Defaults to 50% of the JVM heap size.
      * 
      */
     public Optional<Integer> knnMemoryCircuitBreakerLimit() {

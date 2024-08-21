@@ -69,7 +69,7 @@ type LookupProjectVpcResult struct {
 	NetworkCidr string `pulumi:"networkCidr"`
 	// Identifies the project this resource belongs to.
 	Project *string `pulumi:"project"`
-	// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
 	State string `pulumi:"state"`
 	// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
 	VpcId *string `pulumi:"vpcId"`
@@ -137,7 +137,7 @@ func (o LookupProjectVpcResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
 func (o LookupProjectVpcResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.State }).(pulumi.StringOutput)
 }

@@ -67,7 +67,7 @@ export class ProjectVpc extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -126,7 +126,7 @@ export interface ProjectVpcState {
      */
     project?: pulumi.Input<string>;
     /**
-     * State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
+     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
     state?: pulumi.Input<string>;
 }

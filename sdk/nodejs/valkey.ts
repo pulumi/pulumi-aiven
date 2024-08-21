@@ -64,7 +64,7 @@ export class Valkey extends pulumi.CustomResource {
     }
 
     /**
-     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      */
     public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -271,7 +271,7 @@ export class Valkey extends pulumi.CustomResource {
  */
 export interface ValkeyState {
     /**
-     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**
@@ -391,7 +391,7 @@ export interface ValkeyState {
  */
 export interface ValkeyArgs {
     /**
-     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**
