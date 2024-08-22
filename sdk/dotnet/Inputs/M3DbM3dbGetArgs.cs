@@ -12,35 +12,85 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("httpClusterUri")]
+        private Input<string>? _httpClusterUri;
+
         /// <summary>
         /// M3DB cluster URI.
         /// </summary>
-        [Input("httpClusterUri")]
-        public Input<string>? HttpClusterUri { get; set; }
+        public Input<string>? HttpClusterUri
+        {
+            get => _httpClusterUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _httpClusterUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("httpNodeUri")]
+        private Input<string>? _httpNodeUri;
 
         /// <summary>
         /// M3DB node URI.
         /// </summary>
-        [Input("httpNodeUri")]
-        public Input<string>? HttpNodeUri { get; set; }
+        public Input<string>? HttpNodeUri
+        {
+            get => _httpNodeUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _httpNodeUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("influxdbUri")]
+        private Input<string>? _influxdbUri;
 
         /// <summary>
         /// InfluxDB URI.
         /// </summary>
-        [Input("influxdbUri")]
-        public Input<string>? InfluxdbUri { get; set; }
+        public Input<string>? InfluxdbUri
+        {
+            get => _influxdbUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _influxdbUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("prometheusRemoteReadUri")]
+        private Input<string>? _prometheusRemoteReadUri;
 
         /// <summary>
         /// Prometheus remote read URI.
         /// </summary>
-        [Input("prometheusRemoteReadUri")]
-        public Input<string>? PrometheusRemoteReadUri { get; set; }
+        public Input<string>? PrometheusRemoteReadUri
+        {
+            get => _prometheusRemoteReadUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _prometheusRemoteReadUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("prometheusRemoteWriteUri")]
+        private Input<string>? _prometheusRemoteWriteUri;
 
         /// <summary>
         /// Prometheus remote write URI.
         /// </summary>
-        [Input("prometheusRemoteWriteUri")]
-        public Input<string>? PrometheusRemoteWriteUri { get; set; }
+        public Input<string>? PrometheusRemoteWriteUri
+        {
+            get => _prometheusRemoteWriteUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _prometheusRemoteWriteUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("uris")]
         private InputList<string>? _uris;
@@ -51,7 +101,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> Uris
         {
             get => _uris ?? (_uris = new InputList<string>());
-            set => _uris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _uris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         public M3DbM3dbGetArgs()

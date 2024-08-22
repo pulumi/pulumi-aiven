@@ -97,7 +97,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Cassandra server URIs.\n"
+                    "description": "Cassandra server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -354,7 +355,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "ClickHouse server URIs.\n"
+                    "description": "ClickHouse server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -707,21 +709,24 @@
                 },
                 "replicaUri": {
                     "type": "string",
-                    "description": "Dragonfly replica server URI.\n"
+                    "description": "Dragonfly replica server URI.\n",
+                    "secret": true
                 },
                 "slaveUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Dragonfly slave server URIs.\n"
+                    "description": "Dragonfly slave server URIs.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Dragonfly server URIs.\n"
+                    "description": "Dragonfly server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -1054,7 +1059,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The host and port of a Flink server.\n"
+                    "description": "The host and port of a Flink server.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -1252,7 +1258,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Grafana server URIs.\n"
+                    "description": "Grafana server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -1934,7 +1941,8 @@
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "Name of the default InfluxDB database\n"
+                    "description": "Name of the default InfluxDB database\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
@@ -1946,11 +1954,13 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "InfluxDB server URIs.\n"
+                    "description": "InfluxDB server URIs.\n",
+                    "secret": true
                 },
                 "username": {
                     "type": "string",
-                    "description": "InfluxDB username\n"
+                    "description": "InfluxDB username\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -2625,7 +2635,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Kafka server URIs.\n"
+                    "description": "Kafka server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -3760,14 +3771,16 @@
             "properties": {
                 "aggregatorHttpUri": {
                     "type": "string",
-                    "description": "M3 Aggregator HTTP URI.\n"
+                    "description": "M3 Aggregator HTTP URI.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "M3 Aggregator server URIs.\n"
+                    "description": "M3 Aggregator server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -3944,30 +3957,36 @@
             "properties": {
                 "httpClusterUri": {
                     "type": "string",
-                    "description": "M3DB cluster URI.\n"
+                    "description": "M3DB cluster URI.\n",
+                    "secret": true
                 },
                 "httpNodeUri": {
                     "type": "string",
-                    "description": "M3DB node URI.\n"
+                    "description": "M3DB node URI.\n",
+                    "secret": true
                 },
                 "influxdbUri": {
                     "type": "string",
-                    "description": "InfluxDB URI.\n"
+                    "description": "InfluxDB URI.\n",
+                    "secret": true
                 },
                 "prometheusRemoteReadUri": {
                     "type": "string",
-                    "description": "Prometheus remote read URI.\n"
+                    "description": "Prometheus remote read URI.\n",
+                    "secret": true
                 },
                 "prometheusRemoteWriteUri": {
                     "type": "string",
-                    "description": "Prometheus remote write URI.\n"
+                    "description": "Prometheus remote write URI.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "M3DB server URIs.\n"
+                    "description": "M3DB server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -4436,7 +4455,8 @@
                     "items": {
                         "$ref": "#/types/aiven:index/MySqlMysqlParam:MySqlMysqlParam"
                     },
-                    "description": "MySQL connection parameters\n"
+                    "description": "MySQL connection parameters\n",
+                    "secret": true
                 },
                 "replicaUri": {
                     "type": "string",
@@ -4448,21 +4468,24 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "MySQL standby connection URIs\n"
+                    "description": "MySQL standby connection URIs\n",
+                    "secret": true
                 },
                 "syncingUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "MySQL syncing connection URIs\n"
+                    "description": "MySQL syncing connection URIs\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "MySQL master connection URIs\n"
+                    "description": "MySQL master connection URIs\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -4482,11 +4505,13 @@
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "Primary MySQL database name\n"
+                    "description": "Primary MySQL database name\n",
+                    "secret": true
                 },
                 "host": {
                     "type": "string",
-                    "description": "MySQL host IP or name\n"
+                    "description": "MySQL host IP or name\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
@@ -4495,15 +4520,18 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "MySQL port\n"
+                    "description": "MySQL port\n",
+                    "secret": true
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "MySQL sslmode setting (currently always \"require\")\n"
+                    "description": "MySQL sslmode setting (currently always \"require\")\n",
+                    "secret": true
                 },
                 "user": {
                     "type": "string",
-                    "description": "MySQL admin user name\n"
+                    "description": "MySQL admin user name\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -4960,7 +4988,8 @@
             "properties": {
                 "kibanaUri": {
                     "type": "string",
-                    "description": "URI for Kibana dashboard frontend\n"
+                    "description": "URI for Kibana dashboard frontend\n",
+                    "secret": true
                 },
                 "opensearchDashboardsUri": {
                     "type": "string",
@@ -4977,11 +5006,13 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "OpenSearch server URIs.\n"
+                    "description": "OpenSearch server URIs.\n",
+                    "secret": true
                 },
                 "username": {
                     "type": "string",
-                    "description": "OpenSearch username\n"
+                    "description": "OpenSearch username\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -5928,26 +5959,31 @@
             "properties": {
                 "bouncer": {
                     "type": "string",
-                    "description": "PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).\n"
+                    "description": "PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).\n",
+                    "secret": true
                 },
                 "dbname": {
                     "type": "string",
-                    "description": "Primary PostgreSQL database name.\n"
+                    "description": "Primary PostgreSQL database name.\n",
+                    "secret": true
                 },
                 "host": {
                     "type": "string",
-                    "description": "PostgreSQL primary node host IP or name.\n"
+                    "description": "PostgreSQL primary node host IP or name.\n",
+                    "secret": true
                 },
                 "maxConnections": {
                     "type": "integer",
-                    "description": "The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.\n"
+                    "description": "The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.\n",
+                    "secret": true
                 },
                 "params": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/PgPgParam:PgPgParam"
                     },
-                    "description": "PostgreSQL connection parameters.\n"
+                    "description": "PostgreSQL connection parameters.\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
@@ -5956,7 +5992,8 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "PostgreSQL port.\n"
+                    "description": "PostgreSQL port.\n",
+                    "secret": true
                 },
                 "replicaUri": {
                     "type": "string",
@@ -5965,21 +6002,24 @@
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "PostgreSQL SSL mode setting.\n"
+                    "description": "PostgreSQL SSL mode setting.\n",
+                    "secret": true
                 },
                 "standbyUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL standby connection URIs.\n"
+                    "description": "PostgreSQL standby connection URIs.\n",
+                    "secret": true
                 },
                 "syncingUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL syncing connection URIs.\n"
+                    "description": "PostgreSQL syncing connection URIs.\n",
+                    "secret": true
                 },
                 "uri": {
                     "type": "string",
@@ -5991,11 +6031,13 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL primary connection URIs.\n"
+                    "description": "PostgreSQL primary connection URIs.\n",
+                    "secret": true
                 },
                 "user": {
                     "type": "string",
-                    "description": "PostgreSQL admin user name.\n"
+                    "description": "PostgreSQL admin user name.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -6024,11 +6066,13 @@
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "Primary PostgreSQL database name.\n"
+                    "description": "Primary PostgreSQL database name.\n",
+                    "secret": true
                 },
                 "host": {
                     "type": "string",
-                    "description": "PostgreSQL host IP or name.\n"
+                    "description": "PostgreSQL host IP or name.\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
@@ -6037,15 +6081,18 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "PostgreSQL port.\n"
+                    "description": "PostgreSQL port.\n",
+                    "secret": true
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "PostgreSQL SSL mode setting.\n"
+                    "description": "PostgreSQL SSL mode setting.\n",
+                    "secret": true
                 },
                 "user": {
                     "type": "string",
-                    "description": "PostgreSQL admin user name.\n"
+                    "description": "PostgreSQL admin user name.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -6825,21 +6872,24 @@
                 },
                 "replicaUri": {
                     "type": "string",
-                    "description": "Redis replica server URI.\n"
+                    "description": "Redis replica server URI.\n",
+                    "secret": true
                 },
                 "slaveUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Redis slave server URIs.\n"
+                    "description": "Redis slave server URIs.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Redis server URIs.\n"
+                    "description": "Redis server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -8302,7 +8352,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Thanos server URIs.\n"
+                    "description": "Thanos server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -8564,21 +8615,24 @@
                 },
                 "replicaUri": {
                     "type": "string",
-                    "description": "Valkey replica server URI.\n"
+                    "description": "Valkey replica server URI.\n",
+                    "secret": true
                 },
                 "slaveUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valkey slave server URIs.\n"
+                    "description": "Valkey slave server URIs.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valkey server URIs.\n"
+                    "description": "Valkey server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -8839,7 +8893,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Cassandra server URIs.\n"
+                    "description": "Cassandra server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -9116,7 +9171,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Cassandra server URIs.\n"
+                    "description": "Cassandra server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -9393,7 +9449,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "ClickHouse server URIs.\n"
+                    "description": "ClickHouse server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -9724,21 +9781,24 @@
                 },
                 "replicaUri": {
                     "type": "string",
-                    "description": "Dragonfly replica server URI.\n"
+                    "description": "Dragonfly replica server URI.\n",
+                    "secret": true
                 },
                 "slaveUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Dragonfly slave server URIs.\n"
+                    "description": "Dragonfly slave server URIs.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Dragonfly server URIs.\n"
+                    "description": "Dragonfly server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -10102,7 +10162,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The host and port of a Flink server.\n"
+                    "description": "The host and port of a Flink server.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -10321,7 +10382,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Grafana server URIs.\n"
+                    "description": "Grafana server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -11058,7 +11120,8 @@
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "Name of the default InfluxDB database\n"
+                    "description": "Name of the default InfluxDB database\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
@@ -11070,11 +11133,13 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "InfluxDB server URIs.\n"
+                    "description": "InfluxDB server URIs.\n",
+                    "secret": true
                 },
                 "username": {
                     "type": "string",
-                    "description": "InfluxDB username\n"
+                    "description": "InfluxDB username\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -11806,7 +11871,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Kafka server URIs.\n"
+                    "description": "Kafka server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -13004,14 +13070,16 @@
             "properties": {
                 "aggregatorHttpUri": {
                     "type": "string",
-                    "description": "M3 Aggregator HTTP URI.\n"
+                    "description": "M3 Aggregator HTTP URI.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "M3 Aggregator server URIs.\n"
+                    "description": "M3 Aggregator server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -13210,30 +13278,36 @@
             "properties": {
                 "httpClusterUri": {
                     "type": "string",
-                    "description": "M3DB cluster URI.\n"
+                    "description": "M3DB cluster URI.\n",
+                    "secret": true
                 },
                 "httpNodeUri": {
                     "type": "string",
-                    "description": "M3DB node URI.\n"
+                    "description": "M3DB node URI.\n",
+                    "secret": true
                 },
                 "influxdbUri": {
                     "type": "string",
-                    "description": "InfluxDB URI.\n"
+                    "description": "InfluxDB URI.\n",
+                    "secret": true
                 },
                 "prometheusRemoteReadUri": {
                     "type": "string",
-                    "description": "Prometheus remote read URI.\n"
+                    "description": "Prometheus remote read URI.\n",
+                    "secret": true
                 },
                 "prometheusRemoteWriteUri": {
                     "type": "string",
-                    "description": "Prometheus remote write URI.\n"
+                    "description": "Prometheus remote write URI.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "M3DB server URIs.\n"
+                    "description": "M3DB server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -13747,7 +13821,8 @@
                     "items": {
                         "$ref": "#/types/aiven:index/getMySqlMysqlParam:getMySqlMysqlParam"
                     },
-                    "description": "MySQL connection parameters\n"
+                    "description": "MySQL connection parameters\n",
+                    "secret": true
                 },
                 "replicaUri": {
                     "type": "string",
@@ -13759,21 +13834,24 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "MySQL standby connection URIs\n"
+                    "description": "MySQL standby connection URIs\n",
+                    "secret": true
                 },
                 "syncingUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "MySQL syncing connection URIs\n"
+                    "description": "MySQL syncing connection URIs\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "MySQL master connection URIs\n"
+                    "description": "MySQL master connection URIs\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -13794,11 +13872,13 @@
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "Primary MySQL database name\n"
+                    "description": "Primary MySQL database name\n",
+                    "secret": true
                 },
                 "host": {
                     "type": "string",
-                    "description": "MySQL host IP or name\n"
+                    "description": "MySQL host IP or name\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
@@ -13807,15 +13887,18 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "MySQL port\n"
+                    "description": "MySQL port\n",
+                    "secret": true
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "MySQL sslmode setting (currently always \"require\")\n"
+                    "description": "MySQL sslmode setting (currently always \"require\")\n",
+                    "secret": true
                 },
                 "user": {
                     "type": "string",
-                    "description": "MySQL admin user name\n"
+                    "description": "MySQL admin user name\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -14294,7 +14377,8 @@
             "properties": {
                 "kibanaUri": {
                     "type": "string",
-                    "description": "URI for Kibana dashboard frontend\n"
+                    "description": "URI for Kibana dashboard frontend\n",
+                    "secret": true
                 },
                 "opensearchDashboardsUri": {
                     "type": "string",
@@ -14311,11 +14395,13 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "OpenSearch server URIs.\n"
+                    "description": "OpenSearch server URIs.\n",
+                    "secret": true
                 },
                 "username": {
                     "type": "string",
-                    "description": "OpenSearch username\n"
+                    "description": "OpenSearch username\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -15249,26 +15335,31 @@
             "properties": {
                 "bouncer": {
                     "type": "string",
-                    "description": "PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).\n"
+                    "description": "PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).\n",
+                    "secret": true
                 },
                 "dbname": {
                     "type": "string",
-                    "description": "Primary PostgreSQL database name.\n"
+                    "description": "Primary PostgreSQL database name.\n",
+                    "secret": true
                 },
                 "host": {
                     "type": "string",
-                    "description": "PostgreSQL primary node host IP or name.\n"
+                    "description": "PostgreSQL primary node host IP or name.\n",
+                    "secret": true
                 },
                 "maxConnections": {
                     "type": "integer",
-                    "description": "The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.\n"
+                    "description": "The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.\n",
+                    "secret": true
                 },
                 "params": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/getPgPgParam:getPgPgParam"
                     },
-                    "description": "PostgreSQL connection parameters.\n"
+                    "description": "PostgreSQL connection parameters.\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
@@ -15277,7 +15368,8 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "PostgreSQL port.\n"
+                    "description": "PostgreSQL port.\n",
+                    "secret": true
                 },
                 "replicaUri": {
                     "type": "string",
@@ -15286,21 +15378,24 @@
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "PostgreSQL SSL mode setting.\n"
+                    "description": "PostgreSQL SSL mode setting.\n",
+                    "secret": true
                 },
                 "standbyUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL standby connection URIs.\n"
+                    "description": "PostgreSQL standby connection URIs.\n",
+                    "secret": true
                 },
                 "syncingUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL syncing connection URIs.\n"
+                    "description": "PostgreSQL syncing connection URIs.\n",
+                    "secret": true
                 },
                 "uri": {
                     "type": "string",
@@ -15312,11 +15407,13 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "PostgreSQL primary connection URIs.\n"
+                    "description": "PostgreSQL primary connection URIs.\n",
+                    "secret": true
                 },
                 "user": {
                     "type": "string",
-                    "description": "PostgreSQL admin user name.\n"
+                    "description": "PostgreSQL admin user name.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -15346,11 +15443,13 @@
             "properties": {
                 "databaseName": {
                     "type": "string",
-                    "description": "Primary PostgreSQL database name.\n"
+                    "description": "Primary PostgreSQL database name.\n",
+                    "secret": true
                 },
                 "host": {
                     "type": "string",
-                    "description": "PostgreSQL host IP or name.\n"
+                    "description": "PostgreSQL host IP or name.\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
@@ -15359,15 +15458,18 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "PostgreSQL port.\n"
+                    "description": "PostgreSQL port.\n",
+                    "secret": true
                 },
                 "sslmode": {
                     "type": "string",
-                    "description": "PostgreSQL SSL mode setting.\n"
+                    "description": "PostgreSQL SSL mode setting.\n",
+                    "secret": true
                 },
                 "user": {
                     "type": "string",
-                    "description": "PostgreSQL admin user name.\n"
+                    "description": "PostgreSQL admin user name.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -16173,21 +16275,24 @@
                 },
                 "replicaUri": {
                     "type": "string",
-                    "description": "Redis replica server URI.\n"
+                    "description": "Redis replica server URI.\n",
+                    "secret": true
                 },
                 "slaveUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Redis slave server URIs.\n"
+                    "description": "Redis slave server URIs.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Redis server URIs.\n"
+                    "description": "Redis server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -17785,7 +17890,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Thanos server URIs.\n"
+                    "description": "Thanos server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -18069,21 +18175,24 @@
                 },
                 "replicaUri": {
                     "type": "string",
-                    "description": "Valkey replica server URI.\n"
+                    "description": "Valkey replica server URI.\n",
+                    "secret": true
                 },
                 "slaveUris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valkey slave server URIs.\n"
+                    "description": "Valkey slave server URIs.\n",
+                    "secret": true
                 },
                 "uris": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Valkey server URIs.\n"
+                    "description": "Valkey server URIs.\n",
+                    "secret": true
                 }
             },
             "type": "object",

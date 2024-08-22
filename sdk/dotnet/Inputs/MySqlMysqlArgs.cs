@@ -21,7 +21,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<Inputs.MySqlMysqlParamArgs> Params
         {
             get => _params ?? (_params = new InputList<Inputs.MySqlMysqlParamArgs>());
-            set => _params = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.MySqlMysqlParamArgs>());
+                _params = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("replicaUri")]
@@ -49,7 +53,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> StandbyUris
         {
             get => _standbyUris ?? (_standbyUris = new InputList<string>());
-            set => _standbyUris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _standbyUris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("syncingUris")]
@@ -61,7 +69,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> SyncingUris
         {
             get => _syncingUris ?? (_syncingUris = new InputList<string>());
-            set => _syncingUris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _syncingUris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("uris")]
@@ -73,7 +85,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> Uris
         {
             get => _uris ?? (_uris = new InputList<string>());
-            set => _uris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _uris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         public MySqlMysqlArgs()

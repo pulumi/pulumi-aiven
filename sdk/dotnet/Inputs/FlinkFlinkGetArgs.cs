@@ -21,7 +21,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> HostPorts
         {
             get => _hostPorts ?? (_hostPorts = new InputList<string>());
-            set => _hostPorts = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _hostPorts = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         public FlinkFlinkGetArgs()

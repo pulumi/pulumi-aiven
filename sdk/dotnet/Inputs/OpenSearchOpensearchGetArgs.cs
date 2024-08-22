@@ -12,11 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class OpenSearchOpensearchGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("kibanaUri")]
+        private Input<string>? _kibanaUri;
+
         /// <summary>
         /// URI for Kibana dashboard frontend
         /// </summary>
-        [Input("kibanaUri")]
-        public Input<string>? KibanaUri { get; set; }
+        public Input<string>? KibanaUri
+        {
+            get => _kibanaUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kibanaUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("opensearchDashboardsUri")]
         private Input<string>? _opensearchDashboardsUri;
@@ -59,14 +69,28 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> Uris
         {
             get => _uris ?? (_uris = new InputList<string>());
-            set => _uris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _uris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
+
+        [Input("username")]
+        private Input<string>? _username;
 
         /// <summary>
         /// OpenSearch username
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public OpenSearchOpensearchGetArgs()
         {

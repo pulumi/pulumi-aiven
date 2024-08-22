@@ -71,11 +71,18 @@ func makeResource(mod string, res string) tokens.Type {
 
 func ref[T any](val T) *T { return &val }
 
+func must[T any](t T, err error) T {
+	if err == nil {
+		return t
+	}
+	panic(err)
+}
+
 func Provider(ctx context.Context) tfbridge.ProviderInfo {
 	_ = os.Setenv("PROVIDER_AIVEN_ENABLE_BETA", "true")
 
 	p := pfbridge.MuxShimWithDisjointgPF(ctx,
-		shimv2.NewProvider(providerShim.NewProvider(version.Version)),
+		shimv2.NewProvider(must(providerShim.NewProvider(version.Version))),
 		providerShim.NewPFProvider(version.Version))
 
 	prov := tfbridge.ProviderInfo{

@@ -12,11 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class InfluxDbInfluxdbGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("databaseName")]
+        private Input<string>? _databaseName;
+
         /// <summary>
         /// Name of the default InfluxDB database
         /// </summary>
-        [Input("databaseName")]
-        public Input<string>? DatabaseName { get; set; }
+        public Input<string>? DatabaseName
+        {
+            get => _databaseName;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _databaseName = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("password")]
         private Input<string>? _password;
@@ -43,14 +53,28 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> Uris
         {
             get => _uris ?? (_uris = new InputList<string>());
-            set => _uris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _uris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
+
+        [Input("username")]
+        private Input<string>? _username;
 
         /// <summary>
         /// InfluxDB username
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public InfluxDbInfluxdbGetArgs()
         {

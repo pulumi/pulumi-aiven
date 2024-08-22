@@ -12,29 +12,69 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class PgPgGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("bouncer")]
+        private Input<string>? _bouncer;
+
         /// <summary>
         /// PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
         /// </summary>
-        [Input("bouncer")]
-        public Input<string>? Bouncer { get; set; }
+        public Input<string>? Bouncer
+        {
+            get => _bouncer;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _bouncer = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("dbname")]
+        private Input<string>? _dbname;
 
         /// <summary>
         /// Primary PostgreSQL database name.
         /// </summary>
-        [Input("dbname")]
-        public Input<string>? Dbname { get; set; }
+        public Input<string>? Dbname
+        {
+            get => _dbname;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _dbname = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("host")]
+        private Input<string>? _host;
 
         /// <summary>
         /// PostgreSQL primary node host IP or name.
         /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
+        public Input<string>? Host
+        {
+            get => _host;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _host = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("maxConnections")]
+        private Input<int>? _maxConnections;
 
         /// <summary>
         /// The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
         /// </summary>
-        [Input("maxConnections")]
-        public Input<int>? MaxConnections { get; set; }
+        public Input<int>? MaxConnections
+        {
+            get => _maxConnections;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _maxConnections = Output.Tuple<Input<int>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("params")]
         private InputList<Inputs.PgPgParamGetArgs>? _params;
@@ -45,7 +85,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<Inputs.PgPgParamGetArgs> Params
         {
             get => _params ?? (_params = new InputList<Inputs.PgPgParamGetArgs>());
-            set => _params = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.PgPgParamGetArgs>());
+                _params = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("password")]
@@ -64,11 +108,21 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
+        [Input("port")]
+        private Input<int>? _port;
+
         /// <summary>
         /// PostgreSQL port.
         /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
+        public Input<int>? Port
+        {
+            get => _port;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _port = Output.Tuple<Input<int>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("replicaUri")]
         private Input<string>? _replicaUri;
@@ -86,11 +140,21 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
+        [Input("sslmode")]
+        private Input<string>? _sslmode;
+
         /// <summary>
         /// PostgreSQL SSL mode setting.
         /// </summary>
-        [Input("sslmode")]
-        public Input<string>? Sslmode { get; set; }
+        public Input<string>? Sslmode
+        {
+            get => _sslmode;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslmode = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("standbyUris")]
         private InputList<string>? _standbyUris;
@@ -101,7 +165,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> StandbyUris
         {
             get => _standbyUris ?? (_standbyUris = new InputList<string>());
-            set => _standbyUris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _standbyUris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("syncingUris")]
@@ -113,7 +181,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> SyncingUris
         {
             get => _syncingUris ?? (_syncingUris = new InputList<string>());
-            set => _syncingUris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _syncingUris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("uri")]
@@ -141,14 +213,28 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> Uris
         {
             get => _uris ?? (_uris = new InputList<string>());
-            set => _uris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _uris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
+
+        [Input("user")]
+        private Input<string>? _user;
 
         /// <summary>
         /// PostgreSQL admin user name.
         /// </summary>
-        [Input("user")]
-        public Input<string>? User { get; set; }
+        public Input<string>? User
+        {
+            get => _user;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _user = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public PgPgGetArgs()
         {
