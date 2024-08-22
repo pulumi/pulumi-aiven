@@ -35,7 +35,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-aiven/provider/v6/pkg/version"
-	"github.com/ryboe/q"
 )
 
 // all of the token components used below.
@@ -235,6 +234,7 @@ func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	)
 }
 
+// Removes a "Warnings" section that includes TF-specific recommendations
 var skipWarningSection = tfbridge.DocsEdit{
 	Path: "index.md",
 	Edit: func(_ string, content []byte) ([]byte, error) {
@@ -244,6 +244,8 @@ var skipWarningSection = tfbridge.DocsEdit{
 	},
 }
 
+// Removes a section containing TF-specific tutorial links.
+// This is *not* the "Example Usage" section, and doesn't actually contain any code examples.
 var skipExamplesSection = tfbridge.DocsEdit{
 	Path: "index.md",
 	Edit: func(_ string, content []byte) ([]byte, error) {
@@ -253,14 +255,12 @@ var skipExamplesSection = tfbridge.DocsEdit{
 	},
 }
 
+// Removes a reference to TF version and compatibility
 var TFVersionOrLaterRegexp = regexp.MustCompile(`(?s)For [tT]erraform v[0-9]+\.?[0-9]?\.?[0-9]? and later:`)
 var removeTFAndLater = tfbridge.DocsEdit{
 	Path: "index.md",
 	Edit: func(_ string, content []byte) ([]byte, error) {
-		q.Q("BEFORE", string(content))
-		q.Q(TFVersionOrLaterRegexp.Match(content))
 		content = TFVersionOrLaterRegexp.ReplaceAllLiteral(content, nil)
-		q.Q("AFTER", string(content))
 		return content, nil
 	},
 }

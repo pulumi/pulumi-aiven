@@ -1,6 +1,8 @@
 module github.com/pulumi/pulumi-aiven/provider/v6
 
-go 1.23.0
+go 1.22
+
+toolchain go1.22.1
 
 replace (
 	github.com/aiven/terraform-provider-aiven => ../upstream
@@ -16,10 +18,7 @@ require (
 	github.com/pulumi/pulumi/sdk/v3 v3.129.0
 )
 
-require (
-	github.com/aiven/terraform-provider-aiven v0.0.0-00010101000000-000000000000
-	github.com/ryboe/q v1.0.23
-)
+require github.com/aiven/terraform-provider-aiven v0.0.0-00010101000000-000000000000
 
 require (
 	cloud.google.com/go v0.112.1 // indirect
@@ -154,8 +153,6 @@ require (
 	github.com/kelseyhightower/envconfig v1.4.0 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/klauspost/compress v1.16.0 // indirect
-	github.com/kr/pretty v0.3.1 // indirect
-	github.com/kr/text v0.2.0 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
