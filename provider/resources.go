@@ -17,8 +17,10 @@ package aiven
 import (
 	"context"
 	"fmt"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"os"
 	"path/filepath"
+	"regexp"
 	"unicode"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
@@ -98,6 +100,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 		UpstreamRepoPath:  "./upstream",
 		Version:           version.Version,
 		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
+		DocRules:          &tfbridge.DocRuleInfo{EditRules: docEditRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_token": {Secret: tfbridge.True()},
 		},
@@ -227,6 +230,46 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		removeTFAndLater,
+		skipWarningSection,
+		skipExamplesSection,
+	)
+}
+
+// Removes a "Warnings" section that includes TF-specific recommendations
+var skipWarningSection = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			return headerText == "Warning"
+		})
+	},
+}
+
+// Removes a section containing TF-specific tutorial links.
+// This is *not* the "Example Usage" section, and doesn't actually contain any code examples.
+var skipExamplesSection = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			return headerText == "Examples"
+		})
+	},
+}
+
+// Removes a reference to TF version and compatibility
+var TFVersionOrLaterRegexp = regexp.MustCompile(`(?s)For [tT]erraform v[0-9]+\.?[0-9]?\.?[0-9]? and later:`)
+var removeTFAndLater = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		content = TFVersionOrLaterRegexp.ReplaceAllLiteral(content, nil)
+		return content, nil
+	},
 }
 
 //go:embed cmd/pulumi-resource-aiven/bridge-metadata.json
