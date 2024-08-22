@@ -12,17 +12,37 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class MySqlMysqlParamArgs : global::Pulumi.ResourceArgs
     {
+        [Input("databaseName")]
+        private Input<string>? _databaseName;
+
         /// <summary>
         /// Primary MySQL database name
         /// </summary>
-        [Input("databaseName")]
-        public Input<string>? DatabaseName { get; set; }
+        public Input<string>? DatabaseName
+        {
+            get => _databaseName;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _databaseName = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("host")]
+        private Input<string>? _host;
 
         /// <summary>
         /// MySQL host IP or name
         /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
+        public Input<string>? Host
+        {
+            get => _host;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _host = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("password")]
         private Input<string>? _password;
@@ -40,23 +60,53 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
+        [Input("port")]
+        private Input<int>? _port;
+
         /// <summary>
         /// MySQL port
         /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
+        public Input<int>? Port
+        {
+            get => _port;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _port = Output.Tuple<Input<int>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("sslmode")]
+        private Input<string>? _sslmode;
 
         /// <summary>
         /// MySQL sslmode setting (currently always "require")
         /// </summary>
-        [Input("sslmode")]
-        public Input<string>? Sslmode { get; set; }
+        public Input<string>? Sslmode
+        {
+            get => _sslmode;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslmode = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("user")]
+        private Input<string>? _user;
 
         /// <summary>
         /// MySQL admin user name
         /// </summary>
-        [Input("user")]
-        public Input<string>? User { get; set; }
+        public Input<string>? User
+        {
+            get => _user;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _user = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public MySqlMysqlParamArgs()
         {

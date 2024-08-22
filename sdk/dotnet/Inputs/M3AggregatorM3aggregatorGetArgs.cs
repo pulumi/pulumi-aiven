@@ -12,11 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3AggregatorM3aggregatorGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aggregatorHttpUri")]
+        private Input<string>? _aggregatorHttpUri;
+
         /// <summary>
         /// M3 Aggregator HTTP URI.
         /// </summary>
-        [Input("aggregatorHttpUri")]
-        public Input<string>? AggregatorHttpUri { get; set; }
+        public Input<string>? AggregatorHttpUri
+        {
+            get => _aggregatorHttpUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _aggregatorHttpUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("uris")]
         private InputList<string>? _uris;
@@ -27,7 +37,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> Uris
         {
             get => _uris ?? (_uris = new InputList<string>());
-            set => _uris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _uris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         public M3AggregatorM3aggregatorGetArgs()

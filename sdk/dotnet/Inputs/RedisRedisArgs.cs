@@ -28,11 +28,21 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
+        [Input("replicaUri")]
+        private Input<string>? _replicaUri;
+
         /// <summary>
         /// Redis replica server URI.
         /// </summary>
-        [Input("replicaUri")]
-        public Input<string>? ReplicaUri { get; set; }
+        public Input<string>? ReplicaUri
+        {
+            get => _replicaUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _replicaUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("slaveUris")]
         private InputList<string>? _slaveUris;
@@ -43,7 +53,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> SlaveUris
         {
             get => _slaveUris ?? (_slaveUris = new InputList<string>());
-            set => _slaveUris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _slaveUris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("uris")]
@@ -55,7 +69,11 @@ namespace Pulumi.Aiven.Inputs
         public InputList<string> Uris
         {
             get => _uris ?? (_uris = new InputList<string>());
-            set => _uris = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _uris = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         public RedisRedisArgs()
