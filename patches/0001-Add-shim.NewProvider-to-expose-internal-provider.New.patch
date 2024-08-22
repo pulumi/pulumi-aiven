@@ -6,7 +6,7 @@ Subject: [PATCH] Add `shim.NewProvider` to expose `internal/provider.New`
 
 diff --git a/shim/shim.go b/shim/shim.go
 new file mode 100644
-index 00000000..796cd94a
+index 00000000..e6ecce26
 --- /dev/null
 +++ b/shim/shim.go
 @@ -0,0 +1,17 @@
@@ -16,11 +16,11 @@ index 00000000..796cd94a
 +	pf "github.com/hashicorp/terraform-plugin-framework/provider"
 +	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 +
-+	pfProvider "github.com/aiven/terraform-provider-aiven/internal/provider"
++	pfProvider "github.com/aiven/terraform-provider-aiven/internal/plugin"
 +	"github.com/aiven/terraform-provider-aiven/internal/sdkprovider/provider"
 +)
 +
-+func NewProvider(version string) *schema.Provider {
++func NewProvider(version string) (*schema.Provider, error) {
 +	return provider.Provider(version)
 +}
 +
