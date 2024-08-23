@@ -20,7 +20,6 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"os"
 	"path/filepath"
-	"regexp"
 	"unicode"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
@@ -235,7 +234,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	return append(
 		defaults,
-		removeTFAndLater,
 		skipWarningSection,
 		skipExamplesSection,
 	)
@@ -259,16 +257,6 @@ var skipExamplesSection = tfbridge.DocsEdit{
 		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
 			return headerText == "Examples"
 		})
-	},
-}
-
-// Removes a reference to TF version and compatibility
-var TFVersionOrLaterRegexp = regexp.MustCompile(`(?s)For [tT]erraform v[0-9]+\.?[0-9]?\.?[0-9]? and later:`)
-var removeTFAndLater = tfbridge.DocsEdit{
-	Path: "index.md",
-	Edit: func(_ string, content []byte) ([]byte, error) {
-		content = TFVersionOrLaterRegexp.ReplaceAllLiteral(content, nil)
-		return content, nil
 	},
 }
 
