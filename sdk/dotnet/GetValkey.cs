@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetValkey
     {
         /// <summary>
-        /// Gets information about an Aiven for Valkey service. 
+        /// Gets information about an Aiven for Valkey service.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetValkeyResult>("aiven:index/getValkey:getValkey", args ?? new GetValkeyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an Aiven for Valkey service. 
+        /// Gets information about an Aiven for Valkey service.
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.

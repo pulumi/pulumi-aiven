@@ -260,7 +260,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? StaticIps { get; set; }
 
         /// <summary>
-        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See [https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/) for more details.
         /// </summary>
         [Input("unifiedAlertingEnabled")]
         public Input<bool>? UnifiedAlertingEnabled { get; set; }

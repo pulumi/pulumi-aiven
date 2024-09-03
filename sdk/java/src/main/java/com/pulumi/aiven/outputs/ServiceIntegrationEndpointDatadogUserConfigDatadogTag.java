@@ -18,7 +18,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
      */
     private @Nullable String comment;
     /**
-     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+     * @return Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      * 
      */
     private String tag;
@@ -32,7 +32,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
         return Optional.ofNullable(this.comment);
     }
     /**
-     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+     * @return Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      * 
      */
     public String tag() {

@@ -45,14 +45,14 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
     }
 
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
+     * This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
      * 
      */
     @Import(name="serviceAccountCredentials", required=true)
     private Output<String> serviceAccountCredentials;
 
     /**
-     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
+     * @return This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
      * 
      */
     public Output<String> serviceAccountCredentials() {
@@ -128,7 +128,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
+         * @param serviceAccountCredentials This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
+         * @param serviceAccountCredentials This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
          * 
          * @return builder
          * 

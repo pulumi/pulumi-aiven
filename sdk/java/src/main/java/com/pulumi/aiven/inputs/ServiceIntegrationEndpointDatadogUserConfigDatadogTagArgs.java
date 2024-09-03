@@ -32,14 +32,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
     }
 
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+     * Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      * 
      */
     @Import(name="tag", required=true)
     private Output<String> tag;
 
     /**
-     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+     * @return Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      * 
      */
     public Output<String> tag() {
@@ -93,7 +93,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
         }
 
         /**
-         * @param tag Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+         * @param tag Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
         }
 
         /**
-         * @param tag Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+         * @param tag Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
          * 
          * @return builder
          * 

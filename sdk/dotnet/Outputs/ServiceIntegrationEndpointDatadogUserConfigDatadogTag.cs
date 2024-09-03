@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Comment;
         /// <summary>
-        /// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+        /// Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
         /// </summary>
         public readonly string Tag;
 

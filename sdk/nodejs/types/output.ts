@@ -8050,7 +8050,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     staticIps?: boolean;
     /**
-     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See [https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/) for more details.
      */
     unifiedAlertingEnabled?: boolean;
     /**
@@ -12787,7 +12787,7 @@ export interface ServiceIntegrationDatadogUserConfigDatadogTag {
      */
     comment?: string;
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+     * Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      */
     tag: string;
 }
@@ -12855,7 +12855,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
      */
     comment?: string;
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+     * Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      */
     tag: string;
 }
@@ -12930,7 +12930,7 @@ export interface ServiceIntegrationEndpointExternalGoogleCloudBigquery {
      */
     projectId: string;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
+     * This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{"type": "serviceAccount", ...`.
      */
     serviceAccountCredentials: string;
 }
@@ -12945,7 +12945,7 @@ export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig 
      */
     projectId: string;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "serviceAccount", ...`.
+     * This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{"type": "serviceAccount", ...`.
      */
     serviceAccountCredentials: string;
 }
