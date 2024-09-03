@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
+        /// This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{"type": "service_account", ...`.
         /// </summary>
         public readonly string ServiceAccountCredentials;
 

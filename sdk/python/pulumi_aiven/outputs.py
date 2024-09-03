@@ -3732,7 +3732,7 @@ class GrafanaGrafanaUserConfig(dict):
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         :param 'GrafanaGrafanaUserConfigSmtpServerArgs' smtp_server: SMTP server settings
         :param bool static_ips: Use static public IP addresses.
-        :param bool unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        :param bool unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See [https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/) for more details.
         :param bool user_auto_assign_org: Auto-assign new users on signup to main organization. Defaults to false.
         :param str user_auto_assign_org_role: Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
         :param bool viewers_can_edit: Users with view-only permission can edit but not save dashboards.
@@ -4134,7 +4134,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="unifiedAlertingEnabled")
     def unified_alerting_enabled(self) -> Optional[bool]:
         """
-        Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See [https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/) for more details.
         """
         return pulumi.get(self, "unified_alerting_enabled")
 
@@ -20588,7 +20588,7 @@ class ServiceIntegrationDatadogUserConfigDatadogTag(dict):
                  tag: str,
                  comment: Optional[str] = None):
         """
-        :param str tag: Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+        :param str tag: Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
         :param str comment: Optional tag explanation. Example: `Used to tag primary replica metrics`.
         """
         pulumi.set(__self__, "tag", tag)
@@ -20599,7 +20599,7 @@ class ServiceIntegrationDatadogUserConfigDatadogTag(dict):
     @pulumi.getter
     def tag(self) -> str:
         """
-        Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+        Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
         """
         return pulumi.get(self, "tag")
 
@@ -20849,7 +20849,7 @@ class ServiceIntegrationEndpointDatadogUserConfigDatadogTag(dict):
                  tag: str,
                  comment: Optional[str] = None):
         """
-        :param str tag: Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+        :param str tag: Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
         :param str comment: Optional tag explanation. Example: `Used to tag primary replica metrics`.
         """
         pulumi.set(__self__, "tag", tag)
@@ -20860,7 +20860,7 @@ class ServiceIntegrationEndpointDatadogUserConfigDatadogTag(dict):
     @pulumi.getter
     def tag(self) -> str:
         """
-        Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
+        Tag format and usage are described here: [https://docs.datadoghq.com/getting_started/tagging](https://docs.datadoghq.com/getting_started/tagging). Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
         """
         return pulumi.get(self, "tag")
 
@@ -21132,7 +21132,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudBigquery(dict):
                  service_account_credentials: str):
         """
         :param str project_id: GCP project id. Example: `snappy-photon-12345`.
-        :param str service_account_credentials: This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
+        :param str service_account_credentials: This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{"type": "service_account", ...`.
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "service_account_credentials", service_account_credentials)
@@ -21149,7 +21149,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudBigquery(dict):
     @pulumi.getter(name="serviceAccountCredentials")
     def service_account_credentials(self) -> str:
         """
-        This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
+        This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{"type": "service_account", ...`.
         """
         return pulumi.get(self, "service_account_credentials")
 
@@ -21184,7 +21184,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(dict):
         """
         :param str log_id: Google Cloud Logging log id. Example: `syslog`.
         :param str project_id: GCP project id. Example: `snappy-photon-12345`.
-        :param str service_account_credentials: This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
+        :param str service_account_credentials: This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{"type": "service_account", ...`.
         """
         pulumi.set(__self__, "log_id", log_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -21210,7 +21210,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig(dict):
     @pulumi.getter(name="serviceAccountCredentials")
     def service_account_credentials(self) -> str:
         """
-        This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{"type": "service_account", ...`.
+        This is a JSON object with the fields documented in [https://cloud.google.com/iam/docs/creating-managing-service-account-keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). Example: `{"type": "service_account", ...`.
         """
         return pulumi.get(self, "service_account_credentials")
 

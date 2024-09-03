@@ -609,14 +609,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See [https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/) for more details.
      * 
      */
     @Import(name="unifiedAlertingEnabled")
     private @Nullable Output<Boolean> unifiedAlertingEnabled;
 
     /**
-     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See [https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/) for more details.
      * 
      */
     public Optional<Output<Boolean>> unifiedAlertingEnabled() {
@@ -1590,7 +1590,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See [https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/) for more details.
          * 
          * @return builder
          * 
@@ -1601,7 +1601,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See [https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/) for more details.
          * 
          * @return builder
          * 
