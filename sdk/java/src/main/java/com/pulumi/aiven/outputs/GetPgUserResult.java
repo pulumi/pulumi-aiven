@@ -32,7 +32,7 @@ public final class GetPgUserResult {
      */
     private String password;
     /**
-     * @return Allows replication.
+     * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
     private Boolean pgAllowReplication;
@@ -87,7 +87,7 @@ public final class GetPgUserResult {
         return this.password;
     }
     /**
-     * @return Allows replication.
+     * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
     public Boolean pgAllowReplication() {

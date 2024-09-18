@@ -1232,6 +1232,22 @@
                 "current": "aiven:index/organizationGroupProject:OrganizationGroupProject",
                 "majorVersion": 6
             },
+            "aiven_organization_permission": {
+                "current": "aiven:index/organizationPermission:OrganizationPermission",
+                "majorVersion": 6,
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "permissions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "aiven_organization_user": {
                 "current": "aiven:index/organizationUser:OrganizationUser",
                 "majorVersion": 6
@@ -1669,6 +1685,12 @@
                     "external_aws_cloudwatch_metrics_user_config": {
                         "maxItemsOne": true
                     },
+                    "external_aws_s3_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_clickhouse_user_config": {
+                        "maxItemsOne": true
+                    },
                     "external_elasticsearch_logs_user_config": {
                         "maxItemsOne": true
                     },
@@ -1679,6 +1701,9 @@
                         "maxItemsOne": true
                     },
                     "external_kafka_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_mysql_user_config": {
                         "maxItemsOne": true
                     },
                     "external_opensearch_logs_user_config": {
@@ -3544,6 +3569,12 @@
                     "external_aws_cloudwatch_metrics_user_config": {
                         "maxItemsOne": false
                     },
+                    "external_aws_s3_user_config": {
+                        "maxItemsOne": false
+                    },
+                    "external_clickhouse_user_config": {
+                        "maxItemsOne": false
+                    },
                     "external_elasticsearch_logs_user_config": {
                         "maxItemsOne": false
                     },
@@ -3554,6 +3585,9 @@
                         "maxItemsOne": false
                     },
                     "external_kafka_user_config": {
+                        "maxItemsOne": false
+                    },
+                    "external_mysql_user_config": {
                         "maxItemsOne": false
                     },
                     "external_opensearch_logs_user_config": {
@@ -3807,6 +3841,7 @@
             "aiven:index/organizationApplicationUser:OrganizationApplicationUser": 0,
             "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken": 0,
             "aiven:index/organizationGroupProject:OrganizationGroupProject": 1,
+            "aiven:index/organizationPermission:OrganizationPermission": 0,
             "aiven:index/organizationUser:OrganizationUser": 0,
             "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
             "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": 1,

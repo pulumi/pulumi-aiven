@@ -18,6 +18,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? LeaderEligibility;
         /// <summary>
+        /// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+        /// </summary>
+        public readonly bool? RetriableErrorsSilenced;
+        /// <summary>
+        /// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+        /// </summary>
+        public readonly bool? SchemaReaderStrictMode;
+        /// <summary>
         /// The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
         /// </summary>
         public readonly string? TopicName;
@@ -26,9 +34,15 @@ namespace Pulumi.Aiven.Outputs
         private GetKafkaKafkaUserConfigSchemaRegistryConfigResult(
             bool? leaderEligibility,
 
+            bool? retriableErrorsSilenced,
+
+            bool? schemaReaderStrictMode,
+
             string? topicName)
         {
             LeaderEligibility = leaderEligibility;
+            RetriableErrorsSilenced = retriableErrorsSilenced;
+            SchemaReaderStrictMode = schemaReaderStrictMode;
             TopicName = topicName;
         }
     }

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Connection Pool data source provides information about the existing Aiven Connection Pool.
+// Gets information about a connection pool in an Aiven for PostgreSQL® service.
 //
 // ## Example Usage
 //
@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupConnectionPool(ctx, &aiven.LookupConnectionPoolArgs{
-//				Project:     myproject.Project,
-//				ServiceName: mypg.ServiceName,
-//				PoolName:    "mypool",
+//				Project:     exampleProject.Project,
+//				ServiceName: examplePostgres.ServiceName,
+//				PoolName:    "example-pool",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ func LookupConnectionPool(ctx *pulumi.Context, args *LookupConnectionPoolArgs, o
 
 // A collection of arguments for invoking getConnectionPool.
 type LookupConnectionPoolArgs struct {
-	// The name of the created pool. Changing this property forces recreation of the resource.
+	// Name of the pool. Changing this property forces recreation of the resource.
 	PoolName string `pulumi:"poolName"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -62,17 +62,17 @@ type LookupConnectionPoolArgs struct {
 
 // A collection of values returned by getConnectionPool.
 type LookupConnectionPoolResult struct {
-	// The URI for connecting to the pool
+	// The URI for connecting to the pool.
 	ConnectionUri string `pulumi:"connectionUri"`
 	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+	// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 	PoolMode string `pulumi:"poolMode"`
-	// The name of the created pool. Changing this property forces recreation of the resource.
+	// Name of the pool. Changing this property forces recreation of the resource.
 	PoolName string `pulumi:"poolName"`
-	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+	// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
 	PoolSize int `pulumi:"poolSize"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -97,7 +97,7 @@ func LookupConnectionPoolOutput(ctx *pulumi.Context, args LookupConnectionPoolOu
 
 // A collection of arguments for invoking getConnectionPool.
 type LookupConnectionPoolOutputArgs struct {
-	// The name of the created pool. Changing this property forces recreation of the resource.
+	// Name of the pool. Changing this property forces recreation of the resource.
 	PoolName pulumi.StringInput `pulumi:"poolName"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -124,7 +124,7 @@ func (o LookupConnectionPoolResultOutput) ToLookupConnectionPoolResultOutputWith
 	return o
 }
 
-// The URI for connecting to the pool
+// The URI for connecting to the pool.
 func (o LookupConnectionPoolResultOutput) ConnectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
@@ -139,17 +139,17 @@ func (o LookupConnectionPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
 func (o LookupConnectionPoolResultOutput) PoolMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.PoolMode }).(pulumi.StringOutput)
 }
 
-// The name of the created pool. Changing this property forces recreation of the resource.
+// Name of the pool. Changing this property forces recreation of the resource.
 func (o LookupConnectionPoolResultOutput) PoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.PoolName }).(pulumi.StringOutput)
 }
 
-// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
 func (o LookupConnectionPoolResultOutput) PoolSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) int { return v.PoolSize }).(pulumi.IntOutput)
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Cassandra resource allows the creation and management of Aiven Cassandra services.
+    /// Creates and manages an [Aiven for Apache Cassandra®](https://aiven.io/docs/products/cassandra) service.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bar = new Aiven.Cassandra("bar", new()
+    ///     var exampleCassandra = new Aiven.Cassandra("example_cassandra", new()
     ///     {
-    ///         Project = foo.Project,
+    ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
-    ///         ServiceName = "test-service-name",
+    ///         ServiceName = "example-cassandra-service",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
     ///         CassandraUserConfig = new Aiven.Inputs.CassandraCassandraUserConfigArgs
@@ -46,7 +46,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/cassandra:Cassandra bar PROJECT/SERVICE_NAME
+    /// $ pulumi import aiven:index/cassandra:Cassandra example_cassandra PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/cassandra:Cassandra")]
@@ -59,7 +59,7 @@ namespace Pulumi.Aiven
         public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
 
         /// <summary>
-        /// Cassandra server provided values
+        /// Values provided by the Cassandra server.
         /// </summary>
         [Output("cassandra")]
         public Output<Outputs.CassandraCassandra> CassandraServer { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.CassandraCassandraArgs>? _cassandra;
 
         /// <summary>
-        /// Cassandra server provided values
+        /// Values provided by the Cassandra server.
         /// </summary>
         public Input<Inputs.CassandraCassandraArgs>? CassandraServer
         {
@@ -325,7 +325,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -420,7 +420,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.CassandraCassandraGetArgs>? _cassandra;
 
         /// <summary>
-        /// Cassandra server provided values
+        /// Values provided by the Cassandra server.
         /// </summary>
         public Input<Inputs.CassandraCassandraGetArgs>? CassandraServer
         {
@@ -499,7 +499,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

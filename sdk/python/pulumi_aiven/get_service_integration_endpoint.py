@@ -22,7 +22,7 @@ class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
     """
-    def __init__(__self__, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_bigqueries=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_opensearch_logs_user_configs=None, external_postgresqls=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None):
+    def __init__(__self__, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_aws_s3_user_configs=None, external_clickhouse_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_bigqueries=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_mysql_user_configs=None, external_opensearch_logs_user_configs=None, external_postgresqls=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None):
         if datadog_user_configs and not isinstance(datadog_user_configs, list):
             raise TypeError("Expected argument 'datadog_user_configs' to be a list")
         pulumi.set(__self__, "datadog_user_configs", datadog_user_configs)
@@ -41,6 +41,12 @@ class GetServiceIntegrationEndpointResult:
         if external_aws_cloudwatch_metrics_user_configs and not isinstance(external_aws_cloudwatch_metrics_user_configs, list):
             raise TypeError("Expected argument 'external_aws_cloudwatch_metrics_user_configs' to be a list")
         pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_configs", external_aws_cloudwatch_metrics_user_configs)
+        if external_aws_s3_user_configs and not isinstance(external_aws_s3_user_configs, list):
+            raise TypeError("Expected argument 'external_aws_s3_user_configs' to be a list")
+        pulumi.set(__self__, "external_aws_s3_user_configs", external_aws_s3_user_configs)
+        if external_clickhouse_user_configs and not isinstance(external_clickhouse_user_configs, list):
+            raise TypeError("Expected argument 'external_clickhouse_user_configs' to be a list")
+        pulumi.set(__self__, "external_clickhouse_user_configs", external_clickhouse_user_configs)
         if external_elasticsearch_logs_user_configs and not isinstance(external_elasticsearch_logs_user_configs, list):
             raise TypeError("Expected argument 'external_elasticsearch_logs_user_configs' to be a list")
         pulumi.set(__self__, "external_elasticsearch_logs_user_configs", external_elasticsearch_logs_user_configs)
@@ -53,6 +59,9 @@ class GetServiceIntegrationEndpointResult:
         if external_kafka_user_configs and not isinstance(external_kafka_user_configs, list):
             raise TypeError("Expected argument 'external_kafka_user_configs' to be a list")
         pulumi.set(__self__, "external_kafka_user_configs", external_kafka_user_configs)
+        if external_mysql_user_configs and not isinstance(external_mysql_user_configs, list):
+            raise TypeError("Expected argument 'external_mysql_user_configs' to be a list")
+        pulumi.set(__self__, "external_mysql_user_configs", external_mysql_user_configs)
         if external_opensearch_logs_user_configs and not isinstance(external_opensearch_logs_user_configs, list):
             raise TypeError("Expected argument 'external_opensearch_logs_user_configs' to be a list")
         pulumi.set(__self__, "external_opensearch_logs_user_configs", external_opensearch_logs_user_configs)
@@ -127,6 +136,22 @@ class GetServiceIntegrationEndpointResult:
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_configs")
 
     @property
+    @pulumi.getter(name="externalAwsS3UserConfigs")
+    def external_aws_s3_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfigResult']:
+        """
+        ExternalAwsS3 user configurable settings
+        """
+        return pulumi.get(self, "external_aws_s3_user_configs")
+
+    @property
+    @pulumi.getter(name="externalClickhouseUserConfigs")
+    def external_clickhouse_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfigResult']:
+        """
+        ExternalClickhouse user configurable settings
+        """
+        return pulumi.get(self, "external_clickhouse_user_configs")
+
+    @property
     @pulumi.getter(name="externalElasticsearchLogsUserConfigs")
     def external_elasticsearch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult']:
         """
@@ -157,6 +182,14 @@ class GetServiceIntegrationEndpointResult:
         ExternalKafka user configurable settings
         """
         return pulumi.get(self, "external_kafka_user_configs")
+
+    @property
+    @pulumi.getter(name="externalMysqlUserConfigs")
+    def external_mysql_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalMysqlUserConfigResult']:
+        """
+        ExternalMysql user configurable settings
+        """
+        return pulumi.get(self, "external_mysql_user_configs")
 
     @property
     @pulumi.getter(name="externalOpensearchLogsUserConfigs")
@@ -235,10 +268,13 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             endpoint_type=self.endpoint_type,
             external_aws_cloudwatch_logs_user_configs=self.external_aws_cloudwatch_logs_user_configs,
             external_aws_cloudwatch_metrics_user_configs=self.external_aws_cloudwatch_metrics_user_configs,
+            external_aws_s3_user_configs=self.external_aws_s3_user_configs,
+            external_clickhouse_user_configs=self.external_clickhouse_user_configs,
             external_elasticsearch_logs_user_configs=self.external_elasticsearch_logs_user_configs,
             external_google_cloud_bigqueries=self.external_google_cloud_bigqueries,
             external_google_cloud_logging_user_configs=self.external_google_cloud_logging_user_configs,
             external_kafka_user_configs=self.external_kafka_user_configs,
+            external_mysql_user_configs=self.external_mysql_user_configs,
             external_opensearch_logs_user_configs=self.external_opensearch_logs_user_configs,
             external_postgresqls=self.external_postgresqls,
             external_schema_registry_user_configs=self.external_schema_registry_user_configs,
@@ -282,10 +318,13 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
         endpoint_type=pulumi.get(__ret__, 'endpoint_type'),
         external_aws_cloudwatch_logs_user_configs=pulumi.get(__ret__, 'external_aws_cloudwatch_logs_user_configs'),
         external_aws_cloudwatch_metrics_user_configs=pulumi.get(__ret__, 'external_aws_cloudwatch_metrics_user_configs'),
+        external_aws_s3_user_configs=pulumi.get(__ret__, 'external_aws_s3_user_configs'),
+        external_clickhouse_user_configs=pulumi.get(__ret__, 'external_clickhouse_user_configs'),
         external_elasticsearch_logs_user_configs=pulumi.get(__ret__, 'external_elasticsearch_logs_user_configs'),
         external_google_cloud_bigqueries=pulumi.get(__ret__, 'external_google_cloud_bigqueries'),
         external_google_cloud_logging_user_configs=pulumi.get(__ret__, 'external_google_cloud_logging_user_configs'),
         external_kafka_user_configs=pulumi.get(__ret__, 'external_kafka_user_configs'),
+        external_mysql_user_configs=pulumi.get(__ret__, 'external_mysql_user_configs'),
         external_opensearch_logs_user_configs=pulumi.get(__ret__, 'external_opensearch_logs_user_configs'),
         external_postgresqls=pulumi.get(__ret__, 'external_postgresqls'),
         external_schema_registry_user_configs=pulumi.get(__ret__, 'external_schema_registry_user_configs'),

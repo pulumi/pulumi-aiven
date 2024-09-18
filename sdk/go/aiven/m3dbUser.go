@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The M3DB User resource allows the creation and management of Aiven M3DB Users.
+// Creates and manages an Aiven for M3DB service user.
 //
 // ## Example Usage
 //
@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewM3dbUser(ctx, "foo", &aiven.M3dbUserArgs{
-//				ServiceName: pulumi.Any(bar.ServiceName),
-//				Project:     pulumi.String("my-project"),
-//				Username:    pulumi.String("user-1"),
-//				Password:    pulumi.String("Test$1234"),
+//			_, err := aiven.NewM3dbUser(ctx, "example_service_user", &aiven.M3dbUserArgs{
+//				ServiceName: pulumi.Any(exampleM3db.ServiceName),
+//				Project:     pulumi.Any(exampleProject.Project),
+//				Username:    pulumi.String("example-m3db-user"),
+//				Password:    pulumi.Any(serviceUserPw),
 //			})
 //			if err != nil {
 //				return err
@@ -46,20 +46,20 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
+// $ pulumi import aiven:index/m3dbUser:M3dbUser example_service_user PROJECT/SERVICE_NAME/USERNAME
 // ```
 type M3dbUser struct {
 	pulumi.CustomResourceState
 
-	// The password of the M3DB User.
+	// The M3DB service user's password.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -109,28 +109,28 @@ func GetM3dbUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering M3dbUser resources.
 type m3dbUserState struct {
-	// The password of the M3DB User.
+	// The M3DB service user's password.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type *string `pulumi:"type"`
-	// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type M3dbUserState struct {
-	// The password of the M3DB User.
+	// The M3DB service user's password.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringPtrInput
-	// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -139,25 +139,25 @@ func (M3dbUserState) ElementType() reflect.Type {
 }
 
 type m3dbUserArgs struct {
-	// The password of the M3DB User.
+	// The M3DB service user's password.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a M3dbUser resource.
 type M3dbUserArgs struct {
-	// The password of the M3DB User.
+	// The M3DB service user's password.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -248,7 +248,7 @@ func (o M3dbUserOutput) ToM3dbUserOutputWithContext(ctx context.Context) M3dbUse
 	return o
 }
 
-// The password of the M3DB User.
+// The M3DB service user's password.
 func (o M3dbUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3dbUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -263,12 +263,12 @@ func (o M3dbUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3dbUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Type of the user account. Tells whether the user is the primary account or a regular account.
+// User account type, such as primary or regular account.
 func (o M3dbUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3dbUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o M3dbUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3dbUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

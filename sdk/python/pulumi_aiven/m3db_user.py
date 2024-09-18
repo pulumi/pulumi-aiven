@@ -22,8 +22,8 @@ class M3dbUserArgs:
         The set of arguments for constructing a M3dbUser resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] password: The password of the M3DB User.
+        :param pulumi.Input[str] username: Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] password: The M3DB service user's password.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -59,7 +59,7 @@ class M3dbUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -71,7 +71,7 @@ class M3dbUserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the M3DB User.
+        The M3DB service user's password.
         """
         return pulumi.get(self, "password")
 
@@ -90,11 +90,11 @@ class _M3dbUserState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering M3dbUser resources.
-        :param pulumi.Input[str] password: The password of the M3DB User.
+        :param pulumi.Input[str] password: The M3DB service user's password.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] type: User account type, such as primary or regular account.
+        :param pulumi.Input[str] username: Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -111,7 +111,7 @@ class _M3dbUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the M3DB User.
+        The M3DB service user's password.
         """
         return pulumi.get(self, "password")
 
@@ -147,7 +147,7 @@ class _M3dbUserState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -159,7 +159,7 @@ class _M3dbUserState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -179,7 +179,7 @@ class M3dbUser(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The M3DB User resource allows the creation and management of Aiven M3DB Users.
+        Creates and manages an Aiven for M3DB service user.
 
         ## Example Usage
 
@@ -187,25 +187,25 @@ class M3dbUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.M3dbUser("foo",
-            service_name=bar["serviceName"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
+        example_service_user = aiven.M3dbUser("example_service_user",
+            service_name=example_m3db["serviceName"],
+            project=example_project["project"],
+            username="example-m3db-user",
+            password=service_user_pw)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
+        $ pulumi import aiven:index/m3dbUser:M3dbUser example_service_user PROJECT/SERVICE_NAME/USERNAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] password: The password of the M3DB User.
+        :param pulumi.Input[str] password: The M3DB service user's password.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -214,7 +214,7 @@ class M3dbUser(pulumi.CustomResource):
                  args: M3dbUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The M3DB User resource allows the creation and management of Aiven M3DB Users.
+        Creates and manages an Aiven for M3DB service user.
 
         ## Example Usage
 
@@ -222,17 +222,17 @@ class M3dbUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.M3dbUser("foo",
-            service_name=bar["serviceName"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
+        example_service_user = aiven.M3dbUser("example_service_user",
+            service_name=example_m3db["serviceName"],
+            project=example_project["project"],
+            username="example-m3db-user",
+            password=service_user_pw)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
+        $ pulumi import aiven:index/m3dbUser:M3dbUser example_service_user PROJECT/SERVICE_NAME/USERNAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -298,11 +298,11 @@ class M3dbUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] password: The password of the M3DB User.
+        :param pulumi.Input[str] password: The M3DB service user's password.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] type: User account type, such as primary or regular account.
+        :param pulumi.Input[str] username: Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -319,7 +319,7 @@ class M3dbUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        The password of the M3DB User.
+        The M3DB service user's password.
         """
         return pulumi.get(self, "password")
 
@@ -343,7 +343,7 @@ class M3dbUser(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -351,7 +351,7 @@ class M3dbUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

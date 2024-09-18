@@ -108,6 +108,21 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
     }
 
     /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    @Import(name="indices")
+    private @Nullable Output<String> indices;
+
+    /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    public Optional<Output<String>> indices() {
+        return Optional.ofNullable(this.indices);
+    }
+
+    /**
      * Azure account secret key. One of key or sas_token should be specified.
      * 
      */
@@ -161,6 +176,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
         this.compress = $.compress;
         this.container = $.container;
         this.endpointSuffix = $.endpointSuffix;
+        this.indices = $.indices;
         this.key = $.key;
         this.sasToken = $.sasToken;
         this.snapshotName = $.snapshotName;
@@ -308,6 +324,27 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
          */
         public Builder endpointSuffix(String endpointSuffix) {
             return endpointSuffix(Output.of(endpointSuffix));
+        }
+
+        /**
+         * @param indices A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indices(@Nullable Output<String> indices) {
+            $.indices = indices;
+            return this;
+        }
+
+        /**
+         * @param indices A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indices(String indices) {
+            return indices(Output.of(indices));
         }
 
         /**

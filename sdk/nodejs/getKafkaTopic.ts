@@ -63,6 +63,10 @@ export interface GetKafkaTopicResult {
      */
     readonly id: string;
     /**
+     * The user group that is the owner of the topic
+     */
+    readonly ownerUserGroupId: string;
+    /**
      * The number of partitions to create in the topic.
      */
     readonly partitions: number;
@@ -83,6 +87,10 @@ export interface GetKafkaTopicResult {
      */
     readonly tags: outputs.GetKafkaTopicTag[];
     readonly terminationProtection: boolean;
+    /**
+     * The description of the topic
+     */
+    readonly topicDescription: string;
     /**
      * The name of the topic. Changing this property forces recreation of the resource.
      */

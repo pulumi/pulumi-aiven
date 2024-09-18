@@ -68,6 +68,10 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.KafkaTopicConfig | undefined>;
     /**
+     * The user group that is the owner of the topic
+     */
+    public readonly ownerUserGroupId!: pulumi.Output<string | undefined>;
+    /**
      * The number of partitions to create in the topic.
      */
     public readonly partitions!: pulumi.Output<number>;
@@ -89,6 +93,10 @@ export class KafkaTopic extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<outputs.KafkaTopicTag[] | undefined>;
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * The description of the topic
+     */
+    public readonly topicDescription!: pulumi.Output<string | undefined>;
+    /**
      * The name of the topic. Changing this property forces recreation of the resource.
      */
     public readonly topicName!: pulumi.Output<string>;
@@ -107,12 +115,14 @@ export class KafkaTopic extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as KafkaTopicState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["ownerUserGroupId"] = state ? state.ownerUserGroupId : undefined;
             resourceInputs["partitions"] = state ? state.partitions : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["replication"] = state ? state.replication : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
+            resourceInputs["topicDescription"] = state ? state.topicDescription : undefined;
             resourceInputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as KafkaTopicArgs | undefined;
@@ -132,12 +142,14 @@ export class KafkaTopic extends pulumi.CustomResource {
                 throw new Error("Missing required property 'topicName'");
             }
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["ownerUserGroupId"] = args ? args.ownerUserGroupId : undefined;
             resourceInputs["partitions"] = args ? args.partitions : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["replication"] = args ? args.replication : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
+            resourceInputs["topicDescription"] = args ? args.topicDescription : undefined;
             resourceInputs["topicName"] = args ? args.topicName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -153,6 +165,10 @@ export interface KafkaTopicState {
      * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
+    /**
+     * The user group that is the owner of the topic
+     */
+    ownerUserGroupId?: pulumi.Input<string>;
     /**
      * The number of partitions to create in the topic.
      */
@@ -175,6 +191,10 @@ export interface KafkaTopicState {
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     terminationProtection?: pulumi.Input<boolean>;
     /**
+     * The description of the topic
+     */
+    topicDescription?: pulumi.Input<string>;
+    /**
      * The name of the topic. Changing this property forces recreation of the resource.
      */
     topicName?: pulumi.Input<string>;
@@ -188,6 +208,10 @@ export interface KafkaTopicArgs {
      * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
+    /**
+     * The user group that is the owner of the topic
+     */
+    ownerUserGroupId?: pulumi.Input<string>;
     /**
      * The number of partitions to create in the topic.
      */
@@ -209,6 +233,10 @@ export interface KafkaTopicArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
     terminationProtection?: pulumi.Input<boolean>;
+    /**
+     * The description of the topic
+     */
+    topicDescription?: pulumi.Input<string>;
     /**
      * The name of the topic. Changing this property forces recreation of the resource.
      */

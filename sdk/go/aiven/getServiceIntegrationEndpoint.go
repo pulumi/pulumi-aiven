@@ -71,6 +71,10 @@ type LookupServiceIntegrationEndpointResult struct {
 	ExternalAwsCloudwatchLogsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfigs"`
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfigs"`
+	// ExternalAwsS3 user configurable settings
+	ExternalAwsS3UserConfigs []GetServiceIntegrationEndpointExternalAwsS3UserConfig `pulumi:"externalAwsS3UserConfigs"`
+	// ExternalClickhouse user configurable settings
+	ExternalClickhouseUserConfigs []GetServiceIntegrationEndpointExternalClickhouseUserConfig `pulumi:"externalClickhouseUserConfigs"`
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfigs []GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfigs"`
 	// ExternalGoogleCloudBigquery user configurable settings
@@ -79,6 +83,8 @@ type LookupServiceIntegrationEndpointResult struct {
 	ExternalGoogleCloudLoggingUserConfigs []GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfigs"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfigs []GetServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfigs"`
+	// ExternalMysql user configurable settings
+	ExternalMysqlUserConfigs []GetServiceIntegrationEndpointExternalMysqlUserConfig `pulumi:"externalMysqlUserConfigs"`
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfigs []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfigs"`
 	// ExternalPostgresql user configurable settings
@@ -173,6 +179,20 @@ func (o LookupServiceIntegrationEndpointResultOutput) ExternalAwsCloudwatchMetri
 	}).(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput)
 }
 
+// ExternalAwsS3 user configurable settings
+func (o LookupServiceIntegrationEndpointResultOutput) ExternalAwsS3UserConfigs() GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalAwsS3UserConfig {
+		return v.ExternalAwsS3UserConfigs
+	}).(GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput)
+}
+
+// ExternalClickhouse user configurable settings
+func (o LookupServiceIntegrationEndpointResultOutput) ExternalClickhouseUserConfigs() GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalClickhouseUserConfig {
+		return v.ExternalClickhouseUserConfigs
+	}).(GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput)
+}
+
 // ExternalElasticsearchLogs user configurable settings
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalElasticsearchLogsUserConfigs() GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
@@ -199,6 +219,13 @@ func (o LookupServiceIntegrationEndpointResultOutput) ExternalKafkaUserConfigs()
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalKafkaUserConfig {
 		return v.ExternalKafkaUserConfigs
 	}).(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput)
+}
+
+// ExternalMysql user configurable settings
+func (o LookupServiceIntegrationEndpointResultOutput) ExternalMysqlUserConfigs() GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalMysqlUserConfig {
+		return v.ExternalMysqlUserConfigs
+	}).(GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput)
 }
 
 // ExternalOpensearchLogs user configurable settings

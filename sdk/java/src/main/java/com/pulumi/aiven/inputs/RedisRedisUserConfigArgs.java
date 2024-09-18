@@ -39,6 +39,36 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * 
+     */
+    @Import(name="backupHour")
+    private @Nullable Output<Integer> backupHour;
+
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * 
+     */
+    public Optional<Output<Integer>> backupHour() {
+        return Optional.ofNullable(this.backupHour);
+    }
+
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * 
+     */
+    @Import(name="backupMinute")
+    private @Nullable Output<Integer> backupMinute;
+
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * 
+     */
+    public Optional<Output<Integer>> backupMinute() {
+        return Optional.ofNullable(this.backupMinute);
+    }
+
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -410,6 +440,8 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
 
     private RedisRedisUserConfigArgs(RedisRedisUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
+        this.backupHour = $.backupHour;
+        this.backupMinute = $.backupMinute;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
@@ -473,6 +505,48 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupHour(@Nullable Output<Integer> backupHour) {
+            $.backupHour = backupHour;
+            return this;
+        }
+
+        /**
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupHour(Integer backupHour) {
+            return backupHour(Output.of(backupHour));
+        }
+
+        /**
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupMinute(@Nullable Output<Integer> backupMinute) {
+            $.backupMinute = backupMinute;
+            return this;
+        }
+
+        /**
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupMinute(Integer backupMinute) {
+            return backupMinute(Output.of(backupMinute));
         }
 
         /**

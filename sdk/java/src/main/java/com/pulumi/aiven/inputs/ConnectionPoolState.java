@@ -17,14 +17,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     public static final ConnectionPoolState Empty = new ConnectionPoolState();
 
     /**
-     * The URI for connecting to the pool
+     * The URI for connecting to the pool.
      * 
      */
     @Import(name="connectionUri")
     private @Nullable Output<String> connectionUri;
 
     /**
-     * @return The URI for connecting to the pool
+     * @return The URI for connecting to the pool.
      * 
      */
     public Optional<Output<String>> connectionUri() {
@@ -47,14 +47,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     @Import(name="poolMode")
     private @Nullable Output<String> poolMode;
 
     /**
-     * @return The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     public Optional<Output<String>> poolMode() {
@@ -62,14 +62,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the created pool. Changing this property forces recreation of the resource.
+     * Name of the pool. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="poolName")
     private @Nullable Output<String> poolName;
 
     /**
-     * @return The name of the created pool. Changing this property forces recreation of the resource.
+     * @return Name of the pool. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> poolName() {
@@ -77,14 +77,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     * The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
      * 
      */
     @Import(name="poolSize")
     private @Nullable Output<Integer> poolSize;
 
     /**
-     * @return The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     * @return The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
      * 
      */
     public Optional<Output<Integer>> poolSize() {
@@ -168,7 +168,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connectionUri The URI for connecting to the pool
+         * @param connectionUri The URI for connecting to the pool.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connectionUri The URI for connecting to the pool
+         * @param connectionUri The URI for connecting to the pool.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolMode The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+         * @param poolMode The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolMode The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+         * @param poolMode The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolName The name of the created pool. Changing this property forces recreation of the resource.
+         * @param poolName Name of the pool. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolName The name of the created pool. Changing this property forces recreation of the resource.
+         * @param poolName Name of the pool. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolSize The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+         * @param poolSize The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolSize The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+         * @param poolSize The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
          * 
          * @return builder
          * 

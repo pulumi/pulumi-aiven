@@ -69,7 +69,7 @@ export interface GetPgUserResult {
      */
     readonly password: string;
     /**
-     * Allows replication.
+     * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
     readonly pgAllowReplication: boolean;
     /**

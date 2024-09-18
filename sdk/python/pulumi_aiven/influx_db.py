@@ -39,7 +39,7 @@ class InfluxDbArgs:
                store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
                `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+               options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
@@ -115,7 +115,7 @@ class InfluxDbArgs:
         store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
         `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
         other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -382,7 +382,7 @@ class _InfluxDbState:
                store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
                `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+               options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -632,7 +632,7 @@ class _InfluxDbState:
         store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
         `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
         other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -876,7 +876,7 @@ class InfluxDb(pulumi.CustomResource):
                store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
                `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+               options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -1051,7 +1051,7 @@ class InfluxDb(pulumi.CustomResource):
                store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
                `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+               options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -1227,7 +1227,7 @@ class InfluxDb(pulumi.CustomResource):
         store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
         `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
         other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 

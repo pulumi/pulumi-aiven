@@ -49,6 +49,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? EndpointSuffix { get; set; }
 
         /// <summary>
+        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        /// </summary>
+        [Input("indices")]
+        public Input<string>? Indices { get; set; }
+
+        /// <summary>
         /// Azure account secret key. One of key or sas_token should be specified.
         /// </summary>
         [Input("key")]

@@ -59,6 +59,8 @@ type KafkaTopic struct {
 
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config KafkaTopicConfigPtrOutput `pulumi:"config"`
+	// The user group that is the owner of the topic
+	OwnerUserGroupId pulumi.StringPtrOutput `pulumi:"ownerUserGroupId"`
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -70,6 +72,8 @@ type KafkaTopic struct {
 	// Tags for the topic.
 	Tags                  KafkaTopicTagArrayOutput `pulumi:"tags"`
 	TerminationProtection pulumi.BoolPtrOutput     `pulumi:"terminationProtection"`
+	// The description of the topic
+	TopicDescription pulumi.StringPtrOutput `pulumi:"topicDescription"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringOutput `pulumi:"topicName"`
 }
@@ -121,6 +125,8 @@ func GetKafkaTopic(ctx *pulumi.Context,
 type kafkaTopicState struct {
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config *KafkaTopicConfig `pulumi:"config"`
+	// The user group that is the owner of the topic
+	OwnerUserGroupId *string `pulumi:"ownerUserGroupId"`
 	// The number of partitions to create in the topic.
 	Partitions *int `pulumi:"partitions"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -132,6 +138,8 @@ type kafkaTopicState struct {
 	// Tags for the topic.
 	Tags                  []KafkaTopicTag `pulumi:"tags"`
 	TerminationProtection *bool           `pulumi:"terminationProtection"`
+	// The description of the topic
+	TopicDescription *string `pulumi:"topicDescription"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName *string `pulumi:"topicName"`
 }
@@ -139,6 +147,8 @@ type kafkaTopicState struct {
 type KafkaTopicState struct {
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config KafkaTopicConfigPtrInput
+	// The user group that is the owner of the topic
+	OwnerUserGroupId pulumi.StringPtrInput
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -150,6 +160,8 @@ type KafkaTopicState struct {
 	// Tags for the topic.
 	Tags                  KafkaTopicTagArrayInput
 	TerminationProtection pulumi.BoolPtrInput
+	// The description of the topic
+	TopicDescription pulumi.StringPtrInput
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringPtrInput
 }
@@ -161,6 +173,8 @@ func (KafkaTopicState) ElementType() reflect.Type {
 type kafkaTopicArgs struct {
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config *KafkaTopicConfig `pulumi:"config"`
+	// The user group that is the owner of the topic
+	OwnerUserGroupId *string `pulumi:"ownerUserGroupId"`
 	// The number of partitions to create in the topic.
 	Partitions int `pulumi:"partitions"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -172,6 +186,8 @@ type kafkaTopicArgs struct {
 	// Tags for the topic.
 	Tags                  []KafkaTopicTag `pulumi:"tags"`
 	TerminationProtection *bool           `pulumi:"terminationProtection"`
+	// The description of the topic
+	TopicDescription *string `pulumi:"topicDescription"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName string `pulumi:"topicName"`
 }
@@ -180,6 +196,8 @@ type kafkaTopicArgs struct {
 type KafkaTopicArgs struct {
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config KafkaTopicConfigPtrInput
+	// The user group that is the owner of the topic
+	OwnerUserGroupId pulumi.StringPtrInput
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -191,6 +209,8 @@ type KafkaTopicArgs struct {
 	// Tags for the topic.
 	Tags                  KafkaTopicTagArrayInput
 	TerminationProtection pulumi.BoolPtrInput
+	// The description of the topic
+	TopicDescription pulumi.StringPtrInput
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringInput
 }
@@ -287,6 +307,11 @@ func (o KafkaTopicOutput) Config() KafkaTopicConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) KafkaTopicConfigPtrOutput { return v.Config }).(KafkaTopicConfigPtrOutput)
 }
 
+// The user group that is the owner of the topic
+func (o KafkaTopicOutput) OwnerUserGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopic) pulumi.StringPtrOutput { return v.OwnerUserGroupId }).(pulumi.StringPtrOutput)
+}
+
 // The number of partitions to create in the topic.
 func (o KafkaTopicOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.Partitions }).(pulumi.IntOutput)
@@ -314,6 +339,11 @@ func (o KafkaTopicOutput) Tags() KafkaTopicTagArrayOutput {
 
 func (o KafkaTopicOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The description of the topic
+func (o KafkaTopicOutput) TopicDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopic) pulumi.StringPtrOutput { return v.TopicDescription }).(pulumi.StringPtrOutput)
 }
 
 // The name of the topic. Changing this property forces recreation of the resource.

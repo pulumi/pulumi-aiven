@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Cassandra User data source provides information about the existing Aiven Cassandra User.
+ * Gets information about an Aiven for Apache Cassandra® service user.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getCassandraUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleServiceUser = aiven.getCassandraUser({
+ *     serviceName: exampleCassandra.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-cassandra-user",
  * });
  * ```
  */
@@ -43,7 +43,7 @@ export interface GetCassandraUserArgs {
      */
     serviceName: string;
     /**
-     * The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -53,11 +53,11 @@ export interface GetCassandraUserArgs {
  */
 export interface GetCassandraUserResult {
     /**
-     * Access certificate for the user if applicable for the service in question
+     * Access certificate for the user.
      */
     readonly accessCert: string;
     /**
-     * Access certificate key for the user if applicable for the service in question
+     * Access certificate key for the user.
      */
     readonly accessKey: string;
     /**
@@ -65,7 +65,7 @@ export interface GetCassandraUserResult {
      */
     readonly id: string;
     /**
-     * The password of the Cassandra User.
+     * The Cassandra service user's password.
      */
     readonly password: string;
     /**
@@ -77,16 +77,16 @@ export interface GetCassandraUserResult {
      */
     readonly serviceName: string;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     readonly type: string;
     /**
-     * The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
 /**
- * The Cassandra User data source provides information about the existing Aiven Cassandra User.
+ * Gets information about an Aiven for Apache Cassandra® service user.
  *
  * ## Example Usage
  *
@@ -94,10 +94,10 @@ export interface GetCassandraUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getCassandraUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleServiceUser = aiven.getCassandraUser({
+ *     serviceName: exampleCassandra.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-cassandra-user",
  * });
  * ```
  */
@@ -118,7 +118,7 @@ export interface GetCassandraUserOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

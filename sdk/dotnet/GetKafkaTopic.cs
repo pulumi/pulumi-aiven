@@ -130,6 +130,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The user group that is the owner of the topic
+        /// </summary>
+        public readonly string OwnerUserGroupId;
+        /// <summary>
         /// The number of partitions to create in the topic.
         /// </summary>
         public readonly int Partitions;
@@ -151,6 +155,10 @@ namespace Pulumi.Aiven
         public readonly ImmutableArray<Outputs.GetKafkaTopicTagResult> Tags;
         public readonly bool TerminationProtection;
         /// <summary>
+        /// The description of the topic
+        /// </summary>
+        public readonly string TopicDescription;
+        /// <summary>
         /// The name of the topic. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string TopicName;
@@ -160,6 +168,8 @@ namespace Pulumi.Aiven
             ImmutableArray<Outputs.GetKafkaTopicConfigResult> configs,
 
             string id,
+
+            string ownerUserGroupId,
 
             int partitions,
 
@@ -173,16 +183,20 @@ namespace Pulumi.Aiven
 
             bool terminationProtection,
 
+            string topicDescription,
+
             string topicName)
         {
             Configs = configs;
             Id = id;
+            OwnerUserGroupId = ownerUserGroupId;
             Partitions = partitions;
             Project = project;
             Replication = replication;
             ServiceName = serviceName;
             Tags = tags;
             TerminationProtection = terminationProtection;
+            TopicDescription = topicDescription;
             TopicName = topicName;
         }
     }

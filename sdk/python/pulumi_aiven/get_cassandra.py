@@ -131,7 +131,7 @@ class GetCassandraResult:
     @pulumi.getter
     def cassandras(self) -> Sequence['outputs.GetCassandraCassandraResult']:
         """
-        Cassandra server provided values
+        Values provided by the Cassandra server.
         """
         return pulumi.get(self, "cassandras")
 
@@ -219,7 +219,7 @@ class GetCassandraResult:
     @pulumi.getter
     def plan(self) -> str:
         """
-        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -385,7 +385,7 @@ def get_cassandra(project: Optional[str] = None,
                   service_name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCassandraResult:
     """
-    The Cassandra data source provides information about the existing Aiven Cassandra service.
+    Gets information about an Aiven for Apache Cassandra® service.
 
     ## Example Usage
 
@@ -393,8 +393,8 @@ def get_cassandra(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    bar = aiven.get_cassandra(project=foo["project"],
-        service_name="<SERVICE_NAME>")
+    example_cassandra = aiven.get_cassandra(project=example_project["project"],
+        service_name="example-cassandra-service")
     ```
 
 
@@ -444,7 +444,7 @@ def get_cassandra_output(project: Optional[pulumi.Input[str]] = None,
                          service_name: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCassandraResult]:
     """
-    The Cassandra data source provides information about the existing Aiven Cassandra service.
+    Gets information about an Aiven for Apache Cassandra® service.
 
     ## Example Usage
 
@@ -452,8 +452,8 @@ def get_cassandra_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    bar = aiven.get_cassandra(project=foo["project"],
-        service_name="<SERVICE_NAME>")
+    example_cassandra = aiven.get_cassandra(project=example_project["project"],
+        service_name="example-cassandra-service")
     ```
 
 

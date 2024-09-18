@@ -35,7 +35,11 @@ public final class ThanosThanos {
     /**
      * @return Store URI.
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     private @Nullable String storeUri;
     /**
      * @return Thanos server URIs.
@@ -75,7 +79,11 @@ public final class ThanosThanos {
     /**
      * @return Store URI.
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     public Optional<String> storeUri() {
         return Optional.ofNullable(this.storeUri);
     }

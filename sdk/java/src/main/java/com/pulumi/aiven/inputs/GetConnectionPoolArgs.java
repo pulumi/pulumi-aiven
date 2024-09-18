@@ -15,14 +15,14 @@ public final class GetConnectionPoolArgs extends com.pulumi.resources.InvokeArgs
     public static final GetConnectionPoolArgs Empty = new GetConnectionPoolArgs();
 
     /**
-     * The name of the created pool. Changing this property forces recreation of the resource.
+     * Name of the pool. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="poolName", required=true)
     private Output<String> poolName;
 
     /**
-     * @return The name of the created pool. Changing this property forces recreation of the resource.
+     * @return Name of the pool. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> poolName() {
@@ -86,7 +86,7 @@ public final class GetConnectionPoolArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param poolName The name of the created pool. Changing this property forces recreation of the resource.
+         * @param poolName Name of the pool. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetConnectionPoolArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param poolName The name of the created pool. Changing this property forces recreation of the resource.
+         * @param poolName Name of the pool. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -44,6 +44,11 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
      */
     private @Nullable String endpoint;
     /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    private @Nullable String indices;
+    /**
      * @return S3 region.
      * 
      */
@@ -108,6 +113,13 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
         return Optional.ofNullable(this.endpoint);
     }
     /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    public Optional<String> indices() {
+        return Optional.ofNullable(this.indices);
+    }
+    /**
      * @return S3 region.
      * 
      */
@@ -151,6 +163,7 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
         private @Nullable String chunkSize;
         private @Nullable Boolean compress;
         private @Nullable String endpoint;
+        private @Nullable String indices;
         private String region;
         private String secretKey;
         private @Nullable Boolean serverSideEncryption;
@@ -164,6 +177,7 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
     	      this.chunkSize = defaults.chunkSize;
     	      this.compress = defaults.compress;
     	      this.endpoint = defaults.endpoint;
+    	      this.indices = defaults.indices;
     	      this.region = defaults.region;
     	      this.secretKey = defaults.secretKey;
     	      this.serverSideEncryption = defaults.serverSideEncryption;
@@ -213,6 +227,12 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
             return this;
         }
         @CustomType.Setter
+        public Builder indices(@Nullable String indices) {
+
+            this.indices = indices;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetOpenSearchOpensearchUserConfigS3Migration", "region");
@@ -250,6 +270,7 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
             _resultValue.chunkSize = chunkSize;
             _resultValue.compress = compress;
             _resultValue.endpoint = endpoint;
+            _resultValue.indices = indices;
             _resultValue.region = region;
             _resultValue.secretKey = secretKey;
             _resultValue.serverSideEncryption = serverSideEncryption;

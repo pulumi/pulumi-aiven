@@ -30,6 +30,16 @@ namespace Pulumi.Aiven
     ///         Password = serviceUserPassword,
     ///     });
     /// 
+    ///     // Each service has a default admin user with the username avnadmin.
+    ///     var adminUser = new Aiven.PgUser("admin_user", new()
+    ///     {
+    ///         ServiceName = examplePostgres.ServiceName,
+    ///         Project = exampleProject.Project,
+    ///         Username = "avnadmin",
+    ///         Password = serviceUserPassword,
+    ///         PgAllowReplication = true,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -61,7 +71,7 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Allows replication.
+        /// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         /// </summary>
         [Output("pgAllowReplication")]
         public Output<bool?> PgAllowReplication { get; private set; } = null!;
@@ -159,7 +169,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Allows replication.
+        /// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         /// </summary>
         [Input("pgAllowReplication")]
         public Input<bool>? PgAllowReplication { get; set; }
@@ -239,7 +249,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Allows replication.
+        /// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         /// </summary>
         [Input("pgAllowReplication")]
         public Input<bool>? PgAllowReplication { get; set; }

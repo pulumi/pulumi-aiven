@@ -62,14 +62,14 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allows replication.
+     * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
     @Import(name="pgAllowReplication")
     private @Nullable Output<Boolean> pgAllowReplication;
 
     /**
-     * @return Allows replication.
+     * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
     public Optional<Output<Boolean>> pgAllowReplication() {
@@ -231,7 +231,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgAllowReplication Allows replication.
+         * @param pgAllowReplication Allows replication. For the default avnadmin user this attribute is required and is always `true`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class PgUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgAllowReplication Allows replication.
+         * @param pgAllowReplication Allows replication. For the default avnadmin user this attribute is required and is always `true`.
          * 
          * @return builder
          * 

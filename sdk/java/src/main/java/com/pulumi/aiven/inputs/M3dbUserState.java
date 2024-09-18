@@ -16,14 +16,14 @@ public final class M3dbUserState extends com.pulumi.resources.ResourceArgs {
     public static final M3dbUserState Empty = new M3dbUserState();
 
     /**
-     * The password of the M3DB User.
+     * The M3DB service user&#39;s password.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the M3DB User.
+     * @return The M3DB service user&#39;s password.
      * 
      */
     public Optional<Output<String>> password() {
@@ -61,14 +61,14 @@ public final class M3dbUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public Optional<Output<String>> type() {
@@ -76,14 +76,14 @@ public final class M3dbUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -119,7 +119,7 @@ public final class M3dbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the M3DB User.
+         * @param password The M3DB service user&#39;s password.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class M3dbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the M3DB User.
+         * @param password The M3DB service user&#39;s password.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class M3dbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the user account. Tells whether the user is the primary account or a regular account.
+         * @param type User account type, such as primary or regular account.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class M3dbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the user account. Tells whether the user is the primary account or a regular account.
+         * @param type User account type, such as primary or regular account.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class M3dbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class M3dbUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

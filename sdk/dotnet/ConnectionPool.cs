@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Connection Pool resource allows the creation and management of Aiven Connection Pools.
+    /// Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service.
     /// 
     /// ## Example Usage
     /// 
@@ -22,15 +22,15 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mytestpool = new Aiven.ConnectionPool("mytestpool", new()
+    ///     var main = new Aiven.ConnectionPool("main", new()
     ///     {
-    ///         Project = myproject.Project,
-    ///         ServiceName = mypg.ServiceName,
-    ///         DatabaseName = mypgdatabase.DatabaseName,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = examplePostgres.ServiceName,
+    ///         DatabaseName = mainAivenPgDatabase.DatabaseName,
     ///         PoolMode = "transaction",
-    ///         PoolName = "mypool",
+    ///         PoolName = "example-pool",
     ///         PoolSize = 10,
-    ///         Username = mypguser.Username,
+    ///         Username = exampleUser.Username,
     ///     });
     /// 
     /// });
@@ -39,14 +39,14 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool PROJECT/SERVICE_NAME/POOL_NAME
+    /// $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/connectionPool:ConnectionPool")]
     public partial class ConnectionPool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The URI for connecting to the pool
+        /// The URI for connecting to the pool.
         /// </summary>
         [Output("connectionUri")]
         public Output<string> ConnectionUri { get; private set; } = null!;
@@ -58,19 +58,19 @@ namespace Pulumi.Aiven
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Output("poolMode")]
         public Output<string?> PoolMode { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the created pool. Changing this property forces recreation of the resource.
+        /// Name of the pool. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("poolName")]
         public Output<string> PoolName { get; private set; } = null!;
 
         /// <summary>
-        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        /// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         /// </summary>
         [Output("poolSize")]
         public Output<int?> PoolSize { get; private set; } = null!;
@@ -150,19 +150,19 @@ namespace Pulumi.Aiven
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
 
         /// <summary>
-        /// The name of the created pool. Changing this property forces recreation of the resource.
+        /// Name of the pool. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("poolName", required: true)]
         public Input<string> PoolName { get; set; } = null!;
 
         /// <summary>
-        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        /// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         /// </summary>
         [Input("poolSize")]
         public Input<int>? PoolSize { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.Aiven
         private Input<string>? _connectionUri;
 
         /// <summary>
-        /// The URI for connecting to the pool
+        /// The URI for connecting to the pool.
         /// </summary>
         public Input<string>? ConnectionUri
         {
@@ -216,19 +216,19 @@ namespace Pulumi.Aiven
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         /// </summary>
         [Input("poolMode")]
         public Input<string>? PoolMode { get; set; }
 
         /// <summary>
-        /// The name of the created pool. Changing this property forces recreation of the resource.
+        /// Name of the pool. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("poolName")]
         public Input<string>? PoolName { get; set; }
 
         /// <summary>
-        /// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        /// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         /// </summary>
         [Input("poolSize")]
         public Input<int>? PoolSize { get; set; }

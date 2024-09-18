@@ -44,6 +44,11 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
      */
     private @Nullable String endpointSuffix;
     /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    private @Nullable String indices;
+    /**
      * @return Azure account secret key. One of key or sas_token should be specified.
      * 
      */
@@ -103,6 +108,13 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
         return Optional.ofNullable(this.endpointSuffix);
     }
     /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    public Optional<String> indices() {
+        return Optional.ofNullable(this.indices);
+    }
+    /**
      * @return Azure account secret key. One of key or sas_token should be specified.
      * 
      */
@@ -139,6 +151,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
         private @Nullable Boolean compress;
         private String container;
         private @Nullable String endpointSuffix;
+        private @Nullable String indices;
         private @Nullable String key;
         private @Nullable String sasToken;
         private String snapshotName;
@@ -151,6 +164,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
     	      this.compress = defaults.compress;
     	      this.container = defaults.container;
     	      this.endpointSuffix = defaults.endpointSuffix;
+    	      this.indices = defaults.indices;
     	      this.key = defaults.key;
     	      this.sasToken = defaults.sasToken;
     	      this.snapshotName = defaults.snapshotName;
@@ -199,6 +213,12 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
             return this;
         }
         @CustomType.Setter
+        public Builder indices(@Nullable String indices) {
+
+            this.indices = indices;
+            return this;
+        }
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
 
             this.key = key;
@@ -226,6 +246,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
             _resultValue.compress = compress;
             _resultValue.container = container;
             _resultValue.endpointSuffix = endpointSuffix;
+            _resultValue.indices = indices;
             _resultValue.key = key;
             _resultValue.sasToken = sasToken;
             _resultValue.snapshotName = snapshotName;

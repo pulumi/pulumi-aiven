@@ -25,7 +25,7 @@ class PgUserArgs:
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] password: The password of the service user.
-        :param pulumi.Input[bool] pg_allow_replication: Allows replication.
+        :param pulumi.Input[bool] pg_allow_replication: Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -87,7 +87,7 @@ class PgUserArgs:
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allows replication.
+        Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         """
         return pulumi.get(self, "pg_allow_replication")
 
@@ -112,7 +112,7 @@ class _PgUserState:
         :param pulumi.Input[str] access_cert: The access certificate for the servie user.
         :param pulumi.Input[str] access_key: The access certificate key for the service user.
         :param pulumi.Input[str] password: The password of the service user.
-        :param pulumi.Input[bool] pg_allow_replication: Allows replication.
+        :param pulumi.Input[bool] pg_allow_replication: Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] type: The service user account type, either primary or regular.
@@ -175,7 +175,7 @@ class _PgUserState:
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allows replication.
+        Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         """
         return pulumi.get(self, "pg_allow_replication")
 
@@ -257,6 +257,13 @@ class PgUser(pulumi.CustomResource):
             project=example_project["project"],
             username="example-service-user",
             password=service_user_password)
+        # Each service has a default admin user with the username avnadmin.
+        admin_user = aiven.PgUser("admin_user",
+            service_name=example_postgres["serviceName"],
+            project=example_project["project"],
+            username="avnadmin",
+            password=service_user_password,
+            pg_allow_replication=True)
         ```
 
         ## Import
@@ -268,7 +275,7 @@ class PgUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] password: The password of the service user.
-        :param pulumi.Input[bool] pg_allow_replication: Allows replication.
+        :param pulumi.Input[bool] pg_allow_replication: Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The name of the service user for this service. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -293,6 +300,13 @@ class PgUser(pulumi.CustomResource):
             project=example_project["project"],
             username="example-service-user",
             password=service_user_password)
+        # Each service has a default admin user with the username avnadmin.
+        admin_user = aiven.PgUser("admin_user",
+            service_name=example_postgres["serviceName"],
+            project=example_project["project"],
+            username="avnadmin",
+            password=service_user_password,
+            pg_allow_replication=True)
         ```
 
         ## Import
@@ -374,7 +388,7 @@ class PgUser(pulumi.CustomResource):
         :param pulumi.Input[str] access_cert: The access certificate for the servie user.
         :param pulumi.Input[str] access_key: The access certificate key for the service user.
         :param pulumi.Input[str] password: The password of the service user.
-        :param pulumi.Input[bool] pg_allow_replication: Allows replication.
+        :param pulumi.Input[bool] pg_allow_replication: Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] type: The service user account type, either primary or regular.
@@ -422,7 +436,7 @@ class PgUser(pulumi.CustomResource):
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> pulumi.Output[Optional[bool]]:
         """
-        Allows replication.
+        Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         """
         return pulumi.get(self, "pg_allow_replication")
 

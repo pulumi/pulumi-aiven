@@ -24,11 +24,11 @@ class ConnectionPoolArgs:
         """
         The set of arguments for constructing a ConnectionPool resource.
         :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] pool_name: The name of the created pool. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] pool_name: Name of the pool. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
-        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        :param pulumi.Input[str] pool_mode: The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[int] pool_size: The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
         """
         pulumi.set(__self__, "database_name", database_name)
@@ -58,7 +58,7 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="poolName")
     def pool_name(self) -> pulumi.Input[str]:
         """
-        The name of the created pool. Changing this property forces recreation of the resource.
+        Name of the pool. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pool_name")
 
@@ -94,7 +94,7 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -106,7 +106,7 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -140,11 +140,11 @@ class _ConnectionPoolState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConnectionPool resources.
-        :param pulumi.Input[str] connection_uri: The URI for connecting to the pool
+        :param pulumi.Input[str] connection_uri: The URI for connecting to the pool.
         :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
-        :param pulumi.Input[str] pool_name: The name of the created pool. Changing this property forces recreation of the resource.
-        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        :param pulumi.Input[str] pool_mode: The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] pool_name: Name of the pool. Changing this property forces recreation of the resource.
+        :param pulumi.Input[int] pool_size: The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
@@ -170,7 +170,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="connectionUri")
     def connection_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI for connecting to the pool
+        The URI for connecting to the pool.
         """
         return pulumi.get(self, "connection_uri")
 
@@ -194,7 +194,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -206,7 +206,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="poolName")
     def pool_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the created pool. Changing this property forces recreation of the resource.
+        Name of the pool. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pool_name")
 
@@ -218,7 +218,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -277,7 +277,7 @@ class ConnectionPool(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Connection Pool resource allows the creation and management of Aiven Connection Pools.
+        Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service.
 
         ## Example Usage
 
@@ -285,28 +285,28 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mytestpool = aiven.ConnectionPool("mytestpool",
-            project=myproject["project"],
-            service_name=mypg["serviceName"],
-            database_name=mypgdatabase["databaseName"],
+        main = aiven.ConnectionPool("main",
+            project=example_project["project"],
+            service_name=example_postgres["serviceName"],
+            database_name=main_aiven_pg_database["databaseName"],
             pool_mode="transaction",
-            pool_name="mypool",
+            pool_name="example-pool",
             pool_size=10,
-            username=mypguser["username"])
+            username=example_user["username"])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool PROJECT/SERVICE_NAME/POOL_NAME
+        $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
-        :param pulumi.Input[str] pool_name: The name of the created pool. Changing this property forces recreation of the resource.
-        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        :param pulumi.Input[str] pool_mode: The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] pool_name: Name of the pool. Changing this property forces recreation of the resource.
+        :param pulumi.Input[int] pool_size: The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
@@ -318,7 +318,7 @@ class ConnectionPool(pulumi.CustomResource):
                  args: ConnectionPoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Connection Pool resource allows the creation and management of Aiven Connection Pools.
+        Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service.
 
         ## Example Usage
 
@@ -326,20 +326,20 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mytestpool = aiven.ConnectionPool("mytestpool",
-            project=myproject["project"],
-            service_name=mypg["serviceName"],
-            database_name=mypgdatabase["databaseName"],
+        main = aiven.ConnectionPool("main",
+            project=example_project["project"],
+            service_name=example_postgres["serviceName"],
+            database_name=main_aiven_pg_database["databaseName"],
             pool_mode="transaction",
-            pool_name="mypool",
+            pool_name="example-pool",
             pool_size=10,
-            username=mypguser["username"])
+            username=example_user["username"])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool PROJECT/SERVICE_NAME/POOL_NAME
+        $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -416,11 +416,11 @@ class ConnectionPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connection_uri: The URI for connecting to the pool
+        :param pulumi.Input[str] connection_uri: The URI for connecting to the pool.
         :param pulumi.Input[str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] pool_mode: The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
-        :param pulumi.Input[str] pool_name: The name of the created pool. Changing this property forces recreation of the resource.
-        :param pulumi.Input[int] pool_size: The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        :param pulumi.Input[str] pool_mode: The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        :param pulumi.Input[str] pool_name: Name of the pool. Changing this property forces recreation of the resource.
+        :param pulumi.Input[int] pool_size: The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
@@ -443,7 +443,7 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="connectionUri")
     def connection_uri(self) -> pulumi.Output[str]:
         """
-        The URI for connecting to the pool
+        The URI for connecting to the pool.
         """
         return pulumi.get(self, "connection_uri")
 
@@ -459,7 +459,7 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -467,7 +467,7 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="poolName")
     def pool_name(self) -> pulumi.Output[str]:
         """
-        The name of the created pool. Changing this property forces recreation of the resource.
+        Name of the pool. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pool_name")
 
@@ -475,7 +475,7 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 

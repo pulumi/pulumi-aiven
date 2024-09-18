@@ -79,14 +79,22 @@ public final class ThanosThanosArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Store URI.
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     @Import(name="storeUri")
     private @Nullable Output<String> storeUri;
 
     /**
      * @return Store URI.
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     public Optional<Output<String>> storeUri() {
         return Optional.ofNullable(this.storeUri);
     }
@@ -224,7 +232,11 @@ public final class ThanosThanosArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field was added by mistake and has never worked. It will be removed in future versions.
+         * 
          */
+        @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
         public Builder storeUri(@Nullable Output<String> storeUri) {
             $.storeUri = storeUri;
             return this;
@@ -235,7 +247,11 @@ public final class ThanosThanosArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field was added by mistake and has never worked. It will be removed in future versions.
+         * 
          */
+        @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
         public Builder storeUri(String storeUri) {
             return storeUri(Output.of(storeUri));
         }

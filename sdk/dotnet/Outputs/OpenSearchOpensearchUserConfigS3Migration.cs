@@ -38,6 +38,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Endpoint;
         /// <summary>
+        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        /// </summary>
+        public readonly string? Indices;
+        /// <summary>
         /// S3 region.
         /// </summary>
         public readonly string Region;
@@ -68,6 +72,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? endpoint,
 
+            string? indices,
+
             string region,
 
             string secretKey,
@@ -82,6 +88,7 @@ namespace Pulumi.Aiven.Outputs
             ChunkSize = chunkSize;
             Compress = compress;
             Endpoint = endpoint;
+            Indices = indices;
             Region = region;
             SecretKey = secretKey;
             ServerSideEncryption = serverSideEncryption;

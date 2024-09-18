@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? EngineVersion;
         /// <summary>
+        /// Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+        /// </summary>
+        public readonly int? PrefixPathDepth;
+        /// <summary>
         /// Token used to authenticate with vault and auth method `token`.
         /// </summary>
         public readonly string? Token;
@@ -38,11 +42,14 @@ namespace Pulumi.Aiven.Outputs
 
             int? engineVersion,
 
+            int? prefixPathDepth,
+
             string? token)
         {
             Address = address;
             AuthMethod = authMethod;
             EngineVersion = engineVersion;
+            PrefixPathDepth = prefixPathDepth;
             Token = token;
         }
     }

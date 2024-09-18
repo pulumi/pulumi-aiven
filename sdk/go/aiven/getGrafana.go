@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Grafana data source provides information about the existing Aiven Grafana service.
+// Gets information about an Aiven for Grafana® service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupGrafana(ctx, &aiven.LookupGrafanaArgs{
-//				Project:     ps1.Project,
-//				ServiceName: "my-gr1",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-grafana-service",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -77,7 +77,7 @@ type LookupGrafanaResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// Grafana user configurable settings
 	GrafanaUserConfigs []GetGrafanaGrafanaUserConfig `pulumi:"grafanaUserConfigs"`
-	// Grafana server provided values
+	// Values provided by the Grafana server.
 	Grafanas []GetGrafanaGrafana `pulumi:"grafanas"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -85,7 +85,7 @@ type LookupGrafanaResult struct {
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -204,7 +204,7 @@ func (o LookupGrafanaResultOutput) GrafanaUserConfigs() GetGrafanaGrafanaUserCon
 	return o.ApplyT(func(v LookupGrafanaResult) []GetGrafanaGrafanaUserConfig { return v.GrafanaUserConfigs }).(GetGrafanaGrafanaUserConfigArrayOutput)
 }
 
-// Grafana server provided values
+// Values provided by the Grafana server.
 func (o LookupGrafanaResultOutput) Grafanas() GetGrafanaGrafanaArrayOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) []GetGrafanaGrafana { return v.Grafanas }).(GetGrafanaGrafanaArrayOutput)
 }
@@ -224,7 +224,7 @@ func (o LookupGrafanaResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 func (o LookupGrafanaResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.Plan }).(pulumi.StringOutput)
 }

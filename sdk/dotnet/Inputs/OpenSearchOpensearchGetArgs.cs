@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// URI for Kibana dashboard frontend
         /// </summary>
+        [Obsolete(@"This field was added by mistake and has never worked. It will be removed in future versions.")]
         public Input<string>? KibanaUri
         {
             get => _kibanaUri;

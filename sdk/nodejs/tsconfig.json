@@ -142,6 +142,7 @@
         "organizationApplicationUser.ts",
         "organizationApplicationUserToken.ts",
         "organizationGroupProject.ts",
+        "organizationPermission.ts",
         "organizationUser.ts",
         "organizationUserGroup.ts",
         "organizationUserGroupMember.ts",

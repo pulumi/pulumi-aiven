@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The M3DB User resource allows the creation and management of Aiven M3DB Users.
+ * Creates and manages an Aiven for M3DB service user.
  * 
  * ## Example Usage
  * 
@@ -42,11 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new M3dbUser("foo", M3dbUserArgs.builder()
- *             .serviceName(bar.serviceName())
- *             .project("my-project")
- *             .username("user-1")
- *             .password("Test$1234")
+ *         var exampleServiceUser = new M3dbUser("exampleServiceUser", M3dbUserArgs.builder()
+ *             .serviceName(exampleM3db.serviceName())
+ *             .project(exampleProject.project())
+ *             .username("example-m3db-user")
+ *             .password(serviceUserPw)
  *             .build());
  * 
  *     }
@@ -58,21 +58,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
+ * $ pulumi import aiven:index/m3dbUser:M3dbUser example_service_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/m3dbUser:M3dbUser")
 public class M3dbUser extends com.pulumi.resources.CustomResource {
     /**
-     * The password of the M3DB User.
+     * The M3DB service user&#39;s password.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the M3DB User.
+     * @return The M3DB service user&#39;s password.
      * 
      */
     public Output<String> password() {
@@ -107,28 +107,28 @@ public class M3dbUser extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

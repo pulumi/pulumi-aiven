@@ -51,6 +51,15 @@ import javax.annotation.Nullable;
  *             .password(serviceUserPassword)
  *             .build());
  * 
+ *         // Each service has a default admin user with the username avnadmin.
+ *         var adminUser = new PgUser("adminUser", PgUserArgs.builder()
+ *             .serviceName(examplePostgres.serviceName())
+ *             .project(exampleProject.project())
+ *             .username("avnadmin")
+ *             .password(serviceUserPassword)
+ *             .pgAllowReplication(true)
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -109,14 +118,14 @@ public class PgUser extends com.pulumi.resources.CustomResource {
         return this.password;
     }
     /**
-     * Allows replication.
+     * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
     @Export(name="pgAllowReplication", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> pgAllowReplication;
 
     /**
-     * @return Allows replication.
+     * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
     public Output<Optional<Boolean>> pgAllowReplication() {

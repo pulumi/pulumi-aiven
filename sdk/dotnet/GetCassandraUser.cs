@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetCassandraUser
     {
         /// <summary>
-        /// The Cassandra User data source provides information about the existing Aiven Cassandra User.
+        /// Gets information about an Aiven for Apache Cassandra® service user.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetCassandraUser.Invoke(new()
+        ///     var exampleServiceUser = Aiven.GetCassandraUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = exampleCassandra.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-cassandra-user",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCassandraUserResult>("aiven:index/getCassandraUser:getCassandraUser", args ?? new GetCassandraUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Cassandra User data source provides information about the existing Aiven Cassandra User.
+        /// Gets information about an Aiven for Apache Cassandra® service user.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetCassandraUser.Invoke(new()
+        ///     var exampleServiceUser = Aiven.GetCassandraUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = exampleCassandra.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-cassandra-user",
         ///     });
         /// 
         /// });
@@ -80,7 +80,7 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -122,11 +122,11 @@ namespace Pulumi.Aiven
     public sealed class GetCassandraUserResult
     {
         /// <summary>
-        /// Access certificate for the user if applicable for the service in question
+        /// Access certificate for the user.
         /// </summary>
         public readonly string AccessCert;
         /// <summary>
-        /// Access certificate key for the user if applicable for the service in question
+        /// Access certificate key for the user.
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
@@ -134,7 +134,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the Cassandra User.
+        /// The Cassandra service user's password.
         /// </summary>
         public readonly string Password;
         /// <summary>
@@ -146,11 +146,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Username;
 

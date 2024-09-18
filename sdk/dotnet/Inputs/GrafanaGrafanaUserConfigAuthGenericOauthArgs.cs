@@ -106,6 +106,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("tokenUrl", required: true)]
         public Input<string> TokenUrl { get; set; } = null!;
 
+        /// <summary>
+        /// Set to true to use refresh token and check access token expiration.
+        /// </summary>
+        [Input("useRefreshToken")]
+        public Input<bool>? UseRefreshToken { get; set; }
+
         public GrafanaGrafanaUserConfigAuthGenericOauthArgs()
         {
         }

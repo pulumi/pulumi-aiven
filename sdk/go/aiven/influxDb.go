@@ -56,7 +56,7 @@ type InfluxDb struct {
 	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
@@ -188,7 +188,7 @@ type influxDbState struct {
 	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
@@ -273,7 +273,7 @@ type InfluxDbState struct {
 	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
@@ -350,7 +350,7 @@ type influxDbArgs struct {
 	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
@@ -410,7 +410,7 @@ type InfluxDbArgs struct {
 	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
 	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
@@ -603,7 +603,7 @@ func (o InfluxDbOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 // store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
 // `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
 // other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+// options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 func (o InfluxDbOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }

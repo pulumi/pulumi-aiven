@@ -69,6 +69,11 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
      * 
      */
     private String tokenUrl;
+    /**
+     * @return Set to true to use refresh token and check access token expiration.
+     * 
+     */
+    private @Nullable Boolean useRefreshToken;
 
     private GetGrafanaGrafanaUserConfigAuthGenericOauth() {}
     /**
@@ -148,6 +153,13 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
     public String tokenUrl() {
         return this.tokenUrl;
     }
+    /**
+     * @return Set to true to use refresh token and check access token expiration.
+     * 
+     */
+    public Optional<Boolean> useRefreshToken() {
+        return Optional.ofNullable(this.useRefreshToken);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -169,6 +181,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
         private @Nullable String name;
         private @Nullable List<String> scopes;
         private String tokenUrl;
+        private @Nullable Boolean useRefreshToken;
         public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigAuthGenericOauth defaults) {
     	      Objects.requireNonNull(defaults);
@@ -183,6 +196,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
     	      this.name = defaults.name;
     	      this.scopes = defaults.scopes;
     	      this.tokenUrl = defaults.tokenUrl;
+    	      this.useRefreshToken = defaults.useRefreshToken;
         }
 
         @CustomType.Setter
@@ -270,6 +284,12 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
             this.tokenUrl = tokenUrl;
             return this;
         }
+        @CustomType.Setter
+        public Builder useRefreshToken(@Nullable Boolean useRefreshToken) {
+
+            this.useRefreshToken = useRefreshToken;
+            return this;
+        }
         public GetGrafanaGrafanaUserConfigAuthGenericOauth build() {
             final var _resultValue = new GetGrafanaGrafanaUserConfigAuthGenericOauth();
             _resultValue.allowSignUp = allowSignUp;
@@ -283,6 +303,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
             _resultValue.name = name;
             _resultValue.scopes = scopes;
             _resultValue.tokenUrl = tokenUrl;
+            _resultValue.useRefreshToken = useRefreshToken;
             return _resultValue;
         }
     }

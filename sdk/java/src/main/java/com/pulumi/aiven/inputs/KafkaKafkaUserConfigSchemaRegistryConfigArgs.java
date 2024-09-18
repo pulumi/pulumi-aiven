@@ -32,6 +32,36 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
     }
 
     /**
+     * If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+     * 
+     */
+    @Import(name="retriableErrorsSilenced")
+    private @Nullable Output<Boolean> retriableErrorsSilenced;
+
+    /**
+     * @return If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> retriableErrorsSilenced() {
+        return Optional.ofNullable(this.retriableErrorsSilenced);
+    }
+
+    /**
+     * If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+     * 
+     */
+    @Import(name="schemaReaderStrictMode")
+    private @Nullable Output<Boolean> schemaReaderStrictMode;
+
+    /**
+     * @return If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> schemaReaderStrictMode() {
+        return Optional.ofNullable(this.schemaReaderStrictMode);
+    }
+
+    /**
      * The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It&#39;s only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
      * 
      */
@@ -50,6 +80,8 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
 
     private KafkaKafkaUserConfigSchemaRegistryConfigArgs(KafkaKafkaUserConfigSchemaRegistryConfigArgs $) {
         this.leaderEligibility = $.leaderEligibility;
+        this.retriableErrorsSilenced = $.retriableErrorsSilenced;
+        this.schemaReaderStrictMode = $.schemaReaderStrictMode;
         this.topicName = $.topicName;
     }
 
@@ -90,6 +122,48 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
          */
         public Builder leaderEligibility(Boolean leaderEligibility) {
             return leaderEligibility(Output.of(leaderEligibility));
+        }
+
+        /**
+         * @param retriableErrorsSilenced If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retriableErrorsSilenced(@Nullable Output<Boolean> retriableErrorsSilenced) {
+            $.retriableErrorsSilenced = retriableErrorsSilenced;
+            return this;
+        }
+
+        /**
+         * @param retriableErrorsSilenced If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retriableErrorsSilenced(Boolean retriableErrorsSilenced) {
+            return retriableErrorsSilenced(Output.of(retriableErrorsSilenced));
+        }
+
+        /**
+         * @param schemaReaderStrictMode If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaReaderStrictMode(@Nullable Output<Boolean> schemaReaderStrictMode) {
+            $.schemaReaderStrictMode = schemaReaderStrictMode;
+            return this;
+        }
+
+        /**
+         * @param schemaReaderStrictMode If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaReaderStrictMode(Boolean schemaReaderStrictMode) {
+            return schemaReaderStrictMode(Output.of(schemaReaderStrictMode));
         }
 
         /**

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Cassandra User data source provides information about the existing Aiven Cassandra User.
+// Gets information about an Aiven for Apache Cassandra® service user.
 //
 // ## Example Usage
 //
@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupCassandraUser(ctx, &aiven.LookupCassandraUserArgs{
-//				ServiceName: "my-service",
-//				Project:     "my-project",
-//				Username:    "user1",
+//				ServiceName: exampleCassandra.ServiceName,
+//				Project:     exampleProject.Project,
+//				Username:    "example-cassandra-user",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,27 +56,27 @@ type LookupCassandraUserArgs struct {
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getCassandraUser.
 type LookupCassandraUserResult struct {
-	// Access certificate for the user if applicable for the service in question
+	// Access certificate for the user.
 	AccessCert string `pulumi:"accessCert"`
-	// Access certificate key for the user if applicable for the service in question
+	// Access certificate key for the user.
 	AccessKey string `pulumi:"accessKey"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The password of the Cassandra User.
+	// The Cassandra service user's password.
 	Password string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type string `pulumi:"type"`
-	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
@@ -99,7 +99,7 @@ type LookupCassandraUserOutputArgs struct {
 	Project pulumi.StringInput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -122,12 +122,12 @@ func (o LookupCassandraUserResultOutput) ToLookupCassandraUserResultOutputWithCo
 	return o
 }
 
-// Access certificate for the user if applicable for the service in question
+// Access certificate for the user.
 func (o LookupCassandraUserResultOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user if applicable for the service in question
+// Access certificate key for the user.
 func (o LookupCassandraUserResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
@@ -137,7 +137,7 @@ func (o LookupCassandraUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the Cassandra User.
+// The Cassandra service user's password.
 func (o LookupCassandraUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -152,12 +152,12 @@ func (o LookupCassandraUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Type of the user account. Tells whether the user is the primary account or a regular account.
+// User account type, such as primary or regular account.
 func (o LookupCassandraUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupCassandraUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

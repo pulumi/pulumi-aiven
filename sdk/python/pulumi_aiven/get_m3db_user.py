@@ -53,7 +53,7 @@ class GetM3dbUserResult:
     @pulumi.getter
     def password(self) -> str:
         """
-        The password of the M3DB User.
+        The M3DB service user's password.
         """
         return pulumi.get(self, "password")
 
@@ -77,7 +77,7 @@ class GetM3dbUserResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -85,7 +85,7 @@ class GetM3dbUserResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -109,7 +109,7 @@ def get_m3db_user(project: Optional[str] = None,
                   username: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetM3dbUserResult:
     """
-    The M3DB User data source provides information about the existing Aiven M3DB User.
+    Gets information about an Aiven for M3DB service user.
 
     ## Example Usage
 
@@ -117,15 +117,15 @@ def get_m3db_user(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_m3db_user(service_name="my-service",
-        project="my-project",
-        username="user1")
+    example_service_user = aiven.get_m3db_user(service_name=example_m3db["serviceName"],
+        project=example_project["project"],
+        username="example-m3db-user")
     ```
 
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -149,7 +149,7 @@ def get_m3db_user_output(project: Optional[pulumi.Input[str]] = None,
                          username: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetM3dbUserResult]:
     """
-    The M3DB User data source provides information about the existing Aiven M3DB User.
+    Gets information about an Aiven for M3DB service user.
 
     ## Example Usage
 
@@ -157,14 +157,14 @@ def get_m3db_user_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_m3db_user(service_name="my-service",
-        project="my-project",
-        username="user1")
+    example_service_user = aiven.get_m3db_user(service_name=example_m3db["serviceName"],
+        project=example_project["project"],
+        username="example-m3db-user")
     ```
 
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     ...

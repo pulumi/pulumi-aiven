@@ -39,6 +39,11 @@ public final class OpenSearchOpensearchUserConfigGcsMigration {
      */
     private String credentials;
     /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    private @Nullable String indices;
+    /**
      * @return The snapshot name to restore from.
      * 
      */
@@ -81,6 +86,13 @@ public final class OpenSearchOpensearchUserConfigGcsMigration {
         return this.credentials;
     }
     /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    public Optional<String> indices() {
+        return Optional.ofNullable(this.indices);
+    }
+    /**
      * @return The snapshot name to restore from.
      * 
      */
@@ -102,6 +114,7 @@ public final class OpenSearchOpensearchUserConfigGcsMigration {
         private @Nullable String chunkSize;
         private @Nullable Boolean compress;
         private String credentials;
+        private @Nullable String indices;
         private String snapshotName;
         public Builder() {}
         public Builder(OpenSearchOpensearchUserConfigGcsMigration defaults) {
@@ -111,6 +124,7 @@ public final class OpenSearchOpensearchUserConfigGcsMigration {
     	      this.chunkSize = defaults.chunkSize;
     	      this.compress = defaults.compress;
     	      this.credentials = defaults.credentials;
+    	      this.indices = defaults.indices;
     	      this.snapshotName = defaults.snapshotName;
         }
 
@@ -151,6 +165,12 @@ public final class OpenSearchOpensearchUserConfigGcsMigration {
             return this;
         }
         @CustomType.Setter
+        public Builder indices(@Nullable String indices) {
+
+            this.indices = indices;
+            return this;
+        }
+        @CustomType.Setter
         public Builder snapshotName(String snapshotName) {
             if (snapshotName == null) {
               throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigGcsMigration", "snapshotName");
@@ -165,6 +185,7 @@ public final class OpenSearchOpensearchUserConfigGcsMigration {
             _resultValue.chunkSize = chunkSize;
             _resultValue.compress = compress;
             _resultValue.credentials = credentials;
+            _resultValue.indices = indices;
             _resultValue.snapshotName = snapshotName;
             return _resultValue;
         }

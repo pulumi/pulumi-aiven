@@ -54,7 +54,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="connectionUri")
     def connection_uri(self) -> str:
         """
-        The URI for connecting to the pool
+        The URI for connecting to the pool.
         """
         return pulumi.get(self, "connection_uri")
 
@@ -78,7 +78,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> str:
         """
-        The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -86,7 +86,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="poolName")
     def pool_name(self) -> str:
         """
-        The name of the created pool. Changing this property forces recreation of the resource.
+        Name of the pool. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pool_name")
 
@@ -94,7 +94,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> int:
         """
-        The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+        The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -145,7 +145,7 @@ def get_connection_pool(pool_name: Optional[str] = None,
                         service_name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionPoolResult:
     """
-    The Connection Pool data source provides information about the existing Aiven Connection Pool.
+    Gets information about a connection pool in an Aiven for PostgreSQL® service.
 
     ## Example Usage
 
@@ -153,13 +153,13 @@ def get_connection_pool(pool_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestpool = aiven.get_connection_pool(project=myproject["project"],
-        service_name=mypg["serviceName"],
-        pool_name="mypool")
+    main = aiven.get_connection_pool(project=example_project["project"],
+        service_name=example_postgres["serviceName"],
+        pool_name="example-pool")
     ```
 
 
-    :param str pool_name: The name of the created pool. Changing this property forces recreation of the resource.
+    :param str pool_name: Name of the pool. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
@@ -188,7 +188,7 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionPoolResult]:
     """
-    The Connection Pool data source provides information about the existing Aiven Connection Pool.
+    Gets information about a connection pool in an Aiven for PostgreSQL® service.
 
     ## Example Usage
 
@@ -196,13 +196,13 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestpool = aiven.get_connection_pool(project=myproject["project"],
-        service_name=mypg["serviceName"],
-        pool_name="mypool")
+    main = aiven.get_connection_pool(project=example_project["project"],
+        service_name=example_postgres["serviceName"],
+        pool_name="example-pool")
     ```
 
 
-    :param str pool_name: The name of the created pool. Changing this property forces recreation of the resource.
+    :param str pool_name: Name of the pool. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """

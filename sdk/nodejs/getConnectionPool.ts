@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Connection Pool data source provides information about the existing Aiven Connection Pool.
+ * Gets information about a connection pool in an Aiven for PostgreSQL® service.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytestpool = aiven.getConnectionPool({
- *     project: myproject.project,
- *     serviceName: mypg.serviceName,
- *     poolName: "mypool",
+ * const main = aiven.getConnectionPool({
+ *     project: exampleProject.project,
+ *     serviceName: examplePostgres.serviceName,
+ *     poolName: "example-pool",
  * });
  * ```
  */
@@ -35,7 +35,7 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
  */
 export interface GetConnectionPoolArgs {
     /**
-     * The name of the created pool. Changing this property forces recreation of the resource.
+     * Name of the pool. Changing this property forces recreation of the resource.
      */
     poolName: string;
     /**
@@ -53,7 +53,7 @@ export interface GetConnectionPoolArgs {
  */
 export interface GetConnectionPoolResult {
     /**
-     * The URI for connecting to the pool
+     * The URI for connecting to the pool.
      */
     readonly connectionUri: string;
     /**
@@ -65,15 +65,15 @@ export interface GetConnectionPoolResult {
      */
     readonly id: string;
     /**
-     * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      */
     readonly poolMode: string;
     /**
-     * The name of the created pool. Changing this property forces recreation of the resource.
+     * Name of the pool. Changing this property forces recreation of the resource.
      */
     readonly poolName: string;
     /**
-     * The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     * The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
      */
     readonly poolSize: number;
     /**
@@ -90,7 +90,7 @@ export interface GetConnectionPoolResult {
     readonly username: string;
 }
 /**
- * The Connection Pool data source provides information about the existing Aiven Connection Pool.
+ * Gets information about a connection pool in an Aiven for PostgreSQL® service.
  *
  * ## Example Usage
  *
@@ -98,10 +98,10 @@ export interface GetConnectionPoolResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytestpool = aiven.getConnectionPool({
- *     project: myproject.project,
- *     serviceName: mypg.serviceName,
- *     poolName: "mypool",
+ * const main = aiven.getConnectionPool({
+ *     project: exampleProject.project,
+ *     serviceName: examplePostgres.serviceName,
+ *     poolName: "example-pool",
  * });
  * ```
  */
@@ -114,7 +114,7 @@ export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?
  */
 export interface GetConnectionPoolOutputArgs {
     /**
-     * The name of the created pool. Changing this property forces recreation of the resource.
+     * Name of the pool. Changing this property forces recreation of the resource.
      */
     poolName: pulumi.Input<string>;
     /**

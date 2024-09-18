@@ -34,7 +34,11 @@ public final class GetThanosThano {
     /**
      * @return Store URI.
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     private String storeUri;
     /**
      * @return Thanos server URIs.
@@ -74,7 +78,11 @@ public final class GetThanosThano {
     /**
      * @return Store URI.
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     public String storeUri() {
         return this.storeUri;
     }

@@ -26,6 +26,11 @@ public final class GetKafkaTopicResult {
      */
     private String id;
     /**
+     * @return The user group that is the owner of the topic
+     * 
+     */
+    private String ownerUserGroupId;
+    /**
      * @return The number of partitions to create in the topic.
      * 
      */
@@ -52,6 +57,11 @@ public final class GetKafkaTopicResult {
     private List<GetKafkaTopicTag> tags;
     private Boolean terminationProtection;
     /**
+     * @return The description of the topic
+     * 
+     */
+    private String topicDescription;
+    /**
      * @return The name of the topic. Changing this property forces recreation of the resource.
      * 
      */
@@ -71,6 +81,13 @@ public final class GetKafkaTopicResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The user group that is the owner of the topic
+     * 
+     */
+    public String ownerUserGroupId() {
+        return this.ownerUserGroupId;
     }
     /**
      * @return The number of partitions to create in the topic.
@@ -111,6 +128,13 @@ public final class GetKafkaTopicResult {
         return this.terminationProtection;
     }
     /**
+     * @return The description of the topic
+     * 
+     */
+    public String topicDescription() {
+        return this.topicDescription;
+    }
+    /**
      * @return The name of the topic. Changing this property forces recreation of the resource.
      * 
      */
@@ -129,24 +153,28 @@ public final class GetKafkaTopicResult {
     public static final class Builder {
         private List<GetKafkaTopicConfig> configs;
         private String id;
+        private String ownerUserGroupId;
         private Integer partitions;
         private String project;
         private Integer replication;
         private String serviceName;
         private List<GetKafkaTopicTag> tags;
         private Boolean terminationProtection;
+        private String topicDescription;
         private String topicName;
         public Builder() {}
         public Builder(GetKafkaTopicResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
     	      this.id = defaults.id;
+    	      this.ownerUserGroupId = defaults.ownerUserGroupId;
     	      this.partitions = defaults.partitions;
     	      this.project = defaults.project;
     	      this.replication = defaults.replication;
     	      this.serviceName = defaults.serviceName;
     	      this.tags = defaults.tags;
     	      this.terminationProtection = defaults.terminationProtection;
+    	      this.topicDescription = defaults.topicDescription;
     	      this.topicName = defaults.topicName;
         }
 
@@ -167,6 +195,14 @@ public final class GetKafkaTopicResult {
               throw new MissingRequiredPropertyException("GetKafkaTopicResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ownerUserGroupId(String ownerUserGroupId) {
+            if (ownerUserGroupId == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "ownerUserGroupId");
+            }
+            this.ownerUserGroupId = ownerUserGroupId;
             return this;
         }
         @CustomType.Setter
@@ -221,6 +257,14 @@ public final class GetKafkaTopicResult {
             return this;
         }
         @CustomType.Setter
+        public Builder topicDescription(String topicDescription) {
+            if (topicDescription == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "topicDescription");
+            }
+            this.topicDescription = topicDescription;
+            return this;
+        }
+        @CustomType.Setter
         public Builder topicName(String topicName) {
             if (topicName == null) {
               throw new MissingRequiredPropertyException("GetKafkaTopicResult", "topicName");
@@ -232,12 +276,14 @@ public final class GetKafkaTopicResult {
             final var _resultValue = new GetKafkaTopicResult();
             _resultValue.configs = configs;
             _resultValue.id = id;
+            _resultValue.ownerUserGroupId = ownerUserGroupId;
             _resultValue.partitions = partitions;
             _resultValue.project = project;
             _resultValue.replication = replication;
             _resultValue.serviceName = serviceName;
             _resultValue.tags = tags;
             _resultValue.terminationProtection = terminationProtection;
+            _resultValue.topicDescription = topicDescription;
             _resultValue.topicName = topicName;
             return _resultValue;
         }

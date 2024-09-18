@@ -131,6 +131,7 @@ from .organization import *
 from .organization_application_user import *
 from .organization_application_user_token import *
 from .organization_group_project import *
+from .organization_permission import *
 from .organization_user import *
 from .organization_user_group import *
 from .organization_user_group_member import *
@@ -618,6 +619,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/organizationGroupProject:OrganizationGroupProject": "OrganizationGroupProject"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/organizationPermission",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationPermission:OrganizationPermission": "OrganizationPermission"
   }
  },
  {
