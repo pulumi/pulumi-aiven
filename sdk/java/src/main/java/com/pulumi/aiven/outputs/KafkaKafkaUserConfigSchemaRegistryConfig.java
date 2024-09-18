@@ -18,6 +18,16 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfig {
      */
     private @Nullable Boolean leaderEligibility;
     /**
+     * @return If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+     * 
+     */
+    private @Nullable Boolean retriableErrorsSilenced;
+    /**
+     * @return If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+     * 
+     */
+    private @Nullable Boolean schemaReaderStrictMode;
+    /**
      * @return The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It&#39;s only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
      * 
      */
@@ -30,6 +40,20 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfig {
      */
     public Optional<Boolean> leaderEligibility() {
         return Optional.ofNullable(this.leaderEligibility);
+    }
+    /**
+     * @return If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+     * 
+     */
+    public Optional<Boolean> retriableErrorsSilenced() {
+        return Optional.ofNullable(this.retriableErrorsSilenced);
+    }
+    /**
+     * @return If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+     * 
+     */
+    public Optional<Boolean> schemaReaderStrictMode() {
+        return Optional.ofNullable(this.schemaReaderStrictMode);
     }
     /**
      * @return The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It&#39;s only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
@@ -49,11 +73,15 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean leaderEligibility;
+        private @Nullable Boolean retriableErrorsSilenced;
+        private @Nullable Boolean schemaReaderStrictMode;
         private @Nullable String topicName;
         public Builder() {}
         public Builder(KafkaKafkaUserConfigSchemaRegistryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.leaderEligibility = defaults.leaderEligibility;
+    	      this.retriableErrorsSilenced = defaults.retriableErrorsSilenced;
+    	      this.schemaReaderStrictMode = defaults.schemaReaderStrictMode;
     	      this.topicName = defaults.topicName;
         }
 
@@ -61,6 +89,18 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfig {
         public Builder leaderEligibility(@Nullable Boolean leaderEligibility) {
 
             this.leaderEligibility = leaderEligibility;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder retriableErrorsSilenced(@Nullable Boolean retriableErrorsSilenced) {
+
+            this.retriableErrorsSilenced = retriableErrorsSilenced;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder schemaReaderStrictMode(@Nullable Boolean schemaReaderStrictMode) {
+
+            this.schemaReaderStrictMode = schemaReaderStrictMode;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +112,8 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfig {
         public KafkaKafkaUserConfigSchemaRegistryConfig build() {
             final var _resultValue = new KafkaKafkaUserConfigSchemaRegistryConfig();
             _resultValue.leaderEligibility = leaderEligibility;
+            _resultValue.retriableErrorsSilenced = retriableErrorsSilenced;
+            _resultValue.schemaReaderStrictMode = schemaReaderStrictMode;
             _resultValue.topicName = topicName;
             return _resultValue;
         }

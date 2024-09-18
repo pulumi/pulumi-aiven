@@ -30,6 +30,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("engineVersion")]
         public Input<int>? EngineVersion { get; set; }
 
+        /// <summary>
+        /// Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+        /// </summary>
+        [Input("prefixPathDepth")]
+        public Input<int>? PrefixPathDepth { get; set; }
+
         [Input("token")]
         private Input<string>? _token;
 

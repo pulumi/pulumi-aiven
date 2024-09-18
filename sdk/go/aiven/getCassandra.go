@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Cassandra data source provides information about the existing Aiven Cassandra service.
+// Gets information about an Aiven for Apache Cassandra® service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupCassandra(ctx, &aiven.LookupCassandraArgs{
-//				Project:     foo.Project,
-//				ServiceName: "<SERVICE_NAME>",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-cassandra-service",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -63,7 +63,7 @@ type LookupCassandraResult struct {
 	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfigs []GetCassandraCassandraUserConfig `pulumi:"cassandraUserConfigs"`
-	// Cassandra server provided values
+	// Values provided by the Cassandra server.
 	Cassandras []GetCassandraCassandra `pulumi:"cassandras"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName string `pulumi:"cloudName"`
@@ -85,7 +85,7 @@ type LookupCassandraResult struct {
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -169,7 +169,7 @@ func (o LookupCassandraResultOutput) CassandraUserConfigs() GetCassandraCassandr
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraCassandraUserConfig { return v.CassandraUserConfigs }).(GetCassandraCassandraUserConfigArrayOutput)
 }
 
-// Cassandra server provided values
+// Values provided by the Cassandra server.
 func (o LookupCassandraResultOutput) Cassandras() GetCassandraCassandraArrayOutput {
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraCassandra { return v.Cassandras }).(GetCassandraCassandraArrayOutput)
 }
@@ -224,7 +224,7 @@ func (o LookupCassandraResultOutput) MaintenanceWindowTime() pulumi.StringOutput
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 func (o LookupCassandraResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCassandraResult) string { return v.Plan }).(pulumi.StringOutput)
 }

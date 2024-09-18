@@ -635,6 +635,11 @@ export type OrganizationGroupProject = import("./organizationGroupProject").Orga
 export const OrganizationGroupProject: typeof import("./organizationGroupProject").OrganizationGroupProject = null as any;
 utilities.lazyLoad(exports, ["OrganizationGroupProject"], () => require("./organizationGroupProject"));
 
+export { OrganizationPermissionArgs, OrganizationPermissionState } from "./organizationPermission";
+export type OrganizationPermission = import("./organizationPermission").OrganizationPermission;
+export const OrganizationPermission: typeof import("./organizationPermission").OrganizationPermission = null as any;
+utilities.lazyLoad(exports, ["OrganizationPermission"], () => require("./organizationPermission"));
+
 export { OrganizationUserArgs, OrganizationUserState } from "./organizationUser";
 export type OrganizationUser = import("./organizationUser").OrganizationUser;
 export const OrganizationUser: typeof import("./organizationUser").OrganizationUser = null as any;
@@ -863,6 +868,8 @@ const _module = {
                 return new OrganizationApplicationUserToken(name, <any>undefined, { urn })
             case "aiven:index/organizationGroupProject:OrganizationGroupProject":
                 return new OrganizationGroupProject(name, <any>undefined, { urn })
+            case "aiven:index/organizationPermission:OrganizationPermission":
+                return new OrganizationPermission(name, <any>undefined, { urn })
             case "aiven:index/organizationUser:OrganizationUser":
                 return new OrganizationUser(name, <any>undefined, { urn })
             case "aiven:index/organizationUserGroup:OrganizationUserGroup":
@@ -963,6 +970,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/organization", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationApplicationUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationApplicationUserToken", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationGroupProject", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/organizationPermission", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUserGroup", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUserGroupMember", _module)

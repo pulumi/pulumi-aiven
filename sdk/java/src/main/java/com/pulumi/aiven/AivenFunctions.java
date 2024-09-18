@@ -1411,7 +1411,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Cassandra data source provides information about the existing Aiven Cassandra service.
+     * Gets information about an Aiven for Apache Cassandra® service.
      * 
      * ## Example Usage
      * 
@@ -1438,9 +1438,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
      *             .build());
      * 
      *     }
@@ -1458,7 +1458,7 @@ public final class AivenFunctions {
         return getCassanda(args, InvokeOptions.Empty);
     }
     /**
-     * The Cassandra data source provides information about the existing Aiven Cassandra service.
+     * Gets information about an Aiven for Apache Cassandra® service.
      * 
      * ## Example Usage
      * 
@@ -1485,9 +1485,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
      *             .build());
      * 
      *     }
@@ -1505,7 +1505,7 @@ public final class AivenFunctions {
         return getCassandaPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Cassandra data source provides information about the existing Aiven Cassandra service.
+     * Gets information about an Aiven for Apache Cassandra® service.
      * 
      * ## Example Usage
      * 
@@ -1532,9 +1532,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
      *             .build());
      * 
      *     }
@@ -1552,7 +1552,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Cassandra data source provides information about the existing Aiven Cassandra service.
+     * Gets information about an Aiven for Apache Cassandra® service.
      * 
      * ## Example Usage
      * 
@@ -1579,9 +1579,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
      *             .build());
      * 
      *     }
@@ -1599,7 +1599,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Cassandra data source provides information about the existing Aiven Cassandra service.
+     * Gets information about an Aiven for Apache Cassandra® service.
      * 
      * ## Example Usage
      * 
@@ -1626,9 +1626,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
      *             .build());
      * 
      *     }
@@ -1642,7 +1642,7 @@ public final class AivenFunctions {
         return getCassandra(args, InvokeOptions.Empty);
     }
     /**
-     * The Cassandra data source provides information about the existing Aiven Cassandra service.
+     * Gets information about an Aiven for Apache Cassandra® service.
      * 
      * ## Example Usage
      * 
@@ -1669,9 +1669,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
      *             .build());
      * 
      *     }
@@ -1685,7 +1685,7 @@ public final class AivenFunctions {
         return getCassandraPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Cassandra data source provides information about the existing Aiven Cassandra service.
+     * Gets information about an Aiven for Apache Cassandra® service.
      * 
      * ## Example Usage
      * 
@@ -1712,9 +1712,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
      *             .build());
      * 
      *     }
@@ -1728,7 +1728,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Cassandra data source provides information about the existing Aiven Cassandra service.
+     * Gets information about an Aiven for Apache Cassandra® service.
      * 
      * ## Example Usage
      * 
@@ -1755,9 +1755,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("<SERVICE_NAME>")
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
      *             .build());
      * 
      *     }
@@ -1771,7 +1771,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Cassandra User data source provides information about the existing Aiven Cassandra User.
+     * Gets information about an Aiven for Apache Cassandra® service user.
      * 
      * ## Example Usage
      * 
@@ -1798,10 +1798,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
+     *             .serviceName(exampleCassandra.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-cassandra-user")
      *             .build());
      * 
      *     }
@@ -1815,7 +1815,7 @@ public final class AivenFunctions {
         return getCassandraUser(args, InvokeOptions.Empty);
     }
     /**
-     * The Cassandra User data source provides information about the existing Aiven Cassandra User.
+     * Gets information about an Aiven for Apache Cassandra® service user.
      * 
      * ## Example Usage
      * 
@@ -1842,10 +1842,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
+     *             .serviceName(exampleCassandra.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-cassandra-user")
      *             .build());
      * 
      *     }
@@ -1859,7 +1859,7 @@ public final class AivenFunctions {
         return getCassandraUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Cassandra User data source provides information about the existing Aiven Cassandra User.
+     * Gets information about an Aiven for Apache Cassandra® service user.
      * 
      * ## Example Usage
      * 
@@ -1886,10 +1886,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
+     *             .serviceName(exampleCassandra.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-cassandra-user")
      *             .build());
      * 
      *     }
@@ -1903,7 +1903,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Cassandra User data source provides information about the existing Aiven Cassandra User.
+     * Gets information about an Aiven for Apache Cassandra® service user.
      * 
      * ## Example Usage
      * 
@@ -1930,10 +1930,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
+     *             .serviceName(exampleCassandra.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-cassandra-user")
      *             .build());
      * 
      *     }
@@ -2471,7 +2471,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getClickhouseUser:getClickhouseUser", TypeShape.of(GetClickhouseUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Connection Pool data source provides information about the existing Aiven Connection Pool.
+     * Gets information about a connection pool in an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -2498,10 +2498,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mypg.serviceName())
-     *             .poolName("mypool")
+     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .poolName("example-pool")
      *             .build());
      * 
      *     }
@@ -2515,7 +2515,7 @@ public final class AivenFunctions {
         return getConnectionPool(args, InvokeOptions.Empty);
     }
     /**
-     * The Connection Pool data source provides information about the existing Aiven Connection Pool.
+     * Gets information about a connection pool in an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -2542,10 +2542,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mypg.serviceName())
-     *             .poolName("mypool")
+     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .poolName("example-pool")
      *             .build());
      * 
      *     }
@@ -2559,7 +2559,7 @@ public final class AivenFunctions {
         return getConnectionPoolPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Connection Pool data source provides information about the existing Aiven Connection Pool.
+     * Gets information about a connection pool in an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -2586,10 +2586,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mypg.serviceName())
-     *             .poolName("mypool")
+     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .poolName("example-pool")
      *             .build());
      * 
      *     }
@@ -2603,7 +2603,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getConnectionPool:getConnectionPool", TypeShape.of(GetConnectionPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Connection Pool data source provides information about the existing Aiven Connection Pool.
+     * Gets information about a connection pool in an Aiven for PostgreSQL® service.
      * 
      * ## Example Usage
      * 
@@ -2630,10 +2630,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mypg.serviceName())
-     *             .poolName("mypool")
+     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .poolName("example-pool")
      *             .build());
      * 
      *     }
@@ -3695,7 +3695,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", TypeShape.of(GetGcpVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Grafana data source provides information about the existing Aiven Grafana service.
+     * Gets information about an Aiven for Grafana® service.
      * 
      * ## Example Usage
      * 
@@ -3722,9 +3722,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
-     *             .project(ps1.project())
-     *             .serviceName("my-gr1")
+     *         final var exampleGrafana = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-grafana-service")
      *             .build());
      * 
      *     }
@@ -3738,7 +3738,7 @@ public final class AivenFunctions {
         return getGrafana(args, InvokeOptions.Empty);
     }
     /**
-     * The Grafana data source provides information about the existing Aiven Grafana service.
+     * Gets information about an Aiven for Grafana® service.
      * 
      * ## Example Usage
      * 
@@ -3765,9 +3765,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
-     *             .project(ps1.project())
-     *             .serviceName("my-gr1")
+     *         final var exampleGrafana = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-grafana-service")
      *             .build());
      * 
      *     }
@@ -3781,7 +3781,7 @@ public final class AivenFunctions {
         return getGrafanaPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Grafana data source provides information about the existing Aiven Grafana service.
+     * Gets information about an Aiven for Grafana® service.
      * 
      * ## Example Usage
      * 
@@ -3808,9 +3808,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
-     *             .project(ps1.project())
-     *             .serviceName("my-gr1")
+     *         final var exampleGrafana = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-grafana-service")
      *             .build());
      * 
      *     }
@@ -3824,7 +3824,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getGrafana:getGrafana", TypeShape.of(GetGrafanaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Grafana data source provides information about the existing Aiven Grafana service.
+     * Gets information about an Aiven for Grafana® service.
      * 
      * ## Example Usage
      * 
@@ -3851,9 +3851,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
-     *             .project(ps1.project())
-     *             .serviceName("my-gr1")
+     *         final var exampleGrafana = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-grafana-service")
      *             .build());
      * 
      *     }
@@ -5679,7 +5679,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getM3Aggregator:getM3Aggregator", TypeShape.of(GetM3AggregatorResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The M3 DB data source provides information about the existing Aiven M3 services.
+     * Gets information about an Aiven for M3DB service.
      * 
      * ## Example Usage
      * 
@@ -5706,9 +5706,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-m3db")
+     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-m3db-service")
      *             .build());
      * 
      *     }
@@ -5722,7 +5722,7 @@ public final class AivenFunctions {
         return getM3Db(args, InvokeOptions.Empty);
     }
     /**
-     * The M3 DB data source provides information about the existing Aiven M3 services.
+     * Gets information about an Aiven for M3DB service.
      * 
      * ## Example Usage
      * 
@@ -5749,9 +5749,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-m3db")
+     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-m3db-service")
      *             .build());
      * 
      *     }
@@ -5765,7 +5765,7 @@ public final class AivenFunctions {
         return getM3DbPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The M3 DB data source provides information about the existing Aiven M3 services.
+     * Gets information about an Aiven for M3DB service.
      * 
      * ## Example Usage
      * 
@@ -5792,9 +5792,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-m3db")
+     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-m3db-service")
      *             .build());
      * 
      *     }
@@ -5808,7 +5808,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The M3 DB data source provides information about the existing Aiven M3 services.
+     * Gets information about an Aiven for M3DB service.
      * 
      * ## Example Usage
      * 
@@ -5835,9 +5835,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-m3db")
+     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-m3db-service")
      *             .build());
      * 
      *     }
@@ -5851,7 +5851,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The M3DB User data source provides information about the existing Aiven M3DB User.
+     * Gets information about an Aiven for M3DB service user.
      * 
      * ## Example Usage
      * 
@@ -5878,10 +5878,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *             .serviceName(exampleM3db.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-m3db-user")
      *             .build());
      * 
      *     }
@@ -5895,7 +5895,7 @@ public final class AivenFunctions {
         return getM3dbUser(args, InvokeOptions.Empty);
     }
     /**
-     * The M3DB User data source provides information about the existing Aiven M3DB User.
+     * Gets information about an Aiven for M3DB service user.
      * 
      * ## Example Usage
      * 
@@ -5922,10 +5922,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *             .serviceName(exampleM3db.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-m3db-user")
      *             .build());
      * 
      *     }
@@ -5939,7 +5939,7 @@ public final class AivenFunctions {
         return getM3dbUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The M3DB User data source provides information about the existing Aiven M3DB User.
+     * Gets information about an Aiven for M3DB service user.
      * 
      * ## Example Usage
      * 
@@ -5966,10 +5966,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *             .serviceName(exampleM3db.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-m3db-user")
      *             .build());
      * 
      *     }
@@ -5983,7 +5983,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The M3DB User data source provides information about the existing Aiven M3DB User.
+     * Gets information about an Aiven for M3DB service user.
      * 
      * ## Example Usage
      * 
@@ -6010,10 +6010,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *             .serviceName(exampleM3db.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-m3db-user")
      *             .build());
      * 
      *     }

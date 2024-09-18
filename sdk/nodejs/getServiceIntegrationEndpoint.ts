@@ -73,6 +73,14 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly externalAwsCloudwatchMetricsUserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig[];
     /**
+     * ExternalAwsS3 user configurable settings
+     */
+    readonly externalAwsS3UserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfig[];
+    /**
+     * ExternalClickhouse user configurable settings
+     */
+    readonly externalClickhouseUserConfigs: outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfig[];
+    /**
      * ExternalElasticsearchLogs user configurable settings
      */
     readonly externalElasticsearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig[];
@@ -88,6 +96,10 @@ export interface GetServiceIntegrationEndpointResult {
      * ExternalKafka user configurable settings
      */
     readonly externalKafkaUserConfigs: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig[];
+    /**
+     * ExternalMysql user configurable settings
+     */
+    readonly externalMysqlUserConfigs: outputs.GetServiceIntegrationEndpointExternalMysqlUserConfig[];
     /**
      * ExternalOpensearchLogs user configurable settings
      */

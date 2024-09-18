@@ -34,6 +34,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Credentials;
         /// <summary>
+        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        /// </summary>
+        public readonly string? Indices;
+        /// <summary>
         /// The snapshot name to restore from.
         /// </summary>
         public readonly string SnapshotName;
@@ -50,6 +54,8 @@ namespace Pulumi.Aiven.Outputs
 
             string credentials,
 
+            string? indices,
+
             string snapshotName)
         {
             BasePath = basePath;
@@ -57,6 +63,7 @@ namespace Pulumi.Aiven.Outputs
             ChunkSize = chunkSize;
             Compress = compress;
             Credentials = credentials;
+            Indices = indices;
             SnapshotName = snapshotName;
         }
     }

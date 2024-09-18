@@ -29,6 +29,11 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVault {
      */
     private @Nullable Integer engineVersion;
     /**
+     * @return Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     * 
+     */
+    private @Nullable Integer prefixPathDepth;
+    /**
      * @return Token used to authenticate with vault and auth method `token`.
      * 
      */
@@ -57,6 +62,13 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVault {
         return Optional.ofNullable(this.engineVersion);
     }
     /**
+     * @return Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     * 
+     */
+    public Optional<Integer> prefixPathDepth() {
+        return Optional.ofNullable(this.prefixPathDepth);
+    }
+    /**
      * @return Token used to authenticate with vault and auth method `token`.
      * 
      */
@@ -76,6 +88,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVault {
         private String address;
         private String authMethod;
         private @Nullable Integer engineVersion;
+        private @Nullable Integer prefixPathDepth;
         private @Nullable String token;
         public Builder() {}
         public Builder(KafkaConnectKafkaConnectUserConfigSecretProviderVault defaults) {
@@ -83,6 +96,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVault {
     	      this.address = defaults.address;
     	      this.authMethod = defaults.authMethod;
     	      this.engineVersion = defaults.engineVersion;
+    	      this.prefixPathDepth = defaults.prefixPathDepth;
     	      this.token = defaults.token;
         }
 
@@ -109,6 +123,12 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVault {
             return this;
         }
         @CustomType.Setter
+        public Builder prefixPathDepth(@Nullable Integer prefixPathDepth) {
+
+            this.prefixPathDepth = prefixPathDepth;
+            return this;
+        }
+        @CustomType.Setter
         public Builder token(@Nullable String token) {
 
             this.token = token;
@@ -119,6 +139,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVault {
             _resultValue.address = address;
             _resultValue.authMethod = authMethod;
             _resultValue.engineVersion = engineVersion;
+            _resultValue.prefixPathDepth = prefixPathDepth;
             _resultValue.token = token;
             return _resultValue;
         }

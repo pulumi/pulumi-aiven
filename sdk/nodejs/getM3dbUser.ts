@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The M3DB User data source provides information about the existing Aiven M3DB User.
+ * Gets information about an Aiven for M3DB service user.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getM3dbUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleServiceUser = aiven.getM3dbUser({
+ *     serviceName: exampleM3db.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-m3db-user",
  * });
  * ```
  */
@@ -43,7 +43,7 @@ export interface GetM3dbUserArgs {
      */
     serviceName: string;
     /**
-     * The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -57,7 +57,7 @@ export interface GetM3dbUserResult {
      */
     readonly id: string;
     /**
-     * The password of the M3DB User.
+     * The M3DB service user's password.
      */
     readonly password: string;
     /**
@@ -69,16 +69,16 @@ export interface GetM3dbUserResult {
      */
     readonly serviceName: string;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     readonly type: string;
     /**
-     * The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
 /**
- * The M3DB User data source provides information about the existing Aiven M3DB User.
+ * Gets information about an Aiven for M3DB service user.
  *
  * ## Example Usage
  *
@@ -86,10 +86,10 @@ export interface GetM3dbUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const user = aiven.getM3dbUser({
- *     serviceName: "my-service",
- *     project: "my-project",
- *     username: "user1",
+ * const exampleServiceUser = aiven.getM3dbUser({
+ *     serviceName: exampleM3db.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-m3db-user",
  * });
  * ```
  */
@@ -110,7 +110,7 @@ export interface GetM3dbUserOutputArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

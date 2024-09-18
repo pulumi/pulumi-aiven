@@ -13,7 +13,7 @@ namespace Pulumi.Aiven
     public static class GetCassanda
     {
         /// <summary>
-        /// The Cassandra data source provides information about the existing Aiven Cassandra service.
+        /// Gets information about an Aiven for Apache Cassandra® service.
         /// 
         /// ## Example Usage
         /// 
@@ -25,10 +25,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bar = Aiven.GetCassandra.Invoke(new()
+        ///     var exampleCassandra = Aiven.GetCassandra.Invoke(new()
         ///     {
-        ///         Project = foo.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-cassandra-service",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCassandaResult>("aiven:index/getCassanda:getCassanda", args ?? new GetCassandaArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Cassandra data source provides information about the existing Aiven Cassandra service.
+        /// Gets information about an Aiven for Apache Cassandra® service.
         /// 
         /// ## Example Usage
         /// 
@@ -50,10 +50,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bar = Aiven.GetCassandra.Invoke(new()
+        ///     var exampleCassandra = Aiven.GetCassandra.Invoke(new()
         ///     {
-        ///         Project = foo.Project,
-        ///         ServiceName = "&lt;SERVICE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-cassandra-service",
         ///     });
         /// 
         /// });
@@ -117,7 +117,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandaCassandraUserConfigResult> CassandraUserConfigs;
         /// <summary>
-        /// Cassandra server provided values
+        /// Values provided by the Cassandra server.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandaCassandraResult> Cassandras;
         /// <summary>
@@ -161,7 +161,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string MaintenanceWindowTime;
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         public readonly string Plan;
         /// <summary>

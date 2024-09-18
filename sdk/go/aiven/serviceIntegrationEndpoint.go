@@ -28,6 +28,10 @@ type ServiceIntegrationEndpoint struct {
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
+	// ExternalAwsS3 user configurable settings
+	ExternalAwsS3UserConfig ServiceIntegrationEndpointExternalAwsS3UserConfigPtrOutput `pulumi:"externalAwsS3UserConfig"`
+	// ExternalClickhouse user configurable settings
+	ExternalClickhouseUserConfig ServiceIntegrationEndpointExternalClickhouseUserConfigPtrOutput `pulumi:"externalClickhouseUserConfig"`
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput `pulumi:"externalElasticsearchLogsUserConfig"`
 	// ExternalGoogleCloudBigquery user configurable settings
@@ -36,6 +40,8 @@ type ServiceIntegrationEndpoint struct {
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput `pulumi:"externalKafkaUserConfig"`
+	// ExternalMysql user configurable settings
+	ExternalMysqlUserConfig ServiceIntegrationEndpointExternalMysqlUserConfigPtrOutput `pulumi:"externalMysqlUserConfig"`
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrOutput `pulumi:"externalOpensearchLogsUserConfig"`
 	// ExternalPostgresql user configurable settings
@@ -103,6 +109,10 @@ type serviceIntegrationEndpointState struct {
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
+	// ExternalAwsS3 user configurable settings
+	ExternalAwsS3UserConfig *ServiceIntegrationEndpointExternalAwsS3UserConfig `pulumi:"externalAwsS3UserConfig"`
+	// ExternalClickhouse user configurable settings
+	ExternalClickhouseUserConfig *ServiceIntegrationEndpointExternalClickhouseUserConfig `pulumi:"externalClickhouseUserConfig"`
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
 	// ExternalGoogleCloudBigquery user configurable settings
@@ -111,6 +121,8 @@ type serviceIntegrationEndpointState struct {
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
+	// ExternalMysql user configurable settings
+	ExternalMysqlUserConfig *ServiceIntegrationEndpointExternalMysqlUserConfig `pulumi:"externalMysqlUserConfig"`
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig *ServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfig"`
 	// ExternalPostgresql user configurable settings
@@ -140,6 +152,10 @@ type ServiceIntegrationEndpointState struct {
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput
+	// ExternalAwsS3 user configurable settings
+	ExternalAwsS3UserConfig ServiceIntegrationEndpointExternalAwsS3UserConfigPtrInput
+	// ExternalClickhouse user configurable settings
+	ExternalClickhouseUserConfig ServiceIntegrationEndpointExternalClickhouseUserConfigPtrInput
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
 	// ExternalGoogleCloudBigquery user configurable settings
@@ -148,6 +164,8 @@ type ServiceIntegrationEndpointState struct {
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
+	// ExternalMysql user configurable settings
+	ExternalMysqlUserConfig ServiceIntegrationEndpointExternalMysqlUserConfigPtrInput
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrInput
 	// ExternalPostgresql user configurable settings
@@ -179,6 +197,10 @@ type serviceIntegrationEndpointArgs struct {
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
+	// ExternalAwsS3 user configurable settings
+	ExternalAwsS3UserConfig *ServiceIntegrationEndpointExternalAwsS3UserConfig `pulumi:"externalAwsS3UserConfig"`
+	// ExternalClickhouse user configurable settings
+	ExternalClickhouseUserConfig *ServiceIntegrationEndpointExternalClickhouseUserConfig `pulumi:"externalClickhouseUserConfig"`
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
 	// ExternalGoogleCloudBigquery user configurable settings
@@ -187,6 +209,8 @@ type serviceIntegrationEndpointArgs struct {
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
+	// ExternalMysql user configurable settings
+	ExternalMysqlUserConfig *ServiceIntegrationEndpointExternalMysqlUserConfig `pulumi:"externalMysqlUserConfig"`
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig *ServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfig"`
 	// ExternalPostgresql user configurable settings
@@ -215,6 +239,10 @@ type ServiceIntegrationEndpointArgs struct {
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput
+	// ExternalAwsS3 user configurable settings
+	ExternalAwsS3UserConfig ServiceIntegrationEndpointExternalAwsS3UserConfigPtrInput
+	// ExternalClickhouse user configurable settings
+	ExternalClickhouseUserConfig ServiceIntegrationEndpointExternalClickhouseUserConfigPtrInput
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
 	// ExternalGoogleCloudBigquery user configurable settings
@@ -223,6 +251,8 @@ type ServiceIntegrationEndpointArgs struct {
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
+	// ExternalMysql user configurable settings
+	ExternalMysqlUserConfig ServiceIntegrationEndpointExternalMysqlUserConfigPtrInput
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrInput
 	// ExternalPostgresql user configurable settings
@@ -362,6 +392,20 @@ func (o ServiceIntegrationEndpointOutput) ExternalAwsCloudwatchMetricsUserConfig
 	}).(ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput)
 }
 
+// ExternalAwsS3 user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalAwsS3UserConfig() ServiceIntegrationEndpointExternalAwsS3UserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalAwsS3UserConfigPtrOutput {
+		return v.ExternalAwsS3UserConfig
+	}).(ServiceIntegrationEndpointExternalAwsS3UserConfigPtrOutput)
+}
+
+// ExternalClickhouse user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalClickhouseUserConfig() ServiceIntegrationEndpointExternalClickhouseUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalClickhouseUserConfigPtrOutput {
+		return v.ExternalClickhouseUserConfig
+	}).(ServiceIntegrationEndpointExternalClickhouseUserConfigPtrOutput)
+}
+
 // ExternalElasticsearchLogs user configurable settings
 func (o ServiceIntegrationEndpointOutput) ExternalElasticsearchLogsUserConfig() ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput {
@@ -388,6 +432,13 @@ func (o ServiceIntegrationEndpointOutput) ExternalKafkaUserConfig() ServiceInteg
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput {
 		return v.ExternalKafkaUserConfig
 	}).(ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput)
+}
+
+// ExternalMysql user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalMysqlUserConfig() ServiceIntegrationEndpointExternalMysqlUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalMysqlUserConfigPtrOutput {
+		return v.ExternalMysqlUserConfig
+	}).(ServiceIntegrationEndpointExternalMysqlUserConfigPtrOutput)
 }
 
 // ExternalOpensearchLogs user configurable settings

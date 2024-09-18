@@ -86,7 +86,7 @@ class GetPgUserResult:
     @pulumi.getter(name="pgAllowReplication")
     def pg_allow_replication(self) -> bool:
         """
-        Allows replication.
+        Allows replication. For the default avnadmin user this attribute is required and is always `true`.
         """
         return pulumi.get(self, "pg_allow_replication")
 

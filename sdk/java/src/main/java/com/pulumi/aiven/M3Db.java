@@ -24,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The M3 DB resource allows the creation and management of Aiven M3 services.
+ * Creates and manages an [Aiven for M3DB](https://aiven.io/docs/products/m3db) service.
  * 
  * ## Example Usage
  * 
@@ -52,17 +52,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var m3 = new M3Db("m3", M3DbArgs.builder()
- *             .project(foo.project())
+ *         var exampleM3db = new M3Db("exampleM3db", M3DbArgs.builder()
+ *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-8")
- *             .serviceName("my-m3db")
+ *             .serviceName("example-m3db-service")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .m3dbUserConfig(M3DbM3dbUserConfigArgs.builder()
  *                 .m3dbVersion(1.1)
  *                 .namespaces(M3DbM3dbUserConfigNamespaceArgs.builder()
- *                     .name("my_ns1")
+ *                     .name("example-namespace")
  *                     .type("unaggregated")
  *                     .build())
  *                 .build())
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/m3Db:M3Db m3 project/service_name
+ * $ pulumi import aiven:index/m3Db:M3Db example_m3db PROJECT/SERVICE_NAME
  * ```
  * 
  */
@@ -200,14 +200,14 @@ public class M3Db extends com.pulumi.resources.CustomResource {
         return this.diskSpaceUsed;
     }
     /**
-     * M3DB server provided values
+     * Values provided by the M3DB server.
      * 
      */
     @Export(name="m3db", refs={M3DbM3db.class}, tree="[0]")
     private Output<M3DbM3db> m3db;
 
     /**
-     * @return M3DB server provided values
+     * @return Values provided by the M3DB server.
      * 
      */
     public Output<M3DbM3db> m3db() {
@@ -256,14 +256,14 @@ public class M3Db extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowTime);
     }
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     public Output<String> plan() {

@@ -16,7 +16,7 @@ public final class GetM3dbUserResult {
      */
     private String id;
     /**
-     * @return The password of the M3DB User.
+     * @return The M3DB service user&#39;s password.
      * 
      */
     private String password;
@@ -31,12 +31,12 @@ public final class GetM3dbUserResult {
      */
     private String serviceName;
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     private String type;
     /**
-     * @return The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
@@ -50,7 +50,7 @@ public final class GetM3dbUserResult {
         return this.id;
     }
     /**
-     * @return The password of the M3DB User.
+     * @return The M3DB service user&#39;s password.
      * 
      */
     public String password() {
@@ -71,14 +71,14 @@ public final class GetM3dbUserResult {
         return this.serviceName;
     }
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {

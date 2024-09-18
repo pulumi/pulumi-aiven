@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Connection Pool resource allows the creation and management of Aiven Connection Pools.
+ * Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service.
  * 
  * ## Example Usage
  * 
@@ -44,14 +44,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytestpool = new ConnectionPool("mytestpool", ConnectionPoolArgs.builder()
- *             .project(myproject.project())
- *             .serviceName(mypg.serviceName())
- *             .databaseName(mypgdatabase.databaseName())
+ *         var main = new ConnectionPool("main", ConnectionPoolArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(examplePostgres.serviceName())
+ *             .databaseName(mainAivenPgDatabase.databaseName())
  *             .poolMode("transaction")
- *             .poolName("mypool")
+ *             .poolName("example-pool")
  *             .poolSize(10)
- *             .username(mypguser.username())
+ *             .username(exampleUser.username())
  *             .build());
  * 
  *     }
@@ -63,21 +63,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool PROJECT/SERVICE_NAME/POOL_NAME
+ * $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/connectionPool:ConnectionPool")
 public class ConnectionPool extends com.pulumi.resources.CustomResource {
     /**
-     * The URI for connecting to the pool
+     * The URI for connecting to the pool.
      * 
      */
     @Export(name="connectionUri", refs={String.class}, tree="[0]")
     private Output<String> connectionUri;
 
     /**
-     * @return The URI for connecting to the pool
+     * @return The URI for connecting to the pool.
      * 
      */
     public Output<String> connectionUri() {
@@ -98,42 +98,42 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
         return this.databaseName;
     }
     /**
-     * The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     @Export(name="poolMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> poolMode;
 
     /**
-     * @return The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     public Output<Optional<String>> poolMode() {
         return Codegen.optional(this.poolMode);
     }
     /**
-     * The name of the created pool. Changing this property forces recreation of the resource.
+     * Name of the pool. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="poolName", refs={String.class}, tree="[0]")
     private Output<String> poolName;
 
     /**
-     * @return The name of the created pool. Changing this property forces recreation of the resource.
+     * @return Name of the pool. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> poolName() {
         return this.poolName;
     }
     /**
-     * The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     * The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
      * 
      */
     @Export(name="poolSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> poolSize;
 
     /**
-     * @return The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     * @return The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
      * 
      */
     public Output<Optional<Integer>> poolSize() {

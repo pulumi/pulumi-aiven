@@ -70,7 +70,7 @@ type LookupPgUserResult struct {
 	Id string `pulumi:"id"`
 	// The password of the service user.
 	Password string `pulumi:"password"`
-	// Allows replication.
+	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication bool `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -144,7 +144,7 @@ func (o LookupPgUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Allows replication.
+// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 func (o LookupPgUserResultOutput) PgAllowReplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPgUserResult) bool { return v.PgAllowReplication }).(pulumi.BoolOutput)
 }

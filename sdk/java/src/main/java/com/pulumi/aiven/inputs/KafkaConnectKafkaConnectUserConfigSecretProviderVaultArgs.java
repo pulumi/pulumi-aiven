@@ -63,6 +63,21 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs ext
     }
 
     /**
+     * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     * 
+     */
+    @Import(name="prefixPathDepth")
+    private @Nullable Output<Integer> prefixPathDepth;
+
+    /**
+     * @return Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     * 
+     */
+    public Optional<Output<Integer>> prefixPathDepth() {
+        return Optional.ofNullable(this.prefixPathDepth);
+    }
+
+    /**
      * Token used to authenticate with vault and auth method `token`.
      * 
      */
@@ -83,6 +98,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs ext
         this.address = $.address;
         this.authMethod = $.authMethod;
         this.engineVersion = $.engineVersion;
+        this.prefixPathDepth = $.prefixPathDepth;
         this.token = $.token;
     }
 
@@ -165,6 +181,27 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs ext
          */
         public Builder engineVersion(Integer engineVersion) {
             return engineVersion(Output.of(engineVersion));
+        }
+
+        /**
+         * @param prefixPathDepth Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefixPathDepth(@Nullable Output<Integer> prefixPathDepth) {
+            $.prefixPathDepth = prefixPathDepth;
+            return this;
+        }
+
+        /**
+         * @param prefixPathDepth Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefixPathDepth(Integer prefixPathDepth) {
+            return prefixPathDepth(Output.of(prefixPathDepth));
         }
 
         /**

@@ -183,6 +183,21 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         return this.tokenUrl;
     }
 
+    /**
+     * Set to true to use refresh token and check access token expiration.
+     * 
+     */
+    @Import(name="useRefreshToken")
+    private @Nullable Output<Boolean> useRefreshToken;
+
+    /**
+     * @return Set to true to use refresh token and check access token expiration.
+     * 
+     */
+    public Optional<Output<Boolean>> useRefreshToken() {
+        return Optional.ofNullable(this.useRefreshToken);
+    }
+
     private GrafanaGrafanaUserConfigAuthGenericOauthArgs() {}
 
     private GrafanaGrafanaUserConfigAuthGenericOauthArgs(GrafanaGrafanaUserConfigAuthGenericOauthArgs $) {
@@ -197,6 +212,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         this.name = $.name;
         this.scopes = $.scopes;
         this.tokenUrl = $.tokenUrl;
+        this.useRefreshToken = $.useRefreshToken;
     }
 
     public static Builder builder() {
@@ -476,6 +492,27 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
          */
         public Builder tokenUrl(String tokenUrl) {
             return tokenUrl(Output.of(tokenUrl));
+        }
+
+        /**
+         * @param useRefreshToken Set to true to use refresh token and check access token expiration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useRefreshToken(@Nullable Output<Boolean> useRefreshToken) {
+            $.useRefreshToken = useRefreshToken;
+            return this;
+        }
+
+        /**
+         * @param useRefreshToken Set to true to use refresh token and check access token expiration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useRefreshToken(Boolean useRefreshToken) {
+            return useRefreshToken(Output.of(useRefreshToken));
         }
 
         public GrafanaGrafanaUserConfigAuthGenericOauthArgs build() {

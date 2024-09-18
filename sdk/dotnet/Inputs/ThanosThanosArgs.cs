@@ -82,6 +82,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Store URI.
         /// </summary>
+        [Obsolete(@"This field was added by mistake and has never worked. It will be removed in future versions.")]
         public Input<string>? StoreUri
         {
             get => _storeUri;

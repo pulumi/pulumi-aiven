@@ -17,7 +17,11 @@ public final class PgPg {
     /**
      * @return PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     private @Nullable String bouncer;
     /**
      * @return Primary PostgreSQL database name.
@@ -89,7 +93,11 @@ public final class PgPg {
     /**
      * @return PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     public Optional<String> bouncer() {
         return Optional.ofNullable(this.bouncer);
     }

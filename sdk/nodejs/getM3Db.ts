@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The M3 DB data source provides information about the existing Aiven M3 services.
+ * Gets information about an Aiven for M3DB service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const m3 = aiven.getM3Db({
- *     project: foo.project,
- *     serviceName: "my-m3db",
+ * const exampleM3db = aiven.getM3Db({
+ *     project: exampleProject.project,
+ *     serviceName: "example-m3db-service",
  * });
  * ```
  */
@@ -89,7 +89,7 @@ export interface GetM3DbResult {
      */
     readonly m3dbUserConfigs: outputs.GetM3DbM3dbUserConfig[];
     /**
-     * M3DB server provided values
+     * Values provided by the M3DB server.
      */
     readonly m3dbs: outputs.GetM3DbM3db[];
     /**
@@ -101,7 +101,7 @@ export interface GetM3DbResult {
      */
     readonly maintenanceWindowTime: string;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
     readonly plan: string;
     /**
@@ -166,7 +166,7 @@ export interface GetM3DbResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The M3 DB data source provides information about the existing Aiven M3 services.
+ * Gets information about an Aiven for M3DB service.
  *
  * ## Example Usage
  *
@@ -174,9 +174,9 @@ export interface GetM3DbResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const m3 = aiven.getM3Db({
- *     project: foo.project,
- *     serviceName: "my-m3db",
+ * const exampleM3db = aiven.getM3Db({
+ *     project: exampleProject.project,
+ *     serviceName: "example-m3db-service",
  * });
  * ```
  */

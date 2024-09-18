@@ -132,6 +132,14 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult> ExternalAwsCloudwatchMetricsUserConfigs;
         /// <summary>
+        /// ExternalAwsS3 user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfigResult> ExternalAwsS3UserConfigs;
+        /// <summary>
+        /// ExternalClickhouse user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfigResult> ExternalClickhouseUserConfigs;
+        /// <summary>
         /// ExternalElasticsearchLogs user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> ExternalElasticsearchLogsUserConfigs;
@@ -147,6 +155,10 @@ namespace Pulumi.Aiven
         /// ExternalKafka user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> ExternalKafkaUserConfigs;
+        /// <summary>
+        /// ExternalMysql user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalMysqlUserConfigResult> ExternalMysqlUserConfigs;
         /// <summary>
         /// ExternalOpensearchLogs user configurable settings
         /// </summary>
@@ -194,6 +206,10 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult> externalAwsCloudwatchMetricsUserConfigs,
 
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfigResult> externalAwsS3UserConfigs,
+
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfigResult> externalClickhouseUserConfigs,
+
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> externalElasticsearchLogsUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigqueryResult> externalGoogleCloudBigqueries,
@@ -201,6 +217,8 @@ namespace Pulumi.Aiven
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult> externalGoogleCloudLoggingUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> externalKafkaUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalMysqlUserConfigResult> externalMysqlUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult> externalOpensearchLogsUserConfigs,
 
@@ -224,10 +242,13 @@ namespace Pulumi.Aiven
             EndpointType = endpointType;
             ExternalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             ExternalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
+            ExternalAwsS3UserConfigs = externalAwsS3UserConfigs;
+            ExternalClickhouseUserConfigs = externalClickhouseUserConfigs;
             ExternalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
             ExternalGoogleCloudBigqueries = externalGoogleCloudBigqueries;
             ExternalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
             ExternalKafkaUserConfigs = externalKafkaUserConfigs;
+            ExternalMysqlUserConfigs = externalMysqlUserConfigs;
             ExternalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             ExternalPostgresqls = externalPostgresqls;
             ExternalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;

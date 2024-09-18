@@ -2104,6 +2104,10 @@ export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
      * Token URL. Example: `https://yourprovider.com/oauth/token`.
      */
     tokenUrl: string;
+    /**
+     * Set to true to use refresh token and check access token expiration.
+     */
+    useRefreshToken?: boolean;
 }
 
 export interface GetGrafanaGrafanaUserConfigAuthGithub {
@@ -2827,6 +2831,10 @@ export interface GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
      */
     engineVersion?: number;
     /**
+     * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     */
+    prefixPathDepth?: number;
+    /**
      * Token used to authenticate with vault and auth method `token`.
      */
     token?: string;
@@ -2966,7 +2974,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.GetKafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -3338,6 +3346,10 @@ export interface GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault {
      */
     engineVersion?: number;
     /**
+     * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     */
+    prefixPathDepth?: number;
+    /**
      * Token used to authenticate with vault and auth method `token`.
      */
     token?: string;
@@ -3479,6 +3491,14 @@ export interface GetKafkaKafkaUserConfigSchemaRegistryConfig {
      * If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
      */
     leaderEligibility?: boolean;
+    /**
+     * If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+     */
+    retriableErrorsSilenced?: boolean;
+    /**
+     * If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+     */
+    schemaReaderStrictMode?: boolean;
     /**
      * The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
      */
@@ -4768,6 +4788,8 @@ export interface GetOpenSearchComponent {
 export interface GetOpenSearchOpensearch {
     /**
      * URI for Kibana dashboard frontend
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     kibanaUri: string;
     /**
@@ -4918,6 +4940,10 @@ export interface GetOpenSearchOpensearchUserConfigAzureMigration {
      */
     endpointSuffix?: string;
     /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices?: string;
+    /**
      * Azure account secret key. One of key or sasToken should be specified.
      */
     key?: string;
@@ -4952,6 +4978,10 @@ export interface GetOpenSearchOpensearchUserConfigGcsMigration {
      * Google Cloud Storage credentials file content.
      */
     credentials: string;
+    /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices?: string;
     /**
      * The snapshot name to restore from.
      */
@@ -5404,6 +5434,10 @@ export interface GetOpenSearchOpensearchUserConfigS3Migration {
      */
     endpoint?: string;
     /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices?: string;
+    /**
      * S3 region.
      */
     region: string;
@@ -5522,6 +5556,8 @@ export interface GetPgComponent {
 export interface GetPgPg {
     /**
      * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     bouncer: string;
     /**
@@ -5608,6 +5644,8 @@ export interface GetPgPgParam {
 export interface GetPgPgUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -6313,6 +6351,14 @@ export interface GetRedisRedisUserConfig {
      */
     additionalBackupRegions?: string;
     /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: number;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: number;
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.GetRedisRedisUserConfigIpFilterObject[];
@@ -6798,6 +6844,40 @@ export interface GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserCo
     secretKey: string;
 }
 
+export interface GetServiceIntegrationEndpointExternalAwsS3UserConfig {
+    /**
+     * Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.
+     */
+    accessKeyId: string;
+    /**
+     * Secret Access Key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+     */
+    secretAccessKey: string;
+    /**
+     * S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
+     */
+    url: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalClickhouseUserConfig {
+    /**
+     * Hostname or IP address of the server. Example: `my.server.com`.
+     */
+    host: string;
+    /**
+     * Password. Example: `jjKk45Nnd`.
+     */
+    password: string;
+    /**
+     * Secure TCP server port. Example: `9440`.
+     */
+    port: number;
+    /**
+     * User name. Example: `default`.
+     */
+    username: string;
+}
+
 export interface GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
      * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
@@ -6896,6 +6976,36 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
      * Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
      */
     sslEndpointIdentificationAlgorithm?: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalMysqlUserConfig {
+    /**
+     * Hostname or IP address of the server. Example: `my.server.com`.
+     */
+    host: string;
+    /**
+     * Password. Example: `jjKk45Nnd`.
+     */
+    password: string;
+    /**
+     * Port number of the server. Example: `5432`.
+     */
+    port: number;
+    /**
+     * Enum: `verify-full`. SSL Mode. Default: `verify-full`.
+     */
+    sslMode?: string;
+    /**
+     * SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
+     */
+    sslRootCert?: string;
+    /**
+     * User name. Example: `myname`.
+     */
+    username: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
@@ -7461,6 +7571,8 @@ export interface GetThanosThano {
     receiverRemoteWriteUri: string;
     /**
      * Store URI.
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     storeUri: string;
     /**
@@ -7673,6 +7785,14 @@ export interface GetValkeyValkeyUserConfig {
      * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: number;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: number;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -8147,6 +8267,10 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
      * Token URL. Example: `https://yourprovider.com/oauth/token`.
      */
     tokenUrl: string;
+    /**
+     * Set to true to use refresh token and check access token expiration.
+     */
+    useRefreshToken?: boolean;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGithub {
@@ -8870,6 +8994,10 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProviderVault {
      */
     engineVersion?: number;
     /**
+     * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     */
+    prefixPathDepth?: number;
+    /**
      * Token used to authenticate with vault and auth method `token`.
      */
     token?: string;
@@ -9009,7 +9137,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.KafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -9381,6 +9509,10 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
      */
     engineVersion?: number;
     /**
+     * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     */
+    prefixPathDepth?: number;
+    /**
      * Token used to authenticate with vault and auth method `token`.
      */
     token?: string;
@@ -9522,6 +9654,14 @@ export interface KafkaKafkaUserConfigSchemaRegistryConfig {
      * If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
      */
     leaderEligibility?: boolean;
+    /**
+     * If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+     */
+    retriableErrorsSilenced?: boolean;
+    /**
+     * If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+     */
+    schemaReaderStrictMode?: boolean;
     /**
      * The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
      */
@@ -10811,6 +10951,8 @@ export interface OpenSearchComponent {
 export interface OpenSearchOpensearch {
     /**
      * URI for Kibana dashboard frontend
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     kibanaUri: string;
     /**
@@ -10961,6 +11103,10 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      */
     endpointSuffix?: string;
     /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices?: string;
+    /**
      * Azure account secret key. One of key or sasToken should be specified.
      */
     key?: string;
@@ -10995,6 +11141,10 @@ export interface OpenSearchOpensearchUserConfigGcsMigration {
      * Google Cloud Storage credentials file content.
      */
     credentials: string;
+    /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices?: string;
     /**
      * The snapshot name to restore from.
      */
@@ -11447,6 +11597,10 @@ export interface OpenSearchOpensearchUserConfigS3Migration {
      */
     endpoint?: string;
     /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices?: string;
+    /**
      * S3 region.
      */
     region: string;
@@ -11546,6 +11700,29 @@ export interface OrganizationGroupProjectTimeouts {
     update?: string;
 }
 
+export interface OrganizationPermissionPermission {
+    /**
+     * Create Time
+     */
+    createTime: string;
+    /**
+     * List of permissions. The possible values are `admin`, `developer`, `operator` and `readOnly`.
+     */
+    permissions: string[];
+    /**
+     * ID of the principal.
+     */
+    principalId: string;
+    /**
+     * Type of the principal. The possible values are `user` and `userGroup`.
+     */
+    principalType: string;
+    /**
+     * Update Time
+     */
+    updateTime: string;
+}
+
 export interface OrganizationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -11622,6 +11799,8 @@ export interface PgComponent {
 export interface PgPg {
     /**
      * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     bouncer: string;
     /**
@@ -11708,6 +11887,8 @@ export interface PgPgParam {
 export interface PgPgUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -12413,6 +12594,14 @@ export interface RedisRedisUserConfig {
      */
     additionalBackupRegions?: string;
     /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: number;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: number;
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: outputs.RedisRedisUserConfigIpFilterObject[];
@@ -12898,6 +13087,40 @@ export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfi
     secretKey: string;
 }
 
+export interface ServiceIntegrationEndpointExternalAwsS3UserConfig {
+    /**
+     * Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.
+     */
+    accessKeyId: string;
+    /**
+     * Secret Access Key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+     */
+    secretAccessKey: string;
+    /**
+     * S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
+     */
+    url: string;
+}
+
+export interface ServiceIntegrationEndpointExternalClickhouseUserConfig {
+    /**
+     * Hostname or IP address of the server. Example: `my.server.com`.
+     */
+    host: string;
+    /**
+     * Password. Example: `jjKk45Nnd`.
+     */
+    password: string;
+    /**
+     * Secure TCP server port. Example: `9440`.
+     */
+    port: number;
+    /**
+     * User name. Example: `default`.
+     */
+    username: string;
+}
+
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
      * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
@@ -12996,6 +13219,36 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      * Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
      */
     sslEndpointIdentificationAlgorithm?: string;
+}
+
+export interface ServiceIntegrationEndpointExternalMysqlUserConfig {
+    /**
+     * Hostname or IP address of the server. Example: `my.server.com`.
+     */
+    host: string;
+    /**
+     * Password. Example: `jjKk45Nnd`.
+     */
+    password: string;
+    /**
+     * Port number of the server. Example: `5432`.
+     */
+    port: number;
+    /**
+     * Enum: `verify-full`. SSL Mode. Default: `verify-full`.
+     */
+    sslMode?: string;
+    /**
+     * SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
+     */
+    sslRootCert?: string;
+    /**
+     * User name. Example: `myname`.
+     */
+    username: string;
 }
 
 export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
@@ -13561,6 +13814,8 @@ export interface ThanosThanos {
     receiverRemoteWriteUri: string;
     /**
      * Store URI.
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     storeUri: string;
     /**
@@ -13773,6 +14028,14 @@ export interface ValkeyValkeyUserConfig {
      * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: number;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: number;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */

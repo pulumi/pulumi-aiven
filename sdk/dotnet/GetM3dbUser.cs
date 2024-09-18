@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetM3dbUser
     {
         /// <summary>
-        /// The M3DB User data source provides information about the existing Aiven M3DB User.
+        /// Gets information about an Aiven for M3DB service user.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetM3dbUser.Invoke(new()
+        ///     var exampleServiceUser = Aiven.GetM3dbUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = exampleM3db.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-m3db-user",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetM3dbUserResult>("aiven:index/getM3dbUser:getM3dbUser", args ?? new GetM3dbUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The M3DB User data source provides information about the existing Aiven M3DB User.
+        /// Gets information about an Aiven for M3DB service user.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetM3dbUser.Invoke(new()
+        ///     var exampleServiceUser = Aiven.GetM3dbUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = exampleM3db.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-m3db-user",
         ///     });
         /// 
         /// });
@@ -80,7 +80,7 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the M3DB User.
+        /// The M3DB service user's password.
         /// </summary>
         public readonly string Password;
         /// <summary>
@@ -138,11 +138,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Username;
 

@@ -38,6 +38,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? EndpointSuffix;
         /// <summary>
+        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        /// </summary>
+        public readonly string? Indices;
+        /// <summary>
         /// Azure account secret key. One of key or sas_token should be specified.
         /// </summary>
         public readonly string? Key;
@@ -64,6 +68,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? endpointSuffix,
 
+            string? indices,
+
             string? key,
 
             string? sasToken,
@@ -76,6 +82,7 @@ namespace Pulumi.Aiven.Outputs
             Compress = compress;
             Container = container;
             EndpointSuffix = endpointSuffix;
+            Indices = indices;
             Key = key;
             SasToken = sasToken;
             SnapshotName = snapshotName;

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The M3 DB data source provides information about the existing Aiven M3 services.
+// Gets information about an Aiven for M3DB service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupM3Db(ctx, &aiven.LookupM3DbArgs{
-//				Project:     foo.Project,
-//				ServiceName: "my-m3db",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-m3db-service",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -79,13 +79,13 @@ type LookupM3DbResult struct {
 	Id string `pulumi:"id"`
 	// M3db user configurable settings
 	M3dbUserConfigs []GetM3DbM3dbUserConfig `pulumi:"m3dbUserConfigs"`
-	// M3DB server provided values
+	// Values provided by the M3DB server.
 	M3dbs []GetM3DbM3db `pulumi:"m3dbs"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -209,7 +209,7 @@ func (o LookupM3DbResultOutput) M3dbUserConfigs() GetM3DbM3dbUserConfigArrayOutp
 	return o.ApplyT(func(v LookupM3DbResult) []GetM3DbM3dbUserConfig { return v.M3dbUserConfigs }).(GetM3DbM3dbUserConfigArrayOutput)
 }
 
-// M3DB server provided values
+// Values provided by the M3DB server.
 func (o LookupM3DbResultOutput) M3dbs() GetM3DbM3dbArrayOutput {
 	return o.ApplyT(func(v LookupM3DbResult) []GetM3DbM3db { return v.M3dbs }).(GetM3DbM3dbArrayOutput)
 }
@@ -224,7 +224,7 @@ func (o LookupM3DbResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3DbResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 func (o LookupM3DbResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3DbResult) string { return v.Plan }).(pulumi.StringOutput)
 }

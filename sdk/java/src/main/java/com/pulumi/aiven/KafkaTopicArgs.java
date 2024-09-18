@@ -37,6 +37,21 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The user group that is the owner of the topic
+     * 
+     */
+    @Import(name="ownerUserGroupId")
+    private @Nullable Output<String> ownerUserGroupId;
+
+    /**
+     * @return The user group that is the owner of the topic
+     * 
+     */
+    public Optional<Output<String>> ownerUserGroupId() {
+        return Optional.ofNullable(this.ownerUserGroupId);
+    }
+
+    /**
      * The number of partitions to create in the topic.
      * 
      */
@@ -119,6 +134,21 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The description of the topic
+     * 
+     */
+    @Import(name="topicDescription")
+    private @Nullable Output<String> topicDescription;
+
+    /**
+     * @return The description of the topic
+     * 
+     */
+    public Optional<Output<String>> topicDescription() {
+        return Optional.ofNullable(this.topicDescription);
+    }
+
+    /**
      * The name of the topic. Changing this property forces recreation of the resource.
      * 
      */
@@ -137,12 +167,14 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
 
     private KafkaTopicArgs(KafkaTopicArgs $) {
         this.config = $.config;
+        this.ownerUserGroupId = $.ownerUserGroupId;
         this.partitions = $.partitions;
         this.project = $.project;
         this.replication = $.replication;
         this.serviceName = $.serviceName;
         this.tags = $.tags;
         this.terminationProtection = $.terminationProtection;
+        this.topicDescription = $.topicDescription;
         this.topicName = $.topicName;
     }
 
@@ -183,6 +215,27 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder config(KafkaTopicConfigArgs config) {
             return config(Output.of(config));
+        }
+
+        /**
+         * @param ownerUserGroupId The user group that is the owner of the topic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerUserGroupId(@Nullable Output<String> ownerUserGroupId) {
+            $.ownerUserGroupId = ownerUserGroupId;
+            return this;
+        }
+
+        /**
+         * @param ownerUserGroupId The user group that is the owner of the topic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerUserGroupId(String ownerUserGroupId) {
+            return ownerUserGroupId(Output.of(ownerUserGroupId));
         }
 
         /**
@@ -307,6 +360,27 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder terminationProtection(Boolean terminationProtection) {
             return terminationProtection(Output.of(terminationProtection));
+        }
+
+        /**
+         * @param topicDescription The description of the topic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicDescription(@Nullable Output<String> topicDescription) {
+            $.topicDescription = topicDescription;
+            return this;
+        }
+
+        /**
+         * @param topicDescription The description of the topic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicDescription(String topicDescription) {
+            return topicDescription(Output.of(topicDescription));
         }
 
         /**

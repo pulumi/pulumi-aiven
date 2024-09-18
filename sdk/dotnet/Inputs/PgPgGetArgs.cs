@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
         /// </summary>
+        [Obsolete(@"This field was added by mistake and has never worked. It will be removed in future versions.")]
         public Input<string>? Bouncer
         {
             get => _bouncer;

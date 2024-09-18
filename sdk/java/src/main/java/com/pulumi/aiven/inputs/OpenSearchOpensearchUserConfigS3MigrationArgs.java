@@ -108,6 +108,21 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
     }
 
     /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    @Import(name="indices")
+    private @Nullable Output<String> indices;
+
+    /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    public Optional<Output<String>> indices() {
+        return Optional.ofNullable(this.indices);
+    }
+
+    /**
      * S3 region.
      * 
      */
@@ -176,6 +191,7 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
         this.chunkSize = $.chunkSize;
         this.compress = $.compress;
         this.endpoint = $.endpoint;
+        this.indices = $.indices;
         this.region = $.region;
         this.secretKey = $.secretKey;
         this.serverSideEncryption = $.serverSideEncryption;
@@ -324,6 +340,27 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
          */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
+        }
+
+        /**
+         * @param indices A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indices(@Nullable Output<String> indices) {
+            $.indices = indices;
+            return this;
+        }
+
+        /**
+         * @param indices A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indices(String indices) {
+            return indices(Output.of(indices));
         }
 
         /**

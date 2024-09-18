@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetM3Db
     {
         /// <summary>
-        /// The M3 DB data source provides information about the existing Aiven M3 services.
+        /// Gets information about an Aiven for M3DB service.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var m3 = Aiven.GetM3Db.Invoke(new()
+        ///     var exampleM3db = Aiven.GetM3Db.Invoke(new()
         ///     {
-        ///         Project = foo.Project,
-        ///         ServiceName = "my-m3db",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-m3db-service",
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetM3DbResult>("aiven:index/getM3Db:getM3Db", args ?? new GetM3DbArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The M3 DB data source provides information about the existing Aiven M3 services.
+        /// Gets information about an Aiven for M3DB service.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var m3 = Aiven.GetM3Db.Invoke(new()
+        ///     var exampleM3db = Aiven.GetM3Db.Invoke(new()
         ///     {
-        ///         Project = foo.Project,
-        ///         ServiceName = "my-m3db",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-m3db-service",
         ///     });
         /// 
         /// });
@@ -148,7 +148,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetM3DbM3dbUserConfigResult> M3dbUserConfigs;
         /// <summary>
-        /// M3DB server provided values
+        /// Values provided by the M3DB server.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetM3DbM3dbResult> M3dbs;
         /// <summary>
@@ -160,7 +160,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string MaintenanceWindowTime;
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         public readonly string Plan;
         /// <summary>

@@ -56,6 +56,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.KafkaTopicConfig?> Config { get; private set; } = null!;
 
         /// <summary>
+        /// The user group that is the owner of the topic
+        /// </summary>
+        [Output("ownerUserGroupId")]
+        public Output<string?> OwnerUserGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The number of partitions to create in the topic.
         /// </summary>
         [Output("partitions")]
@@ -87,6 +93,12 @@ namespace Pulumi.Aiven
 
         [Output("terminationProtection")]
         public Output<bool?> TerminationProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the topic
+        /// </summary>
+        [Output("topicDescription")]
+        public Output<string?> TopicDescription { get; private set; } = null!;
 
         /// <summary>
         /// The name of the topic. Changing this property forces recreation of the resource.
@@ -147,6 +159,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.KafkaTopicConfigArgs>? Config { get; set; }
 
         /// <summary>
+        /// The user group that is the owner of the topic
+        /// </summary>
+        [Input("ownerUserGroupId")]
+        public Input<string>? OwnerUserGroupId { get; set; }
+
+        /// <summary>
         /// The number of partitions to create in the topic.
         /// </summary>
         [Input("partitions", required: true)]
@@ -186,6 +204,12 @@ namespace Pulumi.Aiven
         public Input<bool>? TerminationProtection { get; set; }
 
         /// <summary>
+        /// The description of the topic
+        /// </summary>
+        [Input("topicDescription")]
+        public Input<string>? TopicDescription { get; set; }
+
+        /// <summary>
         /// The name of the topic. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topicName", required: true)]
@@ -204,6 +228,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("config")]
         public Input<Inputs.KafkaTopicConfigGetArgs>? Config { get; set; }
+
+        /// <summary>
+        /// The user group that is the owner of the topic
+        /// </summary>
+        [Input("ownerUserGroupId")]
+        public Input<string>? OwnerUserGroupId { get; set; }
 
         /// <summary>
         /// The number of partitions to create in the topic.
@@ -243,6 +273,12 @@ namespace Pulumi.Aiven
 
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
+
+        /// <summary>
+        /// The description of the topic
+        /// </summary>
+        [Input("topicDescription")]
+        public Input<string>? TopicDescription { get; set; }
 
         /// <summary>
         /// The name of the topic. Changing this property forces recreation of the resource.

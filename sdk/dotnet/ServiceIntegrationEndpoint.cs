@@ -52,6 +52,18 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig?> ExternalAwsCloudwatchMetricsUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// ExternalAwsS3 user configurable settings
+        /// </summary>
+        [Output("externalAwsS3UserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalAwsS3UserConfig?> ExternalAwsS3UserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// ExternalClickhouse user configurable settings
+        /// </summary>
+        [Output("externalClickhouseUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalClickhouseUserConfig?> ExternalClickhouseUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// ExternalElasticsearchLogs user configurable settings
         /// </summary>
         [Output("externalElasticsearchLogsUserConfig")]
@@ -74,6 +86,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("externalKafkaUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalKafkaUserConfig?> ExternalKafkaUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// ExternalMysql user configurable settings
+        /// </summary>
+        [Output("externalMysqlUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalMysqlUserConfig?> ExternalMysqlUserConfig { get; private set; } = null!;
 
         /// <summary>
         /// ExternalOpensearchLogs user configurable settings
@@ -194,6 +212,18 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
 
         /// <summary>
+        /// ExternalAwsS3 user configurable settings
+        /// </summary>
+        [Input("externalAwsS3UserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalAwsS3UserConfigArgs>? ExternalAwsS3UserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalClickhouse user configurable settings
+        /// </summary>
+        [Input("externalClickhouseUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalClickhouseUserConfigArgs>? ExternalClickhouseUserConfig { get; set; }
+
+        /// <summary>
         /// ExternalElasticsearchLogs user configurable settings
         /// </summary>
         [Input("externalElasticsearchLogsUserConfig")]
@@ -216,6 +246,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalKafkaUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigArgs>? ExternalKafkaUserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalMysql user configurable settings
+        /// </summary>
+        [Input("externalMysqlUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalMysqlUserConfigArgs>? ExternalMysqlUserConfig { get; set; }
 
         /// <summary>
         /// ExternalOpensearchLogs user configurable settings
@@ -310,6 +346,18 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigGetArgs>? ExternalAwsCloudwatchMetricsUserConfig { get; set; }
 
         /// <summary>
+        /// ExternalAwsS3 user configurable settings
+        /// </summary>
+        [Input("externalAwsS3UserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalAwsS3UserConfigGetArgs>? ExternalAwsS3UserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalClickhouse user configurable settings
+        /// </summary>
+        [Input("externalClickhouseUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalClickhouseUserConfigGetArgs>? ExternalClickhouseUserConfig { get; set; }
+
+        /// <summary>
         /// ExternalElasticsearchLogs user configurable settings
         /// </summary>
         [Input("externalElasticsearchLogsUserConfig")]
@@ -332,6 +380,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalKafkaUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalKafkaUserConfigGetArgs>? ExternalKafkaUserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalMysql user configurable settings
+        /// </summary>
+        [Input("externalMysqlUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalMysqlUserConfigGetArgs>? ExternalMysqlUserConfig { get; set; }
 
         /// <summary>
         /// ExternalOpensearchLogs user configurable settings

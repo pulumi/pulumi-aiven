@@ -18,6 +18,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
+        /// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        /// </summary>
+        public readonly int? BackupHour;
+        /// <summary>
+        /// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        /// </summary>
+        public readonly int? BackupMinute;
+        /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.RedisRedisUserConfigIpFilterObject> IpFilterObjects;
@@ -118,6 +126,10 @@ namespace Pulumi.Aiven.Outputs
         private RedisRedisUserConfig(
             string? additionalBackupRegions,
 
+            int? backupHour,
+
+            int? backupMinute,
+
             ImmutableArray<Outputs.RedisRedisUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilterStrings,
@@ -167,6 +179,8 @@ namespace Pulumi.Aiven.Outputs
             bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
+            BackupHour = backupHour;
+            BackupMinute = backupMinute;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;

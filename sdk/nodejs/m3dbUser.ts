@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The M3DB User resource allows the creation and management of Aiven M3DB Users.
+ * Creates and manages an Aiven for M3DB service user.
  *
  * ## Example Usage
  *
@@ -13,18 +13,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = new aiven.M3dbUser("foo", {
- *     serviceName: bar.serviceName,
- *     project: "my-project",
- *     username: "user-1",
- *     password: "Test$1234",
+ * const exampleServiceUser = new aiven.M3dbUser("example_service_user", {
+ *     serviceName: exampleM3db.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-m3db-user",
+ *     password: serviceUserPw,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
+ * $ pulumi import aiven:index/m3dbUser:M3dbUser example_service_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  */
 export class M3dbUser extends pulumi.CustomResource {
@@ -56,7 +56,7 @@ export class M3dbUser extends pulumi.CustomResource {
     }
 
     /**
-     * The password of the M3DB User.
+     * The M3DB service user's password.
      */
     public readonly password!: pulumi.Output<string>;
     /**
@@ -68,11 +68,11 @@ export class M3dbUser extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -123,7 +123,7 @@ export class M3dbUser extends pulumi.CustomResource {
  */
 export interface M3dbUserState {
     /**
-     * The password of the M3DB User.
+     * The M3DB service user's password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -135,11 +135,11 @@ export interface M3dbUserState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     type?: pulumi.Input<string>;
     /**
-     * The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -149,7 +149,7 @@ export interface M3dbUserState {
  */
 export interface M3dbUserArgs {
     /**
-     * The password of the M3DB User.
+     * The M3DB service user's password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface M3dbUserArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the M3DB User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the M3DB service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

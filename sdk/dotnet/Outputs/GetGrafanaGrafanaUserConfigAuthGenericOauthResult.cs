@@ -57,6 +57,10 @@ namespace Pulumi.Aiven.Outputs
         /// Token URL. Example: `https://yourprovider.com/oauth/token`.
         /// </summary>
         public readonly string TokenUrl;
+        /// <summary>
+        /// Set to true to use refresh token and check access token expiration.
+        /// </summary>
+        public readonly bool? UseRefreshToken;
 
         [OutputConstructor]
         private GetGrafanaGrafanaUserConfigAuthGenericOauthResult(
@@ -80,7 +84,9 @@ namespace Pulumi.Aiven.Outputs
 
             ImmutableArray<string> scopes,
 
-            string tokenUrl)
+            string tokenUrl,
+
+            bool? useRefreshToken)
         {
             AllowSignUp = allowSignUp;
             AllowedDomains = allowedDomains;
@@ -93,6 +99,7 @@ namespace Pulumi.Aiven.Outputs
             Name = name;
             Scopes = scopes;
             TokenUrl = tokenUrl;
+            UseRefreshToken = useRefreshToken;
         }
     }
 }

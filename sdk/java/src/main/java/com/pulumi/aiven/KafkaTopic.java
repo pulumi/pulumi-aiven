@@ -91,6 +91,20 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.config);
     }
     /**
+     * The user group that is the owner of the topic
+     * 
+     */
+    @Export(name="ownerUserGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ownerUserGroupId;
+
+    /**
+     * @return The user group that is the owner of the topic
+     * 
+     */
+    public Output<Optional<String>> ownerUserGroupId() {
+        return Codegen.optional(this.ownerUserGroupId);
+    }
+    /**
      * The number of partitions to create in the topic.
      * 
      */
@@ -165,6 +179,20 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> terminationProtection() {
         return Codegen.optional(this.terminationProtection);
+    }
+    /**
+     * The description of the topic
+     * 
+     */
+    @Export(name="topicDescription", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> topicDescription;
+
+    /**
+     * @return The description of the topic
+     * 
+     */
+    public Output<Optional<String>> topicDescription() {
+        return Codegen.optional(this.topicDescription);
     }
     /**
      * The name of the topic. Changing this property forces recreation of the resource.

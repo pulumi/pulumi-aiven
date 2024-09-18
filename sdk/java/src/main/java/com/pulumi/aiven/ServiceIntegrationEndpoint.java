@@ -9,10 +9,13 @@ import com.pulumi.aiven.inputs.ServiceIntegrationEndpointState;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointDatadogUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsS3UserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalClickhouseUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalKafkaUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalMysqlUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalPostgresql;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
@@ -119,6 +122,34 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.externalAwsCloudwatchMetricsUserConfig);
     }
     /**
+     * ExternalAwsS3 user configurable settings
+     * 
+     */
+    @Export(name="externalAwsS3UserConfig", refs={ServiceIntegrationEndpointExternalAwsS3UserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfig;
+
+    /**
+     * @return ExternalAwsS3 user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointExternalAwsS3UserConfig>> externalAwsS3UserConfig() {
+        return Codegen.optional(this.externalAwsS3UserConfig);
+    }
+    /**
+     * ExternalClickhouse user configurable settings
+     * 
+     */
+    @Export(name="externalClickhouseUserConfig", refs={ServiceIntegrationEndpointExternalClickhouseUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfig;
+
+    /**
+     * @return ExternalClickhouse user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointExternalClickhouseUserConfig>> externalClickhouseUserConfig() {
+        return Codegen.optional(this.externalClickhouseUserConfig);
+    }
+    /**
      * ExternalElasticsearchLogs user configurable settings
      * 
      */
@@ -173,6 +204,20 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<ServiceIntegrationEndpointExternalKafkaUserConfig>> externalKafkaUserConfig() {
         return Codegen.optional(this.externalKafkaUserConfig);
+    }
+    /**
+     * ExternalMysql user configurable settings
+     * 
+     */
+    @Export(name="externalMysqlUserConfig", refs={ServiceIntegrationEndpointExternalMysqlUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfig;
+
+    /**
+     * @return ExternalMysql user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointExternalMysqlUserConfig>> externalMysqlUserConfig() {
+        return Codegen.optional(this.externalMysqlUserConfig);
     }
     /**
      * ExternalOpensearchLogs user configurable settings

@@ -24,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Cassandra resource allows the creation and management of Aiven Cassandra services.
+ * Creates and manages an [Aiven for Apache Cassandra®](https://aiven.io/docs/products/cassandra) service.
  * 
  * ## Example Usage
  * 
@@ -53,11 +53,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Cassandra("bar", CassandraArgs.builder()
- *             .project(foo.project())
+ *         var exampleCassandra = new Cassandra("exampleCassandra", CassandraArgs.builder()
+ *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
- *             .serviceName("test-service-name")
+ *             .serviceName("example-cassandra-service")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .cassandraUserConfig(CassandraCassandraUserConfigArgs.builder()
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/cassandra:Cassandra bar PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/cassandra:Cassandra example_cassandra PROJECT/SERVICE_NAME
  * ```
  * 
  */
@@ -98,14 +98,14 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.additionalDiskSpace);
     }
     /**
-     * Cassandra server provided values
+     * Values provided by the Cassandra server.
      * 
      */
     @Export(name="cassandra", refs={CassandraCassandra.class}, tree="[0]")
     private Output<CassandraCassandra> cassandra;
 
     /**
-     * @return Cassandra server provided values
+     * @return Values provided by the Cassandra server.
      * 
      */
     public Output<CassandraCassandra> cassandra() {
@@ -256,14 +256,14 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowTime);
     }
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     public Output<String> plan() {

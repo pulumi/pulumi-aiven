@@ -6,10 +6,13 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointDatadogUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigquery;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalMysqlUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalPostgresql;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
@@ -56,6 +59,16 @@ public final class GetServiceIntegrationEndpointResult {
      */
     private List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
     /**
+     * @return ExternalAwsS3 user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfigs;
+    /**
+     * @return ExternalClickhouse user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfigs;
+    /**
      * @return ExternalElasticsearchLogs user configurable settings
      * 
      */
@@ -75,6 +88,11 @@ public final class GetServiceIntegrationEndpointResult {
      * 
      */
     private List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs;
+    /**
+     * @return ExternalMysql user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs;
     /**
      * @return ExternalOpensearchLogs user configurable settings
      * 
@@ -160,6 +178,20 @@ public final class GetServiceIntegrationEndpointResult {
         return this.externalAwsCloudwatchMetricsUserConfigs;
     }
     /**
+     * @return ExternalAwsS3 user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfigs() {
+        return this.externalAwsS3UserConfigs;
+    }
+    /**
+     * @return ExternalClickhouse user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfigs() {
+        return this.externalClickhouseUserConfigs;
+    }
+    /**
      * @return ExternalElasticsearchLogs user configurable settings
      * 
      */
@@ -186,6 +218,13 @@ public final class GetServiceIntegrationEndpointResult {
      */
     public List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs() {
         return this.externalKafkaUserConfigs;
+    }
+    /**
+     * @return ExternalMysql user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs() {
+        return this.externalMysqlUserConfigs;
     }
     /**
      * @return ExternalOpensearchLogs user configurable settings
@@ -259,10 +298,13 @@ public final class GetServiceIntegrationEndpointResult {
         private String endpointType;
         private List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
+        private List<GetServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfigs;
+        private List<GetServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfigs;
         private List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigqueries;
         private List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs;
         private List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs;
+        private List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs;
         private List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalPostgresql> externalPostgresqls;
         private List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs;
@@ -280,10 +322,13 @@ public final class GetServiceIntegrationEndpointResult {
     	      this.endpointType = defaults.endpointType;
     	      this.externalAwsCloudwatchLogsUserConfigs = defaults.externalAwsCloudwatchLogsUserConfigs;
     	      this.externalAwsCloudwatchMetricsUserConfigs = defaults.externalAwsCloudwatchMetricsUserConfigs;
+    	      this.externalAwsS3UserConfigs = defaults.externalAwsS3UserConfigs;
+    	      this.externalClickhouseUserConfigs = defaults.externalClickhouseUserConfigs;
     	      this.externalElasticsearchLogsUserConfigs = defaults.externalElasticsearchLogsUserConfigs;
     	      this.externalGoogleCloudBigqueries = defaults.externalGoogleCloudBigqueries;
     	      this.externalGoogleCloudLoggingUserConfigs = defaults.externalGoogleCloudLoggingUserConfigs;
     	      this.externalKafkaUserConfigs = defaults.externalKafkaUserConfigs;
+    	      this.externalMysqlUserConfigs = defaults.externalMysqlUserConfigs;
     	      this.externalOpensearchLogsUserConfigs = defaults.externalOpensearchLogsUserConfigs;
     	      this.externalPostgresqls = defaults.externalPostgresqls;
     	      this.externalSchemaRegistryUserConfigs = defaults.externalSchemaRegistryUserConfigs;
@@ -352,6 +397,28 @@ public final class GetServiceIntegrationEndpointResult {
             return externalAwsCloudwatchMetricsUserConfigs(List.of(externalAwsCloudwatchMetricsUserConfigs));
         }
         @CustomType.Setter
+        public Builder externalAwsS3UserConfigs(List<GetServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfigs) {
+            if (externalAwsS3UserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalAwsS3UserConfigs");
+            }
+            this.externalAwsS3UserConfigs = externalAwsS3UserConfigs;
+            return this;
+        }
+        public Builder externalAwsS3UserConfigs(GetServiceIntegrationEndpointExternalAwsS3UserConfig... externalAwsS3UserConfigs) {
+            return externalAwsS3UserConfigs(List.of(externalAwsS3UserConfigs));
+        }
+        @CustomType.Setter
+        public Builder externalClickhouseUserConfigs(List<GetServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfigs) {
+            if (externalClickhouseUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalClickhouseUserConfigs");
+            }
+            this.externalClickhouseUserConfigs = externalClickhouseUserConfigs;
+            return this;
+        }
+        public Builder externalClickhouseUserConfigs(GetServiceIntegrationEndpointExternalClickhouseUserConfig... externalClickhouseUserConfigs) {
+            return externalClickhouseUserConfigs(List.of(externalClickhouseUserConfigs));
+        }
+        @CustomType.Setter
         public Builder externalElasticsearchLogsUserConfigs(List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs) {
             if (externalElasticsearchLogsUserConfigs == null) {
               throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalElasticsearchLogsUserConfigs");
@@ -394,6 +461,17 @@ public final class GetServiceIntegrationEndpointResult {
         }
         public Builder externalKafkaUserConfigs(GetServiceIntegrationEndpointExternalKafkaUserConfig... externalKafkaUserConfigs) {
             return externalKafkaUserConfigs(List.of(externalKafkaUserConfigs));
+        }
+        @CustomType.Setter
+        public Builder externalMysqlUserConfigs(List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs) {
+            if (externalMysqlUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalMysqlUserConfigs");
+            }
+            this.externalMysqlUserConfigs = externalMysqlUserConfigs;
+            return this;
+        }
+        public Builder externalMysqlUserConfigs(GetServiceIntegrationEndpointExternalMysqlUserConfig... externalMysqlUserConfigs) {
+            return externalMysqlUserConfigs(List.of(externalMysqlUserConfigs));
         }
         @CustomType.Setter
         public Builder externalOpensearchLogsUserConfigs(List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs) {
@@ -485,10 +563,13 @@ public final class GetServiceIntegrationEndpointResult {
             _resultValue.endpointType = endpointType;
             _resultValue.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             _resultValue.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
+            _resultValue.externalAwsS3UserConfigs = externalAwsS3UserConfigs;
+            _resultValue.externalClickhouseUserConfigs = externalClickhouseUserConfigs;
             _resultValue.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
             _resultValue.externalGoogleCloudBigqueries = externalGoogleCloudBigqueries;
             _resultValue.externalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
             _resultValue.externalKafkaUserConfigs = externalKafkaUserConfigs;
+            _resultValue.externalMysqlUserConfigs = externalMysqlUserConfigs;
             _resultValue.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             _resultValue.externalPostgresqls = externalPostgresqls;
             _resultValue.externalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Grafana resource allows the creation and management of Aiven Grafana services.
+ * Creates and manages an [Aiven for Grafana®](https://aiven.io/docs/products/grafana) service.
  *
  * ## Example Usage
  *
@@ -15,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const gr1 = new aiven.Grafana("gr1", {
- *     project: ps1.project,
+ * const exampleGrafana = new aiven.Grafana("example_grafana", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-1",
- *     serviceName: "my-gr1",
+ *     serviceName: "example-grafana-service",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     grafanaUserConfig: {
@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/grafana:Grafana gr1 project/service_name
+ * $ pulumi import aiven:index/grafana:Grafana example_grafana PROJECT/SERVICE_NAME
  * ```
  */
 export class Grafana extends pulumi.CustomResource {
@@ -100,7 +100,7 @@ export class Grafana extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
-     * Grafana server provided values
+     * Values provided by the Grafana server.
      */
     public readonly grafana!: pulumi.Output<outputs.GrafanaGrafana>;
     /**
@@ -116,7 +116,7 @@ export class Grafana extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -304,7 +304,7 @@ export interface GrafanaState {
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
-     * Grafana server provided values
+     * Values provided by the Grafana server.
      */
     grafana?: pulumi.Input<inputs.GrafanaGrafana>;
     /**
@@ -320,7 +320,7 @@ export interface GrafanaState {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan?: pulumi.Input<string>;
     /**
@@ -404,7 +404,7 @@ export interface GrafanaArgs {
      */
     diskSpace?: pulumi.Input<string>;
     /**
-     * Grafana server provided values
+     * Values provided by the Grafana server.
      */
     grafana?: pulumi.Input<inputs.GrafanaGrafana>;
     /**
@@ -420,7 +420,7 @@ export interface GrafanaArgs {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan: pulumi.Input<string>;
     /**

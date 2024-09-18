@@ -135,6 +135,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationApplicationUserToken{}
 	case "aiven:index/organizationGroupProject:OrganizationGroupProject":
 		r = &OrganizationGroupProject{}
+	case "aiven:index/organizationPermission:OrganizationPermission":
+		r = &OrganizationPermission{}
 	case "aiven:index/organizationUser:OrganizationUser":
 		r = &OrganizationUser{}
 	case "aiven:index/organizationUserGroup:OrganizationUserGroup":
@@ -487,6 +489,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/organizationGroupProject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/organizationPermission",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

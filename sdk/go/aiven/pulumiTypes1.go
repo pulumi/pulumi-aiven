@@ -13,6 +13,535 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetServiceIntegrationClickhouseKafkaUserConfigTable struct {
+	// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+	AutoOffsetReset *string `pulumi:"autoOffsetReset"`
+	// Table columns
+	Columns []GetServiceIntegrationClickhouseKafkaUserConfigTableColumn `pulumi:"columns"`
+	// Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
+	DataFormat string `pulumi:"dataFormat"`
+	// Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
+	DateTimeInputFormat *string `pulumi:"dateTimeInputFormat"`
+	// Kafka consumers group. Default: `clickhouse`.
+	GroupName string `pulumi:"groupName"`
+	// Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+	HandleErrorMode *string `pulumi:"handleErrorMode"`
+	// Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+	MaxBlockSize *int `pulumi:"maxBlockSize"`
+	// The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+	MaxRowsPerMessage *int `pulumi:"maxRowsPerMessage"`
+	// Name of the table. Example: `events`.
+	Name string `pulumi:"name"`
+	// The number of consumers per table per replica. Default: `1`.
+	NumConsumers *int `pulumi:"numConsumers"`
+	// Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+	PollMaxBatchSize *int `pulumi:"pollMaxBatchSize"`
+	// Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
+	PollMaxTimeoutMs *int `pulumi:"pollMaxTimeoutMs"`
+	// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+	SkipBrokenMessages *int `pulumi:"skipBrokenMessages"`
+	// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+	ThreadPerConsumer *bool `pulumi:"threadPerConsumer"`
+	// Kafka topics
+	Topics []GetServiceIntegrationClickhouseKafkaUserConfigTableTopic `pulumi:"topics"`
+}
+
+// GetServiceIntegrationClickhouseKafkaUserConfigTableInput is an input type that accepts GetServiceIntegrationClickhouseKafkaUserConfigTableArgs and GetServiceIntegrationClickhouseKafkaUserConfigTableOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseKafkaUserConfigTableInput` via:
+//
+//	GetServiceIntegrationClickhouseKafkaUserConfigTableArgs{...}
+type GetServiceIntegrationClickhouseKafkaUserConfigTableInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableOutput
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableOutputWithContext(context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableOutput
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableArgs struct {
+	// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+	AutoOffsetReset pulumi.StringPtrInput `pulumi:"autoOffsetReset"`
+	// Table columns
+	Columns GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput `pulumi:"columns"`
+	// Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
+	DataFormat pulumi.StringInput `pulumi:"dataFormat"`
+	// Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
+	DateTimeInputFormat pulumi.StringPtrInput `pulumi:"dateTimeInputFormat"`
+	// Kafka consumers group. Default: `clickhouse`.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+	HandleErrorMode pulumi.StringPtrInput `pulumi:"handleErrorMode"`
+	// Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+	MaxBlockSize pulumi.IntPtrInput `pulumi:"maxBlockSize"`
+	// The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+	MaxRowsPerMessage pulumi.IntPtrInput `pulumi:"maxRowsPerMessage"`
+	// Name of the table. Example: `events`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number of consumers per table per replica. Default: `1`.
+	NumConsumers pulumi.IntPtrInput `pulumi:"numConsumers"`
+	// Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+	PollMaxBatchSize pulumi.IntPtrInput `pulumi:"pollMaxBatchSize"`
+	// Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
+	PollMaxTimeoutMs pulumi.IntPtrInput `pulumi:"pollMaxTimeoutMs"`
+	// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+	SkipBrokenMessages pulumi.IntPtrInput `pulumi:"skipBrokenMessages"`
+	// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+	ThreadPerConsumer pulumi.BoolPtrInput `pulumi:"threadPerConsumer"`
+	// Kafka topics
+	Topics GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput `pulumi:"topics"`
+}
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTable)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableArgs) ToGetServiceIntegrationClickhouseKafkaUserConfigTableOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableOutput {
+	return i.ToGetServiceIntegrationClickhouseKafkaUserConfigTableOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableArgs) ToGetServiceIntegrationClickhouseKafkaUserConfigTableOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseKafkaUserConfigTableOutput)
+}
+
+// GetServiceIntegrationClickhouseKafkaUserConfigTableArrayInput is an input type that accepts GetServiceIntegrationClickhouseKafkaUserConfigTableArray and GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseKafkaUserConfigTableArrayInput` via:
+//
+//	GetServiceIntegrationClickhouseKafkaUserConfigTableArray{ GetServiceIntegrationClickhouseKafkaUserConfigTableArgs{...} }
+type GetServiceIntegrationClickhouseKafkaUserConfigTableArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutputWithContext(context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableArray []GetServiceIntegrationClickhouseKafkaUserConfigTableInput
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseKafkaUserConfigTable)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableArray) ToGetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput {
+	return i.ToGetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableArray) ToGetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTable)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableOutput {
+	return o
+}
+
+// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) AutoOffsetReset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.AutoOffsetReset }).(pulumi.StringPtrOutput)
+}
+
+// Table columns
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) Columns() GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) []GetServiceIntegrationClickhouseKafkaUserConfigTableColumn {
+		return v.Columns
+	}).(GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput)
+}
+
+// Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) DataFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.DataFormat }).(pulumi.StringOutput)
+}
+
+// Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. Default: `basic`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) DateTimeInputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.DateTimeInputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Kafka consumers group. Default: `clickhouse`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) HandleErrorMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *string { return v.HandleErrorMode }).(pulumi.StringPtrOutput)
+}
+
+// Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) MaxBlockSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.MaxBlockSize }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) MaxRowsPerMessage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.MaxRowsPerMessage }).(pulumi.IntPtrOutput)
+}
+
+// Name of the table. Example: `events`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of consumers per table per replica. Default: `1`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) NumConsumers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.NumConsumers }).(pulumi.IntPtrOutput)
+}
+
+// Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) PollMaxBatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.PollMaxBatchSize }).(pulumi.IntPtrOutput)
+}
+
+// Timeout in milliseconds for a single poll from Kafka. Takes the value of the streamFlushIntervalMs server setting by default (500ms). Default: `0`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) PollMaxTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.PollMaxTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) SkipBrokenMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *int { return v.SkipBrokenMessages }).(pulumi.IntPtrOutput)
+}
+
+// Provide an independent thread for each consumer. All consumers run in the same thread by default. Default: `false`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) ThreadPerConsumer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) *bool { return v.ThreadPerConsumer }).(pulumi.BoolPtrOutput)
+}
+
+// Kafka topics
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableOutput) Topics() GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTable) []GetServiceIntegrationClickhouseKafkaUserConfigTableTopic {
+		return v.Topics
+	}).(GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseKafkaUserConfigTable)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationClickhouseKafkaUserConfigTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationClickhouseKafkaUserConfigTable {
+		return vs[0].([]GetServiceIntegrationClickhouseKafkaUserConfigTable)[vs[1].(int)]
+	}).(GetServiceIntegrationClickhouseKafkaUserConfigTableOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableColumn struct {
+	// Column name. Example: `key`.
+	Name string `pulumi:"name"`
+	// Column type. Example: `UInt64`.
+	Type string `pulumi:"type"`
+}
+
+// GetServiceIntegrationClickhouseKafkaUserConfigTableColumnInput is an input type that accepts GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs and GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseKafkaUserConfigTableColumnInput` via:
+//
+//	GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs{...}
+type GetServiceIntegrationClickhouseKafkaUserConfigTableColumnInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutputWithContext(context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs struct {
+	// Column name. Example: `key`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Column type. Example: `UInt64`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableColumn)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs) ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput {
+	return i.ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs) ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput)
+}
+
+// GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput is an input type that accepts GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArray and GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput` via:
+//
+//	GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArray{ GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs{...} }
+type GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutputWithContext(context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArray []GetServiceIntegrationClickhouseKafkaUserConfigTableColumnInput
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseKafkaUserConfigTableColumn)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArray) ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput {
+	return i.ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArray) ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableColumn)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput {
+	return o
+}
+
+// Column name. Example: `key`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTableColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Column type. Example: `UInt64`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTableColumn) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseKafkaUserConfigTableColumn)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationClickhouseKafkaUserConfigTableColumn {
+		return vs[0].([]GetServiceIntegrationClickhouseKafkaUserConfigTableColumn)[vs[1].(int)]
+	}).(GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableTopic struct {
+	// Name of the topic. Example: `topicName`.
+	Name string `pulumi:"name"`
+}
+
+// GetServiceIntegrationClickhouseKafkaUserConfigTableTopicInput is an input type that accepts GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs and GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseKafkaUserConfigTableTopicInput` via:
+//
+//	GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs{...}
+type GetServiceIntegrationClickhouseKafkaUserConfigTableTopicInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutputWithContext(context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs struct {
+	// Name of the topic. Example: `topicName`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableTopic)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs) ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput {
+	return i.ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs) ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput)
+}
+
+// GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput is an input type that accepts GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArray and GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput` via:
+//
+//	GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArray{ GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs{...} }
+type GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput
+	ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutputWithContext(context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArray []GetServiceIntegrationClickhouseKafkaUserConfigTableTopicInput
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseKafkaUserConfigTableTopic)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArray) ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput {
+	return i.ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArray) ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableTopic)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput {
+	return o
+}
+
+// Name of the topic. Example: `topicName`.
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfigTableTopic) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseKafkaUserConfigTableTopic)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationClickhouseKafkaUserConfigTableTopic {
+		return vs[0].([]GetServiceIntegrationClickhouseKafkaUserConfigTableTopic)[vs[1].(int)]
+	}).(GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput)
+}
+
+type GetServiceIntegrationClickhousePostgresqlUserConfig struct {
+	// Databases to expose
+	Databases []GetServiceIntegrationClickhousePostgresqlUserConfigDatabase `pulumi:"databases"`
+}
+
+// GetServiceIntegrationClickhousePostgresqlUserConfigInput is an input type that accepts GetServiceIntegrationClickhousePostgresqlUserConfigArgs and GetServiceIntegrationClickhousePostgresqlUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhousePostgresqlUserConfigInput` via:
+//
+//	GetServiceIntegrationClickhousePostgresqlUserConfigArgs{...}
+type GetServiceIntegrationClickhousePostgresqlUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhousePostgresqlUserConfigOutput() GetServiceIntegrationClickhousePostgresqlUserConfigOutput
+	ToGetServiceIntegrationClickhousePostgresqlUserConfigOutputWithContext(context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigOutput
+}
+
+type GetServiceIntegrationClickhousePostgresqlUserConfigArgs struct {
+	// Databases to expose
+	Databases GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayInput `pulumi:"databases"`
+}
+
+func (GetServiceIntegrationClickhousePostgresqlUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhousePostgresqlUserConfigArgs) ToGetServiceIntegrationClickhousePostgresqlUserConfigOutput() GetServiceIntegrationClickhousePostgresqlUserConfigOutput {
+	return i.ToGetServiceIntegrationClickhousePostgresqlUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhousePostgresqlUserConfigArgs) ToGetServiceIntegrationClickhousePostgresqlUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhousePostgresqlUserConfigOutput)
+}
+
+// GetServiceIntegrationClickhousePostgresqlUserConfigArrayInput is an input type that accepts GetServiceIntegrationClickhousePostgresqlUserConfigArray and GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhousePostgresqlUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationClickhousePostgresqlUserConfigArray{ GetServiceIntegrationClickhousePostgresqlUserConfigArgs{...} }
+type GetServiceIntegrationClickhousePostgresqlUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput() GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput
+	ToGetServiceIntegrationClickhousePostgresqlUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput
+}
+
+type GetServiceIntegrationClickhousePostgresqlUserConfigArray []GetServiceIntegrationClickhousePostgresqlUserConfigInput
+
+func (GetServiceIntegrationClickhousePostgresqlUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhousePostgresqlUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhousePostgresqlUserConfigArray) ToGetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput() GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationClickhousePostgresqlUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhousePostgresqlUserConfigArray) ToGetServiceIntegrationClickhousePostgresqlUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationClickhousePostgresqlUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhousePostgresqlUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigOutput) ToGetServiceIntegrationClickhousePostgresqlUserConfigOutput() GetServiceIntegrationClickhousePostgresqlUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigOutput) ToGetServiceIntegrationClickhousePostgresqlUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigOutput {
+	return o
+}
+
+// Databases to expose
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigOutput) Databases() GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhousePostgresqlUserConfig) []GetServiceIntegrationClickhousePostgresqlUserConfigDatabase {
+		return v.Databases
+	}).(GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput)
+}
+
+type GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhousePostgresqlUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput) ToGetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput() GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput) ToGetServiceIntegrationClickhousePostgresqlUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationClickhousePostgresqlUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationClickhousePostgresqlUserConfig {
+		return vs[0].([]GetServiceIntegrationClickhousePostgresqlUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationClickhousePostgresqlUserConfigOutput)
+}
+
 type GetServiceIntegrationClickhousePostgresqlUserConfigDatabase struct {
 	// PostgreSQL database to expose. Default: `defaultdb`.
 	Database *string `pulumi:"database"`
@@ -1267,6 +1796,245 @@ func (o GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray
 	}).(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput)
 }
 
+type GetServiceIntegrationEndpointExternalAwsS3UserConfig struct {
+	// Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// Secret Access Key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+	SecretAccessKey string `pulumi:"secretAccessKey"`
+	// S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
+	Url string `pulumi:"url"`
+}
+
+// GetServiceIntegrationEndpointExternalAwsS3UserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsS3UserConfigArgs and GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsS3UserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalAwsS3UserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalAwsS3UserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalAwsS3UserConfigOutput() GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput
+	ToGetServiceIntegrationEndpointExternalAwsS3UserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalAwsS3UserConfigArgs struct {
+	// Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.
+	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	// Secret Access Key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+	SecretAccessKey pulumi.StringInput `pulumi:"secretAccessKey"`
+	// S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetServiceIntegrationEndpointExternalAwsS3UserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsS3UserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsS3UserConfigArgs) ToGetServiceIntegrationEndpointExternalAwsS3UserConfigOutput() GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalAwsS3UserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsS3UserConfigArgs) ToGetServiceIntegrationEndpointExternalAwsS3UserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalAwsS3UserConfigArray and GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalAwsS3UserConfigArray{ GetServiceIntegrationEndpointExternalAwsS3UserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput() GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalAwsS3UserConfigArray []GetServiceIntegrationEndpointExternalAwsS3UserConfigInput
+
+func (GetServiceIntegrationEndpointExternalAwsS3UserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalAwsS3UserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsS3UserConfigArray) ToGetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput() GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalAwsS3UserConfigArray) ToGetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsS3UserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput) ToGetServiceIntegrationEndpointExternalAwsS3UserConfigOutput() GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput) ToGetServiceIntegrationEndpointExternalAwsS3UserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput {
+	return o
+}
+
+// Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.
+func (o GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput) AccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsS3UserConfig) string { return v.AccessKeyId }).(pulumi.StringOutput)
+}
+
+// Secret Access Key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+func (o GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput) SecretAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsS3UserConfig) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+}
+
+// S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
+func (o GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAwsS3UserConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalAwsS3UserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput() GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalAwsS3UserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalAwsS3UserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalClickhouseUserConfig struct {
+	// Hostname or IP address of the server. Example: `my.server.com`.
+	Host string `pulumi:"host"`
+	// Password. Example: `jjKk45Nnd`.
+	Password string `pulumi:"password"`
+	// Secure TCP server port. Example: `9440`.
+	Port int `pulumi:"port"`
+	// User name. Example: `default`.
+	Username string `pulumi:"username"`
+}
+
+// GetServiceIntegrationEndpointExternalClickhouseUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalClickhouseUserConfigArgs and GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalClickhouseUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalClickhouseUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalClickhouseUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalClickhouseUserConfigOutput() GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalClickhouseUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalClickhouseUserConfigArgs struct {
+	// Hostname or IP address of the server. Example: `my.server.com`.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Password. Example: `jjKk45Nnd`.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Secure TCP server port. Example: `9440`.
+	Port pulumi.IntInput `pulumi:"port"`
+	// User name. Example: `default`.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetServiceIntegrationEndpointExternalClickhouseUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalClickhouseUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalClickhouseUserConfigArgs) ToGetServiceIntegrationEndpointExternalClickhouseUserConfigOutput() GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalClickhouseUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalClickhouseUserConfigArgs) ToGetServiceIntegrationEndpointExternalClickhouseUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalClickhouseUserConfigArray and GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalClickhouseUserConfigArray{ GetServiceIntegrationEndpointExternalClickhouseUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput() GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalClickhouseUserConfigArray []GetServiceIntegrationEndpointExternalClickhouseUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalClickhouseUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalClickhouseUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalClickhouseUserConfigArray) ToGetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput() GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalClickhouseUserConfigArray) ToGetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalClickhouseUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput) ToGetServiceIntegrationEndpointExternalClickhouseUserConfigOutput() GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput) ToGetServiceIntegrationEndpointExternalClickhouseUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput {
+	return o
+}
+
+// Hostname or IP address of the server. Example: `my.server.com`.
+func (o GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalClickhouseUserConfig) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Password. Example: `jjKk45Nnd`.
+func (o GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalClickhouseUserConfig) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Secure TCP server port. Example: `9440`.
+func (o GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalClickhouseUserConfig) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// User name. Example: `default`.
+func (o GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalClickhouseUserConfig) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalClickhouseUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput() GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalClickhouseUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalClickhouseUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput)
+}
+
 type GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig struct {
 	// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
 	// ...
@@ -1830,6 +2598,157 @@ func (o GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalKafkaUserConfig {
 		return vs[0].([]GetServiceIntegrationEndpointExternalKafkaUserConfig)[vs[1].(int)]
 	}).(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointExternalMysqlUserConfig struct {
+	// Hostname or IP address of the server. Example: `my.server.com`.
+	Host string `pulumi:"host"`
+	// Password. Example: `jjKk45Nnd`.
+	Password string `pulumi:"password"`
+	// Port number of the server. Example: `5432`.
+	Port int `pulumi:"port"`
+	// Enum: `verify-full`. SSL Mode. Default: `verify-full`.
+	SslMode *string `pulumi:"sslMode"`
+	// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslRootCert *string `pulumi:"sslRootCert"`
+	// User name. Example: `myname`.
+	Username string `pulumi:"username"`
+}
+
+// GetServiceIntegrationEndpointExternalMysqlUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalMysqlUserConfigArgs and GetServiceIntegrationEndpointExternalMysqlUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalMysqlUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalMysqlUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalMysqlUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalMysqlUserConfigOutput() GetServiceIntegrationEndpointExternalMysqlUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalMysqlUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalMysqlUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalMysqlUserConfigArgs struct {
+	// Hostname or IP address of the server. Example: `my.server.com`.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Password. Example: `jjKk45Nnd`.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Port number of the server. Example: `5432`.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Enum: `verify-full`. SSL Mode. Default: `verify-full`.
+	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
+	// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	SslRootCert pulumi.StringPtrInput `pulumi:"sslRootCert"`
+	// User name. Example: `myname`.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetServiceIntegrationEndpointExternalMysqlUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalMysqlUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalMysqlUserConfigArgs) ToGetServiceIntegrationEndpointExternalMysqlUserConfigOutput() GetServiceIntegrationEndpointExternalMysqlUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalMysqlUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalMysqlUserConfigArgs) ToGetServiceIntegrationEndpointExternalMysqlUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalMysqlUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalMysqlUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalMysqlUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalMysqlUserConfigArray and GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalMysqlUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalMysqlUserConfigArray{ GetServiceIntegrationEndpointExternalMysqlUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalMysqlUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput() GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalMysqlUserConfigArray []GetServiceIntegrationEndpointExternalMysqlUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalMysqlUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalMysqlUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalMysqlUserConfigArray) ToGetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput() GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalMysqlUserConfigArray) ToGetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalMysqlUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalMysqlUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalMysqlUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigOutput) ToGetServiceIntegrationEndpointExternalMysqlUserConfigOutput() GetServiceIntegrationEndpointExternalMysqlUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigOutput) ToGetServiceIntegrationEndpointExternalMysqlUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalMysqlUserConfigOutput {
+	return o
+}
+
+// Hostname or IP address of the server. Example: `my.server.com`.
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalMysqlUserConfig) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Password. Example: `jjKk45Nnd`.
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalMysqlUserConfig) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Port number of the server. Example: `5432`.
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalMysqlUserConfig) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Enum: `verify-full`. SSL Mode. Default: `verify-full`.
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalMysqlUserConfig) *string { return v.SslMode }).(pulumi.StringPtrOutput)
+}
+
+// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigOutput) SslRootCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalMysqlUserConfig) *string { return v.SslRootCert }).(pulumi.StringPtrOutput)
+}
+
+// User name. Example: `myname`.
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalMysqlUserConfig) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalMysqlUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput() GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalMysqlUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalMysqlUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalMysqlUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalMysqlUserConfigOutput)
 }
 
 type GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig struct {
@@ -6028,6 +6947,8 @@ type GetThanosThano struct {
 	// Receiver remote write URI.
 	ReceiverRemoteWriteUri string `pulumi:"receiverRemoteWriteUri"`
 	// Store URI.
+	//
+	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
 	StoreUri string `pulumi:"storeUri"`
 	// Thanos server URIs.
 	Uris []string `pulumi:"uris"`
@@ -6054,6 +6975,8 @@ type GetThanosThanoArgs struct {
 	// Receiver remote write URI.
 	ReceiverRemoteWriteUri pulumi.StringInput `pulumi:"receiverRemoteWriteUri"`
 	// Store URI.
+	//
+	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
 	StoreUri pulumi.StringInput `pulumi:"storeUri"`
 	// Thanos server URIs.
 	Uris pulumi.StringArrayInput `pulumi:"uris"`
@@ -6131,6 +7054,8 @@ func (o GetThanosThanoOutput) ReceiverRemoteWriteUri() pulumi.StringOutput {
 }
 
 // Store URI.
+//
+// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
 func (o GetThanosThanoOutput) StoreUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetThanosThano) string { return v.StoreUri }).(pulumi.StringOutput)
 }
@@ -7746,6 +8671,10 @@ func (o GetValkeyValkeyArrayOutput) Index(i pulumi.IntInput) GetValkeyValkeyOutp
 type GetValkeyValkeyUserConfig struct {
 	// Additional Cloud Regions for Backup Replication.
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+	BackupHour *int `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+	BackupMinute *int `pulumi:"backupMinute"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilterObjects []GetValkeyValkeyUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -7810,6 +8739,10 @@ type GetValkeyValkeyUserConfigInput interface {
 type GetValkeyValkeyUserConfigArgs struct {
 	// Additional Cloud Regions for Backup Replication.
 	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+	BackupHour pulumi.IntPtrInput `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilterObjects GetValkeyValkeyUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -7914,6 +8847,16 @@ func (o GetValkeyValkeyUserConfigOutput) ToGetValkeyValkeyUserConfigOutputWithCo
 // Additional Cloud Regions for Backup Replication.
 func (o GetValkeyValkeyUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+func (o GetValkeyValkeyUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+}
+
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+func (o GetValkeyValkeyUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
 }
 
 // Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -8919,6 +9862,14 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableArrayInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableColumnInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableTopicInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfigInput)(nil)).Elem(), GetServiceIntegrationClickhousePostgresqlUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationClickhousePostgresqlUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseInput)(nil)).Elem(), GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayInput)(nil)).Elem(), GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigArgs{})
@@ -8937,6 +9888,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsS3UserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsS3UserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsS3UserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalClickhouseUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalClickhouseUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalClickhouseUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudBigqueryInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs{})
@@ -8945,6 +9900,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalKafkaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalKafkaUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalKafkaUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalMysqlUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalMysqlUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalMysqlUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalMysqlUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalPostgresqlInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalPostgresqlArgs{})
@@ -9037,6 +9994,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableTopicOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhousePostgresqlUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhousePostgresqlUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOutput{})
@@ -9055,6 +10020,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryOutput{})
@@ -9063,6 +10032,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalMysqlUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalPostgresqlOutput{})

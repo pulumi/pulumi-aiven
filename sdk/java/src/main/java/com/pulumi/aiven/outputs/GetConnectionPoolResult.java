@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetConnectionPoolResult {
     /**
-     * @return The URI for connecting to the pool
+     * @return The URI for connecting to the pool.
      * 
      */
     private String connectionUri;
@@ -27,17 +27,17 @@ public final class GetConnectionPoolResult {
      */
     private String id;
     /**
-     * @return The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     private String poolMode;
     /**
-     * @return The name of the created pool. Changing this property forces recreation of the resource.
+     * @return Name of the pool. Changing this property forces recreation of the resource.
      * 
      */
     private String poolName;
     /**
-     * @return The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     * @return The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
      * 
      */
     private Integer poolSize;
@@ -59,7 +59,7 @@ public final class GetConnectionPoolResult {
 
     private GetConnectionPoolResult() {}
     /**
-     * @return The URI for connecting to the pool
+     * @return The URI for connecting to the pool.
      * 
      */
     public String connectionUri() {
@@ -80,21 +80,21 @@ public final class GetConnectionPoolResult {
         return this.id;
     }
     /**
-     * @return The mode the pool operates in. The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
      * 
      */
     public String poolMode() {
         return this.poolMode;
     }
     /**
-     * @return The name of the created pool. Changing this property forces recreation of the resource.
+     * @return Name of the pool. Changing this property forces recreation of the resource.
      * 
      */
     public String poolName() {
         return this.poolName;
     }
     /**
-     * @return The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
+     * @return The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
      * 
      */
     public Integer poolSize() {

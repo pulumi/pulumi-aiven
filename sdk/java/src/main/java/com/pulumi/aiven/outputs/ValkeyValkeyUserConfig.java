@@ -25,6 +25,16 @@ public final class ValkeyValkeyUserConfig {
      */
     private @Nullable String additionalBackupRegions;
     /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * 
+     */
+    private @Nullable Integer backupHour;
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * 
+     */
+    private @Nullable Integer backupMinute;
+    /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -151,6 +161,20 @@ public final class ValkeyValkeyUserConfig {
      */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * 
+     */
+    public Optional<Integer> backupHour() {
+        return Optional.ofNullable(this.backupHour);
+    }
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * 
+     */
+    public Optional<Integer> backupMinute() {
+        return Optional.ofNullable(this.backupMinute);
     }
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -328,6 +352,8 @@ public final class ValkeyValkeyUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
+        private @Nullable Integer backupHour;
+        private @Nullable Integer backupMinute;
         private @Nullable List<ValkeyValkeyUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
@@ -355,6 +381,8 @@ public final class ValkeyValkeyUserConfig {
         public Builder(ValkeyValkeyUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.backupHour = defaults.backupHour;
+    	      this.backupMinute = defaults.backupMinute;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
@@ -384,6 +412,18 @@ public final class ValkeyValkeyUserConfig {
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
 
             this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backupHour(@Nullable Integer backupHour) {
+
+            this.backupHour = backupHour;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backupMinute(@Nullable Integer backupMinute) {
+
+            this.backupMinute = backupMinute;
             return this;
         }
         @CustomType.Setter
@@ -536,6 +576,8 @@ public final class ValkeyValkeyUserConfig {
         public ValkeyValkeyUserConfig build() {
             final var _resultValue = new ValkeyValkeyUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.backupHour = backupHour;
+            _resultValue.backupMinute = backupMinute;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;

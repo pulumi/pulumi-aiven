@@ -62,6 +62,14 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly externalAwsCloudwatchMetricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig | undefined>;
     /**
+     * ExternalAwsS3 user configurable settings
+     */
+    public readonly externalAwsS3UserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsS3UserConfig | undefined>;
+    /**
+     * ExternalClickhouse user configurable settings
+     */
+    public readonly externalClickhouseUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalClickhouseUserConfig | undefined>;
+    /**
      * ExternalElasticsearchLogs user configurable settings
      */
     public readonly externalElasticsearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig | undefined>;
@@ -77,6 +85,10 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      * ExternalKafka user configurable settings
      */
     public readonly externalKafkaUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalKafkaUserConfig | undefined>;
+    /**
+     * ExternalMysql user configurable settings
+     */
+    public readonly externalMysqlUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalMysqlUserConfig | undefined>;
     /**
      * ExternalOpensearchLogs user configurable settings
      */
@@ -125,10 +137,13 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["endpointType"] = state ? state.endpointType : undefined;
             resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
+            resourceInputs["externalAwsS3UserConfig"] = state ? state.externalAwsS3UserConfig : undefined;
+            resourceInputs["externalClickhouseUserConfig"] = state ? state.externalClickhouseUserConfig : undefined;
             resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
             resourceInputs["externalGoogleCloudBigquery"] = state ? state.externalGoogleCloudBigquery : undefined;
             resourceInputs["externalGoogleCloudLoggingUserConfig"] = state ? state.externalGoogleCloudLoggingUserConfig : undefined;
             resourceInputs["externalKafkaUserConfig"] = state ? state.externalKafkaUserConfig : undefined;
+            resourceInputs["externalMysqlUserConfig"] = state ? state.externalMysqlUserConfig : undefined;
             resourceInputs["externalOpensearchLogsUserConfig"] = state ? state.externalOpensearchLogsUserConfig : undefined;
             resourceInputs["externalPostgresql"] = state ? state.externalPostgresql : undefined;
             resourceInputs["externalSchemaRegistryUserConfig"] = state ? state.externalSchemaRegistryUserConfig : undefined;
@@ -152,10 +167,13 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["endpointType"] = args ? args.endpointType : undefined;
             resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
+            resourceInputs["externalAwsS3UserConfig"] = args ? args.externalAwsS3UserConfig : undefined;
+            resourceInputs["externalClickhouseUserConfig"] = args ? args.externalClickhouseUserConfig : undefined;
             resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
             resourceInputs["externalGoogleCloudBigquery"] = args ? args.externalGoogleCloudBigquery : undefined;
             resourceInputs["externalGoogleCloudLoggingUserConfig"] = args ? args.externalGoogleCloudLoggingUserConfig : undefined;
             resourceInputs["externalKafkaUserConfig"] = args ? args.externalKafkaUserConfig : undefined;
+            resourceInputs["externalMysqlUserConfig"] = args ? args.externalMysqlUserConfig : undefined;
             resourceInputs["externalOpensearchLogsUserConfig"] = args ? args.externalOpensearchLogsUserConfig : undefined;
             resourceInputs["externalPostgresql"] = args ? args.externalPostgresql : undefined;
             resourceInputs["externalSchemaRegistryUserConfig"] = args ? args.externalSchemaRegistryUserConfig : undefined;
@@ -199,6 +217,14 @@ export interface ServiceIntegrationEndpointState {
      */
     externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
     /**
+     * ExternalAwsS3 user configurable settings
+     */
+    externalAwsS3UserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsS3UserConfig>;
+    /**
+     * ExternalClickhouse user configurable settings
+     */
+    externalClickhouseUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalClickhouseUserConfig>;
+    /**
      * ExternalElasticsearchLogs user configurable settings
      */
     externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
@@ -214,6 +240,10 @@ export interface ServiceIntegrationEndpointState {
      * ExternalKafka user configurable settings
      */
     externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
+    /**
+     * ExternalMysql user configurable settings
+     */
+    externalMysqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalMysqlUserConfig>;
     /**
      * ExternalOpensearchLogs user configurable settings
      */
@@ -269,6 +299,14 @@ export interface ServiceIntegrationEndpointArgs {
      */
     externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
     /**
+     * ExternalAwsS3 user configurable settings
+     */
+    externalAwsS3UserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsS3UserConfig>;
+    /**
+     * ExternalClickhouse user configurable settings
+     */
+    externalClickhouseUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalClickhouseUserConfig>;
+    /**
      * ExternalElasticsearchLogs user configurable settings
      */
     externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
@@ -284,6 +322,10 @@ export interface ServiceIntegrationEndpointArgs {
      * ExternalKafka user configurable settings
      */
     externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
+    /**
+     * ExternalMysql user configurable settings
+     */
+    externalMysqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalMysqlUserConfig>;
     /**
      * ExternalOpensearchLogs user configurable settings
      */

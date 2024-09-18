@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Cassandra data source provides information about the existing Aiven Cassandra service.
+ * Gets information about an Aiven for Apache Cassandra® service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const bar = aiven.getCassandra({
- *     project: foo.project,
- *     serviceName: "<SERVICE_NAME>",
+ * const exampleCassandra = aiven.getCassandra({
+ *     project: exampleProject.project,
+ *     serviceName: "example-cassandra-service",
  * });
  * ```
  */
@@ -59,7 +59,7 @@ export interface GetCassandaResult {
      */
     readonly cassandraUserConfigs: outputs.GetCassandaCassandraUserConfig[];
     /**
-     * Cassandra server provided values
+     * Values provided by the Cassandra server.
      */
     readonly cassandras: outputs.GetCassandaCassandra[];
     /**
@@ -103,7 +103,7 @@ export interface GetCassandaResult {
      */
     readonly maintenanceWindowTime: string;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
     readonly plan: string;
     /**
@@ -168,7 +168,7 @@ export interface GetCassandaResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The Cassandra data source provides information about the existing Aiven Cassandra service.
+ * Gets information about an Aiven for Apache Cassandra® service.
  *
  * ## Example Usage
  *
@@ -176,9 +176,9 @@ export interface GetCassandaResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const bar = aiven.getCassandra({
- *     project: foo.project,
- *     serviceName: "<SERVICE_NAME>",
+ * const exampleCassandra = aiven.getCassandra({
+ *     project: exampleProject.project,
+ *     serviceName: "example-cassandra-service",
  * });
  * ```
  */

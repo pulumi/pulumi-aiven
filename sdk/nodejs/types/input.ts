@@ -1122,6 +1122,10 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
      * Token URL. Example: `https://yourprovider.com/oauth/token`.
      */
     tokenUrl: pulumi.Input<string>;
+    /**
+     * Set to true to use refresh token and check access token expiration.
+     */
+    useRefreshToken?: pulumi.Input<boolean>;
 }
 
 export interface GrafanaGrafanaUserConfigAuthGithub {
@@ -1845,6 +1849,10 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProviderVault {
      */
     engineVersion?: pulumi.Input<number>;
     /**
+     * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     */
+    prefixPathDepth?: pulumi.Input<number>;
+    /**
      * Token used to authenticate with vault and auth method `token`.
      */
     token?: pulumi.Input<string>;
@@ -1984,7 +1992,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaSaslMechanisms>;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, and newer. Kafka major version.
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
@@ -2356,6 +2364,10 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
      */
     engineVersion?: pulumi.Input<number>;
     /**
+     * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
+     */
+    prefixPathDepth?: pulumi.Input<number>;
+    /**
      * Token used to authenticate with vault and auth method `token`.
      */
     token?: pulumi.Input<string>;
@@ -2497,6 +2509,14 @@ export interface KafkaKafkaUserConfigSchemaRegistryConfig {
      * If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
      */
     leaderEligibility?: pulumi.Input<boolean>;
+    /**
+     * If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+     */
+    retriableErrorsSilenced?: pulumi.Input<boolean>;
+    /**
+     * If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+     */
+    schemaReaderStrictMode?: pulumi.Input<boolean>;
     /**
      * The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
      */
@@ -3786,6 +3806,8 @@ export interface OpenSearchComponent {
 export interface OpenSearchOpensearch {
     /**
      * URI for Kibana dashboard frontend
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     kibanaUri?: pulumi.Input<string>;
     /**
@@ -3936,6 +3958,10 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      */
     endpointSuffix?: pulumi.Input<string>;
     /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices?: pulumi.Input<string>;
+    /**
      * Azure account secret key. One of key or sasToken should be specified.
      */
     key?: pulumi.Input<string>;
@@ -3970,6 +3996,10 @@ export interface OpenSearchOpensearchUserConfigGcsMigration {
      * Google Cloud Storage credentials file content.
      */
     credentials: pulumi.Input<string>;
+    /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices?: pulumi.Input<string>;
     /**
      * The snapshot name to restore from.
      */
@@ -4422,6 +4452,10 @@ export interface OpenSearchOpensearchUserConfigS3Migration {
      */
     endpoint?: pulumi.Input<string>;
     /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices?: pulumi.Input<string>;
+    /**
      * S3 region.
      */
     region: pulumi.Input<string>;
@@ -4521,6 +4555,29 @@ export interface OrganizationGroupProjectTimeouts {
     update?: pulumi.Input<string>;
 }
 
+export interface OrganizationPermissionPermission {
+    /**
+     * Create Time
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * List of permissions. The possible values are `admin`, `developer`, `operator` and `readOnly`.
+     */
+    permissions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the principal.
+     */
+    principalId: pulumi.Input<string>;
+    /**
+     * Type of the principal. The possible values are `user` and `userGroup`.
+     */
+    principalType: pulumi.Input<string>;
+    /**
+     * Update Time
+     */
+    updateTime?: pulumi.Input<string>;
+}
+
 export interface OrganizationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -4597,6 +4654,8 @@ export interface PgComponent {
 export interface PgPg {
     /**
      * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     bouncer?: pulumi.Input<string>;
     /**
@@ -4683,6 +4742,8 @@ export interface PgPgParam {
 export interface PgPgUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -5388,6 +5449,14 @@ export interface RedisRedisUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: pulumi.Input<number>;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: pulumi.Input<number>;
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.RedisRedisUserConfigIpFilterObject>[]>;
@@ -5873,6 +5942,40 @@ export interface ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfi
     secretKey: pulumi.Input<string>;
 }
 
+export interface ServiceIntegrationEndpointExternalAwsS3UserConfig {
+    /**
+     * Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.
+     */
+    accessKeyId: pulumi.Input<string>;
+    /**
+     * Secret Access Key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+     */
+    secretAccessKey: pulumi.Input<string>;
+    /**
+     * S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
+     */
+    url: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationEndpointExternalClickhouseUserConfig {
+    /**
+     * Hostname or IP address of the server. Example: `my.server.com`.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * Password. Example: `jjKk45Nnd`.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * Secure TCP server port. Example: `9440`.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * User name. Example: `default`.
+     */
+    username: pulumi.Input<string>;
+}
+
 export interface ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
     /**
      * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
@@ -5971,6 +6074,36 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      * Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
      */
     sslEndpointIdentificationAlgorithm?: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationEndpointExternalMysqlUserConfig {
+    /**
+     * Hostname or IP address of the server. Example: `my.server.com`.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * Password. Example: `jjKk45Nnd`.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * Port number of the server. Example: `5432`.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Enum: `verify-full`. SSL Mode. Default: `verify-full`.
+     */
+    sslMode?: pulumi.Input<string>;
+    /**
+     * SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
+     */
+    sslRootCert?: pulumi.Input<string>;
+    /**
+     * User name. Example: `myname`.
+     */
+    username: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
@@ -6536,6 +6669,8 @@ export interface ThanosThanos {
     receiverRemoteWriteUri?: pulumi.Input<string>;
     /**
      * Store URI.
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      */
     storeUri?: pulumi.Input<string>;
     /**
@@ -6748,6 +6883,14 @@ export interface ValkeyValkeyUserConfig {
      * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: pulumi.Input<string>;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: pulumi.Input<number>;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: pulumi.Input<number>;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */

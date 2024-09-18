@@ -19,6 +19,14 @@ import * as utilities from "./utilities";
  *     username: "example-service-user",
  *     password: serviceUserPassword,
  * });
+ * // Each service has a default admin user with the username avnadmin.
+ * const adminUser = new aiven.PgUser("admin_user", {
+ *     serviceName: examplePostgres.serviceName,
+ *     project: exampleProject.project,
+ *     username: "avnadmin",
+ *     password: serviceUserPassword,
+ *     pgAllowReplication: true,
+ * });
  * ```
  *
  * ## Import
@@ -68,7 +76,7 @@ export class PgUser extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * Allows replication.
+     * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
     public readonly pgAllowReplication!: pulumi.Output<boolean | undefined>;
     /**
@@ -153,7 +161,7 @@ export interface PgUserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Allows replication.
+     * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
     pgAllowReplication?: pulumi.Input<boolean>;
     /**
@@ -183,7 +191,7 @@ export interface PgUserArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * Allows replication.
+     * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
     pgAllowReplication?: pulumi.Input<boolean>;
     /**

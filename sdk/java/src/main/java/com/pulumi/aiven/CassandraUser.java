@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The Cassandra User resource allows the creation and management of Aiven Cassandra Users.
+ * Creates and manages an Aiven for Apache Cassandra® service user.
  * 
  * ## Example Usage
  * 
@@ -42,11 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new CassandraUser("foo", CassandraUserArgs.builder()
- *             .serviceName(bar.serviceName())
- *             .project("my-project")
- *             .username("user-1")
- *             .password("Test$1234")
+ *         var exampleServiceUser = new CassandraUser("exampleServiceUser", CassandraUserArgs.builder()
+ *             .serviceName(exampleCassandra.serviceName())
+ *             .project(exampleProject.project())
+ *             .username("example-cassandra-user")
+ *             .password(serviceUserPw)
  *             .build());
  * 
  *     }
@@ -58,49 +58,49 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/cassandraUser:CassandraUser foo PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/cassandraUser:CassandraUser example_service_user PROJECT/SERVICE_NAME/USERNAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/cassandraUser:CassandraUser")
 public class CassandraUser extends com.pulumi.resources.CustomResource {
     /**
-     * Access certificate for the user if applicable for the service in question
+     * Access certificate for the user.
      * 
      */
     @Export(name="accessCert", refs={String.class}, tree="[0]")
     private Output<String> accessCert;
 
     /**
-     * @return Access certificate for the user if applicable for the service in question
+     * @return Access certificate for the user.
      * 
      */
     public Output<String> accessCert() {
         return this.accessCert;
     }
     /**
-     * Access certificate key for the user if applicable for the service in question
+     * Access certificate key for the user.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
-     * @return Access certificate key for the user if applicable for the service in question
+     * @return Access certificate key for the user.
      * 
      */
     public Output<String> accessKey() {
         return this.accessKey;
     }
     /**
-     * The password of the Cassandra User.
+     * The Cassandra service user&#39;s password.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the Cassandra User.
+     * @return The Cassandra service user&#39;s password.
      * 
      */
     public Output<String> password() {
@@ -135,28 +135,28 @@ public class CassandraUser extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

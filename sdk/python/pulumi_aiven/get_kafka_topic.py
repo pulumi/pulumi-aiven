@@ -22,13 +22,16 @@ class GetKafkaTopicResult:
     """
     A collection of values returned by getKafkaTopic.
     """
-    def __init__(__self__, configs=None, id=None, partitions=None, project=None, replication=None, service_name=None, tags=None, termination_protection=None, topic_name=None):
+    def __init__(__self__, configs=None, id=None, owner_user_group_id=None, partitions=None, project=None, replication=None, service_name=None, tags=None, termination_protection=None, topic_description=None, topic_name=None):
         if configs and not isinstance(configs, list):
             raise TypeError("Expected argument 'configs' to be a list")
         pulumi.set(__self__, "configs", configs)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if owner_user_group_id and not isinstance(owner_user_group_id, str):
+            raise TypeError("Expected argument 'owner_user_group_id' to be a str")
+        pulumi.set(__self__, "owner_user_group_id", owner_user_group_id)
         if partitions and not isinstance(partitions, int):
             raise TypeError("Expected argument 'partitions' to be a int")
         pulumi.set(__self__, "partitions", partitions)
@@ -47,6 +50,9 @@ class GetKafkaTopicResult:
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         pulumi.set(__self__, "termination_protection", termination_protection)
+        if topic_description and not isinstance(topic_description, str):
+            raise TypeError("Expected argument 'topic_description' to be a str")
+        pulumi.set(__self__, "topic_description", topic_description)
         if topic_name and not isinstance(topic_name, str):
             raise TypeError("Expected argument 'topic_name' to be a str")
         pulumi.set(__self__, "topic_name", topic_name)
@@ -66,6 +72,14 @@ class GetKafkaTopicResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ownerUserGroupId")
+    def owner_user_group_id(self) -> str:
+        """
+        The user group that is the owner of the topic
+        """
+        return pulumi.get(self, "owner_user_group_id")
 
     @property
     @pulumi.getter
@@ -113,6 +127,14 @@ class GetKafkaTopicResult:
         return pulumi.get(self, "termination_protection")
 
     @property
+    @pulumi.getter(name="topicDescription")
+    def topic_description(self) -> str:
+        """
+        The description of the topic
+        """
+        return pulumi.get(self, "topic_description")
+
+    @property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> str:
         """
@@ -129,12 +151,14 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
         return GetKafkaTopicResult(
             configs=self.configs,
             id=self.id,
+            owner_user_group_id=self.owner_user_group_id,
             partitions=self.partitions,
             project=self.project,
             replication=self.replication,
             service_name=self.service_name,
             tags=self.tags,
             termination_protection=self.termination_protection,
+            topic_description=self.topic_description,
             topic_name=self.topic_name)
 
 
@@ -171,12 +195,14 @@ def get_kafka_topic(project: Optional[str] = None,
     return AwaitableGetKafkaTopicResult(
         configs=pulumi.get(__ret__, 'configs'),
         id=pulumi.get(__ret__, 'id'),
+        owner_user_group_id=pulumi.get(__ret__, 'owner_user_group_id'),
         partitions=pulumi.get(__ret__, 'partitions'),
         project=pulumi.get(__ret__, 'project'),
         replication=pulumi.get(__ret__, 'replication'),
         service_name=pulumi.get(__ret__, 'service_name'),
         tags=pulumi.get(__ret__, 'tags'),
         termination_protection=pulumi.get(__ret__, 'termination_protection'),
+        topic_description=pulumi.get(__ret__, 'topic_description'),
         topic_name=pulumi.get(__ret__, 'topic_name'))
 
 

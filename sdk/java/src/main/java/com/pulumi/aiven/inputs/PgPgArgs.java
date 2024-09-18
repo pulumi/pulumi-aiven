@@ -21,14 +21,22 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     @Import(name="bouncer")
     private @Nullable Output<String> bouncer;
 
     /**
      * @return PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
      * 
+     * @deprecated
+     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * 
      */
+    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
     public Optional<Output<String>> bouncer() {
         return Optional.ofNullable(this.bouncer);
     }
@@ -270,7 +278,11 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field was added by mistake and has never worked. It will be removed in future versions.
+         * 
          */
+        @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
         public Builder bouncer(@Nullable Output<String> bouncer) {
             $.bouncer = bouncer;
             return this;
@@ -281,7 +293,11 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field was added by mistake and has never worked. It will be removed in future versions.
+         * 
          */
+        @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
         public Builder bouncer(String bouncer) {
             return bouncer(Output.of(bouncer));
         }

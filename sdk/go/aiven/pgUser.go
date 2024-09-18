@@ -37,6 +37,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Each service has a default admin user with the username avnadmin.
+//			_, err = aiven.NewPgUser(ctx, "admin_user", &aiven.PgUserArgs{
+//				ServiceName:        pulumi.Any(examplePostgres.ServiceName),
+//				Project:            pulumi.Any(exampleProject.Project),
+//				Username:           pulumi.String("avnadmin"),
+//				Password:           pulumi.Any(serviceUserPassword),
+//				PgAllowReplication: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -57,7 +68,7 @@ type PgUser struct {
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// The password of the service user.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Allows replication.
+	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication pulumi.BoolPtrOutput `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -123,7 +134,7 @@ type pgUserState struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// The password of the service user.
 	Password *string `pulumi:"password"`
-	// Allows replication.
+	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
@@ -142,7 +153,7 @@ type PgUserState struct {
 	AccessKey pulumi.StringPtrInput
 	// The password of the service user.
 	Password pulumi.StringPtrInput
-	// Allows replication.
+	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication pulumi.BoolPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
@@ -161,7 +172,7 @@ func (PgUserState) ElementType() reflect.Type {
 type pgUserArgs struct {
 	// The password of the service user.
 	Password *string `pulumi:"password"`
-	// Allows replication.
+	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication *bool `pulumi:"pgAllowReplication"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -175,7 +186,7 @@ type pgUserArgs struct {
 type PgUserArgs struct {
 	// The password of the service user.
 	Password pulumi.StringPtrInput
-	// Allows replication.
+	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication pulumi.BoolPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
@@ -287,7 +298,7 @@ func (o PgUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Allows replication.
+// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 func (o PgUserOutput) PgAllowReplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.BoolPtrOutput { return v.PgAllowReplication }).(pulumi.BoolPtrOutput)
 }

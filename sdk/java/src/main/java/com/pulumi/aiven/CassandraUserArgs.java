@@ -17,14 +17,14 @@ public final class CassandraUserArgs extends com.pulumi.resources.ResourceArgs {
     public static final CassandraUserArgs Empty = new CassandraUserArgs();
 
     /**
-     * The password of the Cassandra User.
+     * The Cassandra service user&#39;s password.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the Cassandra User.
+     * @return The Cassandra service user&#39;s password.
      * 
      */
     public Optional<Output<String>> password() {
@@ -62,14 +62,14 @@ public final class CassandraUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
@@ -104,7 +104,7 @@ public final class CassandraUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the Cassandra User.
+         * @param password The Cassandra service user&#39;s password.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class CassandraUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the Cassandra User.
+         * @param password The Cassandra service user&#39;s password.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class CassandraUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class CassandraUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Name of the Cassandra service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

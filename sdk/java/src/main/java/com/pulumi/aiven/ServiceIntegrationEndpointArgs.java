@@ -6,10 +6,13 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointDatadogUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsS3UserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalClickhouseUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalKafkaUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalMysqlUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalPostgresqlArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs;
@@ -105,6 +108,36 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
     }
 
     /**
+     * ExternalAwsS3 user configurable settings
+     * 
+     */
+    @Import(name="externalAwsS3UserConfig")
+    private @Nullable Output<ServiceIntegrationEndpointExternalAwsS3UserConfigArgs> externalAwsS3UserConfig;
+
+    /**
+     * @return ExternalAwsS3 user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationEndpointExternalAwsS3UserConfigArgs>> externalAwsS3UserConfig() {
+        return Optional.ofNullable(this.externalAwsS3UserConfig);
+    }
+
+    /**
+     * ExternalClickhouse user configurable settings
+     * 
+     */
+    @Import(name="externalClickhouseUserConfig")
+    private @Nullable Output<ServiceIntegrationEndpointExternalClickhouseUserConfigArgs> externalClickhouseUserConfig;
+
+    /**
+     * @return ExternalClickhouse user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationEndpointExternalClickhouseUserConfigArgs>> externalClickhouseUserConfig() {
+        return Optional.ofNullable(this.externalClickhouseUserConfig);
+    }
+
+    /**
      * ExternalElasticsearchLogs user configurable settings
      * 
      */
@@ -162,6 +195,21 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
      */
     public Optional<Output<ServiceIntegrationEndpointExternalKafkaUserConfigArgs>> externalKafkaUserConfig() {
         return Optional.ofNullable(this.externalKafkaUserConfig);
+    }
+
+    /**
+     * ExternalMysql user configurable settings
+     * 
+     */
+    @Import(name="externalMysqlUserConfig")
+    private @Nullable Output<ServiceIntegrationEndpointExternalMysqlUserConfigArgs> externalMysqlUserConfig;
+
+    /**
+     * @return ExternalMysql user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationEndpointExternalMysqlUserConfigArgs>> externalMysqlUserConfig() {
+        return Optional.ofNullable(this.externalMysqlUserConfig);
     }
 
     /**
@@ -277,10 +325,13 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         this.endpointType = $.endpointType;
         this.externalAwsCloudwatchLogsUserConfig = $.externalAwsCloudwatchLogsUserConfig;
         this.externalAwsCloudwatchMetricsUserConfig = $.externalAwsCloudwatchMetricsUserConfig;
+        this.externalAwsS3UserConfig = $.externalAwsS3UserConfig;
+        this.externalClickhouseUserConfig = $.externalClickhouseUserConfig;
         this.externalElasticsearchLogsUserConfig = $.externalElasticsearchLogsUserConfig;
         this.externalGoogleCloudBigquery = $.externalGoogleCloudBigquery;
         this.externalGoogleCloudLoggingUserConfig = $.externalGoogleCloudLoggingUserConfig;
         this.externalKafkaUserConfig = $.externalKafkaUserConfig;
+        this.externalMysqlUserConfig = $.externalMysqlUserConfig;
         this.externalOpensearchLogsUserConfig = $.externalOpensearchLogsUserConfig;
         this.externalPostgresql = $.externalPostgresql;
         this.externalSchemaRegistryUserConfig = $.externalSchemaRegistryUserConfig;
@@ -414,6 +465,48 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param externalAwsS3UserConfig ExternalAwsS3 user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAwsS3UserConfig(@Nullable Output<ServiceIntegrationEndpointExternalAwsS3UserConfigArgs> externalAwsS3UserConfig) {
+            $.externalAwsS3UserConfig = externalAwsS3UserConfig;
+            return this;
+        }
+
+        /**
+         * @param externalAwsS3UserConfig ExternalAwsS3 user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAwsS3UserConfig(ServiceIntegrationEndpointExternalAwsS3UserConfigArgs externalAwsS3UserConfig) {
+            return externalAwsS3UserConfig(Output.of(externalAwsS3UserConfig));
+        }
+
+        /**
+         * @param externalClickhouseUserConfig ExternalClickhouse user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalClickhouseUserConfig(@Nullable Output<ServiceIntegrationEndpointExternalClickhouseUserConfigArgs> externalClickhouseUserConfig) {
+            $.externalClickhouseUserConfig = externalClickhouseUserConfig;
+            return this;
+        }
+
+        /**
+         * @param externalClickhouseUserConfig ExternalClickhouse user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalClickhouseUserConfig(ServiceIntegrationEndpointExternalClickhouseUserConfigArgs externalClickhouseUserConfig) {
+            return externalClickhouseUserConfig(Output.of(externalClickhouseUserConfig));
+        }
+
+        /**
          * @param externalElasticsearchLogsUserConfig ExternalElasticsearchLogs user configurable settings
          * 
          * @return builder
@@ -495,6 +588,27 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
          */
         public Builder externalKafkaUserConfig(ServiceIntegrationEndpointExternalKafkaUserConfigArgs externalKafkaUserConfig) {
             return externalKafkaUserConfig(Output.of(externalKafkaUserConfig));
+        }
+
+        /**
+         * @param externalMysqlUserConfig ExternalMysql user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMysqlUserConfig(@Nullable Output<ServiceIntegrationEndpointExternalMysqlUserConfigArgs> externalMysqlUserConfig) {
+            $.externalMysqlUserConfig = externalMysqlUserConfig;
+            return this;
+        }
+
+        /**
+         * @param externalMysqlUserConfig ExternalMysql user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMysqlUserConfig(ServiceIntegrationEndpointExternalMysqlUserConfigArgs externalMysqlUserConfig) {
+            return externalMysqlUserConfig(Output.of(externalMysqlUserConfig));
         }
 
         /**

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Grafana data source provides information about the existing Aiven Grafana service.
+ * Gets information about an Aiven for Grafana® service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const gr1 = aiven.getGrafana({
- *     project: ps1.project,
- *     serviceName: "my-gr1",
+ * const exampleGrafana = aiven.getGrafana({
+ *     project: exampleProject.project,
+ *     serviceName: "example-grafana-service",
  * });
  * ```
  */
@@ -85,7 +85,7 @@ export interface GetGrafanaResult {
      */
     readonly grafanaUserConfigs: outputs.GetGrafanaGrafanaUserConfig[];
     /**
-     * Grafana server provided values
+     * Values provided by the Grafana server.
      */
     readonly grafanas: outputs.GetGrafanaGrafana[];
     /**
@@ -101,7 +101,7 @@ export interface GetGrafanaResult {
      */
     readonly maintenanceWindowTime: string;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
     readonly plan: string;
     /**
@@ -166,7 +166,7 @@ export interface GetGrafanaResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The Grafana data source provides information about the existing Aiven Grafana service.
+ * Gets information about an Aiven for Grafana® service.
  *
  * ## Example Usage
  *
@@ -174,9 +174,9 @@ export interface GetGrafanaResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const gr1 = aiven.getGrafana({
- *     project: ps1.project,
- *     serviceName: "my-gr1",
+ * const exampleGrafana = aiven.getGrafana({
+ *     project: exampleProject.project,
+ *     serviceName: "example-grafana-service",
  * });
  * ```
  */

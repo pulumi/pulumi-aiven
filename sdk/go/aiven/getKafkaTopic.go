@@ -66,6 +66,8 @@ type LookupKafkaTopicResult struct {
 	Configs []GetKafkaTopicConfig `pulumi:"configs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The user group that is the owner of the topic
+	OwnerUserGroupId string `pulumi:"ownerUserGroupId"`
 	// The number of partitions to create in the topic.
 	Partitions int `pulumi:"partitions"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -77,6 +79,8 @@ type LookupKafkaTopicResult struct {
 	// Tags for the topic.
 	Tags                  []GetKafkaTopicTag `pulumi:"tags"`
 	TerminationProtection bool               `pulumi:"terminationProtection"`
+	// The description of the topic
+	TopicDescription string `pulumi:"topicDescription"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName string `pulumi:"topicName"`
 }
@@ -133,6 +137,11 @@ func (o LookupKafkaTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The user group that is the owner of the topic
+func (o LookupKafkaTopicResultOutput) OwnerUserGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.OwnerUserGroupId }).(pulumi.StringOutput)
+}
+
 // The number of partitions to create in the topic.
 func (o LookupKafkaTopicResultOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) int { return v.Partitions }).(pulumi.IntOutput)
@@ -160,6 +169,11 @@ func (o LookupKafkaTopicResultOutput) Tags() GetKafkaTopicTagArrayOutput {
 
 func (o LookupKafkaTopicResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
+}
+
+// The description of the topic
+func (o LookupKafkaTopicResultOutput) TopicDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.TopicDescription }).(pulumi.StringOutput)
 }
 
 // The name of the topic. Changing this property forces recreation of the resource.
