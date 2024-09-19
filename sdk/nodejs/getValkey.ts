@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getValkey(args: GetValkeyArgs, opts?: pulumi.InvokeOptions): Promise<GetValkeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getValkey:getValkey", {
         "project": args.project,
@@ -187,7 +186,11 @@ export interface GetValkeyResult {
  * ```
  */
 export function getValkeyOutput(args: GetValkeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetValkeyResult> {
-    return pulumi.output(args).apply((a: any) => getValkey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getValkey:getValkey", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getOpenSearchAclRule(args: GetOpenSearchAclRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchAclRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", {
         "index": args.index,
@@ -106,7 +105,14 @@ export interface GetOpenSearchAclRuleResult {
  * ```
  */
 export function getOpenSearchAclRuleOutput(args: GetOpenSearchAclRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchAclRuleResult> {
-    return pulumi.output(args).apply((a: any) => getOpenSearchAclRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", {
+        "index": args.index,
+        "permission": args.permission,
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "username": args.username,
+    }, opts);
 }
 
 /**

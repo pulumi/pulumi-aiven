@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getOrganizationApplicationUser(args: GetOrganizationApplicationUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationApplicationUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", {
         "organizationId": args.organizationId,
@@ -87,7 +86,11 @@ export interface GetOrganizationApplicationUserResult {
  * ```
  */
 export function getOrganizationApplicationUserOutput(args: GetOrganizationApplicationUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationApplicationUserResult> {
-    return pulumi.output(args).apply((a: any) => getOrganizationApplicationUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", {
+        "organizationId": args.organizationId,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

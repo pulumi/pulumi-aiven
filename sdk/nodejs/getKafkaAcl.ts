@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaAcl:getKafkaAcl", {
         "permission": args.permission,
@@ -112,7 +111,14 @@ export interface GetKafkaAclResult {
  * ```
  */
 export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaAclResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaAcl(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getKafkaAcl:getKafkaAcl", {
+        "permission": args.permission,
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "topic": args.topic,
+        "username": args.username,
+    }, opts);
 }
 
 /**

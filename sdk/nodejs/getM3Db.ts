@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getM3Db(args: GetM3DbArgs, opts?: pulumi.InvokeOptions): Promise<GetM3DbResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getM3Db:getM3Db", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetM3DbResult {
  * ```
  */
 export function getM3DbOutput(args: GetM3DbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3DbResult> {
-    return pulumi.output(args).apply((a: any) => getM3Db(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getM3Db:getM3Db", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

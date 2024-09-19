@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlowArgs, opts?: pulumi.InvokeOptions): Promise<GetMirrorMakerReplicationFlowResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", {
         "project": args.project,
@@ -141,7 +140,13 @@ export interface GetMirrorMakerReplicationFlowResult {
  * ```
  */
 export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicationFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMirrorMakerReplicationFlowResult> {
-    return pulumi.output(args).apply((a: any) => getMirrorMakerReplicationFlow(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "sourceCluster": args.sourceCluster,
+        "targetCluster": args.targetCluster,
+    }, opts);
 }
 
 /**

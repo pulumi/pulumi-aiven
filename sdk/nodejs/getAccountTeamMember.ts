@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * The Account Team Member data source provides information about the existing Aiven Account Team Member.
  */
 export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamMemberResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", {
         "accountId": args.accountId,
@@ -72,7 +71,12 @@ export interface GetAccountTeamMemberResult {
  * The Account Team Member data source provides information about the existing Aiven Account Team Member.
  */
 export function getAccountTeamMemberOutput(args: GetAccountTeamMemberOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountTeamMemberResult> {
-    return pulumi.output(args).apply((a: any) => getAccountTeamMember(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getAccountTeamMember:getAccountTeamMember", {
+        "accountId": args.accountId,
+        "teamId": args.teamId,
+        "userEmail": args.userEmail,
+    }, opts);
 }
 
 /**

@@ -121,14 +121,20 @@ type LookupM3AggregatorResult struct {
 
 func LookupM3AggregatorOutput(ctx *pulumi.Context, args LookupM3AggregatorOutputArgs, opts ...pulumi.InvokeOption) LookupM3AggregatorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupM3AggregatorResult, error) {
+		ApplyT(func(v interface{}) (LookupM3AggregatorResultOutput, error) {
 			args := v.(LookupM3AggregatorArgs)
-			r, err := LookupM3Aggregator(ctx, &args, opts...)
-			var s LookupM3AggregatorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupM3AggregatorResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getM3Aggregator:getM3Aggregator", args, &rv, "", opts...)
+			if err != nil {
+				return LookupM3AggregatorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupM3AggregatorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupM3AggregatorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupM3AggregatorResultOutput)
 }
 

@@ -111,14 +111,20 @@ type LookupServiceIntegrationResult struct {
 
 func LookupServiceIntegrationOutput(ctx *pulumi.Context, args LookupServiceIntegrationOutputArgs, opts ...pulumi.InvokeOption) LookupServiceIntegrationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServiceIntegrationResult, error) {
+		ApplyT(func(v interface{}) (LookupServiceIntegrationResultOutput, error) {
 			args := v.(LookupServiceIntegrationArgs)
-			r, err := LookupServiceIntegration(ctx, &args, opts...)
-			var s LookupServiceIntegrationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupServiceIntegrationResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getServiceIntegration:getServiceIntegration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServiceIntegrationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServiceIntegrationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServiceIntegrationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServiceIntegrationResultOutput)
 }
 

@@ -121,14 +121,20 @@ type LookupOpenSearchResult struct {
 
 func LookupOpenSearchOutput(ctx *pulumi.Context, args LookupOpenSearchOutputArgs, opts ...pulumi.InvokeOption) LookupOpenSearchResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOpenSearchResult, error) {
+		ApplyT(func(v interface{}) (LookupOpenSearchResultOutput, error) {
 			args := v.(LookupOpenSearchArgs)
-			r, err := LookupOpenSearch(ctx, &args, opts...)
-			var s LookupOpenSearchResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupOpenSearchResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getOpenSearch:getOpenSearch", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOpenSearchResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOpenSearchResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOpenSearchResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOpenSearchResultOutput)
 }
 

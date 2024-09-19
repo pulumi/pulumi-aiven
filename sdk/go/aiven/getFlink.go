@@ -121,14 +121,20 @@ type LookupFlinkResult struct {
 
 func LookupFlinkOutput(ctx *pulumi.Context, args LookupFlinkOutputArgs, opts ...pulumi.InvokeOption) LookupFlinkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFlinkResult, error) {
+		ApplyT(func(v interface{}) (LookupFlinkResultOutput, error) {
 			args := v.(LookupFlinkArgs)
-			r, err := LookupFlink(ctx, &args, opts...)
-			var s LookupFlinkResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupFlinkResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getFlink:getFlink", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFlinkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFlinkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFlinkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFlinkResultOutput)
 }
 

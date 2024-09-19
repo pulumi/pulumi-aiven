@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRedisUser(args: GetRedisUserArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getRedisUser:getRedisUser", {
         "project": args.project,
@@ -110,7 +109,12 @@ export interface GetRedisUserResult {
  * ```
  */
 export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisUserResult> {
-    return pulumi.output(args).apply((a: any) => getRedisUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getRedisUser:getRedisUser", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "username": args.username,
+    }, opts);
 }
 
 /**

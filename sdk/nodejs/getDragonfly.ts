@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDragonfly(args: GetDragonflyArgs, opts?: pulumi.InvokeOptions): Promise<GetDragonflyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getDragonfly:getDragonfly", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetDragonflyResult {
  * ```
  */
 export function getDragonflyOutput(args: GetDragonflyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDragonflyResult> {
-    return pulumi.output(args).apply((a: any) => getDragonfly(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getDragonfly:getDragonfly", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

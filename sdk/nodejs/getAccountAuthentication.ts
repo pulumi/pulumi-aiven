@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * The Account Authentication data source provides information about the existing Aiven Account Authentication.
  */
 export function getAccountAuthentication(args: GetAccountAuthenticationArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAuthenticationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAccountAuthentication:getAccountAuthentication", {
         "accountId": args.accountId,
@@ -117,7 +116,11 @@ export interface GetAccountAuthenticationResult {
  * The Account Authentication data source provides information about the existing Aiven Account Authentication.
  */
 export function getAccountAuthenticationOutput(args: GetAccountAuthenticationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAuthenticationResult> {
-    return pulumi.output(args).apply((a: any) => getAccountAuthentication(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getAccountAuthentication:getAccountAuthentication", {
+        "accountId": args.accountId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

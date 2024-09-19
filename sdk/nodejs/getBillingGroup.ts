@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Gets information about a billing group.
  */
 export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getBillingGroup:getBillingGroup", {
         "billingGroupId": args.billingGroupId,
@@ -102,7 +101,10 @@ export interface GetBillingGroupResult {
  * Gets information about a billing group.
  */
 export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingGroupResult> {
-    return pulumi.output(args).apply((a: any) => getBillingGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getBillingGroup:getBillingGroup", {
+        "billingGroupId": args.billingGroupId,
+    }, opts);
 }
 
 /**

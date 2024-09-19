@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGcpVpcPeeringConnection(args: GetGcpVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpVpcPeeringConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", {
         "gcpProjectId": args.gcpProjectId,
@@ -98,7 +97,12 @@ export interface GetGcpVpcPeeringConnectionResult {
  * ```
  */
 export function getGcpVpcPeeringConnectionOutput(args: GetGcpVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpVpcPeeringConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getGcpVpcPeeringConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", {
+        "gcpProjectId": args.gcpProjectId,
+        "peerVpc": args.peerVpc,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

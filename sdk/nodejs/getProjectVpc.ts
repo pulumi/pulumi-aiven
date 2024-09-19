@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  */
 export function getProjectVpc(args?: GetProjectVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVpcResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getProjectVpc:getProjectVpc", {
         "cloudName": args.cloudName,
@@ -93,7 +92,13 @@ export interface GetProjectVpcResult {
  * ```
  */
 export function getProjectVpcOutput(args?: GetProjectVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVpcResult> {
-    return pulumi.output(args).apply((a: any) => getProjectVpc(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getProjectVpc:getProjectVpc", {
+        "cloudName": args.cloudName,
+        "project": args.project,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

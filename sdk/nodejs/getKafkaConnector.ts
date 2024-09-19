@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaConnector(args: GetKafkaConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaConnector:getKafkaConnector", {
         "connectorName": args.connectorName,
@@ -120,7 +119,12 @@ export interface GetKafkaConnectorResult {
  * ```
  */
 export function getKafkaConnectorOutput(args: GetKafkaConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getKafkaConnector:getKafkaConnector", {
+        "connectorName": args.connectorName,
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -95,14 +95,20 @@ type LookupAzureVpcPeeringConnectionResult struct {
 
 func LookupAzureVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupAzureVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupAzureVpcPeeringConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAzureVpcPeeringConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupAzureVpcPeeringConnectionResultOutput, error) {
 			args := v.(LookupAzureVpcPeeringConnectionArgs)
-			r, err := LookupAzureVpcPeeringConnection(ctx, &args, opts...)
-			var s LookupAzureVpcPeeringConnectionResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAzureVpcPeeringConnectionResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAzureVpcPeeringConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAzureVpcPeeringConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAzureVpcPeeringConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAzureVpcPeeringConnectionResultOutput)
 }
 

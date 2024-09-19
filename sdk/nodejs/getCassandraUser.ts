@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getCassandraUser(args: GetCassandraUserArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getCassandraUser:getCassandraUser", {
         "project": args.project,
@@ -102,7 +101,12 @@ export interface GetCassandraUserResult {
  * ```
  */
 export function getCassandraUserOutput(args: GetCassandraUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandraUserResult> {
-    return pulumi.output(args).apply((a: any) => getCassandraUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getCassandraUser:getCassandraUser", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "username": args.username,
+    }, opts);
 }
 
 /**

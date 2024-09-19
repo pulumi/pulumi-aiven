@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getServiceComponent(args: GetServiceComponentArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceComponentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getServiceComponent:getServiceComponent", {
         "component": args.component,
@@ -138,7 +137,16 @@ export interface GetServiceComponentResult {
  * ```
  */
 export function getServiceComponentOutput(args: GetServiceComponentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceComponentResult> {
-    return pulumi.output(args).apply((a: any) => getServiceComponent(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getServiceComponent:getServiceComponent", {
+        "component": args.component,
+        "kafkaAuthenticationMethod": args.kafkaAuthenticationMethod,
+        "project": args.project,
+        "route": args.route,
+        "serviceName": args.serviceName,
+        "ssl": args.ssl,
+        "usage": args.usage,
+    }, opts);
 }
 
 /**
