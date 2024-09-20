@@ -84,14 +84,20 @@ type LookupConnectionPoolResult struct {
 
 func LookupConnectionPoolOutput(ctx *pulumi.Context, args LookupConnectionPoolOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectionPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectionPoolResultOutput, error) {
 			args := v.(LookupConnectionPoolArgs)
-			r, err := LookupConnectionPool(ctx, &args, opts...)
-			var s LookupConnectionPoolResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectionPoolResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getConnectionPool:getConnectionPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectionPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectionPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectionPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectionPoolResultOutput)
 }
 

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getMySql(args: GetMySqlArgs, opts?: pulumi.InvokeOptions): Promise<GetMySqlResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getMySql:getMySql", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetMySqlResult {
  * ```
  */
 export function getMySqlOutput(args: GetMySqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMySqlResult> {
-    return pulumi.output(args).apply((a: any) => getMySql(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getMySql:getMySql", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

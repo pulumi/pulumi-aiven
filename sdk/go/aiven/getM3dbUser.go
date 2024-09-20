@@ -78,14 +78,20 @@ type LookupM3dbUserResult struct {
 
 func LookupM3dbUserOutput(ctx *pulumi.Context, args LookupM3dbUserOutputArgs, opts ...pulumi.InvokeOption) LookupM3dbUserResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupM3dbUserResult, error) {
+		ApplyT(func(v interface{}) (LookupM3dbUserResultOutput, error) {
 			args := v.(LookupM3dbUserArgs)
-			r, err := LookupM3dbUser(ctx, &args, opts...)
-			var s LookupM3dbUserResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupM3dbUserResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getM3dbUser:getM3dbUser", args, &rv, "", opts...)
+			if err != nil {
+				return LookupM3dbUserResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupM3dbUserResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupM3dbUserResultOutput), nil
+			}
+			return output, nil
 		}).(LookupM3dbUserResultOutput)
 }
 

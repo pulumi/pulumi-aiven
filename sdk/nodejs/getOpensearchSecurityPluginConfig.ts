@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getOpensearchSecurityPluginConfig(args: GetOpensearchSecurityPluginConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetOpensearchSecurityPluginConfigResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", {
         "project": args.project,
@@ -91,7 +90,11 @@ export interface GetOpensearchSecurityPluginConfigResult {
  * ```
  */
 export function getOpensearchSecurityPluginConfigOutput(args: GetOpensearchSecurityPluginConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpensearchSecurityPluginConfigResult> {
-    return pulumi.output(args).apply((a: any) => getOpensearchSecurityPluginConfig(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

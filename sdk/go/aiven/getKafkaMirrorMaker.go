@@ -119,14 +119,20 @@ type LookupKafkaMirrorMakerResult struct {
 
 func LookupKafkaMirrorMakerOutput(ctx *pulumi.Context, args LookupKafkaMirrorMakerOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaMirrorMakerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKafkaMirrorMakerResult, error) {
+		ApplyT(func(v interface{}) (LookupKafkaMirrorMakerResultOutput, error) {
 			args := v.(LookupKafkaMirrorMakerArgs)
-			r, err := LookupKafkaMirrorMaker(ctx, &args, opts...)
-			var s LookupKafkaMirrorMakerResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupKafkaMirrorMakerResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKafkaMirrorMakerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKafkaMirrorMakerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKafkaMirrorMakerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKafkaMirrorMakerResultOutput)
 }
 

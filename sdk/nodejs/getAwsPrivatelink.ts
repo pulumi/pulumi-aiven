@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAwsPrivatelink(args: GetAwsPrivatelinkArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsPrivatelinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAwsPrivatelink:getAwsPrivatelink", {
         "project": args.project,
@@ -87,7 +86,11 @@ export interface GetAwsPrivatelinkResult {
  * ```
  */
 export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsPrivatelinkResult> {
-    return pulumi.output(args).apply((a: any) => getAwsPrivatelink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getAwsPrivatelink:getAwsPrivatelink", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

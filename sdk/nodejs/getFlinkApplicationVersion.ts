@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getFlinkApplicationVersion(args: GetFlinkApplicationVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetFlinkApplicationVersionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", {
         "applicationId": args.applicationId,
@@ -131,7 +130,13 @@ export interface GetFlinkApplicationVersionResult {
  * ```
  */
 export function getFlinkApplicationVersionOutput(args: GetFlinkApplicationVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkApplicationVersionResult> {
-    return pulumi.output(args).apply((a: any) => getFlinkApplicationVersion(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", {
+        "applicationId": args.applicationId,
+        "applicationVersionId": args.applicationVersionId,
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

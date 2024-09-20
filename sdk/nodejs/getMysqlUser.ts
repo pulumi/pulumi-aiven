@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getMysqlUser(args: GetMysqlUserArgs, opts?: pulumi.InvokeOptions): Promise<GetMysqlUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getMysqlUser:getMysqlUser", {
         "project": args.project,
@@ -106,7 +105,12 @@ export interface GetMysqlUserResult {
  * ```
  */
 export function getMysqlUserOutput(args: GetMysqlUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlUserResult> {
-    return pulumi.output(args).apply((a: any) => getMysqlUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getMysqlUser:getMysqlUser", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "username": args.username,
+    }, opts);
 }
 
 /**

@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAzurePrivatelink(args: GetAzurePrivatelinkArgs, opts?: pulumi.InvokeOptions): Promise<GetAzurePrivatelinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAzurePrivatelink:getAzurePrivatelink", {
         "project": args.project,
@@ -95,7 +94,11 @@ export interface GetAzurePrivatelinkResult {
  * ```
  */
 export function getAzurePrivatelinkOutput(args: GetAzurePrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzurePrivatelinkResult> {
-    return pulumi.output(args).apply((a: any) => getAzurePrivatelink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getAzurePrivatelink:getAzurePrivatelink", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

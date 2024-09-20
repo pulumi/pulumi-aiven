@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getInfluxdbUser(args: GetInfluxdbUserArgs, opts?: pulumi.InvokeOptions): Promise<GetInfluxdbUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getInfluxdbUser:getInfluxdbUser", {
         "project": args.project,
@@ -40,7 +39,12 @@ export interface GetInfluxdbUserResult {
     readonly username: string;
 }
 export function getInfluxdbUserOutput(args: GetInfluxdbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfluxdbUserResult> {
-    return pulumi.output(args).apply((a: any) => getInfluxdbUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getInfluxdbUser:getInfluxdbUser", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "username": args.username,
+    }, opts);
 }
 
 /**

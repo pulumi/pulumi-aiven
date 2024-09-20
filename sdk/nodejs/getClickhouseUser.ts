@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getClickhouseUser(args: GetClickhouseUserArgs, opts?: pulumi.InvokeOptions): Promise<GetClickhouseUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getClickhouseUser:getClickhouseUser", {
         "project": args.project,
@@ -98,7 +97,12 @@ export interface GetClickhouseUserResult {
  * ```
  */
 export function getClickhouseUserOutput(args: GetClickhouseUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseUserResult> {
-    return pulumi.output(args).apply((a: any) => getClickhouseUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getClickhouseUser:getClickhouseUser", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "username": args.username,
+    }, opts);
 }
 
 /**

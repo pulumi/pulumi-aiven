@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaTopic:getKafkaTopic", {
         "project": args.project,
@@ -113,7 +112,12 @@ export interface GetKafkaTopicResult {
  * ```
  */
 export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaTopicResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaTopic(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getKafkaTopic:getKafkaTopic", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "topicName": args.topicName,
+    }, opts);
 }
 
 /**

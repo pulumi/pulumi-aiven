@@ -123,14 +123,20 @@ type GetCassandaResult struct {
 
 func GetCassandaOutput(ctx *pulumi.Context, args GetCassandaOutputArgs, opts ...pulumi.InvokeOption) GetCassandaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCassandaResult, error) {
+		ApplyT(func(v interface{}) (GetCassandaResultOutput, error) {
 			args := v.(GetCassandaArgs)
-			r, err := GetCassanda(ctx, &args, opts...)
-			var s GetCassandaResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCassandaResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getCassanda:getCassanda", args, &rv, "", opts...)
+			if err != nil {
+				return GetCassandaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCassandaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCassandaResultOutput), nil
+			}
+			return output, nil
 		}).(GetCassandaResultOutput)
 }
 

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getCassandra(args: GetCassandraArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getCassandra:getCassandra", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetCassandraResult {
  * ```
  */
 export function getCassandraOutput(args: GetCassandraOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandraResult> {
-    return pulumi.output(args).apply((a: any) => getCassandra(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getCassandra:getCassandra", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

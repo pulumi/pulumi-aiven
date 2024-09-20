@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * The Account Team Project data source provides information about the existing Account Team Project.
  */
 export function getAccountTeamProject(args: GetAccountTeamProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTeamProjectResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAccountTeamProject:getAccountTeamProject", {
         "accountId": args.accountId,
@@ -64,7 +63,12 @@ export interface GetAccountTeamProjectResult {
  * The Account Team Project data source provides information about the existing Account Team Project.
  */
 export function getAccountTeamProjectOutput(args: GetAccountTeamProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountTeamProjectResult> {
-    return pulumi.output(args).apply((a: any) => getAccountTeamProject(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getAccountTeamProject:getAccountTeamProject", {
+        "accountId": args.accountId,
+        "projectName": args.projectName,
+        "teamId": args.teamId,
+    }, opts);
 }
 
 /**

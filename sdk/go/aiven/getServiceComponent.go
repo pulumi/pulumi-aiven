@@ -98,14 +98,20 @@ type GetServiceComponentResult struct {
 
 func GetServiceComponentOutput(ctx *pulumi.Context, args GetServiceComponentOutputArgs, opts ...pulumi.InvokeOption) GetServiceComponentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServiceComponentResult, error) {
+		ApplyT(func(v interface{}) (GetServiceComponentResultOutput, error) {
 			args := v.(GetServiceComponentArgs)
-			r, err := GetServiceComponent(ctx, &args, opts...)
-			var s GetServiceComponentResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServiceComponentResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getServiceComponent:getServiceComponent", args, &rv, "", opts...)
+			if err != nil {
+				return GetServiceComponentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServiceComponentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServiceComponentResultOutput), nil
+			}
+			return output, nil
 		}).(GetServiceComponentResultOutput)
 }
 

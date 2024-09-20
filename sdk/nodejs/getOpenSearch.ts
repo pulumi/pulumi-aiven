@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getOpenSearch(args: GetOpenSearchArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOpenSearch:getOpenSearch", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetOpenSearchResult {
  * ```
  */
 export function getOpenSearchOutput(args: GetOpenSearchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchResult> {
-    return pulumi.output(args).apply((a: any) => getOpenSearch(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getOpenSearch:getOpenSearch", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

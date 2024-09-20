@@ -77,14 +77,20 @@ type LookupProjectVpcResult struct {
 
 func LookupProjectVpcOutput(ctx *pulumi.Context, args LookupProjectVpcOutputArgs, opts ...pulumi.InvokeOption) LookupProjectVpcResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProjectVpcResult, error) {
+		ApplyT(func(v interface{}) (LookupProjectVpcResultOutput, error) {
 			args := v.(LookupProjectVpcArgs)
-			r, err := LookupProjectVpc(ctx, &args, opts...)
-			var s LookupProjectVpcResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupProjectVpcResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getProjectVpc:getProjectVpc", args, &rv, "", opts...)
+			if err != nil {
+				return LookupProjectVpcResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupProjectVpcResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupProjectVpcResultOutput), nil
+			}
+			return output, nil
 		}).(LookupProjectVpcResultOutput)
 }
 

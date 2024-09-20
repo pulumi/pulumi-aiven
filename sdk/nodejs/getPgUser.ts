@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getPgUser(args: GetPgUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPgUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getPgUser:getPgUser", {
         "project": args.project,
@@ -106,7 +105,12 @@ export interface GetPgUserResult {
  * ```
  */
 export function getPgUserOutput(args: GetPgUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgUserResult> {
-    return pulumi.output(args).apply((a: any) => getPgUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getPgUser:getPgUser", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "username": args.username,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getFlink(args: GetFlinkArgs, opts?: pulumi.InvokeOptions): Promise<GetFlinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getFlink:getFlink", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetFlinkResult {
  * ```
  */
 export function getFlinkOutput(args: GetFlinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkResult> {
-    return pulumi.output(args).apply((a: any) => getFlink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getFlink:getFlink", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

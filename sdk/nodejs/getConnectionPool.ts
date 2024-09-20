@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionPoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getConnectionPool:getConnectionPool", {
         "poolName": args.poolName,
@@ -106,7 +105,12 @@ export interface GetConnectionPoolResult {
  * ```
  */
 export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionPoolResult> {
-    return pulumi.output(args).apply((a: any) => getConnectionPool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getConnectionPool:getConnectionPool", {
+        "poolName": args.poolName,
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGcpPrivatelink(args: GetGcpPrivatelinkArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpPrivatelinkResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getGcpPrivatelink:getGcpPrivatelink", {
         "project": args.project,
@@ -87,7 +86,11 @@ export interface GetGcpPrivatelinkResult {
  * ```
  */
 export function getGcpPrivatelinkOutput(args: GetGcpPrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpPrivatelinkResult> {
-    return pulumi.output(args).apply((a: any) => getGcpPrivatelink(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getGcpPrivatelink:getGcpPrivatelink", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getMysqlDatabase(args: GetMysqlDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetMysqlDatabaseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getMysqlDatabase:getMysqlDatabase", {
         "databaseName": args.databaseName,
@@ -87,7 +86,12 @@ export interface GetMysqlDatabaseResult {
  * ```
  */
 export function getMysqlDatabaseOutput(args: GetMysqlDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlDatabaseResult> {
-    return pulumi.output(args).apply((a: any) => getMysqlDatabase(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getMysqlDatabase:getMysqlDatabase", {
+        "databaseName": args.databaseName,
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationEndpointResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", {
         "endpointName": args.endpointName,
@@ -149,7 +148,11 @@ export interface GetServiceIntegrationEndpointResult {
  * ```
  */
 export function getServiceIntegrationEndpointOutput(args: GetServiceIntegrationEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationEndpointResult> {
-    return pulumi.output(args).apply((a: any) => getServiceIntegrationEndpoint(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", {
+        "endpointName": args.endpointName,
+        "project": args.project,
+    }, opts);
 }
 
 /**

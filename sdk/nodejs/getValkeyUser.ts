@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getValkeyUser(args: GetValkeyUserArgs, opts?: pulumi.InvokeOptions): Promise<GetValkeyUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getValkeyUser:getValkeyUser", {
         "project": args.project,
@@ -90,7 +89,12 @@ export interface GetValkeyUserResult {
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getValkeyUserOutput(args: GetValkeyUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetValkeyUserResult> {
-    return pulumi.output(args).apply((a: any) => getValkeyUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getValkeyUser:getValkeyUser", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "username": args.username,
+    }, opts);
 }
 
 /**
