@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * The Organization User data source provides information about the existing Aiven Organization User.
  */
 export function getOrganizationUser(args: GetOrganizationUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationUser:getOrganizationUser", {
         "organizationId": args.organizationId,
@@ -64,7 +63,12 @@ export interface GetOrganizationUserResult {
  * The Organization User data source provides information about the existing Aiven Organization User.
  */
 export function getOrganizationUserOutput(args: GetOrganizationUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationUserResult> {
-    return pulumi.output(args).apply((a: any) => getOrganizationUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getOrganizationUser:getOrganizationUser", {
+        "organizationId": args.organizationId,
+        "userEmail": args.userEmail,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

@@ -101,14 +101,20 @@ type LookupMirrorMakerReplicationFlowResult struct {
 
 func LookupMirrorMakerReplicationFlowOutput(ctx *pulumi.Context, args LookupMirrorMakerReplicationFlowOutputArgs, opts ...pulumi.InvokeOption) LookupMirrorMakerReplicationFlowResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMirrorMakerReplicationFlowResult, error) {
+		ApplyT(func(v interface{}) (LookupMirrorMakerReplicationFlowResultOutput, error) {
 			args := v.(LookupMirrorMakerReplicationFlowArgs)
-			r, err := LookupMirrorMakerReplicationFlow(ctx, &args, opts...)
-			var s LookupMirrorMakerReplicationFlowResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupMirrorMakerReplicationFlowResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMirrorMakerReplicationFlowResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMirrorMakerReplicationFlowResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMirrorMakerReplicationFlowResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMirrorMakerReplicationFlowResultOutput)
 }
 

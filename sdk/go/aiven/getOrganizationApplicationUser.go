@@ -75,14 +75,20 @@ type LookupOrganizationApplicationUserResult struct {
 
 func LookupOrganizationApplicationUserOutput(ctx *pulumi.Context, args LookupOrganizationApplicationUserOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationApplicationUserResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationApplicationUserResult, error) {
+		ApplyT(func(v interface{}) (LookupOrganizationApplicationUserResultOutput, error) {
 			args := v.(LookupOrganizationApplicationUserArgs)
-			r, err := LookupOrganizationApplicationUser(ctx, &args, opts...)
-			var s LookupOrganizationApplicationUserResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupOrganizationApplicationUserResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOrganizationApplicationUserResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOrganizationApplicationUserResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOrganizationApplicationUserResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOrganizationApplicationUserResultOutput)
 }
 

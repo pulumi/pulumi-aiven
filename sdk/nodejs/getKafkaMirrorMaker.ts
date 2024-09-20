@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaMirrorMaker(args: GetKafkaMirrorMakerArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaMirrorMakerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", {
         "project": args.project,
@@ -177,7 +176,11 @@ export interface GetKafkaMirrorMakerResult {
  * ```
  */
 export function getKafkaMirrorMakerOutput(args: GetKafkaMirrorMakerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaMirrorMakerResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaMirrorMaker(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

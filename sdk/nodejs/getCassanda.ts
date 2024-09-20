@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
 /** @deprecated aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
 export function getCassanda(args: GetCassandaArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandaResult> {
     pulumi.log.warn("getCassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra")
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getCassanda:getCassanda", {
         "project": args.project,
@@ -184,7 +183,12 @@ export interface GetCassandaResult {
  */
 /** @deprecated aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
 export function getCassandaOutput(args: GetCassandaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandaResult> {
-    return pulumi.output(args).apply((a: any) => getCassanda(a, opts))
+    pulumi.log.warn("getCassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra")
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getCassanda:getCassanda", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

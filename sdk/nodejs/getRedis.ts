@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRedis(args: GetRedisArgs, opts?: pulumi.InvokeOptions): Promise<GetRedisResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getRedis:getRedis", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetRedisResult {
  * ```
  */
 export function getRedisOutput(args: GetRedisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisResult> {
-    return pulumi.output(args).apply((a: any) => getRedis(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getRedis:getRedis", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getM3Aggregator(args: GetM3AggregatorArgs, opts?: pulumi.InvokeOptions): Promise<GetM3AggregatorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getM3Aggregator:getM3Aggregator", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetM3AggregatorResult {
  * ```
  */
 export function getM3AggregatorOutput(args: GetM3AggregatorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3AggregatorResult> {
-    return pulumi.output(args).apply((a: any) => getM3Aggregator(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getM3Aggregator:getM3Aggregator", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

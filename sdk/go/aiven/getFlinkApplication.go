@@ -84,14 +84,20 @@ type LookupFlinkApplicationResult struct {
 
 func LookupFlinkApplicationOutput(ctx *pulumi.Context, args LookupFlinkApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupFlinkApplicationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFlinkApplicationResult, error) {
+		ApplyT(func(v interface{}) (LookupFlinkApplicationResultOutput, error) {
 			args := v.(LookupFlinkApplicationArgs)
-			r, err := LookupFlinkApplication(ctx, &args, opts...)
-			var s LookupFlinkApplicationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupFlinkApplicationResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getFlinkApplication:getFlinkApplication", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFlinkApplicationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFlinkApplicationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFlinkApplicationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFlinkApplicationResultOutput)
 }
 

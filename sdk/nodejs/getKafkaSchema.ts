@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaSchema(args: GetKafkaSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaSchema:getKafkaSchema", {
         "project": args.project,
@@ -100,7 +99,12 @@ export interface GetKafkaSchemaResult {
  * ```
  */
 export function getKafkaSchemaOutput(args: GetKafkaSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaSchema(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getKafkaSchema:getKafkaSchema", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "subjectName": args.subjectName,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGrafana(args: GetGrafanaArgs, opts?: pulumi.InvokeOptions): Promise<GetGrafanaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getGrafana:getGrafana", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetGrafanaResult {
  * ```
  */
 export function getGrafanaOutput(args: GetGrafanaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrafanaResult> {
-    return pulumi.output(args).apply((a: any) => getGrafana(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getGrafana:getGrafana", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

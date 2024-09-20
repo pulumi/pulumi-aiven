@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getPg(args: GetPgArgs, opts?: pulumi.InvokeOptions): Promise<GetPgResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getPg:getPg", {
         "project": args.project,
@@ -181,7 +180,11 @@ export interface GetPgResult {
  * ```
  */
 export function getPgOutput(args: GetPgOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgResult> {
-    return pulumi.output(args).apply((a: any) => getPg(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getPg:getPg", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

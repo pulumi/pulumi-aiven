@@ -121,14 +121,20 @@ type LookupPgResult struct {
 
 func LookupPgOutput(ctx *pulumi.Context, args LookupPgOutputArgs, opts ...pulumi.InvokeOption) LookupPgResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPgResult, error) {
+		ApplyT(func(v interface{}) (LookupPgResultOutput, error) {
 			args := v.(LookupPgArgs)
-			r, err := LookupPg(ctx, &args, opts...)
-			var s LookupPgResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPgResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getPg:getPg", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPgResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPgResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPgResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPgResultOutput)
 }
 

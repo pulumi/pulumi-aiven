@@ -83,14 +83,20 @@ type LookupOpenSearchAclRuleResult struct {
 
 func LookupOpenSearchAclRuleOutput(ctx *pulumi.Context, args LookupOpenSearchAclRuleOutputArgs, opts ...pulumi.InvokeOption) LookupOpenSearchAclRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOpenSearchAclRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupOpenSearchAclRuleResultOutput, error) {
 			args := v.(LookupOpenSearchAclRuleArgs)
-			r, err := LookupOpenSearchAclRule(ctx, &args, opts...)
-			var s LookupOpenSearchAclRuleResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupOpenSearchAclRuleResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOpenSearchAclRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOpenSearchAclRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOpenSearchAclRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOpenSearchAclRuleResultOutput)
 }
 

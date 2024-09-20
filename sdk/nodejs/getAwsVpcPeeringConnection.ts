@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAwsVpcPeeringConnection(args: GetAwsVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsVpcPeeringConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", {
         "awsAccountId": args.awsAccountId,
@@ -119,7 +118,13 @@ export interface GetAwsVpcPeeringConnectionResult {
  * ```
  */
 export function getAwsVpcPeeringConnectionOutput(args: GetAwsVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsVpcPeeringConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getAwsVpcPeeringConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", {
+        "awsAccountId": args.awsAccountId,
+        "awsVpcId": args.awsVpcId,
+        "awsVpcRegion": args.awsVpcRegion,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

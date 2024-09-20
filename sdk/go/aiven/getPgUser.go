@@ -84,14 +84,20 @@ type LookupPgUserResult struct {
 
 func LookupPgUserOutput(ctx *pulumi.Context, args LookupPgUserOutputArgs, opts ...pulumi.InvokeOption) LookupPgUserResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPgUserResult, error) {
+		ApplyT(func(v interface{}) (LookupPgUserResultOutput, error) {
 			args := v.(LookupPgUserArgs)
-			r, err := LookupPgUser(ctx, &args, opts...)
-			var s LookupPgUserResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPgUserResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getPgUser:getPgUser", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPgUserResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPgUserResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPgUserResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPgUserResultOutput)
 }
 

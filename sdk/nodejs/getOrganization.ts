@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganization:getOrganization", {
         "id": args.id,
@@ -82,7 +81,12 @@ export interface GetOrganizationResult {
  * ```
  */
 export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
-    return pulumi.output(args).apply((a: any) => getOrganization(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getOrganization:getOrganization", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

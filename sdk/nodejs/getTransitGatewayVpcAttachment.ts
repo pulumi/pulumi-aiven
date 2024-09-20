@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getTransitGatewayVpcAttachment(args: GetTransitGatewayVpcAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitGatewayVpcAttachmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", {
         "peerCloudAccount": args.peerCloudAccount,
@@ -106,7 +105,12 @@ export interface GetTransitGatewayVpcAttachmentResult {
  * ```
  */
 export function getTransitGatewayVpcAttachmentOutput(args: GetTransitGatewayVpcAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitGatewayVpcAttachmentResult> {
-    return pulumi.output(args).apply((a: any) => getTransitGatewayVpcAttachment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", {
+        "peerCloudAccount": args.peerCloudAccount,
+        "peerVpc": args.peerVpc,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

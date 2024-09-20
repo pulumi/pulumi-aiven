@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getOpenSearchAclConfig(args: GetOpenSearchAclConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchAclConfigResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", {
         "project": args.project,
@@ -83,7 +82,11 @@ export interface GetOpenSearchAclConfigResult {
  * ```
  */
 export function getOpenSearchAclConfigOutput(args: GetOpenSearchAclConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchAclConfigResult> {
-    return pulumi.output(args).apply((a: any) => getOpenSearchAclConfig(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

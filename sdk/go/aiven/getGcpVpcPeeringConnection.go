@@ -80,14 +80,20 @@ type LookupGcpVpcPeeringConnectionResult struct {
 
 func LookupGcpVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupGcpVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupGcpVpcPeeringConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGcpVpcPeeringConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupGcpVpcPeeringConnectionResultOutput, error) {
 			args := v.(LookupGcpVpcPeeringConnectionArgs)
-			r, err := LookupGcpVpcPeeringConnection(ctx, &args, opts...)
-			var s LookupGcpVpcPeeringConnectionResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGcpVpcPeeringConnectionResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGcpVpcPeeringConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGcpVpcPeeringConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGcpVpcPeeringConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGcpVpcPeeringConnectionResultOutput)
 }
 

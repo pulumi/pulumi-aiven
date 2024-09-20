@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getThanos(args: GetThanosArgs, opts?: pulumi.InvokeOptions): Promise<GetThanosResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getThanos:getThanos", {
         "project": args.project,
@@ -163,7 +162,11 @@ export interface GetThanosResult {
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getThanosOutput(args: GetThanosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetThanosResult> {
-    return pulumi.output(args).apply((a: any) => getThanos(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getThanos:getThanos", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

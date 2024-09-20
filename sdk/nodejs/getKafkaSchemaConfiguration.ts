@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafkaSchemaConfiguration(args: GetKafkaSchemaConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaConfigurationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", {
         "project": args.project,
@@ -97,7 +96,11 @@ export interface GetKafkaSchemaConfigurationResult {
  * ```
  */
 export function getKafkaSchemaConfigurationOutput(args: GetKafkaSchemaConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaConfigurationResult> {
-    return pulumi.output(args).apply((a: any) => getKafkaSchemaConfiguration(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

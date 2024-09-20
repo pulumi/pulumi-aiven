@@ -74,14 +74,20 @@ type LookupAccountAuthenticationResult struct {
 
 func LookupAccountAuthenticationOutput(ctx *pulumi.Context, args LookupAccountAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAuthenticationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAccountAuthenticationResult, error) {
+		ApplyT(func(v interface{}) (LookupAccountAuthenticationResultOutput, error) {
 			args := v.(LookupAccountAuthenticationArgs)
-			r, err := LookupAccountAuthentication(ctx, &args, opts...)
-			var s LookupAccountAuthenticationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAccountAuthenticationResult
+			secret, err := ctx.InvokePackageRaw("aiven:index/getAccountAuthentication:getAccountAuthentication", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAccountAuthenticationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAccountAuthenticationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAccountAuthenticationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAccountAuthenticationResultOutput)
 }
 

@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getInfluxdbDatabase(args: GetInfluxdbDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetInfluxdbDatabaseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", {
         "databaseName": args.databaseName,
@@ -37,7 +36,12 @@ export interface GetInfluxdbDatabaseResult {
     readonly terminationProtection: boolean;
 }
 export function getInfluxdbDatabaseOutput(args: GetInfluxdbDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfluxdbDatabaseResult> {
-    return pulumi.output(args).apply((a: any) => getInfluxdbDatabase(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", {
+        "databaseName": args.databaseName,
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

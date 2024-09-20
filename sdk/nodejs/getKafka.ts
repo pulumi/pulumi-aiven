@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKafka(args: GetKafkaArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafka:getKafka", {
         "project": args.project,
@@ -189,7 +188,11 @@ export interface GetKafkaResult {
  * ```
  */
 export function getKafkaOutput(args: GetKafkaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaResult> {
-    return pulumi.output(args).apply((a: any) => getKafka(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getKafka:getKafka", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

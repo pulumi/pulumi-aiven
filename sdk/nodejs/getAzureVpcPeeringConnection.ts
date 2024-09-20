@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAzureVpcPeeringConnection(args: GetAzureVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureVpcPeeringConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", {
         "azureSubscriptionId": args.azureSubscriptionId,
@@ -131,7 +130,15 @@ export interface GetAzureVpcPeeringConnectionResult {
  * ```
  */
 export function getAzureVpcPeeringConnectionOutput(args: GetAzureVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVpcPeeringConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getAzureVpcPeeringConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", {
+        "azureSubscriptionId": args.azureSubscriptionId,
+        "peerAzureAppId": args.peerAzureAppId,
+        "peerAzureTenantId": args.peerAzureTenantId,
+        "peerResourceGroup": args.peerResourceGroup,
+        "vnetName": args.vnetName,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

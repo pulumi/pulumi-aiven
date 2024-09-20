@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getOpensearchUser(args: GetOpensearchUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOpensearchUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOpensearchUser:getOpensearchUser", {
         "project": args.project,
@@ -94,7 +93,12 @@ export interface GetOpensearchUserResult {
  * ```
  */
 export function getOpensearchUserOutput(args: GetOpensearchUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpensearchUserResult> {
-    return pulumi.output(args).apply((a: any) => getOpensearchUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getOpensearchUser:getOpensearchUser", {
+        "project": args.project,
+        "serviceName": args.serviceName,
+        "username": args.username,
+    }, opts);
 }
 
 /**

@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getProjectUser:getProjectUser", {
         "email": args.email,
@@ -83,7 +82,11 @@ export interface GetProjectUserResult {
  * ```
  */
 export function getProjectUserOutput(args: GetProjectUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectUserResult> {
-    return pulumi.output(args).apply((a: any) => getProjectUser(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("aiven:index/getProjectUser:getProjectUser", {
+        "email": args.email,
+        "project": args.project,
+    }, opts);
 }
 
 /**
