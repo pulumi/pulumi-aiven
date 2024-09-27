@@ -18,14 +18,14 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
     public static final OrganizationPermissionState Empty = new OrganizationPermissionState();
 
     /**
-     * Organization ID
+     * Organization ID.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return Organization ID
+     * @return Organization ID.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -33,14 +33,14 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
     }
 
     /**
-     * A permission to set
+     * Permissions to grant to principals.
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<List<OrganizationPermissionPermissionArgs>> permissions;
 
     /**
-     * @return A permission to set
+     * @return Permissions to grant to principals.
      * 
      */
     public Optional<Output<List<OrganizationPermissionPermissionArgs>>> permissions() {
@@ -48,14 +48,14 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Resource Id.
+     * Resource ID.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return Resource Id.
+     * @return Resource ID.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -105,7 +105,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param organizationId Organization ID
+         * @param organizationId Organization ID.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param organizationId Organization ID
+         * @param organizationId Organization ID.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permissions A permission to set
+         * @param permissions Permissions to grant to principals.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permissions A permission to set
+         * @param permissions Permissions to grant to principals.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permissions A permission to set
+         * @param permissions Permissions to grant to principals.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource Id.
+         * @param resourceId Resource ID.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId Resource Id.
+         * @param resourceId Resource ID.
          * 
          * @return builder
          * 

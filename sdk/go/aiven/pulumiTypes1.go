@@ -7088,6 +7088,8 @@ func (o GetThanosThanoArrayOutput) Index(i pulumi.IntInput) GetThanosThanoOutput
 type GetThanosThanosUserConfig struct {
 	// ThanosCompactor
 	Compactor *GetThanosThanosUserConfigCompactor `pulumi:"compactor"`
+	// Environmental variables.
+	Env map[string]string `pulumi:"env"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilterObjects []GetThanosThanosUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -7124,6 +7126,8 @@ type GetThanosThanosUserConfigInput interface {
 type GetThanosThanosUserConfigArgs struct {
 	// ThanosCompactor
 	Compactor GetThanosThanosUserConfigCompactorPtrInput `pulumi:"compactor"`
+	// Environmental variables.
+	Env pulumi.StringMapInput `pulumi:"env"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilterObjects GetThanosThanosUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -7200,6 +7204,11 @@ func (o GetThanosThanosUserConfigOutput) ToGetThanosThanosUserConfigOutputWithCo
 // ThanosCompactor
 func (o GetThanosThanosUserConfigOutput) Compactor() GetThanosThanosUserConfigCompactorPtrOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigCompactor { return v.Compactor }).(GetThanosThanosUserConfigCompactorPtrOutput)
+}
+
+// Environmental variables.
+func (o GetThanosThanosUserConfigOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) map[string]string { return v.Env }).(pulumi.StringMapOutput)
 }
 
 // Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -7753,6 +7762,10 @@ type GetThanosThanosUserConfigQuery struct {
 	QueryMetadataDefaultTimeRange *string `pulumi:"queryMetadataDefaultTimeRange"`
 	// Maximum time to process a query by the query node. Default: `2m`.
 	QueryTimeout *string `pulumi:"queryTimeout"`
+	// The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+	StoreLimitsRequestSamples *int `pulumi:"storeLimitsRequestSamples"`
+	// The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+	StoreLimitsRequestSeries *int `pulumi:"storeLimitsRequestSeries"`
 }
 
 // GetThanosThanosUserConfigQueryInput is an input type that accepts GetThanosThanosUserConfigQueryArgs and GetThanosThanosUserConfigQueryOutput values.
@@ -7775,6 +7788,10 @@ type GetThanosThanosUserConfigQueryArgs struct {
 	QueryMetadataDefaultTimeRange pulumi.StringPtrInput `pulumi:"queryMetadataDefaultTimeRange"`
 	// Maximum time to process a query by the query node. Default: `2m`.
 	QueryTimeout pulumi.StringPtrInput `pulumi:"queryTimeout"`
+	// The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+	StoreLimitsRequestSamples pulumi.IntPtrInput `pulumi:"storeLimitsRequestSamples"`
+	// The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+	StoreLimitsRequestSeries pulumi.IntPtrInput `pulumi:"storeLimitsRequestSeries"`
 }
 
 func (GetThanosThanosUserConfigQueryArgs) ElementType() reflect.Type {
@@ -7874,6 +7891,16 @@ func (o GetThanosThanosUserConfigQueryOutput) QueryTimeout() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetThanosThanosUserConfigQuery) *string { return v.QueryTimeout }).(pulumi.StringPtrOutput)
 }
 
+// The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+func (o GetThanosThanosUserConfigQueryOutput) StoreLimitsRequestSamples() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigQuery) *int { return v.StoreLimitsRequestSamples }).(pulumi.IntPtrOutput)
+}
+
+// The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+func (o GetThanosThanosUserConfigQueryOutput) StoreLimitsRequestSeries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigQuery) *int { return v.StoreLimitsRequestSeries }).(pulumi.IntPtrOutput)
+}
+
 type GetThanosThanosUserConfigQueryPtrOutput struct{ *pulumi.OutputState }
 
 func (GetThanosThanosUserConfigQueryPtrOutput) ElementType() reflect.Type {
@@ -7936,6 +7963,26 @@ func (o GetThanosThanosUserConfigQueryPtrOutput) QueryTimeout() pulumi.StringPtr
 		}
 		return v.QueryTimeout
 	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+func (o GetThanosThanosUserConfigQueryPtrOutput) StoreLimitsRequestSamples() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigQuery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StoreLimitsRequestSamples
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+func (o GetThanosThanosUserConfigQueryPtrOutput) StoreLimitsRequestSeries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigQuery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StoreLimitsRequestSeries
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetThanosThanosUserConfigQueryFrontend struct {

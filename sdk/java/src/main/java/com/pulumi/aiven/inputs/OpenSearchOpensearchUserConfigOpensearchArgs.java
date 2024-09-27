@@ -80,14 +80,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     * How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
      * 
      */
     @Import(name="clusterRoutingAllocationNodeConcurrentRecoveries")
     private @Nullable Output<Integer> clusterRoutingAllocationNodeConcurrentRecoveries;
 
     /**
-     * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
      * 
      */
     public Optional<Output<Integer>> clusterRoutingAllocationNodeConcurrentRecoveries() {
@@ -831,7 +831,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param clusterRoutingAllocationNodeConcurrentRecoveries How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+         * @param clusterRoutingAllocationNodeConcurrentRecoveries How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
          * 
          * @return builder
          * 
@@ -842,7 +842,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param clusterRoutingAllocationNodeConcurrentRecoveries How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+         * @param clusterRoutingAllocationNodeConcurrentRecoveries How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
          * 
          * @return builder
          * 

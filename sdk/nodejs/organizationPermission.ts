@@ -11,6 +11,42 @@ import * as utilities from "./utilities";
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * // Grant permission to a user
+ * const operator = new aiven.OrganizationPermission("operator", {
+ *     organizationId: main.id,
+ *     resourceId: exampleProject.id,
+ *     resourceType: "project",
+ *     permissions: [{
+ *         permissions: ["operator"],
+ *         principalId: "u123a456b7890c",
+ *         principalType: "user",
+ *     }],
+ * });
+ * // Grant permission to a group
+ * const developers = new aiven.OrganizationPermission("developers", {
+ *     organizationId: main.id,
+ *     resourceId: exampleProject.id,
+ *     resourceType: "project",
+ *     permissions: [{
+ *         permissions: ["developer"],
+ *         principalId: exampleGroup.groupId,
+ *         principalType: "user_group",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/organizationPermission:OrganizationPermission operator ORGANIZATION_ID/ID
+ * ```
  */
 export class OrganizationPermission extends pulumi.CustomResource {
     /**
@@ -41,15 +77,15 @@ export class OrganizationPermission extends pulumi.CustomResource {
     }
 
     /**
-     * Organization ID
+     * Organization ID.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * A permission to set
+     * Permissions to grant to principals.
      */
     public readonly permissions!: pulumi.Output<outputs.OrganizationPermissionPermission[]>;
     /**
-     * Resource Id.
+     * Resource ID.
      */
     public readonly resourceId!: pulumi.Output<string>;
     /**
@@ -103,15 +139,15 @@ export class OrganizationPermission extends pulumi.CustomResource {
  */
 export interface OrganizationPermissionState {
     /**
-     * Organization ID
+     * Organization ID.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * A permission to set
+     * Permissions to grant to principals.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
     /**
-     * Resource Id.
+     * Resource ID.
      */
     resourceId?: pulumi.Input<string>;
     /**
@@ -125,15 +161,15 @@ export interface OrganizationPermissionState {
  */
 export interface OrganizationPermissionArgs {
     /**
-     * Organization ID
+     * Organization ID.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * A permission to set
+     * Permissions to grant to principals.
      */
     permissions: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
     /**
-     * Resource Id.
+     * Resource ID.
      */
     resourceId: pulumi.Input<string>;
     /**

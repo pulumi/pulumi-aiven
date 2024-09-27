@@ -15172,7 +15172,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         :param bool action_destructive_requires_name: Require explicit index names when deleting.
         :param 'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs' auth_failure_listeners: Opensearch Security Plugin Settings
         :param int cluster_max_shards_per_node: Controls the number of shards allowed in the cluster per data node. Example: `1000`.
-        :param int cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+        :param int cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         :param str email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         :param str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param str email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
@@ -15338,7 +15338,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="clusterRoutingAllocationNodeConcurrentRecoveries")
     def cluster_routing_allocation_node_concurrent_recoveries(self) -> Optional[int]:
         """
-        How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+        How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         """
         return pulumi.get(self, "cluster_routing_allocation_node_concurrent_recoveries")
 
@@ -16628,10 +16628,10 @@ class OrganizationPermissionPermission(dict):
                  update_time: Optional[str] = None):
         """
         :param Sequence[str] permissions: List of permissions. The possible values are `admin`, `developer`, `operator` and `read_only`.
-        :param str principal_id: ID of the principal.
-        :param str principal_type: Type of the principal. The possible values are `user` and `user_group`.
-        :param str create_time: Create Time
-        :param str update_time: Update Time
+        :param str principal_id: ID of the user or group.
+        :param str principal_type: The type of principal. The possible values are `user` and `user_group`.
+        :param str create_time: Time created.
+        :param str update_time: Time updated.
         """
         pulumi.set(__self__, "permissions", permissions)
         pulumi.set(__self__, "principal_id", principal_id)
@@ -16653,7 +16653,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter(name="principalId")
     def principal_id(self) -> str:
         """
-        ID of the principal.
+        ID of the user or group.
         """
         return pulumi.get(self, "principal_id")
 
@@ -16661,7 +16661,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter(name="principalType")
     def principal_type(self) -> str:
         """
-        Type of the principal. The possible values are `user` and `user_group`.
+        The type of principal. The possible values are `user` and `user_group`.
         """
         return pulumi.get(self, "principal_type")
 
@@ -16669,7 +16669,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[str]:
         """
-        Create Time
+        Time created.
         """
         return pulumi.get(self, "create_time")
 
@@ -16677,7 +16677,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
         """
-        Update Time
+        Time updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -23975,6 +23975,7 @@ class ThanosThanosUserConfig(dict):
 
     def __init__(__self__, *,
                  compactor: Optional['outputs.ThanosThanosUserConfigCompactor'] = None,
+                 env: Optional[Mapping[str, str]] = None,
                  ip_filter_objects: Optional[Sequence['outputs.ThanosThanosUserConfigIpFilterObject']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -23986,6 +23987,7 @@ class ThanosThanosUserConfig(dict):
                  static_ips: Optional[bool] = None):
         """
         :param 'ThanosThanosUserConfigCompactorArgs' compactor: ThanosCompactor
+        :param Mapping[str, str] env: Environmental variables.
         :param Sequence['ThanosThanosUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -23998,6 +24000,8 @@ class ThanosThanosUserConfig(dict):
         """
         if compactor is not None:
             pulumi.set(__self__, "compactor", compactor)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -24024,6 +24028,14 @@ class ThanosThanosUserConfig(dict):
         ThanosCompactor
         """
         return pulumi.get(self, "compactor")
+
+    @property
+    @pulumi.getter
+    def env(self) -> Optional[Mapping[str, str]]:
+        """
+        Environmental variables.
+        """
+        return pulumi.get(self, "env")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
@@ -24278,6 +24290,10 @@ class ThanosThanosUserConfigQuery(dict):
             suggest = "query_metadata_default_time_range"
         elif key == "queryTimeout":
             suggest = "query_timeout"
+        elif key == "storeLimitsRequestSamples":
+            suggest = "store_limits_request_samples"
+        elif key == "storeLimitsRequestSeries":
+            suggest = "store_limits_request_series"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ThanosThanosUserConfigQuery. Access the value via the '{suggest}' property getter instead.")
@@ -24294,12 +24310,16 @@ class ThanosThanosUserConfigQuery(dict):
                  query_default_evaluation_interval: Optional[str] = None,
                  query_lookback_delta: Optional[str] = None,
                  query_metadata_default_time_range: Optional[str] = None,
-                 query_timeout: Optional[str] = None):
+                 query_timeout: Optional[str] = None,
+                 store_limits_request_samples: Optional[int] = None,
+                 store_limits_request_series: Optional[int] = None):
         """
         :param str query_default_evaluation_interval: Set the default evaluation interval for subqueries. Default: `1m`.
         :param str query_lookback_delta: The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
         :param str query_metadata_default_time_range: The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
         :param str query_timeout: Maximum time to process a query by the query node. Default: `2m`.
+        :param int store_limits_request_samples: The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+        :param int store_limits_request_series: The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
         """
         if query_default_evaluation_interval is not None:
             pulumi.set(__self__, "query_default_evaluation_interval", query_default_evaluation_interval)
@@ -24309,6 +24329,10 @@ class ThanosThanosUserConfigQuery(dict):
             pulumi.set(__self__, "query_metadata_default_time_range", query_metadata_default_time_range)
         if query_timeout is not None:
             pulumi.set(__self__, "query_timeout", query_timeout)
+        if store_limits_request_samples is not None:
+            pulumi.set(__self__, "store_limits_request_samples", store_limits_request_samples)
+        if store_limits_request_series is not None:
+            pulumi.set(__self__, "store_limits_request_series", store_limits_request_series)
 
     @property
     @pulumi.getter(name="queryDefaultEvaluationInterval")
@@ -24341,6 +24365,22 @@ class ThanosThanosUserConfigQuery(dict):
         Maximum time to process a query by the query node. Default: `2m`.
         """
         return pulumi.get(self, "query_timeout")
+
+    @property
+    @pulumi.getter(name="storeLimitsRequestSamples")
+    def store_limits_request_samples(self) -> Optional[int]:
+        """
+        The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+        """
+        return pulumi.get(self, "store_limits_request_samples")
+
+    @property
+    @pulumi.getter(name="storeLimitsRequestSeries")
+    def store_limits_request_series(self) -> Optional[int]:
+        """
+        The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+        """
+        return pulumi.get(self, "store_limits_request_series")
 
 
 @pulumi.output_type
@@ -37432,7 +37472,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         :param bool action_destructive_requires_name: Require explicit index names when deleting.
         :param 'GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs' auth_failure_listeners: Opensearch Security Plugin Settings
         :param int cluster_max_shards_per_node: Controls the number of shards allowed in the cluster per data node. Example: `1000`.
-        :param int cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+        :param int cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         :param str email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         :param str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param str email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
@@ -37598,7 +37638,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="clusterRoutingAllocationNodeConcurrentRecoveries")
     def cluster_routing_allocation_node_concurrent_recoveries(self) -> Optional[int]:
         """
-        How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+        How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         """
         return pulumi.get(self, "cluster_routing_allocation_node_concurrent_recoveries")
 
@@ -44323,6 +44363,7 @@ class GetThanosThanoResult(dict):
 class GetThanosThanosUserConfigResult(dict):
     def __init__(__self__, *,
                  compactor: Optional['outputs.GetThanosThanosUserConfigCompactorResult'] = None,
+                 env: Optional[Mapping[str, str]] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetThanosThanosUserConfigIpFilterObjectResult']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -44334,6 +44375,7 @@ class GetThanosThanosUserConfigResult(dict):
                  static_ips: Optional[bool] = None):
         """
         :param 'GetThanosThanosUserConfigCompactorArgs' compactor: ThanosCompactor
+        :param Mapping[str, str] env: Environmental variables.
         :param Sequence['GetThanosThanosUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -44346,6 +44388,8 @@ class GetThanosThanosUserConfigResult(dict):
         """
         if compactor is not None:
             pulumi.set(__self__, "compactor", compactor)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -44372,6 +44416,14 @@ class GetThanosThanosUserConfigResult(dict):
         ThanosCompactor
         """
         return pulumi.get(self, "compactor")
+
+    @property
+    @pulumi.getter
+    def env(self) -> Optional[Mapping[str, str]]:
+        """
+        Environmental variables.
+        """
+        return pulumi.get(self, "env")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
@@ -44581,12 +44633,16 @@ class GetThanosThanosUserConfigQueryResult(dict):
                  query_default_evaluation_interval: Optional[str] = None,
                  query_lookback_delta: Optional[str] = None,
                  query_metadata_default_time_range: Optional[str] = None,
-                 query_timeout: Optional[str] = None):
+                 query_timeout: Optional[str] = None,
+                 store_limits_request_samples: Optional[int] = None,
+                 store_limits_request_series: Optional[int] = None):
         """
         :param str query_default_evaluation_interval: Set the default evaluation interval for subqueries. Default: `1m`.
         :param str query_lookback_delta: The maximum lookback duration for retrieving metrics during expression evaluations in PromQL. PromQL always evaluates the query for a certain timestamp, and it looks back for the given amount of time to get the latest sample. If it exceeds the maximum lookback delta, it assumes the series is stale and returns none (a gap). The lookback delta should be set to at least 2 times the slowest scrape interval. If unset, it will use the promql default of 5m. Default: `5m`.
         :param str query_metadata_default_time_range: The default metadata time range duration for retrieving labels through Labels and Series API when the range parameters are not specified. The zero value means the range covers the time since the beginning. Default: `0s`.
         :param str query_timeout: Maximum time to process a query by the query node. Default: `2m`.
+        :param int store_limits_request_samples: The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+        :param int store_limits_request_series: The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
         """
         if query_default_evaluation_interval is not None:
             pulumi.set(__self__, "query_default_evaluation_interval", query_default_evaluation_interval)
@@ -44596,6 +44652,10 @@ class GetThanosThanosUserConfigQueryResult(dict):
             pulumi.set(__self__, "query_metadata_default_time_range", query_metadata_default_time_range)
         if query_timeout is not None:
             pulumi.set(__self__, "query_timeout", query_timeout)
+        if store_limits_request_samples is not None:
+            pulumi.set(__self__, "store_limits_request_samples", store_limits_request_samples)
+        if store_limits_request_series is not None:
+            pulumi.set(__self__, "store_limits_request_series", store_limits_request_series)
 
     @property
     @pulumi.getter(name="queryDefaultEvaluationInterval")
@@ -44628,6 +44688,22 @@ class GetThanosThanosUserConfigQueryResult(dict):
         Maximum time to process a query by the query node. Default: `2m`.
         """
         return pulumi.get(self, "query_timeout")
+
+    @property
+    @pulumi.getter(name="storeLimitsRequestSamples")
+    def store_limits_request_samples(self) -> Optional[int]:
+        """
+        The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+        """
+        return pulumi.get(self, "store_limits_request_samples")
+
+    @property
+    @pulumi.getter(name="storeLimitsRequestSeries")
+    def store_limits_request_series(self) -> Optional[int]:
+        """
+        The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+        """
+        return pulumi.get(self, "store_limits_request_series")
 
 
 @pulumi.output_type

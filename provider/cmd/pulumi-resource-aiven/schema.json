@@ -5423,7 +5423,7 @@
                 },
                 "clusterRoutingAllocationNodeConcurrentRecoveries": {
                     "type": "integer",
-                    "description": "How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.\n"
+                    "description": "How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.\n"
                 },
                 "emailSenderName": {
                     "type": "string",
@@ -5899,7 +5899,7 @@
             "properties": {
                 "createTime": {
                     "type": "string",
-                    "description": "Create Time\n"
+                    "description": "Time created.\n"
                 },
                 "permissions": {
                     "type": "array",
@@ -5910,15 +5910,15 @@
                 },
                 "principalId": {
                     "type": "string",
-                    "description": "ID of the principal.\n"
+                    "description": "ID of the user or group.\n"
                 },
                 "principalType": {
                     "type": "string",
-                    "description": "Type of the principal. The possible values are `user` and `user_group`.\n"
+                    "description": "The type of principal. The possible values are `user` and `user_group`.\n"
                 },
                 "updateTime": {
                     "type": "string",
-                    "description": "Update Time\n"
+                    "description": "Time updated.\n"
                 }
             },
             "type": "object",
@@ -8552,6 +8552,13 @@
                     "$ref": "#/types/aiven:index/ThanosThanosUserConfigCompactor:ThanosThanosUserConfigCompactor",
                     "description": "ThanosCompactor\n"
                 },
+                "env": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Environmental variables.\n"
+                },
                 "ipFilterObjects": {
                     "type": "array",
                     "items": {
@@ -8672,6 +8679,14 @@
                 "queryTimeout": {
                     "type": "string",
                     "description": "Maximum time to process a query by the query node. Default: `2m`.\n"
+                },
+                "storeLimitsRequestSamples": {
+                    "type": "integer",
+                    "description": "The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.\n"
+                },
+                "storeLimitsRequestSeries": {
+                    "type": "integer",
+                    "description": "The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.\n"
                 }
             },
             "type": "object"
@@ -15020,7 +15035,7 @@
                 },
                 "clusterRoutingAllocationNodeConcurrentRecoveries": {
                     "type": "integer",
-                    "description": "How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.\n"
+                    "description": "How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.\n"
                 },
                 "emailSenderName": {
                     "type": "string",
@@ -18246,6 +18261,13 @@
                     "$ref": "#/types/aiven:index/getThanosThanosUserConfigCompactor:getThanosThanosUserConfigCompactor",
                     "description": "ThanosCompactor\n"
                 },
+                "env": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Environmental variables.\n"
+                },
                 "ipFilterObjects": {
                     "type": "array",
                     "items": {
@@ -18371,6 +18393,14 @@
                 "queryTimeout": {
                     "type": "string",
                     "description": "Maximum time to process a query by the query node. Default: `2m`.\n"
+                },
+                "storeLimitsRequestSamples": {
+                    "type": "integer",
+                    "description": "The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.\n"
+                },
+                "storeLimitsRequestSeries": {
+                    "type": "integer",
+                    "description": "The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.\n"
                 }
             },
             "type": "object"
@@ -28771,22 +28801,22 @@
             }
         },
         "aiven:index/organizationPermission:OrganizationPermission": {
-            "description": "Grants permissions to a principal for a resource. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "description": "Grants permissions to a principal for a resource. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\n// Grant permission to a user\nconst operator = new aiven.OrganizationPermission(\"operator\", {\n    organizationId: main.id,\n    resourceId: exampleProject.id,\n    resourceType: \"project\",\n    permissions: [{\n        permissions: [\"operator\"],\n        principalId: \"u123a456b7890c\",\n        principalType: \"user\",\n    }],\n});\n// Grant permission to a group\nconst developers = new aiven.OrganizationPermission(\"developers\", {\n    organizationId: main.id,\n    resourceId: exampleProject.id,\n    resourceType: \"project\",\n    permissions: [{\n        permissions: [\"developer\"],\n        principalId: exampleGroup.groupId,\n        principalType: \"user_group\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\n# Grant permission to a user\noperator = aiven.OrganizationPermission(\"operator\",\n    organization_id=main[\"id\"],\n    resource_id=example_project[\"id\"],\n    resource_type=\"project\",\n    permissions=[{\n        \"permissions\": [\"operator\"],\n        \"principal_id\": \"u123a456b7890c\",\n        \"principal_type\": \"user\",\n    }])\n# Grant permission to a group\ndevelopers = aiven.OrganizationPermission(\"developers\",\n    organization_id=main[\"id\"],\n    resource_id=example_project[\"id\"],\n    resource_type=\"project\",\n    permissions=[{\n        \"permissions\": [\"developer\"],\n        \"principal_id\": example_group[\"groupId\"],\n        \"principal_type\": \"user_group\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Grant permission to a user\n    var @operator = new Aiven.OrganizationPermission(\"operator\", new()\n    {\n        OrganizationId = main.Id,\n        ResourceId = exampleProject.Id,\n        ResourceType = \"project\",\n        Permissions = new[]\n        {\n            new Aiven.Inputs.OrganizationPermissionPermissionArgs\n            {\n                Permissions = new[]\n                {\n                    \"operator\",\n                },\n                PrincipalId = \"u123a456b7890c\",\n                PrincipalType = \"user\",\n            },\n        },\n    });\n\n    // Grant permission to a group\n    var developers = new Aiven.OrganizationPermission(\"developers\", new()\n    {\n        OrganizationId = main.Id,\n        ResourceId = exampleProject.Id,\n        ResourceType = \"project\",\n        Permissions = new[]\n        {\n            new Aiven.Inputs.OrganizationPermissionPermissionArgs\n            {\n                Permissions = new[]\n                {\n                    \"developer\",\n                },\n                PrincipalId = exampleGroup.GroupId,\n                PrincipalType = \"user_group\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Grant permission to a user\n\t\t_, err := aiven.NewOrganizationPermission(ctx, \"operator\", \u0026aiven.OrganizationPermissionArgs{\n\t\t\tOrganizationId: pulumi.Any(main.Id),\n\t\t\tResourceId:     pulumi.Any(exampleProject.Id),\n\t\t\tResourceType:   pulumi.String(\"project\"),\n\t\t\tPermissions: aiven.OrganizationPermissionPermissionArray{\n\t\t\t\t\u0026aiven.OrganizationPermissionPermissionArgs{\n\t\t\t\t\tPermissions: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"operator\"),\n\t\t\t\t\t},\n\t\t\t\t\tPrincipalId:   pulumi.String(\"u123a456b7890c\"),\n\t\t\t\t\tPrincipalType: pulumi.String(\"user\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Grant permission to a group\n\t\t_, err = aiven.NewOrganizationPermission(ctx, \"developers\", \u0026aiven.OrganizationPermissionArgs{\n\t\t\tOrganizationId: pulumi.Any(main.Id),\n\t\t\tResourceId:     pulumi.Any(exampleProject.Id),\n\t\t\tResourceType:   pulumi.String(\"project\"),\n\t\t\tPermissions: aiven.OrganizationPermissionPermissionArray{\n\t\t\t\t\u0026aiven.OrganizationPermissionPermissionArgs{\n\t\t\t\t\tPermissions: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"developer\"),\n\t\t\t\t\t},\n\t\t\t\t\tPrincipalId:   pulumi.Any(exampleGroup.GroupId),\n\t\t\t\t\tPrincipalType: pulumi.String(\"user_group\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationPermission;\nimport com.pulumi.aiven.OrganizationPermissionArgs;\nimport com.pulumi.aiven.inputs.OrganizationPermissionPermissionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Grant permission to a user\n        var operator = new OrganizationPermission(\"operator\", OrganizationPermissionArgs.builder()\n            .organizationId(main.id())\n            .resourceId(exampleProject.id())\n            .resourceType(\"project\")\n            .permissions(OrganizationPermissionPermissionArgs.builder()\n                .permissions(\"operator\")\n                .principalId(\"u123a456b7890c\")\n                .principalType(\"user\")\n                .build())\n            .build());\n\n        // Grant permission to a group\n        var developers = new OrganizationPermission(\"developers\", OrganizationPermissionArgs.builder()\n            .organizationId(main.id())\n            .resourceId(exampleProject.id())\n            .resourceType(\"project\")\n            .permissions(OrganizationPermissionPermissionArgs.builder()\n                .permissions(\"developer\")\n                .principalId(exampleGroup.groupId())\n                .principalType(\"user_group\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Grant permission to a user\n  operator:\n    type: aiven:OrganizationPermission\n    properties:\n      organizationId: ${main.id}\n      resourceId: ${exampleProject.id}\n      resourceType: project\n      permissions:\n        - permissions:\n            - operator\n          principalId: u123a456b7890c\n          principalType: user\n  # Grant permission to a group\n  developers:\n    type: aiven:OrganizationPermission\n    properties:\n      organizationId: ${main.id}\n      resourceId: ${exampleProject.id}\n      resourceType: project\n      permissions:\n        - permissions:\n            - developer\n          principalId: ${exampleGroup.groupId}\n          principalType: user_group\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/organizationPermission:OrganizationPermission operator ORGANIZATION_ID/ID\n```\n\n",
             "properties": {
                 "organizationId": {
                     "type": "string",
-                    "description": "Organization ID\n"
+                    "description": "Organization ID.\n"
                 },
                 "permissions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/OrganizationPermissionPermission:OrganizationPermissionPermission"
                     },
-                    "description": "A permission to set\n"
+                    "description": "Permissions to grant to principals.\n"
                 },
                 "resourceId": {
                     "type": "string",
-                    "description": "Resource Id.\n"
+                    "description": "Resource ID.\n"
                 },
                 "resourceType": {
                     "type": "string",
@@ -28802,18 +28832,18 @@
             "inputProperties": {
                 "organizationId": {
                     "type": "string",
-                    "description": "Organization ID\n"
+                    "description": "Organization ID.\n"
                 },
                 "permissions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/OrganizationPermissionPermission:OrganizationPermissionPermission"
                     },
-                    "description": "A permission to set\n"
+                    "description": "Permissions to grant to principals.\n"
                 },
                 "resourceId": {
                     "type": "string",
-                    "description": "Resource Id.\n"
+                    "description": "Resource ID.\n"
                 },
                 "resourceType": {
                     "type": "string",
@@ -28831,18 +28861,18 @@
                 "properties": {
                     "organizationId": {
                         "type": "string",
-                        "description": "Organization ID\n"
+                        "description": "Organization ID.\n"
                     },
                     "permissions": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/OrganizationPermissionPermission:OrganizationPermissionPermission"
                         },
-                        "description": "A permission to set\n"
+                        "description": "Permissions to grant to principals.\n"
                     },
                     "resourceId": {
                         "type": "string",
-                        "description": "Resource Id.\n"
+                        "description": "Resource ID.\n"
                     },
                     "resourceType": {
                         "type": "string",
@@ -31897,7 +31927,7 @@
             }
         },
         "aiven:index/valkey:Valkey": {
-            "description": "Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) service. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleValkey = new aiven.Valkey(\"example_valkey\", {\n    project: exampleProject.project,\n    plan: \"startup-4\",\n    cloudName: \"google-europe-west1\",\n    serviceName: \"example-valkey-service\",\n    valkeyUserConfig: {\n        valkeyMaxmemoryPolicy: \"allkeys-random\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_valkey = aiven.Valkey(\"example_valkey\",\n    project=example_project[\"project\"],\n    plan=\"startup-4\",\n    cloud_name=\"google-europe-west1\",\n    service_name=\"example-valkey-service\",\n    valkey_user_config={\n        \"valkey_maxmemory_policy\": \"allkeys-random\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleValkey = new Aiven.Valkey(\"example_valkey\", new()\n    {\n        Project = exampleProject.Project,\n        Plan = \"startup-4\",\n        CloudName = \"google-europe-west1\",\n        ServiceName = \"example-valkey-service\",\n        ValkeyUserConfig = new Aiven.Inputs.ValkeyValkeyUserConfigArgs\n        {\n            ValkeyMaxmemoryPolicy = \"allkeys-random\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewValkey(ctx, \"example_valkey\", \u0026aiven.ValkeyArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tPlan:        pulumi.String(\"startup-4\"),\n\t\t\tCloudName:   pulumi.String(\"google-europe-west1\"),\n\t\t\tServiceName: pulumi.String(\"example-valkey-service\"),\n\t\t\tValkeyUserConfig: \u0026aiven.ValkeyValkeyUserConfigArgs{\n\t\t\t\tValkeyMaxmemoryPolicy: pulumi.String(\"allkeys-random\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Valkey;\nimport com.pulumi.aiven.ValkeyArgs;\nimport com.pulumi.aiven.inputs.ValkeyValkeyUserConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleValkey = new Valkey(\"exampleValkey\", ValkeyArgs.builder()\n            .project(exampleProject.project())\n            .plan(\"startup-4\")\n            .cloudName(\"google-europe-west1\")\n            .serviceName(\"example-valkey-service\")\n            .valkeyUserConfig(ValkeyValkeyUserConfigArgs.builder()\n                .valkeyMaxmemoryPolicy(\"allkeys-random\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleValkey:\n    type: aiven:Valkey\n    name: example_valkey\n    properties:\n      project: ${exampleProject.project}\n      plan: startup-4\n      cloudName: google-europe-west1\n      serviceName: example-valkey-service\n      valkeyUserConfig:\n        valkeyMaxmemoryPolicy: allkeys-random\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/valkey:Valkey example_valkey PROJECT/SERVICE_NAME\n```\n\n",
+            "description": "Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleValkey = new aiven.Valkey(\"example_valkey\", {\n    project: exampleProject.project,\n    plan: \"startup-4\",\n    cloudName: \"google-europe-west1\",\n    serviceName: \"example-valkey-service\",\n    valkeyUserConfig: {\n        valkeyMaxmemoryPolicy: \"allkeys-random\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_valkey = aiven.Valkey(\"example_valkey\",\n    project=example_project[\"project\"],\n    plan=\"startup-4\",\n    cloud_name=\"google-europe-west1\",\n    service_name=\"example-valkey-service\",\n    valkey_user_config={\n        \"valkey_maxmemory_policy\": \"allkeys-random\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleValkey = new Aiven.Valkey(\"example_valkey\", new()\n    {\n        Project = exampleProject.Project,\n        Plan = \"startup-4\",\n        CloudName = \"google-europe-west1\",\n        ServiceName = \"example-valkey-service\",\n        ValkeyUserConfig = new Aiven.Inputs.ValkeyValkeyUserConfigArgs\n        {\n            ValkeyMaxmemoryPolicy = \"allkeys-random\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewValkey(ctx, \"example_valkey\", \u0026aiven.ValkeyArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tPlan:        pulumi.String(\"startup-4\"),\n\t\t\tCloudName:   pulumi.String(\"google-europe-west1\"),\n\t\t\tServiceName: pulumi.String(\"example-valkey-service\"),\n\t\t\tValkeyUserConfig: \u0026aiven.ValkeyValkeyUserConfigArgs{\n\t\t\t\tValkeyMaxmemoryPolicy: pulumi.String(\"allkeys-random\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Valkey;\nimport com.pulumi.aiven.ValkeyArgs;\nimport com.pulumi.aiven.inputs.ValkeyValkeyUserConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleValkey = new Valkey(\"exampleValkey\", ValkeyArgs.builder()\n            .project(exampleProject.project())\n            .plan(\"startup-4\")\n            .cloudName(\"google-europe-west1\")\n            .serviceName(\"example-valkey-service\")\n            .valkeyUserConfig(ValkeyValkeyUserConfigArgs.builder()\n                .valkeyMaxmemoryPolicy(\"allkeys-random\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleValkey:\n    type: aiven:Valkey\n    name: example_valkey\n    properties:\n      project: ${exampleProject.project}\n      plan: startup-4\n      cloudName: google-europe-west1\n      serviceName: example-valkey-service\n      valkeyUserConfig:\n        valkeyMaxmemoryPolicy: allkeys-random\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/valkey:Valkey example_valkey PROJECT/SERVICE_NAME\n```\n\n",
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
@@ -32292,7 +32322,7 @@
             }
         },
         "aiven:index/valkeyUser:ValkeyUser": {
-            "description": "Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "description": "Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.\n",
             "properties": {
                 "password": {
                     "type": "string",
@@ -39801,7 +39831,7 @@
             }
         },
         "aiven:index/getValkey:getValkey": {
-            "description": "Gets information about an Aiven for Valkey service. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleValkey = aiven.getValkey({\n    project: exampleProject.project,\n    serviceName: \"example-valkey-service\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_valkey = aiven.get_valkey(project=example_project[\"project\"],\n    service_name=\"example-valkey-service\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleValkey = Aiven.GetValkey.Invoke(new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = \"example-valkey-service\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupValkey(ctx, \u0026aiven.LookupValkeyArgs{\n\t\t\tProject:     exampleProject.Project,\n\t\t\tServiceName: \"example-valkey-service\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetValkeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleValkey = AivenFunctions.getValkey(GetValkeyArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(\"example-valkey-service\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  exampleValkey:\n    fn::invoke:\n      Function: aiven:getValkey\n      Arguments:\n        project: ${exampleProject.project}\n        serviceName: example-valkey-service\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Gets information about an Aiven for Valkey service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleValkey = aiven.getValkey({\n    project: exampleProject.project,\n    serviceName: \"example-valkey-service\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_valkey = aiven.get_valkey(project=example_project[\"project\"],\n    service_name=\"example-valkey-service\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleValkey = Aiven.GetValkey.Invoke(new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = \"example-valkey-service\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupValkey(ctx, \u0026aiven.LookupValkeyArgs{\n\t\t\tProject:     exampleProject.Project,\n\t\t\tServiceName: \"example-valkey-service\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetValkeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleValkey = AivenFunctions.getValkey(GetValkeyArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(\"example-valkey-service\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  exampleValkey:\n    fn::invoke:\n      Function: aiven:getValkey\n      Arguments:\n        project: ${exampleProject.project}\n        serviceName: example-valkey-service\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getValkey.\n",
                 "properties": {
@@ -39999,7 +40029,7 @@
             }
         },
         "aiven:index/getValkeyUser:getValkeyUser": {
-            "description": "The Valkey User data source provides information about the existing Aiven for Valkey user. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "description": "The Valkey User data source provides information about the existing Aiven for Valkey user.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getValkeyUser.\n",
                 "properties": {

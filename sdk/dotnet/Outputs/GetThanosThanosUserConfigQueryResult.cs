@@ -29,6 +29,14 @@ namespace Pulumi.Aiven.Outputs
         /// Maximum time to process a query by the query node. Default: `2m`.
         /// </summary>
         public readonly string? QueryTimeout;
+        /// <summary>
+        /// The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+        /// </summary>
+        public readonly int? StoreLimitsRequestSamples;
+        /// <summary>
+        /// The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+        /// </summary>
+        public readonly int? StoreLimitsRequestSeries;
 
         [OutputConstructor]
         private GetThanosThanosUserConfigQueryResult(
@@ -38,12 +46,18 @@ namespace Pulumi.Aiven.Outputs
 
             string? queryMetadataDefaultTimeRange,
 
-            string? queryTimeout)
+            string? queryTimeout,
+
+            int? storeLimitsRequestSamples,
+
+            int? storeLimitsRequestSeries)
         {
             QueryDefaultEvaluationInterval = queryDefaultEvaluationInterval;
             QueryLookbackDelta = queryLookbackDelta;
             QueryMetadataDefaultTimeRange = queryMetadataDefaultTimeRange;
             QueryTimeout = queryTimeout;
+            StoreLimitsRequestSamples = storeLimitsRequestSamples;
+            StoreLimitsRequestSeries = storeLimitsRequestSeries;
         }
     }
 }

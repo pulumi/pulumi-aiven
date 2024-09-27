@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OrganizationPermissionPermissionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create Time
+        /// Time created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -31,19 +31,19 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// ID of the principal.
+        /// ID of the user or group.
         /// </summary>
         [Input("principalId", required: true)]
         public Input<string> PrincipalId { get; set; } = null!;
 
         /// <summary>
-        /// Type of the principal. The possible values are `user` and `user_group`.
+        /// The type of principal. The possible values are `user` and `user_group`.
         /// </summary>
         [Input("principalType", required: true)]
         public Input<string> PrincipalType { get; set; } = null!;
 
         /// <summary>
-        /// Update Time
+        /// Time updated.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

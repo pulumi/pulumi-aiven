@@ -4139,7 +4139,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     clusterMaxShardsPerNode?: pulumi.Input<number>;
     /**
-     * How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     * How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number>;
     /**
@@ -4557,7 +4557,7 @@ export interface OrganizationGroupProjectTimeouts {
 
 export interface OrganizationPermissionPermission {
     /**
-     * Create Time
+     * Time created.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -4565,15 +4565,15 @@ export interface OrganizationPermissionPermission {
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ID of the principal.
+     * ID of the user or group.
      */
     principalId: pulumi.Input<string>;
     /**
-     * Type of the principal. The possible values are `user` and `userGroup`.
+     * The type of principal. The possible values are `user` and `userGroup`.
      */
     principalType: pulumi.Input<string>;
     /**
-     * Update Time
+     * Time updated.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -6685,6 +6685,10 @@ export interface ThanosThanosUserConfig {
      */
     compactor?: pulumi.Input<inputs.ThanosThanosUserConfigCompactor>;
     /**
+     * Environmental variables.
+     */
+    env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.ThanosThanosUserConfigIpFilterObject>[]>;
@@ -6786,6 +6790,14 @@ export interface ThanosThanosUserConfigQuery {
      * Maximum time to process a query by the query node. Default: `2m`.
      */
     queryTimeout?: pulumi.Input<string>;
+    /**
+     * The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as 'chunks limit' considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+     */
+    storeLimitsRequestSamples?: pulumi.Input<number>;
+    /**
+     * The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+     */
+    storeLimitsRequestSeries?: pulumi.Input<number>;
 }
 
 export interface ThanosThanosUserConfigQueryFrontend {

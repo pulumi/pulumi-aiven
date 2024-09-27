@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetThanosThanosUserConfigCompactorResult? Compactor;
         /// <summary>
+        /// Environmental variables.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Env;
+        /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.GetThanosThanosUserConfigIpFilterObjectResult> IpFilterObjects;
@@ -58,6 +62,8 @@ namespace Pulumi.Aiven.Outputs
         private GetThanosThanosUserConfigResult(
             Outputs.GetThanosThanosUserConfigCompactorResult? compactor,
 
+            ImmutableDictionary<string, string>? env,
+
             ImmutableArray<Outputs.GetThanosThanosUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilterStrings,
@@ -77,6 +83,7 @@ namespace Pulumi.Aiven.Outputs
             bool? staticIps)
         {
             Compactor = compactor;
+            Env = env;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;

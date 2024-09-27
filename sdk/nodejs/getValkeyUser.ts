@@ -6,9 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The Valkey User data source provides information about the existing Aiven for Valkey user.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getValkeyUser(args: GetValkeyUserArgs, opts?: pulumi.InvokeOptions): Promise<GetValkeyUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -84,9 +81,6 @@ export interface GetValkeyUserResult {
 }
 /**
  * The Valkey User data source provides information about the existing Aiven for Valkey user.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getValkeyUserOutput(args: GetValkeyUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetValkeyUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -21,46 +21,108 @@ import javax.annotation.Nullable;
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OrganizationPermission;
+ * import com.pulumi.aiven.OrganizationPermissionArgs;
+ * import com.pulumi.aiven.inputs.OrganizationPermissionPermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Grant permission to a user
+ *         var operator = new OrganizationPermission("operator", OrganizationPermissionArgs.builder()
+ *             .organizationId(main.id())
+ *             .resourceId(exampleProject.id())
+ *             .resourceType("project")
+ *             .permissions(OrganizationPermissionPermissionArgs.builder()
+ *                 .permissions("operator")
+ *                 .principalId("u123a456b7890c")
+ *                 .principalType("user")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Grant permission to a group
+ *         var developers = new OrganizationPermission("developers", OrganizationPermissionArgs.builder()
+ *             .organizationId(main.id())
+ *             .resourceId(exampleProject.id())
+ *             .resourceType("project")
+ *             .permissions(OrganizationPermissionPermissionArgs.builder()
+ *                 .permissions("developer")
+ *                 .principalId(exampleGroup.groupId())
+ *                 .principalType("user_group")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/organizationPermission:OrganizationPermission operator ORGANIZATION_ID/ID
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/organizationPermission:OrganizationPermission")
 public class OrganizationPermission extends com.pulumi.resources.CustomResource {
     /**
-     * Organization ID
+     * Organization ID.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return Organization ID
+     * @return Organization ID.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * A permission to set
+     * Permissions to grant to principals.
      * 
      */
     @Export(name="permissions", refs={List.class,OrganizationPermissionPermission.class}, tree="[0,1]")
     private Output<List<OrganizationPermissionPermission>> permissions;
 
     /**
-     * @return A permission to set
+     * @return Permissions to grant to principals.
      * 
      */
     public Output<List<OrganizationPermissionPermission>> permissions() {
         return this.permissions;
     }
     /**
-     * Resource Id.
+     * Resource ID.
      * 
      */
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
-     * @return Resource Id.
+     * @return Resource ID.
      * 
      */
     public Output<String> resourceId() {

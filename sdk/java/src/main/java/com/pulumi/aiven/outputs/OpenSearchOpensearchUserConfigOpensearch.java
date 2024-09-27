@@ -36,7 +36,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer clusterMaxShardsPerNode;
     /**
-     * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
      * 
      */
     private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
@@ -266,7 +266,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.clusterMaxShardsPerNode);
     }
     /**
-     * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
      * 
      */
     public Optional<Integer> clusterRoutingAllocationNodeConcurrentRecoveries() {

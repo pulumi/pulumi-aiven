@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OrganizationPermissionPermission
     {
         /// <summary>
-        /// Create Time
+        /// Time created.
         /// </summary>
         public readonly string? CreateTime;
         /// <summary>
@@ -22,15 +22,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Permissions;
         /// <summary>
-        /// ID of the principal.
+        /// ID of the user or group.
         /// </summary>
         public readonly string PrincipalId;
         /// <summary>
-        /// Type of the principal. The possible values are `user` and `user_group`.
+        /// The type of principal. The possible values are `user` and `user_group`.
         /// </summary>
         public readonly string PrincipalType;
         /// <summary>
-        /// Update Time
+        /// Time updated.
         /// </summary>
         public readonly string? UpdateTime;
 

@@ -6,9 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export class ValkeyUser extends pulumi.CustomResource {
     /**
