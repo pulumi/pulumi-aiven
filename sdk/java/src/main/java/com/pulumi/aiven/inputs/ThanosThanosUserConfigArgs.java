@@ -14,6 +14,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +37,21 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<ThanosThanosUserConfigCompactorArgs>> compactor() {
         return Optional.ofNullable(this.compactor);
+    }
+
+    /**
+     * Environmental variables.
+     * 
+     */
+    @Import(name="env")
+    private @Nullable Output<Map<String,String>> env;
+
+    /**
+     * @return Environmental variables.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> env() {
+        return Optional.ofNullable(this.env);
     }
 
     /**
@@ -185,6 +201,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
 
     private ThanosThanosUserConfigArgs(ThanosThanosUserConfigArgs $) {
         this.compactor = $.compactor;
+        this.env = $.env;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
@@ -233,6 +250,27 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder compactor(ThanosThanosUserConfigCompactorArgs compactor) {
             return compactor(Output.of(compactor));
+        }
+
+        /**
+         * @param env Environmental variables.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(@Nullable Output<Map<String,String>> env) {
+            $.env = env;
+            return this;
+        }
+
+        /**
+         * @param env Environmental variables.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(Map<String,String> env) {
+            return env(Output.of(env));
         }
 
         /**

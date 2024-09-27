@@ -313,9 +313,6 @@ class ValkeyUser(pulumi.CustomResource):
         """
         Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] password: The password of the Valkey User.
@@ -335,9 +332,6 @@ class ValkeyUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         :param str resource_name: The name of the resource.
         :param ValkeyUserArgs args: The arguments to use to populate this resource's properties.

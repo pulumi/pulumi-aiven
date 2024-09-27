@@ -11,9 +11,6 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
-    /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// </summary>
     [AivenResourceType("aiven:index/valkeyUser:ValkeyUser")]
     public partial class ValkeyUser : global::Pulumi.CustomResource

@@ -12,19 +12,13 @@ namespace Pulumi.Aiven
     public static class GetValkeyUser
     {
         /// <summary>
-        /// The Valkey User data source provides information about the existing Aiven for Valkey user. 
-        /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// The Valkey User data source provides information about the existing Aiven for Valkey user.
         /// </summary>
         public static Task<GetValkeyUserResult> InvokeAsync(GetValkeyUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetValkeyUserResult>("aiven:index/getValkeyUser:getValkeyUser", args ?? new GetValkeyUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Valkey User data source provides information about the existing Aiven for Valkey user. 
-        /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// The Valkey User data source provides information about the existing Aiven for Valkey user.
         /// </summary>
         public static Output<GetValkeyUserResult> Invoke(GetValkeyUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetValkeyUserResult>("aiven:index/getValkeyUser:getValkeyUser", args ?? new GetValkeyUserInvokeArgs(), options.WithDefaults());

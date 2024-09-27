@@ -17,14 +17,14 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
     public static final OrganizationPermissionArgs Empty = new OrganizationPermissionArgs();
 
     /**
-     * Organization ID
+     * Organization ID.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return Organization ID
+     * @return Organization ID.
      * 
      */
     public Output<String> organizationId() {
@@ -32,14 +32,14 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * A permission to set
+     * Permissions to grant to principals.
      * 
      */
     @Import(name="permissions", required=true)
     private Output<List<OrganizationPermissionPermissionArgs>> permissions;
 
     /**
-     * @return A permission to set
+     * @return Permissions to grant to principals.
      * 
      */
     public Output<List<OrganizationPermissionPermissionArgs>> permissions() {
@@ -47,14 +47,14 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Resource Id.
+     * Resource ID.
      * 
      */
     @Import(name="resourceId", required=true)
     private Output<String> resourceId;
 
     /**
-     * @return Resource Id.
+     * @return Resource ID.
      * 
      */
     public Output<String> resourceId() {
@@ -104,7 +104,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param organizationId Organization ID
+         * @param organizationId Organization ID.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param organizationId Organization ID
+         * @param organizationId Organization ID.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permissions A permission to set
+         * @param permissions Permissions to grant to principals.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permissions A permission to set
+         * @param permissions Permissions to grant to principals.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permissions A permission to set
+         * @param permissions Permissions to grant to principals.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceId Resource Id.
+         * @param resourceId Resource ID.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceId Resource Id.
+         * @param resourceId Resource ID.
          * 
          * @return builder
          * 

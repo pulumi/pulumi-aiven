@@ -387,9 +387,6 @@ def get_valkey(project: Optional[str] = None,
     """
     Gets information about an Aiven for Valkey service.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
     ## Example Usage
 
     ```python
@@ -448,9 +445,6 @@ def get_valkey_output(project: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetValkeyResult]:
     """
     Gets information about an Aiven for Valkey service.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
     ## Example Usage
 

@@ -18,14 +18,14 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
     public static final OrganizationPermissionPermissionArgs Empty = new OrganizationPermissionPermissionArgs();
 
     /**
-     * Create Time
+     * Time created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Create Time
+     * @return Time created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -48,14 +48,14 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
     }
 
     /**
-     * ID of the principal.
+     * ID of the user or group.
      * 
      */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
     /**
-     * @return ID of the principal.
+     * @return ID of the user or group.
      * 
      */
     public Output<String> principalId() {
@@ -63,14 +63,14 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
     }
 
     /**
-     * Type of the principal. The possible values are `user` and `user_group`.
+     * The type of principal. The possible values are `user` and `user_group`.
      * 
      */
     @Import(name="principalType", required=true)
     private Output<String> principalType;
 
     /**
-     * @return Type of the principal. The possible values are `user` and `user_group`.
+     * @return The type of principal. The possible values are `user` and `user_group`.
      * 
      */
     public Output<String> principalType() {
@@ -78,14 +78,14 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
     }
 
     /**
-     * Update Time
+     * Time updated.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Update Time
+     * @return Time updated.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -121,7 +121,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param createTime Create Time
+         * @param createTime Time created.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param createTime Create Time
+         * @param createTime Time created.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalId ID of the principal.
+         * @param principalId ID of the user or group.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalId ID of the principal.
+         * @param principalId ID of the user or group.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalType Type of the principal. The possible values are `user` and `user_group`.
+         * @param principalType The type of principal. The possible values are `user` and `user_group`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalType Type of the principal. The possible values are `user` and `user_group`.
+         * @param principalType The type of principal. The possible values are `user` and `user_group`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param updateTime Update Time
+         * @param updateTime Time updated.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param updateTime Update Time
+         * @param updateTime Time updated.
          * 
          * @return builder
          * 

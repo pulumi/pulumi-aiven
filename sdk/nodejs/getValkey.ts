@@ -9,9 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Gets information about an Aiven for Valkey service.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -169,9 +166,6 @@ export interface GetValkeyResult {
 }
 /**
  * Gets information about an Aiven for Valkey service.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
  * ## Example Usage
  *

@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,16 @@ public final class ThanosThanosUserConfigQuery {
      * 
      */
     private @Nullable String queryTimeout;
+    /**
+     * @return The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as &#39;chunks limit&#39; considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+     * 
+     */
+    private @Nullable Integer storeLimitsRequestSamples;
+    /**
+     * @return The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+     * 
+     */
+    private @Nullable Integer storeLimitsRequestSeries;
 
     private ThanosThanosUserConfigQuery() {}
     /**
@@ -61,6 +72,20 @@ public final class ThanosThanosUserConfigQuery {
     public Optional<String> queryTimeout() {
         return Optional.ofNullable(this.queryTimeout);
     }
+    /**
+     * @return The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as &#39;chunks limit&#39; considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+     * 
+     */
+    public Optional<Integer> storeLimitsRequestSamples() {
+        return Optional.ofNullable(this.storeLimitsRequestSamples);
+    }
+    /**
+     * @return The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+     * 
+     */
+    public Optional<Integer> storeLimitsRequestSeries() {
+        return Optional.ofNullable(this.storeLimitsRequestSeries);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -75,6 +100,8 @@ public final class ThanosThanosUserConfigQuery {
         private @Nullable String queryLookbackDelta;
         private @Nullable String queryMetadataDefaultTimeRange;
         private @Nullable String queryTimeout;
+        private @Nullable Integer storeLimitsRequestSamples;
+        private @Nullable Integer storeLimitsRequestSeries;
         public Builder() {}
         public Builder(ThanosThanosUserConfigQuery defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,6 +109,8 @@ public final class ThanosThanosUserConfigQuery {
     	      this.queryLookbackDelta = defaults.queryLookbackDelta;
     	      this.queryMetadataDefaultTimeRange = defaults.queryMetadataDefaultTimeRange;
     	      this.queryTimeout = defaults.queryTimeout;
+    	      this.storeLimitsRequestSamples = defaults.storeLimitsRequestSamples;
+    	      this.storeLimitsRequestSeries = defaults.storeLimitsRequestSeries;
         }
 
         @CustomType.Setter
@@ -108,12 +137,26 @@ public final class ThanosThanosUserConfigQuery {
             this.queryTimeout = queryTimeout;
             return this;
         }
+        @CustomType.Setter
+        public Builder storeLimitsRequestSamples(@Nullable Integer storeLimitsRequestSamples) {
+
+            this.storeLimitsRequestSamples = storeLimitsRequestSamples;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storeLimitsRequestSeries(@Nullable Integer storeLimitsRequestSeries) {
+
+            this.storeLimitsRequestSeries = storeLimitsRequestSeries;
+            return this;
+        }
         public ThanosThanosUserConfigQuery build() {
             final var _resultValue = new ThanosThanosUserConfigQuery();
             _resultValue.queryDefaultEvaluationInterval = queryDefaultEvaluationInterval;
             _resultValue.queryLookbackDelta = queryLookbackDelta;
             _resultValue.queryMetadataDefaultTimeRange = queryMetadataDefaultTimeRange;
             _resultValue.queryTimeout = queryTimeout;
+            _resultValue.storeLimitsRequestSamples = storeLimitsRequestSamples;
+            _resultValue.storeLimitsRequestSeries = storeLimitsRequestSeries;
             return _resultValue;
         }
     }

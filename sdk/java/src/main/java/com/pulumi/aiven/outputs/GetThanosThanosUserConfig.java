@@ -13,6 +13,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,6 +25,11 @@ public final class GetThanosThanosUserConfig {
      * 
      */
     private @Nullable GetThanosThanosUserConfigCompactor compactor;
+    /**
+     * @return Environmental variables.
+     * 
+     */
+    private @Nullable Map<String,String> env;
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
@@ -81,6 +87,13 @@ public final class GetThanosThanosUserConfig {
      */
     public Optional<GetThanosThanosUserConfigCompactor> compactor() {
         return Optional.ofNullable(this.compactor);
+    }
+    /**
+     * @return Environmental variables.
+     * 
+     */
+    public Map<String,String> env() {
+        return this.env == null ? Map.of() : this.env;
     }
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -160,6 +173,7 @@ public final class GetThanosThanosUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetThanosThanosUserConfigCompactor compactor;
+        private @Nullable Map<String,String> env;
         private @Nullable List<GetThanosThanosUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
@@ -173,6 +187,7 @@ public final class GetThanosThanosUserConfig {
         public Builder(GetThanosThanosUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.compactor = defaults.compactor;
+    	      this.env = defaults.env;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
@@ -188,6 +203,12 @@ public final class GetThanosThanosUserConfig {
         public Builder compactor(@Nullable GetThanosThanosUserConfigCompactor compactor) {
 
             this.compactor = compactor;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder env(@Nullable Map<String,String> env) {
+
+            this.env = env;
             return this;
         }
         @CustomType.Setter
@@ -256,6 +277,7 @@ public final class GetThanosThanosUserConfig {
         public GetThanosThanosUserConfig build() {
             final var _resultValue = new GetThanosThanosUserConfig();
             _resultValue.compactor = compactor;
+            _resultValue.env = env;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;

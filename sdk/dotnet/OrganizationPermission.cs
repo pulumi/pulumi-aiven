@@ -14,24 +14,83 @@ namespace Pulumi.Aiven
     /// 
     /// **This resource is in the beta stage and may change without notice.** Set
     /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Grant permission to a user
+    ///     var @operator = new Aiven.OrganizationPermission("operator", new()
+    ///     {
+    ///         OrganizationId = main.Id,
+    ///         ResourceId = exampleProject.Id,
+    ///         ResourceType = "project",
+    ///         Permissions = new[]
+    ///         {
+    ///             new Aiven.Inputs.OrganizationPermissionPermissionArgs
+    ///             {
+    ///                 Permissions = new[]
+    ///                 {
+    ///                     "operator",
+    ///                 },
+    ///                 PrincipalId = "u123a456b7890c",
+    ///                 PrincipalType = "user",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Grant permission to a group
+    ///     var developers = new Aiven.OrganizationPermission("developers", new()
+    ///     {
+    ///         OrganizationId = main.Id,
+    ///         ResourceId = exampleProject.Id,
+    ///         ResourceType = "project",
+    ///         Permissions = new[]
+    ///         {
+    ///             new Aiven.Inputs.OrganizationPermissionPermissionArgs
+    ///             {
+    ///                 Permissions = new[]
+    ///                 {
+    ///                     "developer",
+    ///                 },
+    ///                 PrincipalId = exampleGroup.GroupId,
+    ///                 PrincipalType = "user_group",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/organizationPermission:OrganizationPermission operator ORGANIZATION_ID/ID
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationPermission:OrganizationPermission")]
     public partial class OrganizationPermission : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Organization ID
+        /// Organization ID.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// A permission to set
+        /// Permissions to grant to principals.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.OrganizationPermissionPermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// Resource Id.
+        /// Resource ID.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
@@ -89,7 +148,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationPermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Organization ID
+        /// Organization ID.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -98,7 +157,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OrganizationPermissionPermissionArgs>? _permissions;
 
         /// <summary>
-        /// A permission to set
+        /// Permissions to grant to principals.
         /// </summary>
         public InputList<Inputs.OrganizationPermissionPermissionArgs> Permissions
         {
@@ -107,7 +166,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Resource Id.
+        /// Resource ID.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
@@ -127,7 +186,7 @@ namespace Pulumi.Aiven
     public sealed class OrganizationPermissionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Organization ID
+        /// Organization ID.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
@@ -136,7 +195,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OrganizationPermissionPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// A permission to set
+        /// Permissions to grant to principals.
         /// </summary>
         public InputList<Inputs.OrganizationPermissionPermissionGetArgs> Permissions
         {
@@ -145,7 +204,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Resource Id.
+        /// Resource ID.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }

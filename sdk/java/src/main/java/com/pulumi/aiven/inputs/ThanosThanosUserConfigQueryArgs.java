@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -75,6 +76,36 @@ public final class ThanosThanosUserConfigQueryArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.queryTimeout);
     }
 
+    /**
+     * The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as &#39;chunks limit&#39; considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+     * 
+     */
+    @Import(name="storeLimitsRequestSamples")
+    private @Nullable Output<Integer> storeLimitsRequestSamples;
+
+    /**
+     * @return The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as &#39;chunks limit&#39; considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+     * 
+     */
+    public Optional<Output<Integer>> storeLimitsRequestSamples() {
+        return Optional.ofNullable(this.storeLimitsRequestSamples);
+    }
+
+    /**
+     * The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+     * 
+     */
+    @Import(name="storeLimitsRequestSeries")
+    private @Nullable Output<Integer> storeLimitsRequestSeries;
+
+    /**
+     * @return The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+     * 
+     */
+    public Optional<Output<Integer>> storeLimitsRequestSeries() {
+        return Optional.ofNullable(this.storeLimitsRequestSeries);
+    }
+
     private ThanosThanosUserConfigQueryArgs() {}
 
     private ThanosThanosUserConfigQueryArgs(ThanosThanosUserConfigQueryArgs $) {
@@ -82,6 +113,8 @@ public final class ThanosThanosUserConfigQueryArgs extends com.pulumi.resources.
         this.queryLookbackDelta = $.queryLookbackDelta;
         this.queryMetadataDefaultTimeRange = $.queryMetadataDefaultTimeRange;
         this.queryTimeout = $.queryTimeout;
+        this.storeLimitsRequestSamples = $.storeLimitsRequestSamples;
+        this.storeLimitsRequestSeries = $.storeLimitsRequestSeries;
     }
 
     public static Builder builder() {
@@ -184,6 +217,48 @@ public final class ThanosThanosUserConfigQueryArgs extends com.pulumi.resources.
          */
         public Builder queryTimeout(String queryTimeout) {
             return queryTimeout(Output.of(queryTimeout));
+        }
+
+        /**
+         * @param storeLimitsRequestSamples The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as &#39;chunks limit&#39; considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storeLimitsRequestSamples(@Nullable Output<Integer> storeLimitsRequestSamples) {
+            $.storeLimitsRequestSamples = storeLimitsRequestSamples;
+            return this;
+        }
+
+        /**
+         * @param storeLimitsRequestSamples The maximum samples allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. NOTE: For efficiency, the limit is internally implemented as &#39;chunks limit&#39; considering each chunk contains a maximum of 120 samples. The default value is 100 * store.limits.request-series. Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storeLimitsRequestSamples(Integer storeLimitsRequestSamples) {
+            return storeLimitsRequestSamples(Output.of(storeLimitsRequestSamples));
+        }
+
+        /**
+         * @param storeLimitsRequestSeries The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storeLimitsRequestSeries(@Nullable Output<Integer> storeLimitsRequestSeries) {
+            $.storeLimitsRequestSeries = storeLimitsRequestSeries;
+            return this;
+        }
+
+        /**
+         * @param storeLimitsRequestSeries The maximum series allowed for a single Series request. The Series call fails if this limit is exceeded. Set to 0 for no limit. The default value is 1000 * cpu_count. Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storeLimitsRequestSeries(Integer storeLimitsRequestSeries) {
+            return storeLimitsRequestSeries(Output.of(storeLimitsRequestSeries));
         }
 
         public ThanosThanosUserConfigQueryArgs build() {

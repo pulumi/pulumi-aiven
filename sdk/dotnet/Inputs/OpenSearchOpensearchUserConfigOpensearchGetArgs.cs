@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ClusterMaxShardsPerNode { get; set; }
 
         /// <summary>
-        /// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+        /// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         /// </summary>
         [Input("clusterRoutingAllocationNodeConcurrentRecoveries")]
         public Input<int>? ClusterRoutingAllocationNodeConcurrentRecoveries { get; set; }

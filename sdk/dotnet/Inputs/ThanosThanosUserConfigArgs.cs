@@ -18,6 +18,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("compactor")]
         public Input<Inputs.ThanosThanosUserConfigCompactorArgs>? Compactor { get; set; }
 
+        [Input("env")]
+        private InputMap<string>? _env;
+
+        /// <summary>
+        /// Environmental variables.
+        /// </summary>
+        public InputMap<string> Env
+        {
+            get => _env ?? (_env = new InputMap<string>());
+            set => _env = value;
+        }
+
         [Input("ipFilterObjects")]
         private InputList<Inputs.ThanosThanosUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 

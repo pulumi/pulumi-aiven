@@ -10631,9 +10631,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Valkey service.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -10676,9 +10673,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for Valkey service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -10723,9 +10717,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Valkey service.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -10768,9 +10759,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for Valkey service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -10815,18 +10803,12 @@ public final class AivenFunctions {
     /**
      * The Valkey User data source provides information about the existing Aiven for Valkey user.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      */
     public static Output<GetValkeyUserResult> getValkeyUser(GetValkeyUserArgs args) {
         return getValkeyUser(args, InvokeOptions.Empty);
     }
     /**
      * The Valkey User data source provides information about the existing Aiven for Valkey user.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static CompletableFuture<GetValkeyUserResult> getValkeyUserPlain(GetValkeyUserPlainArgs args) {
@@ -10835,18 +10817,12 @@ public final class AivenFunctions {
     /**
      * The Valkey User data source provides information about the existing Aiven for Valkey user.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      */
     public static Output<GetValkeyUserResult> getValkeyUser(GetValkeyUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getValkeyUser:getValkeyUser", TypeShape.of(GetValkeyUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Valkey User data source provides information about the existing Aiven for Valkey user.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static CompletableFuture<GetValkeyUserResult> getValkeyUserPlain(GetValkeyUserPlainArgs args, InvokeOptions options) {

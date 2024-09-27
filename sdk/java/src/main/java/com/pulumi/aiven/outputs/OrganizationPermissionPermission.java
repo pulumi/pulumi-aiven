@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OrganizationPermissionPermission {
     /**
-     * @return Create Time
+     * @return Time created.
      * 
      */
     private @Nullable String createTime;
@@ -24,24 +24,24 @@ public final class OrganizationPermissionPermission {
      */
     private List<String> permissions;
     /**
-     * @return ID of the principal.
+     * @return ID of the user or group.
      * 
      */
     private String principalId;
     /**
-     * @return Type of the principal. The possible values are `user` and `user_group`.
+     * @return The type of principal. The possible values are `user` and `user_group`.
      * 
      */
     private String principalType;
     /**
-     * @return Update Time
+     * @return Time updated.
      * 
      */
     private @Nullable String updateTime;
 
     private OrganizationPermissionPermission() {}
     /**
-     * @return Create Time
+     * @return Time created.
      * 
      */
     public Optional<String> createTime() {
@@ -55,21 +55,21 @@ public final class OrganizationPermissionPermission {
         return this.permissions;
     }
     /**
-     * @return ID of the principal.
+     * @return ID of the user or group.
      * 
      */
     public String principalId() {
         return this.principalId;
     }
     /**
-     * @return Type of the principal. The possible values are `user` and `user_group`.
+     * @return The type of principal. The possible values are `user` and `user_group`.
      * 
      */
     public String principalType() {
         return this.principalType;
     }
     /**
-     * @return Update Time
+     * @return Time updated.
      * 
      */
     public Optional<String> updateTime() {

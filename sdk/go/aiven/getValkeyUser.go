@@ -12,9 +12,6 @@ import (
 )
 
 // The Valkey User data source provides information about the existing Aiven for Valkey user.
-//
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 func LookupValkeyUser(ctx *pulumi.Context, args *LookupValkeyUserArgs, opts ...pulumi.InvokeOption) (*LookupValkeyUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupValkeyUserResult
