@@ -1,1 +1,0 @@
-# examples/aiven/service
