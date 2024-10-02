@@ -17,10 +17,11 @@ package aiven
 import (
 	"context"
 	"fmt"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"os"
 	"path/filepath"
 	"unicode"
+
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -177,9 +178,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_influxdb_user":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0",
-			},
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0",
 				"@types/mime": "^2.0.0",
@@ -199,9 +197,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 
 		Python: &tfbridge.PythonInfo{
 			RespectSchemaVersion: true,
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
+
 			PyProject: struct{ Enabled bool }{true},
 		},
 		CSharp: &tfbridge.CSharpInfo{
