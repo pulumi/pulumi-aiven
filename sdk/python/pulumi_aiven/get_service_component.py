@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -209,9 +214,6 @@ def get_service_component(component: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         ssl=pulumi.get(__ret__, 'ssl'),
         usage=pulumi.get(__ret__, 'usage'))
-
-
-@_utilities.lift_output_func(get_service_component)
 def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
                                  kafka_authentication_method: Optional[pulumi.Input[Optional[str]]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
@@ -247,4 +249,24 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
     :param bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
     :param str usage: DNS usage name
     """
-    ...
+    __args__ = dict()
+    __args__['component'] = component
+    __args__['kafkaAuthenticationMethod'] = kafka_authentication_method
+    __args__['project'] = project
+    __args__['route'] = route
+    __args__['serviceName'] = service_name
+    __args__['ssl'] = ssl
+    __args__['usage'] = usage
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getServiceComponent:getServiceComponent', __args__, opts=opts, typ=GetServiceComponentResult)
+    return __ret__.apply(lambda __response__: GetServiceComponentResult(
+        component=pulumi.get(__response__, 'component'),
+        host=pulumi.get(__response__, 'host'),
+        id=pulumi.get(__response__, 'id'),
+        kafka_authentication_method=pulumi.get(__response__, 'kafka_authentication_method'),
+        port=pulumi.get(__response__, 'port'),
+        project=pulumi.get(__response__, 'project'),
+        route=pulumi.get(__response__, 'route'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        ssl=pulumi.get(__response__, 'ssl'),
+        usage=pulumi.get(__response__, 'usage')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -251,9 +256,6 @@ def get_project(project: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         technical_emails=pulumi.get(__ret__, 'technical_emails'),
         use_source_project_billing_group=pulumi.get(__ret__, 'use_source_project_billing_group'))
-
-
-@_utilities.lift_output_func(get_project)
 def get_project_output(project: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
@@ -271,4 +273,23 @@ def get_project_output(project: Optional[pulumi.Input[str]] = None,
 
     :param str project: The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    return __ret__.apply(lambda __response__: GetProjectResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        add_account_owners_admin_access=pulumi.get(__response__, 'add_account_owners_admin_access'),
+        available_credits=pulumi.get(__response__, 'available_credits'),
+        billing_group=pulumi.get(__response__, 'billing_group'),
+        ca_cert=pulumi.get(__response__, 'ca_cert'),
+        copy_from_project=pulumi.get(__response__, 'copy_from_project'),
+        default_cloud=pulumi.get(__response__, 'default_cloud'),
+        estimated_balance=pulumi.get(__response__, 'estimated_balance'),
+        id=pulumi.get(__response__, 'id'),
+        parent_id=pulumi.get(__response__, 'parent_id'),
+        payment_method=pulumi.get(__response__, 'payment_method'),
+        project=pulumi.get(__response__, 'project'),
+        tags=pulumi.get(__response__, 'tags'),
+        technical_emails=pulumi.get(__response__, 'technical_emails'),
+        use_source_project_billing_group=pulumi.get(__response__, 'use_source_project_billing_group')))

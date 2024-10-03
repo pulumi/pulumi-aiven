@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -297,9 +302,6 @@ def get_account_authentication(account_id: Optional[str] = None,
         saml_variant=pulumi.get(__ret__, 'saml_variant'),
         type=pulumi.get(__ret__, 'type'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_account_authentication)
 def get_account_authentication_output(account_id: Optional[pulumi.Input[str]] = None,
                                       name: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAuthenticationResult]:
@@ -310,4 +312,28 @@ def get_account_authentication_output(account_id: Optional[pulumi.Input[str]] = 
     :param str account_id: The unique id of the account.
     :param str name: The name of the account authentication.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getAccountAuthentication:getAccountAuthentication', __args__, opts=opts, typ=GetAccountAuthenticationResult)
+    return __ret__.apply(lambda __response__: GetAccountAuthenticationResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        authentication_id=pulumi.get(__response__, 'authentication_id'),
+        auto_join_team_id=pulumi.get(__response__, 'auto_join_team_id'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        saml_acs_url=pulumi.get(__response__, 'saml_acs_url'),
+        saml_certificate=pulumi.get(__response__, 'saml_certificate'),
+        saml_digest_algorithm=pulumi.get(__response__, 'saml_digest_algorithm'),
+        saml_entity_id=pulumi.get(__response__, 'saml_entity_id'),
+        saml_field_mappings=pulumi.get(__response__, 'saml_field_mappings'),
+        saml_idp_login_allowed=pulumi.get(__response__, 'saml_idp_login_allowed'),
+        saml_idp_url=pulumi.get(__response__, 'saml_idp_url'),
+        saml_metadata_url=pulumi.get(__response__, 'saml_metadata_url'),
+        saml_signature_algorithm=pulumi.get(__response__, 'saml_signature_algorithm'),
+        saml_variant=pulumi.get(__response__, 'saml_variant'),
+        type=pulumi.get(__response__, 'type'),
+        update_time=pulumi.get(__response__, 'update_time')))

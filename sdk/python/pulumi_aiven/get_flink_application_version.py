@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -237,9 +242,6 @@ def get_flink_application_version(application_id: Optional[str] = None,
         sources=pulumi.get(__ret__, 'sources'),
         statement=pulumi.get(__ret__, 'statement'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_flink_application_version)
 def get_flink_application_version_output(application_id: Optional[pulumi.Input[str]] = None,
                                          application_version_id: Optional[pulumi.Input[str]] = None,
                                          project: Optional[pulumi.Input[str]] = None,
@@ -266,4 +268,24 @@ def get_flink_application_version_output(application_id: Optional[pulumi.Input[s
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['applicationId'] = application_id
+    __args__['applicationVersionId'] = application_version_id
+    __args__['project'] = project
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion', __args__, opts=opts, typ=GetFlinkApplicationVersionResult)
+    return __ret__.apply(lambda __response__: GetFlinkApplicationVersionResult(
+        application_id=pulumi.get(__response__, 'application_id'),
+        application_version_id=pulumi.get(__response__, 'application_version_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        created_by=pulumi.get(__response__, 'created_by'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        sink=pulumi.get(__response__, 'sink'),
+        sinks=pulumi.get(__response__, 'sinks'),
+        source=pulumi.get(__response__, 'source'),
+        sources=pulumi.get(__response__, 'sources'),
+        statement=pulumi.get(__response__, 'statement'),
+        version=pulumi.get(__response__, 'version')))

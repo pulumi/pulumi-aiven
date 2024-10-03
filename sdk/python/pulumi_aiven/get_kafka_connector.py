@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -220,9 +225,6 @@ def get_kafka_connector(connector_name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
         tasks=pulumi.get(__ret__, 'tasks'))
-
-
-@_utilities.lift_output_func(get_kafka_connector)
 def get_kafka_connector_output(connector_name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
@@ -246,4 +248,22 @@ def get_kafka_connector_output(connector_name: Optional[pulumi.Input[str]] = Non
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['connectorName'] = connector_name
+    __args__['project'] = project
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaConnector:getKafkaConnector', __args__, opts=opts, typ=GetKafkaConnectorResult)
+    return __ret__.apply(lambda __response__: GetKafkaConnectorResult(
+        config=pulumi.get(__response__, 'config'),
+        connector_name=pulumi.get(__response__, 'connector_name'),
+        id=pulumi.get(__response__, 'id'),
+        plugin_author=pulumi.get(__response__, 'plugin_author'),
+        plugin_class=pulumi.get(__response__, 'plugin_class'),
+        plugin_doc_url=pulumi.get(__response__, 'plugin_doc_url'),
+        plugin_title=pulumi.get(__response__, 'plugin_title'),
+        plugin_type=pulumi.get(__response__, 'plugin_type'),
+        plugin_version=pulumi.get(__response__, 'plugin_version'),
+        project=pulumi.get(__response__, 'project'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        tasks=pulumi.get(__response__, 'tasks')))

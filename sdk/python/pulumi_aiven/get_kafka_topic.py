@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -204,9 +209,6 @@ def get_kafka_topic(project: Optional[str] = None,
         termination_protection=pulumi.get(__ret__, 'termination_protection'),
         topic_description=pulumi.get(__ret__, 'topic_description'),
         topic_name=pulumi.get(__ret__, 'topic_name'))
-
-
-@_utilities.lift_output_func(get_kafka_topic)
 def get_kafka_topic_output(project: Optional[pulumi.Input[str]] = None,
                            service_name: Optional[pulumi.Input[str]] = None,
                            topic_name: Optional[pulumi.Input[str]] = None,
@@ -230,4 +232,21 @@ def get_kafka_topic_output(project: Optional[pulumi.Input[str]] = None,
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str topic_name: The name of the topic. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['serviceName'] = service_name
+    __args__['topicName'] = topic_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaTopic:getKafkaTopic', __args__, opts=opts, typ=GetKafkaTopicResult)
+    return __ret__.apply(lambda __response__: GetKafkaTopicResult(
+        configs=pulumi.get(__response__, 'configs'),
+        id=pulumi.get(__response__, 'id'),
+        owner_user_group_id=pulumi.get(__response__, 'owner_user_group_id'),
+        partitions=pulumi.get(__response__, 'partitions'),
+        project=pulumi.get(__response__, 'project'),
+        replication=pulumi.get(__response__, 'replication'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        tags=pulumi.get(__response__, 'tags'),
+        termination_protection=pulumi.get(__response__, 'termination_protection'),
+        topic_description=pulumi.get(__response__, 'topic_description'),
+        topic_name=pulumi.get(__response__, 'topic_name')))
