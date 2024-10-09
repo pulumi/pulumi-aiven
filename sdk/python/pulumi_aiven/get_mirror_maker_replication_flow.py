@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -275,9 +280,6 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
         target_cluster=pulumi.get(__ret__, 'target_cluster'),
         topics=pulumi.get(__ret__, 'topics'),
         topics_blacklists=pulumi.get(__ret__, 'topics_blacklists'))
-
-
-@_utilities.lift_output_func(get_mirror_maker_replication_flow)
 def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]] = None,
                                              service_name: Optional[pulumi.Input[str]] = None,
                                              source_cluster: Optional[pulumi.Input[str]] = None,
@@ -304,4 +306,27 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
     :param str source_cluster: Source cluster alias. Maximum length: `128`.
     :param str target_cluster: Target cluster alias. Maximum length: `128`.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['serviceName'] = service_name
+    __args__['sourceCluster'] = source_cluster
+    __args__['targetCluster'] = target_cluster
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult)
+    return __ret__.apply(lambda __response__: GetMirrorMakerReplicationFlowResult(
+        config_properties_excludes=pulumi.get(__response__, 'config_properties_excludes'),
+        emit_backward_heartbeats_enabled=pulumi.get(__response__, 'emit_backward_heartbeats_enabled'),
+        emit_heartbeats_enabled=pulumi.get(__response__, 'emit_heartbeats_enabled'),
+        enable=pulumi.get(__response__, 'enable'),
+        id=pulumi.get(__response__, 'id'),
+        offset_syncs_topic_location=pulumi.get(__response__, 'offset_syncs_topic_location'),
+        project=pulumi.get(__response__, 'project'),
+        replication_factor=pulumi.get(__response__, 'replication_factor'),
+        replication_policy_class=pulumi.get(__response__, 'replication_policy_class'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        source_cluster=pulumi.get(__response__, 'source_cluster'),
+        sync_group_offsets_enabled=pulumi.get(__response__, 'sync_group_offsets_enabled'),
+        sync_group_offsets_interval_seconds=pulumi.get(__response__, 'sync_group_offsets_interval_seconds'),
+        target_cluster=pulumi.get(__response__, 'target_cluster'),
+        topics=pulumi.get(__response__, 'topics'),
+        topics_blacklists=pulumi.get(__response__, 'topics_blacklists')))
