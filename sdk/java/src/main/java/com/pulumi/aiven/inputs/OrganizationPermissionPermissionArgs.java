@@ -33,14 +33,14 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
     }
 
     /**
-     * List of permissions. The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
      * 
      */
     @Import(name="permissions", required=true)
     private Output<List<String>> permissions;
 
     /**
-     * @return List of permissions. The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * @return List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
      * 
      */
     public Output<List<String>> permissions() {
@@ -142,7 +142,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param permissions List of permissions. The possible values are `admin`, `developer`, `operator` and `read_only`.
+         * @param permissions List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param permissions List of permissions. The possible values are `admin`, `developer`, `operator` and `read_only`.
+         * @param permissions List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param permissions List of permissions. The possible values are `admin`, `developer`, `operator` and `read_only`.
+         * @param permissions List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
          * 
          * @return builder
          * 

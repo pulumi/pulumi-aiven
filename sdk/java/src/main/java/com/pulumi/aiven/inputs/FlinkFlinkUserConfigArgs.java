@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.FlinkFlinkUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.FlinkFlinkUserConfigPrivatelinkAccessArgs;
+import com.pulumi.aiven.inputs.FlinkFlinkUserConfigPublicAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -127,6 +128,36 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+     * 
+     */
+    @Import(name="pekkoAskTimeoutS")
+    private @Nullable Output<Integer> pekkoAskTimeoutS;
+
+    /**
+     * @return Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+     * 
+     */
+    public Optional<Output<Integer>> pekkoAskTimeoutS() {
+        return Optional.ofNullable(this.pekkoAskTimeoutS);
+    }
+
+    /**
+     * Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     * 
+     */
+    @Import(name="pekkoFramesizeB")
+    private @Nullable Output<Integer> pekkoFramesizeB;
+
+    /**
+     * @return Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     * 
+     */
+    public Optional<Output<Integer>> pekkoFramesizeB() {
+        return Optional.ofNullable(this.pekkoFramesizeB);
+    }
+
+    /**
      * Allow access to selected service components through Privatelink
      * 
      */
@@ -139,6 +170,21 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<FlinkFlinkUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
+    }
+
+    /**
+     * Allow access to selected service ports from the public Internet
+     * 
+     */
+    @Import(name="publicAccess")
+    private @Nullable Output<FlinkFlinkUserConfigPublicAccessArgs> publicAccess;
+
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
+    public Optional<Output<FlinkFlinkUserConfigPublicAccessArgs>> publicAccess() {
+        return Optional.ofNullable(this.publicAccess);
     }
 
     /**
@@ -180,7 +226,10 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.numberOfTaskSlots = $.numberOfTaskSlots;
+        this.pekkoAskTimeoutS = $.pekkoAskTimeoutS;
+        this.pekkoFramesizeB = $.pekkoFramesizeB;
         this.privatelinkAccess = $.privatelinkAccess;
+        this.publicAccess = $.publicAccess;
         this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
     }
@@ -380,6 +429,48 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param pekkoAskTimeoutS Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pekkoAskTimeoutS(@Nullable Output<Integer> pekkoAskTimeoutS) {
+            $.pekkoAskTimeoutS = pekkoAskTimeoutS;
+            return this;
+        }
+
+        /**
+         * @param pekkoAskTimeoutS Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pekkoAskTimeoutS(Integer pekkoAskTimeoutS) {
+            return pekkoAskTimeoutS(Output.of(pekkoAskTimeoutS));
+        }
+
+        /**
+         * @param pekkoFramesizeB Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pekkoFramesizeB(@Nullable Output<Integer> pekkoFramesizeB) {
+            $.pekkoFramesizeB = pekkoFramesizeB;
+            return this;
+        }
+
+        /**
+         * @param pekkoFramesizeB Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pekkoFramesizeB(Integer pekkoFramesizeB) {
+            return pekkoFramesizeB(Output.of(pekkoFramesizeB));
+        }
+
+        /**
          * @param privatelinkAccess Allow access to selected service components through Privatelink
          * 
          * @return builder
@@ -398,6 +489,27 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder privatelinkAccess(FlinkFlinkUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
+        }
+
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicAccess(@Nullable Output<FlinkFlinkUserConfigPublicAccessArgs> publicAccess) {
+            $.publicAccess = publicAccess;
+            return this;
+        }
+
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicAccess(FlinkFlinkUserConfigPublicAccessArgs publicAccess) {
+            return publicAccess(Output.of(publicAccess));
         }
 
         /**

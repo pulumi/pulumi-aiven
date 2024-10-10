@@ -17,6 +17,9 @@ namespace Pulumi.Aiven.Outputs
         /// Additional Cloud Regions for Backup Replication.
         /// </summary>
         public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Azure migration settings
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigAzureMigrationResult? AzureMigration;
         /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
@@ -26,6 +29,9 @@ namespace Pulumi.Aiven.Outputs
         /// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
         /// </summary>
         public readonly bool? DisableReplicationFactorAdjustment;
+        /// <summary>
+        /// Google Cloud Storage migration settings
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigGcsMigrationResult? GcsMigration;
         /// <summary>
         /// Index patterns
@@ -95,6 +101,9 @@ namespace Pulumi.Aiven.Outputs
         /// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
         /// </summary>
         public readonly string? RecoveryBasebackupName;
+        /// <summary>
+        /// AWS S3 / AWS S3 compatible migration settings
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigS3MigrationResult? S3Migration;
         /// <summary>
         /// OpenSearch SAML configuration

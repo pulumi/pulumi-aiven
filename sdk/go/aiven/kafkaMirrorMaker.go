@@ -78,6 +78,8 @@ type KafkaMirrorMaker struct {
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput `pulumi:"kafkaMirrormakerUserConfig"`
@@ -90,7 +92,7 @@ type KafkaMirrorMaker struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
+	ProjectVpcId pulumi.StringOutput `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
@@ -180,6 +182,8 @@ type kafkaMirrorMakerState struct {
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig *KafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
@@ -239,6 +243,8 @@ type KafkaMirrorMakerState struct {
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringPtrInput
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig KafkaMirrorMakerKafkaMirrormakerUserConfigPtrInput
@@ -480,6 +486,8 @@ func (o KafkaMirrorMakerOutput) DiskSpaceStep() pulumi.StringOutput {
 }
 
 // Disk space that service is currently using
+//
+// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 func (o KafkaMirrorMakerOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
@@ -512,8 +520,8 @@ func (o KafkaMirrorMakerOutput) Project() pulumi.StringOutput {
 }
 
 // Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
-func (o KafkaMirrorMakerOutput) ProjectVpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+func (o KafkaMirrorMakerOutput) ProjectVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
 // The hostname of the service.

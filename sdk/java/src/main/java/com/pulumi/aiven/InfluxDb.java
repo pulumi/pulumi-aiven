@@ -150,7 +150,11 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
     /**
      * Disk space that service is currently using
      * 
+     * @deprecated
+     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     @Export(name="diskSpaceUsed", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceUsed;
 
@@ -265,7 +269,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="projectVpcId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> projectVpcId;
+    private Output<String> projectVpcId;
 
     /**
      * @return Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -274,8 +278,8 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * servers so the operation can take significant amount of time to complete if the service has a lot of data.
      * 
      */
-    public Output<Optional<String>> projectVpcId() {
-        return Codegen.optional(this.projectVpcId);
+    public Output<String> projectVpcId() {
+        return this.projectVpcId;
     }
     /**
      * The hostname of the service.
@@ -296,14 +300,14 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="serviceIntegrations", refs={List.class,InfluxDbServiceIntegration.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<InfluxDbServiceIntegration>> serviceIntegrations;
+    private Output<List<InfluxDbServiceIntegration>> serviceIntegrations;
 
     /**
      * @return Service integrations to specify when creating a service. Not applied after initial service creation
      * 
      */
-    public Output<Optional<List<InfluxDbServiceIntegration>>> serviceIntegrations() {
-        return Codegen.optional(this.serviceIntegrations);
+    public Output<List<InfluxDbServiceIntegration>> serviceIntegrations() {
+        return this.serviceIntegrations;
     }
     /**
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the

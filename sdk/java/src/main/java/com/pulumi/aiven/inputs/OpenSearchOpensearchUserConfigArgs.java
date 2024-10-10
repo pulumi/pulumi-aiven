@@ -47,9 +47,17 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.additionalBackupRegions);
     }
 
+    /**
+     * Azure migration settings
+     * 
+     */
     @Import(name="azureMigration")
     private @Nullable Output<OpenSearchOpensearchUserConfigAzureMigrationArgs> azureMigration;
 
+    /**
+     * @return Azure migration settings
+     * 
+     */
     public Optional<Output<OpenSearchOpensearchUserConfigAzureMigrationArgs>> azureMigration() {
         return Optional.ofNullable(this.azureMigration);
     }
@@ -84,9 +92,17 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
 
+    /**
+     * Google Cloud Storage migration settings
+     * 
+     */
     @Import(name="gcsMigration")
     private @Nullable Output<OpenSearchOpensearchUserConfigGcsMigrationArgs> gcsMigration;
 
+    /**
+     * @return Google Cloud Storage migration settings
+     * 
+     */
     public Optional<Output<OpenSearchOpensearchUserConfigGcsMigrationArgs>> gcsMigration() {
         return Optional.ofNullable(this.gcsMigration);
     }
@@ -354,9 +370,17 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
 
+    /**
+     * AWS S3 / AWS S3 compatible migration settings
+     * 
+     */
     @Import(name="s3Migration")
     private @Nullable Output<OpenSearchOpensearchUserConfigS3MigrationArgs> s3Migration;
 
+    /**
+     * @return AWS S3 / AWS S3 compatible migration settings
+     * 
+     */
     public Optional<Output<OpenSearchOpensearchUserConfigS3MigrationArgs>> s3Migration() {
         return Optional.ofNullable(this.s3Migration);
     }
@@ -492,11 +516,23 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
+        /**
+         * @param azureMigration Azure migration settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureMigration(@Nullable Output<OpenSearchOpensearchUserConfigAzureMigrationArgs> azureMigration) {
             $.azureMigration = azureMigration;
             return this;
         }
 
+        /**
+         * @param azureMigration Azure migration settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureMigration(OpenSearchOpensearchUserConfigAzureMigrationArgs azureMigration) {
             return azureMigration(Output.of(azureMigration));
         }
@@ -543,11 +579,23 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
             return disableReplicationFactorAdjustment(Output.of(disableReplicationFactorAdjustment));
         }
 
+        /**
+         * @param gcsMigration Google Cloud Storage migration settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcsMigration(@Nullable Output<OpenSearchOpensearchUserConfigGcsMigrationArgs> gcsMigration) {
             $.gcsMigration = gcsMigration;
             return this;
         }
 
+        /**
+         * @param gcsMigration Google Cloud Storage migration settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcsMigration(OpenSearchOpensearchUserConfigGcsMigrationArgs gcsMigration) {
             return gcsMigration(Output.of(gcsMigration));
         }
@@ -961,11 +1009,23 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
             return recoveryBasebackupName(Output.of(recoveryBasebackupName));
         }
 
+        /**
+         * @param s3Migration AWS S3 / AWS S3 compatible migration settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder s3Migration(@Nullable Output<OpenSearchOpensearchUserConfigS3MigrationArgs> s3Migration) {
             $.s3Migration = s3Migration;
             return this;
         }
 
+        /**
+         * @param s3Migration AWS S3 / AWS S3 compatible migration settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder s3Migration(OpenSearchOpensearchUserConfigS3MigrationArgs s3Migration) {
             return s3Migration(Output.of(s3Migration));
         }

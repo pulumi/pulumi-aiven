@@ -38,9 +38,21 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? NumberOfTaskSlots;
         /// <summary>
+        /// Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+        /// </summary>
+        public readonly int? PekkoAskTimeoutS;
+        /// <summary>
+        /// Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+        /// </summary>
+        public readonly int? PekkoFramesizeB;
+        /// <summary>
         /// Allow access to selected service components through Privatelink
         /// </summary>
         public readonly Outputs.FlinkFlinkUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
+        public readonly Outputs.FlinkFlinkUserConfigPublicAccess? PublicAccess;
         /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
@@ -64,7 +76,13 @@ namespace Pulumi.Aiven.Outputs
 
             int? numberOfTaskSlots,
 
+            int? pekkoAskTimeoutS,
+
+            int? pekkoFramesizeB,
+
             Outputs.FlinkFlinkUserConfigPrivatelinkAccess? privatelinkAccess,
+
+            Outputs.FlinkFlinkUserConfigPublicAccess? publicAccess,
 
             bool? serviceLog,
 
@@ -76,7 +94,10 @@ namespace Pulumi.Aiven.Outputs
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             NumberOfTaskSlots = numberOfTaskSlots;
+            PekkoAskTimeoutS = pekkoAskTimeoutS;
+            PekkoFramesizeB = pekkoFramesizeB;
             PrivatelinkAccess = privatelinkAccess;
+            PublicAccess = publicAccess;
             ServiceLog = serviceLog;
             StaticIps = staticIps;
         }

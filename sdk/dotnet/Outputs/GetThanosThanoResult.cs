@@ -22,17 +22,9 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string QueryUri;
         /// <summary>
-        /// Receiver ingesting remote write URI.
-        /// </summary>
-        public readonly string ReceiverIngestingRemoteWriteUri;
-        /// <summary>
         /// Receiver remote write URI.
         /// </summary>
         public readonly string ReceiverRemoteWriteUri;
-        /// <summary>
-        /// Store URI.
-        /// </summary>
-        public readonly string StoreUri;
         /// <summary>
         /// Thanos server URIs.
         /// </summary>
@@ -44,19 +36,13 @@ namespace Pulumi.Aiven.Outputs
 
             string queryUri,
 
-            string receiverIngestingRemoteWriteUri,
-
             string receiverRemoteWriteUri,
-
-            string storeUri,
 
             ImmutableArray<string> uris)
         {
             QueryFrontendUri = queryFrontendUri;
             QueryUri = queryUri;
-            ReceiverIngestingRemoteWriteUri = receiverIngestingRemoteWriteUri;
             ReceiverRemoteWriteUri = receiverRemoteWriteUri;
-            StoreUri = storeUri;
             Uris = uris;
         }
     }

@@ -80,6 +80,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.ClickhouseClickhouseUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
         /// <summary>
+        /// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+        /// </summary>
+        [Input("recoveryBasebackupName")]
+        public Input<string>? RecoveryBasebackupName { get; set; }
+
+        /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
         [Input("serviceLog")]

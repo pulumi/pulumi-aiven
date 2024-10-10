@@ -13,6 +13,570 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRedisRedisUserConfigPublicAccess struct {
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *bool `pulumi:"prometheus"`
+	// Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+	Redis *bool `pulumi:"redis"`
+}
+
+// GetRedisRedisUserConfigPublicAccessInput is an input type that accepts GetRedisRedisUserConfigPublicAccessArgs and GetRedisRedisUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigPublicAccessInput` via:
+//
+//	GetRedisRedisUserConfigPublicAccessArgs{...}
+type GetRedisRedisUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigPublicAccessOutput() GetRedisRedisUserConfigPublicAccessOutput
+	ToGetRedisRedisUserConfigPublicAccessOutputWithContext(context.Context) GetRedisRedisUserConfigPublicAccessOutput
+}
+
+type GetRedisRedisUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+	Redis pulumi.BoolPtrInput `pulumi:"redis"`
+}
+
+func (GetRedisRedisUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetRedisRedisUserConfigPublicAccessArgs) ToGetRedisRedisUserConfigPublicAccessOutput() GetRedisRedisUserConfigPublicAccessOutput {
+	return i.ToGetRedisRedisUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigPublicAccessArgs) ToGetRedisRedisUserConfigPublicAccessOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigPublicAccessOutput)
+}
+
+func (i GetRedisRedisUserConfigPublicAccessArgs) ToGetRedisRedisUserConfigPublicAccessPtrOutput() GetRedisRedisUserConfigPublicAccessPtrOutput {
+	return i.ToGetRedisRedisUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigPublicAccessArgs) ToGetRedisRedisUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigPublicAccessOutput).ToGetRedisRedisUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetRedisRedisUserConfigPublicAccessPtrInput is an input type that accepts GetRedisRedisUserConfigPublicAccessArgs, GetRedisRedisUserConfigPublicAccessPtr and GetRedisRedisUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigPublicAccessPtrInput` via:
+//
+//	        GetRedisRedisUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRedisRedisUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigPublicAccessPtrOutput() GetRedisRedisUserConfigPublicAccessPtrOutput
+	ToGetRedisRedisUserConfigPublicAccessPtrOutputWithContext(context.Context) GetRedisRedisUserConfigPublicAccessPtrOutput
+}
+
+type getRedisRedisUserConfigPublicAccessPtrType GetRedisRedisUserConfigPublicAccessArgs
+
+func GetRedisRedisUserConfigPublicAccessPtr(v *GetRedisRedisUserConfigPublicAccessArgs) GetRedisRedisUserConfigPublicAccessPtrInput {
+	return (*getRedisRedisUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getRedisRedisUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRedisRedisUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getRedisRedisUserConfigPublicAccessPtrType) ToGetRedisRedisUserConfigPublicAccessPtrOutput() GetRedisRedisUserConfigPublicAccessPtrOutput {
+	return i.ToGetRedisRedisUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getRedisRedisUserConfigPublicAccessPtrType) ToGetRedisRedisUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigPublicAccessPtrOutput)
+}
+
+type GetRedisRedisUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigPublicAccessOutput) ToGetRedisRedisUserConfigPublicAccessOutput() GetRedisRedisUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPublicAccessOutput) ToGetRedisRedisUserConfigPublicAccessOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPublicAccessOutput) ToGetRedisRedisUserConfigPublicAccessPtrOutput() GetRedisRedisUserConfigPublicAccessPtrOutput {
+	return o.ToGetRedisRedisUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetRedisRedisUserConfigPublicAccessOutput) ToGetRedisRedisUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRedisRedisUserConfigPublicAccess) *GetRedisRedisUserConfigPublicAccess {
+		return &v
+	}).(GetRedisRedisUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetRedisRedisUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetRedisRedisUserConfigPublicAccessOutput) Redis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigPublicAccess) *bool { return v.Redis }).(pulumi.BoolPtrOutput)
+}
+
+type GetRedisRedisUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRedisRedisUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigPublicAccessPtrOutput) ToGetRedisRedisUserConfigPublicAccessPtrOutput() GetRedisRedisUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPublicAccessPtrOutput) ToGetRedisRedisUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Elem() GetRedisRedisUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigPublicAccess) GetRedisRedisUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetRedisRedisUserConfigPublicAccess
+		return ret
+	}).(GetRedisRedisUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Redis
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetRedisServiceIntegration struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetRedisServiceIntegrationInput is an input type that accepts GetRedisServiceIntegrationArgs and GetRedisServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetRedisServiceIntegrationInput` via:
+//
+//	GetRedisServiceIntegrationArgs{...}
+type GetRedisServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetRedisServiceIntegrationOutput() GetRedisServiceIntegrationOutput
+	ToGetRedisServiceIntegrationOutputWithContext(context.Context) GetRedisServiceIntegrationOutput
+}
+
+type GetRedisServiceIntegrationArgs struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetRedisServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisServiceIntegration)(nil)).Elem()
+}
+
+func (i GetRedisServiceIntegrationArgs) ToGetRedisServiceIntegrationOutput() GetRedisServiceIntegrationOutput {
+	return i.ToGetRedisServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetRedisServiceIntegrationArgs) ToGetRedisServiceIntegrationOutputWithContext(ctx context.Context) GetRedisServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisServiceIntegrationOutput)
+}
+
+// GetRedisServiceIntegrationArrayInput is an input type that accepts GetRedisServiceIntegrationArray and GetRedisServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetRedisServiceIntegrationArrayInput` via:
+//
+//	GetRedisServiceIntegrationArray{ GetRedisServiceIntegrationArgs{...} }
+type GetRedisServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetRedisServiceIntegrationArrayOutput() GetRedisServiceIntegrationArrayOutput
+	ToGetRedisServiceIntegrationArrayOutputWithContext(context.Context) GetRedisServiceIntegrationArrayOutput
+}
+
+type GetRedisServiceIntegrationArray []GetRedisServiceIntegrationInput
+
+func (GetRedisServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisServiceIntegration)(nil)).Elem()
+}
+
+func (i GetRedisServiceIntegrationArray) ToGetRedisServiceIntegrationArrayOutput() GetRedisServiceIntegrationArrayOutput {
+	return i.ToGetRedisServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRedisServiceIntegrationArray) ToGetRedisServiceIntegrationArrayOutputWithContext(ctx context.Context) GetRedisServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisServiceIntegrationArrayOutput)
+}
+
+type GetRedisServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetRedisServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisServiceIntegration)(nil)).Elem()
+}
+
+func (o GetRedisServiceIntegrationOutput) ToGetRedisServiceIntegrationOutput() GetRedisServiceIntegrationOutput {
+	return o
+}
+
+func (o GetRedisServiceIntegrationOutput) ToGetRedisServiceIntegrationOutputWithContext(ctx context.Context) GetRedisServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration. The only supported value at the moment is `readReplica`
+func (o GetRedisServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetRedisServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetRedisServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRedisServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisServiceIntegration)(nil)).Elem()
+}
+
+func (o GetRedisServiceIntegrationArrayOutput) ToGetRedisServiceIntegrationArrayOutput() GetRedisServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetRedisServiceIntegrationArrayOutput) ToGetRedisServiceIntegrationArrayOutputWithContext(ctx context.Context) GetRedisServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetRedisServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetRedisServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRedisServiceIntegration {
+		return vs[0].([]GetRedisServiceIntegration)[vs[1].(int)]
+	}).(GetRedisServiceIntegrationOutput)
+}
+
+type GetRedisTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetRedisTagInput is an input type that accepts GetRedisTagArgs and GetRedisTagOutput values.
+// You can construct a concrete instance of `GetRedisTagInput` via:
+//
+//	GetRedisTagArgs{...}
+type GetRedisTagInput interface {
+	pulumi.Input
+
+	ToGetRedisTagOutput() GetRedisTagOutput
+	ToGetRedisTagOutputWithContext(context.Context) GetRedisTagOutput
+}
+
+type GetRedisTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRedisTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisTag)(nil)).Elem()
+}
+
+func (i GetRedisTagArgs) ToGetRedisTagOutput() GetRedisTagOutput {
+	return i.ToGetRedisTagOutputWithContext(context.Background())
+}
+
+func (i GetRedisTagArgs) ToGetRedisTagOutputWithContext(ctx context.Context) GetRedisTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisTagOutput)
+}
+
+// GetRedisTagArrayInput is an input type that accepts GetRedisTagArray and GetRedisTagArrayOutput values.
+// You can construct a concrete instance of `GetRedisTagArrayInput` via:
+//
+//	GetRedisTagArray{ GetRedisTagArgs{...} }
+type GetRedisTagArrayInput interface {
+	pulumi.Input
+
+	ToGetRedisTagArrayOutput() GetRedisTagArrayOutput
+	ToGetRedisTagArrayOutputWithContext(context.Context) GetRedisTagArrayOutput
+}
+
+type GetRedisTagArray []GetRedisTagInput
+
+func (GetRedisTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisTag)(nil)).Elem()
+}
+
+func (i GetRedisTagArray) ToGetRedisTagArrayOutput() GetRedisTagArrayOutput {
+	return i.ToGetRedisTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetRedisTagArray) ToGetRedisTagArrayOutputWithContext(ctx context.Context) GetRedisTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisTagArrayOutput)
+}
+
+type GetRedisTagOutput struct{ *pulumi.OutputState }
+
+func (GetRedisTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisTag)(nil)).Elem()
+}
+
+func (o GetRedisTagOutput) ToGetRedisTagOutput() GetRedisTagOutput {
+	return o
+}
+
+func (o GetRedisTagOutput) ToGetRedisTagOutputWithContext(ctx context.Context) GetRedisTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetRedisTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetRedisTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRedisTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRedisTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisTag)(nil)).Elem()
+}
+
+func (o GetRedisTagArrayOutput) ToGetRedisTagArrayOutput() GetRedisTagArrayOutput {
+	return o
+}
+
+func (o GetRedisTagArrayOutput) ToGetRedisTagArrayOutputWithContext(ctx context.Context) GetRedisTagArrayOutput {
+	return o
+}
+
+func (o GetRedisTagArrayOutput) Index(i pulumi.IntInput) GetRedisTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRedisTag {
+		return vs[0].([]GetRedisTag)[vs[1].(int)]
+	}).(GetRedisTagOutput)
+}
+
+type GetRedisTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetRedisTechEmailInput is an input type that accepts GetRedisTechEmailArgs and GetRedisTechEmailOutput values.
+// You can construct a concrete instance of `GetRedisTechEmailInput` via:
+//
+//	GetRedisTechEmailArgs{...}
+type GetRedisTechEmailInput interface {
+	pulumi.Input
+
+	ToGetRedisTechEmailOutput() GetRedisTechEmailOutput
+	ToGetRedisTechEmailOutputWithContext(context.Context) GetRedisTechEmailOutput
+}
+
+type GetRedisTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetRedisTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisTechEmail)(nil)).Elem()
+}
+
+func (i GetRedisTechEmailArgs) ToGetRedisTechEmailOutput() GetRedisTechEmailOutput {
+	return i.ToGetRedisTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetRedisTechEmailArgs) ToGetRedisTechEmailOutputWithContext(ctx context.Context) GetRedisTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisTechEmailOutput)
+}
+
+// GetRedisTechEmailArrayInput is an input type that accepts GetRedisTechEmailArray and GetRedisTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetRedisTechEmailArrayInput` via:
+//
+//	GetRedisTechEmailArray{ GetRedisTechEmailArgs{...} }
+type GetRedisTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetRedisTechEmailArrayOutput() GetRedisTechEmailArrayOutput
+	ToGetRedisTechEmailArrayOutputWithContext(context.Context) GetRedisTechEmailArrayOutput
+}
+
+type GetRedisTechEmailArray []GetRedisTechEmailInput
+
+func (GetRedisTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisTechEmail)(nil)).Elem()
+}
+
+func (i GetRedisTechEmailArray) ToGetRedisTechEmailArrayOutput() GetRedisTechEmailArrayOutput {
+	return i.ToGetRedisTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetRedisTechEmailArray) ToGetRedisTechEmailArrayOutputWithContext(ctx context.Context) GetRedisTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisTechEmailArrayOutput)
+}
+
+type GetRedisTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetRedisTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisTechEmail)(nil)).Elem()
+}
+
+func (o GetRedisTechEmailOutput) ToGetRedisTechEmailOutput() GetRedisTechEmailOutput {
+	return o
+}
+
+func (o GetRedisTechEmailOutput) ToGetRedisTechEmailOutputWithContext(ctx context.Context) GetRedisTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetRedisTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetRedisTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRedisTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisTechEmail)(nil)).Elem()
+}
+
+func (o GetRedisTechEmailArrayOutput) ToGetRedisTechEmailArrayOutput() GetRedisTechEmailArrayOutput {
+	return o
+}
+
+func (o GetRedisTechEmailArrayOutput) ToGetRedisTechEmailArrayOutputWithContext(ctx context.Context) GetRedisTechEmailArrayOutput {
+	return o
+}
+
+func (o GetRedisTechEmailArrayOutput) Index(i pulumi.IntInput) GetRedisTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRedisTechEmail {
+		return vs[0].([]GetRedisTechEmail)[vs[1].(int)]
+	}).(GetRedisTechEmailOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfig struct {
+	// Tables to create
+	Tables []GetServiceIntegrationClickhouseKafkaUserConfigTable `pulumi:"tables"`
+}
+
+// GetServiceIntegrationClickhouseKafkaUserConfigInput is an input type that accepts GetServiceIntegrationClickhouseKafkaUserConfigArgs and GetServiceIntegrationClickhouseKafkaUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseKafkaUserConfigInput` via:
+//
+//	GetServiceIntegrationClickhouseKafkaUserConfigArgs{...}
+type GetServiceIntegrationClickhouseKafkaUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseKafkaUserConfigOutput() GetServiceIntegrationClickhouseKafkaUserConfigOutput
+	ToGetServiceIntegrationClickhouseKafkaUserConfigOutputWithContext(context.Context) GetServiceIntegrationClickhouseKafkaUserConfigOutput
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigArgs struct {
+	// Tables to create
+	Tables GetServiceIntegrationClickhouseKafkaUserConfigTableArrayInput `pulumi:"tables"`
+}
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigArgs) ToGetServiceIntegrationClickhouseKafkaUserConfigOutput() GetServiceIntegrationClickhouseKafkaUserConfigOutput {
+	return i.ToGetServiceIntegrationClickhouseKafkaUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigArgs) ToGetServiceIntegrationClickhouseKafkaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseKafkaUserConfigOutput)
+}
+
+// GetServiceIntegrationClickhouseKafkaUserConfigArrayInput is an input type that accepts GetServiceIntegrationClickhouseKafkaUserConfigArray and GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationClickhouseKafkaUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationClickhouseKafkaUserConfigArray{ GetServiceIntegrationClickhouseKafkaUserConfigArgs{...} }
+type GetServiceIntegrationClickhouseKafkaUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationClickhouseKafkaUserConfigArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput
+	ToGetServiceIntegrationClickhouseKafkaUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigArray []GetServiceIntegrationClickhouseKafkaUserConfigInput
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseKafkaUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigArray) ToGetServiceIntegrationClickhouseKafkaUserConfigArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationClickhouseKafkaUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationClickhouseKafkaUserConfigArray) ToGetServiceIntegrationClickhouseKafkaUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigOutput() GetServiceIntegrationClickhouseKafkaUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigOutput {
+	return o
+}
+
+// Tables to create
+func (o GetServiceIntegrationClickhouseKafkaUserConfigOutput) Tables() GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationClickhouseKafkaUserConfig) []GetServiceIntegrationClickhouseKafkaUserConfigTable {
+		return v.Tables
+	}).(GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput)
+}
+
+type GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationClickhouseKafkaUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigArrayOutput() GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput) ToGetServiceIntegrationClickhouseKafkaUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationClickhouseKafkaUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationClickhouseKafkaUserConfig {
+		return vs[0].([]GetServiceIntegrationClickhouseKafkaUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationClickhouseKafkaUserConfigOutput)
+}
+
 type GetServiceIntegrationClickhouseKafkaUserConfigTable struct {
 	// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
 	AutoOffsetReset *string `pulumi:"autoOffsetReset"`
@@ -4248,6 +4812,103 @@ func (o GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput) Index(
 	}).(GetServiceIntegrationExternalOpensearchLogsUserConfigOutput)
 }
 
+type GetServiceIntegrationFlinkExternalPostgresqlUserConfig struct {
+	// Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+	Stringtype *string `pulumi:"stringtype"`
+}
+
+// GetServiceIntegrationFlinkExternalPostgresqlUserConfigInput is an input type that accepts GetServiceIntegrationFlinkExternalPostgresqlUserConfigArgs and GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationFlinkExternalPostgresqlUserConfigInput` via:
+//
+//	GetServiceIntegrationFlinkExternalPostgresqlUserConfigArgs{...}
+type GetServiceIntegrationFlinkExternalPostgresqlUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput() GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput
+	ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigOutputWithContext(context.Context) GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput
+}
+
+type GetServiceIntegrationFlinkExternalPostgresqlUserConfigArgs struct {
+	// Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+	Stringtype pulumi.StringPtrInput `pulumi:"stringtype"`
+}
+
+func (GetServiceIntegrationFlinkExternalPostgresqlUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationFlinkExternalPostgresqlUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationFlinkExternalPostgresqlUserConfigArgs) ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput() GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput {
+	return i.ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationFlinkExternalPostgresqlUserConfigArgs) ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput)
+}
+
+// GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayInput is an input type that accepts GetServiceIntegrationFlinkExternalPostgresqlUserConfigArray and GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationFlinkExternalPostgresqlUserConfigArray{ GetServiceIntegrationFlinkExternalPostgresqlUserConfigArgs{...} }
+type GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput() GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput
+	ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput
+}
+
+type GetServiceIntegrationFlinkExternalPostgresqlUserConfigArray []GetServiceIntegrationFlinkExternalPostgresqlUserConfigInput
+
+func (GetServiceIntegrationFlinkExternalPostgresqlUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationFlinkExternalPostgresqlUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationFlinkExternalPostgresqlUserConfigArray) ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput() GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationFlinkExternalPostgresqlUserConfigArray) ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationFlinkExternalPostgresqlUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput) ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput() GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput) ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput {
+	return o
+}
+
+// Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+func (o GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput) Stringtype() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationFlinkExternalPostgresqlUserConfig) *string { return v.Stringtype }).(pulumi.StringPtrOutput)
+}
+
+type GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationFlinkExternalPostgresqlUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput) ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput() GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput) ToGetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationFlinkExternalPostgresqlUserConfig {
+		return vs[0].([]GetServiceIntegrationFlinkExternalPostgresqlUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput)
+}
+
 type GetServiceIntegrationKafkaConnectUserConfig struct {
 	// Kafka Connect service configuration values
 	KafkaConnect *GetServiceIntegrationKafkaConnectUserConfigKafkaConnect `pulumi:"kafkaConnect"`
@@ -6942,14 +7603,8 @@ type GetThanosThano struct {
 	QueryFrontendUri string `pulumi:"queryFrontendUri"`
 	// Query URI.
 	QueryUri string `pulumi:"queryUri"`
-	// Receiver ingesting remote write URI.
-	ReceiverIngestingRemoteWriteUri string `pulumi:"receiverIngestingRemoteWriteUri"`
 	// Receiver remote write URI.
 	ReceiverRemoteWriteUri string `pulumi:"receiverRemoteWriteUri"`
-	// Store URI.
-	//
-	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
-	StoreUri string `pulumi:"storeUri"`
 	// Thanos server URIs.
 	Uris []string `pulumi:"uris"`
 }
@@ -6970,14 +7625,8 @@ type GetThanosThanoArgs struct {
 	QueryFrontendUri pulumi.StringInput `pulumi:"queryFrontendUri"`
 	// Query URI.
 	QueryUri pulumi.StringInput `pulumi:"queryUri"`
-	// Receiver ingesting remote write URI.
-	ReceiverIngestingRemoteWriteUri pulumi.StringInput `pulumi:"receiverIngestingRemoteWriteUri"`
 	// Receiver remote write URI.
 	ReceiverRemoteWriteUri pulumi.StringInput `pulumi:"receiverRemoteWriteUri"`
-	// Store URI.
-	//
-	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
-	StoreUri pulumi.StringInput `pulumi:"storeUri"`
 	// Thanos server URIs.
 	Uris pulumi.StringArrayInput `pulumi:"uris"`
 }
@@ -7043,21 +7692,9 @@ func (o GetThanosThanoOutput) QueryUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetThanosThano) string { return v.QueryUri }).(pulumi.StringOutput)
 }
 
-// Receiver ingesting remote write URI.
-func (o GetThanosThanoOutput) ReceiverIngestingRemoteWriteUri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetThanosThano) string { return v.ReceiverIngestingRemoteWriteUri }).(pulumi.StringOutput)
-}
-
 // Receiver remote write URI.
 func (o GetThanosThanoOutput) ReceiverRemoteWriteUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetThanosThano) string { return v.ReceiverRemoteWriteUri }).(pulumi.StringOutput)
-}
-
-// Store URI.
-//
-// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
-func (o GetThanosThanoOutput) StoreUri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetThanosThano) string { return v.StoreUri }).(pulumi.StringOutput)
 }
 
 // Thanos server URIs.
@@ -7532,6 +8169,8 @@ type GetThanosThanosUserConfigPublicAccess struct {
 	ReceiverIngesting *bool `pulumi:"receiverIngesting"`
 	// Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
 	ReceiverRouting *bool `pulumi:"receiverRouting"`
+	// Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+	Ruler *bool `pulumi:"ruler"`
 	// Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
 	Store *bool `pulumi:"store"`
 }
@@ -7558,6 +8197,8 @@ type GetThanosThanosUserConfigPublicAccessArgs struct {
 	ReceiverIngesting pulumi.BoolPtrInput `pulumi:"receiverIngesting"`
 	// Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
 	ReceiverRouting pulumi.BoolPtrInput `pulumi:"receiverRouting"`
+	// Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+	Ruler pulumi.BoolPtrInput `pulumi:"ruler"`
 	// Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
 	Store pulumi.BoolPtrInput `pulumi:"store"`
 }
@@ -7664,6 +8305,11 @@ func (o GetThanosThanosUserConfigPublicAccessOutput) ReceiverRouting() pulumi.Bo
 	return o.ApplyT(func(v GetThanosThanosUserConfigPublicAccess) *bool { return v.ReceiverRouting }).(pulumi.BoolPtrOutput)
 }
 
+// Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessOutput) Ruler() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPublicAccess) *bool { return v.Ruler }).(pulumi.BoolPtrOutput)
+}
+
 // Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
 func (o GetThanosThanosUserConfigPublicAccessOutput) Store() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfigPublicAccess) *bool { return v.Store }).(pulumi.BoolPtrOutput)
@@ -7740,6 +8386,16 @@ func (o GetThanosThanosUserConfigPublicAccessPtrOutput) ReceiverRouting() pulumi
 			return nil
 		}
 		return v.ReceiverRouting
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetThanosThanosUserConfigPublicAccessPtrOutput) Ruler() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ruler
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -9909,6 +10565,16 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigPublicAccessInput)(nil)).Elem(), GetRedisRedisUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigPublicAccessPtrInput)(nil)).Elem(), GetRedisRedisUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisServiceIntegrationInput)(nil)).Elem(), GetRedisServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisServiceIntegrationArrayInput)(nil)).Elem(), GetRedisServiceIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTagInput)(nil)).Elem(), GetRedisTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTagArrayInput)(nil)).Elem(), GetRedisTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTechEmailInput)(nil)).Elem(), GetRedisTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisTechEmailArrayInput)(nil)).Elem(), GetRedisTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableArrayInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhouseKafkaUserConfigTableColumnInput)(nil)).Elem(), GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs{})
@@ -9973,6 +10639,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationExternalElasticsearchLogsUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalOpensearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationExternalOpensearchLogsUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationExternalOpensearchLogsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationExternalOpensearchLogsUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationFlinkExternalPostgresqlUserConfigInput)(nil)).Elem(), GetServiceIntegrationFlinkExternalPostgresqlUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationFlinkExternalPostgresqlUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationKafkaConnectUserConfigKafkaConnectInput)(nil)).Elem(), GetServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{})
@@ -10041,6 +10709,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetRedisServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetRedisServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetRedisTagOutput{})
+	pulumi.RegisterOutputType(GetRedisTagArrayOutput{})
+	pulumi.RegisterOutputType(GetRedisTechEmailOutput{})
+	pulumi.RegisterOutputType(GetRedisTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhouseKafkaUserConfigTableColumnOutput{})
@@ -10105,6 +10783,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalElasticsearchLogsUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalOpensearchLogsUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationExternalOpensearchLogsUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationFlinkExternalPostgresqlUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationFlinkExternalPostgresqlUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationKafkaConnectUserConfigKafkaConnectOutput{})

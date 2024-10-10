@@ -46,6 +46,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetClickhouseClickhouseUserConfigPublicAccessResult? PublicAccess;
         /// <summary>
+        /// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+        /// </summary>
+        public readonly string? RecoveryBasebackupName;
+        /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
         public readonly bool? ServiceLog;
@@ -76,6 +80,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetClickhouseClickhouseUserConfigPublicAccessResult? publicAccess,
 
+            string? recoveryBasebackupName,
+
             bool? serviceLog,
 
             string? serviceToForkFrom,
@@ -90,6 +96,7 @@ namespace Pulumi.Aiven.Outputs
             PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
+            RecoveryBasebackupName = recoveryBasebackupName;
             ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;

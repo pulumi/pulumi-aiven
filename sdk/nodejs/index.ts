@@ -230,6 +230,11 @@ export const getDragonfly: typeof import("./getDragonfly").getDragonfly = null a
 export const getDragonflyOutput: typeof import("./getDragonfly").getDragonflyOutput = null as any;
 utilities.lazyLoad(exports, ["getDragonfly","getDragonflyOutput"], () => require("./getDragonfly"));
 
+export { GetExternalIdentityArgs, GetExternalIdentityResult, GetExternalIdentityOutputArgs } from "./getExternalIdentity";
+export const getExternalIdentity: typeof import("./getExternalIdentity").getExternalIdentity = null as any;
+export const getExternalIdentityOutput: typeof import("./getExternalIdentity").getExternalIdentityOutput = null as any;
+utilities.lazyLoad(exports, ["getExternalIdentity","getExternalIdentityOutput"], () => require("./getExternalIdentity"));
+
 export { GetFlinkArgs, GetFlinkResult, GetFlinkOutputArgs } from "./getFlink";
 export const getFlink: typeof import("./getFlink").getFlink = null as any;
 export const getFlinkOutput: typeof import("./getFlink").getFlinkOutput = null as any;

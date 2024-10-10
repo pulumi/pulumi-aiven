@@ -55,7 +55,7 @@ export interface GetAccountTeamProjectResult {
      */
     readonly teamId: string;
     /**
-     * The Account team project type. The possible values are `admin`, `operator`, `developer` and `readOnly`.
+     * The Account team project type. The possible values are `admin`, `operator`, `developer`, `readOnly` and `project:permissions:read`.
      */
     readonly teamType: string;
 }

@@ -107,6 +107,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ServiceLog;
         /// <summary>
+        /// Single-zone configuration
+        /// </summary>
+        public readonly Outputs.GetKafkaKafkaUserConfigSingleZoneResult? SingleZone;
+        /// <summary>
         /// Use static public IP addresses.
         /// </summary>
         public readonly bool? StaticIps;
@@ -165,6 +169,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? serviceLog,
 
+            Outputs.GetKafkaKafkaUserConfigSingleZoneResult? singleZone,
+
             bool? staticIps,
 
             Outputs.GetKafkaKafkaUserConfigTieredStorageResult? tieredStorage)
@@ -193,6 +199,7 @@ namespace Pulumi.Aiven.Outputs
             SchemaRegistry = schemaRegistry;
             SchemaRegistryConfig = schemaRegistryConfig;
             ServiceLog = serviceLog;
+            SingleZone = singleZone;
             StaticIps = staticIps;
             TieredStorage = tieredStorage;
         }

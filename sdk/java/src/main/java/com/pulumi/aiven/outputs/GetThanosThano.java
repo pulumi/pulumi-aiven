@@ -22,24 +22,10 @@ public final class GetThanosThano {
      */
     private String queryUri;
     /**
-     * @return Receiver ingesting remote write URI.
-     * 
-     */
-    private String receiverIngestingRemoteWriteUri;
-    /**
      * @return Receiver remote write URI.
      * 
      */
     private String receiverRemoteWriteUri;
-    /**
-     * @return Store URI.
-     * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
-     * 
-     */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
-    private String storeUri;
     /**
      * @return Thanos server URIs.
      * 
@@ -62,29 +48,11 @@ public final class GetThanosThano {
         return this.queryUri;
     }
     /**
-     * @return Receiver ingesting remote write URI.
-     * 
-     */
-    public String receiverIngestingRemoteWriteUri() {
-        return this.receiverIngestingRemoteWriteUri;
-    }
-    /**
      * @return Receiver remote write URI.
      * 
      */
     public String receiverRemoteWriteUri() {
         return this.receiverRemoteWriteUri;
-    }
-    /**
-     * @return Store URI.
-     * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
-     * 
-     */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
-    public String storeUri() {
-        return this.storeUri;
     }
     /**
      * @return Thanos server URIs.
@@ -105,18 +73,14 @@ public final class GetThanosThano {
     public static final class Builder {
         private String queryFrontendUri;
         private String queryUri;
-        private String receiverIngestingRemoteWriteUri;
         private String receiverRemoteWriteUri;
-        private String storeUri;
         private List<String> uris;
         public Builder() {}
         public Builder(GetThanosThano defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queryFrontendUri = defaults.queryFrontendUri;
     	      this.queryUri = defaults.queryUri;
-    	      this.receiverIngestingRemoteWriteUri = defaults.receiverIngestingRemoteWriteUri;
     	      this.receiverRemoteWriteUri = defaults.receiverRemoteWriteUri;
-    	      this.storeUri = defaults.storeUri;
     	      this.uris = defaults.uris;
         }
 
@@ -137,27 +101,11 @@ public final class GetThanosThano {
             return this;
         }
         @CustomType.Setter
-        public Builder receiverIngestingRemoteWriteUri(String receiverIngestingRemoteWriteUri) {
-            if (receiverIngestingRemoteWriteUri == null) {
-              throw new MissingRequiredPropertyException("GetThanosThano", "receiverIngestingRemoteWriteUri");
-            }
-            this.receiverIngestingRemoteWriteUri = receiverIngestingRemoteWriteUri;
-            return this;
-        }
-        @CustomType.Setter
         public Builder receiverRemoteWriteUri(String receiverRemoteWriteUri) {
             if (receiverRemoteWriteUri == null) {
               throw new MissingRequiredPropertyException("GetThanosThano", "receiverRemoteWriteUri");
             }
             this.receiverRemoteWriteUri = receiverRemoteWriteUri;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder storeUri(String storeUri) {
-            if (storeUri == null) {
-              throw new MissingRequiredPropertyException("GetThanosThano", "storeUri");
-            }
-            this.storeUri = storeUri;
             return this;
         }
         @CustomType.Setter
@@ -175,9 +123,7 @@ public final class GetThanosThano {
             final var _resultValue = new GetThanosThano();
             _resultValue.queryFrontendUri = queryFrontendUri;
             _resultValue.queryUri = queryUri;
-            _resultValue.receiverIngestingRemoteWriteUri = receiverIngestingRemoteWriteUri;
             _resultValue.receiverRemoteWriteUri = receiverRemoteWriteUri;
-            _resultValue.storeUri = storeUri;
             _resultValue.uris = uris;
             return _resultValue;
         }

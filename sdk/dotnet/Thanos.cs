@@ -11,9 +11,6 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.
-    /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// </summary>
     [AivenResourceType("aiven:index/thanos:Thanos")]
     public partial class Thanos : global::Pulumi.CustomResource
@@ -94,7 +91,7 @@ namespace Pulumi.Aiven
         /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
         [Output("projectVpcId")]
-        public Output<string?> ProjectVpcId { get; private set; } = null!;
+        public Output<string> ProjectVpcId { get; private set; } = null!;
 
         /// <summary>
         /// The hostname of the service.

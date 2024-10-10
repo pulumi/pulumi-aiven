@@ -44,22 +44,6 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
-        [Input("receiverIngestingRemoteWriteUri")]
-        private Input<string>? _receiverIngestingRemoteWriteUri;
-
-        /// <summary>
-        /// Receiver ingesting remote write URI.
-        /// </summary>
-        public Input<string>? ReceiverIngestingRemoteWriteUri
-        {
-            get => _receiverIngestingRemoteWriteUri;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _receiverIngestingRemoteWriteUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
         [Input("receiverRemoteWriteUri")]
         private Input<string>? _receiverRemoteWriteUri;
 
@@ -73,23 +57,6 @@ namespace Pulumi.Aiven.Inputs
             {
                 var emptySecret = Output.CreateSecret(0);
                 _receiverRemoteWriteUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("storeUri")]
-        private Input<string>? _storeUri;
-
-        /// <summary>
-        /// Store URI.
-        /// </summary>
-        [Obsolete(@"This field was added by mistake and has never worked. It will be removed in future versions.")]
-        public Input<string>? StoreUri
-        {
-            get => _storeUri;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _storeUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 

@@ -12,9 +12,6 @@ import (
 )
 
 // Gets information about an Aiven for Thanos® service.
-//
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 func LookupThanos(ctx *pulumi.Context, args *LookupThanosArgs, opts ...pulumi.InvokeOption) (*LookupThanosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupThanosResult

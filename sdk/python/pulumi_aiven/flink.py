@@ -358,6 +358,9 @@ class _FlinkState:
         if disk_space_step is not None:
             pulumi.set(__self__, "disk_space_step", disk_space_step)
         if disk_space_used is not None:
+            warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
+            pulumi.log.warn("""disk_space_used is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
+        if disk_space_used is not None:
             pulumi.set(__self__, "disk_space_used", disk_space_used)
         if flink is not None:
             pulumi.set(__self__, "flink", flink)
@@ -487,6 +490,7 @@ class _FlinkState:
 
     @property
     @pulumi.getter(name="diskSpaceUsed")
+    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
     def disk_space_used(self) -> Optional[pulumi.Input[str]]:
         """
         Disk space that service is currently using
@@ -1082,6 +1086,7 @@ class Flink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSpaceUsed")
+    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
     def disk_space_used(self) -> pulumi.Output[str]:
         """
         Disk space that service is currently using
@@ -1138,7 +1143,7 @@ class Flink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectVpcId")
-    def project_vpc_id(self) -> pulumi.Output[Optional[str]]:
+    def project_vpc_id(self) -> pulumi.Output[str]:
         """
         Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
@@ -1154,7 +1159,7 @@ class Flink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkServiceIntegration']]]:
+    def service_integrations(self) -> pulumi.Output[Sequence['outputs.FlinkServiceIntegration']]:
         """
         Service integrations to specify when creating a service. Not applied after initial service creation
         """

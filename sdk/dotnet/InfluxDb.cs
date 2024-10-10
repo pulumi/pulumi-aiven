@@ -119,7 +119,7 @@ namespace Pulumi.Aiven
         /// servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
         [Output("projectVpcId")]
-        public Output<string?> ProjectVpcId { get; private set; } = null!;
+        public Output<string> ProjectVpcId { get; private set; } = null!;
 
         /// <summary>
         /// The hostname of the service.

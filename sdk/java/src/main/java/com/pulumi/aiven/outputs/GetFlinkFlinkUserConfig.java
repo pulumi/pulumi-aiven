@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfigPrivatelinkAccess;
+import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -55,10 +56,25 @@ public final class GetFlinkFlinkUserConfig {
      */
     private @Nullable Integer numberOfTaskSlots;
     /**
+     * @return Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+     * 
+     */
+    private @Nullable Integer pekkoAskTimeoutS;
+    /**
+     * @return Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     * 
+     */
+    private @Nullable Integer pekkoFramesizeB;
+    /**
      * @return Allow access to selected service components through Privatelink
      * 
      */
     private @Nullable GetFlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
+    private @Nullable GetFlinkFlinkUserConfigPublicAccess publicAccess;
     /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
@@ -122,11 +138,32 @@ public final class GetFlinkFlinkUserConfig {
         return Optional.ofNullable(this.numberOfTaskSlots);
     }
     /**
+     * @return Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+     * 
+     */
+    public Optional<Integer> pekkoAskTimeoutS() {
+        return Optional.ofNullable(this.pekkoAskTimeoutS);
+    }
+    /**
+     * @return Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     * 
+     */
+    public Optional<Integer> pekkoFramesizeB() {
+        return Optional.ofNullable(this.pekkoFramesizeB);
+    }
+    /**
      * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<GetFlinkFlinkUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
+    }
+    /**
+     * @return Allow access to selected service ports from the public Internet
+     * 
+     */
+    public Optional<GetFlinkFlinkUserConfigPublicAccess> publicAccess() {
+        return Optional.ofNullable(this.publicAccess);
     }
     /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
@@ -158,7 +195,10 @@ public final class GetFlinkFlinkUserConfig {
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable Integer numberOfTaskSlots;
+        private @Nullable Integer pekkoAskTimeoutS;
+        private @Nullable Integer pekkoFramesizeB;
         private @Nullable GetFlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
+        private @Nullable GetFlinkFlinkUserConfigPublicAccess publicAccess;
         private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
         public Builder() {}
@@ -170,7 +210,10 @@ public final class GetFlinkFlinkUserConfig {
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.numberOfTaskSlots = defaults.numberOfTaskSlots;
+    	      this.pekkoAskTimeoutS = defaults.pekkoAskTimeoutS;
+    	      this.pekkoFramesizeB = defaults.pekkoFramesizeB;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
+    	      this.publicAccess = defaults.publicAccess;
     	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
         }
@@ -221,9 +264,27 @@ public final class GetFlinkFlinkUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pekkoAskTimeoutS(@Nullable Integer pekkoAskTimeoutS) {
+
+            this.pekkoAskTimeoutS = pekkoAskTimeoutS;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pekkoFramesizeB(@Nullable Integer pekkoFramesizeB) {
+
+            this.pekkoFramesizeB = pekkoFramesizeB;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetFlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess) {
 
             this.privatelinkAccess = privatelinkAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicAccess(@Nullable GetFlinkFlinkUserConfigPublicAccess publicAccess) {
+
+            this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
@@ -246,7 +307,10 @@ public final class GetFlinkFlinkUserConfig {
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
             _resultValue.numberOfTaskSlots = numberOfTaskSlots;
+            _resultValue.pekkoAskTimeoutS = pekkoAskTimeoutS;
+            _resultValue.pekkoFramesizeB = pekkoFramesizeB;
             _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.publicAccess = publicAccess;
             _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;
             return _resultValue;

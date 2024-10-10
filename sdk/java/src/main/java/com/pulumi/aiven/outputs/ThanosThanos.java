@@ -23,24 +23,10 @@ public final class ThanosThanos {
      */
     private @Nullable String queryUri;
     /**
-     * @return Receiver ingesting remote write URI.
-     * 
-     */
-    private @Nullable String receiverIngestingRemoteWriteUri;
-    /**
      * @return Receiver remote write URI.
      * 
      */
     private @Nullable String receiverRemoteWriteUri;
-    /**
-     * @return Store URI.
-     * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
-     * 
-     */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
-    private @Nullable String storeUri;
     /**
      * @return Thanos server URIs.
      * 
@@ -63,29 +49,11 @@ public final class ThanosThanos {
         return Optional.ofNullable(this.queryUri);
     }
     /**
-     * @return Receiver ingesting remote write URI.
-     * 
-     */
-    public Optional<String> receiverIngestingRemoteWriteUri() {
-        return Optional.ofNullable(this.receiverIngestingRemoteWriteUri);
-    }
-    /**
      * @return Receiver remote write URI.
      * 
      */
     public Optional<String> receiverRemoteWriteUri() {
         return Optional.ofNullable(this.receiverRemoteWriteUri);
-    }
-    /**
-     * @return Store URI.
-     * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
-     * 
-     */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
-    public Optional<String> storeUri() {
-        return Optional.ofNullable(this.storeUri);
     }
     /**
      * @return Thanos server URIs.
@@ -106,18 +74,14 @@ public final class ThanosThanos {
     public static final class Builder {
         private @Nullable String queryFrontendUri;
         private @Nullable String queryUri;
-        private @Nullable String receiverIngestingRemoteWriteUri;
         private @Nullable String receiverRemoteWriteUri;
-        private @Nullable String storeUri;
         private @Nullable List<String> uris;
         public Builder() {}
         public Builder(ThanosThanos defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queryFrontendUri = defaults.queryFrontendUri;
     	      this.queryUri = defaults.queryUri;
-    	      this.receiverIngestingRemoteWriteUri = defaults.receiverIngestingRemoteWriteUri;
     	      this.receiverRemoteWriteUri = defaults.receiverRemoteWriteUri;
-    	      this.storeUri = defaults.storeUri;
     	      this.uris = defaults.uris;
         }
 
@@ -134,21 +98,9 @@ public final class ThanosThanos {
             return this;
         }
         @CustomType.Setter
-        public Builder receiverIngestingRemoteWriteUri(@Nullable String receiverIngestingRemoteWriteUri) {
-
-            this.receiverIngestingRemoteWriteUri = receiverIngestingRemoteWriteUri;
-            return this;
-        }
-        @CustomType.Setter
         public Builder receiverRemoteWriteUri(@Nullable String receiverRemoteWriteUri) {
 
             this.receiverRemoteWriteUri = receiverRemoteWriteUri;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder storeUri(@Nullable String storeUri) {
-
-            this.storeUri = storeUri;
             return this;
         }
         @CustomType.Setter
@@ -164,9 +116,7 @@ public final class ThanosThanos {
             final var _resultValue = new ThanosThanos();
             _resultValue.queryFrontendUri = queryFrontendUri;
             _resultValue.queryUri = queryUri;
-            _resultValue.receiverIngestingRemoteWriteUri = receiverIngestingRemoteWriteUri;
             _resultValue.receiverRemoteWriteUri = receiverRemoteWriteUri;
-            _resultValue.storeUri = storeUri;
             _resultValue.uris = uris;
             return _resultValue;
         }

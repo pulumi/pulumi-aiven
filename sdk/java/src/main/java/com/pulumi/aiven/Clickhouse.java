@@ -208,7 +208,11 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
     /**
      * Disk space that service is currently using
      * 
+     * @deprecated
+     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     @Export(name="diskSpaceUsed", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceUsed;
 
@@ -280,14 +284,14 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="projectVpcId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> projectVpcId;
+    private Output<String> projectVpcId;
 
     /**
      * @return Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      * 
      */
-    public Output<Optional<String>> projectVpcId() {
-        return Codegen.optional(this.projectVpcId);
+    public Output<String> projectVpcId() {
+        return this.projectVpcId;
     }
     /**
      * The hostname of the service.

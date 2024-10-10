@@ -65,7 +65,7 @@ type LookupProjectUserResult struct {
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Project membership type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
+	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
 	MemberType string `pulumi:"memberType"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -132,7 +132,7 @@ func (o LookupProjectUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Project membership type. The possible values are `admin`, `developer`, `operator` and `readOnly`.
+// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
 func (o LookupProjectUserResultOutput) MemberType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectUserResult) string { return v.MemberType }).(pulumi.StringOutput)
 }

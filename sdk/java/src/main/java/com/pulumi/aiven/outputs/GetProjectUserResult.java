@@ -27,7 +27,7 @@ public final class GetProjectUserResult {
      */
     private String id;
     /**
-     * @return Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * @return Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
      * 
      */
     private String memberType;
@@ -60,7 +60,7 @@ public final class GetProjectUserResult {
         return this.id;
     }
     /**
-     * @return Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * @return Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
      * 
      */
     public String memberType() {

@@ -158,6 +158,21 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     * 
+     */
+    @Import(name="recoveryBasebackupName")
+    private @Nullable Output<String> recoveryBasebackupName;
+
+    /**
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     * 
+     */
+    public Optional<Output<String>> recoveryBasebackupName() {
+        return Optional.ofNullable(this.recoveryBasebackupName);
+    }
+
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -213,6 +228,7 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         this.privatelinkAccess = $.privatelinkAccess;
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
+        this.recoveryBasebackupName = $.recoveryBasebackupName;
         this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.staticIps = $.staticIps;
@@ -452,6 +468,27 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          */
         public Builder publicAccess(ClickhouseClickhouseUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
+        }
+
+        /**
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recoveryBasebackupName(@Nullable Output<String> recoveryBasebackupName) {
+            $.recoveryBasebackupName = recoveryBasebackupName;
+            return this;
+        }
+
+        /**
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recoveryBasebackupName(String recoveryBasebackupName) {
+            return recoveryBasebackupName(Output.of(recoveryBasebackupName));
         }
 
         /**

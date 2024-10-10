@@ -42,6 +42,8 @@ type InfluxDb struct {
 	// project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Influxdb user configurable settings
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrOutput `pulumi:"influxdbUserConfig"`
@@ -65,7 +67,7 @@ type InfluxDb struct {
 	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
 	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
 	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
+	ProjectVpcId pulumi.StringOutput `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
@@ -174,6 +176,8 @@ type influxDbState struct {
 	// project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Influxdb user configurable settings
 	InfluxdbUserConfig *InfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
@@ -259,6 +263,8 @@ type InfluxDbState struct {
 	// project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Influxdb user configurable settings
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrInput
@@ -574,6 +580,8 @@ func (o InfluxDbOutput) DiskSpaceStep() pulumi.StringOutput {
 }
 
 // Disk space that service is currently using
+//
+// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 func (o InfluxDbOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
@@ -618,8 +626,8 @@ func (o InfluxDbOutput) Project() pulumi.StringOutput {
 // value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
 // as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
 // servers so the operation can take significant amount of time to complete if the service has a lot of data.
-func (o InfluxDbOutput) ProjectVpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InfluxDb) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+func (o InfluxDbOutput) ProjectVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
 // The hostname of the service.

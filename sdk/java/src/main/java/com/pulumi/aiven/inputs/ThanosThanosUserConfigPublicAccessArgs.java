@@ -91,6 +91,21 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
     }
 
     /**
+     * Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    @Import(name="ruler")
+    private @Nullable Output<Boolean> ruler;
+
+    /**
+     * @return Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    public Optional<Output<Boolean>> ruler() {
+        return Optional.ofNullable(this.ruler);
+    }
+
+    /**
      * Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
@@ -113,6 +128,7 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
         this.queryFrontend = $.queryFrontend;
         this.receiverIngesting = $.receiverIngesting;
         this.receiverRouting = $.receiverRouting;
+        this.ruler = $.ruler;
         this.store = $.store;
     }
 
@@ -237,6 +253,27 @@ public final class ThanosThanosUserConfigPublicAccessArgs extends com.pulumi.res
          */
         public Builder receiverRouting(Boolean receiverRouting) {
             return receiverRouting(Output.of(receiverRouting));
+        }
+
+        /**
+         * @param ruler Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruler(@Nullable Output<Boolean> ruler) {
+            $.ruler = ruler;
+            return this;
+        }
+
+        /**
+         * @param ruler Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruler(Boolean ruler) {
+            return ruler(Output.of(ruler));
         }
 
         /**
