@@ -15,6 +15,7 @@ import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
+import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigSingleZone;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigTieredStorage;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -150,6 +151,11 @@ public final class GetKafkaKafkaUserConfig {
      * 
      */
     private @Nullable Boolean serviceLog;
+    /**
+     * @return Single-zone configuration
+     * 
+     */
+    private @Nullable GetKafkaKafkaUserConfigSingleZone singleZone;
     /**
      * @return Use static public IP addresses.
      * 
@@ -335,6 +341,13 @@ public final class GetKafkaKafkaUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
+     * @return Single-zone configuration
+     * 
+     */
+    public Optional<GetKafkaKafkaUserConfigSingleZone> singleZone() {
+        return Optional.ofNullable(this.singleZone);
+    }
+    /**
      * @return Use static public IP addresses.
      * 
      */
@@ -382,6 +395,7 @@ public final class GetKafkaKafkaUserConfig {
         private @Nullable Boolean schemaRegistry;
         private @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
         private @Nullable Boolean serviceLog;
+        private @Nullable GetKafkaKafkaUserConfigSingleZone singleZone;
         private @Nullable Boolean staticIps;
         private @Nullable GetKafkaKafkaUserConfigTieredStorage tieredStorage;
         public Builder() {}
@@ -411,6 +425,7 @@ public final class GetKafkaKafkaUserConfig {
     	      this.schemaRegistry = defaults.schemaRegistry;
     	      this.schemaRegistryConfig = defaults.schemaRegistryConfig;
     	      this.serviceLog = defaults.serviceLog;
+    	      this.singleZone = defaults.singleZone;
     	      this.staticIps = defaults.staticIps;
     	      this.tieredStorage = defaults.tieredStorage;
         }
@@ -572,6 +587,12 @@ public final class GetKafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder singleZone(@Nullable GetKafkaKafkaUserConfigSingleZone singleZone) {
+
+            this.singleZone = singleZone;
+            return this;
+        }
+        @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
 
             this.staticIps = staticIps;
@@ -609,6 +630,7 @@ public final class GetKafkaKafkaUserConfig {
             _resultValue.schemaRegistry = schemaRegistry;
             _resultValue.schemaRegistryConfig = schemaRegistryConfig;
             _resultValue.serviceLog = serviceLog;
+            _resultValue.singleZone = singleZone;
             _resultValue.staticIps = staticIps;
             _resultValue.tieredStorage = tieredStorage;
             return _resultValue;

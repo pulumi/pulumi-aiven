@@ -121,7 +121,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         /// <summary>
-        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+        /// Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+        /// </summary>
+        [Input("logOutput")]
+        public Input<string>? LogOutput { get; set; }
+
+        /// <summary>
+        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
         /// </summary>
         [Input("longQueryTime")]
         public Input<double>? LongQueryTime { get; set; }
@@ -157,7 +163,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? NetWriteTimeout { get; set; }
 
         /// <summary>
-        /// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+        /// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
         /// </summary>
         [Input("slowQueryLog")]
         public Input<bool>? SlowQueryLog { get; set; }

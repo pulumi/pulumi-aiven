@@ -68,10 +68,28 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? NumberOfTaskSlots { get; set; }
 
         /// <summary>
+        /// Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+        /// </summary>
+        [Input("pekkoAskTimeoutS")]
+        public Input<int>? PekkoAskTimeoutS { get; set; }
+
+        /// <summary>
+        /// Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+        /// </summary>
+        [Input("pekkoFramesizeB")]
+        public Input<int>? PekkoFramesizeB { get; set; }
+
+        /// <summary>
         /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.FlinkFlinkUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
+
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet
+        /// </summary>
+        [Input("publicAccess")]
+        public Input<Inputs.FlinkFlinkUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.

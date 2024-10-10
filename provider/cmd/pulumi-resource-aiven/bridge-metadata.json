@@ -315,6 +315,9 @@
                                 },
                                 "privatelink_access": {
                                     "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -645,6 +648,9 @@
                                     "maxItemsOne": true
                                 },
                                 "schema_registry_config": {
+                                    "maxItemsOne": true
+                                },
+                                "single_zone": {
                                     "maxItemsOne": true
                                 },
                                 "tiered_storage": {
@@ -1589,6 +1595,9 @@
                             }
                         }
                     },
+                    "flink_external_postgresql_user_config": {
+                        "maxItemsOne": true
+                    },
                     "kafka_connect_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -2201,6 +2210,10 @@
                     }
                 }
             },
+            "aiven_external_identity": {
+                "current": "aiven:index/getExternalIdentity:getExternalIdentity",
+                "majorVersion": 6
+            },
             "aiven_flink": {
                 "current": "aiven:index/getFlink:getFlink",
                 "majorVersion": 6,
@@ -2235,6 +2248,9 @@
                                     "maxItemsOne": false
                                 },
                                 "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -2558,6 +2574,9 @@
                                     "maxItemsOne": true
                                 },
                                 "schema_registry_config": {
+                                    "maxItemsOne": true
+                                },
+                                "single_zone": {
                                     "maxItemsOne": true
                                 },
                                 "tiered_storage": {
@@ -3473,6 +3492,9 @@
                             }
                         }
                     },
+                    "flink_external_postgresql_user_config": {
+                        "maxItemsOne": false
+                    },
                     "kafka_connect_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -3881,6 +3903,7 @@
             "aiven:index/getClickhouseUser:getClickhouseUser": 0,
             "aiven:index/getConnectionPool:getConnectionPool": 0,
             "aiven:index/getDragonfly:getDragonfly": 0,
+            "aiven:index/getExternalIdentity:getExternalIdentity": 1,
             "aiven:index/getFlink:getFlink": 0,
             "aiven:index/getFlinkApplication:getFlinkApplication": 0,
             "aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion": 0,

@@ -178,6 +178,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ServiceLog { get; set; }
 
         /// <summary>
+        /// Single-zone configuration
+        /// </summary>
+        [Input("singleZone")]
+        public Input<Inputs.KafkaKafkaUserConfigSingleZoneGetArgs>? SingleZone { get; set; }
+
+        /// <summary>
         /// Use static public IP addresses.
         /// </summary>
         [Input("staticIps")]

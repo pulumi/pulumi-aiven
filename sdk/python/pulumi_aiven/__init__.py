@@ -50,6 +50,7 @@ from .get_clickhouse_database import *
 from .get_clickhouse_user import *
 from .get_connection_pool import *
 from .get_dragonfly import *
+from .get_external_identity import *
 from .get_flink import *
 from .get_flink_application import *
 from .get_flink_application_version import *

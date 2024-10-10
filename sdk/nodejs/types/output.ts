@@ -263,6 +263,10 @@ export interface ClickhouseClickhouseUserConfig {
      */
     publicAccess?: outputs.ClickhouseClickhouseUserConfigPublicAccess;
     /**
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     */
+    recoveryBasebackupName?: string;
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
     serviceLog?: boolean;
@@ -763,9 +767,21 @@ export interface FlinkFlinkUserConfig {
      */
     numberOfTaskSlots?: number;
     /**
+     * Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+     */
+    pekkoAskTimeoutS?: number;
+    /**
+     * Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     */
+    pekkoFramesizeB?: number;
+    /**
      * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.FlinkFlinkUserConfigPrivatelinkAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.FlinkFlinkUserConfigPublicAccess;
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
@@ -796,6 +812,13 @@ export interface FlinkFlinkUserConfigPrivatelinkAccess {
      * Enable prometheus.
      */
     prometheus?: boolean;
+}
+
+export interface FlinkFlinkUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    flink?: boolean;
 }
 
 export interface FlinkServiceIntegration {
@@ -1275,6 +1298,10 @@ export interface GetClickhouseClickhouseUserConfig {
      */
     publicAccess?: outputs.GetClickhouseClickhouseUserConfigPublicAccess;
     /**
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     */
+    recoveryBasebackupName?: string;
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
     serviceLog?: boolean;
@@ -1745,9 +1772,21 @@ export interface GetFlinkFlinkUserConfig {
      */
     numberOfTaskSlots?: number;
     /**
+     * Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+     */
+    pekkoAskTimeoutS?: number;
+    /**
+     * Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     */
+    pekkoFramesizeB?: number;
+    /**
      * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetFlinkFlinkUserConfigPrivatelinkAccess;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.GetFlinkFlinkUserConfigPublicAccess;
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
@@ -1778,6 +1817,13 @@ export interface GetFlinkFlinkUserConfigPrivatelinkAccess {
      * Enable prometheus.
      */
     prometheus?: boolean;
+}
+
+export interface GetFlinkFlinkUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    flink?: boolean;
 }
 
 export interface GetFlinkServiceIntegration {
@@ -3006,6 +3052,10 @@ export interface GetKafkaKafkaUserConfig {
      */
     serviceLog?: boolean;
     /**
+     * Single-zone configuration
+     */
+    singleZone?: outputs.GetKafkaKafkaUserConfigSingleZone;
+    /**
      * Use static public IP addresses.
      */
     staticIps?: boolean;
@@ -3503,6 +3553,13 @@ export interface GetKafkaKafkaUserConfigSchemaRegistryConfig {
      * The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
      */
     topicName?: string;
+}
+
+export interface GetKafkaKafkaUserConfigSingleZone {
+    /**
+     * Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+     */
+    enabled?: boolean;
 }
 
 export interface GetKafkaKafkaUserConfigTieredStorage {
@@ -4627,7 +4684,11 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     internalTmpMemStorageEngine?: string;
     /**
-     * The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Default is 10s. Example: `10`.
+     * Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slowQueryLog is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
+     */
+    logOutput?: string;
+    /**
+     * The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
      */
     longQueryTime?: number;
     /**
@@ -4651,7 +4712,7 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     netWriteTimeout?: number;
     /**
-     * Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table. Default is off.
+     * Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
      */
     slowQueryLog?: boolean;
     /**
@@ -4815,6 +4876,9 @@ export interface GetOpenSearchOpensearchUserConfig {
      * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
+    /**
+     * Azure migration settings
+     */
     azureMigration?: outputs.GetOpenSearchOpensearchUserConfigAzureMigration;
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
@@ -4824,6 +4888,9 @@ export interface GetOpenSearchOpensearchUserConfig {
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      */
     disableReplicationFactorAdjustment?: boolean;
+    /**
+     * Google Cloud Storage migration settings
+     */
     gcsMigration?: outputs.GetOpenSearchOpensearchUserConfigGcsMigration;
     /**
      * Index patterns
@@ -4895,6 +4962,9 @@ export interface GetOpenSearchOpensearchUserConfig {
      * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
+    /**
+     * AWS S3 / AWS S3 compatible migration settings
+     */
     s3Migration?: outputs.GetOpenSearchOpensearchUserConfigS3Migration;
     /**
      * OpenSearch SAML configuration
@@ -7228,6 +7298,13 @@ export interface GetServiceIntegrationExternalOpensearchLogsUserConfig {
     selectedLogFields?: string[];
 }
 
+export interface GetServiceIntegrationFlinkExternalPostgresqlUserConfig {
+    /**
+     * Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+     */
+    stringtype?: string;
+}
+
 export interface GetServiceIntegrationKafkaConnectUserConfig {
     /**
      * Kafka Connect service configuration values
@@ -7562,19 +7639,9 @@ export interface GetThanosThano {
      */
     queryUri: string;
     /**
-     * Receiver ingesting remote write URI.
-     */
-    receiverIngestingRemoteWriteUri: string;
-    /**
      * Receiver remote write URI.
      */
     receiverRemoteWriteUri: string;
-    /**
-     * Store URI.
-     *
-     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
-     */
-    storeUri: string;
     /**
      * Thanos server URIs.
      */
@@ -7669,6 +7736,10 @@ export interface GetThanosThanosUserConfigPublicAccess {
      * Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     receiverRouting?: boolean;
+    /**
+     * Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    ruler?: boolean;
     /**
      * Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
      */
@@ -9181,6 +9252,10 @@ export interface KafkaKafkaUserConfig {
      */
     serviceLog?: boolean;
     /**
+     * Single-zone configuration
+     */
+    singleZone?: outputs.KafkaKafkaUserConfigSingleZone;
+    /**
      * Use static public IP addresses.
      */
     staticIps?: boolean;
@@ -9678,6 +9753,13 @@ export interface KafkaKafkaUserConfigSchemaRegistryConfig {
      * The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
      */
     topicName?: string;
+}
+
+export interface KafkaKafkaUserConfigSingleZone {
+    /**
+     * Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+     */
+    enabled?: boolean;
 }
 
 export interface KafkaKafkaUserConfigTieredStorage {
@@ -10802,7 +10884,11 @@ export interface MySqlMysqlUserConfigMysql {
      */
     internalTmpMemStorageEngine?: string;
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+     * Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     */
+    logOutput?: string;
+    /**
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      */
     longQueryTime?: number;
     /**
@@ -10826,7 +10912,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     netWriteTimeout?: number;
     /**
-     * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+     * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      */
     slowQueryLog?: boolean;
     /**
@@ -10990,6 +11076,9 @@ export interface OpenSearchOpensearchUserConfig {
      * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: string;
+    /**
+     * Azure migration settings
+     */
     azureMigration?: outputs.OpenSearchOpensearchUserConfigAzureMigration;
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
@@ -10999,6 +11088,9 @@ export interface OpenSearchOpensearchUserConfig {
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      */
     disableReplicationFactorAdjustment?: boolean;
+    /**
+     * Google Cloud Storage migration settings
+     */
     gcsMigration?: outputs.OpenSearchOpensearchUserConfigGcsMigration;
     /**
      * Index patterns
@@ -11070,6 +11162,9 @@ export interface OpenSearchOpensearchUserConfig {
      * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: string;
+    /**
+     * AWS S3 / AWS S3 compatible migration settings
+     */
     s3Migration?: outputs.OpenSearchOpensearchUserConfigS3Migration;
     /**
      * OpenSearch SAML configuration
@@ -11718,7 +11813,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime: string;
     /**
-     * List of permissions. The possible values are `admin`, `developer`, `operator` and `readOnly`.
+     * List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
      */
     permissions: string[];
     /**
@@ -13483,6 +13578,13 @@ export interface ServiceIntegrationExternalOpensearchLogsUserConfig {
     selectedLogFields?: string[];
 }
 
+export interface ServiceIntegrationFlinkExternalPostgresqlUserConfig {
+    /**
+     * Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+     */
+    stringtype?: string;
+}
+
 export interface ServiceIntegrationKafkaConnectUserConfig {
     /**
      * Kafka Connect service configuration values
@@ -13817,19 +13919,9 @@ export interface ThanosThanos {
      */
     queryUri: string;
     /**
-     * Receiver ingesting remote write URI.
-     */
-    receiverIngestingRemoteWriteUri: string;
-    /**
      * Receiver remote write URI.
      */
     receiverRemoteWriteUri: string;
-    /**
-     * Store URI.
-     *
-     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
-     */
-    storeUri: string;
     /**
      * Thanos server URIs.
      */
@@ -13924,6 +14016,10 @@ export interface ThanosThanosUserConfigPublicAccess {
      * Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     receiverRouting?: boolean;
+    /**
+     * Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    ruler?: boolean;
     /**
      * Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
      */

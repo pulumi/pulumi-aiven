@@ -73,6 +73,8 @@ type M3Aggregator struct {
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// M3 Aggregator server provided values
 	M3aggregator M3AggregatorM3aggregatorOutput `pulumi:"m3aggregator"`
@@ -87,7 +89,7 @@ type M3Aggregator struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
+	ProjectVpcId pulumi.StringOutput `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
@@ -181,6 +183,8 @@ type m3aggregatorState struct {
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// M3 Aggregator server provided values
 	M3aggregator *M3AggregatorM3aggregator `pulumi:"m3aggregator"`
@@ -242,6 +246,8 @@ type M3AggregatorState struct {
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringPtrInput
 	// M3 Aggregator server provided values
 	M3aggregator M3AggregatorM3aggregatorPtrInput
@@ -489,6 +495,8 @@ func (o M3AggregatorOutput) DiskSpaceStep() pulumi.StringOutput {
 }
 
 // Disk space that service is currently using
+//
+// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 func (o M3AggregatorOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3Aggregator) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
@@ -524,8 +532,8 @@ func (o M3AggregatorOutput) Project() pulumi.StringOutput {
 }
 
 // Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
-func (o M3AggregatorOutput) ProjectVpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *M3Aggregator) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+func (o M3AggregatorOutput) ProjectVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *M3Aggregator) pulumi.StringOutput { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
 // The hostname of the service.

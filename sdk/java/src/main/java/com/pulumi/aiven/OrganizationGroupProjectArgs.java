@@ -48,14 +48,14 @@ public final class OrganizationGroupProjectArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
+     * @return [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
      * 
      */
     public Output<String> role() {
@@ -139,7 +139,7 @@ public final class OrganizationGroupProjectArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
+         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class OrganizationGroupProjectArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.
+         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
          * 
          * @return builder
          * 

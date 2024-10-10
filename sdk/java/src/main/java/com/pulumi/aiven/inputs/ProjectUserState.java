@@ -47,14 +47,14 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
      * 
      */
     @Import(name="memberType")
     private @Nullable Output<String> memberType;
 
     /**
-     * @return Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
+     * @return Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
      * 
      */
     public Optional<Output<String>> memberType() {
@@ -146,7 +146,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberType Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
+         * @param memberType Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberType Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.
+         * @param memberType Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
          * 
          * @return builder
          * 

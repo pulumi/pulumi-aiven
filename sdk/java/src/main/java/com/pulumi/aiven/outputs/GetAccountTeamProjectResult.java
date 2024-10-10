@@ -31,7 +31,7 @@ public final class GetAccountTeamProjectResult {
      */
     private String teamId;
     /**
-     * @return The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.
+     * @return The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
      * 
      */
     private String teamType;
@@ -66,7 +66,7 @@ public final class GetAccountTeamProjectResult {
         return this.teamId;
     }
     /**
-     * @return The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.
+     * @return The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
      * 
      */
     public String teamType() {

@@ -408,6 +408,10 @@
                     "$ref": "#/types/aiven:index/ClickhouseClickhouseUserConfigPublicAccess:ClickhouseClickhouseUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet\n"
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "description": "Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.\n"
+                },
                 "serviceLog": {
                     "type": "boolean",
                     "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
@@ -1104,9 +1108,21 @@
                     "type": "integer",
                     "description": "Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.\n"
                 },
+                "pekkoAskTimeoutS": {
+                    "type": "integer",
+                    "description": "Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.\n"
+                },
+                "pekkoFramesizeB": {
+                    "type": "integer",
+                    "description": "Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.\n"
+                },
                 "privatelinkAccess": {
                     "$ref": "#/types/aiven:index/FlinkFlinkUserConfigPrivatelinkAccess:FlinkFlinkUserConfigPrivatelinkAccess",
                     "description": "Allow access to selected service components through Privatelink\n"
+                },
+                "publicAccess": {
+                    "$ref": "#/types/aiven:index/FlinkFlinkUserConfigPublicAccess:FlinkFlinkUserConfigPublicAccess",
+                    "description": "Allow access to selected service ports from the public Internet\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -1144,6 +1160,15 @@
                 "prometheus": {
                     "type": "boolean",
                     "description": "Enable prometheus.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/FlinkFlinkUserConfigPublicAccess:FlinkFlinkUserConfigPublicAccess": {
+            "properties": {
+                "flink": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 }
             },
             "type": "object"
@@ -2766,6 +2791,10 @@
                     "type": "boolean",
                     "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
                 },
+                "singleZone": {
+                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfigSingleZone:KafkaKafkaUserConfigSingleZone",
+                    "description": "Single-zone configuration\n"
+                },
                 "staticIps": {
                     "type": "boolean",
                     "description": "Use static public IP addresses.\n"
@@ -3308,6 +3337,15 @@
                 "topicName": {
                     "type": "string",
                     "description": "The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/KafkaKafkaUserConfigSingleZone:KafkaKafkaUserConfigSingleZone": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.\n"
                 }
             },
             "type": "object"
@@ -4799,9 +4837,13 @@
                     "type": "string",
                     "description": "Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.\n"
                 },
+                "logOutput": {
+                    "type": "string",
+                    "description": "Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.\n"
+                },
                 "longQueryTime": {
                     "type": "number",
-                    "description": "The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.\n"
+                    "description": "The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.\n"
                 },
                 "maxAllowedPacket": {
                     "type": "integer",
@@ -4825,7 +4867,7 @@
                 },
                 "slowQueryLog": {
                     "type": "boolean",
-                    "description": "Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.\n"
+                    "description": "Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.\n"
                 },
                 "sortBufferSize": {
                     "type": "integer",
@@ -5050,7 +5092,8 @@
                     "description": "Additional Cloud Regions for Backup Replication.\n"
                 },
                 "azureMigration": {
-                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigAzureMigration:OpenSearchOpensearchUserConfigAzureMigration"
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigAzureMigration:OpenSearchOpensearchUserConfigAzureMigration",
+                    "description": "Azure migration settings\n"
                 },
                 "customDomain": {
                     "type": "string",
@@ -5061,7 +5104,8 @@
                     "description": "Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.\n"
                 },
                 "gcsMigration": {
-                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigGcsMigration:OpenSearchOpensearchUserConfigGcsMigration"
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigGcsMigration:OpenSearchOpensearchUserConfigGcsMigration",
+                    "description": "Google Cloud Storage migration settings\n"
                 },
                 "indexPatterns": {
                     "type": "array",
@@ -5146,7 +5190,8 @@
                     "description": "Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.\n"
                 },
                 "s3Migration": {
-                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigS3Migration:OpenSearchOpensearchUserConfigS3Migration"
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigS3Migration:OpenSearchOpensearchUserConfigS3Migration",
+                    "description": "AWS S3 / AWS S3 compatible migration settings\n"
                 },
                 "saml": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigSaml:OpenSearchOpensearchUserConfigSaml",
@@ -5200,11 +5245,13 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "Azure account secret key. One of key or sas_token should be specified.\n"
+                    "description": "Azure account secret key. One of key or sas_token should be specified.\n",
+                    "secret": true
                 },
                 "sasToken": {
                     "type": "string",
-                    "description": "A shared access signatures (SAS) token. One of key or sas_token should be specified.\n"
+                    "description": "A shared access signatures (SAS) token. One of key or sas_token should be specified.\n",
+                    "secret": true
                 },
                 "snapshotName": {
                     "type": "string",
@@ -5239,7 +5286,8 @@
                 },
                 "credentials": {
                     "type": "string",
-                    "description": "Google Cloud Storage credentials file content.\n"
+                    "description": "Google Cloud Storage credentials file content.\n",
+                    "secret": true
                 },
                 "indices": {
                     "type": "string",
@@ -5900,7 +5948,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of permissions. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
+                    "description": "List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n"
                 },
                 "principalId": {
                     "type": "string",
@@ -8099,6 +8147,15 @@
             },
             "type": "object"
         },
+        "aiven:index/ServiceIntegrationFlinkExternalPostgresqlUserConfig:ServiceIntegrationFlinkExternalPostgresqlUserConfig": {
+            "properties": {
+                "stringtype": {
+                    "type": "string",
+                    "description": "Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig": {
             "properties": {
                 "kafkaConnect": {
@@ -8501,20 +8558,9 @@
                     "description": "Query URI.\n",
                     "secret": true
                 },
-                "receiverIngestingRemoteWriteUri": {
-                    "type": "string",
-                    "description": "Receiver ingesting remote write URI.\n",
-                    "secret": true
-                },
                 "receiverRemoteWriteUri": {
                     "type": "string",
                     "description": "Receiver remote write URI.\n",
-                    "secret": true
-                },
-                "storeUri": {
-                    "type": "string",
-                    "description": "Store URI.\n",
-                    "deprecationMessage": "This field was added by mistake and has never worked. It will be removed in future versions.",
                     "secret": true
                 },
                 "uris": {
@@ -8532,9 +8578,7 @@
                     "requiredOutputs": [
                         "queryFrontendUri",
                         "queryUri",
-                        "receiverIngestingRemoteWriteUri",
                         "receiverRemoteWriteUri",
-                        "storeUri",
                         "uris"
                     ]
                 }
@@ -8648,6 +8692,10 @@
                 "receiverRouting": {
                     "type": "boolean",
                     "description": "Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "ruler": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "store": {
                     "type": "boolean",
@@ -9701,6 +9749,10 @@
                     "$ref": "#/types/aiven:index/getClickhouseClickhouseUserConfigPublicAccess:getClickhouseClickhouseUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet\n"
                 },
+                "recoveryBasebackupName": {
+                    "type": "string",
+                    "description": "Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.\n"
+                },
                 "serviceLog": {
                     "type": "boolean",
                     "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
@@ -10406,9 +10458,21 @@
                     "type": "integer",
                     "description": "Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.\n"
                 },
+                "pekkoAskTimeoutS": {
+                    "type": "integer",
+                    "description": "Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.\n"
+                },
+                "pekkoFramesizeB": {
+                    "type": "integer",
+                    "description": "Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.\n"
+                },
                 "privatelinkAccess": {
                     "$ref": "#/types/aiven:index/getFlinkFlinkUserConfigPrivatelinkAccess:getFlinkFlinkUserConfigPrivatelinkAccess",
                     "description": "Allow access to selected service components through Privatelink\n"
+                },
+                "publicAccess": {
+                    "$ref": "#/types/aiven:index/getFlinkFlinkUserConfigPublicAccess:getFlinkFlinkUserConfigPublicAccess",
+                    "description": "Allow access to selected service ports from the public Internet\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -10451,6 +10515,15 @@
                 "prometheus": {
                     "type": "boolean",
                     "description": "Enable prometheus.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getFlinkFlinkUserConfigPublicAccess:getFlinkFlinkUserConfigPublicAccess": {
+            "properties": {
+                "flink": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 }
             },
             "type": "object"
@@ -12202,6 +12275,10 @@
                     "type": "boolean",
                     "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
                 },
+                "singleZone": {
+                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigSingleZone:getKafkaKafkaUserConfigSingleZone",
+                    "description": "Single-zone configuration\n"
+                },
                 "staticIps": {
                     "type": "boolean",
                     "description": "Use static public IP addresses.\n"
@@ -12764,6 +12841,15 @@
                 "topicName": {
                     "type": "string",
                     "description": "The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getKafkaKafkaUserConfigSingleZone:getKafkaKafkaUserConfigSingleZone": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.\n"
                 }
             },
             "type": "object"
@@ -14371,9 +14457,13 @@
                     "type": "string",
                     "description": "Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.\n"
                 },
+                "logOutput": {
+                    "type": "string",
+                    "description": "Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow_query_log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.\n"
+                },
                 "longQueryTime": {
                     "type": "number",
-                    "description": "The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s. Example: `10`.\n"
+                    "description": "The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10`.\n"
                 },
                 "maxAllowedPacket": {
                     "type": "integer",
@@ -14397,7 +14487,7 @@
                 },
                 "slowQueryLog": {
                     "type": "boolean",
-                    "description": "Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.\n"
+                    "description": "Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table.\n"
                 },
                 "sortBufferSize": {
                     "type": "integer",
@@ -14639,7 +14729,8 @@
                     "description": "Additional Cloud Regions for Backup Replication.\n"
                 },
                 "azureMigration": {
-                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigAzureMigration:getOpenSearchOpensearchUserConfigAzureMigration"
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigAzureMigration:getOpenSearchOpensearchUserConfigAzureMigration",
+                    "description": "Azure migration settings\n"
                 },
                 "customDomain": {
                     "type": "string",
@@ -14650,7 +14741,8 @@
                     "description": "Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.\n"
                 },
                 "gcsMigration": {
-                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigGcsMigration:getOpenSearchOpensearchUserConfigGcsMigration"
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigGcsMigration:getOpenSearchOpensearchUserConfigGcsMigration",
+                    "description": "Google Cloud Storage migration settings\n"
                 },
                 "indexPatterns": {
                     "type": "array",
@@ -14734,7 +14826,8 @@
                     "description": "Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.\n"
                 },
                 "s3Migration": {
-                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigS3Migration:getOpenSearchOpensearchUserConfigS3Migration"
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigS3Migration:getOpenSearchOpensearchUserConfigS3Migration",
+                    "description": "AWS S3 / AWS S3 compatible migration settings\n"
                 },
                 "saml": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigSaml:getOpenSearchOpensearchUserConfigSaml",
@@ -14787,11 +14880,13 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "Azure account secret key. One of key or sas_token should be specified.\n"
+                    "description": "Azure account secret key. One of key or sas_token should be specified.\n",
+                    "secret": true
                 },
                 "sasToken": {
                     "type": "string",
-                    "description": "A shared access signatures (SAS) token. One of key or sas_token should be specified.\n"
+                    "description": "A shared access signatures (SAS) token. One of key or sas_token should be specified.\n",
+                    "secret": true
                 },
                 "snapshotName": {
                     "type": "string",
@@ -14831,7 +14926,8 @@
                 },
                 "credentials": {
                     "type": "string",
-                    "description": "Google Cloud Storage credentials file content.\n"
+                    "description": "Google Cloud Storage credentials file content.\n",
+                    "secret": true
                 },
                 "indices": {
                     "type": "string",
@@ -17786,6 +17882,15 @@
             },
             "type": "object"
         },
+        "aiven:index/getServiceIntegrationFlinkExternalPostgresqlUserConfig:getServiceIntegrationFlinkExternalPostgresqlUserConfig": {
+            "properties": {
+                "stringtype": {
+                    "type": "string",
+                    "description": "Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getServiceIntegrationKafkaConnectUserConfig:getServiceIntegrationKafkaConnectUserConfig": {
             "properties": {
                 "kafkaConnect": {
@@ -18209,20 +18314,9 @@
                     "description": "Query URI.\n",
                     "secret": true
                 },
-                "receiverIngestingRemoteWriteUri": {
-                    "type": "string",
-                    "description": "Receiver ingesting remote write URI.\n",
-                    "secret": true
-                },
                 "receiverRemoteWriteUri": {
                     "type": "string",
                     "description": "Receiver remote write URI.\n",
-                    "secret": true
-                },
-                "storeUri": {
-                    "type": "string",
-                    "description": "Store URI.\n",
-                    "deprecationMessage": "This field was added by mistake and has never worked. It will be removed in future versions.",
                     "secret": true
                 },
                 "uris": {
@@ -18238,9 +18332,7 @@
             "required": [
                 "queryFrontendUri",
                 "queryUri",
-                "receiverIngestingRemoteWriteUri",
                 "receiverRemoteWriteUri",
-                "storeUri",
                 "uris"
             ],
             "language": {
@@ -18362,6 +18454,10 @@
                 "receiverRouting": {
                     "type": "boolean",
                     "description": "Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.\n"
+                },
+                "ruler": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "store": {
                     "type": "boolean",
@@ -19320,7 +19416,7 @@
                 },
                 "teamType": {
                     "type": "string",
-                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.\n"
+                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
                 }
             },
             "required": [
@@ -19342,7 +19438,7 @@
                 },
                 "teamType": {
                     "type": "string",
-                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.\n"
+                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
                 }
             },
             "requiredInputs": [
@@ -19366,7 +19462,7 @@
                     },
                     "teamType": {
                         "type": "string",
-                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.\n"
+                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
                     }
                 },
                 "type": "object"
@@ -20177,7 +20273,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -20275,7 +20372,9 @@
                 "diskSpaceUsed",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -20427,7 +20526,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -20684,7 +20784,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -20782,6 +20883,7 @@
                 "diskSpaceUsed",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
                 "serviceName",
                 "servicePassword",
@@ -20934,7 +21036,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -21548,7 +21651,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "dragonfly": {
                     "$ref": "#/types/aiven:index/DragonflyDragonfly:DragonflyDragonfly",
@@ -21660,7 +21764,9 @@
                 "dragonfly",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -21798,7 +21904,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "dragonfly": {
                         "$ref": "#/types/aiven:index/DragonflyDragonfly:DragonflyDragonfly",
@@ -21943,7 +22050,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "flink": {
                     "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
@@ -22055,7 +22163,9 @@
                 "flink",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -22193,7 +22303,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "flink": {
                         "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
@@ -23065,7 +23176,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "grafana": {
                     "$ref": "#/types/aiven:index/GrafanaGrafana:GrafanaGrafana",
@@ -23177,7 +23289,9 @@
                 "grafana",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -23314,7 +23428,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "grafana": {
                         "$ref": "#/types/aiven:index/GrafanaGrafana:GrafanaGrafana",
@@ -23458,7 +23573,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "influxdbUserConfig": {
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
@@ -23568,7 +23684,9 @@
                 "influxdbs",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -23704,7 +23822,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "influxdbUserConfig": {
                         "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
@@ -24035,7 +24154,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "kafkaUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig",
@@ -24155,7 +24275,9 @@
                 "kafkas",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -24311,7 +24433,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "kafkaUserConfig": {
                         "$ref": "#/types/aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig",
@@ -24570,7 +24693,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfig:KafkaConnectKafkaConnectUserConfig",
@@ -24671,7 +24795,9 @@
                 "diskSpaceUsed",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -24799,7 +24925,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "kafkaConnectUserConfig": {
                         "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfig:KafkaConnectKafkaConnectUserConfig",
@@ -25091,7 +25218,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "kafkaMirrormakerUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfig:KafkaMirrorMakerKafkaMirrormakerUserConfig",
@@ -25192,7 +25320,9 @@
                 "diskSpaceUsed",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -25320,7 +25450,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "kafkaMirrormakerUserConfig": {
                         "$ref": "#/types/aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfig:KafkaMirrorMakerKafkaMirrormakerUserConfig",
@@ -26007,7 +26138,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "m3aggregator": {
                     "$ref": "#/types/aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator",
@@ -26114,7 +26246,9 @@
                 "m3aggregator",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -26247,7 +26381,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "m3aggregator": {
                         "$ref": "#/types/aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator",
@@ -26387,7 +26522,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "m3db": {
                     "$ref": "#/types/aiven:index/M3DbM3db:M3DbM3db",
@@ -26494,7 +26630,9 @@
                 "m3db",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -26627,7 +26765,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "m3db": {
                         "$ref": "#/types/aiven:index/M3DbM3db:M3DbM3db",
@@ -27099,7 +27238,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -27206,7 +27346,9 @@
                 "mysql",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -27339,7 +27481,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -27677,7 +27820,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -27787,7 +27931,9 @@
                 "opensearches",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -27923,7 +28069,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -28739,7 +28886,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.\n"
+                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts"
@@ -28761,7 +28908,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.\n"
+                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts"
@@ -28785,7 +28932,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `read_only`.\n"
+                        "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts"
@@ -29238,7 +29385,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -29350,7 +29498,9 @@
                 "pg",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -29487,7 +29637,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -30053,7 +30204,7 @@
                 },
                 "memberType": {
                     "type": "string",
-                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
+                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n"
                 },
                 "project": {
                     "type": "string",
@@ -30074,7 +30225,7 @@
                 },
                 "memberType": {
                     "type": "string",
-                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
+                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n"
                 },
                 "project": {
                     "type": "string",
@@ -30101,7 +30252,7 @@
                     },
                     "memberType": {
                         "type": "string",
-                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n"
+                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n"
                     },
                     "project": {
                         "type": "string",
@@ -30223,7 +30374,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -30334,8 +30486,10 @@
                 "diskSpaceUsed",
                 "plan",
                 "project",
+                "projectVpcId",
                 "redis",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -30473,7 +30627,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -30802,13 +30957,17 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationExternalOpensearchLogsUserConfig:ServiceIntegrationExternalOpensearchLogsUserConfig",
                     "description": "ExternalOpensearchLogs user configurable settings\n"
                 },
+                "flinkExternalPostgresqlUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationFlinkExternalPostgresqlUserConfig:ServiceIntegrationFlinkExternalPostgresqlUserConfig",
+                    "description": "FlinkExternalPostgresql user configurable settings\n"
+                },
                 "integrationId": {
                     "type": "string",
                     "description": "The ID of the Aiven service integration.\n"
                 },
                 "integrationType": {
                     "type": "string",
-                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
+                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`\n"
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig",
@@ -30891,9 +31050,13 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationExternalOpensearchLogsUserConfig:ServiceIntegrationExternalOpensearchLogsUserConfig",
                     "description": "ExternalOpensearchLogs user configurable settings\n"
                 },
+                "flinkExternalPostgresqlUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationFlinkExternalPostgresqlUserConfig:ServiceIntegrationFlinkExternalPostgresqlUserConfig",
+                    "description": "FlinkExternalPostgresql user configurable settings\n"
+                },
                 "integrationType": {
                     "type": "string",
-                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
+                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`\n",
                     "willReplaceOnChanges": true
                 },
                 "kafkaConnectUserConfig": {
@@ -30981,13 +31144,17 @@
                         "$ref": "#/types/aiven:index/ServiceIntegrationExternalOpensearchLogsUserConfig:ServiceIntegrationExternalOpensearchLogsUserConfig",
                         "description": "ExternalOpensearchLogs user configurable settings\n"
                     },
+                    "flinkExternalPostgresqlUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationFlinkExternalPostgresqlUserConfig:ServiceIntegrationFlinkExternalPostgresqlUserConfig",
+                        "description": "FlinkExternalPostgresql user configurable settings\n"
+                    },
                     "integrationId": {
                         "type": "string",
                         "description": "The ID of the Aiven service integration.\n"
                     },
                     "integrationType": {
                         "type": "string",
-                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
+                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`\n",
                         "willReplaceOnChanges": true
                     },
                     "kafkaConnectUserConfig": {
@@ -31306,7 +31473,7 @@
             }
         },
         "aiven:index/staticIp:StaticIp": {
-            "description": "The aiven.StaticIp resource allows the creation and deletion of static ips. Please not that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.\n",
+            "description": "The aiven.StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.\n",
             "properties": {
                 "cloudName": {
                     "type": "string",
@@ -31391,7 +31558,7 @@
             }
         },
         "aiven:index/thanos:Thanos": {
-            "description": "Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "description": "Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.\n",
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
@@ -31427,7 +31594,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -31538,7 +31706,9 @@
                 "diskSpaceUsed",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -31677,7 +31847,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -31957,7 +32128,8 @@
                 },
                 "diskSpaceUsed": {
                     "type": "string",
-                    "description": "Disk space that service is currently using\n"
+                    "description": "Disk space that service is currently using\n",
+                    "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -32068,7 +32240,9 @@
                 "diskSpaceUsed",
                 "plan",
                 "project",
+                "projectVpcId",
                 "serviceHost",
+                "serviceIntegrations",
                 "serviceName",
                 "servicePassword",
                 "servicePort",
@@ -32207,7 +32381,8 @@
                     },
                     "diskSpaceUsed": {
                         "type": "string",
-                        "description": "Disk space that service is currently using\n"
+                        "description": "Disk space that service is currently using\n",
+                        "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -32868,7 +33043,7 @@
                         "type": "string"
                     },
                     "teamType": {
-                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.\n",
+                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n",
                         "type": "string"
                     }
                 },
@@ -34388,6 +34563,70 @@
                     "tags",
                     "techEmails",
                     "terminationProtection",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getExternalIdentity:getExternalIdentity": {
+            "description": "Maps an external service user to an Aiven user. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getExternalIdentity.\n",
+                "properties": {
+                    "externalServiceName": {
+                        "type": "string",
+                        "description": "The name of the external service. The possible values are `github`.\n"
+                    },
+                    "externalUserId": {
+                        "type": "string",
+                        "description": "The user's ID on the external service.\n"
+                    },
+                    "internalUserId": {
+                        "type": "string",
+                        "description": "The Aiven user ID.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The ID of the Aiven organization that the user is part of.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "externalServiceName",
+                    "externalUserId",
+                    "internalUserId",
+                    "organizationId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getExternalIdentity.\n",
+                "properties": {
+                    "externalServiceName": {
+                        "description": "The name of the external service. The possible values are `github`.\n",
+                        "type": "string"
+                    },
+                    "externalUserId": {
+                        "description": "The user's ID on the external service.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "internalUserId": {
+                        "description": "The Aiven user ID.\n",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "The ID of the Aiven organization that the user is part of.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "externalServiceName",
+                    "externalUserId",
+                    "internalUserId",
+                    "organizationId",
                     "id"
                 ],
                 "type": "object"
@@ -38710,7 +38949,7 @@
                         "type": "string"
                     },
                     "memberType": {
-                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator` and `read_only`.\n",
+                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n",
                         "type": "string"
                     },
                     "project": {
@@ -39184,7 +39423,7 @@
                     },
                     "integrationType": {
                         "type": "string",
-                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
+                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`\n"
                     },
                     "project": {
                         "type": "string",
@@ -39263,6 +39502,13 @@
                         },
                         "type": "array"
                     },
+                    "flinkExternalPostgresqlUserConfigs": {
+                        "description": "FlinkExternalPostgresql user configurable settings\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServiceIntegrationFlinkExternalPostgresqlUserConfig:getServiceIntegrationFlinkExternalPostgresqlUserConfig"
+                        },
+                        "type": "array"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
@@ -39272,7 +39518,7 @@
                         "type": "string"
                     },
                     "integrationType": {
-                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
+                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`\n",
                         "type": "string"
                     },
                     "kafkaConnectUserConfigs": {
@@ -39340,6 +39586,7 @@
                     "externalAwsCloudwatchMetricsUserConfigs",
                     "externalElasticsearchLogsUserConfigs",
                     "externalOpensearchLogsUserConfigs",
+                    "flinkExternalPostgresqlUserConfigs",
                     "integrationId",
                     "integrationType",
                     "kafkaConnectUserConfigs",
@@ -39542,7 +39789,7 @@
             }
         },
         "aiven:index/getThanos:getThanos": {
-            "description": "Gets information about an Aiven for Thanos® service. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "description": "Gets information about an Aiven for Thanos® service.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getThanos.\n",
                 "properties": {

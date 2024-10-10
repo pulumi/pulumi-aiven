@@ -22,7 +22,7 @@ class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
     """
-    def __init__(__self__, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_opensearch_logs_user_configs=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, project=None, prometheus_user_configs=None, source_endpoint_id=None, source_service_name=None):
+    def __init__(__self__, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_opensearch_logs_user_configs=None, flink_external_postgresql_user_configs=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, project=None, prometheus_user_configs=None, source_endpoint_id=None, source_service_name=None):
         if clickhouse_kafka_user_configs and not isinstance(clickhouse_kafka_user_configs, list):
             raise TypeError("Expected argument 'clickhouse_kafka_user_configs' to be a list")
         pulumi.set(__self__, "clickhouse_kafka_user_configs", clickhouse_kafka_user_configs)
@@ -50,6 +50,9 @@ class GetServiceIntegrationResult:
         if external_opensearch_logs_user_configs and not isinstance(external_opensearch_logs_user_configs, list):
             raise TypeError("Expected argument 'external_opensearch_logs_user_configs' to be a list")
         pulumi.set(__self__, "external_opensearch_logs_user_configs", external_opensearch_logs_user_configs)
+        if flink_external_postgresql_user_configs and not isinstance(flink_external_postgresql_user_configs, list):
+            raise TypeError("Expected argument 'flink_external_postgresql_user_configs' to be a list")
+        pulumi.set(__self__, "flink_external_postgresql_user_configs", flink_external_postgresql_user_configs)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -160,6 +163,14 @@ class GetServiceIntegrationResult:
         return pulumi.get(self, "external_opensearch_logs_user_configs")
 
     @property
+    @pulumi.getter(name="flinkExternalPostgresqlUserConfigs")
+    def flink_external_postgresql_user_configs(self) -> Sequence['outputs.GetServiceIntegrationFlinkExternalPostgresqlUserConfigResult']:
+        """
+        FlinkExternalPostgresql user configurable settings
+        """
+        return pulumi.get(self, "flink_external_postgresql_user_configs")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -179,7 +190,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
+        Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
         """
         return pulumi.get(self, "integration_type")
 
@@ -271,6 +282,7 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             external_aws_cloudwatch_metrics_user_configs=self.external_aws_cloudwatch_metrics_user_configs,
             external_elasticsearch_logs_user_configs=self.external_elasticsearch_logs_user_configs,
             external_opensearch_logs_user_configs=self.external_opensearch_logs_user_configs,
+            flink_external_postgresql_user_configs=self.flink_external_postgresql_user_configs,
             id=self.id,
             integration_id=self.integration_id,
             integration_type=self.integration_type,
@@ -307,7 +319,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
 
 
     :param str destination_service_name: Destination service for the integration.
-    :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
+    :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
     :param str project: Project the integration belongs to.
     :param str source_service_name: Source service for the integration (if any)
     """
@@ -329,6 +341,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
         external_aws_cloudwatch_metrics_user_configs=pulumi.get(__ret__, 'external_aws_cloudwatch_metrics_user_configs'),
         external_elasticsearch_logs_user_configs=pulumi.get(__ret__, 'external_elasticsearch_logs_user_configs'),
         external_opensearch_logs_user_configs=pulumi.get(__ret__, 'external_opensearch_logs_user_configs'),
+        flink_external_postgresql_user_configs=pulumi.get(__ret__, 'flink_external_postgresql_user_configs'),
         id=pulumi.get(__ret__, 'id'),
         integration_id=pulumi.get(__ret__, 'integration_id'),
         integration_type=pulumi.get(__ret__, 'integration_type'),
@@ -366,7 +379,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
 
 
     :param str destination_service_name: Destination service for the integration.
-    :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
+    :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
     :param str project: Project the integration belongs to.
     :param str source_service_name: Source service for the integration (if any)
     """

@@ -33,6 +33,10 @@ public final class GetOpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable String additionalBackupRegions;
+    /**
+     * @return Azure migration settings
+     * 
+     */
     private @Nullable GetOpenSearchOpensearchUserConfigAzureMigration azureMigration;
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
@@ -44,6 +48,10 @@ public final class GetOpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable Boolean disableReplicationFactorAdjustment;
+    /**
+     * @return Google Cloud Storage migration settings
+     * 
+     */
     private @Nullable GetOpenSearchOpensearchUserConfigGcsMigration gcsMigration;
     /**
      * @return Index patterns
@@ -134,6 +142,10 @@ public final class GetOpenSearchOpensearchUserConfig {
      * 
      */
     private @Nullable String recoveryBasebackupName;
+    /**
+     * @return AWS S3 / AWS S3 compatible migration settings
+     * 
+     */
     private @Nullable GetOpenSearchOpensearchUserConfigS3Migration s3Migration;
     /**
      * @return OpenSearch SAML configuration
@@ -164,6 +176,10 @@ public final class GetOpenSearchOpensearchUserConfig {
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
+    /**
+     * @return Azure migration settings
+     * 
+     */
     public Optional<GetOpenSearchOpensearchUserConfigAzureMigration> azureMigration() {
         return Optional.ofNullable(this.azureMigration);
     }
@@ -181,6 +197,10 @@ public final class GetOpenSearchOpensearchUserConfig {
     public Optional<Boolean> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
+    /**
+     * @return Google Cloud Storage migration settings
+     * 
+     */
     public Optional<GetOpenSearchOpensearchUserConfigGcsMigration> gcsMigration() {
         return Optional.ofNullable(this.gcsMigration);
     }
@@ -307,6 +327,10 @@ public final class GetOpenSearchOpensearchUserConfig {
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
+    /**
+     * @return AWS S3 / AWS S3 compatible migration settings
+     * 
+     */
     public Optional<GetOpenSearchOpensearchUserConfigS3Migration> s3Migration() {
         return Optional.ofNullable(this.s3Migration);
     }

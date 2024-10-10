@@ -66,6 +66,11 @@ public final class GetClickhouseClickhouseUserConfig {
      */
     private @Nullable GetClickhouseClickhouseUserConfigPublicAccess publicAccess;
     /**
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     * 
+     */
+    private @Nullable String recoveryBasebackupName;
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -147,6 +152,13 @@ public final class GetClickhouseClickhouseUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     * 
+     */
+    public Optional<String> recoveryBasebackupName() {
+        return Optional.ofNullable(this.recoveryBasebackupName);
+    }
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -185,6 +197,7 @@ public final class GetClickhouseClickhouseUserConfig {
         private @Nullable GetClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable String projectToForkFrom;
         private @Nullable GetClickhouseClickhouseUserConfigPublicAccess publicAccess;
+        private @Nullable String recoveryBasebackupName;
         private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
@@ -199,6 +212,7 @@ public final class GetClickhouseClickhouseUserConfig {
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
+    	      this.recoveryBasebackupName = defaults.recoveryBasebackupName;
     	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
@@ -262,6 +276,12 @@ public final class GetClickhouseClickhouseUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder recoveryBasebackupName(@Nullable String recoveryBasebackupName) {
+
+            this.recoveryBasebackupName = recoveryBasebackupName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceLog(@Nullable Boolean serviceLog) {
 
             this.serviceLog = serviceLog;
@@ -289,6 +309,7 @@ public final class GetClickhouseClickhouseUserConfig {
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
+            _resultValue.recoveryBasebackupName = recoveryBasebackupName;
             _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.staticIps = staticIps;

@@ -36,11 +36,21 @@ namespace Pulumi.Aiven.Inputs
         [Input("compress")]
         public Input<bool>? Compress { get; set; }
 
+        [Input("credentials", required: true)]
+        private Input<string>? _credentials;
+
         /// <summary>
         /// Google Cloud Storage credentials file content.
         /// </summary>
-        [Input("credentials", required: true)]
-        public Input<string> Credentials { get; set; } = null!;
+        public Input<string>? Credentials
+        {
+            get => _credentials;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _credentials = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.

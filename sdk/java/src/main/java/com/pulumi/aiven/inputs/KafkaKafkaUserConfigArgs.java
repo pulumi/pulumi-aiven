@@ -15,6 +15,7 @@ import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigPublicAccessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigSchemaRegistryConfigArgs;
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigSingleZoneArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigTieredStorageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -399,6 +400,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Single-zone configuration
+     * 
+     */
+    @Import(name="singleZone")
+    private @Nullable Output<KafkaKafkaUserConfigSingleZoneArgs> singleZone;
+
+    /**
+     * @return Single-zone configuration
+     * 
+     */
+    public Optional<Output<KafkaKafkaUserConfigSingleZoneArgs>> singleZone() {
+        return Optional.ofNullable(this.singleZone);
+    }
+
+    /**
      * Use static public IP addresses.
      * 
      */
@@ -455,6 +471,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.schemaRegistry = $.schemaRegistry;
         this.schemaRegistryConfig = $.schemaRegistryConfig;
         this.serviceLog = $.serviceLog;
+        this.singleZone = $.singleZone;
         this.staticIps = $.staticIps;
         this.tieredStorage = $.tieredStorage;
     }
@@ -1021,6 +1038,27 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder serviceLog(Boolean serviceLog) {
             return serviceLog(Output.of(serviceLog));
+        }
+
+        /**
+         * @param singleZone Single-zone configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleZone(@Nullable Output<KafkaKafkaUserConfigSingleZoneArgs> singleZone) {
+            $.singleZone = singleZone;
+            return this;
+        }
+
+        /**
+         * @param singleZone Single-zone configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleZone(KafkaKafkaUserConfigSingleZoneArgs singleZone) {
+            return singleZone(Output.of(singleZone));
         }
 
         /**

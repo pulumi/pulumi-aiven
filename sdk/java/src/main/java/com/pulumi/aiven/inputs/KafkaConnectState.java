@@ -139,14 +139,22 @@ public final class KafkaConnectState extends com.pulumi.resources.ResourceArgs {
     /**
      * Disk space that service is currently using
      * 
+     * @deprecated
+     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     @Import(name="diskSpaceUsed")
     private @Nullable Output<String> diskSpaceUsed;
 
     /**
      * @return Disk space that service is currently using
      * 
+     * @deprecated
+     * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * 
      */
+    @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     public Optional<Output<String>> diskSpaceUsed() {
         return Optional.ofNullable(this.diskSpaceUsed);
     }
@@ -656,7 +664,11 @@ public final class KafkaConnectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpaceUsed(@Nullable Output<String> diskSpaceUsed) {
             $.diskSpaceUsed = diskSpaceUsed;
             return this;
@@ -667,7 +679,11 @@ public final class KafkaConnectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+         * 
          */
+        @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpaceUsed(String diskSpaceUsed) {
             return diskSpaceUsed(Output.of(diskSpaceUsed));
         }

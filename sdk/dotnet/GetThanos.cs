@@ -12,19 +12,13 @@ namespace Pulumi.Aiven
     public static class GetThanos
     {
         /// <summary>
-        /// Gets information about an Aiven for Thanos® service. 
-        /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// Gets information about an Aiven for Thanos® service.
         /// </summary>
         public static Task<GetThanosResult> InvokeAsync(GetThanosArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetThanosResult>("aiven:index/getThanos:getThanos", args ?? new GetThanosArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an Aiven for Thanos® service. 
-        /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// Gets information about an Aiven for Thanos® service.
         /// </summary>
         public static Output<GetThanosResult> Invoke(GetThanosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetThanosResult>("aiven:index/getThanos:getThanos", args ?? new GetThanosInvokeArgs(), options.WithDefaults());

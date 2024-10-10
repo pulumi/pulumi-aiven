@@ -47,21 +47,6 @@ public final class ThanosThanosArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Receiver ingesting remote write URI.
-     * 
-     */
-    @Import(name="receiverIngestingRemoteWriteUri")
-    private @Nullable Output<String> receiverIngestingRemoteWriteUri;
-
-    /**
-     * @return Receiver ingesting remote write URI.
-     * 
-     */
-    public Optional<Output<String>> receiverIngestingRemoteWriteUri() {
-        return Optional.ofNullable(this.receiverIngestingRemoteWriteUri);
-    }
-
-    /**
      * Receiver remote write URI.
      * 
      */
@@ -74,29 +59,6 @@ public final class ThanosThanosArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> receiverRemoteWriteUri() {
         return Optional.ofNullable(this.receiverRemoteWriteUri);
-    }
-
-    /**
-     * Store URI.
-     * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
-     * 
-     */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
-    @Import(name="storeUri")
-    private @Nullable Output<String> storeUri;
-
-    /**
-     * @return Store URI.
-     * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
-     * 
-     */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
-    public Optional<Output<String>> storeUri() {
-        return Optional.ofNullable(this.storeUri);
     }
 
     /**
@@ -119,9 +81,7 @@ public final class ThanosThanosArgs extends com.pulumi.resources.ResourceArgs {
     private ThanosThanosArgs(ThanosThanosArgs $) {
         this.queryFrontendUri = $.queryFrontendUri;
         this.queryUri = $.queryUri;
-        this.receiverIngestingRemoteWriteUri = $.receiverIngestingRemoteWriteUri;
         this.receiverRemoteWriteUri = $.receiverRemoteWriteUri;
-        this.storeUri = $.storeUri;
         this.uris = $.uris;
     }
 
@@ -186,27 +146,6 @@ public final class ThanosThanosArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param receiverIngestingRemoteWriteUri Receiver ingesting remote write URI.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder receiverIngestingRemoteWriteUri(@Nullable Output<String> receiverIngestingRemoteWriteUri) {
-            $.receiverIngestingRemoteWriteUri = receiverIngestingRemoteWriteUri;
-            return this;
-        }
-
-        /**
-         * @param receiverIngestingRemoteWriteUri Receiver ingesting remote write URI.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder receiverIngestingRemoteWriteUri(String receiverIngestingRemoteWriteUri) {
-            return receiverIngestingRemoteWriteUri(Output.of(receiverIngestingRemoteWriteUri));
-        }
-
-        /**
          * @param receiverRemoteWriteUri Receiver remote write URI.
          * 
          * @return builder
@@ -225,35 +164,6 @@ public final class ThanosThanosArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder receiverRemoteWriteUri(String receiverRemoteWriteUri) {
             return receiverRemoteWriteUri(Output.of(receiverRemoteWriteUri));
-        }
-
-        /**
-         * @param storeUri Store URI.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This field was added by mistake and has never worked. It will be removed in future versions.
-         * 
-         */
-        @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
-        public Builder storeUri(@Nullable Output<String> storeUri) {
-            $.storeUri = storeUri;
-            return this;
-        }
-
-        /**
-         * @param storeUri Store URI.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This field was added by mistake and has never worked. It will be removed in future versions.
-         * 
-         */
-        @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
-        public Builder storeUri(String storeUri) {
-            return storeUri(Output.of(storeUri));
         }
 
         /**

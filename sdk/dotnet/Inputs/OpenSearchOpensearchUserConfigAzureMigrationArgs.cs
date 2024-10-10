@@ -54,17 +54,37 @@ namespace Pulumi.Aiven.Inputs
         [Input("indices")]
         public Input<string>? Indices { get; set; }
 
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// Azure account secret key. One of key or sas_token should be specified.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("sasToken")]
+        private Input<string>? _sasToken;
 
         /// <summary>
         /// A shared access signatures (SAS) token. One of key or sas_token should be specified.
         /// </summary>
-        [Input("sasToken")]
-        public Input<string>? SasToken { get; set; }
+        public Input<string>? SasToken
+        {
+            get => _sasToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sasToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The snapshot name to restore from.

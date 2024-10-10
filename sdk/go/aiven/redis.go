@@ -76,6 +76,8 @@ type Redis struct {
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -86,7 +88,7 @@ type Redis struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
-	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
+	ProjectVpcId pulumi.StringOutput `pulumi:"projectVpcId"`
 	// Redis server provided values
 	Redis RedisRedisOutput `pulumi:"redis"`
 	// Redis user configurable settings
@@ -184,6 +186,8 @@ type redisState struct {
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -245,6 +249,8 @@ type RedisState struct {
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
+	//
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -492,6 +498,8 @@ func (o RedisOutput) DiskSpaceStep() pulumi.StringOutput {
 }
 
 // Disk space that service is currently using
+//
+// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 func (o RedisOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
@@ -517,8 +525,8 @@ func (o RedisOutput) Project() pulumi.StringOutput {
 }
 
 // Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
-func (o RedisOutput) ProjectVpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Redis) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+func (o RedisOutput) ProjectVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Redis) pulumi.StringOutput { return v.ProjectVpcId }).(pulumi.StringOutput)
 }
 
 // Redis server provided values

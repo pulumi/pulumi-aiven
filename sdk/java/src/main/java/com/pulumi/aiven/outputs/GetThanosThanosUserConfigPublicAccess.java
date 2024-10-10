@@ -37,6 +37,11 @@ public final class GetThanosThanosUserConfigPublicAccess {
      */
     private @Nullable Boolean receiverRouting;
     /**
+     * @return Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    private @Nullable Boolean ruler;
+    /**
      * @return Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
@@ -79,6 +84,13 @@ public final class GetThanosThanosUserConfigPublicAccess {
         return Optional.ofNullable(this.receiverRouting);
     }
     /**
+     * @return Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    public Optional<Boolean> ruler() {
+        return Optional.ofNullable(this.ruler);
+    }
+    /**
      * @return Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
@@ -100,6 +112,7 @@ public final class GetThanosThanosUserConfigPublicAccess {
         private @Nullable Boolean queryFrontend;
         private @Nullable Boolean receiverIngesting;
         private @Nullable Boolean receiverRouting;
+        private @Nullable Boolean ruler;
         private @Nullable Boolean store;
         public Builder() {}
         public Builder(GetThanosThanosUserConfigPublicAccess defaults) {
@@ -109,6 +122,7 @@ public final class GetThanosThanosUserConfigPublicAccess {
     	      this.queryFrontend = defaults.queryFrontend;
     	      this.receiverIngesting = defaults.receiverIngesting;
     	      this.receiverRouting = defaults.receiverRouting;
+    	      this.ruler = defaults.ruler;
     	      this.store = defaults.store;
         }
 
@@ -143,6 +157,12 @@ public final class GetThanosThanosUserConfigPublicAccess {
             return this;
         }
         @CustomType.Setter
+        public Builder ruler(@Nullable Boolean ruler) {
+
+            this.ruler = ruler;
+            return this;
+        }
+        @CustomType.Setter
         public Builder store(@Nullable Boolean store) {
 
             this.store = store;
@@ -155,6 +175,7 @@ public final class GetThanosThanosUserConfigPublicAccess {
             _resultValue.queryFrontend = queryFrontend;
             _resultValue.receiverIngesting = receiverIngesting;
             _resultValue.receiverRouting = receiverRouting;
+            _resultValue.ruler = ruler;
             _resultValue.store = store;
             return _resultValue;
         }

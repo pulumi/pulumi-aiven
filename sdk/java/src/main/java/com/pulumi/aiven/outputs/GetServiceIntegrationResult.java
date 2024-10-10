@@ -10,6 +10,7 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUs
 import com.pulumi.aiven.outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationExternalOpensearchLogsUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationFlinkExternalPostgresqlUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaConnectUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
@@ -70,6 +71,11 @@ public final class GetServiceIntegrationResult {
      */
     private List<GetServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
     /**
+     * @return FlinkExternalPostgresql user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationFlinkExternalPostgresqlUserConfig> flinkExternalPostgresqlUserConfigs;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -80,7 +86,7 @@ public final class GetServiceIntegrationResult {
      */
     private String integrationId;
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
+     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
      * 
      */
     private String integrationType;
@@ -195,6 +201,13 @@ public final class GetServiceIntegrationResult {
         return this.externalOpensearchLogsUserConfigs;
     }
     /**
+     * @return FlinkExternalPostgresql user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationFlinkExternalPostgresqlUserConfig> flinkExternalPostgresqlUserConfigs() {
+        return this.flinkExternalPostgresqlUserConfigs;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -209,7 +222,7 @@ public final class GetServiceIntegrationResult {
         return this.integrationId;
     }
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
+     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
      * 
      */
     public String integrationType() {
@@ -297,6 +310,7 @@ public final class GetServiceIntegrationResult {
         private List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
         private List<GetServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
         private List<GetServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
+        private List<GetServiceIntegrationFlinkExternalPostgresqlUserConfig> flinkExternalPostgresqlUserConfigs;
         private String id;
         private String integrationId;
         private String integrationType;
@@ -321,6 +335,7 @@ public final class GetServiceIntegrationResult {
     	      this.externalAwsCloudwatchMetricsUserConfigs = defaults.externalAwsCloudwatchMetricsUserConfigs;
     	      this.externalElasticsearchLogsUserConfigs = defaults.externalElasticsearchLogsUserConfigs;
     	      this.externalOpensearchLogsUserConfigs = defaults.externalOpensearchLogsUserConfigs;
+    	      this.flinkExternalPostgresqlUserConfigs = defaults.flinkExternalPostgresqlUserConfigs;
     	      this.id = defaults.id;
     	      this.integrationId = defaults.integrationId;
     	      this.integrationType = defaults.integrationType;
@@ -427,6 +442,17 @@ public final class GetServiceIntegrationResult {
         }
         public Builder externalOpensearchLogsUserConfigs(GetServiceIntegrationExternalOpensearchLogsUserConfig... externalOpensearchLogsUserConfigs) {
             return externalOpensearchLogsUserConfigs(List.of(externalOpensearchLogsUserConfigs));
+        }
+        @CustomType.Setter
+        public Builder flinkExternalPostgresqlUserConfigs(List<GetServiceIntegrationFlinkExternalPostgresqlUserConfig> flinkExternalPostgresqlUserConfigs) {
+            if (flinkExternalPostgresqlUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "flinkExternalPostgresqlUserConfigs");
+            }
+            this.flinkExternalPostgresqlUserConfigs = flinkExternalPostgresqlUserConfigs;
+            return this;
+        }
+        public Builder flinkExternalPostgresqlUserConfigs(GetServiceIntegrationFlinkExternalPostgresqlUserConfig... flinkExternalPostgresqlUserConfigs) {
+            return flinkExternalPostgresqlUserConfigs(List.of(flinkExternalPostgresqlUserConfigs));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -553,6 +579,7 @@ public final class GetServiceIntegrationResult {
             _resultValue.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             _resultValue.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
             _resultValue.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
+            _resultValue.flinkExternalPostgresqlUserConfigs = flinkExternalPostgresqlUserConfigs;
             _resultValue.id = id;
             _resultValue.integrationId = integrationId;
             _resultValue.integrationType = integrationType;

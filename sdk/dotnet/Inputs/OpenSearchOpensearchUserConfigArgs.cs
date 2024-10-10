@@ -18,6 +18,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
 
+        /// <summary>
+        /// Azure migration settings
+        /// </summary>
         [Input("azureMigration")]
         public Input<Inputs.OpenSearchOpensearchUserConfigAzureMigrationArgs>? AzureMigration { get; set; }
 
@@ -33,6 +36,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("disableReplicationFactorAdjustment")]
         public Input<bool>? DisableReplicationFactorAdjustment { get; set; }
 
+        /// <summary>
+        /// Google Cloud Storage migration settings
+        /// </summary>
         [Input("gcsMigration")]
         public Input<Inputs.OpenSearchOpensearchUserConfigGcsMigrationArgs>? GcsMigration { get; set; }
 
@@ -163,6 +169,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
 
+        /// <summary>
+        /// AWS S3 / AWS S3 compatible migration settings
+        /// </summary>
         [Input("s3Migration")]
         public Input<Inputs.OpenSearchOpensearchUserConfigS3MigrationArgs>? S3Migration { get; set; }
 

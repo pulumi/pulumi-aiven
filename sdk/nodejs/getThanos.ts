@@ -8,9 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Gets information about an Aiven for Thanos® service.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getThanos(args: GetThanosArgs, opts?: pulumi.InvokeOptions): Promise<GetThanosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -157,9 +154,6 @@ export interface GetThanosResult {
 }
 /**
  * Gets information about an Aiven for Thanos® service.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export function getThanosOutput(args: GetThanosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetThanosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

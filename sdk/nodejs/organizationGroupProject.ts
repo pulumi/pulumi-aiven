@@ -79,7 +79,7 @@ export class OrganizationGroupProject extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `readOnly` and `project:permissions:read`.
      */
     public readonly role!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.OrganizationGroupProjectTimeouts | undefined>;
@@ -135,7 +135,7 @@ export interface OrganizationGroupProjectState {
      */
     project?: pulumi.Input<string>;
     /**
-     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `readOnly` and `project:permissions:read`.
      */
     role?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationGroupProjectTimeouts>;
@@ -154,7 +154,7 @@ export interface OrganizationGroupProjectArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer` and `readOnly`.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `readOnly` and `project:permissions:read`.
      */
     role: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationGroupProjectTimeouts>;

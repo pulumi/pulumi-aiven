@@ -289,14 +289,29 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+     * Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     * 
+     */
+    @Import(name="logOutput")
+    private @Nullable Output<String> logOutput;
+
+    /**
+     * @return Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     * 
+     */
+    public Optional<Output<String>> logOutput() {
+        return Optional.ofNullable(this.logOutput);
+    }
+
+    /**
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      * 
      */
     @Import(name="longQueryTime")
     private @Nullable Output<Double> longQueryTime;
 
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      * 
      */
     public Optional<Output<Double>> longQueryTime() {
@@ -379,14 +394,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+     * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      * 
      */
     @Import(name="slowQueryLog")
     private @Nullable Output<Boolean> slowQueryLog;
 
     /**
-     * @return Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+     * @return Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      * 
      */
     public Optional<Output<Boolean>> slowQueryLog() {
@@ -489,6 +504,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         this.innodbWriteIoThreads = $.innodbWriteIoThreads;
         this.interactiveTimeout = $.interactiveTimeout;
         this.internalTmpMemStorageEngine = $.internalTmpMemStorageEngine;
+        this.logOutput = $.logOutput;
         this.longQueryTime = $.longQueryTime;
         this.maxAllowedPacket = $.maxAllowedPacket;
         this.maxHeapTableSize = $.maxHeapTableSize;
@@ -900,7 +916,28 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+         * @param logOutput Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logOutput(@Nullable Output<String> logOutput) {
+            $.logOutput = logOutput;
+            return this;
+        }
+
+        /**
+         * @param logOutput Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logOutput(String logOutput) {
+            return logOutput(Output.of(logOutput));
+        }
+
+        /**
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
          * 
          * @return builder
          * 
@@ -911,7 +948,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
          * 
          * @return builder
          * 
@@ -1026,7 +1063,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param slowQueryLog Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+         * @param slowQueryLog Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
          * 
          * @return builder
          * 
@@ -1037,7 +1074,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param slowQueryLog Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+         * @param slowQueryLog Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
          * 
          * @return builder
          * 

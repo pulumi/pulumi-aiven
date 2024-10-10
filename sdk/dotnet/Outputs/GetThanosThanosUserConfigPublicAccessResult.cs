@@ -34,6 +34,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ReceiverRouting;
         /// <summary>
+        /// Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
+        public readonly bool? Ruler;
+        /// <summary>
         /// Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? Store;
@@ -50,6 +54,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? receiverRouting,
 
+            bool? ruler,
+
             bool? store)
         {
             Compactor = compactor;
@@ -57,6 +63,7 @@ namespace Pulumi.Aiven.Outputs
             QueryFrontend = queryFrontend;
             ReceiverIngesting = receiverIngesting;
             ReceiverRouting = receiverRouting;
+            Ruler = ruler;
             Store = store;
         }
     }

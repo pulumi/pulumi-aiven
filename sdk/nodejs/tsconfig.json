@@ -60,6 +60,7 @@
         "getClickhouseUser.ts",
         "getConnectionPool.ts",
         "getDragonfly.ts",
+        "getExternalIdentity.ts",
         "getFlink.ts",
         "getFlinkApplication.ts",
         "getFlinkApplicationVersion.ts",

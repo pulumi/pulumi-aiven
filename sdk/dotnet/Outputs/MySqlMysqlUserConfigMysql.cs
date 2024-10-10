@@ -86,7 +86,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? InternalTmpMemStorageEngine;
         /// <summary>
-        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+        /// Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+        /// </summary>
+        public readonly string? LogOutput;
+        /// <summary>
+        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
         /// </summary>
         public readonly double? LongQueryTime;
         /// <summary>
@@ -110,7 +114,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? NetWriteTimeout;
         /// <summary>
-        /// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+        /// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
         /// </summary>
         public readonly bool? SlowQueryLog;
         /// <summary>
@@ -172,6 +176,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? internalTmpMemStorageEngine,
 
+            string? logOutput,
+
             double? longQueryTime,
 
             int? maxAllowedPacket,
@@ -214,6 +220,7 @@ namespace Pulumi.Aiven.Outputs
             InnodbWriteIoThreads = innodbWriteIoThreads;
             InteractiveTimeout = interactiveTimeout;
             InternalTmpMemStorageEngine = internalTmpMemStorageEngine;
+            LogOutput = logOutput;
             LongQueryTime = longQueryTime;
             MaxAllowedPacket = maxAllowedPacket;
             MaxHeapTableSize = maxHeapTableSize;

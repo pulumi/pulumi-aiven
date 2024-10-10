@@ -105,7 +105,12 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable String internalTmpMemStorageEngine;
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+     * @return Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     * 
+     */
+    private @Nullable String logOutput;
+    /**
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      * 
      */
     private @Nullable Double longQueryTime;
@@ -135,7 +140,7 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer netWriteTimeout;
     /**
-     * @return Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+     * @return Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      * 
      */
     private @Nullable Boolean slowQueryLog;
@@ -293,7 +298,14 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.internalTmpMemStorageEngine);
     }
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+     * @return Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     * 
+     */
+    public Optional<String> logOutput() {
+        return Optional.ofNullable(this.logOutput);
+    }
+    /**
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      * 
      */
     public Optional<Double> longQueryTime() {
@@ -335,7 +347,7 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.netWriteTimeout);
     }
     /**
-     * @return Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+     * @return Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      * 
      */
     public Optional<Boolean> slowQueryLog() {
@@ -404,6 +416,7 @@ public final class MySqlMysqlUserConfigMysql {
         private @Nullable Integer innodbWriteIoThreads;
         private @Nullable Integer interactiveTimeout;
         private @Nullable String internalTmpMemStorageEngine;
+        private @Nullable String logOutput;
         private @Nullable Double longQueryTime;
         private @Nullable Integer maxAllowedPacket;
         private @Nullable Integer maxHeapTableSize;
@@ -437,6 +450,7 @@ public final class MySqlMysqlUserConfigMysql {
     	      this.innodbWriteIoThreads = defaults.innodbWriteIoThreads;
     	      this.interactiveTimeout = defaults.interactiveTimeout;
     	      this.internalTmpMemStorageEngine = defaults.internalTmpMemStorageEngine;
+    	      this.logOutput = defaults.logOutput;
     	      this.longQueryTime = defaults.longQueryTime;
     	      this.maxAllowedPacket = defaults.maxAllowedPacket;
     	      this.maxHeapTableSize = defaults.maxHeapTableSize;
@@ -560,6 +574,12 @@ public final class MySqlMysqlUserConfigMysql {
             return this;
         }
         @CustomType.Setter
+        public Builder logOutput(@Nullable String logOutput) {
+
+            this.logOutput = logOutput;
+            return this;
+        }
+        @CustomType.Setter
         public Builder longQueryTime(@Nullable Double longQueryTime) {
 
             this.longQueryTime = longQueryTime;
@@ -651,6 +671,7 @@ public final class MySqlMysqlUserConfigMysql {
             _resultValue.innodbWriteIoThreads = innodbWriteIoThreads;
             _resultValue.interactiveTimeout = interactiveTimeout;
             _resultValue.internalTmpMemStorageEngine = internalTmpMemStorageEngine;
+            _resultValue.logOutput = logOutput;
             _resultValue.longQueryTime = longQueryTime;
             _resultValue.maxAllowedPacket = maxAllowedPacket;
             _resultValue.maxHeapTableSize = maxHeapTableSize;

@@ -387,9 +387,6 @@ def get_thanos(project: Optional[str] = None,
     """
     Gets information about an Aiven for Thanos® service.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
@@ -438,9 +435,6 @@ def get_thanos_output(project: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetThanosResult]:
     """
     Gets information about an Aiven for Thanos® service.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

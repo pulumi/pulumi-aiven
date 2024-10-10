@@ -43,6 +43,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ReceiverRouting { get; set; }
 
         /// <summary>
+        /// Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
+        [Input("ruler")]
+        public Input<bool>? Ruler { get; set; }
+
+        /// <summary>
         /// Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("store")]

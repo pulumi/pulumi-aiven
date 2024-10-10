@@ -8,9 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
 export class Thanos extends pulumi.CustomResource {
     /**
@@ -72,6 +69,8 @@ export class Thanos extends pulumi.CustomResource {
     public /*out*/ readonly diskSpaceStep!: pulumi.Output<string>;
     /**
      * Disk space that service is currently using
+     *
+     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
@@ -93,7 +92,7 @@ export class Thanos extends pulumi.CustomResource {
     /**
      * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
-    public readonly projectVpcId!: pulumi.Output<string | undefined>;
+    public readonly projectVpcId!: pulumi.Output<string>;
     /**
      * The hostname of the service.
      */
@@ -101,7 +100,7 @@ export class Thanos extends pulumi.CustomResource {
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    public readonly serviceIntegrations!: pulumi.Output<outputs.ThanosServiceIntegration[] | undefined>;
+    public readonly serviceIntegrations!: pulumi.Output<outputs.ThanosServiceIntegration[]>;
     /**
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
@@ -279,6 +278,8 @@ export interface ThanosState {
     diskSpaceStep?: pulumi.Input<string>;
     /**
      * Disk space that service is currently using
+     *
+     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**

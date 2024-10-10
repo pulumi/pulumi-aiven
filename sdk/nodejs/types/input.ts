@@ -263,6 +263,10 @@ export interface ClickhouseClickhouseUserConfig {
      */
     publicAccess?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigPublicAccess>;
     /**
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+     */
+    recoveryBasebackupName?: pulumi.Input<string>;
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
     serviceLog?: pulumi.Input<boolean>;
@@ -763,9 +767,21 @@ export interface FlinkFlinkUserConfig {
      */
     numberOfTaskSlots?: pulumi.Input<number>;
     /**
+     * Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+     */
+    pekkoAskTimeoutS?: pulumi.Input<number>;
+    /**
+     * Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+     */
+    pekkoFramesizeB?: pulumi.Input<number>;
+    /**
      * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.FlinkFlinkUserConfigPrivatelinkAccess>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: pulumi.Input<inputs.FlinkFlinkUserConfigPublicAccess>;
     /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
@@ -796,6 +812,13 @@ export interface FlinkFlinkUserConfigPrivatelinkAccess {
      * Enable prometheus.
      */
     prometheus?: pulumi.Input<boolean>;
+}
+
+export interface FlinkFlinkUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    flink?: pulumi.Input<boolean>;
 }
 
 export interface FlinkServiceIntegration {
@@ -2024,6 +2047,10 @@ export interface KafkaKafkaUserConfig {
      */
     serviceLog?: pulumi.Input<boolean>;
     /**
+     * Single-zone configuration
+     */
+    singleZone?: pulumi.Input<inputs.KafkaKafkaUserConfigSingleZone>;
+    /**
      * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<boolean>;
@@ -2521,6 +2548,13 @@ export interface KafkaKafkaUserConfigSchemaRegistryConfig {
      * The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
      */
     topicName?: pulumi.Input<string>;
+}
+
+export interface KafkaKafkaUserConfigSingleZone {
+    /**
+     * Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface KafkaKafkaUserConfigTieredStorage {
@@ -3645,7 +3679,11 @@ export interface MySqlMysqlUserConfigMysql {
      */
     internalTmpMemStorageEngine?: pulumi.Input<string>;
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+     * Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     */
+    logOutput?: pulumi.Input<string>;
+    /**
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
      */
     longQueryTime?: pulumi.Input<number>;
     /**
@@ -3669,7 +3707,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     netWriteTimeout?: pulumi.Input<number>;
     /**
-     * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+     * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      */
     slowQueryLog?: pulumi.Input<boolean>;
     /**
@@ -3833,6 +3871,9 @@ export interface OpenSearchOpensearchUserConfig {
      * Additional Cloud Regions for Backup Replication.
      */
     additionalBackupRegions?: pulumi.Input<string>;
+    /**
+     * Azure migration settings
+     */
     azureMigration?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigAzureMigration>;
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
@@ -3842,6 +3883,9 @@ export interface OpenSearchOpensearchUserConfig {
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      */
     disableReplicationFactorAdjustment?: pulumi.Input<boolean>;
+    /**
+     * Google Cloud Storage migration settings
+     */
     gcsMigration?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigGcsMigration>;
     /**
      * Index patterns
@@ -3913,6 +3957,9 @@ export interface OpenSearchOpensearchUserConfig {
      * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      */
     recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * AWS S3 / AWS S3 compatible migration settings
+     */
     s3Migration?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigS3Migration>;
     /**
      * OpenSearch SAML configuration
@@ -4561,7 +4608,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * List of permissions. The possible values are `admin`, `developer`, `operator` and `readOnly`.
+     * List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -6326,6 +6373,13 @@ export interface ServiceIntegrationExternalOpensearchLogsUserConfig {
     selectedLogFields?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ServiceIntegrationFlinkExternalPostgresqlUserConfig {
+    /**
+     * Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+     */
+    stringtype?: pulumi.Input<string>;
+}
+
 export interface ServiceIntegrationKafkaConnectUserConfig {
     /**
      * Kafka Connect service configuration values
@@ -6660,19 +6714,9 @@ export interface ThanosThanos {
      */
     queryUri?: pulumi.Input<string>;
     /**
-     * Receiver ingesting remote write URI.
-     */
-    receiverIngestingRemoteWriteUri?: pulumi.Input<string>;
-    /**
      * Receiver remote write URI.
      */
     receiverRemoteWriteUri?: pulumi.Input<string>;
-    /**
-     * Store URI.
-     *
-     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
-     */
-    storeUri?: pulumi.Input<string>;
     /**
      * Thanos server URIs.
      */
@@ -6767,6 +6811,10 @@ export interface ThanosThanosUserConfigPublicAccess {
      * Allow clients to connect to receiverRouting from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     receiverRouting?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    ruler?: pulumi.Input<boolean>;
     /**
      * Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
      */

@@ -40,6 +40,8 @@ import com.pulumi.aiven.inputs.GetConnectionPoolArgs;
 import com.pulumi.aiven.inputs.GetConnectionPoolPlainArgs;
 import com.pulumi.aiven.inputs.GetDragonflyArgs;
 import com.pulumi.aiven.inputs.GetDragonflyPlainArgs;
+import com.pulumi.aiven.inputs.GetExternalIdentityArgs;
+import com.pulumi.aiven.inputs.GetExternalIdentityPlainArgs;
 import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
 import com.pulumi.aiven.inputs.GetFlinkApplicationPlainArgs;
 import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
@@ -160,6 +162,7 @@ import com.pulumi.aiven.outputs.GetClickhouseResult;
 import com.pulumi.aiven.outputs.GetClickhouseUserResult;
 import com.pulumi.aiven.outputs.GetConnectionPoolResult;
 import com.pulumi.aiven.outputs.GetDragonflyResult;
+import com.pulumi.aiven.outputs.GetExternalIdentityResult;
 import com.pulumi.aiven.outputs.GetFlinkApplicationResult;
 import com.pulumi.aiven.outputs.GetFlinkApplicationVersionResult;
 import com.pulumi.aiven.outputs.GetFlinkResult;
@@ -2817,6 +2820,46 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetDragonflyResult> getDragonflyPlain(GetDragonflyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getDragonfly:getDragonfly", TypeShape.of(GetDragonflyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Maps an external service user to an Aiven user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetExternalIdentityResult> getExternalIdentity(GetExternalIdentityArgs args) {
+        return getExternalIdentity(args, InvokeOptions.Empty);
+    }
+    /**
+     * Maps an external service user to an Aiven user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetExternalIdentityResult> getExternalIdentityPlain(GetExternalIdentityPlainArgs args) {
+        return getExternalIdentityPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Maps an external service user to an Aiven user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetExternalIdentityResult> getExternalIdentity(GetExternalIdentityArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getExternalIdentity:getExternalIdentity", TypeShape.of(GetExternalIdentityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Maps an external service user to an Aiven user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetExternalIdentityResult> getExternalIdentityPlain(GetExternalIdentityPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getExternalIdentity:getExternalIdentity", TypeShape.of(GetExternalIdentityResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an Aiven for Apache Flink® service.
@@ -10415,18 +10458,12 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Thanos® service.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      */
     public static Output<GetThanosResult> getThanos(GetThanosArgs args) {
         return getThanos(args, InvokeOptions.Empty);
     }
     /**
      * Gets information about an Aiven for Thanos® service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static CompletableFuture<GetThanosResult> getThanosPlain(GetThanosPlainArgs args) {
@@ -10435,18 +10472,12 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Thanos® service.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      */
     public static Output<GetThanosResult> getThanos(GetThanosArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getThanos:getThanos", TypeShape.of(GetThanosResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an Aiven for Thanos® service.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      */
     public static CompletableFuture<GetThanosResult> getThanosPlain(GetThanosPlainArgs args, InvokeOptions options) {

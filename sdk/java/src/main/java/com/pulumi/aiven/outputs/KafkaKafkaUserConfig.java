@@ -15,6 +15,7 @@ import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigSchemaRegistryConfig;
+import com.pulumi.aiven.outputs.KafkaKafkaUserConfigSingleZone;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigTieredStorage;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -150,6 +151,11 @@ public final class KafkaKafkaUserConfig {
      * 
      */
     private @Nullable Boolean serviceLog;
+    /**
+     * @return Single-zone configuration
+     * 
+     */
+    private @Nullable KafkaKafkaUserConfigSingleZone singleZone;
     /**
      * @return Use static public IP addresses.
      * 
@@ -335,6 +341,13 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
+     * @return Single-zone configuration
+     * 
+     */
+    public Optional<KafkaKafkaUserConfigSingleZone> singleZone() {
+        return Optional.ofNullable(this.singleZone);
+    }
+    /**
      * @return Use static public IP addresses.
      * 
      */
@@ -382,6 +395,7 @@ public final class KafkaKafkaUserConfig {
         private @Nullable Boolean schemaRegistry;
         private @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
         private @Nullable Boolean serviceLog;
+        private @Nullable KafkaKafkaUserConfigSingleZone singleZone;
         private @Nullable Boolean staticIps;
         private @Nullable KafkaKafkaUserConfigTieredStorage tieredStorage;
         public Builder() {}
@@ -411,6 +425,7 @@ public final class KafkaKafkaUserConfig {
     	      this.schemaRegistry = defaults.schemaRegistry;
     	      this.schemaRegistryConfig = defaults.schemaRegistryConfig;
     	      this.serviceLog = defaults.serviceLog;
+    	      this.singleZone = defaults.singleZone;
     	      this.staticIps = defaults.staticIps;
     	      this.tieredStorage = defaults.tieredStorage;
         }
@@ -572,6 +587,12 @@ public final class KafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder singleZone(@Nullable KafkaKafkaUserConfigSingleZone singleZone) {
+
+            this.singleZone = singleZone;
+            return this;
+        }
+        @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
 
             this.staticIps = staticIps;
@@ -609,6 +630,7 @@ public final class KafkaKafkaUserConfig {
             _resultValue.schemaRegistry = schemaRegistry;
             _resultValue.schemaRegistryConfig = schemaRegistryConfig;
             _resultValue.serviceLog = serviceLog;
+            _resultValue.singleZone = singleZone;
             _resultValue.staticIps = staticIps;
             _resultValue.tieredStorage = tieredStorage;
             return _resultValue;

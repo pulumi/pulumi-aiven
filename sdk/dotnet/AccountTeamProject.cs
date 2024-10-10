@@ -82,7 +82,7 @@ namespace Pulumi.Aiven
         public Output<string> TeamId { get; private set; } = null!;
 
         /// <summary>
-        /// The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.
+        /// The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
         /// </summary>
         [Output("teamType")]
         public Output<string?> TeamType { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Aiven
         public Input<string> TeamId { get; set; } = null!;
 
         /// <summary>
-        /// The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.
+        /// The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
         /// </summary>
         [Input("teamType")]
         public Input<string>? TeamType { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.Aiven
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// The Account team project type. The possible values are `admin`, `operator`, `developer` and `read_only`.
+        /// The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
         /// </summary>
         [Input("teamType")]
         public Input<string>? TeamType { get; set; }

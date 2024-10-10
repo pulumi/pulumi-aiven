@@ -51,6 +51,7 @@ __all__ = [
     'FlinkFlinkUserConfigArgs',
     'FlinkFlinkUserConfigIpFilterObjectArgs',
     'FlinkFlinkUserConfigPrivatelinkAccessArgs',
+    'FlinkFlinkUserConfigPublicAccessArgs',
     'FlinkServiceIntegrationArgs',
     'FlinkTagArgs',
     'FlinkTechEmailArgs',
@@ -114,6 +115,7 @@ __all__ = [
     'KafkaKafkaUserConfigPrivatelinkAccessArgs',
     'KafkaKafkaUserConfigPublicAccessArgs',
     'KafkaKafkaUserConfigSchemaRegistryConfigArgs',
+    'KafkaKafkaUserConfigSingleZoneArgs',
     'KafkaKafkaUserConfigTieredStorageArgs',
     'KafkaKafkaUserConfigTieredStorageLocalCacheArgs',
     'KafkaMirrorMakerComponentArgs',
@@ -257,6 +259,7 @@ __all__ = [
     'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs',
     'ServiceIntegrationExternalElasticsearchLogsUserConfigArgs',
     'ServiceIntegrationExternalOpensearchLogsUserConfigArgs',
+    'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs',
     'ServiceIntegrationKafkaConnectUserConfigArgs',
     'ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs',
     'ServiceIntegrationKafkaLogsUserConfigArgs',
@@ -1110,6 +1113,7 @@ class ClickhouseClickhouseUserConfigArgs:
                  privatelink_access: Optional[pulumi.Input['ClickhouseClickhouseUserConfigPrivatelinkAccessArgs']] = None,
                  project_to_fork_from: Optional[pulumi.Input[str]] = None,
                  public_access: Optional[pulumi.Input['ClickhouseClickhouseUserConfigPublicAccessArgs']] = None,
+                 recovery_basebackup_name: Optional[pulumi.Input[str]] = None,
                  service_log: Optional[pulumi.Input[bool]] = None,
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[bool]] = None):
@@ -1122,6 +1126,7 @@ class ClickhouseClickhouseUserConfigArgs:
         :param pulumi.Input['ClickhouseClickhouseUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         :param pulumi.Input['ClickhouseClickhouseUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
+        :param pulumi.Input[str] recovery_basebackup_name: Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
         :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
@@ -1148,6 +1153,8 @@ class ClickhouseClickhouseUserConfigArgs:
             pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
+        if recovery_basebackup_name is not None:
+            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
         if service_to_fork_from is not None:
@@ -1252,6 +1259,18 @@ class ClickhouseClickhouseUserConfigArgs:
     @public_access.setter
     def public_access(self, value: Optional[pulumi.Input['ClickhouseClickhouseUserConfigPublicAccessArgs']]):
         pulumi.set(self, "public_access", value)
+
+    @property
+    @pulumi.getter(name="recoveryBasebackupName")
+    def recovery_basebackup_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+        """
+        return pulumi.get(self, "recovery_basebackup_name")
+
+    @recovery_basebackup_name.setter
+    def recovery_basebackup_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recovery_basebackup_name", value)
 
     @property
     @pulumi.getter(name="serviceLog")
@@ -2981,7 +3000,10 @@ class FlinkFlinkUserConfigArgs:
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  number_of_task_slots: Optional[pulumi.Input[int]] = None,
+                 pekko_ask_timeout_s: Optional[pulumi.Input[int]] = None,
+                 pekko_framesize_b: Optional[pulumi.Input[int]] = None,
                  privatelink_access: Optional[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs']] = None,
+                 public_access: Optional[pulumi.Input['FlinkFlinkUserConfigPublicAccessArgs']] = None,
                  service_log: Optional[pulumi.Input[bool]] = None,
                  static_ips: Optional[pulumi.Input[bool]] = None):
         """
@@ -2991,7 +3013,10 @@ class FlinkFlinkUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[int] number_of_task_slots: Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
+        :param pulumi.Input[int] pekko_ask_timeout_s: Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+        :param pulumi.Input[int] pekko_framesize_b: Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
         :param pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
+        :param pulumi.Input['FlinkFlinkUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
         :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
@@ -3013,8 +3038,14 @@ class FlinkFlinkUserConfigArgs:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if number_of_task_slots is not None:
             pulumi.set(__self__, "number_of_task_slots", number_of_task_slots)
+        if pekko_ask_timeout_s is not None:
+            pulumi.set(__self__, "pekko_ask_timeout_s", pekko_ask_timeout_s)
+        if pekko_framesize_b is not None:
+            pulumi.set(__self__, "pekko_framesize_b", pekko_framesize_b)
         if privatelink_access is not None:
             pulumi.set(__self__, "privatelink_access", privatelink_access)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
         if static_ips is not None:
@@ -3095,6 +3126,30 @@ class FlinkFlinkUserConfigArgs:
         pulumi.set(self, "number_of_task_slots", value)
 
     @property
+    @pulumi.getter(name="pekkoAskTimeoutS")
+    def pekko_ask_timeout_s(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout in seconds used for all futures and blocking Pekko requests. Example: `10`.
+        """
+        return pulumi.get(self, "pekko_ask_timeout_s")
+
+    @pekko_ask_timeout_s.setter
+    def pekko_ask_timeout_s(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pekko_ask_timeout_s", value)
+
+    @property
+    @pulumi.getter(name="pekkoFramesizeB")
+    def pekko_framesize_b(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers. Example: `10485760`.
+        """
+        return pulumi.get(self, "pekko_framesize_b")
+
+    @pekko_framesize_b.setter
+    def pekko_framesize_b(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pekko_framesize_b", value)
+
+    @property
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs']]:
         """
@@ -3105,6 +3160,18 @@ class FlinkFlinkUserConfigArgs:
     @privatelink_access.setter
     def privatelink_access(self, value: Optional[pulumi.Input['FlinkFlinkUserConfigPrivatelinkAccessArgs']]):
         pulumi.set(self, "privatelink_access", value)
+
+    @property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional[pulumi.Input['FlinkFlinkUserConfigPublicAccessArgs']]:
+        """
+        Allow access to selected service ports from the public Internet
+        """
+        return pulumi.get(self, "public_access")
+
+    @public_access.setter
+    def public_access(self, value: Optional[pulumi.Input['FlinkFlinkUserConfigPublicAccessArgs']]):
+        pulumi.set(self, "public_access", value)
 
     @property
     @pulumi.getter(name="serviceLog")
@@ -3206,6 +3273,29 @@ class FlinkFlinkUserConfigPrivatelinkAccessArgs:
     @prometheus.setter
     def prometheus(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "prometheus", value)
+
+
+@pulumi.input_type
+class FlinkFlinkUserConfigPublicAccessArgs:
+    def __init__(__self__, *,
+                 flink: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] flink: Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        if flink is not None:
+            pulumi.set(__self__, "flink", flink)
+
+    @property
+    @pulumi.getter
+    def flink(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "flink")
+
+    @flink.setter
+    def flink(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "flink", value)
 
 
 @pulumi.input_type
@@ -7439,6 +7529,7 @@ class KafkaKafkaUserConfigArgs:
                  schema_registry: Optional[pulumi.Input[bool]] = None,
                  schema_registry_config: Optional[pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgs']] = None,
                  service_log: Optional[pulumi.Input[bool]] = None,
+                 single_zone: Optional[pulumi.Input['KafkaKafkaUserConfigSingleZoneArgs']] = None,
                  static_ips: Optional[pulumi.Input[bool]] = None,
                  tiered_storage: Optional[pulumi.Input['KafkaKafkaUserConfigTieredStorageArgs']] = None):
         """
@@ -7465,6 +7556,7 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input[bool] schema_registry: Enable Schema-Registry service. Default: `false`.
         :param pulumi.Input['KafkaKafkaUserConfigSchemaRegistryConfigArgs'] schema_registry_config: Schema Registry configuration
         :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
+        :param pulumi.Input['KafkaKafkaUserConfigSingleZoneArgs'] single_zone: Single-zone configuration
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         :param pulumi.Input['KafkaKafkaUserConfigTieredStorageArgs'] tiered_storage: Tiered storage configuration
         """
@@ -7522,6 +7614,8 @@ class KafkaKafkaUserConfigArgs:
             pulumi.set(__self__, "schema_registry_config", schema_registry_config)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
+        if single_zone is not None:
+            pulumi.set(__self__, "single_zone", single_zone)
         if static_ips is not None:
             pulumi.set(__self__, "static_ips", static_ips)
         if tiered_storage is not None:
@@ -7813,6 +7907,18 @@ class KafkaKafkaUserConfigArgs:
     @service_log.setter
     def service_log(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "service_log", value)
+
+    @property
+    @pulumi.getter(name="singleZone")
+    def single_zone(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigSingleZoneArgs']]:
+        """
+        Single-zone configuration
+        """
+        return pulumi.get(self, "single_zone")
+
+    @single_zone.setter
+    def single_zone(self, value: Optional[pulumi.Input['KafkaKafkaUserConfigSingleZoneArgs']]):
+        pulumi.set(self, "single_zone", value)
 
     @property
     @pulumi.getter(name="staticIps")
@@ -9721,6 +9827,29 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
     @topic_name.setter
     def topic_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "topic_name", value)
+
+
+@pulumi.input_type
+class KafkaKafkaUserConfigSingleZoneArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -13636,6 +13765,7 @@ class MySqlMysqlUserConfigMysqlArgs:
                  innodb_write_io_threads: Optional[pulumi.Input[int]] = None,
                  interactive_timeout: Optional[pulumi.Input[int]] = None,
                  internal_tmp_mem_storage_engine: Optional[pulumi.Input[str]] = None,
+                 log_output: Optional[pulumi.Input[str]] = None,
                  long_query_time: Optional[pulumi.Input[float]] = None,
                  max_allowed_packet: Optional[pulumi.Input[int]] = None,
                  max_heap_table_size: Optional[pulumi.Input[int]] = None,
@@ -13667,13 +13797,14 @@ class MySqlMysqlUserConfigMysqlArgs:
         :param pulumi.Input[int] innodb_write_io_threads: The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
         :param pulumi.Input[int] interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
         :param pulumi.Input[str] internal_tmp_mem_storage_engine: Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
-        :param pulumi.Input[float] long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+        :param pulumi.Input[str] log_output: Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+        :param pulumi.Input[float] long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
         :param pulumi.Input[int] max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
         :param pulumi.Input[int] max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
         :param pulumi.Input[int] net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
         :param pulumi.Input[int] net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
         :param pulumi.Input[int] net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
-        :param pulumi.Input[bool] slow_query_log: Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+        :param pulumi.Input[bool] slow_query_log: Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
         :param pulumi.Input[int] sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
         :param pulumi.Input[str] sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
         :param pulumi.Input[bool] sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
@@ -13716,6 +13847,8 @@ class MySqlMysqlUserConfigMysqlArgs:
             pulumi.set(__self__, "interactive_timeout", interactive_timeout)
         if internal_tmp_mem_storage_engine is not None:
             pulumi.set(__self__, "internal_tmp_mem_storage_engine", internal_tmp_mem_storage_engine)
+        if log_output is not None:
+            pulumi.set(__self__, "log_output", log_output)
         if long_query_time is not None:
             pulumi.set(__self__, "long_query_time", long_query_time)
         if max_allowed_packet is not None:
@@ -13958,10 +14091,22 @@ class MySqlMysqlUserConfigMysqlArgs:
         pulumi.set(self, "internal_tmp_mem_storage_engine", value)
 
     @property
+    @pulumi.getter(name="logOutput")
+    def log_output(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+        """
+        return pulumi.get(self, "log_output")
+
+    @log_output.setter
+    def log_output(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_output", value)
+
+    @property
     @pulumi.getter(name="longQueryTime")
     def long_query_time(self) -> Optional[pulumi.Input[float]]:
         """
-        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
+        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
         """
         return pulumi.get(self, "long_query_time")
 
@@ -14033,7 +14178,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="slowQueryLog")
     def slow_query_log(self) -> Optional[pulumi.Input[bool]]:
         """
-        Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
+        Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
         """
         return pulumi.get(self, "slow_query_log")
 
@@ -14621,8 +14766,10 @@ class OpenSearchOpensearchUserConfigArgs:
                  static_ips: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigAzureMigrationArgs'] azure_migration: Azure migration settings
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         :param pulumi.Input[bool] disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigGcsMigrationArgs'] gcs_migration: Google Cloud Storage migration settings
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]] index_patterns: Index patterns
         :param pulumi.Input['OpenSearchOpensearchUserConfigIndexRollupArgs'] index_rollup: Index rollup settings
         :param pulumi.Input['OpenSearchOpensearchUserConfigIndexTemplateArgs'] index_template: Template settings for all new indexes
@@ -14640,6 +14787,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         :param pulumi.Input['OpenSearchOpensearchUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
         :param pulumi.Input[str] recovery_basebackup_name: Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigS3MigrationArgs'] s3_migration: AWS S3 / AWS S3 compatible migration settings
         :param pulumi.Input['OpenSearchOpensearchUserConfigSamlArgs'] saml: OpenSearch SAML configuration
         :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
@@ -14718,6 +14866,9 @@ class OpenSearchOpensearchUserConfigArgs:
     @property
     @pulumi.getter(name="azureMigration")
     def azure_migration(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigAzureMigrationArgs']]:
+        """
+        Azure migration settings
+        """
         return pulumi.get(self, "azure_migration")
 
     @azure_migration.setter
@@ -14751,6 +14902,9 @@ class OpenSearchOpensearchUserConfigArgs:
     @property
     @pulumi.getter(name="gcsMigration")
     def gcs_migration(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigGcsMigrationArgs']]:
+        """
+        Google Cloud Storage migration settings
+        """
         return pulumi.get(self, "gcs_migration")
 
     @gcs_migration.setter
@@ -14965,6 +15119,9 @@ class OpenSearchOpensearchUserConfigArgs:
     @property
     @pulumi.getter(name="s3Migration")
     def s3_migration(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigS3MigrationArgs']]:
+        """
+        AWS S3 / AWS S3 compatible migration settings
+        """
         return pulumi.get(self, "s3_migration")
 
     @s3_migration.setter
@@ -17388,7 +17545,7 @@ class OrganizationPermissionPermissionArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of permissions. The possible values are `admin`, `developer`, `operator` and `read_only`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
         :param pulumi.Input[str] principal_id: ID of the user or group.
         :param pulumi.Input[str] principal_type: The type of principal. The possible values are `user` and `user_group`.
         :param pulumi.Input[str] create_time: Time created.
@@ -17406,7 +17563,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of permissions. The possible values are `admin`, `developer`, `operator` and `read_only`.
+        List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
         """
         return pulumi.get(self, "permissions")
 
@@ -23890,6 +24047,29 @@ class ServiceIntegrationExternalOpensearchLogsUserConfigArgs:
 
 
 @pulumi.input_type
+class ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs:
+    def __init__(__self__, *,
+                 stringtype: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] stringtype: Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+        """
+        if stringtype is not None:
+            pulumi.set(__self__, "stringtype", stringtype)
+
+    @property
+    @pulumi.getter
+    def stringtype(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum: `unspecified`. If stringtype is set to unspecified, parameters will be sent to the server as untyped values.
+        """
+        return pulumi.get(self, "stringtype")
+
+    @stringtype.setter
+    def stringtype(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stringtype", value)
+
+
+@pulumi.input_type
 class ServiceIntegrationKafkaConnectUserConfigArgs:
     def __init__(__self__, *,
                  kafka_connect: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs']] = None):
@@ -25104,31 +25284,20 @@ class ThanosThanosArgs:
     def __init__(__self__, *,
                  query_frontend_uri: Optional[pulumi.Input[str]] = None,
                  query_uri: Optional[pulumi.Input[str]] = None,
-                 receiver_ingesting_remote_write_uri: Optional[pulumi.Input[str]] = None,
                  receiver_remote_write_uri: Optional[pulumi.Input[str]] = None,
-                 store_uri: Optional[pulumi.Input[str]] = None,
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] query_frontend_uri: Query frontend URI.
         :param pulumi.Input[str] query_uri: Query URI.
-        :param pulumi.Input[str] receiver_ingesting_remote_write_uri: Receiver ingesting remote write URI.
         :param pulumi.Input[str] receiver_remote_write_uri: Receiver remote write URI.
-        :param pulumi.Input[str] store_uri: Store URI.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: Thanos server URIs.
         """
         if query_frontend_uri is not None:
             pulumi.set(__self__, "query_frontend_uri", query_frontend_uri)
         if query_uri is not None:
             pulumi.set(__self__, "query_uri", query_uri)
-        if receiver_ingesting_remote_write_uri is not None:
-            pulumi.set(__self__, "receiver_ingesting_remote_write_uri", receiver_ingesting_remote_write_uri)
         if receiver_remote_write_uri is not None:
             pulumi.set(__self__, "receiver_remote_write_uri", receiver_remote_write_uri)
-        if store_uri is not None:
-            warnings.warn("""This field was added by mistake and has never worked. It will be removed in future versions.""", DeprecationWarning)
-            pulumi.log.warn("""store_uri is deprecated: This field was added by mistake and has never worked. It will be removed in future versions.""")
-        if store_uri is not None:
-            pulumi.set(__self__, "store_uri", store_uri)
         if uris is not None:
             pulumi.set(__self__, "uris", uris)
 
@@ -25157,18 +25326,6 @@ class ThanosThanosArgs:
         pulumi.set(self, "query_uri", value)
 
     @property
-    @pulumi.getter(name="receiverIngestingRemoteWriteUri")
-    def receiver_ingesting_remote_write_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Receiver ingesting remote write URI.
-        """
-        return pulumi.get(self, "receiver_ingesting_remote_write_uri")
-
-    @receiver_ingesting_remote_write_uri.setter
-    def receiver_ingesting_remote_write_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "receiver_ingesting_remote_write_uri", value)
-
-    @property
     @pulumi.getter(name="receiverRemoteWriteUri")
     def receiver_remote_write_uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -25179,19 +25336,6 @@ class ThanosThanosArgs:
     @receiver_remote_write_uri.setter
     def receiver_remote_write_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "receiver_remote_write_uri", value)
-
-    @property
-    @pulumi.getter(name="storeUri")
-    @_utilities.deprecated("""This field was added by mistake and has never worked. It will be removed in future versions.""")
-    def store_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Store URI.
-        """
-        return pulumi.get(self, "store_uri")
-
-    @store_uri.setter
-    def store_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "store_uri", value)
 
     @property
     @pulumi.getter
@@ -25462,6 +25606,7 @@ class ThanosThanosUserConfigPublicAccessArgs:
                  query_frontend: Optional[pulumi.Input[bool]] = None,
                  receiver_ingesting: Optional[pulumi.Input[bool]] = None,
                  receiver_routing: Optional[pulumi.Input[bool]] = None,
+                 ruler: Optional[pulumi.Input[bool]] = None,
                  store: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] compactor: Allow clients to connect to compactor from the public internet for service nodes that are in a project VPC or another type of private network.
@@ -25469,6 +25614,7 @@ class ThanosThanosUserConfigPublicAccessArgs:
         :param pulumi.Input[bool] query_frontend: Allow clients to connect to query_frontend from the public internet for service nodes that are in a project VPC or another type of private network.
         :param pulumi.Input[bool] receiver_ingesting: Allow clients to connect to receiver_ingesting from the public internet for service nodes that are in a project VPC or another type of private network.
         :param pulumi.Input[bool] receiver_routing: Allow clients to connect to receiver_routing from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param pulumi.Input[bool] ruler: Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
         :param pulumi.Input[bool] store: Allow clients to connect to store from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         if compactor is not None:
@@ -25481,6 +25627,8 @@ class ThanosThanosUserConfigPublicAccessArgs:
             pulumi.set(__self__, "receiver_ingesting", receiver_ingesting)
         if receiver_routing is not None:
             pulumi.set(__self__, "receiver_routing", receiver_routing)
+        if ruler is not None:
+            pulumi.set(__self__, "ruler", ruler)
         if store is not None:
             pulumi.set(__self__, "store", store)
 
@@ -25543,6 +25691,18 @@ class ThanosThanosUserConfigPublicAccessArgs:
     @receiver_routing.setter
     def receiver_routing(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "receiver_routing", value)
+
+    @property
+    @pulumi.getter
+    def ruler(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to ruler from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "ruler")
+
+    @ruler.setter
+    def ruler(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ruler", value)
 
     @property
     @pulumi.getter
