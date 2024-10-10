@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -165,9 +170,6 @@ def get_kafka_schema_configuration(project: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         subject_name=pulumi.get(__ret__, 'subject_name'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_kafka_schema_configuration)
 def get_kafka_schema_configuration_output(project: Optional[pulumi.Input[str]] = None,
                                           service_name: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaSchemaConfigurationResult]:
@@ -190,4 +192,17 @@ def get_kafka_schema_configuration_output(project: Optional[pulumi.Input[str]] =
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration', __args__, opts=opts, typ=GetKafkaSchemaConfigurationResult)
+    return __ret__.apply(lambda __response__: GetKafkaSchemaConfigurationResult(
+        compatibility_level=pulumi.get(__response__, 'compatibility_level'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        schema=pulumi.get(__response__, 'schema'),
+        schema_type=pulumi.get(__response__, 'schema_type'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        subject_name=pulumi.get(__response__, 'subject_name'),
+        version=pulumi.get(__response__, 'version')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -180,9 +185,6 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
         state_info=pulumi.get(__ret__, 'state_info'),
         user_peer_network_cidrs=pulumi.get(__ret__, 'user_peer_network_cidrs'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_transit_gateway_vpc_attachment)
 def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulumi.Input[str]] = None,
                                               peer_vpc: Optional[pulumi.Input[str]] = None,
                                               vpc_id: Optional[pulumi.Input[str]] = None,
@@ -206,4 +208,19 @@ def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulum
     :param str peer_vpc: Transit gateway ID. Changing this property forces recreation of the resource.
     :param str vpc_id: The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['peerCloudAccount'] = peer_cloud_account
+    __args__['peerVpc'] = peer_vpc
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment', __args__, opts=opts, typ=GetTransitGatewayVpcAttachmentResult)
+    return __ret__.apply(lambda __response__: GetTransitGatewayVpcAttachmentResult(
+        id=pulumi.get(__response__, 'id'),
+        peer_cloud_account=pulumi.get(__response__, 'peer_cloud_account'),
+        peer_region=pulumi.get(__response__, 'peer_region'),
+        peer_vpc=pulumi.get(__response__, 'peer_vpc'),
+        peering_connection_id=pulumi.get(__response__, 'peering_connection_id'),
+        state=pulumi.get(__response__, 'state'),
+        state_info=pulumi.get(__response__, 'state_info'),
+        user_peer_network_cidrs=pulumi.get(__response__, 'user_peer_network_cidrs'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

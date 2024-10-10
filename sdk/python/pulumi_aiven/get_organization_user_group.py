@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -150,9 +155,6 @@ def get_organization_user_group(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_organization_user_group)
 def get_organization_user_group_output(name: Optional[pulumi.Input[str]] = None,
                                        organization_id: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationUserGroupResult]:
@@ -173,4 +175,16 @@ def get_organization_user_group_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the user group. Changing this property forces recreation of the resource.
     :param str organization_id: The ID of the organization. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['organizationId'] = organization_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationUserGroup:getOrganizationUserGroup', __args__, opts=opts, typ=GetOrganizationUserGroupResult)
+    return __ret__.apply(lambda __response__: GetOrganizationUserGroupResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        organization_id=pulumi.get(__response__, 'organization_id'),
+        update_time=pulumi.get(__response__, 'update_time')))

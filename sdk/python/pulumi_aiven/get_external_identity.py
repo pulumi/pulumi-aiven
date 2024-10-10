@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -123,9 +128,6 @@ def get_external_identity(external_service_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         internal_user_id=pulumi.get(__ret__, 'internal_user_id'),
         organization_id=pulumi.get(__ret__, 'organization_id'))
-
-
-@_utilities.lift_output_func(get_external_identity)
 def get_external_identity_output(external_service_name: Optional[pulumi.Input[str]] = None,
                                  external_user_id: Optional[pulumi.Input[str]] = None,
                                  internal_user_id: Optional[pulumi.Input[str]] = None,
@@ -143,4 +145,16 @@ def get_external_identity_output(external_service_name: Optional[pulumi.Input[st
     :param str internal_user_id: The Aiven user ID.
     :param str organization_id: The ID of the Aiven organization that the user is part of.
     """
-    ...
+    __args__ = dict()
+    __args__['externalServiceName'] = external_service_name
+    __args__['externalUserId'] = external_user_id
+    __args__['internalUserId'] = internal_user_id
+    __args__['organizationId'] = organization_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getExternalIdentity:getExternalIdentity', __args__, opts=opts, typ=GetExternalIdentityResult)
+    return __ret__.apply(lambda __response__: GetExternalIdentityResult(
+        external_service_name=pulumi.get(__response__, 'external_service_name'),
+        external_user_id=pulumi.get(__response__, 'external_user_id'),
+        id=pulumi.get(__response__, 'id'),
+        internal_user_id=pulumi.get(__response__, 'internal_user_id'),
+        organization_id=pulumi.get(__response__, 'organization_id')))

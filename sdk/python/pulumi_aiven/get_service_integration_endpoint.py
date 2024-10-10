@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -333,9 +338,6 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         prometheus_user_configs=pulumi.get(__ret__, 'prometheus_user_configs'),
         rsyslog_user_configs=pulumi.get(__ret__, 'rsyslog_user_configs'))
-
-
-@_utilities.lift_output_func(get_service_integration_endpoint)
 def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input[str]] = None,
                                             project: Optional[pulumi.Input[str]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIntegrationEndpointResult]:
@@ -356,4 +358,30 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
     :param str endpoint_name: Name of the service integration endpoint
     :param str project: Project the service integration endpoint belongs to
     """
-    ...
+    __args__ = dict()
+    __args__['endpointName'] = endpoint_name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint', __args__, opts=opts, typ=GetServiceIntegrationEndpointResult)
+    return __ret__.apply(lambda __response__: GetServiceIntegrationEndpointResult(
+        datadog_user_configs=pulumi.get(__response__, 'datadog_user_configs'),
+        endpoint_config=pulumi.get(__response__, 'endpoint_config'),
+        endpoint_name=pulumi.get(__response__, 'endpoint_name'),
+        endpoint_type=pulumi.get(__response__, 'endpoint_type'),
+        external_aws_cloudwatch_logs_user_configs=pulumi.get(__response__, 'external_aws_cloudwatch_logs_user_configs'),
+        external_aws_cloudwatch_metrics_user_configs=pulumi.get(__response__, 'external_aws_cloudwatch_metrics_user_configs'),
+        external_aws_s3_user_configs=pulumi.get(__response__, 'external_aws_s3_user_configs'),
+        external_clickhouse_user_configs=pulumi.get(__response__, 'external_clickhouse_user_configs'),
+        external_elasticsearch_logs_user_configs=pulumi.get(__response__, 'external_elasticsearch_logs_user_configs'),
+        external_google_cloud_bigqueries=pulumi.get(__response__, 'external_google_cloud_bigqueries'),
+        external_google_cloud_logging_user_configs=pulumi.get(__response__, 'external_google_cloud_logging_user_configs'),
+        external_kafka_user_configs=pulumi.get(__response__, 'external_kafka_user_configs'),
+        external_mysql_user_configs=pulumi.get(__response__, 'external_mysql_user_configs'),
+        external_opensearch_logs_user_configs=pulumi.get(__response__, 'external_opensearch_logs_user_configs'),
+        external_postgresqls=pulumi.get(__response__, 'external_postgresqls'),
+        external_schema_registry_user_configs=pulumi.get(__response__, 'external_schema_registry_user_configs'),
+        id=pulumi.get(__response__, 'id'),
+        jolokia_user_configs=pulumi.get(__response__, 'jolokia_user_configs'),
+        project=pulumi.get(__response__, 'project'),
+        prometheus_user_configs=pulumi.get(__response__, 'prometheus_user_configs'),
+        rsyslog_user_configs=pulumi.get(__response__, 'rsyslog_user_configs')))

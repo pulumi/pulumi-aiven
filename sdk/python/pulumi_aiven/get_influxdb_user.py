@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -130,9 +135,6 @@ def get_influxdb_user(project: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         type=pulumi.get(__ret__, 'type'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_influxdb_user)
 def get_influxdb_user_output(project: Optional[pulumi.Input[str]] = None,
                              service_name: Optional[pulumi.Input[str]] = None,
                              username: Optional[pulumi.Input[str]] = None,
@@ -140,4 +142,18 @@ def get_influxdb_user_output(project: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['serviceName'] = service_name
+    __args__['username'] = username
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getInfluxdbUser:getInfluxdbUser', __args__, opts=opts, typ=GetInfluxdbUserResult)
+    return __ret__.apply(lambda __response__: GetInfluxdbUserResult(
+        access_cert=pulumi.get(__response__, 'access_cert'),
+        access_key=pulumi.get(__response__, 'access_key'),
+        id=pulumi.get(__response__, 'id'),
+        password=pulumi.get(__response__, 'password'),
+        project=pulumi.get(__response__, 'project'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        type=pulumi.get(__response__, 'type'),
+        username=pulumi.get(__response__, 'username')))

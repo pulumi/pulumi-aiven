@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -172,9 +177,6 @@ def get_account(name: Optional[str] = None,
         primary_billing_group_id=pulumi.get(__ret__, 'primary_billing_group_id'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_account)
 def get_account_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
@@ -192,4 +194,17 @@ def get_account_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: Account name
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
+    return __ret__.apply(lambda __response__: GetAccountResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        id=pulumi.get(__response__, 'id'),
+        is_account_owner=pulumi.get(__response__, 'is_account_owner'),
+        name=pulumi.get(__response__, 'name'),
+        owner_team_id=pulumi.get(__response__, 'owner_team_id'),
+        primary_billing_group_id=pulumi.get(__response__, 'primary_billing_group_id'),
+        tenant_id=pulumi.get(__response__, 'tenant_id'),
+        update_time=pulumi.get(__response__, 'update_time')))

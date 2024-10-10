@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -150,9 +155,6 @@ def get_opensearch_security_plugin_config(project: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_opensearch_security_plugin_config)
 def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[str]] = None,
                                                  service_name: Optional[pulumi.Input[str]] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpensearchSecurityPluginConfigResult]:
@@ -173,4 +175,16 @@ def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig', __args__, opts=opts, typ=GetOpensearchSecurityPluginConfigResult)
+    return __ret__.apply(lambda __response__: GetOpensearchSecurityPluginConfigResult(
+        admin_enabled=pulumi.get(__response__, 'admin_enabled'),
+        admin_password=pulumi.get(__response__, 'admin_password'),
+        available=pulumi.get(__response__, 'available'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        service_name=pulumi.get(__response__, 'service_name')))

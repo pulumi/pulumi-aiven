@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -137,9 +142,6 @@ def get_organization_application_user(organization_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_organization_application_user)
 def get_organization_application_user_output(organization_id: Optional[pulumi.Input[str]] = None,
                                              user_id: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationApplicationUserResult]:
@@ -160,4 +162,15 @@ def get_organization_application_user_output(organization_id: Optional[pulumi.In
     :param str organization_id: The ID of the organization the application user belongs to.
     :param str user_id: The ID of the application user.
     """
-    ...
+    __args__ = dict()
+    __args__['organizationId'] = organization_id
+    __args__['userId'] = user_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser', __args__, opts=opts, typ=GetOrganizationApplicationUserResult)
+    return __ret__.apply(lambda __response__: GetOrganizationApplicationUserResult(
+        email=pulumi.get(__response__, 'email'),
+        id=pulumi.get(__response__, 'id'),
+        is_super_admin=pulumi.get(__response__, 'is_super_admin'),
+        name=pulumi.get(__response__, 'name'),
+        organization_id=pulumi.get(__response__, 'organization_id'),
+        user_id=pulumi.get(__response__, 'user_id')))
