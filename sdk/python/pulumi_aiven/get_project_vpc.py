@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -140,9 +145,6 @@ def get_project_vpc(cloud_name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         state=pulumi.get(__ret__, 'state'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_project_vpc)
 def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -165,4 +167,16 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = N
     :param str project: Identifies the project this resource belongs to.
     :param str vpc_id: The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
     """
-    ...
+    __args__ = dict()
+    __args__['cloudName'] = cloud_name
+    __args__['project'] = project
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getProjectVpc:getProjectVpc', __args__, opts=opts, typ=GetProjectVpcResult)
+    return __ret__.apply(lambda __response__: GetProjectVpcResult(
+        cloud_name=pulumi.get(__response__, 'cloud_name'),
+        id=pulumi.get(__response__, 'id'),
+        network_cidr=pulumi.get(__response__, 'network_cidr'),
+        project=pulumi.get(__response__, 'project'),
+        state=pulumi.get(__response__, 'state'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

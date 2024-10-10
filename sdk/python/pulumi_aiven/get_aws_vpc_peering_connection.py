@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -175,9 +180,6 @@ def get_aws_vpc_peering_connection(aws_account_id: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         state_info=pulumi.get(__ret__, 'state_info'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_aws_vpc_peering_connection)
 def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[str]] = None,
                                           aws_vpc_id: Optional[pulumi.Input[str]] = None,
                                           aws_vpc_region: Optional[pulumi.Input[str]] = None,
@@ -208,4 +210,19 @@ def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[
     :param str aws_vpc_region: The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
     :param str vpc_id: The ID of the Aiven VPC. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['awsAccountId'] = aws_account_id
+    __args__['awsVpcId'] = aws_vpc_id
+    __args__['awsVpcRegion'] = aws_vpc_region
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection', __args__, opts=opts, typ=GetAwsVpcPeeringConnectionResult)
+    return __ret__.apply(lambda __response__: GetAwsVpcPeeringConnectionResult(
+        aws_account_id=pulumi.get(__response__, 'aws_account_id'),
+        aws_vpc_id=pulumi.get(__response__, 'aws_vpc_id'),
+        aws_vpc_peering_connection_id=pulumi.get(__response__, 'aws_vpc_peering_connection_id'),
+        aws_vpc_region=pulumi.get(__response__, 'aws_vpc_region'),
+        id=pulumi.get(__response__, 'id'),
+        state=pulumi.get(__response__, 'state'),
+        state_info=pulumi.get(__response__, 'state_info'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

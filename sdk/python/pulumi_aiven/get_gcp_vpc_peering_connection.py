@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -154,9 +159,6 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         state_info=pulumi.get(__ret__, 'state_info'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_gcp_vpc_peering_connection)
 def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[str]] = None,
                                           peer_vpc: Optional[pulumi.Input[str]] = None,
                                           vpc_id: Optional[pulumi.Input[str]] = None,
@@ -180,4 +182,17 @@ def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[
     :param str peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
     :param str vpc_id: The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['gcpProjectId'] = gcp_project_id
+    __args__['peerVpc'] = peer_vpc
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection', __args__, opts=opts, typ=GetGcpVpcPeeringConnectionResult)
+    return __ret__.apply(lambda __response__: GetGcpVpcPeeringConnectionResult(
+        gcp_project_id=pulumi.get(__response__, 'gcp_project_id'),
+        id=pulumi.get(__response__, 'id'),
+        peer_vpc=pulumi.get(__response__, 'peer_vpc'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        state=pulumi.get(__response__, 'state'),
+        state_info=pulumi.get(__response__, 'state_info'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

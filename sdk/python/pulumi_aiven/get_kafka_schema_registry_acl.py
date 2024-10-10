@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -149,9 +154,6 @@ def get_kafka_schema_registry_acl(permission: Optional[str] = None,
         resource=pulumi.get(__ret__, 'resource'),
         service_name=pulumi.get(__ret__, 'service_name'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_kafka_schema_registry_acl)
 def get_kafka_schema_registry_acl_output(permission: Optional[pulumi.Input[str]] = None,
                                          project: Optional[pulumi.Input[str]] = None,
                                          resource: Optional[pulumi.Input[str]] = None,
@@ -168,4 +170,19 @@ def get_kafka_schema_registry_acl_output(permission: Optional[pulumi.Input[str]]
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['permission'] = permission
+    __args__['project'] = project
+    __args__['resource'] = resource
+    __args__['serviceName'] = service_name
+    __args__['username'] = username
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl', __args__, opts=opts, typ=GetKafkaSchemaRegistryAclResult)
+    return __ret__.apply(lambda __response__: GetKafkaSchemaRegistryAclResult(
+        acl_id=pulumi.get(__response__, 'acl_id'),
+        id=pulumi.get(__response__, 'id'),
+        permission=pulumi.get(__response__, 'permission'),
+        project=pulumi.get(__response__, 'project'),
+        resource=pulumi.get(__response__, 'resource'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        username=pulumi.get(__response__, 'username')))

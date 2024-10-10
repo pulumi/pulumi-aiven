@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -143,9 +148,6 @@ def get_account_team_member(account_id: Optional[str] = None,
         invited_by_user_email=pulumi.get(__ret__, 'invited_by_user_email'),
         team_id=pulumi.get(__ret__, 'team_id'),
         user_email=pulumi.get(__ret__, 'user_email'))
-
-
-@_utilities.lift_output_func(get_account_team_member)
 def get_account_team_member_output(account_id: Optional[pulumi.Input[str]] = None,
                                    team_id: Optional[pulumi.Input[str]] = None,
                                    user_email: Optional[pulumi.Input[str]] = None,
@@ -158,4 +160,17 @@ def get_account_team_member_output(account_id: Optional[pulumi.Input[str]] = Non
     :param str team_id: An account team id. Changing this property forces recreation of the resource.
     :param str user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['teamId'] = team_id
+    __args__['userEmail'] = user_email
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getAccountTeamMember:getAccountTeamMember', __args__, opts=opts, typ=GetAccountTeamMemberResult)
+    return __ret__.apply(lambda __response__: GetAccountTeamMemberResult(
+        accepted=pulumi.get(__response__, 'accepted'),
+        account_id=pulumi.get(__response__, 'account_id'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        id=pulumi.get(__response__, 'id'),
+        invited_by_user_email=pulumi.get(__response__, 'invited_by_user_email'),
+        team_id=pulumi.get(__response__, 'team_id'),
+        user_email=pulumi.get(__response__, 'user_email')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -267,9 +272,6 @@ def get_billing_group(billing_group_id: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         vat_id=pulumi.get(__ret__, 'vat_id'),
         zip_code=pulumi.get(__ret__, 'zip_code'))
-
-
-@_utilities.lift_output_func(get_billing_group)
 def get_billing_group_output(billing_group_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
@@ -278,4 +280,25 @@ def get_billing_group_output(billing_group_id: Optional[pulumi.Input[str]] = Non
 
     :param str billing_group_id: The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
     """
-    ...
+    __args__ = dict()
+    __args__['billingGroupId'] = billing_group_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getBillingGroup:getBillingGroup', __args__, opts=opts, typ=GetBillingGroupResult)
+    return __ret__.apply(lambda __response__: GetBillingGroupResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        address_lines=pulumi.get(__response__, 'address_lines'),
+        billing_currency=pulumi.get(__response__, 'billing_currency'),
+        billing_emails=pulumi.get(__response__, 'billing_emails'),
+        billing_extra_text=pulumi.get(__response__, 'billing_extra_text'),
+        billing_group_id=pulumi.get(__response__, 'billing_group_id'),
+        card_id=pulumi.get(__response__, 'card_id'),
+        city=pulumi.get(__response__, 'city'),
+        company=pulumi.get(__response__, 'company'),
+        copy_from_billing_group=pulumi.get(__response__, 'copy_from_billing_group'),
+        country_code=pulumi.get(__response__, 'country_code'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        parent_id=pulumi.get(__response__, 'parent_id'),
+        state=pulumi.get(__response__, 'state'),
+        vat_id=pulumi.get(__response__, 'vat_id'),
+        zip_code=pulumi.get(__response__, 'zip_code')))

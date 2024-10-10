@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -100,9 +105,6 @@ def get_influxdb_database(database_name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
         termination_protection=pulumi.get(__ret__, 'termination_protection'))
-
-
-@_utilities.lift_output_func(get_influxdb_database)
 def get_influxdb_database_output(database_name: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
@@ -110,4 +112,15 @@ def get_influxdb_database_output(database_name: Optional[pulumi.Input[str]] = No
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['databaseName'] = database_name
+    __args__['project'] = project
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getInfluxdbDatabase:getInfluxdbDatabase', __args__, opts=opts, typ=GetInfluxdbDatabaseResult)
+    return __ret__.apply(lambda __response__: GetInfluxdbDatabaseResult(
+        database_name=pulumi.get(__response__, 'database_name'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        termination_protection=pulumi.get(__response__, 'termination_protection')))

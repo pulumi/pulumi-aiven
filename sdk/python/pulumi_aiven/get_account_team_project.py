@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -117,9 +122,6 @@ def get_account_team_project(account_id: Optional[str] = None,
         project_name=pulumi.get(__ret__, 'project_name'),
         team_id=pulumi.get(__ret__, 'team_id'),
         team_type=pulumi.get(__ret__, 'team_type'))
-
-
-@_utilities.lift_output_func(get_account_team_project)
 def get_account_team_project_output(account_id: Optional[pulumi.Input[str]] = None,
                                     project_name: Optional[pulumi.Input[str]] = None,
                                     team_id: Optional[pulumi.Input[str]] = None,
@@ -132,4 +134,15 @@ def get_account_team_project_output(account_id: Optional[pulumi.Input[str]] = No
     :param str project_name: The name of an already existing project
     :param str team_id: An account team id
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['projectName'] = project_name
+    __args__['teamId'] = team_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('aiven:index/getAccountTeamProject:getAccountTeamProject', __args__, opts=opts, typ=GetAccountTeamProjectResult)
+    return __ret__.apply(lambda __response__: GetAccountTeamProjectResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        id=pulumi.get(__response__, 'id'),
+        project_name=pulumi.get(__response__, 'project_name'),
+        team_id=pulumi.get(__response__, 'team_id'),
+        team_type=pulumi.get(__response__, 'team_type')))
