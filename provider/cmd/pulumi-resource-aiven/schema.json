@@ -1752,8 +1752,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.\n",
-                    "secret": true
+                    "description": "S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.\n"
                 },
                 "bucketUrl": {
                     "type": "string",
@@ -2510,8 +2509,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "Access key used to authenticate with aws.\n",
-                    "secret": true
+                    "description": "Access key used to authenticate with aws.\n"
                 },
                 "authMethod": {
                     "type": "string",
@@ -3126,8 +3124,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "Access key used to authenticate with aws.\n",
-                    "secret": true
+                    "description": "Access key used to authenticate with aws.\n"
                 },
                 "authMethod": {
                     "type": "string",
@@ -5579,9 +5576,17 @@
                     "type": "string",
                     "description": "Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.\n"
                 },
+                "searchBackpressure": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchBackpressure:OpenSearchOpensearchUserConfigOpensearchSearchBackpressure",
+                    "description": "Search Backpressure Settings\n"
+                },
                 "searchMaxBuckets": {
                     "type": "integer",
                     "description": "Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.\n"
+                },
+                "shardIndexingPressure": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure",
+                    "description": "Shard indexing back pressure settings\n"
                 },
                 "threadPoolAnalyzeQueueSize": {
                     "type": "integer",
@@ -5721,6 +5726,193 @@
             },
             "type": "object"
         },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchBackpressure:OpenSearchOpensearchUserConfigOpensearchSearchBackpressure": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.\n"
+                },
+                "nodeDuress": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress:OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress",
+                    "description": "Node duress settings\n"
+                },
+                "searchShardTask": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask:OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask",
+                    "description": "Search shard settings\n"
+                },
+                "searchTask": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask:OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask",
+                    "description": "Search task settings\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress:OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress": {
+            "properties": {
+                "cpuThreshold": {
+                    "type": "number",
+                    "description": "The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.\n"
+                },
+                "heapThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.\n"
+                },
+                "numSuccessiveBreaches": {
+                    "type": "integer",
+                    "description": "The number of successive limit breaches after which the node is considered to be under duress. Default is 3.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask:OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask": {
+            "properties": {
+                "cancellationBurst": {
+                    "type": "number",
+                    "description": "The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.\n"
+                },
+                "cancellationRate": {
+                    "type": "number",
+                    "description": "The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.\n"
+                },
+                "cancellationRatio": {
+                    "type": "number",
+                    "description": "The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.\n"
+                },
+                "cpuTimeMillisThreshold": {
+                    "type": "integer",
+                    "description": "The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.\n"
+                },
+                "elapsedTimeMillisThreshold": {
+                    "type": "integer",
+                    "description": "The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.\n"
+                },
+                "heapMovingAverageWindowSize": {
+                    "type": "integer",
+                    "description": "The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.\n"
+                },
+                "heapPercentThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.\n"
+                },
+                "heapVariance": {
+                    "type": "number",
+                    "description": "The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.\n"
+                },
+                "totalHeapPercentThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask:OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask": {
+            "properties": {
+                "cancellationBurst": {
+                    "type": "number",
+                    "description": "The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.\n"
+                },
+                "cancellationRate": {
+                    "type": "number",
+                    "description": "The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.\n"
+                },
+                "cancellationRatio": {
+                    "type": "number",
+                    "description": "The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.\n"
+                },
+                "cpuTimeMillisThreshold": {
+                    "type": "integer",
+                    "description": "The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.\n"
+                },
+                "elapsedTimeMillisThreshold": {
+                    "type": "integer",
+                    "description": "The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.\n"
+                },
+                "heapMovingAverageWindowSize": {
+                    "type": "integer",
+                    "description": "The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.\n"
+                },
+                "heapPercentThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.\n"
+                },
+                "heapVariance": {
+                    "type": "number",
+                    "description": "The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.\n"
+                },
+                "totalHeapPercentThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable shard indexing backpressure. Default is false.\n"
+                },
+                "enforced": {
+                    "type": "boolean",
+                    "description": "Run shard indexing backpressure in shadow mode or enforced mode.\n        In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,\n        but it doesn’t actually reject any indexing requests.\n        In enforced mode (value set as true),\n        shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.\n        Default is false.\n"
+                },
+                "operatingFactor": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor",
+                    "description": "Operating factor\n"
+                },
+                "primaryParameter": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter",
+                    "description": "Primary parameter\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor": {
+            "properties": {
+                "lower": {
+                    "type": "number",
+                    "description": "Specify the lower occupancy limit of the allocated quota of memory for the shard.\n                If the total memory usage of a shard is below this limit,\n                shard indexing backpressure decreases the current allocated memory for that shard.\n                Default is 0.75.\n"
+                },
+                "optimal": {
+                    "type": "number",
+                    "description": "Specify the optimal occupancy of the allocated quota of memory for the shard.\n                If the total memory usage of a shard is at this level,\n                shard indexing backpressure doesn’t change the current allocated memory for that shard.\n                Default is 0.85.\n"
+                },
+                "upper": {
+                    "type": "number",
+                    "description": "Specify the upper occupancy limit of the allocated quota of memory for the shard.\n                If the total memory usage of a shard is above this limit,\n                shard indexing backpressure increases the current allocated memory for that shard.\n                Default is 0.95.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter": {
+            "properties": {
+                "node": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode"
+                },
+                "shard": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode": {
+            "properties": {
+                "softLimit": {
+                    "type": "number",
+                    "description": "Define the percentage of the node-level memory\n                        threshold that acts as a soft indicator for strain on a node.\n                        Default is 0.7.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard:OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard": {
+            "properties": {
+                "minLimit": {
+                    "type": "number",
+                    "description": "Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).\n                        Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.\n                        Default is 0.001.\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/OpenSearchOpensearchUserConfigPrivateAccess:OpenSearchOpensearchUserConfigPrivateAccess": {
             "properties": {
                 "opensearch": {
@@ -5776,8 +5968,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "AWS Access key.\n",
-                    "secret": true
+                    "description": "AWS Access key.\n"
                 },
                 "basePath": {
                     "type": "string",
@@ -5948,7 +6139,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n"
+                    "description": "List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.\n"
                 },
                 "principalId": {
                     "type": "string",
@@ -7621,8 +7812,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.\n",
-                    "secret": true
+                    "description": "AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.\n"
                 },
                 "logGroupName": {
                     "type": "string",
@@ -7649,8 +7839,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.\n",
-                    "secret": true
+                    "description": "AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.\n"
                 },
                 "namespace": {
                     "type": "string",
@@ -7678,8 +7867,7 @@
             "properties": {
                 "accessKeyId": {
                     "type": "string",
-                    "description": "Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.\n",
-                    "secret": true
+                    "description": "Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.\n"
                 },
                 "secretAccessKey": {
                     "type": "string",
@@ -7763,7 +7951,8 @@
                 },
                 "serviceAccountCredentials": {
                     "type": "string",
-                    "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{\"type\": \"service_account\", ...`.\n"
+                    "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{\"type\": \"service_account\", ...`.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -7784,7 +7973,8 @@
                 },
                 "serviceAccountCredentials": {
                     "type": "string",
-                    "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{\"type\": \"service_account\", ...`.\n"
+                    "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{\"type\": \"service_account\", ...`.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -7827,7 +8017,8 @@
                 },
                 "sslClientKey": {
                     "type": "string",
-                    "description": "PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n`.\n"
+                    "description": "PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n`.\n",
+                    "secret": true
                 },
                 "sslEndpointIdentificationAlgorithm": {
                     "type": "string",
@@ -8023,7 +8214,8 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n`.\n"
+                    "description": "PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n`.\n",
+                    "secret": true
                 },
                 "logline": {
                     "type": "string",
@@ -8595,7 +8787,8 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Environmental variables.\n"
+                    "description": "Environmental variables.\n",
+                    "deprecationMessage": "This property is deprecated."
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -11147,8 +11340,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.\n",
-                    "secret": true
+                    "description": "S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.\n"
                 },
                 "bucketUrl": {
                     "type": "string",
@@ -11967,8 +12159,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "Access key used to authenticate with aws.\n",
-                    "secret": true
+                    "description": "Access key used to authenticate with aws.\n"
                 },
                 "authMethod": {
                     "type": "string",
@@ -12620,8 +12811,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "Access key used to authenticate with aws.\n",
-                    "secret": true
+                    "description": "Access key used to authenticate with aws.\n"
                 },
                 "authMethod": {
                     "type": "string",
@@ -15239,9 +15429,17 @@
                     "type": "string",
                     "description": "Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.\n"
                 },
+                "searchBackpressure": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchBackpressure:getOpenSearchOpensearchUserConfigOpensearchSearchBackpressure",
+                    "description": "Search Backpressure Settings\n"
+                },
                 "searchMaxBuckets": {
                     "type": "integer",
                     "description": "Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.\n"
+                },
+                "shardIndexingPressure": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure",
+                    "description": "Shard indexing back pressure settings\n"
                 },
                 "threadPoolAnalyzeQueueSize": {
                     "type": "integer",
@@ -15381,6 +15579,193 @@
             },
             "type": "object"
         },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchBackpressure:getOpenSearchOpensearchUserConfigOpensearchSearchBackpressure": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.\n"
+                },
+                "nodeDuress": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress:getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress",
+                    "description": "Node duress settings\n"
+                },
+                "searchShardTask": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask:getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask",
+                    "description": "Search shard settings\n"
+                },
+                "searchTask": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask:getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask",
+                    "description": "Search task settings\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress:getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress": {
+            "properties": {
+                "cpuThreshold": {
+                    "type": "number",
+                    "description": "The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.\n"
+                },
+                "heapThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.\n"
+                },
+                "numSuccessiveBreaches": {
+                    "type": "integer",
+                    "description": "The number of successive limit breaches after which the node is considered to be under duress. Default is 3.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask:getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask": {
+            "properties": {
+                "cancellationBurst": {
+                    "type": "number",
+                    "description": "The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.\n"
+                },
+                "cancellationRate": {
+                    "type": "number",
+                    "description": "The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.\n"
+                },
+                "cancellationRatio": {
+                    "type": "number",
+                    "description": "The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.\n"
+                },
+                "cpuTimeMillisThreshold": {
+                    "type": "integer",
+                    "description": "The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.\n"
+                },
+                "elapsedTimeMillisThreshold": {
+                    "type": "integer",
+                    "description": "The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.\n"
+                },
+                "heapMovingAverageWindowSize": {
+                    "type": "integer",
+                    "description": "The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.\n"
+                },
+                "heapPercentThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.\n"
+                },
+                "heapVariance": {
+                    "type": "number",
+                    "description": "The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.\n"
+                },
+                "totalHeapPercentThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask:getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask": {
+            "properties": {
+                "cancellationBurst": {
+                    "type": "number",
+                    "description": "The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.\n"
+                },
+                "cancellationRate": {
+                    "type": "number",
+                    "description": "The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.\n"
+                },
+                "cancellationRatio": {
+                    "type": "number",
+                    "description": "The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.\n"
+                },
+                "cpuTimeMillisThreshold": {
+                    "type": "integer",
+                    "description": "The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.\n"
+                },
+                "elapsedTimeMillisThreshold": {
+                    "type": "integer",
+                    "description": "The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.\n"
+                },
+                "heapMovingAverageWindowSize": {
+                    "type": "integer",
+                    "description": "The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.\n"
+                },
+                "heapPercentThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.\n"
+                },
+                "heapVariance": {
+                    "type": "number",
+                    "description": "The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.\n"
+                },
+                "totalHeapPercentThreshold": {
+                    "type": "number",
+                    "description": "The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable shard indexing backpressure. Default is false.\n"
+                },
+                "enforced": {
+                    "type": "boolean",
+                    "description": "Run shard indexing backpressure in shadow mode or enforced mode.\n            In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,\n            but it doesn’t actually reject any indexing requests.\n            In enforced mode (value set as true),\n            shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.\n            Default is false.\n"
+                },
+                "operatingFactor": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor",
+                    "description": "Operating factor\n"
+                },
+                "primaryParameter": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter",
+                    "description": "Primary parameter\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor": {
+            "properties": {
+                "lower": {
+                    "type": "number",
+                    "description": "Specify the lower occupancy limit of the allocated quota of memory for the shard.\n                    If the total memory usage of a shard is below this limit,\n                    shard indexing backpressure decreases the current allocated memory for that shard.\n                    Default is 0.75.\n"
+                },
+                "optimal": {
+                    "type": "number",
+                    "description": "Specify the optimal occupancy of the allocated quota of memory for the shard.\n                    If the total memory usage of a shard is at this level,\n                    shard indexing backpressure doesn’t change the current allocated memory for that shard.\n                    Default is 0.85.\n"
+                },
+                "upper": {
+                    "type": "number",
+                    "description": "Specify the upper occupancy limit of the allocated quota of memory for the shard.\n                    If the total memory usage of a shard is above this limit,\n                    shard indexing backpressure increases the current allocated memory for that shard.\n                    Default is 0.95.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter": {
+            "properties": {
+                "node": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode"
+                },
+                "shard": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode": {
+            "properties": {
+                "softLimit": {
+                    "type": "number",
+                    "description": "Define the percentage of the node-level memory\n                            threshold that acts as a soft indicator for strain on a node.\n                            Default is 0.7.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard:getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard": {
+            "properties": {
+                "minLimit": {
+                    "type": "number",
+                    "description": "Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).\n                            Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.\n                            Default is 0.001.\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getOpenSearchOpensearchUserConfigPrivateAccess:getOpenSearchOpensearchUserConfigPrivateAccess": {
             "properties": {
                 "opensearch": {
@@ -15436,8 +15821,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "AWS Access key.\n",
-                    "secret": true
+                    "description": "AWS Access key.\n"
                 },
                 "basePath": {
                     "type": "string",
@@ -15594,6 +15978,112 @@
             "type": "object",
             "required": [
                 "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getOrganizationUserListUser:getOrganizationUserListUser": {
+            "properties": {
+                "isSuperAdmin": {
+                    "type": "boolean",
+                    "description": "Super admin state of the organization user\n"
+                },
+                "joinTime": {
+                    "type": "string",
+                    "description": "Join time\n"
+                },
+                "lastActivityTime": {
+                    "type": "string",
+                    "description": "Last activity time\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "User ID\n"
+                },
+                "userInfos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getOrganizationUserListUserUserInfo:getOrganizationUserListUserUserInfo"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "isSuperAdmin",
+                "joinTime",
+                "lastActivityTime",
+                "userId",
+                "userInfos"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getOrganizationUserListUserUserInfo:getOrganizationUserListUserUserInfo": {
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "description": "City\n"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "Country\n"
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "Creation time\n"
+                },
+                "department": {
+                    "type": "string",
+                    "description": "Department\n"
+                },
+                "isApplicationUser": {
+                    "type": "boolean",
+                    "description": "Is Application User\n"
+                },
+                "jobTitle": {
+                    "type": "string",
+                    "description": "Job Title\n"
+                },
+                "managedByScim": {
+                    "type": "boolean",
+                    "description": "Managed By Scim\n"
+                },
+                "managingOrganizationId": {
+                    "type": "string",
+                    "description": "Managing Organization ID\n"
+                },
+                "realName": {
+                    "type": "string",
+                    "description": "Real Name\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State\n"
+                },
+                "userEmail": {
+                    "type": "string",
+                    "description": "User Email\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "city",
+                "country",
+                "createTime",
+                "department",
+                "isApplicationUser",
+                "jobTitle",
+                "managedByScim",
+                "managingOrganizationId",
+                "realName",
+                "state",
+                "userEmail"
             ],
             "language": {
                 "nodejs": {
@@ -17281,8 +17771,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.\n",
-                    "secret": true
+                    "description": "AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.\n"
                 },
                 "logGroupName": {
                     "type": "string",
@@ -17314,8 +17803,7 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.\n",
-                    "secret": true
+                    "description": "AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.\n"
                 },
                 "namespace": {
                     "type": "string",
@@ -17348,8 +17836,7 @@
             "properties": {
                 "accessKeyId": {
                     "type": "string",
-                    "description": "Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.\n",
-                    "secret": true
+                    "description": "Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.\n"
                 },
                 "secretAccessKey": {
                     "type": "string",
@@ -17448,7 +17935,8 @@
                 },
                 "serviceAccountCredentials": {
                     "type": "string",
-                    "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{\"type\": \"service_account\", ...`.\n"
+                    "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{\"type\": \"service_account\", ...`.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -17474,7 +17962,8 @@
                 },
                 "serviceAccountCredentials": {
                     "type": "string",
-                    "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{\"type\": \"service_account\", ...`.\n"
+                    "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{\"type\": \"service_account\", ...`.\n",
+                    "secret": true
                 }
             },
             "type": "object",
@@ -17522,7 +18011,8 @@
                 },
                 "sslClientKey": {
                     "type": "string",
-                    "description": "PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n`.\n"
+                    "description": "PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n`.\n",
+                    "secret": true
                 },
                 "sslEndpointIdentificationAlgorithm": {
                     "type": "string",
@@ -17743,7 +18233,8 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n`.\n"
+                    "description": "PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n`.\n",
+                    "secret": true
                 },
                 "logline": {
                     "type": "string",
@@ -18352,7 +18843,8 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Environmental variables.\n"
+                    "description": "Environmental variables.\n",
+                    "deprecationMessage": "This property is deprecated."
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -19416,7 +19908,7 @@
                 },
                 "teamType": {
                     "type": "string",
-                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
+                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.\n"
                 }
             },
             "required": [
@@ -19438,7 +19930,7 @@
                 },
                 "teamType": {
                     "type": "string",
-                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
+                    "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.\n"
                 }
             },
             "requiredInputs": [
@@ -19462,7 +19954,7 @@
                     },
                     "teamType": {
                         "type": "string",
-                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
+                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.\n"
                     }
                 },
                 "type": "object"
@@ -25566,7 +26058,7 @@
                 },
                 "schemaType": {
                     "type": "string",
-                    "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n"
+                    "description": "Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -25604,7 +26096,7 @@
                 },
                 "schemaType": {
                     "type": "string",
-                    "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n",
+                    "description": "Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.\n",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
@@ -25642,7 +26134,7 @@
                     },
                     "schemaType": {
                         "type": "string",
-                        "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n",
+                        "description": "Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.\n",
                         "willReplaceOnChanges": true
                     },
                     "serviceName": {
@@ -25831,7 +26323,7 @@
             }
         },
         "aiven:index/kafkaTopic:KafkaTopic": {
-            "description": "Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleTopic = new aiven.KafkaTopic(\"example_topic\", {\n    project: exampleProject.project,\n    serviceName: exampleKafka.serviceName,\n    topicName: \"example-topic\",\n    partitions: 5,\n    replication: 3,\n    terminationProtection: true,\n    config: {\n        flushMs: \"10\",\n        cleanupPolicy: \"compact,delete\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_topic = aiven.KafkaTopic(\"example_topic\",\n    project=example_project[\"project\"],\n    service_name=example_kafka[\"serviceName\"],\n    topic_name=\"example-topic\",\n    partitions=5,\n    replication=3,\n    termination_protection=True,\n    config={\n        \"flush_ms\": \"10\",\n        \"cleanup_policy\": \"compact,delete\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleTopic = new Aiven.KafkaTopic(\"example_topic\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleKafka.ServiceName,\n        TopicName = \"example-topic\",\n        Partitions = 5,\n        Replication = 3,\n        TerminationProtection = true,\n        Config = new Aiven.Inputs.KafkaTopicConfigArgs\n        {\n            FlushMs = \"10\",\n            CleanupPolicy = \"compact,delete\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaTopic(ctx, \"example_topic\", \u0026aiven.KafkaTopicArgs{\n\t\t\tProject:               pulumi.Any(exampleProject.Project),\n\t\t\tServiceName:           pulumi.Any(exampleKafka.ServiceName),\n\t\t\tTopicName:             pulumi.String(\"example-topic\"),\n\t\t\tPartitions:            pulumi.Int(5),\n\t\t\tReplication:           pulumi.Int(3),\n\t\t\tTerminationProtection: pulumi.Bool(true),\n\t\t\tConfig: \u0026aiven.KafkaTopicConfigArgs{\n\t\t\t\tFlushMs:       pulumi.String(\"10\"),\n\t\t\t\tCleanupPolicy: pulumi.String(\"compact,delete\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.KafkaTopic;\nimport com.pulumi.aiven.KafkaTopicArgs;\nimport com.pulumi.aiven.inputs.KafkaTopicConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleTopic = new KafkaTopic(\"exampleTopic\", KafkaTopicArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleKafka.serviceName())\n            .topicName(\"example-topic\")\n            .partitions(5)\n            .replication(3)\n            .terminationProtection(true)\n            .config(KafkaTopicConfigArgs.builder()\n                .flushMs(10)\n                .cleanupPolicy(\"compact,delete\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleTopic:\n    type: aiven:KafkaTopic\n    name: example_topic\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleKafka.serviceName}\n      topicName: example-topic\n      partitions: 5\n      replication: 3\n      terminationProtection: true\n      config:\n        flushMs: 10\n        cleanupPolicy: compact,delete\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME\n```\n\n",
+            "description": "Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleTopic = new aiven.KafkaTopic(\"example_topic\", {\n    project: exampleProject.project,\n    serviceName: exampleKafka.serviceName,\n    topicName: \"example-topic\",\n    partitions: 5,\n    replication: 3,\n    terminationProtection: true,\n    config: {\n        flushMs: \"10\",\n        cleanupPolicy: \"compact,delete\",\n    },\n    ownerUserGroupId: example.groupId,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_topic = aiven.KafkaTopic(\"example_topic\",\n    project=example_project[\"project\"],\n    service_name=example_kafka[\"serviceName\"],\n    topic_name=\"example-topic\",\n    partitions=5,\n    replication=3,\n    termination_protection=True,\n    config={\n        \"flush_ms\": \"10\",\n        \"cleanup_policy\": \"compact,delete\",\n    },\n    owner_user_group_id=example[\"groupId\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleTopic = new Aiven.KafkaTopic(\"example_topic\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleKafka.ServiceName,\n        TopicName = \"example-topic\",\n        Partitions = 5,\n        Replication = 3,\n        TerminationProtection = true,\n        Config = new Aiven.Inputs.KafkaTopicConfigArgs\n        {\n            FlushMs = \"10\",\n            CleanupPolicy = \"compact,delete\",\n        },\n        OwnerUserGroupId = example.GroupId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaTopic(ctx, \"example_topic\", \u0026aiven.KafkaTopicArgs{\n\t\t\tProject:               pulumi.Any(exampleProject.Project),\n\t\t\tServiceName:           pulumi.Any(exampleKafka.ServiceName),\n\t\t\tTopicName:             pulumi.String(\"example-topic\"),\n\t\t\tPartitions:            pulumi.Int(5),\n\t\t\tReplication:           pulumi.Int(3),\n\t\t\tTerminationProtection: pulumi.Bool(true),\n\t\t\tConfig: \u0026aiven.KafkaTopicConfigArgs{\n\t\t\t\tFlushMs:       pulumi.String(\"10\"),\n\t\t\t\tCleanupPolicy: pulumi.String(\"compact,delete\"),\n\t\t\t},\n\t\t\tOwnerUserGroupId: pulumi.Any(example.GroupId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.KafkaTopic;\nimport com.pulumi.aiven.KafkaTopicArgs;\nimport com.pulumi.aiven.inputs.KafkaTopicConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleTopic = new KafkaTopic(\"exampleTopic\", KafkaTopicArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleKafka.serviceName())\n            .topicName(\"example-topic\")\n            .partitions(5)\n            .replication(3)\n            .terminationProtection(true)\n            .config(KafkaTopicConfigArgs.builder()\n                .flushMs(10)\n                .cleanupPolicy(\"compact,delete\")\n                .build())\n            .ownerUserGroupId(example.groupId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleTopic:\n    type: aiven:KafkaTopic\n    name: example_topic\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleKafka.serviceName}\n      topicName: example-topic\n      partitions: 5\n      replication: 3\n      terminationProtection: true\n      config:\n        flushMs: 10\n        cleanupPolicy: compact,delete\n      ownerUserGroupId: ${example.groupId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME\n```\n\n",
             "properties": {
                 "config": {
                     "$ref": "#/types/aiven:index/KafkaTopicConfig:KafkaTopicConfig",
@@ -25839,7 +26331,7 @@
                 },
                 "ownerUserGroupId": {
                     "type": "string",
-                    "description": "The user group that is the owner of the topic\n"
+                    "description": "The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).\n"
                 },
                 "partitions": {
                     "type": "integer",
@@ -25890,7 +26382,7 @@
                 },
                 "ownerUserGroupId": {
                     "type": "string",
-                    "description": "The user group that is the owner of the topic\n"
+                    "description": "The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).\n"
                 },
                 "partitions": {
                     "type": "integer",
@@ -25946,7 +26438,7 @@
                     },
                     "ownerUserGroupId": {
                         "type": "string",
-                        "description": "The user group that is the owner of the topic\n"
+                        "description": "The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).\n"
                     },
                     "partitions": {
                         "type": "integer",
@@ -28886,7 +29378,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
+                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts"
@@ -28908,7 +29400,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
+                    "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts"
@@ -28932,7 +29424,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n"
+                        "description": "[Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts"
@@ -30048,6 +30540,7 @@
                 }
             },
             "required": [
+                "accountId",
                 "availableCredits",
                 "caCert",
                 "estimatedBalance",
@@ -30204,7 +30697,7 @@
                 },
                 "memberType": {
                     "type": "string",
-                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n"
+                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.\n"
                 },
                 "project": {
                     "type": "string",
@@ -30225,7 +30718,7 @@
                 },
                 "memberType": {
                     "type": "string",
-                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n"
+                    "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.\n"
                 },
                 "project": {
                     "type": "string",
@@ -30252,7 +30745,7 @@
                     },
                     "memberType": {
                         "type": "string",
-                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n"
+                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.\n"
                     },
                     "project": {
                         "type": "string",
@@ -31558,7 +32051,7 @@
             }
         },
         "aiven:index/thanos:Thanos": {
-            "description": "Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.\n",
+            "description": "Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleThanos = new aiven.Thanos(\"example_thanos\", {\n    project: exampleProject.project,\n    plan: \"startup-4\",\n    cloudName: \"google-europe-west1\",\n    serviceName: \"example-thanos-service\",\n    thanosUserConfig: {\n        compactor: {\n            retentionDays: 30,\n        },\n        objectStorageUsageAlertThresholdGb: 10,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_thanos = aiven.Thanos(\"example_thanos\",\n    project=example_project[\"project\"],\n    plan=\"startup-4\",\n    cloud_name=\"google-europe-west1\",\n    service_name=\"example-thanos-service\",\n    thanos_user_config={\n        \"compactor\": {\n            \"retention_days\": 30,\n        },\n        \"object_storage_usage_alert_threshold_gb\": 10,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleThanos = new Aiven.Thanos(\"example_thanos\", new()\n    {\n        Project = exampleProject.Project,\n        Plan = \"startup-4\",\n        CloudName = \"google-europe-west1\",\n        ServiceName = \"example-thanos-service\",\n        ThanosUserConfig = new Aiven.Inputs.ThanosThanosUserConfigArgs\n        {\n            Compactor = new Aiven.Inputs.ThanosThanosUserConfigCompactorArgs\n            {\n                RetentionDays = 30,\n            },\n            ObjectStorageUsageAlertThresholdGb = 10,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewThanos(ctx, \"example_thanos\", \u0026aiven.ThanosArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tPlan:        pulumi.String(\"startup-4\"),\n\t\t\tCloudName:   pulumi.String(\"google-europe-west1\"),\n\t\t\tServiceName: pulumi.String(\"example-thanos-service\"),\n\t\t\tThanosUserConfig: \u0026aiven.ThanosThanosUserConfigArgs{\n\t\t\t\tCompactor: \u0026aiven.ThanosThanosUserConfigCompactorArgs{\n\t\t\t\t\tRetentionDays: pulumi.Int(30),\n\t\t\t\t},\n\t\t\t\tObjectStorageUsageAlertThresholdGb: pulumi.Int(10),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Thanos;\nimport com.pulumi.aiven.ThanosArgs;\nimport com.pulumi.aiven.inputs.ThanosThanosUserConfigArgs;\nimport com.pulumi.aiven.inputs.ThanosThanosUserConfigCompactorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleThanos = new Thanos(\"exampleThanos\", ThanosArgs.builder()\n            .project(exampleProject.project())\n            .plan(\"startup-4\")\n            .cloudName(\"google-europe-west1\")\n            .serviceName(\"example-thanos-service\")\n            .thanosUserConfig(ThanosThanosUserConfigArgs.builder()\n                .compactor(ThanosThanosUserConfigCompactorArgs.builder()\n                    .retentionDays(\"30\")\n                    .build())\n                .objectStorageUsageAlertThresholdGb(\"10\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleThanos:\n    type: aiven:Thanos\n    name: example_thanos\n    properties:\n      project: ${exampleProject.project}\n      plan: startup-4\n      cloudName: google-europe-west1\n      serviceName: example-thanos-service\n      thanosUserConfig:\n        compactor:\n          retentionDays: '30'\n        objectStorageUsageAlertThresholdGb: '10'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/thanos:Thanos example_thanos PROJECT/SERVICE_NAME\n```\n\n",
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
@@ -33043,7 +33536,7 @@
                         "type": "string"
                     },
                     "teamType": {
-                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.\n",
+                        "description": "The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.\n",
                         "type": "string"
                     }
                 },
@@ -36448,7 +36941,7 @@
                         "type": "string"
                     },
                     "schemaType": {
-                        "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n",
+                        "description": "Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.\n",
                         "type": "string"
                     },
                     "serviceName": {
@@ -36517,7 +37010,7 @@
                         "type": "string"
                     },
                     "schemaType": {
-                        "description": "Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.\n",
+                        "description": "Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.\n",
                         "type": "string"
                     },
                     "serviceName": {
@@ -36665,7 +37158,7 @@
                         "type": "string"
                     },
                     "ownerUserGroupId": {
-                        "description": "The user group that is the owner of the topic\n",
+                        "description": "The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).\n",
                         "type": "string"
                     },
                     "partitions": {
@@ -38405,6 +38898,47 @@
                 "type": "object"
             }
         },
+        "aiven:index/getOrganizationUserList:getOrganizationUserList": {
+            "description": "List of users of the organization. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganizationUserList.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Organization id. Example: `org12345678`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Organization name. Example: `aiven`.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganizationUserList.\n",
+                "properties": {
+                    "id": {
+                        "description": "Organization id. Example: `org12345678`.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Organization name. Example: `aiven`.\n",
+                        "type": "string"
+                    },
+                    "users": {
+                        "description": "List of users of the organization\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getOrganizationUserListUser:getOrganizationUserListUser"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "users"
+                ],
+                "type": "object"
+            }
+        },
         "aiven:index/getOrganizationalUnit:getOrganizationalUnit": {
             "description": "Gets information about an organizational unit.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()\n            .name(\"Example organizational unit\")\n            .parentId(main.id())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  exampleUnit:\n    fn::invoke:\n      Function: aiven:getOrganizationalUnit\n      Arguments:\n        name: Example organizational unit\n        parentId: ${main.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -38949,7 +39483,7 @@
                         "type": "string"
                     },
                     "memberType": {
-                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.\n",
+                        "description": "Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.\n",
                         "type": "string"
                     },
                     "project": {
@@ -39789,7 +40323,7 @@
             }
         },
         "aiven:index/getThanos:getThanos": {
-            "description": "Gets information about an Aiven for Thanos® service.\n",
+            "description": "Gets information about an Aiven for Thanos® service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleThanos = aiven.getThanos({\n    project: exampleProject.project,\n    serviceName: \"example-thanos-service\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_thanos = aiven.get_thanos(project=example_project[\"project\"],\n    service_name=\"example-thanos-service\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleThanos = Aiven.GetThanos.Invoke(new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = \"example-thanos-service\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupThanos(ctx, \u0026aiven.LookupThanosArgs{\n\t\t\tProject:     exampleProject.Project,\n\t\t\tServiceName: \"example-thanos-service\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetThanosArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleThanos = AivenFunctions.getThanos(GetThanosArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(\"example-thanos-service\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  exampleThanos:\n    fn::invoke:\n      Function: aiven:getThanos\n      Arguments:\n        project: ${exampleProject.project}\n        serviceName: example-thanos-service\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getThanos.\n",
                 "properties": {
