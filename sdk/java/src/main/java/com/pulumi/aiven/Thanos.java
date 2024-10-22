@@ -26,6 +26,58 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Thanos;
+ * import com.pulumi.aiven.ThanosArgs;
+ * import com.pulumi.aiven.inputs.ThanosThanosUserConfigArgs;
+ * import com.pulumi.aiven.inputs.ThanosThanosUserConfigCompactorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleThanos = new Thanos("exampleThanos", ThanosArgs.builder()
+ *             .project(exampleProject.project())
+ *             .plan("startup-4")
+ *             .cloudName("google-europe-west1")
+ *             .serviceName("example-thanos-service")
+ *             .thanosUserConfig(ThanosThanosUserConfigArgs.builder()
+ *                 .compactor(ThanosThanosUserConfigCompactorArgs.builder()
+ *                     .retentionDays("30")
+ *                     .build())
+ *                 .objectStorageUsageAlertThresholdGb("10")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/thanos:Thanos example_thanos PROJECT/SERVICE_NAME
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/thanos:Thanos")
 public class Thanos extends com.pulumi.resources.CustomResource {

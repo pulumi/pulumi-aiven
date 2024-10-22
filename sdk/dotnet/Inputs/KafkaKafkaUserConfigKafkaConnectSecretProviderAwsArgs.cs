@@ -12,21 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessKey")]
-        private Input<string>? _accessKey;
-
         /// <summary>
         /// Access key used to authenticate with aws.
         /// </summary>
-        public Input<string>? AccessKey
-        {
-            get => _accessKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("accessKey")]
+        public Input<string>? AccessKey { get; set; }
 
         /// <summary>
         /// Enum: `credentials`. Auth method of the vault secret provider.

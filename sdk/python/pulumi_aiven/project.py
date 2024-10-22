@@ -637,7 +637,7 @@ class Project(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
-    def account_id(self) -> pulumi.Output[Optional[str]]:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         """

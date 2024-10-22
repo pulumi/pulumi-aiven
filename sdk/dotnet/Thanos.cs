@@ -11,6 +11,41 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleThanos = new Aiven.Thanos("example_thanos", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         Plan = "startup-4",
+    ///         CloudName = "google-europe-west1",
+    ///         ServiceName = "example-thanos-service",
+    ///         ThanosUserConfig = new Aiven.Inputs.ThanosThanosUserConfigArgs
+    ///         {
+    ///             Compactor = new Aiven.Inputs.ThanosThanosUserConfigCompactorArgs
+    ///             {
+    ///                 RetentionDays = 30,
+    ///             },
+    ///             ObjectStorageUsageAlertThresholdGb = 10,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/thanos:Thanos example_thanos PROJECT/SERVICE_NAME
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/thanos:Thanos")]
     public partial class Thanos : global::Pulumi.CustomResource

@@ -77,7 +77,7 @@ namespace Pulumi.Aiven
         public Output<string> Schema { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        /// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         /// </summary>
         [Output("schemaType")]
         public Output<string?> SchemaType { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Aiven
         public Input<string> Schema { get; set; } = null!;
 
         /// <summary>
-        /// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        /// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         /// </summary>
         [Input("schemaType")]
         public Input<string>? SchemaType { get; set; }
@@ -209,7 +209,7 @@ namespace Pulumi.Aiven
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        /// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         /// </summary>
         [Input("schemaType")]
         public Input<string>? SchemaType { get; set; }

@@ -74,14 +74,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* Use parent_id instead. This field will be removed in the next major release. */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.

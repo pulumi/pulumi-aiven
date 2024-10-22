@@ -12,21 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigExternalImageStorageArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessKey", required: true)]
-        private Input<string>? _accessKey;
-
         /// <summary>
         /// S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
         /// </summary>
-        public Input<string>? AccessKey
-        {
-            get => _accessKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("accessKey", required: true)]
+        public Input<string> AccessKey { get; set; } = null!;
 
         /// <summary>
         /// Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.

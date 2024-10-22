@@ -44,7 +44,7 @@ namespace Pulumi.Aiven
         /// Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.

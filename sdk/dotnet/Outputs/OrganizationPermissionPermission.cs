@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CreateTime;
         /// <summary>
-        /// List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
+        /// List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
         /// </summary>
         public readonly ImmutableArray<string> Permissions;
         /// <summary>

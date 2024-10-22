@@ -60,7 +60,7 @@ export class Project extends pulumi.CustomResource {
      *
      * @deprecated Use parentId instead. This field will be removed in the next major release.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      *

@@ -36,14 +36,24 @@ namespace Pulumi.Aiven.Inputs
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
         /// ...
         /// -----END PRIVATE KEY-----
         /// `.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Custom syslog message format. Example: `&lt;%pri%&gt;%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.

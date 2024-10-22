@@ -32,7 +32,7 @@ class KafkaSchemaArgs:
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] subject_name: The Kafka Schema Subject name. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
-        :param pulumi.Input[str] schema_type: Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        :param pulumi.Input[str] schema_type: Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "schema", schema)
@@ -107,7 +107,7 @@ class KafkaSchemaArgs:
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         """
         return pulumi.get(self, "schema_type")
 
@@ -131,7 +131,7 @@ class _KafkaSchemaState:
         :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] schema: Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
-        :param pulumi.Input[str] schema_type: Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        :param pulumi.Input[str] schema_type: Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] subject_name: The Kafka Schema Subject name. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] version: Kafka Schema configuration version.
@@ -191,7 +191,7 @@ class _KafkaSchemaState:
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         """
         return pulumi.get(self, "schema_type")
 
@@ -291,7 +291,7 @@ class KafkaSchema(pulumi.CustomResource):
         :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] schema: Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
-        :param pulumi.Input[str] schema_type: Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        :param pulumi.Input[str] schema_type: Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] subject_name: The Kafka Schema Subject name. Changing this property forces recreation of the resource.
         """
@@ -411,7 +411,7 @@ class KafkaSchema(pulumi.CustomResource):
         :param pulumi.Input[str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] schema: Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
-        :param pulumi.Input[str] schema_type: Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        :param pulumi.Input[str] schema_type: Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] subject_name: The Kafka Schema Subject name. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] version: Kafka Schema configuration version.
@@ -457,7 +457,7 @@ class KafkaSchema(pulumi.CustomResource):
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         """
         return pulumi.get(self, "schema_type")
 

@@ -19,7 +19,7 @@ public final class OrganizationPermissionPermission {
      */
     private @Nullable String createTime;
     /**
-     * @return List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
+     * @return List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
      * 
      */
     private List<String> permissions;
@@ -48,7 +48,7 @@ public final class OrganizationPermissionPermission {
         return Optional.ofNullable(this.createTime);
     }
     /**
-     * @return List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
+     * @return List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
      * 
      */
     public List<String> permissions() {

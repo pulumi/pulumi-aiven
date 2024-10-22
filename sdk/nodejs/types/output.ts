@@ -5303,9 +5303,17 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     scriptMaxCompilationsRate?: string;
     /**
+     * Search Backpressure Settings
+     */
+    searchBackpressure?: outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
+    /**
      * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      */
     searchMaxBuckets?: number;
+    /**
+     * Shard indexing back pressure settings
+     */
+    shardIndexingPressure?: outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure;
     /**
      * Size for the thread pool queue. See documentation for exact details.
      */
@@ -5431,6 +5439,189 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
      * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: number;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
+    /**
+     * Enum: `monitorOnly`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
+     */
+    mode?: string;
+    /**
+     * Node duress settings
+     */
+    nodeDuress?: outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress;
+    /**
+     * Search shard settings
+     */
+    searchShardTask?: outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask;
+    /**
+     * Search task settings
+     */
+    searchTask?: outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
+    /**
+     * The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+     */
+    cpuThreshold?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+     */
+    heapThreshold?: number;
+    /**
+     * The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+     */
+    numSuccessiveBreaches?: number;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
+    /**
+     * The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+     */
+    cancellationBurst?: number;
+    /**
+     * The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+     */
+    cancellationRate?: number;
+    /**
+     * The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+     */
+    cancellationRatio?: number;
+    /**
+     * The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+     */
+    cpuTimeMillisThreshold?: number;
+    /**
+     * The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+     */
+    elapsedTimeMillisThreshold?: number;
+    /**
+     * The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+     */
+    heapMovingAverageWindowSize?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+     */
+    heapPercentThreshold?: number;
+    /**
+     * The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+     */
+    heapVariance?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+     */
+    totalHeapPercentThreshold?: number;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask {
+    /**
+     * The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+     */
+    cancellationBurst?: number;
+    /**
+     * The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+     */
+    cancellationRate?: number;
+    /**
+     * The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+     */
+    cancellationRatio?: number;
+    /**
+     * The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+     */
+    cpuTimeMillisThreshold?: number;
+    /**
+     * The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+     */
+    elapsedTimeMillisThreshold?: number;
+    /**
+     * The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+     */
+    heapMovingAverageWindowSize?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+     */
+    heapPercentThreshold?: number;
+    /**
+     * The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+     */
+    heapVariance?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+     */
+    totalHeapPercentThreshold?: number;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
+    /**
+     * Enable or disable shard indexing backpressure. Default is false.
+     */
+    enabled?: boolean;
+    /**
+     * Run shard indexing backpressure in shadow mode or enforced mode.
+     *             In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
+     *             but it doesn’t actually reject any indexing requests.
+     *             In enforced mode (value set as true),
+     *             shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
+     *             Default is false.
+     */
+    enforced?: boolean;
+    /**
+     * Operating factor
+     */
+    operatingFactor?: outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor;
+    /**
+     * Primary parameter
+     */
+    primaryParameter?: outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor {
+    /**
+     * Specify the lower occupancy limit of the allocated quota of memory for the shard.
+     *                     If the total memory usage of a shard is below this limit,
+     *                     shard indexing backpressure decreases the current allocated memory for that shard.
+     *                     Default is 0.75.
+     */
+    lower?: number;
+    /**
+     * Specify the optimal occupancy of the allocated quota of memory for the shard.
+     *                     If the total memory usage of a shard is at this level,
+     *                     shard indexing backpressure doesn’t change the current allocated memory for that shard.
+     *                     Default is 0.85.
+     */
+    optimal?: number;
+    /**
+     * Specify the upper occupancy limit of the allocated quota of memory for the shard.
+     *                     If the total memory usage of a shard is above this limit,
+     *                     shard indexing backpressure increases the current allocated memory for that shard.
+     *                     Default is 0.95.
+     */
+    upper?: number;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter {
+    node?: outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode;
+    shard?: outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
+    /**
+     * Define the percentage of the node-level memory
+     *                             threshold that acts as a soft indicator for strain on a node.
+     *                             Default is 0.7.
+     */
+    softLimit?: number;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard {
+    /**
+     * Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
+     *                             Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
+     *                             Default is 0.001.
+     */
+    minLimit?: number;
 }
 
 export interface GetOpenSearchOpensearchUserConfigPrivateAccess {
@@ -5586,6 +5777,73 @@ export interface GetOpenSearchTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface GetOrganizationUserListUser {
+    /**
+     * Super admin state of the organization user
+     */
+    isSuperAdmin: boolean;
+    /**
+     * Join time
+     */
+    joinTime: string;
+    /**
+     * Last activity time
+     */
+    lastActivityTime: string;
+    /**
+     * User ID
+     */
+    userId: string;
+    userInfos: outputs.GetOrganizationUserListUserUserInfo[];
+}
+
+export interface GetOrganizationUserListUserUserInfo {
+    /**
+     * City
+     */
+    city: string;
+    /**
+     * Country
+     */
+    country: string;
+    /**
+     * Creation time
+     */
+    createTime: string;
+    /**
+     * Department
+     */
+    department: string;
+    /**
+     * Is Application User
+     */
+    isApplicationUser: boolean;
+    /**
+     * Job Title
+     */
+    jobTitle: string;
+    /**
+     * Managed By Scim
+     */
+    managedByScim: boolean;
+    /**
+     * Managing Organization ID
+     */
+    managingOrganizationId: string;
+    /**
+     * Real Name
+     */
+    realName: string;
+    /**
+     * State
+     */
+    state: string;
+    /**
+     * User Email
+     */
+    userEmail: string;
 }
 
 export interface GetPgComponent {
@@ -7655,6 +7913,8 @@ export interface GetThanosThanosUserConfig {
     compactor?: outputs.GetThanosThanosUserConfigCompactor;
     /**
      * Environmental variables.
+     *
+     * @deprecated This property is deprecated.
      */
     env?: {[key: string]: string};
     /**
@@ -11503,9 +11763,17 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     scriptMaxCompilationsRate?: string;
     /**
+     * Search Backpressure Settings
+     */
+    searchBackpressure?: outputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
+    /**
      * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      */
     searchMaxBuckets?: number;
+    /**
+     * Shard indexing back pressure settings
+     */
+    shardIndexingPressure?: outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure;
     /**
      * Size for the thread pool queue. See documentation for exact details.
      */
@@ -11631,6 +11899,189 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
      * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: number;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
+    /**
+     * Enum: `monitorOnly`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+     */
+    mode?: string;
+    /**
+     * Node duress settings
+     */
+    nodeDuress?: outputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress;
+    /**
+     * Search shard settings
+     */
+    searchShardTask?: outputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask;
+    /**
+     * Search task settings
+     */
+    searchTask?: outputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
+    /**
+     * The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+     */
+    cpuThreshold?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+     */
+    heapThreshold?: number;
+    /**
+     * The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+     */
+    numSuccessiveBreaches?: number;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
+    /**
+     * The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+     */
+    cancellationBurst?: number;
+    /**
+     * The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+     */
+    cancellationRate?: number;
+    /**
+     * The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+     */
+    cancellationRatio?: number;
+    /**
+     * The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+     */
+    cpuTimeMillisThreshold?: number;
+    /**
+     * The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+     */
+    elapsedTimeMillisThreshold?: number;
+    /**
+     * The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+     */
+    heapMovingAverageWindowSize?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+     */
+    heapPercentThreshold?: number;
+    /**
+     * The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+     */
+    heapVariance?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+     */
+    totalHeapPercentThreshold?: number;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask {
+    /**
+     * The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+     */
+    cancellationBurst?: number;
+    /**
+     * The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+     */
+    cancellationRate?: number;
+    /**
+     * The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+     */
+    cancellationRatio?: number;
+    /**
+     * The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+     */
+    cpuTimeMillisThreshold?: number;
+    /**
+     * The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+     */
+    elapsedTimeMillisThreshold?: number;
+    /**
+     * The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+     */
+    heapMovingAverageWindowSize?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+     */
+    heapPercentThreshold?: number;
+    /**
+     * The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+     */
+    heapVariance?: number;
+    /**
+     * The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+     */
+    totalHeapPercentThreshold?: number;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
+    /**
+     * Enable or disable shard indexing backpressure. Default is false.
+     */
+    enabled?: boolean;
+    /**
+     * Run shard indexing backpressure in shadow mode or enforced mode.
+     *         In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
+     *         but it doesn’t actually reject any indexing requests.
+     *         In enforced mode (value set as true),
+     *         shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
+     *         Default is false.
+     */
+    enforced?: boolean;
+    /**
+     * Operating factor
+     */
+    operatingFactor?: outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor;
+    /**
+     * Primary parameter
+     */
+    primaryParameter?: outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor {
+    /**
+     * Specify the lower occupancy limit of the allocated quota of memory for the shard.
+     *                 If the total memory usage of a shard is below this limit,
+     *                 shard indexing backpressure decreases the current allocated memory for that shard.
+     *                 Default is 0.75.
+     */
+    lower?: number;
+    /**
+     * Specify the optimal occupancy of the allocated quota of memory for the shard.
+     *                 If the total memory usage of a shard is at this level,
+     *                 shard indexing backpressure doesn’t change the current allocated memory for that shard.
+     *                 Default is 0.85.
+     */
+    optimal?: number;
+    /**
+     * Specify the upper occupancy limit of the allocated quota of memory for the shard.
+     *                 If the total memory usage of a shard is above this limit,
+     *                 shard indexing backpressure increases the current allocated memory for that shard.
+     *                 Default is 0.95.
+     */
+    upper?: number;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter {
+    node?: outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode;
+    shard?: outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
+    /**
+     * Define the percentage of the node-level memory
+     *                         threshold that acts as a soft indicator for strain on a node.
+     *                         Default is 0.7.
+     */
+    softLimit?: number;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard {
+    /**
+     * Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
+     *                         Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
+     *                         Default is 0.001.
+     */
+    minLimit?: number;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
@@ -11813,7 +12264,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime: string;
     /**
-     * List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
+     * List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `readOnly` and `service:logs:read`.
      */
     permissions: string[];
     /**
@@ -13935,6 +14386,8 @@ export interface ThanosThanosUserConfig {
     compactor?: outputs.ThanosThanosUserConfigCompactor;
     /**
      * Environmental variables.
+     *
+     * @deprecated This property is deprecated.
      */
     env?: {[key: string]: string};
     /**

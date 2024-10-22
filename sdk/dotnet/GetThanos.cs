@@ -13,12 +13,50 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// Gets information about an Aiven for Thanos® service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleThanos = Aiven.GetThanos.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-thanos-service",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetThanosResult> InvokeAsync(GetThanosArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetThanosResult>("aiven:index/getThanos:getThanos", args ?? new GetThanosArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about an Aiven for Thanos® service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleThanos = Aiven.GetThanos.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-thanos-service",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetThanosResult> Invoke(GetThanosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetThanosResult>("aiven:index/getThanos:getThanos", args ?? new GetThanosInvokeArgs(), options.WithDefaults());

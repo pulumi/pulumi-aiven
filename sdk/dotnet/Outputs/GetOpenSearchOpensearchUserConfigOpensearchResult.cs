@@ -142,9 +142,17 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ScriptMaxCompilationsRate;
         /// <summary>
+        /// Search Backpressure Settings
+        /// </summary>
+        public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureResult? SearchBackpressure;
+        /// <summary>
         /// Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
         /// </summary>
         public readonly int? SearchMaxBuckets;
+        /// <summary>
+        /// Shard indexing back pressure settings
+        /// </summary>
+        public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureResult? ShardIndexingPressure;
         /// <summary>
         /// Size for the thread pool queue. See documentation for exact details.
         /// </summary>
@@ -256,7 +264,11 @@ namespace Pulumi.Aiven.Outputs
 
             string? scriptMaxCompilationsRate,
 
+            Outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureResult? searchBackpressure,
+
             int? searchMaxBuckets,
+
+            Outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureResult? shardIndexingPressure,
 
             int? threadPoolAnalyzeQueueSize,
 
@@ -312,7 +324,9 @@ namespace Pulumi.Aiven.Outputs
             PluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
             ReindexRemoteWhitelists = reindexRemoteWhitelists;
             ScriptMaxCompilationsRate = scriptMaxCompilationsRate;
+            SearchBackpressure = searchBackpressure;
             SearchMaxBuckets = searchMaxBuckets;
+            ShardIndexingPressure = shardIndexingPressure;
             ThreadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;
             ThreadPoolAnalyzeSize = threadPoolAnalyzeSize;
             ThreadPoolForceMergeSize = threadPoolForceMergeSize;

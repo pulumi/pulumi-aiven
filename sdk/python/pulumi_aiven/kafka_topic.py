@@ -39,7 +39,7 @@ class KafkaTopicArgs:
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         :param pulumi.Input['KafkaTopicConfigArgs'] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
-        :param pulumi.Input[str] owner_user_group_id: The user group that is the owner of the topic
+        :param pulumi.Input[str] owner_user_group_id: The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Tags for the topic.
         :param pulumi.Input[str] topic_description: The description of the topic
         """
@@ -135,7 +135,7 @@ class KafkaTopicArgs:
     @pulumi.getter(name="ownerUserGroupId")
     def owner_user_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The user group that is the owner of the topic
+        The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         """
         return pulumi.get(self, "owner_user_group_id")
 
@@ -193,7 +193,7 @@ class _KafkaTopicState:
         """
         Input properties used for looking up and filtering KafkaTopic resources.
         :param pulumi.Input['KafkaTopicConfigArgs'] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
-        :param pulumi.Input[str] owner_user_group_id: The user group that is the owner of the topic
+        :param pulumi.Input[str] owner_user_group_id: The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
@@ -239,7 +239,7 @@ class _KafkaTopicState:
     @pulumi.getter(name="ownerUserGroupId")
     def owner_user_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The user group that is the owner of the topic
+        The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         """
         return pulumi.get(self, "owner_user_group_id")
 
@@ -376,7 +376,8 @@ class KafkaTopic(pulumi.CustomResource):
             config={
                 "flush_ms": "10",
                 "cleanup_policy": "compact,delete",
-            })
+            },
+            owner_user_group_id=example["groupId"])
         ```
 
         ## Import
@@ -388,7 +389,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
-        :param pulumi.Input[str] owner_user_group_id: The user group that is the owner of the topic
+        :param pulumi.Input[str] owner_user_group_id: The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
@@ -422,7 +423,8 @@ class KafkaTopic(pulumi.CustomResource):
             config={
                 "flush_ms": "10",
                 "cleanup_policy": "compact,delete",
-            })
+            },
+            owner_user_group_id=example["groupId"])
         ```
 
         ## Import
@@ -513,7 +515,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
-        :param pulumi.Input[str] owner_user_group_id: The user group that is the owner of the topic
+        :param pulumi.Input[str] owner_user_group_id: The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
@@ -550,7 +552,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="ownerUserGroupId")
     def owner_user_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The user group that is the owner of the topic
+        The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         """
         return pulumi.get(self, "owner_user_group_id")
 

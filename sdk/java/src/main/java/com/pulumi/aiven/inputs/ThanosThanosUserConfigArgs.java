@@ -42,14 +42,22 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     /**
      * Environmental variables.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="env")
     private @Nullable Output<Map<String,String>> env;
 
     /**
      * @return Environmental variables.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<Map<String,String>>> env() {
         return Optional.ofNullable(this.env);
     }
@@ -257,7 +265,11 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder env(@Nullable Output<Map<String,String>> env) {
             $.env = env;
             return this;
@@ -268,7 +280,11 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder env(Map<String,String> env) {
             return env(Output.of(env));
         }

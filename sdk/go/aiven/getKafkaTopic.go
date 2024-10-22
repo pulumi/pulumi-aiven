@@ -66,7 +66,7 @@ type LookupKafkaTopicResult struct {
 	Configs []GetKafkaTopicConfig `pulumi:"configs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The user group that is the owner of the topic
+	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
 	OwnerUserGroupId string `pulumi:"ownerUserGroupId"`
 	// The number of partitions to create in the topic.
 	Partitions int `pulumi:"partitions"`
@@ -143,7 +143,7 @@ func (o LookupKafkaTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The user group that is the owner of the topic
+// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
 func (o LookupKafkaTopicResultOutput) OwnerUserGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.OwnerUserGroupId }).(pulumi.StringOutput)
 }

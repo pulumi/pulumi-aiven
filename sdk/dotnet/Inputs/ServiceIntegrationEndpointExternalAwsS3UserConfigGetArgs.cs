@@ -12,21 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationEndpointExternalAwsS3UserConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessKeyId", required: true)]
-        private Input<string>? _accessKeyId;
-
         /// <summary>
         /// Access Key Id. Example: `AAAAAAAAAAAAAAAAAAA`.
         /// </summary>
-        public Input<string>? AccessKeyId
-        {
-            get => _accessKeyId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accessKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("accessKeyId", required: true)]
+        public Input<string> AccessKeyId { get; set; } = null!;
 
         [Input("secretAccessKey", required: true)]
         private Input<string>? _secretAccessKey;

@@ -4298,9 +4298,17 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     scriptMaxCompilationsRate?: pulumi.Input<string>;
     /**
+     * Search Backpressure Settings
+     */
+    searchBackpressure?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressure>;
+    /**
      * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      */
     searchMaxBuckets?: pulumi.Input<number>;
+    /**
+     * Shard indexing back pressure settings
+     */
+    shardIndexingPressure?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure>;
     /**
      * Size for the thread pool queue. See documentation for exact details.
      */
@@ -4426,6 +4434,189 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
      * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: pulumi.Input<number>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
+    /**
+     * Enum: `monitorOnly`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Node duress settings
+     */
+    nodeDuress?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress>;
+    /**
+     * Search shard settings
+     */
+    searchShardTask?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask>;
+    /**
+     * Search task settings
+     */
+    searchTask?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
+    /**
+     * The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+     */
+    cpuThreshold?: pulumi.Input<number>;
+    /**
+     * The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+     */
+    heapThreshold?: pulumi.Input<number>;
+    /**
+     * The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+     */
+    numSuccessiveBreaches?: pulumi.Input<number>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
+    /**
+     * The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+     */
+    cancellationBurst?: pulumi.Input<number>;
+    /**
+     * The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+     */
+    cancellationRate?: pulumi.Input<number>;
+    /**
+     * The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+     */
+    cancellationRatio?: pulumi.Input<number>;
+    /**
+     * The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+     */
+    cpuTimeMillisThreshold?: pulumi.Input<number>;
+    /**
+     * The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+     */
+    elapsedTimeMillisThreshold?: pulumi.Input<number>;
+    /**
+     * The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+     */
+    heapMovingAverageWindowSize?: pulumi.Input<number>;
+    /**
+     * The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+     */
+    heapPercentThreshold?: pulumi.Input<number>;
+    /**
+     * The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+     */
+    heapVariance?: pulumi.Input<number>;
+    /**
+     * The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+     */
+    totalHeapPercentThreshold?: pulumi.Input<number>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask {
+    /**
+     * The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+     */
+    cancellationBurst?: pulumi.Input<number>;
+    /**
+     * The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+     */
+    cancellationRate?: pulumi.Input<number>;
+    /**
+     * The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+     */
+    cancellationRatio?: pulumi.Input<number>;
+    /**
+     * The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+     */
+    cpuTimeMillisThreshold?: pulumi.Input<number>;
+    /**
+     * The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+     */
+    elapsedTimeMillisThreshold?: pulumi.Input<number>;
+    /**
+     * The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+     */
+    heapMovingAverageWindowSize?: pulumi.Input<number>;
+    /**
+     * The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+     */
+    heapPercentThreshold?: pulumi.Input<number>;
+    /**
+     * The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+     */
+    heapVariance?: pulumi.Input<number>;
+    /**
+     * The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+     */
+    totalHeapPercentThreshold?: pulumi.Input<number>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
+    /**
+     * Enable or disable shard indexing backpressure. Default is false.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Run shard indexing backpressure in shadow mode or enforced mode.
+     *         In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
+     *         but it doesn’t actually reject any indexing requests.
+     *         In enforced mode (value set as true),
+     *         shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
+     *         Default is false.
+     */
+    enforced?: pulumi.Input<boolean>;
+    /**
+     * Operating factor
+     */
+    operatingFactor?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor>;
+    /**
+     * Primary parameter
+     */
+    primaryParameter?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor {
+    /**
+     * Specify the lower occupancy limit of the allocated quota of memory for the shard.
+     *                 If the total memory usage of a shard is below this limit,
+     *                 shard indexing backpressure decreases the current allocated memory for that shard.
+     *                 Default is 0.75.
+     */
+    lower?: pulumi.Input<number>;
+    /**
+     * Specify the optimal occupancy of the allocated quota of memory for the shard.
+     *                 If the total memory usage of a shard is at this level,
+     *                 shard indexing backpressure doesn’t change the current allocated memory for that shard.
+     *                 Default is 0.85.
+     */
+    optimal?: pulumi.Input<number>;
+    /**
+     * Specify the upper occupancy limit of the allocated quota of memory for the shard.
+     *                 If the total memory usage of a shard is above this limit,
+     *                 shard indexing backpressure increases the current allocated memory for that shard.
+     *                 Default is 0.95.
+     */
+    upper?: pulumi.Input<number>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter {
+    node?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode>;
+    shard?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
+    /**
+     * Define the percentage of the node-level memory
+     *                         threshold that acts as a soft indicator for strain on a node.
+     *                         Default is 0.7.
+     */
+    softLimit?: pulumi.Input<number>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard {
+    /**
+     * Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
+     *                         Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
+     *                         Default is 0.001.
+     */
+    minLimit?: pulumi.Input<number>;
 }
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
@@ -4608,7 +4799,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
+     * List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `readOnly` and `service:logs:read`.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -6730,6 +6921,8 @@ export interface ThanosThanosUserConfig {
     compactor?: pulumi.Input<inputs.ThanosThanosUserConfigCompactor>;
     /**
      * Environmental variables.
+     *
+     * @deprecated This property is deprecated.
      */
     env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

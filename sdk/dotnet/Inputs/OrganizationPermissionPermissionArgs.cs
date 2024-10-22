@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _permissions;
 
         /// <summary>
-        /// List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
+        /// List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
         /// </summary>
         public InputList<string> Permissions
         {

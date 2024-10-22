@@ -13,6 +13,47 @@ import (
 )
 
 // Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewThanos(ctx, "example_thanos", &aiven.ThanosArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				Plan:        pulumi.String("startup-4"),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				ServiceName: pulumi.String("example-thanos-service"),
+//				ThanosUserConfig: &aiven.ThanosThanosUserConfigArgs{
+//					Compactor: &aiven.ThanosThanosUserConfigCompactorArgs{
+//						RetentionDays: pulumi.Int(30),
+//					},
+//					ObjectStorageUsageAlertThresholdGb: pulumi.Int(10),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import aiven:index/thanos:Thanos example_thanos PROJECT/SERVICE_NAME
+// ```
 type Thanos struct {
 	pulumi.CustomResourceState
 

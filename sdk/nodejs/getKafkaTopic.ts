@@ -62,7 +62,7 @@ export interface GetKafkaTopicResult {
      */
     readonly id: string;
     /**
-     * The user group that is the owner of the topic
+     * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      */
     readonly ownerUserGroupId: string;
     /**

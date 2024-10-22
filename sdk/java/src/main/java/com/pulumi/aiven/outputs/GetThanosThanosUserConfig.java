@@ -28,7 +28,11 @@ public final class GetThanosThanosUserConfig {
     /**
      * @return Environmental variables.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Map<String,String> env;
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -91,7 +95,11 @@ public final class GetThanosThanosUserConfig {
     /**
      * @return Environmental variables.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Map<String,String> env() {
         return this.env == null ? Map.of() : this.env;
     }

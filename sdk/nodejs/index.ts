@@ -410,6 +410,11 @@ export const getOrganizationUserGroup: typeof import("./getOrganizationUserGroup
 export const getOrganizationUserGroupOutput: typeof import("./getOrganizationUserGroup").getOrganizationUserGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganizationUserGroup","getOrganizationUserGroupOutput"], () => require("./getOrganizationUserGroup"));
 
+export { GetOrganizationUserListArgs, GetOrganizationUserListResult, GetOrganizationUserListOutputArgs } from "./getOrganizationUserList";
+export const getOrganizationUserList: typeof import("./getOrganizationUserList").getOrganizationUserList = null as any;
+export const getOrganizationUserListOutput: typeof import("./getOrganizationUserList").getOrganizationUserListOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationUserList","getOrganizationUserListOutput"], () => require("./getOrganizationUserList"));
+
 export { GetOrganizationalUnitArgs, GetOrganizationalUnitResult, GetOrganizationalUnitOutputArgs } from "./getOrganizationalUnit";
 export const getOrganizationalUnit: typeof import("./getOrganizationalUnit").getOrganizationalUnit = null as any;
 export const getOrganizationalUnitOutput: typeof import("./getOrganizationalUnit").getOrganizationalUnitOutput = null as any;

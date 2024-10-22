@@ -13,6 +13,4654 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetPgPgUserConfigPg struct {
+	// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+	AutovacuumAnalyzeScaleFactor *float64 `pulumi:"autovacuumAnalyzeScaleFactor"`
+	// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+	AutovacuumAnalyzeThreshold *int `pulumi:"autovacuumAnalyzeThreshold"`
+	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+	AutovacuumFreezeMaxAge *int `pulumi:"autovacuumFreezeMaxAge"`
+	// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+	AutovacuumMaxWorkers *int `pulumi:"autovacuumMaxWorkers"`
+	// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+	AutovacuumNaptime *int `pulumi:"autovacuumNaptime"`
+	// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds.
+	AutovacuumVacuumCostDelay *int `pulumi:"autovacuumVacuumCostDelay"`
+	// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+	AutovacuumVacuumCostLimit *int `pulumi:"autovacuumVacuumCostLimit"`
+	// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+	AutovacuumVacuumScaleFactor *float64 `pulumi:"autovacuumVacuumScaleFactor"`
+	// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+	AutovacuumVacuumThreshold *int `pulumi:"autovacuumVacuumThreshold"`
+	// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+	BgwriterDelay *int `pulumi:"bgwriterDelay"`
+	// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+	BgwriterFlushAfter *int `pulumi:"bgwriterFlushAfter"`
+	// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+	BgwriterLruMaxpages *int `pulumi:"bgwriterLruMaxpages"`
+	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+	BgwriterLruMultiplier *float64 `pulumi:"bgwriterLruMultiplier"`
+	// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+	DeadlockTimeout *int `pulumi:"deadlockTimeout"`
+	// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+	DefaultToastCompression *string `pulumi:"defaultToastCompression"`
+	// Time out sessions with open transactions after this number of milliseconds.
+	IdleInTransactionSessionTimeout *int `pulumi:"idleInTransactionSessionTimeout"`
+	// Controls system-wide use of Just-in-Time Compilation (JIT).
+	Jit *bool `pulumi:"jit"`
+	// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+	LogAutovacuumMinDuration *int `pulumi:"logAutovacuumMinDuration"`
+	// Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+	LogErrorVerbosity *string `pulumi:"logErrorVerbosity"`
+	// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+	LogLinePrefix *string `pulumi:"logLinePrefix"`
+	// Log statements that take more than this number of milliseconds to run, -1 disables.
+	LogMinDurationStatement *int `pulumi:"logMinDurationStatement"`
+	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+	LogTempFiles *int `pulumi:"logTempFiles"`
+	// PostgreSQL maximum number of files that can be open per process.
+	MaxFilesPerProcess *int `pulumi:"maxFilesPerProcess"`
+	// PostgreSQL maximum locks per transaction.
+	MaxLocksPerTransaction *int `pulumi:"maxLocksPerTransaction"`
+	// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+	MaxLogicalReplicationWorkers *int `pulumi:"maxLogicalReplicationWorkers"`
+	// Sets the maximum number of workers that the system can support for parallel queries.
+	MaxParallelWorkers *int `pulumi:"maxParallelWorkers"`
+	// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+	MaxParallelWorkersPerGather *int `pulumi:"maxParallelWorkersPerGather"`
+	// PostgreSQL maximum predicate locks per transaction.
+	MaxPredLocksPerTransaction *int `pulumi:"maxPredLocksPerTransaction"`
+	// PostgreSQL maximum prepared transactions.
+	MaxPreparedTransactions *int `pulumi:"maxPreparedTransactions"`
+	// PostgreSQL maximum replication slots.
+	MaxReplicationSlots *int `pulumi:"maxReplicationSlots"`
+	// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+	MaxSlotWalKeepSize *int `pulumi:"maxSlotWalKeepSize"`
+	// Maximum depth of the stack in bytes.
+	MaxStackDepth *int `pulumi:"maxStackDepth"`
+	// Max standby archive delay in milliseconds.
+	MaxStandbyArchiveDelay *int `pulumi:"maxStandbyArchiveDelay"`
+	// Max standby streaming delay in milliseconds.
+	MaxStandbyStreamingDelay *int `pulumi:"maxStandbyStreamingDelay"`
+	// PostgreSQL maximum WAL senders.
+	MaxWalSenders *int `pulumi:"maxWalSenders"`
+	// Sets the maximum number of background processes that the system can support.
+	MaxWorkerProcesses *int `pulumi:"maxWorkerProcesses"`
+	// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+	PgPartmanBgwDotInterval *int `pulumi:"pgPartmanBgwDotInterval"`
+	// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
+	PgPartmanBgwDotRole *string `pulumi:"pgPartmanBgwDotRole"`
+	// Enables or disables query plan monitoring.
+	PgStatMonitorDotPgsmEnableQueryPlan *bool `pulumi:"pgStatMonitorDotPgsmEnableQueryPlan"`
+	// Sets the maximum number of buckets. Example: `10`.
+	PgStatMonitorDotPgsmMaxBuckets *int `pulumi:"pgStatMonitorDotPgsmMaxBuckets"`
+	// Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+	PgStatStatementsDotTrack *string `pulumi:"pgStatStatementsDotTrack"`
+	// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+	TempFileLimit *int `pulumi:"tempFileLimit"`
+	// PostgreSQL service timezone. Example: `Europe/Helsinki`.
+	Timezone *string `pulumi:"timezone"`
+	// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+	TrackActivityQuerySize *int `pulumi:"trackActivityQuerySize"`
+	// Enum: `off`, `on`. Record commit time of transactions.
+	TrackCommitTimestamp *string `pulumi:"trackCommitTimestamp"`
+	// Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+	TrackFunctions *string `pulumi:"trackFunctions"`
+	// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+	TrackIoTiming *string `pulumi:"trackIoTiming"`
+	// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
+	WalSenderTimeout *int `pulumi:"walSenderTimeout"`
+	// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+	WalWriterDelay *int `pulumi:"walWriterDelay"`
+}
+
+// GetPgPgUserConfigPgInput is an input type that accepts GetPgPgUserConfigPgArgs and GetPgPgUserConfigPgOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgInput` via:
+//
+//	GetPgPgUserConfigPgArgs{...}
+type GetPgPgUserConfigPgInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgOutput() GetPgPgUserConfigPgOutput
+	ToGetPgPgUserConfigPgOutputWithContext(context.Context) GetPgPgUserConfigPgOutput
+}
+
+type GetPgPgUserConfigPgArgs struct {
+	// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+	AutovacuumAnalyzeScaleFactor pulumi.Float64PtrInput `pulumi:"autovacuumAnalyzeScaleFactor"`
+	// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+	AutovacuumAnalyzeThreshold pulumi.IntPtrInput `pulumi:"autovacuumAnalyzeThreshold"`
+	// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+	AutovacuumFreezeMaxAge pulumi.IntPtrInput `pulumi:"autovacuumFreezeMaxAge"`
+	// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+	AutovacuumMaxWorkers pulumi.IntPtrInput `pulumi:"autovacuumMaxWorkers"`
+	// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+	AutovacuumNaptime pulumi.IntPtrInput `pulumi:"autovacuumNaptime"`
+	// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds.
+	AutovacuumVacuumCostDelay pulumi.IntPtrInput `pulumi:"autovacuumVacuumCostDelay"`
+	// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+	AutovacuumVacuumCostLimit pulumi.IntPtrInput `pulumi:"autovacuumVacuumCostLimit"`
+	// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+	AutovacuumVacuumScaleFactor pulumi.Float64PtrInput `pulumi:"autovacuumVacuumScaleFactor"`
+	// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+	AutovacuumVacuumThreshold pulumi.IntPtrInput `pulumi:"autovacuumVacuumThreshold"`
+	// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+	BgwriterDelay pulumi.IntPtrInput `pulumi:"bgwriterDelay"`
+	// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+	BgwriterFlushAfter pulumi.IntPtrInput `pulumi:"bgwriterFlushAfter"`
+	// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+	BgwriterLruMaxpages pulumi.IntPtrInput `pulumi:"bgwriterLruMaxpages"`
+	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+	BgwriterLruMultiplier pulumi.Float64PtrInput `pulumi:"bgwriterLruMultiplier"`
+	// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+	DeadlockTimeout pulumi.IntPtrInput `pulumi:"deadlockTimeout"`
+	// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+	DefaultToastCompression pulumi.StringPtrInput `pulumi:"defaultToastCompression"`
+	// Time out sessions with open transactions after this number of milliseconds.
+	IdleInTransactionSessionTimeout pulumi.IntPtrInput `pulumi:"idleInTransactionSessionTimeout"`
+	// Controls system-wide use of Just-in-Time Compilation (JIT).
+	Jit pulumi.BoolPtrInput `pulumi:"jit"`
+	// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+	LogAutovacuumMinDuration pulumi.IntPtrInput `pulumi:"logAutovacuumMinDuration"`
+	// Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+	LogErrorVerbosity pulumi.StringPtrInput `pulumi:"logErrorVerbosity"`
+	// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+	LogLinePrefix pulumi.StringPtrInput `pulumi:"logLinePrefix"`
+	// Log statements that take more than this number of milliseconds to run, -1 disables.
+	LogMinDurationStatement pulumi.IntPtrInput `pulumi:"logMinDurationStatement"`
+	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+	LogTempFiles pulumi.IntPtrInput `pulumi:"logTempFiles"`
+	// PostgreSQL maximum number of files that can be open per process.
+	MaxFilesPerProcess pulumi.IntPtrInput `pulumi:"maxFilesPerProcess"`
+	// PostgreSQL maximum locks per transaction.
+	MaxLocksPerTransaction pulumi.IntPtrInput `pulumi:"maxLocksPerTransaction"`
+	// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+	MaxLogicalReplicationWorkers pulumi.IntPtrInput `pulumi:"maxLogicalReplicationWorkers"`
+	// Sets the maximum number of workers that the system can support for parallel queries.
+	MaxParallelWorkers pulumi.IntPtrInput `pulumi:"maxParallelWorkers"`
+	// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+	MaxParallelWorkersPerGather pulumi.IntPtrInput `pulumi:"maxParallelWorkersPerGather"`
+	// PostgreSQL maximum predicate locks per transaction.
+	MaxPredLocksPerTransaction pulumi.IntPtrInput `pulumi:"maxPredLocksPerTransaction"`
+	// PostgreSQL maximum prepared transactions.
+	MaxPreparedTransactions pulumi.IntPtrInput `pulumi:"maxPreparedTransactions"`
+	// PostgreSQL maximum replication slots.
+	MaxReplicationSlots pulumi.IntPtrInput `pulumi:"maxReplicationSlots"`
+	// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+	MaxSlotWalKeepSize pulumi.IntPtrInput `pulumi:"maxSlotWalKeepSize"`
+	// Maximum depth of the stack in bytes.
+	MaxStackDepth pulumi.IntPtrInput `pulumi:"maxStackDepth"`
+	// Max standby archive delay in milliseconds.
+	MaxStandbyArchiveDelay pulumi.IntPtrInput `pulumi:"maxStandbyArchiveDelay"`
+	// Max standby streaming delay in milliseconds.
+	MaxStandbyStreamingDelay pulumi.IntPtrInput `pulumi:"maxStandbyStreamingDelay"`
+	// PostgreSQL maximum WAL senders.
+	MaxWalSenders pulumi.IntPtrInput `pulumi:"maxWalSenders"`
+	// Sets the maximum number of background processes that the system can support.
+	MaxWorkerProcesses pulumi.IntPtrInput `pulumi:"maxWorkerProcesses"`
+	// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+	PgPartmanBgwDotInterval pulumi.IntPtrInput `pulumi:"pgPartmanBgwDotInterval"`
+	// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
+	PgPartmanBgwDotRole pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
+	// Enables or disables query plan monitoring.
+	PgStatMonitorDotPgsmEnableQueryPlan pulumi.BoolPtrInput `pulumi:"pgStatMonitorDotPgsmEnableQueryPlan"`
+	// Sets the maximum number of buckets. Example: `10`.
+	PgStatMonitorDotPgsmMaxBuckets pulumi.IntPtrInput `pulumi:"pgStatMonitorDotPgsmMaxBuckets"`
+	// Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+	PgStatStatementsDotTrack pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
+	// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+	TempFileLimit pulumi.IntPtrInput `pulumi:"tempFileLimit"`
+	// PostgreSQL service timezone. Example: `Europe/Helsinki`.
+	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
+	// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+	TrackActivityQuerySize pulumi.IntPtrInput `pulumi:"trackActivityQuerySize"`
+	// Enum: `off`, `on`. Record commit time of transactions.
+	TrackCommitTimestamp pulumi.StringPtrInput `pulumi:"trackCommitTimestamp"`
+	// Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+	TrackFunctions pulumi.StringPtrInput `pulumi:"trackFunctions"`
+	// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+	TrackIoTiming pulumi.StringPtrInput `pulumi:"trackIoTiming"`
+	// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
+	WalSenderTimeout pulumi.IntPtrInput `pulumi:"walSenderTimeout"`
+	// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+	WalWriterDelay pulumi.IntPtrInput `pulumi:"walWriterDelay"`
+}
+
+func (GetPgPgUserConfigPgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPg)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPgArgs) ToGetPgPgUserConfigPgOutput() GetPgPgUserConfigPgOutput {
+	return i.ToGetPgPgUserConfigPgOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgArgs) ToGetPgPgUserConfigPgOutputWithContext(ctx context.Context) GetPgPgUserConfigPgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgOutput)
+}
+
+func (i GetPgPgUserConfigPgArgs) ToGetPgPgUserConfigPgPtrOutput() GetPgPgUserConfigPgPtrOutput {
+	return i.ToGetPgPgUserConfigPgPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgArgs) ToGetPgPgUserConfigPgPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgOutput).ToGetPgPgUserConfigPgPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPgPtrInput is an input type that accepts GetPgPgUserConfigPgArgs, GetPgPgUserConfigPgPtr and GetPgPgUserConfigPgPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgPtrInput` via:
+//
+//	        GetPgPgUserConfigPgArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigPgPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgPtrOutput() GetPgPgUserConfigPgPtrOutput
+	ToGetPgPgUserConfigPgPtrOutputWithContext(context.Context) GetPgPgUserConfigPgPtrOutput
+}
+
+type getPgPgUserConfigPgPtrType GetPgPgUserConfigPgArgs
+
+func GetPgPgUserConfigPgPtr(v *GetPgPgUserConfigPgArgs) GetPgPgUserConfigPgPtrInput {
+	return (*getPgPgUserConfigPgPtrType)(v)
+}
+
+func (*getPgPgUserConfigPgPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPg)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPgPtrType) ToGetPgPgUserConfigPgPtrOutput() GetPgPgUserConfigPgPtrOutput {
+	return i.ToGetPgPgUserConfigPgPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPgPtrType) ToGetPgPgUserConfigPgPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgPtrOutput)
+}
+
+type GetPgPgUserConfigPgOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPg)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgOutput) ToGetPgPgUserConfigPgOutput() GetPgPgUserConfigPgOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgOutput) ToGetPgPgUserConfigPgOutputWithContext(ctx context.Context) GetPgPgUserConfigPgOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgOutput) ToGetPgPgUserConfigPgPtrOutput() GetPgPgUserConfigPgPtrOutput {
+	return o.ToGetPgPgUserConfigPgPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPgOutput) ToGetPgPgUserConfigPgPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigPg) *GetPgPgUserConfigPg {
+		return &v
+	}).(GetPgPgUserConfigPgPtrOutput)
+}
+
+// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+func (o GetPgPgUserConfigPgOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *float64 { return v.AutovacuumAnalyzeScaleFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+func (o GetPgPgUserConfigPgOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumAnalyzeThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+func (o GetPgPgUserConfigPgOutput) AutovacuumFreezeMaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumFreezeMaxAge }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+func (o GetPgPgUserConfigPgOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumMaxWorkers }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+func (o GetPgPgUserConfigPgOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumNaptime }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds.
+func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumVacuumCostDelay }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumVacuumCostLimit }).(pulumi.IntPtrOutput)
+}
+
+// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *float64 { return v.AutovacuumVacuumScaleFactor }).(pulumi.Float64PtrOutput)
+}
+
+// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+func (o GetPgPgUserConfigPgOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.AutovacuumVacuumThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+func (o GetPgPgUserConfigPgOutput) BgwriterDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.BgwriterDelay }).(pulumi.IntPtrOutput)
+}
+
+// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+func (o GetPgPgUserConfigPgOutput) BgwriterFlushAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.BgwriterFlushAfter }).(pulumi.IntPtrOutput)
+}
+
+// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+func (o GetPgPgUserConfigPgOutput) BgwriterLruMaxpages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.BgwriterLruMaxpages }).(pulumi.IntPtrOutput)
+}
+
+// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+func (o GetPgPgUserConfigPgOutput) BgwriterLruMultiplier() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *float64 { return v.BgwriterLruMultiplier }).(pulumi.Float64PtrOutput)
+}
+
+// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+func (o GetPgPgUserConfigPgOutput) DeadlockTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.DeadlockTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+func (o GetPgPgUserConfigPgOutput) DefaultToastCompression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.DefaultToastCompression }).(pulumi.StringPtrOutput)
+}
+
+// Time out sessions with open transactions after this number of milliseconds.
+func (o GetPgPgUserConfigPgOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.IdleInTransactionSessionTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Controls system-wide use of Just-in-Time Compilation (JIT).
+func (o GetPgPgUserConfigPgOutput) Jit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *bool { return v.Jit }).(pulumi.BoolPtrOutput)
+}
+
+// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+func (o GetPgPgUserConfigPgOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.LogAutovacuumMinDuration }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+func (o GetPgPgUserConfigPgOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogErrorVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+func (o GetPgPgUserConfigPgOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.LogLinePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Log statements that take more than this number of milliseconds to run, -1 disables.
+func (o GetPgPgUserConfigPgOutput) LogMinDurationStatement() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.LogMinDurationStatement }).(pulumi.IntPtrOutput)
+}
+
+// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+func (o GetPgPgUserConfigPgOutput) LogTempFiles() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.LogTempFiles }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum number of files that can be open per process.
+func (o GetPgPgUserConfigPgOutput) MaxFilesPerProcess() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxFilesPerProcess }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum locks per transaction.
+func (o GetPgPgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxLocksPerTransaction }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+func (o GetPgPgUserConfigPgOutput) MaxLogicalReplicationWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxLogicalReplicationWorkers }).(pulumi.IntPtrOutput)
+}
+
+// Sets the maximum number of workers that the system can support for parallel queries.
+func (o GetPgPgUserConfigPgOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxParallelWorkers }).(pulumi.IntPtrOutput)
+}
+
+// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+func (o GetPgPgUserConfigPgOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxParallelWorkersPerGather }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum predicate locks per transaction.
+func (o GetPgPgUserConfigPgOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxPredLocksPerTransaction }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum prepared transactions.
+func (o GetPgPgUserConfigPgOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxPreparedTransactions }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum replication slots.
+func (o GetPgPgUserConfigPgOutput) MaxReplicationSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxReplicationSlots }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+func (o GetPgPgUserConfigPgOutput) MaxSlotWalKeepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxSlotWalKeepSize }).(pulumi.IntPtrOutput)
+}
+
+// Maximum depth of the stack in bytes.
+func (o GetPgPgUserConfigPgOutput) MaxStackDepth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxStackDepth }).(pulumi.IntPtrOutput)
+}
+
+// Max standby archive delay in milliseconds.
+func (o GetPgPgUserConfigPgOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxStandbyArchiveDelay }).(pulumi.IntPtrOutput)
+}
+
+// Max standby streaming delay in milliseconds.
+func (o GetPgPgUserConfigPgOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxStandbyStreamingDelay }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum WAL senders.
+func (o GetPgPgUserConfigPgOutput) MaxWalSenders() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxWalSenders }).(pulumi.IntPtrOutput)
+}
+
+// Sets the maximum number of background processes that the system can support.
+func (o GetPgPgUserConfigPgOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxWorkerProcesses }).(pulumi.IntPtrOutput)
+}
+
+// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+func (o GetPgPgUserConfigPgOutput) PgPartmanBgwDotInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.PgPartmanBgwDotInterval }).(pulumi.IntPtrOutput)
+}
+
+// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
+func (o GetPgPgUserConfigPgOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgPartmanBgwDotRole }).(pulumi.StringPtrOutput)
+}
+
+// Enables or disables query plan monitoring.
+func (o GetPgPgUserConfigPgOutput) PgStatMonitorDotPgsmEnableQueryPlan() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *bool { return v.PgStatMonitorDotPgsmEnableQueryPlan }).(pulumi.BoolPtrOutput)
+}
+
+// Sets the maximum number of buckets. Example: `10`.
+func (o GetPgPgUserConfigPgOutput) PgStatMonitorDotPgsmMaxBuckets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.PgStatMonitorDotPgsmMaxBuckets }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+func (o GetPgPgUserConfigPgOutput) PgStatStatementsDotTrack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgStatStatementsDotTrack }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+func (o GetPgPgUserConfigPgOutput) TempFileLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.TempFileLimit }).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL service timezone. Example: `Europe/Helsinki`.
+func (o GetPgPgUserConfigPgOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+func (o GetPgPgUserConfigPgOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.TrackActivityQuerySize }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `off`, `on`. Record commit time of transactions.
+func (o GetPgPgUserConfigPgOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackCommitTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+func (o GetPgPgUserConfigPgOutput) TrackFunctions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackFunctions }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+func (o GetPgPgUserConfigPgOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.TrackIoTiming }).(pulumi.StringPtrOutput)
+}
+
+// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
+func (o GetPgPgUserConfigPgOutput) WalSenderTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.WalSenderTimeout }).(pulumi.IntPtrOutput)
+}
+
+// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+func (o GetPgPgUserConfigPgOutput) WalWriterDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.WalWriterDelay }).(pulumi.IntPtrOutput)
+}
+
+type GetPgPgUserConfigPgPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPg)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgPtrOutput) ToGetPgPgUserConfigPgPtrOutput() GetPgPgUserConfigPgPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgPtrOutput) ToGetPgPgUserConfigPgPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgPtrOutput) Elem() GetPgPgUserConfigPgOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) GetPgPgUserConfigPg {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigPg
+		return ret
+	}).(GetPgPgUserConfigPgOutput)
+}
+
+// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeScaleFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumAnalyzeScaleFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+func (o GetPgPgUserConfigPgPtrOutput) AutovacuumAnalyzeThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumAnalyzeThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+func (o GetPgPgUserConfigPgPtrOutput) AutovacuumFreezeMaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumFreezeMaxAge
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+func (o GetPgPgUserConfigPgPtrOutput) AutovacuumMaxWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumMaxWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+func (o GetPgPgUserConfigPgPtrOutput) AutovacuumNaptime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumNaptime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds.
+func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumCostDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumCostLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumCostLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumScaleFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumScaleFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+func (o GetPgPgUserConfigPgPtrOutput) AutovacuumVacuumThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutovacuumVacuumThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+func (o GetPgPgUserConfigPgPtrOutput) BgwriterDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BgwriterDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+func (o GetPgPgUserConfigPgPtrOutput) BgwriterFlushAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BgwriterFlushAfter
+	}).(pulumi.IntPtrOutput)
+}
+
+// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+func (o GetPgPgUserConfigPgPtrOutput) BgwriterLruMaxpages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BgwriterLruMaxpages
+	}).(pulumi.IntPtrOutput)
+}
+
+// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+func (o GetPgPgUserConfigPgPtrOutput) BgwriterLruMultiplier() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BgwriterLruMultiplier
+	}).(pulumi.Float64PtrOutput)
+}
+
+// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+func (o GetPgPgUserConfigPgPtrOutput) DeadlockTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DeadlockTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+func (o GetPgPgUserConfigPgPtrOutput) DefaultToastCompression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultToastCompression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time out sessions with open transactions after this number of milliseconds.
+func (o GetPgPgUserConfigPgPtrOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleInTransactionSessionTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Controls system-wide use of Just-in-Time Compilation (JIT).
+func (o GetPgPgUserConfigPgPtrOutput) Jit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Jit
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+func (o GetPgPgUserConfigPgPtrOutput) LogAutovacuumMinDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogAutovacuumMinDuration
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+func (o GetPgPgUserConfigPgPtrOutput) LogErrorVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogErrorVerbosity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+func (o GetPgPgUserConfigPgPtrOutput) LogLinePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogLinePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Log statements that take more than this number of milliseconds to run, -1 disables.
+func (o GetPgPgUserConfigPgPtrOutput) LogMinDurationStatement() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogMinDurationStatement
+	}).(pulumi.IntPtrOutput)
+}
+
+// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+func (o GetPgPgUserConfigPgPtrOutput) LogTempFiles() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogTempFiles
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum number of files that can be open per process.
+func (o GetPgPgUserConfigPgPtrOutput) MaxFilesPerProcess() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFilesPerProcess
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum locks per transaction.
+func (o GetPgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLocksPerTransaction
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+func (o GetPgPgUserConfigPgPtrOutput) MaxLogicalReplicationWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLogicalReplicationWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sets the maximum number of workers that the system can support for parallel queries.
+func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+func (o GetPgPgUserConfigPgPtrOutput) MaxParallelWorkersPerGather() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelWorkersPerGather
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum predicate locks per transaction.
+func (o GetPgPgUserConfigPgPtrOutput) MaxPredLocksPerTransaction() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPredLocksPerTransaction
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum prepared transactions.
+func (o GetPgPgUserConfigPgPtrOutput) MaxPreparedTransactions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPreparedTransactions
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum replication slots.
+func (o GetPgPgUserConfigPgPtrOutput) MaxReplicationSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicationSlots
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+func (o GetPgPgUserConfigPgPtrOutput) MaxSlotWalKeepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSlotWalKeepSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum depth of the stack in bytes.
+func (o GetPgPgUserConfigPgPtrOutput) MaxStackDepth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStackDepth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max standby archive delay in milliseconds.
+func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyArchiveDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStandbyArchiveDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max standby streaming delay in milliseconds.
+func (o GetPgPgUserConfigPgPtrOutput) MaxStandbyStreamingDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStandbyStreamingDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL maximum WAL senders.
+func (o GetPgPgUserConfigPgPtrOutput) MaxWalSenders() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWalSenders
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sets the maximum number of background processes that the system can support.
+func (o GetPgPgUserConfigPgPtrOutput) MaxWorkerProcesses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWorkerProcesses
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+func (o GetPgPgUserConfigPgPtrOutput) PgPartmanBgwDotInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
+func (o GetPgPgUserConfigPgPtrOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgPartmanBgwDotRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enables or disables query plan monitoring.
+func (o GetPgPgUserConfigPgPtrOutput) PgStatMonitorDotPgsmEnableQueryPlan() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PgStatMonitorDotPgsmEnableQueryPlan
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets the maximum number of buckets. Example: `10`.
+func (o GetPgPgUserConfigPgPtrOutput) PgStatMonitorDotPgsmMaxBuckets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PgStatMonitorDotPgsmMaxBuckets
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+func (o GetPgPgUserConfigPgPtrOutput) PgStatStatementsDotTrack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgStatStatementsDotTrack
+	}).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+func (o GetPgPgUserConfigPgPtrOutput) TempFileLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TempFileLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// PostgreSQL service timezone. Example: `Europe/Helsinki`.
+func (o GetPgPgUserConfigPgPtrOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timezone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+func (o GetPgPgUserConfigPgPtrOutput) TrackActivityQuerySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TrackActivityQuerySize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `off`, `on`. Record commit time of transactions.
+func (o GetPgPgUserConfigPgPtrOutput) TrackCommitTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackCommitTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+func (o GetPgPgUserConfigPgPtrOutput) TrackFunctions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackFunctions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+func (o GetPgPgUserConfigPgPtrOutput) TrackIoTiming() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackIoTiming
+	}).(pulumi.StringPtrOutput)
+}
+
+// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
+func (o GetPgPgUserConfigPgPtrOutput) WalSenderTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WalSenderTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+func (o GetPgPgUserConfigPgPtrOutput) WalWriterDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WalWriterDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPgPgUserConfigPgQualstats struct {
+	// Enable / Disable pg_qualstats. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	Enabled *bool `pulumi:"enabled"`
+	// Error estimation num threshold to save quals. Default: `0`.
+	//
+	// Deprecated: This property is deprecated.
+	MinErrEstimateNum *int `pulumi:"minErrEstimateNum"`
+	// Error estimation ratio threshold to save quals. Default: `0`.
+	//
+	// Deprecated: This property is deprecated.
+	MinErrEstimateRatio *int `pulumi:"minErrEstimateRatio"`
+	// Enable / Disable pgQualstats constants tracking. Default: `true`.
+	//
+	// Deprecated: This property is deprecated.
+	TrackConstants *bool `pulumi:"trackConstants"`
+	// Track quals on system catalogs too. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	TrackPgCatalog *bool `pulumi:"trackPgCatalog"`
+}
+
+// GetPgPgUserConfigPgQualstatsInput is an input type that accepts GetPgPgUserConfigPgQualstatsArgs and GetPgPgUserConfigPgQualstatsOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgQualstatsInput` via:
+//
+//	GetPgPgUserConfigPgQualstatsArgs{...}
+type GetPgPgUserConfigPgQualstatsInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgQualstatsOutput() GetPgPgUserConfigPgQualstatsOutput
+	ToGetPgPgUserConfigPgQualstatsOutputWithContext(context.Context) GetPgPgUserConfigPgQualstatsOutput
+}
+
+type GetPgPgUserConfigPgQualstatsArgs struct {
+	// Enable / Disable pg_qualstats. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Error estimation num threshold to save quals. Default: `0`.
+	//
+	// Deprecated: This property is deprecated.
+	MinErrEstimateNum pulumi.IntPtrInput `pulumi:"minErrEstimateNum"`
+	// Error estimation ratio threshold to save quals. Default: `0`.
+	//
+	// Deprecated: This property is deprecated.
+	MinErrEstimateRatio pulumi.IntPtrInput `pulumi:"minErrEstimateRatio"`
+	// Enable / Disable pgQualstats constants tracking. Default: `true`.
+	//
+	// Deprecated: This property is deprecated.
+	TrackConstants pulumi.BoolPtrInput `pulumi:"trackConstants"`
+	// Track quals on system catalogs too. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	TrackPgCatalog pulumi.BoolPtrInput `pulumi:"trackPgCatalog"`
+}
+
+func (GetPgPgUserConfigPgQualstatsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPgQualstatsArgs) ToGetPgPgUserConfigPgQualstatsOutput() GetPgPgUserConfigPgQualstatsOutput {
+	return i.ToGetPgPgUserConfigPgQualstatsOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgQualstatsArgs) ToGetPgPgUserConfigPgQualstatsOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgQualstatsOutput)
+}
+
+func (i GetPgPgUserConfigPgQualstatsArgs) ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput {
+	return i.ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgQualstatsArgs) ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgQualstatsOutput).ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPgQualstatsPtrInput is an input type that accepts GetPgPgUserConfigPgQualstatsArgs, GetPgPgUserConfigPgQualstatsPtr and GetPgPgUserConfigPgQualstatsPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgQualstatsPtrInput` via:
+//
+//	        GetPgPgUserConfigPgQualstatsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigPgQualstatsPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput
+	ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Context) GetPgPgUserConfigPgQualstatsPtrOutput
+}
+
+type getPgPgUserConfigPgQualstatsPtrType GetPgPgUserConfigPgQualstatsArgs
+
+func GetPgPgUserConfigPgQualstatsPtr(v *GetPgPgUserConfigPgQualstatsArgs) GetPgPgUserConfigPgQualstatsPtrInput {
+	return (*getPgPgUserConfigPgQualstatsPtrType)(v)
+}
+
+func (*getPgPgUserConfigPgQualstatsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPgQualstatsPtrType) ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput {
+	return i.ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPgQualstatsPtrType) ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgQualstatsPtrOutput)
+}
+
+type GetPgPgUserConfigPgQualstatsOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgQualstatsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) ToGetPgPgUserConfigPgQualstatsOutput() GetPgPgUserConfigPgQualstatsOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) ToGetPgPgUserConfigPgQualstatsOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput {
+	return o.ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPgQualstatsOutput) ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigPgQualstats) *GetPgPgUserConfigPgQualstats {
+		return &v
+	}).(GetPgPgUserConfigPgQualstatsPtrOutput)
+}
+
+// Enable / Disable pg_qualstats. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Error estimation num threshold to save quals. Default: `0`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsOutput) MinErrEstimateNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *int { return v.MinErrEstimateNum }).(pulumi.IntPtrOutput)
+}
+
+// Error estimation ratio threshold to save quals. Default: `0`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsOutput) MinErrEstimateRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *int { return v.MinErrEstimateRatio }).(pulumi.IntPtrOutput)
+}
+
+// Enable / Disable pgQualstats constants tracking. Default: `true`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsOutput) TrackConstants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *bool { return v.TrackConstants }).(pulumi.BoolPtrOutput)
+}
+
+// Track quals on system catalogs too. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsOutput) TrackPgCatalog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgQualstats) *bool { return v.TrackPgCatalog }).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPgQualstatsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgQualstatsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPgQualstats)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) ToGetPgPgUserConfigPgQualstatsPtrOutput() GetPgPgUserConfigPgQualstatsPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) ToGetPgPgUserConfigPgQualstatsPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgQualstatsPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) Elem() GetPgPgUserConfigPgQualstatsOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) GetPgPgUserConfigPgQualstats {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigPgQualstats
+		return ret
+	}).(GetPgPgUserConfigPgQualstatsOutput)
+}
+
+// Enable / Disable pg_qualstats. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Error estimation num threshold to save quals. Default: `0`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) MinErrEstimateNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinErrEstimateNum
+	}).(pulumi.IntPtrOutput)
+}
+
+// Error estimation ratio threshold to save quals. Default: `0`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) MinErrEstimateRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinErrEstimateRatio
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable / Disable pgQualstats constants tracking. Default: `true`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) TrackConstants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackConstants
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Track quals on system catalogs too. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgQualstatsPtrOutput) TrackPgCatalog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgQualstats) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrackPgCatalog
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPgaudit struct {
+	// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	FeatureEnabled *bool `pulumi:"featureEnabled"`
+	// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+	//
+	// Deprecated: This property is deprecated.
+	LogCatalog *bool `pulumi:"logCatalog"`
+	// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogClient *bool `pulumi:"logClient"`
+	// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+	//
+	// Deprecated: This property is deprecated.
+	LogLevel *string `pulumi:"logLevel"`
+	// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+	//
+	// Deprecated: This property is deprecated.
+	LogMaxStringLength *int `pulumi:"logMaxStringLength"`
+	// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+	//
+	// Deprecated: This property is deprecated.
+	LogNestedStatements *bool `pulumi:"logNestedStatements"`
+	// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogParameter *bool `pulumi:"logParameter"`
+	// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
+	//
+	// Deprecated: This property is deprecated.
+	LogParameterMaxSize *int `pulumi:"logParameterMaxSize"`
+	// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogRelation *bool `pulumi:"logRelation"`
+	// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogRows *bool `pulumi:"logRows"`
+	// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+	//
+	// Deprecated: This property is deprecated.
+	LogStatement *bool `pulumi:"logStatement"`
+	// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogStatementOnce *bool `pulumi:"logStatementOnce"`
+	// Specifies which classes of statements will be logged by session audit logging.
+	//
+	// Deprecated: This property is deprecated.
+	Logs []string `pulumi:"logs"`
+	// Specifies the master role to use for object audit logging.
+	//
+	// Deprecated: This property is deprecated.
+	Role *string `pulumi:"role"`
+}
+
+// GetPgPgUserConfigPgauditInput is an input type that accepts GetPgPgUserConfigPgauditArgs and GetPgPgUserConfigPgauditOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgauditInput` via:
+//
+//	GetPgPgUserConfigPgauditArgs{...}
+type GetPgPgUserConfigPgauditInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgauditOutput() GetPgPgUserConfigPgauditOutput
+	ToGetPgPgUserConfigPgauditOutputWithContext(context.Context) GetPgPgUserConfigPgauditOutput
+}
+
+type GetPgPgUserConfigPgauditArgs struct {
+	// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	FeatureEnabled pulumi.BoolPtrInput `pulumi:"featureEnabled"`
+	// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+	//
+	// Deprecated: This property is deprecated.
+	LogCatalog pulumi.BoolPtrInput `pulumi:"logCatalog"`
+	// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogClient pulumi.BoolPtrInput `pulumi:"logClient"`
+	// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+	//
+	// Deprecated: This property is deprecated.
+	LogLevel pulumi.StringPtrInput `pulumi:"logLevel"`
+	// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+	//
+	// Deprecated: This property is deprecated.
+	LogMaxStringLength pulumi.IntPtrInput `pulumi:"logMaxStringLength"`
+	// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+	//
+	// Deprecated: This property is deprecated.
+	LogNestedStatements pulumi.BoolPtrInput `pulumi:"logNestedStatements"`
+	// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogParameter pulumi.BoolPtrInput `pulumi:"logParameter"`
+	// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
+	//
+	// Deprecated: This property is deprecated.
+	LogParameterMaxSize pulumi.IntPtrInput `pulumi:"logParameterMaxSize"`
+	// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogRelation pulumi.BoolPtrInput `pulumi:"logRelation"`
+	// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogRows pulumi.BoolPtrInput `pulumi:"logRows"`
+	// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+	//
+	// Deprecated: This property is deprecated.
+	LogStatement pulumi.BoolPtrInput `pulumi:"logStatement"`
+	// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+	//
+	// Deprecated: This property is deprecated.
+	LogStatementOnce pulumi.BoolPtrInput `pulumi:"logStatementOnce"`
+	// Specifies which classes of statements will be logged by session audit logging.
+	//
+	// Deprecated: This property is deprecated.
+	Logs pulumi.StringArrayInput `pulumi:"logs"`
+	// Specifies the master role to use for object audit logging.
+	//
+	// Deprecated: This property is deprecated.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (GetPgPgUserConfigPgauditArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPgaudit)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPgauditArgs) ToGetPgPgUserConfigPgauditOutput() GetPgPgUserConfigPgauditOutput {
+	return i.ToGetPgPgUserConfigPgauditOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgauditArgs) ToGetPgPgUserConfigPgauditOutputWithContext(ctx context.Context) GetPgPgUserConfigPgauditOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgauditOutput)
+}
+
+func (i GetPgPgUserConfigPgauditArgs) ToGetPgPgUserConfigPgauditPtrOutput() GetPgPgUserConfigPgauditPtrOutput {
+	return i.ToGetPgPgUserConfigPgauditPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgauditArgs) ToGetPgPgUserConfigPgauditPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgauditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgauditOutput).ToGetPgPgUserConfigPgauditPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPgauditPtrInput is an input type that accepts GetPgPgUserConfigPgauditArgs, GetPgPgUserConfigPgauditPtr and GetPgPgUserConfigPgauditPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgauditPtrInput` via:
+//
+//	        GetPgPgUserConfigPgauditArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigPgauditPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgauditPtrOutput() GetPgPgUserConfigPgauditPtrOutput
+	ToGetPgPgUserConfigPgauditPtrOutputWithContext(context.Context) GetPgPgUserConfigPgauditPtrOutput
+}
+
+type getPgPgUserConfigPgauditPtrType GetPgPgUserConfigPgauditArgs
+
+func GetPgPgUserConfigPgauditPtr(v *GetPgPgUserConfigPgauditArgs) GetPgPgUserConfigPgauditPtrInput {
+	return (*getPgPgUserConfigPgauditPtrType)(v)
+}
+
+func (*getPgPgUserConfigPgauditPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPgaudit)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPgauditPtrType) ToGetPgPgUserConfigPgauditPtrOutput() GetPgPgUserConfigPgauditPtrOutput {
+	return i.ToGetPgPgUserConfigPgauditPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPgauditPtrType) ToGetPgPgUserConfigPgauditPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgauditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgauditPtrOutput)
+}
+
+type GetPgPgUserConfigPgauditOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgauditOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPgaudit)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgauditOutput) ToGetPgPgUserConfigPgauditOutput() GetPgPgUserConfigPgauditOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgauditOutput) ToGetPgPgUserConfigPgauditOutputWithContext(ctx context.Context) GetPgPgUserConfigPgauditOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgauditOutput) ToGetPgPgUserConfigPgauditPtrOutput() GetPgPgUserConfigPgauditPtrOutput {
+	return o.ToGetPgPgUserConfigPgauditPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPgauditOutput) ToGetPgPgUserConfigPgauditPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgauditPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigPgaudit) *GetPgPgUserConfigPgaudit {
+		return &v
+	}).(GetPgPgUserConfigPgauditPtrOutput)
+}
+
+// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) FeatureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.FeatureEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogCatalog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogCatalog }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogClient }).(pulumi.BoolPtrOutput)
+}
+
+// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *string { return v.LogLevel }).(pulumi.StringPtrOutput)
+}
+
+// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogMaxStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *int { return v.LogMaxStringLength }).(pulumi.IntPtrOutput)
+}
+
+// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogNestedStatements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogNestedStatements }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogParameter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogParameter }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogParameterMaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *int { return v.LogParameterMaxSize }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogRelation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogRelation }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogRows() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogRows }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogStatement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogStatement }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) LogStatementOnce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *bool { return v.LogStatementOnce }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies which classes of statements will be logged by session audit logging.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) Logs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) []string { return v.Logs }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the master role to use for object audit logging.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgaudit) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type GetPgPgUserConfigPgauditPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgauditPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPgaudit)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgauditPtrOutput) ToGetPgPgUserConfigPgauditPtrOutput() GetPgPgUserConfigPgauditPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgauditPtrOutput) ToGetPgPgUserConfigPgauditPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgauditPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgauditPtrOutput) Elem() GetPgPgUserConfigPgauditOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) GetPgPgUserConfigPgaudit {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigPgaudit
+		return ret
+	}).(GetPgPgUserConfigPgauditOutput)
+}
+
+// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) FeatureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogCatalog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogCatalog
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogClient
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogMaxStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogMaxStringLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogNestedStatements() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogNestedStatements
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogParameter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogParameter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogParameterMaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LogParameterMaxSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogRelation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogRelation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogRows() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogRows
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogStatement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogStatement
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) LogStatementOnce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogStatementOnce
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies which classes of statements will be logged by session audit logging.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) Logs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Logs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the master role to use for object audit logging.
+//
+// Deprecated: This property is deprecated.
+func (o GetPgPgUserConfigPgauditPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgaudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Role
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPgPgUserConfigPgbouncer struct {
+	// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
+	AutodbIdleTimeout *int `pulumi:"autodbIdleTimeout"`
+	// Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
+	AutodbMaxDbConnections *int `pulumi:"autodbMaxDbConnections"`
+	// Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+	AutodbPoolMode *string `pulumi:"autodbPoolMode"`
+	// If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
+	AutodbPoolSize *int `pulumi:"autodbPoolSize"`
+	// List of parameters to ignore when given in startup packet.
+	IgnoreStartupParameters []string `pulumi:"ignoreStartupParameters"`
+	// PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
+	MaxPreparedStatements *int `pulumi:"maxPreparedStatements"`
+	// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+	MinPoolSize *int `pulumi:"minPoolSize"`
+	// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
+	ServerIdleTimeout *int `pulumi:"serverIdleTimeout"`
+	// The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+	ServerLifetime *int `pulumi:"serverLifetime"`
+	// Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
+	ServerResetQueryAlways *bool `pulumi:"serverResetQueryAlways"`
+}
+
+// GetPgPgUserConfigPgbouncerInput is an input type that accepts GetPgPgUserConfigPgbouncerArgs and GetPgPgUserConfigPgbouncerOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgbouncerInput` via:
+//
+//	GetPgPgUserConfigPgbouncerArgs{...}
+type GetPgPgUserConfigPgbouncerInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgbouncerOutput() GetPgPgUserConfigPgbouncerOutput
+	ToGetPgPgUserConfigPgbouncerOutputWithContext(context.Context) GetPgPgUserConfigPgbouncerOutput
+}
+
+type GetPgPgUserConfigPgbouncerArgs struct {
+	// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
+	AutodbIdleTimeout pulumi.IntPtrInput `pulumi:"autodbIdleTimeout"`
+	// Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
+	AutodbMaxDbConnections pulumi.IntPtrInput `pulumi:"autodbMaxDbConnections"`
+	// Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+	AutodbPoolMode pulumi.StringPtrInput `pulumi:"autodbPoolMode"`
+	// If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
+	AutodbPoolSize pulumi.IntPtrInput `pulumi:"autodbPoolSize"`
+	// List of parameters to ignore when given in startup packet.
+	IgnoreStartupParameters pulumi.StringArrayInput `pulumi:"ignoreStartupParameters"`
+	// PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
+	MaxPreparedStatements pulumi.IntPtrInput `pulumi:"maxPreparedStatements"`
+	// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+	MinPoolSize pulumi.IntPtrInput `pulumi:"minPoolSize"`
+	// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
+	ServerIdleTimeout pulumi.IntPtrInput `pulumi:"serverIdleTimeout"`
+	// The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+	ServerLifetime pulumi.IntPtrInput `pulumi:"serverLifetime"`
+	// Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
+	ServerResetQueryAlways pulumi.BoolPtrInput `pulumi:"serverResetQueryAlways"`
+}
+
+func (GetPgPgUserConfigPgbouncerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPgbouncer)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPgbouncerArgs) ToGetPgPgUserConfigPgbouncerOutput() GetPgPgUserConfigPgbouncerOutput {
+	return i.ToGetPgPgUserConfigPgbouncerOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgbouncerArgs) ToGetPgPgUserConfigPgbouncerOutputWithContext(ctx context.Context) GetPgPgUserConfigPgbouncerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgbouncerOutput)
+}
+
+func (i GetPgPgUserConfigPgbouncerArgs) ToGetPgPgUserConfigPgbouncerPtrOutput() GetPgPgUserConfigPgbouncerPtrOutput {
+	return i.ToGetPgPgUserConfigPgbouncerPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPgbouncerArgs) ToGetPgPgUserConfigPgbouncerPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgbouncerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgbouncerOutput).ToGetPgPgUserConfigPgbouncerPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPgbouncerPtrInput is an input type that accepts GetPgPgUserConfigPgbouncerArgs, GetPgPgUserConfigPgbouncerPtr and GetPgPgUserConfigPgbouncerPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPgbouncerPtrInput` via:
+//
+//	        GetPgPgUserConfigPgbouncerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigPgbouncerPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPgbouncerPtrOutput() GetPgPgUserConfigPgbouncerPtrOutput
+	ToGetPgPgUserConfigPgbouncerPtrOutputWithContext(context.Context) GetPgPgUserConfigPgbouncerPtrOutput
+}
+
+type getPgPgUserConfigPgbouncerPtrType GetPgPgUserConfigPgbouncerArgs
+
+func GetPgPgUserConfigPgbouncerPtr(v *GetPgPgUserConfigPgbouncerArgs) GetPgPgUserConfigPgbouncerPtrInput {
+	return (*getPgPgUserConfigPgbouncerPtrType)(v)
+}
+
+func (*getPgPgUserConfigPgbouncerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPgbouncer)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPgbouncerPtrType) ToGetPgPgUserConfigPgbouncerPtrOutput() GetPgPgUserConfigPgbouncerPtrOutput {
+	return i.ToGetPgPgUserConfigPgbouncerPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPgbouncerPtrType) ToGetPgPgUserConfigPgbouncerPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgbouncerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPgbouncerPtrOutput)
+}
+
+type GetPgPgUserConfigPgbouncerOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgbouncerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPgbouncer)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgbouncerOutput) ToGetPgPgUserConfigPgbouncerOutput() GetPgPgUserConfigPgbouncerOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgbouncerOutput) ToGetPgPgUserConfigPgbouncerOutputWithContext(ctx context.Context) GetPgPgUserConfigPgbouncerOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgbouncerOutput) ToGetPgPgUserConfigPgbouncerPtrOutput() GetPgPgUserConfigPgbouncerPtrOutput {
+	return o.ToGetPgPgUserConfigPgbouncerPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPgbouncerOutput) ToGetPgPgUserConfigPgbouncerPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgbouncerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigPgbouncer) *GetPgPgUserConfigPgbouncer {
+		return &v
+	}).(GetPgPgUserConfigPgbouncerPtrOutput)
+}
+
+// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
+func (o GetPgPgUserConfigPgbouncerOutput) AutodbIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.AutodbIdleTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
+func (o GetPgPgUserConfigPgbouncerOutput) AutodbMaxDbConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.AutodbMaxDbConnections }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+func (o GetPgPgUserConfigPgbouncerOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *string { return v.AutodbPoolMode }).(pulumi.StringPtrOutput)
+}
+
+// If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
+func (o GetPgPgUserConfigPgbouncerOutput) AutodbPoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.AutodbPoolSize }).(pulumi.IntPtrOutput)
+}
+
+// List of parameters to ignore when given in startup packet.
+func (o GetPgPgUserConfigPgbouncerOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) []string { return v.IgnoreStartupParameters }).(pulumi.StringArrayOutput)
+}
+
+// PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
+func (o GetPgPgUserConfigPgbouncerOutput) MaxPreparedStatements() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.MaxPreparedStatements }).(pulumi.IntPtrOutput)
+}
+
+// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+func (o GetPgPgUserConfigPgbouncerOutput) MinPoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.MinPoolSize }).(pulumi.IntPtrOutput)
+}
+
+// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
+func (o GetPgPgUserConfigPgbouncerOutput) ServerIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.ServerIdleTimeout }).(pulumi.IntPtrOutput)
+}
+
+// The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+func (o GetPgPgUserConfigPgbouncerOutput) ServerLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.ServerLifetime }).(pulumi.IntPtrOutput)
+}
+
+// Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
+func (o GetPgPgUserConfigPgbouncerOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *bool { return v.ServerResetQueryAlways }).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPgbouncerPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPgbouncerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPgbouncer)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPgbouncerPtrOutput) ToGetPgPgUserConfigPgbouncerPtrOutput() GetPgPgUserConfigPgbouncerPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgbouncerPtrOutput) ToGetPgPgUserConfigPgbouncerPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPgbouncerPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPgbouncerPtrOutput) Elem() GetPgPgUserConfigPgbouncerOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) GetPgPgUserConfigPgbouncer {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigPgbouncer
+		return ret
+	}).(GetPgPgUserConfigPgbouncerOutput)
+}
+
+// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) AutodbIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbIdleTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) AutodbMaxDbConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbMaxDbConnections
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) AutodbPoolMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) AutodbPoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutodbPoolSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// List of parameters to ignore when given in startup packet.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) IgnoreStartupParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreStartupParameters
+	}).(pulumi.StringArrayOutput)
+}
+
+// PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) MaxPreparedStatements() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPreparedStatements
+	}).(pulumi.IntPtrOutput)
+}
+
+// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) MinPoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinPoolSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ServerIdleTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ServerLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
+func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerResetQueryAlways() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerResetQueryAlways
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPglookout struct {
+	// Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
+	MaxFailoverReplicationTimeLag *int `pulumi:"maxFailoverReplicationTimeLag"`
+}
+
+// GetPgPgUserConfigPglookoutInput is an input type that accepts GetPgPgUserConfigPglookoutArgs and GetPgPgUserConfigPglookoutOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPglookoutInput` via:
+//
+//	GetPgPgUserConfigPglookoutArgs{...}
+type GetPgPgUserConfigPglookoutInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPglookoutOutput() GetPgPgUserConfigPglookoutOutput
+	ToGetPgPgUserConfigPglookoutOutputWithContext(context.Context) GetPgPgUserConfigPglookoutOutput
+}
+
+type GetPgPgUserConfigPglookoutArgs struct {
+	// Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
+	MaxFailoverReplicationTimeLag pulumi.IntPtrInput `pulumi:"maxFailoverReplicationTimeLag"`
+}
+
+func (GetPgPgUserConfigPglookoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPglookout)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPglookoutArgs) ToGetPgPgUserConfigPglookoutOutput() GetPgPgUserConfigPglookoutOutput {
+	return i.ToGetPgPgUserConfigPglookoutOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPglookoutArgs) ToGetPgPgUserConfigPglookoutOutputWithContext(ctx context.Context) GetPgPgUserConfigPglookoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPglookoutOutput)
+}
+
+func (i GetPgPgUserConfigPglookoutArgs) ToGetPgPgUserConfigPglookoutPtrOutput() GetPgPgUserConfigPglookoutPtrOutput {
+	return i.ToGetPgPgUserConfigPglookoutPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPglookoutArgs) ToGetPgPgUserConfigPglookoutPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPglookoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPglookoutOutput).ToGetPgPgUserConfigPglookoutPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPglookoutPtrInput is an input type that accepts GetPgPgUserConfigPglookoutArgs, GetPgPgUserConfigPglookoutPtr and GetPgPgUserConfigPglookoutPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPglookoutPtrInput` via:
+//
+//	        GetPgPgUserConfigPglookoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigPglookoutPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPglookoutPtrOutput() GetPgPgUserConfigPglookoutPtrOutput
+	ToGetPgPgUserConfigPglookoutPtrOutputWithContext(context.Context) GetPgPgUserConfigPglookoutPtrOutput
+}
+
+type getPgPgUserConfigPglookoutPtrType GetPgPgUserConfigPglookoutArgs
+
+func GetPgPgUserConfigPglookoutPtr(v *GetPgPgUserConfigPglookoutArgs) GetPgPgUserConfigPglookoutPtrInput {
+	return (*getPgPgUserConfigPglookoutPtrType)(v)
+}
+
+func (*getPgPgUserConfigPglookoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPglookout)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPglookoutPtrType) ToGetPgPgUserConfigPglookoutPtrOutput() GetPgPgUserConfigPglookoutPtrOutput {
+	return i.ToGetPgPgUserConfigPglookoutPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPglookoutPtrType) ToGetPgPgUserConfigPglookoutPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPglookoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPglookoutPtrOutput)
+}
+
+type GetPgPgUserConfigPglookoutOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPglookoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPglookout)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPglookoutOutput) ToGetPgPgUserConfigPglookoutOutput() GetPgPgUserConfigPglookoutOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPglookoutOutput) ToGetPgPgUserConfigPglookoutOutputWithContext(ctx context.Context) GetPgPgUserConfigPglookoutOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPglookoutOutput) ToGetPgPgUserConfigPglookoutPtrOutput() GetPgPgUserConfigPglookoutPtrOutput {
+	return o.ToGetPgPgUserConfigPglookoutPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPglookoutOutput) ToGetPgPgUserConfigPglookoutPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPglookoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigPglookout) *GetPgPgUserConfigPglookout {
+		return &v
+	}).(GetPgPgUserConfigPglookoutPtrOutput)
+}
+
+// Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
+func (o GetPgPgUserConfigPglookoutOutput) MaxFailoverReplicationTimeLag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPglookout) *int { return v.MaxFailoverReplicationTimeLag }).(pulumi.IntPtrOutput)
+}
+
+type GetPgPgUserConfigPglookoutPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPglookoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPglookout)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPglookoutPtrOutput) ToGetPgPgUserConfigPglookoutPtrOutput() GetPgPgUserConfigPglookoutPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPglookoutPtrOutput) ToGetPgPgUserConfigPglookoutPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPglookoutPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPglookoutPtrOutput) Elem() GetPgPgUserConfigPglookoutOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPglookout) GetPgPgUserConfigPglookout {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigPglookout
+		return ret
+	}).(GetPgPgUserConfigPglookoutOutput)
+}
+
+// Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
+func (o GetPgPgUserConfigPglookoutPtrOutput) MaxFailoverReplicationTimeLag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPglookout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxFailoverReplicationTimeLag
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPgPgUserConfigPrivateAccess struct {
+	// Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Pg *bool `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Pgbouncer *bool `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus *bool `pulumi:"prometheus"`
+}
+
+// GetPgPgUserConfigPrivateAccessInput is an input type that accepts GetPgPgUserConfigPrivateAccessArgs and GetPgPgUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPrivateAccessInput` via:
+//
+//	GetPgPgUserConfigPrivateAccessArgs{...}
+type GetPgPgUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPrivateAccessOutput() GetPgPgUserConfigPrivateAccessOutput
+	ToGetPgPgUserConfigPrivateAccessOutputWithContext(context.Context) GetPgPgUserConfigPrivateAccessOutput
+}
+
+type GetPgPgUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Pg pulumi.BoolPtrInput `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Pgbouncer pulumi.BoolPtrInput `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetPgPgUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPrivateAccessArgs) ToGetPgPgUserConfigPrivateAccessOutput() GetPgPgUserConfigPrivateAccessOutput {
+	return i.ToGetPgPgUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPrivateAccessArgs) ToGetPgPgUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPrivateAccessOutput)
+}
+
+func (i GetPgPgUserConfigPrivateAccessArgs) ToGetPgPgUserConfigPrivateAccessPtrOutput() GetPgPgUserConfigPrivateAccessPtrOutput {
+	return i.ToGetPgPgUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPrivateAccessArgs) ToGetPgPgUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPrivateAccessOutput).ToGetPgPgUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPrivateAccessPtrInput is an input type that accepts GetPgPgUserConfigPrivateAccessArgs, GetPgPgUserConfigPrivateAccessPtr and GetPgPgUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPrivateAccessPtrInput` via:
+//
+//	        GetPgPgUserConfigPrivateAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPrivateAccessPtrOutput() GetPgPgUserConfigPrivateAccessPtrOutput
+	ToGetPgPgUserConfigPrivateAccessPtrOutputWithContext(context.Context) GetPgPgUserConfigPrivateAccessPtrOutput
+}
+
+type getPgPgUserConfigPrivateAccessPtrType GetPgPgUserConfigPrivateAccessArgs
+
+func GetPgPgUserConfigPrivateAccessPtr(v *GetPgPgUserConfigPrivateAccessArgs) GetPgPgUserConfigPrivateAccessPtrInput {
+	return (*getPgPgUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*getPgPgUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPrivateAccessPtrType) ToGetPgPgUserConfigPrivateAccessPtrOutput() GetPgPgUserConfigPrivateAccessPtrOutput {
+	return i.ToGetPgPgUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPrivateAccessPtrType) ToGetPgPgUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPrivateAccessPtrOutput)
+}
+
+type GetPgPgUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPrivateAccessOutput) ToGetPgPgUserConfigPrivateAccessOutput() GetPgPgUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivateAccessOutput) ToGetPgPgUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivateAccessOutput) ToGetPgPgUserConfigPrivateAccessPtrOutput() GetPgPgUserConfigPrivateAccessPtrOutput {
+	return o.ToGetPgPgUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPrivateAccessOutput) ToGetPgPgUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivateAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigPrivateAccess) *GetPgPgUserConfigPrivateAccess {
+		return &v
+	}).(GetPgPgUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetPgPgUserConfigPrivateAccessOutput) Pg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *bool { return v.Pg }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetPgPgUserConfigPrivateAccessOutput) Pgbouncer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *bool { return v.Pgbouncer }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetPgPgUserConfigPrivateAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPrivateAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPrivateAccessPtrOutput) ToGetPgPgUserConfigPrivateAccessPtrOutput() GetPgPgUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivateAccessPtrOutput) ToGetPgPgUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivateAccessPtrOutput) Elem() GetPgPgUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) GetPgPgUserConfigPrivateAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigPrivateAccess
+		return ret
+	}).(GetPgPgUserConfigPrivateAccessOutput)
+}
+
+// Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetPgPgUserConfigPrivateAccessPtrOutput) Pgbouncer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetPgPgUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPrivatelinkAccess struct {
+	// Enable pg.
+	Pg *bool `pulumi:"pg"`
+	// Enable pgbouncer.
+	Pgbouncer *bool `pulumi:"pgbouncer"`
+	// Enable prometheus.
+	Prometheus *bool `pulumi:"prometheus"`
+}
+
+// GetPgPgUserConfigPrivatelinkAccessInput is an input type that accepts GetPgPgUserConfigPrivatelinkAccessArgs and GetPgPgUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPrivatelinkAccessInput` via:
+//
+//	GetPgPgUserConfigPrivatelinkAccessArgs{...}
+type GetPgPgUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPrivatelinkAccessOutput() GetPgPgUserConfigPrivatelinkAccessOutput
+	ToGetPgPgUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetPgPgUserConfigPrivatelinkAccessOutput
+}
+
+type GetPgPgUserConfigPrivatelinkAccessArgs struct {
+	// Enable pg.
+	Pg pulumi.BoolPtrInput `pulumi:"pg"`
+	// Enable pgbouncer.
+	Pgbouncer pulumi.BoolPtrInput `pulumi:"pgbouncer"`
+	// Enable prometheus.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetPgPgUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPrivatelinkAccessArgs) ToGetPgPgUserConfigPrivatelinkAccessOutput() GetPgPgUserConfigPrivatelinkAccessOutput {
+	return i.ToGetPgPgUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPrivatelinkAccessArgs) ToGetPgPgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetPgPgUserConfigPrivatelinkAccessArgs) ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPrivatelinkAccessArgs) ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPrivatelinkAccessOutput).ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetPgPgUserConfigPrivatelinkAccessArgs, GetPgPgUserConfigPrivatelinkAccessPtr and GetPgPgUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPrivatelinkAccessPtrInput` via:
+//
+//	        GetPgPgUserConfigPrivatelinkAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput
+	ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getPgPgUserConfigPrivatelinkAccessPtrType GetPgPgUserConfigPrivatelinkAccessArgs
+
+func GetPgPgUserConfigPrivatelinkAccessPtr(v *GetPgPgUserConfigPrivatelinkAccessArgs) GetPgPgUserConfigPrivatelinkAccessPtrInput {
+	return (*getPgPgUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getPgPgUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPrivatelinkAccessPtrType) ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPrivatelinkAccessPtrType) ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetPgPgUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelinkAccessOutput() GetPgPgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigPrivatelinkAccess) *GetPgPgUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetPgPgUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Enable pg.
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) Pg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPrivatelinkAccess) *bool { return v.Pg }).(pulumi.BoolPtrOutput)
+}
+
+// Enable pgbouncer.
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) Pgbouncer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPrivatelinkAccess) *bool { return v.Pgbouncer }).(pulumi.BoolPtrOutput)
+}
+
+// Enable prometheus.
+func (o GetPgPgUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPrivatelinkAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) ToGetPgPgUserConfigPrivatelinkAccessPtrOutput() GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) ToGetPgPgUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Elem() GetPgPgUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivatelinkAccess) GetPgPgUserConfigPrivatelinkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigPrivatelinkAccess
+		return ret
+	}).(GetPgPgUserConfigPrivatelinkAccessOutput)
+}
+
+// Enable pg.
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Pg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable pgbouncer.
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Pgbouncer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable prometheus.
+func (o GetPgPgUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPublicAccess struct {
+	// Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
+	Pg *bool `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
+	Pgbouncer *bool `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *bool `pulumi:"prometheus"`
+}
+
+// GetPgPgUserConfigPublicAccessInput is an input type that accepts GetPgPgUserConfigPublicAccessArgs and GetPgPgUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPublicAccessInput` via:
+//
+//	GetPgPgUserConfigPublicAccessArgs{...}
+type GetPgPgUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPublicAccessOutput() GetPgPgUserConfigPublicAccessOutput
+	ToGetPgPgUserConfigPublicAccessOutputWithContext(context.Context) GetPgPgUserConfigPublicAccessOutput
+}
+
+type GetPgPgUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
+	Pg pulumi.BoolPtrInput `pulumi:"pg"`
+	// Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
+	Pgbouncer pulumi.BoolPtrInput `pulumi:"pgbouncer"`
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetPgPgUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigPublicAccessArgs) ToGetPgPgUserConfigPublicAccessOutput() GetPgPgUserConfigPublicAccessOutput {
+	return i.ToGetPgPgUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPublicAccessArgs) ToGetPgPgUserConfigPublicAccessOutputWithContext(ctx context.Context) GetPgPgUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPublicAccessOutput)
+}
+
+func (i GetPgPgUserConfigPublicAccessArgs) ToGetPgPgUserConfigPublicAccessPtrOutput() GetPgPgUserConfigPublicAccessPtrOutput {
+	return i.ToGetPgPgUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigPublicAccessArgs) ToGetPgPgUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPublicAccessOutput).ToGetPgPgUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigPublicAccessPtrInput is an input type that accepts GetPgPgUserConfigPublicAccessArgs, GetPgPgUserConfigPublicAccessPtr and GetPgPgUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigPublicAccessPtrInput` via:
+//
+//	        GetPgPgUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigPublicAccessPtrOutput() GetPgPgUserConfigPublicAccessPtrOutput
+	ToGetPgPgUserConfigPublicAccessPtrOutputWithContext(context.Context) GetPgPgUserConfigPublicAccessPtrOutput
+}
+
+type getPgPgUserConfigPublicAccessPtrType GetPgPgUserConfigPublicAccessArgs
+
+func GetPgPgUserConfigPublicAccessPtr(v *GetPgPgUserConfigPublicAccessArgs) GetPgPgUserConfigPublicAccessPtrInput {
+	return (*getPgPgUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getPgPgUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigPublicAccessPtrType) ToGetPgPgUserConfigPublicAccessPtrOutput() GetPgPgUserConfigPublicAccessPtrOutput {
+	return i.ToGetPgPgUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigPublicAccessPtrType) ToGetPgPgUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigPublicAccessPtrOutput)
+}
+
+type GetPgPgUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPublicAccessOutput) ToGetPgPgUserConfigPublicAccessOutput() GetPgPgUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPublicAccessOutput) ToGetPgPgUserConfigPublicAccessOutputWithContext(ctx context.Context) GetPgPgUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPublicAccessOutput) ToGetPgPgUserConfigPublicAccessPtrOutput() GetPgPgUserConfigPublicAccessPtrOutput {
+	return o.ToGetPgPgUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigPublicAccessOutput) ToGetPgPgUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigPublicAccess) *GetPgPgUserConfigPublicAccess {
+		return &v
+	}).(GetPgPgUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetPgPgUserConfigPublicAccessOutput) Pg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *bool { return v.Pg }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetPgPgUserConfigPublicAccessOutput) Pgbouncer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *bool { return v.Pgbouncer }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetPgPgUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigPublicAccessPtrOutput) ToGetPgPgUserConfigPublicAccessPtrOutput() GetPgPgUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPublicAccessPtrOutput) ToGetPgPgUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigPublicAccessPtrOutput) Elem() GetPgPgUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) GetPgPgUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigPublicAccess
+		return ret
+	}).(GetPgPgUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetPgPgUserConfigPublicAccessPtrOutput) Pg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Pg
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetPgPgUserConfigPublicAccessPtrOutput) Pgbouncer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Pgbouncer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetPgPgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigTimescaledb struct {
+	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+	MaxBackgroundWorkers *int `pulumi:"maxBackgroundWorkers"`
+}
+
+// GetPgPgUserConfigTimescaledbInput is an input type that accepts GetPgPgUserConfigTimescaledbArgs and GetPgPgUserConfigTimescaledbOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigTimescaledbInput` via:
+//
+//	GetPgPgUserConfigTimescaledbArgs{...}
+type GetPgPgUserConfigTimescaledbInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigTimescaledbOutput() GetPgPgUserConfigTimescaledbOutput
+	ToGetPgPgUserConfigTimescaledbOutputWithContext(context.Context) GetPgPgUserConfigTimescaledbOutput
+}
+
+type GetPgPgUserConfigTimescaledbArgs struct {
+	// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+	MaxBackgroundWorkers pulumi.IntPtrInput `pulumi:"maxBackgroundWorkers"`
+}
+
+func (GetPgPgUserConfigTimescaledbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigTimescaledb)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigTimescaledbArgs) ToGetPgPgUserConfigTimescaledbOutput() GetPgPgUserConfigTimescaledbOutput {
+	return i.ToGetPgPgUserConfigTimescaledbOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigTimescaledbArgs) ToGetPgPgUserConfigTimescaledbOutputWithContext(ctx context.Context) GetPgPgUserConfigTimescaledbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigTimescaledbOutput)
+}
+
+func (i GetPgPgUserConfigTimescaledbArgs) ToGetPgPgUserConfigTimescaledbPtrOutput() GetPgPgUserConfigTimescaledbPtrOutput {
+	return i.ToGetPgPgUserConfigTimescaledbPtrOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigTimescaledbArgs) ToGetPgPgUserConfigTimescaledbPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigTimescaledbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigTimescaledbOutput).ToGetPgPgUserConfigTimescaledbPtrOutputWithContext(ctx)
+}
+
+// GetPgPgUserConfigTimescaledbPtrInput is an input type that accepts GetPgPgUserConfigTimescaledbArgs, GetPgPgUserConfigTimescaledbPtr and GetPgPgUserConfigTimescaledbPtrOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigTimescaledbPtrInput` via:
+//
+//	        GetPgPgUserConfigTimescaledbArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPgPgUserConfigTimescaledbPtrInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigTimescaledbPtrOutput() GetPgPgUserConfigTimescaledbPtrOutput
+	ToGetPgPgUserConfigTimescaledbPtrOutputWithContext(context.Context) GetPgPgUserConfigTimescaledbPtrOutput
+}
+
+type getPgPgUserConfigTimescaledbPtrType GetPgPgUserConfigTimescaledbArgs
+
+func GetPgPgUserConfigTimescaledbPtr(v *GetPgPgUserConfigTimescaledbArgs) GetPgPgUserConfigTimescaledbPtrInput {
+	return (*getPgPgUserConfigTimescaledbPtrType)(v)
+}
+
+func (*getPgPgUserConfigTimescaledbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigTimescaledb)(nil)).Elem()
+}
+
+func (i *getPgPgUserConfigTimescaledbPtrType) ToGetPgPgUserConfigTimescaledbPtrOutput() GetPgPgUserConfigTimescaledbPtrOutput {
+	return i.ToGetPgPgUserConfigTimescaledbPtrOutputWithContext(context.Background())
+}
+
+func (i *getPgPgUserConfigTimescaledbPtrType) ToGetPgPgUserConfigTimescaledbPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigTimescaledbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigTimescaledbPtrOutput)
+}
+
+type GetPgPgUserConfigTimescaledbOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigTimescaledbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigTimescaledb)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigTimescaledbOutput) ToGetPgPgUserConfigTimescaledbOutput() GetPgPgUserConfigTimescaledbOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigTimescaledbOutput) ToGetPgPgUserConfigTimescaledbOutputWithContext(ctx context.Context) GetPgPgUserConfigTimescaledbOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigTimescaledbOutput) ToGetPgPgUserConfigTimescaledbPtrOutput() GetPgPgUserConfigTimescaledbPtrOutput {
+	return o.ToGetPgPgUserConfigTimescaledbPtrOutputWithContext(context.Background())
+}
+
+func (o GetPgPgUserConfigTimescaledbOutput) ToGetPgPgUserConfigTimescaledbPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigTimescaledbPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPgPgUserConfigTimescaledb) *GetPgPgUserConfigTimescaledb {
+		return &v
+	}).(GetPgPgUserConfigTimescaledbPtrOutput)
+}
+
+// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+func (o GetPgPgUserConfigTimescaledbOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigTimescaledb) *int { return v.MaxBackgroundWorkers }).(pulumi.IntPtrOutput)
+}
+
+type GetPgPgUserConfigTimescaledbPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigTimescaledbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPgPgUserConfigTimescaledb)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigTimescaledbPtrOutput) ToGetPgPgUserConfigTimescaledbPtrOutput() GetPgPgUserConfigTimescaledbPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigTimescaledbPtrOutput) ToGetPgPgUserConfigTimescaledbPtrOutputWithContext(ctx context.Context) GetPgPgUserConfigTimescaledbPtrOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigTimescaledbPtrOutput) Elem() GetPgPgUserConfigTimescaledbOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigTimescaledb) GetPgPgUserConfigTimescaledb {
+		if v != nil {
+			return *v
+		}
+		var ret GetPgPgUserConfigTimescaledb
+		return ret
+	}).(GetPgPgUserConfigTimescaledbOutput)
+}
+
+// The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
+func (o GetPgPgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigTimescaledb) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBackgroundWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPgServiceIntegration struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetPgServiceIntegrationInput is an input type that accepts GetPgServiceIntegrationArgs and GetPgServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetPgServiceIntegrationInput` via:
+//
+//	GetPgServiceIntegrationArgs{...}
+type GetPgServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetPgServiceIntegrationOutput() GetPgServiceIntegrationOutput
+	ToGetPgServiceIntegrationOutputWithContext(context.Context) GetPgServiceIntegrationOutput
+}
+
+type GetPgServiceIntegrationArgs struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetPgServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgServiceIntegration)(nil)).Elem()
+}
+
+func (i GetPgServiceIntegrationArgs) ToGetPgServiceIntegrationOutput() GetPgServiceIntegrationOutput {
+	return i.ToGetPgServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetPgServiceIntegrationArgs) ToGetPgServiceIntegrationOutputWithContext(ctx context.Context) GetPgServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgServiceIntegrationOutput)
+}
+
+// GetPgServiceIntegrationArrayInput is an input type that accepts GetPgServiceIntegrationArray and GetPgServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetPgServiceIntegrationArrayInput` via:
+//
+//	GetPgServiceIntegrationArray{ GetPgServiceIntegrationArgs{...} }
+type GetPgServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetPgServiceIntegrationArrayOutput() GetPgServiceIntegrationArrayOutput
+	ToGetPgServiceIntegrationArrayOutputWithContext(context.Context) GetPgServiceIntegrationArrayOutput
+}
+
+type GetPgServiceIntegrationArray []GetPgServiceIntegrationInput
+
+func (GetPgServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgServiceIntegration)(nil)).Elem()
+}
+
+func (i GetPgServiceIntegrationArray) ToGetPgServiceIntegrationArrayOutput() GetPgServiceIntegrationArrayOutput {
+	return i.ToGetPgServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetPgServiceIntegrationArray) ToGetPgServiceIntegrationArrayOutputWithContext(ctx context.Context) GetPgServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgServiceIntegrationArrayOutput)
+}
+
+type GetPgServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetPgServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgServiceIntegration)(nil)).Elem()
+}
+
+func (o GetPgServiceIntegrationOutput) ToGetPgServiceIntegrationOutput() GetPgServiceIntegrationOutput {
+	return o
+}
+
+func (o GetPgServiceIntegrationOutput) ToGetPgServiceIntegrationOutputWithContext(ctx context.Context) GetPgServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration. The only supported value at the moment is `readReplica`
+func (o GetPgServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetPgServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetPgServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPgServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgServiceIntegration)(nil)).Elem()
+}
+
+func (o GetPgServiceIntegrationArrayOutput) ToGetPgServiceIntegrationArrayOutput() GetPgServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetPgServiceIntegrationArrayOutput) ToGetPgServiceIntegrationArrayOutputWithContext(ctx context.Context) GetPgServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetPgServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetPgServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPgServiceIntegration {
+		return vs[0].([]GetPgServiceIntegration)[vs[1].(int)]
+	}).(GetPgServiceIntegrationOutput)
+}
+
+type GetPgTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetPgTagInput is an input type that accepts GetPgTagArgs and GetPgTagOutput values.
+// You can construct a concrete instance of `GetPgTagInput` via:
+//
+//	GetPgTagArgs{...}
+type GetPgTagInput interface {
+	pulumi.Input
+
+	ToGetPgTagOutput() GetPgTagOutput
+	ToGetPgTagOutputWithContext(context.Context) GetPgTagOutput
+}
+
+type GetPgTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetPgTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgTag)(nil)).Elem()
+}
+
+func (i GetPgTagArgs) ToGetPgTagOutput() GetPgTagOutput {
+	return i.ToGetPgTagOutputWithContext(context.Background())
+}
+
+func (i GetPgTagArgs) ToGetPgTagOutputWithContext(ctx context.Context) GetPgTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgTagOutput)
+}
+
+// GetPgTagArrayInput is an input type that accepts GetPgTagArray and GetPgTagArrayOutput values.
+// You can construct a concrete instance of `GetPgTagArrayInput` via:
+//
+//	GetPgTagArray{ GetPgTagArgs{...} }
+type GetPgTagArrayInput interface {
+	pulumi.Input
+
+	ToGetPgTagArrayOutput() GetPgTagArrayOutput
+	ToGetPgTagArrayOutputWithContext(context.Context) GetPgTagArrayOutput
+}
+
+type GetPgTagArray []GetPgTagInput
+
+func (GetPgTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgTag)(nil)).Elem()
+}
+
+func (i GetPgTagArray) ToGetPgTagArrayOutput() GetPgTagArrayOutput {
+	return i.ToGetPgTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetPgTagArray) ToGetPgTagArrayOutputWithContext(ctx context.Context) GetPgTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgTagArrayOutput)
+}
+
+type GetPgTagOutput struct{ *pulumi.OutputState }
+
+func (GetPgTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgTag)(nil)).Elem()
+}
+
+func (o GetPgTagOutput) ToGetPgTagOutput() GetPgTagOutput {
+	return o
+}
+
+func (o GetPgTagOutput) ToGetPgTagOutputWithContext(ctx context.Context) GetPgTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetPgTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetPgTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetPgTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPgTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgTag)(nil)).Elem()
+}
+
+func (o GetPgTagArrayOutput) ToGetPgTagArrayOutput() GetPgTagArrayOutput {
+	return o
+}
+
+func (o GetPgTagArrayOutput) ToGetPgTagArrayOutputWithContext(ctx context.Context) GetPgTagArrayOutput {
+	return o
+}
+
+func (o GetPgTagArrayOutput) Index(i pulumi.IntInput) GetPgTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPgTag {
+		return vs[0].([]GetPgTag)[vs[1].(int)]
+	}).(GetPgTagOutput)
+}
+
+type GetPgTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetPgTechEmailInput is an input type that accepts GetPgTechEmailArgs and GetPgTechEmailOutput values.
+// You can construct a concrete instance of `GetPgTechEmailInput` via:
+//
+//	GetPgTechEmailArgs{...}
+type GetPgTechEmailInput interface {
+	pulumi.Input
+
+	ToGetPgTechEmailOutput() GetPgTechEmailOutput
+	ToGetPgTechEmailOutputWithContext(context.Context) GetPgTechEmailOutput
+}
+
+type GetPgTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetPgTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgTechEmail)(nil)).Elem()
+}
+
+func (i GetPgTechEmailArgs) ToGetPgTechEmailOutput() GetPgTechEmailOutput {
+	return i.ToGetPgTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetPgTechEmailArgs) ToGetPgTechEmailOutputWithContext(ctx context.Context) GetPgTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgTechEmailOutput)
+}
+
+// GetPgTechEmailArrayInput is an input type that accepts GetPgTechEmailArray and GetPgTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetPgTechEmailArrayInput` via:
+//
+//	GetPgTechEmailArray{ GetPgTechEmailArgs{...} }
+type GetPgTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetPgTechEmailArrayOutput() GetPgTechEmailArrayOutput
+	ToGetPgTechEmailArrayOutputWithContext(context.Context) GetPgTechEmailArrayOutput
+}
+
+type GetPgTechEmailArray []GetPgTechEmailInput
+
+func (GetPgTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgTechEmail)(nil)).Elem()
+}
+
+func (i GetPgTechEmailArray) ToGetPgTechEmailArrayOutput() GetPgTechEmailArrayOutput {
+	return i.ToGetPgTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetPgTechEmailArray) ToGetPgTechEmailArrayOutputWithContext(ctx context.Context) GetPgTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgTechEmailArrayOutput)
+}
+
+type GetPgTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetPgTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgTechEmail)(nil)).Elem()
+}
+
+func (o GetPgTechEmailOutput) ToGetPgTechEmailOutput() GetPgTechEmailOutput {
+	return o
+}
+
+func (o GetPgTechEmailOutput) ToGetPgTechEmailOutputWithContext(ctx context.Context) GetPgTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetPgTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetPgTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPgTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgTechEmail)(nil)).Elem()
+}
+
+func (o GetPgTechEmailArrayOutput) ToGetPgTechEmailArrayOutput() GetPgTechEmailArrayOutput {
+	return o
+}
+
+func (o GetPgTechEmailArrayOutput) ToGetPgTechEmailArrayOutputWithContext(ctx context.Context) GetPgTechEmailArrayOutput {
+	return o
+}
+
+func (o GetPgTechEmailArrayOutput) Index(i pulumi.IntInput) GetPgTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPgTechEmail {
+		return vs[0].([]GetPgTechEmail)[vs[1].(int)]
+	}).(GetPgTechEmailOutput)
+}
+
+type GetProjectTag struct {
+	// Project tag key.
+	Key string `pulumi:"key"`
+	// Project tag value.
+	Value string `pulumi:"value"`
+}
+
+// GetProjectTagInput is an input type that accepts GetProjectTagArgs and GetProjectTagOutput values.
+// You can construct a concrete instance of `GetProjectTagInput` via:
+//
+//	GetProjectTagArgs{...}
+type GetProjectTagInput interface {
+	pulumi.Input
+
+	ToGetProjectTagOutput() GetProjectTagOutput
+	ToGetProjectTagOutputWithContext(context.Context) GetProjectTagOutput
+}
+
+type GetProjectTagArgs struct {
+	// Project tag key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Project tag value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetProjectTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTag)(nil)).Elem()
+}
+
+func (i GetProjectTagArgs) ToGetProjectTagOutput() GetProjectTagOutput {
+	return i.ToGetProjectTagOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagArgs) ToGetProjectTagOutputWithContext(ctx context.Context) GetProjectTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagOutput)
+}
+
+// GetProjectTagArrayInput is an input type that accepts GetProjectTagArray and GetProjectTagArrayOutput values.
+// You can construct a concrete instance of `GetProjectTagArrayInput` via:
+//
+//	GetProjectTagArray{ GetProjectTagArgs{...} }
+type GetProjectTagArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectTagArrayOutput() GetProjectTagArrayOutput
+	ToGetProjectTagArrayOutputWithContext(context.Context) GetProjectTagArrayOutput
+}
+
+type GetProjectTagArray []GetProjectTagInput
+
+func (GetProjectTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTag)(nil)).Elem()
+}
+
+func (i GetProjectTagArray) ToGetProjectTagArrayOutput() GetProjectTagArrayOutput {
+	return i.ToGetProjectTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectTagArray) ToGetProjectTagArrayOutputWithContext(ctx context.Context) GetProjectTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectTagArrayOutput)
+}
+
+type GetProjectTagOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectTag)(nil)).Elem()
+}
+
+func (o GetProjectTagOutput) ToGetProjectTagOutput() GetProjectTagOutput {
+	return o
+}
+
+func (o GetProjectTagOutput) ToGetProjectTagOutputWithContext(ctx context.Context) GetProjectTagOutput {
+	return o
+}
+
+// Project tag key.
+func (o GetProjectTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Project tag value.
+func (o GetProjectTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetProjectTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectTag)(nil)).Elem()
+}
+
+func (o GetProjectTagArrayOutput) ToGetProjectTagArrayOutput() GetProjectTagArrayOutput {
+	return o
+}
+
+func (o GetProjectTagArrayOutput) ToGetProjectTagArrayOutputWithContext(ctx context.Context) GetProjectTagArrayOutput {
+	return o
+}
+
+func (o GetProjectTagArrayOutput) Index(i pulumi.IntInput) GetProjectTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectTag {
+		return vs[0].([]GetProjectTag)[vs[1].(int)]
+	}).(GetProjectTagOutput)
+}
+
+type GetRedisComponent struct {
+	// Service component name
+	Component string `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host string `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port int `pulumi:"port"`
+	// Network access route
+	Route string `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl bool `pulumi:"ssl"`
+	// DNS usage name
+	Usage string `pulumi:"usage"`
+}
+
+// GetRedisComponentInput is an input type that accepts GetRedisComponentArgs and GetRedisComponentOutput values.
+// You can construct a concrete instance of `GetRedisComponentInput` via:
+//
+//	GetRedisComponentArgs{...}
+type GetRedisComponentInput interface {
+	pulumi.Input
+
+	ToGetRedisComponentOutput() GetRedisComponentOutput
+	ToGetRedisComponentOutputWithContext(context.Context) GetRedisComponentOutput
+}
+
+type GetRedisComponentArgs struct {
+	// Service component name
+	Component pulumi.StringInput `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri pulumi.StringInput `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host pulumi.StringInput `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port pulumi.IntInput `pulumi:"port"`
+	// Network access route
+	Route pulumi.StringInput `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl pulumi.BoolInput `pulumi:"ssl"`
+	// DNS usage name
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetRedisComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisComponent)(nil)).Elem()
+}
+
+func (i GetRedisComponentArgs) ToGetRedisComponentOutput() GetRedisComponentOutput {
+	return i.ToGetRedisComponentOutputWithContext(context.Background())
+}
+
+func (i GetRedisComponentArgs) ToGetRedisComponentOutputWithContext(ctx context.Context) GetRedisComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisComponentOutput)
+}
+
+// GetRedisComponentArrayInput is an input type that accepts GetRedisComponentArray and GetRedisComponentArrayOutput values.
+// You can construct a concrete instance of `GetRedisComponentArrayInput` via:
+//
+//	GetRedisComponentArray{ GetRedisComponentArgs{...} }
+type GetRedisComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetRedisComponentArrayOutput() GetRedisComponentArrayOutput
+	ToGetRedisComponentArrayOutputWithContext(context.Context) GetRedisComponentArrayOutput
+}
+
+type GetRedisComponentArray []GetRedisComponentInput
+
+func (GetRedisComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisComponent)(nil)).Elem()
+}
+
+func (i GetRedisComponentArray) ToGetRedisComponentArrayOutput() GetRedisComponentArrayOutput {
+	return i.ToGetRedisComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetRedisComponentArray) ToGetRedisComponentArrayOutputWithContext(ctx context.Context) GetRedisComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisComponentArrayOutput)
+}
+
+type GetRedisComponentOutput struct{ *pulumi.OutputState }
+
+func (GetRedisComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisComponent)(nil)).Elem()
+}
+
+func (o GetRedisComponentOutput) ToGetRedisComponentOutput() GetRedisComponentOutput {
+	return o
+}
+
+func (o GetRedisComponentOutput) ToGetRedisComponentOutputWithContext(ctx context.Context) GetRedisComponentOutput {
+	return o
+}
+
+// Service component name
+func (o GetRedisComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+// Connection info for connecting to the service component. This is a combination of host and port.
+func (o GetRedisComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// Host name for connecting to the service component
+func (o GetRedisComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Kafka authentication method. This is a value specific to the 'kafka' service component
+func (o GetRedisComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Port number for connecting to the service component
+func (o GetRedisComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRedisComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Network access route
+func (o GetRedisComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+func (o GetRedisComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRedisComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+// DNS usage name
+func (o GetRedisComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetRedisComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRedisComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisComponent)(nil)).Elem()
+}
+
+func (o GetRedisComponentArrayOutput) ToGetRedisComponentArrayOutput() GetRedisComponentArrayOutput {
+	return o
+}
+
+func (o GetRedisComponentArrayOutput) ToGetRedisComponentArrayOutputWithContext(ctx context.Context) GetRedisComponentArrayOutput {
+	return o
+}
+
+func (o GetRedisComponentArrayOutput) Index(i pulumi.IntInput) GetRedisComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRedisComponent {
+		return vs[0].([]GetRedisComponent)[vs[1].(int)]
+	}).(GetRedisComponentOutput)
+}
+
+type GetRedisRedi struct {
+	// Redis password.
+	Password string `pulumi:"password"`
+	// Redis replica server URI.
+	ReplicaUri string `pulumi:"replicaUri"`
+	// Redis slave server URIs.
+	SlaveUris []string `pulumi:"slaveUris"`
+	// Redis server URIs.
+	Uris []string `pulumi:"uris"`
+}
+
+// GetRedisRediInput is an input type that accepts GetRedisRediArgs and GetRedisRediOutput values.
+// You can construct a concrete instance of `GetRedisRediInput` via:
+//
+//	GetRedisRediArgs{...}
+type GetRedisRediInput interface {
+	pulumi.Input
+
+	ToGetRedisRediOutput() GetRedisRediOutput
+	ToGetRedisRediOutputWithContext(context.Context) GetRedisRediOutput
+}
+
+type GetRedisRediArgs struct {
+	// Redis password.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Redis replica server URI.
+	ReplicaUri pulumi.StringInput `pulumi:"replicaUri"`
+	// Redis slave server URIs.
+	SlaveUris pulumi.StringArrayInput `pulumi:"slaveUris"`
+	// Redis server URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (GetRedisRediArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedi)(nil)).Elem()
+}
+
+func (i GetRedisRediArgs) ToGetRedisRediOutput() GetRedisRediOutput {
+	return i.ToGetRedisRediOutputWithContext(context.Background())
+}
+
+func (i GetRedisRediArgs) ToGetRedisRediOutputWithContext(ctx context.Context) GetRedisRediOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRediOutput)
+}
+
+// GetRedisRediArrayInput is an input type that accepts GetRedisRediArray and GetRedisRediArrayOutput values.
+// You can construct a concrete instance of `GetRedisRediArrayInput` via:
+//
+//	GetRedisRediArray{ GetRedisRediArgs{...} }
+type GetRedisRediArrayInput interface {
+	pulumi.Input
+
+	ToGetRedisRediArrayOutput() GetRedisRediArrayOutput
+	ToGetRedisRediArrayOutputWithContext(context.Context) GetRedisRediArrayOutput
+}
+
+type GetRedisRediArray []GetRedisRediInput
+
+func (GetRedisRediArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisRedi)(nil)).Elem()
+}
+
+func (i GetRedisRediArray) ToGetRedisRediArrayOutput() GetRedisRediArrayOutput {
+	return i.ToGetRedisRediArrayOutputWithContext(context.Background())
+}
+
+func (i GetRedisRediArray) ToGetRedisRediArrayOutputWithContext(ctx context.Context) GetRedisRediArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRediArrayOutput)
+}
+
+type GetRedisRediOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRediOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedi)(nil)).Elem()
+}
+
+func (o GetRedisRediOutput) ToGetRedisRediOutput() GetRedisRediOutput {
+	return o
+}
+
+func (o GetRedisRediOutput) ToGetRedisRediOutputWithContext(ctx context.Context) GetRedisRediOutput {
+	return o
+}
+
+// Redis password.
+func (o GetRedisRediOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisRedi) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Redis replica server URI.
+func (o GetRedisRediOutput) ReplicaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisRedi) string { return v.ReplicaUri }).(pulumi.StringOutput)
+}
+
+// Redis slave server URIs.
+func (o GetRedisRediOutput) SlaveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRedisRedi) []string { return v.SlaveUris }).(pulumi.StringArrayOutput)
+}
+
+// Redis server URIs.
+func (o GetRedisRediOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRedisRedi) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type GetRedisRediArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRediArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisRedi)(nil)).Elem()
+}
+
+func (o GetRedisRediArrayOutput) ToGetRedisRediArrayOutput() GetRedisRediArrayOutput {
+	return o
+}
+
+func (o GetRedisRediArrayOutput) ToGetRedisRediArrayOutputWithContext(ctx context.Context) GetRedisRediArrayOutput {
+	return o
+}
+
+func (o GetRedisRediArrayOutput) Index(i pulumi.IntInput) GetRedisRediOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRedisRedi {
+		return vs[0].([]GetRedisRedi)[vs[1].(int)]
+	}).(GetRedisRediOutput)
+}
+
+type GetRedisRedisUserConfig struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+	BackupHour *int `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+	BackupMinute *int `pulumi:"backupMinute"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects []GetRedisRedisUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration *GetRedisRedisUserConfigMigration `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetRedisRedisUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *GetRedisRedisUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetRedisRedisUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+	RedisAclChannelsDefault *string `pulumi:"redisAclChannelsDefault"`
+	// Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
+	RedisIoThreads *int `pulumi:"redisIoThreads"`
+	// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+	RedisLfuDecayTime *int `pulumi:"redisLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+	RedisLfuLogFactor *int `pulumi:"redisLfuLogFactor"`
+	// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+	RedisMaxmemoryPolicy *string `pulumi:"redisMaxmemoryPolicy"`
+	// Set notify-keyspace-events option.
+	RedisNotifyKeyspaceEvents *string `pulumi:"redisNotifyKeyspaceEvents"`
+	// Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
+	RedisNumberOfDatabases *int `pulumi:"redisNumberOfDatabases"`
+	// Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+	RedisPersistence *string `pulumi:"redisPersistence"`
+	// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+	RedisPubsubClientOutputBufferLimit *int `pulumi:"redisPubsubClientOutputBufferLimit"`
+	// Require SSL to access Redis. Default: `true`.
+	RedisSsl *bool `pulumi:"redisSsl"`
+	// Redis idle connection timeout in seconds. Default: `300`.
+	RedisTimeout *int `pulumi:"redisTimeout"`
+	// Enum: `7.0`, and newer. Redis major version.
+	RedisVersion *string `pulumi:"redisVersion"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
+}
+
+// GetRedisRedisUserConfigInput is an input type that accepts GetRedisRedisUserConfigArgs and GetRedisRedisUserConfigOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigInput` via:
+//
+//	GetRedisRedisUserConfigArgs{...}
+type GetRedisRedisUserConfigInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigOutput() GetRedisRedisUserConfigOutput
+	ToGetRedisRedisUserConfigOutputWithContext(context.Context) GetRedisRedisUserConfigOutput
+}
+
+type GetRedisRedisUserConfigArgs struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+	BackupHour pulumi.IntPtrInput `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects GetRedisRedisUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration GetRedisRedisUserConfigMigrationPtrInput `pulumi:"migration"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetRedisRedisUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess GetRedisRedisUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetRedisRedisUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+	RedisAclChannelsDefault pulumi.StringPtrInput `pulumi:"redisAclChannelsDefault"`
+	// Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
+	RedisIoThreads pulumi.IntPtrInput `pulumi:"redisIoThreads"`
+	// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+	RedisLfuDecayTime pulumi.IntPtrInput `pulumi:"redisLfuDecayTime"`
+	// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+	RedisLfuLogFactor pulumi.IntPtrInput `pulumi:"redisLfuLogFactor"`
+	// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+	RedisMaxmemoryPolicy pulumi.StringPtrInput `pulumi:"redisMaxmemoryPolicy"`
+	// Set notify-keyspace-events option.
+	RedisNotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"redisNotifyKeyspaceEvents"`
+	// Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
+	RedisNumberOfDatabases pulumi.IntPtrInput `pulumi:"redisNumberOfDatabases"`
+	// Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+	RedisPersistence pulumi.StringPtrInput `pulumi:"redisPersistence"`
+	// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+	RedisPubsubClientOutputBufferLimit pulumi.IntPtrInput `pulumi:"redisPubsubClientOutputBufferLimit"`
+	// Require SSL to access Redis. Default: `true`.
+	RedisSsl pulumi.BoolPtrInput `pulumi:"redisSsl"`
+	// Redis idle connection timeout in seconds. Default: `300`.
+	RedisTimeout pulumi.IntPtrInput `pulumi:"redisTimeout"`
+	// Enum: `7.0`, and newer. Redis major version.
+	RedisVersion pulumi.StringPtrInput `pulumi:"redisVersion"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+}
+
+func (GetRedisRedisUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfig)(nil)).Elem()
+}
+
+func (i GetRedisRedisUserConfigArgs) ToGetRedisRedisUserConfigOutput() GetRedisRedisUserConfigOutput {
+	return i.ToGetRedisRedisUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigArgs) ToGetRedisRedisUserConfigOutputWithContext(ctx context.Context) GetRedisRedisUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigOutput)
+}
+
+// GetRedisRedisUserConfigArrayInput is an input type that accepts GetRedisRedisUserConfigArray and GetRedisRedisUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigArrayInput` via:
+//
+//	GetRedisRedisUserConfigArray{ GetRedisRedisUserConfigArgs{...} }
+type GetRedisRedisUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigArrayOutput() GetRedisRedisUserConfigArrayOutput
+	ToGetRedisRedisUserConfigArrayOutputWithContext(context.Context) GetRedisRedisUserConfigArrayOutput
+}
+
+type GetRedisRedisUserConfigArray []GetRedisRedisUserConfigInput
+
+func (GetRedisRedisUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisRedisUserConfig)(nil)).Elem()
+}
+
+func (i GetRedisRedisUserConfigArray) ToGetRedisRedisUserConfigArrayOutput() GetRedisRedisUserConfigArrayOutput {
+	return i.ToGetRedisRedisUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigArray) ToGetRedisRedisUserConfigArrayOutputWithContext(ctx context.Context) GetRedisRedisUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigArrayOutput)
+}
+
+type GetRedisRedisUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfig)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigOutput) ToGetRedisRedisUserConfigOutput() GetRedisRedisUserConfigOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigOutput) ToGetRedisRedisUserConfigOutputWithContext(ctx context.Context) GetRedisRedisUserConfigOutput {
+	return o
+}
+
+// Additional Cloud Regions for Backup Replication.
+func (o GetRedisRedisUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+func (o GetRedisRedisUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+}
+
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+func (o GetRedisRedisUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+func (o GetRedisRedisUserConfigOutput) IpFilterObjects() GetRedisRedisUserConfigIpFilterObjectArrayOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) []GetRedisRedisUserConfigIpFilterObject { return v.IpFilterObjects }).(GetRedisRedisUserConfigIpFilterObjectArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+func (o GetRedisRedisUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+//
+// Deprecated: Deprecated. Use `ipFilterString` instead.
+func (o GetRedisRedisUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// Migrate data from existing server
+func (o GetRedisRedisUserConfigOutput) Migration() GetRedisRedisUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *GetRedisRedisUserConfigMigration { return v.Migration }).(GetRedisRedisUserConfigMigrationPtrOutput)
+}
+
+// Allow access to selected service ports from private networks
+func (o GetRedisRedisUserConfigOutput) PrivateAccess() GetRedisRedisUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *GetRedisRedisUserConfigPrivateAccess { return v.PrivateAccess }).(GetRedisRedisUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink
+func (o GetRedisRedisUserConfigOutput) PrivatelinkAccess() GetRedisRedisUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *GetRedisRedisUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(GetRedisRedisUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+func (o GetRedisRedisUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet
+func (o GetRedisRedisUserConfigOutput) PublicAccess() GetRedisRedisUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *GetRedisRedisUserConfigPublicAccess { return v.PublicAccess }).(GetRedisRedisUserConfigPublicAccessPtrOutput)
+}
+
+// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+func (o GetRedisRedisUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+func (o GetRedisRedisUserConfigOutput) RedisAclChannelsDefault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisAclChannelsDefault }).(pulumi.StringPtrOutput)
+}
+
+// Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
+func (o GetRedisRedisUserConfigOutput) RedisIoThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.RedisIoThreads }).(pulumi.IntPtrOutput)
+}
+
+// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
+func (o GetRedisRedisUserConfigOutput) RedisLfuDecayTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.RedisLfuDecayTime }).(pulumi.IntPtrOutput)
+}
+
+// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
+func (o GetRedisRedisUserConfigOutput) RedisLfuLogFactor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.RedisLfuLogFactor }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+func (o GetRedisRedisUserConfigOutput) RedisMaxmemoryPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisMaxmemoryPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Set notify-keyspace-events option.
+func (o GetRedisRedisUserConfigOutput) RedisNotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisNotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
+}
+
+// Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
+func (o GetRedisRedisUserConfigOutput) RedisNumberOfDatabases() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.RedisNumberOfDatabases }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+func (o GetRedisRedisUserConfigOutput) RedisPersistence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisPersistence }).(pulumi.StringPtrOutput)
+}
+
+// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
+func (o GetRedisRedisUserConfigOutput) RedisPubsubClientOutputBufferLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.RedisPubsubClientOutputBufferLimit }).(pulumi.IntPtrOutput)
+}
+
+// Require SSL to access Redis. Default: `true`.
+func (o GetRedisRedisUserConfigOutput) RedisSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *bool { return v.RedisSsl }).(pulumi.BoolPtrOutput)
+}
+
+// Redis idle connection timeout in seconds. Default: `300`.
+func (o GetRedisRedisUserConfigOutput) RedisTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.RedisTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `7.0`, and newer. Redis major version.
+func (o GetRedisRedisUserConfigOutput) RedisVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisVersion }).(pulumi.StringPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o GetRedisRedisUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+func (o GetRedisRedisUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o GetRedisRedisUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+type GetRedisRedisUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisRedisUserConfig)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigArrayOutput) ToGetRedisRedisUserConfigArrayOutput() GetRedisRedisUserConfigArrayOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigArrayOutput) ToGetRedisRedisUserConfigArrayOutputWithContext(ctx context.Context) GetRedisRedisUserConfigArrayOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigArrayOutput) Index(i pulumi.IntInput) GetRedisRedisUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRedisRedisUserConfig {
+		return vs[0].([]GetRedisRedisUserConfig)[vs[1].(int)]
+	}).(GetRedisRedisUserConfigOutput)
+}
+
+type GetRedisRedisUserConfigIpFilterObject struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description *string `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network string `pulumi:"network"`
+}
+
+// GetRedisRedisUserConfigIpFilterObjectInput is an input type that accepts GetRedisRedisUserConfigIpFilterObjectArgs and GetRedisRedisUserConfigIpFilterObjectOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigIpFilterObjectInput` via:
+//
+//	GetRedisRedisUserConfigIpFilterObjectArgs{...}
+type GetRedisRedisUserConfigIpFilterObjectInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigIpFilterObjectOutput() GetRedisRedisUserConfigIpFilterObjectOutput
+	ToGetRedisRedisUserConfigIpFilterObjectOutputWithContext(context.Context) GetRedisRedisUserConfigIpFilterObjectOutput
+}
+
+type GetRedisRedisUserConfigIpFilterObjectArgs struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetRedisRedisUserConfigIpFilterObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetRedisRedisUserConfigIpFilterObjectArgs) ToGetRedisRedisUserConfigIpFilterObjectOutput() GetRedisRedisUserConfigIpFilterObjectOutput {
+	return i.ToGetRedisRedisUserConfigIpFilterObjectOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigIpFilterObjectArgs) ToGetRedisRedisUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetRedisRedisUserConfigIpFilterObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigIpFilterObjectOutput)
+}
+
+// GetRedisRedisUserConfigIpFilterObjectArrayInput is an input type that accepts GetRedisRedisUserConfigIpFilterObjectArray and GetRedisRedisUserConfigIpFilterObjectArrayOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigIpFilterObjectArrayInput` via:
+//
+//	GetRedisRedisUserConfigIpFilterObjectArray{ GetRedisRedisUserConfigIpFilterObjectArgs{...} }
+type GetRedisRedisUserConfigIpFilterObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigIpFilterObjectArrayOutput() GetRedisRedisUserConfigIpFilterObjectArrayOutput
+	ToGetRedisRedisUserConfigIpFilterObjectArrayOutputWithContext(context.Context) GetRedisRedisUserConfigIpFilterObjectArrayOutput
+}
+
+type GetRedisRedisUserConfigIpFilterObjectArray []GetRedisRedisUserConfigIpFilterObjectInput
+
+func (GetRedisRedisUserConfigIpFilterObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisRedisUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetRedisRedisUserConfigIpFilterObjectArray) ToGetRedisRedisUserConfigIpFilterObjectArrayOutput() GetRedisRedisUserConfigIpFilterObjectArrayOutput {
+	return i.ToGetRedisRedisUserConfigIpFilterObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigIpFilterObjectArray) ToGetRedisRedisUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetRedisRedisUserConfigIpFilterObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigIpFilterObjectArrayOutput)
+}
+
+type GetRedisRedisUserConfigIpFilterObjectOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigIpFilterObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigIpFilterObjectOutput) ToGetRedisRedisUserConfigIpFilterObjectOutput() GetRedisRedisUserConfigIpFilterObjectOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigIpFilterObjectOutput) ToGetRedisRedisUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetRedisRedisUserConfigIpFilterObjectOutput {
+	return o
+}
+
+// Description for IP filter list entry. Example: `Production service IP range`.
+func (o GetRedisRedisUserConfigIpFilterObjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigIpFilterObject) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// CIDR address block. Example: `10.20.0.0/16`.
+func (o GetRedisRedisUserConfigIpFilterObjectOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigIpFilterObject) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetRedisRedisUserConfigIpFilterObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigIpFilterObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRedisRedisUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigIpFilterObjectArrayOutput) ToGetRedisRedisUserConfigIpFilterObjectArrayOutput() GetRedisRedisUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigIpFilterObjectArrayOutput) ToGetRedisRedisUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetRedisRedisUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigIpFilterObjectArrayOutput) Index(i pulumi.IntInput) GetRedisRedisUserConfigIpFilterObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRedisRedisUserConfigIpFilterObject {
+		return vs[0].([]GetRedisRedisUserConfigIpFilterObject)[vs[1].(int)]
+	}).(GetRedisRedisUserConfigIpFilterObjectOutput)
+}
+
+type GetRedisRedisUserConfigMigration struct {
+	// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+	Dbname *string `pulumi:"dbname"`
+	// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+	Host string `pulumi:"host"`
+	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+	IgnoreDbs *string `pulumi:"ignoreDbs"`
+	// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+	IgnoreRoles *string `pulumi:"ignoreRoles"`
+	// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+	Method *string `pulumi:"method"`
+	// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+	Password *string `pulumi:"password"`
+	// Port number of the server where to migrate data from. Example: `1234`.
+	Port int `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL. Default: `true`.
+	Ssl *bool `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from. Example: `myname`.
+	Username *string `pulumi:"username"`
+}
+
+// GetRedisRedisUserConfigMigrationInput is an input type that accepts GetRedisRedisUserConfigMigrationArgs and GetRedisRedisUserConfigMigrationOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigMigrationInput` via:
+//
+//	GetRedisRedisUserConfigMigrationArgs{...}
+type GetRedisRedisUserConfigMigrationInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigMigrationOutput() GetRedisRedisUserConfigMigrationOutput
+	ToGetRedisRedisUserConfigMigrationOutputWithContext(context.Context) GetRedisRedisUserConfigMigrationOutput
+}
+
+type GetRedisRedisUserConfigMigrationArgs struct {
+	// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+	IgnoreDbs pulumi.StringPtrInput `pulumi:"ignoreDbs"`
+	// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+	IgnoreRoles pulumi.StringPtrInput `pulumi:"ignoreRoles"`
+	// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Port number of the server where to migrate data from. Example: `1234`.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL. Default: `true`.
+	Ssl pulumi.BoolPtrInput `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from. Example: `myname`.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetRedisRedisUserConfigMigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigMigration)(nil)).Elem()
+}
+
+func (i GetRedisRedisUserConfigMigrationArgs) ToGetRedisRedisUserConfigMigrationOutput() GetRedisRedisUserConfigMigrationOutput {
+	return i.ToGetRedisRedisUserConfigMigrationOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigMigrationArgs) ToGetRedisRedisUserConfigMigrationOutputWithContext(ctx context.Context) GetRedisRedisUserConfigMigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigMigrationOutput)
+}
+
+func (i GetRedisRedisUserConfigMigrationArgs) ToGetRedisRedisUserConfigMigrationPtrOutput() GetRedisRedisUserConfigMigrationPtrOutput {
+	return i.ToGetRedisRedisUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigMigrationArgs) ToGetRedisRedisUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigMigrationOutput).ToGetRedisRedisUserConfigMigrationPtrOutputWithContext(ctx)
+}
+
+// GetRedisRedisUserConfigMigrationPtrInput is an input type that accepts GetRedisRedisUserConfigMigrationArgs, GetRedisRedisUserConfigMigrationPtr and GetRedisRedisUserConfigMigrationPtrOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigMigrationPtrInput` via:
+//
+//	        GetRedisRedisUserConfigMigrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRedisRedisUserConfigMigrationPtrInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigMigrationPtrOutput() GetRedisRedisUserConfigMigrationPtrOutput
+	ToGetRedisRedisUserConfigMigrationPtrOutputWithContext(context.Context) GetRedisRedisUserConfigMigrationPtrOutput
+}
+
+type getRedisRedisUserConfigMigrationPtrType GetRedisRedisUserConfigMigrationArgs
+
+func GetRedisRedisUserConfigMigrationPtr(v *GetRedisRedisUserConfigMigrationArgs) GetRedisRedisUserConfigMigrationPtrInput {
+	return (*getRedisRedisUserConfigMigrationPtrType)(v)
+}
+
+func (*getRedisRedisUserConfigMigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRedisRedisUserConfigMigration)(nil)).Elem()
+}
+
+func (i *getRedisRedisUserConfigMigrationPtrType) ToGetRedisRedisUserConfigMigrationPtrOutput() GetRedisRedisUserConfigMigrationPtrOutput {
+	return i.ToGetRedisRedisUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *getRedisRedisUserConfigMigrationPtrType) ToGetRedisRedisUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigMigrationPtrOutput)
+}
+
+type GetRedisRedisUserConfigMigrationOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigMigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigMigrationOutput) ToGetRedisRedisUserConfigMigrationOutput() GetRedisRedisUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigMigrationOutput) ToGetRedisRedisUserConfigMigrationOutputWithContext(ctx context.Context) GetRedisRedisUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigMigrationOutput) ToGetRedisRedisUserConfigMigrationPtrOutput() GetRedisRedisUserConfigMigrationPtrOutput {
+	return o.ToGetRedisRedisUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (o GetRedisRedisUserConfigMigrationOutput) ToGetRedisRedisUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigMigrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRedisRedisUserConfigMigration) *GetRedisRedisUserConfigMigration {
+		return &v
+	}).(GetRedisRedisUserConfigMigrationPtrOutput)
+}
+
+// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+func (o GetRedisRedisUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
+// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+func (o GetRedisRedisUserConfigMigrationOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+func (o GetRedisRedisUserConfigMigrationOutput) IgnoreDbs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.IgnoreDbs }).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+func (o GetRedisRedisUserConfigMigrationOutput) IgnoreRoles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.IgnoreRoles }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+func (o GetRedisRedisUserConfigMigrationOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+func (o GetRedisRedisUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Port number of the server where to migrate data from. Example: `1234`.
+func (o GetRedisRedisUserConfigMigrationOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The server where to migrate data from is secured with SSL. Default: `true`.
+func (o GetRedisRedisUserConfigMigrationOutput) Ssl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+}
+
+// User name for authentication with the server where to migrate data from. Example: `myname`.
+func (o GetRedisRedisUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetRedisRedisUserConfigMigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigMigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRedisRedisUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigMigrationPtrOutput) ToGetRedisRedisUserConfigMigrationPtrOutput() GetRedisRedisUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigMigrationPtrOutput) ToGetRedisRedisUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigMigrationPtrOutput) Elem() GetRedisRedisUserConfigMigrationOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) GetRedisRedisUserConfigMigration {
+		if v != nil {
+			return *v
+		}
+		var ret GetRedisRedisUserConfigMigration
+		return ret
+	}).(GetRedisRedisUserConfigMigrationOutput)
+}
+
+// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+func (o GetRedisRedisUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+func (o GetRedisRedisUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+func (o GetRedisRedisUserConfigMigrationPtrOutput) IgnoreDbs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreDbs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+func (o GetRedisRedisUserConfigMigrationPtrOutput) IgnoreRoles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreRoles
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+func (o GetRedisRedisUserConfigMigrationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+func (o GetRedisRedisUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port number of the server where to migrate data from. Example: `1234`.
+func (o GetRedisRedisUserConfigMigrationPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The server where to migrate data from is secured with SSL. Default: `true`.
+func (o GetRedisRedisUserConfigMigrationPtrOutput) Ssl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// User name for authentication with the server where to migrate data from. Example: `myname`.
+func (o GetRedisRedisUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetRedisRedisUserConfigPrivateAccess struct {
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus *bool `pulumi:"prometheus"`
+	// Allow clients to connect to redis with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Redis *bool `pulumi:"redis"`
+}
+
+// GetRedisRedisUserConfigPrivateAccessInput is an input type that accepts GetRedisRedisUserConfigPrivateAccessArgs and GetRedisRedisUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigPrivateAccessInput` via:
+//
+//	GetRedisRedisUserConfigPrivateAccessArgs{...}
+type GetRedisRedisUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigPrivateAccessOutput() GetRedisRedisUserConfigPrivateAccessOutput
+	ToGetRedisRedisUserConfigPrivateAccessOutputWithContext(context.Context) GetRedisRedisUserConfigPrivateAccessOutput
+}
+
+type GetRedisRedisUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to redis with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Redis pulumi.BoolPtrInput `pulumi:"redis"`
+}
+
+func (GetRedisRedisUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i GetRedisRedisUserConfigPrivateAccessArgs) ToGetRedisRedisUserConfigPrivateAccessOutput() GetRedisRedisUserConfigPrivateAccessOutput {
+	return i.ToGetRedisRedisUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigPrivateAccessArgs) ToGetRedisRedisUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigPrivateAccessOutput)
+}
+
+func (i GetRedisRedisUserConfigPrivateAccessArgs) ToGetRedisRedisUserConfigPrivateAccessPtrOutput() GetRedisRedisUserConfigPrivateAccessPtrOutput {
+	return i.ToGetRedisRedisUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigPrivateAccessArgs) ToGetRedisRedisUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigPrivateAccessOutput).ToGetRedisRedisUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// GetRedisRedisUserConfigPrivateAccessPtrInput is an input type that accepts GetRedisRedisUserConfigPrivateAccessArgs, GetRedisRedisUserConfigPrivateAccessPtr and GetRedisRedisUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigPrivateAccessPtrInput` via:
+//
+//	        GetRedisRedisUserConfigPrivateAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRedisRedisUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigPrivateAccessPtrOutput() GetRedisRedisUserConfigPrivateAccessPtrOutput
+	ToGetRedisRedisUserConfigPrivateAccessPtrOutputWithContext(context.Context) GetRedisRedisUserConfigPrivateAccessPtrOutput
+}
+
+type getRedisRedisUserConfigPrivateAccessPtrType GetRedisRedisUserConfigPrivateAccessArgs
+
+func GetRedisRedisUserConfigPrivateAccessPtr(v *GetRedisRedisUserConfigPrivateAccessArgs) GetRedisRedisUserConfigPrivateAccessPtrInput {
+	return (*getRedisRedisUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*getRedisRedisUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRedisRedisUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *getRedisRedisUserConfigPrivateAccessPtrType) ToGetRedisRedisUserConfigPrivateAccessPtrOutput() GetRedisRedisUserConfigPrivateAccessPtrOutput {
+	return i.ToGetRedisRedisUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getRedisRedisUserConfigPrivateAccessPtrType) ToGetRedisRedisUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigPrivateAccessPtrOutput)
+}
+
+type GetRedisRedisUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigPrivateAccessOutput) ToGetRedisRedisUserConfigPrivateAccessOutput() GetRedisRedisUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPrivateAccessOutput) ToGetRedisRedisUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPrivateAccessOutput) ToGetRedisRedisUserConfigPrivateAccessPtrOutput() GetRedisRedisUserConfigPrivateAccessPtrOutput {
+	return o.ToGetRedisRedisUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetRedisRedisUserConfigPrivateAccessOutput) ToGetRedisRedisUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivateAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRedisRedisUserConfigPrivateAccess) *GetRedisRedisUserConfigPrivateAccess {
+		return &v
+	}).(GetRedisRedisUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetRedisRedisUserConfigPrivateAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigPrivateAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to redis with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetRedisRedisUserConfigPrivateAccessOutput) Redis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigPrivateAccess) *bool { return v.Redis }).(pulumi.BoolPtrOutput)
+}
+
+type GetRedisRedisUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRedisRedisUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) ToGetRedisRedisUserConfigPrivateAccessPtrOutput() GetRedisRedisUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) ToGetRedisRedisUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Elem() GetRedisRedisUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivateAccess) GetRedisRedisUserConfigPrivateAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetRedisRedisUserConfigPrivateAccess
+		return ret
+	}).(GetRedisRedisUserConfigPrivateAccessOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to redis with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetRedisRedisUserConfigPrivateAccessPtrOutput) Redis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Redis
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetRedisRedisUserConfigPrivatelinkAccess struct {
+	// Enable prometheus.
+	Prometheus *bool `pulumi:"prometheus"`
+	// Enable redis.
+	Redis *bool `pulumi:"redis"`
+}
+
+// GetRedisRedisUserConfigPrivatelinkAccessInput is an input type that accepts GetRedisRedisUserConfigPrivatelinkAccessArgs and GetRedisRedisUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigPrivatelinkAccessInput` via:
+//
+//	GetRedisRedisUserConfigPrivatelinkAccessArgs{...}
+type GetRedisRedisUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigPrivatelinkAccessOutput() GetRedisRedisUserConfigPrivatelinkAccessOutput
+	ToGetRedisRedisUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetRedisRedisUserConfigPrivatelinkAccessOutput
+}
+
+type GetRedisRedisUserConfigPrivatelinkAccessArgs struct {
+	// Enable prometheus.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+	// Enable redis.
+	Redis pulumi.BoolPtrInput `pulumi:"redis"`
+}
+
+func (GetRedisRedisUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetRedisRedisUserConfigPrivatelinkAccessArgs) ToGetRedisRedisUserConfigPrivatelinkAccessOutput() GetRedisRedisUserConfigPrivatelinkAccessOutput {
+	return i.ToGetRedisRedisUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigPrivatelinkAccessArgs) ToGetRedisRedisUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetRedisRedisUserConfigPrivatelinkAccessArgs) ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutput() GetRedisRedisUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetRedisRedisUserConfigPrivatelinkAccessArgs) ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigPrivatelinkAccessOutput).ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetRedisRedisUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetRedisRedisUserConfigPrivatelinkAccessArgs, GetRedisRedisUserConfigPrivatelinkAccessPtr and GetRedisRedisUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetRedisRedisUserConfigPrivatelinkAccessPtrInput` via:
+//
+//	        GetRedisRedisUserConfigPrivatelinkAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRedisRedisUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutput() GetRedisRedisUserConfigPrivatelinkAccessPtrOutput
+	ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetRedisRedisUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getRedisRedisUserConfigPrivatelinkAccessPtrType GetRedisRedisUserConfigPrivatelinkAccessArgs
+
+func GetRedisRedisUserConfigPrivatelinkAccessPtr(v *GetRedisRedisUserConfigPrivatelinkAccessArgs) GetRedisRedisUserConfigPrivatelinkAccessPtrInput {
+	return (*getRedisRedisUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getRedisRedisUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRedisRedisUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getRedisRedisUserConfigPrivatelinkAccessPtrType) ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutput() GetRedisRedisUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getRedisRedisUserConfigPrivatelinkAccessPtrType) ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRedisRedisUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetRedisRedisUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRedisRedisUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) ToGetRedisRedisUserConfigPrivatelinkAccessOutput() GetRedisRedisUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) ToGetRedisRedisUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutput() GetRedisRedisUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRedisRedisUserConfigPrivatelinkAccess) *GetRedisRedisUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetRedisRedisUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Enable prometheus.
+func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigPrivatelinkAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+// Enable redis.
+func (o GetRedisRedisUserConfigPrivatelinkAccessOutput) Redis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfigPrivatelinkAccess) *bool { return v.Redis }).(pulumi.BoolPtrOutput)
+}
+
+type GetRedisRedisUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRedisRedisUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutput() GetRedisRedisUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) ToGetRedisRedisUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetRedisRedisUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) Elem() GetRedisRedisUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivatelinkAccess) GetRedisRedisUserConfigPrivatelinkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetRedisRedisUserConfigPrivatelinkAccess
+		return ret
+	}).(GetRedisRedisUserConfigPrivatelinkAccessOutput)
+}
+
+// Enable prometheus.
+func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable redis.
+func (o GetRedisRedisUserConfigPrivatelinkAccessPtrOutput) Redis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetRedisRedisUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Redis
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetRedisRedisUserConfigPublicAccess struct {
 	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
 	Prometheus *bool `pulumi:"prometheus"`
@@ -7726,6 +12374,8 @@ type GetThanosThanosUserConfig struct {
 	// ThanosCompactor
 	Compactor *GetThanosThanosUserConfigCompactor `pulumi:"compactor"`
 	// Environmental variables.
+	//
+	// Deprecated: This property is deprecated.
 	Env map[string]string `pulumi:"env"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilterObjects []GetThanosThanosUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
@@ -7764,6 +12414,8 @@ type GetThanosThanosUserConfigArgs struct {
 	// ThanosCompactor
 	Compactor GetThanosThanosUserConfigCompactorPtrInput `pulumi:"compactor"`
 	// Environmental variables.
+	//
+	// Deprecated: This property is deprecated.
 	Env pulumi.StringMapInput `pulumi:"env"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilterObjects GetThanosThanosUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
@@ -7844,6 +12496,8 @@ func (o GetThanosThanosUserConfigOutput) Compactor() GetThanosThanosUserConfigCo
 }
 
 // Environmental variables.
+//
+// Deprecated: This property is deprecated.
 func (o GetThanosThanosUserConfigOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) map[string]string { return v.Env }).(pulumi.StringMapOutput)
 }
@@ -10565,6 +15219,46 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgInput)(nil)).Elem(), GetPgPgUserConfigPgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgPtrInput)(nil)).Elem(), GetPgPgUserConfigPgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgQualstatsInput)(nil)).Elem(), GetPgPgUserConfigPgQualstatsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgQualstatsPtrInput)(nil)).Elem(), GetPgPgUserConfigPgQualstatsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgauditInput)(nil)).Elem(), GetPgPgUserConfigPgauditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgauditPtrInput)(nil)).Elem(), GetPgPgUserConfigPgauditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgbouncerInput)(nil)).Elem(), GetPgPgUserConfigPgbouncerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPgbouncerPtrInput)(nil)).Elem(), GetPgPgUserConfigPgbouncerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPglookoutInput)(nil)).Elem(), GetPgPgUserConfigPglookoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPglookoutPtrInput)(nil)).Elem(), GetPgPgUserConfigPglookoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPrivateAccessInput)(nil)).Elem(), GetPgPgUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPrivateAccessPtrInput)(nil)).Elem(), GetPgPgUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPrivatelinkAccessInput)(nil)).Elem(), GetPgPgUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetPgPgUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPublicAccessInput)(nil)).Elem(), GetPgPgUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPublicAccessPtrInput)(nil)).Elem(), GetPgPgUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigTimescaledbInput)(nil)).Elem(), GetPgPgUserConfigTimescaledbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigTimescaledbPtrInput)(nil)).Elem(), GetPgPgUserConfigTimescaledbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgServiceIntegrationInput)(nil)).Elem(), GetPgServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgServiceIntegrationArrayInput)(nil)).Elem(), GetPgServiceIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTagInput)(nil)).Elem(), GetPgTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTagArrayInput)(nil)).Elem(), GetPgTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTechEmailInput)(nil)).Elem(), GetPgTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgTechEmailArrayInput)(nil)).Elem(), GetPgTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagInput)(nil)).Elem(), GetProjectTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectTagArrayInput)(nil)).Elem(), GetProjectTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisComponentInput)(nil)).Elem(), GetRedisComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisComponentArrayInput)(nil)).Elem(), GetRedisComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRediInput)(nil)).Elem(), GetRedisRediArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRediArrayInput)(nil)).Elem(), GetRedisRediArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigInput)(nil)).Elem(), GetRedisRedisUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigArrayInput)(nil)).Elem(), GetRedisRedisUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigIpFilterObjectInput)(nil)).Elem(), GetRedisRedisUserConfigIpFilterObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetRedisRedisUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigMigrationInput)(nil)).Elem(), GetRedisRedisUserConfigMigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigMigrationPtrInput)(nil)).Elem(), GetRedisRedisUserConfigMigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigPrivateAccessInput)(nil)).Elem(), GetRedisRedisUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigPrivateAccessPtrInput)(nil)).Elem(), GetRedisRedisUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigPrivatelinkAccessInput)(nil)).Elem(), GetRedisRedisUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetRedisRedisUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigPublicAccessInput)(nil)).Elem(), GetRedisRedisUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisRedisUserConfigPublicAccessPtrInput)(nil)).Elem(), GetRedisRedisUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRedisServiceIntegrationInput)(nil)).Elem(), GetRedisServiceIntegrationArgs{})
@@ -10709,6 +15403,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgQualstatsOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgQualstatsPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgauditOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgauditPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgbouncerOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPgbouncerPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPglookoutOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPglookoutPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPrivatelinkAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigTimescaledbOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigTimescaledbPtrOutput{})
+	pulumi.RegisterOutputType(GetPgServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetPgServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetPgTagOutput{})
+	pulumi.RegisterOutputType(GetPgTagArrayOutput{})
+	pulumi.RegisterOutputType(GetPgTechEmailOutput{})
+	pulumi.RegisterOutputType(GetPgTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectTagOutput{})
+	pulumi.RegisterOutputType(GetProjectTagArrayOutput{})
+	pulumi.RegisterOutputType(GetRedisComponentOutput{})
+	pulumi.RegisterOutputType(GetRedisComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetRedisRediOutput{})
+	pulumi.RegisterOutputType(GetRedisRediArrayOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigIpFilterObjectOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigMigrationOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigMigrationPtrOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetRedisRedisUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetRedisRedisUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetRedisRedisUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetRedisServiceIntegrationOutput{})

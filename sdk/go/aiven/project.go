@@ -52,7 +52,7 @@ type Project struct {
 	// Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
 	//
 	// Deprecated: Use parentId instead. This field will be removed in the next major release.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
@@ -348,8 +348,8 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 // Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
 //
 // Deprecated: Use parentId instead. This field will be removed in the next major release.
-func (o ProjectOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ProjectOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // If parentId is set, grant account owner team admin access to the new project. The default value is `true`.

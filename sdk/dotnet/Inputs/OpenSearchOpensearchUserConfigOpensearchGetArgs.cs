@@ -221,10 +221,22 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ScriptMaxCompilationsRate { get; set; }
 
         /// <summary>
+        /// Search Backpressure Settings
+        /// </summary>
+        [Input("searchBackpressure")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureGetArgs>? SearchBackpressure { get; set; }
+
+        /// <summary>
         /// Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
         /// </summary>
         [Input("searchMaxBuckets")]
         public Input<int>? SearchMaxBuckets { get; set; }
+
+        /// <summary>
+        /// Shard indexing back pressure settings
+        /// </summary>
+        [Input("shardIndexingPressure")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureGetArgs>? ShardIndexingPressure { get; set; }
 
         /// <summary>
         /// Size for the thread pool queue. See documentation for exact details.

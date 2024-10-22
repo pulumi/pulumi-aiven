@@ -26,7 +26,7 @@ public final class GetKafkaTopicResult {
      */
     private String id;
     /**
-     * @return The user group that is the owner of the topic
+     * @return The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      * 
      */
     private String ownerUserGroupId;
@@ -83,7 +83,7 @@ public final class GetKafkaTopicResult {
         return this.id;
     }
     /**
-     * @return The user group that is the owner of the topic
+     * @return The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      * 
      */
     public String ownerUserGroupId() {

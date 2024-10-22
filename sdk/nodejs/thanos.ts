@@ -8,6 +8,32 @@ import * as utilities from "./utilities";
 
 /**
  * Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleThanos = new aiven.Thanos("example_thanos", {
+ *     project: exampleProject.project,
+ *     plan: "startup-4",
+ *     cloudName: "google-europe-west1",
+ *     serviceName: "example-thanos-service",
+ *     thanosUserConfig: {
+ *         compactor: {
+ *             retentionDays: 30,
+ *         },
+ *         objectStorageUsageAlertThresholdGb: 10,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/thanos:Thanos example_thanos PROJECT/SERVICE_NAME
+ * ```
  */
 export class Thanos extends pulumi.CustomResource {
     /**
