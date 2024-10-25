@@ -11,3 +11,4 @@ plugins:
     version: "1.0.16"
     kind: converter
 pulumiConvert: 1
+registryDocs: true

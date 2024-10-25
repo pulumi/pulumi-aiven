@@ -30,6 +30,7 @@ import (
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -243,6 +244,7 @@ var skipWarningSection = tfbridge.DocsEdit{
 			return headerText == "Warning"
 		})
 	},
+	Phase: info.PostCodeTranslation,
 }
 
 // Removes a section containing TF-specific tutorial links.
@@ -254,6 +256,7 @@ var skipExamplesSection = tfbridge.DocsEdit{
 			return headerText == "Examples"
 		})
 	},
+	Phase: info.PostCodeTranslation,
 }
 
 //go:embed cmd/pulumi-resource-aiven/bridge-metadata.json
