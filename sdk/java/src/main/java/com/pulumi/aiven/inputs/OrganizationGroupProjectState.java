@@ -47,14 +47,14 @@ public final class OrganizationGroupProjectState extends com.pulumi.resources.Re
     }
 
     /**
-     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+     * @return [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -138,7 +138,7 @@ public final class OrganizationGroupProjectState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class OrganizationGroupProjectState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+         * @param role [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
          * 
          * @return builder
          * 

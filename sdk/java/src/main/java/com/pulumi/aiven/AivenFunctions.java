@@ -111,6 +111,8 @@ import com.pulumi.aiven.inputs.GetOrganizationPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
+import com.pulumi.aiven.inputs.GetOrganizationUserListPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
 import com.pulumi.aiven.inputs.GetOrganizationalUnitPlainArgs;
@@ -197,6 +199,7 @@ import com.pulumi.aiven.outputs.GetOpensearchUserResult;
 import com.pulumi.aiven.outputs.GetOrganizationApplicationUserResult;
 import com.pulumi.aiven.outputs.GetOrganizationResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupResult;
+import com.pulumi.aiven.outputs.GetOrganizationUserListResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserResult;
 import com.pulumi.aiven.outputs.GetOrganizationalUnitResult;
 import com.pulumi.aiven.outputs.GetPgDatabaseResult;
@@ -8270,6 +8273,66 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", TypeShape.of(GetOrganizationUserGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * List of users of the organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationUserListResult> getOrganizationUserList() {
+        return getOrganizationUserList(GetOrganizationUserListArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List of users of the organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationUserListResult> getOrganizationUserListPlain() {
+        return getOrganizationUserListPlain(GetOrganizationUserListPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List of users of the organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationUserListResult> getOrganizationUserList(GetOrganizationUserListArgs args) {
+        return getOrganizationUserList(args, InvokeOptions.Empty);
+    }
+    /**
+     * List of users of the organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationUserListResult> getOrganizationUserListPlain(GetOrganizationUserListPlainArgs args) {
+        return getOrganizationUserListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List of users of the organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationUserListResult> getOrganizationUserList(GetOrganizationUserListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationUserList:getOrganizationUserList", TypeShape.of(GetOrganizationUserListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List of users of the organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationUserListResult> getOrganizationUserListPlain(GetOrganizationUserListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUserList:getOrganizationUserList", TypeShape.of(GetOrganizationUserListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Gets information about an organizational unit.
      * 
      * ## Example Usage
@@ -10458,12 +10521,84 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Thanos® service.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetThanosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleThanos = AivenFunctions.getThanos(GetThanosArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-thanos-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetThanosResult> getThanos(GetThanosArgs args) {
         return getThanos(args, InvokeOptions.Empty);
     }
     /**
      * Gets information about an Aiven for Thanos® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetThanosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleThanos = AivenFunctions.getThanos(GetThanosArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-thanos-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetThanosResult> getThanosPlain(GetThanosPlainArgs args) {
@@ -10472,12 +10607,84 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Thanos® service.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetThanosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleThanos = AivenFunctions.getThanos(GetThanosArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-thanos-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetThanosResult> getThanos(GetThanosArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getThanos:getThanos", TypeShape.of(GetThanosResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an Aiven for Thanos® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetThanosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleThanos = AivenFunctions.getThanos(GetThanosArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-thanos-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetThanosResult> getThanosPlain(GetThanosPlainArgs args, InvokeOptions options) {

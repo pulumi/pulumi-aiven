@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * Gets information about an Aiven for Thanos® service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleThanos = aiven.getThanos({
+ *     project: exampleProject.project,
+ *     serviceName: "example-thanos-service",
+ * });
+ * ```
  */
 export function getThanos(args: GetThanosArgs, opts?: pulumi.InvokeOptions): Promise<GetThanosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -154,6 +166,18 @@ export interface GetThanosResult {
 }
 /**
  * Gets information about an Aiven for Thanos® service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleThanos = aiven.getThanos({
+ *     project: exampleProject.project,
+ *     serviceName: "example-thanos-service",
+ * });
+ * ```
  */
 export function getThanosOutput(args: GetThanosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetThanosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

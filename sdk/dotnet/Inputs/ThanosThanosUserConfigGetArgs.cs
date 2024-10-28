@@ -24,6 +24,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Environmental variables.
         /// </summary>
+        [Obsolete(@"This property is deprecated.")]
         public InputMap<string> Env
         {
             get => _env ?? (_env = new InputMap<string>());

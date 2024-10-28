@@ -63,7 +63,7 @@ export interface GetKafkaSchemaConfigurationResult {
      */
     readonly schema: string;
     /**
-     * Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+     * Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      */
     readonly schemaType: string;
     /**

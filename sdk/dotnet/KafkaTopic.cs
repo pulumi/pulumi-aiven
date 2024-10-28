@@ -35,6 +35,7 @@ namespace Pulumi.Aiven
     ///             FlushMs = "10",
     ///             CleanupPolicy = "compact,delete",
     ///         },
+    ///         OwnerUserGroupId = example.GroupId,
     ///     });
     /// 
     /// });
@@ -56,7 +57,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.KafkaTopicConfig?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The user group that is the owner of the topic
+        /// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         /// </summary>
         [Output("ownerUserGroupId")]
         public Output<string?> OwnerUserGroupId { get; private set; } = null!;
@@ -159,7 +160,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.KafkaTopicConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// The user group that is the owner of the topic
+        /// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         /// </summary>
         [Input("ownerUserGroupId")]
         public Input<string>? OwnerUserGroupId { get; set; }
@@ -230,7 +231,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.KafkaTopicConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// The user group that is the owner of the topic
+        /// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         /// </summary>
         [Input("ownerUserGroupId")]
         public Input<string>? OwnerUserGroupId { get; set; }

@@ -29,7 +29,7 @@ class OrganizationGroupProjectArgs:
         The set of arguments for constructing a OrganizationGroupProject resource.
         :param pulumi.Input[str] group_id: The ID of the user group.
         :param pulumi.Input[str] project: The project that the users in the group are members of.
-        :param pulumi.Input[str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+        :param pulumi.Input[str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "project", project)
@@ -65,7 +65,7 @@ class OrganizationGroupProjectArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+        [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
         """
         return pulumi.get(self, "role")
 
@@ -94,7 +94,7 @@ class _OrganizationGroupProjectState:
         Input properties used for looking up and filtering OrganizationGroupProject resources.
         :param pulumi.Input[str] group_id: The ID of the user group.
         :param pulumi.Input[str] project: The project that the users in the group are members of.
-        :param pulumi.Input[str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+        :param pulumi.Input[str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -133,7 +133,7 @@ class _OrganizationGroupProjectState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+        [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
         """
         return pulumi.get(self, "role")
 
@@ -197,7 +197,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The ID of the user group.
         :param pulumi.Input[str] project: The project that the users in the group are members of.
-        :param pulumi.Input[str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+        :param pulumi.Input[str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
         """
         ...
     @overload
@@ -298,7 +298,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The ID of the user group.
         :param pulumi.Input[str] project: The project that the users in the group are members of.
-        :param pulumi.Input[str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+        :param pulumi.Input[str] role: [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -330,7 +330,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         """
-        [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only` and `project:permissions:read`.
+        [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
         """
         return pulumi.get(self, "role")
 

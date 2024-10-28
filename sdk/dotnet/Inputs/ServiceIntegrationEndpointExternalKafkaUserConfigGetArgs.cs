@@ -70,14 +70,24 @@ namespace Pulumi.Aiven.Inputs
         [Input("sslClientCert")]
         public Input<string>? SslClientCert { get; set; }
 
+        [Input("sslClientKey")]
+        private Input<string>? _sslClientKey;
+
         /// <summary>
         /// PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
         /// ...
         /// -----END PRIVATE KEY-----
         /// `.
         /// </summary>
-        [Input("sslClientKey")]
-        public Input<string>? SslClientKey { get; set; }
+        public Input<string>? SslClientKey
+        {
+            get => _sslClientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslClientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.

@@ -26,6 +26,7 @@ import * as utilities from "./utilities";
  *         flushMs: "10",
  *         cleanupPolicy: "compact,delete",
  *     },
+ *     ownerUserGroupId: example.groupId,
  * });
  * ```
  *
@@ -68,7 +69,7 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.KafkaTopicConfig | undefined>;
     /**
-     * The user group that is the owner of the topic
+     * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      */
     public readonly ownerUserGroupId!: pulumi.Output<string | undefined>;
     /**
@@ -166,7 +167,7 @@ export interface KafkaTopicState {
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
     /**
-     * The user group that is the owner of the topic
+     * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      */
     ownerUserGroupId?: pulumi.Input<string>;
     /**
@@ -209,7 +210,7 @@ export interface KafkaTopicArgs {
      */
     config?: pulumi.Input<inputs.KafkaTopicConfig>;
     /**
-     * The user group that is the owner of the topic
+     * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      */
     ownerUserGroupId?: pulumi.Input<string>;
     /**

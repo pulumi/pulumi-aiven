@@ -44,8 +44,8 @@ require (
 	github.com/ProtonMail/go-crypto v1.1.0-alpha.2 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
-	github.com/aiven/aiven-go-client/v2 v2.27.0 // indirect
-	github.com/aiven/go-client-codegen v0.39.0 // indirect
+	github.com/aiven/aiven-go-client/v2 v2.28.0 // indirect
+	github.com/aiven/go-client-codegen v0.41.0 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
@@ -109,6 +109,7 @@ require (
 	github.com/googleapis/gax-go/v2 v2.12.2 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
+	github.com/hamba/avro/v2 v2.26.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
@@ -151,7 +152,7 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kelseyhightower/envconfig v1.4.0 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
-	github.com/klauspost/compress v1.16.0 // indirect
+	github.com/klauspost/compress v1.17.9 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect

@@ -32,7 +32,7 @@ public final class GetKafkaSchemaConfigurationResult {
      */
     private String schema;
     /**
-     * @return Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+     * @return Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      * 
      */
     private String schemaType;
@@ -82,7 +82,7 @@ public final class GetKafkaSchemaConfigurationResult {
         return this.schema;
     }
     /**
-     * @return Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+     * @return Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      * 
      */
     public String schemaType() {

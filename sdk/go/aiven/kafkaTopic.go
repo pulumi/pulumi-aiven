@@ -39,6 +39,7 @@ import (
 //					FlushMs:       pulumi.String("10"),
 //					CleanupPolicy: pulumi.String("compact,delete"),
 //				},
+//				OwnerUserGroupId: pulumi.Any(example.GroupId),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +60,7 @@ type KafkaTopic struct {
 
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config KafkaTopicConfigPtrOutput `pulumi:"config"`
-	// The user group that is the owner of the topic
+	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
 	OwnerUserGroupId pulumi.StringPtrOutput `pulumi:"ownerUserGroupId"`
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
@@ -125,7 +126,7 @@ func GetKafkaTopic(ctx *pulumi.Context,
 type kafkaTopicState struct {
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config *KafkaTopicConfig `pulumi:"config"`
-	// The user group that is the owner of the topic
+	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
 	OwnerUserGroupId *string `pulumi:"ownerUserGroupId"`
 	// The number of partitions to create in the topic.
 	Partitions *int `pulumi:"partitions"`
@@ -147,7 +148,7 @@ type kafkaTopicState struct {
 type KafkaTopicState struct {
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config KafkaTopicConfigPtrInput
-	// The user group that is the owner of the topic
+	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
 	OwnerUserGroupId pulumi.StringPtrInput
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntPtrInput
@@ -173,7 +174,7 @@ func (KafkaTopicState) ElementType() reflect.Type {
 type kafkaTopicArgs struct {
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config *KafkaTopicConfig `pulumi:"config"`
-	// The user group that is the owner of the topic
+	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
 	OwnerUserGroupId *string `pulumi:"ownerUserGroupId"`
 	// The number of partitions to create in the topic.
 	Partitions int `pulumi:"partitions"`
@@ -196,7 +197,7 @@ type kafkaTopicArgs struct {
 type KafkaTopicArgs struct {
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
 	Config KafkaTopicConfigPtrInput
-	// The user group that is the owner of the topic
+	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
 	OwnerUserGroupId pulumi.StringPtrInput
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntInput
@@ -307,7 +308,7 @@ func (o KafkaTopicOutput) Config() KafkaTopicConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) KafkaTopicConfigPtrOutput { return v.Config }).(KafkaTopicConfigPtrOutput)
 }
 
-// The user group that is the owner of the topic
+// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
 func (o KafkaTopicOutput) OwnerUserGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringPtrOutput { return v.OwnerUserGroupId }).(pulumi.StringPtrOutput)
 }

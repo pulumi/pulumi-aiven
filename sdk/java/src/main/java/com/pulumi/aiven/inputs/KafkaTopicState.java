@@ -36,14 +36,14 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user group that is the owner of the topic
+     * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      * 
      */
     @Import(name="ownerUserGroupId")
     private @Nullable Output<String> ownerUserGroupId;
 
     /**
-     * @return The user group that is the owner of the topic
+     * @return The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      * 
      */
     public Optional<Output<String>> ownerUserGroupId() {
@@ -217,7 +217,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ownerUserGroupId The user group that is the owner of the topic
+         * @param ownerUserGroupId The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ownerUserGroupId The user group that is the owner of the topic
+         * @param ownerUserGroupId The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
          * 
          * @return builder
          * 

@@ -54,7 +54,7 @@ type ProjectUser struct {
 	Accepted pulumi.BoolOutput `pulumi:"accepted"`
 	// Email address of the user in lowercase. Changing this property forces recreation of the resource.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
+	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `readOnly` and `service:logs:read`.
 	MemberType pulumi.StringOutput `pulumi:"memberType"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -103,7 +103,7 @@ type projectUserState struct {
 	Accepted *bool `pulumi:"accepted"`
 	// Email address of the user in lowercase. Changing this property forces recreation of the resource.
 	Email *string `pulumi:"email"`
-	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
+	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `readOnly` and `service:logs:read`.
 	MemberType *string `pulumi:"memberType"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
@@ -114,7 +114,7 @@ type ProjectUserState struct {
 	Accepted pulumi.BoolPtrInput
 	// Email address of the user in lowercase. Changing this property forces recreation of the resource.
 	Email pulumi.StringPtrInput
-	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
+	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `readOnly` and `service:logs:read`.
 	MemberType pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
@@ -127,7 +127,7 @@ func (ProjectUserState) ElementType() reflect.Type {
 type projectUserArgs struct {
 	// Email address of the user in lowercase. Changing this property forces recreation of the resource.
 	Email string `pulumi:"email"`
-	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
+	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `readOnly` and `service:logs:read`.
 	MemberType string `pulumi:"memberType"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -137,7 +137,7 @@ type projectUserArgs struct {
 type ProjectUserArgs struct {
 	// Email address of the user in lowercase. Changing this property forces recreation of the resource.
 	Email pulumi.StringInput
-	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
+	// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `readOnly` and `service:logs:read`.
 	MemberType pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
@@ -240,7 +240,7 @@ func (o ProjectUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectUser) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `readOnly`.
+// Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `readOnly` and `service:logs:read`.
 func (o ProjectUserOutput) MemberType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectUser) pulumi.StringOutput { return v.MemberType }).(pulumi.StringOutput)
 }

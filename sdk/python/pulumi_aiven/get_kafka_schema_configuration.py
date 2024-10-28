@@ -88,7 +88,7 @@ class GetKafkaSchemaConfigurationResult:
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> str:
         """
-        Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+        Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         """
         return pulumi.get(self, "schema_type")
 

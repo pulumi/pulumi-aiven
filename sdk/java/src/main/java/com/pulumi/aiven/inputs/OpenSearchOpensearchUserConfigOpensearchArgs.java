@@ -4,6 +4,8 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -500,6 +502,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Search Backpressure Settings
+     * 
+     */
+    @Import(name="searchBackpressure")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs> searchBackpressure;
+
+    /**
+     * @return Search Backpressure Settings
+     * 
+     */
+    public Optional<Output<OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs>> searchBackpressure() {
+        return Optional.ofNullable(this.searchBackpressure);
+    }
+
+    /**
      * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
      */
@@ -512,6 +529,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
      */
     public Optional<Output<Integer>> searchMaxBuckets() {
         return Optional.ofNullable(this.searchMaxBuckets);
+    }
+
+    /**
+     * Shard indexing back pressure settings
+     * 
+     */
+    @Import(name="shardIndexingPressure")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs> shardIndexingPressure;
+
+    /**
+     * @return Shard indexing back pressure settings
+     * 
+     */
+    public Optional<Output<OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs>> shardIndexingPressure() {
+        return Optional.ofNullable(this.shardIndexingPressure);
     }
 
     /**
@@ -714,7 +746,9 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.pluginsAlertingFilterByBackendRoles = $.pluginsAlertingFilterByBackendRoles;
         this.reindexRemoteWhitelists = $.reindexRemoteWhitelists;
         this.scriptMaxCompilationsRate = $.scriptMaxCompilationsRate;
+        this.searchBackpressure = $.searchBackpressure;
         this.searchMaxBuckets = $.searchMaxBuckets;
+        this.shardIndexingPressure = $.shardIndexingPressure;
         this.threadPoolAnalyzeQueueSize = $.threadPoolAnalyzeQueueSize;
         this.threadPoolAnalyzeSize = $.threadPoolAnalyzeSize;
         this.threadPoolForceMergeSize = $.threadPoolForceMergeSize;
@@ -1429,6 +1463,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
+         * @param searchBackpressure Search Backpressure Settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder searchBackpressure(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs> searchBackpressure) {
+            $.searchBackpressure = searchBackpressure;
+            return this;
+        }
+
+        /**
+         * @param searchBackpressure Search Backpressure Settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder searchBackpressure(OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs searchBackpressure) {
+            return searchBackpressure(Output.of(searchBackpressure));
+        }
+
+        /**
          * @param searchMaxBuckets Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
          * 
          * @return builder
@@ -1447,6 +1502,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder searchMaxBuckets(Integer searchMaxBuckets) {
             return searchMaxBuckets(Output.of(searchMaxBuckets));
+        }
+
+        /**
+         * @param shardIndexingPressure Shard indexing back pressure settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shardIndexingPressure(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs> shardIndexingPressure) {
+            $.shardIndexingPressure = shardIndexingPressure;
+            return this;
+        }
+
+        /**
+         * @param shardIndexingPressure Shard indexing back pressure settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shardIndexingPressure(OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs shardIndexingPressure) {
+            return shardIndexingPressure(Output.of(shardIndexingPressure));
         }
 
         /**

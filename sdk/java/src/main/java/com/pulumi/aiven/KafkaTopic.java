@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *                 .flushMs(10)
  *                 .cleanupPolicy("compact,delete")
  *                 .build())
+ *             .ownerUserGroupId(example.groupId())
  *             .build());
  * 
  *     }
@@ -91,14 +92,14 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.config);
     }
     /**
-     * The user group that is the owner of the topic
+     * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      * 
      */
     @Export(name="ownerUserGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ownerUserGroupId;
 
     /**
-     * @return The user group that is the owner of the topic
+     * @return The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      * 
      */
     public Output<Optional<String>> ownerUserGroupId() {

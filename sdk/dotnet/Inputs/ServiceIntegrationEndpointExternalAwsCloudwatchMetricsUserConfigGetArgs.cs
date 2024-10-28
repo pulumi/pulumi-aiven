@@ -12,21 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessKey", required: true)]
-        private Input<string>? _accessKey;
-
         /// <summary>
         /// AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
         /// </summary>
-        public Input<string>? AccessKey
-        {
-            get => _accessKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("accessKey", required: true)]
+        public Input<string> AccessKey { get; set; } = null!;
 
         /// <summary>
         /// AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.

@@ -772,6 +772,31 @@ class Thanos(pulumi.CustomResource):
         """
         Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_thanos = aiven.Thanos("example_thanos",
+            project=example_project["project"],
+            plan="startup-4",
+            cloud_name="google-europe-west1",
+            service_name="example-thanos-service",
+            thanos_user_config={
+                "compactor": {
+                    "retention_days": 30,
+                },
+                "object_storage_usage_alert_threshold_gb": 10,
+            })
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/thanos:Thanos example_thanos PROJECT/SERVICE_NAME
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
@@ -799,6 +824,31 @@ class Thanos(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates and manages an [Aiven for Metrics®](https://aiven.io/docs/products/metrics/concepts/metrics-overview) service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_thanos = aiven.Thanos("example_thanos",
+            project=example_project["project"],
+            plan="startup-4",
+            cloud_name="google-europe-west1",
+            service_name="example-thanos-service",
+            thanos_user_config={
+                "compactor": {
+                    "retention_days": 30,
+                },
+                "object_storage_usage_alert_threshold_gb": 10,
+            })
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/thanos:Thanos example_thanos PROJECT/SERVICE_NAME
+        ```
 
         :param str resource_name: The name of the resource.
         :param ThanosArgs args: The arguments to use to populate this resource's properties.

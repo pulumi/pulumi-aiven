@@ -75,7 +75,7 @@ type KafkaSchema struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema pulumi.StringOutput `pulumi:"schema"`
-	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
 	SchemaType pulumi.StringPtrOutput `pulumi:"schemaType"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -133,7 +133,7 @@ type kafkaSchemaState struct {
 	Project *string `pulumi:"project"`
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema *string `pulumi:"schema"`
-	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
 	SchemaType *string `pulumi:"schemaType"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
@@ -150,7 +150,7 @@ type KafkaSchemaState struct {
 	Project pulumi.StringPtrInput
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema pulumi.StringPtrInput
-	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
 	SchemaType pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
@@ -171,7 +171,7 @@ type kafkaSchemaArgs struct {
 	Project string `pulumi:"project"`
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema string `pulumi:"schema"`
-	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
 	SchemaType *string `pulumi:"schemaType"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
@@ -187,7 +187,7 @@ type KafkaSchemaArgs struct {
 	Project pulumi.StringInput
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema pulumi.StringInput
-	// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
 	SchemaType pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
@@ -297,7 +297,7 @@ func (o KafkaSchemaOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchema) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
 }
 
-// Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
 func (o KafkaSchemaOutput) SchemaType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaSchema) pulumi.StringPtrOutput { return v.SchemaType }).(pulumi.StringPtrOutput)
 }

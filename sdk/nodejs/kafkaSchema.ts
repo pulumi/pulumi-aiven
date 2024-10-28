@@ -84,7 +84,7 @@ export class KafkaSchema extends pulumi.CustomResource {
      */
     public readonly schema!: pulumi.Output<string>;
     /**
-     * Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+     * Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      */
     public readonly schemaType!: pulumi.Output<string | undefined>;
     /**
@@ -164,7 +164,7 @@ export interface KafkaSchemaState {
      */
     schema?: pulumi.Input<string>;
     /**
-     * Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+     * Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      */
     schemaType?: pulumi.Input<string>;
     /**
@@ -198,7 +198,7 @@ export interface KafkaSchemaArgs {
      */
     schema: pulumi.Input<string>;
     /**
-     * Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+     * Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      */
     schemaType?: pulumi.Input<string>;
     /**

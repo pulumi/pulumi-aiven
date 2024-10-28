@@ -363,6 +363,24 @@ __all__ = [
     'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs',
     'OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs',
+    'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs',
+    'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs',
+    'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs',
+    'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs',
+    'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict',
     'OpenSearchOpensearchUserConfigPrivateAccessArgs',
     'OpenSearchOpensearchUserConfigPrivateAccessArgsDict',
     'OpenSearchOpensearchUserConfigPrivatelinkAccessArgs',
@@ -20755,9 +20773,17 @@ if not MYPY:
         """
         Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
         """
+        search_backpressure: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict']]
+        """
+        Search Backpressure Settings
+        """
         search_max_buckets: NotRequired[pulumi.Input[int]]
         """
         Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
+        """
+        shard_indexing_pressure: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict']]
+        """
+        Shard indexing back pressure settings
         """
         thread_pool_analyze_queue_size: NotRequired[pulumi.Input[int]]
         """
@@ -20841,7 +20867,9 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  plugins_alerting_filter_by_backend_roles: Optional[pulumi.Input[bool]] = None,
                  reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  script_max_compilations_rate: Optional[pulumi.Input[str]] = None,
+                 search_backpressure: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs']] = None,
                  search_max_buckets: Optional[pulumi.Input[int]] = None,
+                 shard_indexing_pressure: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs']] = None,
                  thread_pool_analyze_queue_size: Optional[pulumi.Input[int]] = None,
                  thread_pool_analyze_size: Optional[pulumi.Input[int]] = None,
                  thread_pool_force_merge_size: Optional[pulumi.Input[int]] = None,
@@ -20886,7 +20914,9 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[bool] plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reindex_remote_whitelists: Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
         :param pulumi.Input[str] script_max_compilations_rate: Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs'] search_backpressure: Search Backpressure Settings
         :param pulumi.Input[int] search_max_buckets: Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs'] shard_indexing_pressure: Shard indexing back pressure settings
         :param pulumi.Input[int] thread_pool_analyze_queue_size: Size for the thread pool queue. See documentation for exact details.
         :param pulumi.Input[int] thread_pool_analyze_size: Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         :param pulumi.Input[int] thread_pool_force_merge_size: Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
@@ -20963,8 +20993,12 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "reindex_remote_whitelists", reindex_remote_whitelists)
         if script_max_compilations_rate is not None:
             pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
+        if search_backpressure is not None:
+            pulumi.set(__self__, "search_backpressure", search_backpressure)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
+        if shard_indexing_pressure is not None:
+            pulumi.set(__self__, "shard_indexing_pressure", shard_indexing_pressure)
         if thread_pool_analyze_queue_size is not None:
             pulumi.set(__self__, "thread_pool_analyze_queue_size", thread_pool_analyze_queue_size)
         if thread_pool_analyze_size is not None:
@@ -21373,6 +21407,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         pulumi.set(self, "script_max_compilations_rate", value)
 
     @property
+    @pulumi.getter(name="searchBackpressure")
+    def search_backpressure(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs']]:
+        """
+        Search Backpressure Settings
+        """
+        return pulumi.get(self, "search_backpressure")
+
+    @search_backpressure.setter
+    def search_backpressure(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs']]):
+        pulumi.set(self, "search_backpressure", value)
+
+    @property
     @pulumi.getter(name="searchMaxBuckets")
     def search_max_buckets(self) -> Optional[pulumi.Input[int]]:
         """
@@ -21383,6 +21429,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @search_max_buckets.setter
     def search_max_buckets(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "search_max_buckets", value)
+
+    @property
+    @pulumi.getter(name="shardIndexingPressure")
+    def shard_indexing_pressure(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs']]:
+        """
+        Shard indexing back pressure settings
+        """
+        return pulumi.get(self, "shard_indexing_pressure")
+
+    @shard_indexing_pressure.setter
+    def shard_indexing_pressure(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs']]):
+        pulumi.set(self, "shard_indexing_pressure", value)
 
     @property
     @pulumi.getter(name="threadPoolAnalyzeQueueSize")
@@ -21916,6 +21974,872 @@ class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs:
     @opensearch_request_timeout.setter
     def opensearch_request_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "opensearch_request_timeout", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+        """
+        node_duress: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict']]
+        """
+        Node duress settings
+        """
+        search_shard_task: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict']]
+        """
+        Search shard settings
+        """
+        search_task: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict']]
+        """
+        Search task settings
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 node_duress: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs']] = None,
+                 search_shard_task: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs']] = None,
+                 search_task: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs']] = None):
+        """
+        :param pulumi.Input[str] mode: Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs'] node_duress: Node duress settings
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs'] search_shard_task: Search shard settings
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs'] search_task: Search task settings
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if node_duress is not None:
+            pulumi.set(__self__, "node_duress", node_duress)
+        if search_shard_task is not None:
+            pulumi.set(__self__, "search_shard_task", search_shard_task)
+        if search_task is not None:
+            pulumi.set(__self__, "search_task", search_task)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="nodeDuress")
+    def node_duress(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs']]:
+        """
+        Node duress settings
+        """
+        return pulumi.get(self, "node_duress")
+
+    @node_duress.setter
+    def node_duress(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs']]):
+        pulumi.set(self, "node_duress", value)
+
+    @property
+    @pulumi.getter(name="searchShardTask")
+    def search_shard_task(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs']]:
+        """
+        Search shard settings
+        """
+        return pulumi.get(self, "search_shard_task")
+
+    @search_shard_task.setter
+    def search_shard_task(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs']]):
+        pulumi.set(self, "search_shard_task", value)
+
+    @property
+    @pulumi.getter(name="searchTask")
+    def search_task(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs']]:
+        """
+        Search task settings
+        """
+        return pulumi.get(self, "search_task")
+
+    @search_task.setter
+    def search_task(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs']]):
+        pulumi.set(self, "search_task", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict(TypedDict):
+        cpu_threshold: NotRequired[pulumi.Input[float]]
+        """
+        The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+        """
+        heap_threshold: NotRequired[pulumi.Input[float]]
+        """
+        The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+        """
+        num_successive_breaches: NotRequired[pulumi.Input[int]]
+        """
+        The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs:
+    def __init__(__self__, *,
+                 cpu_threshold: Optional[pulumi.Input[float]] = None,
+                 heap_threshold: Optional[pulumi.Input[float]] = None,
+                 num_successive_breaches: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[float] cpu_threshold: The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+        :param pulumi.Input[float] heap_threshold: The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+        :param pulumi.Input[int] num_successive_breaches: The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+        """
+        if cpu_threshold is not None:
+            pulumi.set(__self__, "cpu_threshold", cpu_threshold)
+        if heap_threshold is not None:
+            pulumi.set(__self__, "heap_threshold", heap_threshold)
+        if num_successive_breaches is not None:
+            pulumi.set(__self__, "num_successive_breaches", num_successive_breaches)
+
+    @property
+    @pulumi.getter(name="cpuThreshold")
+    def cpu_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+        """
+        return pulumi.get(self, "cpu_threshold")
+
+    @cpu_threshold.setter
+    def cpu_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu_threshold", value)
+
+    @property
+    @pulumi.getter(name="heapThreshold")
+    def heap_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+        """
+        return pulumi.get(self, "heap_threshold")
+
+    @heap_threshold.setter
+    def heap_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "heap_threshold", value)
+
+    @property
+    @pulumi.getter(name="numSuccessiveBreaches")
+    def num_successive_breaches(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+        """
+        return pulumi.get(self, "num_successive_breaches")
+
+    @num_successive_breaches.setter
+    def num_successive_breaches(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_successive_breaches", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict(TypedDict):
+        cancellation_burst: NotRequired[pulumi.Input[float]]
+        """
+        The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+        """
+        cancellation_rate: NotRequired[pulumi.Input[float]]
+        """
+        The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+        """
+        cancellation_ratio: NotRequired[pulumi.Input[float]]
+        """
+        The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+        """
+        cpu_time_millis_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+        """
+        elapsed_time_millis_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+        """
+        heap_moving_average_window_size: NotRequired[pulumi.Input[int]]
+        """
+        The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+        """
+        heap_percent_threshold: NotRequired[pulumi.Input[float]]
+        """
+        The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+        """
+        heap_variance: NotRequired[pulumi.Input[float]]
+        """
+        The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+        """
+        total_heap_percent_threshold: NotRequired[pulumi.Input[float]]
+        """
+        The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs:
+    def __init__(__self__, *,
+                 cancellation_burst: Optional[pulumi.Input[float]] = None,
+                 cancellation_rate: Optional[pulumi.Input[float]] = None,
+                 cancellation_ratio: Optional[pulumi.Input[float]] = None,
+                 cpu_time_millis_threshold: Optional[pulumi.Input[int]] = None,
+                 elapsed_time_millis_threshold: Optional[pulumi.Input[int]] = None,
+                 heap_moving_average_window_size: Optional[pulumi.Input[int]] = None,
+                 heap_percent_threshold: Optional[pulumi.Input[float]] = None,
+                 heap_variance: Optional[pulumi.Input[float]] = None,
+                 total_heap_percent_threshold: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] cancellation_burst: The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+        :param pulumi.Input[float] cancellation_rate: The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+        :param pulumi.Input[float] cancellation_ratio: The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+        :param pulumi.Input[int] cpu_time_millis_threshold: The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+        :param pulumi.Input[int] elapsed_time_millis_threshold: The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+        :param pulumi.Input[int] heap_moving_average_window_size: The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+        :param pulumi.Input[float] heap_percent_threshold: The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+        :param pulumi.Input[float] heap_variance: The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+        :param pulumi.Input[float] total_heap_percent_threshold: The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+        """
+        if cancellation_burst is not None:
+            pulumi.set(__self__, "cancellation_burst", cancellation_burst)
+        if cancellation_rate is not None:
+            pulumi.set(__self__, "cancellation_rate", cancellation_rate)
+        if cancellation_ratio is not None:
+            pulumi.set(__self__, "cancellation_ratio", cancellation_ratio)
+        if cpu_time_millis_threshold is not None:
+            pulumi.set(__self__, "cpu_time_millis_threshold", cpu_time_millis_threshold)
+        if elapsed_time_millis_threshold is not None:
+            pulumi.set(__self__, "elapsed_time_millis_threshold", elapsed_time_millis_threshold)
+        if heap_moving_average_window_size is not None:
+            pulumi.set(__self__, "heap_moving_average_window_size", heap_moving_average_window_size)
+        if heap_percent_threshold is not None:
+            pulumi.set(__self__, "heap_percent_threshold", heap_percent_threshold)
+        if heap_variance is not None:
+            pulumi.set(__self__, "heap_variance", heap_variance)
+        if total_heap_percent_threshold is not None:
+            pulumi.set(__self__, "total_heap_percent_threshold", total_heap_percent_threshold)
+
+    @property
+    @pulumi.getter(name="cancellationBurst")
+    def cancellation_burst(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+        """
+        return pulumi.get(self, "cancellation_burst")
+
+    @cancellation_burst.setter
+    def cancellation_burst(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cancellation_burst", value)
+
+    @property
+    @pulumi.getter(name="cancellationRate")
+    def cancellation_rate(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+        """
+        return pulumi.get(self, "cancellation_rate")
+
+    @cancellation_rate.setter
+    def cancellation_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cancellation_rate", value)
+
+    @property
+    @pulumi.getter(name="cancellationRatio")
+    def cancellation_ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+        """
+        return pulumi.get(self, "cancellation_ratio")
+
+    @cancellation_ratio.setter
+    def cancellation_ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cancellation_ratio", value)
+
+    @property
+    @pulumi.getter(name="cpuTimeMillisThreshold")
+    def cpu_time_millis_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+        """
+        return pulumi.get(self, "cpu_time_millis_threshold")
+
+    @cpu_time_millis_threshold.setter
+    def cpu_time_millis_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_time_millis_threshold", value)
+
+    @property
+    @pulumi.getter(name="elapsedTimeMillisThreshold")
+    def elapsed_time_millis_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+        """
+        return pulumi.get(self, "elapsed_time_millis_threshold")
+
+    @elapsed_time_millis_threshold.setter
+    def elapsed_time_millis_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "elapsed_time_millis_threshold", value)
+
+    @property
+    @pulumi.getter(name="heapMovingAverageWindowSize")
+    def heap_moving_average_window_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+        """
+        return pulumi.get(self, "heap_moving_average_window_size")
+
+    @heap_moving_average_window_size.setter
+    def heap_moving_average_window_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "heap_moving_average_window_size", value)
+
+    @property
+    @pulumi.getter(name="heapPercentThreshold")
+    def heap_percent_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+        """
+        return pulumi.get(self, "heap_percent_threshold")
+
+    @heap_percent_threshold.setter
+    def heap_percent_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "heap_percent_threshold", value)
+
+    @property
+    @pulumi.getter(name="heapVariance")
+    def heap_variance(self) -> Optional[pulumi.Input[float]]:
+        """
+        The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+        """
+        return pulumi.get(self, "heap_variance")
+
+    @heap_variance.setter
+    def heap_variance(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "heap_variance", value)
+
+    @property
+    @pulumi.getter(name="totalHeapPercentThreshold")
+    def total_heap_percent_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+        """
+        return pulumi.get(self, "total_heap_percent_threshold")
+
+    @total_heap_percent_threshold.setter
+    def total_heap_percent_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "total_heap_percent_threshold", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict(TypedDict):
+        cancellation_burst: NotRequired[pulumi.Input[float]]
+        """
+        The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+        """
+        cancellation_rate: NotRequired[pulumi.Input[float]]
+        """
+        The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+        """
+        cancellation_ratio: NotRequired[pulumi.Input[float]]
+        """
+        The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+        """
+        cpu_time_millis_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+        """
+        elapsed_time_millis_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+        """
+        heap_moving_average_window_size: NotRequired[pulumi.Input[int]]
+        """
+        The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+        """
+        heap_percent_threshold: NotRequired[pulumi.Input[float]]
+        """
+        The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+        """
+        heap_variance: NotRequired[pulumi.Input[float]]
+        """
+        The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+        """
+        total_heap_percent_threshold: NotRequired[pulumi.Input[float]]
+        """
+        The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs:
+    def __init__(__self__, *,
+                 cancellation_burst: Optional[pulumi.Input[float]] = None,
+                 cancellation_rate: Optional[pulumi.Input[float]] = None,
+                 cancellation_ratio: Optional[pulumi.Input[float]] = None,
+                 cpu_time_millis_threshold: Optional[pulumi.Input[int]] = None,
+                 elapsed_time_millis_threshold: Optional[pulumi.Input[int]] = None,
+                 heap_moving_average_window_size: Optional[pulumi.Input[int]] = None,
+                 heap_percent_threshold: Optional[pulumi.Input[float]] = None,
+                 heap_variance: Optional[pulumi.Input[float]] = None,
+                 total_heap_percent_threshold: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] cancellation_burst: The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+        :param pulumi.Input[float] cancellation_rate: The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+        :param pulumi.Input[float] cancellation_ratio: The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+        :param pulumi.Input[int] cpu_time_millis_threshold: The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+        :param pulumi.Input[int] elapsed_time_millis_threshold: The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+        :param pulumi.Input[int] heap_moving_average_window_size: The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+        :param pulumi.Input[float] heap_percent_threshold: The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+        :param pulumi.Input[float] heap_variance: The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+        :param pulumi.Input[float] total_heap_percent_threshold: The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+        """
+        if cancellation_burst is not None:
+            pulumi.set(__self__, "cancellation_burst", cancellation_burst)
+        if cancellation_rate is not None:
+            pulumi.set(__self__, "cancellation_rate", cancellation_rate)
+        if cancellation_ratio is not None:
+            pulumi.set(__self__, "cancellation_ratio", cancellation_ratio)
+        if cpu_time_millis_threshold is not None:
+            pulumi.set(__self__, "cpu_time_millis_threshold", cpu_time_millis_threshold)
+        if elapsed_time_millis_threshold is not None:
+            pulumi.set(__self__, "elapsed_time_millis_threshold", elapsed_time_millis_threshold)
+        if heap_moving_average_window_size is not None:
+            pulumi.set(__self__, "heap_moving_average_window_size", heap_moving_average_window_size)
+        if heap_percent_threshold is not None:
+            pulumi.set(__self__, "heap_percent_threshold", heap_percent_threshold)
+        if heap_variance is not None:
+            pulumi.set(__self__, "heap_variance", heap_variance)
+        if total_heap_percent_threshold is not None:
+            pulumi.set(__self__, "total_heap_percent_threshold", total_heap_percent_threshold)
+
+    @property
+    @pulumi.getter(name="cancellationBurst")
+    def cancellation_burst(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+        """
+        return pulumi.get(self, "cancellation_burst")
+
+    @cancellation_burst.setter
+    def cancellation_burst(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cancellation_burst", value)
+
+    @property
+    @pulumi.getter(name="cancellationRate")
+    def cancellation_rate(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+        """
+        return pulumi.get(self, "cancellation_rate")
+
+    @cancellation_rate.setter
+    def cancellation_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cancellation_rate", value)
+
+    @property
+    @pulumi.getter(name="cancellationRatio")
+    def cancellation_ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+        """
+        return pulumi.get(self, "cancellation_ratio")
+
+    @cancellation_ratio.setter
+    def cancellation_ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cancellation_ratio", value)
+
+    @property
+    @pulumi.getter(name="cpuTimeMillisThreshold")
+    def cpu_time_millis_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+        """
+        return pulumi.get(self, "cpu_time_millis_threshold")
+
+    @cpu_time_millis_threshold.setter
+    def cpu_time_millis_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_time_millis_threshold", value)
+
+    @property
+    @pulumi.getter(name="elapsedTimeMillisThreshold")
+    def elapsed_time_millis_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+        """
+        return pulumi.get(self, "elapsed_time_millis_threshold")
+
+    @elapsed_time_millis_threshold.setter
+    def elapsed_time_millis_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "elapsed_time_millis_threshold", value)
+
+    @property
+    @pulumi.getter(name="heapMovingAverageWindowSize")
+    def heap_moving_average_window_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+        """
+        return pulumi.get(self, "heap_moving_average_window_size")
+
+    @heap_moving_average_window_size.setter
+    def heap_moving_average_window_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "heap_moving_average_window_size", value)
+
+    @property
+    @pulumi.getter(name="heapPercentThreshold")
+    def heap_percent_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+        """
+        return pulumi.get(self, "heap_percent_threshold")
+
+    @heap_percent_threshold.setter
+    def heap_percent_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "heap_percent_threshold", value)
+
+    @property
+    @pulumi.getter(name="heapVariance")
+    def heap_variance(self) -> Optional[pulumi.Input[float]]:
+        """
+        The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+        """
+        return pulumi.get(self, "heap_variance")
+
+    @heap_variance.setter
+    def heap_variance(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "heap_variance", value)
+
+    @property
+    @pulumi.getter(name="totalHeapPercentThreshold")
+    def total_heap_percent_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+        """
+        return pulumi.get(self, "total_heap_percent_threshold")
+
+    @total_heap_percent_threshold.setter
+    def total_heap_percent_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "total_heap_percent_threshold", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable shard indexing backpressure. Default is false.
+        """
+        enforced: NotRequired[pulumi.Input[bool]]
+        """
+        Run shard indexing backpressure in shadow mode or enforced mode.
+                In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
+                but it doesn’t actually reject any indexing requests.
+                In enforced mode (value set as true),
+                shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
+                Default is false.
+        """
+        operating_factor: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict']]
+        """
+        Operating factor
+        """
+        primary_parameter: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict']]
+        """
+        Primary parameter
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 enforced: Optional[pulumi.Input[bool]] = None,
+                 operating_factor: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs']] = None,
+                 primary_parameter: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs']] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable or disable shard indexing backpressure. Default is false.
+        :param pulumi.Input[bool] enforced: Run shard indexing backpressure in shadow mode or enforced mode.
+                       In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
+                       but it doesn’t actually reject any indexing requests.
+                       In enforced mode (value set as true),
+                       shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
+                       Default is false.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs'] operating_factor: Operating factor
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs'] primary_parameter: Primary parameter
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if enforced is not None:
+            pulumi.set(__self__, "enforced", enforced)
+        if operating_factor is not None:
+            pulumi.set(__self__, "operating_factor", operating_factor)
+        if primary_parameter is not None:
+            pulumi.set(__self__, "primary_parameter", primary_parameter)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable shard indexing backpressure. Default is false.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def enforced(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Run shard indexing backpressure in shadow mode or enforced mode.
+                In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics,
+                but it doesn’t actually reject any indexing requests.
+                In enforced mode (value set as true),
+                shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance.
+                Default is false.
+        """
+        return pulumi.get(self, "enforced")
+
+    @enforced.setter
+    def enforced(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enforced", value)
+
+    @property
+    @pulumi.getter(name="operatingFactor")
+    def operating_factor(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs']]:
+        """
+        Operating factor
+        """
+        return pulumi.get(self, "operating_factor")
+
+    @operating_factor.setter
+    def operating_factor(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs']]):
+        pulumi.set(self, "operating_factor", value)
+
+    @property
+    @pulumi.getter(name="primaryParameter")
+    def primary_parameter(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs']]:
+        """
+        Primary parameter
+        """
+        return pulumi.get(self, "primary_parameter")
+
+    @primary_parameter.setter
+    def primary_parameter(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs']]):
+        pulumi.set(self, "primary_parameter", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict(TypedDict):
+        lower: NotRequired[pulumi.Input[float]]
+        """
+        Specify the lower occupancy limit of the allocated quota of memory for the shard.
+                        If the total memory usage of a shard is below this limit,
+                        shard indexing backpressure decreases the current allocated memory for that shard.
+                        Default is 0.75.
+        """
+        optimal: NotRequired[pulumi.Input[float]]
+        """
+        Specify the optimal occupancy of the allocated quota of memory for the shard.
+                        If the total memory usage of a shard is at this level,
+                        shard indexing backpressure doesn’t change the current allocated memory for that shard.
+                        Default is 0.85.
+        """
+        upper: NotRequired[pulumi.Input[float]]
+        """
+        Specify the upper occupancy limit of the allocated quota of memory for the shard.
+                        If the total memory usage of a shard is above this limit,
+                        shard indexing backpressure increases the current allocated memory for that shard.
+                        Default is 0.95.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs:
+    def __init__(__self__, *,
+                 lower: Optional[pulumi.Input[float]] = None,
+                 optimal: Optional[pulumi.Input[float]] = None,
+                 upper: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] lower: Specify the lower occupancy limit of the allocated quota of memory for the shard.
+                               If the total memory usage of a shard is below this limit,
+                               shard indexing backpressure decreases the current allocated memory for that shard.
+                               Default is 0.75.
+        :param pulumi.Input[float] optimal: Specify the optimal occupancy of the allocated quota of memory for the shard.
+                               If the total memory usage of a shard is at this level,
+                               shard indexing backpressure doesn’t change the current allocated memory for that shard.
+                               Default is 0.85.
+        :param pulumi.Input[float] upper: Specify the upper occupancy limit of the allocated quota of memory for the shard.
+                               If the total memory usage of a shard is above this limit,
+                               shard indexing backpressure increases the current allocated memory for that shard.
+                               Default is 0.95.
+        """
+        if lower is not None:
+            pulumi.set(__self__, "lower", lower)
+        if optimal is not None:
+            pulumi.set(__self__, "optimal", optimal)
+        if upper is not None:
+            pulumi.set(__self__, "upper", upper)
+
+    @property
+    @pulumi.getter
+    def lower(self) -> Optional[pulumi.Input[float]]:
+        """
+        Specify the lower occupancy limit of the allocated quota of memory for the shard.
+                        If the total memory usage of a shard is below this limit,
+                        shard indexing backpressure decreases the current allocated memory for that shard.
+                        Default is 0.75.
+        """
+        return pulumi.get(self, "lower")
+
+    @lower.setter
+    def lower(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "lower", value)
+
+    @property
+    @pulumi.getter
+    def optimal(self) -> Optional[pulumi.Input[float]]:
+        """
+        Specify the optimal occupancy of the allocated quota of memory for the shard.
+                        If the total memory usage of a shard is at this level,
+                        shard indexing backpressure doesn’t change the current allocated memory for that shard.
+                        Default is 0.85.
+        """
+        return pulumi.get(self, "optimal")
+
+    @optimal.setter
+    def optimal(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "optimal", value)
+
+    @property
+    @pulumi.getter
+    def upper(self) -> Optional[pulumi.Input[float]]:
+        """
+        Specify the upper occupancy limit of the allocated quota of memory for the shard.
+                        If the total memory usage of a shard is above this limit,
+                        shard indexing backpressure increases the current allocated memory for that shard.
+                        Default is 0.95.
+        """
+        return pulumi.get(self, "upper")
+
+    @upper.setter
+    def upper(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "upper", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict(TypedDict):
+        node: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict']]
+        shard: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict']]
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs:
+    def __init__(__self__, *,
+                 node: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs']] = None,
+                 shard: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs']] = None):
+        if node is not None:
+            pulumi.set(__self__, "node", node)
+        if shard is not None:
+            pulumi.set(__self__, "shard", shard)
+
+    @property
+    @pulumi.getter
+    def node(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs']]:
+        return pulumi.get(self, "node")
+
+    @node.setter
+    def node(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs']]):
+        pulumi.set(self, "node", value)
+
+    @property
+    @pulumi.getter
+    def shard(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs']]:
+        return pulumi.get(self, "shard")
+
+    @shard.setter
+    def shard(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs']]):
+        pulumi.set(self, "shard", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict(TypedDict):
+        soft_limit: NotRequired[pulumi.Input[float]]
+        """
+        Define the percentage of the node-level memory
+                                threshold that acts as a soft indicator for strain on a node.
+                                Default is 0.7.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs:
+    def __init__(__self__, *,
+                 soft_limit: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] soft_limit: Define the percentage of the node-level memory
+                                       threshold that acts as a soft indicator for strain on a node.
+                                       Default is 0.7.
+        """
+        if soft_limit is not None:
+            pulumi.set(__self__, "soft_limit", soft_limit)
+
+    @property
+    @pulumi.getter(name="softLimit")
+    def soft_limit(self) -> Optional[pulumi.Input[float]]:
+        """
+        Define the percentage of the node-level memory
+                                threshold that acts as a soft indicator for strain on a node.
+                                Default is 0.7.
+        """
+        return pulumi.get(self, "soft_limit")
+
+    @soft_limit.setter
+    def soft_limit(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "soft_limit", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict(TypedDict):
+        min_limit: NotRequired[pulumi.Input[float]]
+        """
+        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
+                                Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
+                                Default is 0.001.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs:
+    def __init__(__self__, *,
+                 min_limit: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] min_limit: Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
+                                       Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
+                                       Default is 0.001.
+        """
+        if min_limit is not None:
+            pulumi.set(__self__, "min_limit", min_limit)
+
+    @property
+    @pulumi.getter(name="minLimit")
+    def min_limit(self) -> Optional[pulumi.Input[float]]:
+        """
+        Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica).
+                                Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard.
+                                Default is 0.001.
+        """
+        return pulumi.get(self, "min_limit")
+
+    @min_limit.setter
+    def min_limit(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_limit", value)
 
 
 if not MYPY:
@@ -22744,7 +23668,7 @@ if not MYPY:
     class OrganizationPermissionPermissionArgsDict(TypedDict):
         permissions: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
-        List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
+        List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
         """
         principal_id: pulumi.Input[str]
         """
@@ -22774,7 +23698,7 @@ class OrganizationPermissionPermissionArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
         :param pulumi.Input[str] principal_id: ID of the user or group.
         :param pulumi.Input[str] principal_type: The type of principal. The possible values are `user` and `user_group`.
         :param pulumi.Input[str] create_time: Time created.
@@ -22792,7 +23716,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
+        List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
         """
         return pulumi.get(self, "permissions")
 
@@ -32872,6 +33796,9 @@ class ThanosThanosUserConfigArgs:
         if compactor is not None:
             pulumi.set(__self__, "compactor", compactor)
         if env is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""env is deprecated: This property is deprecated.""")
+        if env is not None:
             pulumi.set(__self__, "env", env)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
@@ -32909,6 +33836,7 @@ class ThanosThanosUserConfigArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This property is deprecated.""")
     def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Environmental variables.

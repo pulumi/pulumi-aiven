@@ -62,14 +62,14 @@ public final class KafkaSchemaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+     * Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      * 
      */
     @Import(name="schemaType")
     private @Nullable Output<String> schemaType;
 
     /**
-     * @return Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+     * @return Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      * 
      */
     public Optional<Output<String>> schemaType() {
@@ -199,7 +199,7 @@ public final class KafkaSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaType Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+         * @param schemaType Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class KafkaSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaType Kafka Schema configuration type. Defaults to AVRO. Possible values are AVRO, JSON, and PROTOBUF.
+         * @param schemaType Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
          * 
          * @return builder
          * 

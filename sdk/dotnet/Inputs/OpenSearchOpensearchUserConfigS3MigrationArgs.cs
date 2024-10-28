@@ -12,21 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class OpenSearchOpensearchUserConfigS3MigrationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessKey", required: true)]
-        private Input<string>? _accessKey;
-
         /// <summary>
         /// AWS Access key.
         /// </summary>
-        public Input<string>? AccessKey
-        {
-            get => _accessKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("accessKey", required: true)]
+        public Input<string> AccessKey { get; set; } = null!;
 
         /// <summary>
         /// The path to the repository data within its container. The value of this setting should not start or end with a /.

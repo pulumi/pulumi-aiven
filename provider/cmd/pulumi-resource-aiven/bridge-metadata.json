@@ -1162,6 +1162,45 @@
                                             },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
+                                            },
+                                            "search_backpressure": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "node_duress": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "search_shard_task": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "search_task": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "shard_indexing_pressure": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "operating_factor": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "primary_parameter": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "node": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "shard": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -3088,6 +3127,45 @@
                                             },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
+                                            },
+                                            "search_backpressure": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "node_duress": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "search_shard_task": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "search_task": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "shard_indexing_pressure": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "operating_factor": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "primary_parameter": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "node": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "shard": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -3158,6 +3236,22 @@
             "aiven_organization_user_group": {
                 "current": "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup",
                 "majorVersion": 6
+            },
+            "aiven_organization_user_list": {
+                "current": "aiven:index/getOrganizationUserList:getOrganizationUserList",
+                "majorVersion": 6,
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "user_info": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "aiven_organizational_unit": {
                 "current": "aiven:index/getOrganizationalUnit:getOrganizationalUnit",
@@ -3939,6 +4033,7 @@
             "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": 0,
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
+            "aiven:index/getOrganizationUserList:getOrganizationUserList": 0,
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 0,
             "aiven:index/getPg:getPg": 0,
             "aiven:index/getPgDatabase:getPgDatabase": 0,

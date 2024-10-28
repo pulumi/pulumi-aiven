@@ -4,6 +4,8 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -176,10 +178,20 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable String scriptMaxCompilationsRate;
     /**
+     * @return Search Backpressure Settings
+     * 
+     */
+    private @Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure searchBackpressure;
+    /**
      * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
      */
     private @Nullable Integer searchMaxBuckets;
+    /**
+     * @return Shard indexing back pressure settings
+     * 
+     */
+    private @Nullable GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure shardIndexingPressure;
     /**
      * @return Size for the thread pool queue. See documentation for exact details.
      * 
@@ -462,11 +474,25 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.scriptMaxCompilationsRate);
     }
     /**
+     * @return Search Backpressure Settings
+     * 
+     */
+    public Optional<GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure> searchBackpressure() {
+        return Optional.ofNullable(this.searchBackpressure);
+    }
+    /**
      * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
      */
     public Optional<Integer> searchMaxBuckets() {
         return Optional.ofNullable(this.searchMaxBuckets);
+    }
+    /**
+     * @return Shard indexing back pressure settings
+     * 
+     */
+    public Optional<GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure> shardIndexingPressure() {
+        return Optional.ofNullable(this.shardIndexingPressure);
     }
     /**
      * @return Size for the thread pool queue. See documentation for exact details.
@@ -587,7 +613,9 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Boolean pluginsAlertingFilterByBackendRoles;
         private @Nullable List<String> reindexRemoteWhitelists;
         private @Nullable String scriptMaxCompilationsRate;
+        private @Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure searchBackpressure;
         private @Nullable Integer searchMaxBuckets;
+        private @Nullable GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure shardIndexingPressure;
         private @Nullable Integer threadPoolAnalyzeQueueSize;
         private @Nullable Integer threadPoolAnalyzeSize;
         private @Nullable Integer threadPoolForceMergeSize;
@@ -634,7 +662,9 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     	      this.pluginsAlertingFilterByBackendRoles = defaults.pluginsAlertingFilterByBackendRoles;
     	      this.reindexRemoteWhitelists = defaults.reindexRemoteWhitelists;
     	      this.scriptMaxCompilationsRate = defaults.scriptMaxCompilationsRate;
+    	      this.searchBackpressure = defaults.searchBackpressure;
     	      this.searchMaxBuckets = defaults.searchMaxBuckets;
+    	      this.shardIndexingPressure = defaults.shardIndexingPressure;
     	      this.threadPoolAnalyzeQueueSize = defaults.threadPoolAnalyzeQueueSize;
     	      this.threadPoolAnalyzeSize = defaults.threadPoolAnalyzeSize;
     	      this.threadPoolForceMergeSize = defaults.threadPoolForceMergeSize;
@@ -844,9 +874,21 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder searchBackpressure(@Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure searchBackpressure) {
+
+            this.searchBackpressure = searchBackpressure;
+            return this;
+        }
+        @CustomType.Setter
         public Builder searchMaxBuckets(@Nullable Integer searchMaxBuckets) {
 
             this.searchMaxBuckets = searchMaxBuckets;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shardIndexingPressure(@Nullable GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure shardIndexingPressure) {
+
+            this.shardIndexingPressure = shardIndexingPressure;
             return this;
         }
         @CustomType.Setter
@@ -949,7 +991,9 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             _resultValue.pluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
             _resultValue.reindexRemoteWhitelists = reindexRemoteWhitelists;
             _resultValue.scriptMaxCompilationsRate = scriptMaxCompilationsRate;
+            _resultValue.searchBackpressure = searchBackpressure;
             _resultValue.searchMaxBuckets = searchMaxBuckets;
+            _resultValue.shardIndexingPressure = shardIndexingPressure;
             _resultValue.threadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;
             _resultValue.threadPoolAnalyzeSize = threadPoolAnalyzeSize;
             _resultValue.threadPoolForceMergeSize = threadPoolForceMergeSize;

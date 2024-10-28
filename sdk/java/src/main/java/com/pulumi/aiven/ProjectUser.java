@@ -92,14 +92,14 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
         return this.email;
     }
     /**
-     * Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
+     * Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
      * 
      */
     @Export(name="memberType", refs={String.class}, tree="[0]")
     private Output<String> memberType;
 
     /**
-     * @return Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read` and `read_only`.
+     * @return Project membership type. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
      * 
      */
     public Output<String> memberType() {

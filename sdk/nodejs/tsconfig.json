@@ -96,6 +96,7 @@
         "getOrganizationApplicationUser.ts",
         "getOrganizationUser.ts",
         "getOrganizationUserGroup.ts",
+        "getOrganizationUserList.ts",
         "getOrganizationalUnit.ts",
         "getPg.ts",
         "getPgDatabase.ts",
