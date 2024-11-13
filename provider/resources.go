@@ -90,6 +90,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:                 p,
 		Name:              "aiven",
+		DisplayName:       "Aiven",
 		GitHubOrg:         "aiven",
 		Description:       "A Pulumi package for creating and managing Aiven cloud resources.",
 		Keywords:          []string{"pulumi", "aiven"},
