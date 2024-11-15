@@ -191,14 +191,14 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Opensearch user configurable settings
+     * Opensearch user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="opensearchUserConfig")
     private @Nullable Output<OpenSearchOpensearchUserConfigArgs> opensearchUserConfig;
 
     /**
-     * @return Opensearch user configurable settings
+     * @return Opensearch user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigArgs>> opensearchUserConfig() {
@@ -748,7 +748,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearchUserConfig Opensearch user configurable settings
+         * @param opensearchUserConfig Opensearch user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -759,7 +759,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearchUserConfig Opensearch user configurable settings
+         * @param opensearchUserConfig Opensearch user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

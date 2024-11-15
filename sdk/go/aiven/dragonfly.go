@@ -55,7 +55,7 @@ type Dragonfly struct {
 	pulumi.CustomResourceState
 
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
@@ -76,7 +76,7 @@ type Dragonfly struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Dragonfly server provided values
 	Dragonfly DragonflyDragonflyOutput `pulumi:"dragonfly"`
-	// Dragonfly user configurable settings
+	// Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	DragonflyUserConfig DragonflyDragonflyUserConfigPtrOutput `pulumi:"dragonflyUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -186,7 +186,7 @@ type dragonflyState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Dragonfly server provided values
 	Dragonfly *DragonflyDragonfly `pulumi:"dragonfly"`
-	// Dragonfly user configurable settings
+	// Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	DragonflyUserConfig *DragonflyDragonflyUserConfig `pulumi:"dragonflyUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -249,7 +249,7 @@ type DragonflyState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Dragonfly server provided values
 	Dragonfly DragonflyDragonflyPtrInput
-	// Dragonfly user configurable settings
+	// Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	DragonflyUserConfig DragonflyDragonflyUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -304,7 +304,7 @@ type dragonflyArgs struct {
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Dragonfly server provided values
 	Dragonfly *DragonflyDragonfly `pulumi:"dragonfly"`
-	// Dragonfly user configurable settings
+	// Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	DragonflyUserConfig *DragonflyDragonflyUserConfig `pulumi:"dragonflyUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -342,7 +342,7 @@ type DragonflyArgs struct {
 	DiskSpace pulumi.StringPtrInput
 	// Dragonfly server provided values
 	Dragonfly DragonflyDragonflyPtrInput
-	// Dragonfly user configurable settings
+	// Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	DragonflyUserConfig DragonflyDragonflyUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -456,8 +456,8 @@ func (o DragonflyOutput) ToDragonflyOutputWithContext(ctx context.Context) Drago
 }
 
 // Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-func (o DragonflyOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Dragonfly) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+func (o DragonflyOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -504,7 +504,7 @@ func (o DragonflyOutput) Dragonfly() DragonflyDragonflyOutput {
 	return o.ApplyT(func(v *Dragonfly) DragonflyDragonflyOutput { return v.Dragonfly }).(DragonflyDragonflyOutput)
 }
 
-// Dragonfly user configurable settings
+// Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o DragonflyOutput) DragonflyUserConfig() DragonflyDragonflyUserConfigPtrOutput {
 	return o.ApplyT(func(v *Dragonfly) DragonflyDragonflyUserConfigPtrOutput { return v.DragonflyUserConfig }).(DragonflyDragonflyUserConfigPtrOutput)
 }

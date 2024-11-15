@@ -30,10 +30,26 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccessArgs extends com.pulum
         return Optional.ofNullable(this.influxdb);
     }
 
+    /**
+     * Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    @Import(name="userBackup")
+    private @Nullable Output<Boolean> userBackup;
+
+    /**
+     * @return Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    public Optional<Output<Boolean>> userBackup() {
+        return Optional.ofNullable(this.userBackup);
+    }
+
     private InfluxDbInfluxdbUserConfigPrivateAccessArgs() {}
 
     private InfluxDbInfluxdbUserConfigPrivateAccessArgs(InfluxDbInfluxdbUserConfigPrivateAccessArgs $) {
         this.influxdb = $.influxdb;
+        this.userBackup = $.userBackup;
     }
 
     public static Builder builder() {
@@ -73,6 +89,27 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccessArgs extends com.pulum
          */
         public Builder influxdb(Boolean influxdb) {
             return influxdb(Output.of(influxdb));
+        }
+
+        /**
+         * @param userBackup Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userBackup(@Nullable Output<Boolean> userBackup) {
+            $.userBackup = userBackup;
+            return this;
+        }
+
+        /**
+         * @param userBackup Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userBackup(Boolean userBackup) {
+            return userBackup(Output.of(userBackup));
         }
 
         public InfluxDbInfluxdbUserConfigPrivateAccessArgs build() {

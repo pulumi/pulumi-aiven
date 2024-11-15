@@ -189,7 +189,7 @@ class GetKafkaMirrorMakerResult:
     @pulumi.getter(name="kafkaMirrormakerUserConfigs")
     def kafka_mirrormaker_user_configs(self) -> Sequence['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult']:
         """
-        KafkaMirrormaker user configurable settings
+        KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_mirrormaker_user_configs")
 

@@ -81,7 +81,7 @@ type LookupMySqlResult struct {
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
-	// Mysql user configurable settings
+	// Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	MysqlUserConfigs []GetMySqlMysqlUserConfig `pulumi:"mysqlUserConfigs"`
 	// MySQL specific server provided values
 	Mysqls []GetMySqlMysql `pulumi:"mysqls"`
@@ -220,7 +220,7 @@ func (o LookupMySqlResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMySqlResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// Mysql user configurable settings
+// Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupMySqlResultOutput) MysqlUserConfigs() GetMySqlMysqlUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupMySqlResult) []GetMySqlMysqlUserConfig { return v.MysqlUserConfigs }).(GetMySqlMysqlUserConfigArrayOutput)
 }

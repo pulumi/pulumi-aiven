@@ -30,10 +30,26 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
         return Optional.ofNullable(this.influxdb);
     }
 
+    /**
+     * Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    @Import(name="userBackup")
+    private @Nullable Output<Boolean> userBackup;
+
+    /**
+     * @return Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    public Optional<Output<Boolean>> userBackup() {
+        return Optional.ofNullable(this.userBackup);
+    }
+
     private InfluxDbInfluxdbUserConfigPublicAccessArgs() {}
 
     private InfluxDbInfluxdbUserConfigPublicAccessArgs(InfluxDbInfluxdbUserConfigPublicAccessArgs $) {
         this.influxdb = $.influxdb;
+        this.userBackup = $.userBackup;
     }
 
     public static Builder builder() {
@@ -73,6 +89,27 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
          */
         public Builder influxdb(Boolean influxdb) {
             return influxdb(Output.of(influxdb));
+        }
+
+        /**
+         * @param userBackup Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userBackup(@Nullable Output<Boolean> userBackup) {
+            $.userBackup = userBackup;
+            return this;
+        }
+
+        /**
+         * @param userBackup Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userBackup(Boolean userBackup) {
+            return userBackup(Output.of(userBackup));
         }
 
         public InfluxDbInfluxdbUserConfigPublicAccessArgs build() {

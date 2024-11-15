@@ -60,7 +60,8 @@ class InfluxDbArgs:
                AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigArgs'] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input['InfluxDbInfluxdbUserConfigArgs'] influxdb_user_config: Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+               Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbArgs']]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -203,7 +204,8 @@ class InfluxDbArgs:
     @pulumi.getter(name="influxdbUserConfig")
     def influxdb_user_config(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigArgs']]:
         """
-        Influxdb user configurable settings
+        Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+        Options that you add cannot be removed later
         """
         return pulumi.get(self, "influxdb_user_config")
 
@@ -378,7 +380,8 @@ class _InfluxDbState:
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the
                project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigArgs'] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input['InfluxDbInfluxdbUserConfigArgs'] influxdb_user_config: Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+               Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbArgs']]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -588,7 +591,8 @@ class _InfluxDbState:
     @pulumi.getter(name="influxdbUserConfig")
     def influxdb_user_config(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigArgs']]:
         """
-        Influxdb user configurable settings
+        Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+        Options that you add cannot be removed later
         """
         return pulumi.get(self, "influxdb_user_config")
 
@@ -876,7 +880,8 @@ class InfluxDb(pulumi.CustomResource):
                AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
-        :param pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']] influxdb_user_config: Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+               Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbInfluxdbArgs', 'InfluxDbInfluxdbArgsDict']]]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -1051,7 +1056,8 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the
                project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']] influxdb_user_config: Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+               Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbInfluxdbArgs', 'InfluxDbInfluxdbArgsDict']]]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -1122,7 +1128,7 @@ class InfluxDb(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalDiskSpace")
-    def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
+    def additional_disk_space(self) -> pulumi.Output[str]:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
         service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
@@ -1200,7 +1206,8 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="influxdbUserConfig")
     def influxdb_user_config(self) -> pulumi.Output[Optional['outputs.InfluxDbInfluxdbUserConfig']]:
         """
-        Influxdb user configurable settings
+        Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+        Options that you add cannot be removed later
         """
         return pulumi.get(self, "influxdb_user_config")
 

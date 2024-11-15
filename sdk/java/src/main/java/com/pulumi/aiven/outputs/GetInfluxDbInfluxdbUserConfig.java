@@ -38,6 +38,11 @@ public final class GetInfluxDbInfluxdbUserConfig {
      */
     private @Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb;
     /**
+     * @return Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+     * 
+     */
+    private @Nullable String influxdbVersion;
+    /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -122,6 +127,13 @@ public final class GetInfluxDbInfluxdbUserConfig {
      */
     public Optional<GetInfluxDbInfluxdbUserConfigInfluxdb> influxdb() {
         return Optional.ofNullable(this.influxdb);
+    }
+    /**
+     * @return Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+     * 
+     */
+    public Optional<String> influxdbVersion() {
+        return Optional.ofNullable(this.influxdbVersion);
     }
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -217,6 +229,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable String customDomain;
         private @Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb;
+        private @Nullable String influxdbVersion;
         private @Nullable List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
@@ -234,6 +247,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.customDomain = defaults.customDomain;
     	      this.influxdb = defaults.influxdb;
+    	      this.influxdbVersion = defaults.influxdbVersion;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
@@ -263,6 +277,12 @@ public final class GetInfluxDbInfluxdbUserConfig {
         public Builder influxdb(@Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb) {
 
             this.influxdb = influxdb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder influxdbVersion(@Nullable String influxdbVersion) {
+
+            this.influxdbVersion = influxdbVersion;
             return this;
         }
         @CustomType.Setter
@@ -345,6 +365,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
             _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.customDomain = customDomain;
             _resultValue.influxdb = influxdb;
+            _resultValue.influxdbVersion = influxdbVersion;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;

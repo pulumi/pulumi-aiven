@@ -45,14 +45,14 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
     }
 
     /**
-     * Enum: `s3`. Provider type.
+     * Enum: `s3`. External image store provider.
      * 
      */
     @Import(name="provider", required=true)
     private Output<String> provider;
 
     /**
-     * @return Enum: `s3`. Provider type.
+     * @return Enum: `s3`. External image store provider.
      * 
      */
     public Output<String> provider() {
@@ -144,7 +144,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         /**
-         * @param provider Enum: `s3`. Provider type.
+         * @param provider Enum: `s3`. External image store provider.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         /**
-         * @param provider Enum: `s3`. Provider type.
+         * @param provider Enum: `s3`. External image store provider.
          * 
          * @return builder
          * 

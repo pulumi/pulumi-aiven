@@ -47,7 +47,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SaslPlainUsername { get; set; }
 
         /// <summary>
-        /// Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+        /// Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
         /// </summary>
         [Input("securityProtocol", required: true)]
         public Input<string> SecurityProtocol { get; set; } = null!;

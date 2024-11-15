@@ -55,7 +55,7 @@ export interface GetAccountTeamProjectResult {
      */
     readonly teamId: string;
     /**
-     * The Account team project type. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:permissions:read` and `service:logs:read`.
+     * The Account team project type. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
      */
     readonly teamType: string;
 }

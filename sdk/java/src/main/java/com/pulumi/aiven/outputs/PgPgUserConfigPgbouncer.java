@@ -25,7 +25,7 @@ public final class PgPgUserConfigPgbouncer {
      */
     private @Nullable Integer autodbMaxDbConnections;
     /**
-     * @return Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+     * @return Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
      * 
      */
     private @Nullable String autodbPoolMode;
@@ -81,7 +81,7 @@ public final class PgPgUserConfigPgbouncer {
         return Optional.ofNullable(this.autodbMaxDbConnections);
     }
     /**
-     * @return Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+     * @return Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
      * 
      */
     public Optional<String> autodbPoolMode() {

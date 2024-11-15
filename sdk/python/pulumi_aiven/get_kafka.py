@@ -206,7 +206,7 @@ class GetKafkaResult:
     @pulumi.getter(name="kafkaUserConfigs")
     def kafka_user_configs(self) -> Sequence['outputs.GetKafkaKafkaUserConfigResult']:
         """
-        Kafka user configurable settings
+        Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_user_configs")
 

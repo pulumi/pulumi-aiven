@@ -61,7 +61,7 @@ type LookupClickhouseArgs struct {
 type LookupClickhouseResult struct {
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
-	// Clickhouse user configurable settings
+	// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseUserConfigs []GetClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfigs"`
 	// Values provided by the ClickHouse server.
 	Clickhouses []GetClickhouseClickhouse `pulumi:"clickhouses"`
@@ -170,7 +170,7 @@ func (o LookupClickhouseResultOutput) AdditionalDiskSpace() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupClickhouseResult) string { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
-// Clickhouse user configurable settings
+// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupClickhouseResultOutput) ClickhouseUserConfigs() GetClickhouseClickhouseUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) []GetClickhouseClickhouseUserConfig { return v.ClickhouseUserConfigs }).(GetClickhouseClickhouseUserConfigArrayOutput)
 }

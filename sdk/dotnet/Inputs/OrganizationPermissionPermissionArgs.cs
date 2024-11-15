@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _permissions;
 
         /// <summary>
-        /// List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
+        /// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         /// </summary>
         public InputList<string> Permissions
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// ID of the user or group.
+        /// ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         /// </summary>
         [Input("principalId", required: true)]
         public Input<string> PrincipalId { get; set; } = null!;

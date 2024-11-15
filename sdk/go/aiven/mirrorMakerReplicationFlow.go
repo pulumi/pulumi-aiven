@@ -76,7 +76,7 @@ type MirrorMakerReplicationFlow struct {
 	EmitHeartbeatsEnabled pulumi.BoolPtrOutput `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolOutput `pulumi:"enable"`
-	// Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringOutput `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -159,7 +159,7 @@ type mirrorMakerReplicationFlowState struct {
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable *bool `pulumi:"enable"`
-	// Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation *string `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
@@ -192,7 +192,7 @@ type MirrorMakerReplicationFlowState struct {
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolPtrInput
-	// Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
@@ -229,7 +229,7 @@ type mirrorMakerReplicationFlowArgs struct {
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable bool `pulumi:"enable"`
-	// Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation string `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -263,7 +263,7 @@ type MirrorMakerReplicationFlowArgs struct {
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolInput
-	// Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
@@ -394,7 +394,7 @@ func (o MirrorMakerReplicationFlowOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+// Offset syncs topic location. The possible values are `source` and `target`.
 func (o MirrorMakerReplicationFlowOutput) OffsetSyncsTopicLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.OffsetSyncsTopicLocation }).(pulumi.StringOutput)
 }

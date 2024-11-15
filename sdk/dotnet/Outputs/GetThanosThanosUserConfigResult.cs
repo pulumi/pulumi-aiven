@@ -50,6 +50,18 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetThanosThanosUserConfigQueryFrontendResult? QueryFrontend;
         /// <summary>
+        /// CommonReceive.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ReceiverIngesting;
+        /// <summary>
+        /// ThanosReceiveRouting.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ReceiverRouting;
+        /// <summary>
+        /// ThanosRuler.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Ruler;
+        /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
         public readonly bool? ServiceLog;
@@ -57,6 +69,10 @@ namespace Pulumi.Aiven.Outputs
         /// Use static public IP addresses.
         /// </summary>
         public readonly bool? StaticIps;
+        /// <summary>
+        /// ThanosStore.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Store;
 
         [OutputConstructor]
         private GetThanosThanosUserConfigResult(
@@ -78,9 +94,17 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetThanosThanosUserConfigQueryFrontendResult? queryFrontend,
 
+            ImmutableDictionary<string, string>? receiverIngesting,
+
+            ImmutableDictionary<string, string>? receiverRouting,
+
+            ImmutableDictionary<string, string>? ruler,
+
             bool? serviceLog,
 
-            bool? staticIps)
+            bool? staticIps,
+
+            ImmutableDictionary<string, string>? store)
         {
             Compactor = compactor;
             Env = env;
@@ -91,8 +115,12 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             Query = query;
             QueryFrontend = queryFrontend;
+            ReceiverIngesting = receiverIngesting;
+            ReceiverRouting = receiverRouting;
+            Ruler = ruler;
             ServiceLog = serviceLog;
             StaticIps = staticIps;
+            Store = store;
         }
     }
 }

@@ -60,7 +60,7 @@ public final class GetFlinkResult {
      */
     private String diskSpaceUsed;
     /**
-     * @return Flink user configurable settings
+     * @return Flink user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetFlinkFlinkUserConfig> flinkUserConfigs;
@@ -223,7 +223,7 @@ public final class GetFlinkResult {
         return this.diskSpaceUsed;
     }
     /**
-     * @return Flink user configurable settings
+     * @return Flink user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetFlinkFlinkUserConfig> flinkUserConfigs() {

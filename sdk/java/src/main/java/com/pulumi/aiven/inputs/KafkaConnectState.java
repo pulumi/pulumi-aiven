@@ -160,14 +160,14 @@ public final class KafkaConnectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * KafkaConnect user configurable settings
+     * KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="kafkaConnectUserConfig")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigArgs> kafkaConnectUserConfig;
 
     /**
-     * @return KafkaConnect user configurable settings
+     * @return KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigArgs>> kafkaConnectUserConfig() {
@@ -689,7 +689,7 @@ public final class KafkaConnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkaConnectUserConfig KafkaConnect user configurable settings
+         * @param kafkaConnectUserConfig KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -700,7 +700,7 @@ public final class KafkaConnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkaConnectUserConfig KafkaConnect user configurable settings
+         * @param kafkaConnectUserConfig KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

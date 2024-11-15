@@ -181,14 +181,16 @@ public final class InfluxDbState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Influxdb user configurable settings
+     * Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
+     * Options that you add cannot be removed later
      * 
      */
     @Import(name="influxdbUserConfig")
     private @Nullable Output<InfluxDbInfluxdbUserConfigArgs> influxdbUserConfig;
 
     /**
-     * @return Influxdb user configurable settings
+     * @return Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
+     * Options that you add cannot be removed later
      * 
      */
     public Optional<Output<InfluxDbInfluxdbUserConfigArgs>> influxdbUserConfig() {
@@ -774,7 +776,8 @@ public final class InfluxDbState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxdbUserConfig Influxdb user configurable settings
+         * @param influxdbUserConfig Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
+         * Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -785,7 +788,8 @@ public final class InfluxDbState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxdbUserConfig Influxdb user configurable settings
+         * @param influxdbUserConfig Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
+         * Options that you add cannot be removed later
          * 
          * @return builder
          * 

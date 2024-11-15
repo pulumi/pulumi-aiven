@@ -99,7 +99,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="clickhouseKafkaUserConfigs")
     def clickhouse_kafka_user_configs(self) -> Sequence['outputs.GetServiceIntegrationClickhouseKafkaUserConfigResult']:
         """
-        ClickhouseKafka user configurable settings
+        ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_kafka_user_configs")
 
@@ -107,7 +107,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="clickhousePostgresqlUserConfigs")
     def clickhouse_postgresql_user_configs(self) -> Sequence['outputs.GetServiceIntegrationClickhousePostgresqlUserConfigResult']:
         """
-        ClickhousePostgresql user configurable settings
+        ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_postgresql_user_configs")
 
@@ -115,7 +115,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="datadogUserConfigs")
     def datadog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationDatadogUserConfigResult']:
         """
-        Datadog user configurable settings
+        Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "datadog_user_configs")
 
@@ -139,7 +139,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfigs")
     def external_aws_cloudwatch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult']:
         """
-        ExternalAwsCloudwatchLogs user configurable settings
+        ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_configs")
 
@@ -147,7 +147,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfigs")
     def external_aws_cloudwatch_metrics_user_configs(self) -> Sequence['outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult']:
         """
-        ExternalAwsCloudwatchMetrics user configurable settings
+        ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_configs")
 
@@ -155,7 +155,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="externalElasticsearchLogsUserConfigs")
     def external_elasticsearch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigResult']:
         """
-        ExternalElasticsearchLogs user configurable settings
+        ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_elasticsearch_logs_user_configs")
 
@@ -163,7 +163,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="externalOpensearchLogsUserConfigs")
     def external_opensearch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationExternalOpensearchLogsUserConfigResult']:
         """
-        ExternalOpensearchLogs user configurable settings
+        ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_opensearch_logs_user_configs")
 
@@ -171,7 +171,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="flinkExternalPostgresqlUserConfigs")
     def flink_external_postgresql_user_configs(self) -> Sequence['outputs.GetServiceIntegrationFlinkExternalPostgresqlUserConfigResult']:
         """
-        FlinkExternalPostgresql user configurable settings
+        FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "flink_external_postgresql_user_configs")
 
@@ -195,7 +195,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+        Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -203,7 +203,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="kafkaConnectUserConfigs")
     def kafka_connect_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaConnectUserConfigResult']:
         """
-        KafkaConnect user configurable settings
+        KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_connect_user_configs")
 
@@ -211,7 +211,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="kafkaLogsUserConfigs")
     def kafka_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaLogsUserConfigResult']:
         """
-        KafkaLogs user configurable settings
+        KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_logs_user_configs")
 
@@ -219,7 +219,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="kafkaMirrormakerUserConfigs")
     def kafka_mirrormaker_user_configs(self) -> Sequence['outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult']:
         """
-        KafkaMirrormaker user configurable settings
+        KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_mirrormaker_user_configs")
 
@@ -227,7 +227,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="logsUserConfigs")
     def logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationLogsUserConfigResult']:
         """
-        Logs user configurable settings
+        Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "logs_user_configs")
 
@@ -235,7 +235,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="metricsUserConfigs")
     def metrics_user_configs(self) -> Sequence['outputs.GetServiceIntegrationMetricsUserConfigResult']:
         """
-        Metrics user configurable settings
+        Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "metrics_user_configs")
 
@@ -251,7 +251,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="prometheusUserConfigs")
     def prometheus_user_configs(self) -> Sequence['outputs.GetServiceIntegrationPrometheusUserConfigResult']:
         """
-        Prometheus user configurable settings
+        Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "prometheus_user_configs")
 
@@ -324,7 +324,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
 
 
     :param str destination_service_name: Destination service for the integration.
-    :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+    :param str integration_type: Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
     :param str project: Project the integration belongs to.
     :param str source_service_name: Source service for the integration (if any)
     """
@@ -381,7 +381,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
 
 
     :param str destination_service_name: Destination service for the integration.
-    :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+    :param str integration_type: Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
     :param str project: Project the integration belongs to.
     :param str source_service_name: Source service for the integration (if any)
     """

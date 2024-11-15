@@ -70,7 +70,7 @@ public final class GetKafkaResult {
      */
     private String id;
     /**
-     * @return Kafka user configurable settings
+     * @return Kafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetKafkaKafkaUserConfig> kafkaUserConfigs;
@@ -247,7 +247,7 @@ public final class GetKafkaResult {
         return this.id;
     }
     /**
-     * @return Kafka user configurable settings
+     * @return Kafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetKafkaKafkaUserConfig> kafkaUserConfigs() {

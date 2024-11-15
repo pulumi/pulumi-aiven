@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SslClientKey;
         /// <summary>
-        /// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        /// Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         /// </summary>
         public readonly string? SslMode;
         /// <summary>

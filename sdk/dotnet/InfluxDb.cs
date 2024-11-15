@@ -18,7 +18,7 @@ namespace Pulumi.Aiven
         /// service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         /// </summary>
         [Output("additionalDiskSpace")]
-        public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
+        public Output<string> AdditionalDiskSpace { get; private set; } = null!;
 
         /// <summary>
         /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
@@ -71,7 +71,8 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
 
         /// <summary>
-        /// Influxdb user configurable settings
+        /// Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+        /// Options that you add cannot be removed later
         /// </summary>
         [Output("influxdbUserConfig")]
         public Output<Outputs.InfluxDbInfluxdbUserConfig?> InfluxdbUserConfig { get; private set; } = null!;
@@ -283,7 +284,8 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpace { get; set; }
 
         /// <summary>
-        /// Influxdb user configurable settings
+        /// Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+        /// Options that you add cannot be removed later
         /// </summary>
         [Input("influxdbUserConfig")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigArgs>? InfluxdbUserConfig { get; set; }
@@ -481,7 +483,8 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpaceUsed { get; set; }
 
         /// <summary>
-        /// Influxdb user configurable settings
+        /// Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+        /// Options that you add cannot be removed later
         /// </summary>
         [Input("influxdbUserConfig")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigGetArgs>? InfluxdbUserConfig { get; set; }

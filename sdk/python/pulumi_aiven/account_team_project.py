@@ -28,7 +28,7 @@ class AccountTeamProjectArgs:
         :param pulumi.Input[str] account_id: The unique account id
         :param pulumi.Input[str] team_id: An account team id
         :param pulumi.Input[str] project_name: The name of an already existing project
-        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "team_id", team_id)
@@ -77,7 +77,7 @@ class AccountTeamProjectArgs:
     @pulumi.getter(name="teamType")
     def team_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         """
         return pulumi.get(self, "team_type")
 
@@ -98,7 +98,7 @@ class _AccountTeamProjectState:
         :param pulumi.Input[str] account_id: The unique account id
         :param pulumi.Input[str] project_name: The name of an already existing project
         :param pulumi.Input[str] team_id: An account team id
-        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -149,7 +149,7 @@ class _AccountTeamProjectState:
     @pulumi.getter(name="teamType")
     def team_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         """
         return pulumi.get(self, "team_type")
 
@@ -210,7 +210,7 @@ class AccountTeamProject(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The unique account id
         :param pulumi.Input[str] project_name: The name of an already existing project
         :param pulumi.Input[str] team_id: An account team id
-        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         """
         ...
     @overload
@@ -315,7 +315,7 @@ class AccountTeamProject(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The unique account id
         :param pulumi.Input[str] project_name: The name of an already existing project
         :param pulumi.Input[str] team_id: An account team id
-        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        :param pulumi.Input[str] team_type: The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -355,7 +355,7 @@ class AccountTeamProject(pulumi.CustomResource):
     @pulumi.getter(name="teamType")
     def team_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         """
         return pulumi.get(self, "team_type")
 

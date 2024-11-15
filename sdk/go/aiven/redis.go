@@ -60,7 +60,7 @@ type Redis struct {
 	pulumi.CustomResourceState
 
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
@@ -91,7 +91,7 @@ type Redis struct {
 	ProjectVpcId pulumi.StringOutput `pulumi:"projectVpcId"`
 	// Redis server provided values
 	Redis RedisRedisOutput `pulumi:"redis"`
-	// Redis user configurable settings
+	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	RedisUserConfig RedisRedisUserConfigPtrOutput `pulumi:"redisUserConfig"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
@@ -201,7 +201,7 @@ type redisState struct {
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// Redis server provided values
 	Redis *RedisRedis `pulumi:"redis"`
-	// Redis user configurable settings
+	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	RedisUserConfig *RedisRedisUserConfig `pulumi:"redisUserConfig"`
 	// The hostname of the service.
 	ServiceHost *string `pulumi:"serviceHost"`
@@ -264,7 +264,7 @@ type RedisState struct {
 	ProjectVpcId pulumi.StringPtrInput
 	// Redis server provided values
 	Redis RedisRedisPtrInput
-	// Redis user configurable settings
+	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	RedisUserConfig RedisRedisUserConfigPtrInput
 	// The hostname of the service.
 	ServiceHost pulumi.StringPtrInput
@@ -319,7 +319,7 @@ type redisArgs struct {
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// Redis server provided values
 	Redis *RedisRedis `pulumi:"redis"`
-	// Redis user configurable settings
+	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	RedisUserConfig *RedisRedisUserConfig `pulumi:"redisUserConfig"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []RedisServiceIntegration `pulumi:"serviceIntegrations"`
@@ -357,7 +357,7 @@ type RedisArgs struct {
 	ProjectVpcId pulumi.StringPtrInput
 	// Redis server provided values
 	Redis RedisRedisPtrInput
-	// Redis user configurable settings
+	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	RedisUserConfig RedisRedisUserConfigPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations RedisServiceIntegrationArrayInput
@@ -461,8 +461,8 @@ func (o RedisOutput) ToRedisOutputWithContext(ctx context.Context) RedisOutput {
 }
 
 // Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-func (o RedisOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Redis) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+func (o RedisOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *Redis) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -534,7 +534,7 @@ func (o RedisOutput) Redis() RedisRedisOutput {
 	return o.ApplyT(func(v *Redis) RedisRedisOutput { return v.Redis }).(RedisRedisOutput)
 }
 
-// Redis user configurable settings
+// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o RedisOutput) RedisUserConfig() RedisRedisUserConfigPtrOutput {
 	return o.ApplyT(func(v *Redis) RedisRedisUserConfigPtrOutput { return v.RedisUserConfig }).(RedisRedisUserConfigPtrOutput)
 }

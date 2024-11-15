@@ -16,6 +16,11 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccess {
      * 
      */
     private @Nullable Boolean influxdb;
+    /**
+     * @return Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    private @Nullable Boolean userBackup;
 
     private InfluxDbInfluxdbUserConfigPrivateAccess() {}
     /**
@@ -24,6 +29,13 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccess {
      */
     public Optional<Boolean> influxdb() {
         return Optional.ofNullable(this.influxdb);
+    }
+    /**
+     * @return Allow clients to connect to user_backup with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    public Optional<Boolean> userBackup() {
+        return Optional.ofNullable(this.userBackup);
     }
 
     public static Builder builder() {
@@ -36,10 +48,12 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccess {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean influxdb;
+        private @Nullable Boolean userBackup;
         public Builder() {}
         public Builder(InfluxDbInfluxdbUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.influxdb = defaults.influxdb;
+    	      this.userBackup = defaults.userBackup;
         }
 
         @CustomType.Setter
@@ -48,9 +62,16 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccess {
             this.influxdb = influxdb;
             return this;
         }
+        @CustomType.Setter
+        public Builder userBackup(@Nullable Boolean userBackup) {
+
+            this.userBackup = userBackup;
+            return this;
+        }
         public InfluxDbInfluxdbUserConfigPrivateAccess build() {
             final var _resultValue = new InfluxDbInfluxdbUserConfigPrivateAccess();
             _resultValue.influxdb = influxdb;
+            _resultValue.userBackup = userBackup;
             return _resultValue;
         }
     }

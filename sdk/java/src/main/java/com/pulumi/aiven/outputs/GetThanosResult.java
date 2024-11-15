@@ -160,7 +160,7 @@ public final class GetThanosResult {
      */
     private List<GetThanosThano> thanos;
     /**
-     * @return Thanos user configurable settings
+     * @return Thanos user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetThanosThanosUserConfig> thanosUserConfigs;
@@ -363,7 +363,7 @@ public final class GetThanosResult {
         return this.thanos;
     }
     /**
-     * @return Thanos user configurable settings
+     * @return Thanos user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetThanosThanosUserConfig> thanosUserConfigs() {

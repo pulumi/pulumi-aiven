@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigKafkaConnectConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        /// Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         /// </summary>
         [Input("connectorClientConfigOverridePolicy")]
         public Input<string>? ConnectorClientConfigOverridePolicy { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ConsumerFetchMaxBytes { get; set; }
 
         /// <summary>
-        /// Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        /// Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         /// </summary>
         [Input("consumerIsolationLevel")]
         public Input<string>? ConsumerIsolationLevel { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerBufferMemory { get; set; }
 
         /// <summary>
-        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        /// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }

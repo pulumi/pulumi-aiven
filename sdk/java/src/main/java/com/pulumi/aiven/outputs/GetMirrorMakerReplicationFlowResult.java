@@ -39,7 +39,7 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     private String id;
     /**
-     * @return Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
+     * @return Offset syncs topic location. The possible values are `source` and `target`.
      * 
      */
     private String offsetSyncsTopicLocation;
@@ -131,7 +131,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         return this.id;
     }
     /**
-     * @return Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
+     * @return Offset syncs topic location. The possible values are `source` and `target`.
      * 
      */
     public String offsetSyncsTopicLocation() {

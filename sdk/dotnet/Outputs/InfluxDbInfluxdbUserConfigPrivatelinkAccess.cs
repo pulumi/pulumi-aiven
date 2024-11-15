@@ -17,11 +17,19 @@ namespace Pulumi.Aiven.Outputs
         /// Enable influxdb.
         /// </summary>
         public readonly bool? Influxdb;
+        /// <summary>
+        /// Enable user_backup.
+        /// </summary>
+        public readonly bool? UserBackup;
 
         [OutputConstructor]
-        private InfluxDbInfluxdbUserConfigPrivatelinkAccess(bool? influxdb)
+        private InfluxDbInfluxdbUserConfigPrivatelinkAccess(
+            bool? influxdb,
+
+            bool? userBackup)
         {
             Influxdb = influxdb;
+            UserBackup = userBackup;
         }
     }
 }

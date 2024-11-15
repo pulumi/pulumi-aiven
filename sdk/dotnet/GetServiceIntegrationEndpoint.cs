@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetServiceIntegrationEndpoint
     {
         /// <summary>
-        /// The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+        /// Gets information about an integration endpoint.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myendpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
+        ///     var exampleDatadogEndpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         EndpointName = "&lt;ENDPOINT_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         EndpointName = "Datadog endpoint",
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationEndpointResult>("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args ?? new GetServiceIntegrationEndpointArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+        /// Gets information about an integration endpoint.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myendpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
+        ///     var exampleDatadogEndpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         EndpointName = "&lt;ENDPOINT_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         EndpointName = "Datadog endpoint",
         ///     });
         /// 
         /// });
@@ -66,13 +66,13 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationEndpointArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the service integration endpoint
+        /// Name of the service integration endpoint.
         /// </summary>
         [Input("endpointName", required: true)]
         public string EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// Project the service integration endpoint belongs to
+        /// Project the service integration endpoint is in.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -86,13 +86,13 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationEndpointInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the service integration endpoint
+        /// Name of the service integration endpoint.
         /// </summary>
         [Input("endpointName", required: true)]
         public Input<string> EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// Project the service integration endpoint belongs to
+        /// Project the service integration endpoint is in.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -108,67 +108,75 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationEndpointResult
     {
         /// <summary>
-        /// Datadog user configurable settings
+        /// Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointAutoscalerUserConfigResult> AutoscalerUserConfigs;
+        /// <summary>
+        /// Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigResult> DatadogUserConfigs;
         /// <summary>
-        /// Integration endpoint specific backend configuration
+        /// Backend configuration for the endpoint.
         /// </summary>
         public readonly ImmutableDictionary<string, string> EndpointConfig;
         /// <summary>
-        /// Name of the service integration endpoint
+        /// Name of the service integration endpoint.
         /// </summary>
         public readonly string EndpointName;
         /// <summary>
-        /// Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`
+        /// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
-        /// ExternalAwsCloudwatchLogs user configurable settings
+        /// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult> ExternalAwsCloudwatchLogsUserConfigs;
         /// <summary>
-        /// ExternalAwsCloudwatchMetrics user configurable settings
+        /// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult> ExternalAwsCloudwatchMetricsUserConfigs;
         /// <summary>
-        /// ExternalAwsS3 user configurable settings
+        /// ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfigResult> ExternalAwsS3UserConfigs;
         /// <summary>
-        /// ExternalClickhouse user configurable settings
+        /// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfigResult> ExternalClickhouseUserConfigs;
         /// <summary>
-        /// ExternalElasticsearchLogs user configurable settings
+        /// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> ExternalElasticsearchLogsUserConfigs;
         /// <summary>
-        /// ExternalGoogleCloudBigquery user configurable settings
+        /// ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigqueryResult> ExternalGoogleCloudBigqueries;
         /// <summary>
-        /// ExternalGoogleCloudLogging user configurable settings
+        /// ExternalGoogleCloudLogging user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult> ExternalGoogleCloudLoggingUserConfigs;
         /// <summary>
-        /// ExternalKafka user configurable settings
+        /// ExternalKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult> ExternalKafkaUserConfigs;
         /// <summary>
-        /// ExternalMysql user configurable settings
+        /// ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalMysqlUserConfigResult> ExternalMysqlUserConfigs;
         /// <summary>
-        /// ExternalOpensearchLogs user configurable settings
+        /// ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult> ExternalOpensearchLogsUserConfigs;
         /// <summary>
-        /// ExternalPostgresql user configurable settings
+        /// ExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalPostgresqlResult> ExternalPostgresqls;
         /// <summary>
-        /// ExternalSchemaRegistry user configurable settings
+        /// ExternalPrometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalPrometheusUserConfigResult> ExternalPrometheusUserConfigs;
+        /// <summary>
+        /// ExternalSchemaRegistry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult> ExternalSchemaRegistryUserConfigs;
         /// <summary>
@@ -176,24 +184,26 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Jolokia user configurable settings
+        /// Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult> JolokiaUserConfigs;
         /// <summary>
-        /// Project the service integration endpoint belongs to
+        /// Project the service integration endpoint is in.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Prometheus user configurable settings
+        /// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult> PrometheusUserConfigs;
         /// <summary>
-        /// Rsyslog user configurable settings
+        /// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult> RsyslogUserConfigs;
 
         [OutputConstructor]
         private GetServiceIntegrationEndpointResult(
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointAutoscalerUserConfigResult> autoscalerUserConfigs,
+
             ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigResult> datadogUserConfigs,
 
             ImmutableDictionary<string, string> endpointConfig,
@@ -224,6 +234,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalPostgresqlResult> externalPostgresqls,
 
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalPrometheusUserConfigResult> externalPrometheusUserConfigs,
+
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult> externalSchemaRegistryUserConfigs,
 
             string id,
@@ -236,6 +248,7 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult> rsyslogUserConfigs)
         {
+            AutoscalerUserConfigs = autoscalerUserConfigs;
             DatadogUserConfigs = datadogUserConfigs;
             EndpointConfig = endpointConfig;
             EndpointName = endpointName;
@@ -251,6 +264,7 @@ namespace Pulumi.Aiven
             ExternalMysqlUserConfigs = externalMysqlUserConfigs;
             ExternalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             ExternalPostgresqls = externalPostgresqls;
+            ExternalPrometheusUserConfigs = externalPrometheusUserConfigs;
             ExternalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
             Id = id;
             JolokiaUserConfigs = jolokiaUserConfigs;

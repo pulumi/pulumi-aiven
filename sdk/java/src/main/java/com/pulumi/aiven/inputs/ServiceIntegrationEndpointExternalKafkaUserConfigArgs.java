@@ -77,14 +77,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+     * Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
      * 
      */
     @Import(name="securityProtocol", required=true)
     private Output<String> securityProtocol;
 
     /**
-     * @return Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+     * @return Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
      * 
      */
     public Output<String> securityProtocol() {
@@ -286,7 +286,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param securityProtocol Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+         * @param securityProtocol Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param securityProtocol Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+         * @param securityProtocol Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
          * 
          * @return builder
          * 

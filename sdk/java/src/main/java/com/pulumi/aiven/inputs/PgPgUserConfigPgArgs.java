@@ -289,14 +289,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+     * Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      * 
      */
     @Import(name="logErrorVerbosity")
     private @Nullable Output<String> logErrorVerbosity;
 
     /**
-     * @return Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+     * @return Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      * 
      */
     public Optional<Output<String>> logErrorVerbosity() {
@@ -304,14 +304,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
+     * Enum: `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
      * 
      */
     @Import(name="logLinePrefix")
     private @Nullable Output<String> logLinePrefix;
 
     /**
-     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
+     * @return Enum: `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
      * 
      */
     public Optional<Output<String>> logLinePrefix() {
@@ -619,14 +619,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      * 
      */
     @Import(name="pgStatStatementsDotTrack")
     private @Nullable Output<String> pgStatStatementsDotTrack;
 
     /**
-     * @return Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * @return Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      * 
      */
     public Optional<Output<String>> pgStatStatementsDotTrack() {
@@ -694,14 +694,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+     * Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
      * 
      */
     @Import(name="trackFunctions")
     private @Nullable Output<String> trackFunctions;
 
     /**
-     * @return Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+     * @return Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
      * 
      */
     public Optional<Output<String>> trackFunctions() {
@@ -1204,7 +1204,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logErrorVerbosity Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+         * @param logErrorVerbosity Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
          * 
          * @return builder
          * 
@@ -1215,7 +1215,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logErrorVerbosity Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+         * @param logErrorVerbosity Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
          * 
          * @return builder
          * 
@@ -1225,7 +1225,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLinePrefix Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
+         * @param logLinePrefix Enum: `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
          * 
          * @return builder
          * 
@@ -1236,7 +1236,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLinePrefix Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
+         * @param logLinePrefix Enum: `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
          * 
          * @return builder
          * 
@@ -1666,7 +1666,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatStatementsDotTrack Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+         * @param pgStatStatementsDotTrack Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
          * 
          * @return builder
          * 
@@ -1677,7 +1677,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatStatementsDotTrack Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+         * @param pgStatStatementsDotTrack Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
          * 
          * @return builder
          * 
@@ -1771,7 +1771,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackFunctions Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+         * @param trackFunctions Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
          * 
          * @return builder
          * 
@@ -1782,7 +1782,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackFunctions Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+         * @param trackFunctions Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
          * 
          * @return builder
          * 

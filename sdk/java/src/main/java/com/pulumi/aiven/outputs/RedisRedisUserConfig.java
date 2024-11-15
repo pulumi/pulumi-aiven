@@ -104,7 +104,7 @@ public final class RedisRedisUserConfig {
      */
     private @Nullable Integer redisLfuLogFactor;
     /**
-     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+     * @return Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
      * 
      */
     private @Nullable String redisMaxmemoryPolicy;
@@ -277,7 +277,7 @@ public final class RedisRedisUserConfig {
         return Optional.ofNullable(this.redisLfuLogFactor);
     }
     /**
-     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+     * @return Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
      * 
      */
     public Optional<String> redisMaxmemoryPolicy() {

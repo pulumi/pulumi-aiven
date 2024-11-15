@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         /// <summary>
-        /// Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+        /// Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
         /// </summary>
         [Input("alertingEnabled")]
         public Input<bool>? AlertingEnabled { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? AlertingMaxAnnotationsToKeep { get; set; }
 
         /// <summary>
-        /// Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
+        /// Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for 'no data or null values' for new alerting rules.
         /// </summary>
         [Input("alertingNodataOrNullvalues")]
         public Input<string>? AlertingNodataOrNullvalues { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.GrafanaGrafanaUserConfigAuthGoogleArgs>? AuthGoogle { get; set; }
 
         /// <summary>
-        /// Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+        /// Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
         /// </summary>
         [Input("cookieSamesite")]
         public Input<string>? CookieSamesite { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? CustomDomain { get; set; }
 
         /// <summary>
-        /// This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+        /// Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
         /// </summary>
         [Input("dashboardPreviewsEnabled")]
         public Input<bool>? DashboardPreviewsEnabled { get; set; }
@@ -194,7 +194,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Enable Grafana /metrics endpoint.
+        /// Enable Grafana's /metrics endpoint.
         /// </summary>
         [Input("metricsEnabled")]
         public Input<bool>? MetricsEnabled { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? StaticIps { get; set; }
 
         /// <summary>
-        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
         /// </summary>
         [Input("unifiedAlertingEnabled")]
         public Input<bool>? UnifiedAlertingEnabled { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? UserAutoAssignOrg { get; set; }
 
         /// <summary>
-        /// Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+        /// Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
         /// </summary>
         [Input("userAutoAssignOrgRole")]
         public Input<string>? UserAutoAssignOrgRole { get; set; }

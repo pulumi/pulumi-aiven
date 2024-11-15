@@ -80,7 +80,7 @@ export interface GetGrafanaResult {
      */
     readonly diskSpaceUsed: string;
     /**
-     * Grafana user configurable settings
+     * Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly grafanaUserConfigs: outputs.GetGrafanaGrafanaUserConfig[];
     /**

@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The aiven provider is available as a package in all Pulumi languages:
+The Aiven provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/aiven`](https://www.npmjs.com/package/@pulumi/aiven)
 * Python: [`pulumi-aiven`](https://pypi.org/project/pulumi-aiven/)

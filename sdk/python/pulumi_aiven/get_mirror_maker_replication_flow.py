@@ -120,7 +120,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="offsetSyncsTopicLocation")
     def offset_syncs_topic_location(self) -> str:
         """
-        Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+        Offset syncs topic location. The possible values are `source` and `target`.
         """
         return pulumi.get(self, "offset_syncs_topic_location")
 

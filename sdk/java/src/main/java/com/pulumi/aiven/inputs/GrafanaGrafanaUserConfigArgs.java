@@ -46,14 +46,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+     * Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
      * 
      */
     @Import(name="alertingEnabled")
     private @Nullable Output<Boolean> alertingEnabled;
 
     /**
-     * @return Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+     * @return Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
      * 
      */
     public Optional<Output<Boolean>> alertingEnabled() {
@@ -91,14 +91,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+     * Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     @Import(name="alertingNodataOrNullvalues")
     private @Nullable Output<String> alertingNodataOrNullvalues;
 
     /**
-     * @return Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+     * @return Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     public Optional<Output<String>> alertingNodataOrNullvalues() {
@@ -211,14 +211,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+     * Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      * 
      */
     @Import(name="cookieSamesite")
     private @Nullable Output<String> cookieSamesite;
 
     /**
-     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+     * @return Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      * 
      */
     public Optional<Output<String>> cookieSamesite() {
@@ -241,14 +241,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+     * Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
      * 
      */
     @Import(name="dashboardPreviewsEnabled")
     private @Nullable Output<Boolean> dashboardPreviewsEnabled;
 
     /**
-     * @return This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+     * @return Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
      * 
      */
     public Optional<Output<Boolean>> dashboardPreviewsEnabled() {
@@ -444,14 +444,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enable Grafana /metrics endpoint.
+     * Enable Grafana&#39;s /metrics endpoint.
      * 
      */
     @Import(name="metricsEnabled")
     private @Nullable Output<Boolean> metricsEnabled;
 
     /**
-     * @return Enable Grafana /metrics endpoint.
+     * @return Enable Grafana&#39;s /metrics endpoint.
      * 
      */
     public Optional<Output<Boolean>> metricsEnabled() {
@@ -609,14 +609,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
      * 
      */
     @Import(name="unifiedAlertingEnabled")
     private @Nullable Output<Boolean> unifiedAlertingEnabled;
 
     /**
-     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
      * 
      */
     public Optional<Output<Boolean>> unifiedAlertingEnabled() {
@@ -639,14 +639,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+     * Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
      * 
      */
     @Import(name="userAutoAssignOrgRole")
     private @Nullable Output<String> userAutoAssignOrgRole;
 
     /**
-     * @return Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+     * @return Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
      * 
      */
     public Optional<Output<String>> userAutoAssignOrgRole() {
@@ -771,7 +771,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingEnabled Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+         * @param alertingEnabled Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
          * 
          * @return builder
          * 
@@ -782,7 +782,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingEnabled Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+         * @param alertingEnabled Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
          * 
          * @return builder
          * 
@@ -834,7 +834,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingNodataOrNullvalues Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+         * @param alertingNodataOrNullvalues Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
          * 
          * @return builder
          * 
@@ -845,7 +845,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingNodataOrNullvalues Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+         * @param alertingNodataOrNullvalues Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
          * 
          * @return builder
          * 
@@ -1002,7 +1002,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cookieSamesite Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+         * @param cookieSamesite Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
          * 
          * @return builder
          * 
@@ -1013,7 +1013,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cookieSamesite Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+         * @param cookieSamesite Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dashboardPreviewsEnabled This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+         * @param dashboardPreviewsEnabled Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
          * 
          * @return builder
          * 
@@ -1055,7 +1055,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dashboardPreviewsEnabled This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+         * @param dashboardPreviewsEnabled Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
          * 
          * @return builder
          * 
@@ -1359,7 +1359,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param metricsEnabled Enable Grafana /metrics endpoint.
+         * @param metricsEnabled Enable Grafana&#39;s /metrics endpoint.
          * 
          * @return builder
          * 
@@ -1370,7 +1370,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param metricsEnabled Enable Grafana /metrics endpoint.
+         * @param metricsEnabled Enable Grafana&#39;s /metrics endpoint.
          * 
          * @return builder
          * 
@@ -1590,7 +1590,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
          * 
          * @return builder
          * 
@@ -1601,7 +1601,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+         * @param unifiedAlertingEnabled Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
          * 
          * @return builder
          * 
@@ -1632,7 +1632,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param userAutoAssignOrgRole Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+         * @param userAutoAssignOrgRole Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
          * 
          * @return builder
          * 
@@ -1643,7 +1643,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param userAutoAssignOrgRole Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+         * @param userAutoAssignOrgRole Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
          * 
          * @return builder
          * 

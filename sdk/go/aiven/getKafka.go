@@ -79,7 +79,7 @@ type LookupKafkaResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Kafka user configurable settings
+	// Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaUserConfigs []GetKafkaKafkaUserConfig `pulumi:"kafkaUserConfigs"`
 	// Kafka server connection details.
 	Kafkas []GetKafkaKafka `pulumi:"kafkas"`
@@ -219,7 +219,7 @@ func (o LookupKafkaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Kafka user configurable settings
+// Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupKafkaResultOutput) KafkaUserConfigs() GetKafkaKafkaUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupKafkaResult) []GetKafkaKafkaUserConfig { return v.KafkaUserConfigs }).(GetKafkaKafkaUserConfigArrayOutput)
 }

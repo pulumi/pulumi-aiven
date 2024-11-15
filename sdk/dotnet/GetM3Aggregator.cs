@@ -144,7 +144,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// M3aggregator user configurable settings
+        /// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetM3AggregatorM3aggregatorUserConfigResult> M3aggregatorUserConfigs;
         /// <summary>

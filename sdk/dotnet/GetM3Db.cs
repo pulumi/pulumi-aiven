@@ -144,7 +144,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// M3db user configurable settings
+        /// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetM3DbM3dbUserConfigResult> M3dbUserConfigs;
         /// <summary>

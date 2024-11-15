@@ -183,7 +183,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable Boolean staticIps;
     /**
-     * @return Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * @return Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
      */
     private @Nullable String synchronousReplication;
@@ -417,7 +417,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.staticIps);
     }
     /**
-     * @return Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * @return Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
      */
     public Optional<String> synchronousReplication() {

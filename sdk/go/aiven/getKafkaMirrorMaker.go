@@ -77,7 +77,7 @@ type LookupKafkaMirrorMakerResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// KafkaMirrormaker user configurable settings
+	// KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaMirrormakerUserConfigs []GetKafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfigs"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
@@ -208,7 +208,7 @@ func (o LookupKafkaMirrorMakerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// KafkaMirrormaker user configurable settings
+// KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupKafkaMirrorMakerResultOutput) KafkaMirrormakerUserConfigs() GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) []GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
 		return v.KafkaMirrormakerUserConfigs

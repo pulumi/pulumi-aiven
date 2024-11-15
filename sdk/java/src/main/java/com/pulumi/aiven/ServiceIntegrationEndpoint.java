@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.ServiceIntegrationEndpointArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointState;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointAutoscalerUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointDatadogUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
@@ -18,6 +19,7 @@ import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalKafkaUserConfi
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalMysqlUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalPostgresql;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalPrometheusUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointJolokiaUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointPrometheusUserConfig;
@@ -32,286 +34,376 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Service Integration Endpoint resource allows the creation and management of Aiven Service Integration Endpoints.
+ * Creates and manages an integration endpoint.
+ * 
+ * Integration endpoints let you send data like metrics and logs from Aiven services to external systems. The `autoscaler` endpoint lets you automatically scale the disk space on your services.
+ * 
+ * After creating an endpoint, use the service integration resource to connect it to a service.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.ServiceIntegrationEndpoint;
+ * import com.pulumi.aiven.ServiceIntegrationEndpointArgs;
+ * import com.pulumi.aiven.inputs.ServiceIntegrationEndpointAutoscalerUserConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Datadog endpoint
+ *         var exampleEndpoint = new ServiceIntegrationEndpoint("exampleEndpoint", ServiceIntegrationEndpointArgs.builder()
+ *             .project(exampleProject.project())
+ *             .endpointName("Datadog endpoint")
+ *             .endpointType("datadog")
+ *             .build());
+ * 
+ *         // Disk autoscaler endpoint
+ *         var autoscalerEndpoint = new ServiceIntegrationEndpoint("autoscalerEndpoint", ServiceIntegrationEndpointArgs.builder()
+ *             .project(exampleProject.project())
+ *             .endpointName("disk-autoscaler-200GiB")
+ *             .endpointType("autoscaler")
+ *             .autoscalerUserConfig(ServiceIntegrationEndpointAutoscalerUserConfigArgs.builder()
+ *                 .autoscalings(ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs.builder()
+ *                     .capGb(200)
+ *                     .type("autoscale_disk")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint example_endpoint PROJECT/ID
+ * ```
  * 
  */
 @ResourceType(type="aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint")
 public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * Datadog user configurable settings
+     * Autoscaler user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Export(name="autoscalerUserConfig", refs={ServiceIntegrationEndpointAutoscalerUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointAutoscalerUserConfig> autoscalerUserConfig;
+
+    /**
+     * @return Autoscaler user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointAutoscalerUserConfig>> autoscalerUserConfig() {
+        return Codegen.optional(this.autoscalerUserConfig);
+    }
+    /**
+     * Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="datadogUserConfig", refs={ServiceIntegrationEndpointDatadogUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointDatadogUserConfig> datadogUserConfig;
 
     /**
-     * @return Datadog user configurable settings
+     * @return Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointDatadogUserConfig>> datadogUserConfig() {
         return Codegen.optional(this.datadogUserConfig);
     }
     /**
-     * Integration endpoint specific backend configuration
+     * Backend configuration for the endpoint.
      * 
      */
     @Export(name="endpointConfig", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> endpointConfig;
 
     /**
-     * @return Integration endpoint specific backend configuration
+     * @return Backend configuration for the endpoint.
      * 
      */
     public Output<Map<String,String>> endpointConfig() {
         return this.endpointConfig;
     }
     /**
-     * Name of the service integration endpoint
+     * Name of the service integration endpoint.
      * 
      */
     @Export(name="endpointName", refs={String.class}, tree="[0]")
     private Output<String> endpointName;
 
     /**
-     * @return Name of the service integration endpoint
+     * @return Name of the service integration endpoint.
      * 
      */
     public Output<String> endpointName() {
         return this.endpointName;
     }
     /**
-     * Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`
+     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
      * 
      */
     public Output<String> endpointType() {
         return this.endpointType;
     }
     /**
-     * ExternalAwsCloudwatchLogs user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalAwsCloudwatchLogsUserConfig", refs={ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfig;
 
     /**
-     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * @return ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>> externalAwsCloudwatchLogsUserConfig() {
         return Codegen.optional(this.externalAwsCloudwatchLogsUserConfig);
     }
     /**
-     * ExternalAwsCloudwatchMetrics user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalAwsCloudwatchMetricsUserConfig", refs={ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfig;
 
     /**
-     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * @return ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>> externalAwsCloudwatchMetricsUserConfig() {
         return Codegen.optional(this.externalAwsCloudwatchMetricsUserConfig);
     }
     /**
-     * ExternalAwsS3 user configurable settings
+     * ExternalAwsS3 user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalAwsS3UserConfig", refs={ServiceIntegrationEndpointExternalAwsS3UserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfig;
 
     /**
-     * @return ExternalAwsS3 user configurable settings
+     * @return ExternalAwsS3 user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalAwsS3UserConfig>> externalAwsS3UserConfig() {
         return Codegen.optional(this.externalAwsS3UserConfig);
     }
     /**
-     * ExternalClickhouse user configurable settings
+     * ExternalClickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalClickhouseUserConfig", refs={ServiceIntegrationEndpointExternalClickhouseUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfig;
 
     /**
-     * @return ExternalClickhouse user configurable settings
+     * @return ExternalClickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalClickhouseUserConfig>> externalClickhouseUserConfig() {
         return Codegen.optional(this.externalClickhouseUserConfig);
     }
     /**
-     * ExternalElasticsearchLogs user configurable settings
+     * ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalElasticsearchLogsUserConfig", refs={ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfig;
 
     /**
-     * @return ExternalElasticsearchLogs user configurable settings
+     * @return ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>> externalElasticsearchLogsUserConfig() {
         return Codegen.optional(this.externalElasticsearchLogsUserConfig);
     }
     /**
-     * ExternalGoogleCloudBigquery user configurable settings
+     * ExternalGoogleCloudBigquery user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalGoogleCloudBigquery", refs={ServiceIntegrationEndpointExternalGoogleCloudBigquery.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigquery;
 
     /**
-     * @return ExternalGoogleCloudBigquery user configurable settings
+     * @return ExternalGoogleCloudBigquery user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalGoogleCloudBigquery>> externalGoogleCloudBigquery() {
         return Codegen.optional(this.externalGoogleCloudBigquery);
     }
     /**
-     * ExternalGoogleCloudLogging user configurable settings
+     * ExternalGoogleCloudLogging user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalGoogleCloudLoggingUserConfig", refs={ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfig;
 
     /**
-     * @return ExternalGoogleCloudLogging user configurable settings
+     * @return ExternalGoogleCloudLogging user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>> externalGoogleCloudLoggingUserConfig() {
         return Codegen.optional(this.externalGoogleCloudLoggingUserConfig);
     }
     /**
-     * ExternalKafka user configurable settings
+     * ExternalKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalKafkaUserConfig", refs={ServiceIntegrationEndpointExternalKafkaUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfig;
 
     /**
-     * @return ExternalKafka user configurable settings
+     * @return ExternalKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalKafkaUserConfig>> externalKafkaUserConfig() {
         return Codegen.optional(this.externalKafkaUserConfig);
     }
     /**
-     * ExternalMysql user configurable settings
+     * ExternalMysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalMysqlUserConfig", refs={ServiceIntegrationEndpointExternalMysqlUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfig;
 
     /**
-     * @return ExternalMysql user configurable settings
+     * @return ExternalMysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalMysqlUserConfig>> externalMysqlUserConfig() {
         return Codegen.optional(this.externalMysqlUserConfig);
     }
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalOpensearchLogsUserConfig", refs={ServiceIntegrationEndpointExternalOpensearchLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfig;
 
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>> externalOpensearchLogsUserConfig() {
         return Codegen.optional(this.externalOpensearchLogsUserConfig);
     }
     /**
-     * ExternalPostgresql user configurable settings
+     * ExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalPostgresql", refs={ServiceIntegrationEndpointExternalPostgresql.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalPostgresql> externalPostgresql;
 
     /**
-     * @return ExternalPostgresql user configurable settings
+     * @return ExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalPostgresql>> externalPostgresql() {
         return Codegen.optional(this.externalPostgresql);
     }
     /**
-     * ExternalSchemaRegistry user configurable settings
+     * ExternalPrometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Export(name="externalPrometheusUserConfig", refs={ServiceIntegrationEndpointExternalPrometheusUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointExternalPrometheusUserConfig> externalPrometheusUserConfig;
+
+    /**
+     * @return ExternalPrometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointExternalPrometheusUserConfig>> externalPrometheusUserConfig() {
+        return Codegen.optional(this.externalPrometheusUserConfig);
+    }
+    /**
+     * ExternalSchemaRegistry user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalSchemaRegistryUserConfig", refs={ServiceIntegrationEndpointExternalSchemaRegistryUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfig;
 
     /**
-     * @return ExternalSchemaRegistry user configurable settings
+     * @return ExternalSchemaRegistry user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>> externalSchemaRegistryUserConfig() {
         return Codegen.optional(this.externalSchemaRegistryUserConfig);
     }
     /**
-     * Jolokia user configurable settings
+     * Jolokia user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="jolokiaUserConfig", refs={ServiceIntegrationEndpointJolokiaUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfig;
 
     /**
-     * @return Jolokia user configurable settings
+     * @return Jolokia user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointJolokiaUserConfig>> jolokiaUserConfig() {
         return Codegen.optional(this.jolokiaUserConfig);
     }
     /**
-     * Project the service integration endpoint belongs to
+     * Project the service integration endpoint is in.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Project the service integration endpoint belongs to
+     * @return Project the service integration endpoint is in.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Prometheus user configurable settings
+     * Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="prometheusUserConfig", refs={ServiceIntegrationEndpointPrometheusUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfig;
 
     /**
-     * @return Prometheus user configurable settings
+     * @return Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointPrometheusUserConfig>> prometheusUserConfig() {
         return Codegen.optional(this.prometheusUserConfig);
     }
     /**
-     * Rsyslog user configurable settings
+     * Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="rsyslogUserConfig", refs={ServiceIntegrationEndpointRsyslogUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfig;
 
     /**
-     * @return Rsyslog user configurable settings
+     * @return Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationEndpointRsyslogUserConfig>> rsyslogUserConfig() {

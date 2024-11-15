@@ -108,7 +108,7 @@ export interface GetRedisResult {
      */
     readonly redis: outputs.GetRedisRedi[];
     /**
-     * Redis user configurable settings
+     * Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly redisUserConfigs: outputs.GetRedisRedisUserConfig[];
     /**

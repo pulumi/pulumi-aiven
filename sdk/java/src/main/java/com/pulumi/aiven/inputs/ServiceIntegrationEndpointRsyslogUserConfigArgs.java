@@ -61,14 +61,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+     * Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
      * 
      */
     @Import(name="format", required=true)
     private Output<String> format;
 
     /**
-     * @return Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+     * @return Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
      * 
      */
     public Output<String> format() {
@@ -274,7 +274,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param format Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+         * @param format Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param format Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+         * @param format Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
          * 
          * @return builder
          * 

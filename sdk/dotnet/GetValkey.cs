@@ -216,7 +216,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly bool TerminationProtection;
         /// <summary>
-        /// Valkey user configurable settings
+        /// Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetValkeyValkeyUserConfigResult> ValkeyUserConfigs;
         /// <summary>

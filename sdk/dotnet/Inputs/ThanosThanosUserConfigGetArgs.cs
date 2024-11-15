@@ -92,6 +92,42 @@ namespace Pulumi.Aiven.Inputs
         [Input("queryFrontend")]
         public Input<Inputs.ThanosThanosUserConfigQueryFrontendGetArgs>? QueryFrontend { get; set; }
 
+        [Input("receiverIngesting")]
+        private InputMap<string>? _receiverIngesting;
+
+        /// <summary>
+        /// CommonReceive.
+        /// </summary>
+        public InputMap<string> ReceiverIngesting
+        {
+            get => _receiverIngesting ?? (_receiverIngesting = new InputMap<string>());
+            set => _receiverIngesting = value;
+        }
+
+        [Input("receiverRouting")]
+        private InputMap<string>? _receiverRouting;
+
+        /// <summary>
+        /// ThanosReceiveRouting.
+        /// </summary>
+        public InputMap<string> ReceiverRouting
+        {
+            get => _receiverRouting ?? (_receiverRouting = new InputMap<string>());
+            set => _receiverRouting = value;
+        }
+
+        [Input("ruler")]
+        private InputMap<string>? _ruler;
+
+        /// <summary>
+        /// ThanosRuler.
+        /// </summary>
+        public InputMap<string> Ruler
+        {
+            get => _ruler ?? (_ruler = new InputMap<string>());
+            set => _ruler = value;
+        }
+
         /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
@@ -103,6 +139,18 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("staticIps")]
         public Input<bool>? StaticIps { get; set; }
+
+        [Input("store")]
+        private InputMap<string>? _store;
+
+        /// <summary>
+        /// ThanosStore.
+        /// </summary>
+        public InputMap<string> Store
+        {
+            get => _store ?? (_store = new InputMap<string>());
+            set => _store = value;
+        }
 
         public ThanosThanosUserConfigGetArgs()
         {

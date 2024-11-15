@@ -192,7 +192,7 @@ class GetM3AggregatorResult:
     @pulumi.getter(name="m3aggregatorUserConfigs")
     def m3aggregator_user_configs(self) -> Sequence['outputs.GetM3AggregatorM3aggregatorUserConfigResult']:
         """
-        M3aggregator user configurable settings
+        M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "m3aggregator_user_configs")
 

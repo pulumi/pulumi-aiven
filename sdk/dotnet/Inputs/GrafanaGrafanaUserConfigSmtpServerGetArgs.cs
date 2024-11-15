@@ -59,7 +59,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? SkipVerify { get; set; }
 
         /// <summary>
-        /// Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        /// Enum: `MandatoryStartTLS`, `NoStartTLS`, `OpportunisticStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
         /// </summary>
         [Input("starttlsPolicy")]
         public Input<string>? StarttlsPolicy { get; set; }

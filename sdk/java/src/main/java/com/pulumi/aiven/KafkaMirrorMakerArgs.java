@@ -76,14 +76,14 @@ public final class KafkaMirrorMakerArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * KafkaMirrormaker user configurable settings
+     * KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="kafkaMirrormakerUserConfig")
     private @Nullable Output<KafkaMirrorMakerKafkaMirrormakerUserConfigArgs> kafkaMirrormakerUserConfig;
 
     /**
-     * @return KafkaMirrormaker user configurable settings
+     * @return KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<KafkaMirrorMakerKafkaMirrormakerUserConfigArgs>> kafkaMirrormakerUserConfig() {
@@ -365,7 +365,7 @@ public final class KafkaMirrorMakerArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings
+         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class KafkaMirrorMakerArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings
+         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

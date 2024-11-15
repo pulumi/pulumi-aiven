@@ -30,6 +30,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("influxdb")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigInfluxdbGetArgs>? Influxdb { get; set; }
 
+        /// <summary>
+        /// Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+        /// </summary>
+        [Input("influxdbVersion")]
+        public Input<string>? InfluxdbVersion { get; set; }
+
         [Input("ipFilterObjects")]
         private InputList<Inputs.InfluxDbInfluxdbUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 

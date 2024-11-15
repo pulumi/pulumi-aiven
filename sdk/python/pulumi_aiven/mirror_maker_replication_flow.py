@@ -37,7 +37,7 @@ class MirrorMakerReplicationFlowArgs:
         """
         The set of arguments for constructing a MirrorMakerReplicationFlow resource.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
-        :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+        :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         :param pulumi.Input[str] service_name: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -92,7 +92,7 @@ class MirrorMakerReplicationFlowArgs:
     @pulumi.getter(name="offsetSyncsTopicLocation")
     def offset_syncs_topic_location(self) -> pulumi.Input[str]:
         """
-        Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+        Offset syncs topic location. The possible values are `source` and `target`.
         """
         return pulumi.get(self, "offset_syncs_topic_location")
 
@@ -281,7 +281,7 @@ class _MirrorMakerReplicationFlowState:
         :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
-        :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+        :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication_factor: Replication factor, `>= 1`.
         :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -376,7 +376,7 @@ class _MirrorMakerReplicationFlowState:
     @pulumi.getter(name="offsetSyncsTopicLocation")
     def offset_syncs_topic_location(self) -> Optional[pulumi.Input[str]]:
         """
-        Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+        Offset syncs topic location. The possible values are `source` and `target`.
         """
         return pulumi.get(self, "offset_syncs_topic_location")
 
@@ -569,7 +569,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
-        :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+        :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication_factor: Replication factor, `>= 1`.
         :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -728,7 +728,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
-        :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+        :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication_factor: Replication factor, `>= 1`.
         :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
@@ -797,7 +797,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     @pulumi.getter(name="offsetSyncsTopicLocation")
     def offset_syncs_topic_location(self) -> pulumi.Output[str]:
         """
-        Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+        Offset syncs topic location. The possible values are `source` and `target`.
         """
         return pulumi.get(self, "offset_syncs_topic_location")
 

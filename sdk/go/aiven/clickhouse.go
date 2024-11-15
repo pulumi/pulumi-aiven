@@ -54,10 +54,10 @@ type Clickhouse struct {
 	pulumi.CustomResourceState
 
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// Values provided by the ClickHouse server.
 	Clickhouse ClickhouseClickhouseOutput `pulumi:"clickhouse"`
-	// Clickhouse user configurable settings
+	// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrOutput `pulumi:"clickhouseUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
@@ -167,7 +167,7 @@ type clickhouseState struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Values provided by the ClickHouse server.
 	Clickhouse *ClickhouseClickhouse `pulumi:"clickhouse"`
-	// Clickhouse user configurable settings
+	// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseUserConfig *ClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
@@ -230,7 +230,7 @@ type ClickhouseState struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Values provided by the ClickHouse server.
 	Clickhouse ClickhouseClickhousePtrInput
-	// Clickhouse user configurable settings
+	// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
@@ -297,7 +297,7 @@ type clickhouseArgs struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Values provided by the ClickHouse server.
 	Clickhouse *ClickhouseClickhouse `pulumi:"clickhouse"`
-	// Clickhouse user configurable settings
+	// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseUserConfig *ClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
@@ -335,7 +335,7 @@ type ClickhouseArgs struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Values provided by the ClickHouse server.
 	Clickhouse ClickhouseClickhousePtrInput
-	// Clickhouse user configurable settings
+	// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
@@ -455,8 +455,8 @@ func (o ClickhouseOutput) ToClickhouseOutputWithContext(ctx context.Context) Cli
 }
 
 // Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-func (o ClickhouseOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Clickhouse) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+func (o ClickhouseOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *Clickhouse) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
 // Values provided by the ClickHouse server.
@@ -464,7 +464,7 @@ func (o ClickhouseOutput) Clickhouse() ClickhouseClickhouseOutput {
 	return o.ApplyT(func(v *Clickhouse) ClickhouseClickhouseOutput { return v.Clickhouse }).(ClickhouseClickhouseOutput)
 }
 
-// Clickhouse user configurable settings
+// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o ClickhouseOutput) ClickhouseUserConfig() ClickhouseClickhouseUserConfigPtrOutput {
 	return o.ApplyT(func(v *Clickhouse) ClickhouseClickhouseUserConfigPtrOutput { return v.ClickhouseUserConfig }).(ClickhouseClickhouseUserConfigPtrOutput)
 }

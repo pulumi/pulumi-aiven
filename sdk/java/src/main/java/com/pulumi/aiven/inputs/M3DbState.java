@@ -176,14 +176,14 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * M3db user configurable settings
+     * M3db user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="m3dbUserConfig")
     private @Nullable Output<M3DbM3dbUserConfigArgs> m3dbUserConfig;
 
     /**
-     * @return M3db user configurable settings
+     * @return M3db user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<M3DbM3dbUserConfigArgs>> m3dbUserConfig() {
@@ -727,7 +727,7 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param m3dbUserConfig M3db user configurable settings
+         * @param m3dbUserConfig M3db user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -738,7 +738,7 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param m3dbUserConfig M3db user configurable settings
+         * @param m3dbUserConfig M3db user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

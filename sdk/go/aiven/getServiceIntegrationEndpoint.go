@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+// Gets information about an integration endpoint.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupServiceIntegrationEndpoint(ctx, &aiven.LookupServiceIntegrationEndpointArgs{
-//				Project:      myproject.Project,
-//				EndpointName: "<ENDPOINT_NAME>",
+//				Project:      exampleProject.Project,
+//				EndpointName: "Datadog endpoint",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,55 +51,59 @@ func LookupServiceIntegrationEndpoint(ctx *pulumi.Context, args *LookupServiceIn
 
 // A collection of arguments for invoking getServiceIntegrationEndpoint.
 type LookupServiceIntegrationEndpointArgs struct {
-	// Name of the service integration endpoint
+	// Name of the service integration endpoint.
 	EndpointName string `pulumi:"endpointName"`
-	// Project the service integration endpoint belongs to
+	// Project the service integration endpoint is in.
 	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getServiceIntegrationEndpoint.
 type LookupServiceIntegrationEndpointResult struct {
-	// Datadog user configurable settings
+	// Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	AutoscalerUserConfigs []GetServiceIntegrationEndpointAutoscalerUserConfig `pulumi:"autoscalerUserConfigs"`
+	// Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	DatadogUserConfigs []GetServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfigs"`
-	// Integration endpoint specific backend configuration
+	// Backend configuration for the endpoint.
 	EndpointConfig map[string]string `pulumi:"endpointConfig"`
-	// Name of the service integration endpoint
+	// Name of the service integration endpoint.
 	EndpointName string `pulumi:"endpointName"`
-	// Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus`, `rsyslog`
+	// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
 	EndpointType string `pulumi:"endpointType"`
-	// ExternalAwsCloudwatchLogs user configurable settings
+	// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsCloudwatchLogsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfigs"`
-	// ExternalAwsCloudwatchMetrics user configurable settings
+	// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsCloudwatchMetricsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfigs"`
-	// ExternalAwsS3 user configurable settings
+	// ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsS3UserConfigs []GetServiceIntegrationEndpointExternalAwsS3UserConfig `pulumi:"externalAwsS3UserConfigs"`
-	// ExternalClickhouse user configurable settings
+	// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalClickhouseUserConfigs []GetServiceIntegrationEndpointExternalClickhouseUserConfig `pulumi:"externalClickhouseUserConfigs"`
-	// ExternalElasticsearchLogs user configurable settings
+	// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalElasticsearchLogsUserConfigs []GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfigs"`
-	// ExternalGoogleCloudBigquery user configurable settings
+	// ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalGoogleCloudBigqueries []GetServiceIntegrationEndpointExternalGoogleCloudBigquery `pulumi:"externalGoogleCloudBigqueries"`
-	// ExternalGoogleCloudLogging user configurable settings
+	// ExternalGoogleCloudLogging user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalGoogleCloudLoggingUserConfigs []GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfigs"`
-	// ExternalKafka user configurable settings
+	// ExternalKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalKafkaUserConfigs []GetServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfigs"`
-	// ExternalMysql user configurable settings
+	// ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalMysqlUserConfigs []GetServiceIntegrationEndpointExternalMysqlUserConfig `pulumi:"externalMysqlUserConfigs"`
-	// ExternalOpensearchLogs user configurable settings
+	// ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalOpensearchLogsUserConfigs []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfigs"`
-	// ExternalPostgresql user configurable settings
+	// ExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalPostgresqls []GetServiceIntegrationEndpointExternalPostgresql `pulumi:"externalPostgresqls"`
-	// ExternalSchemaRegistry user configurable settings
+	// ExternalPrometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ExternalPrometheusUserConfigs []GetServiceIntegrationEndpointExternalPrometheusUserConfig `pulumi:"externalPrometheusUserConfigs"`
+	// ExternalSchemaRegistry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalSchemaRegistryUserConfigs []GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Jolokia user configurable settings
+	// Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	JolokiaUserConfigs []GetServiceIntegrationEndpointJolokiaUserConfig `pulumi:"jolokiaUserConfigs"`
-	// Project the service integration endpoint belongs to
+	// Project the service integration endpoint is in.
 	Project string `pulumi:"project"`
-	// Prometheus user configurable settings
+	// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	PrometheusUserConfigs []GetServiceIntegrationEndpointPrometheusUserConfig `pulumi:"prometheusUserConfigs"`
-	// Rsyslog user configurable settings
+	// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	RsyslogUserConfigs []GetServiceIntegrationEndpointRsyslogUserConfig `pulumi:"rsyslogUserConfigs"`
 }
 
@@ -124,9 +128,9 @@ func LookupServiceIntegrationEndpointOutput(ctx *pulumi.Context, args LookupServ
 
 // A collection of arguments for invoking getServiceIntegrationEndpoint.
 type LookupServiceIntegrationEndpointOutputArgs struct {
-	// Name of the service integration endpoint
+	// Name of the service integration endpoint.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
-	// Project the service integration endpoint belongs to
+	// Project the service integration endpoint is in.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -149,106 +153,120 @@ func (o LookupServiceIntegrationEndpointResultOutput) ToLookupServiceIntegration
 	return o
 }
 
-// Datadog user configurable settings
+// Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+func (o LookupServiceIntegrationEndpointResultOutput) AutoscalerUserConfigs() GetServiceIntegrationEndpointAutoscalerUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointAutoscalerUserConfig {
+		return v.AutoscalerUserConfigs
+	}).(GetServiceIntegrationEndpointAutoscalerUserConfigArrayOutput)
+}
+
+// Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) DatadogUserConfigs() GetServiceIntegrationEndpointDatadogUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointDatadogUserConfig {
 		return v.DatadogUserConfigs
 	}).(GetServiceIntegrationEndpointDatadogUserConfigArrayOutput)
 }
 
-// Integration endpoint specific backend configuration
+// Backend configuration for the endpoint.
 func (o LookupServiceIntegrationEndpointResultOutput) EndpointConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) map[string]string { return v.EndpointConfig }).(pulumi.StringMapOutput)
 }
 
-// Name of the service integration endpoint
+// Name of the service integration endpoint.
 func (o LookupServiceIntegrationEndpointResultOutput) EndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.EndpointName }).(pulumi.StringOutput)
 }
 
-// Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus`, `rsyslog`
+// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
 func (o LookupServiceIntegrationEndpointResultOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
-// ExternalAwsCloudwatchLogs user configurable settings
+// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalAwsCloudwatchLogsUserConfigs() GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
 		return v.ExternalAwsCloudwatchLogsUserConfigs
 	}).(GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArrayOutput)
 }
 
-// ExternalAwsCloudwatchMetrics user configurable settings
+// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalAwsCloudwatchMetricsUserConfigs() GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
 		return v.ExternalAwsCloudwatchMetricsUserConfigs
 	}).(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput)
 }
 
-// ExternalAwsS3 user configurable settings
+// ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalAwsS3UserConfigs() GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalAwsS3UserConfig {
 		return v.ExternalAwsS3UserConfigs
 	}).(GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput)
 }
 
-// ExternalClickhouse user configurable settings
+// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalClickhouseUserConfigs() GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalClickhouseUserConfig {
 		return v.ExternalClickhouseUserConfigs
 	}).(GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput)
 }
 
-// ExternalElasticsearchLogs user configurable settings
+// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalElasticsearchLogsUserConfigs() GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig {
 		return v.ExternalElasticsearchLogsUserConfigs
 	}).(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArrayOutput)
 }
 
-// ExternalGoogleCloudBigquery user configurable settings
+// ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalGoogleCloudBigqueries() GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalGoogleCloudBigquery {
 		return v.ExternalGoogleCloudBigqueries
 	}).(GetServiceIntegrationEndpointExternalGoogleCloudBigqueryArrayOutput)
 }
 
-// ExternalGoogleCloudLogging user configurable settings
+// ExternalGoogleCloudLogging user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalGoogleCloudLoggingUserConfigs() GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
 		return v.ExternalGoogleCloudLoggingUserConfigs
 	}).(GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArrayOutput)
 }
 
-// ExternalKafka user configurable settings
+// ExternalKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalKafkaUserConfigs() GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalKafkaUserConfig {
 		return v.ExternalKafkaUserConfigs
 	}).(GetServiceIntegrationEndpointExternalKafkaUserConfigArrayOutput)
 }
 
-// ExternalMysql user configurable settings
+// ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalMysqlUserConfigs() GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalMysqlUserConfig {
 		return v.ExternalMysqlUserConfigs
 	}).(GetServiceIntegrationEndpointExternalMysqlUserConfigArrayOutput)
 }
 
-// ExternalOpensearchLogs user configurable settings
+// ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalOpensearchLogsUserConfigs() GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
 		return v.ExternalOpensearchLogsUserConfigs
 	}).(GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigArrayOutput)
 }
 
-// ExternalPostgresql user configurable settings
+// ExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalPostgresqls() GetServiceIntegrationEndpointExternalPostgresqlArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalPostgresql {
 		return v.ExternalPostgresqls
 	}).(GetServiceIntegrationEndpointExternalPostgresqlArrayOutput)
 }
 
-// ExternalSchemaRegistry user configurable settings
+// ExternalPrometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+func (o LookupServiceIntegrationEndpointResultOutput) ExternalPrometheusUserConfigs() GetServiceIntegrationEndpointExternalPrometheusUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalPrometheusUserConfig {
+		return v.ExternalPrometheusUserConfigs
+	}).(GetServiceIntegrationEndpointExternalPrometheusUserConfigArrayOutput)
+}
+
+// ExternalSchemaRegistry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) ExternalSchemaRegistryUserConfigs() GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
 		return v.ExternalSchemaRegistryUserConfigs
@@ -260,26 +278,26 @@ func (o LookupServiceIntegrationEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Jolokia user configurable settings
+// Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) JolokiaUserConfigs() GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointJolokiaUserConfig {
 		return v.JolokiaUserConfigs
 	}).(GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput)
 }
 
-// Project the service integration endpoint belongs to
+// Project the service integration endpoint is in.
 func (o LookupServiceIntegrationEndpointResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Prometheus user configurable settings
+// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) PrometheusUserConfigs() GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointPrometheusUserConfig {
 		return v.PrometheusUserConfigs
 	}).(GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput)
 }
 
-// Rsyslog user configurable settings
+// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupServiceIntegrationEndpointResultOutput) RsyslogUserConfigs() GetServiceIntegrationEndpointRsyslogUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointRsyslogUserConfig {
 		return v.RsyslogUserConfigs

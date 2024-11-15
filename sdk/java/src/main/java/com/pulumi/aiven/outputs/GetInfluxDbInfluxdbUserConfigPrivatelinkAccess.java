@@ -16,6 +16,11 @@ public final class GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
      * 
      */
     private @Nullable Boolean influxdb;
+    /**
+     * @return Enable user_backup.
+     * 
+     */
+    private @Nullable Boolean userBackup;
 
     private GetInfluxDbInfluxdbUserConfigPrivatelinkAccess() {}
     /**
@@ -24,6 +29,13 @@ public final class GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
      */
     public Optional<Boolean> influxdb() {
         return Optional.ofNullable(this.influxdb);
+    }
+    /**
+     * @return Enable user_backup.
+     * 
+     */
+    public Optional<Boolean> userBackup() {
+        return Optional.ofNullable(this.userBackup);
     }
 
     public static Builder builder() {
@@ -36,10 +48,12 @@ public final class GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean influxdb;
+        private @Nullable Boolean userBackup;
         public Builder() {}
         public Builder(GetInfluxDbInfluxdbUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.influxdb = defaults.influxdb;
+    	      this.userBackup = defaults.userBackup;
         }
 
         @CustomType.Setter
@@ -48,9 +62,16 @@ public final class GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
             this.influxdb = influxdb;
             return this;
         }
+        @CustomType.Setter
+        public Builder userBackup(@Nullable Boolean userBackup) {
+
+            this.userBackup = userBackup;
+            return this;
+        }
         public GetInfluxDbInfluxdbUserConfigPrivatelinkAccess build() {
             final var _resultValue = new GetInfluxDbInfluxdbUserConfigPrivatelinkAccess();
             _resultValue.influxdb = influxdb;
+            _resultValue.userBackup = userBackup;
             return _resultValue;
         }
     }

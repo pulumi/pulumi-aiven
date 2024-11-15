@@ -485,6 +485,10 @@ __all__ = [
     'ServiceIntegrationDatadogUserConfigOpensearchArgsDict',
     'ServiceIntegrationDatadogUserConfigRedisArgs',
     'ServiceIntegrationDatadogUserConfigRedisArgsDict',
+    'ServiceIntegrationEndpointAutoscalerUserConfigArgs',
+    'ServiceIntegrationEndpointAutoscalerUserConfigArgsDict',
+    'ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs',
+    'ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgsDict',
     'ServiceIntegrationEndpointDatadogUserConfigArgs',
     'ServiceIntegrationEndpointDatadogUserConfigArgsDict',
     'ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs',
@@ -511,6 +515,8 @@ __all__ = [
     'ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict',
     'ServiceIntegrationEndpointExternalPostgresqlArgs',
     'ServiceIntegrationEndpointExternalPostgresqlArgsDict',
+    'ServiceIntegrationEndpointExternalPrometheusUserConfigArgs',
+    'ServiceIntegrationEndpointExternalPrometheusUserConfigArgsDict',
     'ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs',
     'ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict',
     'ServiceIntegrationEndpointJolokiaUserConfigArgs',
@@ -856,9 +862,6 @@ class CassandraCassandraUserConfigArgs:
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
         if additional_backup_regions is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-        if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if backup_hour is not None:
             pulumi.set(__self__, "backup_hour", backup_hour)
@@ -896,7 +899,6 @@ class CassandraCassandraUserConfigArgs:
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
-    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[pulumi.Input[str]]:
         """
         Additional Cloud Regions for Backup Replication.
@@ -2956,7 +2958,7 @@ if not MYPY:
         """
         dragonfly_persistence: NotRequired[pulumi.Input[str]]
         """
-        Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+        Enum: `dfs`, `off`, `rdb`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         """
         dragonfly_ssl: NotRequired[pulumi.Input[bool]]
         """
@@ -3033,7 +3035,7 @@ class DragonflyDragonflyUserConfigArgs:
                  static_ips: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] cache_mode: Evict entries when getting close to maxmemory limit. Default: `false`.
-        :param pulumi.Input[str] dragonfly_persistence: Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+        :param pulumi.Input[str] dragonfly_persistence: Enum: `dfs`, `off`, `rdb`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         :param pulumi.Input[bool] dragonfly_ssl: Require SSL to access Dragonfly. Default: `true`.
         :param pulumi.Input[Sequence[pulumi.Input['DragonflyDragonflyUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -3098,7 +3100,7 @@ class DragonflyDragonflyUserConfigArgs:
     @pulumi.getter(name="dragonflyPersistence")
     def dragonfly_persistence(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+        Enum: `dfs`, `off`, `rdb`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         """
         return pulumi.get(self, "dragonfly_persistence")
 
@@ -4836,7 +4838,7 @@ if not MYPY:
         """
         alerting_enabled: NotRequired[pulumi.Input[bool]]
         """
-        Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+        Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
         """
         alerting_error_or_timeout: NotRequired[pulumi.Input[str]]
         """
@@ -4848,7 +4850,7 @@ if not MYPY:
         """
         alerting_nodata_or_nullvalues: NotRequired[pulumi.Input[str]]
         """
-        Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
+        Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for 'no data or null values' for new alerting rules.
         """
         allow_embedding: NotRequired[pulumi.Input[bool]]
         """
@@ -4880,7 +4882,7 @@ if not MYPY:
         """
         cookie_samesite: NotRequired[pulumi.Input[str]]
         """
-        Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+        Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
         """
         custom_domain: NotRequired[pulumi.Input[str]]
         """
@@ -4888,7 +4890,7 @@ if not MYPY:
         """
         dashboard_previews_enabled: NotRequired[pulumi.Input[bool]]
         """
-        This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+        Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
         """
         dashboards_min_refresh_interval: NotRequired[pulumi.Input[str]]
         """
@@ -4940,7 +4942,7 @@ if not MYPY:
         """
         metrics_enabled: NotRequired[pulumi.Input[bool]]
         """
-        Enable Grafana /metrics endpoint.
+        Enable Grafana's /metrics endpoint.
         """
         oauth_allow_insecure_email_lookup: NotRequired[pulumi.Input[bool]]
         """
@@ -4984,7 +4986,7 @@ if not MYPY:
         """
         unified_alerting_enabled: NotRequired[pulumi.Input[bool]]
         """
-        Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
         """
         user_auto_assign_org: NotRequired[pulumi.Input[bool]]
         """
@@ -4992,7 +4994,7 @@ if not MYPY:
         """
         user_auto_assign_org_role: NotRequired[pulumi.Input[str]]
         """
-        Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+        Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
         """
         viewers_can_edit: NotRequired[pulumi.Input[bool]]
         """
@@ -5053,10 +5055,10 @@ class GrafanaGrafanaUserConfigArgs:
                  wal: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param pulumi.Input[bool] alerting_enabled: Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+        :param pulumi.Input[bool] alerting_enabled: Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
         :param pulumi.Input[str] alerting_error_or_timeout: Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
         :param pulumi.Input[int] alerting_max_annotations_to_keep: Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
-        :param pulumi.Input[str] alerting_nodata_or_nullvalues: Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
+        :param pulumi.Input[str] alerting_nodata_or_nullvalues: Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for 'no data or null values' for new alerting rules.
         :param pulumi.Input[bool] allow_embedding: Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking.
         :param pulumi.Input['GrafanaGrafanaUserConfigAuthAzureadArgs'] auth_azuread: Azure AD OAuth integration
         :param pulumi.Input[bool] auth_basic_enabled: Enable or disable basic authentication form, used by Grafana built-in login.
@@ -5064,9 +5066,9 @@ class GrafanaGrafanaUserConfigArgs:
         :param pulumi.Input['GrafanaGrafanaUserConfigAuthGithubArgs'] auth_github: Github Auth integration
         :param pulumi.Input['GrafanaGrafanaUserConfigAuthGitlabArgs'] auth_gitlab: GitLab Auth integration
         :param pulumi.Input['GrafanaGrafanaUserConfigAuthGoogleArgs'] auth_google: Google Auth integration
-        :param pulumi.Input[str] cookie_samesite: Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+        :param pulumi.Input[str] cookie_samesite: Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        :param pulumi.Input[bool] dashboard_previews_enabled: This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+        :param pulumi.Input[bool] dashboard_previews_enabled: Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
         :param pulumi.Input[str] dashboards_min_refresh_interval: Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
         :param pulumi.Input[int] dashboards_versions_to_keep: Dashboard versions to keep per dashboard. Example: `20`.
         :param pulumi.Input[bool] dataproxy_send_user_header: Send `X-Grafana-User` header to data source.
@@ -5079,7 +5081,7 @@ class GrafanaGrafanaUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        :param pulumi.Input[bool] metrics_enabled: Enable Grafana /metrics endpoint.
+        :param pulumi.Input[bool] metrics_enabled: Enable Grafana's /metrics endpoint.
         :param pulumi.Input[bool] oauth_allow_insecure_email_lookup: Enforce user lookup based on email instead of the unique ID provided by the IdP.
         :param pulumi.Input['GrafanaGrafanaUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['GrafanaGrafanaUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
@@ -5090,9 +5092,9 @@ class GrafanaGrafanaUserConfigArgs:
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         :param pulumi.Input['GrafanaGrafanaUserConfigSmtpServerArgs'] smtp_server: SMTP server settings
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
-        :param pulumi.Input[bool] unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        :param pulumi.Input[bool] unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
         :param pulumi.Input[bool] user_auto_assign_org: Auto-assign new users on signup to main organization. Defaults to false.
-        :param pulumi.Input[str] user_auto_assign_org_role: Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+        :param pulumi.Input[str] user_auto_assign_org_role: Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
         :param pulumi.Input[bool] viewers_can_edit: Users with view-only permission can edit but not save dashboards.
         :param pulumi.Input[bool] wal: Setting to enable/disable Write-Ahead Logging. The default value is false (disabled).
         """
@@ -5202,7 +5204,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="alertingEnabled")
     def alerting_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+        Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
         """
         return pulumi.get(self, "alerting_enabled")
 
@@ -5238,7 +5240,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="alertingNodataOrNullvalues")
     def alerting_nodata_or_nullvalues(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
+        Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for 'no data or null values' for new alerting rules.
         """
         return pulumi.get(self, "alerting_nodata_or_nullvalues")
 
@@ -5334,7 +5336,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="cookieSamesite")
     def cookie_samesite(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+        Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
         """
         return pulumi.get(self, "cookie_samesite")
 
@@ -5358,7 +5360,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="dashboardPreviewsEnabled")
     def dashboard_previews_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+        Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
         """
         return pulumi.get(self, "dashboard_previews_enabled")
 
@@ -5515,7 +5517,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="metricsEnabled")
     def metrics_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Grafana /metrics endpoint.
+        Enable Grafana's /metrics endpoint.
         """
         return pulumi.get(self, "metrics_enabled")
 
@@ -5647,7 +5649,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="unifiedAlertingEnabled")
     def unified_alerting_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
         """
         return pulumi.get(self, "unified_alerting_enabled")
 
@@ -5671,7 +5673,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="userAutoAssignOrgRole")
     def user_auto_assign_org_role(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+        Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
         """
         return pulumi.get(self, "user_auto_assign_org_role")
 
@@ -6269,15 +6271,15 @@ if not MYPY:
         """
         api_url: NotRequired[pulumi.Input[str]]
         """
-        API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
+        This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
         """
         auth_url: NotRequired[pulumi.Input[str]]
         """
-        Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
+        This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
         """
         token_url: NotRequired[pulumi.Input[str]]
         """
-        Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
+        This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
         """
 elif False:
     GrafanaGrafanaUserConfigAuthGitlabArgsDict: TypeAlias = Mapping[str, Any]
@@ -6297,9 +6299,9 @@ class GrafanaGrafanaUserConfigAuthGitlabArgs:
         :param pulumi.Input[str] client_id: Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
         :param pulumi.Input[str] client_secret: Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
         :param pulumi.Input[bool] allow_sign_up: Automatically sign-up users on successful sign-in.
-        :param pulumi.Input[str] api_url: API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
-        :param pulumi.Input[str] auth_url: Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
-        :param pulumi.Input[str] token_url: Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
+        :param pulumi.Input[str] api_url: This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
+        :param pulumi.Input[str] auth_url: This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
+        :param pulumi.Input[str] token_url: This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
         """
         pulumi.set(__self__, "allowed_groups", allowed_groups)
         pulumi.set(__self__, "client_id", client_id)
@@ -6365,7 +6367,7 @@ class GrafanaGrafanaUserConfigAuthGitlabArgs:
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> Optional[pulumi.Input[str]]:
         """
-        API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
+        This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
         """
         return pulumi.get(self, "api_url")
 
@@ -6377,7 +6379,7 @@ class GrafanaGrafanaUserConfigAuthGitlabArgs:
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
+        This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
         """
         return pulumi.get(self, "auth_url")
 
@@ -6389,7 +6391,7 @@ class GrafanaGrafanaUserConfigAuthGitlabArgs:
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
+        This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
         """
         return pulumi.get(self, "token_url")
 
@@ -6671,7 +6673,7 @@ if not MYPY:
         """
         provider: pulumi.Input[str]
         """
-        Enum: `s3`. Provider type.
+        Enum: `s3`. External image store provider.
         """
         secret_key: pulumi.Input[str]
         """
@@ -6690,7 +6692,7 @@ class GrafanaGrafanaUserConfigExternalImageStorageArgs:
         """
         :param pulumi.Input[str] access_key: S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
         :param pulumi.Input[str] bucket_url: Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
-        :param pulumi.Input[str] provider: Enum: `s3`. Provider type.
+        :param pulumi.Input[str] provider: Enum: `s3`. External image store provider.
         :param pulumi.Input[str] secret_key: S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
         """
         pulumi.set(__self__, "access_key", access_key)
@@ -6726,7 +6728,7 @@ class GrafanaGrafanaUserConfigExternalImageStorageArgs:
     @pulumi.getter
     def provider(self) -> pulumi.Input[str]:
         """
-        Enum: `s3`. Provider type.
+        Enum: `s3`. External image store provider.
         """
         return pulumi.get(self, "provider")
 
@@ -6922,7 +6924,7 @@ if not MYPY:
         """
         starttls_policy: NotRequired[pulumi.Input[str]]
         """
-        Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        Enum: `MandatoryStartTLS`, `NoStartTLS`, `OpportunisticStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
         """
         username: NotRequired[pulumi.Input[str]]
         """
@@ -6949,7 +6951,7 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
         :param pulumi.Input[str] from_name: Name used in outgoing emails, defaults to Grafana.
         :param pulumi.Input[str] password: Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
         :param pulumi.Input[bool] skip_verify: Skip verifying server certificate. Defaults to false.
-        :param pulumi.Input[str] starttls_policy: Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        :param pulumi.Input[str] starttls_policy: Enum: `MandatoryStartTLS`, `NoStartTLS`, `OpportunisticStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
         :param pulumi.Input[str] username: Username for SMTP authentication. Example: `smtpuser`.
         """
         pulumi.set(__self__, "from_address", from_address)
@@ -7042,7 +7044,7 @@ class GrafanaGrafanaUserConfigSmtpServerArgs:
     @pulumi.getter(name="starttlsPolicy")
     def starttls_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        Enum: `MandatoryStartTLS`, `NoStartTLS`, `OpportunisticStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
         """
         return pulumi.get(self, "starttls_policy")
 
@@ -7472,6 +7474,10 @@ if not MYPY:
         """
         influxdb.conf configuration values
         """
+        influxdb_version: NotRequired[pulumi.Input[str]]
+        """
+        Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+        """
         ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgsDict']]]]
         """
         Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -7525,6 +7531,7 @@ class InfluxDbInfluxdbUserConfigArgs:
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
                  influxdb: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']] = None,
+                 influxdb_version: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -7540,6 +7547,7 @@ class InfluxDbInfluxdbUserConfigArgs:
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         :param pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs'] influxdb: influxdb.conf configuration values
+        :param pulumi.Input[str] influxdb_version: Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -7561,6 +7569,8 @@ class InfluxDbInfluxdbUserConfigArgs:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
+        if influxdb_version is not None:
+            pulumi.set(__self__, "influxdb_version", influxdb_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -7623,6 +7633,18 @@ class InfluxDbInfluxdbUserConfigArgs:
     @influxdb.setter
     def influxdb(self, value: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']]):
         pulumi.set(self, "influxdb", value)
+
+    @property
+    @pulumi.getter(name="influxdbVersion")
+    def influxdb_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+        """
+        return pulumi.get(self, "influxdb_version")
+
+    @influxdb_version.setter
+    def influxdb_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "influxdb_version", value)
 
     @property
     @pulumi.getter(name="ipFilterObjects")
@@ -7967,18 +7989,26 @@ if not MYPY:
         """
         Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
+        user_backup: NotRequired[pulumi.Input[bool]]
+        """
+        Allow clients to connect to user_backup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
 elif False:
     InfluxDbInfluxdbUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigPrivateAccessArgs:
     def __init__(__self__, *,
-                 influxdb: Optional[pulumi.Input[bool]] = None):
+                 influxdb: Optional[pulumi.Input[bool]] = None,
+                 user_backup: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] influxdb: Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param pulumi.Input[bool] user_backup: Allow clients to connect to user_backup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
+        if user_backup is not None:
+            pulumi.set(__self__, "user_backup", user_backup)
 
     @property
     @pulumi.getter
@@ -7992,6 +8022,18 @@ class InfluxDbInfluxdbUserConfigPrivateAccessArgs:
     def influxdb(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "influxdb", value)
 
+    @property
+    @pulumi.getter(name="userBackup")
+    def user_backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to user_backup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        return pulumi.get(self, "user_backup")
+
+    @user_backup.setter
+    def user_backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_backup", value)
+
 
 if not MYPY:
     class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict(TypedDict):
@@ -7999,18 +8041,26 @@ if not MYPY:
         """
         Enable influxdb.
         """
+        user_backup: NotRequired[pulumi.Input[bool]]
+        """
+        Enable user_backup.
+        """
 elif False:
     InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs:
     def __init__(__self__, *,
-                 influxdb: Optional[pulumi.Input[bool]] = None):
+                 influxdb: Optional[pulumi.Input[bool]] = None,
+                 user_backup: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] influxdb: Enable influxdb.
+        :param pulumi.Input[bool] user_backup: Enable user_backup.
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
+        if user_backup is not None:
+            pulumi.set(__self__, "user_backup", user_backup)
 
     @property
     @pulumi.getter
@@ -8023,6 +8073,18 @@ class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs:
     @influxdb.setter
     def influxdb(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "influxdb", value)
+
+    @property
+    @pulumi.getter(name="userBackup")
+    def user_backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable user_backup.
+        """
+        return pulumi.get(self, "user_backup")
+
+    @user_backup.setter
+    def user_backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_backup", value)
 
 
 if not MYPY:
@@ -8031,18 +8093,26 @@ if not MYPY:
         """
         Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
         """
+        user_backup: NotRequired[pulumi.Input[bool]]
+        """
+        Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
 elif False:
     InfluxDbInfluxdbUserConfigPublicAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InfluxDbInfluxdbUserConfigPublicAccessArgs:
     def __init__(__self__, *,
-                 influxdb: Optional[pulumi.Input[bool]] = None):
+                 influxdb: Optional[pulumi.Input[bool]] = None,
+                 user_backup: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] influxdb: Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param pulumi.Input[bool] user_backup: Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
+        if user_backup is not None:
+            pulumi.set(__self__, "user_backup", user_backup)
 
     @property
     @pulumi.getter
@@ -8055,6 +8125,18 @@ class InfluxDbInfluxdbUserConfigPublicAccessArgs:
     @influxdb.setter
     def influxdb(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "influxdb", value)
+
+    @property
+    @pulumi.getter(name="userBackup")
+    def user_backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+        """
+        return pulumi.get(self, "user_backup")
+
+    @user_backup.setter
+    def user_backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_backup", value)
 
 
 if not MYPY:
@@ -8820,7 +8902,7 @@ if not MYPY:
     class KafkaConnectKafkaConnectUserConfigKafkaConnectArgsDict(TypedDict):
         connector_client_config_override_policy: NotRequired[pulumi.Input[str]]
         """
-        Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         """
         consumer_auto_offset_reset: NotRequired[pulumi.Input[str]]
         """
@@ -8832,7 +8914,7 @@ if not MYPY:
         """
         consumer_isolation_level: NotRequired[pulumi.Input[str]]
         """
-        Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         """
         consumer_max_partition_fetch_bytes: NotRequired[pulumi.Input[int]]
         """
@@ -8864,7 +8946,7 @@ if not MYPY:
         """
         producer_compression_type: NotRequired[pulumi.Input[str]]
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         """
         producer_linger_ms: NotRequired[pulumi.Input[int]]
         """
@@ -8905,10 +8987,10 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
                  scheduled_rebalance_max_delay_ms: Optional[pulumi.Input[int]] = None,
                  session_timeout_ms: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] connector_client_config_override_policy: Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        :param pulumi.Input[str] connector_client_config_override_policy: Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         :param pulumi.Input[str] consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         :param pulumi.Input[int] consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
-        :param pulumi.Input[str] consumer_isolation_level: Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        :param pulumi.Input[str] consumer_isolation_level: Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         :param pulumi.Input[int] consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
         :param pulumi.Input[int] consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param pulumi.Input[int] consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
@@ -8916,7 +8998,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
         :param pulumi.Input[int] offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
         :param pulumi.Input[int] producer_batch_size: This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
         :param pulumi.Input[int] producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
-        :param pulumi.Input[str] producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        :param pulumi.Input[str] producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param pulumi.Input[int] producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
         :param pulumi.Input[int] producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
         :param pulumi.Input[int] scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
@@ -8959,7 +9041,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         """
         return pulumi.get(self, "connector_client_config_override_policy")
 
@@ -8995,7 +9077,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
 
@@ -9091,7 +9173,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -10554,7 +10636,7 @@ if not MYPY:
         """
         compression_type: NotRequired[pulumi.Input[str]]
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+        Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
         """
         connections_max_idle_ms: NotRequired[pulumi.Input[int]]
         """
@@ -10594,11 +10676,11 @@ if not MYPY:
         """
         log_cleanup_policy: NotRequired[pulumi.Input[str]]
         """
-        Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+        Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
         """
         log_flush_interval_messages: NotRequired[pulumi.Input[int]]
         """
-        The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+        The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
         """
         log_flush_interval_ms: NotRequired[pulumi.Input[int]]
         """
@@ -10786,7 +10868,7 @@ class KafkaKafkaUserConfigKafkaArgs:
                  transaction_state_log_segment_bytes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] auto_create_topics_enable: Enable auto-creation of topics. (Default: true).
-        :param pulumi.Input[str] compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+        :param pulumi.Input[str] compression_type: Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
         :param pulumi.Input[int] connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
         :param pulumi.Input[int] default_replication_factor: Replication factor for auto-created topics (Default: 3).
         :param pulumi.Input[int] group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
@@ -10796,8 +10878,8 @@ class KafkaKafkaUserConfigKafkaArgs:
         :param pulumi.Input[int] log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
         :param pulumi.Input[float] log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
         :param pulumi.Input[int] log_cleaner_min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted. (Default: 0 ms).
-        :param pulumi.Input[str] log_cleanup_policy: Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
-        :param pulumi.Input[int] log_flush_interval_messages: The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+        :param pulumi.Input[str] log_cleanup_policy: Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+        :param pulumi.Input[int] log_flush_interval_messages: The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
         :param pulumi.Input[int] log_flush_interval_ms: The maximum time in ms that a message in any topic is kept in memory (page-cache) before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used (Default: null).
         :param pulumi.Input[int] log_index_interval_bytes: The interval with which Kafka adds an entry to the offset index (Default: 4096 bytes (4 kibibytes)). Example: `4096`.
         :param pulumi.Input[int] log_index_size_max_bytes: The maximum size in bytes of the offset index (Default: 10485760 (10 mebibytes)). Example: `10485760`.
@@ -10941,7 +11023,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+        Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
         """
         return pulumi.get(self, "compression_type")
 
@@ -11061,7 +11143,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logCleanupPolicy")
     def log_cleanup_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+        Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
         """
         return pulumi.get(self, "log_cleanup_policy")
 
@@ -11073,7 +11155,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logFlushIntervalMessages")
     def log_flush_interval_messages(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+        The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
         """
         return pulumi.get(self, "log_flush_interval_messages")
 
@@ -11534,7 +11616,7 @@ if not MYPY:
     class KafkaKafkaUserConfigKafkaConnectConfigArgsDict(TypedDict):
         connector_client_config_override_policy: NotRequired[pulumi.Input[str]]
         """
-        Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         """
         consumer_auto_offset_reset: NotRequired[pulumi.Input[str]]
         """
@@ -11546,7 +11628,7 @@ if not MYPY:
         """
         consumer_isolation_level: NotRequired[pulumi.Input[str]]
         """
-        Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         """
         consumer_max_partition_fetch_bytes: NotRequired[pulumi.Input[int]]
         """
@@ -11578,7 +11660,7 @@ if not MYPY:
         """
         producer_compression_type: NotRequired[pulumi.Input[str]]
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         """
         producer_linger_ms: NotRequired[pulumi.Input[int]]
         """
@@ -11619,10 +11701,10 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
                  scheduled_rebalance_max_delay_ms: Optional[pulumi.Input[int]] = None,
                  session_timeout_ms: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] connector_client_config_override_policy: Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        :param pulumi.Input[str] connector_client_config_override_policy: Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         :param pulumi.Input[str] consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         :param pulumi.Input[int] consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
-        :param pulumi.Input[str] consumer_isolation_level: Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        :param pulumi.Input[str] consumer_isolation_level: Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         :param pulumi.Input[int] consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
         :param pulumi.Input[int] consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param pulumi.Input[int] consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
@@ -11630,7 +11712,7 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
         :param pulumi.Input[int] offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
         :param pulumi.Input[int] producer_batch_size: This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
         :param pulumi.Input[int] producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
-        :param pulumi.Input[str] producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        :param pulumi.Input[str] producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param pulumi.Input[int] producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
         :param pulumi.Input[int] producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
         :param pulumi.Input[int] scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
@@ -11673,7 +11755,7 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         """
         return pulumi.get(self, "connector_client_config_override_policy")
 
@@ -11709,7 +11791,7 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
 
@@ -11805,7 +11887,7 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -12149,7 +12231,7 @@ if not MYPY:
         """
         name_strategy: NotRequired[pulumi.Input[str]]
         """
-        Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+        Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
         """
         name_strategy_validation: NotRequired[pulumi.Input[bool]]
         """
@@ -12157,11 +12239,11 @@ if not MYPY:
         """
         producer_acks: NotRequired[pulumi.Input[str]]
         """
-        Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
+        Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
         """
         producer_compression_type: NotRequired[pulumi.Input[str]]
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         """
         producer_linger_ms: NotRequired[pulumi.Input[int]]
         """
@@ -12195,10 +12277,10 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
         :param pulumi.Input[bool] consumer_enable_auto_commit: If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
         :param pulumi.Input[int] consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
         :param pulumi.Input[int] consumer_request_timeout_ms: Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
-        :param pulumi.Input[str] name_strategy: Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+        :param pulumi.Input[str] name_strategy: Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
         :param pulumi.Input[bool] name_strategy_validation: If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. Default: `true`.
-        :param pulumi.Input[str] producer_acks: Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
-        :param pulumi.Input[str] producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        :param pulumi.Input[str] producer_acks: Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
+        :param pulumi.Input[str] producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param pulumi.Input[int] producer_linger_ms: Wait for up to the given delay to allow batching records together. Default: `0`.
         :param pulumi.Input[int] producer_max_request_size: The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. Default: `1048576`.
         :param pulumi.Input[int] simpleconsumer_pool_size_max: Maximum number of SimpleConsumers that can be instantiated per broker. Default: `25`.
@@ -12264,7 +12346,7 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
     @pulumi.getter(name="nameStrategy")
     def name_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+        Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
         """
         return pulumi.get(self, "name_strategy")
 
@@ -12288,7 +12370,7 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
     @pulumi.getter(name="producerAcks")
     def producer_acks(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
+        Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
         """
         return pulumi.get(self, "producer_acks")
 
@@ -12300,7 +12382,7 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -13930,11 +14012,11 @@ if not MYPY:
     class KafkaTopicConfigArgsDict(TypedDict):
         cleanup_policy: NotRequired[pulumi.Input[str]]
         """
-        cleanup.policy value
+        cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
         """
         compression_type: NotRequired[pulumi.Input[str]]
         """
-        compression.type value
+        compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
         """
         delete_retention_ms: NotRequired[pulumi.Input[str]]
         """
@@ -13978,7 +14060,7 @@ if not MYPY:
         """
         message_format_version: NotRequired[pulumi.Input[str]]
         """
-        message.format.version value
+        message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         """
         message_timestamp_difference_max_ms: NotRequired[pulumi.Input[str]]
         """
@@ -13986,7 +14068,7 @@ if not MYPY:
         """
         message_timestamp_type: NotRequired[pulumi.Input[str]]
         """
-        message.timestamp.type value
+        message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
         """
         min_cleanable_dirty_ratio: NotRequired[pulumi.Input[float]]
         """
@@ -14070,8 +14152,8 @@ class KafkaTopicConfigArgs:
                  segment_ms: Optional[pulumi.Input[str]] = None,
                  unclean_leader_election_enable: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] cleanup_policy: cleanup.policy value
-        :param pulumi.Input[str] compression_type: compression.type value
+        :param pulumi.Input[str] cleanup_policy: cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
+        :param pulumi.Input[str] compression_type: compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
         :param pulumi.Input[str] delete_retention_ms: delete.retention.ms value
         :param pulumi.Input[str] file_delete_delay_ms: file.delete.delay.ms value
         :param pulumi.Input[str] flush_messages: flush.messages value
@@ -14082,9 +14164,9 @@ class KafkaTopicConfigArgs:
         :param pulumi.Input[str] max_compaction_lag_ms: max.compaction.lag.ms value
         :param pulumi.Input[str] max_message_bytes: max.message.bytes value
         :param pulumi.Input[bool] message_downconversion_enable: message.downconversion.enable value
-        :param pulumi.Input[str] message_format_version: message.format.version value
+        :param pulumi.Input[str] message_format_version: message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         :param pulumi.Input[str] message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
-        :param pulumi.Input[str] message_timestamp_type: message.timestamp.type value
+        :param pulumi.Input[str] message_timestamp_type: message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
         :param pulumi.Input[float] min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
         :param pulumi.Input[str] min_compaction_lag_ms: min.compaction.lag.ms value
         :param pulumi.Input[str] min_insync_replicas: min.insync.replicas value
@@ -14160,7 +14242,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        cleanup.policy value
+        cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -14172,7 +14254,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[pulumi.Input[str]]:
         """
-        compression.type value
+        compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
         """
         return pulumi.get(self, "compression_type")
 
@@ -14304,7 +14386,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[pulumi.Input[str]]:
         """
-        message.format.version value
+        message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -14328,7 +14410,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="messageTimestampType")
     def message_timestamp_type(self) -> Optional[pulumi.Input[str]]:
         """
-        message.timestamp.type value
+        message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
         """
         return pulumi.get(self, "message_timestamp_type")
 
@@ -17983,15 +18065,15 @@ if not MYPY:
         """
         internal_tmp_mem_storage_engine: NotRequired[pulumi.Input[str]]
         """
-        Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+        Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
         """
         log_output: NotRequired[pulumi.Input[str]]
         """
-        Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+        Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
         """
         long_query_time: NotRequired[pulumi.Input[float]]
         """
-        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
         """
         max_allowed_packet: NotRequired[pulumi.Input[int]]
         """
@@ -18092,9 +18174,9 @@ class MySqlMysqlUserConfigMysqlArgs:
         :param pulumi.Input[int] innodb_thread_concurrency: Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
         :param pulumi.Input[int] innodb_write_io_threads: The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
         :param pulumi.Input[int] interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
-        :param pulumi.Input[str] internal_tmp_mem_storage_engine: Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
-        :param pulumi.Input[str] log_output: Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
-        :param pulumi.Input[float] long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+        :param pulumi.Input[str] internal_tmp_mem_storage_engine: Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
+        :param pulumi.Input[str] log_output: Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+        :param pulumi.Input[float] long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
         :param pulumi.Input[int] max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
         :param pulumi.Input[int] max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
         :param pulumi.Input[int] net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
@@ -18378,7 +18460,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="internalTmpMemStorageEngine")
     def internal_tmp_mem_storage_engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+        Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
         """
         return pulumi.get(self, "internal_tmp_mem_storage_engine")
 
@@ -18390,7 +18472,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="logOutput")
     def log_output(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+        Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
         """
         return pulumi.get(self, "log_output")
 
@@ -18402,7 +18484,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="longQueryTime")
     def long_query_time(self) -> Optional[pulumi.Input[float]]:
         """
-        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
         """
         return pulumi.get(self, "long_query_time")
 
@@ -19194,7 +19276,7 @@ if not MYPY:
         """
         disable_replication_factor_adjustment: NotRequired[pulumi.Input[bool]]
         """
-        Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+        Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         """
         gcs_migration: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigGcsMigrationArgsDict']]
         """
@@ -19325,7 +19407,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input['OpenSearchOpensearchUserConfigAzureMigrationArgs'] azure_migration: Azure migration settings
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        :param pulumi.Input[bool] disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+        :param pulumi.Input[bool] disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         :param pulumi.Input['OpenSearchOpensearchUserConfigGcsMigrationArgs'] gcs_migration: Google Cloud Storage migration settings
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]] index_patterns: Index patterns
         :param pulumi.Input['OpenSearchOpensearchUserConfigIndexRollupArgs'] index_rollup: Index rollup settings
@@ -19448,7 +19530,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="disableReplicationFactorAdjustment")
     def disable_replication_factor_adjustment(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+        Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
         """
         return pulumi.get(self, "disable_replication_factor_adjustment")
 
@@ -19748,6 +19830,10 @@ if not MYPY:
         """
         Azure container name.
         """
+        indices: pulumi.Input[str]
+        """
+        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+        """
         snapshot_name: pulumi.Input[str]
         """
         The snapshot name to restore from.
@@ -19764,13 +19850,17 @@ if not MYPY:
         """
         Defines the DNS suffix for Azure Storage endpoints.
         """
-        indices: NotRequired[pulumi.Input[str]]
+        include_aliases: NotRequired[pulumi.Input[bool]]
         """
-        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        Whether to restore aliases alongside their associated indexes. Default is true.
         """
         key: NotRequired[pulumi.Input[str]]
         """
         Azure account secret key. One of key or sas_token should be specified.
+        """
+        restore_global_state: NotRequired[pulumi.Input[bool]]
+        """
+        If true, restore the cluster state. Defaults to false.
         """
         sas_token: NotRequired[pulumi.Input[str]]
         """
@@ -19785,28 +19875,33 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
                  account: pulumi.Input[str],
                  base_path: pulumi.Input[str],
                  container: pulumi.Input[str],
+                 indices: pulumi.Input[str],
                  snapshot_name: pulumi.Input[str],
                  chunk_size: Optional[pulumi.Input[str]] = None,
                  compress: Optional[pulumi.Input[bool]] = None,
                  endpoint_suffix: Optional[pulumi.Input[str]] = None,
-                 indices: Optional[pulumi.Input[str]] = None,
+                 include_aliases: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 restore_global_state: Optional[pulumi.Input[bool]] = None,
                  sas_token: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] account: Azure account name.
         :param pulumi.Input[str] base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
         :param pulumi.Input[str] container: Azure container name.
+        :param pulumi.Input[str] indices: A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
         :param pulumi.Input[str] snapshot_name: The snapshot name to restore from.
         :param pulumi.Input[str] chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
         :param pulumi.Input[bool] compress: When set to true metadata files are stored in compressed format.
         :param pulumi.Input[str] endpoint_suffix: Defines the DNS suffix for Azure Storage endpoints.
-        :param pulumi.Input[str] indices: A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        :param pulumi.Input[bool] include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
         :param pulumi.Input[str] key: Azure account secret key. One of key or sas_token should be specified.
+        :param pulumi.Input[bool] restore_global_state: If true, restore the cluster state. Defaults to false.
         :param pulumi.Input[str] sas_token: A shared access signatures (SAS) token. One of key or sas_token should be specified.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "base_path", base_path)
         pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "indices", indices)
         pulumi.set(__self__, "snapshot_name", snapshot_name)
         if chunk_size is not None:
             pulumi.set(__self__, "chunk_size", chunk_size)
@@ -19814,10 +19909,12 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
             pulumi.set(__self__, "compress", compress)
         if endpoint_suffix is not None:
             pulumi.set(__self__, "endpoint_suffix", endpoint_suffix)
-        if indices is not None:
-            pulumi.set(__self__, "indices", indices)
+        if include_aliases is not None:
+            pulumi.set(__self__, "include_aliases", include_aliases)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if restore_global_state is not None:
+            pulumi.set(__self__, "restore_global_state", restore_global_state)
         if sas_token is not None:
             pulumi.set(__self__, "sas_token", sas_token)
 
@@ -19856,6 +19953,18 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
     @container.setter
     def container(self, value: pulumi.Input[str]):
         pulumi.set(self, "container", value)
+
+    @property
+    @pulumi.getter
+    def indices(self) -> pulumi.Input[str]:
+        """
+        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+        """
+        return pulumi.get(self, "indices")
+
+    @indices.setter
+    def indices(self, value: pulumi.Input[str]):
+        pulumi.set(self, "indices", value)
 
     @property
     @pulumi.getter(name="snapshotName")
@@ -19906,16 +20015,16 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
         pulumi.set(self, "endpoint_suffix", value)
 
     @property
-    @pulumi.getter
-    def indices(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="includeAliases")
+    def include_aliases(self) -> Optional[pulumi.Input[bool]]:
         """
-        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        Whether to restore aliases alongside their associated indexes. Default is true.
         """
-        return pulumi.get(self, "indices")
+        return pulumi.get(self, "include_aliases")
 
-    @indices.setter
-    def indices(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "indices", value)
+    @include_aliases.setter
+    def include_aliases(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_aliases", value)
 
     @property
     @pulumi.getter
@@ -19928,6 +20037,18 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
     @key.setter
     def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="restoreGlobalState")
+    def restore_global_state(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, restore the cluster state. Defaults to false.
+        """
+        return pulumi.get(self, "restore_global_state")
+
+    @restore_global_state.setter
+    def restore_global_state(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restore_global_state", value)
 
     @property
     @pulumi.getter(name="sasToken")
@@ -19956,6 +20077,10 @@ if not MYPY:
         """
         Google Cloud Storage credentials file content.
         """
+        indices: pulumi.Input[str]
+        """
+        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+        """
         snapshot_name: pulumi.Input[str]
         """
         The snapshot name to restore from.
@@ -19968,9 +20093,13 @@ if not MYPY:
         """
         When set to true metadata files are stored in compressed format.
         """
-        indices: NotRequired[pulumi.Input[str]]
+        include_aliases: NotRequired[pulumi.Input[bool]]
         """
-        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        Whether to restore aliases alongside their associated indexes. Default is true.
+        """
+        restore_global_state: NotRequired[pulumi.Input[bool]]
+        """
+        If true, restore the cluster state. Defaults to false.
         """
 elif False:
     OpenSearchOpensearchUserConfigGcsMigrationArgsDict: TypeAlias = Mapping[str, Any]
@@ -19981,29 +20110,36 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
                  base_path: pulumi.Input[str],
                  bucket: pulumi.Input[str],
                  credentials: pulumi.Input[str],
+                 indices: pulumi.Input[str],
                  snapshot_name: pulumi.Input[str],
                  chunk_size: Optional[pulumi.Input[str]] = None,
                  compress: Optional[pulumi.Input[bool]] = None,
-                 indices: Optional[pulumi.Input[str]] = None):
+                 include_aliases: Optional[pulumi.Input[bool]] = None,
+                 restore_global_state: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
         :param pulumi.Input[str] bucket: The path to the repository data within its container.
         :param pulumi.Input[str] credentials: Google Cloud Storage credentials file content.
+        :param pulumi.Input[str] indices: A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
         :param pulumi.Input[str] snapshot_name: The snapshot name to restore from.
         :param pulumi.Input[str] chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
         :param pulumi.Input[bool] compress: When set to true metadata files are stored in compressed format.
-        :param pulumi.Input[str] indices: A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        :param pulumi.Input[bool] include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param pulumi.Input[bool] restore_global_state: If true, restore the cluster state. Defaults to false.
         """
         pulumi.set(__self__, "base_path", base_path)
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "credentials", credentials)
+        pulumi.set(__self__, "indices", indices)
         pulumi.set(__self__, "snapshot_name", snapshot_name)
         if chunk_size is not None:
             pulumi.set(__self__, "chunk_size", chunk_size)
         if compress is not None:
             pulumi.set(__self__, "compress", compress)
-        if indices is not None:
-            pulumi.set(__self__, "indices", indices)
+        if include_aliases is not None:
+            pulumi.set(__self__, "include_aliases", include_aliases)
+        if restore_global_state is not None:
+            pulumi.set(__self__, "restore_global_state", restore_global_state)
 
     @property
     @pulumi.getter(name="basePath")
@@ -20042,6 +20178,18 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
         pulumi.set(self, "credentials", value)
 
     @property
+    @pulumi.getter
+    def indices(self) -> pulumi.Input[str]:
+        """
+        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+        """
+        return pulumi.get(self, "indices")
+
+    @indices.setter
+    def indices(self, value: pulumi.Input[str]):
+        pulumi.set(self, "indices", value)
+
+    @property
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> pulumi.Input[str]:
         """
@@ -20078,16 +20226,28 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
         pulumi.set(self, "compress", value)
 
     @property
-    @pulumi.getter
-    def indices(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="includeAliases")
+    def include_aliases(self) -> Optional[pulumi.Input[bool]]:
         """
-        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        Whether to restore aliases alongside their associated indexes. Default is true.
         """
-        return pulumi.get(self, "indices")
+        return pulumi.get(self, "include_aliases")
 
-    @indices.setter
-    def indices(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "indices", value)
+    @include_aliases.setter
+    def include_aliases(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_aliases", value)
+
+    @property
+    @pulumi.getter(name="restoreGlobalState")
+    def restore_global_state(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, restore the cluster state. Defaults to false.
+        """
+        return pulumi.get(self, "restore_global_state")
+
+    @restore_global_state.setter
+    def restore_global_state(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restore_global_state", value)
 
 
 if not MYPY:
@@ -21980,7 +22140,7 @@ if not MYPY:
     class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict(TypedDict):
         mode: NotRequired[pulumi.Input[str]]
         """
-        Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+        Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
         """
         node_duress: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict']]
         """
@@ -22005,7 +22165,7 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs:
                  search_shard_task: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs']] = None,
                  search_task: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs']] = None):
         """
-        :param pulumi.Input[str] mode: Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+        :param pulumi.Input[str] mode: Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs'] node_duress: Node duress settings
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs'] search_shard_task: Search shard settings
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs'] search_task: Search task settings
@@ -22023,7 +22183,7 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+        Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
         """
         return pulumi.get(self, "mode")
 
@@ -23072,6 +23232,10 @@ if not MYPY:
         """
         S3 bucket name.
         """
+        indices: pulumi.Input[str]
+        """
+        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+        """
         region: pulumi.Input[str]
         """
         S3 region.
@@ -23096,9 +23260,13 @@ if not MYPY:
         """
         The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
         """
-        indices: NotRequired[pulumi.Input[str]]
+        include_aliases: NotRequired[pulumi.Input[bool]]
         """
-        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        Whether to restore aliases alongside their associated indexes. Default is true.
+        """
+        restore_global_state: NotRequired[pulumi.Input[bool]]
+        """
+        If true, restore the cluster state. Defaults to false.
         """
         server_side_encryption: NotRequired[pulumi.Input[bool]]
         """
@@ -23113,30 +23281,35 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
                  access_key: pulumi.Input[str],
                  base_path: pulumi.Input[str],
                  bucket: pulumi.Input[str],
+                 indices: pulumi.Input[str],
                  region: pulumi.Input[str],
                  secret_key: pulumi.Input[str],
                  snapshot_name: pulumi.Input[str],
                  chunk_size: Optional[pulumi.Input[str]] = None,
                  compress: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
-                 indices: Optional[pulumi.Input[str]] = None,
+                 include_aliases: Optional[pulumi.Input[bool]] = None,
+                 restore_global_state: Optional[pulumi.Input[bool]] = None,
                  server_side_encryption: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] access_key: AWS Access key.
         :param pulumi.Input[str] base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
         :param pulumi.Input[str] bucket: S3 bucket name.
+        :param pulumi.Input[str] indices: A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
         :param pulumi.Input[str] region: S3 region.
         :param pulumi.Input[str] secret_key: AWS secret key.
         :param pulumi.Input[str] snapshot_name: The snapshot name to restore from.
         :param pulumi.Input[str] chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
         :param pulumi.Input[bool] compress: When set to true metadata files are stored in compressed format.
         :param pulumi.Input[str] endpoint: The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
-        :param pulumi.Input[str] indices: A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        :param pulumi.Input[bool] include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param pulumi.Input[bool] restore_global_state: If true, restore the cluster state. Defaults to false.
         :param pulumi.Input[bool] server_side_encryption: When set to true files are encrypted on server side.
         """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "base_path", base_path)
         pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "indices", indices)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "secret_key", secret_key)
         pulumi.set(__self__, "snapshot_name", snapshot_name)
@@ -23146,8 +23319,10 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
             pulumi.set(__self__, "compress", compress)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
-        if indices is not None:
-            pulumi.set(__self__, "indices", indices)
+        if include_aliases is not None:
+            pulumi.set(__self__, "include_aliases", include_aliases)
+        if restore_global_state is not None:
+            pulumi.set(__self__, "restore_global_state", restore_global_state)
         if server_side_encryption is not None:
             pulumi.set(__self__, "server_side_encryption", server_side_encryption)
 
@@ -23186,6 +23361,18 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
     @bucket.setter
     def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def indices(self) -> pulumi.Input[str]:
+        """
+        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+        """
+        return pulumi.get(self, "indices")
+
+    @indices.setter
+    def indices(self, value: pulumi.Input[str]):
+        pulumi.set(self, "indices", value)
 
     @property
     @pulumi.getter
@@ -23260,16 +23447,28 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
         pulumi.set(self, "endpoint", value)
 
     @property
-    @pulumi.getter
-    def indices(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="includeAliases")
+    def include_aliases(self) -> Optional[pulumi.Input[bool]]:
         """
-        A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        Whether to restore aliases alongside their associated indexes. Default is true.
         """
-        return pulumi.get(self, "indices")
+        return pulumi.get(self, "include_aliases")
 
-    @indices.setter
-    def indices(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "indices", value)
+    @include_aliases.setter
+    def include_aliases(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_aliases", value)
+
+    @property
+    @pulumi.getter(name="restoreGlobalState")
+    def restore_global_state(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, restore the cluster state. Defaults to false.
+        """
+        return pulumi.get(self, "restore_global_state")
+
+    @restore_global_state.setter
+    def restore_global_state(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restore_global_state", value)
 
     @property
     @pulumi.getter(name="serverSideEncryption")
@@ -23668,11 +23867,11 @@ if not MYPY:
     class OrganizationPermissionPermissionArgsDict(TypedDict):
         permissions: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
-        List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         principal_id: pulumi.Input[str]
         """
-        ID of the user or group.
+        ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         """
         principal_type: pulumi.Input[str]
         """
@@ -23698,8 +23897,8 @@ class OrganizationPermissionPermissionArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
-        :param pulumi.Input[str] principal_id: ID of the user or group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        :param pulumi.Input[str] principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param pulumi.Input[str] principal_type: The type of principal. The possible values are `user` and `user_group`.
         :param pulumi.Input[str] create_time: Time created.
         :param pulumi.Input[str] update_time: Time updated.
@@ -23716,7 +23915,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -23728,7 +23927,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Input[str]:
         """
-        ID of the user or group.
+        ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         """
         return pulumi.get(self, "principal_id")
 
@@ -24673,7 +24872,7 @@ if not MYPY:
         """
         synchronous_replication: NotRequired[pulumi.Input[str]]
         """
-        Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         """
         timescaledb: NotRequired[pulumi.Input['PgPgUserConfigTimescaledbArgsDict']]
         """
@@ -24754,7 +24953,7 @@ class PgPgUserConfigArgs:
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         :param pulumi.Input[float] shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
-        :param pulumi.Input[str] synchronous_replication: Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        :param pulumi.Input[str] synchronous_replication: Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         :param pulumi.Input['PgPgUserConfigTimescaledbArgs'] timescaledb: System-wide settings for the timescaledb extension
         :param pulumi.Input[str] variant: Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         :param pulumi.Input[int] work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
@@ -25180,7 +25379,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="synchronousReplication")
     def synchronous_replication(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         """
         return pulumi.get(self, "synchronous_replication")
 
@@ -25542,11 +25741,11 @@ if not MYPY:
         """
         log_error_verbosity: NotRequired[pulumi.Input[str]]
         """
-        Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+        Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
         """
         log_line_prefix: NotRequired[pulumi.Input[str]]
         """
-        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+        Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         """
         log_min_duration_statement: NotRequired[pulumi.Input[int]]
         """
@@ -25630,7 +25829,7 @@ if not MYPY:
         """
         pg_stat_statements_dot_track: NotRequired[pulumi.Input[str]]
         """
-        Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         """
         temp_file_limit: NotRequired[pulumi.Input[int]]
         """
@@ -25650,7 +25849,7 @@ if not MYPY:
         """
         track_functions: NotRequired[pulumi.Input[str]]
         """
-        Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+        Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
         """
         track_io_timing: NotRequired[pulumi.Input[str]]
         """
@@ -25738,8 +25937,8 @@ class PgPgUserConfigPgArgs:
         :param pulumi.Input[int] idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
         :param pulumi.Input[bool] jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param pulumi.Input[int] log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
-        :param pulumi.Input[str] log_error_verbosity: Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-        :param pulumi.Input[str] log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+        :param pulumi.Input[str] log_error_verbosity: Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+        :param pulumi.Input[str] log_line_prefix: Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         :param pulumi.Input[int] log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param pulumi.Input[int] log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
         :param pulumi.Input[int] max_files_per_process: PostgreSQL maximum number of files that can be open per process.
@@ -25760,12 +25959,12 @@ class PgPgUserConfigPgArgs:
         :param pulumi.Input[str] pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
         :param pulumi.Input[bool] pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring.
         :param pulumi.Input[int] pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets. Example: `10`.
-        :param pulumi.Input[str] pg_stat_statements_dot_track: Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        :param pulumi.Input[str] pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         :param pulumi.Input[int] temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
         :param pulumi.Input[str] timezone: PostgreSQL service timezone. Example: `Europe/Helsinki`.
         :param pulumi.Input[int] track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
         :param pulumi.Input[str] track_commit_timestamp: Enum: `off`, `on`. Record commit time of transactions.
-        :param pulumi.Input[str] track_functions: Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+        :param pulumi.Input[str] track_functions: Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
         :param pulumi.Input[str] track_io_timing: Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
         :param pulumi.Input[int] wal_sender_timeout: Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
         :param pulumi.Input[int] wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
@@ -26089,7 +26288,7 @@ class PgPgUserConfigPgArgs:
     @pulumi.getter(name="logErrorVerbosity")
     def log_error_verbosity(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+        Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
         """
         return pulumi.get(self, "log_error_verbosity")
 
@@ -26101,7 +26300,7 @@ class PgPgUserConfigPgArgs:
     @pulumi.getter(name="logLinePrefix")
     def log_line_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+        Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         """
         return pulumi.get(self, "log_line_prefix")
 
@@ -26353,7 +26552,7 @@ class PgPgUserConfigPgArgs:
     @pulumi.getter(name="pgStatStatementsDotTrack")
     def pg_stat_statements_dot_track(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         """
         return pulumi.get(self, "pg_stat_statements_dot_track")
 
@@ -26413,7 +26612,7 @@ class PgPgUserConfigPgArgs:
     @pulumi.getter(name="trackFunctions")
     def track_functions(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+        Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
         """
         return pulumi.get(self, "track_functions")
 
@@ -26950,7 +27149,7 @@ if not MYPY:
         """
         autodb_pool_mode: NotRequired[pulumi.Input[str]]
         """
-        Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+        Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
         """
         autodb_pool_size: NotRequired[pulumi.Input[int]]
         """
@@ -26999,7 +27198,7 @@ class PgPgUserConfigPgbouncerArgs:
         """
         :param pulumi.Input[int] autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
         :param pulumi.Input[int] autodb_max_db_connections: Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
-        :param pulumi.Input[str] autodb_pool_mode: Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+        :param pulumi.Input[str] autodb_pool_mode: Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
         :param pulumi.Input[int] autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
         :param pulumi.Input[int] max_prepared_statements: PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
@@ -27057,7 +27256,7 @@ class PgPgUserConfigPgbouncerArgs:
     @pulumi.getter(name="autodbPoolMode")
     def autodb_pool_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+        Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
         """
         return pulumi.get(self, "autodb_pool_mode")
 
@@ -27943,7 +28142,7 @@ if not MYPY:
         """
         redis_maxmemory_policy: NotRequired[pulumi.Input[str]]
         """
-        Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+        Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
         """
         redis_notify_keyspace_events: NotRequired[pulumi.Input[str]]
         """
@@ -28035,7 +28234,7 @@ class RedisRedisUserConfigArgs:
         :param pulumi.Input[int] redis_io_threads: Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
         :param pulumi.Input[int] redis_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. Default: `1`.
         :param pulumi.Input[int] redis_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
-        :param pulumi.Input[str] redis_maxmemory_policy: Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+        :param pulumi.Input[str] redis_maxmemory_policy: Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
         :param pulumi.Input[str] redis_notify_keyspace_events: Set notify-keyspace-events option.
         :param pulumi.Input[int] redis_number_of_databases: Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
         :param pulumi.Input[str] redis_persistence: Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
@@ -28302,7 +28501,7 @@ class RedisRedisUserConfigArgs:
     @pulumi.getter(name="redisMaxmemoryPolicy")
     def redis_maxmemory_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+        Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
         """
         return pulumi.get(self, "redis_maxmemory_policy")
 
@@ -28999,7 +29198,7 @@ if not MYPY:
         """
         data_format: pulumi.Input[str]
         """
-        Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
+        Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
         """
         group_name: pulumi.Input[str]
         """
@@ -29015,7 +29214,7 @@ if not MYPY:
         """
         auto_offset_reset: NotRequired[pulumi.Input[str]]
         """
-        Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+        Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
         """
         date_time_input_format: NotRequired[pulumi.Input[str]]
         """
@@ -29076,11 +29275,11 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
                  thread_per_consumer: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs']]] columns: Table columns
-        :param pulumi.Input[str] data_format: Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
+        :param pulumi.Input[str] data_format: Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
         :param pulumi.Input[str] group_name: Kafka consumers group. Default: `clickhouse`.
         :param pulumi.Input[str] name: Name of the table. Example: `events`.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs']]] topics: Kafka topics
-        :param pulumi.Input[str] auto_offset_reset: Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+        :param pulumi.Input[str] auto_offset_reset: Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
         :param pulumi.Input[str] date_time_input_format: Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
         :param pulumi.Input[str] handle_error_mode: Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
         :param pulumi.Input[int] max_block_size: Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
@@ -29133,7 +29332,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
     @pulumi.getter(name="dataFormat")
     def data_format(self) -> pulumi.Input[str]:
         """
-        Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
+        Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
         """
         return pulumi.get(self, "data_format")
 
@@ -29181,7 +29380,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
     @pulumi.getter(name="autoOffsetReset")
     def auto_offset_reset(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+        Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
         """
         return pulumi.get(self, "auto_offset_reset")
 
@@ -29891,6 +30090,87 @@ class ServiceIntegrationDatadogUserConfigRedisArgs:
 
 
 if not MYPY:
+    class ServiceIntegrationEndpointAutoscalerUserConfigArgsDict(TypedDict):
+        autoscalings: pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgsDict']]]
+        """
+        Configure autoscaling thresholds for a service
+        """
+elif False:
+    ServiceIntegrationEndpointAutoscalerUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceIntegrationEndpointAutoscalerUserConfigArgs:
+    def __init__(__self__, *,
+                 autoscalings: pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs']]] autoscalings: Configure autoscaling thresholds for a service
+        """
+        pulumi.set(__self__, "autoscalings", autoscalings)
+
+    @property
+    @pulumi.getter
+    def autoscalings(self) -> pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs']]]:
+        """
+        Configure autoscaling thresholds for a service
+        """
+        return pulumi.get(self, "autoscalings")
+
+    @autoscalings.setter
+    def autoscalings(self, value: pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs']]]):
+        pulumi.set(self, "autoscalings", value)
+
+
+if not MYPY:
+    class ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgsDict(TypedDict):
+        cap_gb: pulumi.Input[int]
+        """
+        The maximum total disk size (in gb) to allow autoscaler to scale up to. Example: `300`.
+        """
+        type: pulumi.Input[str]
+        """
+        Enum: `autoscale_disk`. Type of autoscale event.
+        """
+elif False:
+    ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs:
+    def __init__(__self__, *,
+                 cap_gb: pulumi.Input[int],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] cap_gb: The maximum total disk size (in gb) to allow autoscaler to scale up to. Example: `300`.
+        :param pulumi.Input[str] type: Enum: `autoscale_disk`. Type of autoscale event.
+        """
+        pulumi.set(__self__, "cap_gb", cap_gb)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="capGb")
+    def cap_gb(self) -> pulumi.Input[int]:
+        """
+        The maximum total disk size (in gb) to allow autoscaler to scale up to. Example: `300`.
+        """
+        return pulumi.get(self, "cap_gb")
+
+    @cap_gb.setter
+    def cap_gb(self, value: pulumi.Input[int]):
+        pulumi.set(self, "cap_gb", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Enum: `autoscale_disk`. Type of autoscale event.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
     class ServiceIntegrationEndpointDatadogUserConfigArgsDict(TypedDict):
         datadog_api_key: pulumi.Input[str]
         """
@@ -29918,7 +30198,7 @@ if not MYPY:
         """
         site: NotRequired[pulumi.Input[str]]
         """
-        Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+        Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
         """
 elif False:
     ServiceIntegrationEndpointDatadogUserConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -29940,7 +30220,7 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
         :param pulumi.Input[int] kafka_consumer_check_instances: Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
         :param pulumi.Input[int] kafka_consumer_stats_timeout: Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
         :param pulumi.Input[int] max_partition_contexts: Maximum number of partition contexts to send. Example: `32000`.
-        :param pulumi.Input[str] site: Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+        :param pulumi.Input[str] site: Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
         """
         pulumi.set(__self__, "datadog_api_key", datadog_api_key)
         if datadog_tags is not None:
@@ -30032,7 +30312,7 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
     @pulumi.getter
     def site(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+        Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
         """
         return pulumi.get(self, "site")
 
@@ -30672,7 +30952,7 @@ if not MYPY:
         """
         security_protocol: pulumi.Input[str]
         """
-        Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+        Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
         """
         sasl_mechanism: NotRequired[pulumi.Input[str]]
         """
@@ -30728,7 +31008,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
                  ssl_endpoint_identification_algorithm: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bootstrap_servers: Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
-        :param pulumi.Input[str] security_protocol: Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+        :param pulumi.Input[str] security_protocol: Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
         :param pulumi.Input[str] sasl_mechanism: Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
         :param pulumi.Input[str] sasl_plain_password: Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
         :param pulumi.Input[str] sasl_plain_username: Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
@@ -30779,7 +31059,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @pulumi.getter(name="securityProtocol")
     def security_protocol(self) -> pulumi.Input[str]:
         """
-        Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+        Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
         """
         return pulumi.get(self, "security_protocol")
 
@@ -31174,7 +31454,7 @@ if not MYPY:
         """
         ssl_mode: NotRequired[pulumi.Input[str]]
         """
-        Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         """
         ssl_root_cert: NotRequired[pulumi.Input[str]]
         """
@@ -31211,7 +31491,7 @@ class ServiceIntegrationEndpointExternalPostgresqlArgs:
         :param pulumi.Input[str] ssl_client_key: Client key. Example: `-----BEGIN PRIVATE KEY-----
                ...
                -----END PRIVATE KEY-----`.
-        :param pulumi.Input[str] ssl_mode: Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        :param pulumi.Input[str] ssl_mode: Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         :param pulumi.Input[str] ssl_root_cert: SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
                ...
                -----END CERTIFICATE-----
@@ -31326,7 +31606,7 @@ class ServiceIntegrationEndpointExternalPostgresqlArgs:
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+        Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -31351,10 +31631,82 @@ class ServiceIntegrationEndpointExternalPostgresqlArgs:
 
 
 if not MYPY:
+    class ServiceIntegrationEndpointExternalPrometheusUserConfigArgsDict(TypedDict):
+        basic_auth_password: NotRequired[pulumi.Input[str]]
+        """
+        Prometheus basic authentication password. Example: `fhyFNBjj3R`.
+        """
+        basic_auth_username: NotRequired[pulumi.Input[str]]
+        """
+        Prometheus basic authentication username. Example: `prom4851`.
+        """
+        service_uri: NotRequired[pulumi.Input[str]]
+        """
+        Prometheus enabled write endpoint. Example: `https://write.example.com/`.
+        """
+elif False:
+    ServiceIntegrationEndpointExternalPrometheusUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceIntegrationEndpointExternalPrometheusUserConfigArgs:
+    def __init__(__self__, *,
+                 basic_auth_password: Optional[pulumi.Input[str]] = None,
+                 basic_auth_username: Optional[pulumi.Input[str]] = None,
+                 service_uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] basic_auth_password: Prometheus basic authentication password. Example: `fhyFNBjj3R`.
+        :param pulumi.Input[str] basic_auth_username: Prometheus basic authentication username. Example: `prom4851`.
+        :param pulumi.Input[str] service_uri: Prometheus enabled write endpoint. Example: `https://write.example.com/`.
+        """
+        if basic_auth_password is not None:
+            pulumi.set(__self__, "basic_auth_password", basic_auth_password)
+        if basic_auth_username is not None:
+            pulumi.set(__self__, "basic_auth_username", basic_auth_username)
+        if service_uri is not None:
+            pulumi.set(__self__, "service_uri", service_uri)
+
+    @property
+    @pulumi.getter(name="basicAuthPassword")
+    def basic_auth_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prometheus basic authentication password. Example: `fhyFNBjj3R`.
+        """
+        return pulumi.get(self, "basic_auth_password")
+
+    @basic_auth_password.setter
+    def basic_auth_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "basic_auth_password", value)
+
+    @property
+    @pulumi.getter(name="basicAuthUsername")
+    def basic_auth_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prometheus basic authentication username. Example: `prom4851`.
+        """
+        return pulumi.get(self, "basic_auth_username")
+
+    @basic_auth_username.setter
+    def basic_auth_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "basic_auth_username", value)
+
+    @property
+    @pulumi.getter(name="serviceUri")
+    def service_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prometheus enabled write endpoint. Example: `https://write.example.com/`.
+        """
+        return pulumi.get(self, "service_uri")
+
+    @service_uri.setter
+    def service_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_uri", value)
+
+
+if not MYPY:
     class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict(TypedDict):
         authentication: pulumi.Input[str]
         """
-        Enum: `none`, `basic`. Authentication method.
+        Enum: `basic`, `none`. Authentication method.
         """
         url: pulumi.Input[str]
         """
@@ -31379,7 +31731,7 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
                  basic_auth_password: Optional[pulumi.Input[str]] = None,
                  basic_auth_username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] authentication: Enum: `none`, `basic`. Authentication method.
+        :param pulumi.Input[str] authentication: Enum: `basic`, `none`. Authentication method.
         :param pulumi.Input[str] url: Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
         :param pulumi.Input[str] basic_auth_password: Basic authentication password. Example: `Zm9vYg==`.
         :param pulumi.Input[str] basic_auth_username: Basic authentication user name. Example: `avnadmin`.
@@ -31395,7 +31747,7 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs:
     @pulumi.getter
     def authentication(self) -> pulumi.Input[str]:
         """
-        Enum: `none`, `basic`. Authentication method.
+        Enum: `basic`, `none`. Authentication method.
         """
         return pulumi.get(self, "authentication")
 
@@ -31548,7 +31900,7 @@ if not MYPY:
     class ServiceIntegrationEndpointRsyslogUserConfigArgsDict(TypedDict):
         format: pulumi.Input[str]
         """
-        Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+        Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
         """
         port: pulumi.Input[int]
         """
@@ -31612,7 +31964,7 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
                  max_message_size: Optional[pulumi.Input[int]] = None,
                  sd: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] format: Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+        :param pulumi.Input[str] format: Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
         :param pulumi.Input[int] port: Rsyslog server port. Default: `514`.
         :param pulumi.Input[str] server: Rsyslog server IP address or hostname. Example: `logs.example.com`.
         :param pulumi.Input[bool] tls: Require TLS. Default: `true`.
@@ -31653,7 +32005,7 @@ class ServiceIntegrationEndpointRsyslogUserConfigArgs:
     @pulumi.getter
     def format(self) -> pulumi.Input[str]:
         """
-        Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+        Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
         """
         return pulumi.get(self, "format")
 
@@ -32310,7 +32662,7 @@ if not MYPY:
         """
         producer_compression_type: NotRequired[pulumi.Input[str]]
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         """
         producer_linger_ms: NotRequired[pulumi.Input[int]]
         """
@@ -32340,7 +32692,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
         :param pulumi.Input[int] consumer_max_poll_records: Set consumer max.poll.records. The default is 500. Example: `500`.
         :param pulumi.Input[int] producer_batch_size: The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
         :param pulumi.Input[int] producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
-        :param pulumi.Input[str] producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        :param pulumi.Input[str] producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         :param pulumi.Input[int] producer_linger_ms: The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
         :param pulumi.Input[int] producer_max_request_size: The maximum request size in bytes. Example: `1048576`.
         """
@@ -32425,7 +32777,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -33755,6 +34107,18 @@ if not MYPY:
         """
         ThanosQueryFrontend
         """
+        receiver_ingesting: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        CommonReceive.
+        """
+        receiver_routing: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        ThanosReceiveRouting.
+        """
+        ruler: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        ThanosRuler.
+        """
         service_log: NotRequired[pulumi.Input[bool]]
         """
         Store logs for the service so that they are available in the HTTP API and console.
@@ -33762,6 +34126,10 @@ if not MYPY:
         static_ips: NotRequired[pulumi.Input[bool]]
         """
         Use static public IP addresses.
+        """
+        store: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        ThanosStore.
         """
 elif False:
     ThanosThanosUserConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -33778,8 +34146,12 @@ class ThanosThanosUserConfigArgs:
                  public_access: Optional[pulumi.Input['ThanosThanosUserConfigPublicAccessArgs']] = None,
                  query: Optional[pulumi.Input['ThanosThanosUserConfigQueryArgs']] = None,
                  query_frontend: Optional[pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs']] = None,
+                 receiver_ingesting: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 receiver_routing: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 ruler: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_log: Optional[pulumi.Input[bool]] = None,
-                 static_ips: Optional[pulumi.Input[bool]] = None):
+                 static_ips: Optional[pulumi.Input[bool]] = None,
+                 store: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input['ThanosThanosUserConfigCompactorArgs'] compactor: ThanosCompactor
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Environmental variables.
@@ -33790,8 +34162,12 @@ class ThanosThanosUserConfigArgs:
         :param pulumi.Input['ThanosThanosUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
         :param pulumi.Input['ThanosThanosUserConfigQueryArgs'] query: ThanosQuery
         :param pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs'] query_frontend: ThanosQueryFrontend
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] receiver_ingesting: CommonReceive.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] receiver_routing: ThanosReceiveRouting.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] ruler: ThanosRuler.
         :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] store: ThanosStore.
         """
         if compactor is not None:
             pulumi.set(__self__, "compactor", compactor)
@@ -33817,10 +34193,18 @@ class ThanosThanosUserConfigArgs:
             pulumi.set(__self__, "query", query)
         if query_frontend is not None:
             pulumi.set(__self__, "query_frontend", query_frontend)
+        if receiver_ingesting is not None:
+            pulumi.set(__self__, "receiver_ingesting", receiver_ingesting)
+        if receiver_routing is not None:
+            pulumi.set(__self__, "receiver_routing", receiver_routing)
+        if ruler is not None:
+            pulumi.set(__self__, "ruler", ruler)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
         if static_ips is not None:
             pulumi.set(__self__, "static_ips", static_ips)
+        if store is not None:
+            pulumi.set(__self__, "store", store)
 
     @property
     @pulumi.getter
@@ -33933,6 +34317,42 @@ class ThanosThanosUserConfigArgs:
         pulumi.set(self, "query_frontend", value)
 
     @property
+    @pulumi.getter(name="receiverIngesting")
+    def receiver_ingesting(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        CommonReceive.
+        """
+        return pulumi.get(self, "receiver_ingesting")
+
+    @receiver_ingesting.setter
+    def receiver_ingesting(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "receiver_ingesting", value)
+
+    @property
+    @pulumi.getter(name="receiverRouting")
+    def receiver_routing(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        ThanosReceiveRouting.
+        """
+        return pulumi.get(self, "receiver_routing")
+
+    @receiver_routing.setter
+    def receiver_routing(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "receiver_routing", value)
+
+    @property
+    @pulumi.getter
+    def ruler(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        ThanosRuler.
+        """
+        return pulumi.get(self, "ruler")
+
+    @ruler.setter
+    def ruler(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "ruler", value)
+
+    @property
     @pulumi.getter(name="serviceLog")
     def service_log(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -33955,6 +34375,18 @@ class ThanosThanosUserConfigArgs:
     @static_ips.setter
     def static_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "static_ips", value)
+
+    @property
+    @pulumi.getter
+    def store(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        ThanosStore.
+        """
+        return pulumi.get(self, "store")
+
+    @store.setter
+    def store(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "store", value)
 
 
 if not MYPY:
@@ -34831,7 +35263,7 @@ if not MYPY:
         """
         valkey_maxmemory_policy: NotRequired[pulumi.Input[str]]
         """
-        Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+        Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
         """
         valkey_notify_keyspace_events: NotRequired[pulumi.Input[str]]
         """
@@ -34909,7 +35341,7 @@ class ValkeyValkeyUserConfigArgs:
         :param pulumi.Input[int] valkey_io_threads: Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
         :param pulumi.Input[int] valkey_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. Default: `1`.
         :param pulumi.Input[int] valkey_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
-        :param pulumi.Input[str] valkey_maxmemory_policy: Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+        :param pulumi.Input[str] valkey_maxmemory_policy: Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
         :param pulumi.Input[str] valkey_notify_keyspace_events: Set notify-keyspace-events option.
         :param pulumi.Input[int] valkey_number_of_databases: Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
         :param pulumi.Input[str] valkey_persistence: Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
@@ -35206,7 +35638,7 @@ class ValkeyValkeyUserConfigArgs:
     @pulumi.getter(name="valkeyMaxmemoryPolicy")
     def valkey_maxmemory_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+        Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
         """
         return pulumi.get(self, "valkey_maxmemory_policy")
 

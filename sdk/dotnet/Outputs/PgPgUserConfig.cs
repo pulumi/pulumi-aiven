@@ -126,7 +126,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? StaticIps;
         /// <summary>
-        /// Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        /// Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         /// </summary>
         public readonly string? SynchronousReplication;
         /// <summary>

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+ * Gets information about an integration endpoint.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myendpoint = aiven.getServiceIntegrationEndpoint({
- *     project: myproject.project,
- *     endpointName: "<ENDPOINT_NAME>",
+ * const exampleDatadogEndpoint = aiven.getServiceIntegrationEndpoint({
+ *     project: exampleProject.project,
+ *     endpointName: "Datadog endpoint",
  * });
  * ```
  */
@@ -34,11 +34,11 @@ export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpoin
  */
 export interface GetServiceIntegrationEndpointArgs {
     /**
-     * Name of the service integration endpoint
+     * Name of the service integration endpoint.
      */
     endpointName: string;
     /**
-     * Project the service integration endpoint belongs to
+     * Project the service integration endpoint is in.
      */
     project: string;
 }
@@ -48,67 +48,75 @@ export interface GetServiceIntegrationEndpointArgs {
  */
 export interface GetServiceIntegrationEndpointResult {
     /**
-     * Datadog user configurable settings
+     * Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    readonly autoscalerUserConfigs: outputs.GetServiceIntegrationEndpointAutoscalerUserConfig[];
+    /**
+     * Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly datadogUserConfigs: outputs.GetServiceIntegrationEndpointDatadogUserConfig[];
     /**
-     * Integration endpoint specific backend configuration
+     * Backend configuration for the endpoint.
      */
     readonly endpointConfig: {[key: string]: string};
     /**
-     * Name of the service integration endpoint
+     * Name of the service integration endpoint.
      */
     readonly endpointName: string;
     /**
-     * Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus`, `rsyslog`
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      */
     readonly endpointType: string;
     /**
-     * ExternalAwsCloudwatchLogs user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalAwsCloudwatchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig[];
     /**
-     * ExternalAwsCloudwatchMetrics user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalAwsCloudwatchMetricsUserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig[];
     /**
-     * ExternalAwsS3 user configurable settings
+     * ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalAwsS3UserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfig[];
     /**
-     * ExternalClickhouse user configurable settings
+     * ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalClickhouseUserConfigs: outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfig[];
     /**
-     * ExternalElasticsearchLogs user configurable settings
+     * ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalElasticsearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig[];
     /**
-     * ExternalGoogleCloudBigquery user configurable settings
+     * ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalGoogleCloudBigqueries: outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigquery[];
     /**
-     * ExternalGoogleCloudLogging user configurable settings
+     * ExternalGoogleCloudLogging user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalGoogleCloudLoggingUserConfigs: outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig[];
     /**
-     * ExternalKafka user configurable settings
+     * ExternalKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalKafkaUserConfigs: outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig[];
     /**
-     * ExternalMysql user configurable settings
+     * ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalMysqlUserConfigs: outputs.GetServiceIntegrationEndpointExternalMysqlUserConfig[];
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalOpensearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig[];
     /**
-     * ExternalPostgresql user configurable settings
+     * ExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalPostgresqls: outputs.GetServiceIntegrationEndpointExternalPostgresql[];
     /**
-     * ExternalSchemaRegistry user configurable settings
+     * ExternalPrometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    readonly externalPrometheusUserConfigs: outputs.GetServiceIntegrationEndpointExternalPrometheusUserConfig[];
+    /**
+     * ExternalSchemaRegistry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalSchemaRegistryUserConfigs: outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig[];
     /**
@@ -116,24 +124,24 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly id: string;
     /**
-     * Jolokia user configurable settings
+     * Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly jolokiaUserConfigs: outputs.GetServiceIntegrationEndpointJolokiaUserConfig[];
     /**
-     * Project the service integration endpoint belongs to
+     * Project the service integration endpoint is in.
      */
     readonly project: string;
     /**
-     * Prometheus user configurable settings
+     * Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly prometheusUserConfigs: outputs.GetServiceIntegrationEndpointPrometheusUserConfig[];
     /**
-     * Rsyslog user configurable settings
+     * Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly rsyslogUserConfigs: outputs.GetServiceIntegrationEndpointRsyslogUserConfig[];
 }
 /**
- * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+ * Gets information about an integration endpoint.
  *
  * ## Example Usage
  *
@@ -141,9 +149,9 @@ export interface GetServiceIntegrationEndpointResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myendpoint = aiven.getServiceIntegrationEndpoint({
- *     project: myproject.project,
- *     endpointName: "<ENDPOINT_NAME>",
+ * const exampleDatadogEndpoint = aiven.getServiceIntegrationEndpoint({
+ *     project: exampleProject.project,
+ *     endpointName: "Datadog endpoint",
  * });
  * ```
  */
@@ -160,11 +168,11 @@ export function getServiceIntegrationEndpointOutput(args: GetServiceIntegrationE
  */
 export interface GetServiceIntegrationEndpointOutputArgs {
     /**
-     * Name of the service integration endpoint
+     * Name of the service integration endpoint.
      */
     endpointName: pulumi.Input<string>;
     /**
-     * Project the service integration endpoint belongs to
+     * Project the service integration endpoint is in.
      */
     project: pulumi.Input<string>;
 }

@@ -81,7 +81,7 @@ type LookupOpenSearchResult struct {
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
-	// Opensearch user configurable settings
+	// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	OpensearchUserConfigs []GetOpenSearchOpensearchUserConfig `pulumi:"opensearchUserConfigs"`
 	// OpenSearch server provided values
 	Opensearches []GetOpenSearchOpensearch `pulumi:"opensearches"`
@@ -220,7 +220,7 @@ func (o LookupOpenSearchResultOutput) MaintenanceWindowTime() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupOpenSearchResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// Opensearch user configurable settings
+// Opensearch user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupOpenSearchResultOutput) OpensearchUserConfigs() GetOpenSearchOpensearchUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupOpenSearchResult) []GetOpenSearchOpensearchUserConfig { return v.OpensearchUserConfigs }).(GetOpenSearchOpensearchUserConfigArrayOutput)
 }

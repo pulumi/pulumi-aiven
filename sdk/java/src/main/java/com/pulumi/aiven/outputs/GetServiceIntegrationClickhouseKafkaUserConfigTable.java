@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+     * @return Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      * 
      */
     private @Nullable String autoOffsetReset;
@@ -28,7 +28,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private List<GetServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
     /**
-     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
+     * @return Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
      * 
      */
     private String dataFormat;
@@ -95,7 +95,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
 
     private GetServiceIntegrationClickhouseKafkaUserConfigTable() {}
     /**
-     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+     * @return Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      * 
      */
     public Optional<String> autoOffsetReset() {
@@ -109,7 +109,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return this.columns;
     }
     /**
-     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
+     * @return Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
      * 
      */
     public String dataFormat() {

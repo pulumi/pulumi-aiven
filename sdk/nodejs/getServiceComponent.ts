@@ -46,7 +46,7 @@ export interface GetServiceComponentArgs {
      */
     component: string;
     /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     * Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
      */
     kafkaAuthenticationMethod?: string;
     /**
@@ -54,7 +54,7 @@ export interface GetServiceComponentArgs {
      */
     project: string;
     /**
-     * Network access route
+     * Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
      */
     route?: string;
     /**
@@ -66,7 +66,7 @@ export interface GetServiceComponentArgs {
      */
     ssl?: boolean;
     /**
-     * DNS usage name
+     * DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
      */
     usage?: string;
 }
@@ -88,7 +88,7 @@ export interface GetServiceComponentResult {
      */
     readonly id: string;
     /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     * Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
      */
     readonly kafkaAuthenticationMethod?: string;
     /**
@@ -100,7 +100,7 @@ export interface GetServiceComponentResult {
      */
     readonly project: string;
     /**
-     * Network access route
+     * Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
      */
     readonly route?: string;
     /**
@@ -112,7 +112,7 @@ export interface GetServiceComponentResult {
      */
     readonly ssl?: boolean;
     /**
-     * DNS usage name
+     * DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
      */
     readonly usage?: string;
 }
@@ -158,7 +158,7 @@ export interface GetServiceComponentOutputArgs {
      */
     component: pulumi.Input<string>;
     /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     * Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     /**
@@ -166,7 +166,7 @@ export interface GetServiceComponentOutputArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Network access route
+     * Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
      */
     route?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface GetServiceComponentOutputArgs {
      */
     ssl?: pulumi.Input<boolean>;
     /**
-     * DNS usage name
+     * DNS usage name. The possible values are `disasterRecovery`, `primary` and `replica`.
      */
     usage?: pulumi.Input<string>;
 }

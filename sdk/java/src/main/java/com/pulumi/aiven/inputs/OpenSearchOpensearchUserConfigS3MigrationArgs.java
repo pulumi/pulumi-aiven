@@ -108,18 +108,33 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
     }
 
     /**
-     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * Whether to restore aliases alongside their associated indexes. Default is true.
      * 
      */
-    @Import(name="indices")
-    private @Nullable Output<String> indices;
+    @Import(name="includeAliases")
+    private @Nullable Output<Boolean> includeAliases;
 
     /**
-     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * @return Whether to restore aliases alongside their associated indexes. Default is true.
      * 
      */
-    public Optional<Output<String>> indices() {
-        return Optional.ofNullable(this.indices);
+    public Optional<Output<Boolean>> includeAliases() {
+        return Optional.ofNullable(this.includeAliases);
+    }
+
+    /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    @Import(name="indices", required=true)
+    private Output<String> indices;
+
+    /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    public Output<String> indices() {
+        return this.indices;
     }
 
     /**
@@ -135,6 +150,21 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
      */
     public Output<String> region() {
         return this.region;
+    }
+
+    /**
+     * If true, restore the cluster state. Defaults to false.
+     * 
+     */
+    @Import(name="restoreGlobalState")
+    private @Nullable Output<Boolean> restoreGlobalState;
+
+    /**
+     * @return If true, restore the cluster state. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> restoreGlobalState() {
+        return Optional.ofNullable(this.restoreGlobalState);
     }
 
     /**
@@ -191,8 +221,10 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
         this.chunkSize = $.chunkSize;
         this.compress = $.compress;
         this.endpoint = $.endpoint;
+        this.includeAliases = $.includeAliases;
         this.indices = $.indices;
         this.region = $.region;
+        this.restoreGlobalState = $.restoreGlobalState;
         this.secretKey = $.secretKey;
         this.serverSideEncryption = $.serverSideEncryption;
         this.snapshotName = $.snapshotName;
@@ -343,18 +375,39 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
         }
 
         /**
-         * @param indices A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+         * @param includeAliases Whether to restore aliases alongside their associated indexes. Default is true.
          * 
          * @return builder
          * 
          */
-        public Builder indices(@Nullable Output<String> indices) {
+        public Builder includeAliases(@Nullable Output<Boolean> includeAliases) {
+            $.includeAliases = includeAliases;
+            return this;
+        }
+
+        /**
+         * @param includeAliases Whether to restore aliases alongside their associated indexes. Default is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeAliases(Boolean includeAliases) {
+            return includeAliases(Output.of(includeAliases));
+        }
+
+        /**
+         * @param indices A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indices(Output<String> indices) {
             $.indices = indices;
             return this;
         }
 
         /**
-         * @param indices A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+         * @param indices A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
          * 
          * @return builder
          * 
@@ -382,6 +435,27 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param restoreGlobalState If true, restore the cluster state. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreGlobalState(@Nullable Output<Boolean> restoreGlobalState) {
+            $.restoreGlobalState = restoreGlobalState;
+            return this;
+        }
+
+        /**
+         * @param restoreGlobalState If true, restore the cluster state. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreGlobalState(Boolean restoreGlobalState) {
+            return restoreGlobalState(Output.of(restoreGlobalState));
         }
 
         /**
@@ -456,6 +530,9 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
             }
             if ($.bucket == null) {
                 throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigS3MigrationArgs", "bucket");
+            }
+            if ($.indices == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigS3MigrationArgs", "indices");
             }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigS3MigrationArgs", "region");

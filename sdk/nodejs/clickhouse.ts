@@ -62,13 +62,13 @@ export class Clickhouse extends pulumi.CustomResource {
     /**
      * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      */
-    public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
+    public readonly additionalDiskSpace!: pulumi.Output<string>;
     /**
      * Values provided by the ClickHouse server.
      */
     public readonly clickhouse!: pulumi.Output<outputs.ClickhouseClickhouse>;
     /**
-     * Clickhouse user configurable settings
+     * Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     public readonly clickhouseUserConfig!: pulumi.Output<outputs.ClickhouseClickhouseUserConfig | undefined>;
     /**
@@ -277,7 +277,7 @@ export interface ClickhouseState {
      */
     clickhouse?: pulumi.Input<inputs.ClickhouseClickhouse>;
     /**
-     * Clickhouse user configurable settings
+     * Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     clickhouseUserConfig?: pulumi.Input<inputs.ClickhouseClickhouseUserConfig>;
     /**
@@ -399,7 +399,7 @@ export interface ClickhouseArgs {
      */
     clickhouse?: pulumi.Input<inputs.ClickhouseClickhouse>;
     /**
-     * Clickhouse user configurable settings
+     * Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     clickhouseUserConfig?: pulumi.Input<inputs.ClickhouseClickhouseUserConfig>;
     /**

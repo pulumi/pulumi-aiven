@@ -31,7 +31,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      */
     private @Nullable String cert;
     /**
-     * @return Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+     * @return Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
      * 
      */
     private String format;
@@ -96,7 +96,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
         return Optional.ofNullable(this.cert);
     }
     /**
-     * @return Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+     * @return Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
      * 
      */
     public String format() {

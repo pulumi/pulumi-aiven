@@ -77,7 +77,7 @@ type LookupM3DbResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// M3db user configurable settings
+	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3dbUserConfigs []GetM3DbM3dbUserConfig `pulumi:"m3dbUserConfigs"`
 	// Values provided by the M3DB server.
 	M3dbs []GetM3DbM3db `pulumi:"m3dbs"`
@@ -210,7 +210,7 @@ func (o LookupM3DbResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3DbResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// M3db user configurable settings
+// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupM3DbResultOutput) M3dbUserConfigs() GetM3DbM3dbUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupM3DbResult) []GetM3DbM3dbUserConfig { return v.M3dbUserConfigs }).(GetM3DbM3dbUserConfigArrayOutput)
 }

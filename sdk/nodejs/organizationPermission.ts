@@ -7,10 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Grants permissions to a principal for a resource.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
  *
  * ## Example Usage
  *
@@ -18,27 +15,29 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * // Grant permission to a user
- * const operator = new aiven.OrganizationPermission("operator", {
+ * const examplePermissions = new aiven.OrganizationPermission("example_permissions", {
  *     organizationId: main.id,
  *     resourceId: exampleProject.id,
  *     resourceType: "project",
- *     permissions: [{
- *         permissions: ["operator"],
- *         principalId: "u123a456b7890c",
- *         principalType: "user",
- *     }],
- * });
- * // Grant permission to a group
- * const developers = new aiven.OrganizationPermission("developers", {
- *     organizationId: main.id,
- *     resourceId: exampleProject.id,
- *     resourceType: "project",
- *     permissions: [{
- *         permissions: ["developer"],
- *         principalId: exampleGroup.groupId,
- *         principalType: "user_group",
- *     }],
+ *     permissions: [
+ *         {
+ *             permissions: [
+ *                 "operator",
+ *                 "service:logs:read",
+ *             ],
+ *             principalId: "u123a456b7890c",
+ *             principalType: "user",
+ *         },
+ *         {
+ *             permissions: [
+ *                 "project:integrations:write",
+ *                 "project:networking:read",
+ *                 "developer",
+ *             ],
+ *             principalId: exampleGroup.groupId,
+ *             principalType: "user_group",
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -89,7 +88,7 @@ export class OrganizationPermission extends pulumi.CustomResource {
      */
     public readonly resourceId!: pulumi.Output<string>;
     /**
-     * Resource type. The possible values are `project`.
+     * Resource type. The possible values are `project`, `organization` and `organizationUnit`.
      */
     public readonly resourceType!: pulumi.Output<string>;
 
@@ -151,7 +150,7 @@ export interface OrganizationPermissionState {
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * Resource type. The possible values are `project`.
+     * Resource type. The possible values are `project`, `organization` and `organizationUnit`.
      */
     resourceType?: pulumi.Input<string>;
 }
@@ -173,7 +172,7 @@ export interface OrganizationPermissionArgs {
      */
     resourceId: pulumi.Input<string>;
     /**
-     * Resource type. The possible values are `project`.
+     * Resource type. The possible values are `project`, `organization` and `organizationUnit`.
      */
     resourceType: pulumi.Input<string>;
 }

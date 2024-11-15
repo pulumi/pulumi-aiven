@@ -32,14 +32,14 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component. The possible values are `certificate` and `sasl`.
      * 
      */
     @Import(name="kafkaAuthenticationMethod")
     private @Nullable String kafkaAuthenticationMethod;
 
     /**
-     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component. The possible values are `certificate` and `sasl`.
      * 
      */
     public Optional<String> kafkaAuthenticationMethod() {
@@ -62,14 +62,14 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Network access route
+     * Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
      * 
      */
     @Import(name="route")
     private @Nullable String route;
 
     /**
-     * @return Network access route
+     * @return Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
      * 
      */
     public Optional<String> route() {
@@ -107,14 +107,14 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * DNS usage name
+     * DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
      * 
      */
     @Import(name="usage")
     private @Nullable String usage;
 
     /**
-     * @return DNS usage name
+     * @return DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
      * 
      */
     public Optional<String> usage() {
@@ -163,7 +163,7 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param kafkaAuthenticationMethod Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+         * @param kafkaAuthenticationMethod Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component. The possible values are `certificate` and `sasl`.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param route Network access route
+         * @param route Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param usage DNS usage name
+         * @param usage DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
          * 
          * @return builder
          * 

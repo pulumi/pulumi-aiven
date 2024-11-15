@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? AutodbMaxDbConnections { get; set; }
 
         /// <summary>
-        /// Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+        /// Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
         /// </summary>
         [Input("autodbPoolMode")]
         public Input<string>? AutodbPoolMode { get; set; }

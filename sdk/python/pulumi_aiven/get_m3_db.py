@@ -192,7 +192,7 @@ class GetM3DbResult:
     @pulumi.getter(name="m3dbUserConfigs")
     def m3db_user_configs(self) -> Sequence['outputs.GetM3DbM3dbUserConfigResult']:
         """
-        M3db user configurable settings
+        M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "m3db_user_configs")
 

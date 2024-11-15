@@ -52,7 +52,7 @@ export interface GetCassandraResult {
      */
     readonly additionalDiskSpace: string;
     /**
-     * Cassandra user configurable settings
+     * Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly cassandraUserConfigs: outputs.GetCassandraCassandraUserConfig[];
     /**

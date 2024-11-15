@@ -65,7 +65,7 @@ public final class GetM3DbResult {
      */
     private String id;
     /**
-     * @return M3db user configurable settings
+     * @return M3db user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetM3DbM3dbUserConfig> m3dbUserConfigs;
@@ -230,7 +230,7 @@ public final class GetM3DbResult {
         return this.id;
     }
     /**
-     * @return M3db user configurable settings
+     * @return M3db user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetM3DbM3dbUserConfig> m3dbUserConfigs() {

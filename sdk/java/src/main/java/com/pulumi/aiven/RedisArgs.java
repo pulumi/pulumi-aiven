@@ -167,14 +167,14 @@ public final class RedisArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Redis user configurable settings
+     * Redis user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="redisUserConfig")
     private @Nullable Output<RedisRedisUserConfigArgs> redisUserConfig;
 
     /**
-     * @return Redis user configurable settings
+     * @return Redis user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<RedisRedisUserConfigArgs>> redisUserConfig() {
@@ -508,7 +508,7 @@ public final class RedisArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisUserConfig Redis user configurable settings
+         * @param redisUserConfig Redis user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -519,7 +519,7 @@ public final class RedisArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisUserConfig Redis user configurable settings
+         * @param redisUserConfig Redis user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

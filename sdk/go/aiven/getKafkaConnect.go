@@ -77,7 +77,7 @@ type LookupKafkaConnectResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// KafkaConnect user configurable settings
+	// KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaConnectUserConfigs []GetKafkaConnectKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfigs"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
@@ -208,7 +208,7 @@ func (o LookupKafkaConnectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaConnectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// KafkaConnect user configurable settings
+// KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupKafkaConnectResultOutput) KafkaConnectUserConfigs() GetKafkaConnectKafkaConnectUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupKafkaConnectResult) []GetKafkaConnectKafkaConnectUserConfig {
 		return v.KafkaConnectUserConfigs

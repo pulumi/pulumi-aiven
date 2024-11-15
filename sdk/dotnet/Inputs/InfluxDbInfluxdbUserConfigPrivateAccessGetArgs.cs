@@ -18,6 +18,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("influxdb")]
         public Input<bool>? Influxdb { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to user_backup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
+        [Input("userBackup")]
+        public Input<bool>? UserBackup { get; set; }
+
         public InfluxDbInfluxdbUserConfigPrivateAccessGetArgs()
         {
         }

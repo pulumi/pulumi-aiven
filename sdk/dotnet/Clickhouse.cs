@@ -48,7 +48,7 @@ namespace Pulumi.Aiven
         /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         /// </summary>
         [Output("additionalDiskSpace")]
-        public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
+        public Output<string> AdditionalDiskSpace { get; private set; } = null!;
 
         /// <summary>
         /// Values provided by the ClickHouse server.
@@ -57,7 +57,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.ClickhouseClickhouse> ClickhouseServer { get; private set; } = null!;
 
         /// <summary>
-        /// Clickhouse user configurable settings
+        /// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         [Output("clickhouseUserConfig")]
         public Output<Outputs.ClickhouseClickhouseUserConfig?> ClickhouseUserConfig { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Clickhouse user configurable settings
+        /// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         [Input("clickhouseUserConfig")]
         public Input<Inputs.ClickhouseClickhouseUserConfigArgs>? ClickhouseUserConfig { get; set; }
@@ -425,7 +425,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Clickhouse user configurable settings
+        /// Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         [Input("clickhouseUserConfig")]
         public Input<Inputs.ClickhouseClickhouseUserConfigGetArgs>? ClickhouseUserConfig { get; set; }

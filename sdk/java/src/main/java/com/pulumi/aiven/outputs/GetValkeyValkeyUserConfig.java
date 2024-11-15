@@ -119,7 +119,7 @@ public final class GetValkeyValkeyUserConfig {
      */
     private @Nullable Integer valkeyLfuLogFactor;
     /**
-     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+     * @return Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
      * 
      */
     private @Nullable String valkeyMaxmemoryPolicy;
@@ -293,7 +293,7 @@ public final class GetValkeyValkeyUserConfig {
         return Optional.ofNullable(this.valkeyLfuLogFactor);
     }
     /**
-     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+     * @return Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
      * 
      */
     public Optional<String> valkeyMaxmemoryPolicy() {

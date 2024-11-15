@@ -21,7 +21,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorage {
      */
     private String bucketUrl;
     /**
-     * @return Enum: `s3`. Provider type.
+     * @return Enum: `s3`. External image store provider.
      * 
      */
     private String provider;
@@ -47,7 +47,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorage {
         return this.bucketUrl;
     }
     /**
-     * @return Enum: `s3`. Provider type.
+     * @return Enum: `s3`. External image store provider.
      * 
      */
     public String provider() {

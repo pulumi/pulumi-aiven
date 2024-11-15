@@ -75,7 +75,7 @@ public final class GetPgResult {
      */
     private String maintenanceWindowTime;
     /**
-     * @return Pg user configurable settings
+     * @return Pg user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetPgPgUserConfig> pgUserConfigs;
@@ -244,7 +244,7 @@ public final class GetPgResult {
         return this.maintenanceWindowTime;
     }
     /**
-     * @return Pg user configurable settings
+     * @return Pg user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetPgPgUserConfig> pgUserConfigs() {

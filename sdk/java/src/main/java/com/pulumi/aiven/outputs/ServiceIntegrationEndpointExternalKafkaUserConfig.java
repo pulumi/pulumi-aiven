@@ -33,7 +33,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     private @Nullable String saslPlainUsername;
     /**
-     * @return Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+     * @return Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
      * 
      */
     private String securityProtocol;
@@ -97,7 +97,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfig {
         return Optional.ofNullable(this.saslPlainUsername);
     }
     /**
-     * @return Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+     * @return Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
      * 
      */
     public String securityProtocol() {

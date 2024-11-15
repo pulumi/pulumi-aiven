@@ -184,7 +184,7 @@ class GetGrafanaResult:
     @pulumi.getter(name="grafanaUserConfigs")
     def grafana_user_configs(self) -> Sequence['outputs.GetGrafanaGrafanaUserConfigResult']:
         """
-        Grafana user configurable settings
+        Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "grafana_user_configs")
 

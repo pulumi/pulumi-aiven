@@ -38,8 +38,6 @@ export interface CassandraCassandra {
 export interface CassandraCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -502,7 +500,7 @@ export interface DragonflyDragonflyUserConfig {
      */
     cacheMode?: pulumi.Input<boolean>;
     /**
-     * Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+     * Enum: `dfs`, `off`, `rdb`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     dragonflyPersistence?: pulumi.Input<string>;
     /**
@@ -898,7 +896,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
+     * Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
      */
     alertingEnabled?: pulumi.Input<boolean>;
     /**
@@ -910,7 +908,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     alertingMaxAnnotationsToKeep?: pulumi.Input<number>;
     /**
-     * Enum: `alerting`, `noData`, `keepState`, `ok`. Default value for 'no data or null values' for new alerting rules.
+     * Enum: `alerting`, `keepState`, `noData`, `ok`. Default value for 'no data or null values' for new alerting rules.
      */
     alertingNodataOrNullvalues?: pulumi.Input<string>;
     /**
@@ -942,7 +940,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     authGoogle?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGoogle>;
     /**
-     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+     * Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      */
     cookieSamesite?: pulumi.Input<string>;
     /**
@@ -950,7 +948,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+     * Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
      */
     dashboardPreviewsEnabled?: pulumi.Input<boolean>;
     /**
@@ -1004,7 +1002,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enable Grafana /metrics endpoint.
+     * Enable Grafana's /metrics endpoint.
      */
     metricsEnabled?: pulumi.Input<boolean>;
     /**
@@ -1048,7 +1046,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     staticIps?: pulumi.Input<boolean>;
     /**
-     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
      */
     unifiedAlertingEnabled?: pulumi.Input<boolean>;
     /**
@@ -1056,7 +1054,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     userAutoAssignOrg?: pulumi.Input<boolean>;
     /**
-     * Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+     * Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
      */
     userAutoAssignOrgRole?: pulumi.Input<string>;
     /**
@@ -1192,11 +1190,11 @@ export interface GrafanaGrafanaUserConfigAuthGitlab {
      */
     allowedGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * API URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
+     * This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/api/v4`.
      */
     apiUrl?: pulumi.Input<string>;
     /**
-     * Authorization URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
+     * This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/authorize`.
      */
     authUrl?: pulumi.Input<string>;
     /**
@@ -1208,7 +1206,7 @@ export interface GrafanaGrafanaUserConfigAuthGitlab {
      */
     clientSecret: pulumi.Input<string>;
     /**
-     * Token URL. This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
+     * This only needs to be set when using self hosted GitLab. Example: `https://gitlab.com/oauth/token`.
      */
     tokenUrl?: pulumi.Input<string>;
 }
@@ -1277,7 +1275,7 @@ export interface GrafanaGrafanaUserConfigExternalImageStorage {
      */
     bucketUrl: pulumi.Input<string>;
     /**
-     * Enum: `s3`. Provider type.
+     * Enum: `s3`. External image store provider.
      */
     provider: pulumi.Input<string>;
     /**
@@ -1344,7 +1342,7 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
      */
     skipVerify?: pulumi.Input<boolean>;
     /**
-     * Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * Enum: `MandatoryStartTLS`, `NoStartTLS`, `OpportunisticStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
      */
     starttlsPolicy?: pulumi.Input<string>;
     /**
@@ -1452,6 +1450,10 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     influxdb?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigInfluxdb>;
     /**
+     * Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+     */
+    influxdbVersion?: pulumi.Input<string>;
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.InfluxDbInfluxdbUserConfigIpFilterObject>[]>;
@@ -1546,6 +1548,10 @@ export interface InfluxDbInfluxdbUserConfigPrivateAccess {
      * Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     influxdb?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to userBackup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    userBackup?: pulumi.Input<boolean>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
@@ -1553,6 +1559,10 @@ export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
      * Enable influxdb.
      */
     influxdb?: pulumi.Input<boolean>;
+    /**
+     * Enable user_backup.
+     */
+    userBackup?: pulumi.Input<boolean>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
@@ -1560,6 +1570,10 @@ export interface InfluxDbInfluxdbUserConfigPublicAccess {
      * Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     influxdb?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    userBackup?: pulumi.Input<boolean>;
 }
 
 export interface InfluxDbServiceIntegration {
@@ -1722,7 +1736,7 @@ export interface KafkaConnectKafkaConnectUserConfigIpFilterObject {
 
 export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
     /**
-     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
      */
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     /**
@@ -1734,7 +1748,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerFetchMaxBytes?: pulumi.Input<number>;
     /**
-     * Enum: `readUncommitted`, `readCommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * Enum: `readCommitted`, `readUncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
@@ -1766,7 +1780,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
@@ -2084,7 +2098,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     autoCreateTopicsEnable?: pulumi.Input<boolean>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+     * Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
      */
     compressionType?: pulumi.Input<string>;
     /**
@@ -2124,11 +2138,11 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logCleanerMinCompactionLagMs?: pulumi.Input<number>;
     /**
-     * Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+     * Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
      */
     logCleanupPolicy?: pulumi.Input<string>;
     /**
-     * The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+     * The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
      */
     logFlushIntervalMessages?: pulumi.Input<number>;
     /**
@@ -2278,7 +2292,7 @@ export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
 
 export interface KafkaKafkaUserConfigKafkaConnectConfig {
     /**
-     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
      */
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     /**
@@ -2290,7 +2304,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerFetchMaxBytes?: pulumi.Input<number>;
     /**
-     * Enum: `readUncommitted`, `readCommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * Enum: `readCommitted`, `readUncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
@@ -2322,7 +2336,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
@@ -2414,7 +2428,7 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     consumerRequestTimeoutMs?: pulumi.Input<number>;
     /**
-     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
+     * Enum: `recordName`, `topicName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. Default: `topicName`.
      */
     nameStrategy?: pulumi.Input<string>;
     /**
@@ -2422,11 +2436,11 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     nameStrategyValidation?: pulumi.Input<boolean>;
     /**
-     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
+     * Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
      */
     producerAcks?: pulumi.Input<string>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
@@ -2779,11 +2793,11 @@ export interface KafkaTechEmail {
 
 export interface KafkaTopicConfig {
     /**
-     * cleanup.policy value
+     * cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
      */
     cleanupPolicy?: pulumi.Input<string>;
     /**
-     * compression.type value
+     * compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
      */
     compressionType?: pulumi.Input<string>;
     /**
@@ -2827,7 +2841,7 @@ export interface KafkaTopicConfig {
      */
     messageDownconversionEnable?: pulumi.Input<boolean>;
     /**
-     * message.format.version value
+     * message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
      */
     messageFormatVersion?: pulumi.Input<string>;
     /**
@@ -2835,7 +2849,7 @@ export interface KafkaTopicConfig {
      */
     messageTimestampDifferenceMaxMs?: pulumi.Input<string>;
     /**
-     * message.timestamp.type value
+     * message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
      */
     messageTimestampType?: pulumi.Input<string>;
     /**
@@ -3675,15 +3689,15 @@ export interface MySqlMysqlUserConfigMysql {
      */
     interactiveTimeout?: pulumi.Input<number>;
     /**
-     * Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+     * Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
      */
     internalTmpMemStorageEngine?: pulumi.Input<string>;
     /**
-     * Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     * Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
      */
     logOutput?: pulumi.Input<string>;
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
      */
     longQueryTime?: pulumi.Input<number>;
     /**
@@ -3880,7 +3894,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
      */
     disableReplicationFactorAdjustment?: pulumi.Input<boolean>;
     /**
@@ -4005,13 +4019,21 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      */
     endpointSuffix?: pulumi.Input<string>;
     /**
-     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * Whether to restore aliases alongside their associated indexes. Default is true.
      */
-    indices?: pulumi.Input<string>;
+    includeAliases?: pulumi.Input<boolean>;
+    /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices: pulumi.Input<string>;
     /**
      * Azure account secret key. One of key or sasToken should be specified.
      */
     key?: pulumi.Input<string>;
+    /**
+     * If true, restore the cluster state. Defaults to false.
+     */
+    restoreGlobalState?: pulumi.Input<boolean>;
     /**
      * A shared access signatures (SAS) token. One of key or sasToken should be specified.
      */
@@ -4044,9 +4066,17 @@ export interface OpenSearchOpensearchUserConfigGcsMigration {
      */
     credentials: pulumi.Input<string>;
     /**
-     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * Whether to restore aliases alongside their associated indexes. Default is true.
      */
-    indices?: pulumi.Input<string>;
+    includeAliases?: pulumi.Input<boolean>;
+    /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices: pulumi.Input<string>;
+    /**
+     * If true, restore the cluster state. Defaults to false.
+     */
+    restoreGlobalState?: pulumi.Input<boolean>;
     /**
      * The snapshot name to restore from.
      */
@@ -4438,7 +4468,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
 
 export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
     /**
-     * Enum: `monitorOnly`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+     * Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -4690,13 +4720,21 @@ export interface OpenSearchOpensearchUserConfigS3Migration {
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * Whether to restore aliases alongside their associated indexes. Default is true.
      */
-    indices?: pulumi.Input<string>;
+    includeAliases?: pulumi.Input<boolean>;
+    /**
+     * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+     */
+    indices: pulumi.Input<string>;
     /**
      * S3 region.
      */
     region: pulumi.Input<string>;
+    /**
+     * If true, restore the cluster state. Defaults to false.
+     */
+    restoreGlobalState?: pulumi.Input<boolean>;
     /**
      * AWS secret key.
      */
@@ -4799,11 +4837,11 @@ export interface OrganizationPermissionPermission {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `readOnly` and `service:logs:read`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ID of the user or group.
+     * ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
      */
     principalId: pulumi.Input<string>;
     /**
@@ -5099,7 +5137,7 @@ export interface PgPgUserConfig {
      */
     staticIps?: pulumi.Input<boolean>;
     /**
-     * Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      */
     synchronousReplication?: pulumi.Input<string>;
     /**
@@ -5240,11 +5278,11 @@ export interface PgPgUserConfigPg {
      */
     logAutovacuumMinDuration?: pulumi.Input<number>;
     /**
-     * Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+     * Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      */
     logErrorVerbosity?: pulumi.Input<string>;
     /**
-     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+     * Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
      */
     logLinePrefix?: pulumi.Input<string>;
     /**
@@ -5328,7 +5366,7 @@ export interface PgPgUserConfigPg {
      */
     pgStatMonitorDotPgsmMaxBuckets?: pulumi.Input<number>;
     /**
-     * Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      */
     pgStatStatementsDotTrack?: pulumi.Input<string>;
     /**
@@ -5348,7 +5386,7 @@ export interface PgPgUserConfigPg {
      */
     trackCommitTimestamp?: pulumi.Input<string>;
     /**
-     * Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+     * Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
      */
     trackFunctions?: pulumi.Input<string>;
     /**
@@ -5495,7 +5533,7 @@ export interface PgPgUserConfigPgbouncer {
      */
     autodbMaxDbConnections?: pulumi.Input<number>;
     /**
-     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
+     * Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
      */
     autodbPoolMode?: pulumi.Input<string>;
     /**
@@ -5749,7 +5787,7 @@ export interface RedisRedisUserConfig {
      */
     redisLfuLogFactor?: pulumi.Input<number>;
     /**
-     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+     * Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
      */
     redisMaxmemoryPolicy?: pulumi.Input<string>;
     /**
@@ -5915,7 +5953,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfig {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
+     * Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
      */
     autoOffsetReset?: pulumi.Input<string>;
     /**
@@ -5923,7 +5961,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     columns: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn>[]>;
     /**
-     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
+     * Enum: `Avro`, `AvroConfluent`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `Parquet`, `RawBLOB`, `TSKV`, `TSV`, `TabSeparated`. Message data format. Default: `JSONEachRow`.
      */
     dataFormat: pulumi.Input<string>;
     /**
@@ -6100,6 +6138,24 @@ export interface ServiceIntegrationDatadogUserConfigRedis {
     commandStatsEnabled?: pulumi.Input<boolean>;
 }
 
+export interface ServiceIntegrationEndpointAutoscalerUserConfig {
+    /**
+     * Configure autoscaling thresholds for a service
+     */
+    autoscalings: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationEndpointAutoscalerUserConfigAutoscaling>[]>;
+}
+
+export interface ServiceIntegrationEndpointAutoscalerUserConfigAutoscaling {
+    /**
+     * The maximum total disk size (in gb) to allow autoscaler to scale up to. Example: `300`.
+     */
+    capGb: pulumi.Input<number>;
+    /**
+     * Enum: `autoscaleDisk`. Type of autoscale event.
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface ServiceIntegrationEndpointDatadogUserConfig {
     /**
      * Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
@@ -6126,7 +6182,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     maxPartitionContexts?: pulumi.Input<number>;
     /**
-     * Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+     * Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
      */
     site?: pulumi.Input<string>;
 }
@@ -6284,7 +6340,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     saslPlainUsername?: pulumi.Input<string>;
     /**
-     * Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+     * Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
      */
     securityProtocol: pulumi.Input<string>;
     /**
@@ -6401,7 +6457,7 @@ export interface ServiceIntegrationEndpointExternalPostgresql {
      */
     sslClientKey?: pulumi.Input<string>;
     /**
-     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+     * Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      */
     sslMode?: pulumi.Input<string>;
     /**
@@ -6417,9 +6473,24 @@ export interface ServiceIntegrationEndpointExternalPostgresql {
     username: pulumi.Input<string>;
 }
 
+export interface ServiceIntegrationEndpointExternalPrometheusUserConfig {
+    /**
+     * Prometheus basic authentication password. Example: `fhyFNBjj3R`.
+     */
+    basicAuthPassword?: pulumi.Input<string>;
+    /**
+     * Prometheus basic authentication username. Example: `prom4851`.
+     */
+    basicAuthUsername?: pulumi.Input<string>;
+    /**
+     * Prometheus enabled write endpoint. Example: `https://write.example.com/`.
+     */
+    serviceUri?: pulumi.Input<string>;
+}
+
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
-     * Enum: `none`, `basic`. Authentication method.
+     * Enum: `basic`, `none`. Authentication method.
      */
     authentication: pulumi.Input<string>;
     /**
@@ -6474,7 +6545,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     cert?: pulumi.Input<string>;
     /**
-     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+     * Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
      */
     format: pulumi.Input<string>;
     /**
@@ -6641,7 +6712,7 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
@@ -6956,6 +7027,18 @@ export interface ThanosThanosUserConfig {
      */
     queryFrontend?: pulumi.Input<inputs.ThanosThanosUserConfigQueryFrontend>;
     /**
+     * CommonReceive.
+     */
+    receiverIngesting?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * ThanosReceiveRouting.
+     */
+    receiverRouting?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * ThanosRuler.
+     */
+    ruler?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
     serviceLog?: pulumi.Input<boolean>;
@@ -6963,6 +7046,10 @@ export interface ThanosThanosUserConfig {
      * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<boolean>;
+    /**
+     * ThanosStore.
+     */
+    store?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ThanosThanosUserConfigCompactor {
@@ -7211,7 +7298,7 @@ export interface ValkeyValkeyUserConfig {
      */
     valkeyLfuLogFactor?: pulumi.Input<number>;
     /**
-     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+     * Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
      */
     valkeyMaxmemoryPolicy?: pulumi.Input<string>;
     /**

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
     /**
-     * @return Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
+     * @return Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
      * 
      */
     private @Nullable String mode;
@@ -37,7 +37,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure
 
     private GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure() {}
     /**
-     * @return Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
+     * @return Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
      * 
      */
     public Optional<String> mode() {

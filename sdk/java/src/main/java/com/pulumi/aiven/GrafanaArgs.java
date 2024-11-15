@@ -92,14 +92,14 @@ public final class GrafanaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Grafana user configurable settings
+     * Grafana user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="grafanaUserConfig")
     private @Nullable Output<GrafanaGrafanaUserConfigArgs> grafanaUserConfig;
 
     /**
-     * @return Grafana user configurable settings
+     * @return Grafana user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigArgs>> grafanaUserConfig() {
@@ -403,7 +403,7 @@ public final class GrafanaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grafanaUserConfig Grafana user configurable settings
+         * @param grafanaUserConfig Grafana user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class GrafanaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grafanaUserConfig Grafana user configurable settings
+         * @param grafanaUserConfig Grafana user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

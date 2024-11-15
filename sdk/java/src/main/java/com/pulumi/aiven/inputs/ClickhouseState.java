@@ -55,14 +55,14 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Clickhouse user configurable settings
+     * Clickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="clickhouseUserConfig")
     private @Nullable Output<ClickhouseClickhouseUserConfigArgs> clickhouseUserConfig;
 
     /**
-     * @return Clickhouse user configurable settings
+     * @return Clickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ClickhouseClickhouseUserConfigArgs>> clickhouseUserConfig() {
@@ -554,7 +554,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clickhouseUserConfig Clickhouse user configurable settings
+         * @param clickhouseUserConfig Clickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clickhouseUserConfig Clickhouse user configurable settings
+         * @param clickhouseUserConfig Clickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
