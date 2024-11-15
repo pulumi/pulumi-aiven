@@ -1717,6 +1717,16 @@
                 "current": "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint",
                 "majorVersion": 6,
                 "fields": {
+                    "autoscaler_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "autoscaling": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "datadog_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1758,6 +1768,9 @@
                         "maxItemsOne": true
                     },
                     "external_postgresql": {
+                        "maxItemsOne": true
+                    },
+                    "external_prometheus_user_config": {
                         "maxItemsOne": true
                     },
                     "external_schema_registry_user_config": {
@@ -3669,6 +3682,16 @@
                 "current": "aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint",
                 "majorVersion": 6,
                 "fields": {
+                    "autoscaler_user_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "autoscaling": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "datadog_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -3710,6 +3733,9 @@
                         "maxItemsOne": false
                     },
                     "external_postgresql": {
+                        "maxItemsOne": false
+                    },
+                    "external_prometheus_user_config": {
                         "maxItemsOne": false
                     },
                     "external_schema_registry_user_config": {
