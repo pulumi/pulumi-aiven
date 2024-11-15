@@ -92,14 +92,14 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * M3aggregator user configurable settings
+     * M3aggregator user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="m3aggregatorUserConfig")
     private @Nullable Output<M3AggregatorM3aggregatorUserConfigArgs> m3aggregatorUserConfig;
 
     /**
-     * @return M3aggregator user configurable settings
+     * @return M3aggregator user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<M3AggregatorM3aggregatorUserConfigArgs>> m3aggregatorUserConfig() {
@@ -403,7 +403,7 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param m3aggregatorUserConfig M3aggregator user configurable settings
+         * @param m3aggregatorUserConfig M3aggregator user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param m3aggregatorUserConfig M3aggregator user configurable settings
+         * @param m3aggregatorUserConfig M3aggregator user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

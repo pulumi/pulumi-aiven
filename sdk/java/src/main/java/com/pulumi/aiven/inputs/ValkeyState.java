@@ -446,14 +446,14 @@ public final class ValkeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valkey user configurable settings
+     * Valkey user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="valkeyUserConfig")
     private @Nullable Output<ValkeyValkeyUserConfigArgs> valkeyUserConfig;
 
     /**
-     * @return Valkey user configurable settings
+     * @return Valkey user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ValkeyValkeyUserConfigArgs>> valkeyUserConfig() {
@@ -1145,7 +1145,7 @@ public final class ValkeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyUserConfig Valkey user configurable settings
+         * @param valkeyUserConfig Valkey user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -1156,7 +1156,7 @@ public final class ValkeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyUserConfig Valkey user configurable settings
+         * @param valkeyUserConfig Valkey user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

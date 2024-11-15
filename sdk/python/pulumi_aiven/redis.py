@@ -49,7 +49,7 @@ class RedisArgs:
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input['RedisRedisArgs'] redis: Redis server provided values
-        :param pulumi.Input['RedisRedisUserConfigArgs'] redis_user_config: Redis user configurable settings
+        :param pulumi.Input['RedisRedisUserConfigArgs'] redis_user_config: Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input['RedisServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['RedisTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
@@ -214,7 +214,7 @@ class RedisArgs:
     @pulumi.getter(name="redisUserConfig")
     def redis_user_config(self) -> Optional[pulumi.Input['RedisRedisUserConfigArgs']]:
         """
-        Redis user configurable settings
+        Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "redis_user_config")
 
@@ -330,7 +330,7 @@ class _RedisState:
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input['RedisRedisArgs'] redis: Redis server provided values
-        :param pulumi.Input['RedisRedisUserConfigArgs'] redis_user_config: Redis user configurable settings
+        :param pulumi.Input['RedisRedisUserConfigArgs'] redis_user_config: Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input['RedisServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
@@ -582,7 +582,7 @@ class _RedisState:
     @pulumi.getter(name="redisUserConfig")
     def redis_user_config(self) -> Optional[pulumi.Input['RedisRedisUserConfigArgs']]:
         """
-        Redis user configurable settings
+        Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "redis_user_config")
 
@@ -810,7 +810,7 @@ class Redis(pulumi.CustomResource):
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Union['RedisRedisArgs', 'RedisRedisArgsDict']] redis: Redis server provided values
-        :param pulumi.Input[Union['RedisRedisUserConfigArgs', 'RedisRedisUserConfigArgsDict']] redis_user_config: Redis user configurable settings
+        :param pulumi.Input[Union['RedisRedisUserConfigArgs', 'RedisRedisUserConfigArgsDict']] redis_user_config: Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input[Union['RedisServiceIntegrationArgs', 'RedisServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -989,7 +989,7 @@ class Redis(pulumi.CustomResource):
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Union['RedisRedisArgs', 'RedisRedisArgsDict']] redis: Redis server provided values
-        :param pulumi.Input[Union['RedisRedisUserConfigArgs', 'RedisRedisUserConfigArgsDict']] redis_user_config: Redis user configurable settings
+        :param pulumi.Input[Union['RedisRedisUserConfigArgs', 'RedisRedisUserConfigArgsDict']] redis_user_config: Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RedisServiceIntegrationArgs', 'RedisServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
@@ -1040,7 +1040,7 @@ class Redis(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalDiskSpace")
-    def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
+    def additional_disk_space(self) -> pulumi.Output[str]:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
@@ -1156,7 +1156,7 @@ class Redis(pulumi.CustomResource):
     @pulumi.getter(name="redisUserConfig")
     def redis_user_config(self) -> pulumi.Output[Optional['outputs.RedisRedisUserConfig']]:
         """
-        Redis user configurable settings
+        Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "redis_user_config")
 

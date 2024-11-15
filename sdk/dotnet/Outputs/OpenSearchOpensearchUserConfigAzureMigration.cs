@@ -38,13 +38,21 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? EndpointSuffix;
         /// <summary>
-        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        /// Whether to restore aliases alongside their associated indexes. Default is true.
         /// </summary>
-        public readonly string? Indices;
+        public readonly bool? IncludeAliases;
+        /// <summary>
+        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+        /// </summary>
+        public readonly string Indices;
         /// <summary>
         /// Azure account secret key. One of key or sas_token should be specified.
         /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// If true, restore the cluster state. Defaults to false.
+        /// </summary>
+        public readonly bool? RestoreGlobalState;
         /// <summary>
         /// A shared access signatures (SAS) token. One of key or sas_token should be specified.
         /// </summary>
@@ -68,9 +76,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? endpointSuffix,
 
-            string? indices,
+            bool? includeAliases,
+
+            string indices,
 
             string? key,
+
+            bool? restoreGlobalState,
 
             string? sasToken,
 
@@ -82,8 +94,10 @@ namespace Pulumi.Aiven.Outputs
             Compress = compress;
             Container = container;
             EndpointSuffix = endpointSuffix;
+            IncludeAliases = includeAliases;
             Indices = indices;
             Key = key;
+            RestoreGlobalState = restoreGlobalState;
             SasToken = sasToken;
             SnapshotName = snapshotName;
         }

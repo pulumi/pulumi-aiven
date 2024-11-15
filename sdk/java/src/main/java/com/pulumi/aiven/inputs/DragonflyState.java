@@ -176,14 +176,14 @@ public final class DragonflyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Dragonfly user configurable settings
+     * Dragonfly user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="dragonflyUserConfig")
     private @Nullable Output<DragonflyDragonflyUserConfigArgs> dragonflyUserConfig;
 
     /**
-     * @return Dragonfly user configurable settings
+     * @return Dragonfly user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<DragonflyDragonflyUserConfigArgs>> dragonflyUserConfig() {
@@ -727,7 +727,7 @@ public final class DragonflyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dragonflyUserConfig Dragonfly user configurable settings
+         * @param dragonflyUserConfig Dragonfly user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -738,7 +738,7 @@ public final class DragonflyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dragonflyUserConfig Dragonfly user configurable settings
+         * @param dragonflyUserConfig Dragonfly user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

@@ -15,14 +15,14 @@ public final class GetServiceIntegrationEndpointArgs extends com.pulumi.resource
     public static final GetServiceIntegrationEndpointArgs Empty = new GetServiceIntegrationEndpointArgs();
 
     /**
-     * Name of the service integration endpoint
+     * Name of the service integration endpoint.
      * 
      */
     @Import(name="endpointName", required=true)
     private Output<String> endpointName;
 
     /**
-     * @return Name of the service integration endpoint
+     * @return Name of the service integration endpoint.
      * 
      */
     public Output<String> endpointName() {
@@ -30,14 +30,14 @@ public final class GetServiceIntegrationEndpointArgs extends com.pulumi.resource
     }
 
     /**
-     * Project the service integration endpoint belongs to
+     * Project the service integration endpoint is in.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Project the service integration endpoint belongs to
+     * @return Project the service integration endpoint is in.
      * 
      */
     public Output<String> project() {
@@ -70,7 +70,7 @@ public final class GetServiceIntegrationEndpointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param endpointName Name of the service integration endpoint
+         * @param endpointName Name of the service integration endpoint.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetServiceIntegrationEndpointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param endpointName Name of the service integration endpoint
+         * @param endpointName Name of the service integration endpoint.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetServiceIntegrationEndpointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param project Project the service integration endpoint belongs to
+         * @param project Project the service integration endpoint is in.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetServiceIntegrationEndpointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param project Project the service integration endpoint belongs to
+         * @param project Project the service integration endpoint is in.
          * 
          * @return builder
          * 

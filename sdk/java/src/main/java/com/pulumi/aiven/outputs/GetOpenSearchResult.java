@@ -75,7 +75,7 @@ public final class GetOpenSearchResult {
      */
     private String maintenanceWindowTime;
     /**
-     * @return Opensearch user configurable settings
+     * @return Opensearch user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetOpenSearchOpensearchUserConfig> opensearchUserConfigs;
@@ -244,7 +244,7 @@ public final class GetOpenSearchResult {
         return this.maintenanceWindowTime;
     }
     /**
-     * @return Opensearch user configurable settings
+     * @return Opensearch user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetOpenSearchOpensearchUserConfig> opensearchUserConfigs() {

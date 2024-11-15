@@ -144,7 +144,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDragonflyDragonflyResult> Dragonflies;
         /// <summary>
-        /// Dragonfly user configurable settings
+        /// Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDragonflyDragonflyUserConfigResult> DragonflyUserConfigs;
         /// <summary>

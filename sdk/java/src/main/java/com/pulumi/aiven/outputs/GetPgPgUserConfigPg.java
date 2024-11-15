@@ -105,12 +105,12 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Integer logAutovacuumMinDuration;
     /**
-     * @return Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+     * @return Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      * 
      */
     private @Nullable String logErrorVerbosity;
     /**
-     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
+     * @return Enum: `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
      * 
      */
     private @Nullable String logLinePrefix;
@@ -215,7 +215,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Integer pgStatMonitorDotPgsmMaxBuckets;
     /**
-     * @return Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * @return Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      * 
      */
     private @Nullable String pgStatStatementsDotTrack;
@@ -240,7 +240,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable String trackCommitTimestamp;
     /**
-     * @return Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+     * @return Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
      * 
      */
     private @Nullable String trackFunctions;
@@ -388,14 +388,14 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.logAutovacuumMinDuration);
     }
     /**
-     * @return Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+     * @return Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      * 
      */
     public Optional<String> logErrorVerbosity() {
         return Optional.ofNullable(this.logErrorVerbosity);
     }
     /**
-     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
+     * @return Enum: `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q &#39;`. Choose from one of the available log formats.
      * 
      */
     public Optional<String> logLinePrefix() {
@@ -542,7 +542,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.pgStatMonitorDotPgsmMaxBuckets);
     }
     /**
-     * @return Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * @return Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      * 
      */
     public Optional<String> pgStatStatementsDotTrack() {
@@ -577,7 +577,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.trackCommitTimestamp);
     }
     /**
-     * @return Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+     * @return Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
      * 
      */
     public Optional<String> trackFunctions() {

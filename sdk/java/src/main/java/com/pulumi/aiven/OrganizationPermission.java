@@ -16,10 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Grants permissions to a principal for a resource.
- * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
  * 
  * ## Example Usage
  * 
@@ -47,28 +44,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Grant permission to a user
- *         var operator = new OrganizationPermission("operator", OrganizationPermissionArgs.builder()
+ *         var examplePermissions = new OrganizationPermission("examplePermissions", OrganizationPermissionArgs.builder()
  *             .organizationId(main.id())
  *             .resourceId(exampleProject.id())
  *             .resourceType("project")
- *             .permissions(OrganizationPermissionPermissionArgs.builder()
- *                 .permissions("operator")
- *                 .principalId("u123a456b7890c")
- *                 .principalType("user")
- *                 .build())
- *             .build());
- * 
- *         // Grant permission to a group
- *         var developers = new OrganizationPermission("developers", OrganizationPermissionArgs.builder()
- *             .organizationId(main.id())
- *             .resourceId(exampleProject.id())
- *             .resourceType("project")
- *             .permissions(OrganizationPermissionPermissionArgs.builder()
- *                 .permissions("developer")
- *                 .principalId(exampleGroup.groupId())
- *                 .principalType("user_group")
- *                 .build())
+ *             .permissions(            
+ *                 OrganizationPermissionPermissionArgs.builder()
+ *                     .permissions(                    
+ *                         "operator",
+ *                         "service:logs:read")
+ *                     .principalId("u123a456b7890c")
+ *                     .principalType("user")
+ *                     .build(),
+ *                 OrganizationPermissionPermissionArgs.builder()
+ *                     .permissions(                    
+ *                         "project:integrations:write",
+ *                         "project:networking:read",
+ *                         "developer")
+ *                     .principalId(exampleGroup.groupId())
+ *                     .principalType("user_group")
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -129,14 +124,14 @@ public class OrganizationPermission extends com.pulumi.resources.CustomResource 
         return this.resourceId;
     }
     /**
-     * Resource type. The possible values are `project`.
+     * Resource type. The possible values are `project`, `organization` and `organization_unit`.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return Resource type. The possible values are `project`.
+     * @return Resource type. The possible values are `project`, `organization` and `organization_unit`.
      * 
      */
     public Output<String> resourceType() {

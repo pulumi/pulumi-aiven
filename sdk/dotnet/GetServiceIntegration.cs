@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         public string DestinationServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+        /// Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         /// </summary>
         [Input("integrationType", required: true)]
         public string IntegrationType { get; set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.Aiven
         public Input<string> DestinationServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+        /// Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
@@ -136,15 +136,15 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationResult
     {
         /// <summary>
-        /// ClickhouseKafka user configurable settings
+        /// ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhouseKafkaUserConfigResult> ClickhouseKafkaUserConfigs;
         /// <summary>
-        /// ClickhousePostgresql user configurable settings
+        /// ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhousePostgresqlUserConfigResult> ClickhousePostgresqlUserConfigs;
         /// <summary>
-        /// Datadog user configurable settings
+        /// Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigResult> DatadogUserConfigs;
         /// <summary>
@@ -156,23 +156,23 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string DestinationServiceName;
         /// <summary>
-        /// ExternalAwsCloudwatchLogs user configurable settings
+        /// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult> ExternalAwsCloudwatchLogsUserConfigs;
         /// <summary>
-        /// ExternalAwsCloudwatchMetrics user configurable settings
+        /// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult> ExternalAwsCloudwatchMetricsUserConfigs;
         /// <summary>
-        /// ExternalElasticsearchLogs user configurable settings
+        /// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigResult> ExternalElasticsearchLogsUserConfigs;
         /// <summary>
-        /// ExternalOpensearchLogs user configurable settings
+        /// ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalOpensearchLogsUserConfigResult> ExternalOpensearchLogsUserConfigs;
         /// <summary>
-        /// FlinkExternalPostgresql user configurable settings
+        /// FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationFlinkExternalPostgresqlUserConfigResult> FlinkExternalPostgresqlUserConfigs;
         /// <summary>
@@ -184,27 +184,27 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string IntegrationId;
         /// <summary>
-        /// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+        /// Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         /// </summary>
         public readonly string IntegrationType;
         /// <summary>
-        /// KafkaConnect user configurable settings
+        /// KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationKafkaConnectUserConfigResult> KafkaConnectUserConfigs;
         /// <summary>
-        /// KafkaLogs user configurable settings
+        /// KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationKafkaLogsUserConfigResult> KafkaLogsUserConfigs;
         /// <summary>
-        /// KafkaMirrormaker user configurable settings
+        /// KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationKafkaMirrormakerUserConfigResult> KafkaMirrormakerUserConfigs;
         /// <summary>
-        /// Logs user configurable settings
+        /// Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationLogsUserConfigResult> LogsUserConfigs;
         /// <summary>
-        /// Metrics user configurable settings
+        /// Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationMetricsUserConfigResult> MetricsUserConfigs;
         /// <summary>
@@ -212,7 +212,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Prometheus user configurable settings
+        /// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationPrometheusUserConfigResult> PrometheusUserConfigs;
         /// <summary>

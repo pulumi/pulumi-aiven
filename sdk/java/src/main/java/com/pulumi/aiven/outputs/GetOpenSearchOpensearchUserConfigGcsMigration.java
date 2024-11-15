@@ -39,10 +39,20 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
      */
     private String credentials;
     /**
-     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * @return Whether to restore aliases alongside their associated indexes. Default is true.
      * 
      */
-    private @Nullable String indices;
+    private @Nullable Boolean includeAliases;
+    /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    private String indices;
+    /**
+     * @return If true, restore the cluster state. Defaults to false.
+     * 
+     */
+    private @Nullable Boolean restoreGlobalState;
     /**
      * @return The snapshot name to restore from.
      * 
@@ -86,11 +96,25 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
         return this.credentials;
     }
     /**
-     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * @return Whether to restore aliases alongside their associated indexes. Default is true.
      * 
      */
-    public Optional<String> indices() {
-        return Optional.ofNullable(this.indices);
+    public Optional<Boolean> includeAliases() {
+        return Optional.ofNullable(this.includeAliases);
+    }
+    /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    public String indices() {
+        return this.indices;
+    }
+    /**
+     * @return If true, restore the cluster state. Defaults to false.
+     * 
+     */
+    public Optional<Boolean> restoreGlobalState() {
+        return Optional.ofNullable(this.restoreGlobalState);
     }
     /**
      * @return The snapshot name to restore from.
@@ -114,7 +138,9 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
         private @Nullable String chunkSize;
         private @Nullable Boolean compress;
         private String credentials;
-        private @Nullable String indices;
+        private @Nullable Boolean includeAliases;
+        private String indices;
+        private @Nullable Boolean restoreGlobalState;
         private String snapshotName;
         public Builder() {}
         public Builder(GetOpenSearchOpensearchUserConfigGcsMigration defaults) {
@@ -124,7 +150,9 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
     	      this.chunkSize = defaults.chunkSize;
     	      this.compress = defaults.compress;
     	      this.credentials = defaults.credentials;
+    	      this.includeAliases = defaults.includeAliases;
     	      this.indices = defaults.indices;
+    	      this.restoreGlobalState = defaults.restoreGlobalState;
     	      this.snapshotName = defaults.snapshotName;
         }
 
@@ -165,9 +193,23 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
             return this;
         }
         @CustomType.Setter
-        public Builder indices(@Nullable String indices) {
+        public Builder includeAliases(@Nullable Boolean includeAliases) {
 
+            this.includeAliases = includeAliases;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder indices(String indices) {
+            if (indices == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchOpensearchUserConfigGcsMigration", "indices");
+            }
             this.indices = indices;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder restoreGlobalState(@Nullable Boolean restoreGlobalState) {
+
+            this.restoreGlobalState = restoreGlobalState;
             return this;
         }
         @CustomType.Setter
@@ -185,7 +227,9 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
             _resultValue.chunkSize = chunkSize;
             _resultValue.compress = compress;
             _resultValue.credentials = credentials;
+            _resultValue.includeAliases = includeAliases;
             _resultValue.indices = indices;
+            _resultValue.restoreGlobalState = restoreGlobalState;
             _resultValue.snapshotName = snapshotName;
             return _resultValue;
         }

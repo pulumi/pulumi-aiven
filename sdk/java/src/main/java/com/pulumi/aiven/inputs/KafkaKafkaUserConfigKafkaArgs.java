@@ -34,14 +34,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+     * Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
      * 
      */
     @Import(name="compressionType")
     private @Nullable Output<String> compressionType;
 
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+     * @return Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
      * 
      */
     public Optional<Output<String>> compressionType() {
@@ -184,14 +184,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+     * Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
      * 
      */
     @Import(name="logCleanupPolicy")
     private @Nullable Output<String> logCleanupPolicy;
 
     /**
-     * @return Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+     * @return Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
      * 
      */
     public Optional<Output<String>> logCleanupPolicy() {
@@ -199,14 +199,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+     * The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
      * 
      */
     @Import(name="logFlushIntervalMessages")
     private @Nullable Output<Integer> logFlushIntervalMessages;
 
     /**
-     * @return The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+     * @return The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
      * 
      */
     public Optional<Output<Integer>> logFlushIntervalMessages() {
@@ -799,7 +799,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param compressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+         * @param compressionType Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param compressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+         * @param compressionType Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
          * 
          * @return builder
          * 
@@ -1009,7 +1009,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanupPolicy Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+         * @param logCleanupPolicy Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
          * 
          * @return builder
          * 
@@ -1020,7 +1020,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanupPolicy Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+         * @param logCleanupPolicy Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
          * 
          * @return builder
          * 
@@ -1030,7 +1030,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
          * 
          * @return builder
          * 
@@ -1041,7 +1041,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
          * 
          * @return builder
          * 

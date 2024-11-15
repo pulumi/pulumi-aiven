@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Grants permissions to a principal for a resource.
-    /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
     /// 
     /// ## Example Usage
     /// 
@@ -25,8 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Grant permission to a user
-    ///     var @operator = new Aiven.OrganizationPermission("operator", new()
+    ///     var examplePermissions = new Aiven.OrganizationPermission("example_permissions", new()
     ///     {
     ///         OrganizationId = main.Id,
     ///         ResourceId = exampleProject.Id,
@@ -38,25 +34,17 @@ namespace Pulumi.Aiven
     ///                 Permissions = new[]
     ///                 {
     ///                     "operator",
+    ///                     "service:logs:read",
     ///                 },
     ///                 PrincipalId = "u123a456b7890c",
     ///                 PrincipalType = "user",
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Grant permission to a group
-    ///     var developers = new Aiven.OrganizationPermission("developers", new()
-    ///     {
-    ///         OrganizationId = main.Id,
-    ///         ResourceId = exampleProject.Id,
-    ///         ResourceType = "project",
-    ///         Permissions = new[]
-    ///         {
     ///             new Aiven.Inputs.OrganizationPermissionPermissionArgs
     ///             {
     ///                 Permissions = new[]
     ///                 {
+    ///                     "project:integrations:write",
+    ///                     "project:networking:read",
     ///                     "developer",
     ///                 },
     ///                 PrincipalId = exampleGroup.GroupId,
@@ -96,7 +84,7 @@ namespace Pulumi.Aiven
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Resource type. The possible values are `project`.
+        /// Resource type. The possible values are `project`, `organization` and `organization_unit`.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -172,7 +160,7 @@ namespace Pulumi.Aiven
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// Resource type. The possible values are `project`.
+        /// Resource type. The possible values are `project`, `organization` and `organization_unit`.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -210,7 +198,7 @@ namespace Pulumi.Aiven
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Resource type. The possible values are `project`.
+        /// Resource type. The possible values are `project`, `organization` and `organization_unit`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

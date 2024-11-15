@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaTopicConfig {
     /**
-     * @return cleanup.policy value
+     * @return cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
      * 
      */
     private @Nullable String cleanupPolicy;
     /**
-     * @return compression.type value
+     * @return compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
      * 
      */
     private @Nullable String compressionType;
@@ -74,7 +74,7 @@ public final class KafkaTopicConfig {
      */
     private @Nullable Boolean messageDownconversionEnable;
     /**
-     * @return message.format.version value
+     * @return message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
      * 
      */
     private @Nullable String messageFormatVersion;
@@ -84,7 +84,7 @@ public final class KafkaTopicConfig {
      */
     private @Nullable String messageTimestampDifferenceMaxMs;
     /**
-     * @return message.timestamp.type value
+     * @return message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
      * 
      */
     private @Nullable String messageTimestampType;
@@ -155,14 +155,14 @@ public final class KafkaTopicConfig {
 
     private KafkaTopicConfig() {}
     /**
-     * @return cleanup.policy value
+     * @return cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
      * 
      */
     public Optional<String> cleanupPolicy() {
         return Optional.ofNullable(this.cleanupPolicy);
     }
     /**
-     * @return compression.type value
+     * @return compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
      * 
      */
     public Optional<String> compressionType() {
@@ -239,7 +239,7 @@ public final class KafkaTopicConfig {
         return Optional.ofNullable(this.messageDownconversionEnable);
     }
     /**
-     * @return message.format.version value
+     * @return message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
      * 
      */
     public Optional<String> messageFormatVersion() {
@@ -253,7 +253,7 @@ public final class KafkaTopicConfig {
         return Optional.ofNullable(this.messageTimestampDifferenceMaxMs);
     }
     /**
-     * @return message.timestamp.type value
+     * @return message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
      * 
      */
     public Optional<String> messageTimestampType() {

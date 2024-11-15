@@ -64,7 +64,7 @@ public final class GetKafkaMirrorMakerResult {
      */
     private String id;
     /**
-     * @return KafkaMirrormaker user configurable settings
+     * @return KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetKafkaMirrorMakerKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
@@ -224,7 +224,7 @@ public final class GetKafkaMirrorMakerResult {
         return this.id;
     }
     /**
-     * @return KafkaMirrormaker user configurable settings
+     * @return KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetKafkaMirrorMakerKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs() {

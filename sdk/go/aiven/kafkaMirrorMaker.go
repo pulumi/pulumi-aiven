@@ -62,7 +62,7 @@ type KafkaMirrorMaker struct {
 	pulumi.CustomResourceState
 
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
@@ -81,7 +81,7 @@ type KafkaMirrorMaker struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
-	// KafkaMirrormaker user configurable settings
+	// KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaMirrormakerUserConfig KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput `pulumi:"kafkaMirrormakerUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -185,7 +185,7 @@ type kafkaMirrorMakerState struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
-	// KafkaMirrormaker user configurable settings
+	// KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaMirrormakerUserConfig *KafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -246,7 +246,7 @@ type KafkaMirrorMakerState struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpaceUsed pulumi.StringPtrInput
-	// KafkaMirrormaker user configurable settings
+	// KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaMirrormakerUserConfig KafkaMirrorMakerKafkaMirrormakerUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -299,7 +299,7 @@ type kafkaMirrorMakerArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
-	// KafkaMirrormaker user configurable settings
+	// KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaMirrormakerUserConfig *KafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -335,7 +335,7 @@ type KafkaMirrorMakerArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
-	// KafkaMirrormaker user configurable settings
+	// KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	KafkaMirrormakerUserConfig KafkaMirrorMakerKafkaMirrormakerUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -449,8 +449,8 @@ func (o KafkaMirrorMakerOutput) ToKafkaMirrorMakerOutputWithContext(ctx context.
 }
 
 // Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-func (o KafkaMirrorMakerOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+func (o KafkaMirrorMakerOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -492,7 +492,7 @@ func (o KafkaMirrorMakerOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
 
-// KafkaMirrormaker user configurable settings
+// KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o KafkaMirrorMakerOutput) KafkaMirrormakerUserConfig() KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMaker) KafkaMirrorMakerKafkaMirrormakerUserConfigPtrOutput {
 		return v.KafkaMirrormakerUserConfig

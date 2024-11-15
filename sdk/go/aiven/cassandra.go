@@ -60,10 +60,10 @@ type Cassandra struct {
 	pulumi.CustomResourceState
 
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// Values provided by the Cassandra server.
 	Cassandra CassandraCassandraOutput `pulumi:"cassandra"`
-	// Cassandra user configurable settings
+	// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	CassandraUserConfig CassandraCassandraUserConfigPtrOutput `pulumi:"cassandraUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
@@ -173,7 +173,7 @@ type cassandraState struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Values provided by the Cassandra server.
 	Cassandra *CassandraCassandra `pulumi:"cassandra"`
-	// Cassandra user configurable settings
+	// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	CassandraUserConfig *CassandraCassandraUserConfig `pulumi:"cassandraUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
@@ -236,7 +236,7 @@ type CassandraState struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Values provided by the Cassandra server.
 	Cassandra CassandraCassandraPtrInput
-	// Cassandra user configurable settings
+	// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	CassandraUserConfig CassandraCassandraUserConfigPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
@@ -303,7 +303,7 @@ type cassandraArgs struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Values provided by the Cassandra server.
 	Cassandra *CassandraCassandra `pulumi:"cassandra"`
-	// Cassandra user configurable settings
+	// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	CassandraUserConfig *CassandraCassandraUserConfig `pulumi:"cassandraUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
@@ -341,7 +341,7 @@ type CassandraArgs struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Values provided by the Cassandra server.
 	Cassandra CassandraCassandraPtrInput
-	// Cassandra user configurable settings
+	// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	CassandraUserConfig CassandraCassandraUserConfigPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
@@ -461,8 +461,8 @@ func (o CassandraOutput) ToCassandraOutputWithContext(ctx context.Context) Cassa
 }
 
 // Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-func (o CassandraOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Cassandra) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+func (o CassandraOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cassandra) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
 // Values provided by the Cassandra server.
@@ -470,7 +470,7 @@ func (o CassandraOutput) Cassandra() CassandraCassandraOutput {
 	return o.ApplyT(func(v *Cassandra) CassandraCassandraOutput { return v.Cassandra }).(CassandraCassandraOutput)
 }
 
-// Cassandra user configurable settings
+// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o CassandraOutput) CassandraUserConfig() CassandraCassandraUserConfigPtrOutput {
 	return o.ApplyT(func(v *Cassandra) CassandraCassandraUserConfigPtrOutput { return v.CassandraUserConfig }).(CassandraCassandraUserConfigPtrOutput)
 }

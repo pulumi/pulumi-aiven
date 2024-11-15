@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SaslPlainUsername;
         /// <summary>
-        /// Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+        /// Enum: `PLAINTEXT`, `SASL_PLAINTEXT`, `SASL_SSL`, `SSL`. Security protocol.
         /// </summary>
         public readonly string SecurityProtocol;
         /// <summary>

@@ -80,14 +80,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
+     * Offset syncs topic location. The possible values are `source` and `target`.
      * 
      */
     @Import(name="offsetSyncsTopicLocation", required=true)
     private Output<String> offsetSyncsTopicLocation;
 
     /**
-     * @return Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
+     * @return Offset syncs topic location. The possible values are `source` and `target`.
      * 
      */
     public Output<String> offsetSyncsTopicLocation() {
@@ -377,7 +377,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param offsetSyncsTopicLocation Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
+         * @param offsetSyncsTopicLocation Offset syncs topic location. The possible values are `source` and `target`.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param offsetSyncsTopicLocation Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
+         * @param offsetSyncsTopicLocation Offset syncs topic location. The possible values are `source` and `target`.
          * 
          * @return builder
          * 

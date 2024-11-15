@@ -206,14 +206,14 @@ public final class MySqlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mysql user configurable settings
+     * Mysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="mysqlUserConfig")
     private @Nullable Output<MySqlMysqlUserConfigArgs> mysqlUserConfig;
 
     /**
-     * @return Mysql user configurable settings
+     * @return Mysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<MySqlMysqlUserConfigArgs>> mysqlUserConfig() {
@@ -769,7 +769,7 @@ public final class MySqlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mysqlUserConfig Mysql user configurable settings
+         * @param mysqlUserConfig Mysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -780,7 +780,7 @@ public final class MySqlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mysqlUserConfig Mysql user configurable settings
+         * @param mysqlUserConfig Mysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

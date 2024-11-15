@@ -128,7 +128,7 @@ class GetCassandraResult:
     @pulumi.getter(name="cassandraUserConfigs")
     def cassandra_user_configs(self) -> Sequence['outputs.GetCassandraCassandraUserConfigResult']:
         """
-        Cassandra user configurable settings
+        Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "cassandra_user_configs")
 

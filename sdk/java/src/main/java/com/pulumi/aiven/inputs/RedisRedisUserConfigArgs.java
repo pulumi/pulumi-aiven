@@ -272,14 +272,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+     * Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
      * 
      */
     @Import(name="redisMaxmemoryPolicy")
     private @Nullable Output<String> redisMaxmemoryPolicy;
 
     /**
-     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+     * @return Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
      * 
      */
     public Optional<Output<String>> redisMaxmemoryPolicy() {
@@ -865,7 +865,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+         * @param redisMaxmemoryPolicy Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
          * 
          * @return builder
          * 
@@ -876,7 +876,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
+         * @param redisMaxmemoryPolicy Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
          * 
          * @return builder
          * 

@@ -60,7 +60,7 @@ type Grafana struct {
 	pulumi.CustomResourceState
 
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
@@ -81,7 +81,7 @@ type Grafana struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Values provided by the Grafana server.
 	Grafana GrafanaGrafanaOutput `pulumi:"grafana"`
-	// Grafana user configurable settings
+	// Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	GrafanaUserConfig GrafanaGrafanaUserConfigPtrOutput `pulumi:"grafanaUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -188,7 +188,7 @@ type grafanaState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Values provided by the Grafana server.
 	Grafana *GrafanaGrafana `pulumi:"grafana"`
-	// Grafana user configurable settings
+	// Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	GrafanaUserConfig *GrafanaGrafanaUserConfig `pulumi:"grafanaUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -251,7 +251,7 @@ type GrafanaState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Values provided by the Grafana server.
 	Grafana GrafanaGrafanaPtrInput
-	// Grafana user configurable settings
+	// Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	GrafanaUserConfig GrafanaGrafanaUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -306,7 +306,7 @@ type grafanaArgs struct {
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Values provided by the Grafana server.
 	Grafana *GrafanaGrafana `pulumi:"grafana"`
-	// Grafana user configurable settings
+	// Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	GrafanaUserConfig *GrafanaGrafanaUserConfig `pulumi:"grafanaUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -344,7 +344,7 @@ type GrafanaArgs struct {
 	DiskSpace pulumi.StringPtrInput
 	// Values provided by the Grafana server.
 	Grafana GrafanaGrafanaPtrInput
-	// Grafana user configurable settings
+	// Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	GrafanaUserConfig GrafanaGrafanaUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -458,8 +458,8 @@ func (o GrafanaOutput) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOu
 }
 
 // Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-func (o GrafanaOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Grafana) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+func (o GrafanaOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *Grafana) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -506,7 +506,7 @@ func (o GrafanaOutput) Grafana() GrafanaGrafanaOutput {
 	return o.ApplyT(func(v *Grafana) GrafanaGrafanaOutput { return v.Grafana }).(GrafanaGrafanaOutput)
 }
 
-// Grafana user configurable settings
+// Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o GrafanaOutput) GrafanaUserConfig() GrafanaGrafanaUserConfigPtrOutput {
 	return o.ApplyT(func(v *Grafana) GrafanaGrafanaUserConfigPtrOutput { return v.GrafanaUserConfig }).(GrafanaGrafanaUserConfigPtrOutput)
 }

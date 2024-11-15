@@ -48,7 +48,7 @@ class KafkaArgs:
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[bool] default_acl: Create a default wildcard Kafka ACL.
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
-        :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka server connection details.
         :param pulumi.Input[bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -189,7 +189,7 @@ class KafkaArgs:
     @pulumi.getter(name="kafkaUserConfig")
     def kafka_user_config(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigArgs']]:
         """
-        Kafka user configurable settings
+        Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_user_config")
 
@@ -363,7 +363,7 @@ class _KafkaState:
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka server connection details.
         :param pulumi.Input[bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -569,7 +569,7 @@ class _KafkaState:
     @pulumi.getter(name="kafkaUserConfig")
     def kafka_user_config(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigArgs']]:
         """
-        Kafka user configurable settings
+        Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_user_config")
 
@@ -887,7 +887,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[bool] default_acl: Create a default wildcard Kafka ACL.
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
-        :param pulumi.Input[Union['KafkaKafkaUserConfigArgs', 'KafkaKafkaUserConfigArgsDict']] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Union['KafkaKafkaUserConfigArgs', 'KafkaKafkaUserConfigArgsDict']] kafka_user_config: Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaKafkaArgs', 'KafkaKafkaArgsDict']]]] kafkas: Kafka server connection details.
         :param pulumi.Input[bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -1082,7 +1082,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input[Union['KafkaKafkaUserConfigArgs', 'KafkaKafkaUserConfigArgsDict']] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Union['KafkaKafkaUserConfigArgs', 'KafkaKafkaUserConfigArgsDict']] kafka_user_config: Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaKafkaArgs', 'KafkaKafkaArgsDict']]]] kafkas: Kafka server connection details.
         :param pulumi.Input[bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -1142,7 +1142,7 @@ class Kafka(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalDiskSpace")
-    def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
+    def additional_disk_space(self) -> pulumi.Output[str]:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
@@ -1218,7 +1218,7 @@ class Kafka(pulumi.CustomResource):
     @pulumi.getter(name="kafkaUserConfig")
     def kafka_user_config(self) -> pulumi.Output[Optional['outputs.KafkaKafkaUserConfig']]:
         """
-        Kafka user configurable settings
+        Kafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_user_config")
 

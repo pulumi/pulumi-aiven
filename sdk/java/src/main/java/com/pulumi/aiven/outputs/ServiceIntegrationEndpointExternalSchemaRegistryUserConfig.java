@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
-     * @return Enum: `none`, `basic`. Authentication method.
+     * @return Enum: `basic`, `none`. Authentication method.
      * 
      */
     private String authentication;
@@ -35,7 +35,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
 
     private ServiceIntegrationEndpointExternalSchemaRegistryUserConfig() {}
     /**
-     * @return Enum: `none`, `basic`. Authentication method.
+     * @return Enum: `basic`, `none`. Authentication method.
      * 
      */
     public String authentication() {

@@ -18,6 +18,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("influxdb")]
         public Input<bool>? Influxdb { get; set; }
 
+        /// <summary>
+        /// Enable user_backup.
+        /// </summary>
+        [Input("userBackup")]
+        public Input<bool>? UserBackup { get; set; }
+
         public InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs()
         {
         }

@@ -17,14 +17,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     public static final KafkaConnectKafkaConnectUserConfigKafkaConnectArgs Empty = new KafkaConnectKafkaConnectUserConfigKafkaConnectArgs();
 
     /**
-     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
      * 
      */
     @Import(name="connectorClientConfigOverridePolicy")
     private @Nullable Output<String> connectorClientConfigOverridePolicy;
 
     /**
-     * @return Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+     * @return Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
      * 
      */
     public Optional<Output<String>> connectorClientConfigOverridePolicy() {
@@ -62,14 +62,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     /**
-     * Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     @Import(name="consumerIsolationLevel")
     private @Nullable Output<String> consumerIsolationLevel;
 
     /**
-     * @return Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * @return Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     public Optional<Output<String>> consumerIsolationLevel() {
@@ -182,14 +182,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     @Import(name="producerCompressionType")
     private @Nullable Output<String> producerCompressionType;
 
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     public Optional<Output<String>> producerCompressionType() {
@@ -296,7 +296,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param connectorClientConfigOverridePolicy Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+         * @param connectorClientConfigOverridePolicy Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param connectorClientConfigOverridePolicy Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+         * @param connectorClientConfigOverridePolicy Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerIsolationLevel Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+         * @param consumerIsolationLevel Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerIsolationLevel Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+         * @param consumerIsolationLevel Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
          * 
          * @return builder
          * 

@@ -26,17 +26,17 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceIntegrationResult {
     /**
-     * @return ClickhouseKafka user configurable settings
+     * @return ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfigs;
     /**
-     * @return ClickhousePostgresql user configurable settings
+     * @return ClickhousePostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfigs;
     /**
-     * @return Datadog user configurable settings
+     * @return Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs;
@@ -51,27 +51,27 @@ public final class GetServiceIntegrationResult {
      */
     private String destinationServiceName;
     /**
-     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * @return ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
     /**
-     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * @return ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
     /**
-     * @return ExternalElasticsearchLogs user configurable settings
+     * @return ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
     /**
-     * @return FlinkExternalPostgresql user configurable settings
+     * @return FlinkExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationFlinkExternalPostgresqlUserConfig> flinkExternalPostgresqlUserConfigs;
@@ -86,32 +86,32 @@ public final class GetServiceIntegrationResult {
      */
     private String integrationId;
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+     * @return Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      * 
      */
     private String integrationType;
     /**
-     * @return KafkaConnect user configurable settings
+     * @return KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs;
     /**
-     * @return KafkaLogs user configurable settings
+     * @return KafkaLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs;
     /**
-     * @return KafkaMirrormaker user configurable settings
+     * @return KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
     /**
-     * @return Logs user configurable settings
+     * @return Logs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationLogsUserConfig> logsUserConfigs;
     /**
-     * @return Metrics user configurable settings
+     * @return Metrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
@@ -121,7 +121,7 @@ public final class GetServiceIntegrationResult {
      */
     private String project;
     /**
-     * @return Prometheus user configurable settings
+     * @return Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs;
@@ -138,21 +138,21 @@ public final class GetServiceIntegrationResult {
 
     private GetServiceIntegrationResult() {}
     /**
-     * @return ClickhouseKafka user configurable settings
+     * @return ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfigs() {
         return this.clickhouseKafkaUserConfigs;
     }
     /**
-     * @return ClickhousePostgresql user configurable settings
+     * @return ClickhousePostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfigs() {
         return this.clickhousePostgresqlUserConfigs;
     }
     /**
-     * @return Datadog user configurable settings
+     * @return Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs() {
@@ -173,35 +173,35 @@ public final class GetServiceIntegrationResult {
         return this.destinationServiceName;
     }
     /**
-     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * @return ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs() {
         return this.externalAwsCloudwatchLogsUserConfigs;
     }
     /**
-     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * @return ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs() {
         return this.externalAwsCloudwatchMetricsUserConfigs;
     }
     /**
-     * @return ExternalElasticsearchLogs user configurable settings
+     * @return ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs() {
         return this.externalElasticsearchLogsUserConfigs;
     }
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs() {
         return this.externalOpensearchLogsUserConfigs;
     }
     /**
-     * @return FlinkExternalPostgresql user configurable settings
+     * @return FlinkExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationFlinkExternalPostgresqlUserConfig> flinkExternalPostgresqlUserConfigs() {
@@ -222,42 +222,42 @@ public final class GetServiceIntegrationResult {
         return this.integrationId;
     }
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+     * @return Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      * 
      */
     public String integrationType() {
         return this.integrationType;
     }
     /**
-     * @return KafkaConnect user configurable settings
+     * @return KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfigs() {
         return this.kafkaConnectUserConfigs;
     }
     /**
-     * @return KafkaLogs user configurable settings
+     * @return KafkaLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfigs() {
         return this.kafkaLogsUserConfigs;
     }
     /**
-     * @return KafkaMirrormaker user configurable settings
+     * @return KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs() {
         return this.kafkaMirrormakerUserConfigs;
     }
     /**
-     * @return Logs user configurable settings
+     * @return Logs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationLogsUserConfig> logsUserConfigs() {
         return this.logsUserConfigs;
     }
     /**
-     * @return Metrics user configurable settings
+     * @return Metrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs() {
@@ -271,7 +271,7 @@ public final class GetServiceIntegrationResult {
         return this.project;
     }
     /**
-     * @return Prometheus user configurable settings
+     * @return Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs() {

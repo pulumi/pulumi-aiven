@@ -48,7 +48,7 @@ class MySqlArgs:
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['MySqlMysqlArgs'] mysql: MySQL specific server provided values
-        :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -202,7 +202,7 @@ class MySqlArgs:
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> Optional[pulumi.Input['MySqlMysqlUserConfigArgs']]:
         """
-        Mysql user configurable settings
+        Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "mysql_user_config")
 
@@ -327,7 +327,7 @@ class _MySqlState:
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['MySqlMysqlArgs'] mysql: MySQL specific server provided values
-        :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
@@ -546,7 +546,7 @@ class _MySqlState:
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> Optional[pulumi.Input['MySqlMysqlUserConfigArgs']]:
         """
-        Mysql user configurable settings
+        Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "mysql_user_config")
 
@@ -811,7 +811,7 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[Union['MySqlMysqlArgs', 'MySqlMysqlArgsDict']] mysql: MySQL specific server provided values
-        :param pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']] mysql_user_config: Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
@@ -994,7 +994,7 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[Union['MySqlMysqlArgs', 'MySqlMysqlArgsDict']] mysql: MySQL specific server provided values
-        :param pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']] mysql_user_config: Mysql user configurable settings
+        :param pulumi.Input[Union['MySqlMysqlUserConfigArgs', 'MySqlMysqlUserConfigArgsDict']] mysql_user_config: Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
@@ -1048,7 +1048,7 @@ class MySql(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalDiskSpace")
-    def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
+    def additional_disk_space(self) -> pulumi.Output[str]:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
@@ -1140,7 +1140,7 @@ class MySql(pulumi.CustomResource):
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> pulumi.Output[Optional['outputs.MySqlMysqlUserConfig']]:
         """
-        Mysql user configurable settings
+        Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "mysql_user_config")
 

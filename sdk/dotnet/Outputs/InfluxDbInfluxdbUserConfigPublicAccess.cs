@@ -17,11 +17,19 @@ namespace Pulumi.Aiven.Outputs
         /// Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? Influxdb;
+        /// <summary>
+        /// Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
+        public readonly bool? UserBackup;
 
         [OutputConstructor]
-        private InfluxDbInfluxdbUserConfigPublicAccess(bool? influxdb)
+        private InfluxDbInfluxdbUserConfigPublicAccess(
+            bool? influxdb,
+
+            bool? userBackup)
         {
             Influxdb = influxdb;
+            UserBackup = userBackup;
         }
     }
 }

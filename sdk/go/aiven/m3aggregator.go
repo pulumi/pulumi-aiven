@@ -57,7 +57,7 @@ type M3Aggregator struct {
 	pulumi.CustomResourceState
 
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
@@ -78,7 +78,7 @@ type M3Aggregator struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// M3 Aggregator server provided values
 	M3aggregator M3AggregatorM3aggregatorOutput `pulumi:"m3aggregator"`
-	// M3aggregator user configurable settings
+	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrOutput `pulumi:"m3aggregatorUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -188,7 +188,7 @@ type m3aggregatorState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// M3 Aggregator server provided values
 	M3aggregator *M3AggregatorM3aggregator `pulumi:"m3aggregator"`
-	// M3aggregator user configurable settings
+	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3aggregatorUserConfig *M3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -251,7 +251,7 @@ type M3AggregatorState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// M3 Aggregator server provided values
 	M3aggregator M3AggregatorM3aggregatorPtrInput
-	// M3aggregator user configurable settings
+	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -306,7 +306,7 @@ type m3aggregatorArgs struct {
 	DiskSpace *string `pulumi:"diskSpace"`
 	// M3 Aggregator server provided values
 	M3aggregator *M3AggregatorM3aggregator `pulumi:"m3aggregator"`
-	// M3aggregator user configurable settings
+	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3aggregatorUserConfig *M3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -344,7 +344,7 @@ type M3AggregatorArgs struct {
 	DiskSpace pulumi.StringPtrInput
 	// M3 Aggregator server provided values
 	M3aggregator M3AggregatorM3aggregatorPtrInput
-	// M3aggregator user configurable settings
+	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -458,8 +458,8 @@ func (o M3AggregatorOutput) ToM3AggregatorOutputWithContext(ctx context.Context)
 }
 
 // Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-func (o M3AggregatorOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *M3Aggregator) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+func (o M3AggregatorOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *M3Aggregator) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -506,7 +506,7 @@ func (o M3AggregatorOutput) M3aggregator() M3AggregatorM3aggregatorOutput {
 	return o.ApplyT(func(v *M3Aggregator) M3AggregatorM3aggregatorOutput { return v.M3aggregator }).(M3AggregatorM3aggregatorOutput)
 }
 
-// M3aggregator user configurable settings
+// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o M3AggregatorOutput) M3aggregatorUserConfig() M3AggregatorM3aggregatorUserConfigPtrOutput {
 	return o.ApplyT(func(v *M3Aggregator) M3AggregatorM3aggregatorUserConfigPtrOutput { return v.M3aggregatorUserConfig }).(M3AggregatorM3aggregatorUserConfigPtrOutput)
 }

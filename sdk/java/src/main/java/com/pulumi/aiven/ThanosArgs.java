@@ -257,14 +257,14 @@ public final class ThanosArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Thanos user configurable settings
+     * Thanos user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="thanosUserConfig")
     private @Nullable Output<ThanosThanosUserConfigArgs> thanosUserConfig;
 
     /**
-     * @return Thanos user configurable settings
+     * @return Thanos user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ThanosThanosUserConfigArgs>> thanosUserConfig() {
@@ -674,7 +674,7 @@ public final class ThanosArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param thanosUserConfig Thanos user configurable settings
+         * @param thanosUserConfig Thanos user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class ThanosArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param thanosUserConfig Thanos user configurable settings
+         * @param thanosUserConfig Thanos user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

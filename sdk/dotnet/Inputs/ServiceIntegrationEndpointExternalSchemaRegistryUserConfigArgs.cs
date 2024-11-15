@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enum: `none`, `basic`. Authentication method.
+        /// Enum: `basic`, `none`. Authentication method.
         /// </summary>
         [Input("authentication", required: true)]
         public Input<string> Authentication { get; set; } = null!;

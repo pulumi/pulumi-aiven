@@ -27,7 +27,10 @@ class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
     """
-    def __init__(__self__, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_aws_s3_user_configs=None, external_clickhouse_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_bigqueries=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_mysql_user_configs=None, external_opensearch_logs_user_configs=None, external_postgresqls=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None):
+    def __init__(__self__, autoscaler_user_configs=None, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_aws_s3_user_configs=None, external_clickhouse_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_bigqueries=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_mysql_user_configs=None, external_opensearch_logs_user_configs=None, external_postgresqls=None, external_prometheus_user_configs=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None):
+        if autoscaler_user_configs and not isinstance(autoscaler_user_configs, list):
+            raise TypeError("Expected argument 'autoscaler_user_configs' to be a list")
+        pulumi.set(__self__, "autoscaler_user_configs", autoscaler_user_configs)
         if datadog_user_configs and not isinstance(datadog_user_configs, list):
             raise TypeError("Expected argument 'datadog_user_configs' to be a list")
         pulumi.set(__self__, "datadog_user_configs", datadog_user_configs)
@@ -73,6 +76,9 @@ class GetServiceIntegrationEndpointResult:
         if external_postgresqls and not isinstance(external_postgresqls, list):
             raise TypeError("Expected argument 'external_postgresqls' to be a list")
         pulumi.set(__self__, "external_postgresqls", external_postgresqls)
+        if external_prometheus_user_configs and not isinstance(external_prometheus_user_configs, list):
+            raise TypeError("Expected argument 'external_prometheus_user_configs' to be a list")
+        pulumi.set(__self__, "external_prometheus_user_configs", external_prometheus_user_configs)
         if external_schema_registry_user_configs and not isinstance(external_schema_registry_user_configs, list):
             raise TypeError("Expected argument 'external_schema_registry_user_configs' to be a list")
         pulumi.set(__self__, "external_schema_registry_user_configs", external_schema_registry_user_configs)
@@ -93,10 +99,18 @@ class GetServiceIntegrationEndpointResult:
         pulumi.set(__self__, "rsyslog_user_configs", rsyslog_user_configs)
 
     @property
+    @pulumi.getter(name="autoscalerUserConfigs")
+    def autoscaler_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointAutoscalerUserConfigResult']:
+        """
+        Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "autoscaler_user_configs")
+
+    @property
     @pulumi.getter(name="datadogUserConfigs")
     def datadog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointDatadogUserConfigResult']:
         """
-        Datadog user configurable settings
+        Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "datadog_user_configs")
 
@@ -104,7 +118,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="endpointConfig")
     def endpoint_config(self) -> Mapping[str, str]:
         """
-        Integration endpoint specific backend configuration
+        Backend configuration for the endpoint.
         """
         return pulumi.get(self, "endpoint_config")
 
@@ -112,7 +126,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="endpointName")
     def endpoint_name(self) -> str:
         """
-        Name of the service integration endpoint
+        Name of the service integration endpoint.
         """
         return pulumi.get(self, "endpoint_name")
 
@@ -120,7 +134,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> str:
         """
-        Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`
+        The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -128,7 +142,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfigs")
     def external_aws_cloudwatch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult']:
         """
-        ExternalAwsCloudwatchLogs user configurable settings
+        ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_configs")
 
@@ -136,7 +150,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfigs")
     def external_aws_cloudwatch_metrics_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigResult']:
         """
-        ExternalAwsCloudwatchMetrics user configurable settings
+        ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_configs")
 
@@ -144,7 +158,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalAwsS3UserConfigs")
     def external_aws_s3_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfigResult']:
         """
-        ExternalAwsS3 user configurable settings
+        ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_s3_user_configs")
 
@@ -152,7 +166,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalClickhouseUserConfigs")
     def external_clickhouse_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfigResult']:
         """
-        ExternalClickhouse user configurable settings
+        ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_clickhouse_user_configs")
 
@@ -160,7 +174,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalElasticsearchLogsUserConfigs")
     def external_elasticsearch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult']:
         """
-        ExternalElasticsearchLogs user configurable settings
+        ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_elasticsearch_logs_user_configs")
 
@@ -168,7 +182,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalGoogleCloudBigqueries")
     def external_google_cloud_bigqueries(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigqueryResult']:
         """
-        ExternalGoogleCloudBigquery user configurable settings
+        ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_google_cloud_bigqueries")
 
@@ -176,7 +190,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalGoogleCloudLoggingUserConfigs")
     def external_google_cloud_logging_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult']:
         """
-        ExternalGoogleCloudLogging user configurable settings
+        ExternalGoogleCloudLogging user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_google_cloud_logging_user_configs")
 
@@ -184,7 +198,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalKafkaUserConfigs")
     def external_kafka_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalKafkaUserConfigResult']:
         """
-        ExternalKafka user configurable settings
+        ExternalKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_kafka_user_configs")
 
@@ -192,7 +206,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalMysqlUserConfigs")
     def external_mysql_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalMysqlUserConfigResult']:
         """
-        ExternalMysql user configurable settings
+        ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_mysql_user_configs")
 
@@ -200,7 +214,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalOpensearchLogsUserConfigs")
     def external_opensearch_logs_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult']:
         """
-        ExternalOpensearchLogs user configurable settings
+        ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_opensearch_logs_user_configs")
 
@@ -208,15 +222,23 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="externalPostgresqls")
     def external_postgresqls(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalPostgresqlResult']:
         """
-        ExternalPostgresql user configurable settings
+        ExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_postgresqls")
+
+    @property
+    @pulumi.getter(name="externalPrometheusUserConfigs")
+    def external_prometheus_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalPrometheusUserConfigResult']:
+        """
+        ExternalPrometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "external_prometheus_user_configs")
 
     @property
     @pulumi.getter(name="externalSchemaRegistryUserConfigs")
     def external_schema_registry_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult']:
         """
-        ExternalSchemaRegistry user configurable settings
+        ExternalSchemaRegistry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_schema_registry_user_configs")
 
@@ -232,7 +254,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="jolokiaUserConfigs")
     def jolokia_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult']:
         """
-        Jolokia user configurable settings
+        Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "jolokia_user_configs")
 
@@ -240,7 +262,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Project the service integration endpoint belongs to
+        Project the service integration endpoint is in.
         """
         return pulumi.get(self, "project")
 
@@ -248,7 +270,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="prometheusUserConfigs")
     def prometheus_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult']:
         """
-        Prometheus user configurable settings
+        Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "prometheus_user_configs")
 
@@ -256,7 +278,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="rsyslogUserConfigs")
     def rsyslog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointRsyslogUserConfigResult']:
         """
-        Rsyslog user configurable settings
+        Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "rsyslog_user_configs")
 
@@ -267,6 +289,7 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
         if False:
             yield self
         return GetServiceIntegrationEndpointResult(
+            autoscaler_user_configs=self.autoscaler_user_configs,
             datadog_user_configs=self.datadog_user_configs,
             endpoint_config=self.endpoint_config,
             endpoint_name=self.endpoint_name,
@@ -282,6 +305,7 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             external_mysql_user_configs=self.external_mysql_user_configs,
             external_opensearch_logs_user_configs=self.external_opensearch_logs_user_configs,
             external_postgresqls=self.external_postgresqls,
+            external_prometheus_user_configs=self.external_prometheus_user_configs,
             external_schema_registry_user_configs=self.external_schema_registry_user_configs,
             id=self.id,
             jolokia_user_configs=self.jolokia_user_configs,
@@ -294,7 +318,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
                                      project: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIntegrationEndpointResult:
     """
-    The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+    Gets information about an integration endpoint.
 
     ## Example Usage
 
@@ -302,13 +326,13 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myendpoint = aiven.get_service_integration_endpoint(project=myproject["project"],
-        endpoint_name="<ENDPOINT_NAME>")
+    example_datadog_endpoint = aiven.get_service_integration_endpoint(project=example_project["project"],
+        endpoint_name="Datadog endpoint")
     ```
 
 
-    :param str endpoint_name: Name of the service integration endpoint
-    :param str project: Project the service integration endpoint belongs to
+    :param str endpoint_name: Name of the service integration endpoint.
+    :param str project: Project the service integration endpoint is in.
     """
     __args__ = dict()
     __args__['endpointName'] = endpoint_name
@@ -317,6 +341,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint', __args__, opts=opts, typ=GetServiceIntegrationEndpointResult).value
 
     return AwaitableGetServiceIntegrationEndpointResult(
+        autoscaler_user_configs=pulumi.get(__ret__, 'autoscaler_user_configs'),
         datadog_user_configs=pulumi.get(__ret__, 'datadog_user_configs'),
         endpoint_config=pulumi.get(__ret__, 'endpoint_config'),
         endpoint_name=pulumi.get(__ret__, 'endpoint_name'),
@@ -332,6 +357,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
         external_mysql_user_configs=pulumi.get(__ret__, 'external_mysql_user_configs'),
         external_opensearch_logs_user_configs=pulumi.get(__ret__, 'external_opensearch_logs_user_configs'),
         external_postgresqls=pulumi.get(__ret__, 'external_postgresqls'),
+        external_prometheus_user_configs=pulumi.get(__ret__, 'external_prometheus_user_configs'),
         external_schema_registry_user_configs=pulumi.get(__ret__, 'external_schema_registry_user_configs'),
         id=pulumi.get(__ret__, 'id'),
         jolokia_user_configs=pulumi.get(__ret__, 'jolokia_user_configs'),
@@ -342,7 +368,7 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
                                             project: Optional[pulumi.Input[str]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIntegrationEndpointResult]:
     """
-    The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+    Gets information about an integration endpoint.
 
     ## Example Usage
 
@@ -350,13 +376,13 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
     import pulumi
     import pulumi_aiven as aiven
 
-    myendpoint = aiven.get_service_integration_endpoint(project=myproject["project"],
-        endpoint_name="<ENDPOINT_NAME>")
+    example_datadog_endpoint = aiven.get_service_integration_endpoint(project=example_project["project"],
+        endpoint_name="Datadog endpoint")
     ```
 
 
-    :param str endpoint_name: Name of the service integration endpoint
-    :param str project: Project the service integration endpoint belongs to
+    :param str endpoint_name: Name of the service integration endpoint.
+    :param str project: Project the service integration endpoint is in.
     """
     __args__ = dict()
     __args__['endpointName'] = endpoint_name
@@ -364,6 +390,7 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint', __args__, opts=opts, typ=GetServiceIntegrationEndpointResult)
     return __ret__.apply(lambda __response__: GetServiceIntegrationEndpointResult(
+        autoscaler_user_configs=pulumi.get(__response__, 'autoscaler_user_configs'),
         datadog_user_configs=pulumi.get(__response__, 'datadog_user_configs'),
         endpoint_config=pulumi.get(__response__, 'endpoint_config'),
         endpoint_name=pulumi.get(__response__, 'endpoint_name'),
@@ -379,6 +406,7 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
         external_mysql_user_configs=pulumi.get(__response__, 'external_mysql_user_configs'),
         external_opensearch_logs_user_configs=pulumi.get(__response__, 'external_opensearch_logs_user_configs'),
         external_postgresqls=pulumi.get(__response__, 'external_postgresqls'),
+        external_prometheus_user_configs=pulumi.get(__response__, 'external_prometheus_user_configs'),
         external_schema_registry_user_configs=pulumi.get(__response__, 'external_schema_registry_user_configs'),
         id=pulumi.get(__response__, 'id'),
         jolokia_user_configs=pulumi.get(__response__, 'jolokia_user_configs'),

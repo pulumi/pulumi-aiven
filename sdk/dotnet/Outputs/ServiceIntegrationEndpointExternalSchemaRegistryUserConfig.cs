@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig
     {
         /// <summary>
-        /// Enum: `none`, `basic`. Authentication method.
+        /// Enum: `basic`, `none`. Authentication method.
         /// </summary>
         public readonly string Authentication;
         /// <summary>

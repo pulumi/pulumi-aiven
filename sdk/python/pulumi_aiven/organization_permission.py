@@ -30,7 +30,7 @@ class OrganizationPermissionArgs:
         :param pulumi.Input[str] organization_id: Organization ID.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Permissions to grant to principals.
         :param pulumi.Input[str] resource_id: Resource ID.
-        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`.
+        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`, `organization` and `organization_unit`.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "permissions", permissions)
@@ -77,7 +77,7 @@ class OrganizationPermissionArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[str]:
         """
-        Resource type. The possible values are `project`.
+        Resource type. The possible values are `project`, `organization` and `organization_unit`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -98,7 +98,7 @@ class _OrganizationPermissionState:
         :param pulumi.Input[str] organization_id: Organization ID.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Permissions to grant to principals.
         :param pulumi.Input[str] resource_id: Resource ID.
-        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`.
+        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`, `organization` and `organization_unit`.
         """
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
@@ -149,7 +149,7 @@ class _OrganizationPermissionState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource type. The possible values are `project`.
+        Resource type. The possible values are `project`, `organization` and `organization_unit`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -169,10 +169,7 @@ class OrganizationPermission(pulumi.CustomResource):
                  resource_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Grants permissions to a principal for a resource.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
 
         ## Example Usage
 
@@ -180,26 +177,29 @@ class OrganizationPermission(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        # Grant permission to a user
-        operator = aiven.OrganizationPermission("operator",
+        example_permissions = aiven.OrganizationPermission("example_permissions",
             organization_id=main["id"],
             resource_id=example_project["id"],
             resource_type="project",
-            permissions=[{
-                "permissions": ["operator"],
-                "principal_id": "u123a456b7890c",
-                "principal_type": "user",
-            }])
-        # Grant permission to a group
-        developers = aiven.OrganizationPermission("developers",
-            organization_id=main["id"],
-            resource_id=example_project["id"],
-            resource_type="project",
-            permissions=[{
-                "permissions": ["developer"],
-                "principal_id": example_group["groupId"],
-                "principal_type": "user_group",
-            }])
+            permissions=[
+                {
+                    "permissions": [
+                        "operator",
+                        "service:logs:read",
+                    ],
+                    "principal_id": "u123a456b7890c",
+                    "principal_type": "user",
+                },
+                {
+                    "permissions": [
+                        "project:integrations:write",
+                        "project:networking:read",
+                        "developer",
+                    ],
+                    "principal_id": example_group["groupId"],
+                    "principal_type": "user_group",
+                },
+            ])
         ```
 
         ## Import
@@ -213,7 +213,7 @@ class OrganizationPermission(pulumi.CustomResource):
         :param pulumi.Input[str] organization_id: Organization ID.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Permissions to grant to principals.
         :param pulumi.Input[str] resource_id: Resource ID.
-        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`.
+        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`, `organization` and `organization_unit`.
         """
         ...
     @overload
@@ -222,10 +222,7 @@ class OrganizationPermission(pulumi.CustomResource):
                  args: OrganizationPermissionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Grants permissions to a principal for a resource.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
 
         ## Example Usage
 
@@ -233,26 +230,29 @@ class OrganizationPermission(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        # Grant permission to a user
-        operator = aiven.OrganizationPermission("operator",
+        example_permissions = aiven.OrganizationPermission("example_permissions",
             organization_id=main["id"],
             resource_id=example_project["id"],
             resource_type="project",
-            permissions=[{
-                "permissions": ["operator"],
-                "principal_id": "u123a456b7890c",
-                "principal_type": "user",
-            }])
-        # Grant permission to a group
-        developers = aiven.OrganizationPermission("developers",
-            organization_id=main["id"],
-            resource_id=example_project["id"],
-            resource_type="project",
-            permissions=[{
-                "permissions": ["developer"],
-                "principal_id": example_group["groupId"],
-                "principal_type": "user_group",
-            }])
+            permissions=[
+                {
+                    "permissions": [
+                        "operator",
+                        "service:logs:read",
+                    ],
+                    "principal_id": "u123a456b7890c",
+                    "principal_type": "user",
+                },
+                {
+                    "permissions": [
+                        "project:integrations:write",
+                        "project:networking:read",
+                        "developer",
+                    ],
+                    "principal_id": example_group["groupId"],
+                    "principal_type": "user_group",
+                },
+            ])
         ```
 
         ## Import
@@ -325,7 +325,7 @@ class OrganizationPermission(pulumi.CustomResource):
         :param pulumi.Input[str] organization_id: Organization ID.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Permissions to grant to principals.
         :param pulumi.Input[str] resource_id: Resource ID.
-        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`.
+        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`, `organization` and `organization_unit`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -365,7 +365,7 @@ class OrganizationPermission(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[str]:
         """
-        Resource type. The possible values are `project`.
+        Resource type. The possible values are `project`, `organization` and `organization_unit`.
         """
         return pulumi.get(self, "resource_type")
 

@@ -210,7 +210,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? StaticIps { get; set; }
 
         /// <summary>
-        /// Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        /// Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         /// </summary>
         [Input("synchronousReplication")]
         public Input<string>? SynchronousReplication { get; set; }

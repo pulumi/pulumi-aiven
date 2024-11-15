@@ -75,7 +75,7 @@ public final class GetMySqlResult {
      */
     private String maintenanceWindowTime;
     /**
-     * @return Mysql user configurable settings
+     * @return Mysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetMySqlMysqlUserConfig> mysqlUserConfigs;
@@ -244,7 +244,7 @@ public final class GetMySqlResult {
         return this.maintenanceWindowTime;
     }
     /**
-     * @return Mysql user configurable settings
+     * @return Mysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetMySqlMysqlUserConfig> mysqlUserConfigs() {

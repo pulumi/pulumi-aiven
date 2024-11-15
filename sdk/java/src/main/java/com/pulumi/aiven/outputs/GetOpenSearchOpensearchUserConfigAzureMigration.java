@@ -44,15 +44,25 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
      */
     private @Nullable String endpointSuffix;
     /**
-     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * @return Whether to restore aliases alongside their associated indexes. Default is true.
      * 
      */
-    private @Nullable String indices;
+    private @Nullable Boolean includeAliases;
+    /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    private String indices;
     /**
      * @return Azure account secret key. One of key or sas_token should be specified.
      * 
      */
     private @Nullable String key;
+    /**
+     * @return If true, restore the cluster state. Defaults to false.
+     * 
+     */
+    private @Nullable Boolean restoreGlobalState;
     /**
      * @return A shared access signatures (SAS) token. One of key or sas_token should be specified.
      * 
@@ -108,11 +118,18 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
         return Optional.ofNullable(this.endpointSuffix);
     }
     /**
-     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+     * @return Whether to restore aliases alongside their associated indexes. Default is true.
      * 
      */
-    public Optional<String> indices() {
-        return Optional.ofNullable(this.indices);
+    public Optional<Boolean> includeAliases() {
+        return Optional.ofNullable(this.includeAliases);
+    }
+    /**
+     * @return A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+     * 
+     */
+    public String indices() {
+        return this.indices;
     }
     /**
      * @return Azure account secret key. One of key or sas_token should be specified.
@@ -120,6 +137,13 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
+    }
+    /**
+     * @return If true, restore the cluster state. Defaults to false.
+     * 
+     */
+    public Optional<Boolean> restoreGlobalState() {
+        return Optional.ofNullable(this.restoreGlobalState);
     }
     /**
      * @return A shared access signatures (SAS) token. One of key or sas_token should be specified.
@@ -151,8 +175,10 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
         private @Nullable Boolean compress;
         private String container;
         private @Nullable String endpointSuffix;
-        private @Nullable String indices;
+        private @Nullable Boolean includeAliases;
+        private String indices;
         private @Nullable String key;
+        private @Nullable Boolean restoreGlobalState;
         private @Nullable String sasToken;
         private String snapshotName;
         public Builder() {}
@@ -164,8 +190,10 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
     	      this.compress = defaults.compress;
     	      this.container = defaults.container;
     	      this.endpointSuffix = defaults.endpointSuffix;
+    	      this.includeAliases = defaults.includeAliases;
     	      this.indices = defaults.indices;
     	      this.key = defaults.key;
+    	      this.restoreGlobalState = defaults.restoreGlobalState;
     	      this.sasToken = defaults.sasToken;
     	      this.snapshotName = defaults.snapshotName;
         }
@@ -213,8 +241,16 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
             return this;
         }
         @CustomType.Setter
-        public Builder indices(@Nullable String indices) {
+        public Builder includeAliases(@Nullable Boolean includeAliases) {
 
+            this.includeAliases = includeAliases;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder indices(String indices) {
+            if (indices == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchOpensearchUserConfigAzureMigration", "indices");
+            }
             this.indices = indices;
             return this;
         }
@@ -222,6 +258,12 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
         public Builder key(@Nullable String key) {
 
             this.key = key;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder restoreGlobalState(@Nullable Boolean restoreGlobalState) {
+
+            this.restoreGlobalState = restoreGlobalState;
             return this;
         }
         @CustomType.Setter
@@ -246,8 +288,10 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
             _resultValue.compress = compress;
             _resultValue.container = container;
             _resultValue.endpointSuffix = endpointSuffix;
+            _resultValue.includeAliases = includeAliases;
             _resultValue.indices = indices;
             _resultValue.key = key;
+            _resultValue.restoreGlobalState = restoreGlobalState;
             _resultValue.sasToken = sasToken;
             _resultValue.snapshotName = snapshotName;
             return _resultValue;

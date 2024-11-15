@@ -168,7 +168,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRedisRediResult> Redis;
         /// <summary>
-        /// Redis user configurable settings
+        /// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRedisRedisUserConfigResult> RedisUserConfigs;
         /// <summary>

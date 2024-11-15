@@ -24,7 +24,7 @@ public final class DragonflyDragonflyUserConfig {
      */
     private @Nullable Boolean cacheMode;
     /**
-     * @return Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * @return Enum: `dfs`, `off`, `rdb`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     private @Nullable String dragonflyPersistence;
@@ -107,7 +107,7 @@ public final class DragonflyDragonflyUserConfig {
         return Optional.ofNullable(this.cacheMode);
     }
     /**
-     * @return Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * @return Enum: `dfs`, `off`, `rdb`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     public Optional<String> dragonflyPersistence() {

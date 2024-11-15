@@ -38,7 +38,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
      */
     private @Nullable Integer producerBufferMemory;
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     private @Nullable String producerCompressionType;
@@ -90,7 +90,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker 
         return Optional.ofNullable(this.producerBufferMemory);
     }
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     public Optional<String> producerCompressionType() {

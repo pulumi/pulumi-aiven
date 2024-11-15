@@ -74,6 +74,21 @@ public final class GetThanosThanosUserConfig {
      */
     private @Nullable GetThanosThanosUserConfigQueryFrontend queryFrontend;
     /**
+     * @return CommonReceive.
+     * 
+     */
+    private @Nullable Map<String,String> receiverIngesting;
+    /**
+     * @return ThanosReceiveRouting.
+     * 
+     */
+    private @Nullable Map<String,String> receiverRouting;
+    /**
+     * @return ThanosRuler.
+     * 
+     */
+    private @Nullable Map<String,String> ruler;
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -83,6 +98,11 @@ public final class GetThanosThanosUserConfig {
      * 
      */
     private @Nullable Boolean staticIps;
+    /**
+     * @return ThanosStore.
+     * 
+     */
+    private @Nullable Map<String,String> store;
 
     private GetThanosThanosUserConfig() {}
     /**
@@ -157,6 +177,27 @@ public final class GetThanosThanosUserConfig {
         return Optional.ofNullable(this.queryFrontend);
     }
     /**
+     * @return CommonReceive.
+     * 
+     */
+    public Map<String,String> receiverIngesting() {
+        return this.receiverIngesting == null ? Map.of() : this.receiverIngesting;
+    }
+    /**
+     * @return ThanosReceiveRouting.
+     * 
+     */
+    public Map<String,String> receiverRouting() {
+        return this.receiverRouting == null ? Map.of() : this.receiverRouting;
+    }
+    /**
+     * @return ThanosRuler.
+     * 
+     */
+    public Map<String,String> ruler() {
+        return this.ruler == null ? Map.of() : this.ruler;
+    }
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -169,6 +210,13 @@ public final class GetThanosThanosUserConfig {
      */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
+    }
+    /**
+     * @return ThanosStore.
+     * 
+     */
+    public Map<String,String> store() {
+        return this.store == null ? Map.of() : this.store;
     }
 
     public static Builder builder() {
@@ -189,8 +237,12 @@ public final class GetThanosThanosUserConfig {
         private @Nullable GetThanosThanosUserConfigPublicAccess publicAccess;
         private @Nullable GetThanosThanosUserConfigQuery query;
         private @Nullable GetThanosThanosUserConfigQueryFrontend queryFrontend;
+        private @Nullable Map<String,String> receiverIngesting;
+        private @Nullable Map<String,String> receiverRouting;
+        private @Nullable Map<String,String> ruler;
         private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
+        private @Nullable Map<String,String> store;
         public Builder() {}
         public Builder(GetThanosThanosUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -203,8 +255,12 @@ public final class GetThanosThanosUserConfig {
     	      this.publicAccess = defaults.publicAccess;
     	      this.query = defaults.query;
     	      this.queryFrontend = defaults.queryFrontend;
+    	      this.receiverIngesting = defaults.receiverIngesting;
+    	      this.receiverRouting = defaults.receiverRouting;
+    	      this.ruler = defaults.ruler;
     	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
+    	      this.store = defaults.store;
         }
 
         @CustomType.Setter
@@ -271,6 +327,24 @@ public final class GetThanosThanosUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder receiverIngesting(@Nullable Map<String,String> receiverIngesting) {
+
+            this.receiverIngesting = receiverIngesting;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder receiverRouting(@Nullable Map<String,String> receiverRouting) {
+
+            this.receiverRouting = receiverRouting;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ruler(@Nullable Map<String,String> ruler) {
+
+            this.ruler = ruler;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceLog(@Nullable Boolean serviceLog) {
 
             this.serviceLog = serviceLog;
@@ -280,6 +354,12 @@ public final class GetThanosThanosUserConfig {
         public Builder staticIps(@Nullable Boolean staticIps) {
 
             this.staticIps = staticIps;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder store(@Nullable Map<String,String> store) {
+
+            this.store = store;
             return this;
         }
         public GetThanosThanosUserConfig build() {
@@ -293,8 +373,12 @@ public final class GetThanosThanosUserConfig {
             _resultValue.publicAccess = publicAccess;
             _resultValue.query = query;
             _resultValue.queryFrontend = queryFrontend;
+            _resultValue.receiverIngesting = receiverIngesting;
+            _resultValue.receiverRouting = receiverRouting;
+            _resultValue.ruler = ruler;
             _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;
+            _resultValue.store = store;
             return _resultValue;
         }
     }

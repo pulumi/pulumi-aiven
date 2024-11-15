@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointAutoscalerUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointDatadogUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
@@ -15,6 +16,7 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalKafkaUserCo
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalMysqlUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalPostgresql;
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalPrometheusUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointJolokiaUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointPrometheusUserConfig;
@@ -29,82 +31,92 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceIntegrationEndpointResult {
     /**
-     * @return Datadog user configurable settings
+     * @return Autoscaler user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    private List<GetServiceIntegrationEndpointAutoscalerUserConfig> autoscalerUserConfigs;
+    /**
+     * @return Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs;
     /**
-     * @return Integration endpoint specific backend configuration
+     * @return Backend configuration for the endpoint.
      * 
      */
     private Map<String,String> endpointConfig;
     /**
-     * @return Name of the service integration endpoint
+     * @return Name of the service integration endpoint.
      * 
      */
     private String endpointName;
     /**
-     * @return Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`
+     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
      * 
      */
     private String endpointType;
     /**
-     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * @return ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
     /**
-     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * @return ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
     /**
-     * @return ExternalAwsS3 user configurable settings
+     * @return ExternalAwsS3 user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfigs;
     /**
-     * @return ExternalClickhouse user configurable settings
+     * @return ExternalClickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfigs;
     /**
-     * @return ExternalElasticsearchLogs user configurable settings
+     * @return ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
     /**
-     * @return ExternalGoogleCloudBigquery user configurable settings
+     * @return ExternalGoogleCloudBigquery user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigqueries;
     /**
-     * @return ExternalGoogleCloudLogging user configurable settings
+     * @return ExternalGoogleCloudLogging user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs;
     /**
-     * @return ExternalKafka user configurable settings
+     * @return ExternalKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs;
     /**
-     * @return ExternalMysql user configurable settings
+     * @return ExternalMysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs;
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
     /**
-     * @return ExternalPostgresql user configurable settings
+     * @return ExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalPostgresql> externalPostgresqls;
     /**
-     * @return ExternalSchemaRegistry user configurable settings
+     * @return ExternalPrometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    private List<GetServiceIntegrationEndpointExternalPrometheusUserConfig> externalPrometheusUserConfigs;
+    /**
+     * @return ExternalSchemaRegistry user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs;
@@ -114,134 +126,148 @@ public final class GetServiceIntegrationEndpointResult {
      */
     private String id;
     /**
-     * @return Jolokia user configurable settings
+     * @return Jolokia user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs;
     /**
-     * @return Project the service integration endpoint belongs to
+     * @return Project the service integration endpoint is in.
      * 
      */
     private String project;
     /**
-     * @return Prometheus user configurable settings
+     * @return Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs;
     /**
-     * @return Rsyslog user configurable settings
+     * @return Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs;
 
     private GetServiceIntegrationEndpointResult() {}
     /**
-     * @return Datadog user configurable settings
+     * @return Autoscaler user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public List<GetServiceIntegrationEndpointAutoscalerUserConfig> autoscalerUserConfigs() {
+        return this.autoscalerUserConfigs;
+    }
+    /**
+     * @return Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs() {
         return this.datadogUserConfigs;
     }
     /**
-     * @return Integration endpoint specific backend configuration
+     * @return Backend configuration for the endpoint.
      * 
      */
     public Map<String,String> endpointConfig() {
         return this.endpointConfig;
     }
     /**
-     * @return Name of the service integration endpoint
+     * @return Name of the service integration endpoint.
      * 
      */
     public String endpointName() {
         return this.endpointName;
     }
     /**
-     * @return Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`
+     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
      * 
      */
     public String endpointType() {
         return this.endpointType;
     }
     /**
-     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * @return ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs() {
         return this.externalAwsCloudwatchLogsUserConfigs;
     }
     /**
-     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * @return ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs() {
         return this.externalAwsCloudwatchMetricsUserConfigs;
     }
     /**
-     * @return ExternalAwsS3 user configurable settings
+     * @return ExternalAwsS3 user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfigs() {
         return this.externalAwsS3UserConfigs;
     }
     /**
-     * @return ExternalClickhouse user configurable settings
+     * @return ExternalClickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfigs() {
         return this.externalClickhouseUserConfigs;
     }
     /**
-     * @return ExternalElasticsearchLogs user configurable settings
+     * @return ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs() {
         return this.externalElasticsearchLogsUserConfigs;
     }
     /**
-     * @return ExternalGoogleCloudBigquery user configurable settings
+     * @return ExternalGoogleCloudBigquery user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigqueries() {
         return this.externalGoogleCloudBigqueries;
     }
     /**
-     * @return ExternalGoogleCloudLogging user configurable settings
+     * @return ExternalGoogleCloudLogging user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs() {
         return this.externalGoogleCloudLoggingUserConfigs;
     }
     /**
-     * @return ExternalKafka user configurable settings
+     * @return ExternalKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs() {
         return this.externalKafkaUserConfigs;
     }
     /**
-     * @return ExternalMysql user configurable settings
+     * @return ExternalMysql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs() {
         return this.externalMysqlUserConfigs;
     }
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs() {
         return this.externalOpensearchLogsUserConfigs;
     }
     /**
-     * @return ExternalPostgresql user configurable settings
+     * @return ExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalPostgresql> externalPostgresqls() {
         return this.externalPostgresqls;
     }
     /**
-     * @return ExternalSchemaRegistry user configurable settings
+     * @return ExternalPrometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public List<GetServiceIntegrationEndpointExternalPrometheusUserConfig> externalPrometheusUserConfigs() {
+        return this.externalPrometheusUserConfigs;
+    }
+    /**
+     * @return ExternalSchemaRegistry user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs() {
@@ -255,28 +281,28 @@ public final class GetServiceIntegrationEndpointResult {
         return this.id;
     }
     /**
-     * @return Jolokia user configurable settings
+     * @return Jolokia user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs() {
         return this.jolokiaUserConfigs;
     }
     /**
-     * @return Project the service integration endpoint belongs to
+     * @return Project the service integration endpoint is in.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Prometheus user configurable settings
+     * @return Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs() {
         return this.prometheusUserConfigs;
     }
     /**
-     * @return Rsyslog user configurable settings
+     * @return Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs() {
@@ -292,6 +318,7 @@ public final class GetServiceIntegrationEndpointResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetServiceIntegrationEndpointAutoscalerUserConfig> autoscalerUserConfigs;
         private List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs;
         private Map<String,String> endpointConfig;
         private String endpointName;
@@ -307,6 +334,7 @@ public final class GetServiceIntegrationEndpointResult {
         private List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs;
         private List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalPostgresql> externalPostgresqls;
+        private List<GetServiceIntegrationEndpointExternalPrometheusUserConfig> externalPrometheusUserConfigs;
         private List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs;
         private String id;
         private List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs;
@@ -316,6 +344,7 @@ public final class GetServiceIntegrationEndpointResult {
         public Builder() {}
         public Builder(GetServiceIntegrationEndpointResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoscalerUserConfigs = defaults.autoscalerUserConfigs;
     	      this.datadogUserConfigs = defaults.datadogUserConfigs;
     	      this.endpointConfig = defaults.endpointConfig;
     	      this.endpointName = defaults.endpointName;
@@ -331,6 +360,7 @@ public final class GetServiceIntegrationEndpointResult {
     	      this.externalMysqlUserConfigs = defaults.externalMysqlUserConfigs;
     	      this.externalOpensearchLogsUserConfigs = defaults.externalOpensearchLogsUserConfigs;
     	      this.externalPostgresqls = defaults.externalPostgresqls;
+    	      this.externalPrometheusUserConfigs = defaults.externalPrometheusUserConfigs;
     	      this.externalSchemaRegistryUserConfigs = defaults.externalSchemaRegistryUserConfigs;
     	      this.id = defaults.id;
     	      this.jolokiaUserConfigs = defaults.jolokiaUserConfigs;
@@ -339,6 +369,17 @@ public final class GetServiceIntegrationEndpointResult {
     	      this.rsyslogUserConfigs = defaults.rsyslogUserConfigs;
         }
 
+        @CustomType.Setter
+        public Builder autoscalerUserConfigs(List<GetServiceIntegrationEndpointAutoscalerUserConfig> autoscalerUserConfigs) {
+            if (autoscalerUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "autoscalerUserConfigs");
+            }
+            this.autoscalerUserConfigs = autoscalerUserConfigs;
+            return this;
+        }
+        public Builder autoscalerUserConfigs(GetServiceIntegrationEndpointAutoscalerUserConfig... autoscalerUserConfigs) {
+            return autoscalerUserConfigs(List.of(autoscalerUserConfigs));
+        }
         @CustomType.Setter
         public Builder datadogUserConfigs(List<GetServiceIntegrationEndpointDatadogUserConfig> datadogUserConfigs) {
             if (datadogUserConfigs == null) {
@@ -496,6 +537,17 @@ public final class GetServiceIntegrationEndpointResult {
             return externalPostgresqls(List.of(externalPostgresqls));
         }
         @CustomType.Setter
+        public Builder externalPrometheusUserConfigs(List<GetServiceIntegrationEndpointExternalPrometheusUserConfig> externalPrometheusUserConfigs) {
+            if (externalPrometheusUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalPrometheusUserConfigs");
+            }
+            this.externalPrometheusUserConfigs = externalPrometheusUserConfigs;
+            return this;
+        }
+        public Builder externalPrometheusUserConfigs(GetServiceIntegrationEndpointExternalPrometheusUserConfig... externalPrometheusUserConfigs) {
+            return externalPrometheusUserConfigs(List.of(externalPrometheusUserConfigs));
+        }
+        @CustomType.Setter
         public Builder externalSchemaRegistryUserConfigs(List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs) {
             if (externalSchemaRegistryUserConfigs == null) {
               throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalSchemaRegistryUserConfigs");
@@ -557,6 +609,7 @@ public final class GetServiceIntegrationEndpointResult {
         }
         public GetServiceIntegrationEndpointResult build() {
             final var _resultValue = new GetServiceIntegrationEndpointResult();
+            _resultValue.autoscalerUserConfigs = autoscalerUserConfigs;
             _resultValue.datadogUserConfigs = datadogUserConfigs;
             _resultValue.endpointConfig = endpointConfig;
             _resultValue.endpointName = endpointName;
@@ -572,6 +625,7 @@ public final class GetServiceIntegrationEndpointResult {
             _resultValue.externalMysqlUserConfigs = externalMysqlUserConfigs;
             _resultValue.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             _resultValue.externalPostgresqls = externalPostgresqls;
+            _resultValue.externalPrometheusUserConfigs = externalPrometheusUserConfigs;
             _resultValue.externalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
             _resultValue.id = id;
             _resultValue.jolokiaUserConfigs = jolokiaUserConfigs;

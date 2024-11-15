@@ -52,7 +52,7 @@ export interface GetClickhouseResult {
      */
     readonly additionalDiskSpace: string;
     /**
-     * Clickhouse user configurable settings
+     * Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly clickhouseUserConfigs: outputs.GetClickhouseClickhouseUserConfig[];
     /**

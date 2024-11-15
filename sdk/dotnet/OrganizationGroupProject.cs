@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as members of a project.
+    /// Adds and manages a group of users as members of a project.
+    /// 
+    /// **This resource is deprecated.** Use `aiven.OrganizationPermission` and
+    /// migrate existing aiven.OrganizationGroupProject resources
+    /// to the new resource.
     /// 
     /// ## Example Usage
     /// 
@@ -74,7 +78,7 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        /// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -141,7 +145,7 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        /// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -170,7 +174,7 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:permissions:read` and `service:logs:read`.
+        /// [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

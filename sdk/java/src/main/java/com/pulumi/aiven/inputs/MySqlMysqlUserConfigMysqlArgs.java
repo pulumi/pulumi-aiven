@@ -274,14 +274,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+     * Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
      * 
      */
     @Import(name="internalTmpMemStorageEngine")
     private @Nullable Output<String> internalTmpMemStorageEngine;
 
     /**
-     * @return Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+     * @return Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
      * 
      */
     public Optional<Output<String>> internalTmpMemStorageEngine() {
@@ -289,14 +289,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     * Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
      * 
      */
     @Import(name="logOutput")
     private @Nullable Output<String> logOutput;
 
     /**
-     * @return Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     * @return Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
      * 
      */
     public Optional<Output<String>> logOutput() {
@@ -304,14 +304,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
      * 
      */
     @Import(name="longQueryTime")
     private @Nullable Output<Double> longQueryTime;
 
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
      * 
      */
     public Optional<Output<Double>> longQueryTime() {
@@ -895,7 +895,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param internalTmpMemStorageEngine Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+         * @param internalTmpMemStorageEngine Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
          * 
          * @return builder
          * 
@@ -906,7 +906,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param internalTmpMemStorageEngine Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+         * @param internalTmpMemStorageEngine Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
          * 
          * @return builder
          * 
@@ -916,7 +916,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logOutput Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+         * @param logOutput Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
          * 
          * @return builder
          * 
@@ -927,7 +927,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logOutput Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+         * @param logOutput Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
          * 
          * @return builder
          * 
@@ -937,7 +937,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
          * 
          * @return builder
          * 
@@ -948,7 +948,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
          * 
          * @return builder
          * 

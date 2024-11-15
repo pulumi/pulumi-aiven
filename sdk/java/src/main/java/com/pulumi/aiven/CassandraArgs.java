@@ -54,14 +54,14 @@ public final class CassandraArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cassandra user configurable settings
+     * Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="cassandraUserConfig")
     private @Nullable Output<CassandraCassandraUserConfigArgs> cassandraUserConfig;
 
     /**
-     * @return Cassandra user configurable settings
+     * @return Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<CassandraCassandraUserConfigArgs>> cassandraUserConfig() {
@@ -353,7 +353,7 @@ public final class CassandraArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cassandraUserConfig Cassandra user configurable settings
+         * @param cassandraUserConfig Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class CassandraArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cassandraUserConfig Cassandra user configurable settings
+         * @param cassandraUserConfig Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

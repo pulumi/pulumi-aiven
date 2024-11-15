@@ -75,7 +75,7 @@ type LookupGrafanaResult struct {
 	DiskSpaceStep string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
-	// Grafana user configurable settings
+	// Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	GrafanaUserConfigs []GetGrafanaGrafanaUserConfig `pulumi:"grafanaUserConfigs"`
 	// Values provided by the Grafana server.
 	Grafanas []GetGrafanaGrafana `pulumi:"grafanas"`
@@ -205,7 +205,7 @@ func (o LookupGrafanaResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
 
-// Grafana user configurable settings
+// Grafana user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupGrafanaResultOutput) GrafanaUserConfigs() GetGrafanaGrafanaUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) []GetGrafanaGrafanaUserConfig { return v.GrafanaUserConfigs }).(GetGrafanaGrafanaUserConfigArrayOutput)
 }

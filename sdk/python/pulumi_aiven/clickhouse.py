@@ -44,7 +44,7 @@ class ClickhouseArgs:
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input['ClickhouseClickhouseArgs'] clickhouse: Values provided by the ClickHouse server.
-        :param pulumi.Input['ClickhouseClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings
+        :param pulumi.Input['ClickhouseClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -153,7 +153,7 @@ class ClickhouseArgs:
     @pulumi.getter(name="clickhouseUserConfig")
     def clickhouse_user_config(self) -> Optional[pulumi.Input['ClickhouseClickhouseUserConfigArgs']]:
         """
-        Clickhouse user configurable settings
+        Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_user_config")
 
@@ -318,7 +318,7 @@ class _ClickhouseState:
         Input properties used for looking up and filtering Clickhouse resources.
         :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input['ClickhouseClickhouseArgs'] clickhouse: Values provided by the ClickHouse server.
-        :param pulumi.Input['ClickhouseClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings
+        :param pulumi.Input['ClickhouseClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseComponentArgs']]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -436,7 +436,7 @@ class _ClickhouseState:
     @pulumi.getter(name="clickhouseUserConfig")
     def clickhouse_user_config(self) -> Optional[pulumi.Input['ClickhouseClickhouseUserConfigArgs']]:
         """
-        Clickhouse user configurable settings
+        Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_user_config")
 
@@ -797,7 +797,7 @@ class Clickhouse(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[Union['ClickhouseClickhouseArgs', 'ClickhouseClickhouseArgsDict']] clickhouse: Values provided by the ClickHouse server.
-        :param pulumi.Input[Union['ClickhouseClickhouseUserConfigArgs', 'ClickhouseClickhouseUserConfigArgsDict']] clickhouse_user_config: Clickhouse user configurable settings
+        :param pulumi.Input[Union['ClickhouseClickhouseUserConfigArgs', 'ClickhouseClickhouseUserConfigArgsDict']] clickhouse_user_config: Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -965,7 +965,7 @@ class Clickhouse(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         :param pulumi.Input[Union['ClickhouseClickhouseArgs', 'ClickhouseClickhouseArgsDict']] clickhouse: Values provided by the ClickHouse server.
-        :param pulumi.Input[Union['ClickhouseClickhouseUserConfigArgs', 'ClickhouseClickhouseUserConfigArgsDict']] clickhouse_user_config: Clickhouse user configurable settings
+        :param pulumi.Input[Union['ClickhouseClickhouseUserConfigArgs', 'ClickhouseClickhouseUserConfigArgsDict']] clickhouse_user_config: Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseComponentArgs', 'ClickhouseComponentArgsDict']]]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -1028,7 +1028,7 @@ class Clickhouse(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalDiskSpace")
-    def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
+    def additional_disk_space(self) -> pulumi.Output[str]:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
@@ -1046,7 +1046,7 @@ class Clickhouse(pulumi.CustomResource):
     @pulumi.getter(name="clickhouseUserConfig")
     def clickhouse_user_config(self) -> pulumi.Output[Optional['outputs.ClickhouseClickhouseUserConfig']]:
         """
-        Clickhouse user configurable settings
+        Clickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_user_config")
 

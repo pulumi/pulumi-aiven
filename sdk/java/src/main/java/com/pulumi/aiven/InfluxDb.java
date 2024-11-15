@@ -32,7 +32,7 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="additionalDiskSpace", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> additionalDiskSpace;
+    private Output<String> additionalDiskSpace;
 
     /**
      * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
@@ -40,8 +40,8 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
      * service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      * 
      */
-    public Output<Optional<String>> additionalDiskSpace() {
-        return Codegen.optional(this.additionalDiskSpace);
+    public Output<String> additionalDiskSpace() {
+        return this.additionalDiskSpace;
     }
     /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
@@ -166,14 +166,16 @@ public class InfluxDb extends com.pulumi.resources.CustomResource {
         return this.diskSpaceUsed;
     }
     /**
-     * Influxdb user configurable settings
+     * Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
+     * Options that you add cannot be removed later
      * 
      */
     @Export(name="influxdbUserConfig", refs={InfluxDbInfluxdbUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ InfluxDbInfluxdbUserConfig> influxdbUserConfig;
 
     /**
-     * @return Influxdb user configurable settings
+     * @return Influxdb user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default.
+     * Options that you add cannot be removed later
      * 
      */
     public Output<Optional<InfluxDbInfluxdbUserConfig>> influxdbUserConfig() {

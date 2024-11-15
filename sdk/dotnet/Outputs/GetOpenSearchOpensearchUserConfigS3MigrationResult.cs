@@ -38,13 +38,21 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Endpoint;
         /// <summary>
-        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        /// Whether to restore aliases alongside their associated indexes. Default is true.
         /// </summary>
-        public readonly string? Indices;
+        public readonly bool? IncludeAliases;
+        /// <summary>
+        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+        /// </summary>
+        public readonly string Indices;
         /// <summary>
         /// S3 region.
         /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// If true, restore the cluster state. Defaults to false.
+        /// </summary>
+        public readonly bool? RestoreGlobalState;
         /// <summary>
         /// AWS secret key.
         /// </summary>
@@ -72,9 +80,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? endpoint,
 
-            string? indices,
+            bool? includeAliases,
+
+            string indices,
 
             string region,
+
+            bool? restoreGlobalState,
 
             string secretKey,
 
@@ -88,8 +100,10 @@ namespace Pulumi.Aiven.Outputs
             ChunkSize = chunkSize;
             Compress = compress;
             Endpoint = endpoint;
+            IncludeAliases = includeAliases;
             Indices = indices;
             Region = region;
+            RestoreGlobalState = restoreGlobalState;
             SecretKey = secretKey;
             ServerSideEncryption = serverSideEncryption;
             SnapshotName = snapshotName;

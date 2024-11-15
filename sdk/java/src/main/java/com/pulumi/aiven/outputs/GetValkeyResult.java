@@ -155,7 +155,7 @@ public final class GetValkeyResult {
      */
     private Boolean terminationProtection;
     /**
-     * @return Valkey user configurable settings
+     * @return Valkey user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetValkeyValkeyUserConfig> valkeyUserConfigs;
@@ -356,7 +356,7 @@ public final class GetValkeyResult {
         return this.terminationProtection;
     }
     /**
-     * @return Valkey user configurable settings
+     * @return Valkey user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetValkeyValkeyUserConfig> valkeyUserConfigs() {

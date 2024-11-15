@@ -84,7 +84,7 @@ export interface GetM3DbResult {
      */
     readonly id: string;
     /**
-     * M3db user configurable settings
+     * M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly m3dbUserConfigs: outputs.GetM3DbM3dbUserConfig[];
     /**

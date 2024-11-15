@@ -84,7 +84,7 @@ export interface GetKafkaConnectResult {
      */
     readonly id: string;
     /**
-     * KafkaConnect user configurable settings
+     * KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly kafkaConnectUserConfigs: outputs.GetKafkaConnectKafkaConnectUserConfig[];
     /**

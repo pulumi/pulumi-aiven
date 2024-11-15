@@ -31,14 +31,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     public static final ServiceIntegrationArgs Empty = new ServiceIntegrationArgs();
 
     /**
-     * ClickhouseKafka user configurable settings
+     * ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="clickhouseKafkaUserConfig")
     private @Nullable Output<ServiceIntegrationClickhouseKafkaUserConfigArgs> clickhouseKafkaUserConfig;
 
     /**
-     * @return ClickhouseKafka user configurable settings
+     * @return ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationClickhouseKafkaUserConfigArgs>> clickhouseKafkaUserConfig() {
@@ -46,14 +46,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * ClickhousePostgresql user configurable settings
+     * ClickhousePostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="clickhousePostgresqlUserConfig")
     private @Nullable Output<ServiceIntegrationClickhousePostgresqlUserConfigArgs> clickhousePostgresqlUserConfig;
 
     /**
-     * @return ClickhousePostgresql user configurable settings
+     * @return ClickhousePostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationClickhousePostgresqlUserConfigArgs>> clickhousePostgresqlUserConfig() {
@@ -61,14 +61,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Datadog user configurable settings
+     * Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="datadogUserConfig")
     private @Nullable Output<ServiceIntegrationDatadogUserConfigArgs> datadogUserConfig;
 
     /**
-     * @return Datadog user configurable settings
+     * @return Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationDatadogUserConfigArgs>> datadogUserConfig() {
@@ -106,14 +106,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * ExternalAwsCloudwatchLogs user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="externalAwsCloudwatchLogsUserConfig")
     private @Nullable Output<ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs> externalAwsCloudwatchLogsUserConfig;
 
     /**
-     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * @return ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs>> externalAwsCloudwatchLogsUserConfig() {
@@ -121,14 +121,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * ExternalAwsCloudwatchMetrics user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="externalAwsCloudwatchMetricsUserConfig")
     private @Nullable Output<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs> externalAwsCloudwatchMetricsUserConfig;
 
     /**
-     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * @return ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs>> externalAwsCloudwatchMetricsUserConfig() {
@@ -136,14 +136,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * ExternalElasticsearchLogs user configurable settings
+     * ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="externalElasticsearchLogsUserConfig")
     private @Nullable Output<ServiceIntegrationExternalElasticsearchLogsUserConfigArgs> externalElasticsearchLogsUserConfig;
 
     /**
-     * @return ExternalElasticsearchLogs user configurable settings
+     * @return ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationExternalElasticsearchLogsUserConfigArgs>> externalElasticsearchLogsUserConfig() {
@@ -151,14 +151,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="externalOpensearchLogsUserConfig")
     private @Nullable Output<ServiceIntegrationExternalOpensearchLogsUserConfigArgs> externalOpensearchLogsUserConfig;
 
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationExternalOpensearchLogsUserConfigArgs>> externalOpensearchLogsUserConfig() {
@@ -166,14 +166,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * FlinkExternalPostgresql user configurable settings
+     * FlinkExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="flinkExternalPostgresqlUserConfig")
     private @Nullable Output<ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs> flinkExternalPostgresqlUserConfig;
 
     /**
-     * @return FlinkExternalPostgresql user configurable settings
+     * @return FlinkExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs>> flinkExternalPostgresqlUserConfig() {
@@ -181,14 +181,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+     * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+     * @return Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      * 
      */
     public Output<String> integrationType() {
@@ -196,14 +196,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * KafkaConnect user configurable settings
+     * KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="kafkaConnectUserConfig")
     private @Nullable Output<ServiceIntegrationKafkaConnectUserConfigArgs> kafkaConnectUserConfig;
 
     /**
-     * @return KafkaConnect user configurable settings
+     * @return KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationKafkaConnectUserConfigArgs>> kafkaConnectUserConfig() {
@@ -211,14 +211,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * KafkaLogs user configurable settings
+     * KafkaLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="kafkaLogsUserConfig")
     private @Nullable Output<ServiceIntegrationKafkaLogsUserConfigArgs> kafkaLogsUserConfig;
 
     /**
-     * @return KafkaLogs user configurable settings
+     * @return KafkaLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationKafkaLogsUserConfigArgs>> kafkaLogsUserConfig() {
@@ -226,14 +226,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * KafkaMirrormaker user configurable settings
+     * KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="kafkaMirrormakerUserConfig")
     private @Nullable Output<ServiceIntegrationKafkaMirrormakerUserConfigArgs> kafkaMirrormakerUserConfig;
 
     /**
-     * @return KafkaMirrormaker user configurable settings
+     * @return KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationKafkaMirrormakerUserConfigArgs>> kafkaMirrormakerUserConfig() {
@@ -241,14 +241,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Logs user configurable settings
+     * Logs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="logsUserConfig")
     private @Nullable Output<ServiceIntegrationLogsUserConfigArgs> logsUserConfig;
 
     /**
-     * @return Logs user configurable settings
+     * @return Logs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationLogsUserConfigArgs>> logsUserConfig() {
@@ -256,14 +256,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Metrics user configurable settings
+     * Metrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="metricsUserConfig")
     private @Nullable Output<ServiceIntegrationMetricsUserConfigArgs> metricsUserConfig;
 
     /**
-     * @return Metrics user configurable settings
+     * @return Metrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationMetricsUserConfigArgs>> metricsUserConfig() {
@@ -286,14 +286,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Prometheus user configurable settings
+     * Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="prometheusUserConfig")
     private @Nullable Output<ServiceIntegrationPrometheusUserConfigArgs> prometheusUserConfig;
 
     /**
-     * @return Prometheus user configurable settings
+     * @return Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<ServiceIntegrationPrometheusUserConfigArgs>> prometheusUserConfig() {
@@ -374,7 +374,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clickhouseKafkaUserConfig ClickhouseKafka user configurable settings
+         * @param clickhouseKafkaUserConfig ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clickhouseKafkaUserConfig ClickhouseKafka user configurable settings
+         * @param clickhouseKafkaUserConfig ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clickhousePostgresqlUserConfig ClickhousePostgresql user configurable settings
+         * @param clickhousePostgresqlUserConfig ClickhousePostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clickhousePostgresqlUserConfig ClickhousePostgresql user configurable settings
+         * @param clickhousePostgresqlUserConfig ClickhousePostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param datadogUserConfig Datadog user configurable settings
+         * @param datadogUserConfig Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param datadogUserConfig Datadog user configurable settings
+         * @param datadogUserConfig Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalAwsCloudwatchLogsUserConfig ExternalAwsCloudwatchLogs user configurable settings
+         * @param externalAwsCloudwatchLogsUserConfig ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalAwsCloudwatchLogsUserConfig ExternalAwsCloudwatchLogs user configurable settings
+         * @param externalAwsCloudwatchLogsUserConfig ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalAwsCloudwatchMetricsUserConfig ExternalAwsCloudwatchMetrics user configurable settings
+         * @param externalAwsCloudwatchMetricsUserConfig ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalAwsCloudwatchMetricsUserConfig ExternalAwsCloudwatchMetrics user configurable settings
+         * @param externalAwsCloudwatchMetricsUserConfig ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalElasticsearchLogsUserConfig ExternalElasticsearchLogs user configurable settings
+         * @param externalElasticsearchLogsUserConfig ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -532,7 +532,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalElasticsearchLogsUserConfig ExternalElasticsearchLogs user configurable settings
+         * @param externalElasticsearchLogsUserConfig ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings
+         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings
+         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param flinkExternalPostgresqlUserConfig FlinkExternalPostgresql user configurable settings
+         * @param flinkExternalPostgresqlUserConfig FlinkExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param flinkExternalPostgresqlUserConfig FlinkExternalPostgresql user configurable settings
+         * @param flinkExternalPostgresqlUserConfig FlinkExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param integrationType Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+         * @param integrationType Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param integrationType Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+         * @param integrationType Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
          * 
          * @return builder
          * 
@@ -605,7 +605,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kafkaConnectUserConfig KafkaConnect user configurable settings
+         * @param kafkaConnectUserConfig KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kafkaConnectUserConfig KafkaConnect user configurable settings
+         * @param kafkaConnectUserConfig KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -626,7 +626,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kafkaLogsUserConfig KafkaLogs user configurable settings
+         * @param kafkaLogsUserConfig KafkaLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kafkaLogsUserConfig KafkaLogs user configurable settings
+         * @param kafkaLogsUserConfig KafkaLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -647,7 +647,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings
+         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -658,7 +658,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings
+         * @param kafkaMirrormakerUserConfig KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -668,7 +668,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param logsUserConfig Logs user configurable settings
+         * @param logsUserConfig Logs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -679,7 +679,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param logsUserConfig Logs user configurable settings
+         * @param logsUserConfig Logs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -689,7 +689,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param metricsUserConfig Metrics user configurable settings
+         * @param metricsUserConfig Metrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -700,7 +700,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param metricsUserConfig Metrics user configurable settings
+         * @param metricsUserConfig Metrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -731,7 +731,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param prometheusUserConfig Prometheus user configurable settings
+         * @param prometheusUserConfig Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -742,7 +742,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param prometheusUserConfig Prometheus user configurable settings
+         * @param prometheusUserConfig Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

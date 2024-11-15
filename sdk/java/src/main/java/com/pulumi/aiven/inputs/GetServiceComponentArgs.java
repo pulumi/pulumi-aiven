@@ -33,14 +33,14 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component. The possible values are `certificate` and `sasl`.
      * 
      */
     @Import(name="kafkaAuthenticationMethod")
     private @Nullable Output<String> kafkaAuthenticationMethod;
 
     /**
-     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component. The possible values are `certificate` and `sasl`.
      * 
      */
     public Optional<Output<String>> kafkaAuthenticationMethod() {
@@ -63,14 +63,14 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Network access route
+     * Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
      * 
      */
     @Import(name="route")
     private @Nullable Output<String> route;
 
     /**
-     * @return Network access route
+     * @return Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
      * 
      */
     public Optional<Output<String>> route() {
@@ -108,14 +108,14 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * DNS usage name
+     * DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
      * 
      */
     @Import(name="usage")
     private @Nullable Output<String> usage;
 
     /**
-     * @return DNS usage name
+     * @return DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
      * 
      */
     public Optional<Output<String>> usage() {
@@ -174,7 +174,7 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param kafkaAuthenticationMethod Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+         * @param kafkaAuthenticationMethod Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component. The possible values are `certificate` and `sasl`.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param kafkaAuthenticationMethod Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+         * @param kafkaAuthenticationMethod Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component. The possible values are `certificate` and `sasl`.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param route Network access route
+         * @param route Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param route Network access route
+         * @param route Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param usage DNS usage name
+         * @param usage DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param usage DNS usage name
+         * @param usage DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
          * 
          * @return builder
          * 

@@ -208,7 +208,7 @@ class GetMySqlResult:
     @pulumi.getter(name="mysqlUserConfigs")
     def mysql_user_configs(self) -> Sequence['outputs.GetMySqlMysqlUserConfigResult']:
         """
-        Mysql user configurable settings
+        Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "mysql_user_configs")
 

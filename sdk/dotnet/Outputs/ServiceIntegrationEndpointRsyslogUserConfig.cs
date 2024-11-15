@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Cert;
         /// <summary>
-        /// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
+        /// Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
         /// </summary>
         public readonly string Format;
         /// <summary>

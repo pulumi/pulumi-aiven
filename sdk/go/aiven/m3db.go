@@ -63,7 +63,7 @@ type M3Db struct {
 	pulumi.CustomResourceState
 
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
@@ -84,7 +84,7 @@ type M3Db struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Values provided by the M3DB server.
 	M3db M3DbM3dbOutput `pulumi:"m3db"`
-	// M3db user configurable settings
+	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3dbUserConfig M3DbM3dbUserConfigPtrOutput `pulumi:"m3dbUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
@@ -194,7 +194,7 @@ type m3dbState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Values provided by the M3DB server.
 	M3db *M3DbM3db `pulumi:"m3db"`
-	// M3db user configurable settings
+	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3dbUserConfig *M3DbM3dbUserConfig `pulumi:"m3dbUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -257,7 +257,7 @@ type M3DbState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Values provided by the M3DB server.
 	M3db M3DbM3dbPtrInput
-	// M3db user configurable settings
+	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3dbUserConfig M3DbM3dbUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -312,7 +312,7 @@ type m3dbArgs struct {
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Values provided by the M3DB server.
 	M3db *M3DbM3db `pulumi:"m3db"`
-	// M3db user configurable settings
+	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3dbUserConfig *M3DbM3dbUserConfig `pulumi:"m3dbUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -350,7 +350,7 @@ type M3DbArgs struct {
 	DiskSpace pulumi.StringPtrInput
 	// Values provided by the M3DB server.
 	M3db M3DbM3dbPtrInput
-	// M3db user configurable settings
+	// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3dbUserConfig M3DbM3dbUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -464,8 +464,8 @@ func (o M3DbOutput) ToM3DbOutputWithContext(ctx context.Context) M3DbOutput {
 }
 
 // Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-func (o M3DbOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *M3Db) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+func (o M3DbOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *M3Db) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -512,7 +512,7 @@ func (o M3DbOutput) M3db() M3DbM3dbOutput {
 	return o.ApplyT(func(v *M3Db) M3DbM3dbOutput { return v.M3db }).(M3DbM3dbOutput)
 }
 
-// M3db user configurable settings
+// M3db user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o M3DbOutput) M3dbUserConfig() M3DbM3dbUserConfigPtrOutput {
 	return o.ApplyT(func(v *M3Db) M3DbM3dbUserConfigPtrOutput { return v.M3dbUserConfig }).(M3DbM3dbUserConfigPtrOutput)
 }

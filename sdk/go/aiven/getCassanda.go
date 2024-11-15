@@ -63,7 +63,7 @@ type GetCassandaArgs struct {
 type GetCassandaResult struct {
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
 	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
-	// Cassandra user configurable settings
+	// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	CassandraUserConfigs []GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfigs"`
 	// Values provided by the Cassandra server.
 	Cassandras []GetCassandaCassandra `pulumi:"cassandras"`
@@ -172,7 +172,7 @@ func (o GetCassandaResultOutput) AdditionalDiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
-// Cassandra user configurable settings
+// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o GetCassandaResultOutput) CassandraUserConfigs() GetCassandaCassandraUserConfigArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaCassandraUserConfig { return v.CassandraUserConfigs }).(GetCassandaCassandraUserConfigArrayOutput)
 }

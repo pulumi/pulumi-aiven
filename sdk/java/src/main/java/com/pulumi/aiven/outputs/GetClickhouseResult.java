@@ -25,7 +25,7 @@ public final class GetClickhouseResult {
      */
     private String additionalDiskSpace;
     /**
-     * @return Clickhouse user configurable settings
+     * @return Clickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetClickhouseClickhouseUserConfig> clickhouseUserConfigs;
@@ -174,7 +174,7 @@ public final class GetClickhouseResult {
         return this.additionalDiskSpace;
     }
     /**
-     * @return Clickhouse user configurable settings
+     * @return Clickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetClickhouseClickhouseUserConfig> clickhouseUserConfigs() {

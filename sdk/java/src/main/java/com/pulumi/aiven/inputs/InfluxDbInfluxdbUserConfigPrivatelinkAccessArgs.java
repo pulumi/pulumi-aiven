@@ -30,10 +30,26 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs extends com.p
         return Optional.ofNullable(this.influxdb);
     }
 
+    /**
+     * Enable user_backup.
+     * 
+     */
+    @Import(name="userBackup")
+    private @Nullable Output<Boolean> userBackup;
+
+    /**
+     * @return Enable user_backup.
+     * 
+     */
+    public Optional<Output<Boolean>> userBackup() {
+        return Optional.ofNullable(this.userBackup);
+    }
+
     private InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs() {}
 
     private InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs(InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs $) {
         this.influxdb = $.influxdb;
+        this.userBackup = $.userBackup;
     }
 
     public static Builder builder() {
@@ -73,6 +89,27 @@ public final class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs extends com.p
          */
         public Builder influxdb(Boolean influxdb) {
             return influxdb(Output.of(influxdb));
+        }
+
+        /**
+         * @param userBackup Enable user_backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userBackup(@Nullable Output<Boolean> userBackup) {
+            $.userBackup = userBackup;
+            return this;
+        }
+
+        /**
+         * @param userBackup Enable user_backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userBackup(Boolean userBackup) {
+            return userBackup(Output.of(userBackup));
         }
 
         public InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs build() {

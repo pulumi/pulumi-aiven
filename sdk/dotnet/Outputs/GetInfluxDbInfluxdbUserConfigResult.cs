@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult? Influxdb;
         /// <summary>
+        /// Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+        /// </summary>
+        public readonly string? InfluxdbVersion;
+        /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult> IpFilterObjects;
@@ -78,6 +82,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult? influxdb,
 
+            string? influxdbVersion,
+
             ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilterStrings,
@@ -103,6 +109,7 @@ namespace Pulumi.Aiven.Outputs
             AdditionalBackupRegions = additionalBackupRegions;
             CustomDomain = customDomain;
             Influxdb = influxdb;
+            InfluxdbVersion = influxdbVersion;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;

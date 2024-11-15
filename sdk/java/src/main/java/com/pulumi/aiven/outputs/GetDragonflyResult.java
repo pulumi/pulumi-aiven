@@ -65,7 +65,7 @@ public final class GetDragonflyResult {
      */
     private List<GetDragonflyDragonfly> dragonflies;
     /**
-     * @return Dragonfly user configurable settings
+     * @return Dragonfly user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetDragonflyDragonflyUserConfig> dragonflyUserConfigs;
@@ -230,7 +230,7 @@ public final class GetDragonflyResult {
         return this.dragonflies;
     }
     /**
-     * @return Dragonfly user configurable settings
+     * @return Dragonfly user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetDragonflyDragonflyUserConfig> dragonflyUserConfigs() {

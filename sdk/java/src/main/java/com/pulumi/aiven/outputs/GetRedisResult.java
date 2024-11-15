@@ -95,7 +95,7 @@ public final class GetRedisResult {
      */
     private List<GetRedisRedi> redis;
     /**
-     * @return Redis user configurable settings
+     * @return Redis user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetRedisRedisUserConfig> redisUserConfigs;
@@ -272,7 +272,7 @@ public final class GetRedisResult {
         return this.redis;
     }
     /**
-     * @return Redis user configurable settings
+     * @return Redis user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetRedisRedisUserConfig> redisUserConfigs() {

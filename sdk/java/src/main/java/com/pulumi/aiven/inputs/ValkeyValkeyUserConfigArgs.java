@@ -317,14 +317,14 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+     * Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
      * 
      */
     @Import(name="valkeyMaxmemoryPolicy")
     private @Nullable Output<String> valkeyMaxmemoryPolicy;
 
     /**
-     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+     * @return Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
      * 
      */
     public Optional<Output<String>> valkeyMaxmemoryPolicy() {
@@ -912,7 +912,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valkeyMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+         * @param valkeyMaxmemoryPolicy Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
          * 
          * @return builder
          * 
@@ -923,7 +923,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valkeyMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+         * @param valkeyMaxmemoryPolicy Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
          * 
          * @return builder
          * 

@@ -176,14 +176,14 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kafka user configurable settings
+     * Kafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="kafkaUserConfig")
     private @Nullable Output<KafkaKafkaUserConfigArgs> kafkaUserConfig;
 
     /**
-     * @return Kafka user configurable settings
+     * @return Kafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<KafkaKafkaUserConfigArgs>> kafkaUserConfig() {
@@ -767,7 +767,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkaUserConfig Kafka user configurable settings
+         * @param kafkaUserConfig Kafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -778,7 +778,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkaUserConfig Kafka user configurable settings
+         * @param kafkaUserConfig Kafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

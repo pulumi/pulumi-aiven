@@ -16,6 +16,11 @@ public final class GetInfluxDbInfluxdbUserConfigPublicAccess {
      * 
      */
     private @Nullable Boolean influxdb;
+    /**
+     * @return Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    private @Nullable Boolean userBackup;
 
     private GetInfluxDbInfluxdbUserConfigPublicAccess() {}
     /**
@@ -24,6 +29,13 @@ public final class GetInfluxDbInfluxdbUserConfigPublicAccess {
      */
     public Optional<Boolean> influxdb() {
         return Optional.ofNullable(this.influxdb);
+    }
+    /**
+     * @return Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    public Optional<Boolean> userBackup() {
+        return Optional.ofNullable(this.userBackup);
     }
 
     public static Builder builder() {
@@ -36,10 +48,12 @@ public final class GetInfluxDbInfluxdbUserConfigPublicAccess {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean influxdb;
+        private @Nullable Boolean userBackup;
         public Builder() {}
         public Builder(GetInfluxDbInfluxdbUserConfigPublicAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.influxdb = defaults.influxdb;
+    	      this.userBackup = defaults.userBackup;
         }
 
         @CustomType.Setter
@@ -48,9 +62,16 @@ public final class GetInfluxDbInfluxdbUserConfigPublicAccess {
             this.influxdb = influxdb;
             return this;
         }
+        @CustomType.Setter
+        public Builder userBackup(@Nullable Boolean userBackup) {
+
+            this.userBackup = userBackup;
+            return this;
+        }
         public GetInfluxDbInfluxdbUserConfigPublicAccess build() {
             final var _resultValue = new GetInfluxDbInfluxdbUserConfigPublicAccess();
             _resultValue.influxdb = influxdb;
+            _resultValue.userBackup = userBackup;
             return _resultValue;
         }
     }

@@ -62,14 +62,14 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Resource type. The possible values are `project`.
+     * Resource type. The possible values are `project`, `organization` and `organization_unit`.
      * 
      */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
     /**
-     * @return Resource type. The possible values are `project`.
+     * @return Resource type. The possible values are `project`, `organization` and `organization_unit`.
      * 
      */
     public Output<String> resourceType() {
@@ -177,7 +177,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceType Resource type. The possible values are `project`.
+         * @param resourceType Resource type. The possible values are `project`, `organization` and `organization_unit`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class OrganizationPermissionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceType Resource type. The possible values are `project`.
+         * @param resourceType Resource type. The possible values are `project`, `organization` and `organization_unit`.
          * 
          * @return builder
          * 

@@ -76,6 +76,21 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+     * 
+     */
+    @Import(name="influxdbVersion")
+    private @Nullable Output<String> influxdbVersion;
+
+    /**
+     * @return Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+     * 
+     */
+    public Optional<Output<String>> influxdbVersion() {
+        return Optional.ofNullable(this.influxdbVersion);
+    }
+
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -254,6 +269,7 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.customDomain = $.customDomain;
         this.influxdb = $.influxdb;
+        this.influxdbVersion = $.influxdbVersion;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
@@ -354,6 +370,27 @@ public final class InfluxDbInfluxdbUserConfigArgs extends com.pulumi.resources.R
          */
         public Builder influxdb(InfluxDbInfluxdbUserConfigInfluxdbArgs influxdb) {
             return influxdb(Output.of(influxdb));
+        }
+
+        /**
+         * @param influxdbVersion Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder influxdbVersion(@Nullable Output<String> influxdbVersion) {
+            $.influxdbVersion = influxdbVersion;
+            return this;
+        }
+
+        /**
+         * @param influxdbVersion Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder influxdbVersion(String influxdbVersion) {
+            return influxdbVersion(Output.of(influxdbVersion));
         }
 
         /**

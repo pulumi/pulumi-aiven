@@ -77,7 +77,7 @@ type LookupM3AggregatorResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// M3aggregator user configurable settings
+	// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	M3aggregatorUserConfigs []GetM3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfigs"`
 	// M3 Aggregator server provided values
 	M3aggregators []GetM3AggregatorM3aggregator `pulumi:"m3aggregators"`
@@ -210,7 +210,7 @@ func (o LookupM3AggregatorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// M3aggregator user configurable settings
+// M3aggregator user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupM3AggregatorResultOutput) M3aggregatorUserConfigs() GetM3AggregatorM3aggregatorUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorM3aggregatorUserConfig {
 		return v.M3aggregatorUserConfigs

@@ -65,7 +65,7 @@ public final class GetM3AggregatorResult {
      */
     private String id;
     /**
-     * @return M3aggregator user configurable settings
+     * @return M3aggregator user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetM3AggregatorM3aggregatorUserConfig> m3aggregatorUserConfigs;
@@ -230,7 +230,7 @@ public final class GetM3AggregatorResult {
         return this.id;
     }
     /**
-     * @return M3aggregator user configurable settings
+     * @return M3aggregator user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetM3AggregatorM3aggregatorUserConfig> m3aggregatorUserConfigs() {

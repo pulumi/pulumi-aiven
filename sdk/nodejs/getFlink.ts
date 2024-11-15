@@ -80,7 +80,7 @@ export interface GetFlinkResult {
      */
     readonly diskSpaceUsed: string;
     /**
-     * Flink user configurable settings
+     * Flink user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly flinkUserConfigs: outputs.GetFlinkFlinkUserConfig[];
     /**

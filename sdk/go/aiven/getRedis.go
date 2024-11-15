@@ -89,7 +89,7 @@ type LookupRedisResult struct {
 	ProjectVpcId string `pulumi:"projectVpcId"`
 	// Redis server provided values
 	Redis []GetRedisRedi `pulumi:"redis"`
-	// Redis user configurable settings
+	// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	RedisUserConfigs []GetRedisRedisUserConfig `pulumi:"redisUserConfigs"`
 	// The hostname of the service.
 	ServiceHost string `pulumi:"serviceHost"`
@@ -240,7 +240,7 @@ func (o LookupRedisResultOutput) Redis() GetRedisRediArrayOutput {
 	return o.ApplyT(func(v LookupRedisResult) []GetRedisRedi { return v.Redis }).(GetRedisRediArrayOutput)
 }
 
-// Redis user configurable settings
+// Redis user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupRedisResultOutput) RedisUserConfigs() GetRedisRedisUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupRedisResult) []GetRedisRedisUserConfig { return v.RedisUserConfigs }).(GetRedisRedisUserConfigArrayOutput)
 }

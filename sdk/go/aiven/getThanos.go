@@ -115,7 +115,7 @@ type LookupThanosResult struct {
 	TerminationProtection bool `pulumi:"terminationProtection"`
 	// Thanos server connection details.
 	Thanos []GetThanosThano `pulumi:"thanos"`
-	// Thanos user configurable settings
+	// Thanos user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ThanosUserConfigs []GetThanosThanosUserConfig `pulumi:"thanosUserConfigs"`
 }
 
@@ -305,7 +305,7 @@ func (o LookupThanosResultOutput) Thanos() GetThanosThanoArrayOutput {
 	return o.ApplyT(func(v LookupThanosResult) []GetThanosThano { return v.Thanos }).(GetThanosThanoArrayOutput)
 }
 
-// Thanos user configurable settings
+// Thanos user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupThanosResultOutput) ThanosUserConfigs() GetThanosThanosUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupThanosResult) []GetThanosThanosUserConfig { return v.ThanosUserConfigs }).(GetThanosThanosUserConfigArrayOutput)
 }

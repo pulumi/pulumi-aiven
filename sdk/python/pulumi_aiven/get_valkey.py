@@ -336,7 +336,7 @@ class GetValkeyResult:
     @pulumi.getter(name="valkeyUserConfigs")
     def valkey_user_configs(self) -> Sequence['outputs.GetValkeyValkeyUserConfigResult']:
         """
-        Valkey user configurable settings
+        Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "valkey_user_configs")
 

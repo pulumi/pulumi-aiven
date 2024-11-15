@@ -77,7 +77,7 @@ type LookupDragonflyResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// Dragonfly server provided values
 	Dragonflies []GetDragonflyDragonfly `pulumi:"dragonflies"`
-	// Dragonfly user configurable settings
+	// Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	DragonflyUserConfigs []GetDragonflyDragonflyUserConfig `pulumi:"dragonflyUserConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -210,7 +210,7 @@ func (o LookupDragonflyResultOutput) Dragonflies() GetDragonflyDragonflyArrayOut
 	return o.ApplyT(func(v LookupDragonflyResult) []GetDragonflyDragonfly { return v.Dragonflies }).(GetDragonflyDragonflyArrayOutput)
 }
 
-// Dragonfly user configurable settings
+// Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupDragonflyResultOutput) DragonflyUserConfigs() GetDragonflyDragonflyUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupDragonflyResult) []GetDragonflyDragonflyUserConfig { return v.DragonflyUserConfigs }).(GetDragonflyDragonflyUserConfigArrayOutput)
 }

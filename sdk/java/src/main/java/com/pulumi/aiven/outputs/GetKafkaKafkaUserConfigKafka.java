@@ -20,7 +20,7 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Boolean autoCreateTopicsEnable;
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+     * @return Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
      * 
      */
     private @Nullable String compressionType;
@@ -70,12 +70,12 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer logCleanerMinCompactionLagMs;
     /**
-     * @return Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+     * @return Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
      * 
      */
     private @Nullable String logCleanupPolicy;
     /**
-     * @return The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+     * @return The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
      * 
      */
     private @Nullable Integer logFlushIntervalMessages;
@@ -254,7 +254,7 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.autoCreateTopicsEnable);
     }
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
+     * @return Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
      * 
      */
     public Optional<String> compressionType() {
@@ -324,14 +324,14 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logCleanerMinCompactionLagMs);
     }
     /**
-     * @return Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
+     * @return Enum: `compact`, `compact,delete`, `delete`. The default cleanup policy for segments beyond the retention window (Default: delete).
      * 
      */
     public Optional<String> logCleanupPolicy() {
         return Optional.ofNullable(this.logCleanupPolicy);
     }
     /**
-     * @return The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)). Example: `9223372036854775807`.
+     * @return The number of messages accumulated on a log partition before messages are flushed to disk (Default: 9223372036854775807 (Long.MAX_VALUE)).
      * 
      */
     public Optional<Integer> logFlushIntervalMessages() {

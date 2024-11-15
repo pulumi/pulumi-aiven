@@ -19,14 +19,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArg
     public static final OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs Empty = new OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs();
 
     /**
-     * Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+     * Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+     * @return Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -106,7 +106,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArg
         }
 
         /**
-         * @param mode Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+         * @param mode Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArg
         }
 
         /**
-         * @param mode Enum: `monitor_only`, `enforced`, `disabled`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
+         * @param mode Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
          * 
          * @return builder
          * 

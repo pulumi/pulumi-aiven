@@ -49,7 +49,7 @@ public final class ServiceIntegrationEndpointExternalPostgresql {
      */
     private @Nullable String sslClientKey;
     /**
-     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+     * @return Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      * 
      */
     private @Nullable String sslMode;
@@ -116,7 +116,7 @@ public final class ServiceIntegrationEndpointExternalPostgresql {
         return Optional.ofNullable(this.sslClientKey);
     }
     /**
-     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
+     * @return Enum: `allow`, `disable`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      * 
      */
     public Optional<String> sslMode() {

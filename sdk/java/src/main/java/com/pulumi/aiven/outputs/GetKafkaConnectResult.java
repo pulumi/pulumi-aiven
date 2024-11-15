@@ -64,7 +64,7 @@ public final class GetKafkaConnectResult {
      */
     private String id;
     /**
-     * @return KafkaConnect user configurable settings
+     * @return KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetKafkaConnectKafkaConnectUserConfig> kafkaConnectUserConfigs;
@@ -224,7 +224,7 @@ public final class GetKafkaConnectResult {
         return this.id;
     }
     /**
-     * @return KafkaConnect user configurable settings
+     * @return KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetKafkaConnectKafkaConnectUserConfig> kafkaConnectUserConfigs() {

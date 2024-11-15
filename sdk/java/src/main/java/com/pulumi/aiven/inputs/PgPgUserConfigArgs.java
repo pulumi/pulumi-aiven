@@ -483,14 +483,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
      */
     @Import(name="synchronousReplication")
     private @Nullable Output<String> synchronousReplication;
 
     /**
-     * @return Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * @return Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
      */
     public Optional<Output<String>> synchronousReplication() {
@@ -1252,7 +1252,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param synchronousReplication Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+         * @param synchronousReplication Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
          * 
          * @return builder
          * 
@@ -1263,7 +1263,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param synchronousReplication Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+         * @param synchronousReplication Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
          * 
          * @return builder
          * 

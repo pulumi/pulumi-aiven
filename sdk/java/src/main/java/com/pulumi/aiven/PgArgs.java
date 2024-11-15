@@ -122,14 +122,14 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Pg user configurable settings
+     * Pg user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="pgUserConfig")
     private @Nullable Output<PgPgUserConfigArgs> pgUserConfig;
 
     /**
-     * @return Pg user configurable settings
+     * @return Pg user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<PgPgUserConfigArgs>> pgUserConfig() {
@@ -445,7 +445,7 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgUserConfig Pg user configurable settings
+         * @param pgUserConfig Pg user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pgUserConfig Pg user configurable settings
+         * @param pgUserConfig Pg user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

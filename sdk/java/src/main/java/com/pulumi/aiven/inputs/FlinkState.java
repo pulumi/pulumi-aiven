@@ -176,14 +176,14 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Flink user configurable settings
+     * Flink user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Import(name="flinkUserConfig")
     private @Nullable Output<FlinkFlinkUserConfigArgs> flinkUserConfig;
 
     /**
-     * @return Flink user configurable settings
+     * @return Flink user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Optional<Output<FlinkFlinkUserConfigArgs>> flinkUserConfig() {
@@ -727,7 +727,7 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flinkUserConfig Flink user configurable settings
+         * @param flinkUserConfig Flink user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 
@@ -738,7 +738,7 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flinkUserConfig Flink user configurable settings
+         * @param flinkUserConfig Flink user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
          * 
          * @return builder
          * 

@@ -58,7 +58,7 @@ type Thanos struct {
 	pulumi.CustomResourceState
 
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
@@ -115,7 +115,7 @@ type Thanos struct {
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 	// Thanos server connection details.
 	Thanos ThanosThanosOutput `pulumi:"thanos"`
-	// Thanos user configurable settings
+	// Thanos user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ThanosUserConfig ThanosThanosUserConfigPtrOutput `pulumi:"thanosUserConfig"`
 }
 
@@ -225,7 +225,7 @@ type thanosState struct {
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 	// Thanos server connection details.
 	Thanos *ThanosThanos `pulumi:"thanos"`
-	// Thanos user configurable settings
+	// Thanos user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ThanosUserConfig *ThanosThanosUserConfig `pulumi:"thanosUserConfig"`
 }
 
@@ -288,7 +288,7 @@ type ThanosState struct {
 	TerminationProtection pulumi.BoolPtrInput
 	// Thanos server connection details.
 	Thanos ThanosThanosPtrInput
-	// Thanos user configurable settings
+	// Thanos user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ThanosUserConfig ThanosThanosUserConfigPtrInput
 }
 
@@ -329,7 +329,7 @@ type thanosArgs struct {
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 	// Thanos server connection details.
 	Thanos *ThanosThanos `pulumi:"thanos"`
-	// Thanos user configurable settings
+	// Thanos user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ThanosUserConfig *ThanosThanosUserConfig `pulumi:"thanosUserConfig"`
 }
 
@@ -367,7 +367,7 @@ type ThanosArgs struct {
 	TerminationProtection pulumi.BoolPtrInput
 	// Thanos server connection details.
 	Thanos ThanosThanosPtrInput
-	// Thanos user configurable settings
+	// Thanos user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ThanosUserConfig ThanosThanosUserConfigPtrInput
 }
 
@@ -459,8 +459,8 @@ func (o ThanosOutput) ToThanosOutputWithContext(ctx context.Context) ThanosOutpu
 }
 
 // Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-func (o ThanosOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Thanos) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+func (o ThanosOutput) AdditionalDiskSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *Thanos) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -597,7 +597,7 @@ func (o ThanosOutput) Thanos() ThanosThanosOutput {
 	return o.ApplyT(func(v *Thanos) ThanosThanosOutput { return v.Thanos }).(ThanosThanosOutput)
 }
 
-// Thanos user configurable settings
+// Thanos user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o ThanosOutput) ThanosUserConfig() ThanosThanosUserConfigPtrOutput {
 	return o.ApplyT(func(v *Thanos) ThanosThanosUserConfigPtrOutput { return v.ThanosUserConfig }).(ThanosThanosUserConfigPtrOutput)
 }

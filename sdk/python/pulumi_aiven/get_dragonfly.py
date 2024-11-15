@@ -192,7 +192,7 @@ class GetDragonflyResult:
     @pulumi.getter(name="dragonflyUserConfigs")
     def dragonfly_user_configs(self) -> Sequence['outputs.GetDragonflyDragonflyUserConfigResult']:
         """
-        Dragonfly user configurable settings
+        Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "dragonfly_user_configs")
 

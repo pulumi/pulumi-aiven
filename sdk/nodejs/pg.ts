@@ -46,7 +46,7 @@ export class Pg extends pulumi.CustomResource {
     /**
      * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      */
-    public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
+    public readonly additionalDiskSpace!: pulumi.Output<string>;
     /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
@@ -92,7 +92,7 @@ export class Pg extends pulumi.CustomResource {
      */
     public readonly pg!: pulumi.Output<outputs.PgPg>;
     /**
-     * Pg user configurable settings
+     * Pg user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     public readonly pgUserConfig!: pulumi.Output<outputs.PgPgUserConfig | undefined>;
     /**
@@ -298,7 +298,7 @@ export interface PgState {
      */
     pg?: pulumi.Input<inputs.PgPg>;
     /**
-     * Pg user configurable settings
+     * Pg user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     pgUserConfig?: pulumi.Input<inputs.PgPgUserConfig>;
     /**
@@ -398,7 +398,7 @@ export interface PgArgs {
      */
     pg?: pulumi.Input<inputs.PgPg>;
     /**
-     * Pg user configurable settings
+     * Pg user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     pgUserConfig?: pulumi.Input<inputs.PgPgUserConfig>;
     /**

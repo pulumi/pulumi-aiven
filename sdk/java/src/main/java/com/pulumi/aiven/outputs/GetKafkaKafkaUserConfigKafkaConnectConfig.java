@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
     /**
-     * @return Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+     * @return Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
      * 
      */
     private @Nullable String connectorClientConfigOverridePolicy;
@@ -28,7 +28,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     private @Nullable Integer consumerFetchMaxBytes;
     /**
-     * @return Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * @return Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     private @Nullable String consumerIsolationLevel;
@@ -68,7 +68,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     private @Nullable Integer producerBufferMemory;
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     private @Nullable String producerCompressionType;
@@ -95,7 +95,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
 
     private GetKafkaKafkaUserConfigKafkaConnectConfig() {}
     /**
-     * @return Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+     * @return Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
      * 
      */
     public Optional<String> connectorClientConfigOverridePolicy() {
@@ -116,7 +116,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
         return Optional.ofNullable(this.consumerFetchMaxBytes);
     }
     /**
-     * @return Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * @return Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     public Optional<String> consumerIsolationLevel() {
@@ -172,7 +172,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
         return Optional.ofNullable(this.producerBufferMemory);
     }
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     public Optional<String> producerCompressionType() {

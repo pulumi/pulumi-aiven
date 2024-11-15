@@ -60,7 +60,7 @@ public final class GetGrafanaResult {
      */
     private String diskSpaceUsed;
     /**
-     * @return Grafana user configurable settings
+     * @return Grafana user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetGrafanaGrafanaUserConfig> grafanaUserConfigs;
@@ -223,7 +223,7 @@ public final class GetGrafanaResult {
         return this.diskSpaceUsed;
     }
     /**
-     * @return Grafana user configurable settings
+     * @return Grafana user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetGrafanaGrafanaUserConfig> grafanaUserConfigs() {

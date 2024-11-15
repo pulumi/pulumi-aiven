@@ -100,17 +100,17 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer interactiveTimeout;
     /**
-     * @return Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+     * @return Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
      * 
      */
     private @Nullable String internalTmpMemStorageEngine;
     /**
-     * @return Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     * @return Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
      * 
      */
     private @Nullable String logOutput;
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
      * 
      */
     private @Nullable Double longQueryTime;
@@ -291,21 +291,21 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.interactiveTimeout);
     }
     /**
-     * @return Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+     * @return Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
      * 
      */
     public Optional<String> internalTmpMemStorageEngine() {
         return Optional.ofNullable(this.internalTmpMemStorageEngine);
     }
     /**
-     * @return Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+     * @return Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
      * 
      */
     public Optional<String> logOutput() {
         return Optional.ofNullable(this.logOutput);
     }
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
      * 
      */
     public Optional<Double> longQueryTime() {

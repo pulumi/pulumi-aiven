@@ -10347,7 +10347,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getServiceIntegration:getServiceIntegration", TypeShape.of(GetServiceIntegrationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+     * Gets information about an integration endpoint.
      * 
      * ## Example Usage
      * 
@@ -10374,9 +10374,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
-     *             .project(myproject.project())
-     *             .endpointName("<ENDPOINT_NAME>")
+     *         final var exampleDatadogEndpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
+     *             .project(exampleProject.project())
+     *             .endpointName("Datadog endpoint")
      *             .build());
      * 
      *     }
@@ -10390,7 +10390,7 @@ public final class AivenFunctions {
         return getServiceIntegrationEndpoint(args, InvokeOptions.Empty);
     }
     /**
-     * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+     * Gets information about an integration endpoint.
      * 
      * ## Example Usage
      * 
@@ -10417,9 +10417,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
-     *             .project(myproject.project())
-     *             .endpointName("<ENDPOINT_NAME>")
+     *         final var exampleDatadogEndpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
+     *             .project(exampleProject.project())
+     *             .endpointName("Datadog endpoint")
      *             .build());
      * 
      *     }
@@ -10433,7 +10433,7 @@ public final class AivenFunctions {
         return getServiceIntegrationEndpointPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+     * Gets information about an integration endpoint.
      * 
      * ## Example Usage
      * 
@@ -10460,9 +10460,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
-     *             .project(myproject.project())
-     *             .endpointName("<ENDPOINT_NAME>")
+     *         final var exampleDatadogEndpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
+     *             .project(exampleProject.project())
+     *             .endpointName("Datadog endpoint")
      *             .build());
      * 
      *     }
@@ -10476,7 +10476,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", TypeShape.of(GetServiceIntegrationEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
+     * Gets information about an integration endpoint.
      * 
      * ## Example Usage
      * 
@@ -10503,9 +10503,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
-     *             .project(myproject.project())
-     *             .endpointName("<ENDPOINT_NAME>")
+     *         final var exampleDatadogEndpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
+     *             .project(exampleProject.project())
+     *             .endpointName("Datadog endpoint")
      *             .build());
      * 
      *     }

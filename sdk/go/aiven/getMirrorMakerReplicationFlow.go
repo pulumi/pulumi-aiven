@@ -75,7 +75,7 @@ type LookupMirrorMakerReplicationFlowResult struct {
 	Enable bool `pulumi:"enable"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation string `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -174,7 +174,7 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
+// Offset syncs topic location. The possible values are `source` and `target`.
 func (o LookupMirrorMakerReplicationFlowResultOutput) OffsetSyncsTopicLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.OffsetSyncsTopicLocation }).(pulumi.StringOutput)
 }

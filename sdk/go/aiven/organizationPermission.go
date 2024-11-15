@@ -12,10 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Grants permissions to a principal for a resource.
-//
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
 //
 // ## Example Usage
 //
@@ -31,8 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Grant permission to a user
-//			_, err := aiven.NewOrganizationPermission(ctx, "operator", &aiven.OrganizationPermissionArgs{
+//			_, err := aiven.NewOrganizationPermission(ctx, "example_permissions", &aiven.OrganizationPermissionArgs{
 //				OrganizationId: pulumi.Any(main.Id),
 //				ResourceId:     pulumi.Any(exampleProject.Id),
 //				ResourceType:   pulumi.String("project"),
@@ -40,23 +36,15 @@ import (
 //					&aiven.OrganizationPermissionPermissionArgs{
 //						Permissions: pulumi.StringArray{
 //							pulumi.String("operator"),
+//							pulumi.String("service:logs:read"),
 //						},
 //						PrincipalId:   pulumi.String("u123a456b7890c"),
 //						PrincipalType: pulumi.String("user"),
 //					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Grant permission to a group
-//			_, err = aiven.NewOrganizationPermission(ctx, "developers", &aiven.OrganizationPermissionArgs{
-//				OrganizationId: pulumi.Any(main.Id),
-//				ResourceId:     pulumi.Any(exampleProject.Id),
-//				ResourceType:   pulumi.String("project"),
-//				Permissions: aiven.OrganizationPermissionPermissionArray{
 //					&aiven.OrganizationPermissionPermissionArgs{
 //						Permissions: pulumi.StringArray{
+//							pulumi.String("project:integrations:write"),
+//							pulumi.String("project:networking:read"),
 //							pulumi.String("developer"),
 //						},
 //						PrincipalId:   pulumi.Any(exampleGroup.GroupId),
@@ -87,7 +75,7 @@ type OrganizationPermission struct {
 	Permissions OrganizationPermissionPermissionArrayOutput `pulumi:"permissions"`
 	// Resource ID.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// Resource type. The possible values are `project`.
+	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 }
 
@@ -139,7 +127,7 @@ type organizationPermissionState struct {
 	Permissions []OrganizationPermissionPermission `pulumi:"permissions"`
 	// Resource ID.
 	ResourceId *string `pulumi:"resourceId"`
-	// Resource type. The possible values are `project`.
+	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -150,7 +138,7 @@ type OrganizationPermissionState struct {
 	Permissions OrganizationPermissionPermissionArrayInput
 	// Resource ID.
 	ResourceId pulumi.StringPtrInput
-	// Resource type. The possible values are `project`.
+	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
 	ResourceType pulumi.StringPtrInput
 }
 
@@ -165,7 +153,7 @@ type organizationPermissionArgs struct {
 	Permissions []OrganizationPermissionPermission `pulumi:"permissions"`
 	// Resource ID.
 	ResourceId string `pulumi:"resourceId"`
-	// Resource type. The possible values are `project`.
+	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -177,7 +165,7 @@ type OrganizationPermissionArgs struct {
 	Permissions OrganizationPermissionPermissionArrayInput
 	// Resource ID.
 	ResourceId pulumi.StringInput
-	// Resource type. The possible values are `project`.
+	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
 	ResourceType pulumi.StringInput
 }
 
@@ -283,7 +271,7 @@ func (o OrganizationPermissionOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationPermission) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Resource type. The possible values are `project`.
+// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
 func (o OrganizationPermissionOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationPermission) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }

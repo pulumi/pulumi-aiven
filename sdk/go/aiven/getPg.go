@@ -81,7 +81,7 @@ type LookupPgResult struct {
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
-	// Pg user configurable settings
+	// Pg user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	PgUserConfigs []GetPgPgUserConfig `pulumi:"pgUserConfigs"`
 	// Values provided by the PostgreSQL server.
 	Pgs []GetPgPg `pulumi:"pgs"`
@@ -220,7 +220,7 @@ func (o LookupPgResultOutput) MaintenanceWindowTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgResult) string { return v.MaintenanceWindowTime }).(pulumi.StringOutput)
 }
 
-// Pg user configurable settings
+// Pg user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupPgResultOutput) PgUserConfigs() GetPgPgUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupPgResult) []GetPgPgUserConfig { return v.PgUserConfigs }).(GetPgPgUserConfigArrayOutput)
 }

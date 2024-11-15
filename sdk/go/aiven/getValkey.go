@@ -113,7 +113,7 @@ type LookupValkeyResult struct {
 	TechEmails []GetValkeyTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
-	// Valkey user configurable settings
+	// Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ValkeyUserConfigs []GetValkeyValkeyUserConfig `pulumi:"valkeyUserConfigs"`
 	// Valkey server provided values
 	Valkeys []GetValkeyValkey `pulumi:"valkeys"`
@@ -300,7 +300,7 @@ func (o LookupValkeyResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupValkeyResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }
 
-// Valkey user configurable settings
+// Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupValkeyResultOutput) ValkeyUserConfigs() GetValkeyValkeyUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupValkeyResult) []GetValkeyValkeyUserConfig { return v.ValkeyUserConfigs }).(GetValkeyValkeyUserConfigArrayOutput)
 }

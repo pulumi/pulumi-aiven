@@ -121,13 +121,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogAutovacuumMinDuration { get; set; }
 
         /// <summary>
-        /// Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+        /// Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
         /// </summary>
         [Input("logErrorVerbosity")]
         public Input<string>? LogErrorVerbosity { get; set; }
 
         /// <summary>
-        /// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+        /// Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
         /// </summary>
         [Input("logLinePrefix")]
         public Input<string>? LogLinePrefix { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? PgStatMonitorDotPgsmMaxBuckets { get; set; }
 
         /// <summary>
-        /// Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        /// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         /// </summary>
         [Input("pgStatStatementsDotTrack")]
         public Input<string>? PgStatStatementsDotTrack { get; set; }
@@ -283,7 +283,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? TrackCommitTimestamp { get; set; }
 
         /// <summary>
-        /// Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+        /// Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
         /// </summary>
         [Input("trackFunctions")]
         public Input<string>? TrackFunctions { get; set; }

@@ -39,7 +39,7 @@ export class InfluxDb extends pulumi.CustomResource {
      * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
      * service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      */
-    public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
+    public readonly additionalDiskSpace!: pulumi.Output<string>;
     /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
      * created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
@@ -81,7 +81,8 @@ export class InfluxDb extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
-     * Influxdb user configurable settings
+     * Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+     * Options that you add cannot be removed later
      */
     public readonly influxdbUserConfig!: pulumi.Output<outputs.InfluxDbInfluxdbUserConfig | undefined>;
     /**
@@ -314,7 +315,8 @@ export interface InfluxDbState {
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
-     * Influxdb user configurable settings
+     * Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+     * Options that you add cannot be removed later
      */
     influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
     /**
@@ -436,7 +438,8 @@ export interface InfluxDbArgs {
      */
     diskSpace?: pulumi.Input<string>;
     /**
-     * Influxdb user configurable settings
+     * Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
+     * Options that you add cannot be removed later
      */
     influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
     /**

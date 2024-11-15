@@ -32,7 +32,7 @@ public final class GetGrafanaGrafanaUserConfig {
      */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
+     * @return Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
      * 
      */
     private @Nullable Boolean alertingEnabled;
@@ -47,7 +47,7 @@ public final class GetGrafanaGrafanaUserConfig {
      */
     private @Nullable Integer alertingMaxAnnotationsToKeep;
     /**
-     * @return Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+     * @return Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     private @Nullable String alertingNodataOrNullvalues;
@@ -87,7 +87,7 @@ public final class GetGrafanaGrafanaUserConfig {
      */
     private @Nullable GetGrafanaGrafanaUserConfigAuthGoogle authGoogle;
     /**
-     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+     * @return Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      * 
      */
     private @Nullable String cookieSamesite;
@@ -97,7 +97,7 @@ public final class GetGrafanaGrafanaUserConfig {
      */
     private @Nullable String customDomain;
     /**
-     * @return This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+     * @return Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
      * 
      */
     private @Nullable Boolean dashboardPreviewsEnabled;
@@ -166,7 +166,7 @@ public final class GetGrafanaGrafanaUserConfig {
     @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Enable Grafana /metrics endpoint.
+     * @return Enable Grafana&#39;s /metrics endpoint.
      * 
      */
     private @Nullable Boolean metricsEnabled;
@@ -221,7 +221,7 @@ public final class GetGrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean staticIps;
     /**
-     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
      * 
      */
     private @Nullable Boolean unifiedAlertingEnabled;
@@ -231,7 +231,7 @@ public final class GetGrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean userAutoAssignOrg;
     /**
-     * @return Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+     * @return Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
      * 
      */
     private @Nullable String userAutoAssignOrgRole;
@@ -255,7 +255,7 @@ public final class GetGrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
+     * @return Setting has no effect with Grafana 11 and onward. Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
      * 
      */
     public Optional<Boolean> alertingEnabled() {
@@ -276,7 +276,7 @@ public final class GetGrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.alertingMaxAnnotationsToKeep);
     }
     /**
-     * @return Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
+     * @return Enum: `alerting`, `keep_state`, `no_data`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     public Optional<String> alertingNodataOrNullvalues() {
@@ -332,7 +332,7 @@ public final class GetGrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.authGoogle);
     }
     /**
-     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
+     * @return Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      * 
      */
     public Optional<String> cookieSamesite() {
@@ -346,7 +346,7 @@ public final class GetGrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+     * @return Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
      * 
      */
     public Optional<Boolean> dashboardPreviewsEnabled() {
@@ -441,7 +441,7 @@ public final class GetGrafanaGrafanaUserConfig {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Enable Grafana /metrics endpoint.
+     * @return Enable Grafana&#39;s /metrics endpoint.
      * 
      */
     public Optional<Boolean> metricsEnabled() {
@@ -518,7 +518,7 @@ public final class GetGrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.staticIps);
     }
     /**
-     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/ for more details.
      * 
      */
     public Optional<Boolean> unifiedAlertingEnabled() {
@@ -532,7 +532,7 @@ public final class GetGrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.userAutoAssignOrg);
     }
     /**
-     * @return Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
+     * @return Enum: `Admin`, `Editor`, `Viewer`. Set role for new signups. Defaults to Viewer.
      * 
      */
     public Optional<String> userAutoAssignOrgRole() {

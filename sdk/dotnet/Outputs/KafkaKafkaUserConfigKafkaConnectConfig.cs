@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigKafkaConnectConfig
     {
         /// <summary>
-        /// Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        /// Enum: `All`, `None`. Defines what client configurations can be overridden by the connector. Default is None.
         /// </summary>
         public readonly string? ConnectorClientConfigOverridePolicy;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ConsumerFetchMaxBytes;
         /// <summary>
-        /// Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        /// Enum: `read_committed`, `read_uncommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         /// </summary>
         public readonly string? ConsumerIsolationLevel;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ProducerBufferMemory;
         /// <summary>
-        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+        /// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         /// </summary>
         public readonly string? ProducerCompressionType;
         /// <summary>

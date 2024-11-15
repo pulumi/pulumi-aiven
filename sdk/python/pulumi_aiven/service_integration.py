@@ -43,24 +43,24 @@ class ServiceIntegrationArgs:
                  source_service_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceIntegration resource.
-        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+        :param pulumi.Input[str] integration_type: Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         :param pulumi.Input[str] project: Project the integration belongs to.
-        :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
-        :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
-        :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
+        :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration.
-        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
-        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
-        :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
-        :param pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs'] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
-        :param pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs'] flink_external_postgresql_user_config: FlinkExternalPostgresql user configurable settings
-        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings
-        :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings
-        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
-        :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
-        :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
-        :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings
+        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs'] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs'] flink_external_postgresql_user_config: FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -107,7 +107,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Input[str]:
         """
-        Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+        Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -131,7 +131,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="clickhouseKafkaUserConfig")
     def clickhouse_kafka_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]:
         """
-        ClickhouseKafka user configurable settings
+        ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_kafka_user_config")
 
@@ -143,7 +143,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="clickhousePostgresqlUserConfig")
     def clickhouse_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]:
         """
-        ClickhousePostgresql user configurable settings
+        ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_postgresql_user_config")
 
@@ -155,7 +155,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="datadogUserConfig")
     def datadog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]:
         """
-        Datadog user configurable settings
+        Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "datadog_user_config")
 
@@ -191,7 +191,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
     def external_aws_cloudwatch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]:
         """
-        ExternalAwsCloudwatchLogs user configurable settings
+        ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
 
@@ -203,7 +203,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
     def external_aws_cloudwatch_metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]:
         """
-        ExternalAwsCloudwatchMetrics user configurable settings
+        ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
 
@@ -215,7 +215,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")
     def external_elasticsearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]:
         """
-        ExternalElasticsearchLogs user configurable settings
+        ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_elasticsearch_logs_user_config")
 
@@ -227,7 +227,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="externalOpensearchLogsUserConfig")
     def external_opensearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]:
         """
-        ExternalOpensearchLogs user configurable settings
+        ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_opensearch_logs_user_config")
 
@@ -239,7 +239,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="flinkExternalPostgresqlUserConfig")
     def flink_external_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]:
         """
-        FlinkExternalPostgresql user configurable settings
+        FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "flink_external_postgresql_user_config")
 
@@ -251,7 +251,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="kafkaConnectUserConfig")
     def kafka_connect_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']]:
         """
-        KafkaConnect user configurable settings
+        KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
@@ -263,7 +263,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="kafkaLogsUserConfig")
     def kafka_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']]:
         """
-        KafkaLogs user configurable settings
+        KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_logs_user_config")
 
@@ -275,7 +275,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]:
         """
-        KafkaMirrormaker user configurable settings
+        KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
@@ -287,7 +287,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="logsUserConfig")
     def logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']]:
         """
-        Logs user configurable settings
+        Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "logs_user_config")
 
@@ -299,7 +299,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="metricsUserConfig")
     def metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']]:
         """
-        Metrics user configurable settings
+        Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "metrics_user_config")
 
@@ -311,7 +311,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="prometheusUserConfig")
     def prometheus_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]:
         """
-        Prometheus user configurable settings
+        Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "prometheus_user_config")
 
@@ -370,25 +370,25 @@ class _ServiceIntegrationState:
                  source_service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceIntegration resources.
-        :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
-        :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
-        :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
+        :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration.
-        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
-        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
-        :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
-        :param pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs'] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
-        :param pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs'] flink_external_postgresql_user_config: FlinkExternalPostgresql user configurable settings
+        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs'] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs'] flink_external_postgresql_user_config: FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] integration_id: The ID of the Aiven service integration.
-        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
-        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings
-        :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings
-        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
-        :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
-        :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
+        :param pulumi.Input[str] integration_type: Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
+        :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] project: Project the integration belongs to.
-        :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings
+        :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -439,7 +439,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="clickhouseKafkaUserConfig")
     def clickhouse_kafka_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]:
         """
-        ClickhouseKafka user configurable settings
+        ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_kafka_user_config")
 
@@ -451,7 +451,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="clickhousePostgresqlUserConfig")
     def clickhouse_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]:
         """
-        ClickhousePostgresql user configurable settings
+        ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_postgresql_user_config")
 
@@ -463,7 +463,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="datadogUserConfig")
     def datadog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]:
         """
-        Datadog user configurable settings
+        Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "datadog_user_config")
 
@@ -499,7 +499,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
     def external_aws_cloudwatch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]:
         """
-        ExternalAwsCloudwatchLogs user configurable settings
+        ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
 
@@ -511,7 +511,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
     def external_aws_cloudwatch_metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]:
         """
-        ExternalAwsCloudwatchMetrics user configurable settings
+        ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
 
@@ -523,7 +523,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")
     def external_elasticsearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]:
         """
-        ExternalElasticsearchLogs user configurable settings
+        ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_elasticsearch_logs_user_config")
 
@@ -535,7 +535,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="externalOpensearchLogsUserConfig")
     def external_opensearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]:
         """
-        ExternalOpensearchLogs user configurable settings
+        ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_opensearch_logs_user_config")
 
@@ -547,7 +547,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="flinkExternalPostgresqlUserConfig")
     def flink_external_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]:
         """
-        FlinkExternalPostgresql user configurable settings
+        FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "flink_external_postgresql_user_config")
 
@@ -571,7 +571,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+        Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -583,7 +583,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="kafkaConnectUserConfig")
     def kafka_connect_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']]:
         """
-        KafkaConnect user configurable settings
+        KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
@@ -595,7 +595,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="kafkaLogsUserConfig")
     def kafka_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']]:
         """
-        KafkaLogs user configurable settings
+        KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_logs_user_config")
 
@@ -607,7 +607,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]:
         """
-        KafkaMirrormaker user configurable settings
+        KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
@@ -619,7 +619,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="logsUserConfig")
     def logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']]:
         """
-        Logs user configurable settings
+        Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "logs_user_config")
 
@@ -631,7 +631,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="metricsUserConfig")
     def metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']]:
         """
-        Metrics user configurable settings
+        Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "metrics_user_config")
 
@@ -655,7 +655,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="prometheusUserConfig")
     def prometheus_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]:
         """
-        Prometheus user configurable settings
+        Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "prometheus_user_config")
 
@@ -715,26 +715,34 @@ class ServiceIntegration(pulumi.CustomResource):
                  source_service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
-
-        You can set up an integration between two Aiven services or an Aiven service and an external
-        service. For example, you can send metrics from a Kafka service to an M3DB service,
-        send metrics from an M3DB service to a Grafana service to show dashboards, and send logs from
-        any service to OpenSearch.
-
-        **Services integrations are not supported for services running on hobbyist plans.**
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
+        # Integrate Kafka and M3DB services for metrics
         example_integration = aiven.ServiceIntegration("example_integration",
             project=example_project["project"],
             integration_type="metrics",
             source_service_name=example_kafka["serviceName"],
             destination_service_name=example_m3db["serviceName"])
+        # Use disk autoscaler with a PostgreSQL service
+        autoscaler_endpoint = aiven.ServiceIntegrationEndpoint("autoscaler_endpoint",
+            project=example_project["project"],
+            endpoint_name="disk-autoscaler-200GiB",
+            endpoint_type="autoscaler",
+            autoscaler_user_config={
+                "autoscalings": [{
+                    "cap_gb": 200,
+                    "type": "autoscale_disk",
+                }],
+            })
+        autoscaler_integration = aiven.ServiceIntegration("autoscaler_integration",
+            project=example_project["project"],
+            integration_type="autoscaler",
+            source_service_name=example_pg["serviceName"],
+            destination_endpoint_id=autoscaler_endpoint.id)
         ```
 
         ## Import
@@ -745,24 +753,24 @@ class ServiceIntegration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration.
-        :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']] flink_external_postgresql_user_config: FlinkExternalPostgresql user configurable settings
-        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
-        :param pulumi.Input[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']] kafka_connect_user_config: KafkaConnect user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']] kafka_logs_user_config: KafkaLogs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']] logs_user_config: Logs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']] metrics_user_config: Metrics user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']] flink_external_postgresql_user_config: FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[str] integration_type: Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
+        :param pulumi.Input[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']] kafka_connect_user_config: KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']] kafka_logs_user_config: KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']] logs_user_config: Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']] metrics_user_config: Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] project: Project the integration belongs to.
-        :param pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -773,26 +781,34 @@ class ServiceIntegration(pulumi.CustomResource):
                  args: ServiceIntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
-
-        You can set up an integration between two Aiven services or an Aiven service and an external
-        service. For example, you can send metrics from a Kafka service to an M3DB service,
-        send metrics from an M3DB service to a Grafana service to show dashboards, and send logs from
-        any service to OpenSearch.
-
-        **Services integrations are not supported for services running on hobbyist plans.**
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
+        # Integrate Kafka and M3DB services for metrics
         example_integration = aiven.ServiceIntegration("example_integration",
             project=example_project["project"],
             integration_type="metrics",
             source_service_name=example_kafka["serviceName"],
             destination_service_name=example_m3db["serviceName"])
+        # Use disk autoscaler with a PostgreSQL service
+        autoscaler_endpoint = aiven.ServiceIntegrationEndpoint("autoscaler_endpoint",
+            project=example_project["project"],
+            endpoint_name="disk-autoscaler-200GiB",
+            endpoint_type="autoscaler",
+            autoscaler_user_config={
+                "autoscalings": [{
+                    "cap_gb": 200,
+                    "type": "autoscale_disk",
+                }],
+            })
+        autoscaler_integration = aiven.ServiceIntegration("autoscaler_integration",
+            project=example_project["project"],
+            integration_type="autoscaler",
+            source_service_name=example_pg["serviceName"],
+            destination_endpoint_id=autoscaler_endpoint.id)
         ```
 
         ## Import
@@ -908,25 +924,25 @@ class ServiceIntegration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration.
-        :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']] flink_external_postgresql_user_config: FlinkExternalPostgresql user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']] flink_external_postgresql_user_config: FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] integration_id: The ID of the Aiven service integration.
-        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
-        :param pulumi.Input[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']] kafka_connect_user_config: KafkaConnect user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']] kafka_logs_user_config: KafkaLogs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']] logs_user_config: Logs user configurable settings
-        :param pulumi.Input[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']] metrics_user_config: Metrics user configurable settings
+        :param pulumi.Input[str] integration_type: Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
+        :param pulumi.Input[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']] kafka_connect_user_config: KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']] kafka_logs_user_config: KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']] logs_user_config: Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']] metrics_user_config: Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] project: Project the integration belongs to.
-        :param pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings
+        :param pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -961,7 +977,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="clickhouseKafkaUserConfig")
     def clickhouse_kafka_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationClickhouseKafkaUserConfig']]:
         """
-        ClickhouseKafka user configurable settings
+        ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_kafka_user_config")
 
@@ -969,7 +985,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="clickhousePostgresqlUserConfig")
     def clickhouse_postgresql_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationClickhousePostgresqlUserConfig']]:
         """
-        ClickhousePostgresql user configurable settings
+        ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_postgresql_user_config")
 
@@ -977,7 +993,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="datadogUserConfig")
     def datadog_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationDatadogUserConfig']]:
         """
-        Datadog user configurable settings
+        Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "datadog_user_config")
 
@@ -1001,7 +1017,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
     def external_aws_cloudwatch_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig']]:
         """
-        ExternalAwsCloudwatchLogs user configurable settings
+        ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
 
@@ -1009,7 +1025,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
     def external_aws_cloudwatch_metrics_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig']]:
         """
-        ExternalAwsCloudwatchMetrics user configurable settings
+        ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
 
@@ -1017,7 +1033,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")
     def external_elasticsearch_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig']]:
         """
-        ExternalElasticsearchLogs user configurable settings
+        ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_elasticsearch_logs_user_config")
 
@@ -1025,7 +1041,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="externalOpensearchLogsUserConfig")
     def external_opensearch_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalOpensearchLogsUserConfig']]:
         """
-        ExternalOpensearchLogs user configurable settings
+        ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_opensearch_logs_user_config")
 
@@ -1033,7 +1049,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="flinkExternalPostgresqlUserConfig")
     def flink_external_postgresql_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationFlinkExternalPostgresqlUserConfig']]:
         """
-        FlinkExternalPostgresql user configurable settings
+        FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "flink_external_postgresql_user_config")
 
@@ -1049,7 +1065,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Output[str]:
         """
-        Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+        Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -1057,7 +1073,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="kafkaConnectUserConfig")
     def kafka_connect_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationKafkaConnectUserConfig']]:
         """
-        KafkaConnect user configurable settings
+        KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
@@ -1065,7 +1081,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="kafkaLogsUserConfig")
     def kafka_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationKafkaLogsUserConfig']]:
         """
-        KafkaLogs user configurable settings
+        KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_logs_user_config")
 
@@ -1073,7 +1089,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
     def kafka_mirrormaker_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationKafkaMirrormakerUserConfig']]:
         """
-        KafkaMirrormaker user configurable settings
+        KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
@@ -1081,7 +1097,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="logsUserConfig")
     def logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationLogsUserConfig']]:
         """
-        Logs user configurable settings
+        Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "logs_user_config")
 
@@ -1089,7 +1105,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="metricsUserConfig")
     def metrics_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationMetricsUserConfig']]:
         """
-        Metrics user configurable settings
+        Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "metrics_user_config")
 
@@ -1105,7 +1121,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="prometheusUserConfig")
     def prometheus_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationPrometheusUserConfig']]:
         """
-        Prometheus user configurable settings
+        Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "prometheus_user_config")
 

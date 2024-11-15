@@ -44,7 +44,7 @@ public final class GetOpenSearchOpensearchUserConfig {
      */
     private @Nullable String customDomain;
     /**
-     * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
      * 
      */
     private @Nullable Boolean disableReplicationFactorAdjustment;
@@ -191,7 +191,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+     * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
      * 
      */
     public Optional<Boolean> disableReplicationFactorAdjustment() {

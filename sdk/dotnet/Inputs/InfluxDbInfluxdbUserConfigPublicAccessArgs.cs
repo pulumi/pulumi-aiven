@@ -18,6 +18,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("influxdb")]
         public Input<bool>? Influxdb { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
+        [Input("userBackup")]
+        public Input<bool>? UserBackup { get; set; }
+
         public InfluxDbInfluxdbUserConfigPublicAccessArgs()
         {
         }

@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> BucketUrl { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `s3`. Provider type.
+        /// Enum: `s3`. External image store provider.
         /// </summary>
         [Input("provider", required: true)]
         public Input<string> Provider { get; set; } = null!;

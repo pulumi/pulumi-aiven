@@ -29,15 +29,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
- * 
- * You can set up an integration between two Aiven services or an Aiven service and an external
- * service. For example, you can send metrics from a Kafka service to an M3DB service,
- * send metrics from an M3DB service to a Grafana service to show dashboards, and send logs from
- * any service to OpenSearch.
- * 
- * **Services integrations are not supported for services running on hobbyist plans.**
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -50,6 +41,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.aiven.ServiceIntegration;
  * import com.pulumi.aiven.ServiceIntegrationArgs;
+ * import com.pulumi.aiven.ServiceIntegrationEndpoint;
+ * import com.pulumi.aiven.ServiceIntegrationEndpointArgs;
+ * import com.pulumi.aiven.inputs.ServiceIntegrationEndpointAutoscalerUserConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -63,11 +57,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Integrate Kafka and M3DB services for metrics
  *         var exampleIntegration = new ServiceIntegration("exampleIntegration", ServiceIntegrationArgs.builder()
  *             .project(exampleProject.project())
  *             .integrationType("metrics")
  *             .sourceServiceName(exampleKafka.serviceName())
  *             .destinationServiceName(exampleM3db.serviceName())
+ *             .build());
+ * 
+ *         // Use disk autoscaler with a PostgreSQL service
+ *         var autoscalerEndpoint = new ServiceIntegrationEndpoint("autoscalerEndpoint", ServiceIntegrationEndpointArgs.builder()
+ *             .project(exampleProject.project())
+ *             .endpointName("disk-autoscaler-200GiB")
+ *             .endpointType("autoscaler")
+ *             .autoscalerUserConfig(ServiceIntegrationEndpointAutoscalerUserConfigArgs.builder()
+ *                 .autoscalings(ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs.builder()
+ *                     .capGb(200)
+ *                     .type("autoscale_disk")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var autoscalerIntegration = new ServiceIntegration("autoscalerIntegration", ServiceIntegrationArgs.builder()
+ *             .project(exampleProject.project())
+ *             .integrationType("autoscaler")
+ *             .sourceServiceName(examplePg.serviceName())
+ *             .destinationEndpointId(autoscalerEndpoint.id())
  *             .build());
  * 
  *     }
@@ -86,42 +101,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/serviceIntegration:ServiceIntegration")
 public class ServiceIntegration extends com.pulumi.resources.CustomResource {
     /**
-     * ClickhouseKafka user configurable settings
+     * ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="clickhouseKafkaUserConfig", refs={ServiceIntegrationClickhouseKafkaUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationClickhouseKafkaUserConfig> clickhouseKafkaUserConfig;
 
     /**
-     * @return ClickhouseKafka user configurable settings
+     * @return ClickhouseKafka user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationClickhouseKafkaUserConfig>> clickhouseKafkaUserConfig() {
         return Codegen.optional(this.clickhouseKafkaUserConfig);
     }
     /**
-     * ClickhousePostgresql user configurable settings
+     * ClickhousePostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="clickhousePostgresqlUserConfig", refs={ServiceIntegrationClickhousePostgresqlUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationClickhousePostgresqlUserConfig> clickhousePostgresqlUserConfig;
 
     /**
-     * @return ClickhousePostgresql user configurable settings
+     * @return ClickhousePostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationClickhousePostgresqlUserConfig>> clickhousePostgresqlUserConfig() {
         return Codegen.optional(this.clickhousePostgresqlUserConfig);
     }
     /**
-     * Datadog user configurable settings
+     * Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="datadogUserConfig", refs={ServiceIntegrationDatadogUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationDatadogUserConfig> datadogUserConfig;
 
     /**
-     * @return Datadog user configurable settings
+     * @return Datadog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationDatadogUserConfig>> datadogUserConfig() {
@@ -156,70 +171,70 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.destinationServiceName);
     }
     /**
-     * ExternalAwsCloudwatchLogs user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalAwsCloudwatchLogsUserConfig", refs={ServiceIntegrationExternalAwsCloudwatchLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfig;
 
     /**
-     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * @return ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>> externalAwsCloudwatchLogsUserConfig() {
         return Codegen.optional(this.externalAwsCloudwatchLogsUserConfig);
     }
     /**
-     * ExternalAwsCloudwatchMetrics user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalAwsCloudwatchMetricsUserConfig", refs={ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfig;
 
     /**
-     * @return ExternalAwsCloudwatchMetrics user configurable settings
+     * @return ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>> externalAwsCloudwatchMetricsUserConfig() {
         return Codegen.optional(this.externalAwsCloudwatchMetricsUserConfig);
     }
     /**
-     * ExternalElasticsearchLogs user configurable settings
+     * ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalElasticsearchLogsUserConfig", refs={ServiceIntegrationExternalElasticsearchLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfig;
 
     /**
-     * @return ExternalElasticsearchLogs user configurable settings
+     * @return ExternalElasticsearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationExternalElasticsearchLogsUserConfig>> externalElasticsearchLogsUserConfig() {
         return Codegen.optional(this.externalElasticsearchLogsUserConfig);
     }
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="externalOpensearchLogsUserConfig", refs={ServiceIntegrationExternalOpensearchLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfig;
 
     /**
-     * @return ExternalOpensearchLogs user configurable settings
+     * @return ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationExternalOpensearchLogsUserConfig>> externalOpensearchLogsUserConfig() {
         return Codegen.optional(this.externalOpensearchLogsUserConfig);
     }
     /**
-     * FlinkExternalPostgresql user configurable settings
+     * FlinkExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="flinkExternalPostgresqlUserConfig", refs={ServiceIntegrationFlinkExternalPostgresqlUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationFlinkExternalPostgresqlUserConfig> flinkExternalPostgresqlUserConfig;
 
     /**
-     * @return FlinkExternalPostgresql user configurable settings
+     * @return FlinkExternalPostgresql user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationFlinkExternalPostgresqlUserConfig>> flinkExternalPostgresqlUserConfig() {
@@ -240,84 +255,84 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return this.integrationId;
     }
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+     * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      * 
      */
     @Export(name="integrationType", refs={String.class}, tree="[0]")
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+     * @return Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      * 
      */
     public Output<String> integrationType() {
         return this.integrationType;
     }
     /**
-     * KafkaConnect user configurable settings
+     * KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="kafkaConnectUserConfig", refs={ServiceIntegrationKafkaConnectUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationKafkaConnectUserConfig> kafkaConnectUserConfig;
 
     /**
-     * @return KafkaConnect user configurable settings
+     * @return KafkaConnect user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationKafkaConnectUserConfig>> kafkaConnectUserConfig() {
         return Codegen.optional(this.kafkaConnectUserConfig);
     }
     /**
-     * KafkaLogs user configurable settings
+     * KafkaLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="kafkaLogsUserConfig", refs={ServiceIntegrationKafkaLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationKafkaLogsUserConfig> kafkaLogsUserConfig;
 
     /**
-     * @return KafkaLogs user configurable settings
+     * @return KafkaLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationKafkaLogsUserConfig>> kafkaLogsUserConfig() {
         return Codegen.optional(this.kafkaLogsUserConfig);
     }
     /**
-     * KafkaMirrormaker user configurable settings
+     * KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="kafkaMirrormakerUserConfig", refs={ServiceIntegrationKafkaMirrormakerUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfig;
 
     /**
-     * @return KafkaMirrormaker user configurable settings
+     * @return KafkaMirrormaker user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationKafkaMirrormakerUserConfig>> kafkaMirrormakerUserConfig() {
         return Codegen.optional(this.kafkaMirrormakerUserConfig);
     }
     /**
-     * Logs user configurable settings
+     * Logs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="logsUserConfig", refs={ServiceIntegrationLogsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationLogsUserConfig> logsUserConfig;
 
     /**
-     * @return Logs user configurable settings
+     * @return Logs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationLogsUserConfig>> logsUserConfig() {
         return Codegen.optional(this.logsUserConfig);
     }
     /**
-     * Metrics user configurable settings
+     * Metrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="metricsUserConfig", refs={ServiceIntegrationMetricsUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationMetricsUserConfig> metricsUserConfig;
 
     /**
-     * @return Metrics user configurable settings
+     * @return Metrics user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationMetricsUserConfig>> metricsUserConfig() {
@@ -338,14 +353,14 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Prometheus user configurable settings
+     * Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="prometheusUserConfig", refs={ServiceIntegrationPrometheusUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIntegrationPrometheusUserConfig> prometheusUserConfig;
 
     /**
-     * @return Prometheus user configurable settings
+     * @return Prometheus user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ServiceIntegrationPrometheusUserConfig>> prometheusUserConfig() {

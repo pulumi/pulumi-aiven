@@ -7,7 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as members of a project.
+ * Adds and manages a group of users as members of a project.
+ *
+ * **This resource is deprecated.** Use `aiven.OrganizationPermission` and
+ * migrate existing aiven.OrganizationGroupProject resources
+ * to the new resource.
  *
  * ## Example Usage
  *
@@ -79,7 +83,7 @@ export class OrganizationGroupProject extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:permissions:read` and `service:logs:read`.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
      */
     public readonly role!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.OrganizationGroupProjectTimeouts | undefined>;
@@ -135,7 +139,7 @@ export interface OrganizationGroupProjectState {
      */
     project?: pulumi.Input<string>;
     /**
-     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:permissions:read` and `service:logs:read`.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
      */
     role?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationGroupProjectTimeouts>;
@@ -154,7 +158,7 @@ export interface OrganizationGroupProjectArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:permissions:read` and `service:logs:read`.
+     * [Project-level role](https://aiven.io/docs/platform/reference/project-member-privileges) assigned to all users in the group. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `role:services:maintenance`, `role:services:recover`, `organization:billing:read`, `organization:billing:write`, `organization:audit_logs:read`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write`, `organization:network:read`, `organization:network:write`, `role:organization:admin` and `service:users:write`.
      */
     role: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationGroupProjectTimeouts>;

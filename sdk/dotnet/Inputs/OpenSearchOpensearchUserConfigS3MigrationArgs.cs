@@ -49,16 +49,28 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. By default, a restore operation includes all data streams and indices in the snapshot. If this argument is provided, the restore operation only includes the data streams and indices that you specify. Example: `metrics*,logs*,data-20240823`.
+        /// Whether to restore aliases alongside their associated indexes. Default is true.
         /// </summary>
-        [Input("indices")]
-        public Input<string>? Indices { get; set; }
+        [Input("includeAliases")]
+        public Input<bool>? IncludeAliases { get; set; }
+
+        /// <summary>
+        /// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+        /// </summary>
+        [Input("indices", required: true)]
+        public Input<string> Indices { get; set; } = null!;
 
         /// <summary>
         /// S3 region.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
+
+        /// <summary>
+        /// If true, restore the cluster state. Defaults to false.
+        /// </summary>
+        [Input("restoreGlobalState")]
+        public Input<bool>? RestoreGlobalState { get; set; }
 
         [Input("secretKey", required: true)]
         private Input<string>? _secretKey;

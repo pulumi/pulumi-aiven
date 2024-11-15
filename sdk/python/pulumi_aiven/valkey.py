@@ -54,7 +54,7 @@ class ValkeyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ValkeyTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         :param pulumi.Input['ValkeyValkeyArgs'] valkey: Valkey server provided values
-        :param pulumi.Input['ValkeyValkeyUserConfigArgs'] valkey_user_config: Valkey user configurable settings
+        :param pulumi.Input['ValkeyValkeyUserConfigArgs'] valkey_user_config: Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         pulumi.set(__self__, "plan", plan)
         pulumi.set(__self__, "project", project)
@@ -274,7 +274,7 @@ class ValkeyArgs:
     @pulumi.getter(name="valkeyUserConfig")
     def valkey_user_config(self) -> Optional[pulumi.Input['ValkeyValkeyUserConfigArgs']]:
         """
-        Valkey user configurable settings
+        Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "valkey_user_config")
 
@@ -343,7 +343,7 @@ class _ValkeyState:
         :param pulumi.Input[Sequence[pulumi.Input['ValkeyTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         :param pulumi.Input['ValkeyValkeyArgs'] valkey: Valkey server provided values
-        :param pulumi.Input['ValkeyValkeyUserConfigArgs'] valkey_user_config: Valkey user configurable settings
+        :param pulumi.Input['ValkeyValkeyUserConfigArgs'] valkey_user_config: Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         if additional_disk_space is not None:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -738,7 +738,7 @@ class _ValkeyState:
     @pulumi.getter(name="valkeyUserConfig")
     def valkey_user_config(self) -> Optional[pulumi.Input['ValkeyValkeyUserConfigArgs']]:
         """
-        Valkey user configurable settings
+        Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "valkey_user_config")
 
@@ -811,7 +811,7 @@ class Valkey(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ValkeyTechEmailArgs', 'ValkeyTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         :param pulumi.Input[Union['ValkeyValkeyArgs', 'ValkeyValkeyArgsDict']] valkey: Valkey server provided values
-        :param pulumi.Input[Union['ValkeyValkeyUserConfigArgs', 'ValkeyValkeyUserConfigArgsDict']] valkey_user_config: Valkey user configurable settings
+        :param pulumi.Input[Union['ValkeyValkeyUserConfigArgs', 'ValkeyValkeyUserConfigArgsDict']] valkey_user_config: Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         ...
     @overload
@@ -992,7 +992,7 @@ class Valkey(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ValkeyTechEmailArgs', 'ValkeyTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         :param pulumi.Input[Union['ValkeyValkeyArgs', 'ValkeyValkeyArgsDict']] valkey: Valkey server provided values
-        :param pulumi.Input[Union['ValkeyValkeyUserConfigArgs', 'ValkeyValkeyUserConfigArgsDict']] valkey_user_config: Valkey user configurable settings
+        :param pulumi.Input[Union['ValkeyValkeyUserConfigArgs', 'ValkeyValkeyUserConfigArgsDict']] valkey_user_config: Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1030,7 +1030,7 @@ class Valkey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalDiskSpace")
-    def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
+    def additional_disk_space(self) -> pulumi.Output[str]:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
         """
@@ -1250,7 +1250,7 @@ class Valkey(pulumi.CustomResource):
     @pulumi.getter(name="valkeyUserConfig")
     def valkey_user_config(self) -> pulumi.Output[Optional['outputs.ValkeyValkeyUserConfig']]:
         """
-        Valkey user configurable settings
+        Valkey user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "valkey_user_config")
 

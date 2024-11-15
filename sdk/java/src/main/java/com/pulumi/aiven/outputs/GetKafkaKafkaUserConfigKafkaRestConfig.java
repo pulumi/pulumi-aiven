@@ -29,7 +29,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Integer consumerRequestTimeoutMs;
     /**
-     * @return Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+     * @return Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
      * 
      */
     private @Nullable String nameStrategy;
@@ -39,12 +39,12 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Boolean nameStrategyValidation;
     /**
-     * @return Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
+     * @return Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
      * 
      */
     private @Nullable String producerAcks;
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     private @Nullable String producerCompressionType;
@@ -87,7 +87,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
     }
     /**
-     * @return Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
+     * @return Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
      * 
      */
     public Optional<String> nameStrategy() {
@@ -101,14 +101,14 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
         return Optional.ofNullable(this.nameStrategyValidation);
     }
     /**
-     * @return Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
+     * @return Enum: `-1`, `0`, `1`, `all`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to `all` or `-1`, the leader will wait for the full set of in-sync replicas to acknowledge the record. Default: `1`.
      * 
      */
     public Optional<String> producerAcks() {
         return Optional.ofNullable(this.producerAcks);
     }
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     public Optional<String> producerCompressionType() {

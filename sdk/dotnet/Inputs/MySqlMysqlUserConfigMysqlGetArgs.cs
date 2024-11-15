@@ -115,19 +115,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? InteractiveTimeout { get; set; }
 
         /// <summary>
-        /// Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
+        /// Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
         /// </summary>
         [Input("internalTmpMemStorageEngine")]
         public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         /// <summary>
-        /// Enum: `INSIGHTS`, `NONE`, `TABLE`, `INSIGHTS,TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
+        /// Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
         /// </summary>
         [Input("logOutput")]
         public Input<string>? LogOutput { get; set; }
 
         /// <summary>
-        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
+        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10.0`.
         /// </summary>
         [Input("longQueryTime")]
         public Input<double>? LongQueryTime { get; set; }

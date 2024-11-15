@@ -42,7 +42,7 @@ export interface GetServiceIntegrationArgs {
      */
     destinationServiceName: string;
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+     * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      */
     integrationType: string;
     /**
@@ -60,15 +60,15 @@ export interface GetServiceIntegrationArgs {
  */
 export interface GetServiceIntegrationResult {
     /**
-     * ClickhouseKafka user configurable settings
+     * ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly clickhouseKafkaUserConfigs: outputs.GetServiceIntegrationClickhouseKafkaUserConfig[];
     /**
-     * ClickhousePostgresql user configurable settings
+     * ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly clickhousePostgresqlUserConfigs: outputs.GetServiceIntegrationClickhousePostgresqlUserConfig[];
     /**
-     * Datadog user configurable settings
+     * Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly datadogUserConfigs: outputs.GetServiceIntegrationDatadogUserConfig[];
     /**
@@ -80,23 +80,23 @@ export interface GetServiceIntegrationResult {
      */
     readonly destinationServiceName: string;
     /**
-     * ExternalAwsCloudwatchLogs user configurable settings
+     * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalAwsCloudwatchLogsUserConfigs: outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig[];
     /**
-     * ExternalAwsCloudwatchMetrics user configurable settings
+     * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalAwsCloudwatchMetricsUserConfigs: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig[];
     /**
-     * ExternalElasticsearchLogs user configurable settings
+     * ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalElasticsearchLogsUserConfigs: outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig[];
     /**
-     * ExternalOpensearchLogs user configurable settings
+     * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalOpensearchLogsUserConfigs: outputs.GetServiceIntegrationExternalOpensearchLogsUserConfig[];
     /**
-     * FlinkExternalPostgresql user configurable settings
+     * FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly flinkExternalPostgresqlUserConfigs: outputs.GetServiceIntegrationFlinkExternalPostgresqlUserConfig[];
     /**
@@ -108,27 +108,27 @@ export interface GetServiceIntegrationResult {
      */
     readonly integrationId: string;
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+     * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      */
     readonly integrationType: string;
     /**
-     * KafkaConnect user configurable settings
+     * KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly kafkaConnectUserConfigs: outputs.GetServiceIntegrationKafkaConnectUserConfig[];
     /**
-     * KafkaLogs user configurable settings
+     * KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly kafkaLogsUserConfigs: outputs.GetServiceIntegrationKafkaLogsUserConfig[];
     /**
-     * KafkaMirrormaker user configurable settings
+     * KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly kafkaMirrormakerUserConfigs: outputs.GetServiceIntegrationKafkaMirrormakerUserConfig[];
     /**
-     * Logs user configurable settings
+     * Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly logsUserConfigs: outputs.GetServiceIntegrationLogsUserConfig[];
     /**
-     * Metrics user configurable settings
+     * Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly metricsUserConfigs: outputs.GetServiceIntegrationMetricsUserConfig[];
     /**
@@ -136,7 +136,7 @@ export interface GetServiceIntegrationResult {
      */
     readonly project: string;
     /**
-     * Prometheus user configurable settings
+     * Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly prometheusUserConfigs: outputs.GetServiceIntegrationPrometheusUserConfig[];
     /**
@@ -184,7 +184,7 @@ export interface GetServiceIntegrationOutputArgs {
      */
     destinationServiceName: pulumi.Input<string>;
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector`, `vmalert`
+     * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      */
     integrationType: pulumi.Input<string>;
     /**

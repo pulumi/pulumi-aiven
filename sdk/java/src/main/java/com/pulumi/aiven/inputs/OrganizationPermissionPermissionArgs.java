@@ -33,14 +33,14 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
     }
 
     /**
-     * List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      * 
      */
     @Import(name="permissions", required=true)
     private Output<List<String>> permissions;
 
     /**
-     * @return List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
+     * @return List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      * 
      */
     public Output<List<String>> permissions() {
@@ -48,14 +48,14 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
     }
 
     /**
-     * ID of the user or group.
+     * ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
      * 
      */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
     /**
-     * @return ID of the user or group.
+     * @return ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
      * 
      */
     public Output<String> principalId() {
@@ -142,7 +142,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param permissions List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
+         * @param permissions List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param permissions List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
+         * @param permissions List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param permissions List of permissions. The possible values are `admin`, `developer`, `operator`, `project:permissions:read`, `read_only` and `service:logs:read`.
+         * @param permissions List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalId ID of the user or group.
+         * @param principalId ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class OrganizationPermissionPermissionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param principalId ID of the user or group.
+         * @param principalId ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
          * 
          * @return builder
          * 

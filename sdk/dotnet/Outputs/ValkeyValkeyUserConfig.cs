@@ -90,7 +90,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ValkeyLfuLogFactor;
         /// <summary>
-        /// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Valkey maxmemory-policy. Default: `noeviction`.
+        /// Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
         /// </summary>
         public readonly string? ValkeyMaxmemoryPolicy;
         /// <summary>

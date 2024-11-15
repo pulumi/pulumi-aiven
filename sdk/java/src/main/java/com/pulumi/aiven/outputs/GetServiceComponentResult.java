@@ -30,7 +30,7 @@ public final class GetServiceComponentResult {
      */
     private String id;
     /**
-     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component. The possible values are `certificate` and `sasl`.
      * 
      */
     private @Nullable String kafkaAuthenticationMethod;
@@ -45,7 +45,7 @@ public final class GetServiceComponentResult {
      */
     private String project;
     /**
-     * @return Network access route
+     * @return Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
      * 
      */
     private @Nullable String route;
@@ -60,7 +60,7 @@ public final class GetServiceComponentResult {
      */
     private @Nullable Boolean ssl;
     /**
-     * @return DNS usage name
+     * @return DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
      * 
      */
     private @Nullable String usage;
@@ -88,7 +88,7 @@ public final class GetServiceComponentResult {
         return this.id;
     }
     /**
-     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component. The possible values are `certificate` and `sasl`.
      * 
      */
     public Optional<String> kafkaAuthenticationMethod() {
@@ -109,7 +109,7 @@ public final class GetServiceComponentResult {
         return this.project;
     }
     /**
-     * @return Network access route
+     * @return Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
      * 
      */
     public Optional<String> route() {
@@ -130,7 +130,7 @@ public final class GetServiceComponentResult {
         return Optional.ofNullable(this.ssl);
     }
     /**
-     * @return DNS usage name
+     * @return DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
      * 
      */
     public Optional<String> usage() {

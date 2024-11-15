@@ -75,7 +75,7 @@ type LookupFlinkResult struct {
 	DiskSpaceStep string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
-	// Flink user configurable settings
+	// Flink user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	FlinkUserConfigs []GetFlinkFlinkUserConfig `pulumi:"flinkUserConfigs"`
 	// Values provided by the Flink server.
 	Flinks []GetFlinkFlink `pulumi:"flinks"`
@@ -205,7 +205,7 @@ func (o LookupFlinkResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
 
-// Flink user configurable settings
+// Flink user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o LookupFlinkResultOutput) FlinkUserConfigs() GetFlinkFlinkUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupFlinkResult) []GetFlinkFlinkUserConfig { return v.FlinkUserConfigs }).(GetFlinkFlinkUserConfigArrayOutput)
 }

@@ -25,7 +25,7 @@ public final class GetCassandraResult {
      */
     private String additionalDiskSpace;
     /**
-     * @return Cassandra user configurable settings
+     * @return Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     private List<GetCassandraCassandraUserConfig> cassandraUserConfigs;
@@ -174,7 +174,7 @@ public final class GetCassandraResult {
         return this.additionalDiskSpace;
     }
     /**
-     * @return Cassandra user configurable settings
+     * @return Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public List<GetCassandraCassandraUserConfig> cassandraUserConfigs() {

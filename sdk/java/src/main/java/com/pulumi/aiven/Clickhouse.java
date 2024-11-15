@@ -80,14 +80,14 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="additionalDiskSpace", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> additionalDiskSpace;
+    private Output<String> additionalDiskSpace;
 
     /**
      * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
      * 
      */
-    public Output<Optional<String>> additionalDiskSpace() {
-        return Codegen.optional(this.additionalDiskSpace);
+    public Output<String> additionalDiskSpace() {
+        return this.additionalDiskSpace;
     }
     /**
      * Values provided by the ClickHouse server.
@@ -104,14 +104,14 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
         return this.clickhouse;
     }
     /**
-     * Clickhouse user configurable settings
+     * Clickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     @Export(name="clickhouseUserConfig", refs={ClickhouseClickhouseUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClickhouseClickhouseUserConfig> clickhouseUserConfig;
 
     /**
-     * @return Clickhouse user configurable settings
+     * @return Clickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
     public Output<Optional<ClickhouseClickhouseUserConfig>> clickhouseUserConfig() {

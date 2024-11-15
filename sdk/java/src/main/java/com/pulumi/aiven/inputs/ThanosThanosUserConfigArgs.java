@@ -176,6 +176,51 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * CommonReceive.
+     * 
+     */
+    @Import(name="receiverIngesting")
+    private @Nullable Output<Map<String,String>> receiverIngesting;
+
+    /**
+     * @return CommonReceive.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> receiverIngesting() {
+        return Optional.ofNullable(this.receiverIngesting);
+    }
+
+    /**
+     * ThanosReceiveRouting.
+     * 
+     */
+    @Import(name="receiverRouting")
+    private @Nullable Output<Map<String,String>> receiverRouting;
+
+    /**
+     * @return ThanosReceiveRouting.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> receiverRouting() {
+        return Optional.ofNullable(this.receiverRouting);
+    }
+
+    /**
+     * ThanosRuler.
+     * 
+     */
+    @Import(name="ruler")
+    private @Nullable Output<Map<String,String>> ruler;
+
+    /**
+     * @return ThanosRuler.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> ruler() {
+        return Optional.ofNullable(this.ruler);
+    }
+
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -205,6 +250,21 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.staticIps);
     }
 
+    /**
+     * ThanosStore.
+     * 
+     */
+    @Import(name="store")
+    private @Nullable Output<Map<String,String>> store;
+
+    /**
+     * @return ThanosStore.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> store() {
+        return Optional.ofNullable(this.store);
+    }
+
     private ThanosThanosUserConfigArgs() {}
 
     private ThanosThanosUserConfigArgs(ThanosThanosUserConfigArgs $) {
@@ -217,8 +277,12 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         this.publicAccess = $.publicAccess;
         this.query = $.query;
         this.queryFrontend = $.queryFrontend;
+        this.receiverIngesting = $.receiverIngesting;
+        this.receiverRouting = $.receiverRouting;
+        this.ruler = $.ruler;
         this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
+        this.store = $.store;
     }
 
     public static Builder builder() {
@@ -479,6 +543,69 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param receiverIngesting CommonReceive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder receiverIngesting(@Nullable Output<Map<String,String>> receiverIngesting) {
+            $.receiverIngesting = receiverIngesting;
+            return this;
+        }
+
+        /**
+         * @param receiverIngesting CommonReceive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder receiverIngesting(Map<String,String> receiverIngesting) {
+            return receiverIngesting(Output.of(receiverIngesting));
+        }
+
+        /**
+         * @param receiverRouting ThanosReceiveRouting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder receiverRouting(@Nullable Output<Map<String,String>> receiverRouting) {
+            $.receiverRouting = receiverRouting;
+            return this;
+        }
+
+        /**
+         * @param receiverRouting ThanosReceiveRouting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder receiverRouting(Map<String,String> receiverRouting) {
+            return receiverRouting(Output.of(receiverRouting));
+        }
+
+        /**
+         * @param ruler ThanosRuler.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruler(@Nullable Output<Map<String,String>> ruler) {
+            $.ruler = ruler;
+            return this;
+        }
+
+        /**
+         * @param ruler ThanosRuler.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruler(Map<String,String> ruler) {
+            return ruler(Output.of(ruler));
+        }
+
+        /**
          * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
          * 
          * @return builder
@@ -518,6 +645,27 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
+        }
+
+        /**
+         * @param store ThanosStore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder store(@Nullable Output<Map<String,String>> store) {
+            $.store = store;
+            return this;
+        }
+
+        /**
+         * @param store ThanosStore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder store(Map<String,String> store) {
+            return store(Output.of(store));
         }
 
         public ThanosThanosUserConfigArgs build() {
