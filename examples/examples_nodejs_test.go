@@ -31,7 +31,7 @@ func TestAccPgService(t *testing.T) {
 
 func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	projectName := getProjectName(t)
-	base := getBaseOptions()
+	base := getBaseOptions(t)
 	baseJS := base.With(integration.ProgramTestOptions{
 		ExpectRefreshChanges: true,
 		Config: map[string]string{
