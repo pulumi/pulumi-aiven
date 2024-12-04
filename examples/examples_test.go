@@ -28,6 +28,9 @@ func getCwd(t *testing.T) string {
 }
 
 func getBaseOptions() integration.ProgramTestOptions {
+	t.Skip(`Testing for pulumi-aiven needs to be robust to resource leaks (#235).
+               In the past, we have leaked resources here, and continued E2E testing on this provider is not a priority
+	       so we have chosen to discontinue testing pulumi-aiven in CI.`)
 	return integration.ProgramTestOptions{
 		RunUpdateTest: false,
 	}
