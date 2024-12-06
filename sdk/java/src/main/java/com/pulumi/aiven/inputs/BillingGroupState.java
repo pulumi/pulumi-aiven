@@ -205,14 +205,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * State or province.
+     * Address state.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State or province.
+     * @return Address state.
      * 
      */
     public Optional<Output<String>> state() {
@@ -568,7 +568,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State or province.
+         * @param state Address state.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State or province.
+         * @param state Address state.
          * 
          * @return builder
          * 

@@ -85,7 +85,7 @@ export interface GetBillingGroupResult {
      */
     readonly parentId: string;
     /**
-     * State or province.
+     * Address state.
      */
     readonly state: string;
     /**

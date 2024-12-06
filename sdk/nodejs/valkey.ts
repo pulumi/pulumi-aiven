@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) service.
+ * Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service.
  *
  * ## Example Usage
  *

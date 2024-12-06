@@ -2841,7 +2841,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigPublicAccess {
 
 export interface GetKafkaConnectKafkaConnectUserConfigSecretProvider {
     /**
-     * AWS config for Secret Provider
+     * AWS secret provider configuration
      */
     aws?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderAws;
     /**
@@ -2849,7 +2849,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigSecretProvider {
      */
     name: string;
     /**
-     * Vault Config for Secret Provider
+     * Vault secret provider configuration
      */
     vault?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderVault;
 }
@@ -3360,7 +3360,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
 
 export interface GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
     /**
-     * AWS config for Secret Provider
+     * AWS secret provider configuration
      */
     aws?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws;
     /**
@@ -3368,7 +3368,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     name: string;
     /**
-     * Vault Config for Secret Provider
+     * Vault secret provider configuration
      */
     vault?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault;
 }
@@ -4996,7 +4996,7 @@ export interface GetOpenSearchOpensearchUserConfig {
 
 export interface GetOpenSearchOpensearchUserConfigAzureMigration {
     /**
-     * Azure account name.
+     * Account name.
      */
     account: string;
     /**
@@ -5332,6 +5332,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      * Search Backpressure Settings
      */
     searchBackpressure?: outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
+    searchInsightsTopQueries?: outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries;
     /**
      * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      */
@@ -5577,6 +5578,66 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSe
      * The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
      */
     totalHeapPercentThreshold?: number;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries {
+    /**
+     * Top N queries monitoring by CPU
+     */
+    cpu?: outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu;
+    /**
+     * Top N queries monitoring by latency
+     */
+    latency?: outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency;
+    /**
+     * Top N queries monitoring by memory
+     */
+    memory?: outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu {
+    /**
+     * Enable or disable top N query monitoring by the metric. Default: `false`.
+     */
+    enabled?: boolean;
+    /**
+     * Specify the value of N for the top N queries by the metric.
+     */
+    topNSize?: number;
+    /**
+     * The window size of the top N queries by the metric.
+     */
+    windowSize?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency {
+    /**
+     * Enable or disable top N query monitoring by the metric. Default: `false`.
+     */
+    enabled?: boolean;
+    /**
+     * Specify the value of N for the top N queries by the metric.
+     */
+    topNSize?: number;
+    /**
+     * The window size of the top N queries by the metric.
+     */
+    windowSize?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory {
+    /**
+     * Enable or disable top N query monitoring by the metric. Default: `false`.
+     */
+    enabled?: boolean;
+    /**
+     * Specify the value of N for the top N queries by the metric.
+     */
+    topNSize?: number;
+    /**
+     * The window size of the top N queries by the metric.
+     */
+    windowSize?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
@@ -7158,6 +7219,10 @@ export interface GetServiceIntegrationEndpointDatadogUserConfig {
      */
     disableConsumerStats?: boolean;
     /**
+     * Extra tags prefix. Defaults to aiven.
+     */
+    extraTagsPrefix?: string;
+    /**
      * Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      */
     kafkaConsumerCheckInstances?: number;
@@ -7975,7 +8040,7 @@ export interface GetThanosThano {
 
 export interface GetThanosThanosUserConfig {
     /**
-     * ThanosCompactor
+     * Configuration options for Thanos Compactor
      */
     compactor?: outputs.GetThanosThanosUserConfigCompactor;
     /**
@@ -8003,27 +8068,35 @@ export interface GetThanosThanosUserConfig {
      */
     objectStorageUsageAlertThresholdGb?: number;
     /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: outputs.GetThanosThanosUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetThanosThanosUserConfigPrivatelinkAccess;
+    /**
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetThanosThanosUserConfigPublicAccess;
     /**
-     * ThanosQuery
+     * Configuration options for Thanos Query
      */
     query?: outputs.GetThanosThanosUserConfigQuery;
     /**
-     * ThanosQueryFrontend
+     * Configuration options for Thanos Query Frontend
      */
     queryFrontend?: outputs.GetThanosThanosUserConfigQueryFrontend;
     /**
-     * CommonReceive.
+     * Common configuration options for Thanos Receive.
      */
     receiverIngesting?: {[key: string]: string};
     /**
-     * ThanosReceiveRouting.
+     * Configuration options for Thanos Receive Routing.
      */
     receiverRouting?: {[key: string]: string};
     /**
-     * ThanosRuler.
+     * Configuration options for Thanos Ruler.
      */
     ruler?: {[key: string]: string};
     /**
@@ -8035,7 +8108,7 @@ export interface GetThanosThanosUserConfig {
      */
     staticIps?: boolean;
     /**
-     * ThanosStore.
+     * Configuration options for Thanos Store.
      */
     store?: {[key: string]: string};
 }
@@ -8056,6 +8129,28 @@ export interface GetThanosThanosUserConfigIpFilterObject {
      * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
+}
+
+export interface GetThanosThanosUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to queryFrontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    queryFrontend?: boolean;
+    /**
+     * Allow clients to connect to receiverRouting with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    receiverRouting?: boolean;
+}
+
+export interface GetThanosThanosUserConfigPrivatelinkAccess {
+    /**
+     * Enable query_frontend.
+     */
+    queryFrontend?: boolean;
+    /**
+     * Enable receiver_routing.
+     */
+    receiverRouting?: boolean;
 }
 
 export interface GetThanosThanosUserConfigPublicAccess {
@@ -9390,7 +9485,7 @@ export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
 
 export interface KafkaConnectKafkaConnectUserConfigSecretProvider {
     /**
-     * AWS config for Secret Provider
+     * AWS secret provider configuration
      */
     aws?: outputs.KafkaConnectKafkaConnectUserConfigSecretProviderAws;
     /**
@@ -9398,7 +9493,7 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProvider {
      */
     name: string;
     /**
-     * Vault Config for Secret Provider
+     * Vault secret provider configuration
      */
     vault?: outputs.KafkaConnectKafkaConnectUserConfigSecretProviderVault;
 }
@@ -9909,7 +10004,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
 
 export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
     /**
-     * AWS config for Secret Provider
+     * AWS secret provider configuration
      */
     aws?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws;
     /**
@@ -9917,7 +10012,7 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     name: string;
     /**
-     * Vault Config for Secret Provider
+     * Vault secret provider configuration
      */
     vault?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault;
 }
@@ -11545,7 +11640,7 @@ export interface OpenSearchOpensearchUserConfig {
 
 export interface OpenSearchOpensearchUserConfigAzureMigration {
     /**
-     * Azure account name.
+     * Account name.
      */
     account: string;
     /**
@@ -11881,6 +11976,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Search Backpressure Settings
      */
     searchBackpressure?: outputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
+    searchInsightsTopQueries?: outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries;
     /**
      * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      */
@@ -12126,6 +12222,66 @@ export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearc
      * The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
      */
     totalHeapPercentThreshold?: number;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries {
+    /**
+     * Top N queries monitoring by CPU
+     */
+    cpu?: outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu;
+    /**
+     * Top N queries monitoring by latency
+     */
+    latency?: outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency;
+    /**
+     * Top N queries monitoring by memory
+     */
+    memory?: outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu {
+    /**
+     * Enable or disable top N query monitoring by the metric. Default: `false`.
+     */
+    enabled?: boolean;
+    /**
+     * Specify the value of N for the top N queries by the metric.
+     */
+    topNSize?: number;
+    /**
+     * The window size of the top N queries by the metric.
+     */
+    windowSize?: string;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency {
+    /**
+     * Enable or disable top N query monitoring by the metric. Default: `false`.
+     */
+    enabled?: boolean;
+    /**
+     * Specify the value of N for the top N queries by the metric.
+     */
+    topNSize?: number;
+    /**
+     * The window size of the top N queries by the metric.
+     */
+    windowSize?: string;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory {
+    /**
+     * Enable or disable top N query monitoring by the metric. Default: `false`.
+     */
+    enabled?: boolean;
+    /**
+     * Specify the value of N for the top N queries by the metric.
+     */
+    topNSize?: number;
+    /**
+     * The window size of the top N queries by the metric.
+     */
+    windowSize?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
@@ -13720,6 +13876,10 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     disableConsumerStats?: boolean;
     /**
+     * Extra tags prefix. Defaults to aiven.
+     */
+    extraTagsPrefix?: string;
+    /**
      * Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      */
     kafkaConsumerCheckInstances?: number;
@@ -14537,7 +14697,7 @@ export interface ThanosThanos {
 
 export interface ThanosThanosUserConfig {
     /**
-     * ThanosCompactor
+     * Configuration options for Thanos Compactor
      */
     compactor?: outputs.ThanosThanosUserConfigCompactor;
     /**
@@ -14565,27 +14725,35 @@ export interface ThanosThanosUserConfig {
      */
     objectStorageUsageAlertThresholdGb?: number;
     /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: outputs.ThanosThanosUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.ThanosThanosUserConfigPrivatelinkAccess;
+    /**
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.ThanosThanosUserConfigPublicAccess;
     /**
-     * ThanosQuery
+     * Configuration options for Thanos Query
      */
     query?: outputs.ThanosThanosUserConfigQuery;
     /**
-     * ThanosQueryFrontend
+     * Configuration options for Thanos Query Frontend
      */
     queryFrontend?: outputs.ThanosThanosUserConfigQueryFrontend;
     /**
-     * CommonReceive.
+     * Common configuration options for Thanos Receive.
      */
     receiverIngesting?: {[key: string]: string};
     /**
-     * ThanosReceiveRouting.
+     * Configuration options for Thanos Receive Routing.
      */
     receiverRouting?: {[key: string]: string};
     /**
-     * ThanosRuler.
+     * Configuration options for Thanos Ruler.
      */
     ruler?: {[key: string]: string};
     /**
@@ -14597,7 +14765,7 @@ export interface ThanosThanosUserConfig {
      */
     staticIps?: boolean;
     /**
-     * ThanosStore.
+     * Configuration options for Thanos Store.
      */
     store?: {[key: string]: string};
 }
@@ -14618,6 +14786,28 @@ export interface ThanosThanosUserConfigIpFilterObject {
      * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: string;
+}
+
+export interface ThanosThanosUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to queryFrontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    queryFrontend?: boolean;
+    /**
+     * Allow clients to connect to receiverRouting with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    receiverRouting?: boolean;
+}
+
+export interface ThanosThanosUserConfigPrivatelinkAccess {
+    /**
+     * Enable query_frontend.
+     */
+    queryFrontend?: boolean;
+    /**
+     * Enable receiver_routing.
+     */
+    receiverRouting?: boolean;
 }
 
 export interface ThanosThanosUserConfigPublicAccess {

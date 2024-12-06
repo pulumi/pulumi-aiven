@@ -47,6 +47,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? DisableConsumerStats { get; set; }
 
         /// <summary>
+        /// Extra tags prefix. Defaults to aiven.
+        /// </summary>
+        [Input("extraTagsPrefix")]
+        public Input<string>? ExtraTagsPrefix { get; set; }
+
+        /// <summary>
         /// Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
         /// </summary>
         [Input("kafkaConsumerCheckInstances")]

@@ -371,6 +371,14 @@ __all__ = [
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs',
     'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs',
@@ -579,6 +587,10 @@ __all__ = [
     'ThanosThanosUserConfigCompactorArgsDict',
     'ThanosThanosUserConfigIpFilterObjectArgs',
     'ThanosThanosUserConfigIpFilterObjectArgsDict',
+    'ThanosThanosUserConfigPrivateAccessArgs',
+    'ThanosThanosUserConfigPrivateAccessArgsDict',
+    'ThanosThanosUserConfigPrivatelinkAccessArgs',
+    'ThanosThanosUserConfigPrivatelinkAccessArgsDict',
     'ThanosThanosUserConfigPublicAccessArgs',
     'ThanosThanosUserConfigPublicAccessArgsDict',
     'ThanosThanosUserConfigQueryArgs',
@@ -9414,11 +9426,11 @@ if not MYPY:
         """
         aws: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgsDict']]
         """
-        AWS config for Secret Provider
+        AWS secret provider configuration
         """
         vault: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgsDict']]
         """
-        Vault Config for Secret Provider
+        Vault secret provider configuration
         """
 elif False:
     KafkaConnectKafkaConnectUserConfigSecretProviderArgsDict: TypeAlias = Mapping[str, Any]
@@ -9431,8 +9443,8 @@ class KafkaConnectKafkaConnectUserConfigSecretProviderArgs:
                  vault: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the secret provider. Used to reference secrets in connector config.
-        :param pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs'] aws: AWS config for Secret Provider
-        :param pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs'] vault: Vault Config for Secret Provider
+        :param pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs'] aws: AWS secret provider configuration
+        :param pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs'] vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
@@ -9456,7 +9468,7 @@ class KafkaConnectKafkaConnectUserConfigSecretProviderArgs:
     @pulumi.getter
     def aws(self) -> Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs']]:
         """
-        AWS config for Secret Provider
+        AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
 
@@ -9468,7 +9480,7 @@ class KafkaConnectKafkaConnectUserConfigSecretProviderArgs:
     @pulumi.getter
     def vault(self) -> Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs']]:
         """
-        Vault Config for Secret Provider
+        Vault secret provider configuration
         """
         return pulumi.get(self, "vault")
 
@@ -11952,11 +11964,11 @@ if not MYPY:
         """
         aws: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgsDict']]
         """
-        AWS config for Secret Provider
+        AWS secret provider configuration
         """
         vault: NotRequired[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgsDict']]
         """
-        Vault Config for Secret Provider
+        Vault secret provider configuration
         """
 elif False:
     KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict: TypeAlias = Mapping[str, Any]
@@ -11969,8 +11981,8 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderArgs:
                  vault: Optional[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs']] = None):
         """
         :param pulumi.Input[str] name: Name of the secret provider. Used to reference secrets in connector config.
-        :param pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs'] aws: AWS config for Secret Provider
-        :param pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs'] vault: Vault Config for Secret Provider
+        :param pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs'] aws: AWS secret provider configuration
+        :param pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs'] vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
@@ -11994,7 +12006,7 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderArgs:
     @pulumi.getter
     def aws(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs']]:
         """
-        AWS config for Secret Provider
+        AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
 
@@ -12006,7 +12018,7 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderArgs:
     @pulumi.getter
     def vault(self) -> Optional[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs']]:
         """
-        Vault Config for Secret Provider
+        Vault secret provider configuration
         """
         return pulumi.get(self, "vault")
 
@@ -19820,7 +19832,7 @@ if not MYPY:
     class OpenSearchOpensearchUserConfigAzureMigrationArgsDict(TypedDict):
         account: pulumi.Input[str]
         """
-        Azure account name.
+        Account name.
         """
         base_path: pulumi.Input[str]
         """
@@ -19885,7 +19897,7 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
                  restore_global_state: Optional[pulumi.Input[bool]] = None,
                  sas_token: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] account: Azure account name.
+        :param pulumi.Input[str] account: Account name.
         :param pulumi.Input[str] base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
         :param pulumi.Input[str] container: Azure container name.
         :param pulumi.Input[str] indices: A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
@@ -19922,7 +19934,7 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
     @pulumi.getter
     def account(self) -> pulumi.Input[str]:
         """
-        Azure account name.
+        Account name.
         """
         return pulumi.get(self, "account")
 
@@ -20937,6 +20949,7 @@ if not MYPY:
         """
         Search Backpressure Settings
         """
+        search_insights_top_queries: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict']]
         search_max_buckets: NotRequired[pulumi.Input[int]]
         """
         Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
@@ -21028,6 +21041,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  script_max_compilations_rate: Optional[pulumi.Input[str]] = None,
                  search_backpressure: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs']] = None,
+                 search_insights_top_queries: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs']] = None,
                  search_max_buckets: Optional[pulumi.Input[int]] = None,
                  shard_indexing_pressure: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs']] = None,
                  thread_pool_analyze_queue_size: Optional[pulumi.Input[int]] = None,
@@ -21155,6 +21169,8 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_backpressure is not None:
             pulumi.set(__self__, "search_backpressure", search_backpressure)
+        if search_insights_top_queries is not None:
+            pulumi.set(__self__, "search_insights_top_queries", search_insights_top_queries)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if shard_indexing_pressure is not None:
@@ -21577,6 +21593,15 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @search_backpressure.setter
     def search_backpressure(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs']]):
         pulumi.set(self, "search_backpressure", value)
+
+    @property
+    @pulumi.getter(name="searchInsightsTopQueries")
+    def search_insights_top_queries(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs']]:
+        return pulumi.get(self, "search_insights_top_queries")
+
+    @search_insights_top_queries.setter
+    def search_insights_top_queries(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs']]):
+        pulumi.set(self, "search_insights_top_queries", value)
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
@@ -22682,6 +22707,294 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs:
     @total_heap_percent_threshold.setter
     def total_heap_percent_threshold(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "total_heap_percent_threshold", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict']]
+        """
+        Top N queries monitoring by CPU
+        """
+        latency: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict']]
+        """
+        Top N queries monitoring by latency
+        """
+        memory: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict']]
+        """
+        Top N queries monitoring by memory
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs']] = None,
+                 latency: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs']] = None,
+                 memory: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs']] = None):
+        """
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs'] cpu: Top N queries monitoring by CPU
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs'] latency: Top N queries monitoring by latency
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs'] memory: Top N queries monitoring by memory
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if latency is not None:
+            pulumi.set(__self__, "latency", latency)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs']]:
+        """
+        Top N queries monitoring by CPU
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs']]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter
+    def latency(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs']]:
+        """
+        Top N queries monitoring by latency
+        """
+        return pulumi.get(self, "latency")
+
+    @latency.setter
+    def latency(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs']]):
+        pulumi.set(self, "latency", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs']]:
+        """
+        Top N queries monitoring by memory
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs']]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        top_n_size: NotRequired[pulumi.Input[int]]
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        window_size: NotRequired[pulumi.Input[str]]
+        """
+        The window size of the top N queries by the metric.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 top_n_size: Optional[pulumi.Input[int]] = None,
+                 window_size: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable or disable top N query monitoring by the metric. Default: `false`.
+        :param pulumi.Input[int] top_n_size: Specify the value of N for the top N queries by the metric.
+        :param pulumi.Input[str] window_size: The window size of the top N queries by the metric.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if top_n_size is not None:
+            pulumi.set(__self__, "top_n_size", top_n_size)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="topNSize")
+    def top_n_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        return pulumi.get(self, "top_n_size")
+
+    @top_n_size.setter
+    def top_n_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "top_n_size", value)
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The window size of the top N queries by the metric.
+        """
+        return pulumi.get(self, "window_size")
+
+    @window_size.setter
+    def window_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "window_size", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        top_n_size: NotRequired[pulumi.Input[int]]
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        window_size: NotRequired[pulumi.Input[str]]
+        """
+        The window size of the top N queries by the metric.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 top_n_size: Optional[pulumi.Input[int]] = None,
+                 window_size: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable or disable top N query monitoring by the metric. Default: `false`.
+        :param pulumi.Input[int] top_n_size: Specify the value of N for the top N queries by the metric.
+        :param pulumi.Input[str] window_size: The window size of the top N queries by the metric.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if top_n_size is not None:
+            pulumi.set(__self__, "top_n_size", top_n_size)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="topNSize")
+    def top_n_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        return pulumi.get(self, "top_n_size")
+
+    @top_n_size.setter
+    def top_n_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "top_n_size", value)
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The window size of the top N queries by the metric.
+        """
+        return pulumi.get(self, "window_size")
+
+    @window_size.setter
+    def window_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "window_size", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        top_n_size: NotRequired[pulumi.Input[int]]
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        window_size: NotRequired[pulumi.Input[str]]
+        """
+        The window size of the top N queries by the metric.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 top_n_size: Optional[pulumi.Input[int]] = None,
+                 window_size: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable or disable top N query monitoring by the metric. Default: `false`.
+        :param pulumi.Input[int] top_n_size: Specify the value of N for the top N queries by the metric.
+        :param pulumi.Input[str] window_size: The window size of the top N queries by the metric.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if top_n_size is not None:
+            pulumi.set(__self__, "top_n_size", top_n_size)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="topNSize")
+    def top_n_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        return pulumi.get(self, "top_n_size")
+
+    @top_n_size.setter
+    def top_n_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "top_n_size", value)
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The window size of the top N queries by the metric.
+        """
+        return pulumi.get(self, "window_size")
+
+    @window_size.setter
+    def window_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "window_size", value)
 
 
 if not MYPY:
@@ -30184,6 +30497,10 @@ if not MYPY:
         """
         Disable consumer group metrics.
         """
+        extra_tags_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Extra tags prefix. Defaults to aiven.
+        """
         kafka_consumer_check_instances: NotRequired[pulumi.Input[int]]
         """
         Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
@@ -30209,6 +30526,7 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
                  datadog_api_key: pulumi.Input[str],
                  datadog_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]]] = None,
                  disable_consumer_stats: Optional[pulumi.Input[bool]] = None,
+                 extra_tags_prefix: Optional[pulumi.Input[str]] = None,
                  kafka_consumer_check_instances: Optional[pulumi.Input[int]] = None,
                  kafka_consumer_stats_timeout: Optional[pulumi.Input[int]] = None,
                  max_partition_contexts: Optional[pulumi.Input[int]] = None,
@@ -30217,6 +30535,7 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
         :param pulumi.Input[str] datadog_api_key: Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]] datadog_tags: Custom tags provided by user
         :param pulumi.Input[bool] disable_consumer_stats: Disable consumer group metrics.
+        :param pulumi.Input[str] extra_tags_prefix: Extra tags prefix. Defaults to aiven.
         :param pulumi.Input[int] kafka_consumer_check_instances: Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
         :param pulumi.Input[int] kafka_consumer_stats_timeout: Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
         :param pulumi.Input[int] max_partition_contexts: Maximum number of partition contexts to send. Example: `32000`.
@@ -30227,6 +30546,8 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if disable_consumer_stats is not None:
             pulumi.set(__self__, "disable_consumer_stats", disable_consumer_stats)
+        if extra_tags_prefix is not None:
+            pulumi.set(__self__, "extra_tags_prefix", extra_tags_prefix)
         if kafka_consumer_check_instances is not None:
             pulumi.set(__self__, "kafka_consumer_check_instances", kafka_consumer_check_instances)
         if kafka_consumer_stats_timeout is not None:
@@ -30271,6 +30592,18 @@ class ServiceIntegrationEndpointDatadogUserConfigArgs:
     @disable_consumer_stats.setter
     def disable_consumer_stats(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_consumer_stats", value)
+
+    @property
+    @pulumi.getter(name="extraTagsPrefix")
+    def extra_tags_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Extra tags prefix. Defaults to aiven.
+        """
+        return pulumi.get(self, "extra_tags_prefix")
+
+    @extra_tags_prefix.setter
+    def extra_tags_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "extra_tags_prefix", value)
 
     @property
     @pulumi.getter(name="kafkaConsumerCheckInstances")
@@ -34073,7 +34406,7 @@ if not MYPY:
     class ThanosThanosUserConfigArgsDict(TypedDict):
         compactor: NotRequired[pulumi.Input['ThanosThanosUserConfigCompactorArgsDict']]
         """
-        ThanosCompactor
+        Configuration options for Thanos Compactor
         """
         env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
@@ -34095,29 +34428,37 @@ if not MYPY:
         """
         After exceeding the limit a service alert is going to be raised (0 means not set).
         """
+        private_access: NotRequired[pulumi.Input['ThanosThanosUserConfigPrivateAccessArgsDict']]
+        """
+        Allow access to selected service ports from private networks
+        """
+        privatelink_access: NotRequired[pulumi.Input['ThanosThanosUserConfigPrivatelinkAccessArgsDict']]
+        """
+        Allow access to selected service components through Privatelink
+        """
         public_access: NotRequired[pulumi.Input['ThanosThanosUserConfigPublicAccessArgsDict']]
         """
         Allow access to selected service ports from the public Internet
         """
         query: NotRequired[pulumi.Input['ThanosThanosUserConfigQueryArgsDict']]
         """
-        ThanosQuery
+        Configuration options for Thanos Query
         """
         query_frontend: NotRequired[pulumi.Input['ThanosThanosUserConfigQueryFrontendArgsDict']]
         """
-        ThanosQueryFrontend
+        Configuration options for Thanos Query Frontend
         """
         receiver_ingesting: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        CommonReceive.
+        Common configuration options for Thanos Receive.
         """
         receiver_routing: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        ThanosReceiveRouting.
+        Configuration options for Thanos Receive Routing.
         """
         ruler: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        ThanosRuler.
+        Configuration options for Thanos Ruler.
         """
         service_log: NotRequired[pulumi.Input[bool]]
         """
@@ -34129,7 +34470,7 @@ if not MYPY:
         """
         store: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        ThanosStore.
+        Configuration options for Thanos Store.
         """
 elif False:
     ThanosThanosUserConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -34143,6 +34484,8 @@ class ThanosThanosUserConfigArgs:
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  object_storage_usage_alert_threshold_gb: Optional[pulumi.Input[int]] = None,
+                 private_access: Optional[pulumi.Input['ThanosThanosUserConfigPrivateAccessArgs']] = None,
+                 privatelink_access: Optional[pulumi.Input['ThanosThanosUserConfigPrivatelinkAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['ThanosThanosUserConfigPublicAccessArgs']] = None,
                  query: Optional[pulumi.Input['ThanosThanosUserConfigQueryArgs']] = None,
                  query_frontend: Optional[pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs']] = None,
@@ -34153,21 +34496,23 @@ class ThanosThanosUserConfigArgs:
                  static_ips: Optional[pulumi.Input[bool]] = None,
                  store: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['ThanosThanosUserConfigCompactorArgs'] compactor: ThanosCompactor
+        :param pulumi.Input['ThanosThanosUserConfigCompactorArgs'] compactor: Configuration options for Thanos Compactor
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Environmental variables.
         :param pulumi.Input[Sequence[pulumi.Input['ThanosThanosUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[int] object_storage_usage_alert_threshold_gb: After exceeding the limit a service alert is going to be raised (0 means not set).
+        :param pulumi.Input['ThanosThanosUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
+        :param pulumi.Input['ThanosThanosUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input['ThanosThanosUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
-        :param pulumi.Input['ThanosThanosUserConfigQueryArgs'] query: ThanosQuery
-        :param pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs'] query_frontend: ThanosQueryFrontend
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] receiver_ingesting: CommonReceive.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] receiver_routing: ThanosReceiveRouting.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] ruler: ThanosRuler.
+        :param pulumi.Input['ThanosThanosUserConfigQueryArgs'] query: Configuration options for Thanos Query
+        :param pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs'] query_frontend: Configuration options for Thanos Query Frontend
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] receiver_ingesting: Common configuration options for Thanos Receive.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] receiver_routing: Configuration options for Thanos Receive Routing.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] ruler: Configuration options for Thanos Ruler.
         :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] store: ThanosStore.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] store: Configuration options for Thanos Store.
         """
         if compactor is not None:
             pulumi.set(__self__, "compactor", compactor)
@@ -34187,6 +34532,10 @@ class ThanosThanosUserConfigArgs:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if object_storage_usage_alert_threshold_gb is not None:
             pulumi.set(__self__, "object_storage_usage_alert_threshold_gb", object_storage_usage_alert_threshold_gb)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if query is not None:
@@ -34210,7 +34559,7 @@ class ThanosThanosUserConfigArgs:
     @pulumi.getter
     def compactor(self) -> Optional[pulumi.Input['ThanosThanosUserConfigCompactorArgs']]:
         """
-        ThanosCompactor
+        Configuration options for Thanos Compactor
         """
         return pulumi.get(self, "compactor")
 
@@ -34281,6 +34630,30 @@ class ThanosThanosUserConfigArgs:
         pulumi.set(self, "object_storage_usage_alert_threshold_gb", value)
 
     @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional[pulumi.Input['ThanosThanosUserConfigPrivateAccessArgs']]:
+        """
+        Allow access to selected service ports from private networks
+        """
+        return pulumi.get(self, "private_access")
+
+    @private_access.setter
+    def private_access(self, value: Optional[pulumi.Input['ThanosThanosUserConfigPrivateAccessArgs']]):
+        pulumi.set(self, "private_access", value)
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional[pulumi.Input['ThanosThanosUserConfigPrivatelinkAccessArgs']]:
+        """
+        Allow access to selected service components through Privatelink
+        """
+        return pulumi.get(self, "privatelink_access")
+
+    @privatelink_access.setter
+    def privatelink_access(self, value: Optional[pulumi.Input['ThanosThanosUserConfigPrivatelinkAccessArgs']]):
+        pulumi.set(self, "privatelink_access", value)
+
+    @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional[pulumi.Input['ThanosThanosUserConfigPublicAccessArgs']]:
         """
@@ -34296,7 +34669,7 @@ class ThanosThanosUserConfigArgs:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input['ThanosThanosUserConfigQueryArgs']]:
         """
-        ThanosQuery
+        Configuration options for Thanos Query
         """
         return pulumi.get(self, "query")
 
@@ -34308,7 +34681,7 @@ class ThanosThanosUserConfigArgs:
     @pulumi.getter(name="queryFrontend")
     def query_frontend(self) -> Optional[pulumi.Input['ThanosThanosUserConfigQueryFrontendArgs']]:
         """
-        ThanosQueryFrontend
+        Configuration options for Thanos Query Frontend
         """
         return pulumi.get(self, "query_frontend")
 
@@ -34320,7 +34693,7 @@ class ThanosThanosUserConfigArgs:
     @pulumi.getter(name="receiverIngesting")
     def receiver_ingesting(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        CommonReceive.
+        Common configuration options for Thanos Receive.
         """
         return pulumi.get(self, "receiver_ingesting")
 
@@ -34332,7 +34705,7 @@ class ThanosThanosUserConfigArgs:
     @pulumi.getter(name="receiverRouting")
     def receiver_routing(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        ThanosReceiveRouting.
+        Configuration options for Thanos Receive Routing.
         """
         return pulumi.get(self, "receiver_routing")
 
@@ -34344,7 +34717,7 @@ class ThanosThanosUserConfigArgs:
     @pulumi.getter
     def ruler(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        ThanosRuler.
+        Configuration options for Thanos Ruler.
         """
         return pulumi.get(self, "ruler")
 
@@ -34380,7 +34753,7 @@ class ThanosThanosUserConfigArgs:
     @pulumi.getter
     def store(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        ThanosStore.
+        Configuration options for Thanos Store.
         """
         return pulumi.get(self, "store")
 
@@ -34470,6 +34843,110 @@ class ThanosThanosUserConfigIpFilterObjectArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class ThanosThanosUserConfigPrivateAccessArgsDict(TypedDict):
+        query_frontend: NotRequired[pulumi.Input[bool]]
+        """
+        Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        receiver_routing: NotRequired[pulumi.Input[bool]]
+        """
+        Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+elif False:
+    ThanosThanosUserConfigPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ThanosThanosUserConfigPrivateAccessArgs:
+    def __init__(__self__, *,
+                 query_frontend: Optional[pulumi.Input[bool]] = None,
+                 receiver_routing: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] query_frontend: Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param pulumi.Input[bool] receiver_routing: Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        if query_frontend is not None:
+            pulumi.set(__self__, "query_frontend", query_frontend)
+        if receiver_routing is not None:
+            pulumi.set(__self__, "receiver_routing", receiver_routing)
+
+    @property
+    @pulumi.getter(name="queryFrontend")
+    def query_frontend(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        return pulumi.get(self, "query_frontend")
+
+    @query_frontend.setter
+    def query_frontend(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "query_frontend", value)
+
+    @property
+    @pulumi.getter(name="receiverRouting")
+    def receiver_routing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        return pulumi.get(self, "receiver_routing")
+
+    @receiver_routing.setter
+    def receiver_routing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "receiver_routing", value)
+
+
+if not MYPY:
+    class ThanosThanosUserConfigPrivatelinkAccessArgsDict(TypedDict):
+        query_frontend: NotRequired[pulumi.Input[bool]]
+        """
+        Enable query_frontend.
+        """
+        receiver_routing: NotRequired[pulumi.Input[bool]]
+        """
+        Enable receiver_routing.
+        """
+elif False:
+    ThanosThanosUserConfigPrivatelinkAccessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ThanosThanosUserConfigPrivatelinkAccessArgs:
+    def __init__(__self__, *,
+                 query_frontend: Optional[pulumi.Input[bool]] = None,
+                 receiver_routing: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] query_frontend: Enable query_frontend.
+        :param pulumi.Input[bool] receiver_routing: Enable receiver_routing.
+        """
+        if query_frontend is not None:
+            pulumi.set(__self__, "query_frontend", query_frontend)
+        if receiver_routing is not None:
+            pulumi.set(__self__, "receiver_routing", receiver_routing)
+
+    @property
+    @pulumi.getter(name="queryFrontend")
+    def query_frontend(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable query_frontend.
+        """
+        return pulumi.get(self, "query_frontend")
+
+    @query_frontend.setter
+    def query_frontend(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "query_frontend", value)
+
+    @property
+    @pulumi.getter(name="receiverRouting")
+    def receiver_routing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable receiver_routing.
+        """
+        return pulumi.get(self, "receiver_routing")
+
+    @receiver_routing.setter
+    def receiver_routing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "receiver_routing", value)
 
 
 if not MYPY:

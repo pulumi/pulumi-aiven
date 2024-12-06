@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
     /**
-     * @return AWS config for Secret Provider
+     * @return AWS secret provider configuration
      * 
      */
     private @Nullable GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws aws;
@@ -25,14 +25,14 @@ public final class GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     private String name;
     /**
-     * @return Vault Config for Secret Provider
+     * @return Vault secret provider configuration
      * 
      */
     private @Nullable GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault vault;
 
     private GetKafkaKafkaUserConfigKafkaConnectSecretProvider() {}
     /**
-     * @return AWS config for Secret Provider
+     * @return AWS secret provider configuration
      * 
      */
     public Optional<GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws> aws() {
@@ -46,7 +46,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
         return this.name;
     }
     /**
-     * @return Vault Config for Secret Provider
+     * @return Vault secret provider configuration
      * 
      */
     public Optional<GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault> vault() {

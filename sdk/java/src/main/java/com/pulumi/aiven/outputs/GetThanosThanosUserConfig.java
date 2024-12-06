@@ -5,6 +5,8 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetThanosThanosUserConfigCompactor;
 import com.pulumi.aiven.outputs.GetThanosThanosUserConfigIpFilterObject;
+import com.pulumi.aiven.outputs.GetThanosThanosUserConfigPrivateAccess;
+import com.pulumi.aiven.outputs.GetThanosThanosUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetThanosThanosUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.GetThanosThanosUserConfigQuery;
 import com.pulumi.aiven.outputs.GetThanosThanosUserConfigQueryFrontend;
@@ -21,7 +23,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetThanosThanosUserConfig {
     /**
-     * @return ThanosCompactor
+     * @return Configuration options for Thanos Compactor
      * 
      */
     private @Nullable GetThanosThanosUserConfigCompactor compactor;
@@ -59,32 +61,42 @@ public final class GetThanosThanosUserConfig {
      */
     private @Nullable Integer objectStorageUsageAlertThresholdGb;
     /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
+    private @Nullable GetThanosThanosUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
+    private @Nullable GetThanosThanosUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
      * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable GetThanosThanosUserConfigPublicAccess publicAccess;
     /**
-     * @return ThanosQuery
+     * @return Configuration options for Thanos Query
      * 
      */
     private @Nullable GetThanosThanosUserConfigQuery query;
     /**
-     * @return ThanosQueryFrontend
+     * @return Configuration options for Thanos Query Frontend
      * 
      */
     private @Nullable GetThanosThanosUserConfigQueryFrontend queryFrontend;
     /**
-     * @return CommonReceive.
+     * @return Common configuration options for Thanos Receive.
      * 
      */
     private @Nullable Map<String,String> receiverIngesting;
     /**
-     * @return ThanosReceiveRouting.
+     * @return Configuration options for Thanos Receive Routing.
      * 
      */
     private @Nullable Map<String,String> receiverRouting;
     /**
-     * @return ThanosRuler.
+     * @return Configuration options for Thanos Ruler.
      * 
      */
     private @Nullable Map<String,String> ruler;
@@ -99,14 +111,14 @@ public final class GetThanosThanosUserConfig {
      */
     private @Nullable Boolean staticIps;
     /**
-     * @return ThanosStore.
+     * @return Configuration options for Thanos Store.
      * 
      */
     private @Nullable Map<String,String> store;
 
     private GetThanosThanosUserConfig() {}
     /**
-     * @return ThanosCompactor
+     * @return Configuration options for Thanos Compactor
      * 
      */
     public Optional<GetThanosThanosUserConfigCompactor> compactor() {
@@ -156,6 +168,20 @@ public final class GetThanosThanosUserConfig {
         return Optional.ofNullable(this.objectStorageUsageAlertThresholdGb);
     }
     /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
+    public Optional<GetThanosThanosUserConfigPrivateAccess> privateAccess() {
+        return Optional.ofNullable(this.privateAccess);
+    }
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
+    public Optional<GetThanosThanosUserConfigPrivatelinkAccess> privatelinkAccess() {
+        return Optional.ofNullable(this.privatelinkAccess);
+    }
+    /**
      * @return Allow access to selected service ports from the public Internet
      * 
      */
@@ -163,35 +189,35 @@ public final class GetThanosThanosUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return ThanosQuery
+     * @return Configuration options for Thanos Query
      * 
      */
     public Optional<GetThanosThanosUserConfigQuery> query() {
         return Optional.ofNullable(this.query);
     }
     /**
-     * @return ThanosQueryFrontend
+     * @return Configuration options for Thanos Query Frontend
      * 
      */
     public Optional<GetThanosThanosUserConfigQueryFrontend> queryFrontend() {
         return Optional.ofNullable(this.queryFrontend);
     }
     /**
-     * @return CommonReceive.
+     * @return Common configuration options for Thanos Receive.
      * 
      */
     public Map<String,String> receiverIngesting() {
         return this.receiverIngesting == null ? Map.of() : this.receiverIngesting;
     }
     /**
-     * @return ThanosReceiveRouting.
+     * @return Configuration options for Thanos Receive Routing.
      * 
      */
     public Map<String,String> receiverRouting() {
         return this.receiverRouting == null ? Map.of() : this.receiverRouting;
     }
     /**
-     * @return ThanosRuler.
+     * @return Configuration options for Thanos Ruler.
      * 
      */
     public Map<String,String> ruler() {
@@ -212,7 +238,7 @@ public final class GetThanosThanosUserConfig {
         return Optional.ofNullable(this.staticIps);
     }
     /**
-     * @return ThanosStore.
+     * @return Configuration options for Thanos Store.
      * 
      */
     public Map<String,String> store() {
@@ -234,6 +260,8 @@ public final class GetThanosThanosUserConfig {
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable Integer objectStorageUsageAlertThresholdGb;
+        private @Nullable GetThanosThanosUserConfigPrivateAccess privateAccess;
+        private @Nullable GetThanosThanosUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable GetThanosThanosUserConfigPublicAccess publicAccess;
         private @Nullable GetThanosThanosUserConfigQuery query;
         private @Nullable GetThanosThanosUserConfigQueryFrontend queryFrontend;
@@ -252,6 +280,8 @@ public final class GetThanosThanosUserConfig {
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.objectStorageUsageAlertThresholdGb = defaults.objectStorageUsageAlertThresholdGb;
+    	      this.privateAccess = defaults.privateAccess;
+    	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
     	      this.query = defaults.query;
     	      this.queryFrontend = defaults.queryFrontend;
@@ -306,6 +336,18 @@ public final class GetThanosThanosUserConfig {
         public Builder objectStorageUsageAlertThresholdGb(@Nullable Integer objectStorageUsageAlertThresholdGb) {
 
             this.objectStorageUsageAlertThresholdGb = objectStorageUsageAlertThresholdGb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privateAccess(@Nullable GetThanosThanosUserConfigPrivateAccess privateAccess) {
+
+            this.privateAccess = privateAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privatelinkAccess(@Nullable GetThanosThanosUserConfigPrivatelinkAccess privatelinkAccess) {
+
+            this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
@@ -370,6 +412,8 @@ public final class GetThanosThanosUserConfig {
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
             _resultValue.objectStorageUsageAlertThresholdGb = objectStorageUsageAlertThresholdGb;
+            _resultValue.privateAccess = privateAccess;
+            _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;
             _resultValue.query = query;
             _resultValue.queryFrontend = queryFrontend;

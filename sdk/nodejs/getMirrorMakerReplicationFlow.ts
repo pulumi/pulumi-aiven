@@ -74,6 +74,10 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly enable: boolean;
     /**
+     * Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     */
+    readonly exactlyOnceDeliveryEnabled: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

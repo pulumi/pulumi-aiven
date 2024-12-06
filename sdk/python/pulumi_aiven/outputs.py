@@ -194,6 +194,10 @@ __all__ = [
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency',
+    'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory',
     'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure',
     'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor',
     'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter',
@@ -298,6 +302,8 @@ __all__ = [
     'ThanosThanosUserConfig',
     'ThanosThanosUserConfigCompactor',
     'ThanosThanosUserConfigIpFilterObject',
+    'ThanosThanosUserConfigPrivateAccess',
+    'ThanosThanosUserConfigPrivatelinkAccess',
     'ThanosThanosUserConfigPublicAccess',
     'ThanosThanosUserConfigQuery',
     'ThanosThanosUserConfigQueryFrontend',
@@ -498,6 +504,10 @@ __all__ = [
     'GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressResult',
     'GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskResult',
     'GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskResult',
+    'GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesResult',
+    'GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuResult',
+    'GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyResult',
+    'GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryResult',
     'GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureResult',
     'GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorResult',
     'GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterResult',
@@ -600,6 +610,8 @@ __all__ = [
     'GetThanosThanosUserConfigResult',
     'GetThanosThanosUserConfigCompactorResult',
     'GetThanosThanosUserConfigIpFilterObjectResult',
+    'GetThanosThanosUserConfigPrivateAccessResult',
+    'GetThanosThanosUserConfigPrivatelinkAccessResult',
     'GetThanosThanosUserConfigPublicAccessResult',
     'GetThanosThanosUserConfigQueryResult',
     'GetThanosThanosUserConfigQueryFrontendResult',
@@ -7080,8 +7092,8 @@ class KafkaConnectKafkaConnectUserConfigSecretProvider(dict):
                  vault: Optional['outputs.KafkaConnectKafkaConnectUserConfigSecretProviderVault'] = None):
         """
         :param str name: Name of the secret provider. Used to reference secrets in connector config.
-        :param 'KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs' aws: AWS config for Secret Provider
-        :param 'KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs' vault: Vault Config for Secret Provider
+        :param 'KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs' aws: AWS secret provider configuration
+        :param 'KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs' vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
@@ -7101,7 +7113,7 @@ class KafkaConnectKafkaConnectUserConfigSecretProvider(dict):
     @pulumi.getter
     def aws(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigSecretProviderAws']:
         """
-        AWS config for Secret Provider
+        AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
 
@@ -7109,7 +7121,7 @@ class KafkaConnectKafkaConnectUserConfigSecretProvider(dict):
     @pulumi.getter
     def vault(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigSecretProviderVault']:
         """
-        Vault Config for Secret Provider
+        Vault secret provider configuration
         """
         return pulumi.get(self, "vault")
 
@@ -8900,8 +8912,8 @@ class KafkaKafkaUserConfigKafkaConnectSecretProvider(dict):
                  vault: Optional['outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault'] = None):
         """
         :param str name: Name of the secret provider. Used to reference secrets in connector config.
-        :param 'KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs' aws: AWS config for Secret Provider
-        :param 'KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs' vault: Vault Config for Secret Provider
+        :param 'KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs' aws: AWS secret provider configuration
+        :param 'KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs' vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
@@ -8921,7 +8933,7 @@ class KafkaKafkaUserConfigKafkaConnectSecretProvider(dict):
     @pulumi.getter
     def aws(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws']:
         """
-        AWS config for Secret Provider
+        AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
 
@@ -8929,7 +8941,7 @@ class KafkaKafkaUserConfigKafkaConnectSecretProvider(dict):
     @pulumi.getter
     def vault(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault']:
         """
-        Vault Config for Secret Provider
+        Vault secret provider configuration
         """
         return pulumi.get(self, "vault")
 
@@ -14651,7 +14663,7 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
                  restore_global_state: Optional[bool] = None,
                  sas_token: Optional[str] = None):
         """
-        :param str account: Azure account name.
+        :param str account: Account name.
         :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
         :param str container: Azure container name.
         :param str indices: A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
@@ -14688,7 +14700,7 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
     @pulumi.getter
     def account(self) -> str:
         """
-        Azure account name.
+        Account name.
         """
         return pulumi.get(self, "account")
 
@@ -15413,6 +15425,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             suggest = "script_max_compilations_rate"
         elif key == "searchBackpressure":
             suggest = "search_backpressure"
+        elif key == "searchInsightsTopQueries":
+            suggest = "search_insights_top_queries"
         elif key == "searchMaxBuckets":
             suggest = "search_max_buckets"
         elif key == "shardIndexingPressure":
@@ -15485,6 +15499,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
                  script_max_compilations_rate: Optional[str] = None,
                  search_backpressure: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressure'] = None,
+                 search_insights_top_queries: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries'] = None,
                  search_max_buckets: Optional[int] = None,
                  shard_indexing_pressure: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure'] = None,
                  thread_pool_analyze_queue_size: Optional[int] = None,
@@ -15612,6 +15627,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_backpressure is not None:
             pulumi.set(__self__, "search_backpressure", search_backpressure)
+        if search_insights_top_queries is not None:
+            pulumi.set(__self__, "search_insights_top_queries", search_insights_top_queries)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if shard_indexing_pressure is not None:
@@ -15902,6 +15919,11 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         Search Backpressure Settings
         """
         return pulumi.get(self, "search_backpressure")
+
+    @property
+    @pulumi.getter(name="searchInsightsTopQueries")
+    def search_insights_top_queries(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries']:
+        return pulumi.get(self, "search_insights_top_queries")
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
@@ -16772,6 +16794,235 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask(dict)
         The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
         """
         return pulumi.get(self, "total_heap_percent_threshold")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries(dict):
+    def __init__(__self__, *,
+                 cpu: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu'] = None,
+                 latency: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency'] = None,
+                 memory: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory'] = None):
+        """
+        :param 'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs' cpu: Top N queries monitoring by CPU
+        :param 'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs' latency: Top N queries monitoring by latency
+        :param 'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs' memory: Top N queries monitoring by memory
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if latency is not None:
+            pulumi.set(__self__, "latency", latency)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu']:
+        """
+        Top N queries monitoring by CPU
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def latency(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency']:
+        """
+        Top N queries monitoring by latency
+        """
+        return pulumi.get(self, "latency")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory']:
+        """
+        Top N queries monitoring by memory
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "topNSize":
+            suggest = "top_n_size"
+        elif key == "windowSize":
+            suggest = "window_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 top_n_size: Optional[int] = None,
+                 window_size: Optional[str] = None):
+        """
+        :param bool enabled: Enable or disable top N query monitoring by the metric. Default: `false`.
+        :param int top_n_size: Specify the value of N for the top N queries by the metric.
+        :param str window_size: The window size of the top N queries by the metric.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if top_n_size is not None:
+            pulumi.set(__self__, "top_n_size", top_n_size)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="topNSize")
+    def top_n_size(self) -> Optional[int]:
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        return pulumi.get(self, "top_n_size")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[str]:
+        """
+        The window size of the top N queries by the metric.
+        """
+        return pulumi.get(self, "window_size")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "topNSize":
+            suggest = "top_n_size"
+        elif key == "windowSize":
+            suggest = "window_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 top_n_size: Optional[int] = None,
+                 window_size: Optional[str] = None):
+        """
+        :param bool enabled: Enable or disable top N query monitoring by the metric. Default: `false`.
+        :param int top_n_size: Specify the value of N for the top N queries by the metric.
+        :param str window_size: The window size of the top N queries by the metric.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if top_n_size is not None:
+            pulumi.set(__self__, "top_n_size", top_n_size)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="topNSize")
+    def top_n_size(self) -> Optional[int]:
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        return pulumi.get(self, "top_n_size")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[str]:
+        """
+        The window size of the top N queries by the metric.
+        """
+        return pulumi.get(self, "window_size")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "topNSize":
+            suggest = "top_n_size"
+        elif key == "windowSize":
+            suggest = "window_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 top_n_size: Optional[int] = None,
+                 window_size: Optional[str] = None):
+        """
+        :param bool enabled: Enable or disable top N query monitoring by the metric. Default: `false`.
+        :param int top_n_size: Specify the value of N for the top N queries by the metric.
+        :param str window_size: The window size of the top N queries by the metric.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if top_n_size is not None:
+            pulumi.set(__self__, "top_n_size", top_n_size)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="topNSize")
+    def top_n_size(self) -> Optional[int]:
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        return pulumi.get(self, "top_n_size")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[str]:
+        """
+        The window size of the top N queries by the metric.
+        """
+        return pulumi.get(self, "window_size")
 
 
 @pulumi.output_type
@@ -22094,6 +22345,8 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
             suggest = "datadog_tags"
         elif key == "disableConsumerStats":
             suggest = "disable_consumer_stats"
+        elif key == "extraTagsPrefix":
+            suggest = "extra_tags_prefix"
         elif key == "kafkaConsumerCheckInstances":
             suggest = "kafka_consumer_check_instances"
         elif key == "kafkaConsumerStatsTimeout":
@@ -22116,6 +22369,7 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
                  datadog_api_key: str,
                  datadog_tags: Optional[Sequence['outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag']] = None,
                  disable_consumer_stats: Optional[bool] = None,
+                 extra_tags_prefix: Optional[str] = None,
                  kafka_consumer_check_instances: Optional[int] = None,
                  kafka_consumer_stats_timeout: Optional[int] = None,
                  max_partition_contexts: Optional[int] = None,
@@ -22124,6 +22378,7 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
         :param str datadog_api_key: Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
         :param Sequence['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs'] datadog_tags: Custom tags provided by user
         :param bool disable_consumer_stats: Disable consumer group metrics.
+        :param str extra_tags_prefix: Extra tags prefix. Defaults to aiven.
         :param int kafka_consumer_check_instances: Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
         :param int kafka_consumer_stats_timeout: Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
         :param int max_partition_contexts: Maximum number of partition contexts to send. Example: `32000`.
@@ -22134,6 +22389,8 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if disable_consumer_stats is not None:
             pulumi.set(__self__, "disable_consumer_stats", disable_consumer_stats)
+        if extra_tags_prefix is not None:
+            pulumi.set(__self__, "extra_tags_prefix", extra_tags_prefix)
         if kafka_consumer_check_instances is not None:
             pulumi.set(__self__, "kafka_consumer_check_instances", kafka_consumer_check_instances)
         if kafka_consumer_stats_timeout is not None:
@@ -22166,6 +22423,14 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
         Disable consumer group metrics.
         """
         return pulumi.get(self, "disable_consumer_stats")
+
+    @property
+    @pulumi.getter(name="extraTagsPrefix")
+    def extra_tags_prefix(self) -> Optional[str]:
+        """
+        Extra tags prefix. Defaults to aiven.
+        """
+        return pulumi.get(self, "extra_tags_prefix")
 
     @property
     @pulumi.getter(name="kafkaConsumerCheckInstances")
@@ -25133,6 +25398,10 @@ class ThanosThanosUserConfig(dict):
             suggest = "ip_filters"
         elif key == "objectStorageUsageAlertThresholdGb":
             suggest = "object_storage_usage_alert_threshold_gb"
+        elif key == "privateAccess":
+            suggest = "private_access"
+        elif key == "privatelinkAccess":
+            suggest = "privatelink_access"
         elif key == "publicAccess":
             suggest = "public_access"
         elif key == "queryFrontend":
@@ -25164,6 +25433,8 @@ class ThanosThanosUserConfig(dict):
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  object_storage_usage_alert_threshold_gb: Optional[int] = None,
+                 private_access: Optional['outputs.ThanosThanosUserConfigPrivateAccess'] = None,
+                 privatelink_access: Optional['outputs.ThanosThanosUserConfigPrivatelinkAccess'] = None,
                  public_access: Optional['outputs.ThanosThanosUserConfigPublicAccess'] = None,
                  query: Optional['outputs.ThanosThanosUserConfigQuery'] = None,
                  query_frontend: Optional['outputs.ThanosThanosUserConfigQueryFrontend'] = None,
@@ -25174,21 +25445,23 @@ class ThanosThanosUserConfig(dict):
                  static_ips: Optional[bool] = None,
                  store: Optional[Mapping[str, str]] = None):
         """
-        :param 'ThanosThanosUserConfigCompactorArgs' compactor: ThanosCompactor
+        :param 'ThanosThanosUserConfigCompactorArgs' compactor: Configuration options for Thanos Compactor
         :param Mapping[str, str] env: Environmental variables.
         :param Sequence['ThanosThanosUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param int object_storage_usage_alert_threshold_gb: After exceeding the limit a service alert is going to be raised (0 means not set).
+        :param 'ThanosThanosUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'ThanosThanosUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'ThanosThanosUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
-        :param 'ThanosThanosUserConfigQueryArgs' query: ThanosQuery
-        :param 'ThanosThanosUserConfigQueryFrontendArgs' query_frontend: ThanosQueryFrontend
-        :param Mapping[str, str] receiver_ingesting: CommonReceive.
-        :param Mapping[str, str] receiver_routing: ThanosReceiveRouting.
-        :param Mapping[str, str] ruler: ThanosRuler.
+        :param 'ThanosThanosUserConfigQueryArgs' query: Configuration options for Thanos Query
+        :param 'ThanosThanosUserConfigQueryFrontendArgs' query_frontend: Configuration options for Thanos Query Frontend
+        :param Mapping[str, str] receiver_ingesting: Common configuration options for Thanos Receive.
+        :param Mapping[str, str] receiver_routing: Configuration options for Thanos Receive Routing.
+        :param Mapping[str, str] ruler: Configuration options for Thanos Ruler.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
-        :param Mapping[str, str] store: ThanosStore.
+        :param Mapping[str, str] store: Configuration options for Thanos Store.
         """
         if compactor is not None:
             pulumi.set(__self__, "compactor", compactor)
@@ -25202,6 +25475,10 @@ class ThanosThanosUserConfig(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if object_storage_usage_alert_threshold_gb is not None:
             pulumi.set(__self__, "object_storage_usage_alert_threshold_gb", object_storage_usage_alert_threshold_gb)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if query is not None:
@@ -25225,7 +25502,7 @@ class ThanosThanosUserConfig(dict):
     @pulumi.getter
     def compactor(self) -> Optional['outputs.ThanosThanosUserConfigCompactor']:
         """
-        ThanosCompactor
+        Configuration options for Thanos Compactor
         """
         return pulumi.get(self, "compactor")
 
@@ -25272,6 +25549,22 @@ class ThanosThanosUserConfig(dict):
         return pulumi.get(self, "object_storage_usage_alert_threshold_gb")
 
     @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional['outputs.ThanosThanosUserConfigPrivateAccess']:
+        """
+        Allow access to selected service ports from private networks
+        """
+        return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.ThanosThanosUserConfigPrivatelinkAccess']:
+        """
+        Allow access to selected service components through Privatelink
+        """
+        return pulumi.get(self, "privatelink_access")
+
+    @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.ThanosThanosUserConfigPublicAccess']:
         """
@@ -25283,7 +25576,7 @@ class ThanosThanosUserConfig(dict):
     @pulumi.getter
     def query(self) -> Optional['outputs.ThanosThanosUserConfigQuery']:
         """
-        ThanosQuery
+        Configuration options for Thanos Query
         """
         return pulumi.get(self, "query")
 
@@ -25291,7 +25584,7 @@ class ThanosThanosUserConfig(dict):
     @pulumi.getter(name="queryFrontend")
     def query_frontend(self) -> Optional['outputs.ThanosThanosUserConfigQueryFrontend']:
         """
-        ThanosQueryFrontend
+        Configuration options for Thanos Query Frontend
         """
         return pulumi.get(self, "query_frontend")
 
@@ -25299,7 +25592,7 @@ class ThanosThanosUserConfig(dict):
     @pulumi.getter(name="receiverIngesting")
     def receiver_ingesting(self) -> Optional[Mapping[str, str]]:
         """
-        CommonReceive.
+        Common configuration options for Thanos Receive.
         """
         return pulumi.get(self, "receiver_ingesting")
 
@@ -25307,7 +25600,7 @@ class ThanosThanosUserConfig(dict):
     @pulumi.getter(name="receiverRouting")
     def receiver_routing(self) -> Optional[Mapping[str, str]]:
         """
-        ThanosReceiveRouting.
+        Configuration options for Thanos Receive Routing.
         """
         return pulumi.get(self, "receiver_routing")
 
@@ -25315,7 +25608,7 @@ class ThanosThanosUserConfig(dict):
     @pulumi.getter
     def ruler(self) -> Optional[Mapping[str, str]]:
         """
-        ThanosRuler.
+        Configuration options for Thanos Ruler.
         """
         return pulumi.get(self, "ruler")
 
@@ -25339,7 +25632,7 @@ class ThanosThanosUserConfig(dict):
     @pulumi.getter
     def store(self) -> Optional[Mapping[str, str]]:
         """
-        ThanosStore.
+        Configuration options for Thanos Store.
         """
         return pulumi.get(self, "store")
 
@@ -25408,6 +25701,106 @@ class ThanosThanosUserConfigIpFilterObject(dict):
         Description for IP filter list entry. Example: `Production service IP range`.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ThanosThanosUserConfigPrivateAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryFrontend":
+            suggest = "query_frontend"
+        elif key == "receiverRouting":
+            suggest = "receiver_routing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ThanosThanosUserConfigPrivateAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ThanosThanosUserConfigPrivateAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ThanosThanosUserConfigPrivateAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_frontend: Optional[bool] = None,
+                 receiver_routing: Optional[bool] = None):
+        """
+        :param bool query_frontend: Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool receiver_routing: Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        if query_frontend is not None:
+            pulumi.set(__self__, "query_frontend", query_frontend)
+        if receiver_routing is not None:
+            pulumi.set(__self__, "receiver_routing", receiver_routing)
+
+    @property
+    @pulumi.getter(name="queryFrontend")
+    def query_frontend(self) -> Optional[bool]:
+        """
+        Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        return pulumi.get(self, "query_frontend")
+
+    @property
+    @pulumi.getter(name="receiverRouting")
+    def receiver_routing(self) -> Optional[bool]:
+        """
+        Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        return pulumi.get(self, "receiver_routing")
+
+
+@pulumi.output_type
+class ThanosThanosUserConfigPrivatelinkAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryFrontend":
+            suggest = "query_frontend"
+        elif key == "receiverRouting":
+            suggest = "receiver_routing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ThanosThanosUserConfigPrivatelinkAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ThanosThanosUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ThanosThanosUserConfigPrivatelinkAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_frontend: Optional[bool] = None,
+                 receiver_routing: Optional[bool] = None):
+        """
+        :param bool query_frontend: Enable query_frontend.
+        :param bool receiver_routing: Enable receiver_routing.
+        """
+        if query_frontend is not None:
+            pulumi.set(__self__, "query_frontend", query_frontend)
+        if receiver_routing is not None:
+            pulumi.set(__self__, "receiver_routing", receiver_routing)
+
+    @property
+    @pulumi.getter(name="queryFrontend")
+    def query_frontend(self) -> Optional[bool]:
+        """
+        Enable query_frontend.
+        """
+        return pulumi.get(self, "query_frontend")
+
+    @property
+    @pulumi.getter(name="receiverRouting")
+    def receiver_routing(self) -> Optional[bool]:
+        """
+        Enable receiver_routing.
+        """
+        return pulumi.get(self, "receiver_routing")
 
 
 @pulumi.output_type
@@ -32185,8 +32578,8 @@ class GetKafkaConnectKafkaConnectUserConfigSecretProviderResult(dict):
                  vault: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderVaultResult'] = None):
         """
         :param str name: Name of the secret provider. Used to reference secrets in connector config.
-        :param 'GetKafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs' aws: AWS config for Secret Provider
-        :param 'GetKafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs' vault: Vault Config for Secret Provider
+        :param 'GetKafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs' aws: AWS secret provider configuration
+        :param 'GetKafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs' vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
@@ -32206,7 +32599,7 @@ class GetKafkaConnectKafkaConnectUserConfigSecretProviderResult(dict):
     @pulumi.getter
     def aws(self) -> Optional['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderAwsResult']:
         """
-        AWS config for Secret Provider
+        AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
 
@@ -32214,7 +32607,7 @@ class GetKafkaConnectKafkaConnectUserConfigSecretProviderResult(dict):
     @pulumi.getter
     def vault(self) -> Optional['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderVaultResult']:
         """
-        Vault Config for Secret Provider
+        Vault secret provider configuration
         """
         return pulumi.get(self, "vault")
 
@@ -33690,8 +34083,8 @@ class GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult(dict):
                  vault: Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult'] = None):
         """
         :param str name: Name of the secret provider. Used to reference secrets in connector config.
-        :param 'GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs' aws: AWS config for Secret Provider
-        :param 'GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs' vault: Vault Config for Secret Provider
+        :param 'GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs' aws: AWS secret provider configuration
+        :param 'GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs' vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
@@ -33711,7 +34104,7 @@ class GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult(dict):
     @pulumi.getter
     def aws(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsResult']:
         """
-        AWS config for Secret Provider
+        AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
 
@@ -33719,7 +34112,7 @@ class GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult(dict):
     @pulumi.getter
     def vault(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult']:
         """
-        Vault Config for Secret Provider
+        Vault secret provider configuration
         """
         return pulumi.get(self, "vault")
 
@@ -38311,7 +38704,7 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
                  restore_global_state: Optional[bool] = None,
                  sas_token: Optional[str] = None):
         """
-        :param str account: Azure account name.
+        :param str account: Account name.
         :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
         :param str container: Azure container name.
         :param str indices: A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
@@ -38348,7 +38741,7 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
     @pulumi.getter
     def account(self) -> str:
         """
-        Azure account name.
+        Account name.
         """
         return pulumi.get(self, "account")
 
@@ -38915,6 +39308,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
                  reindex_remote_whitelists: Optional[Sequence[str]] = None,
                  script_max_compilations_rate: Optional[str] = None,
                  search_backpressure: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureResult'] = None,
+                 search_insights_top_queries: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesResult'] = None,
                  search_max_buckets: Optional[int] = None,
                  shard_indexing_pressure: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureResult'] = None,
                  thread_pool_analyze_queue_size: Optional[int] = None,
@@ -39042,6 +39436,8 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
             pulumi.set(__self__, "script_max_compilations_rate", script_max_compilations_rate)
         if search_backpressure is not None:
             pulumi.set(__self__, "search_backpressure", search_backpressure)
+        if search_insights_top_queries is not None:
+            pulumi.set(__self__, "search_insights_top_queries", search_insights_top_queries)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
         if shard_indexing_pressure is not None:
@@ -39332,6 +39728,11 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         Search Backpressure Settings
         """
         return pulumi.get(self, "search_backpressure")
+
+    @property
+    @pulumi.getter(name="searchInsightsTopQueries")
+    def search_insights_top_queries(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesResult']:
+        return pulumi.get(self, "search_insights_top_queries")
 
     @property
     @pulumi.getter(name="searchMaxBuckets")
@@ -40004,6 +40405,178 @@ class GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskRes
         The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
         """
         return pulumi.get(self, "total_heap_percent_threshold")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesResult(dict):
+    def __init__(__self__, *,
+                 cpu: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuResult'] = None,
+                 latency: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyResult'] = None,
+                 memory: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryResult'] = None):
+        """
+        :param 'GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs' cpu: Top N queries monitoring by CPU
+        :param 'GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs' latency: Top N queries monitoring by latency
+        :param 'GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs' memory: Top N queries monitoring by memory
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if latency is not None:
+            pulumi.set(__self__, "latency", latency)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuResult']:
+        """
+        Top N queries monitoring by CPU
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def latency(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyResult']:
+        """
+        Top N queries monitoring by latency
+        """
+        return pulumi.get(self, "latency")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryResult']:
+        """
+        Top N queries monitoring by memory
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 top_n_size: Optional[int] = None,
+                 window_size: Optional[str] = None):
+        """
+        :param bool enabled: Enable or disable top N query monitoring by the metric. Default: `false`.
+        :param int top_n_size: Specify the value of N for the top N queries by the metric.
+        :param str window_size: The window size of the top N queries by the metric.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if top_n_size is not None:
+            pulumi.set(__self__, "top_n_size", top_n_size)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="topNSize")
+    def top_n_size(self) -> Optional[int]:
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        return pulumi.get(self, "top_n_size")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[str]:
+        """
+        The window size of the top N queries by the metric.
+        """
+        return pulumi.get(self, "window_size")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 top_n_size: Optional[int] = None,
+                 window_size: Optional[str] = None):
+        """
+        :param bool enabled: Enable or disable top N query monitoring by the metric. Default: `false`.
+        :param int top_n_size: Specify the value of N for the top N queries by the metric.
+        :param str window_size: The window size of the top N queries by the metric.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if top_n_size is not None:
+            pulumi.set(__self__, "top_n_size", top_n_size)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="topNSize")
+    def top_n_size(self) -> Optional[int]:
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        return pulumi.get(self, "top_n_size")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[str]:
+        """
+        The window size of the top N queries by the metric.
+        """
+        return pulumi.get(self, "window_size")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 top_n_size: Optional[int] = None,
+                 window_size: Optional[str] = None):
+        """
+        :param bool enabled: Enable or disable top N query monitoring by the metric. Default: `false`.
+        :param int top_n_size: Specify the value of N for the top N queries by the metric.
+        :param str window_size: The window size of the top N queries by the metric.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if top_n_size is not None:
+            pulumi.set(__self__, "top_n_size", top_n_size)
+        if window_size is not None:
+            pulumi.set(__self__, "window_size", window_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable or disable top N query monitoring by the metric. Default: `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="topNSize")
+    def top_n_size(self) -> Optional[int]:
+        """
+        Specify the value of N for the top N queries by the metric.
+        """
+        return pulumi.get(self, "top_n_size")
+
+    @property
+    @pulumi.getter(name="windowSize")
+    def window_size(self) -> Optional[str]:
+        """
+        The window size of the top N queries by the metric.
+        """
+        return pulumi.get(self, "window_size")
 
 
 @pulumi.output_type
@@ -44358,6 +44931,7 @@ class GetServiceIntegrationEndpointDatadogUserConfigResult(dict):
                  datadog_api_key: str,
                  datadog_tags: Optional[Sequence['outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult']] = None,
                  disable_consumer_stats: Optional[bool] = None,
+                 extra_tags_prefix: Optional[str] = None,
                  kafka_consumer_check_instances: Optional[int] = None,
                  kafka_consumer_stats_timeout: Optional[int] = None,
                  max_partition_contexts: Optional[int] = None,
@@ -44366,6 +44940,7 @@ class GetServiceIntegrationEndpointDatadogUserConfigResult(dict):
         :param str datadog_api_key: Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
         :param Sequence['GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs'] datadog_tags: Custom tags provided by user
         :param bool disable_consumer_stats: Disable consumer group metrics.
+        :param str extra_tags_prefix: Extra tags prefix. Defaults to aiven.
         :param int kafka_consumer_check_instances: Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
         :param int kafka_consumer_stats_timeout: Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
         :param int max_partition_contexts: Maximum number of partition contexts to send. Example: `32000`.
@@ -44376,6 +44951,8 @@ class GetServiceIntegrationEndpointDatadogUserConfigResult(dict):
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if disable_consumer_stats is not None:
             pulumi.set(__self__, "disable_consumer_stats", disable_consumer_stats)
+        if extra_tags_prefix is not None:
+            pulumi.set(__self__, "extra_tags_prefix", extra_tags_prefix)
         if kafka_consumer_check_instances is not None:
             pulumi.set(__self__, "kafka_consumer_check_instances", kafka_consumer_check_instances)
         if kafka_consumer_stats_timeout is not None:
@@ -44408,6 +44985,14 @@ class GetServiceIntegrationEndpointDatadogUserConfigResult(dict):
         Disable consumer group metrics.
         """
         return pulumi.get(self, "disable_consumer_stats")
+
+    @property
+    @pulumi.getter(name="extraTagsPrefix")
+    def extra_tags_prefix(self) -> Optional[str]:
+        """
+        Extra tags prefix. Defaults to aiven.
+        """
+        return pulumi.get(self, "extra_tags_prefix")
 
     @property
     @pulumi.getter(name="kafkaConsumerCheckInstances")
@@ -46667,6 +47252,8 @@ class GetThanosThanosUserConfigResult(dict):
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
                  object_storage_usage_alert_threshold_gb: Optional[int] = None,
+                 private_access: Optional['outputs.GetThanosThanosUserConfigPrivateAccessResult'] = None,
+                 privatelink_access: Optional['outputs.GetThanosThanosUserConfigPrivatelinkAccessResult'] = None,
                  public_access: Optional['outputs.GetThanosThanosUserConfigPublicAccessResult'] = None,
                  query: Optional['outputs.GetThanosThanosUserConfigQueryResult'] = None,
                  query_frontend: Optional['outputs.GetThanosThanosUserConfigQueryFrontendResult'] = None,
@@ -46677,21 +47264,23 @@ class GetThanosThanosUserConfigResult(dict):
                  static_ips: Optional[bool] = None,
                  store: Optional[Mapping[str, str]] = None):
         """
-        :param 'GetThanosThanosUserConfigCompactorArgs' compactor: ThanosCompactor
+        :param 'GetThanosThanosUserConfigCompactorArgs' compactor: Configuration options for Thanos Compactor
         :param Mapping[str, str] env: Environmental variables.
         :param Sequence['GetThanosThanosUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param int object_storage_usage_alert_threshold_gb: After exceeding the limit a service alert is going to be raised (0 means not set).
+        :param 'GetThanosThanosUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetThanosThanosUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetThanosThanosUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
-        :param 'GetThanosThanosUserConfigQueryArgs' query: ThanosQuery
-        :param 'GetThanosThanosUserConfigQueryFrontendArgs' query_frontend: ThanosQueryFrontend
-        :param Mapping[str, str] receiver_ingesting: CommonReceive.
-        :param Mapping[str, str] receiver_routing: ThanosReceiveRouting.
-        :param Mapping[str, str] ruler: ThanosRuler.
+        :param 'GetThanosThanosUserConfigQueryArgs' query: Configuration options for Thanos Query
+        :param 'GetThanosThanosUserConfigQueryFrontendArgs' query_frontend: Configuration options for Thanos Query Frontend
+        :param Mapping[str, str] receiver_ingesting: Common configuration options for Thanos Receive.
+        :param Mapping[str, str] receiver_routing: Configuration options for Thanos Receive Routing.
+        :param Mapping[str, str] ruler: Configuration options for Thanos Ruler.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
-        :param Mapping[str, str] store: ThanosStore.
+        :param Mapping[str, str] store: Configuration options for Thanos Store.
         """
         if compactor is not None:
             pulumi.set(__self__, "compactor", compactor)
@@ -46705,6 +47294,10 @@ class GetThanosThanosUserConfigResult(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if object_storage_usage_alert_threshold_gb is not None:
             pulumi.set(__self__, "object_storage_usage_alert_threshold_gb", object_storage_usage_alert_threshold_gb)
+        if private_access is not None:
+            pulumi.set(__self__, "private_access", private_access)
+        if privatelink_access is not None:
+            pulumi.set(__self__, "privatelink_access", privatelink_access)
         if public_access is not None:
             pulumi.set(__self__, "public_access", public_access)
         if query is not None:
@@ -46728,7 +47321,7 @@ class GetThanosThanosUserConfigResult(dict):
     @pulumi.getter
     def compactor(self) -> Optional['outputs.GetThanosThanosUserConfigCompactorResult']:
         """
-        ThanosCompactor
+        Configuration options for Thanos Compactor
         """
         return pulumi.get(self, "compactor")
 
@@ -46775,6 +47368,22 @@ class GetThanosThanosUserConfigResult(dict):
         return pulumi.get(self, "object_storage_usage_alert_threshold_gb")
 
     @property
+    @pulumi.getter(name="privateAccess")
+    def private_access(self) -> Optional['outputs.GetThanosThanosUserConfigPrivateAccessResult']:
+        """
+        Allow access to selected service ports from private networks
+        """
+        return pulumi.get(self, "private_access")
+
+    @property
+    @pulumi.getter(name="privatelinkAccess")
+    def privatelink_access(self) -> Optional['outputs.GetThanosThanosUserConfigPrivatelinkAccessResult']:
+        """
+        Allow access to selected service components through Privatelink
+        """
+        return pulumi.get(self, "privatelink_access")
+
+    @property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetThanosThanosUserConfigPublicAccessResult']:
         """
@@ -46786,7 +47395,7 @@ class GetThanosThanosUserConfigResult(dict):
     @pulumi.getter
     def query(self) -> Optional['outputs.GetThanosThanosUserConfigQueryResult']:
         """
-        ThanosQuery
+        Configuration options for Thanos Query
         """
         return pulumi.get(self, "query")
 
@@ -46794,7 +47403,7 @@ class GetThanosThanosUserConfigResult(dict):
     @pulumi.getter(name="queryFrontend")
     def query_frontend(self) -> Optional['outputs.GetThanosThanosUserConfigQueryFrontendResult']:
         """
-        ThanosQueryFrontend
+        Configuration options for Thanos Query Frontend
         """
         return pulumi.get(self, "query_frontend")
 
@@ -46802,7 +47411,7 @@ class GetThanosThanosUserConfigResult(dict):
     @pulumi.getter(name="receiverIngesting")
     def receiver_ingesting(self) -> Optional[Mapping[str, str]]:
         """
-        CommonReceive.
+        Common configuration options for Thanos Receive.
         """
         return pulumi.get(self, "receiver_ingesting")
 
@@ -46810,7 +47419,7 @@ class GetThanosThanosUserConfigResult(dict):
     @pulumi.getter(name="receiverRouting")
     def receiver_routing(self) -> Optional[Mapping[str, str]]:
         """
-        ThanosReceiveRouting.
+        Configuration options for Thanos Receive Routing.
         """
         return pulumi.get(self, "receiver_routing")
 
@@ -46818,7 +47427,7 @@ class GetThanosThanosUserConfigResult(dict):
     @pulumi.getter
     def ruler(self) -> Optional[Mapping[str, str]]:
         """
-        ThanosRuler.
+        Configuration options for Thanos Ruler.
         """
         return pulumi.get(self, "ruler")
 
@@ -46842,7 +47451,7 @@ class GetThanosThanosUserConfigResult(dict):
     @pulumi.getter
     def store(self) -> Optional[Mapping[str, str]]:
         """
-        ThanosStore.
+        Configuration options for Thanos Store.
         """
         return pulumi.get(self, "store")
 
@@ -46894,6 +47503,68 @@ class GetThanosThanosUserConfigIpFilterObjectResult(dict):
         Description for IP filter list entry. Example: `Production service IP range`.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetThanosThanosUserConfigPrivateAccessResult(dict):
+    def __init__(__self__, *,
+                 query_frontend: Optional[bool] = None,
+                 receiver_routing: Optional[bool] = None):
+        """
+        :param bool query_frontend: Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool receiver_routing: Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        if query_frontend is not None:
+            pulumi.set(__self__, "query_frontend", query_frontend)
+        if receiver_routing is not None:
+            pulumi.set(__self__, "receiver_routing", receiver_routing)
+
+    @property
+    @pulumi.getter(name="queryFrontend")
+    def query_frontend(self) -> Optional[bool]:
+        """
+        Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        return pulumi.get(self, "query_frontend")
+
+    @property
+    @pulumi.getter(name="receiverRouting")
+    def receiver_routing(self) -> Optional[bool]:
+        """
+        Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        """
+        return pulumi.get(self, "receiver_routing")
+
+
+@pulumi.output_type
+class GetThanosThanosUserConfigPrivatelinkAccessResult(dict):
+    def __init__(__self__, *,
+                 query_frontend: Optional[bool] = None,
+                 receiver_routing: Optional[bool] = None):
+        """
+        :param bool query_frontend: Enable query_frontend.
+        :param bool receiver_routing: Enable receiver_routing.
+        """
+        if query_frontend is not None:
+            pulumi.set(__self__, "query_frontend", query_frontend)
+        if receiver_routing is not None:
+            pulumi.set(__self__, "receiver_routing", receiver_routing)
+
+    @property
+    @pulumi.getter(name="queryFrontend")
+    def query_frontend(self) -> Optional[bool]:
+        """
+        Enable query_frontend.
+        """
+        return pulumi.get(self, "query_frontend")
+
+    @property
+    @pulumi.getter(name="receiverRouting")
+    def receiver_routing(self) -> Optional[bool]:
+        """
+        Enable receiver_routing.
+        """
+        return pulumi.get(self, "receiver_routing")
 
 
 @pulumi.output_type

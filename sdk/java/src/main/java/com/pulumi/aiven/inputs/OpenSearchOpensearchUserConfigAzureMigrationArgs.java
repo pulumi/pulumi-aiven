@@ -18,14 +18,14 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
     public static final OpenSearchOpensearchUserConfigAzureMigrationArgs Empty = new OpenSearchOpensearchUserConfigAzureMigrationArgs();
 
     /**
-     * Azure account name.
+     * Account name.
      * 
      */
     @Import(name="account", required=true)
     private Output<String> account;
 
     /**
-     * @return Azure account name.
+     * @return Account name.
      * 
      */
     public Output<String> account() {
@@ -233,7 +233,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
         }
 
         /**
-         * @param account Azure account name.
+         * @param account Account name.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
         }
 
         /**
-         * @param account Azure account name.
+         * @param account Account name.
          * 
          * @return builder
          * 

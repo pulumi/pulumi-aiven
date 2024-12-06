@@ -87,6 +87,10 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     public readonly enable!: pulumi.Output<boolean>;
     /**
+     * Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     */
+    public readonly exactlyOnceDeliveryEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      */
     public readonly offsetSyncsTopicLocation!: pulumi.Output<string>;
@@ -148,6 +152,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             resourceInputs["emitBackwardHeartbeatsEnabled"] = state ? state.emitBackwardHeartbeatsEnabled : undefined;
             resourceInputs["emitHeartbeatsEnabled"] = state ? state.emitHeartbeatsEnabled : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["exactlyOnceDeliveryEnabled"] = state ? state.exactlyOnceDeliveryEnabled : undefined;
             resourceInputs["offsetSyncsTopicLocation"] = state ? state.offsetSyncsTopicLocation : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
@@ -186,6 +191,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             resourceInputs["emitBackwardHeartbeatsEnabled"] = args ? args.emitBackwardHeartbeatsEnabled : undefined;
             resourceInputs["emitHeartbeatsEnabled"] = args ? args.emitHeartbeatsEnabled : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["exactlyOnceDeliveryEnabled"] = args ? args.exactlyOnceDeliveryEnabled : undefined;
             resourceInputs["offsetSyncsTopicLocation"] = args ? args.offsetSyncsTopicLocation : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
@@ -223,6 +229,10 @@ export interface MirrorMakerReplicationFlowState {
      * Enable of disable replication flows for a service.
      */
     enable?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     */
+    exactlyOnceDeliveryEnabled?: pulumi.Input<boolean>;
     /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      */
@@ -289,6 +299,10 @@ export interface MirrorMakerReplicationFlowArgs {
      * Enable of disable replication flows for a service.
      */
     enable: pulumi.Input<boolean>;
+    /**
+     * Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     */
+    exactlyOnceDeliveryEnabled?: pulumi.Input<boolean>;
     /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      */

@@ -83,7 +83,7 @@ type BillingGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
-	// State or province.
+	// Address state.
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// The VAT identification number for your company.
 	VatId pulumi.StringPtrOutput `pulumi:"vatId"`
@@ -147,7 +147,7 @@ type billingGroupState struct {
 	Name *string `pulumi:"name"`
 	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
-	// State or province.
+	// Address state.
 	State *string `pulumi:"state"`
 	// The VAT identification number for your company.
 	VatId *string `pulumi:"vatId"`
@@ -182,7 +182,7 @@ type BillingGroupState struct {
 	Name pulumi.StringPtrInput
 	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
-	// State or province.
+	// Address state.
 	State pulumi.StringPtrInput
 	// The VAT identification number for your company.
 	VatId pulumi.StringPtrInput
@@ -221,7 +221,7 @@ type billingGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
-	// State or province.
+	// Address state.
 	State *string `pulumi:"state"`
 	// The VAT identification number for your company.
 	VatId *string `pulumi:"vatId"`
@@ -257,7 +257,7 @@ type BillingGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
-	// State or province.
+	// Address state.
 	State pulumi.StringPtrInput
 	// The VAT identification number for your company.
 	VatId pulumi.StringPtrInput
@@ -414,7 +414,7 @@ func (o BillingGroupOutput) ParentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
 }
 
-// State or province.
+// Address state.
 func (o BillingGroupOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }

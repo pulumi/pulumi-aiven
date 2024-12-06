@@ -195,7 +195,7 @@ class GetBillingGroupResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        State or province.
+        Address state.
         """
         return pulumi.get(self, "state")
 

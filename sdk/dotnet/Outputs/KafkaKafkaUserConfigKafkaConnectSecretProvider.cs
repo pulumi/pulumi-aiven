@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigKafkaConnectSecretProvider
     {
         /// <summary>
-        /// AWS config for Secret Provider
+        /// AWS secret provider configuration
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws? Aws;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Vault Config for Secret Provider
+        /// Vault secret provider configuration
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault? Vault;
 

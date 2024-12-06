@@ -87,6 +87,12 @@ namespace Pulumi.Aiven
         public Output<bool> Enable { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        /// </summary>
+        [Output("exactlyOnceDeliveryEnabled")]
+        public Output<bool?> ExactlyOnceDeliveryEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Offset syncs topic location. The possible values are `source` and `target`.
         /// </summary>
         [Output("offsetSyncsTopicLocation")]
@@ -229,6 +235,12 @@ namespace Pulumi.Aiven
         public Input<bool> Enable { get; set; } = null!;
 
         /// <summary>
+        /// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        /// </summary>
+        [Input("exactlyOnceDeliveryEnabled")]
+        public Input<bool>? ExactlyOnceDeliveryEnabled { get; set; }
+
+        /// <summary>
         /// Offset syncs topic location. The possible values are `source` and `target`.
         /// </summary>
         [Input("offsetSyncsTopicLocation", required: true)]
@@ -343,6 +355,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
+
+        /// <summary>
+        /// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        /// </summary>
+        [Input("exactlyOnceDeliveryEnabled")]
+        public Input<bool>? ExactlyOnceDeliveryEnabled { get; set; }
 
         /// <summary>
         /// Offset syncs topic location. The possible values are `source` and `target`.

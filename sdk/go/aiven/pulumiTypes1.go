@@ -13,6 +13,1782 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetOpenSearchOpensearchUserConfigS3Migration struct {
+	// AWS Access key.
+	AccessKey string `pulumi:"accessKey"`
+	// The path to the repository data within its container. The value of this setting should not start or end with a /.
+	BasePath string `pulumi:"basePath"`
+	// S3 bucket name.
+	Bucket string `pulumi:"bucket"`
+	// Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+	ChunkSize *string `pulumi:"chunkSize"`
+	// When set to true metadata files are stored in compressed format.
+	Compress *bool `pulumi:"compress"`
+	// The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// Whether to restore aliases alongside their associated indexes. Default is true.
+	IncludeAliases *bool `pulumi:"includeAliases"`
+	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+	Indices string `pulumi:"indices"`
+	// S3 region.
+	Region string `pulumi:"region"`
+	// If true, restore the cluster state. Defaults to false.
+	RestoreGlobalState *bool `pulumi:"restoreGlobalState"`
+	// AWS secret key.
+	SecretKey string `pulumi:"secretKey"`
+	// When set to true files are encrypted on server side.
+	ServerSideEncryption *bool `pulumi:"serverSideEncryption"`
+	// The snapshot name to restore from.
+	SnapshotName string `pulumi:"snapshotName"`
+}
+
+// GetOpenSearchOpensearchUserConfigS3MigrationInput is an input type that accepts GetOpenSearchOpensearchUserConfigS3MigrationArgs and GetOpenSearchOpensearchUserConfigS3MigrationOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigS3MigrationInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigS3MigrationArgs{...}
+type GetOpenSearchOpensearchUserConfigS3MigrationInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigS3MigrationOutput() GetOpenSearchOpensearchUserConfigS3MigrationOutput
+	ToGetOpenSearchOpensearchUserConfigS3MigrationOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigS3MigrationOutput
+}
+
+type GetOpenSearchOpensearchUserConfigS3MigrationArgs struct {
+	// AWS Access key.
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// The path to the repository data within its container. The value of this setting should not start or end with a /.
+	BasePath pulumi.StringInput `pulumi:"basePath"`
+	// S3 bucket name.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+	ChunkSize pulumi.StringPtrInput `pulumi:"chunkSize"`
+	// When set to true metadata files are stored in compressed format.
+	Compress pulumi.BoolPtrInput `pulumi:"compress"`
+	// The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Whether to restore aliases alongside their associated indexes. Default is true.
+	IncludeAliases pulumi.BoolPtrInput `pulumi:"includeAliases"`
+	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+	Indices pulumi.StringInput `pulumi:"indices"`
+	// S3 region.
+	Region pulumi.StringInput `pulumi:"region"`
+	// If true, restore the cluster state. Defaults to false.
+	RestoreGlobalState pulumi.BoolPtrInput `pulumi:"restoreGlobalState"`
+	// AWS secret key.
+	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+	// When set to true files are encrypted on server side.
+	ServerSideEncryption pulumi.BoolPtrInput `pulumi:"serverSideEncryption"`
+	// The snapshot name to restore from.
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+}
+
+func (GetOpenSearchOpensearchUserConfigS3MigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigS3Migration)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigS3MigrationArgs) ToGetOpenSearchOpensearchUserConfigS3MigrationOutput() GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigS3MigrationOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigS3MigrationArgs) ToGetOpenSearchOpensearchUserConfigS3MigrationOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigS3MigrationOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigS3MigrationArgs) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigS3MigrationArgs) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigS3MigrationOutput).ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigS3MigrationPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigS3MigrationArgs, GetOpenSearchOpensearchUserConfigS3MigrationPtr and GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigS3MigrationPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigS3MigrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigS3MigrationPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput
+	ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigS3MigrationPtrType GetOpenSearchOpensearchUserConfigS3MigrationArgs
+
+func GetOpenSearchOpensearchUserConfigS3MigrationPtr(v *GetOpenSearchOpensearchUserConfigS3MigrationArgs) GetOpenSearchOpensearchUserConfigS3MigrationPtrInput {
+	return (*getOpenSearchOpensearchUserConfigS3MigrationPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigS3MigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigS3Migration)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigS3MigrationPtrType) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigS3MigrationPtrType) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigS3MigrationOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigS3MigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigS3Migration)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationOutput() GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigS3Migration) *GetOpenSearchOpensearchUserConfigS3Migration {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput)
+}
+
+// AWS Access key.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// The path to the repository data within its container. The value of this setting should not start or end with a /.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) BasePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.BasePath }).(pulumi.StringOutput)
+}
+
+// S3 bucket name.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ChunkSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *string { return v.ChunkSize }).(pulumi.StringPtrOutput)
+}
+
+// When set to true metadata files are stored in compressed format.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Compress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.Compress }).(pulumi.BoolPtrOutput)
+}
+
+// The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Whether to restore aliases alongside their associated indexes. Default is true.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) IncludeAliases() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.IncludeAliases }).(pulumi.BoolPtrOutput)
+}
+
+// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Indices() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.Indices }).(pulumi.StringOutput)
+}
+
+// S3 region.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// If true, restore the cluster state. Defaults to false.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) RestoreGlobalState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.RestoreGlobalState }).(pulumi.BoolPtrOutput)
+}
+
+// AWS secret key.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+// When set to true files are encrypted on server side.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ServerSideEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.ServerSideEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// The snapshot name to restore from.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigS3Migration)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Elem() GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) GetOpenSearchOpensearchUserConfigS3Migration {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigS3Migration
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigS3MigrationOutput)
+}
+
+// AWS Access key.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path to the repository data within its container. The value of this setting should not start or end with a /.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) BasePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BasePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3 bucket name.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ChunkSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChunkSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// When set to true metadata files are stored in compressed format.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Compress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Compress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to restore aliases alongside their associated indexes. Default is true.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) IncludeAliases() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeAliases
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Indices() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Indices
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3 region.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, restore the cluster state. Defaults to false.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) RestoreGlobalState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RestoreGlobalState
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AWS secret key.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// When set to true files are encrypted on server side.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ServerSideEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerSideEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The snapshot name to restore from.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) SnapshotName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SnapshotName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigSaml struct {
+	// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+	Enabled bool `pulumi:"enabled"`
+	// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
+	IdpEntityId string `pulumi:"idpEntityId"`
+	// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+	IdpMetadataUrl string `pulumi:"idpMetadataUrl"`
+	// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	IdpPemtrustedcasContent *string `pulumi:"idpPemtrustedcasContent"`
+	// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
+	RolesKey *string `pulumi:"rolesKey"`
+	// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
+	SpEntityId string `pulumi:"spEntityId"`
+	// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
+	SubjectKey *string `pulumi:"subjectKey"`
+}
+
+// GetOpenSearchOpensearchUserConfigSamlInput is an input type that accepts GetOpenSearchOpensearchUserConfigSamlArgs and GetOpenSearchOpensearchUserConfigSamlOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigSamlInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigSamlArgs{...}
+type GetOpenSearchOpensearchUserConfigSamlInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigSamlOutput() GetOpenSearchOpensearchUserConfigSamlOutput
+	ToGetOpenSearchOpensearchUserConfigSamlOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigSamlOutput
+}
+
+type GetOpenSearchOpensearchUserConfigSamlArgs struct {
+	// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
+	IdpEntityId pulumi.StringInput `pulumi:"idpEntityId"`
+	// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+	IdpMetadataUrl pulumi.StringInput `pulumi:"idpMetadataUrl"`
+	// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	IdpPemtrustedcasContent pulumi.StringPtrInput `pulumi:"idpPemtrustedcasContent"`
+	// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
+	RolesKey pulumi.StringPtrInput `pulumi:"rolesKey"`
+	// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
+	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
+	// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
+	SubjectKey pulumi.StringPtrInput `pulumi:"subjectKey"`
+}
+
+func (GetOpenSearchOpensearchUserConfigSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigSaml)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigSamlArgs) ToGetOpenSearchOpensearchUserConfigSamlOutput() GetOpenSearchOpensearchUserConfigSamlOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigSamlOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigSamlArgs) ToGetOpenSearchOpensearchUserConfigSamlOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigSamlOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigSamlArgs) ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigSamlArgs) ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigSamlOutput).ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigSamlPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigSamlArgs, GetOpenSearchOpensearchUserConfigSamlPtr and GetOpenSearchOpensearchUserConfigSamlPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigSamlPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigSamlArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigSamlPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput
+	ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigSamlPtrType GetOpenSearchOpensearchUserConfigSamlArgs
+
+func GetOpenSearchOpensearchUserConfigSamlPtr(v *GetOpenSearchOpensearchUserConfigSamlArgs) GetOpenSearchOpensearchUserConfigSamlPtrInput {
+	return (*getOpenSearchOpensearchUserConfigSamlPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigSamlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigSaml)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigSamlPtrType) ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigSamlPtrType) ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigSamlPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigSamlOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigSaml)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) ToGetOpenSearchOpensearchUserConfigSamlOutput() GetOpenSearchOpensearchUserConfigSamlOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) ToGetOpenSearchOpensearchUserConfigSamlOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigSaml) *GetOpenSearchOpensearchUserConfigSaml {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigSamlPtrOutput)
+}
+
+// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) IdpEntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) string { return v.IdpEntityId }).(pulumi.StringOutput)
+}
+
+// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) IdpMetadataUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) string { return v.IdpMetadataUrl }).(pulumi.StringOutput)
+}
+
+// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) IdpPemtrustedcasContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) *string { return v.IdpPemtrustedcasContent }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) *string { return v.RolesKey }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) SpEntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) string { return v.SpEntityId }).(pulumi.StringOutput)
+}
+
+// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) *string { return v.SubjectKey }).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigSamlPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigSamlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigSaml)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) Elem() GetOpenSearchOpensearchUserConfigSamlOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) GetOpenSearchOpensearchUserConfigSaml {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigSaml
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigSamlOutput)
+}
+
+// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) IdpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpEntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) IdpMetadataUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpMetadataUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) IdpPemtrustedcasContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpPemtrustedcasContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolesKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) SpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SpEntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchServiceIntegration struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetOpenSearchServiceIntegrationInput is an input type that accepts GetOpenSearchServiceIntegrationArgs and GetOpenSearchServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetOpenSearchServiceIntegrationInput` via:
+//
+//	GetOpenSearchServiceIntegrationArgs{...}
+type GetOpenSearchServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchServiceIntegrationOutput() GetOpenSearchServiceIntegrationOutput
+	ToGetOpenSearchServiceIntegrationOutputWithContext(context.Context) GetOpenSearchServiceIntegrationOutput
+}
+
+type GetOpenSearchServiceIntegrationArgs struct {
+	// Type of the service integration. The only supported value at the moment is `readReplica`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetOpenSearchServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchServiceIntegration)(nil)).Elem()
+}
+
+func (i GetOpenSearchServiceIntegrationArgs) ToGetOpenSearchServiceIntegrationOutput() GetOpenSearchServiceIntegrationOutput {
+	return i.ToGetOpenSearchServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchServiceIntegrationArgs) ToGetOpenSearchServiceIntegrationOutputWithContext(ctx context.Context) GetOpenSearchServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchServiceIntegrationOutput)
+}
+
+// GetOpenSearchServiceIntegrationArrayInput is an input type that accepts GetOpenSearchServiceIntegrationArray and GetOpenSearchServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchServiceIntegrationArrayInput` via:
+//
+//	GetOpenSearchServiceIntegrationArray{ GetOpenSearchServiceIntegrationArgs{...} }
+type GetOpenSearchServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchServiceIntegrationArrayOutput() GetOpenSearchServiceIntegrationArrayOutput
+	ToGetOpenSearchServiceIntegrationArrayOutputWithContext(context.Context) GetOpenSearchServiceIntegrationArrayOutput
+}
+
+type GetOpenSearchServiceIntegrationArray []GetOpenSearchServiceIntegrationInput
+
+func (GetOpenSearchServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchServiceIntegration)(nil)).Elem()
+}
+
+func (i GetOpenSearchServiceIntegrationArray) ToGetOpenSearchServiceIntegrationArrayOutput() GetOpenSearchServiceIntegrationArrayOutput {
+	return i.ToGetOpenSearchServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchServiceIntegrationArray) ToGetOpenSearchServiceIntegrationArrayOutputWithContext(ctx context.Context) GetOpenSearchServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchServiceIntegrationArrayOutput)
+}
+
+type GetOpenSearchServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchServiceIntegration)(nil)).Elem()
+}
+
+func (o GetOpenSearchServiceIntegrationOutput) ToGetOpenSearchServiceIntegrationOutput() GetOpenSearchServiceIntegrationOutput {
+	return o
+}
+
+func (o GetOpenSearchServiceIntegrationOutput) ToGetOpenSearchServiceIntegrationOutputWithContext(ctx context.Context) GetOpenSearchServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration. The only supported value at the moment is `readReplica`
+func (o GetOpenSearchServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetOpenSearchServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchServiceIntegration)(nil)).Elem()
+}
+
+func (o GetOpenSearchServiceIntegrationArrayOutput) ToGetOpenSearchServiceIntegrationArrayOutput() GetOpenSearchServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchServiceIntegrationArrayOutput) ToGetOpenSearchServiceIntegrationArrayOutputWithContext(ctx context.Context) GetOpenSearchServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetOpenSearchServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchServiceIntegration {
+		return vs[0].([]GetOpenSearchServiceIntegration)[vs[1].(int)]
+	}).(GetOpenSearchServiceIntegrationOutput)
+}
+
+type GetOpenSearchTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetOpenSearchTagInput is an input type that accepts GetOpenSearchTagArgs and GetOpenSearchTagOutput values.
+// You can construct a concrete instance of `GetOpenSearchTagInput` via:
+//
+//	GetOpenSearchTagArgs{...}
+type GetOpenSearchTagInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTagOutput() GetOpenSearchTagOutput
+	ToGetOpenSearchTagOutputWithContext(context.Context) GetOpenSearchTagOutput
+}
+
+type GetOpenSearchTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetOpenSearchTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTag)(nil)).Elem()
+}
+
+func (i GetOpenSearchTagArgs) ToGetOpenSearchTagOutput() GetOpenSearchTagOutput {
+	return i.ToGetOpenSearchTagOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTagArgs) ToGetOpenSearchTagOutputWithContext(ctx context.Context) GetOpenSearchTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTagOutput)
+}
+
+// GetOpenSearchTagArrayInput is an input type that accepts GetOpenSearchTagArray and GetOpenSearchTagArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchTagArrayInput` via:
+//
+//	GetOpenSearchTagArray{ GetOpenSearchTagArgs{...} }
+type GetOpenSearchTagArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTagArrayOutput() GetOpenSearchTagArrayOutput
+	ToGetOpenSearchTagArrayOutputWithContext(context.Context) GetOpenSearchTagArrayOutput
+}
+
+type GetOpenSearchTagArray []GetOpenSearchTagInput
+
+func (GetOpenSearchTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTag)(nil)).Elem()
+}
+
+func (i GetOpenSearchTagArray) ToGetOpenSearchTagArrayOutput() GetOpenSearchTagArrayOutput {
+	return i.ToGetOpenSearchTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTagArray) ToGetOpenSearchTagArrayOutputWithContext(ctx context.Context) GetOpenSearchTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTagArrayOutput)
+}
+
+type GetOpenSearchTagOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTag)(nil)).Elem()
+}
+
+func (o GetOpenSearchTagOutput) ToGetOpenSearchTagOutput() GetOpenSearchTagOutput {
+	return o
+}
+
+func (o GetOpenSearchTagOutput) ToGetOpenSearchTagOutputWithContext(ctx context.Context) GetOpenSearchTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetOpenSearchTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetOpenSearchTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTag)(nil)).Elem()
+}
+
+func (o GetOpenSearchTagArrayOutput) ToGetOpenSearchTagArrayOutput() GetOpenSearchTagArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTagArrayOutput) ToGetOpenSearchTagArrayOutputWithContext(ctx context.Context) GetOpenSearchTagArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTagArrayOutput) Index(i pulumi.IntInput) GetOpenSearchTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchTag {
+		return vs[0].([]GetOpenSearchTag)[vs[1].(int)]
+	}).(GetOpenSearchTagOutput)
+}
+
+type GetOpenSearchTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetOpenSearchTechEmailInput is an input type that accepts GetOpenSearchTechEmailArgs and GetOpenSearchTechEmailOutput values.
+// You can construct a concrete instance of `GetOpenSearchTechEmailInput` via:
+//
+//	GetOpenSearchTechEmailArgs{...}
+type GetOpenSearchTechEmailInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTechEmailOutput() GetOpenSearchTechEmailOutput
+	ToGetOpenSearchTechEmailOutputWithContext(context.Context) GetOpenSearchTechEmailOutput
+}
+
+type GetOpenSearchTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOpenSearchTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (i GetOpenSearchTechEmailArgs) ToGetOpenSearchTechEmailOutput() GetOpenSearchTechEmailOutput {
+	return i.ToGetOpenSearchTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTechEmailArgs) ToGetOpenSearchTechEmailOutputWithContext(ctx context.Context) GetOpenSearchTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTechEmailOutput)
+}
+
+// GetOpenSearchTechEmailArrayInput is an input type that accepts GetOpenSearchTechEmailArray and GetOpenSearchTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchTechEmailArrayInput` via:
+//
+//	GetOpenSearchTechEmailArray{ GetOpenSearchTechEmailArgs{...} }
+type GetOpenSearchTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTechEmailArrayOutput() GetOpenSearchTechEmailArrayOutput
+	ToGetOpenSearchTechEmailArrayOutputWithContext(context.Context) GetOpenSearchTechEmailArrayOutput
+}
+
+type GetOpenSearchTechEmailArray []GetOpenSearchTechEmailInput
+
+func (GetOpenSearchTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (i GetOpenSearchTechEmailArray) ToGetOpenSearchTechEmailArrayOutput() GetOpenSearchTechEmailArrayOutput {
+	return i.ToGetOpenSearchTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTechEmailArray) ToGetOpenSearchTechEmailArrayOutputWithContext(ctx context.Context) GetOpenSearchTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTechEmailArrayOutput)
+}
+
+type GetOpenSearchTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (o GetOpenSearchTechEmailOutput) ToGetOpenSearchTechEmailOutput() GetOpenSearchTechEmailOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailOutput) ToGetOpenSearchTechEmailOutputWithContext(ctx context.Context) GetOpenSearchTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetOpenSearchTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (o GetOpenSearchTechEmailArrayOutput) ToGetOpenSearchTechEmailArrayOutput() GetOpenSearchTechEmailArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailArrayOutput) ToGetOpenSearchTechEmailArrayOutputWithContext(ctx context.Context) GetOpenSearchTechEmailArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailArrayOutput) Index(i pulumi.IntInput) GetOpenSearchTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchTechEmail {
+		return vs[0].([]GetOpenSearchTechEmail)[vs[1].(int)]
+	}).(GetOpenSearchTechEmailOutput)
+}
+
+type GetOrganizationUserListUser struct {
+	// Super admin state of the organization user
+	IsSuperAdmin bool `pulumi:"isSuperAdmin"`
+	// Join time
+	JoinTime string `pulumi:"joinTime"`
+	// Last activity time
+	LastActivityTime string `pulumi:"lastActivityTime"`
+	// User ID
+	UserId    string                                `pulumi:"userId"`
+	UserInfos []GetOrganizationUserListUserUserInfo `pulumi:"userInfos"`
+}
+
+// GetOrganizationUserListUserInput is an input type that accepts GetOrganizationUserListUserArgs and GetOrganizationUserListUserOutput values.
+// You can construct a concrete instance of `GetOrganizationUserListUserInput` via:
+//
+//	GetOrganizationUserListUserArgs{...}
+type GetOrganizationUserListUserInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserListUserOutput() GetOrganizationUserListUserOutput
+	ToGetOrganizationUserListUserOutputWithContext(context.Context) GetOrganizationUserListUserOutput
+}
+
+type GetOrganizationUserListUserArgs struct {
+	// Super admin state of the organization user
+	IsSuperAdmin pulumi.BoolInput `pulumi:"isSuperAdmin"`
+	// Join time
+	JoinTime pulumi.StringInput `pulumi:"joinTime"`
+	// Last activity time
+	LastActivityTime pulumi.StringInput `pulumi:"lastActivityTime"`
+	// User ID
+	UserId    pulumi.StringInput                            `pulumi:"userId"`
+	UserInfos GetOrganizationUserListUserUserInfoArrayInput `pulumi:"userInfos"`
+}
+
+func (GetOrganizationUserListUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserListUser)(nil)).Elem()
+}
+
+func (i GetOrganizationUserListUserArgs) ToGetOrganizationUserListUserOutput() GetOrganizationUserListUserOutput {
+	return i.ToGetOrganizationUserListUserOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserListUserArgs) ToGetOrganizationUserListUserOutputWithContext(ctx context.Context) GetOrganizationUserListUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserListUserOutput)
+}
+
+// GetOrganizationUserListUserArrayInput is an input type that accepts GetOrganizationUserListUserArray and GetOrganizationUserListUserArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationUserListUserArrayInput` via:
+//
+//	GetOrganizationUserListUserArray{ GetOrganizationUserListUserArgs{...} }
+type GetOrganizationUserListUserArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserListUserArrayOutput() GetOrganizationUserListUserArrayOutput
+	ToGetOrganizationUserListUserArrayOutputWithContext(context.Context) GetOrganizationUserListUserArrayOutput
+}
+
+type GetOrganizationUserListUserArray []GetOrganizationUserListUserInput
+
+func (GetOrganizationUserListUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserListUser)(nil)).Elem()
+}
+
+func (i GetOrganizationUserListUserArray) ToGetOrganizationUserListUserArrayOutput() GetOrganizationUserListUserArrayOutput {
+	return i.ToGetOrganizationUserListUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserListUserArray) ToGetOrganizationUserListUserArrayOutputWithContext(ctx context.Context) GetOrganizationUserListUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserListUserArrayOutput)
+}
+
+type GetOrganizationUserListUserOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserListUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserListUser)(nil)).Elem()
+}
+
+func (o GetOrganizationUserListUserOutput) ToGetOrganizationUserListUserOutput() GetOrganizationUserListUserOutput {
+	return o
+}
+
+func (o GetOrganizationUserListUserOutput) ToGetOrganizationUserListUserOutputWithContext(ctx context.Context) GetOrganizationUserListUserOutput {
+	return o
+}
+
+// Super admin state of the organization user
+func (o GetOrganizationUserListUserOutput) IsSuperAdmin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUser) bool { return v.IsSuperAdmin }).(pulumi.BoolOutput)
+}
+
+// Join time
+func (o GetOrganizationUserListUserOutput) JoinTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUser) string { return v.JoinTime }).(pulumi.StringOutput)
+}
+
+// Last activity time
+func (o GetOrganizationUserListUserOutput) LastActivityTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUser) string { return v.LastActivityTime }).(pulumi.StringOutput)
+}
+
+// User ID
+func (o GetOrganizationUserListUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUser) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+func (o GetOrganizationUserListUserOutput) UserInfos() GetOrganizationUserListUserUserInfoArrayOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUser) []GetOrganizationUserListUserUserInfo { return v.UserInfos }).(GetOrganizationUserListUserUserInfoArrayOutput)
+}
+
+type GetOrganizationUserListUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserListUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserListUser)(nil)).Elem()
+}
+
+func (o GetOrganizationUserListUserArrayOutput) ToGetOrganizationUserListUserArrayOutput() GetOrganizationUserListUserArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserListUserArrayOutput) ToGetOrganizationUserListUserArrayOutputWithContext(ctx context.Context) GetOrganizationUserListUserArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserListUserArrayOutput) Index(i pulumi.IntInput) GetOrganizationUserListUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationUserListUser {
+		return vs[0].([]GetOrganizationUserListUser)[vs[1].(int)]
+	}).(GetOrganizationUserListUserOutput)
+}
+
+type GetOrganizationUserListUserUserInfo struct {
+	// City
+	City string `pulumi:"city"`
+	// Country
+	Country string `pulumi:"country"`
+	// Creation time
+	CreateTime string `pulumi:"createTime"`
+	// Department
+	Department string `pulumi:"department"`
+	// Is Application User
+	IsApplicationUser bool `pulumi:"isApplicationUser"`
+	// Job Title
+	JobTitle string `pulumi:"jobTitle"`
+	// Managed By Scim
+	ManagedByScim bool `pulumi:"managedByScim"`
+	// Managing Organization ID
+	ManagingOrganizationId string `pulumi:"managingOrganizationId"`
+	// Real Name
+	RealName string `pulumi:"realName"`
+	// State
+	State string `pulumi:"state"`
+	// User Email
+	UserEmail string `pulumi:"userEmail"`
+}
+
+// GetOrganizationUserListUserUserInfoInput is an input type that accepts GetOrganizationUserListUserUserInfoArgs and GetOrganizationUserListUserUserInfoOutput values.
+// You can construct a concrete instance of `GetOrganizationUserListUserUserInfoInput` via:
+//
+//	GetOrganizationUserListUserUserInfoArgs{...}
+type GetOrganizationUserListUserUserInfoInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserListUserUserInfoOutput() GetOrganizationUserListUserUserInfoOutput
+	ToGetOrganizationUserListUserUserInfoOutputWithContext(context.Context) GetOrganizationUserListUserUserInfoOutput
+}
+
+type GetOrganizationUserListUserUserInfoArgs struct {
+	// City
+	City pulumi.StringInput `pulumi:"city"`
+	// Country
+	Country pulumi.StringInput `pulumi:"country"`
+	// Creation time
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Department
+	Department pulumi.StringInput `pulumi:"department"`
+	// Is Application User
+	IsApplicationUser pulumi.BoolInput `pulumi:"isApplicationUser"`
+	// Job Title
+	JobTitle pulumi.StringInput `pulumi:"jobTitle"`
+	// Managed By Scim
+	ManagedByScim pulumi.BoolInput `pulumi:"managedByScim"`
+	// Managing Organization ID
+	ManagingOrganizationId pulumi.StringInput `pulumi:"managingOrganizationId"`
+	// Real Name
+	RealName pulumi.StringInput `pulumi:"realName"`
+	// State
+	State pulumi.StringInput `pulumi:"state"`
+	// User Email
+	UserEmail pulumi.StringInput `pulumi:"userEmail"`
+}
+
+func (GetOrganizationUserListUserUserInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserListUserUserInfo)(nil)).Elem()
+}
+
+func (i GetOrganizationUserListUserUserInfoArgs) ToGetOrganizationUserListUserUserInfoOutput() GetOrganizationUserListUserUserInfoOutput {
+	return i.ToGetOrganizationUserListUserUserInfoOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserListUserUserInfoArgs) ToGetOrganizationUserListUserUserInfoOutputWithContext(ctx context.Context) GetOrganizationUserListUserUserInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserListUserUserInfoOutput)
+}
+
+// GetOrganizationUserListUserUserInfoArrayInput is an input type that accepts GetOrganizationUserListUserUserInfoArray and GetOrganizationUserListUserUserInfoArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationUserListUserUserInfoArrayInput` via:
+//
+//	GetOrganizationUserListUserUserInfoArray{ GetOrganizationUserListUserUserInfoArgs{...} }
+type GetOrganizationUserListUserUserInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserListUserUserInfoArrayOutput() GetOrganizationUserListUserUserInfoArrayOutput
+	ToGetOrganizationUserListUserUserInfoArrayOutputWithContext(context.Context) GetOrganizationUserListUserUserInfoArrayOutput
+}
+
+type GetOrganizationUserListUserUserInfoArray []GetOrganizationUserListUserUserInfoInput
+
+func (GetOrganizationUserListUserUserInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserListUserUserInfo)(nil)).Elem()
+}
+
+func (i GetOrganizationUserListUserUserInfoArray) ToGetOrganizationUserListUserUserInfoArrayOutput() GetOrganizationUserListUserUserInfoArrayOutput {
+	return i.ToGetOrganizationUserListUserUserInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserListUserUserInfoArray) ToGetOrganizationUserListUserUserInfoArrayOutputWithContext(ctx context.Context) GetOrganizationUserListUserUserInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserListUserUserInfoArrayOutput)
+}
+
+type GetOrganizationUserListUserUserInfoOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserListUserUserInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserListUserUserInfo)(nil)).Elem()
+}
+
+func (o GetOrganizationUserListUserUserInfoOutput) ToGetOrganizationUserListUserUserInfoOutput() GetOrganizationUserListUserUserInfoOutput {
+	return o
+}
+
+func (o GetOrganizationUserListUserUserInfoOutput) ToGetOrganizationUserListUserUserInfoOutputWithContext(ctx context.Context) GetOrganizationUserListUserUserInfoOutput {
+	return o
+}
+
+// City
+func (o GetOrganizationUserListUserUserInfoOutput) City() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.City }).(pulumi.StringOutput)
+}
+
+// Country
+func (o GetOrganizationUserListUserUserInfoOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Creation time
+func (o GetOrganizationUserListUserUserInfoOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Department
+func (o GetOrganizationUserListUserUserInfoOutput) Department() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.Department }).(pulumi.StringOutput)
+}
+
+// Is Application User
+func (o GetOrganizationUserListUserUserInfoOutput) IsApplicationUser() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) bool { return v.IsApplicationUser }).(pulumi.BoolOutput)
+}
+
+// Job Title
+func (o GetOrganizationUserListUserUserInfoOutput) JobTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.JobTitle }).(pulumi.StringOutput)
+}
+
+// Managed By Scim
+func (o GetOrganizationUserListUserUserInfoOutput) ManagedByScim() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) bool { return v.ManagedByScim }).(pulumi.BoolOutput)
+}
+
+// Managing Organization ID
+func (o GetOrganizationUserListUserUserInfoOutput) ManagingOrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.ManagingOrganizationId }).(pulumi.StringOutput)
+}
+
+// Real Name
+func (o GetOrganizationUserListUserUserInfoOutput) RealName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.RealName }).(pulumi.StringOutput)
+}
+
+// State
+func (o GetOrganizationUserListUserUserInfoOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.State }).(pulumi.StringOutput)
+}
+
+// User Email
+func (o GetOrganizationUserListUserUserInfoOutput) UserEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.UserEmail }).(pulumi.StringOutput)
+}
+
+type GetOrganizationUserListUserUserInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserListUserUserInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationUserListUserUserInfo)(nil)).Elem()
+}
+
+func (o GetOrganizationUserListUserUserInfoArrayOutput) ToGetOrganizationUserListUserUserInfoArrayOutput() GetOrganizationUserListUserUserInfoArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserListUserUserInfoArrayOutput) ToGetOrganizationUserListUserUserInfoArrayOutputWithContext(ctx context.Context) GetOrganizationUserListUserUserInfoArrayOutput {
+	return o
+}
+
+func (o GetOrganizationUserListUserUserInfoArrayOutput) Index(i pulumi.IntInput) GetOrganizationUserListUserUserInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationUserListUserUserInfo {
+		return vs[0].([]GetOrganizationUserListUserUserInfo)[vs[1].(int)]
+	}).(GetOrganizationUserListUserUserInfoOutput)
+}
+
+type GetPgComponent struct {
+	// Service component name
+	Component string `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host string `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port int `pulumi:"port"`
+	// Network access route
+	Route string `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl bool `pulumi:"ssl"`
+	// DNS usage name
+	Usage string `pulumi:"usage"`
+}
+
+// GetPgComponentInput is an input type that accepts GetPgComponentArgs and GetPgComponentOutput values.
+// You can construct a concrete instance of `GetPgComponentInput` via:
+//
+//	GetPgComponentArgs{...}
+type GetPgComponentInput interface {
+	pulumi.Input
+
+	ToGetPgComponentOutput() GetPgComponentOutput
+	ToGetPgComponentOutputWithContext(context.Context) GetPgComponentOutput
+}
+
+type GetPgComponentArgs struct {
+	// Service component name
+	Component pulumi.StringInput `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri pulumi.StringInput `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host pulumi.StringInput `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port pulumi.IntInput `pulumi:"port"`
+	// Network access route
+	Route pulumi.StringInput `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl pulumi.BoolInput `pulumi:"ssl"`
+	// DNS usage name
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetPgComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgComponent)(nil)).Elem()
+}
+
+func (i GetPgComponentArgs) ToGetPgComponentOutput() GetPgComponentOutput {
+	return i.ToGetPgComponentOutputWithContext(context.Background())
+}
+
+func (i GetPgComponentArgs) ToGetPgComponentOutputWithContext(ctx context.Context) GetPgComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgComponentOutput)
+}
+
+// GetPgComponentArrayInput is an input type that accepts GetPgComponentArray and GetPgComponentArrayOutput values.
+// You can construct a concrete instance of `GetPgComponentArrayInput` via:
+//
+//	GetPgComponentArray{ GetPgComponentArgs{...} }
+type GetPgComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetPgComponentArrayOutput() GetPgComponentArrayOutput
+	ToGetPgComponentArrayOutputWithContext(context.Context) GetPgComponentArrayOutput
+}
+
+type GetPgComponentArray []GetPgComponentInput
+
+func (GetPgComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgComponent)(nil)).Elem()
+}
+
+func (i GetPgComponentArray) ToGetPgComponentArrayOutput() GetPgComponentArrayOutput {
+	return i.ToGetPgComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetPgComponentArray) ToGetPgComponentArrayOutputWithContext(ctx context.Context) GetPgComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgComponentArrayOutput)
+}
+
+type GetPgComponentOutput struct{ *pulumi.OutputState }
+
+func (GetPgComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgComponent)(nil)).Elem()
+}
+
+func (o GetPgComponentOutput) ToGetPgComponentOutput() GetPgComponentOutput {
+	return o
+}
+
+func (o GetPgComponentOutput) ToGetPgComponentOutputWithContext(ctx context.Context) GetPgComponentOutput {
+	return o
+}
+
+// Service component name
+func (o GetPgComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+// Connection info for connecting to the service component. This is a combination of host and port.
+func (o GetPgComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// Host name for connecting to the service component
+func (o GetPgComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Kafka authentication method. This is a value specific to the 'kafka' service component
+func (o GetPgComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Port number for connecting to the service component
+func (o GetPgComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPgComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Network access route
+func (o GetPgComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+func (o GetPgComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPgComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+// DNS usage name
+func (o GetPgComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetPgComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPgComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgComponent)(nil)).Elem()
+}
+
+func (o GetPgComponentArrayOutput) ToGetPgComponentArrayOutput() GetPgComponentArrayOutput {
+	return o
+}
+
+func (o GetPgComponentArrayOutput) ToGetPgComponentArrayOutputWithContext(ctx context.Context) GetPgComponentArrayOutput {
+	return o
+}
+
+func (o GetPgComponentArrayOutput) Index(i pulumi.IntInput) GetPgComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPgComponent {
+		return vs[0].([]GetPgComponent)[vs[1].(int)]
+	}).(GetPgComponentOutput)
+}
+
+type GetPgPg struct {
+	// PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+	//
+	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
+	Bouncer string `pulumi:"bouncer"`
+	// Primary PostgreSQL database name.
+	Dbname string `pulumi:"dbname"`
+	// PostgreSQL primary node host IP or name.
+	Host string `pulumi:"host"`
+	// The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
+	MaxConnections int `pulumi:"maxConnections"`
+	// PostgreSQL connection parameters.
+	Params []GetPgPgParam `pulumi:"params"`
+	// PostgreSQL admin user password.
+	Password string `pulumi:"password"`
+	// PostgreSQL port.
+	Port int `pulumi:"port"`
+	// PostgreSQL replica URI for services with a replica.
+	ReplicaUri string `pulumi:"replicaUri"`
+	// PostgreSQL SSL mode setting.
+	Sslmode string `pulumi:"sslmode"`
+	// PostgreSQL standby connection URIs.
+	StandbyUris []string `pulumi:"standbyUris"`
+	// PostgreSQL syncing connection URIs.
+	SyncingUris []string `pulumi:"syncingUris"`
+	// PostgreSQL primary connection URI.
+	Uri string `pulumi:"uri"`
+	// PostgreSQL primary connection URIs.
+	Uris []string `pulumi:"uris"`
+	// PostgreSQL admin user name.
+	User string `pulumi:"user"`
+}
+
+// GetPgPgInput is an input type that accepts GetPgPgArgs and GetPgPgOutput values.
+// You can construct a concrete instance of `GetPgPgInput` via:
+//
+//	GetPgPgArgs{...}
+type GetPgPgInput interface {
+	pulumi.Input
+
+	ToGetPgPgOutput() GetPgPgOutput
+	ToGetPgPgOutputWithContext(context.Context) GetPgPgOutput
+}
+
+type GetPgPgArgs struct {
+	// PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+	//
+	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
+	Bouncer pulumi.StringInput `pulumi:"bouncer"`
+	// Primary PostgreSQL database name.
+	Dbname pulumi.StringInput `pulumi:"dbname"`
+	// PostgreSQL primary node host IP or name.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
+	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
+	// PostgreSQL connection parameters.
+	Params GetPgPgParamArrayInput `pulumi:"params"`
+	// PostgreSQL admin user password.
+	Password pulumi.StringInput `pulumi:"password"`
+	// PostgreSQL port.
+	Port pulumi.IntInput `pulumi:"port"`
+	// PostgreSQL replica URI for services with a replica.
+	ReplicaUri pulumi.StringInput `pulumi:"replicaUri"`
+	// PostgreSQL SSL mode setting.
+	Sslmode pulumi.StringInput `pulumi:"sslmode"`
+	// PostgreSQL standby connection URIs.
+	StandbyUris pulumi.StringArrayInput `pulumi:"standbyUris"`
+	// PostgreSQL syncing connection URIs.
+	SyncingUris pulumi.StringArrayInput `pulumi:"syncingUris"`
+	// PostgreSQL primary connection URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// PostgreSQL primary connection URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+	// PostgreSQL admin user name.
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (GetPgPgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPg)(nil)).Elem()
+}
+
+func (i GetPgPgArgs) ToGetPgPgOutput() GetPgPgOutput {
+	return i.ToGetPgPgOutputWithContext(context.Background())
+}
+
+func (i GetPgPgArgs) ToGetPgPgOutputWithContext(ctx context.Context) GetPgPgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgOutput)
+}
+
+// GetPgPgArrayInput is an input type that accepts GetPgPgArray and GetPgPgArrayOutput values.
+// You can construct a concrete instance of `GetPgPgArrayInput` via:
+//
+//	GetPgPgArray{ GetPgPgArgs{...} }
+type GetPgPgArrayInput interface {
+	pulumi.Input
+
+	ToGetPgPgArrayOutput() GetPgPgArrayOutput
+	ToGetPgPgArrayOutputWithContext(context.Context) GetPgPgArrayOutput
+}
+
+type GetPgPgArray []GetPgPgInput
+
+func (GetPgPgArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgPg)(nil)).Elem()
+}
+
+func (i GetPgPgArray) ToGetPgPgArrayOutput() GetPgPgArrayOutput {
+	return i.ToGetPgPgArrayOutputWithContext(context.Background())
+}
+
+func (i GetPgPgArray) ToGetPgPgArrayOutputWithContext(ctx context.Context) GetPgPgArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgArrayOutput)
+}
+
+type GetPgPgOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPg)(nil)).Elem()
+}
+
+func (o GetPgPgOutput) ToGetPgPgOutput() GetPgPgOutput {
+	return o
+}
+
+func (o GetPgPgOutput) ToGetPgPgOutputWithContext(ctx context.Context) GetPgPgOutput {
+	return o
+}
+
+// PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+//
+// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
+func (o GetPgPgOutput) Bouncer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPg) string { return v.Bouncer }).(pulumi.StringOutput)
+}
+
+// Primary PostgreSQL database name.
+func (o GetPgPgOutput) Dbname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPg) string { return v.Dbname }).(pulumi.StringOutput)
+}
+
+// PostgreSQL primary node host IP or name.
+func (o GetPgPgOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPg) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
+func (o GetPgPgOutput) MaxConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPgPg) int { return v.MaxConnections }).(pulumi.IntOutput)
+}
+
+// PostgreSQL connection parameters.
+func (o GetPgPgOutput) Params() GetPgPgParamArrayOutput {
+	return o.ApplyT(func(v GetPgPg) []GetPgPgParam { return v.Params }).(GetPgPgParamArrayOutput)
+}
+
+// PostgreSQL admin user password.
+func (o GetPgPgOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPg) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// PostgreSQL port.
+func (o GetPgPgOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPgPg) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// PostgreSQL replica URI for services with a replica.
+func (o GetPgPgOutput) ReplicaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPg) string { return v.ReplicaUri }).(pulumi.StringOutput)
+}
+
+// PostgreSQL SSL mode setting.
+func (o GetPgPgOutput) Sslmode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPg) string { return v.Sslmode }).(pulumi.StringOutput)
+}
+
+// PostgreSQL standby connection URIs.
+func (o GetPgPgOutput) StandbyUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPgPg) []string { return v.StandbyUris }).(pulumi.StringArrayOutput)
+}
+
+// PostgreSQL syncing connection URIs.
+func (o GetPgPgOutput) SyncingUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPgPg) []string { return v.SyncingUris }).(pulumi.StringArrayOutput)
+}
+
+// PostgreSQL primary connection URI.
+func (o GetPgPgOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPg) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// PostgreSQL primary connection URIs.
+func (o GetPgPgOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPgPg) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+// PostgreSQL admin user name.
+func (o GetPgPgOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPg) string { return v.User }).(pulumi.StringOutput)
+}
+
+type GetPgPgArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgPg)(nil)).Elem()
+}
+
+func (o GetPgPgArrayOutput) ToGetPgPgArrayOutput() GetPgPgArrayOutput {
+	return o
+}
+
+func (o GetPgPgArrayOutput) ToGetPgPgArrayOutputWithContext(ctx context.Context) GetPgPgArrayOutput {
+	return o
+}
+
+func (o GetPgPgArrayOutput) Index(i pulumi.IntInput) GetPgPgOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPgPg {
+		return vs[0].([]GetPgPg)[vs[1].(int)]
+	}).(GetPgPgOutput)
+}
+
+type GetPgPgParam struct {
+	// Primary PostgreSQL database name.
+	DatabaseName string `pulumi:"databaseName"`
+	// PostgreSQL host IP or name.
+	Host string `pulumi:"host"`
+	// PostgreSQL admin user password.
+	Password string `pulumi:"password"`
+	// PostgreSQL port.
+	Port int `pulumi:"port"`
+	// PostgreSQL SSL mode setting.
+	Sslmode string `pulumi:"sslmode"`
+	// PostgreSQL admin user name.
+	User string `pulumi:"user"`
+}
+
+// GetPgPgParamInput is an input type that accepts GetPgPgParamArgs and GetPgPgParamOutput values.
+// You can construct a concrete instance of `GetPgPgParamInput` via:
+//
+//	GetPgPgParamArgs{...}
+type GetPgPgParamInput interface {
+	pulumi.Input
+
+	ToGetPgPgParamOutput() GetPgPgParamOutput
+	ToGetPgPgParamOutputWithContext(context.Context) GetPgPgParamOutput
+}
+
+type GetPgPgParamArgs struct {
+	// Primary PostgreSQL database name.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// PostgreSQL host IP or name.
+	Host pulumi.StringInput `pulumi:"host"`
+	// PostgreSQL admin user password.
+	Password pulumi.StringInput `pulumi:"password"`
+	// PostgreSQL port.
+	Port pulumi.IntInput `pulumi:"port"`
+	// PostgreSQL SSL mode setting.
+	Sslmode pulumi.StringInput `pulumi:"sslmode"`
+	// PostgreSQL admin user name.
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (GetPgPgParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgParam)(nil)).Elem()
+}
+
+func (i GetPgPgParamArgs) ToGetPgPgParamOutput() GetPgPgParamOutput {
+	return i.ToGetPgPgParamOutputWithContext(context.Background())
+}
+
+func (i GetPgPgParamArgs) ToGetPgPgParamOutputWithContext(ctx context.Context) GetPgPgParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgParamOutput)
+}
+
+// GetPgPgParamArrayInput is an input type that accepts GetPgPgParamArray and GetPgPgParamArrayOutput values.
+// You can construct a concrete instance of `GetPgPgParamArrayInput` via:
+//
+//	GetPgPgParamArray{ GetPgPgParamArgs{...} }
+type GetPgPgParamArrayInput interface {
+	pulumi.Input
+
+	ToGetPgPgParamArrayOutput() GetPgPgParamArrayOutput
+	ToGetPgPgParamArrayOutputWithContext(context.Context) GetPgPgParamArrayOutput
+}
+
+type GetPgPgParamArray []GetPgPgParamInput
+
+func (GetPgPgParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgPgParam)(nil)).Elem()
+}
+
+func (i GetPgPgParamArray) ToGetPgPgParamArrayOutput() GetPgPgParamArrayOutput {
+	return i.ToGetPgPgParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetPgPgParamArray) ToGetPgPgParamArrayOutputWithContext(ctx context.Context) GetPgPgParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgParamArrayOutput)
+}
+
+type GetPgPgParamOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgParam)(nil)).Elem()
+}
+
+func (o GetPgPgParamOutput) ToGetPgPgParamOutput() GetPgPgParamOutput {
+	return o
+}
+
+func (o GetPgPgParamOutput) ToGetPgPgParamOutputWithContext(ctx context.Context) GetPgPgParamOutput {
+	return o
+}
+
+// Primary PostgreSQL database name.
+func (o GetPgPgParamOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPgParam) string { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+// PostgreSQL host IP or name.
+func (o GetPgPgParamOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPgParam) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// PostgreSQL admin user password.
+func (o GetPgPgParamOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPgParam) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// PostgreSQL port.
+func (o GetPgPgParamOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPgPgParam) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// PostgreSQL SSL mode setting.
+func (o GetPgPgParamOutput) Sslmode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPgParam) string { return v.Sslmode }).(pulumi.StringOutput)
+}
+
+// PostgreSQL admin user name.
+func (o GetPgPgParamOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPgParam) string { return v.User }).(pulumi.StringOutput)
+}
+
+type GetPgPgParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgPgParam)(nil)).Elem()
+}
+
+func (o GetPgPgParamArrayOutput) ToGetPgPgParamArrayOutput() GetPgPgParamArrayOutput {
+	return o
+}
+
+func (o GetPgPgParamArrayOutput) ToGetPgPgParamArrayOutputWithContext(ctx context.Context) GetPgPgParamArrayOutput {
+	return o
+}
+
+func (o GetPgPgParamArrayOutput) Index(i pulumi.IntInput) GetPgPgParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPgPgParam {
+		return vs[0].([]GetPgPgParam)[vs[1].(int)]
+	}).(GetPgPgParamOutput)
+}
+
 type GetPgPgUserConfig struct {
 	// Additional Cloud Regions for Backup Replication.
 	//
@@ -7506,6 +9282,8 @@ type GetServiceIntegrationEndpointDatadogUserConfig struct {
 	DatadogTags []GetServiceIntegrationEndpointDatadogUserConfigDatadogTag `pulumi:"datadogTags"`
 	// Disable consumer group metrics.
 	DisableConsumerStats *bool `pulumi:"disableConsumerStats"`
+	// Extra tags prefix. Defaults to aiven.
+	ExtraTagsPrefix *string `pulumi:"extraTagsPrefix"`
 	// Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
 	KafkaConsumerCheckInstances *int `pulumi:"kafkaConsumerCheckInstances"`
 	// Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
@@ -7534,6 +9312,8 @@ type GetServiceIntegrationEndpointDatadogUserConfigArgs struct {
 	DatadogTags GetServiceIntegrationEndpointDatadogUserConfigDatadogTagArrayInput `pulumi:"datadogTags"`
 	// Disable consumer group metrics.
 	DisableConsumerStats pulumi.BoolPtrInput `pulumi:"disableConsumerStats"`
+	// Extra tags prefix. Defaults to aiven.
+	ExtraTagsPrefix pulumi.StringPtrInput `pulumi:"extraTagsPrefix"`
 	// Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
 	KafkaConsumerCheckInstances pulumi.IntPtrInput `pulumi:"kafkaConsumerCheckInstances"`
 	// Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
@@ -7610,6 +9390,11 @@ func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) DatadogTags() GetS
 // Disable consumer group metrics.
 func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) DisableConsumerStats() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *bool { return v.DisableConsumerStats }).(pulumi.BoolPtrOutput)
+}
+
+// Extra tags prefix. Defaults to aiven.
+func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) ExtraTagsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *string { return v.ExtraTagsPrefix }).(pulumi.StringPtrOutput)
 }
 
 // Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
@@ -13486,7 +15271,7 @@ func (o GetThanosThanoArrayOutput) Index(i pulumi.IntInput) GetThanosThanoOutput
 }
 
 type GetThanosThanosUserConfig struct {
-	// ThanosCompactor
+	// Configuration options for Thanos Compactor
 	Compactor *GetThanosThanosUserConfigCompactor `pulumi:"compactor"`
 	// Environmental variables.
 	//
@@ -13502,23 +15287,27 @@ type GetThanosThanosUserConfig struct {
 	IpFilters []string `pulumi:"ipFilters"`
 	// After exceeding the limit a service alert is going to be raised (0 means not set).
 	ObjectStorageUsageAlertThresholdGb *int `pulumi:"objectStorageUsageAlertThresholdGb"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetThanosThanosUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *GetThanosThanosUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess *GetThanosThanosUserConfigPublicAccess `pulumi:"publicAccess"`
-	// ThanosQuery
+	// Configuration options for Thanos Query
 	Query *GetThanosThanosUserConfigQuery `pulumi:"query"`
-	// ThanosQueryFrontend
+	// Configuration options for Thanos Query Frontend
 	QueryFrontend *GetThanosThanosUserConfigQueryFrontend `pulumi:"queryFrontend"`
-	// CommonReceive.
+	// Common configuration options for Thanos Receive.
 	ReceiverIngesting map[string]string `pulumi:"receiverIngesting"`
-	// ThanosReceiveRouting.
+	// Configuration options for Thanos Receive Routing.
 	ReceiverRouting map[string]string `pulumi:"receiverRouting"`
-	// ThanosRuler.
+	// Configuration options for Thanos Ruler.
 	Ruler map[string]string `pulumi:"ruler"`
 	// Store logs for the service so that they are available in the HTTP API and console.
 	ServiceLog *bool `pulumi:"serviceLog"`
 	// Use static public IP addresses.
 	StaticIps *bool `pulumi:"staticIps"`
-	// ThanosStore.
+	// Configuration options for Thanos Store.
 	Store map[string]string `pulumi:"store"`
 }
 
@@ -13534,7 +15323,7 @@ type GetThanosThanosUserConfigInput interface {
 }
 
 type GetThanosThanosUserConfigArgs struct {
-	// ThanosCompactor
+	// Configuration options for Thanos Compactor
 	Compactor GetThanosThanosUserConfigCompactorPtrInput `pulumi:"compactor"`
 	// Environmental variables.
 	//
@@ -13550,23 +15339,27 @@ type GetThanosThanosUserConfigArgs struct {
 	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
 	// After exceeding the limit a service alert is going to be raised (0 means not set).
 	ObjectStorageUsageAlertThresholdGb pulumi.IntPtrInput `pulumi:"objectStorageUsageAlertThresholdGb"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetThanosThanosUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess GetThanosThanosUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
 	// Allow access to selected service ports from the public Internet
 	PublicAccess GetThanosThanosUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
-	// ThanosQuery
+	// Configuration options for Thanos Query
 	Query GetThanosThanosUserConfigQueryPtrInput `pulumi:"query"`
-	// ThanosQueryFrontend
+	// Configuration options for Thanos Query Frontend
 	QueryFrontend GetThanosThanosUserConfigQueryFrontendPtrInput `pulumi:"queryFrontend"`
-	// CommonReceive.
+	// Common configuration options for Thanos Receive.
 	ReceiverIngesting pulumi.StringMapInput `pulumi:"receiverIngesting"`
-	// ThanosReceiveRouting.
+	// Configuration options for Thanos Receive Routing.
 	ReceiverRouting pulumi.StringMapInput `pulumi:"receiverRouting"`
-	// ThanosRuler.
+	// Configuration options for Thanos Ruler.
 	Ruler pulumi.StringMapInput `pulumi:"ruler"`
 	// Store logs for the service so that they are available in the HTTP API and console.
 	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Use static public IP addresses.
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
-	// ThanosStore.
+	// Configuration options for Thanos Store.
 	Store pulumi.StringMapInput `pulumi:"store"`
 }
 
@@ -13621,7 +15414,7 @@ func (o GetThanosThanosUserConfigOutput) ToGetThanosThanosUserConfigOutputWithCo
 	return o
 }
 
-// ThanosCompactor
+// Configuration options for Thanos Compactor
 func (o GetThanosThanosUserConfigOutput) Compactor() GetThanosThanosUserConfigCompactorPtrOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigCompactor { return v.Compactor }).(GetThanosThanosUserConfigCompactorPtrOutput)
 }
@@ -13655,32 +15448,44 @@ func (o GetThanosThanosUserConfigOutput) ObjectStorageUsageAlertThresholdGb() pu
 	return o.ApplyT(func(v GetThanosThanosUserConfig) *int { return v.ObjectStorageUsageAlertThresholdGb }).(pulumi.IntPtrOutput)
 }
 
+// Allow access to selected service ports from private networks
+func (o GetThanosThanosUserConfigOutput) PrivateAccess() GetThanosThanosUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigPrivateAccess { return v.PrivateAccess }).(GetThanosThanosUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink
+func (o GetThanosThanosUserConfigOutput) PrivatelinkAccess() GetThanosThanosUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigPrivatelinkAccess {
+		return v.PrivatelinkAccess
+	}).(GetThanosThanosUserConfigPrivatelinkAccessPtrOutput)
+}
+
 // Allow access to selected service ports from the public Internet
 func (o GetThanosThanosUserConfigOutput) PublicAccess() GetThanosThanosUserConfigPublicAccessPtrOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigPublicAccess { return v.PublicAccess }).(GetThanosThanosUserConfigPublicAccessPtrOutput)
 }
 
-// ThanosQuery
+// Configuration options for Thanos Query
 func (o GetThanosThanosUserConfigOutput) Query() GetThanosThanosUserConfigQueryPtrOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigQuery { return v.Query }).(GetThanosThanosUserConfigQueryPtrOutput)
 }
 
-// ThanosQueryFrontend
+// Configuration options for Thanos Query Frontend
 func (o GetThanosThanosUserConfigOutput) QueryFrontend() GetThanosThanosUserConfigQueryFrontendPtrOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) *GetThanosThanosUserConfigQueryFrontend { return v.QueryFrontend }).(GetThanosThanosUserConfigQueryFrontendPtrOutput)
 }
 
-// CommonReceive.
+// Common configuration options for Thanos Receive.
 func (o GetThanosThanosUserConfigOutput) ReceiverIngesting() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) map[string]string { return v.ReceiverIngesting }).(pulumi.StringMapOutput)
 }
 
-// ThanosReceiveRouting.
+// Configuration options for Thanos Receive Routing.
 func (o GetThanosThanosUserConfigOutput) ReceiverRouting() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) map[string]string { return v.ReceiverRouting }).(pulumi.StringMapOutput)
 }
 
-// ThanosRuler.
+// Configuration options for Thanos Ruler.
 func (o GetThanosThanosUserConfigOutput) Ruler() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) map[string]string { return v.Ruler }).(pulumi.StringMapOutput)
 }
@@ -13695,7 +15500,7 @@ func (o GetThanosThanosUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
 }
 
-// ThanosStore.
+// Configuration options for Thanos Store.
 func (o GetThanosThanosUserConfigOutput) Store() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetThanosThanosUserConfig) map[string]string { return v.Store }).(pulumi.StringMapOutput)
 }
@@ -13961,6 +15766,318 @@ func (o GetThanosThanosUserConfigIpFilterObjectArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetThanosThanosUserConfigIpFilterObject {
 		return vs[0].([]GetThanosThanosUserConfigIpFilterObject)[vs[1].(int)]
 	}).(GetThanosThanosUserConfigIpFilterObjectOutput)
+}
+
+type GetThanosThanosUserConfigPrivateAccess struct {
+	// Allow clients to connect to queryFrontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	QueryFrontend *bool `pulumi:"queryFrontend"`
+	// Allow clients to connect to receiverRouting with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	ReceiverRouting *bool `pulumi:"receiverRouting"`
+}
+
+// GetThanosThanosUserConfigPrivateAccessInput is an input type that accepts GetThanosThanosUserConfigPrivateAccessArgs and GetThanosThanosUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigPrivateAccessInput` via:
+//
+//	GetThanosThanosUserConfigPrivateAccessArgs{...}
+type GetThanosThanosUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigPrivateAccessOutput() GetThanosThanosUserConfigPrivateAccessOutput
+	ToGetThanosThanosUserConfigPrivateAccessOutputWithContext(context.Context) GetThanosThanosUserConfigPrivateAccessOutput
+}
+
+type GetThanosThanosUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to queryFrontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	QueryFrontend pulumi.BoolPtrInput `pulumi:"queryFrontend"`
+	// Allow clients to connect to receiverRouting with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	ReceiverRouting pulumi.BoolPtrInput `pulumi:"receiverRouting"`
+}
+
+func (GetThanosThanosUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigPrivateAccessArgs) ToGetThanosThanosUserConfigPrivateAccessOutput() GetThanosThanosUserConfigPrivateAccessOutput {
+	return i.ToGetThanosThanosUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigPrivateAccessArgs) ToGetThanosThanosUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigPrivateAccessOutput)
+}
+
+func (i GetThanosThanosUserConfigPrivateAccessArgs) ToGetThanosThanosUserConfigPrivateAccessPtrOutput() GetThanosThanosUserConfigPrivateAccessPtrOutput {
+	return i.ToGetThanosThanosUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigPrivateAccessArgs) ToGetThanosThanosUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigPrivateAccessOutput).ToGetThanosThanosUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// GetThanosThanosUserConfigPrivateAccessPtrInput is an input type that accepts GetThanosThanosUserConfigPrivateAccessArgs, GetThanosThanosUserConfigPrivateAccessPtr and GetThanosThanosUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigPrivateAccessPtrInput` via:
+//
+//	        GetThanosThanosUserConfigPrivateAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetThanosThanosUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigPrivateAccessPtrOutput() GetThanosThanosUserConfigPrivateAccessPtrOutput
+	ToGetThanosThanosUserConfigPrivateAccessPtrOutputWithContext(context.Context) GetThanosThanosUserConfigPrivateAccessPtrOutput
+}
+
+type getThanosThanosUserConfigPrivateAccessPtrType GetThanosThanosUserConfigPrivateAccessArgs
+
+func GetThanosThanosUserConfigPrivateAccessPtr(v *GetThanosThanosUserConfigPrivateAccessArgs) GetThanosThanosUserConfigPrivateAccessPtrInput {
+	return (*getThanosThanosUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*getThanosThanosUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *getThanosThanosUserConfigPrivateAccessPtrType) ToGetThanosThanosUserConfigPrivateAccessPtrOutput() GetThanosThanosUserConfigPrivateAccessPtrOutput {
+	return i.ToGetThanosThanosUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getThanosThanosUserConfigPrivateAccessPtrType) ToGetThanosThanosUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigPrivateAccessPtrOutput)
+}
+
+type GetThanosThanosUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigPrivateAccessOutput) ToGetThanosThanosUserConfigPrivateAccessOutput() GetThanosThanosUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPrivateAccessOutput) ToGetThanosThanosUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPrivateAccessOutput) ToGetThanosThanosUserConfigPrivateAccessPtrOutput() GetThanosThanosUserConfigPrivateAccessPtrOutput {
+	return o.ToGetThanosThanosUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetThanosThanosUserConfigPrivateAccessOutput) ToGetThanosThanosUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivateAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetThanosThanosUserConfigPrivateAccess) *GetThanosThanosUserConfigPrivateAccess {
+		return &v
+	}).(GetThanosThanosUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow clients to connect to queryFrontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetThanosThanosUserConfigPrivateAccessOutput) QueryFrontend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPrivateAccess) *bool { return v.QueryFrontend }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to receiverRouting with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetThanosThanosUserConfigPrivateAccessOutput) ReceiverRouting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPrivateAccess) *bool { return v.ReceiverRouting }).(pulumi.BoolPtrOutput)
+}
+
+type GetThanosThanosUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigPrivateAccessPtrOutput) ToGetThanosThanosUserConfigPrivateAccessPtrOutput() GetThanosThanosUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPrivateAccessPtrOutput) ToGetThanosThanosUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPrivateAccessPtrOutput) Elem() GetThanosThanosUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPrivateAccess) GetThanosThanosUserConfigPrivateAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetThanosThanosUserConfigPrivateAccess
+		return ret
+	}).(GetThanosThanosUserConfigPrivateAccessOutput)
+}
+
+// Allow clients to connect to queryFrontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetThanosThanosUserConfigPrivateAccessPtrOutput) QueryFrontend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFrontend
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to receiverRouting with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetThanosThanosUserConfigPrivateAccessPtrOutput) ReceiverRouting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReceiverRouting
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetThanosThanosUserConfigPrivatelinkAccess struct {
+	// Enable query_frontend.
+	QueryFrontend *bool `pulumi:"queryFrontend"`
+	// Enable receiver_routing.
+	ReceiverRouting *bool `pulumi:"receiverRouting"`
+}
+
+// GetThanosThanosUserConfigPrivatelinkAccessInput is an input type that accepts GetThanosThanosUserConfigPrivatelinkAccessArgs and GetThanosThanosUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigPrivatelinkAccessInput` via:
+//
+//	GetThanosThanosUserConfigPrivatelinkAccessArgs{...}
+type GetThanosThanosUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigPrivatelinkAccessOutput() GetThanosThanosUserConfigPrivatelinkAccessOutput
+	ToGetThanosThanosUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetThanosThanosUserConfigPrivatelinkAccessOutput
+}
+
+type GetThanosThanosUserConfigPrivatelinkAccessArgs struct {
+	// Enable query_frontend.
+	QueryFrontend pulumi.BoolPtrInput `pulumi:"queryFrontend"`
+	// Enable receiver_routing.
+	ReceiverRouting pulumi.BoolPtrInput `pulumi:"receiverRouting"`
+}
+
+func (GetThanosThanosUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetThanosThanosUserConfigPrivatelinkAccessArgs) ToGetThanosThanosUserConfigPrivatelinkAccessOutput() GetThanosThanosUserConfigPrivatelinkAccessOutput {
+	return i.ToGetThanosThanosUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigPrivatelinkAccessArgs) ToGetThanosThanosUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetThanosThanosUserConfigPrivatelinkAccessArgs) ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutput() GetThanosThanosUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetThanosThanosUserConfigPrivatelinkAccessArgs) ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigPrivatelinkAccessOutput).ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetThanosThanosUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetThanosThanosUserConfigPrivatelinkAccessArgs, GetThanosThanosUserConfigPrivatelinkAccessPtr and GetThanosThanosUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetThanosThanosUserConfigPrivatelinkAccessPtrInput` via:
+//
+//	        GetThanosThanosUserConfigPrivatelinkAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetThanosThanosUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutput() GetThanosThanosUserConfigPrivatelinkAccessPtrOutput
+	ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetThanosThanosUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getThanosThanosUserConfigPrivatelinkAccessPtrType GetThanosThanosUserConfigPrivatelinkAccessArgs
+
+func GetThanosThanosUserConfigPrivatelinkAccessPtr(v *GetThanosThanosUserConfigPrivatelinkAccessArgs) GetThanosThanosUserConfigPrivatelinkAccessPtrInput {
+	return (*getThanosThanosUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getThanosThanosUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getThanosThanosUserConfigPrivatelinkAccessPtrType) ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutput() GetThanosThanosUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getThanosThanosUserConfigPrivatelinkAccessPtrType) ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetThanosThanosUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetThanosThanosUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetThanosThanosUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigPrivatelinkAccessOutput) ToGetThanosThanosUserConfigPrivatelinkAccessOutput() GetThanosThanosUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPrivatelinkAccessOutput) ToGetThanosThanosUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPrivatelinkAccessOutput) ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutput() GetThanosThanosUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetThanosThanosUserConfigPrivatelinkAccessOutput) ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetThanosThanosUserConfigPrivatelinkAccess) *GetThanosThanosUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetThanosThanosUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Enable query_frontend.
+func (o GetThanosThanosUserConfigPrivatelinkAccessOutput) QueryFrontend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPrivatelinkAccess) *bool { return v.QueryFrontend }).(pulumi.BoolPtrOutput)
+}
+
+// Enable receiver_routing.
+func (o GetThanosThanosUserConfigPrivatelinkAccessOutput) ReceiverRouting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetThanosThanosUserConfigPrivatelinkAccess) *bool { return v.ReceiverRouting }).(pulumi.BoolPtrOutput)
+}
+
+type GetThanosThanosUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetThanosThanosUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetThanosThanosUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetThanosThanosUserConfigPrivatelinkAccessPtrOutput) ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutput() GetThanosThanosUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPrivatelinkAccessPtrOutput) ToGetThanosThanosUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetThanosThanosUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetThanosThanosUserConfigPrivatelinkAccessPtrOutput) Elem() GetThanosThanosUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPrivatelinkAccess) GetThanosThanosUserConfigPrivatelinkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetThanosThanosUserConfigPrivatelinkAccess
+		return ret
+	}).(GetThanosThanosUserConfigPrivatelinkAccessOutput)
+}
+
+// Enable query_frontend.
+func (o GetThanosThanosUserConfigPrivatelinkAccessPtrOutput) QueryFrontend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFrontend
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable receiver_routing.
+func (o GetThanosThanosUserConfigPrivatelinkAccessPtrOutput) ReceiverRouting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetThanosThanosUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReceiverRouting
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetThanosThanosUserConfigPublicAccess struct {
@@ -16370,6 +18487,26 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigS3MigrationInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigS3MigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigS3MigrationPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigS3MigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigSamlInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigSamlPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchServiceIntegrationInput)(nil)).Elem(), GetOpenSearchServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchServiceIntegrationArrayInput)(nil)).Elem(), GetOpenSearchServiceIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTagInput)(nil)).Elem(), GetOpenSearchTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTagArrayInput)(nil)).Elem(), GetOpenSearchTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailInput)(nil)).Elem(), GetOpenSearchTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailArrayInput)(nil)).Elem(), GetOpenSearchTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserInput)(nil)).Elem(), GetOrganizationUserListUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserArrayInput)(nil)).Elem(), GetOrganizationUserListUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserUserInfoInput)(nil)).Elem(), GetOrganizationUserListUserUserInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserUserInfoArrayInput)(nil)).Elem(), GetOrganizationUserListUserUserInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgComponentInput)(nil)).Elem(), GetPgComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgComponentArrayInput)(nil)).Elem(), GetPgComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgInput)(nil)).Elem(), GetPgPgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgArrayInput)(nil)).Elem(), GetPgPgArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgParamInput)(nil)).Elem(), GetPgPgParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgParamArrayInput)(nil)).Elem(), GetPgPgParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigInput)(nil)).Elem(), GetPgPgUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigArrayInput)(nil)).Elem(), GetPgPgUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigIpFilterObjectInput)(nil)).Elem(), GetPgPgUserConfigIpFilterObjectArgs{})
@@ -16538,6 +18675,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigCompactorPtrInput)(nil)).Elem(), GetThanosThanosUserConfigCompactorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigIpFilterObjectInput)(nil)).Elem(), GetThanosThanosUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetThanosThanosUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigPrivateAccessInput)(nil)).Elem(), GetThanosThanosUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigPrivateAccessPtrInput)(nil)).Elem(), GetThanosThanosUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigPrivatelinkAccessInput)(nil)).Elem(), GetThanosThanosUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetThanosThanosUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigPublicAccessInput)(nil)).Elem(), GetThanosThanosUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigPublicAccessPtrInput)(nil)).Elem(), GetThanosThanosUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryInput)(nil)).Elem(), GetThanosThanosUserConfigQueryArgs{})
@@ -16566,6 +18707,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigS3MigrationOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigSamlOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigSamlPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTagOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTagArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTechEmailOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserListUserOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserListUserArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserListUserUserInfoOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserListUserUserInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetPgComponentOutput{})
+	pulumi.RegisterOutputType(GetPgComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetPgPgOutput{})
+	pulumi.RegisterOutputType(GetPgPgArrayOutput{})
+	pulumi.RegisterOutputType(GetPgPgParamOutput{})
+	pulumi.RegisterOutputType(GetPgPgParamArrayOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigIpFilterObjectOutput{})
@@ -16734,6 +18895,10 @@ func init() {
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigCompactorPtrOutput{})
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetThanosThanosUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryOutput{})

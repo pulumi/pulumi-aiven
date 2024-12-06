@@ -10,13 +10,83 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
+    /// Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example user with read-only access for analytics
+    ///     var readAnalytics = new Aiven.ValkeyUser("read_analytics", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleValkey.ServiceName,
+    ///         Username = "example-analytics-reader",
+    ///         Password = valkeyUserPw,
+    ///         ValkeyAclCategories = new[]
+    ///         {
+    ///             "+@read",
+    ///         },
+    ///         ValkeyAclCommands = new[]
+    ///         {
+    ///             "+get",
+    ///             "+set",
+    ///             "+mget",
+    ///             "+hget",
+    ///             "+zrange",
+    ///         },
+    ///         ValkeyAclKeys = new[]
+    ///         {
+    ///             "analytics:*",
+    ///         },
+    ///     });
+    /// 
+    ///     // Example user with restricted write access for session management
+    ///     var manageSessions = new Aiven.ValkeyUser("manage_sessions", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleValkey.ServiceName,
+    ///         Username = "example-session-manager",
+    ///         Password = valkeyUserPw,
+    ///         ValkeyAclCategories = new[]
+    ///         {
+    ///             "+@write",
+    ///             "+@keyspace",
+    ///         },
+    ///         ValkeyAclCommands = new[]
+    ///         {
+    ///             "+set",
+    ///             "+del",
+    ///             "+expire",
+    ///             "-flushall",
+    ///             "-flushdb",
+    ///         },
+    ///         ValkeyAclKeys = new[]
+    ///         {
+    ///             "session:*",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/valkeyUser:ValkeyUser")]
     public partial class ValkeyUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The password of the Valkey User.
+        /// The Valkey service user's password.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -34,37 +104,37 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("valkeyAclCategories")]
         public Output<ImmutableArray<string>> ValkeyAclCategories { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+        /// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("valkeyAclChannels")]
         public Output<ImmutableArray<string>> ValkeyAclChannels { get; private set; } = null!;
 
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("valkeyAclCommands")]
         public Output<ImmutableArray<string>> ValkeyAclCommands { get; private set; } = null!;
 
         /// <summary>
-        /// Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("valkeyAclKeys")]
         public Output<ImmutableArray<string>> ValkeyAclKeys { get; private set; } = null!;
@@ -123,7 +193,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the Valkey User.
+        /// The Valkey service user's password.
         /// </summary>
         public Input<string>? Password
         {
@@ -148,7 +218,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -157,7 +227,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclCategories;
 
         /// <summary>
-        /// Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclCategories
         {
@@ -169,7 +239,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclChannels;
 
         /// <summary>
-        /// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+        /// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclChannels
         {
@@ -181,7 +251,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclCommands;
 
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclCommands
         {
@@ -193,7 +263,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclKeys;
 
         /// <summary>
-        /// Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclKeys
         {
@@ -213,7 +283,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the Valkey User.
+        /// The Valkey service user's password.
         /// </summary>
         public Input<string>? Password
         {
@@ -238,13 +308,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -253,7 +323,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclCategories;
 
         /// <summary>
-        /// Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclCategories
         {
@@ -265,7 +335,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclChannels;
 
         /// <summary>
-        /// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+        /// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclChannels
         {
@@ -277,7 +347,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclCommands;
 
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclCommands
         {
@@ -289,7 +359,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _valkeyAclKeys;
 
         /// <summary>
-        /// Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ValkeyAclKeys
         {

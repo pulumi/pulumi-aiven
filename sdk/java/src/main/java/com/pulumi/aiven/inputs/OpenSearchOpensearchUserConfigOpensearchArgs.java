@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -516,6 +517,13 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         return Optional.ofNullable(this.searchBackpressure);
     }
 
+    @Import(name="searchInsightsTopQueries")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs> searchInsightsTopQueries;
+
+    public Optional<Output<OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs>> searchInsightsTopQueries() {
+        return Optional.ofNullable(this.searchInsightsTopQueries);
+    }
+
     /**
      * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
@@ -747,6 +755,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.reindexRemoteWhitelists = $.reindexRemoteWhitelists;
         this.scriptMaxCompilationsRate = $.scriptMaxCompilationsRate;
         this.searchBackpressure = $.searchBackpressure;
+        this.searchInsightsTopQueries = $.searchInsightsTopQueries;
         this.searchMaxBuckets = $.searchMaxBuckets;
         this.shardIndexingPressure = $.shardIndexingPressure;
         this.threadPoolAnalyzeQueueSize = $.threadPoolAnalyzeQueueSize;
@@ -1481,6 +1490,15 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder searchBackpressure(OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs searchBackpressure) {
             return searchBackpressure(Output.of(searchBackpressure));
+        }
+
+        public Builder searchInsightsTopQueries(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs> searchInsightsTopQueries) {
+            $.searchInsightsTopQueries = searchInsightsTopQueries;
+            return this;
+        }
+
+        public Builder searchInsightsTopQueries(OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs searchInsightsTopQueries) {
+            return searchInsightsTopQueries(Output.of(searchInsightsTopQueries));
         }
 
         /**

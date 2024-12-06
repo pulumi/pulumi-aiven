@@ -19,14 +19,14 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderArgs extends 
     public static final KafkaConnectKafkaConnectUserConfigSecretProviderArgs Empty = new KafkaConnectKafkaConnectUserConfigSecretProviderArgs();
 
     /**
-     * AWS config for Secret Provider
+     * AWS secret provider configuration
      * 
      */
     @Import(name="aws")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs> aws;
 
     /**
-     * @return AWS config for Secret Provider
+     * @return AWS secret provider configuration
      * 
      */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs>> aws() {
@@ -49,14 +49,14 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderArgs extends 
     }
 
     /**
-     * Vault Config for Secret Provider
+     * Vault secret provider configuration
      * 
      */
     @Import(name="vault")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs> vault;
 
     /**
-     * @return Vault Config for Secret Provider
+     * @return Vault secret provider configuration
      * 
      */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs>> vault() {
@@ -90,7 +90,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderArgs extends 
         }
 
         /**
-         * @param aws AWS config for Secret Provider
+         * @param aws AWS secret provider configuration
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderArgs extends 
         }
 
         /**
-         * @param aws AWS config for Secret Provider
+         * @param aws AWS secret provider configuration
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderArgs extends 
         }
 
         /**
-         * @param vault Vault Config for Secret Provider
+         * @param vault Vault secret provider configuration
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderArgs extends 
         }
 
         /**
-         * @param vault Vault Config for Secret Provider
+         * @param vault Vault secret provider configuration
          * 
          * @return builder
          * 

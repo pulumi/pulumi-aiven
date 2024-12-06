@@ -16,20 +16,91 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
+ * Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.ValkeyUser;
+ * import com.pulumi.aiven.ValkeyUserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // Example user with read-only access for analytics
+ *         var readAnalytics = new ValkeyUser("readAnalytics", ValkeyUserArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleValkey.serviceName())
+ *             .username("example-analytics-reader")
+ *             .password(valkeyUserPw)
+ *             .valkeyAclCategories("+}{@literal @}{@code read")
+ *             .valkeyAclCommands(            
+ *                 "+get",
+ *                 "+set",
+ *                 "+mget",
+ *                 "+hget",
+ *                 "+zrange")
+ *             .valkeyAclKeys("analytics:*")
+ *             .build());
+ * 
+ *         // Example user with restricted write access for session management
+ *         var manageSessions = new ValkeyUser("manageSessions", ValkeyUserArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleValkey.serviceName())
+ *             .username("example-session-manager")
+ *             .password(valkeyUserPw)
+ *             .valkeyAclCategories(            
+ *                 "+}{@literal @}{@code write",
+ *                 "+}{@literal @}{@code keyspace")
+ *             .valkeyAclCommands(            
+ *                 "+set",
+ *                 "+del",
+ *                 "+expire",
+ *                 "-flushall",
+ *                 "-flushdb")
+ *             .valkeyAclKeys("session:*")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
+ * ```
  * 
  */
 @ResourceType(type="aiven:index/valkeyUser:ValkeyUser")
 public class ValkeyUser extends com.pulumi.resources.CustomResource {
     /**
-     * The password of the Valkey User.
+     * The Valkey service user&#39;s password.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the Valkey User.
+     * @return The Valkey service user&#39;s password.
      * 
      */
     public Output<String> password() {
@@ -64,84 +135,84 @@ public class ValkeyUser extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
         return this.username;
     }
     /**
-     * Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="valkeyAclCategories", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclCategories;
 
     /**
-     * @return Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclCategories() {
         return Codegen.optional(this.valkeyAclCategories);
     }
     /**
-     * Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+     * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="valkeyAclChannels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclChannels;
 
     /**
-     * @return Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+     * @return Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclChannels() {
         return Codegen.optional(this.valkeyAclChannels);
     }
     /**
-     * Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="valkeyAclCommands", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclCommands;
 
     /**
-     * @return Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclCommands() {
         return Codegen.optional(this.valkeyAclCommands);
     }
     /**
-     * Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="valkeyAclKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> valkeyAclKeys;
 
     /**
-     * @return Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<String>>> valkeyAclKeys() {

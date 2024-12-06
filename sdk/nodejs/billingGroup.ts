@@ -110,7 +110,7 @@ export class BillingGroup extends pulumi.CustomResource {
      */
     public readonly parentId!: pulumi.Output<string | undefined>;
     /**
-     * State or province.
+     * Address state.
      */
     public readonly state!: pulumi.Output<string | undefined>;
     /**
@@ -228,7 +228,7 @@ export interface BillingGroupState {
      */
     parentId?: pulumi.Input<string>;
     /**
-     * State or province.
+     * Address state.
      */
     state?: pulumi.Input<string>;
     /**
@@ -296,7 +296,7 @@ export interface BillingGroupArgs {
      */
     parentId?: pulumi.Input<string>;
     /**
-     * State or province.
+     * Address state.
      */
     state?: pulumi.Input<string>;
     /**

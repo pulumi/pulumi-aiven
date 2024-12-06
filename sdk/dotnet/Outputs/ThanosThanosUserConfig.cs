@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ThanosThanosUserConfig
     {
         /// <summary>
-        /// ThanosCompactor
+        /// Configuration options for Thanos Compactor
         /// </summary>
         public readonly Outputs.ThanosThanosUserConfigCompactor? Compactor;
         /// <summary>
@@ -38,27 +38,35 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ObjectStorageUsageAlertThresholdGb;
         /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
+        public readonly Outputs.ThanosThanosUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        public readonly Outputs.ThanosThanosUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.ThanosThanosUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// ThanosQuery
+        /// Configuration options for Thanos Query
         /// </summary>
         public readonly Outputs.ThanosThanosUserConfigQuery? Query;
         /// <summary>
-        /// ThanosQueryFrontend
+        /// Configuration options for Thanos Query Frontend
         /// </summary>
         public readonly Outputs.ThanosThanosUserConfigQueryFrontend? QueryFrontend;
         /// <summary>
-        /// CommonReceive.
+        /// Common configuration options for Thanos Receive.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ReceiverIngesting;
         /// <summary>
-        /// ThanosReceiveRouting.
+        /// Configuration options for Thanos Receive Routing.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ReceiverRouting;
         /// <summary>
-        /// ThanosRuler.
+        /// Configuration options for Thanos Ruler.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Ruler;
         /// <summary>
@@ -70,7 +78,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? StaticIps;
         /// <summary>
-        /// ThanosStore.
+        /// Configuration options for Thanos Store.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Store;
 
@@ -87,6 +95,10 @@ namespace Pulumi.Aiven.Outputs
             ImmutableArray<string> ipFilters,
 
             int? objectStorageUsageAlertThresholdGb,
+
+            Outputs.ThanosThanosUserConfigPrivateAccess? privateAccess,
+
+            Outputs.ThanosThanosUserConfigPrivatelinkAccess? privatelinkAccess,
 
             Outputs.ThanosThanosUserConfigPublicAccess? publicAccess,
 
@@ -112,6 +124,8 @@ namespace Pulumi.Aiven.Outputs
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             ObjectStorageUsageAlertThresholdGb = objectStorageUsageAlertThresholdGb;
+            PrivateAccess = privateAccess;
+            PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
             Query = query;
             QueryFrontend = queryFrontend;

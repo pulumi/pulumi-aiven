@@ -245,14 +245,14 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parentId);
     }
     /**
-     * State or province.
+     * Address state.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
-     * @return State or province.
+     * @return Address state.
      * 
      */
     public Output<Optional<String>> state() {

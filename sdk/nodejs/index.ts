@@ -540,6 +540,11 @@ export type KafkaMirrorMaker = import("./kafkaMirrorMaker").KafkaMirrorMaker;
 export const KafkaMirrorMaker: typeof import("./kafkaMirrorMaker").KafkaMirrorMaker = null as any;
 utilities.lazyLoad(exports, ["KafkaMirrorMaker"], () => require("./kafkaMirrorMaker"));
 
+export { KafkaNativeAclArgs, KafkaNativeAclState } from "./kafkaNativeAcl";
+export type KafkaNativeAcl = import("./kafkaNativeAcl").KafkaNativeAcl;
+export const KafkaNativeAcl: typeof import("./kafkaNativeAcl").KafkaNativeAcl = null as any;
+utilities.lazyLoad(exports, ["KafkaNativeAcl"], () => require("./kafkaNativeAcl"));
+
 export { KafkaSchemaArgs, KafkaSchemaState } from "./kafkaSchema";
 export type KafkaSchema = import("./kafkaSchema").KafkaSchema;
 export const KafkaSchema: typeof import("./kafkaSchema").KafkaSchema = null as any;
@@ -836,6 +841,8 @@ const _module = {
                 return new KafkaConnector(name, <any>undefined, { urn })
             case "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker":
                 return new KafkaMirrorMaker(name, <any>undefined, { urn })
+            case "aiven:index/kafkaNativeAcl:KafkaNativeAcl":
+                return new KafkaNativeAcl(name, <any>undefined, { urn })
             case "aiven:index/kafkaSchema:KafkaSchema":
                 return new KafkaSchema(name, <any>undefined, { urn })
             case "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration":
@@ -959,6 +966,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/kafkaAcl", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnect", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnector", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaMirrorMaker", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/kafkaNativeAcl", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchema", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchemaConfiguration", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchemaRegistryAcl", _module)

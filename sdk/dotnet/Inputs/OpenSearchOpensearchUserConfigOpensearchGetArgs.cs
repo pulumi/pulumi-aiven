@@ -226,6 +226,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("searchBackpressure")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureGetArgs>? SearchBackpressure { get; set; }
 
+        [Input("searchInsightsTopQueries")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesGetArgs>? SearchInsightsTopQueries { get; set; }
+
         /// <summary>
         /// Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
         /// </summary>

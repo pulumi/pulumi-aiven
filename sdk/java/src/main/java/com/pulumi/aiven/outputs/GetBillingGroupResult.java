@@ -82,7 +82,7 @@ public final class GetBillingGroupResult {
      */
     private String parentId;
     /**
-     * @return State or province.
+     * @return Address state.
      * 
      */
     private String state;
@@ -197,7 +197,7 @@ public final class GetBillingGroupResult {
         return this.parentId;
     }
     /**
-     * @return State or province.
+     * @return Address state.
      * 
      */
     public String state() {

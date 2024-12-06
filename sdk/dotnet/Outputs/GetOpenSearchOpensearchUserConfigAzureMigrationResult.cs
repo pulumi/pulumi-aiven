@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigAzureMigrationResult
     {
         /// <summary>
-        /// Azure account name.
+        /// Account name.
         /// </summary>
         public readonly string Account;
         /// <summary>

@@ -145,6 +145,7 @@ namespace Pulumi.Aiven.Outputs
         /// Search Backpressure Settings
         /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureResult? SearchBackpressure;
+        public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesResult? SearchInsightsTopQueries;
         /// <summary>
         /// Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
         /// </summary>
@@ -266,6 +267,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureResult? searchBackpressure,
 
+            Outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesResult? searchInsightsTopQueries,
+
             int? searchMaxBuckets,
 
             Outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureResult? shardIndexingPressure,
@@ -325,6 +328,7 @@ namespace Pulumi.Aiven.Outputs
             ReindexRemoteWhitelists = reindexRemoteWhitelists;
             ScriptMaxCompilationsRate = scriptMaxCompilationsRate;
             SearchBackpressure = searchBackpressure;
+            SearchInsightsTopQueries = searchInsightsTopQueries;
             SearchMaxBuckets = searchMaxBuckets;
             ShardIndexingPressure = shardIndexingPressure;
             ThreadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;

@@ -1840,7 +1840,7 @@ export interface KafkaConnectKafkaConnectUserConfigPublicAccess {
 
 export interface KafkaConnectKafkaConnectUserConfigSecretProvider {
     /**
-     * AWS config for Secret Provider
+     * AWS secret provider configuration
      */
     aws?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProviderAws>;
     /**
@@ -1848,7 +1848,7 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProvider {
      */
     name: pulumi.Input<string>;
     /**
-     * Vault Config for Secret Provider
+     * Vault secret provider configuration
      */
     vault?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProviderVault>;
 }
@@ -2359,7 +2359,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
 
 export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
     /**
-     * AWS config for Secret Provider
+     * AWS secret provider configuration
      */
     aws?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws>;
     /**
@@ -2367,7 +2367,7 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     name: pulumi.Input<string>;
     /**
-     * Vault Config for Secret Provider
+     * Vault secret provider configuration
      */
     vault?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault>;
 }
@@ -3995,7 +3995,7 @@ export interface OpenSearchOpensearchUserConfig {
 
 export interface OpenSearchOpensearchUserConfigAzureMigration {
     /**
-     * Azure account name.
+     * Account name.
      */
     account: pulumi.Input<string>;
     /**
@@ -4331,6 +4331,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Search Backpressure Settings
      */
     searchBackpressure?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressure>;
+    searchInsightsTopQueries?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries>;
     /**
      * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      */
@@ -4576,6 +4577,66 @@ export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearc
      * The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
      */
     totalHeapPercentThreshold?: pulumi.Input<number>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries {
+    /**
+     * Top N queries monitoring by CPU
+     */
+    cpu?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu>;
+    /**
+     * Top N queries monitoring by latency
+     */
+    latency?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency>;
+    /**
+     * Top N queries monitoring by memory
+     */
+    memory?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu {
+    /**
+     * Enable or disable top N query monitoring by the metric. Default: `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Specify the value of N for the top N queries by the metric.
+     */
+    topNSize?: pulumi.Input<number>;
+    /**
+     * The window size of the top N queries by the metric.
+     */
+    windowSize?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency {
+    /**
+     * Enable or disable top N query monitoring by the metric. Default: `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Specify the value of N for the top N queries by the metric.
+     */
+    topNSize?: pulumi.Input<number>;
+    /**
+     * The window size of the top N queries by the metric.
+     */
+    windowSize?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory {
+    /**
+     * Enable or disable top N query monitoring by the metric. Default: `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Specify the value of N for the top N queries by the metric.
+     */
+    topNSize?: pulumi.Input<number>;
+    /**
+     * The window size of the top N queries by the metric.
+     */
+    windowSize?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
@@ -6170,6 +6231,10 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     disableConsumerStats?: pulumi.Input<boolean>;
     /**
+     * Extra tags prefix. Defaults to aiven.
+     */
+    extraTagsPrefix?: pulumi.Input<string>;
+    /**
      * Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      */
     kafkaConsumerCheckInstances?: pulumi.Input<number>;
@@ -6987,7 +7052,7 @@ export interface ThanosThanos {
 
 export interface ThanosThanosUserConfig {
     /**
-     * ThanosCompactor
+     * Configuration options for Thanos Compactor
      */
     compactor?: pulumi.Input<inputs.ThanosThanosUserConfigCompactor>;
     /**
@@ -7015,27 +7080,35 @@ export interface ThanosThanosUserConfig {
      */
     objectStorageUsageAlertThresholdGb?: pulumi.Input<number>;
     /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: pulumi.Input<inputs.ThanosThanosUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: pulumi.Input<inputs.ThanosThanosUserConfigPrivatelinkAccess>;
+    /**
      * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.ThanosThanosUserConfigPublicAccess>;
     /**
-     * ThanosQuery
+     * Configuration options for Thanos Query
      */
     query?: pulumi.Input<inputs.ThanosThanosUserConfigQuery>;
     /**
-     * ThanosQueryFrontend
+     * Configuration options for Thanos Query Frontend
      */
     queryFrontend?: pulumi.Input<inputs.ThanosThanosUserConfigQueryFrontend>;
     /**
-     * CommonReceive.
+     * Common configuration options for Thanos Receive.
      */
     receiverIngesting?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ThanosReceiveRouting.
+     * Configuration options for Thanos Receive Routing.
      */
     receiverRouting?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ThanosRuler.
+     * Configuration options for Thanos Ruler.
      */
     ruler?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -7047,7 +7120,7 @@ export interface ThanosThanosUserConfig {
      */
     staticIps?: pulumi.Input<boolean>;
     /**
-     * ThanosStore.
+     * Configuration options for Thanos Store.
      */
     store?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -7068,6 +7141,28 @@ export interface ThanosThanosUserConfigIpFilterObject {
      * CIDR address block. Example: `10.20.0.0/16`.
      */
     network: pulumi.Input<string>;
+}
+
+export interface ThanosThanosUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to queryFrontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    queryFrontend?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to receiverRouting with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    receiverRouting?: pulumi.Input<boolean>;
+}
+
+export interface ThanosThanosUserConfigPrivatelinkAccess {
+    /**
+     * Enable query_frontend.
+     */
+    queryFrontend?: pulumi.Input<boolean>;
+    /**
+     * Enable receiver_routing.
+     */
+    receiverRouting?: pulumi.Input<boolean>;
 }
 
 export interface ThanosThanosUserConfigPublicAccess {

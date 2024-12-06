@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfigAzureMigration {
     /**
-     * @return Azure account name.
+     * @return Account name.
      * 
      */
     private String account;
@@ -76,7 +76,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
 
     private OpenSearchOpensearchUserConfigAzureMigration() {}
     /**
-     * @return Azure account name.
+     * @return Account name.
      * 
      */
     public String account() {
