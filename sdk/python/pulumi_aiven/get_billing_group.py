@@ -273,7 +273,7 @@ def get_billing_group(billing_group_id: Optional[str] = None,
         vat_id=pulumi.get(__ret__, 'vat_id'),
         zip_code=pulumi.get(__ret__, 'zip_code'))
 def get_billing_group_output(billing_group_id: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingGroupResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
     Gets information about a billing group.
 
@@ -282,7 +282,7 @@ def get_billing_group_output(billing_group_id: Optional[pulumi.Input[str]] = Non
     """
     __args__ = dict()
     __args__['billingGroupId'] = billing_group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getBillingGroup:getBillingGroup', __args__, opts=opts, typ=GetBillingGroupResult)
     return __ret__.apply(lambda __response__: GetBillingGroupResult(
         account_id=pulumi.get(__response__, 'account_id'),

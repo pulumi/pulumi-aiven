@@ -104,7 +104,7 @@ export interface GetOpenSearchAclRuleResult {
  * });
  * ```
  */
-export function getOpenSearchAclRuleOutput(args: GetOpenSearchAclRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchAclRuleResult> {
+export function getOpenSearchAclRuleOutput(args: GetOpenSearchAclRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenSearchAclRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", {
         "index": args.index,

@@ -179,7 +179,7 @@ export interface GetValkeyResult {
  * });
  * ```
  */
-export function getValkeyOutput(args: GetValkeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetValkeyResult> {
+export function getValkeyOutput(args: GetValkeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetValkeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getValkey:getValkey", {
         "project": args.project,

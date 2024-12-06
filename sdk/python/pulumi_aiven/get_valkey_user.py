@@ -190,7 +190,7 @@ def get_valkey_user(project: Optional[str] = None,
 def get_valkey_user_output(project: Optional[pulumi.Input[str]] = None,
                            service_name: Optional[pulumi.Input[str]] = None,
                            username: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetValkeyUserResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValkeyUserResult]:
     """
     The Valkey User data source provides information about the existing Aiven for Valkey user.
 
@@ -203,7 +203,7 @@ def get_valkey_user_output(project: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getValkeyUser:getValkeyUser', __args__, opts=opts, typ=GetValkeyUserResult)
     return __ret__.apply(lambda __response__: GetValkeyUserResult(
         id=pulumi.get(__response__, 'id'),

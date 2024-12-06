@@ -149,7 +149,7 @@ def get_m3db_user(project: Optional[str] = None,
 def get_m3db_user_output(project: Optional[pulumi.Input[str]] = None,
                          service_name: Optional[pulumi.Input[str]] = None,
                          username: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetM3dbUserResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetM3dbUserResult]:
     """
     Gets information about an Aiven for M3DB service user.
 
@@ -173,7 +173,7 @@ def get_m3db_user_output(project: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getM3dbUser:getM3dbUser', __args__, opts=opts, typ=GetM3dbUserResult)
     return __ret__.apply(lambda __response__: GetM3dbUserResult(
         id=pulumi.get(__response__, 'id'),

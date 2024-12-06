@@ -188,7 +188,7 @@ def get_pg_user(project: Optional[str] = None,
 def get_pg_user_output(project: Optional[pulumi.Input[str]] = None,
                        service_name: Optional[pulumi.Input[str]] = None,
                        username: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPgUserResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPgUserResult]:
     """
     Gets information about an Aiven for PostgreSQL® service user.
 
@@ -212,7 +212,7 @@ def get_pg_user_output(project: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getPgUser:getPgUser', __args__, opts=opts, typ=GetPgUserResult)
     return __ret__.apply(lambda __response__: GetPgUserResult(
         access_cert=pulumi.get(__response__, 'access_cert'),

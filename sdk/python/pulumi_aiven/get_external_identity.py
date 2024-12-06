@@ -132,7 +132,7 @@ def get_external_identity_output(external_service_name: Optional[pulumi.Input[st
                                  external_user_id: Optional[pulumi.Input[str]] = None,
                                  internal_user_id: Optional[pulumi.Input[str]] = None,
                                  organization_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalIdentityResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalIdentityResult]:
     """
     Maps an external service user to an Aiven user.
 
@@ -150,7 +150,7 @@ def get_external_identity_output(external_service_name: Optional[pulumi.Input[st
     __args__['externalUserId'] = external_user_id
     __args__['internalUserId'] = internal_user_id
     __args__['organizationId'] = organization_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getExternalIdentity:getExternalIdentity', __args__, opts=opts, typ=GetExternalIdentityResult)
     return __ret__.apply(lambda __response__: GetExternalIdentityResult(
         external_service_name=pulumi.get(__response__, 'external_service_name'),

@@ -179,7 +179,7 @@ export interface GetM3AggregatorResult {
  * });
  * ```
  */
-export function getM3AggregatorOutput(args: GetM3AggregatorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3AggregatorResult> {
+export function getM3AggregatorOutput(args: GetM3AggregatorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetM3AggregatorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getM3Aggregator:getM3Aggregator", {
         "project": args.project,

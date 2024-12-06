@@ -104,7 +104,7 @@ export interface GetPgUserResult {
  * });
  * ```
  */
-export function getPgUserOutput(args: GetPgUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgUserResult> {
+export function getPgUserOutput(args: GetPgUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPgUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getPgUser:getPgUser", {
         "project": args.project,

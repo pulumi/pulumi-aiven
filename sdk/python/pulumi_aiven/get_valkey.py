@@ -444,7 +444,7 @@ def get_valkey(project: Optional[str] = None,
         valkeys=pulumi.get(__ret__, 'valkeys'))
 def get_valkey_output(project: Optional[pulumi.Input[str]] = None,
                       service_name: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetValkeyResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValkeyResult]:
     """
     Gets information about an Aiven for Valkey service.
 
@@ -465,7 +465,7 @@ def get_valkey_output(project: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getValkey:getValkey', __args__, opts=opts, typ=GetValkeyResult)
     return __ret__.apply(lambda __response__: GetValkeyResult(
         additional_disk_space=pulumi.get(__response__, 'additional_disk_space'),

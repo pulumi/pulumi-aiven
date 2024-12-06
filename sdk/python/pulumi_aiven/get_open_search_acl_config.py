@@ -131,7 +131,7 @@ def get_open_search_acl_config(project: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_open_search_acl_config_output(project: Optional[pulumi.Input[str]] = None,
                                       service_name: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenSearchAclConfigResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchAclConfigResult]:
     """
     The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
 
@@ -152,7 +152,7 @@ def get_open_search_acl_config_output(project: Optional[pulumi.Input[str]] = Non
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig', __args__, opts=opts, typ=GetOpenSearchAclConfigResult)
     return __ret__.apply(lambda __response__: GetOpenSearchAclConfigResult(
         enabled=pulumi.get(__response__, 'enabled'),

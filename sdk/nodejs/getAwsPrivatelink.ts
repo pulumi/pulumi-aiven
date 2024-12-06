@@ -85,7 +85,7 @@ export interface GetAwsPrivatelinkResult {
  * });
  * ```
  */
-export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsPrivatelinkResult> {
+export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsPrivatelinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getAwsPrivatelink:getAwsPrivatelink", {
         "project": args.project,

@@ -82,7 +82,7 @@ export interface GetValkeyUserResult {
 /**
  * The Valkey User data source provides information about the existing Aiven for Valkey user.
  */
-export function getValkeyUserOutput(args: GetValkeyUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetValkeyUserResult> {
+export function getValkeyUserOutput(args: GetValkeyUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetValkeyUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getValkeyUser:getValkeyUser", {
         "project": args.project,

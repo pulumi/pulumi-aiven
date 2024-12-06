@@ -184,7 +184,7 @@ def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[
                                           aws_vpc_id: Optional[pulumi.Input[str]] = None,
                                           aws_vpc_region: Optional[pulumi.Input[str]] = None,
                                           vpc_id: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsVpcPeeringConnectionResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsVpcPeeringConnectionResult]:
     """
     Gets information about an AWS VPC peering connection.
 
@@ -215,7 +215,7 @@ def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[
     __args__['awsVpcId'] = aws_vpc_id
     __args__['awsVpcRegion'] = aws_vpc_region
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection', __args__, opts=opts, typ=GetAwsVpcPeeringConnectionResult)
     return __ret__.apply(lambda __response__: GetAwsVpcPeeringConnectionResult(
         aws_account_id=pulumi.get(__response__, 'aws_account_id'),

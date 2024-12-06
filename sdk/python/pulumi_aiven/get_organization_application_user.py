@@ -144,7 +144,7 @@ def get_organization_application_user(organization_id: Optional[str] = None,
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_organization_application_user_output(organization_id: Optional[pulumi.Input[str]] = None,
                                              user_id: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationApplicationUserResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationApplicationUserResult]:
     """
     Gets information about an application user.
 
@@ -165,7 +165,7 @@ def get_organization_application_user_output(organization_id: Optional[pulumi.In
     __args__ = dict()
     __args__['organizationId'] = organization_id
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser', __args__, opts=opts, typ=GetOrganizationApplicationUserResult)
     return __ret__.apply(lambda __response__: GetOrganizationApplicationUserResult(
         email=pulumi.get(__response__, 'email'),

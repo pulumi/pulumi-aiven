@@ -178,7 +178,7 @@ def get_account(name: Optional[str] = None,
         tenant_id=pulumi.get(__ret__, 'tenant_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_account_output(name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     The Account data source provides information about the existing Aiven Account.
 
@@ -196,7 +196,7 @@ def get_account_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
     return __ret__.apply(lambda __response__: GetAccountResult(
         account_id=pulumi.get(__response__, 'account_id'),

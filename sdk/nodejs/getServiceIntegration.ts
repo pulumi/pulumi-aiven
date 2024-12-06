@@ -165,7 +165,7 @@ export interface GetServiceIntegrationResult {
  * });
  * ```
  */
-export function getServiceIntegrationOutput(args: GetServiceIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationResult> {
+export function getServiceIntegrationOutput(args: GetServiceIntegrationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceIntegrationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getServiceIntegration:getServiceIntegration", {
         "destinationServiceName": args.destinationServiceName,

@@ -59,7 +59,7 @@ export interface GetInfluxDbResult {
     readonly techEmails: outputs.GetInfluxDbTechEmail[];
     readonly terminationProtection: boolean;
 }
-export function getInfluxDbOutput(args: GetInfluxDbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfluxDbResult> {
+export function getInfluxDbOutput(args: GetInfluxDbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfluxDbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getInfluxDb:getInfluxDb", {
         "project": args.project,
