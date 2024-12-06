@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? DisableConsumerStats;
         /// <summary>
+        /// Extra tags prefix. Defaults to aiven.
+        /// </summary>
+        public readonly string? ExtraTagsPrefix;
+        /// <summary>
         /// Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
         /// </summary>
         public readonly int? KafkaConsumerCheckInstances;
@@ -50,6 +54,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? disableConsumerStats,
 
+            string? extraTagsPrefix,
+
             int? kafkaConsumerCheckInstances,
 
             int? kafkaConsumerStatsTimeout,
@@ -61,6 +67,7 @@ namespace Pulumi.Aiven.Outputs
             DatadogApiKey = datadogApiKey;
             DatadogTags = datadogTags;
             DisableConsumerStats = disableConsumerStats;
+            ExtraTagsPrefix = extraTagsPrefix;
             KafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
             KafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
             MaxPartitionContexts = maxPartitionContexts;

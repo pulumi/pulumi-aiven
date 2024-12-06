@@ -137,6 +137,20 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
         return this.enable;
     }
     /**
+     * Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * 
+     */
+    @Export(name="exactlyOnceDeliveryEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> exactlyOnceDeliveryEnabled;
+
+    /**
+     * @return Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> exactlyOnceDeliveryEnabled() {
+        return Codegen.optional(this.exactlyOnceDeliveryEnabled);
+    }
+    /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      * 
      */

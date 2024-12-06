@@ -17,7 +17,7 @@ public final class GetValkeyUserResult {
      */
     private String id;
     /**
-     * @return The password of the Valkey User.
+     * @return The Valkey service user&#39;s password.
      * 
      */
     private String password;
@@ -32,32 +32,32 @@ public final class GetValkeyUserResult {
      */
     private String serviceName;
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     private String type;
     /**
-     * @return The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
     /**
-     * @return Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> valkeyAclCategories;
     /**
-     * @return Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+     * @return Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> valkeyAclChannels;
     /**
-     * @return Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> valkeyAclCommands;
     /**
-     * @return Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     private List<String> valkeyAclKeys;
@@ -71,7 +71,7 @@ public final class GetValkeyUserResult {
         return this.id;
     }
     /**
-     * @return The password of the Valkey User.
+     * @return The Valkey service user&#39;s password.
      * 
      */
     public String password() {
@@ -92,42 +92,42 @@ public final class GetValkeyUserResult {
         return this.serviceName;
     }
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {
         return this.username;
     }
     /**
-     * @return Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> valkeyAclCategories() {
         return this.valkeyAclCategories;
     }
     /**
-     * @return Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+     * @return Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> valkeyAclChannels() {
         return this.valkeyAclChannels;
     }
     /**
-     * @return Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> valkeyAclCommands() {
         return this.valkeyAclCommands;
     }
     /**
-     * @return Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public List<String> valkeyAclKeys() {

@@ -114,7 +114,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// State or province.
+        /// Address state.
         /// </summary>
         public readonly string State;
         /// <summary>

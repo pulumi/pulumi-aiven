@@ -34,6 +34,11 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     private Boolean enable;
     /**
+     * @return Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * 
+     */
+    private Boolean exactlyOnceDeliveryEnabled;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -122,6 +127,13 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     public Boolean enable() {
         return this.enable;
+    }
+    /**
+     * @return Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * 
+     */
+    public Boolean exactlyOnceDeliveryEnabled() {
+        return this.exactlyOnceDeliveryEnabled;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -221,6 +233,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         private Boolean emitBackwardHeartbeatsEnabled;
         private Boolean emitHeartbeatsEnabled;
         private Boolean enable;
+        private Boolean exactlyOnceDeliveryEnabled;
         private String id;
         private String offsetSyncsTopicLocation;
         private String project;
@@ -240,6 +253,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     	      this.emitBackwardHeartbeatsEnabled = defaults.emitBackwardHeartbeatsEnabled;
     	      this.emitHeartbeatsEnabled = defaults.emitHeartbeatsEnabled;
     	      this.enable = defaults.enable;
+    	      this.exactlyOnceDeliveryEnabled = defaults.exactlyOnceDeliveryEnabled;
     	      this.id = defaults.id;
     	      this.offsetSyncsTopicLocation = defaults.offsetSyncsTopicLocation;
     	      this.project = defaults.project;
@@ -287,6 +301,14 @@ public final class GetMirrorMakerReplicationFlowResult {
               throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "enable");
             }
             this.enable = enable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exactlyOnceDeliveryEnabled(Boolean exactlyOnceDeliveryEnabled) {
+            if (exactlyOnceDeliveryEnabled == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "exactlyOnceDeliveryEnabled");
+            }
+            this.exactlyOnceDeliveryEnabled = exactlyOnceDeliveryEnabled;
             return this;
         }
         @CustomType.Setter
@@ -397,6 +419,7 @@ public final class GetMirrorMakerReplicationFlowResult {
             _resultValue.emitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
             _resultValue.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
             _resultValue.enable = enable;
+            _resultValue.exactlyOnceDeliveryEnabled = exactlyOnceDeliveryEnabled;
             _resultValue.id = id;
             _resultValue.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
             _resultValue.project = project;

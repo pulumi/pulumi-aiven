@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) service.
+    /// Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service.
     /// 
     /// ## Example Usage
     /// 

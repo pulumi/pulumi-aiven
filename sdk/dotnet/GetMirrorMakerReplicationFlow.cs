@@ -152,6 +152,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly bool Enable;
         /// <summary>
+        /// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        /// </summary>
+        public readonly bool ExactlyOnceDeliveryEnabled;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -210,6 +214,8 @@ namespace Pulumi.Aiven
 
             bool enable,
 
+            bool exactlyOnceDeliveryEnabled,
+
             string id,
 
             string offsetSyncsTopicLocation,
@@ -238,6 +244,7 @@ namespace Pulumi.Aiven
             EmitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
             EmitHeartbeatsEnabled = emitHeartbeatsEnabled;
             Enable = enable;
+            ExactlyOnceDeliveryEnabled = exactlyOnceDeliveryEnabled;
             Id = id;
             OffsetSyncsTopicLocation = offsetSyncsTopicLocation;
             Project = project;

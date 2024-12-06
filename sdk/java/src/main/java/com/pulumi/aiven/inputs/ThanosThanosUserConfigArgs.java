@@ -5,6 +5,8 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.ThanosThanosUserConfigCompactorArgs;
 import com.pulumi.aiven.inputs.ThanosThanosUserConfigIpFilterObjectArgs;
+import com.pulumi.aiven.inputs.ThanosThanosUserConfigPrivateAccessArgs;
+import com.pulumi.aiven.inputs.ThanosThanosUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.ThanosThanosUserConfigPublicAccessArgs;
 import com.pulumi.aiven.inputs.ThanosThanosUserConfigQueryArgs;
 import com.pulumi.aiven.inputs.ThanosThanosUserConfigQueryFrontendArgs;
@@ -25,14 +27,14 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     public static final ThanosThanosUserConfigArgs Empty = new ThanosThanosUserConfigArgs();
 
     /**
-     * ThanosCompactor
+     * Configuration options for Thanos Compactor
      * 
      */
     @Import(name="compactor")
     private @Nullable Output<ThanosThanosUserConfigCompactorArgs> compactor;
 
     /**
-     * @return ThanosCompactor
+     * @return Configuration options for Thanos Compactor
      * 
      */
     public Optional<Output<ThanosThanosUserConfigCompactorArgs>> compactor() {
@@ -131,6 +133,36 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Allow access to selected service ports from private networks
+     * 
+     */
+    @Import(name="privateAccess")
+    private @Nullable Output<ThanosThanosUserConfigPrivateAccessArgs> privateAccess;
+
+    /**
+     * @return Allow access to selected service ports from private networks
+     * 
+     */
+    public Optional<Output<ThanosThanosUserConfigPrivateAccessArgs>> privateAccess() {
+        return Optional.ofNullable(this.privateAccess);
+    }
+
+    /**
+     * Allow access to selected service components through Privatelink
+     * 
+     */
+    @Import(name="privatelinkAccess")
+    private @Nullable Output<ThanosThanosUserConfigPrivatelinkAccessArgs> privatelinkAccess;
+
+    /**
+     * @return Allow access to selected service components through Privatelink
+     * 
+     */
+    public Optional<Output<ThanosThanosUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
+        return Optional.ofNullable(this.privatelinkAccess);
+    }
+
+    /**
      * Allow access to selected service ports from the public Internet
      * 
      */
@@ -146,14 +178,14 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * ThanosQuery
+     * Configuration options for Thanos Query
      * 
      */
     @Import(name="query")
     private @Nullable Output<ThanosThanosUserConfigQueryArgs> query;
 
     /**
-     * @return ThanosQuery
+     * @return Configuration options for Thanos Query
      * 
      */
     public Optional<Output<ThanosThanosUserConfigQueryArgs>> query() {
@@ -161,14 +193,14 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * ThanosQueryFrontend
+     * Configuration options for Thanos Query Frontend
      * 
      */
     @Import(name="queryFrontend")
     private @Nullable Output<ThanosThanosUserConfigQueryFrontendArgs> queryFrontend;
 
     /**
-     * @return ThanosQueryFrontend
+     * @return Configuration options for Thanos Query Frontend
      * 
      */
     public Optional<Output<ThanosThanosUserConfigQueryFrontendArgs>> queryFrontend() {
@@ -176,14 +208,14 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * CommonReceive.
+     * Common configuration options for Thanos Receive.
      * 
      */
     @Import(name="receiverIngesting")
     private @Nullable Output<Map<String,String>> receiverIngesting;
 
     /**
-     * @return CommonReceive.
+     * @return Common configuration options for Thanos Receive.
      * 
      */
     public Optional<Output<Map<String,String>>> receiverIngesting() {
@@ -191,14 +223,14 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * ThanosReceiveRouting.
+     * Configuration options for Thanos Receive Routing.
      * 
      */
     @Import(name="receiverRouting")
     private @Nullable Output<Map<String,String>> receiverRouting;
 
     /**
-     * @return ThanosReceiveRouting.
+     * @return Configuration options for Thanos Receive Routing.
      * 
      */
     public Optional<Output<Map<String,String>>> receiverRouting() {
@@ -206,14 +238,14 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * ThanosRuler.
+     * Configuration options for Thanos Ruler.
      * 
      */
     @Import(name="ruler")
     private @Nullable Output<Map<String,String>> ruler;
 
     /**
-     * @return ThanosRuler.
+     * @return Configuration options for Thanos Ruler.
      * 
      */
     public Optional<Output<Map<String,String>>> ruler() {
@@ -251,14 +283,14 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * ThanosStore.
+     * Configuration options for Thanos Store.
      * 
      */
     @Import(name="store")
     private @Nullable Output<Map<String,String>> store;
 
     /**
-     * @return ThanosStore.
+     * @return Configuration options for Thanos Store.
      * 
      */
     public Optional<Output<Map<String,String>>> store() {
@@ -274,6 +306,8 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.objectStorageUsageAlertThresholdGb = $.objectStorageUsageAlertThresholdGb;
+        this.privateAccess = $.privateAccess;
+        this.privatelinkAccess = $.privatelinkAccess;
         this.publicAccess = $.publicAccess;
         this.query = $.query;
         this.queryFrontend = $.queryFrontend;
@@ -304,7 +338,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param compactor ThanosCompactor
+         * @param compactor Configuration options for Thanos Compactor
          * 
          * @return builder
          * 
@@ -315,7 +349,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param compactor ThanosCompactor
+         * @param compactor Configuration options for Thanos Compactor
          * 
          * @return builder
          * 
@@ -480,6 +514,48 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAccess(@Nullable Output<ThanosThanosUserConfigPrivateAccessArgs> privateAccess) {
+            $.privateAccess = privateAccess;
+            return this;
+        }
+
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAccess(ThanosThanosUserConfigPrivateAccessArgs privateAccess) {
+            return privateAccess(Output.of(privateAccess));
+        }
+
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatelinkAccess(@Nullable Output<ThanosThanosUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
+            $.privatelinkAccess = privatelinkAccess;
+            return this;
+        }
+
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privatelinkAccess(ThanosThanosUserConfigPrivatelinkAccessArgs privatelinkAccess) {
+            return privatelinkAccess(Output.of(privatelinkAccess));
+        }
+
+        /**
          * @param publicAccess Allow access to selected service ports from the public Internet
          * 
          * @return builder
@@ -501,7 +577,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param query ThanosQuery
+         * @param query Configuration options for Thanos Query
          * 
          * @return builder
          * 
@@ -512,7 +588,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param query ThanosQuery
+         * @param query Configuration options for Thanos Query
          * 
          * @return builder
          * 
@@ -522,7 +598,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param queryFrontend ThanosQueryFrontend
+         * @param queryFrontend Configuration options for Thanos Query Frontend
          * 
          * @return builder
          * 
@@ -533,7 +609,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param queryFrontend ThanosQueryFrontend
+         * @param queryFrontend Configuration options for Thanos Query Frontend
          * 
          * @return builder
          * 
@@ -543,7 +619,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param receiverIngesting CommonReceive.
+         * @param receiverIngesting Common configuration options for Thanos Receive.
          * 
          * @return builder
          * 
@@ -554,7 +630,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param receiverIngesting CommonReceive.
+         * @param receiverIngesting Common configuration options for Thanos Receive.
          * 
          * @return builder
          * 
@@ -564,7 +640,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param receiverRouting ThanosReceiveRouting.
+         * @param receiverRouting Configuration options for Thanos Receive Routing.
          * 
          * @return builder
          * 
@@ -575,7 +651,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param receiverRouting ThanosReceiveRouting.
+         * @param receiverRouting Configuration options for Thanos Receive Routing.
          * 
          * @return builder
          * 
@@ -585,7 +661,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ruler ThanosRuler.
+         * @param ruler Configuration options for Thanos Ruler.
          * 
          * @return builder
          * 
@@ -596,7 +672,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ruler ThanosRuler.
+         * @param ruler Configuration options for Thanos Ruler.
          * 
          * @return builder
          * 
@@ -648,7 +724,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param store ThanosStore.
+         * @param store Configuration options for Thanos Store.
          * 
          * @return builder
          * 
@@ -659,7 +735,7 @@ public final class ThanosThanosUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param store ThanosStore.
+         * @param store Configuration options for Thanos Store.
          * 
          * @return builder
          * 

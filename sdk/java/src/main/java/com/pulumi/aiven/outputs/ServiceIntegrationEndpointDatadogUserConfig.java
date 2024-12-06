@@ -32,6 +32,11 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
      */
     private @Nullable Boolean disableConsumerStats;
     /**
+     * @return Extra tags prefix. Defaults to aiven.
+     * 
+     */
+    private @Nullable String extraTagsPrefix;
+    /**
      * @return Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      * 
      */
@@ -75,6 +80,13 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         return Optional.ofNullable(this.disableConsumerStats);
     }
     /**
+     * @return Extra tags prefix. Defaults to aiven.
+     * 
+     */
+    public Optional<String> extraTagsPrefix() {
+        return Optional.ofNullable(this.extraTagsPrefix);
+    }
+    /**
      * @return Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      * 
      */
@@ -115,6 +127,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         private String datadogApiKey;
         private @Nullable List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
         private @Nullable Boolean disableConsumerStats;
+        private @Nullable String extraTagsPrefix;
         private @Nullable Integer kafkaConsumerCheckInstances;
         private @Nullable Integer kafkaConsumerStatsTimeout;
         private @Nullable Integer maxPartitionContexts;
@@ -125,6 +138,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
     	      this.datadogApiKey = defaults.datadogApiKey;
     	      this.datadogTags = defaults.datadogTags;
     	      this.disableConsumerStats = defaults.disableConsumerStats;
+    	      this.extraTagsPrefix = defaults.extraTagsPrefix;
     	      this.kafkaConsumerCheckInstances = defaults.kafkaConsumerCheckInstances;
     	      this.kafkaConsumerStatsTimeout = defaults.kafkaConsumerStatsTimeout;
     	      this.maxPartitionContexts = defaults.maxPartitionContexts;
@@ -152,6 +166,12 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         public Builder disableConsumerStats(@Nullable Boolean disableConsumerStats) {
 
             this.disableConsumerStats = disableConsumerStats;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder extraTagsPrefix(@Nullable String extraTagsPrefix) {
+
+            this.extraTagsPrefix = extraTagsPrefix;
             return this;
         }
         @CustomType.Setter
@@ -183,6 +203,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
             _resultValue.datadogApiKey = datadogApiKey;
             _resultValue.datadogTags = datadogTags;
             _resultValue.disableConsumerStats = disableConsumerStats;
+            _resultValue.extraTagsPrefix = extraTagsPrefix;
             _resultValue.kafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
             _resultValue.kafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
             _resultValue.maxPartitionContexts = maxPartitionContexts;

@@ -801,6 +801,10 @@
                     }
                 }
             },
+            "aiven_kafka_native_acl": {
+                "current": "aiven:index/kafkaNativeAcl:KafkaNativeAcl",
+                "majorVersion": 6
+            },
             "aiven_kafka_schema": {
                 "current": "aiven:index/kafkaSchema:KafkaSchema",
                 "majorVersion": 6
@@ -1174,6 +1178,22 @@
                                                             "maxItemsOne": true
                                                         },
                                                         "search_task": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "search_insights_top_queries": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cpu": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "latency": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "memory": {
                                                             "maxItemsOne": true
                                                         }
                                                     }
@@ -1835,6 +1855,12 @@
                                 },
                                 "ip_filter_string": {
                                     "maxItemsOne": false
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
                                 },
                                 "public_access": {
                                     "maxItemsOne": true
@@ -3157,6 +3183,22 @@
                                                     }
                                                 }
                                             },
+                                            "search_insights_top_queries": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cpu": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "latency": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "memory": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "shard_indexing_pressure": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -3797,6 +3839,12 @@
                                 "ip_filter_string": {
                                     "maxItemsOne": false
                                 },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
                                 "public_access": {
                                     "maxItemsOne": true
                                 },
@@ -3962,6 +4010,7 @@
             "aiven:index/kafkaConnect:KafkaConnect": 0,
             "aiven:index/kafkaConnector:KafkaConnector": 0,
             "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker": 0,
+            "aiven:index/kafkaNativeAcl:KafkaNativeAcl": 0,
             "aiven:index/kafkaSchema:KafkaSchema": 0,
             "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration": 0,
             "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": 0,

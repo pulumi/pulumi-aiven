@@ -121,7 +121,7 @@ namespace Pulumi.Aiven
         public Output<string?> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// State or province.
+        /// Address state.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.Aiven
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// State or province.
+        /// Address state.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -379,7 +379,7 @@ namespace Pulumi.Aiven
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// State or province.
+        /// Address state.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

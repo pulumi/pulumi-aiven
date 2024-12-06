@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -182,6 +183,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      * 
      */
     private @Nullable OpenSearchOpensearchUserConfigOpensearchSearchBackpressure searchBackpressure;
+    private @Nullable OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries searchInsightsTopQueries;
     /**
      * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
@@ -480,6 +482,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     public Optional<OpenSearchOpensearchUserConfigOpensearchSearchBackpressure> searchBackpressure() {
         return Optional.ofNullable(this.searchBackpressure);
     }
+    public Optional<OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries> searchInsightsTopQueries() {
+        return Optional.ofNullable(this.searchInsightsTopQueries);
+    }
     /**
      * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
@@ -614,6 +619,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         private @Nullable List<String> reindexRemoteWhitelists;
         private @Nullable String scriptMaxCompilationsRate;
         private @Nullable OpenSearchOpensearchUserConfigOpensearchSearchBackpressure searchBackpressure;
+        private @Nullable OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries searchInsightsTopQueries;
         private @Nullable Integer searchMaxBuckets;
         private @Nullable OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure shardIndexingPressure;
         private @Nullable Integer threadPoolAnalyzeQueueSize;
@@ -663,6 +669,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     	      this.reindexRemoteWhitelists = defaults.reindexRemoteWhitelists;
     	      this.scriptMaxCompilationsRate = defaults.scriptMaxCompilationsRate;
     	      this.searchBackpressure = defaults.searchBackpressure;
+    	      this.searchInsightsTopQueries = defaults.searchInsightsTopQueries;
     	      this.searchMaxBuckets = defaults.searchMaxBuckets;
     	      this.shardIndexingPressure = defaults.shardIndexingPressure;
     	      this.threadPoolAnalyzeQueueSize = defaults.threadPoolAnalyzeQueueSize;
@@ -880,6 +887,12 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder searchInsightsTopQueries(@Nullable OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries searchInsightsTopQueries) {
+
+            this.searchInsightsTopQueries = searchInsightsTopQueries;
+            return this;
+        }
+        @CustomType.Setter
         public Builder searchMaxBuckets(@Nullable Integer searchMaxBuckets) {
 
             this.searchMaxBuckets = searchMaxBuckets;
@@ -992,6 +1005,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             _resultValue.reindexRemoteWhitelists = reindexRemoteWhitelists;
             _resultValue.scriptMaxCompilationsRate = scriptMaxCompilationsRate;
             _resultValue.searchBackpressure = searchBackpressure;
+            _resultValue.searchInsightsTopQueries = searchInsightsTopQueries;
             _resultValue.searchMaxBuckets = searchMaxBuckets;
             _resultValue.shardIndexingPressure = shardIndexingPressure;
             _resultValue.threadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;

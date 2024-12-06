@@ -770,7 +770,7 @@ class Valkey(pulumi.CustomResource):
                  valkey_user_config: Optional[pulumi.Input[Union['ValkeyValkeyUserConfigArgs', 'ValkeyValkeyUserConfigArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) service.
+        Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service.
 
         ## Example Usage
 
@@ -820,7 +820,7 @@ class Valkey(pulumi.CustomResource):
                  args: ValkeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) service.
+        Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service.
 
         ## Example Usage
 

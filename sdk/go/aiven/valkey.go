@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) service.
+// Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service.
 //
 // ## Example Usage
 //

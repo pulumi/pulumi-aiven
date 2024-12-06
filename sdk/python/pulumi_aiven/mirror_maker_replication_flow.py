@@ -29,6 +29,7 @@ class MirrorMakerReplicationFlowArgs:
                  config_properties_excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
+                 exactly_once_delivery_enabled: Optional[pulumi.Input[bool]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  sync_group_offsets_enabled: Optional[pulumi.Input[bool]] = None,
                  sync_group_offsets_interval_seconds: Optional[pulumi.Input[int]] = None,
@@ -46,6 +47,7 @@ class MirrorMakerReplicationFlowArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] config_properties_excludes: List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\\\.replication\\\\.throttled\\\\.replicas", "leader\\\\.replication\\\\.throttled\\\\.replicas", "message\\\\.timestamp\\\\.difference\\\\.max\\\\.ms",  "message\\\\.timestamp\\\\.type"]
         :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
+        :param pulumi.Input[bool] exactly_once_delivery_enabled: Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
         :param pulumi.Input[int] replication_factor: Replication factor, `>= 1`.
         :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
         :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency of consumer group offset sync. The default value is `1`.
@@ -65,6 +67,8 @@ class MirrorMakerReplicationFlowArgs:
             pulumi.set(__self__, "emit_backward_heartbeats_enabled", emit_backward_heartbeats_enabled)
         if emit_heartbeats_enabled is not None:
             pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
+        if exactly_once_delivery_enabled is not None:
+            pulumi.set(__self__, "exactly_once_delivery_enabled", exactly_once_delivery_enabled)
         if replication_factor is not None:
             pulumi.set(__self__, "replication_factor", replication_factor)
         if sync_group_offsets_enabled is not None:
@@ -197,6 +201,18 @@ class MirrorMakerReplicationFlowArgs:
         pulumi.set(self, "emit_heartbeats_enabled", value)
 
     @property
+    @pulumi.getter(name="exactlyOnceDeliveryEnabled")
+    def exactly_once_delivery_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        """
+        return pulumi.get(self, "exactly_once_delivery_enabled")
+
+    @exactly_once_delivery_enabled.setter
+    def exactly_once_delivery_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exactly_once_delivery_enabled", value)
+
+    @property
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> Optional[pulumi.Input[int]]:
         """
@@ -264,6 +280,7 @@ class _MirrorMakerReplicationFlowState:
                  emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
+                 exactly_once_delivery_enabled: Optional[pulumi.Input[bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -281,6 +298,7 @@ class _MirrorMakerReplicationFlowState:
         :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
+        :param pulumi.Input[bool] exactly_once_delivery_enabled: Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
         :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication_factor: Replication factor, `>= 1`.
@@ -301,6 +319,8 @@ class _MirrorMakerReplicationFlowState:
             pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
+        if exactly_once_delivery_enabled is not None:
+            pulumi.set(__self__, "exactly_once_delivery_enabled", exactly_once_delivery_enabled)
         if offset_syncs_topic_location is not None:
             pulumi.set(__self__, "offset_syncs_topic_location", offset_syncs_topic_location)
         if project is not None:
@@ -371,6 +391,18 @@ class _MirrorMakerReplicationFlowState:
     @enable.setter
     def enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="exactlyOnceDeliveryEnabled")
+    def exactly_once_delivery_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        """
+        return pulumi.get(self, "exactly_once_delivery_enabled")
+
+    @exactly_once_delivery_enabled.setter
+    def exactly_once_delivery_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exactly_once_delivery_enabled", value)
 
     @property
     @pulumi.getter(name="offsetSyncsTopicLocation")
@@ -514,6 +546,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
+                 exactly_once_delivery_enabled: Optional[pulumi.Input[bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -569,6 +602,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
+        :param pulumi.Input[bool] exactly_once_delivery_enabled: Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
         :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication_factor: Replication factor, `>= 1`.
@@ -643,6 +677,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
+                 exactly_once_delivery_enabled: Optional[pulumi.Input[bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -669,6 +704,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
             if enable is None and not opts.urn:
                 raise TypeError("Missing required property 'enable'")
             __props__.__dict__["enable"] = enable
+            __props__.__dict__["exactly_once_delivery_enabled"] = exactly_once_delivery_enabled
             if offset_syncs_topic_location is None and not opts.urn:
                 raise TypeError("Missing required property 'offset_syncs_topic_location'")
             __props__.__dict__["offset_syncs_topic_location"] = offset_syncs_topic_location
@@ -706,6 +742,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
             emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
             emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
+            exactly_once_delivery_enabled: Optional[pulumi.Input[bool]] = None,
             offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             replication_factor: Optional[pulumi.Input[int]] = None,
@@ -728,6 +765,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
+        :param pulumi.Input[bool] exactly_once_delivery_enabled: Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
         :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location. The possible values are `source` and `target`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication_factor: Replication factor, `>= 1`.
@@ -748,6 +786,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         __props__.__dict__["emit_backward_heartbeats_enabled"] = emit_backward_heartbeats_enabled
         __props__.__dict__["emit_heartbeats_enabled"] = emit_heartbeats_enabled
         __props__.__dict__["enable"] = enable
+        __props__.__dict__["exactly_once_delivery_enabled"] = exactly_once_delivery_enabled
         __props__.__dict__["offset_syncs_topic_location"] = offset_syncs_topic_location
         __props__.__dict__["project"] = project
         __props__.__dict__["replication_factor"] = replication_factor
@@ -792,6 +831,14 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         Enable of disable replication flows for a service.
         """
         return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="exactlyOnceDeliveryEnabled")
+    def exactly_once_delivery_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        """
+        return pulumi.get(self, "exactly_once_delivery_enabled")
 
     @property
     @pulumi.getter(name="offsetSyncsTopicLocation")

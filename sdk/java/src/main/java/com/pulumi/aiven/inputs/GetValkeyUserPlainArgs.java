@@ -44,14 +44,14 @@ public final class GetValkeyUserPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private String username;
 
     /**
-     * @return The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {
@@ -107,7 +107,7 @@ public final class GetValkeyUserPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param username The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

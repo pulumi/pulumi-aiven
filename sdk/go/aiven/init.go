@@ -93,6 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KafkaConnector{}
 	case "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker":
 		r = &KafkaMirrorMaker{}
+	case "aiven:index/kafkaNativeAcl:KafkaNativeAcl":
+		r = &KafkaNativeAcl{}
 	case "aiven:index/kafkaSchema:KafkaSchema":
 		r = &KafkaSchema{}
 	case "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration":
@@ -384,6 +386,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/kafkaMirrorMaker",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/kafkaNativeAcl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -66,6 +66,21 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
     }
 
     /**
+     * Extra tags prefix. Defaults to aiven.
+     * 
+     */
+    @Import(name="extraTagsPrefix")
+    private @Nullable Output<String> extraTagsPrefix;
+
+    /**
+     * @return Extra tags prefix. Defaults to aiven.
+     * 
+     */
+    public Optional<Output<String>> extraTagsPrefix() {
+        return Optional.ofNullable(this.extraTagsPrefix);
+    }
+
+    /**
      * Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      * 
      */
@@ -131,6 +146,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         this.datadogApiKey = $.datadogApiKey;
         this.datadogTags = $.datadogTags;
         this.disableConsumerStats = $.disableConsumerStats;
+        this.extraTagsPrefix = $.extraTagsPrefix;
         this.kafkaConsumerCheckInstances = $.kafkaConsumerCheckInstances;
         this.kafkaConsumerStatsTimeout = $.kafkaConsumerStatsTimeout;
         this.maxPartitionContexts = $.maxPartitionContexts;
@@ -226,6 +242,27 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
          */
         public Builder disableConsumerStats(Boolean disableConsumerStats) {
             return disableConsumerStats(Output.of(disableConsumerStats));
+        }
+
+        /**
+         * @param extraTagsPrefix Extra tags prefix. Defaults to aiven.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraTagsPrefix(@Nullable Output<String> extraTagsPrefix) {
+            $.extraTagsPrefix = extraTagsPrefix;
+            return this;
+        }
+
+        /**
+         * @param extraTagsPrefix Extra tags prefix. Defaults to aiven.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraTagsPrefix(String extraTagsPrefix) {
+            return extraTagsPrefix(Output.of(extraTagsPrefix));
         }
 
         /**

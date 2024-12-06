@@ -76,6 +76,8 @@ type MirrorMakerReplicationFlow struct {
 	EmitHeartbeatsEnabled pulumi.BoolPtrOutput `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolOutput `pulumi:"enable"`
+	// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+	ExactlyOnceDeliveryEnabled pulumi.BoolPtrOutput `pulumi:"exactlyOnceDeliveryEnabled"`
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringOutput `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -159,6 +161,8 @@ type mirrorMakerReplicationFlowState struct {
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable *bool `pulumi:"enable"`
+	// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+	ExactlyOnceDeliveryEnabled *bool `pulumi:"exactlyOnceDeliveryEnabled"`
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation *string `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -192,6 +196,8 @@ type MirrorMakerReplicationFlowState struct {
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolPtrInput
+	// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+	ExactlyOnceDeliveryEnabled pulumi.BoolPtrInput
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -229,6 +235,8 @@ type mirrorMakerReplicationFlowArgs struct {
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable bool `pulumi:"enable"`
+	// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+	ExactlyOnceDeliveryEnabled *bool `pulumi:"exactlyOnceDeliveryEnabled"`
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation string `pulumi:"offsetSyncsTopicLocation"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -263,6 +271,8 @@ type MirrorMakerReplicationFlowArgs struct {
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolInput
+	// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+	ExactlyOnceDeliveryEnabled pulumi.BoolPtrInput
 	// Offset syncs topic location. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -392,6 +402,11 @@ func (o MirrorMakerReplicationFlowOutput) EmitHeartbeatsEnabled() pulumi.BoolPtr
 // Enable of disable replication flows for a service.
 func (o MirrorMakerReplicationFlowOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+func (o MirrorMakerReplicationFlowOutput) ExactlyOnceDeliveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.ExactlyOnceDeliveryEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Offset syncs topic location. The possible values are `source` and `target`.

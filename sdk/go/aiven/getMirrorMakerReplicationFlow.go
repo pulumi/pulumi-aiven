@@ -73,6 +73,8 @@ type LookupMirrorMakerReplicationFlowResult struct {
 	EmitHeartbeatsEnabled bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable bool `pulumi:"enable"`
+	// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+	ExactlyOnceDeliveryEnabled bool `pulumi:"exactlyOnceDeliveryEnabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Offset syncs topic location. The possible values are `source` and `target`.
@@ -167,6 +169,11 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) EmitHeartbeatsEnabled() pu
 // Enable of disable replication flows for a service.
 func (o LookupMirrorMakerReplicationFlowResultOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+func (o LookupMirrorMakerReplicationFlowResultOutput) ExactlyOnceDeliveryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.ExactlyOnceDeliveryEnabled }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -12,27 +12,100 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
+// Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example user with read-only access for analytics
+//			_, err := aiven.NewValkeyUser(ctx, "read_analytics", &aiven.ValkeyUserArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleValkey.ServiceName),
+//				Username:    pulumi.String("example-analytics-reader"),
+//				Password:    pulumi.Any(valkeyUserPw),
+//				ValkeyAclCategories: pulumi.StringArray{
+//					pulumi.String("+@read"),
+//				},
+//				ValkeyAclCommands: pulumi.StringArray{
+//					pulumi.String("+get"),
+//					pulumi.String("+set"),
+//					pulumi.String("+mget"),
+//					pulumi.String("+hget"),
+//					pulumi.String("+zrange"),
+//				},
+//				ValkeyAclKeys: pulumi.StringArray{
+//					pulumi.String("analytics:*"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example user with restricted write access for session management
+//			_, err = aiven.NewValkeyUser(ctx, "manage_sessions", &aiven.ValkeyUserArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleValkey.ServiceName),
+//				Username:    pulumi.String("example-session-manager"),
+//				Password:    pulumi.Any(valkeyUserPw),
+//				ValkeyAclCategories: pulumi.StringArray{
+//					pulumi.String("+@write"),
+//					pulumi.String("+@keyspace"),
+//				},
+//				ValkeyAclCommands: pulumi.StringArray{
+//					pulumi.String("+set"),
+//					pulumi.String("+del"),
+//					pulumi.String("+expire"),
+//					pulumi.String("-flushall"),
+//					pulumi.String("-flushdb"),
+//				},
+//				ValkeyAclKeys: pulumi.StringArray{
+//					pulumi.String("session:*"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
+// ```
 type ValkeyUser struct {
 	pulumi.CustomResourceState
 
-	// The password of the Valkey User.
+	// The Valkey service user's password.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
-	// Defines command category rules. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCategories pulumi.StringArrayOutput `pulumi:"valkeyAclCategories"`
-	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
 	ValkeyAclChannels pulumi.StringArrayOutput `pulumi:"valkeyAclChannels"`
-	// Defines rules for individual commands. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCommands pulumi.StringArrayOutput `pulumi:"valkeyAclCommands"`
-	// Defines key access rules. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclKeys pulumi.StringArrayOutput `pulumi:"valkeyAclKeys"`
 }
 
@@ -82,44 +155,44 @@ func GetValkeyUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ValkeyUser resources.
 type valkeyUserState struct {
-	// The password of the Valkey User.
+	// The Valkey service user's password.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type *string `pulumi:"type"`
-	// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
-	// Defines command category rules. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCategories []string `pulumi:"valkeyAclCategories"`
-	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
 	ValkeyAclChannels []string `pulumi:"valkeyAclChannels"`
-	// Defines rules for individual commands. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCommands []string `pulumi:"valkeyAclCommands"`
-	// Defines key access rules. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclKeys []string `pulumi:"valkeyAclKeys"`
 }
 
 type ValkeyUserState struct {
-	// The password of the Valkey User.
+	// The Valkey service user's password.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringPtrInput
-	// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
-	// Defines command category rules. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCategories pulumi.StringArrayInput
-	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
 	ValkeyAclChannels pulumi.StringArrayInput
-	// Defines rules for individual commands. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCommands pulumi.StringArrayInput
-	// Defines key access rules. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclKeys pulumi.StringArrayInput
 }
 
@@ -128,41 +201,41 @@ func (ValkeyUserState) ElementType() reflect.Type {
 }
 
 type valkeyUserArgs struct {
-	// The password of the Valkey User.
+	// The Valkey service user's password.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
-	// Defines command category rules. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCategories []string `pulumi:"valkeyAclCategories"`
-	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
 	ValkeyAclChannels []string `pulumi:"valkeyAclChannels"`
-	// Defines rules for individual commands. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCommands []string `pulumi:"valkeyAclCommands"`
-	// Defines key access rules. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclKeys []string `pulumi:"valkeyAclKeys"`
 }
 
 // The set of arguments for constructing a ValkeyUser resource.
 type ValkeyUserArgs struct {
-	// The password of the Valkey User.
+	// The Valkey service user's password.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
-	// Defines command category rules. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCategories pulumi.StringArrayInput
-	// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+	// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
 	ValkeyAclChannels pulumi.StringArrayInput
-	// Defines rules for individual commands. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclCommands pulumi.StringArrayInput
-	// Defines key access rules. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 	ValkeyAclKeys pulumi.StringArrayInput
 }
 
@@ -253,7 +326,7 @@ func (o ValkeyUserOutput) ToValkeyUserOutputWithContext(ctx context.Context) Val
 	return o
 }
 
-// The password of the Valkey User.
+// The Valkey service user's password.
 func (o ValkeyUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -268,32 +341,32 @@ func (o ValkeyUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Type of the user account. Tells whether the user is the primary account or a regular account.
+// User account type, such as primary or regular account.
 func (o ValkeyUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o ValkeyUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
-// Defines command category rules. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 func (o ValkeyUserOutput) ValkeyAclCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclCategories }).(pulumi.StringArrayOutput)
 }
 
-// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
 func (o ValkeyUserOutput) ValkeyAclChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclChannels }).(pulumi.StringArrayOutput)
 }
 
-// Defines rules for individual commands. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 func (o ValkeyUserOutput) ValkeyAclCommands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclCommands }).(pulumi.StringArrayOutput)
 }
 
-// Defines key access rules. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
 func (o ValkeyUserOutput) ValkeyAclKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclKeys }).(pulumi.StringArrayOutput)
 }

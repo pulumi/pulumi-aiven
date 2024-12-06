@@ -17,14 +17,14 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
     public static final ValkeyUserState Empty = new ValkeyUserState();
 
     /**
-     * The password of the Valkey User.
+     * The Valkey service user&#39;s password.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the Valkey User.
+     * @return The Valkey service user&#39;s password.
      * 
      */
     public Optional<Output<String>> password() {
@@ -62,14 +62,14 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public Optional<Output<String>> type() {
@@ -77,14 +77,14 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -92,14 +92,14 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="valkeyAclCategories")
     private @Nullable Output<List<String>> valkeyAclCategories;
 
     /**
-     * @return Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> valkeyAclCategories() {
@@ -107,14 +107,14 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+     * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="valkeyAclChannels")
     private @Nullable Output<List<String>> valkeyAclChannels;
 
     /**
-     * @return Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+     * @return Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> valkeyAclChannels() {
@@ -122,14 +122,14 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="valkeyAclCommands")
     private @Nullable Output<List<String>> valkeyAclCommands;
 
     /**
-     * @return Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> valkeyAclCommands() {
@@ -137,14 +137,14 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="valkeyAclKeys")
     private @Nullable Output<List<String>> valkeyAclKeys;
 
     /**
-     * @return Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> valkeyAclKeys() {
@@ -184,7 +184,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the Valkey User.
+         * @param password The Valkey service user&#39;s password.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the Valkey User.
+         * @param password The Valkey service user&#39;s password.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the user account. Tells whether the user is the primary account or a regular account.
+         * @param type User account type, such as primary or regular account.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the user account. Tells whether the user is the primary account or a regular account.
+         * @param type User account type, such as primary or regular account.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclCategories Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+         * @param valkeyAclCategories Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclCategories Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+         * @param valkeyAclCategories Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclCategories Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+         * @param valkeyAclCategories Allow or disallow command categories. To allow a category use the prefix `+{@literal @}` and to disallow use `-{@literal @}`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclChannels Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+         * @param valkeyAclChannels Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclChannels Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+         * @param valkeyAclChannels Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclChannels Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+         * @param valkeyAclChannels Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclCommands Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+         * @param valkeyAclCommands Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclCommands Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+         * @param valkeyAclCommands Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclCommands Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+         * @param valkeyAclCommands Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclKeys Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+         * @param valkeyAclKeys Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclKeys Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+         * @param valkeyAclKeys Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class ValkeyUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valkeyAclKeys Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+         * @param valkeyAclKeys Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

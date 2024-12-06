@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigAzureMigrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Azure account name.
+        /// Account name.
         /// </summary>
         [Input("account", required: true)]
         public Input<string> Account { get; set; } = null!;

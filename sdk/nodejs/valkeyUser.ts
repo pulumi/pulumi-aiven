@@ -5,7 +5,56 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
+ * Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * // Example user with read-only access for analytics
+ * const readAnalytics = new aiven.ValkeyUser("read_analytics", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleValkey.serviceName,
+ *     username: "example-analytics-reader",
+ *     password: valkeyUserPw,
+ *     valkeyAclCategories: ["+@read"],
+ *     valkeyAclCommands: [
+ *         "+get",
+ *         "+set",
+ *         "+mget",
+ *         "+hget",
+ *         "+zrange",
+ *     ],
+ *     valkeyAclKeys: ["analytics:*"],
+ * });
+ * // Example user with restricted write access for session management
+ * const manageSessions = new aiven.ValkeyUser("manage_sessions", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleValkey.serviceName,
+ *     username: "example-session-manager",
+ *     password: valkeyUserPw,
+ *     valkeyAclCategories: [
+ *         "+@write",
+ *         "+@keyspace",
+ *     ],
+ *     valkeyAclCommands: [
+ *         "+set",
+ *         "+del",
+ *         "+expire",
+ *         "-flushall",
+ *         "-flushdb",
+ *     ],
+ *     valkeyAclKeys: ["session:*"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
+ * ```
  */
 export class ValkeyUser extends pulumi.CustomResource {
     /**
@@ -36,7 +85,7 @@ export class ValkeyUser extends pulumi.CustomResource {
     }
 
     /**
-     * The password of the Valkey User.
+     * The Valkey service user's password.
      */
     public readonly password!: pulumi.Output<string>;
     /**
@@ -48,27 +97,27 @@ export class ValkeyUser extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
     /**
-     * Defines command category rules. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     public readonly valkeyAclCategories!: pulumi.Output<string[] | undefined>;
     /**
-     * Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+     * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      */
     public readonly valkeyAclChannels!: pulumi.Output<string[] | undefined>;
     /**
-     * Defines rules for individual commands. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     public readonly valkeyAclCommands!: pulumi.Output<string[] | undefined>;
     /**
-     * Defines key access rules. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     public readonly valkeyAclKeys!: pulumi.Output<string[] | undefined>;
 
@@ -127,7 +176,7 @@ export class ValkeyUser extends pulumi.CustomResource {
  */
 export interface ValkeyUserState {
     /**
-     * The password of the Valkey User.
+     * The Valkey service user's password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -139,27 +188,27 @@ export interface ValkeyUserState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     type?: pulumi.Input<string>;
     /**
-     * The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
     /**
-     * Defines command category rules. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     valkeyAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+     * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      */
     valkeyAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines rules for individual commands. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     valkeyAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines key access rules. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     valkeyAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -169,7 +218,7 @@ export interface ValkeyUserState {
  */
 export interface ValkeyUserArgs {
     /**
-     * The password of the Valkey User.
+     * The Valkey service user's password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -181,23 +230,23 @@ export interface ValkeyUserArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
     /**
-     * Defines command category rules. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkeyAclCommands` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     valkeyAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+     * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
      */
     valkeyAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines rules for individual commands. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     valkeyAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines key access rules. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
+     * Key access rules. Entries are defined as standard glob patterns. The field is required with`valkeyAclCategories` and `valkeyAclKeys`. Changing this property forces recreation of the resource.
      */
     valkeyAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }

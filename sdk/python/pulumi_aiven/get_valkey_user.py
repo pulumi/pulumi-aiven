@@ -70,7 +70,7 @@ class GetValkeyUserResult:
     @pulumi.getter
     def password(self) -> str:
         """
-        The password of the Valkey User.
+        The Valkey service user's password.
         """
         return pulumi.get(self, "password")
 
@@ -94,7 +94,7 @@ class GetValkeyUserResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -102,7 +102,7 @@ class GetValkeyUserResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -110,7 +110,7 @@ class GetValkeyUserResult:
     @pulumi.getter(name="valkeyAclCategories")
     def valkey_acl_categories(self) -> Sequence[str]:
         """
-        Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_categories")
 
@@ -118,7 +118,7 @@ class GetValkeyUserResult:
     @pulumi.getter(name="valkeyAclChannels")
     def valkey_acl_channels(self) -> Sequence[str]:
         """
-        Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+        Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_channels")
 
@@ -126,7 +126,7 @@ class GetValkeyUserResult:
     @pulumi.getter(name="valkeyAclCommands")
     def valkey_acl_commands(self) -> Sequence[str]:
         """
-        Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_commands")
 
@@ -134,7 +134,7 @@ class GetValkeyUserResult:
     @pulumi.getter(name="valkeyAclKeys")
     def valkey_acl_keys(self) -> Sequence[str]:
         """
-        Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_keys")
 
@@ -167,7 +167,7 @@ def get_valkey_user(project: Optional[str] = None,
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -197,7 +197,7 @@ def get_valkey_user_output(project: Optional[pulumi.Input[str]] = None,
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project

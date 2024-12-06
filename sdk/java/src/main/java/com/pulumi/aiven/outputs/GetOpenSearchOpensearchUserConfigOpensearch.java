@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -182,6 +183,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure searchBackpressure;
+    private @Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries searchInsightsTopQueries;
     /**
      * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
@@ -480,6 +482,9 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     public Optional<GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure> searchBackpressure() {
         return Optional.ofNullable(this.searchBackpressure);
     }
+    public Optional<GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries> searchInsightsTopQueries() {
+        return Optional.ofNullable(this.searchInsightsTopQueries);
+    }
     /**
      * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
@@ -614,6 +619,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         private @Nullable List<String> reindexRemoteWhitelists;
         private @Nullable String scriptMaxCompilationsRate;
         private @Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure searchBackpressure;
+        private @Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries searchInsightsTopQueries;
         private @Nullable Integer searchMaxBuckets;
         private @Nullable GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure shardIndexingPressure;
         private @Nullable Integer threadPoolAnalyzeQueueSize;
@@ -663,6 +669,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     	      this.reindexRemoteWhitelists = defaults.reindexRemoteWhitelists;
     	      this.scriptMaxCompilationsRate = defaults.scriptMaxCompilationsRate;
     	      this.searchBackpressure = defaults.searchBackpressure;
+    	      this.searchInsightsTopQueries = defaults.searchInsightsTopQueries;
     	      this.searchMaxBuckets = defaults.searchMaxBuckets;
     	      this.shardIndexingPressure = defaults.shardIndexingPressure;
     	      this.threadPoolAnalyzeQueueSize = defaults.threadPoolAnalyzeQueueSize;
@@ -880,6 +887,12 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder searchInsightsTopQueries(@Nullable GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries searchInsightsTopQueries) {
+
+            this.searchInsightsTopQueries = searchInsightsTopQueries;
+            return this;
+        }
+        @CustomType.Setter
         public Builder searchMaxBuckets(@Nullable Integer searchMaxBuckets) {
 
             this.searchMaxBuckets = searchMaxBuckets;
@@ -992,6 +1005,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             _resultValue.reindexRemoteWhitelists = reindexRemoteWhitelists;
             _resultValue.scriptMaxCompilationsRate = scriptMaxCompilationsRate;
             _resultValue.searchBackpressure = searchBackpressure;
+            _resultValue.searchInsightsTopQueries = searchInsightsTopQueries;
             _resultValue.searchMaxBuckets = searchMaxBuckets;
             _resultValue.shardIndexingPressure = shardIndexingPressure;
             _resultValue.threadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;

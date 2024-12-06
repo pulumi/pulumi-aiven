@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ThanosThanosUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ThanosCompactor
+        /// Configuration options for Thanos Compactor
         /// </summary>
         [Input("compactor")]
         public Input<Inputs.ThanosThanosUserConfigCompactorGetArgs>? Compactor { get; set; }
@@ -75,19 +75,31 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ObjectStorageUsageAlertThresholdGb { get; set; }
 
         /// <summary>
+        /// Allow access to selected service ports from private networks
+        /// </summary>
+        [Input("privateAccess")]
+        public Input<Inputs.ThanosThanosUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
+
+        /// <summary>
+        /// Allow access to selected service components through Privatelink
+        /// </summary>
+        [Input("privatelinkAccess")]
+        public Input<Inputs.ThanosThanosUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
+
+        /// <summary>
         /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.ThanosThanosUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// ThanosQuery
+        /// Configuration options for Thanos Query
         /// </summary>
         [Input("query")]
         public Input<Inputs.ThanosThanosUserConfigQueryGetArgs>? Query { get; set; }
 
         /// <summary>
-        /// ThanosQueryFrontend
+        /// Configuration options for Thanos Query Frontend
         /// </summary>
         [Input("queryFrontend")]
         public Input<Inputs.ThanosThanosUserConfigQueryFrontendGetArgs>? QueryFrontend { get; set; }
@@ -96,7 +108,7 @@ namespace Pulumi.Aiven.Inputs
         private InputMap<string>? _receiverIngesting;
 
         /// <summary>
-        /// CommonReceive.
+        /// Common configuration options for Thanos Receive.
         /// </summary>
         public InputMap<string> ReceiverIngesting
         {
@@ -108,7 +120,7 @@ namespace Pulumi.Aiven.Inputs
         private InputMap<string>? _receiverRouting;
 
         /// <summary>
-        /// ThanosReceiveRouting.
+        /// Configuration options for Thanos Receive Routing.
         /// </summary>
         public InputMap<string> ReceiverRouting
         {
@@ -120,7 +132,7 @@ namespace Pulumi.Aiven.Inputs
         private InputMap<string>? _ruler;
 
         /// <summary>
-        /// ThanosRuler.
+        /// Configuration options for Thanos Ruler.
         /// </summary>
         public InputMap<string> Ruler
         {
@@ -144,7 +156,7 @@ namespace Pulumi.Aiven.Inputs
         private InputMap<string>? _store;
 
         /// <summary>
-        /// ThanosStore.
+        /// Configuration options for Thanos Store.
         /// </summary>
         public InputMap<string> Store
         {

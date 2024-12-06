@@ -58,7 +58,7 @@ type LookupBillingGroupResult struct {
 	Name string `pulumi:"name"`
 	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId string `pulumi:"parentId"`
-	// State or province.
+	// Address state.
 	State string `pulumi:"state"`
 	// The VAT identification number for your company.
 	VatId string `pulumi:"vatId"`
@@ -180,7 +180,7 @@ func (o LookupBillingGroupResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// State or province.
+// Address state.
 func (o LookupBillingGroupResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.State }).(pulumi.StringOutput)
 }

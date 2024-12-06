@@ -24,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) service.
+ * Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service.
  * 
  * ## Example Usage
  * 

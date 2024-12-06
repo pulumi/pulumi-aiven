@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigKafkaConnectSecretProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS config for Secret Provider
+        /// AWS secret provider configuration
         /// </summary>
         [Input("aws")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs>? Aws { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Vault Config for Secret Provider
+        /// Vault secret provider configuration
         /// </summary>
         [Input("vault")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs>? Vault { get; set; }

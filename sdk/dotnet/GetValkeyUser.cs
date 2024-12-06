@@ -40,7 +40,7 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the Valkey User.
+        /// The Valkey service user's password.
         /// </summary>
         public readonly string Password;
         /// <summary>
@@ -98,27 +98,27 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Username;
         /// <summary>
-        /// Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> ValkeyAclCategories;
         /// <summary>
-        /// Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+        /// Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> ValkeyAclChannels;
         /// <summary>
-        /// Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> ValkeyAclCommands;
         /// <summary>
-        /// Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        /// Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<string> ValkeyAclKeys;
 

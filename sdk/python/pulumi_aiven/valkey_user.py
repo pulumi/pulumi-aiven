@@ -31,12 +31,12 @@ class ValkeyUserArgs:
         The set of arguments for constructing a ValkeyUser resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] password: The password of the Valkey User.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_categories: Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_channels: Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_commands: Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_keys: Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] password: The Valkey service user's password.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_categories: Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_channels: Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_commands: Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -80,7 +80,7 @@ class ValkeyUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -92,7 +92,7 @@ class ValkeyUserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the Valkey User.
+        The Valkey service user's password.
         """
         return pulumi.get(self, "password")
 
@@ -104,7 +104,7 @@ class ValkeyUserArgs:
     @pulumi.getter(name="valkeyAclCategories")
     def valkey_acl_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_categories")
 
@@ -116,7 +116,7 @@ class ValkeyUserArgs:
     @pulumi.getter(name="valkeyAclChannels")
     def valkey_acl_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+        Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_channels")
 
@@ -128,7 +128,7 @@ class ValkeyUserArgs:
     @pulumi.getter(name="valkeyAclCommands")
     def valkey_acl_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_commands")
 
@@ -140,7 +140,7 @@ class ValkeyUserArgs:
     @pulumi.getter(name="valkeyAclKeys")
     def valkey_acl_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_keys")
 
@@ -163,15 +163,15 @@ class _ValkeyUserState:
                  valkey_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ValkeyUser resources.
-        :param pulumi.Input[str] password: The password of the Valkey User.
+        :param pulumi.Input[str] password: The Valkey service user's password.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_categories: Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_channels: Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_commands: Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_keys: Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] type: User account type, such as primary or regular account.
+        :param pulumi.Input[str] username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_categories: Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_channels: Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_commands: Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -196,7 +196,7 @@ class _ValkeyUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the Valkey User.
+        The Valkey service user's password.
         """
         return pulumi.get(self, "password")
 
@@ -232,7 +232,7 @@ class _ValkeyUserState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -244,7 +244,7 @@ class _ValkeyUserState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -256,7 +256,7 @@ class _ValkeyUserState:
     @pulumi.getter(name="valkeyAclCategories")
     def valkey_acl_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_categories")
 
@@ -268,7 +268,7 @@ class _ValkeyUserState:
     @pulumi.getter(name="valkeyAclChannels")
     def valkey_acl_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+        Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_channels")
 
@@ -280,7 +280,7 @@ class _ValkeyUserState:
     @pulumi.getter(name="valkeyAclCommands")
     def valkey_acl_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_commands")
 
@@ -292,7 +292,7 @@ class _ValkeyUserState:
     @pulumi.getter(name="valkeyAclKeys")
     def valkey_acl_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_keys")
 
@@ -316,18 +316,65 @@ class ValkeyUser(pulumi.CustomResource):
                  valkey_acl_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
+        Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        # Example user with read-only access for analytics
+        read_analytics = aiven.ValkeyUser("read_analytics",
+            project=example_project["project"],
+            service_name=example_valkey["serviceName"],
+            username="example-analytics-reader",
+            password=valkey_user_pw,
+            valkey_acl_categories=["+@read"],
+            valkey_acl_commands=[
+                "+get",
+                "+set",
+                "+mget",
+                "+hget",
+                "+zrange",
+            ],
+            valkey_acl_keys=["analytics:*"])
+        # Example user with restricted write access for session management
+        manage_sessions = aiven.ValkeyUser("manage_sessions",
+            project=example_project["project"],
+            service_name=example_valkey["serviceName"],
+            username="example-session-manager",
+            password=valkey_user_pw,
+            valkey_acl_categories=[
+                "+@write",
+                "+@keyspace",
+            ],
+            valkey_acl_commands=[
+                "+set",
+                "+del",
+                "+expire",
+                "-flushall",
+                "-flushdb",
+            ],
+            valkey_acl_keys=["session:*"])
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] password: The password of the Valkey User.
+        :param pulumi.Input[str] password: The Valkey service user's password.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_categories: Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_channels: Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_commands: Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_keys: Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_categories: Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_channels: Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_commands: Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -336,7 +383,54 @@ class ValkeyUser(pulumi.CustomResource):
                  args: ValkeyUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.
+        Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        # Example user with read-only access for analytics
+        read_analytics = aiven.ValkeyUser("read_analytics",
+            project=example_project["project"],
+            service_name=example_valkey["serviceName"],
+            username="example-analytics-reader",
+            password=valkey_user_pw,
+            valkey_acl_categories=["+@read"],
+            valkey_acl_commands=[
+                "+get",
+                "+set",
+                "+mget",
+                "+hget",
+                "+zrange",
+            ],
+            valkey_acl_keys=["analytics:*"])
+        # Example user with restricted write access for session management
+        manage_sessions = aiven.ValkeyUser("manage_sessions",
+            project=example_project["project"],
+            service_name=example_valkey["serviceName"],
+            username="example-session-manager",
+            password=valkey_user_pw,
+            valkey_acl_categories=[
+                "+@write",
+                "+@keyspace",
+            ],
+            valkey_acl_commands=[
+                "+set",
+                "+del",
+                "+expire",
+                "-flushall",
+                "-flushdb",
+            ],
+            valkey_acl_keys=["session:*"])
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
+        ```
 
         :param str resource_name: The name of the resource.
         :param ValkeyUserArgs args: The arguments to use to populate this resource's properties.
@@ -413,15 +507,15 @@ class ValkeyUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] password: The password of the Valkey User.
+        :param pulumi.Input[str] password: The Valkey service user's password.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_categories: Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_channels: Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_commands: Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_keys: Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] type: User account type, such as primary or regular account.
+        :param pulumi.Input[str] username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_categories: Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_channels: Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_commands: Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -442,7 +536,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        The password of the Valkey User.
+        The Valkey service user's password.
         """
         return pulumi.get(self, "password")
 
@@ -466,7 +560,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -474,7 +568,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -482,7 +576,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter(name="valkeyAclCategories")
     def valkey_acl_categories(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_categories")
 
@@ -490,7 +584,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter(name="valkeyAclChannels")
     def valkey_acl_channels(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
+        Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_channels")
 
@@ -498,7 +592,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter(name="valkeyAclCommands")
     def valkey_acl_commands(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_commands")
 
@@ -506,7 +600,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter(name="valkeyAclKeys")
     def valkey_acl_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
+        Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "valkey_acl_keys")
 

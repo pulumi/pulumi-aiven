@@ -79,6 +79,21 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
     }
 
     /**
+     * Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * 
+     */
+    @Import(name="exactlyOnceDeliveryEnabled")
+    private @Nullable Output<Boolean> exactlyOnceDeliveryEnabled;
+
+    /**
+     * @return Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> exactlyOnceDeliveryEnabled() {
+        return Optional.ofNullable(this.exactlyOnceDeliveryEnabled);
+    }
+
+    /**
      * Offset syncs topic location. The possible values are `source` and `target`.
      * 
      */
@@ -250,6 +265,7 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
         this.emitBackwardHeartbeatsEnabled = $.emitBackwardHeartbeatsEnabled;
         this.emitHeartbeatsEnabled = $.emitHeartbeatsEnabled;
         this.enable = $.enable;
+        this.exactlyOnceDeliveryEnabled = $.exactlyOnceDeliveryEnabled;
         this.offsetSyncsTopicLocation = $.offsetSyncsTopicLocation;
         this.project = $.project;
         this.replicationFactor = $.replicationFactor;
@@ -373,6 +389,27 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
          */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
+        }
+
+        /**
+         * @param exactlyOnceDeliveryEnabled Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exactlyOnceDeliveryEnabled(@Nullable Output<Boolean> exactlyOnceDeliveryEnabled) {
+            $.exactlyOnceDeliveryEnabled = exactlyOnceDeliveryEnabled;
+            return this;
+        }
+
+        /**
+         * @param exactlyOnceDeliveryEnabled Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exactlyOnceDeliveryEnabled(Boolean exactlyOnceDeliveryEnabled) {
+            return exactlyOnceDeliveryEnabled(Output.of(exactlyOnceDeliveryEnabled));
         }
 
         /**
