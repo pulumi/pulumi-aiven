@@ -2505,7 +2505,7 @@
             "properties": {
                 "aws": {
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigSecretProviderAws:KafkaConnectKafkaConnectUserConfigSecretProviderAws",
-                    "description": "AWS config for Secret Provider\n"
+                    "description": "AWS secret provider configuration\n"
                 },
                 "name": {
                     "type": "string",
@@ -2513,7 +2513,7 @@
                 },
                 "vault": {
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigSecretProviderVault:KafkaConnectKafkaConnectUserConfigSecretProviderVault",
-                    "description": "Vault Config for Secret Provider\n"
+                    "description": "Vault secret provider configuration\n"
                 }
             },
             "type": "object",
@@ -3120,7 +3120,7 @@
             "properties": {
                 "aws": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigKafkaConnectSecretProviderAws:KafkaKafkaUserConfigKafkaConnectSecretProviderAws",
-                    "description": "AWS config for Secret Provider\n"
+                    "description": "AWS secret provider configuration\n"
                 },
                 "name": {
                     "type": "string",
@@ -3128,7 +3128,7 @@
                 },
                 "vault": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigKafkaConnectSecretProviderVault:KafkaKafkaUserConfigKafkaConnectSecretProviderVault",
-                    "description": "Vault Config for Secret Provider\n"
+                    "description": "Vault secret provider configuration\n"
                 }
             },
             "type": "object",
@@ -5230,7 +5230,7 @@
             "properties": {
                 "account": {
                     "type": "string",
-                    "description": "Azure account name.\n"
+                    "description": "Account name.\n"
                 },
                 "basePath": {
                     "type": "string",
@@ -5614,6 +5614,9 @@
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchBackpressure:OpenSearchOpensearchUserConfigOpensearchSearchBackpressure",
                     "description": "Search Backpressure Settings\n"
                 },
+                "searchInsightsTopQueries": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries:OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries"
+                },
                 "searchMaxBuckets": {
                     "type": "integer",
                     "description": "Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.\n"
@@ -5876,6 +5879,74 @@
                 "totalHeapPercentThreshold": {
                     "type": "number",
                     "description": "The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries:OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries": {
+            "properties": {
+                "cpu": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu:OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu",
+                    "description": "Top N queries monitoring by CPU\n"
+                },
+                "latency": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency:OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency",
+                    "description": "Top N queries monitoring by latency\n"
+                },
+                "memory": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory:OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory",
+                    "description": "Top N queries monitoring by memory\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu:OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable top N query monitoring by the metric. Default: `false`.\n"
+                },
+                "topNSize": {
+                    "type": "integer",
+                    "description": "Specify the value of N for the top N queries by the metric.\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "The window size of the top N queries by the metric.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency:OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable top N query monitoring by the metric. Default: `false`.\n"
+                },
+                "topNSize": {
+                    "type": "integer",
+                    "description": "Specify the value of N for the top N queries by the metric.\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "The window size of the top N queries by the metric.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory:OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable top N query monitoring by the metric. Default: `false`.\n"
+                },
+                "topNSize": {
+                    "type": "integer",
+                    "description": "Specify the value of N for the top N queries by the metric.\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "The window size of the top N queries by the metric.\n"
                 }
             },
             "type": "object"
@@ -7845,6 +7916,10 @@
                     "type": "boolean",
                     "description": "Disable consumer group metrics.\n"
                 },
+                "extraTagsPrefix": {
+                    "type": "string",
+                    "description": "Extra tags prefix. Defaults to aiven.\n"
+                },
                 "kafkaConsumerCheckInstances": {
                     "type": "integer",
                     "description": "Number of separate instances to fetch kafka consumer statistics with. Example: `8`.\n"
@@ -8873,7 +8948,7 @@
             "properties": {
                 "compactor": {
                     "$ref": "#/types/aiven:index/ThanosThanosUserConfigCompactor:ThanosThanosUserConfigCompactor",
-                    "description": "ThanosCompactor\n"
+                    "description": "Configuration options for Thanos Compactor\n"
                 },
                 "env": {
                     "type": "object",
@@ -8909,38 +8984,46 @@
                     "type": "integer",
                     "description": "After exceeding the limit a service alert is going to be raised (0 means not set).\n"
                 },
+                "privateAccess": {
+                    "$ref": "#/types/aiven:index/ThanosThanosUserConfigPrivateAccess:ThanosThanosUserConfigPrivateAccess",
+                    "description": "Allow access to selected service ports from private networks\n"
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/ThanosThanosUserConfigPrivatelinkAccess:ThanosThanosUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n"
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/ThanosThanosUserConfigPublicAccess:ThanosThanosUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet\n"
                 },
                 "query": {
                     "$ref": "#/types/aiven:index/ThanosThanosUserConfigQuery:ThanosThanosUserConfigQuery",
-                    "description": "ThanosQuery\n"
+                    "description": "Configuration options for Thanos Query\n"
                 },
                 "queryFrontend": {
                     "$ref": "#/types/aiven:index/ThanosThanosUserConfigQueryFrontend:ThanosThanosUserConfigQueryFrontend",
-                    "description": "ThanosQueryFrontend\n"
+                    "description": "Configuration options for Thanos Query Frontend\n"
                 },
                 "receiverIngesting": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "CommonReceive.\n"
+                    "description": "Common configuration options for Thanos Receive.\n"
                 },
                 "receiverRouting": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "ThanosReceiveRouting.\n"
+                    "description": "Configuration options for Thanos Receive Routing.\n"
                 },
                 "ruler": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "ThanosRuler.\n"
+                    "description": "Configuration options for Thanos Ruler.\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -8955,7 +9038,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "ThanosStore.\n"
+                    "description": "Configuration options for Thanos Store.\n"
                 }
             },
             "type": "object"
@@ -8984,6 +9067,32 @@
             "required": [
                 "network"
             ]
+        },
+        "aiven:index/ThanosThanosUserConfigPrivateAccess:ThanosThanosUserConfigPrivateAccess": {
+            "properties": {
+                "queryFrontend": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                },
+                "receiverRouting": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/ThanosThanosUserConfigPrivatelinkAccess:ThanosThanosUserConfigPrivatelinkAccess": {
+            "properties": {
+                "queryFrontend": {
+                    "type": "boolean",
+                    "description": "Enable query_frontend.\n"
+                },
+                "receiverRouting": {
+                    "type": "boolean",
+                    "description": "Enable receiver_routing.\n"
+                }
+            },
+            "type": "object"
         },
         "aiven:index/ThanosThanosUserConfigPublicAccess:ThanosThanosUserConfigPublicAccess": {
             "properties": {
@@ -12269,7 +12378,7 @@
             "properties": {
                 "aws": {
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigSecretProviderAws:getKafkaConnectKafkaConnectUserConfigSecretProviderAws",
-                    "description": "AWS config for Secret Provider\n"
+                    "description": "AWS secret provider configuration\n"
                 },
                 "name": {
                     "type": "string",
@@ -12277,7 +12386,7 @@
                 },
                 "vault": {
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigSecretProviderVault:getKafkaConnectKafkaConnectUserConfigSecretProviderVault",
-                    "description": "Vault Config for Secret Provider\n"
+                    "description": "Vault secret provider configuration\n"
                 }
             },
             "type": "object",
@@ -12921,7 +13030,7 @@
             "properties": {
                 "aws": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafkaConnectSecretProviderAws:getKafkaKafkaUserConfigKafkaConnectSecretProviderAws",
-                    "description": "AWS config for Secret Provider\n"
+                    "description": "AWS secret provider configuration\n"
                 },
                 "name": {
                     "type": "string",
@@ -12929,7 +13038,7 @@
                 },
                 "vault": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafkaConnectSecretProviderVault:getKafkaKafkaUserConfigKafkaConnectSecretProviderVault",
-                    "description": "Vault Config for Secret Provider\n"
+                    "description": "Vault secret provider configuration\n"
                 }
             },
             "type": "object",
@@ -15177,7 +15286,7 @@
             "properties": {
                 "account": {
                     "type": "string",
-                    "description": "Azure account name.\n"
+                    "description": "Account name.\n"
                 },
                 "basePath": {
                     "type": "string",
@@ -15586,6 +15695,9 @@
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchBackpressure:getOpenSearchOpensearchUserConfigOpensearchSearchBackpressure",
                     "description": "Search Backpressure Settings\n"
                 },
+                "searchInsightsTopQueries": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries:getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries"
+                },
                 "searchMaxBuckets": {
                     "type": "integer",
                     "description": "Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.\n"
@@ -15848,6 +15960,74 @@
                 "totalHeapPercentThreshold": {
                     "type": "number",
                     "description": "The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries:getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries": {
+            "properties": {
+                "cpu": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu:getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu",
+                    "description": "Top N queries monitoring by CPU\n"
+                },
+                "latency": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency:getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency",
+                    "description": "Top N queries monitoring by latency\n"
+                },
+                "memory": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory:getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory",
+                    "description": "Top N queries monitoring by memory\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu:getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable top N query monitoring by the metric. Default: `false`.\n"
+                },
+                "topNSize": {
+                    "type": "integer",
+                    "description": "Specify the value of N for the top N queries by the metric.\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "The window size of the top N queries by the metric.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency:getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable top N query monitoring by the metric. Default: `false`.\n"
+                },
+                "topNSize": {
+                    "type": "integer",
+                    "description": "Specify the value of N for the top N queries by the metric.\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "The window size of the top N queries by the metric.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory:getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable top N query monitoring by the metric. Default: `false`.\n"
+                },
+                "topNSize": {
+                    "type": "integer",
+                    "description": "Specify the value of N for the top N queries by the metric.\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "The window size of the top N queries by the metric.\n"
                 }
             },
             "type": "object"
@@ -17923,6 +18103,10 @@
                     "type": "boolean",
                     "description": "Disable consumer group metrics.\n"
                 },
+                "extraTagsPrefix": {
+                    "type": "string",
+                    "description": "Extra tags prefix. Defaults to aiven.\n"
+                },
                 "kafkaConsumerCheckInstances": {
                     "type": "integer",
                     "description": "Number of separate instances to fetch kafka consumer statistics with. Example: `8`.\n"
@@ -19058,7 +19242,7 @@
             "properties": {
                 "compactor": {
                     "$ref": "#/types/aiven:index/getThanosThanosUserConfigCompactor:getThanosThanosUserConfigCompactor",
-                    "description": "ThanosCompactor\n"
+                    "description": "Configuration options for Thanos Compactor\n"
                 },
                 "env": {
                     "type": "object",
@@ -19094,38 +19278,46 @@
                     "type": "integer",
                     "description": "After exceeding the limit a service alert is going to be raised (0 means not set).\n"
                 },
+                "privateAccess": {
+                    "$ref": "#/types/aiven:index/getThanosThanosUserConfigPrivateAccess:getThanosThanosUserConfigPrivateAccess",
+                    "description": "Allow access to selected service ports from private networks\n"
+                },
+                "privatelinkAccess": {
+                    "$ref": "#/types/aiven:index/getThanosThanosUserConfigPrivatelinkAccess:getThanosThanosUserConfigPrivatelinkAccess",
+                    "description": "Allow access to selected service components through Privatelink\n"
+                },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getThanosThanosUserConfigPublicAccess:getThanosThanosUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet\n"
                 },
                 "query": {
                     "$ref": "#/types/aiven:index/getThanosThanosUserConfigQuery:getThanosThanosUserConfigQuery",
-                    "description": "ThanosQuery\n"
+                    "description": "Configuration options for Thanos Query\n"
                 },
                 "queryFrontend": {
                     "$ref": "#/types/aiven:index/getThanosThanosUserConfigQueryFrontend:getThanosThanosUserConfigQueryFrontend",
-                    "description": "ThanosQueryFrontend\n"
+                    "description": "Configuration options for Thanos Query Frontend\n"
                 },
                 "receiverIngesting": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "CommonReceive.\n"
+                    "description": "Common configuration options for Thanos Receive.\n"
                 },
                 "receiverRouting": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "ThanosReceiveRouting.\n"
+                    "description": "Configuration options for Thanos Receive Routing.\n"
                 },
                 "ruler": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "ThanosRuler.\n"
+                    "description": "Configuration options for Thanos Ruler.\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -19140,7 +19332,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "ThanosStore.\n"
+                    "description": "Configuration options for Thanos Store.\n"
                 }
             },
             "type": "object"
@@ -19174,6 +19366,32 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "aiven:index/getThanosThanosUserConfigPrivateAccess:getThanosThanosUserConfigPrivateAccess": {
+            "properties": {
+                "queryFrontend": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to query_frontend with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                },
+                "receiverRouting": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to receiver_routing with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getThanosThanosUserConfigPrivatelinkAccess:getThanosThanosUserConfigPrivatelinkAccess": {
+            "properties": {
+                "queryFrontend": {
+                    "type": "boolean",
+                    "description": "Enable query_frontend.\n"
+                },
+                "receiverRouting": {
+                    "type": "boolean",
+                    "description": "Enable receiver_routing.\n"
+                }
+            },
+            "type": "object"
         },
         "aiven:index/getThanosThanosUserConfigPublicAccess:getThanosThanosUserConfigPublicAccess": {
             "properties": {
@@ -20807,7 +21025,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "State or province.\n"
+                    "description": "Address state.\n"
                 },
                 "vatId": {
                     "type": "string",
@@ -20879,7 +21097,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "State or province.\n"
+                    "description": "Address state.\n"
                 },
                 "vatId": {
                     "type": "string",
@@ -20950,7 +21168,7 @@
                     },
                     "state": {
                         "type": "string",
-                        "description": "State or province.\n"
+                        "description": "Address state.\n"
                     },
                     "vatId": {
                         "type": "string",
@@ -26300,6 +26518,165 @@
                 "type": "object"
             }
         },
+        "aiven:index/kafkaNativeAcl:KafkaNativeAcl": {
+            "description": "Manages native acls in [kafka service](https://aiven.io/docs/products/kafka/concepts/acl).\n",
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.\n"
+                },
+                "operation": {
+                    "type": "string",
+                    "description": "The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.\n"
+                },
+                "patternType": {
+                    "type": "string",
+                    "description": "Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.\n"
+                },
+                "permissionType": {
+                    "type": "string",
+                    "description": "The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.\n"
+                },
+                "principal": {
+                    "type": "string",
+                    "description": "Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                },
+                "resourceName": {
+                    "type": "string",
+                    "description": "The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.\n"
+                },
+                "resourceType": {
+                    "type": "string",
+                    "description": "The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                }
+            },
+            "required": [
+                "operation",
+                "patternType",
+                "permissionType",
+                "principal",
+                "project",
+                "resourceName",
+                "resourceType",
+                "serviceName"
+            ],
+            "inputProperties": {
+                "host": {
+                    "type": "string",
+                    "description": "The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "operation": {
+                    "type": "string",
+                    "description": "The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "patternType": {
+                    "type": "string",
+                    "description": "Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "permissionType": {
+                    "type": "string",
+                    "description": "The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "principal": {
+                    "type": "string",
+                    "description": "Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "resourceName": {
+                    "type": "string",
+                    "description": "The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "resourceType": {
+                    "type": "string",
+                    "description": "The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "operation",
+                "patternType",
+                "permissionType",
+                "principal",
+                "project",
+                "resourceName",
+                "resourceType",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KafkaNativeAcl resources.\n",
+                "properties": {
+                    "host": {
+                        "type": "string",
+                        "description": "The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "operation": {
+                        "type": "string",
+                        "description": "The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "patternType": {
+                        "type": "string",
+                        "description": "Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "permissionType": {
+                        "type": "string",
+                        "description": "The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "principal": {
+                        "type": "string",
+                        "description": "Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resourceName": {
+                        "type": "string",
+                        "description": "The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resourceType": {
+                        "type": "string",
+                        "description": "The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aiven:index/kafkaSchema:KafkaSchema": {
             "description": "The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst kafka_schema1 = new aiven.KafkaSchema(\"kafka-schema1\", {\n    project: kafka_schemas_project1.project,\n    serviceName: kafka_service1.serviceName,\n    subjectName: \"kafka-schema1\",\n    compatibilityLevel: \"FORWARD\",\n    schema: `    {\n      \"doc\": \"example\",\n      \"fields\": [\n        {\n          \"default\": 5,\n          \"doc\": \"my test number\",\n          \"name\": \"test\",\n          \"namespace\": \"test\",\n          \"type\": \"int\"\n        }\n      ],\n      \"name\": \"example\",\n      \"namespace\": \"example\",\n      \"type\": \"record\"\n    }\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nkafka_schema1 = aiven.KafkaSchema(\"kafka-schema1\",\n    project=kafka_schemas_project1[\"project\"],\n    service_name=kafka_service1[\"serviceName\"],\n    subject_name=\"kafka-schema1\",\n    compatibility_level=\"FORWARD\",\n    schema=\"\"\"    {\n      \"doc\": \"example\",\n      \"fields\": [\n        {\n          \"default\": 5,\n          \"doc\": \"my test number\",\n          \"name\": \"test\",\n          \"namespace\": \"test\",\n          \"type\": \"int\"\n        }\n      ],\n      \"name\": \"example\",\n      \"namespace\": \"example\",\n      \"type\": \"record\"\n    }\n\"\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var kafka_schema1 = new Aiven.KafkaSchema(\"kafka-schema1\", new()\n    {\n        Project = kafka_schemas_project1.Project,\n        ServiceName = kafka_service1.ServiceName,\n        SubjectName = \"kafka-schema1\",\n        CompatibilityLevel = \"FORWARD\",\n        Schema = @\"    {\n      \"\"doc\"\": \"\"example\"\",\n      \"\"fields\"\": [\n        {\n          \"\"default\"\": 5,\n          \"\"doc\"\": \"\"my test number\"\",\n          \"\"name\"\": \"\"test\"\",\n          \"\"namespace\"\": \"\"test\"\",\n          \"\"type\"\": \"\"int\"\"\n        }\n      ],\n      \"\"name\"\": \"\"example\"\",\n      \"\"namespace\"\": \"\"example\"\",\n      \"\"type\"\": \"\"record\"\"\n    }\n\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewKafkaSchema(ctx, \"kafka-schema1\", \u0026aiven.KafkaSchemaArgs{\n\t\t\tProject:            pulumi.Any(kafka_schemas_project1.Project),\n\t\t\tServiceName:        pulumi.Any(kafka_service1.ServiceName),\n\t\t\tSubjectName:        pulumi.String(\"kafka-schema1\"),\n\t\t\tCompatibilityLevel: pulumi.String(\"FORWARD\"),\n\t\t\tSchema: pulumi.String(`    {\n      \"doc\": \"example\",\n      \"fields\": [\n        {\n          \"default\": 5,\n          \"doc\": \"my test number\",\n          \"name\": \"test\",\n          \"namespace\": \"test\",\n          \"type\": \"int\"\n        }\n      ],\n      \"name\": \"example\",\n      \"namespace\": \"example\",\n      \"type\": \"record\"\n    }\n`),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.KafkaSchema;\nimport com.pulumi.aiven.KafkaSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var kafka_schema1 = new KafkaSchema(\"kafka-schema1\", KafkaSchemaArgs.builder()\n            .project(kafka_schemas_project1.project())\n            .serviceName(kafka_service1.serviceName())\n            .subjectName(\"kafka-schema1\")\n            .compatibilityLevel(\"FORWARD\")\n            .schema(\"\"\"\n    {\n      \"doc\": \"example\",\n      \"fields\": [\n        {\n          \"default\": 5,\n          \"doc\": \"my test number\",\n          \"name\": \"test\",\n          \"namespace\": \"test\",\n          \"type\": \"int\"\n        }\n      ],\n      \"name\": \"example\",\n      \"namespace\": \"example\",\n      \"type\": \"record\"\n    }\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  kafka-schema1:\n    type: aiven:KafkaSchema\n    properties:\n      project: ${[\"kafka-schemas-project1\"].project}\n      serviceName: ${[\"kafka-service1\"].serviceName}\n      subjectName: kafka-schema1\n      compatibilityLevel: FORWARD\n      schema: |2\n            {\n              \"doc\": \"example\",\n              \"fields\": [\n                {\n                  \"default\": 5,\n                  \"doc\": \"my test number\",\n                  \"name\": \"test\",\n                  \"namespace\": \"test\",\n                  \"type\": \"int\"\n                }\n              ],\n              \"name\": \"example\",\n              \"namespace\": \"example\",\n              \"type\": \"record\"\n            }\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/kafkaSchema:KafkaSchema kafka-schema1 project/service_name/subject_name\n```\n\n",
             "properties": {
@@ -27734,6 +28111,10 @@
                     "type": "boolean",
                     "description": "Enable of disable replication flows for a service.\n"
                 },
+                "exactlyOnceDeliveryEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.\n"
+                },
                 "offsetSyncsTopicLocation": {
                     "type": "string",
                     "description": "Offset syncs topic location. The possible values are `source` and `target`.\n"
@@ -27813,6 +28194,10 @@
                 "enable": {
                     "type": "boolean",
                     "description": "Enable of disable replication flows for a service.\n"
+                },
+                "exactlyOnceDeliveryEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.\n"
                 },
                 "offsetSyncsTopicLocation": {
                     "type": "string",
@@ -27897,6 +28282,10 @@
                     "enable": {
                         "type": "boolean",
                         "description": "Enable of disable replication flows for a service.\n"
+                    },
+                    "exactlyOnceDeliveryEnabled": {
+                        "type": "boolean",
+                        "description": "Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.\n"
                     },
                     "offsetSyncsTopicLocation": {
                         "type": "string",
@@ -32875,7 +33264,7 @@
             }
         },
         "aiven:index/valkey:Valkey": {
-            "description": "Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleValkey = new aiven.Valkey(\"example_valkey\", {\n    project: exampleProject.project,\n    plan: \"startup-4\",\n    cloudName: \"google-europe-west1\",\n    serviceName: \"example-valkey-service\",\n    valkeyUserConfig: {\n        valkeyMaxmemoryPolicy: \"allkeys-random\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_valkey = aiven.Valkey(\"example_valkey\",\n    project=example_project[\"project\"],\n    plan=\"startup-4\",\n    cloud_name=\"google-europe-west1\",\n    service_name=\"example-valkey-service\",\n    valkey_user_config={\n        \"valkey_maxmemory_policy\": \"allkeys-random\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleValkey = new Aiven.Valkey(\"example_valkey\", new()\n    {\n        Project = exampleProject.Project,\n        Plan = \"startup-4\",\n        CloudName = \"google-europe-west1\",\n        ServiceName = \"example-valkey-service\",\n        ValkeyUserConfig = new Aiven.Inputs.ValkeyValkeyUserConfigArgs\n        {\n            ValkeyMaxmemoryPolicy = \"allkeys-random\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewValkey(ctx, \"example_valkey\", \u0026aiven.ValkeyArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tPlan:        pulumi.String(\"startup-4\"),\n\t\t\tCloudName:   pulumi.String(\"google-europe-west1\"),\n\t\t\tServiceName: pulumi.String(\"example-valkey-service\"),\n\t\t\tValkeyUserConfig: \u0026aiven.ValkeyValkeyUserConfigArgs{\n\t\t\t\tValkeyMaxmemoryPolicy: pulumi.String(\"allkeys-random\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Valkey;\nimport com.pulumi.aiven.ValkeyArgs;\nimport com.pulumi.aiven.inputs.ValkeyValkeyUserConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleValkey = new Valkey(\"exampleValkey\", ValkeyArgs.builder()\n            .project(exampleProject.project())\n            .plan(\"startup-4\")\n            .cloudName(\"google-europe-west1\")\n            .serviceName(\"example-valkey-service\")\n            .valkeyUserConfig(ValkeyValkeyUserConfigArgs.builder()\n                .valkeyMaxmemoryPolicy(\"allkeys-random\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleValkey:\n    type: aiven:Valkey\n    name: example_valkey\n    properties:\n      project: ${exampleProject.project}\n      plan: startup-4\n      cloudName: google-europe-west1\n      serviceName: example-valkey-service\n      valkeyUserConfig:\n        valkeyMaxmemoryPolicy: allkeys-random\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/valkey:Valkey example_valkey PROJECT/SERVICE_NAME\n```\n\n",
+            "description": "Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleValkey = new aiven.Valkey(\"example_valkey\", {\n    project: exampleProject.project,\n    plan: \"startup-4\",\n    cloudName: \"google-europe-west1\",\n    serviceName: \"example-valkey-service\",\n    valkeyUserConfig: {\n        valkeyMaxmemoryPolicy: \"allkeys-random\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_valkey = aiven.Valkey(\"example_valkey\",\n    project=example_project[\"project\"],\n    plan=\"startup-4\",\n    cloud_name=\"google-europe-west1\",\n    service_name=\"example-valkey-service\",\n    valkey_user_config={\n        \"valkey_maxmemory_policy\": \"allkeys-random\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleValkey = new Aiven.Valkey(\"example_valkey\", new()\n    {\n        Project = exampleProject.Project,\n        Plan = \"startup-4\",\n        CloudName = \"google-europe-west1\",\n        ServiceName = \"example-valkey-service\",\n        ValkeyUserConfig = new Aiven.Inputs.ValkeyValkeyUserConfigArgs\n        {\n            ValkeyMaxmemoryPolicy = \"allkeys-random\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewValkey(ctx, \"example_valkey\", \u0026aiven.ValkeyArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tPlan:        pulumi.String(\"startup-4\"),\n\t\t\tCloudName:   pulumi.String(\"google-europe-west1\"),\n\t\t\tServiceName: pulumi.String(\"example-valkey-service\"),\n\t\t\tValkeyUserConfig: \u0026aiven.ValkeyValkeyUserConfigArgs{\n\t\t\t\tValkeyMaxmemoryPolicy: pulumi.String(\"allkeys-random\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Valkey;\nimport com.pulumi.aiven.ValkeyArgs;\nimport com.pulumi.aiven.inputs.ValkeyValkeyUserConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleValkey = new Valkey(\"exampleValkey\", ValkeyArgs.builder()\n            .project(exampleProject.project())\n            .plan(\"startup-4\")\n            .cloudName(\"google-europe-west1\")\n            .serviceName(\"example-valkey-service\")\n            .valkeyUserConfig(ValkeyValkeyUserConfigArgs.builder()\n                .valkeyMaxmemoryPolicy(\"allkeys-random\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleValkey:\n    type: aiven:Valkey\n    name: example_valkey\n    properties:\n      project: ${exampleProject.project}\n      plan: startup-4\n      cloudName: google-europe-west1\n      serviceName: example-valkey-service\n      valkeyUserConfig:\n        valkeyMaxmemoryPolicy: allkeys-random\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/valkey:Valkey example_valkey PROJECT/SERVICE_NAME\n```\n\n",
             "properties": {
                 "additionalDiskSpace": {
                     "type": "string",
@@ -33275,11 +33664,11 @@
             }
         },
         "aiven:index/valkeyUser:ValkeyUser": {
-            "description": "Creates and manages an [Aiven for Valkey](https://aiven.io/docs/products/valkey) user.\n",
+            "description": "Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\n// Example user with read-only access for analytics\nconst readAnalytics = new aiven.ValkeyUser(\"read_analytics\", {\n    project: exampleProject.project,\n    serviceName: exampleValkey.serviceName,\n    username: \"example-analytics-reader\",\n    password: valkeyUserPw,\n    valkeyAclCategories: [\"+@read\"],\n    valkeyAclCommands: [\n        \"+get\",\n        \"+set\",\n        \"+mget\",\n        \"+hget\",\n        \"+zrange\",\n    ],\n    valkeyAclKeys: [\"analytics:*\"],\n});\n// Example user with restricted write access for session management\nconst manageSessions = new aiven.ValkeyUser(\"manage_sessions\", {\n    project: exampleProject.project,\n    serviceName: exampleValkey.serviceName,\n    username: \"example-session-manager\",\n    password: valkeyUserPw,\n    valkeyAclCategories: [\n        \"+@write\",\n        \"+@keyspace\",\n    ],\n    valkeyAclCommands: [\n        \"+set\",\n        \"+del\",\n        \"+expire\",\n        \"-flushall\",\n        \"-flushdb\",\n    ],\n    valkeyAclKeys: [\"session:*\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\n# Example user with read-only access for analytics\nread_analytics = aiven.ValkeyUser(\"read_analytics\",\n    project=example_project[\"project\"],\n    service_name=example_valkey[\"serviceName\"],\n    username=\"example-analytics-reader\",\n    password=valkey_user_pw,\n    valkey_acl_categories=[\"+@read\"],\n    valkey_acl_commands=[\n        \"+get\",\n        \"+set\",\n        \"+mget\",\n        \"+hget\",\n        \"+zrange\",\n    ],\n    valkey_acl_keys=[\"analytics:*\"])\n# Example user with restricted write access for session management\nmanage_sessions = aiven.ValkeyUser(\"manage_sessions\",\n    project=example_project[\"project\"],\n    service_name=example_valkey[\"serviceName\"],\n    username=\"example-session-manager\",\n    password=valkey_user_pw,\n    valkey_acl_categories=[\n        \"+@write\",\n        \"+@keyspace\",\n    ],\n    valkey_acl_commands=[\n        \"+set\",\n        \"+del\",\n        \"+expire\",\n        \"-flushall\",\n        \"-flushdb\",\n    ],\n    valkey_acl_keys=[\"session:*\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example user with read-only access for analytics\n    var readAnalytics = new Aiven.ValkeyUser(\"read_analytics\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleValkey.ServiceName,\n        Username = \"example-analytics-reader\",\n        Password = valkeyUserPw,\n        ValkeyAclCategories = new[]\n        {\n            \"+@read\",\n        },\n        ValkeyAclCommands = new[]\n        {\n            \"+get\",\n            \"+set\",\n            \"+mget\",\n            \"+hget\",\n            \"+zrange\",\n        },\n        ValkeyAclKeys = new[]\n        {\n            \"analytics:*\",\n        },\n    });\n\n    // Example user with restricted write access for session management\n    var manageSessions = new Aiven.ValkeyUser(\"manage_sessions\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleValkey.ServiceName,\n        Username = \"example-session-manager\",\n        Password = valkeyUserPw,\n        ValkeyAclCategories = new[]\n        {\n            \"+@write\",\n            \"+@keyspace\",\n        },\n        ValkeyAclCommands = new[]\n        {\n            \"+set\",\n            \"+del\",\n            \"+expire\",\n            \"-flushall\",\n            \"-flushdb\",\n        },\n        ValkeyAclKeys = new[]\n        {\n            \"session:*\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example user with read-only access for analytics\n\t\t_, err := aiven.NewValkeyUser(ctx, \"read_analytics\", \u0026aiven.ValkeyUserArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tServiceName: pulumi.Any(exampleValkey.ServiceName),\n\t\t\tUsername:    pulumi.String(\"example-analytics-reader\"),\n\t\t\tPassword:    pulumi.Any(valkeyUserPw),\n\t\t\tValkeyAclCategories: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"+@read\"),\n\t\t\t},\n\t\t\tValkeyAclCommands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"+get\"),\n\t\t\t\tpulumi.String(\"+set\"),\n\t\t\t\tpulumi.String(\"+mget\"),\n\t\t\t\tpulumi.String(\"+hget\"),\n\t\t\t\tpulumi.String(\"+zrange\"),\n\t\t\t},\n\t\t\tValkeyAclKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"analytics:*\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example user with restricted write access for session management\n\t\t_, err = aiven.NewValkeyUser(ctx, \"manage_sessions\", \u0026aiven.ValkeyUserArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tServiceName: pulumi.Any(exampleValkey.ServiceName),\n\t\t\tUsername:    pulumi.String(\"example-session-manager\"),\n\t\t\tPassword:    pulumi.Any(valkeyUserPw),\n\t\t\tValkeyAclCategories: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"+@write\"),\n\t\t\t\tpulumi.String(\"+@keyspace\"),\n\t\t\t},\n\t\t\tValkeyAclCommands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"+set\"),\n\t\t\t\tpulumi.String(\"+del\"),\n\t\t\t\tpulumi.String(\"+expire\"),\n\t\t\t\tpulumi.String(\"-flushall\"),\n\t\t\t\tpulumi.String(\"-flushdb\"),\n\t\t\t},\n\t\t\tValkeyAclKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"session:*\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.ValkeyUser;\nimport com.pulumi.aiven.ValkeyUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example user with read-only access for analytics\n        var readAnalytics = new ValkeyUser(\"readAnalytics\", ValkeyUserArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleValkey.serviceName())\n            .username(\"example-analytics-reader\")\n            .password(valkeyUserPw)\n            .valkeyAclCategories(\"+@read\")\n            .valkeyAclCommands(            \n                \"+get\",\n                \"+set\",\n                \"+mget\",\n                \"+hget\",\n                \"+zrange\")\n            .valkeyAclKeys(\"analytics:*\")\n            .build());\n\n        // Example user with restricted write access for session management\n        var manageSessions = new ValkeyUser(\"manageSessions\", ValkeyUserArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleValkey.serviceName())\n            .username(\"example-session-manager\")\n            .password(valkeyUserPw)\n            .valkeyAclCategories(            \n                \"+@write\",\n                \"+@keyspace\")\n            .valkeyAclCommands(            \n                \"+set\",\n                \"+del\",\n                \"+expire\",\n                \"-flushall\",\n                \"-flushdb\")\n            .valkeyAclKeys(\"session:*\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example user with read-only access for analytics\n  readAnalytics:\n    type: aiven:ValkeyUser\n    name: read_analytics\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleValkey.serviceName}\n      username: example-analytics-reader\n      password: ${valkeyUserPw}\n      valkeyAclCategories:\n        - +@read\n      valkeyAclCommands:\n        - +get\n        - +set\n        - +mget\n        - +hget\n        - +zrange\n      valkeyAclKeys:\n        - analytics:*\n  # Example user with restricted write access for session management\n  manageSessions:\n    type: aiven:ValkeyUser\n    name: manage_sessions\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleValkey.serviceName}\n      username: example-session-manager\n      password: ${valkeyUserPw}\n      valkeyAclCategories:\n        - +@write\n        - +@keyspace\n      valkeyAclCommands:\n        - +set\n        - +del\n        - +expire\n        - -flushall\n        - -flushdb\n      valkeyAclKeys:\n        - session:*\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME\n```\n\n",
             "properties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the Valkey User.\n",
+                    "description": "The Valkey service user's password.\n",
                     "secret": true
                 },
                 "project": {
@@ -33292,39 +33681,39 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the user account. Tells whether the user is the primary account or a regular account.\n"
+                    "description": "User account type, such as primary or regular account.\n"
                 },
                 "username": {
                     "type": "string",
-                    "description": "The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "valkeyAclCategories": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n"
+                    "description": "Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n"
                 },
                 "valkeyAclChannels": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.\n"
+                    "description": "Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.\n"
                 },
                 "valkeyAclCommands": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n"
+                    "description": "Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n"
                 },
                 "valkeyAclKeys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n"
+                    "description": "Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n"
                 }
             },
             "required": [
@@ -33337,7 +33726,7 @@
             "inputProperties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the Valkey User.\n",
+                    "description": "The Valkey service user's password.\n",
                     "secret": true
                 },
                 "project": {
@@ -33352,7 +33741,7 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                    "description": "Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "valkeyAclCategories": {
@@ -33360,7 +33749,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
+                    "description": "Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "valkeyAclChannels": {
@@ -33368,7 +33757,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.\n",
+                    "description": "Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "valkeyAclCommands": {
@@ -33376,7 +33765,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
+                    "description": "Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "valkeyAclKeys": {
@@ -33384,7 +33773,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
+                    "description": "Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -33398,7 +33787,7 @@
                 "properties": {
                     "password": {
                         "type": "string",
-                        "description": "The password of the Valkey User.\n",
+                        "description": "The Valkey service user's password.\n",
                         "secret": true
                     },
                     "project": {
@@ -33413,11 +33802,11 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of the user account. Tells whether the user is the primary account or a regular account.\n"
+                        "description": "User account type, such as primary or regular account.\n"
                     },
                     "username": {
                         "type": "string",
-                        "description": "The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "valkeyAclCategories": {
@@ -33425,7 +33814,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
+                        "description": "Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "valkeyAclChannels": {
@@ -33433,7 +33822,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.\n",
+                        "description": "Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "valkeyAclCommands": {
@@ -33441,7 +33830,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
+                        "description": "Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "valkeyAclKeys": {
@@ -33449,7 +33838,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
+                        "description": "Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -34240,7 +34629,7 @@
                         "type": "string"
                     },
                     "state": {
-                        "description": "State or province.\n",
+                        "description": "Address state.\n",
                         "type": "string"
                     },
                     "vatId": {
@@ -38093,6 +38482,10 @@
                         "description": "Enable of disable replication flows for a service.\n",
                         "type": "boolean"
                     },
+                    "exactlyOnceDeliveryEnabled": {
+                        "description": "Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.\n",
+                        "type": "boolean"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
@@ -38153,6 +38546,7 @@
                     "emitBackwardHeartbeatsEnabled",
                     "emitHeartbeatsEnabled",
                     "enable",
+                    "exactlyOnceDeliveryEnabled",
                     "offsetSyncsTopicLocation",
                     "project",
                     "replicationFactor",
@@ -41125,7 +41519,7 @@
                     },
                     "username": {
                         "type": "string",
-                        "description": "The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                        "description": "Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -41143,7 +41537,7 @@
                         "type": "string"
                     },
                     "password": {
-                        "description": "The password of the Valkey User.\n",
+                        "description": "The Valkey service user's password.\n",
                         "secret": true,
                         "type": "string"
                     },
@@ -41156,36 +41550,36 @@
                         "type": "string"
                     },
                     "type": {
-                        "description": "Type of the user account. Tells whether the user is the primary account or a regular account.\n",
+                        "description": "User account type, such as primary or regular account.\n",
                         "type": "string"
                     },
                     "username": {
-                        "description": "The actual name of the Valkey User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "type": "string"
                     },
                     "valkeyAclCategories": {
-                        "description": "Defines command category rules. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
+                        "description": "Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with`valkey_acl_commands` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
                     },
                     "valkeyAclChannels": {
-                        "description": "Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.\n",
+                        "description": "Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns. Changing this property forces recreation of the resource.\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
                     },
                     "valkeyAclCommands": {
-                        "description": "Defines rules for individual commands. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
+                        "description": "Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
                     },
                     "valkeyAclKeys": {
-                        "description": "Defines key access rules. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
+                        "description": "Key access rules. Entries are defined as standard glob patterns. The field is required with`valkey_acl_categories` and `valkey_acl_keys`. Changing this property forces recreation of the resource.\n",
                         "items": {
                             "type": "string"
                         },
