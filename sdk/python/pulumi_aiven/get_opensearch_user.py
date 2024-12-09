@@ -149,7 +149,7 @@ def get_opensearch_user(project: Optional[str] = None,
 def get_opensearch_user_output(project: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
                                username: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpensearchUserResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchUserResult]:
     """
     The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
 
@@ -173,7 +173,7 @@ def get_opensearch_user_output(project: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOpensearchUser:getOpensearchUser', __args__, opts=opts, typ=GetOpensearchUserResult)
     return __ret__.apply(lambda __response__: GetOpensearchUserResult(
         id=pulumi.get(__response__, 'id'),

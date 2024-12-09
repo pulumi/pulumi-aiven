@@ -115,7 +115,7 @@ export interface GetAccountAuthenticationResult {
 /**
  * The Account Authentication data source provides information about the existing Aiven Account Authentication.
  */
-export function getAccountAuthenticationOutput(args: GetAccountAuthenticationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAuthenticationResult> {
+export function getAccountAuthenticationOutput(args: GetAccountAuthenticationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountAuthenticationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getAccountAuthentication:getAccountAuthentication", {
         "accountId": args.accountId,

@@ -58,7 +58,7 @@ export interface GetOrganizationUserListResult {
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
-export function getOrganizationUserListOutput(args?: GetOrganizationUserListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationUserListResult> {
+export function getOrganizationUserListOutput(args?: GetOrganizationUserListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationUserListResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationUserList:getOrganizationUserList", {

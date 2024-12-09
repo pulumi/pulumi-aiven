@@ -157,7 +157,7 @@ def get_organization_user_group(name: Optional[str] = None,
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_organization_user_group_output(name: Optional[pulumi.Input[str]] = None,
                                        organization_id: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationUserGroupResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserGroupResult]:
     """
     Gets information about an existing user group in an organization.
 
@@ -178,7 +178,7 @@ def get_organization_user_group_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['organizationId'] = organization_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationUserGroup:getOrganizationUserGroup', __args__, opts=opts, typ=GetOrganizationUserGroupResult)
     return __ret__.apply(lambda __response__: GetOrganizationUserGroupResult(
         create_time=pulumi.get(__response__, 'create_time'),

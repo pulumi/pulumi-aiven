@@ -304,7 +304,7 @@ def get_account_authentication(account_id: Optional[str] = None,
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_account_authentication_output(account_id: Optional[pulumi.Input[str]] = None,
                                       name: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAuthenticationResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAuthenticationResult]:
     """
     The Account Authentication data source provides information about the existing Aiven Account Authentication.
 
@@ -315,7 +315,7 @@ def get_account_authentication_output(account_id: Optional[pulumi.Input[str]] = 
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAccountAuthentication:getAccountAuthentication', __args__, opts=opts, typ=GetAccountAuthenticationResult)
     return __ret__.apply(lambda __response__: GetAccountAuthenticationResult(
         account_id=pulumi.get(__response__, 'account_id'),

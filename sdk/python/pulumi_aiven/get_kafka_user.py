@@ -175,7 +175,7 @@ def get_kafka_user(project: Optional[str] = None,
 def get_kafka_user_output(project: Optional[pulumi.Input[str]] = None,
                           service_name: Optional[pulumi.Input[str]] = None,
                           username: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaUserResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaUserResult]:
     """
     Gets information about an Aiven for Apache Kafka® service user.
 
@@ -199,7 +199,7 @@ def get_kafka_user_output(project: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaUser:getKafkaUser', __args__, opts=opts, typ=GetKafkaUserResult)
     return __ret__.apply(lambda __response__: GetKafkaUserResult(
         access_cert=pulumi.get(__response__, 'access_cert'),

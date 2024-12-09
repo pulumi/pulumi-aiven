@@ -81,7 +81,7 @@ export interface GetProjectUserResult {
  * });
  * ```
  */
-export function getProjectUserOutput(args: GetProjectUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectUserResult> {
+export function getProjectUserOutput(args: GetProjectUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getProjectUser:getProjectUser", {
         "email": args.email,

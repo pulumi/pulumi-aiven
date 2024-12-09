@@ -81,7 +81,7 @@ export interface GetOpenSearchAclConfigResult {
  * });
  * ```
  */
-export function getOpenSearchAclConfigOutput(args: GetOpenSearchAclConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchAclConfigResult> {
+export function getOpenSearchAclConfigOutput(args: GetOpenSearchAclConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenSearchAclConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", {
         "project": args.project,

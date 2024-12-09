@@ -110,7 +110,7 @@ export interface GetKafkaAclResult {
  * });
  * ```
  */
-export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaAclResult> {
+export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaAclResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getKafkaAcl:getKafkaAcl", {
         "permission": args.permission,

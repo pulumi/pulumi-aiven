@@ -138,7 +138,7 @@ def get_influxdb_user(project: Optional[str] = None,
 def get_influxdb_user_output(project: Optional[pulumi.Input[str]] = None,
                              service_name: Optional[pulumi.Input[str]] = None,
                              username: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInfluxdbUserResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfluxdbUserResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -146,7 +146,7 @@ def get_influxdb_user_output(project: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getInfluxdbUser:getInfluxdbUser', __args__, opts=opts, typ=GetInfluxdbUserResult)
     return __ret__.apply(lambda __response__: GetInfluxdbUserResult(
         access_cert=pulumi.get(__response__, 'access_cert'),

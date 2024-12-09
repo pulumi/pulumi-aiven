@@ -130,7 +130,7 @@ def get_organizational_unit(name: Optional[str] = None,
         tenant_id=pulumi.get(__ret__, 'tenant_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_organizational_unit_output(name: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationalUnitResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationalUnitResult]:
     """
     Gets information about an organizational unit.
 
@@ -139,7 +139,7 @@ def get_organizational_unit_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationalUnit:getOrganizationalUnit', __args__, opts=opts, typ=GetOrganizationalUnitResult)
     return __ret__.apply(lambda __response__: GetOrganizationalUnitResult(
         create_time=pulumi.get(__response__, 'create_time'),

@@ -157,7 +157,7 @@ def get_opensearch_security_plugin_config(project: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[str]] = None,
                                                  service_name: Optional[pulumi.Input[str]] = None,
-                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpensearchSecurityPluginConfigResult]:
+                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchSecurityPluginConfigResult]:
     """
     The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
 
@@ -178,7 +178,7 @@ def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig', __args__, opts=opts, typ=GetOpensearchSecurityPluginConfigResult)
     return __ret__.apply(lambda __response__: GetOpensearchSecurityPluginConfigResult(
         admin_enabled=pulumi.get(__response__, 'admin_enabled'),

@@ -125,7 +125,7 @@ def get_account_team_project(account_id: Optional[str] = None,
 def get_account_team_project_output(account_id: Optional[pulumi.Input[str]] = None,
                                     project_name: Optional[pulumi.Input[str]] = None,
                                     team_id: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamProjectResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountTeamProjectResult]:
     """
     The Account Team Project data source provides information about the existing Account Team Project.
 
@@ -138,7 +138,7 @@ def get_account_team_project_output(account_id: Optional[pulumi.Input[str]] = No
     __args__['accountId'] = account_id
     __args__['projectName'] = project_name
     __args__['teamId'] = team_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAccountTeamProject:getAccountTeamProject', __args__, opts=opts, typ=GetAccountTeamProjectResult)
     return __ret__.apply(lambda __response__: GetAccountTeamProjectResult(
         account_id=pulumi.get(__response__, 'account_id'),

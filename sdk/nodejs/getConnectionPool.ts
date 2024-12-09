@@ -104,7 +104,7 @@ export interface GetConnectionPoolResult {
  * });
  * ```
  */
-export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionPoolResult> {
+export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getConnectionPool:getConnectionPool", {
         "poolName": args.poolName,

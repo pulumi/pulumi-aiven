@@ -179,7 +179,7 @@ export interface GetFlinkResult {
  * });
  * ```
  */
-export function getFlinkOutput(args: GetFlinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkResult> {
+export function getFlinkOutput(args: GetFlinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getFlink:getFlink", {
         "project": args.project,

@@ -92,7 +92,7 @@ export interface GetM3dbUserResult {
  * });
  * ```
  */
-export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3dbUserResult> {
+export function getM3dbUserOutput(args: GetM3dbUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetM3dbUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getM3dbUser:getM3dbUser", {
         "project": args.project,

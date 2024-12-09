@@ -89,7 +89,7 @@ export interface GetOpensearchSecurityPluginConfigResult {
  * });
  * ```
  */
-export function getOpensearchSecurityPluginConfigOutput(args: GetOpensearchSecurityPluginConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpensearchSecurityPluginConfigResult> {
+export function getOpensearchSecurityPluginConfigOutput(args: GetOpensearchSecurityPluginConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpensearchSecurityPluginConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", {
         "project": args.project,

@@ -134,7 +134,7 @@ def get_account_team(account_id: Optional[str] = None,
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_account_team_output(account_id: Optional[pulumi.Input[str]] = None,
                             name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountTeamResult]:
     """
     The Account Team data source provides information about the existing Account Team.
 
@@ -145,7 +145,7 @@ def get_account_team_output(account_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAccountTeam:getAccountTeam', __args__, opts=opts, typ=GetAccountTeamResult)
     return __ret__.apply(lambda __response__: GetAccountTeamResult(
         account_id=pulumi.get(__response__, 'account_id'),

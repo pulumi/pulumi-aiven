@@ -70,7 +70,7 @@ export interface GetAccountTeamMemberResult {
 /**
  * The Account Team Member data source provides information about the existing Aiven Account Team Member.
  */
-export function getAccountTeamMemberOutput(args: GetAccountTeamMemberOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountTeamMemberResult> {
+export function getAccountTeamMemberOutput(args: GetAccountTeamMemberOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountTeamMemberResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getAccountTeamMember:getAccountTeamMember", {
         "accountId": args.accountId,

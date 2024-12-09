@@ -91,7 +91,7 @@ export interface GetProjectVpcResult {
  * });
  * ```
  */
-export function getProjectVpcOutput(args?: GetProjectVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVpcResult> {
+export function getProjectVpcOutput(args?: GetProjectVpcOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectVpcResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getProjectVpc:getProjectVpc", {

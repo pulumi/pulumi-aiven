@@ -104,7 +104,7 @@ export interface GetTransitGatewayVpcAttachmentResult {
  * });
  * ```
  */
-export function getTransitGatewayVpcAttachmentOutput(args: GetTransitGatewayVpcAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitGatewayVpcAttachmentResult> {
+export function getTransitGatewayVpcAttachmentOutput(args: GetTransitGatewayVpcAttachmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitGatewayVpcAttachmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", {
         "peerCloudAccount": args.peerCloudAccount,
