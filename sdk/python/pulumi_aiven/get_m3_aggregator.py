@@ -444,7 +444,7 @@ def get_m3_aggregator(project: Optional[str] = None,
         termination_protection=pulumi.get(__ret__, 'termination_protection'))
 def get_m3_aggregator_output(project: Optional[pulumi.Input[str]] = None,
                              service_name: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetM3AggregatorResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetM3AggregatorResult]:
     """
     The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
 
@@ -465,7 +465,7 @@ def get_m3_aggregator_output(project: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getM3Aggregator:getM3Aggregator', __args__, opts=opts, typ=GetM3AggregatorResult)
     return __ret__.apply(lambda __response__: GetM3AggregatorResult(
         additional_disk_space=pulumi.get(__response__, 'additional_disk_space'),

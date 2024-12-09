@@ -346,14 +346,14 @@ def get_influx_db(project: Optional[str] = None,
         termination_protection=pulumi.get(__ret__, 'termination_protection'))
 def get_influx_db_output(project: Optional[pulumi.Input[str]] = None,
                          service_name: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInfluxDbResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfluxDbResult]:
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getInfluxDb:getInfluxDb', __args__, opts=opts, typ=GetInfluxDbResult)
     return __ret__.apply(lambda __response__: GetInfluxDbResult(
         additional_disk_space=pulumi.get(__response__, 'additional_disk_space'),

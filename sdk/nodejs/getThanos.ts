@@ -179,7 +179,7 @@ export interface GetThanosResult {
  * });
  * ```
  */
-export function getThanosOutput(args: GetThanosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetThanosResult> {
+export function getThanosOutput(args: GetThanosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetThanosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getThanos:getThanos", {
         "project": args.project,

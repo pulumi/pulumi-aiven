@@ -158,7 +158,7 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
                                     project: Optional[pulumi.Input[str]] = None,
                                     service_name: Optional[pulumi.Input[str]] = None,
                                     username: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenSearchAclRuleResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchAclRuleResult]:
     """
     The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
 
@@ -187,7 +187,7 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOpenSearchAclRule:getOpenSearchAclRule', __args__, opts=opts, typ=GetOpenSearchAclRuleResult)
     return __ret__.apply(lambda __response__: GetOpenSearchAclRuleResult(
         id=pulumi.get(__response__, 'id'),

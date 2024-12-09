@@ -35,7 +35,7 @@ export interface GetInfluxdbDatabaseResult {
     readonly serviceName: string;
     readonly terminationProtection: boolean;
 }
-export function getInfluxdbDatabaseOutput(args: GetInfluxdbDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfluxdbDatabaseResult> {
+export function getInfluxdbDatabaseOutput(args: GetInfluxdbDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfluxdbDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", {
         "databaseName": args.databaseName,

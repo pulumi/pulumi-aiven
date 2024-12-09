@@ -179,7 +179,7 @@ export interface GetCassandraResult {
  * });
  * ```
  */
-export function getCassandraOutput(args: GetCassandraOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandraResult> {
+export function getCassandraOutput(args: GetCassandraOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCassandraResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getCassandra:getCassandra", {
         "project": args.project,

@@ -366,7 +366,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
         rsyslog_user_configs=pulumi.get(__ret__, 'rsyslog_user_configs'))
 def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input[str]] = None,
                                             project: Optional[pulumi.Input[str]] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIntegrationEndpointResult]:
+                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceIntegrationEndpointResult]:
     """
     Gets information about an integration endpoint.
 
@@ -387,7 +387,7 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
     __args__ = dict()
     __args__['endpointName'] = endpoint_name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint', __args__, opts=opts, typ=GetServiceIntegrationEndpointResult)
     return __ret__.apply(lambda __response__: GetServiceIntegrationEndpointResult(
         autoscaler_user_configs=pulumi.get(__response__, 'autoscaler_user_configs'),

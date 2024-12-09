@@ -187,7 +187,7 @@ export interface GetKafkaResult {
  * });
  * ```
  */
-export function getKafkaOutput(args: GetKafkaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaResult> {
+export function getKafkaOutput(args: GetKafkaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getKafka:getKafka", {
         "project": args.project,

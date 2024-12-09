@@ -297,7 +297,7 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
                                              service_name: Optional[pulumi.Input[str]] = None,
                                              source_cluster: Optional[pulumi.Input[str]] = None,
                                              target_cluster: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMirrorMakerReplicationFlowResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMirrorMakerReplicationFlowResult]:
     """
     The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
 
@@ -324,7 +324,7 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
     __args__['serviceName'] = service_name
     __args__['sourceCluster'] = source_cluster
     __args__['targetCluster'] = target_cluster
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult)
     return __ret__.apply(lambda __response__: GetMirrorMakerReplicationFlowResult(
         config_properties_excludes=pulumi.get(__response__, 'config_properties_excludes'),

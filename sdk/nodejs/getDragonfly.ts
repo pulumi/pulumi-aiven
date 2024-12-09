@@ -179,7 +179,7 @@ export interface GetDragonflyResult {
  * });
  * ```
  */
-export function getDragonflyOutput(args: GetDragonflyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDragonflyResult> {
+export function getDragonflyOutput(args: GetDragonflyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDragonflyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getDragonfly:getDragonfly", {
         "project": args.project,

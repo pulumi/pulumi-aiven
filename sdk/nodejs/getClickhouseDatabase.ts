@@ -85,7 +85,7 @@ export interface GetClickhouseDatabaseResult {
  * });
  * ```
  */
-export function getClickhouseDatabaseOutput(args: GetClickhouseDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseDatabaseResult> {
+export function getClickhouseDatabaseOutput(args: GetClickhouseDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClickhouseDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getClickhouseDatabase:getClickhouseDatabase", {
         "name": args.name,

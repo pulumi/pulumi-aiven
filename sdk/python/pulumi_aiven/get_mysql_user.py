@@ -188,7 +188,7 @@ def get_mysql_user(project: Optional[str] = None,
 def get_mysql_user_output(project: Optional[pulumi.Input[str]] = None,
                           service_name: Optional[pulumi.Input[str]] = None,
                           username: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMysqlUserResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMysqlUserResult]:
     """
     The MySQL User data source provides information about the existing Aiven MySQL User.
 
@@ -212,7 +212,7 @@ def get_mysql_user_output(project: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getMysqlUser:getMysqlUser', __args__, opts=opts, typ=GetMysqlUserResult)
     return __ret__.apply(lambda __response__: GetMysqlUserResult(
         access_cert=pulumi.get(__response__, 'access_cert'),

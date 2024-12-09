@@ -136,7 +136,7 @@ export interface GetServiceComponentResult {
  * });
  * ```
  */
-export function getServiceComponentOutput(args: GetServiceComponentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceComponentResult> {
+export function getServiceComponentOutput(args: GetServiceComponentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceComponentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getServiceComponent:getServiceComponent", {
         "component": args.component,

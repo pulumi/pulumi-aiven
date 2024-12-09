@@ -117,7 +117,7 @@ export interface GetAwsVpcPeeringConnectionResult {
  * }));
  * ```
  */
-export function getAwsVpcPeeringConnectionOutput(args: GetAwsVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsVpcPeeringConnectionResult> {
+export function getAwsVpcPeeringConnectionOutput(args: GetAwsVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsVpcPeeringConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", {
         "awsAccountId": args.awsAccountId,
