@@ -62,7 +62,7 @@ export interface GetAccountTeamProjectResult {
 /**
  * The Account Team Project data source provides information about the existing Account Team Project.
  */
-export function getAccountTeamProjectOutput(args: GetAccountTeamProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountTeamProjectResult> {
+export function getAccountTeamProjectOutput(args: GetAccountTeamProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountTeamProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getAccountTeamProject:getAccountTeamProject", {
         "accountId": args.accountId,

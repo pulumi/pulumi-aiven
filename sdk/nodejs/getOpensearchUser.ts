@@ -92,7 +92,7 @@ export interface GetOpensearchUserResult {
  * });
  * ```
  */
-export function getOpensearchUserOutput(args: GetOpensearchUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpensearchUserResult> {
+export function getOpensearchUserOutput(args: GetOpensearchUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpensearchUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOpensearchUser:getOpensearchUser", {
         "project": args.project,

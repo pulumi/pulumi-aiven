@@ -96,7 +96,7 @@ export interface GetGcpVpcPeeringConnectionResult {
  * });
  * ```
  */
-export function getGcpVpcPeeringConnectionOutput(args: GetGcpVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpVpcPeeringConnectionResult> {
+export function getGcpVpcPeeringConnectionOutput(args: GetGcpVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpVpcPeeringConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", {
         "gcpProjectId": args.gcpProjectId,

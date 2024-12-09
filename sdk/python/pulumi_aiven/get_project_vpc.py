@@ -148,7 +148,7 @@ def get_project_vpc(cloud_name: Optional[str] = None,
 def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectVpcResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectVpcResult]:
     """
     Gets information about the VPC for an Aiven project.
 
@@ -171,7 +171,7 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = N
     __args__['cloudName'] = cloud_name
     __args__['project'] = project
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getProjectVpc:getProjectVpc', __args__, opts=opts, typ=GetProjectVpcResult)
     return __ret__.apply(lambda __response__: GetProjectVpcResult(
         cloud_name=pulumi.get(__response__, 'cloud_name'),

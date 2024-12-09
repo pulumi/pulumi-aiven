@@ -85,7 +85,7 @@ export interface GetGcpPrivatelinkResult {
  * });
  * ```
  */
-export function getGcpPrivatelinkOutput(args: GetGcpPrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpPrivatelinkResult> {
+export function getGcpPrivatelinkOutput(args: GetGcpPrivatelinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpPrivatelinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getGcpPrivatelink:getGcpPrivatelink", {
         "project": args.project,

@@ -93,7 +93,7 @@ export interface GetPgDatabaseResult {
  * });
  * ```
  */
-export function getPgDatabaseOutput(args: GetPgDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgDatabaseResult> {
+export function getPgDatabaseOutput(args: GetPgDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPgDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getPgDatabase:getPgDatabase", {
         "databaseName": args.databaseName,

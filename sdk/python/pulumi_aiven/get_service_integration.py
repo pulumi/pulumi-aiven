@@ -363,7 +363,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
                                    integration_type: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[str]] = None,
                                    source_service_name: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIntegrationResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceIntegrationResult]:
     """
     Gets information about an Aiven service integration.
 
@@ -390,7 +390,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
     __args__['integrationType'] = integration_type
     __args__['project'] = project
     __args__['sourceServiceName'] = source_service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getServiceIntegration:getServiceIntegration', __args__, opts=opts, typ=GetServiceIntegrationResult)
     return __ret__.apply(lambda __response__: GetServiceIntegrationResult(
         clickhouse_kafka_user_configs=pulumi.get(__response__, 'clickhouse_kafka_user_configs'),

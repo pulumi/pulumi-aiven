@@ -108,7 +108,7 @@ export interface GetRedisUserResult {
  * });
  * ```
  */
-export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRedisUserResult> {
+export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRedisUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getRedisUser:getRedisUser", {
         "project": args.project,

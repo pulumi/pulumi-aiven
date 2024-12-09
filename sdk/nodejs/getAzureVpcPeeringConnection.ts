@@ -129,7 +129,7 @@ export interface GetAzureVpcPeeringConnectionResult {
  * });
  * ```
  */
-export function getAzureVpcPeeringConnectionOutput(args: GetAzureVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVpcPeeringConnectionResult> {
+export function getAzureVpcPeeringConnectionOutput(args: GetAzureVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureVpcPeeringConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", {
         "azureSubscriptionId": args.azureSubscriptionId,

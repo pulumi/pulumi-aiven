@@ -80,7 +80,7 @@ export interface GetKafkaSchemaRegistryAclResult {
 /**
  * The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
  */
-export function getKafkaSchemaRegistryAclOutput(args: GetKafkaSchemaRegistryAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaRegistryAclResult> {
+export function getKafkaSchemaRegistryAclOutput(args: GetKafkaSchemaRegistryAclOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaSchemaRegistryAclResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", {
         "permission": args.permission,

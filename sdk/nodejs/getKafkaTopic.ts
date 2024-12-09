@@ -111,7 +111,7 @@ export interface GetKafkaTopicResult {
  * });
  * ```
  */
-export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaTopicResult> {
+export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getKafkaTopic:getKafkaTopic", {
         "project": args.project,

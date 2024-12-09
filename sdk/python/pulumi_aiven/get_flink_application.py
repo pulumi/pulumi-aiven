@@ -188,7 +188,7 @@ def get_flink_application(name: Optional[str] = None,
 def get_flink_application_output(name: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlinkApplicationResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlinkApplicationResult]:
     """
     Gets information about an Aiven for Apache Flink® application.
 
@@ -212,7 +212,7 @@ def get_flink_application_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getFlinkApplication:getFlinkApplication', __args__, opts=opts, typ=GetFlinkApplicationResult)
     return __ret__.apply(lambda __response__: GetFlinkApplicationResult(
         application_id=pulumi.get(__response__, 'application_id'),

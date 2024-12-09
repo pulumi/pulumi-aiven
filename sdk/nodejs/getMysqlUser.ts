@@ -104,7 +104,7 @@ export interface GetMysqlUserResult {
  * });
  * ```
  */
-export function getMysqlUserOutput(args: GetMysqlUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlUserResult> {
+export function getMysqlUserOutput(args: GetMysqlUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMysqlUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getMysqlUser:getMysqlUser", {
         "project": args.project,

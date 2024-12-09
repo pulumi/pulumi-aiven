@@ -108,7 +108,7 @@ def get_influxdb_database(database_name: Optional[str] = None,
 def get_influxdb_database_output(database_name: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInfluxdbDatabaseResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfluxdbDatabaseResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -116,7 +116,7 @@ def get_influxdb_database_output(database_name: Optional[pulumi.Input[str]] = No
     __args__['databaseName'] = database_name
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getInfluxdbDatabase:getInfluxdbDatabase', __args__, opts=opts, typ=GetInfluxdbDatabaseResult)
     return __ret__.apply(lambda __response__: GetInfluxdbDatabaseResult(
         database_name=pulumi.get(__response__, 'database_name'),

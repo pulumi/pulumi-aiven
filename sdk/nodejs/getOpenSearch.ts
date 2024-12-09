@@ -179,7 +179,7 @@ export interface GetOpenSearchResult {
  * });
  * ```
  */
-export function getOpenSearchOutput(args: GetOpenSearchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchResult> {
+export function getOpenSearchOutput(args: GetOpenSearchOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenSearchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOpenSearch:getOpenSearch", {
         "project": args.project,

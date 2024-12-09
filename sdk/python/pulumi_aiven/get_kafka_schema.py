@@ -174,7 +174,7 @@ def get_kafka_schema(project: Optional[str] = None,
 def get_kafka_schema_output(project: Optional[pulumi.Input[str]] = None,
                             service_name: Optional[pulumi.Input[str]] = None,
                             subject_name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaSchemaResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaSchemaResult]:
     """
     The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
 
@@ -197,7 +197,7 @@ def get_kafka_schema_output(project: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['subjectName'] = subject_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaSchema:getKafkaSchema', __args__, opts=opts, typ=GetKafkaSchemaResult)
     return __ret__.apply(lambda __response__: GetKafkaSchemaResult(
         compatibility_level=pulumi.get(__response__, 'compatibility_level'),
