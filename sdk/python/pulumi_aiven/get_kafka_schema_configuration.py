@@ -172,7 +172,7 @@ def get_kafka_schema_configuration(project: Optional[str] = None,
         version=pulumi.get(__ret__, 'version'))
 def get_kafka_schema_configuration_output(project: Optional[pulumi.Input[str]] = None,
                                           service_name: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaSchemaConfigurationResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaSchemaConfigurationResult]:
     """
     The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
 
@@ -195,7 +195,7 @@ def get_kafka_schema_configuration_output(project: Optional[pulumi.Input[str]] =
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration', __args__, opts=opts, typ=GetKafkaSchemaConfigurationResult)
     return __ret__.apply(lambda __response__: GetKafkaSchemaConfigurationResult(
         compatibility_level=pulumi.get(__response__, 'compatibility_level'),

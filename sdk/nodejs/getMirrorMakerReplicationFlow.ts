@@ -143,7 +143,7 @@ export interface GetMirrorMakerReplicationFlowResult {
  * });
  * ```
  */
-export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicationFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMirrorMakerReplicationFlowResult> {
+export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicationFlowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMirrorMakerReplicationFlowResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", {
         "project": args.project,

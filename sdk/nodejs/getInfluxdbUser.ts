@@ -38,7 +38,7 @@ export interface GetInfluxdbUserResult {
     readonly type: string;
     readonly username: string;
 }
-export function getInfluxdbUserOutput(args: GetInfluxdbUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfluxdbUserResult> {
+export function getInfluxdbUserOutput(args: GetInfluxdbUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfluxdbUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getInfluxdbUser:getInfluxdbUser", {
         "project": args.project,

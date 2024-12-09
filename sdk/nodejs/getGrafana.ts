@@ -179,7 +179,7 @@ export interface GetGrafanaResult {
  * });
  * ```
  */
-export function getGrafanaOutput(args: GetGrafanaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrafanaResult> {
+export function getGrafanaOutput(args: GetGrafanaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGrafanaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getGrafana:getGrafana", {
         "project": args.project,

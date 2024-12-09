@@ -100,7 +100,7 @@ export interface GetBillingGroupResult {
 /**
  * Gets information about a billing group.
  */
-export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingGroupResult> {
+export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBillingGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getBillingGroup:getBillingGroup", {
         "billingGroupId": args.billingGroupId,

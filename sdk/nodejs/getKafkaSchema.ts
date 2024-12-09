@@ -98,7 +98,7 @@ export interface GetKafkaSchemaResult {
  * });
  * ```
  */
-export function getKafkaSchemaOutput(args: GetKafkaSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaResult> {
+export function getKafkaSchemaOutput(args: GetKafkaSchemaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaSchemaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getKafkaSchema:getKafkaSchema", {
         "project": args.project,

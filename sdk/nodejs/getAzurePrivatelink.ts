@@ -93,7 +93,7 @@ export interface GetAzurePrivatelinkResult {
  * });
  * ```
  */
-export function getAzurePrivatelinkOutput(args: GetAzurePrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzurePrivatelinkResult> {
+export function getAzurePrivatelinkOutput(args: GetAzurePrivatelinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzurePrivatelinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getAzurePrivatelink:getAzurePrivatelink", {
         "project": args.project,

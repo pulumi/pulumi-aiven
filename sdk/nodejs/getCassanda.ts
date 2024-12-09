@@ -182,7 +182,7 @@ export interface GetCassandaResult {
  * ```
  */
 /** @deprecated aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
-export function getCassandaOutput(args: GetCassandaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandaResult> {
+export function getCassandaOutput(args: GetCassandaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCassandaResult> {
     pulumi.log.warn("getCassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getCassanda:getCassanda", {

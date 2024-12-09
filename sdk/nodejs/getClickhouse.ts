@@ -179,7 +179,7 @@ export interface GetClickhouseResult {
  * });
  * ```
  */
-export function getClickhouseOutput(args: GetClickhouseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseResult> {
+export function getClickhouseOutput(args: GetClickhouseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClickhouseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getClickhouse:getClickhouse", {
         "project": args.project,

@@ -175,7 +175,7 @@ def get_cassandra_user(project: Optional[str] = None,
 def get_cassandra_user_output(project: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
                               username: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCassandraUserResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCassandraUserResult]:
     """
     Gets information about an Aiven for Apache Cassandra® service user.
 
@@ -199,7 +199,7 @@ def get_cassandra_user_output(project: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getCassandraUser:getCassandraUser', __args__, opts=opts, typ=GetCassandraUserResult)
     return __ret__.apply(lambda __response__: GetCassandraUserResult(
         access_cert=pulumi.get(__response__, 'access_cert'),

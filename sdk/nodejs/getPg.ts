@@ -179,7 +179,7 @@ export interface GetPgResult {
  * });
  * ```
  */
-export function getPgOutput(args: GetPgOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgResult> {
+export function getPgOutput(args: GetPgOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPgResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getPg:getPg", {
         "project": args.project,

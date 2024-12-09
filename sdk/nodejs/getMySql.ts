@@ -179,7 +179,7 @@ export interface GetMySqlResult {
  * });
  * ```
  */
-export function getMySqlOutput(args: GetMySqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMySqlResult> {
+export function getMySqlOutput(args: GetMySqlOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMySqlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getMySql:getMySql", {
         "project": args.project,

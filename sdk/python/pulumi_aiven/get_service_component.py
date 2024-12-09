@@ -221,7 +221,7 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
                                  service_name: Optional[pulumi.Input[Optional[str]]] = None,
                                  ssl: Optional[pulumi.Input[Optional[bool]]] = None,
                                  usage: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceComponentResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceComponentResult]:
     """
     The Service Component data source provides information about the existing Aiven service Component.
 
@@ -257,7 +257,7 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
     __args__['serviceName'] = service_name
     __args__['ssl'] = ssl
     __args__['usage'] = usage
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getServiceComponent:getServiceComponent', __args__, opts=opts, typ=GetServiceComponentResult)
     return __ret__.apply(lambda __response__: GetServiceComponentResult(
         component=pulumi.get(__response__, 'component'),

@@ -96,7 +96,7 @@ export interface GetClickhouseUserResult {
  * });
  * ```
  */
-export function getClickhouseUserOutput(args: GetClickhouseUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseUserResult> {
+export function getClickhouseUserOutput(args: GetClickhouseUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClickhouseUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getClickhouseUser:getClickhouseUser", {
         "project": args.project,

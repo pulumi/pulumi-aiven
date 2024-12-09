@@ -99,7 +99,7 @@ def get_organization_user_list(id: Optional[str] = None,
         users=pulumi.get(__ret__, 'users'))
 def get_organization_user_list_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                       name: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationUserListResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserListResult]:
     """
     List of users of the organization.
 
@@ -113,7 +113,7 @@ def get_organization_user_list_output(id: Optional[pulumi.Input[Optional[str]]] 
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationUserList:getOrganizationUserList', __args__, opts=opts, typ=GetOrganizationUserListResult)
     return __ret__.apply(lambda __response__: GetOrganizationUserListResult(
         id=pulumi.get(__response__, 'id'),
