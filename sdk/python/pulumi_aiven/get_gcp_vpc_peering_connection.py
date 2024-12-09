@@ -162,7 +162,7 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
 def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[str]] = None,
                                           peer_vpc: Optional[pulumi.Input[str]] = None,
                                           vpc_id: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGcpVpcPeeringConnectionResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpVpcPeeringConnectionResult]:
     """
     The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
 
@@ -186,7 +186,7 @@ def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[
     __args__['gcpProjectId'] = gcp_project_id
     __args__['peerVpc'] = peer_vpc
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection', __args__, opts=opts, typ=GetGcpVpcPeeringConnectionResult)
     return __ret__.apply(lambda __response__: GetGcpVpcPeeringConnectionResult(
         gcp_project_id=pulumi.get(__response__, 'gcp_project_id'),

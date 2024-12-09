@@ -175,7 +175,7 @@ export interface GetKafkaMirrorMakerResult {
  * });
  * ```
  */
-export function getKafkaMirrorMakerOutput(args: GetKafkaMirrorMakerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaMirrorMakerResult> {
+export function getKafkaMirrorMakerOutput(args: GetKafkaMirrorMakerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaMirrorMakerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", {
         "project": args.project,

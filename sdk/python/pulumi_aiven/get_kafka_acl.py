@@ -172,7 +172,7 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
                          service_name: Optional[pulumi.Input[str]] = None,
                          topic: Optional[pulumi.Input[str]] = None,
                          username: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaAclResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaAclResult]:
     """
     Gets information about an ACL entry for an Aiven for Apache Kafka® service.
 
@@ -202,7 +202,7 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
     __args__['serviceName'] = service_name
     __args__['topic'] = topic
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaAcl:getKafkaAcl', __args__, opts=opts, typ=GetKafkaAclResult)
     return __ret__.apply(lambda __response__: GetKafkaAclResult(
         acl_id=pulumi.get(__response__, 'acl_id'),

@@ -104,7 +104,7 @@ export interface GetFlinkApplicationResult {
  * });
  * ```
  */
-export function getFlinkApplicationOutput(args: GetFlinkApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkApplicationResult> {
+export function getFlinkApplicationOutput(args: GetFlinkApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlinkApplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getFlinkApplication:getFlinkApplication", {
         "name": args.name,

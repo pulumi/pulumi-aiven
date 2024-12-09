@@ -216,7 +216,7 @@ def get_azure_vpc_peering_connection_output(azure_subscription_id: Optional[pulu
                                             peer_resource_group: Optional[pulumi.Input[str]] = None,
                                             vnet_name: Optional[pulumi.Input[str]] = None,
                                             vpc_id: Optional[pulumi.Input[str]] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAzureVpcPeeringConnectionResult]:
+                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzureVpcPeeringConnectionResult]:
     """
     Gets information about about an Azure VPC peering connection.
 
@@ -249,7 +249,7 @@ def get_azure_vpc_peering_connection_output(azure_subscription_id: Optional[pulu
     __args__['peerResourceGroup'] = peer_resource_group
     __args__['vnetName'] = vnet_name
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection', __args__, opts=opts, typ=GetAzureVpcPeeringConnectionResult)
     return __ret__.apply(lambda __response__: GetAzureVpcPeeringConnectionResult(
         azure_subscription_id=pulumi.get(__response__, 'azure_subscription_id'),

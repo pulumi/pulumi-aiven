@@ -85,7 +85,7 @@ export interface GetMysqlDatabaseResult {
  * });
  * ```
  */
-export function getMysqlDatabaseOutput(args: GetMysqlDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlDatabaseResult> {
+export function getMysqlDatabaseOutput(args: GetMysqlDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMysqlDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getMysqlDatabase:getMysqlDatabase", {
         "databaseName": args.databaseName,

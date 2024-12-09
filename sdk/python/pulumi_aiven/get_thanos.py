@@ -444,7 +444,7 @@ def get_thanos(project: Optional[str] = None,
         thanos_user_configs=pulumi.get(__ret__, 'thanos_user_configs'))
 def get_thanos_output(project: Optional[pulumi.Input[str]] = None,
                       service_name: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetThanosResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetThanosResult]:
     """
     Gets information about an Aiven for Thanos® service.
 
@@ -465,7 +465,7 @@ def get_thanos_output(project: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getThanos:getThanos', __args__, opts=opts, typ=GetThanosResult)
     return __ret__.apply(lambda __response__: GetThanosResult(
         additional_disk_space=pulumi.get(__response__, 'additional_disk_space'),

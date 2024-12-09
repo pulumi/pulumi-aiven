@@ -129,7 +129,7 @@ export interface GetFlinkApplicationVersionResult {
  * });
  * ```
  */
-export function getFlinkApplicationVersionOutput(args: GetFlinkApplicationVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkApplicationVersionResult> {
+export function getFlinkApplicationVersionOutput(args: GetFlinkApplicationVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlinkApplicationVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", {
         "applicationId": args.applicationId,

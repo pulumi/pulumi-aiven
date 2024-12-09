@@ -85,7 +85,7 @@ export interface GetOrganizationApplicationUserResult {
  * });
  * ```
  */
-export function getOrganizationApplicationUserOutput(args: GetOrganizationApplicationUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationApplicationUserResult> {
+export function getOrganizationApplicationUserOutput(args: GetOrganizationApplicationUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationApplicationUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", {
         "organizationId": args.organizationId,

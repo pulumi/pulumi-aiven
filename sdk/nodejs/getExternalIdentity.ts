@@ -73,7 +73,7 @@ export interface GetExternalIdentityResult {
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  */
-export function getExternalIdentityOutput(args: GetExternalIdentityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalIdentityResult> {
+export function getExternalIdentityOutput(args: GetExternalIdentityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalIdentityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getExternalIdentity:getExternalIdentity", {
         "externalServiceName": args.externalServiceName,

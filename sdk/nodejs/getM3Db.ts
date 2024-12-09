@@ -179,7 +179,7 @@ export interface GetM3DbResult {
  * });
  * ```
  */
-export function getM3DbOutput(args: GetM3DbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3DbResult> {
+export function getM3DbOutput(args: GetM3DbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetM3DbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getM3Db:getM3Db", {
         "project": args.project,

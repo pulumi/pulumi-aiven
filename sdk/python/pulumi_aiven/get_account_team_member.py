@@ -151,7 +151,7 @@ def get_account_team_member(account_id: Optional[str] = None,
 def get_account_team_member_output(account_id: Optional[pulumi.Input[str]] = None,
                                    team_id: Optional[pulumi.Input[str]] = None,
                                    user_email: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountTeamMemberResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountTeamMemberResult]:
     """
     The Account Team Member data source provides information about the existing Aiven Account Team Member.
 
@@ -164,7 +164,7 @@ def get_account_team_member_output(account_id: Optional[pulumi.Input[str]] = Non
     __args__['accountId'] = account_id
     __args__['teamId'] = team_id
     __args__['userEmail'] = user_email
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAccountTeamMember:getAccountTeamMember', __args__, opts=opts, typ=GetAccountTeamMemberResult)
     return __ret__.apply(lambda __response__: GetAccountTeamMemberResult(
         accepted=pulumi.get(__response__, 'accepted'),

@@ -62,7 +62,7 @@ export interface GetOrganizationUserResult {
 /**
  * The Organization User data source provides information about the existing Aiven Organization User.
  */
-export function getOrganizationUserOutput(args: GetOrganizationUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationUserResult> {
+export function getOrganizationUserOutput(args: GetOrganizationUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationUser:getOrganizationUser", {
         "organizationId": args.organizationId,

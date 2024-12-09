@@ -188,7 +188,7 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
 def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulumi.Input[str]] = None,
                                               peer_vpc: Optional[pulumi.Input[str]] = None,
                                               vpc_id: Optional[pulumi.Input[str]] = None,
-                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitGatewayVpcAttachmentResult]:
+                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitGatewayVpcAttachmentResult]:
     """
     The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
 
@@ -212,7 +212,7 @@ def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulum
     __args__['peerCloudAccount'] = peer_cloud_account
     __args__['peerVpc'] = peer_vpc
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment', __args__, opts=opts, typ=GetTransitGatewayVpcAttachmentResult)
     return __ret__.apply(lambda __response__: GetTransitGatewayVpcAttachmentResult(
         id=pulumi.get(__response__, 'id'),

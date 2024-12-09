@@ -444,7 +444,7 @@ def get_open_search(project: Optional[str] = None,
         termination_protection=pulumi.get(__ret__, 'termination_protection'))
 def get_open_search_output(project: Optional[pulumi.Input[str]] = None,
                            service_name: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenSearchResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchResult]:
     """
     The OpenSearch data source provides information about the existing Aiven OpenSearch service.
 
@@ -465,7 +465,7 @@ def get_open_search_output(project: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOpenSearch:getOpenSearch', __args__, opts=opts, typ=GetOpenSearchResult)
     return __ret__.apply(lambda __response__: GetOpenSearchResult(
         additional_disk_space=pulumi.get(__response__, 'additional_disk_space'),

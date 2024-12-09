@@ -89,7 +89,7 @@ export interface GetOrganizationUserGroupResult {
  * });
  * ```
  */
-export function getOrganizationUserGroupOutput(args: GetOrganizationUserGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationUserGroupResult> {
+export function getOrganizationUserGroupOutput(args: GetOrganizationUserGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationUserGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", {
         "name": args.name,
