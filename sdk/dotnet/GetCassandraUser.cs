@@ -62,6 +62,32 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetCassandraUserResult> Invoke(GetCassandraUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCassandraUserResult>("aiven:index/getCassandraUser:getCassandraUser", args ?? new GetCassandraUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an Aiven for Apache Cassandra® service user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleServiceUser = Aiven.GetCassandraUser.Invoke(new()
+        ///     {
+        ///         ServiceName = exampleCassandra.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-cassandra-user",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCassandraUserResult> Invoke(GetCassandraUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCassandraUserResult>("aiven:index/getCassandraUser:getCassandraUser", args ?? new GetCassandraUserInvokeArgs(), options.WithDefaults());
     }
 
 

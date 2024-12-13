@@ -120,21 +120,11 @@ type LookupThanosResult struct {
 }
 
 func LookupThanosOutput(ctx *pulumi.Context, args LookupThanosOutputArgs, opts ...pulumi.InvokeOption) LookupThanosResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupThanosResultOutput, error) {
 			args := v.(LookupThanosArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupThanosResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getThanos:getThanos", args, &rv, "", opts...)
-			if err != nil {
-				return LookupThanosResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupThanosResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupThanosResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getThanos:getThanos", args, LookupThanosResultOutput{}, options).(LookupThanosResultOutput), nil
 		}).(LookupThanosResultOutput)
 }
 

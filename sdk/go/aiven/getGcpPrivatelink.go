@@ -74,21 +74,11 @@ type LookupGcpPrivatelinkResult struct {
 }
 
 func LookupGcpPrivatelinkOutput(ctx *pulumi.Context, args LookupGcpPrivatelinkOutputArgs, opts ...pulumi.InvokeOption) LookupGcpPrivatelinkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGcpPrivatelinkResultOutput, error) {
 			args := v.(LookupGcpPrivatelinkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupGcpPrivatelinkResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getGcpPrivatelink:getGcpPrivatelink", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGcpPrivatelinkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGcpPrivatelinkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGcpPrivatelinkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getGcpPrivatelink:getGcpPrivatelink", args, LookupGcpPrivatelinkResultOutput{}, options).(LookupGcpPrivatelinkResultOutput), nil
 		}).(LookupGcpPrivatelinkResultOutput)
 }
 

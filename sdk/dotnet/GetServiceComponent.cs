@@ -70,6 +70,36 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetServiceComponentResult> Invoke(GetServiceComponentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The Service Component data source provides information about the existing Aiven service Component.
+        /// 
+        /// Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
+        ///     {
+        ///         Project = project1.Project,
+        ///         ServiceName = service1.ServiceName,
+        ///         Component = "kafka",
+        ///         Route = "dynamic",
+        ///         KafkaAuthenticationMethod = "certificate",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceComponentResult> Invoke(GetServiceComponentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceComponentResult>("aiven:index/getServiceComponent:getServiceComponent", args ?? new GetServiceComponentInvokeArgs(), options.WithDefaults());
     }
 
 

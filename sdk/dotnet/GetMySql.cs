@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetMySqlResult> Invoke(GetMySqlInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The MySQL data source provides information about the existing Aiven MySQL service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mysql1 = Aiven.GetMySql.Invoke(new()
+        ///     {
+        ///         Project = foo.Project,
+        ///         ServiceName = "my-mysql1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMySqlResult> Invoke(GetMySqlInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlInvokeArgs(), options.WithDefaults());
     }
 
 

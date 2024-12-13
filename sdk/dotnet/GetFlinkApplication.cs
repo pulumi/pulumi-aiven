@@ -62,6 +62,32 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetFlinkApplicationResult> Invoke(GetFlinkApplicationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlinkApplicationResult>("aiven:index/getFlinkApplication:getFlinkApplication", args ?? new GetFlinkApplicationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an Aiven for Apache Flink® application.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleApp = Aiven.GetFlinkApplication.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-flink-service",
+        ///         Name = "example-app",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFlinkApplicationResult> Invoke(GetFlinkApplicationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlinkApplicationResult>("aiven:index/getFlinkApplication:getFlinkApplication", args ?? new GetFlinkApplicationInvokeArgs(), options.WithDefaults());
     }
 
 

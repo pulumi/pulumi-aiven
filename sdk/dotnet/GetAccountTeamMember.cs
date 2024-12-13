@@ -22,6 +22,12 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetAccountTeamMemberResult> Invoke(GetAccountTeamMemberInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountTeamMemberResult>("aiven:index/getAccountTeamMember:getAccountTeamMember", args ?? new GetAccountTeamMemberInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The Account Team Member data source provides information about the existing Aiven Account Team Member.
+        /// </summary>
+        public static Output<GetAccountTeamMemberResult> Invoke(GetAccountTeamMemberInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountTeamMemberResult>("aiven:index/getAccountTeamMember:getAccountTeamMember", args ?? new GetAccountTeamMemberInvokeArgs(), options.WithDefaults());
     }
 
 

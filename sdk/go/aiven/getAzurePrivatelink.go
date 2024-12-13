@@ -78,21 +78,11 @@ type LookupAzurePrivatelinkResult struct {
 }
 
 func LookupAzurePrivatelinkOutput(ctx *pulumi.Context, args LookupAzurePrivatelinkOutputArgs, opts ...pulumi.InvokeOption) LookupAzurePrivatelinkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAzurePrivatelinkResultOutput, error) {
 			args := v.(LookupAzurePrivatelinkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAzurePrivatelinkResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getAzurePrivatelink:getAzurePrivatelink", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAzurePrivatelinkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAzurePrivatelinkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAzurePrivatelinkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getAzurePrivatelink:getAzurePrivatelink", args, LookupAzurePrivatelinkResultOutput{}, options).(LookupAzurePrivatelinkResultOutput), nil
 		}).(LookupAzurePrivatelinkResultOutput)
 }
 

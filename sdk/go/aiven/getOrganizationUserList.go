@@ -44,21 +44,11 @@ type GetOrganizationUserListResult struct {
 }
 
 func GetOrganizationUserListOutput(ctx *pulumi.Context, args GetOrganizationUserListOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationUserListResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOrganizationUserListResultOutput, error) {
 			args := v.(GetOrganizationUserListArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetOrganizationUserListResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getOrganizationUserList:getOrganizationUserList", args, &rv, "", opts...)
-			if err != nil {
-				return GetOrganizationUserListResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOrganizationUserListResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOrganizationUserListResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getOrganizationUserList:getOrganizationUserList", args, GetOrganizationUserListResultOutput{}, options).(GetOrganizationUserListResultOutput), nil
 		}).(GetOrganizationUserListResultOutput)
 }
 

@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetOrganizationUserGroupResult> Invoke(GetOrganizationUserGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserGroupResult>("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", args ?? new GetOrganizationUserGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an existing user group in an organization.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationUserGroup.Invoke(new()
+        ///     {
+        ///         Name = "Example group",
+        ///         OrganizationId = main.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOrganizationUserGroupResult> Invoke(GetOrganizationUserGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserGroupResult>("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", args ?? new GetOrganizationUserGroupInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -62,6 +62,32 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetMysqlDatabaseResult> Invoke(GetMysqlDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMysqlDatabaseResult>("aiven:index/getMysqlDatabase:getMysqlDatabase", args ?? new GetMysqlDatabaseInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The MySQL Database data source provides information about the existing Aiven MySQL Database.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mydatabase = Aiven.GetMysqlDatabase.Invoke(new()
+        ///     {
+        ///         Project = myproject.Project,
+        ///         ServiceName = mymysql.ServiceName,
+        ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMysqlDatabaseResult> Invoke(GetMysqlDatabaseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMysqlDatabaseResult>("aiven:index/getMysqlDatabase:getMysqlDatabase", args ?? new GetMysqlDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 
