@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetGcpPrivatelinkResult> Invoke(GetGcpPrivatelinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpPrivatelinkResult>("aiven:index/getGcpPrivatelink:getGcpPrivatelink", args ?? new GetGcpPrivatelinkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about a Google Private Service Connect connection for an Aiven service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = Aiven.GetGcpPrivatelink.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGcpPrivatelinkResult> Invoke(GetGcpPrivatelinkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGcpPrivatelinkResult>("aiven:index/getGcpPrivatelink:getGcpPrivatelink", args ?? new GetGcpPrivatelinkInvokeArgs(), options.WithDefaults());
     }
 
 

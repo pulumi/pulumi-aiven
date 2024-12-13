@@ -78,6 +78,40 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetAwsVpcPeeringConnectionResult> Invoke(GetAwsVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsVpcPeeringConnectionResult>("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", args ?? new GetAwsVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an AWS VPC peering connection.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         CloudName = "google-europe-west1",
+        ///         NetworkCidr = "192.168.1.0/24",
+        ///     });
+        /// 
+        ///     var awsToAivenPeering = Aiven.GetAwsVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         VpcId = exampleVpc.Id,
+        ///         AwsAccountId = awsId,
+        ///         AwsVpcId = "vpc-1a2b3c4d5e6f7g8h9",
+        ///         AwsVpcRegion = "aws-us-east-2",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAwsVpcPeeringConnectionResult> Invoke(GetAwsVpcPeeringConnectionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsVpcPeeringConnectionResult>("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", args ?? new GetAwsVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -91,21 +91,11 @@ type LookupAwsVpcPeeringConnectionResult struct {
 }
 
 func LookupAwsVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupAwsVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupAwsVpcPeeringConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAwsVpcPeeringConnectionResultOutput, error) {
 			args := v.(LookupAwsVpcPeeringConnectionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAwsVpcPeeringConnectionResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAwsVpcPeeringConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAwsVpcPeeringConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAwsVpcPeeringConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", args, LookupAwsVpcPeeringConnectionResultOutput{}, options).(LookupAwsVpcPeeringConnectionResultOutput), nil
 		}).(LookupAwsVpcPeeringConnectionResultOutput)
 }
 

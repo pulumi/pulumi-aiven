@@ -64,6 +64,33 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetServiceIntegrationResult> Invoke(GetServiceIntegrationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an Aiven service integration.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleIntegration = Aiven.GetServiceIntegration.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         DestinationServiceName = exampleM3db.ServiceName,
+        ///         IntegrationType = "metrics",
+        ///         SourceServiceName = exampleKafka.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceIntegrationResult> Invoke(GetServiceIntegrationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationInvokeArgs(), options.WithDefaults());
     }
 
 

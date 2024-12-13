@@ -42,21 +42,11 @@ type LookupInfluxdbUserResult struct {
 }
 
 func LookupInfluxdbUserOutput(ctx *pulumi.Context, args LookupInfluxdbUserOutputArgs, opts ...pulumi.InvokeOption) LookupInfluxdbUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInfluxdbUserResultOutput, error) {
 			args := v.(LookupInfluxdbUserArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupInfluxdbUserResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getInfluxdbUser:getInfluxdbUser", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInfluxdbUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInfluxdbUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInfluxdbUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getInfluxdbUser:getInfluxdbUser", args, LookupInfluxdbUserResultOutput{}, options).(LookupInfluxdbUserResultOutput), nil
 		}).(LookupInfluxdbUserResultOutput)
 }
 

@@ -57,21 +57,11 @@ type LookupValkeyUserResult struct {
 }
 
 func LookupValkeyUserOutput(ctx *pulumi.Context, args LookupValkeyUserOutputArgs, opts ...pulumi.InvokeOption) LookupValkeyUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupValkeyUserResultOutput, error) {
 			args := v.(LookupValkeyUserArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupValkeyUserResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getValkeyUser:getValkeyUser", args, &rv, "", opts...)
-			if err != nil {
-				return LookupValkeyUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupValkeyUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupValkeyUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getValkeyUser:getValkeyUser", args, LookupValkeyUserResultOutput{}, options).(LookupValkeyUserResultOutput), nil
 		}).(LookupValkeyUserResultOutput)
 }
 

@@ -57,7 +57,7 @@ import * as utilities from "./utilities";
  *     },
  * ];
  * const osAclRule: aiven.OpenSearchAclRule[] = [];
- * pulumi.all(aclRules.map((v, k) => [k, v]).reduce((__obj, [, ]) => ({ ...__obj, [i]: v }))).apply(rangeBody => {
+ * pulumi.all(aclRules.map((v, k) => [k, v]).reduce((__obj, [i, v]) => ({ ...__obj, [i]: v }))).apply(rangeBody => {
  *     for (const range of Object.entries(rangeBody).map(([k, v]) => ({key: k, value: v}))) {
  *         osAclRule.push(new aiven.OpenSearchAclRule(`os_acl_rule-${range.key}`, {
  *             project: osAclsConfig.project,

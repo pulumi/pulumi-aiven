@@ -62,6 +62,32 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetPgUserResult> Invoke(GetPgUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPgUserResult>("aiven:index/getPgUser:getPgUser", args ?? new GetPgUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an Aiven for PostgreSQL® service user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleUser = Aiven.GetPgUser.Invoke(new()
+        ///     {
+        ///         ServiceName = examplePostgres.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-service-user",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPgUserResult> Invoke(GetPgUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPgUserResult>("aiven:index/getPgUser:getPgUser", args ?? new GetPgUserInvokeArgs(), options.WithDefaults());
     }
 
 

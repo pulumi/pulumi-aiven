@@ -68,6 +68,35 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetAzureVpcPeeringConnectionResult> Invoke(GetAzureVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureVpcPeeringConnectionResult>("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args ?? new GetAzureVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about about an Azure VPC peering connection.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var azureToAivenPeering = Aiven.GetAzureVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         VpcId = exampleVpc.Id,
+        ///         AzureSubscriptionId = "00000000-0000-0000-0000-000000000000",
+        ///         PeerResourceGroup = "example-resource-group",
+        ///         VnetName = "example-vnet",
+        ///         PeerAzureAppId = "00000000-0000-0000-0000-000000000000",
+        ///         PeerAzureTenantId = "00000000-0000-0000-0000-000000000000",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAzureVpcPeeringConnectionResult> Invoke(GetAzureVpcPeeringConnectionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzureVpcPeeringConnectionResult>("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args ?? new GetAzureVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

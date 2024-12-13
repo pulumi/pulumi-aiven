@@ -76,21 +76,11 @@ type LookupOpensearchSecurityPluginConfigResult struct {
 }
 
 func LookupOpensearchSecurityPluginConfigOutput(ctx *pulumi.Context, args LookupOpensearchSecurityPluginConfigOutputArgs, opts ...pulumi.InvokeOption) LookupOpensearchSecurityPluginConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOpensearchSecurityPluginConfigResultOutput, error) {
 			args := v.(LookupOpensearchSecurityPluginConfigArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupOpensearchSecurityPluginConfigResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOpensearchSecurityPluginConfigResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOpensearchSecurityPluginConfigResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOpensearchSecurityPluginConfigResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args, LookupOpensearchSecurityPluginConfigResultOutput{}, options).(LookupOpensearchSecurityPluginConfigResultOutput), nil
 		}).(LookupOpensearchSecurityPluginConfigResultOutput)
 }
 

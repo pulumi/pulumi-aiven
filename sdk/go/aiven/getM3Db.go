@@ -120,21 +120,11 @@ type LookupM3DbResult struct {
 }
 
 func LookupM3DbOutput(ctx *pulumi.Context, args LookupM3DbOutputArgs, opts ...pulumi.InvokeOption) LookupM3DbResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupM3DbResultOutput, error) {
 			args := v.(LookupM3DbArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupM3DbResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getM3Db:getM3Db", args, &rv, "", opts...)
-			if err != nil {
-				return LookupM3DbResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupM3DbResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupM3DbResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getM3Db:getM3Db", args, LookupM3DbResultOutput{}, options).(LookupM3DbResultOutput), nil
 		}).(LookupM3DbResultOutput)
 }
 

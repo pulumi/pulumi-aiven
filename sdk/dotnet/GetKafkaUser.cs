@@ -62,6 +62,32 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetKafkaUserResult> Invoke(GetKafkaUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaUserResult>("aiven:index/getKafkaUser:getKafkaUser", args ?? new GetKafkaUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an Aiven for Apache Kafka® service user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleServiceUser = Aiven.GetKafkaUser.Invoke(new()
+        ///     {
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-kafka-user",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKafkaUserResult> Invoke(GetKafkaUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaUserResult>("aiven:index/getKafkaUser:getKafkaUser", args ?? new GetKafkaUserInvokeArgs(), options.WithDefaults());
     }
 
 

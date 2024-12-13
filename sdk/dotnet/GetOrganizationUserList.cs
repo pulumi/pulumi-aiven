@@ -28,6 +28,15 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetOrganizationUserListResult> Invoke(GetOrganizationUserListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserListResult>("aiven:index/getOrganizationUserList:getOrganizationUserList", args ?? new GetOrganizationUserListInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// List of users of the organization. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// </summary>
+        public static Output<GetOrganizationUserListResult> Invoke(GetOrganizationUserListInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserListResult>("aiven:index/getOrganizationUserList:getOrganizationUserList", args ?? new GetOrganizationUserListInvokeArgs(), options.WithDefaults());
     }
 
 

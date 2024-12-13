@@ -28,6 +28,15 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetExternalIdentityResult> Invoke(GetExternalIdentityInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalIdentityResult>("aiven:index/getExternalIdentity:getExternalIdentity", args ?? new GetExternalIdentityInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Maps an external service user to an Aiven user. 
+        /// 
+        /// **This resource is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// </summary>
+        public static Output<GetExternalIdentityResult> Invoke(GetExternalIdentityInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExternalIdentityResult>("aiven:index/getExternalIdentity:getExternalIdentity", args ?? new GetExternalIdentityInvokeArgs(), options.WithDefaults());
     }
 
 

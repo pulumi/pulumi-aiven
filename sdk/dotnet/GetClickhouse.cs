@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetClickhouseResult> Invoke(GetClickhouseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClickhouseResult>("aiven:index/getClickhouse:getClickhouse", args ?? new GetClickhouseInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about a ClickHouse service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleClickhouse = Aiven.GetClickhouse.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-clickhouse-service",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClickhouseResult> Invoke(GetClickhouseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClickhouseResult>("aiven:index/getClickhouse:getClickhouse", args ?? new GetClickhouseInvokeArgs(), options.WithDefaults());
     }
 
 

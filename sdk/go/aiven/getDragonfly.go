@@ -120,21 +120,11 @@ type LookupDragonflyResult struct {
 }
 
 func LookupDragonflyOutput(ctx *pulumi.Context, args LookupDragonflyOutputArgs, opts ...pulumi.InvokeOption) LookupDragonflyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDragonflyResultOutput, error) {
 			args := v.(LookupDragonflyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDragonflyResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getDragonfly:getDragonfly", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDragonflyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDragonflyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDragonflyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getDragonfly:getDragonfly", args, LookupDragonflyResultOutput{}, options).(LookupDragonflyResultOutput), nil
 		}).(LookupDragonflyResultOutput)
 }
 

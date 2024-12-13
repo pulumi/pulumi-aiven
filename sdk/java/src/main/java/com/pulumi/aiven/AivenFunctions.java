@@ -221,6 +221,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class AivenFunctions {
@@ -389,6 +390,48 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAccountResult> getAccount(GetAccountArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Account data source provides information about the existing Aiven Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account1 = AivenFunctions.getAccount(GetAccountArgs.builder()
+     *             .name("<ACCOUNT_NAME>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountResult> getAccountPlain(GetAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
     }
@@ -411,6 +454,13 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetAccountAuthenticationResult> getAccountAuthentication(GetAccountAuthenticationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAccountAuthentication:getAccountAuthentication", TypeShape.of(GetAccountAuthenticationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Account Authentication data source provides information about the existing Aiven Account Authentication.
+     * 
+     */
+    public static Output<GetAccountAuthenticationResult> getAccountAuthentication(GetAccountAuthenticationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAccountAuthentication:getAccountAuthentication", TypeShape.of(GetAccountAuthenticationResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -445,6 +495,13 @@ public final class AivenFunctions {
      * The Account Team data source provides information about the existing Account Team.
      * 
      */
+    public static Output<GetAccountTeamResult> getAccountTeam(GetAccountTeamArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAccountTeam:getAccountTeam", TypeShape.of(GetAccountTeamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Account Team data source provides information about the existing Account Team.
+     * 
+     */
     public static CompletableFuture<GetAccountTeamResult> getAccountTeamPlain(GetAccountTeamPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAccountTeam:getAccountTeam", TypeShape.of(GetAccountTeamResult.class), args, Utilities.withVersion(options));
     }
@@ -473,6 +530,13 @@ public final class AivenFunctions {
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
      * 
      */
+    public static Output<GetAccountTeamMemberResult> getAccountTeamMember(GetAccountTeamMemberArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", TypeShape.of(GetAccountTeamMemberResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Account Team Member data source provides information about the existing Aiven Account Team Member.
+     * 
+     */
     public static CompletableFuture<GetAccountTeamMemberResult> getAccountTeamMemberPlain(GetAccountTeamMemberPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAccountTeamMember:getAccountTeamMember", TypeShape.of(GetAccountTeamMemberResult.class), args, Utilities.withVersion(options));
     }
@@ -495,6 +559,13 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetAccountTeamProjectResult> getAccountTeamProject(GetAccountTeamProjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAccountTeamProject:getAccountTeamProject", TypeShape.of(GetAccountTeamProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Account Team Project data source provides information about the existing Account Team Project.
+     * 
+     */
+    public static Output<GetAccountTeamProjectResult> getAccountTeamProject(GetAccountTeamProjectArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAccountTeamProject:getAccountTeamProject", TypeShape.of(GetAccountTeamProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -631,6 +702,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetAwsPrivatelinkResult> getAwsPrivatelink(GetAwsPrivatelinkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAwsPrivatelink:getAwsPrivatelink", TypeShape.of(GetAwsPrivatelinkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an AWS PrivateLink connection for an Aiven service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAwsPrivatelinkResult> getAwsPrivatelink(GetAwsPrivatelinkArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAwsPrivatelink:getAwsPrivatelink", TypeShape.of(GetAwsPrivatelinkResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -885,6 +999,59 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAwsVpcPeeringConnectionResult> getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", TypeShape.of(GetAwsVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an AWS VPC peering connection.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.ProjectVpc;
+     * import com.pulumi.aiven.ProjectVpcArgs;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAwsVpcPeeringConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()
+     *             .project(exampleProject.project())
+     *             .cloudName("google-europe-west1")
+     *             .networkCidr("192.168.1.0/24")
+     *             .build());
+     * 
+     *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
+     *             .vpcId(exampleVpc.id())
+     *             .awsAccountId(awsId)
+     *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
+     *             .awsVpcRegion("aws-us-east-2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAwsVpcPeeringConnectionResult> getAwsVpcPeeringConnectionPlain(GetAwsVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", TypeShape.of(GetAwsVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
@@ -1015,6 +1182,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetAzurePrivatelinkResult> getAzurePrivatelink(GetAzurePrivatelinkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAzurePrivatelink:getAzurePrivatelink", TypeShape.of(GetAzurePrivatelinkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Azure Private Link connection for an Aiven service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAzurePrivatelinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAzurePrivatelinkResult> getAzurePrivatelink(GetAzurePrivatelinkArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAzurePrivatelink:getAzurePrivatelink", TypeShape.of(GetAzurePrivatelinkResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1245,6 +1455,53 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAzureVpcPeeringConnectionResult> getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", TypeShape.of(GetAzureVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about about an Azure VPC peering connection.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAzureVpcPeeringConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var azureToAivenPeering = AivenFunctions.getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs.builder()
+     *             .vpcId(exampleVpc.id())
+     *             .azureSubscriptionId("00000000-0000-0000-0000-000000000000")
+     *             .peerResourceGroup("example-resource-group")
+     *             .vnetName("example-vnet")
+     *             .peerAzureAppId("00000000-0000-0000-0000-000000000000")
+     *             .peerAzureTenantId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAzureVpcPeeringConnectionResult> getAzureVpcPeeringConnectionPlain(GetAzureVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", TypeShape.of(GetAzureVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
@@ -1372,6 +1629,48 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetBillingGroupResult> getBillingGroup(GetBillingGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a billing group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetBillingGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *             .name("example-billing-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBillingGroupResult> getBillingGroup(GetBillingGroupArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1601,6 +1900,53 @@ public final class AivenFunctions {
      * 
      */
     @Deprecated /* aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
+    public static Output<GetCassandaResult> getCassanda(GetCassandaArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Cassandra® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCassandraArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * @deprecated
+     * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
+     * 
+     */
+    @Deprecated /* aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
     public static CompletableFuture<GetCassandaResult> getCassandaPlain(GetCassandaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
     }
@@ -1731,6 +2077,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Cassandra® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCassandraArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCassandra = AivenFunctions.getCassandra(GetCassandraArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-cassandra-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1949,6 +2338,50 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCassandraUserResult> getCassandraUser(GetCassandraUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Cassandra® service user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCassandraUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleServiceUser = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
+     *             .serviceName(exampleCassandra.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-cassandra-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCassandraUserResult> getCassandraUserPlain(GetCassandraUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
     }
@@ -2079,6 +2512,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetClickhouseResult> getClickhouse(GetClickhouseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getClickhouse:getClickhouse", TypeShape.of(GetClickhouseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a ClickHouse service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetClickhouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-clickhouse-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetClickhouseResult> getClickhouse(GetClickhouseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getClickhouse:getClickhouse", TypeShape.of(GetClickhouseResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2254,6 +2730,50 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetClickhouseDatabaseResult> getClickhouseDatabase(GetClickhouseDatabaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getClickhouseDatabase:getClickhouseDatabase", TypeShape.of(GetClickhouseDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a ClickHouse database.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetClickhouseDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .name("example-database")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetClickhouseDatabaseResult> getClickhouseDatabase(GetClickhouseDatabaseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getClickhouseDatabase:getClickhouseDatabase", TypeShape.of(GetClickhouseDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2473,6 +2993,50 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetClickhouseUserResult> getClickhouseUser(GetClickhouseUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getClickhouseUser:getClickhouseUser", TypeShape.of(GetClickhouseUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a ClickHouse user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetClickhouseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleClickhouse.serviceName())
+     *             .username("analyst")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetClickhouseUserResult> getClickhouseUserPlain(GetClickhouseUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getClickhouseUser:getClickhouseUser", TypeShape.of(GetClickhouseUserResult.class), args, Utilities.withVersion(options));
     }
@@ -2606,6 +3170,50 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetConnectionPoolResult> getConnectionPool(GetConnectionPoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getConnectionPool:getConnectionPool", TypeShape.of(GetConnectionPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a connection pool in an Aiven for PostgreSQL® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetConnectionPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .poolName("example-pool")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionPoolResult> getConnectionPool(GetConnectionPoolArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getConnectionPool:getConnectionPool", TypeShape.of(GetConnectionPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2821,6 +3429,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDragonflyResult> getDragonfly(GetDragonflyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getDragonfly:getDragonfly", TypeShape.of(GetDragonflyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Dragonfly® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetDragonflyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleDragonfly = AivenFunctions.getDragonfly(GetDragonflyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-dragonfly-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDragonflyResult> getDragonflyPlain(GetDragonflyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getDragonfly:getDragonfly", TypeShape.of(GetDragonflyResult.class), args, Utilities.withVersion(options));
     }
@@ -2852,6 +3503,16 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetExternalIdentityResult> getExternalIdentity(GetExternalIdentityArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getExternalIdentity:getExternalIdentity", TypeShape.of(GetExternalIdentityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Maps an external service user to an Aiven user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetExternalIdentityResult> getExternalIdentity(GetExternalIdentityArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getExternalIdentity:getExternalIdentity", TypeShape.of(GetExternalIdentityResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3033,6 +3694,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFlinkResult> getFlink(GetFlinkArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getFlink:getFlink", TypeShape.of(GetFlinkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Flink® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleFlink = AivenFunctions.getFlink(GetFlinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFlinkResult> getFlinkPlain(GetFlinkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getFlink:getFlink", TypeShape.of(GetFlinkResult.class), args, Utilities.withVersion(options));
     }
@@ -3166,6 +3870,50 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetFlinkApplicationResult> getFlinkApplication(GetFlinkApplicationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getFlinkApplication:getFlinkApplication", TypeShape.of(GetFlinkApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Flink® application.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-flink-service")
+     *             .name("example-app")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFlinkApplicationResult> getFlinkApplication(GetFlinkApplicationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getFlinkApplication:getFlinkApplication", TypeShape.of(GetFlinkApplicationResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3389,6 +4137,51 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFlinkApplicationVersionResult> getFlinkApplicationVersion(GetFlinkApplicationVersionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", TypeShape.of(GetFlinkApplicationVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Flink® application version.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleFlink.serviceName())
+     *             .applicationId(exampleApp.applicationId())
+     *             .applicationVersionId("d6e7f71c-cadf-49b5-a4ad-126c805fe684")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFlinkApplicationVersionResult> getFlinkApplicationVersionPlain(GetFlinkApplicationVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", TypeShape.of(GetFlinkApplicationVersionResult.class), args, Utilities.withVersion(options));
     }
@@ -3519,6 +4312,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetGcpPrivatelinkResult> getGcpPrivatelink(GetGcpPrivatelinkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getGcpPrivatelink:getGcpPrivatelink", TypeShape.of(GetGcpPrivatelinkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a Google Private Service Connect connection for an Aiven service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGcpPrivatelinkResult> getGcpPrivatelink(GetGcpPrivatelinkArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getGcpPrivatelink:getGcpPrivatelink", TypeShape.of(GetGcpPrivatelinkResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3737,6 +4573,50 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetGcpVpcPeeringConnectionResult> getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", TypeShape.of(GetGcpVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs.builder()
+     *             .vpcId(vpc.id())
+     *             .gcpProjectId("example-project")
+     *             .peerVpc("example-network")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGcpVpcPeeringConnectionResult> getGcpVpcPeeringConnectionPlain(GetGcpVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", TypeShape.of(GetGcpVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
@@ -3909,6 +4789,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetGrafanaResult> getGrafana(GetGrafanaArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getGrafana:getGrafana", TypeShape.of(GetGrafanaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Grafana® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGrafanaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleGrafana = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-grafana-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGrafanaResult> getGrafanaPlain(GetGrafanaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getGrafana:getGrafana", TypeShape.of(GetGrafanaResult.class), args, Utilities.withVersion(options));
     }
@@ -3919,6 +4842,9 @@ public final class AivenFunctions {
         return getInfluxDbPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetInfluxDbResult> getInfluxDb(GetInfluxDbArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getInfluxDb:getInfluxDb", TypeShape.of(GetInfluxDbResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetInfluxDbResult> getInfluxDb(GetInfluxDbArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getInfluxDb:getInfluxDb", TypeShape.of(GetInfluxDbResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetInfluxDbResult> getInfluxDbPlain(GetInfluxDbPlainArgs args, InvokeOptions options) {
@@ -3933,6 +4859,9 @@ public final class AivenFunctions {
     public static Output<GetInfluxdbDatabaseResult> getInfluxdbDatabase(GetInfluxdbDatabaseArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", TypeShape.of(GetInfluxdbDatabaseResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetInfluxdbDatabaseResult> getInfluxdbDatabase(GetInfluxdbDatabaseArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", TypeShape.of(GetInfluxdbDatabaseResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetInfluxdbDatabaseResult> getInfluxdbDatabasePlain(GetInfluxdbDatabasePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", TypeShape.of(GetInfluxdbDatabaseResult.class), args, Utilities.withVersion(options));
     }
@@ -3943,6 +4872,9 @@ public final class AivenFunctions {
         return getInfluxdbUserPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetInfluxdbUserResult> getInfluxdbUser(GetInfluxdbUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getInfluxdbUser:getInfluxdbUser", TypeShape.of(GetInfluxdbUserResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetInfluxdbUserResult> getInfluxdbUser(GetInfluxdbUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getInfluxdbUser:getInfluxdbUser", TypeShape.of(GetInfluxdbUserResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetInfluxdbUserResult> getInfluxdbUserPlain(GetInfluxdbUserPlainArgs args, InvokeOptions options) {
@@ -4075,6 +5007,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetKafkaResult> getKafka(GetKafkaArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafka:getKafka", TypeShape.of(GetKafkaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Kafka® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleKafka = AivenFunctions.getKafka(GetKafkaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-kafka")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKafkaResult> getKafka(GetKafkaArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getKafka:getKafka", TypeShape.of(GetKafkaResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4301,6 +5276,52 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKafkaAclResult> getKafkaAcl(GetKafkaAclArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaAcl:getKafkaAcl", TypeShape.of(GetKafkaAclResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an ACL entry for an Aiven for Apache Kafka® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topic("example-topic")
+     *             .permission("admin")
+     *             .username("example-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKafkaAclResult> getKafkaAclPlain(GetKafkaAclPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaAcl:getKafkaAcl", TypeShape.of(GetKafkaAclResult.class), args, Utilities.withVersion(options));
     }
@@ -4431,6 +5452,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetKafkaConnectResult> getKafkaConnect(GetKafkaConnectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaConnect:getKafkaConnect", TypeShape.of(GetKafkaConnectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Kafka® Connect service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaConnectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleKafkaConnect = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-connect-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKafkaConnectResult> getKafkaConnect(GetKafkaConnectArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getKafkaConnect:getKafkaConnect", TypeShape.of(GetKafkaConnectResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -4649,6 +5713,50 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKafkaConnectorResult> getKafkaConnector(GetKafkaConnectorArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaConnector:getKafkaConnector", TypeShape.of(GetKafkaConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Kafka® connector.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var kafka-os-connector = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .connectorName("kafka-opensearch-connector")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKafkaConnectorResult> getKafkaConnectorPlain(GetKafkaConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaConnector:getKafkaConnector", TypeShape.of(GetKafkaConnectorResult.class), args, Utilities.withVersion(options));
     }
@@ -4821,6 +5929,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKafkaMirrorMakerResult> getKafkaMirrorMaker(GetKafkaMirrorMakerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", TypeShape.of(GetKafkaMirrorMakerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaMirrorMakerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
+     *             .project(pr1.project())
+     *             .serviceName("my-mm1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKafkaMirrorMakerResult> getKafkaMirrorMakerPlain(GetKafkaMirrorMakerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", TypeShape.of(GetKafkaMirrorMakerResult.class), args, Utilities.withVersion(options));
     }
@@ -4951,6 +6102,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetKafkaSchemaResult> getKafkaSchema(GetKafkaSchemaArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaSchema:getKafkaSchema", TypeShape.of(GetKafkaSchemaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaSchemaConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = AivenFunctions.getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs.builder()
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKafkaSchemaResult> getKafkaSchema(GetKafkaSchemaArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getKafkaSchema:getKafkaSchema", TypeShape.of(GetKafkaSchemaResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5169,6 +6363,50 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKafkaSchemaConfigurationResult> getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", TypeShape.of(GetKafkaSchemaConfigurationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.KafkaSchemaConfiguration;
+     * import com.pulumi.aiven.KafkaSchemaConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
+     *             .compatibilityLevel("BACKWARD")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKafkaSchemaConfigurationResult> getKafkaSchemaConfigurationPlain(GetKafkaSchemaConfigurationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", TypeShape.of(GetKafkaSchemaConfigurationResult.class), args, Utilities.withVersion(options));
     }
@@ -5191,6 +6429,13 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", TypeShape.of(GetKafkaSchemaRegistryAclResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+     * 
+     */
+    public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", TypeShape.of(GetKafkaSchemaRegistryAclResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5330,6 +6575,50 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetKafkaTopicResult> getKafkaTopic(GetKafkaTopicArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaTopic:getKafkaTopic", TypeShape.of(GetKafkaTopicResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Kafka® topic.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaTopicArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topicName("example-topic")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKafkaTopicResult> getKafkaTopic(GetKafkaTopicArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getKafkaTopic:getKafkaTopic", TypeShape.of(GetKafkaTopicResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5549,6 +6838,50 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetKafkaUserResult> getKafkaUser(GetKafkaUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getKafkaUser:getKafkaUser", TypeShape.of(GetKafkaUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Apache Kafka® service user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .serviceName(exampleKafka.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-kafka-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetKafkaUserResult> getKafkaUserPlain(GetKafkaUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaUser:getKafkaUser", TypeShape.of(GetKafkaUserResult.class), args, Utilities.withVersion(options));
     }
@@ -5679,6 +7012,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getM3Aggregator:getM3Aggregator", TypeShape.of(GetM3AggregatorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetM3AggregatorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
+     *             .project(foo.project())
+     *             .serviceName("my-m3a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getM3Aggregator:getM3Aggregator", TypeShape.of(GetM3AggregatorResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5893,6 +7269,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetM3DbResult> getM3Db(GetM3DbArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for M3DB service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetM3DbArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleM3db = AivenFunctions.getM3Db(GetM3DbArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-m3db-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetM3DbResult> getM3DbPlain(GetM3DbPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
     }
@@ -6026,6 +7445,50 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for M3DB service user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetM3dbUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleServiceUser = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
+     *             .serviceName(exampleM3db.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-m3db-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6249,6 +7712,51 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetMirrorMakerReplicationFlowResult> getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", TypeShape.of(GetMirrorMakerReplicationFlowResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetMirrorMakerReplicationFlowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project(kafka_mm_project1.project())
+     *             .serviceName(mm.serviceName())
+     *             .sourceCluster(source.serviceName())
+     *             .targetCluster(target.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMirrorMakerReplicationFlowResult> getMirrorMakerReplicationFlowPlain(GetMirrorMakerReplicationFlowPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", TypeShape.of(GetMirrorMakerReplicationFlowResult.class), args, Utilities.withVersion(options));
     }
@@ -6379,6 +7887,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetMySqlResult> getMySql(GetMySqlArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getMySql:getMySql", TypeShape.of(GetMySqlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The MySQL data source provides information about the existing Aiven MySQL service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetMySqlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
+     *             .project(foo.project())
+     *             .serviceName("my-mysql1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMySqlResult> getMySql(GetMySqlArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getMySql:getMySql", TypeShape.of(GetMySqlResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6554,6 +8105,50 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetMysqlDatabaseResult> getMysqlDatabase(GetMysqlDatabaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getMysqlDatabase:getMysqlDatabase", TypeShape.of(GetMysqlDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The MySQL Database data source provides information about the existing Aiven MySQL Database.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetMysqlDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project(myproject.project())
+     *             .serviceName(mymysql.serviceName())
+     *             .databaseName("<DATABASE_NAME>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMysqlDatabaseResult> getMysqlDatabase(GetMysqlDatabaseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getMysqlDatabase:getMysqlDatabase", TypeShape.of(GetMysqlDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6773,6 +8368,50 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetMysqlUserResult> getMysqlUser(GetMysqlUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getMysqlUser:getMysqlUser", TypeShape.of(GetMysqlUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The MySQL User data source provides information about the existing Aiven MySQL User.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetMysqlUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMysqlUserResult> getMysqlUserPlain(GetMysqlUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getMysqlUser:getMysqlUser", TypeShape.of(GetMysqlUserResult.class), args, Utilities.withVersion(options));
     }
@@ -6945,6 +8584,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOpenSearchResult> getOpenSearch(GetOpenSearchArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOpenSearch:getOpenSearch", TypeShape.of(GetOpenSearchResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOpenSearchArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
+     *             .project(pr1.project())
+     *             .serviceName("my-os1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOpenSearchResult> getOpenSearchPlain(GetOpenSearchPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpenSearch:getOpenSearch", TypeShape.of(GetOpenSearchResult.class), args, Utilities.withVersion(options));
     }
@@ -7075,6 +8757,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetOpenSearchAclConfigResult> getOpenSearchAclConfig(GetOpenSearchAclConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", TypeShape.of(GetOpenSearchAclConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOpenSearchAclConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOpenSearchAclConfigResult> getOpenSearchAclConfig(GetOpenSearchAclConfigArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", TypeShape.of(GetOpenSearchAclConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -7297,6 +9022,51 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOpenSearchAclRuleResult> getOpenSearchAclRule(GetOpenSearchAclRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", TypeShape.of(GetOpenSearchAclRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOpenSearchAclRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
+     *             .project(osAclsConfig.project())
+     *             .serviceName(osAclsConfig.serviceName())
+     *             .username("<USERNAME>")
+     *             .index("<INDEX>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOpenSearchAclRuleResult> getOpenSearchAclRulePlain(GetOpenSearchAclRulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", TypeShape.of(GetOpenSearchAclRuleResult.class), args, Utilities.withVersion(options));
     }
@@ -7427,6 +9197,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", TypeShape.of(GetOpensearchSecurityPluginConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", TypeShape.of(GetOpensearchSecurityPluginConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -7602,6 +9415,50 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetOpensearchUserResult> getOpensearchUser(GetOpensearchUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOpensearchUser:getOpensearchUser", TypeShape.of(GetOpensearchUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOpensearchUserResult> getOpensearchUser(GetOpensearchUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOpensearchUser:getOpensearchUser", TypeShape.of(GetOpensearchUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -7897,6 +9754,48 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an organization.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .name("Example organization")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
@@ -8069,6 +9968,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOrganizationApplicationUserResult> getOrganizationApplicationUser(GetOrganizationApplicationUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", TypeShape.of(GetOrganizationApplicationUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an application user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
+     *             .organizationId(main.id())
+     *             .userId("u123a456b7890c")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOrganizationApplicationUserResult> getOrganizationApplicationUserPlain(GetOrganizationApplicationUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", TypeShape.of(GetOrganizationApplicationUserResult.class), args, Utilities.withVersion(options));
     }
@@ -8091,6 +10033,13 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Organization User data source provides information about the existing Aiven Organization User.
+     * 
+     */
+    public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -8269,6 +10218,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOrganizationUserGroupResult> getOrganizationUserGroup(GetOrganizationUserGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", TypeShape.of(GetOrganizationUserGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an existing user group in an organization.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
+     *             .name("Example group")
+     *             .organizationId(main.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOrganizationUserGroupResult> getOrganizationUserGroupPlain(GetOrganizationUserGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", TypeShape.of(GetOrganizationUserGroupResult.class), args, Utilities.withVersion(options));
     }
@@ -8320,6 +10312,16 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetOrganizationUserListResult> getOrganizationUserList(GetOrganizationUserListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationUserList:getOrganizationUserList", TypeShape.of(GetOrganizationUserListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List of users of the organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationUserListResult> getOrganizationUserList(GetOrganizationUserListArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUserList:getOrganizationUserList", TypeShape.of(GetOrganizationUserListResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -8459,6 +10461,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetOrganizationalUnitResult> getOrganizationalUnit(GetOrganizationalUnitArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationalUnit:getOrganizationalUnit", TypeShape.of(GetOrganizationalUnitResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an organizational unit.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .name("Example organizational unit")
+     *             .parentId(main.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrganizationalUnitResult> getOrganizationalUnit(GetOrganizationalUnitArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationalUnit:getOrganizationalUnit", TypeShape.of(GetOrganizationalUnitResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -8673,6 +10718,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPgResult> getPg(GetPgArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getPg:getPg", TypeShape.of(GetPgResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for PostgreSQL® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetPgArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePostgres = AivenFunctions.getPg(GetPgArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-postgres-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPgResult> getPgPlain(GetPgPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getPg:getPg", TypeShape.of(GetPgResult.class), args, Utilities.withVersion(options));
     }
@@ -8806,6 +10894,50 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetPgDatabaseResult> getPgDatabase(GetPgDatabaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getPgDatabase:getPgDatabase", TypeShape.of(GetPgDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a database in an Aiven for PostgreSQL® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetPgDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(examplePostgres.serviceName())
+     *             .databaseName("example-database")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPgDatabaseResult> getPgDatabase(GetPgDatabaseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getPgDatabase:getPgDatabase", TypeShape.of(GetPgDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -9025,6 +11157,50 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPgUserResult> getPgUser(GetPgUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getPgUser:getPgUser", TypeShape.of(GetPgUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for PostgreSQL® service user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetPgUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .serviceName(examplePostgres.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-service-user")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPgUserResult> getPgUserPlain(GetPgUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getPgUser:getPgUser", TypeShape.of(GetPgUserResult.class), args, Utilities.withVersion(options));
     }
@@ -9152,6 +11328,48 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleProject = AivenFunctions.getProject(GetProjectArgs.builder()
+     *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -9323,6 +11541,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetProjectUserResult> getProjectUser(GetProjectUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getProjectUser:getProjectUser", TypeShape.of(GetProjectUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Project User data source provides information about the existing Aiven Project User.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetProjectUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()
+     *             .project(myproject.project())
+     *             .email("john.doe}{@literal @}{@code example.com")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectUserResult> getProjectUser(GetProjectUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getProjectUser:getProjectUser", TypeShape.of(GetProjectUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -9623,6 +11884,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProjectVpcResult> getProjectVpc(GetProjectVpcArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getProjectVpc:getProjectVpc", TypeShape.of(GetProjectVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about the VPC for an Aiven project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project(exampleProject.project())
+     *             .cloudName("google-europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProjectVpcResult> getProjectVpcPlain(GetProjectVpcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getProjectVpc:getProjectVpc", TypeShape.of(GetProjectVpcResult.class), args, Utilities.withVersion(options));
     }
@@ -9753,6 +12057,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetRedisResult> getRedis(GetRedisArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getRedis:getRedis", TypeShape.of(GetRedisResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Redis data source provides information about the existing Aiven Redis service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetRedisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
+     *             .project(pr1.project())
+     *             .serviceName("my-redis1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRedisResult> getRedis(GetRedisArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getRedis:getRedis", TypeShape.of(GetRedisResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -9928,6 +12275,50 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Redis User data source provides information about the existing Aiven Redis User.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetRedisUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -10163,6 +12554,54 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceComponentResult> getServiceComponent(GetServiceComponentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getServiceComponent:getServiceComponent", TypeShape.of(GetServiceComponentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Service Component data source provides information about the existing Aiven service Component.
+     * 
+     * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
+     *             .project(project1.project())
+     *             .serviceName(service1.serviceName())
+     *             .component("kafka")
+     *             .route("dynamic")
+     *             .kafkaAuthenticationMethod("certificate")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceComponentResult> getServiceComponentPlain(GetServiceComponentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getServiceComponent:getServiceComponent", TypeShape.of(GetServiceComponentResult.class), args, Utilities.withVersion(options));
     }
@@ -10299,6 +12738,51 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetServiceIntegrationResult> getServiceIntegration(GetServiceIntegrationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getServiceIntegration:getServiceIntegration", TypeShape.of(GetServiceIntegrationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven service integration.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .integrationType("metrics")
+     *             .sourceServiceName(exampleKafka.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceIntegrationResult> getServiceIntegration(GetServiceIntegrationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getServiceIntegration:getServiceIntegration", TypeShape.of(GetServiceIntegrationResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -10515,6 +12999,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceIntegrationEndpointResult> getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", TypeShape.of(GetServiceIntegrationEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an integration endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleDatadogEndpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
+     *             .project(exampleProject.project())
+     *             .endpointName("Datadog endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceIntegrationEndpointResult> getServiceIntegrationEndpointPlain(GetServiceIntegrationEndpointPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", TypeShape.of(GetServiceIntegrationEndpointResult.class), args, Utilities.withVersion(options));
     }
@@ -10645,6 +13172,49 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetThanosResult> getThanos(GetThanosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getThanos:getThanos", TypeShape.of(GetThanosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Thanos® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetThanosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleThanos = AivenFunctions.getThanos(GetThanosArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-thanos-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetThanosResult> getThanos(GetThanosArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getThanos:getThanos", TypeShape.of(GetThanosResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -10863,6 +13433,50 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTransitGatewayVpcAttachmentResult> getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", TypeShape.of(GetTransitGatewayVpcAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
+     *             .vpcId(bar.id())
+     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
+     *             .peerVpc("google-project1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTransitGatewayVpcAttachmentResult> getTransitGatewayVpcAttachmentPlain(GetTransitGatewayVpcAttachmentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", TypeShape.of(GetTransitGatewayVpcAttachmentResult.class), args, Utilities.withVersion(options));
     }
@@ -11035,6 +13649,49 @@ public final class AivenFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetValkeyResult> getValkey(GetValkeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getValkey:getValkey", TypeShape.of(GetValkeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for Valkey service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleValkey = AivenFunctions.getValkey(GetValkeyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-valkey-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetValkeyResult> getValkeyPlain(GetValkeyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getValkey:getValkey", TypeShape.of(GetValkeyResult.class), args, Utilities.withVersion(options));
     }
@@ -11057,6 +13714,13 @@ public final class AivenFunctions {
      * 
      */
     public static Output<GetValkeyUserResult> getValkeyUser(GetValkeyUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getValkeyUser:getValkeyUser", TypeShape.of(GetValkeyUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * 
+     */
+    public static Output<GetValkeyUserResult> getValkeyUser(GetValkeyUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getValkeyUser:getValkeyUser", TypeShape.of(GetValkeyUserResult.class), args, Utilities.withVersion(options));
     }
     /**

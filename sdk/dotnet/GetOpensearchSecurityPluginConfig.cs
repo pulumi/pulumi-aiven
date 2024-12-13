@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetOpensearchSecurityPluginConfigResult> Invoke(GetOpensearchSecurityPluginConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpensearchSecurityPluginConfigResult>("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args ?? new GetOpensearchSecurityPluginConfigInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var os_sec_config = Aiven.GetOpensearchSecurityPluginConfig.Invoke(new()
+        ///     {
+        ///         Project = os_project.Project,
+        ///         ServiceName = os.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOpensearchSecurityPluginConfigResult> Invoke(GetOpensearchSecurityPluginConfigInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpensearchSecurityPluginConfigResult>("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args ?? new GetOpensearchSecurityPluginConfigInvokeArgs(), options.WithDefaults());
     }
 
 

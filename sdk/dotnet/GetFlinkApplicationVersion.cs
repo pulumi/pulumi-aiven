@@ -64,6 +64,33 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetFlinkApplicationVersionResult> Invoke(GetFlinkApplicationVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlinkApplicationVersionResult>("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args ?? new GetFlinkApplicationVersionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an Aiven for Apache Flink® application version.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = Aiven.GetFlinkApplicationVersion.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleFlink.ServiceName,
+        ///         ApplicationId = exampleApp.ApplicationId,
+        ///         ApplicationVersionId = "d6e7f71c-cadf-49b5-a4ad-126c805fe684",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFlinkApplicationVersionResult> Invoke(GetFlinkApplicationVersionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlinkApplicationVersionResult>("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args ?? new GetFlinkApplicationVersionInvokeArgs(), options.WithDefaults());
     }
 
 

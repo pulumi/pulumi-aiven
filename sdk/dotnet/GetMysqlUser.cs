@@ -62,6 +62,32 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetMysqlUserResult> Invoke(GetMysqlUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The MySQL User data source provides information about the existing Aiven MySQL User.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Aiven.GetMysqlUser.Invoke(new()
+        ///     {
+        ///         ServiceName = "my-service",
+        ///         Project = "my-project",
+        ///         Username = "user1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMysqlUserResult> Invoke(GetMysqlUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -64,6 +64,33 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetMirrorMakerReplicationFlowResult> Invoke(GetMirrorMakerReplicationFlowInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
+        ///     {
+        ///         Project = kafka_mm_project1.Project,
+        ///         ServiceName = mm.ServiceName,
+        ///         SourceCluster = source.ServiceName,
+        ///         TargetCluster = target.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMirrorMakerReplicationFlowResult> Invoke(GetMirrorMakerReplicationFlowInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowInvokeArgs(), options.WithDefaults());
     }
 
 

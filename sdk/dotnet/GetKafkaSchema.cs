@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetKafkaSchemaResult> Invoke(GetKafkaSchemaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = Aiven.GetKafkaSchemaConfiguration.Invoke(new()
+        ///     {
+        ///         Project = kafka_schemas_project1.Project,
+        ///         ServiceName = kafka_service1.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKafkaSchemaResult> Invoke(GetKafkaSchemaInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaResult>("aiven:index/getKafkaSchema:getKafkaSchema", args ?? new GetKafkaSchemaInvokeArgs(), options.WithDefaults());
     }
 
 

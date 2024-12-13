@@ -81,21 +81,11 @@ type LookupKafkaUserResult struct {
 }
 
 func LookupKafkaUserOutput(ctx *pulumi.Context, args LookupKafkaUserOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKafkaUserResultOutput, error) {
 			args := v.(LookupKafkaUserArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupKafkaUserResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getKafkaUser:getKafkaUser", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKafkaUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKafkaUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKafkaUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getKafkaUser:getKafkaUser", args, LookupKafkaUserResultOutput{}, options).(LookupKafkaUserResultOutput), nil
 		}).(LookupKafkaUserResultOutput)
 }
 

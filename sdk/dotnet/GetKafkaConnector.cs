@@ -62,6 +62,32 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetKafkaConnectorResult> Invoke(GetKafkaConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an Aiven for Apache Kafka® connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var kafka_os_connector = Aiven.GetKafkaConnector.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///         ConnectorName = "kafka-opensearch-connector",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKafkaConnectorResult> Invoke(GetKafkaConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

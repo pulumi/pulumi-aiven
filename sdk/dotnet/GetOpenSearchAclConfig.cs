@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetOpenSearchAclConfigResult> Invoke(GetOpenSearchAclConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
+        ///     {
+        ///         Project = os_project.Project,
+        ///         ServiceName = os.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOpenSearchAclConfigResult> Invoke(GetOpenSearchAclConfigInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchAclConfigResult>("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args ?? new GetOpenSearchAclConfigInvokeArgs(), options.WithDefaults());
     }
 
 
