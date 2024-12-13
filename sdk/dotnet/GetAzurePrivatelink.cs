@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetAzurePrivatelinkResult> Invoke(GetAzurePrivatelinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzurePrivatelinkResult>("aiven:index/getAzurePrivatelink:getAzurePrivatelink", args ?? new GetAzurePrivatelinkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an Azure Private Link connection for an Aiven service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = Aiven.GetAzurePrivatelink.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAzurePrivatelinkResult> Invoke(GetAzurePrivatelinkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzurePrivatelinkResult>("aiven:index/getAzurePrivatelink:getAzurePrivatelink", args ?? new GetAzurePrivatelinkInvokeArgs(), options.WithDefaults());
     }
 
 

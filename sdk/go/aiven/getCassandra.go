@@ -120,21 +120,11 @@ type LookupCassandraResult struct {
 }
 
 func LookupCassandraOutput(ctx *pulumi.Context, args LookupCassandraOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCassandraResultOutput, error) {
 			args := v.(LookupCassandraArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupCassandraResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getCassandra:getCassandra", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCassandraResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCassandraResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCassandraResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getCassandra:getCassandra", args, LookupCassandraResultOutput{}, options).(LookupCassandraResultOutput), nil
 		}).(LookupCassandraResultOutput)
 }
 

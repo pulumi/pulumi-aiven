@@ -120,21 +120,11 @@ type LookupRedisResult struct {
 }
 
 func LookupRedisOutput(ctx *pulumi.Context, args LookupRedisOutputArgs, opts ...pulumi.InvokeOption) LookupRedisResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRedisResultOutput, error) {
 			args := v.(LookupRedisArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRedisResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getRedis:getRedis", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRedisResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRedisResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRedisResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getRedis:getRedis", args, LookupRedisResultOutput{}, options).(LookupRedisResultOutput), nil
 		}).(LookupRedisResultOutput)
 }
 

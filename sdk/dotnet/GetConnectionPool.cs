@@ -62,6 +62,32 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetConnectionPoolResult> Invoke(GetConnectionPoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args ?? new GetConnectionPoolInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about a connection pool in an Aiven for PostgreSQL® service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = Aiven.GetConnectionPool.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = examplePostgres.ServiceName,
+        ///         PoolName = "example-pool",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectionPoolResult> Invoke(GetConnectionPoolInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionPoolResult>("aiven:index/getConnectionPool:getConnectionPool", args ?? new GetConnectionPoolInvokeArgs(), options.WithDefaults());
     }
 
 

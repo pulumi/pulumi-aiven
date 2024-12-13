@@ -62,6 +62,32 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetPgDatabaseResult> Invoke(GetPgDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about a database in an Aiven for PostgreSQL® service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = Aiven.GetPgDatabase.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = examplePostgres.ServiceName,
+        ///         DatabaseName = "example-database",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPgDatabaseResult> Invoke(GetPgDatabaseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPgDatabaseResult>("aiven:index/getPgDatabase:getPgDatabase", args ?? new GetPgDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 

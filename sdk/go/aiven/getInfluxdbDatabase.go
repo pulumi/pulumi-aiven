@@ -39,21 +39,11 @@ type LookupInfluxdbDatabaseResult struct {
 }
 
 func LookupInfluxdbDatabaseOutput(ctx *pulumi.Context, args LookupInfluxdbDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupInfluxdbDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInfluxdbDatabaseResultOutput, error) {
 			args := v.(LookupInfluxdbDatabaseArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupInfluxdbDatabaseResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInfluxdbDatabaseResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInfluxdbDatabaseResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInfluxdbDatabaseResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", args, LookupInfluxdbDatabaseResultOutput{}, options).(LookupInfluxdbDatabaseResultOutput), nil
 		}).(LookupInfluxdbDatabaseResultOutput)
 }
 

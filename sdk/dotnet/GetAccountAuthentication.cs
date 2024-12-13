@@ -22,6 +22,12 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetAccountAuthenticationResult> Invoke(GetAccountAuthenticationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAuthenticationResult>("aiven:index/getAccountAuthentication:getAccountAuthentication", args ?? new GetAccountAuthenticationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The Account Authentication data source provides information about the existing Aiven Account Authentication.
+        /// </summary>
+        public static Output<GetAccountAuthenticationResult> Invoke(GetAccountAuthenticationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAuthenticationResult>("aiven:index/getAccountAuthentication:getAccountAuthentication", args ?? new GetAccountAuthenticationInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -45,21 +45,11 @@ type LookupOrganizationalUnitResult struct {
 }
 
 func LookupOrganizationalUnitOutput(ctx *pulumi.Context, args LookupOrganizationalUnitOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationalUnitResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOrganizationalUnitResultOutput, error) {
 			args := v.(LookupOrganizationalUnitArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupOrganizationalUnitResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getOrganizationalUnit:getOrganizationalUnit", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOrganizationalUnitResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOrganizationalUnitResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOrganizationalUnitResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getOrganizationalUnit:getOrganizationalUnit", args, LookupOrganizationalUnitResultOutput{}, options).(LookupOrganizationalUnitResultOutput), nil
 		}).(LookupOrganizationalUnitResultOutput)
 }
 

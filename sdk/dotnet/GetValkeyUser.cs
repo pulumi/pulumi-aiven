@@ -22,6 +22,12 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetValkeyUserResult> Invoke(GetValkeyUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetValkeyUserResult>("aiven:index/getValkeyUser:getValkeyUser", args ?? new GetValkeyUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The Valkey User data source provides information about the existing Aiven for Valkey user.
+        /// </summary>
+        public static Output<GetValkeyUserResult> Invoke(GetValkeyUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetValkeyUserResult>("aiven:index/getValkeyUser:getValkeyUser", args ?? new GetValkeyUserInvokeArgs(), options.WithDefaults());
     }
 
 

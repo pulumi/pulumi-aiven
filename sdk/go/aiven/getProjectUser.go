@@ -72,21 +72,11 @@ type LookupProjectUserResult struct {
 }
 
 func LookupProjectUserOutput(ctx *pulumi.Context, args LookupProjectUserOutputArgs, opts ...pulumi.InvokeOption) LookupProjectUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProjectUserResultOutput, error) {
 			args := v.(LookupProjectUserArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupProjectUserResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getProjectUser:getProjectUser", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProjectUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProjectUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProjectUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getProjectUser:getProjectUser", args, LookupProjectUserResultOutput{}, options).(LookupProjectUserResultOutput), nil
 		}).(LookupProjectUserResultOutput)
 }
 

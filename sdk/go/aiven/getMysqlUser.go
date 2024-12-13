@@ -83,21 +83,11 @@ type LookupMysqlUserResult struct {
 }
 
 func LookupMysqlUserOutput(ctx *pulumi.Context, args LookupMysqlUserOutputArgs, opts ...pulumi.InvokeOption) LookupMysqlUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMysqlUserResultOutput, error) {
 			args := v.(LookupMysqlUserArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupMysqlUserResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getMysqlUser:getMysqlUser", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMysqlUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMysqlUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMysqlUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getMysqlUser:getMysqlUser", args, LookupMysqlUserResultOutput{}, options).(LookupMysqlUserResultOutput), nil
 		}).(LookupMysqlUserResultOutput)
 }
 

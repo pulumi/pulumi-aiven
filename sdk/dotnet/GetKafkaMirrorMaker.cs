@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetKafkaMirrorMakerResult> Invoke(GetKafkaMirrorMakerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mm1 = Aiven.GetKafkaMirrorMaker.Invoke(new()
+        ///     {
+        ///         Project = pr1.Project,
+        ///         ServiceName = "my-mm1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKafkaMirrorMakerResult> Invoke(GetKafkaMirrorMakerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerInvokeArgs(), options.WithDefaults());
     }
 
 

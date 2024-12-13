@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetOpenSearchResult> Invoke(GetOpenSearchInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The OpenSearch data source provides information about the existing Aiven OpenSearch service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var os1 = Aiven.GetOpenSearch.Invoke(new()
+        ///     {
+        ///         Project = pr1.Project,
+        ///         ServiceName = "my-os1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOpenSearchResult> Invoke(GetOpenSearchInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenSearchResult>("aiven:index/getOpenSearch:getOpenSearch", args ?? new GetOpenSearchInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -60,6 +60,31 @@ namespace Pulumi.Aiven
         /// </summary>
         public static Output<GetRedisResult> Invoke(GetRedisInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRedisResult>("aiven:index/getRedis:getRedis", args ?? new GetRedisInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The Redis data source provides information about the existing Aiven Redis service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var redis1 = Aiven.GetRedis.Invoke(new()
+        ///     {
+        ///         Project = pr1.Project,
+        ///         ServiceName = "my-redis1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRedisResult> Invoke(GetRedisInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRedisResult>("aiven:index/getRedis:getRedis", args ?? new GetRedisInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -80,21 +80,11 @@ type LookupKafkaSchemaResult struct {
 }
 
 func LookupKafkaSchemaOutput(ctx *pulumi.Context, args LookupKafkaSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaSchemaResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKafkaSchemaResultOutput, error) {
 			args := v.(LookupKafkaSchemaArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupKafkaSchemaResult
-			secret, err := ctx.InvokePackageRaw("aiven:index/getKafkaSchema:getKafkaSchema", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKafkaSchemaResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKafkaSchemaResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKafkaSchemaResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("aiven:index/getKafkaSchema:getKafkaSchema", args, LookupKafkaSchemaResultOutput{}, options).(LookupKafkaSchemaResultOutput), nil
 		}).(LookupKafkaSchemaResultOutput)
 }
 

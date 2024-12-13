@@ -16,6 +16,9 @@ namespace Pulumi.Aiven
 
         public static Output<GetInfluxdbDatabaseResult> Invoke(GetInfluxdbDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInfluxdbDatabaseResult>("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", args ?? new GetInfluxdbDatabaseInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetInfluxdbDatabaseResult> Invoke(GetInfluxdbDatabaseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInfluxdbDatabaseResult>("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", args ?? new GetInfluxdbDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 
