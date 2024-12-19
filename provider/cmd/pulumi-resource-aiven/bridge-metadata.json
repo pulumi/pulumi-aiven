@@ -26,6 +26,98 @@
                 "current": "aiven:index/accountTeamProject:AccountTeamProject",
                 "majorVersion": 6
             },
+            "aiven_alloydbomni": {
+                "current": "aiven:index/alloydbomni:Alloydbomni",
+                "majorVersion": 6,
+                "fields": {
+                    "alloydbomni": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "params": {
+                                    "maxItemsOne": false
+                                },
+                                "standby_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "syncing_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "alloydbomni_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "pg": {
+                                    "maxItemsOne": true
+                                },
+                                "pgbouncer": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ignore_startup_parameters": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "pglookout": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aiven_alloydbomni_database": {
+                "current": "aiven:index/alloydbomniDatabase:AlloydbomniDatabase",
+                "majorVersion": 6
+            },
+            "aiven_alloydbomni_user": {
+                "current": "aiven:index/alloydbomniUser:AlloydbomniUser",
+                "majorVersion": 6
+            },
             "aiven_aws_privatelink": {
                 "current": "aiven:index/awsPrivatelink:AwsPrivatelink",
                 "majorVersion": 6,
@@ -1993,6 +2085,98 @@
             },
             "aiven_account_team_project": {
                 "current": "aiven:index/getAccountTeamProject:getAccountTeamProject",
+                "majorVersion": 6
+            },
+            "aiven_alloydbomni": {
+                "current": "aiven:index/getAlloydbomni:getAlloydbomni",
+                "majorVersion": 6,
+                "fields": {
+                    "alloydbomni": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "params": {
+                                    "maxItemsOne": false
+                                },
+                                "standby_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "syncing_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "alloydbomni_user_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "pg": {
+                                    "maxItemsOne": true
+                                },
+                                "pgbouncer": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ignore_startup_parameters": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "pglookout": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aiven_alloydbomni_database": {
+                "current": "aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase",
+                "majorVersion": 6
+            },
+            "aiven_alloydbomni_user": {
+                "current": "aiven:index/getAlloydbomniUser:getAlloydbomniUser",
                 "majorVersion": 6
             },
             "aiven_aws_privatelink": {
@@ -3979,6 +4163,9 @@
             "aiven:index/accountTeam:AccountTeam": 0,
             "aiven:index/accountTeamMember:AccountTeamMember": 0,
             "aiven:index/accountTeamProject:AccountTeamProject": 0,
+            "aiven:index/alloydbomni:Alloydbomni": 0,
+            "aiven:index/alloydbomniDatabase:AlloydbomniDatabase": 0,
+            "aiven:index/alloydbomniUser:AlloydbomniUser": 0,
             "aiven:index/awsPrivatelink:AwsPrivatelink": 0,
             "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection": 0,
             "aiven:index/azurePrivatelink:AzurePrivatelink": 0,
@@ -4059,6 +4246,9 @@
             "aiven:index/getAccountTeam:getAccountTeam": 0,
             "aiven:index/getAccountTeamMember:getAccountTeamMember": 0,
             "aiven:index/getAccountTeamProject:getAccountTeamProject": 0,
+            "aiven:index/getAlloydbomni:getAlloydbomni": 0,
+            "aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase": 0,
+            "aiven:index/getAlloydbomniUser:getAlloydbomniUser": 0,
             "aiven:index/getAwsPrivatelink:getAwsPrivatelink": 0,
             "aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection": 0,
             "aiven:index/getAzurePrivatelink:getAzurePrivatelink": 0,
