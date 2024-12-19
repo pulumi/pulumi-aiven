@@ -201,7 +201,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceHost;
         /// <summary>
-        /// Integrations with other services. Service integrations are only applied at service creation.
+        /// Service integrations to specify when creating a service. Not applied after initial service creation
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClickhouseServiceIntegrationResult> ServiceIntegrations;
         /// <summary>

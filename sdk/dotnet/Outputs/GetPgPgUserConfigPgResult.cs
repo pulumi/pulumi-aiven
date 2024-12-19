@@ -158,6 +158,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxWorkerProcesses;
         /// <summary>
+        /// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        /// </summary>
+        public readonly string? PasswordEncryption;
+        /// <summary>
         /// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
         /// </summary>
         public readonly int? PgPartmanBgwDotInterval;
@@ -284,6 +288,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? maxWorkerProcesses,
 
+            string? passwordEncryption,
+
             int? pgPartmanBgwDotInterval,
 
             string? pgPartmanBgwDotRole,
@@ -346,6 +352,7 @@ namespace Pulumi.Aiven.Outputs
             MaxStandbyStreamingDelay = maxStandbyStreamingDelay;
             MaxWalSenders = maxWalSenders;
             MaxWorkerProcesses = maxWorkerProcesses;
+            PasswordEncryption = passwordEncryption;
             PgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
             PgPartmanBgwDotRole = pgPartmanBgwDotRole;
             PgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;

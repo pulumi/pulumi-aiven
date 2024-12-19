@@ -21899,6 +21899,11 @@
                 "alloydbomni": {
                     "$ref": "#/types/aiven:index/AlloydbomniAlloydbomni:AlloydbomniAlloydbomni",
                     "description": "Values provided by the AlloyDB Omni server.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "AlloydbomniServer"
+                        }
+                    },
                     "secret": true
                 },
                 "alloydbomniUserConfig": {
@@ -22059,6 +22064,11 @@
                 "alloydbomni": {
                     "$ref": "#/types/aiven:index/AlloydbomniAlloydbomni:AlloydbomniAlloydbomni",
                     "description": "Values provided by the AlloyDB Omni server.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "AlloydbomniServer"
+                        }
+                    },
                     "secret": true
                 },
                 "alloydbomniUserConfig": {
@@ -22153,6 +22163,11 @@
                     "alloydbomni": {
                         "$ref": "#/types/aiven:index/AlloydbomniAlloydbomni:AlloydbomniAlloydbomni",
                         "description": "Values provided by the AlloyDB Omni server.\n",
+                        "language": {
+                            "csharp": {
+                                "name": "AlloydbomniServer"
+                            }
+                        },
                         "secret": true
                     },
                     "alloydbomniUserConfig": {

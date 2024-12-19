@@ -47,7 +47,7 @@ class GetExternalIdentityResult:
     @pulumi.getter(name="externalServiceName")
     def external_service_name(self) -> str:
         """
-        The name of the external service. The possible values are `github`.
+        The name of the external service. The possible value is `github`.
         """
         return pulumi.get(self, "external_service_name")
 
@@ -109,7 +109,7 @@ def get_external_identity(external_service_name: Optional[str] = None,
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
 
-    :param str external_service_name: The name of the external service. The possible values are `github`.
+    :param str external_service_name: The name of the external service. The possible value is `github`.
     :param str external_user_id: The user's ID on the external service.
     :param str internal_user_id: The Aiven user ID.
     :param str organization_id: The ID of the Aiven organization that the user is part of.
@@ -140,7 +140,7 @@ def get_external_identity_output(external_service_name: Optional[pulumi.Input[st
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
 
-    :param str external_service_name: The name of the external service. The possible values are `github`.
+    :param str external_service_name: The name of the external service. The possible value is `github`.
     :param str external_user_id: The user's ID on the external service.
     :param str internal_user_id: The Aiven user ID.
     :param str organization_id: The ID of the Aiven organization that the user is part of.

@@ -80,6 +80,10 @@ export interface GetServiceIntegrationResult {
      */
     readonly destinationServiceName: string;
     /**
+     * Destination service project name
+     */
+    readonly destinationServiceProject: string;
+    /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalAwsCloudwatchLogsUserConfigs: outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig[];
@@ -147,6 +151,10 @@ export interface GetServiceIntegrationResult {
      * Source service for the integration (if any)
      */
     readonly sourceServiceName: string;
+    /**
+     * Source service project name
+     */
+    readonly sourceServiceProject: string;
 }
 /**
  * Gets information about an Aiven service integration.

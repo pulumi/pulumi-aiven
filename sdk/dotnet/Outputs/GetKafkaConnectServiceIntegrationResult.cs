@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaConnectServiceIntegrationResult
     {
         /// <summary>
-        /// Type of the service integration. The only supported value at the moment is `read_replica`
+        /// Type of the service integration
         /// </summary>
         public readonly string IntegrationType;
         /// <summary>

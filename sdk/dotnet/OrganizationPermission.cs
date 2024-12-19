@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
+    /// Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level. Unit-level permissions aren't shown in the Aiven Console.
     /// 
     /// ## Example Usage
     /// 
@@ -22,7 +22,8 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePermissions = new Aiven.OrganizationPermission("example_permissions", new()
+    ///     // Grant access to a specific project
+    ///     var exampleProjectPermissions = new Aiven.OrganizationPermission("example_project_permissions", new()
     ///     {
     ///         OrganizationId = main.Id,
     ///         ResourceId = exampleProject.Id,
@@ -44,10 +45,42 @@ namespace Pulumi.Aiven
     ///                 Permissions = new[]
     ///                 {
     ///                     "project:integrations:write",
-    ///                     "project:networking:read",
     ///                     "developer",
     ///                 },
     ///                 PrincipalId = exampleGroup.GroupId,
+    ///                 PrincipalType = "user_group",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Organization-level permissions
+    ///     var exampleOrgPermissions = new Aiven.OrganizationPermission("example_org_permissions", new()
+    ///     {
+    ///         OrganizationId = main.Id,
+    ///         ResourceId = main.Id,
+    ///         ResourceType = "organization",
+    ///         Permissions = new[]
+    ///         {
+    ///             new Aiven.Inputs.OrganizationPermissionPermissionArgs
+    ///             {
+    ///                 Permissions = new[]
+    ///                 {
+    ///                     "organization:app_users:write",
+    ///                     "project:audit_logs:read",
+    ///                 },
+    ///                 PrincipalId = "u123a456b7890c",
+    ///                 PrincipalType = "user",
+    ///             },
+    ///             new Aiven.Inputs.OrganizationPermissionPermissionArgs
+    ///             {
+    ///                 Permissions = new[]
+    ///                 {
+    ///                     "organization:users:write",
+    ///                     "organization:groups:write",
+    ///                     "organization:domains:write",
+    ///                     "organization:idps:write",
+    ///                 },
+    ///                 PrincipalId = exampleGroupAivenOrganizationUserGroup.GroupId,
     ///                 PrincipalType = "user_group",
     ///             },
     ///         },

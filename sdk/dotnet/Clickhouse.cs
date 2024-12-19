@@ -141,7 +141,7 @@ namespace Pulumi.Aiven
         public Output<string> ServiceHost { get; private set; } = null!;
 
         /// <summary>
-        /// Integrations with other services. Service integrations are only applied at service creation.
+        /// Service integrations to specify when creating a service. Not applied after initial service creation
         /// </summary>
         [Output("serviceIntegrations")]
         public Output<ImmutableArray<Outputs.ClickhouseServiceIntegration>> ServiceIntegrations { get; private set; } = null!;
@@ -338,7 +338,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseServiceIntegrationArgs>? _serviceIntegrations;
 
         /// <summary>
-        /// Integrations with other services. Service integrations are only applied at service creation.
+        /// Service integrations to specify when creating a service. Not applied after initial service creation
         /// </summary>
         public InputList<Inputs.ClickhouseServiceIntegrationArgs> ServiceIntegrations
         {
@@ -518,7 +518,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseServiceIntegrationGetArgs>? _serviceIntegrations;
 
         /// <summary>
-        /// Integrations with other services. Service integrations are only applied at service creation.
+        /// Service integrations to specify when creating a service. Not applied after initial service creation
         /// </summary>
         public InputList<Inputs.ClickhouseServiceIntegrationGetArgs> ServiceIntegrations
         {

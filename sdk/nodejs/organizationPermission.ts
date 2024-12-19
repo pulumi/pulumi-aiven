@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
+ * Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level. Unit-level permissions aren't shown in the Aiven Console.
  *
  * ## Example Usage
  *
@@ -15,7 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const examplePermissions = new aiven.OrganizationPermission("example_permissions", {
+ * // Grant access to a specific project
+ * const exampleProjectPermissions = new aiven.OrganizationPermission("example_project_permissions", {
  *     organizationId: main.id,
  *     resourceId: exampleProject.id,
  *     resourceType: "project",
@@ -31,10 +32,35 @@ import * as utilities from "./utilities";
  *         {
  *             permissions: [
  *                 "project:integrations:write",
- *                 "project:networking:read",
  *                 "developer",
  *             ],
  *             principalId: exampleGroup.groupId,
+ *             principalType: "user_group",
+ *         },
+ *     ],
+ * });
+ * // Organization-level permissions
+ * const exampleOrgPermissions = new aiven.OrganizationPermission("example_org_permissions", {
+ *     organizationId: main.id,
+ *     resourceId: main.id,
+ *     resourceType: "organization",
+ *     permissions: [
+ *         {
+ *             permissions: [
+ *                 "organization:app_users:write",
+ *                 "project:audit_logs:read",
+ *             ],
+ *             principalId: "u123a456b7890c",
+ *             principalType: "user",
+ *         },
+ *         {
+ *             permissions: [
+ *                 "organization:users:write",
+ *                 "organization:groups:write",
+ *                 "organization:domains:write",
+ *                 "organization:idps:write",
+ *             ],
+ *             principalId: exampleGroupAivenOrganizationUserGroup.groupId,
  *             principalType: "user_group",
  *         },
  *     ],

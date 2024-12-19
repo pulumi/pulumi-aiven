@@ -28,6 +28,584 @@ export interface AccountAuthenticationSamlFieldMapping {
     realName?: string;
 }
 
+export interface AlloydbomniAlloydbomni {
+    /**
+     * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
+     */
+    bouncer: string;
+    /**
+     * Primary AlloyDB Omni database name.
+     */
+    dbname: string;
+    /**
+     * AlloyDB Omni primary node host IP or name.
+     */
+    host: string;
+    /**
+     * The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
+     */
+    maxConnections: number;
+    /**
+     * AlloyDB Omni connection parameters.
+     */
+    params: outputs.AlloydbomniAlloydbomniParam[];
+    /**
+     * AlloyDB Omni admin user password.
+     */
+    password: string;
+    /**
+     * AlloyDB Omni port.
+     */
+    port: number;
+    /**
+     * AlloyDB Omni replica URI for services with a replica.
+     */
+    replicaUri: string;
+    /**
+     * AlloyDB Omni SSL mode setting.
+     */
+    sslmode: string;
+    /**
+     * AlloyDB Omni standby connection URIs.
+     */
+    standbyUris: string[];
+    /**
+     * AlloyDB Omni syncing connection URIs.
+     */
+    syncingUris: string[];
+    /**
+     * AlloyDB Omni primary connection URI.
+     */
+    uri: string;
+    /**
+     * AlloyDB Omni primary connection URIs.
+     */
+    uris: string[];
+    /**
+     * AlloyDB Omni admin user name.
+     */
+    user: string;
+}
+
+export interface AlloydbomniAlloydbomniParam {
+    /**
+     * Primary AlloyDB Omni database name.
+     */
+    databaseName: string;
+    /**
+     * AlloyDB Omni host IP or name.
+     */
+    host: string;
+    /**
+     * AlloyDB Omni admin user password.
+     */
+    password: string;
+    /**
+     * AlloyDB Omni port.
+     */
+    port: number;
+    /**
+     * AlloyDB Omni SSL mode setting.
+     */
+    sslmode: string;
+    /**
+     * AlloyDB Omni admin user name.
+     */
+    user: string;
+}
+
+export interface AlloydbomniAlloydbomniUserConfig {
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     */
+    additionalBackupRegions?: string;
+    /**
+     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     */
+    adminPassword?: string;
+    /**
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+     */
+    adminUsername?: string;
+    /**
+     * Enum: `15`, and newer. PostgreSQL major version.
+     */
+    alloydbomniVersion?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: number;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: number;
+    /**
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     */
+    enableIpv6?: boolean;
+    /**
+     * Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
+     */
+    googleColumnarEngineEnabled?: boolean;
+    /**
+     * Allocate the amount of RAM to store columnar data. Default: `10`.
+     */
+    googleColumnarEngineMemorySizePercentage?: number;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilterObjects?: outputs.AlloydbomniAlloydbomniUserConfigIpFilterObject[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: string[];
+    /**
+     * postgresql.conf configuration values
+     */
+    pg?: outputs.AlloydbomniAlloydbomniUserConfigPg;
+    /**
+     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
+     */
+    pgReadReplica?: boolean;
+    /**
+     * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+     */
+    pgServiceToForkFrom?: string;
+    /**
+     * Enum: `15`, and newer. PostgreSQL major version.
+     */
+    pgVersion?: string;
+    /**
+     * PGBouncer connection pooling settings
+     */
+    pgbouncer?: outputs.AlloydbomniAlloydbomniUserConfigPgbouncer;
+    /**
+     * System-wide settings for pglookout
+     */
+    pglookout?: outputs.AlloydbomniAlloydbomniUserConfigPglookout;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: outputs.AlloydbomniAlloydbomniUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.AlloydbomniAlloydbomniUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.AlloydbomniAlloydbomniUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
+     */
+    recoveryTargetTime?: string;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: boolean;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+     */
+    serviceToForkFrom?: string;
+    /**
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Example: `41.5`.
+     */
+    sharedBuffersPercentage?: number;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: boolean;
+    /**
+     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     */
+    synchronousReplication?: string;
+    /**
+     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     */
+    variant?: string;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+     */
+    workMem?: number;
+}
+
+export interface AlloydbomniAlloydbomniUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry. Example: `Production service IP range`.
+     */
+    description?: string;
+    /**
+     * CIDR address block. Example: `10.20.0.0/16`.
+     */
+    network: string;
+}
+
+export interface AlloydbomniAlloydbomniUserConfigPg {
+    /**
+     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     */
+    autovacuumAnalyzeScaleFactor?: number;
+    /**
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     */
+    autovacuumAnalyzeThreshold?: number;
+    /**
+     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+     */
+    autovacuumFreezeMaxAge?: number;
+    /**
+     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     */
+    autovacuumMaxWorkers?: number;
+    /**
+     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+     */
+    autovacuumNaptime?: number;
+    /**
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum*cost*delay value will be used. The default value is 20 milliseconds.
+     */
+    autovacuumVacuumCostDelay?: number;
+    /**
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum*cost*limit value will be used.
+     */
+    autovacuumVacuumCostLimit?: number;
+    /**
+     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     */
+    autovacuumVacuumScaleFactor?: number;
+    /**
+     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     */
+    autovacuumVacuumThreshold?: number;
+    /**
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+     */
+    bgwriterDelay?: number;
+    /**
+     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+     */
+    bgwriterFlushAfter?: number;
+    /**
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+     */
+    bgwriterLruMaxpages?: number;
+    /**
+     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+     */
+    bgwriterLruMultiplier?: number;
+    /**
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+     */
+    deadlockTimeout?: number;
+    /**
+     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     */
+    defaultToastCompression?: string;
+    /**
+     * Time out sessions with open transactions after this number of milliseconds.
+     */
+    idleInTransactionSessionTimeout?: number;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
+    jit?: boolean;
+    /**
+     * Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+     */
+    logAutovacuumMinDuration?: number;
+    /**
+     * Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+     */
+    logErrorVerbosity?: string;
+    /**
+     * Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+     */
+    logLinePrefix?: string;
+    /**
+     * Log statements that take more than this number of milliseconds to run, -1 disables.
+     */
+    logMinDurationStatement?: number;
+    /**
+     * Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+     */
+    logTempFiles?: number;
+    /**
+     * PostgreSQL maximum number of files that can be open per process.
+     */
+    maxFilesPerProcess?: number;
+    /**
+     * PostgreSQL maximum locks per transaction.
+     */
+    maxLocksPerTransaction?: number;
+    /**
+     * PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers).
+     */
+    maxLogicalReplicationWorkers?: number;
+    /**
+     * Sets the maximum number of workers that the system can support for parallel queries.
+     */
+    maxParallelWorkers?: number;
+    /**
+     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     */
+    maxParallelWorkersPerGather?: number;
+    /**
+     * PostgreSQL maximum predicate locks per transaction.
+     */
+    maxPredLocksPerTransaction?: number;
+    /**
+     * PostgreSQL maximum prepared transactions.
+     */
+    maxPreparedTransactions?: number;
+    /**
+     * PostgreSQL maximum replication slots.
+     */
+    maxReplicationSlots?: number;
+    /**
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal*keep*size minimum WAL size setting takes precedence over this.
+     */
+    maxSlotWalKeepSize?: number;
+    /**
+     * Maximum depth of the stack in bytes.
+     */
+    maxStackDepth?: number;
+    /**
+     * Max standby archive delay in milliseconds.
+     */
+    maxStandbyArchiveDelay?: number;
+    /**
+     * Max standby streaming delay in milliseconds.
+     */
+    maxStandbyStreamingDelay?: number;
+    /**
+     * PostgreSQL maximum WAL senders.
+     */
+    maxWalSenders?: number;
+    /**
+     * Sets the maximum number of background processes that the system can support.
+     */
+    maxWorkerProcesses?: number;
+    /**
+     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     */
+    passwordEncryption?: string;
+    /**
+     * Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+     */
+    pgPartmanBgwDotInterval?: number;
+    /**
+     * Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
+     */
+    pgPartmanBgwDotRole?: string;
+    /**
+     * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     */
+    pgStatStatementsDotTrack?: string;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+     */
+    tempFileLimit?: number;
+    /**
+     * PostgreSQL service timezone. Example: `Europe/Helsinki`.
+     */
+    timezone?: string;
+    /**
+     * Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+     */
+    trackActivityQuerySize?: number;
+    /**
+     * Enum: `off`, `on`. Record commit time of transactions.
+     */
+    trackCommitTimestamp?: string;
+    /**
+     * Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
+     */
+    trackFunctions?: string;
+    /**
+     * Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     */
+    trackIoTiming?: string;
+    /**
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
+     */
+    walSenderTimeout?: number;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+     */
+    walWriterDelay?: number;
+}
+
+export interface AlloydbomniAlloydbomniUserConfigPgbouncer {
+    /**
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
+     */
+    autodbIdleTimeout?: number;
+    /**
+     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
+     */
+    autodbMaxDbConnections?: number;
+    /**
+     * Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
+     */
+    autodbPoolMode?: string;
+    /**
+     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
+     */
+    autodbPoolSize?: number;
+    /**
+     * List of parameters to ignore when given in startup packet.
+     */
+    ignoreStartupParameters?: string[];
+    /**
+     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
+     */
+    maxPreparedStatements?: number;
+    /**
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+     */
+    minPoolSize?: number;
+    /**
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
+     */
+    serverIdleTimeout?: number;
+    /**
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+     */
+    serverLifetime?: number;
+    /**
+     * Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
+     */
+    serverResetQueryAlways?: boolean;
+}
+
+export interface AlloydbomniAlloydbomniUserConfigPglookout {
+    /**
+     * Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
+     */
+    maxFailoverReplicationTimeLag?: number;
+}
+
+export interface AlloydbomniAlloydbomniUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    pg?: boolean;
+    /**
+     * Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    pgbouncer?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    prometheus?: boolean;
+}
+
+export interface AlloydbomniAlloydbomniUserConfigPrivatelinkAccess {
+    /**
+     * Enable pg.
+     */
+    pg?: boolean;
+    /**
+     * Enable pgbouncer.
+     */
+    pgbouncer?: boolean;
+    /**
+     * Enable prometheus.
+     */
+    prometheus?: boolean;
+}
+
+export interface AlloydbomniAlloydbomniUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    pg?: boolean;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    pgbouncer?: boolean;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: boolean;
+}
+
+export interface AlloydbomniComponent {
+    /**
+     * Service component name
+     */
+    component: string;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri: string;
+    /**
+     * Host name for connecting to the service component
+     */
+    host: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod: string;
+    /**
+     * Port number for connecting to the service component
+     */
+    port: number;
+    /**
+     * Network access route
+     */
+    route: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl: boolean;
+    /**
+     * DNS usage name
+     */
+    usage: string;
+}
+
+export interface AlloydbomniServiceIntegration {
+    /**
+     * Type of the service integration. The possible value is `readReplica`.
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface AlloydbomniTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
+export interface AlloydbomniTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: string;
+}
+
 export interface CassandraCassandra {
     /**
      * Cassandra server URIs.
@@ -189,7 +767,7 @@ export interface CassandraComponent {
 
 export interface CassandraServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -413,11 +991,11 @@ export interface ClickhouseGrantRoleGrant {
 
 export interface ClickhouseServiceIntegration {
     /**
-     * Type of the service integration. Supported integrations are `clickhouseKafka` and `clickhousePostgresql`.
+     * Type of the service integration
      */
     integrationType: string;
     /**
-     * Name of the source service.
+     * Name of the source service
      */
     sourceServiceName: string;
 }
@@ -644,7 +1222,7 @@ export interface DragonflyDragonflyUserConfigPublicAccess {
 
 export interface DragonflyServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -743,7 +1321,7 @@ export interface FlinkFlinkUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Enum: `1.16`, `1.19`, and newer. Flink major version.
+     * Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
      */
     flinkVersion?: string;
     /**
@@ -821,7 +1399,7 @@ export interface FlinkFlinkUserConfigPublicAccess {
 
 export interface FlinkServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -869,6 +1447,584 @@ export interface GetAccountAuthenticationSamlFieldMapping {
      * Field name for user's full name. If specified, firstName and lastName mappings are ignored
      */
     realName?: string;
+}
+
+export interface GetAlloydbomniAlloydbomni {
+    /**
+     * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
+     *
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
+     */
+    bouncer: string;
+    /**
+     * Primary AlloyDB Omni database name.
+     */
+    dbname: string;
+    /**
+     * AlloyDB Omni primary node host IP or name.
+     */
+    host: string;
+    /**
+     * The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
+     */
+    maxConnections: number;
+    /**
+     * AlloyDB Omni connection parameters.
+     */
+    params: outputs.GetAlloydbomniAlloydbomniParam[];
+    /**
+     * AlloyDB Omni admin user password.
+     */
+    password: string;
+    /**
+     * AlloyDB Omni port.
+     */
+    port: number;
+    /**
+     * AlloyDB Omni replica URI for services with a replica.
+     */
+    replicaUri: string;
+    /**
+     * AlloyDB Omni SSL mode setting.
+     */
+    sslmode: string;
+    /**
+     * AlloyDB Omni standby connection URIs.
+     */
+    standbyUris: string[];
+    /**
+     * AlloyDB Omni syncing connection URIs.
+     */
+    syncingUris: string[];
+    /**
+     * AlloyDB Omni primary connection URI.
+     */
+    uri: string;
+    /**
+     * AlloyDB Omni primary connection URIs.
+     */
+    uris: string[];
+    /**
+     * AlloyDB Omni admin user name.
+     */
+    user: string;
+}
+
+export interface GetAlloydbomniAlloydbomniParam {
+    /**
+     * Primary AlloyDB Omni database name.
+     */
+    databaseName: string;
+    /**
+     * AlloyDB Omni host IP or name.
+     */
+    host: string;
+    /**
+     * AlloyDB Omni admin user password.
+     */
+    password: string;
+    /**
+     * AlloyDB Omni port.
+     */
+    port: number;
+    /**
+     * AlloyDB Omni SSL mode setting.
+     */
+    sslmode: string;
+    /**
+     * AlloyDB Omni admin user name.
+     */
+    user: string;
+}
+
+export interface GetAlloydbomniAlloydbomniUserConfig {
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     */
+    additionalBackupRegions?: string;
+    /**
+     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     */
+    adminPassword?: string;
+    /**
+     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+     */
+    adminUsername?: string;
+    /**
+     * Enum: `15`, and newer. PostgreSQL major version.
+     */
+    alloydbomniVersion?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: number;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: number;
+    /**
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     */
+    enableIpv6?: boolean;
+    /**
+     * Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
+     */
+    googleColumnarEngineEnabled?: boolean;
+    /**
+     * Allocate the amount of RAM to store columnar data. Default: `10`.
+     */
+    googleColumnarEngineMemorySizePercentage?: number;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+     */
+    ipFilterObjects?: outputs.GetAlloydbomniAlloydbomniUserConfigIpFilterObject[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: string[];
+    /**
+     * postgresql.conf configuration values
+     */
+    pg?: outputs.GetAlloydbomniAlloydbomniUserConfigPg;
+    /**
+     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
+     */
+    pgReadReplica?: boolean;
+    /**
+     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
+     */
+    pgServiceToForkFrom?: string;
+    /**
+     * Enum: `15`, and newer. PostgreSQL major version.
+     */
+    pgVersion?: string;
+    /**
+     * PGBouncer connection pooling settings
+     */
+    pgbouncer?: outputs.GetAlloydbomniAlloydbomniUserConfigPgbouncer;
+    /**
+     * System-wide settings for pglookout
+     */
+    pglookout?: outputs.GetAlloydbomniAlloydbomniUserConfigPglookout;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: outputs.GetAlloydbomniAlloydbomniUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetAlloydbomniAlloydbomniUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.GetAlloydbomniAlloydbomniUserConfigPublicAccess;
+    /**
+     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
+     */
+    recoveryTargetTime?: string;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: boolean;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+     */
+    serviceToForkFrom?: string;
+    /**
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Example: `41.5`.
+     */
+    sharedBuffersPercentage?: number;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: boolean;
+    /**
+     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     */
+    synchronousReplication?: string;
+    /**
+     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     */
+    variant?: string;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
+     */
+    workMem?: number;
+}
+
+export interface GetAlloydbomniAlloydbomniUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry. Example: `Production service IP range`.
+     */
+    description?: string;
+    /**
+     * CIDR address block. Example: `10.20.0.0/16`.
+     */
+    network: string;
+}
+
+export interface GetAlloydbomniAlloydbomniUserConfigPg {
+    /**
+     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     */
+    autovacuumAnalyzeScaleFactor?: number;
+    /**
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     */
+    autovacuumAnalyzeThreshold?: number;
+    /**
+     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
+     */
+    autovacuumFreezeMaxAge?: number;
+    /**
+     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     */
+    autovacuumMaxWorkers?: number;
+    /**
+     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
+     */
+    autovacuumNaptime?: number;
+    /**
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds.
+     */
+    autovacuumVacuumCostDelay?: number;
+    /**
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     */
+    autovacuumVacuumCostLimit?: number;
+    /**
+     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     */
+    autovacuumVacuumScaleFactor?: number;
+    /**
+     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     */
+    autovacuumVacuumThreshold?: number;
+    /**
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
+     */
+    bgwriterDelay?: number;
+    /**
+     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
+     */
+    bgwriterFlushAfter?: number;
+    /**
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
+     */
+    bgwriterLruMaxpages?: number;
+    /**
+     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
+     */
+    bgwriterLruMultiplier?: number;
+    /**
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
+     */
+    deadlockTimeout?: number;
+    /**
+     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     */
+    defaultToastCompression?: string;
+    /**
+     * Time out sessions with open transactions after this number of milliseconds.
+     */
+    idleInTransactionSessionTimeout?: number;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
+    jit?: boolean;
+    /**
+     * Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
+     */
+    logAutovacuumMinDuration?: number;
+    /**
+     * Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+     */
+    logErrorVerbosity?: string;
+    /**
+     * Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
+     */
+    logLinePrefix?: string;
+    /**
+     * Log statements that take more than this number of milliseconds to run, -1 disables.
+     */
+    logMinDurationStatement?: number;
+    /**
+     * Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
+     */
+    logTempFiles?: number;
+    /**
+     * PostgreSQL maximum number of files that can be open per process.
+     */
+    maxFilesPerProcess?: number;
+    /**
+     * PostgreSQL maximum locks per transaction.
+     */
+    maxLocksPerTransaction?: number;
+    /**
+     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     */
+    maxLogicalReplicationWorkers?: number;
+    /**
+     * Sets the maximum number of workers that the system can support for parallel queries.
+     */
+    maxParallelWorkers?: number;
+    /**
+     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     */
+    maxParallelWorkersPerGather?: number;
+    /**
+     * PostgreSQL maximum predicate locks per transaction.
+     */
+    maxPredLocksPerTransaction?: number;
+    /**
+     * PostgreSQL maximum prepared transactions.
+     */
+    maxPreparedTransactions?: number;
+    /**
+     * PostgreSQL maximum replication slots.
+     */
+    maxReplicationSlots?: number;
+    /**
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     */
+    maxSlotWalKeepSize?: number;
+    /**
+     * Maximum depth of the stack in bytes.
+     */
+    maxStackDepth?: number;
+    /**
+     * Max standby archive delay in milliseconds.
+     */
+    maxStandbyArchiveDelay?: number;
+    /**
+     * Max standby streaming delay in milliseconds.
+     */
+    maxStandbyStreamingDelay?: number;
+    /**
+     * PostgreSQL maximum WAL senders.
+     */
+    maxWalSenders?: number;
+    /**
+     * Sets the maximum number of background processes that the system can support.
+     */
+    maxWorkerProcesses?: number;
+    /**
+     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     */
+    passwordEncryption?: string;
+    /**
+     * Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
+     */
+    pgPartmanBgwDotInterval?: number;
+    /**
+     * Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
+     */
+    pgPartmanBgwDotRole?: string;
+    /**
+     * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     */
+    pgStatStatementsDotTrack?: string;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
+     */
+    tempFileLimit?: number;
+    /**
+     * PostgreSQL service timezone. Example: `Europe/Helsinki`.
+     */
+    timezone?: string;
+    /**
+     * Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
+     */
+    trackActivityQuerySize?: number;
+    /**
+     * Enum: `off`, `on`. Record commit time of transactions.
+     */
+    trackCommitTimestamp?: string;
+    /**
+     * Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
+     */
+    trackFunctions?: string;
+    /**
+     * Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     */
+    trackIoTiming?: string;
+    /**
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
+     */
+    walSenderTimeout?: number;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
+     */
+    walWriterDelay?: number;
+}
+
+export interface GetAlloydbomniAlloydbomniUserConfigPgbouncer {
+    /**
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
+     */
+    autodbIdleTimeout?: number;
+    /**
+     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
+     */
+    autodbMaxDbConnections?: number;
+    /**
+     * Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
+     */
+    autodbPoolMode?: string;
+    /**
+     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
+     */
+    autodbPoolSize?: number;
+    /**
+     * List of parameters to ignore when given in startup packet.
+     */
+    ignoreStartupParameters?: string[];
+    /**
+     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
+     */
+    maxPreparedStatements?: number;
+    /**
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+     */
+    minPoolSize?: number;
+    /**
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
+     */
+    serverIdleTimeout?: number;
+    /**
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+     */
+    serverLifetime?: number;
+    /**
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
+     */
+    serverResetQueryAlways?: boolean;
+}
+
+export interface GetAlloydbomniAlloydbomniUserConfigPglookout {
+    /**
+     * Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
+     */
+    maxFailoverReplicationTimeLag?: number;
+}
+
+export interface GetAlloydbomniAlloydbomniUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    pg?: boolean;
+    /**
+     * Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    pgbouncer?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    prometheus?: boolean;
+}
+
+export interface GetAlloydbomniAlloydbomniUserConfigPrivatelinkAccess {
+    /**
+     * Enable pg.
+     */
+    pg?: boolean;
+    /**
+     * Enable pgbouncer.
+     */
+    pgbouncer?: boolean;
+    /**
+     * Enable prometheus.
+     */
+    prometheus?: boolean;
+}
+
+export interface GetAlloydbomniAlloydbomniUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    pg?: boolean;
+    /**
+     * Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    pgbouncer?: boolean;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: boolean;
+}
+
+export interface GetAlloydbomniComponent {
+    /**
+     * Service component name
+     */
+    component: string;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri: string;
+    /**
+     * Host name for connecting to the service component
+     */
+    host: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod: string;
+    /**
+     * Port number for connecting to the service component
+     */
+    port: number;
+    /**
+     * Network access route
+     */
+    route: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl: boolean;
+    /**
+     * DNS usage name
+     */
+    usage: string;
+}
+
+export interface GetAlloydbomniServiceIntegration {
+    /**
+     * Type of the service integration. The possible value is `readReplica`.
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface GetAlloydbomniTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
+export interface GetAlloydbomniTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: string;
 }
 
 export interface GetCassandaCassandra {
@@ -1032,7 +2188,7 @@ export interface GetCassandaComponent {
 
 export interface GetCassandaServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -1220,7 +2376,7 @@ export interface GetCassandraComponent {
 
 export interface GetCassandraServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -1414,11 +2570,11 @@ export interface GetClickhouseComponent {
 
 export interface GetClickhouseServiceIntegration {
     /**
-     * Type of the service integration. Supported integrations are `clickhouseKafka` and `clickhousePostgresql`.
+     * Type of the service integration
      */
     integrationType: string;
     /**
-     * Name of the source service.
+     * Name of the source service
      */
     sourceServiceName: string;
 }
@@ -1645,7 +2801,7 @@ export interface GetDragonflyDragonflyUserConfigPublicAccess {
 
 export interface GetDragonflyServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -1744,7 +2900,7 @@ export interface GetFlinkFlinkUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Enum: `1.16`, `1.19`, and newer. Flink major version.
+     * Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
      */
     flinkVersion?: string;
     /**
@@ -1822,7 +2978,7 @@ export interface GetFlinkFlinkUserConfigPublicAccess {
 
 export interface GetFlinkServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -2354,7 +3510,7 @@ export interface GetGrafanaGrafanaUserConfigSmtpServer {
 
 export interface GetGrafanaServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -2579,7 +3735,7 @@ export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
 
 export interface GetInfluxDbServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -2898,7 +4054,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
 
 export interface GetKafkaConnectServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -3736,7 +4892,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 
 export interface GetKafkaMirrorMakerServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -3765,7 +4921,7 @@ export interface GetKafkaMirrorMakerTechEmail {
 
 export interface GetKafkaServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -4012,7 +5168,7 @@ export interface GetM3AggregatorM3aggregatorUserConfigIpFilterObject {
 
 export interface GetM3AggregatorServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -4373,7 +5529,7 @@ export interface GetM3DbM3dbUserConfigRulesMappingTag {
 
 export interface GetM3DbServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -4794,7 +5950,7 @@ export interface GetMySqlMysqlUserConfigPublicAccess {
 
 export interface GetMySqlServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration. The possible value is `readReplica`.
      */
     integrationType: string;
     /**
@@ -5463,6 +6619,10 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
      */
     maxOldSpaceSize?: number;
     /**
+     * Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+     */
+    multipleDataSourceEnabled?: boolean;
+    /**
      * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: number;
@@ -5847,7 +7007,7 @@ export interface GetOpenSearchOpensearchUserConfigSaml {
 
 export interface GetOpenSearchServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -6067,8 +7227,6 @@ export interface GetPgPgParam {
 export interface GetPgPgUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -6132,7 +7290,7 @@ export interface GetPgPgUserConfig {
      */
     pgStatMonitorEnable?: boolean;
     /**
-     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
      */
     pgVersion?: string;
     /**
@@ -6398,6 +7556,10 @@ export interface GetPgPgUserConfigPg {
      * Sets the maximum number of background processes that the system can support.
      */
     maxWorkerProcesses?: number;
+    /**
+     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     */
+    passwordEncryption?: string;
     /**
      * Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
      */
@@ -6676,7 +7838,7 @@ export interface GetPgPgUserConfigTimescaledb {
 
 export interface GetPgServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration. The possible value is `readReplica`.
      */
     integrationType: string;
     /**
@@ -6966,7 +8128,7 @@ export interface GetRedisRedisUserConfigPublicAccess {
 
 export interface GetRedisServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -7992,7 +9154,7 @@ export interface GetThanosComponent {
 
 export interface GetThanosServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -8255,7 +9417,7 @@ export interface GetValkeyComponent {
 
 export interface GetValkeyServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -8998,7 +10160,7 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
 
 export interface GrafanaServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -9223,7 +10385,7 @@ export interface InfluxDbInfluxdbUserConfigPublicAccess {
 
 export interface InfluxDbServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -9542,7 +10704,7 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProviderVault {
 
 export interface KafkaConnectServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -10380,7 +11542,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
 
 export interface KafkaMirrorMakerServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -10409,7 +11571,7 @@ export interface KafkaMirrorMakerTechEmail {
 
 export interface KafkaServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -10656,7 +11818,7 @@ export interface M3AggregatorM3aggregatorUserConfigIpFilterObject {
 
 export interface M3AggregatorServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -11017,7 +12179,7 @@ export interface M3DbM3dbUserConfigRulesMappingTag {
 
 export interface M3DbServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -11438,7 +12600,7 @@ export interface MySqlMysqlUserConfigPublicAccess {
 
 export interface MySqlServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration. The possible value is `readReplica`.
      */
     integrationType: string;
     /**
@@ -12107,6 +13269,10 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
      */
     maxOldSpaceSize?: number;
     /**
+     * Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+     */
+    multipleDataSourceEnabled?: boolean;
+    /**
      * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: number;
@@ -12491,7 +13657,7 @@ export interface OpenSearchOpensearchUserConfigSaml {
 
 export interface OpenSearchServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -12543,7 +13709,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime: string;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:network:read`, `organization:network:write`, `organization:permissions:read`, `organization:permissions:write`, `organization:projects:read`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: string[];
     /**
@@ -12724,8 +13890,6 @@ export interface PgPgParam {
 export interface PgPgUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -12789,7 +13953,7 @@ export interface PgPgUserConfig {
      */
     pgStatMonitorEnable?: boolean;
     /**
-     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
      */
     pgVersion?: string;
     /**
@@ -13055,6 +14219,10 @@ export interface PgPgUserConfigPg {
      * Sets the maximum number of background processes that the system can support.
      */
     maxWorkerProcesses?: number;
+    /**
+     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     */
+    passwordEncryption?: string;
     /**
      * Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
      */
@@ -13333,7 +14501,7 @@ export interface PgPgUserConfigTimescaledb {
 
 export interface PgServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration. The possible value is `readReplica`.
      */
     integrationType: string;
     /**
@@ -13623,7 +14791,7 @@ export interface RedisRedisUserConfigPublicAccess {
 
 export interface RedisServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -14649,7 +15817,7 @@ export interface ThanosComponent {
 
 export interface ThanosServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**
@@ -14912,7 +16080,7 @@ export interface ValkeyComponent {
 
 export interface ValkeyServiceIntegration {
     /**
-     * Type of the service integration. The only supported value at the moment is `readReplica`
+     * Type of the service integration
      */
     integrationType: string;
     /**

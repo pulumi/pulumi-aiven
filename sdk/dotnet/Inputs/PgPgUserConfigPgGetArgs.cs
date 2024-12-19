@@ -229,6 +229,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxWorkerProcesses { get; set; }
 
         /// <summary>
+        /// Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+        /// </summary>
+        [Input("passwordEncryption")]
+        public Input<string>? PasswordEncryption { get; set; }
+
+        /// <summary>
         /// Sets the time interval to run pg_partman's scheduled tasks. Example: `3600`.
         /// </summary>
         [Input("pgPartmanBgwDotInterval")]

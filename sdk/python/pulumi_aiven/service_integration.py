@@ -28,6 +28,7 @@ class ServiceIntegrationArgs:
                  datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
+                 destination_service_project: Optional[pulumi.Input[str]] = None,
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
@@ -40,7 +41,8 @@ class ServiceIntegrationArgs:
                  metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
                  prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
-                 source_service_name: Optional[pulumi.Input[str]] = None):
+                 source_service_name: Optional[pulumi.Input[str]] = None,
+                 source_service_project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceIntegration resource.
         :param pulumi.Input[str] integration_type: Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
@@ -50,6 +52,7 @@ class ServiceIntegrationArgs:
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration.
+        :param pulumi.Input[str] destination_service_project: Destination service project name
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -63,6 +66,7 @@ class ServiceIntegrationArgs:
         :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
+        :param pulumi.Input[str] source_service_project: Source service project name
         """
         pulumi.set(__self__, "integration_type", integration_type)
         pulumi.set(__self__, "project", project)
@@ -76,6 +80,8 @@ class ServiceIntegrationArgs:
             pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
             pulumi.set(__self__, "destination_service_name", destination_service_name)
+        if destination_service_project is not None:
+            pulumi.set(__self__, "destination_service_project", destination_service_project)
         if external_aws_cloudwatch_logs_user_config is not None:
             pulumi.set(__self__, "external_aws_cloudwatch_logs_user_config", external_aws_cloudwatch_logs_user_config)
         if external_aws_cloudwatch_metrics_user_config is not None:
@@ -102,6 +108,8 @@ class ServiceIntegrationArgs:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
             pulumi.set(__self__, "source_service_name", source_service_name)
+        if source_service_project is not None:
+            pulumi.set(__self__, "source_service_project", source_service_project)
 
     @property
     @pulumi.getter(name="integrationType")
@@ -186,6 +194,18 @@ class ServiceIntegrationArgs:
     @destination_service_name.setter
     def destination_service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "destination_service_name", value)
+
+    @property
+    @pulumi.getter(name="destinationServiceProject")
+    def destination_service_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Destination service project name
+        """
+        return pulumi.get(self, "destination_service_project")
+
+    @destination_service_project.setter
+    def destination_service_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_service_project", value)
 
     @property
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
@@ -343,6 +363,18 @@ class ServiceIntegrationArgs:
     def source_service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_service_name", value)
 
+    @property
+    @pulumi.getter(name="sourceServiceProject")
+    def source_service_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source service project name
+        """
+        return pulumi.get(self, "source_service_project")
+
+    @source_service_project.setter
+    def source_service_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_service_project", value)
+
 
 @pulumi.input_type
 class _ServiceIntegrationState:
@@ -352,6 +384,7 @@ class _ServiceIntegrationState:
                  datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
+                 destination_service_project: Optional[pulumi.Input[str]] = None,
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
@@ -367,7 +400,8 @@ class _ServiceIntegrationState:
                  project: Optional[pulumi.Input[str]] = None,
                  prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
-                 source_service_name: Optional[pulumi.Input[str]] = None):
+                 source_service_name: Optional[pulumi.Input[str]] = None,
+                 source_service_project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceIntegration resources.
         :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -375,6 +409,7 @@ class _ServiceIntegrationState:
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration.
+        :param pulumi.Input[str] destination_service_project: Destination service project name
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -391,6 +426,7 @@ class _ServiceIntegrationState:
         :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
+        :param pulumi.Input[str] source_service_project: Source service project name
         """
         if clickhouse_kafka_user_config is not None:
             pulumi.set(__self__, "clickhouse_kafka_user_config", clickhouse_kafka_user_config)
@@ -402,6 +438,8 @@ class _ServiceIntegrationState:
             pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
             pulumi.set(__self__, "destination_service_name", destination_service_name)
+        if destination_service_project is not None:
+            pulumi.set(__self__, "destination_service_project", destination_service_project)
         if external_aws_cloudwatch_logs_user_config is not None:
             pulumi.set(__self__, "external_aws_cloudwatch_logs_user_config", external_aws_cloudwatch_logs_user_config)
         if external_aws_cloudwatch_metrics_user_config is not None:
@@ -434,6 +472,8 @@ class _ServiceIntegrationState:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
             pulumi.set(__self__, "source_service_name", source_service_name)
+        if source_service_project is not None:
+            pulumi.set(__self__, "source_service_project", source_service_project)
 
     @property
     @pulumi.getter(name="clickhouseKafkaUserConfig")
@@ -494,6 +534,18 @@ class _ServiceIntegrationState:
     @destination_service_name.setter
     def destination_service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "destination_service_name", value)
+
+    @property
+    @pulumi.getter(name="destinationServiceProject")
+    def destination_service_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Destination service project name
+        """
+        return pulumi.get(self, "destination_service_project")
+
+    @destination_service_project.setter
+    def destination_service_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_service_project", value)
 
     @property
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
@@ -687,6 +739,18 @@ class _ServiceIntegrationState:
     def source_service_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_service_name", value)
 
+    @property
+    @pulumi.getter(name="sourceServiceProject")
+    def source_service_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source service project name
+        """
+        return pulumi.get(self, "source_service_project")
+
+    @source_service_project.setter
+    def source_service_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_service_project", value)
+
 
 class ServiceIntegration(pulumi.CustomResource):
     @overload
@@ -698,6 +762,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
+                 destination_service_project: Optional[pulumi.Input[str]] = None,
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']]] = None,
@@ -713,6 +778,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  prometheus_user_config: Optional[pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None,
+                 source_service_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -758,6 +824,7 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration.
+        :param pulumi.Input[str] destination_service_project: Destination service project name
         :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -773,6 +840,7 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
+        :param pulumi.Input[str] source_service_project: Source service project name
         """
         ...
     @overload
@@ -837,6 +905,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
+                 destination_service_project: Optional[pulumi.Input[str]] = None,
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']]] = None,
@@ -852,6 +921,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  prometheus_user_config: Optional[pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None,
+                 source_service_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -866,6 +936,7 @@ class ServiceIntegration(pulumi.CustomResource):
             __props__.__dict__["datadog_user_config"] = datadog_user_config
             __props__.__dict__["destination_endpoint_id"] = destination_endpoint_id
             __props__.__dict__["destination_service_name"] = destination_service_name
+            __props__.__dict__["destination_service_project"] = destination_service_project
             __props__.__dict__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
             __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
             __props__.__dict__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
@@ -885,6 +956,7 @@ class ServiceIntegration(pulumi.CustomResource):
             __props__.__dict__["prometheus_user_config"] = prometheus_user_config
             __props__.__dict__["source_endpoint_id"] = source_endpoint_id
             __props__.__dict__["source_service_name"] = source_service_name
+            __props__.__dict__["source_service_project"] = source_service_project
             __props__.__dict__["integration_id"] = None
         super(ServiceIntegration, __self__).__init__(
             'aiven:index/serviceIntegration:ServiceIntegration',
@@ -901,6 +973,7 @@ class ServiceIntegration(pulumi.CustomResource):
             datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
             destination_endpoint_id: Optional[pulumi.Input[str]] = None,
             destination_service_name: Optional[pulumi.Input[str]] = None,
+            destination_service_project: Optional[pulumi.Input[str]] = None,
             external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
             external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
             external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']]] = None,
@@ -916,7 +989,8 @@ class ServiceIntegration(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             prometheus_user_config: Optional[pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
             source_endpoint_id: Optional[pulumi.Input[str]] = None,
-            source_service_name: Optional[pulumi.Input[str]] = None) -> 'ServiceIntegration':
+            source_service_name: Optional[pulumi.Input[str]] = None,
+            source_service_project: Optional[pulumi.Input[str]] = None) -> 'ServiceIntegration':
         """
         Get an existing ServiceIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -929,6 +1003,7 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']] datadog_user_config: Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
         :param pulumi.Input[str] destination_service_name: Destination service for the integration.
+        :param pulumi.Input[str] destination_service_project: Destination service project name
         :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -945,6 +1020,7 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
+        :param pulumi.Input[str] source_service_project: Source service project name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -955,6 +1031,7 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__.__dict__["datadog_user_config"] = datadog_user_config
         __props__.__dict__["destination_endpoint_id"] = destination_endpoint_id
         __props__.__dict__["destination_service_name"] = destination_service_name
+        __props__.__dict__["destination_service_project"] = destination_service_project
         __props__.__dict__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
         __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
         __props__.__dict__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
@@ -971,6 +1048,7 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__.__dict__["prometheus_user_config"] = prometheus_user_config
         __props__.__dict__["source_endpoint_id"] = source_endpoint_id
         __props__.__dict__["source_service_name"] = source_service_name
+        __props__.__dict__["source_service_project"] = source_service_project
         return ServiceIntegration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1012,6 +1090,14 @@ class ServiceIntegration(pulumi.CustomResource):
         Destination service for the integration.
         """
         return pulumi.get(self, "destination_service_name")
+
+    @property
+    @pulumi.getter(name="destinationServiceProject")
+    def destination_service_project(self) -> pulumi.Output[str]:
+        """
+        Destination service project name
+        """
+        return pulumi.get(self, "destination_service_project")
 
     @property
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
@@ -1135,9 +1221,17 @@ class ServiceIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceServiceName")
-    def source_service_name(self) -> pulumi.Output[Optional[str]]:
+    def source_service_name(self) -> pulumi.Output[str]:
         """
         Source service for the integration (if any)
         """
         return pulumi.get(self, "source_service_name")
+
+    @property
+    @pulumi.getter(name="sourceServiceProject")
+    def source_service_project(self) -> pulumi.Output[str]:
+        """
+        Source service project name
+        """
+        return pulumi.get(self, "source_service_project")
 

@@ -10,19 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Manages native acls in [kafka service](https://aiven.io/docs/products/kafka/concepts/acl).
+    /// Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups,
+    /// clusters, and Schema Registry.
+    /// 
+    /// Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleAcl = new Aiven.KafkaNativeAcl("example_acl", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
+    ///         ResourceType = "Topic",
+    ///         ResourceName = "example-topic",
+    ///         Principal = "User:example-user",
+    ///         Operation = "Read",
+    ///         PatternType = "LITERAL",
+    ///         PermissionType = "ALLOW",
+    ///         Host = "198.51.100.0",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example_acl PROJECT/SERVICE_NAME/ID
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaNativeAcl:KafkaNativeAcl")]
     public partial class KafkaNativeAcl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
 
         /// <summary>
-        /// The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        /// The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("operation")]
         public Output<string> Operation { get; private set; } = null!;
@@ -34,13 +69,13 @@ namespace Pulumi.Aiven
         public Output<string> PatternType { get; private set; } = null!;
 
         /// <summary>
-        /// The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        /// Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("permissionType")]
         public Output<string> PermissionType { get; private set; } = null!;
 
         /// <summary>
-        /// Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("principal")]
         public Output<string> Principal { get; private set; } = null!;
@@ -52,13 +87,13 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("resourceName")]
         public Output<string> ResourceName { get; private set; } = null!;
 
         /// <summary>
-        /// The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        /// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -116,13 +151,13 @@ namespace Pulumi.Aiven
     public sealed class KafkaNativeAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        /// The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("operation", required: true)]
         public Input<string> Operation { get; set; } = null!;
@@ -134,13 +169,13 @@ namespace Pulumi.Aiven
         public Input<string> PatternType { get; set; } = null!;
 
         /// <summary>
-        /// The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        /// Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permissionType", required: true)]
         public Input<string> PermissionType { get; set; } = null!;
 
         /// <summary>
-        /// Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("principal", required: true)]
         public Input<string> Principal { get; set; } = null!;
@@ -152,13 +187,13 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceName", required: true)]
         public Input<string> ResourceName { get; set; } = null!;
 
         /// <summary>
-        /// The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        /// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -178,13 +213,13 @@ namespace Pulumi.Aiven
     public sealed class KafkaNativeAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        /// The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("operation")]
         public Input<string>? Operation { get; set; }
@@ -196,13 +231,13 @@ namespace Pulumi.Aiven
         public Input<string>? PatternType { get; set; }
 
         /// <summary>
-        /// The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        /// Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permissionType")]
         public Input<string>? PermissionType { get; set; }
 
         /// <summary>
-        /// Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }
@@ -214,13 +249,13 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+        /// The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceName")]
         public Input<string>? ResourceName { get; set; }
 
         /// <summary>
-        /// The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        /// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

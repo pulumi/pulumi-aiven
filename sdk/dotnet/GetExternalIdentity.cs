@@ -43,7 +43,7 @@ namespace Pulumi.Aiven
     public sealed class GetExternalIdentityArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the external service. The possible values are `github`.
+        /// The name of the external service. The possible value is `github`.
         /// </summary>
         [Input("externalServiceName", required: true)]
         public string ExternalServiceName { get; set; } = null!;
@@ -75,7 +75,7 @@ namespace Pulumi.Aiven
     public sealed class GetExternalIdentityInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the external service. The possible values are `github`.
+        /// The name of the external service. The possible value is `github`.
         /// </summary>
         [Input("externalServiceName", required: true)]
         public Input<string> ExternalServiceName { get; set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.Aiven
     public sealed class GetExternalIdentityResult
     {
         /// <summary>
-        /// The name of the external service. The possible values are `github`.
+        /// The name of the external service. The possible value is `github`.
         /// </summary>
         public readonly string ExternalServiceName;
         /// <summary>

@@ -25,6 +25,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxOldSpaceSize { get; set; }
 
         /// <summary>
+        /// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+        /// </summary>
+        [Input("multipleDataSourceEnabled")]
+        public Input<bool>? MultipleDataSourceEnabled { get; set; }
+
+        /// <summary>
         /// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
         /// </summary>
         [Input("opensearchRequestTimeout")]

@@ -128,9 +128,9 @@ export class Clickhouse extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceHost!: pulumi.Output<string>;
     /**
-     * Integrations with other services. Service integrations are only applied at service creation.
+     * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    public readonly serviceIntegrations!: pulumi.Output<outputs.ClickhouseServiceIntegration[] | undefined>;
+    public readonly serviceIntegrations!: pulumi.Output<outputs.ClickhouseServiceIntegration[]>;
     /**
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
@@ -337,7 +337,7 @@ export interface ClickhouseState {
      */
     serviceHost?: pulumi.Input<string>;
     /**
-     * Integrations with other services. Service integrations are only applied at service creation.
+     * Service integrations to specify when creating a service. Not applied after initial service creation
      */
     serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.ClickhouseServiceIntegration>[]>;
     /**
@@ -433,7 +433,7 @@ export interface ClickhouseArgs {
      */
     projectVpcId?: pulumi.Input<string>;
     /**
-     * Integrations with other services. Service integrations are only applied at service creation.
+     * Service integrations to specify when creating a service. Not applied after initial service creation
      */
     serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.ClickhouseServiceIntegration>[]>;
     /**

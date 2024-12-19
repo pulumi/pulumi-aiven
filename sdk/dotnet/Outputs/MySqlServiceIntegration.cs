@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class MySqlServiceIntegration
     {
         /// <summary>
-        /// Type of the service integration. The only supported value at the moment is `read_replica`
+        /// Type of the service integration. The possible value is `read_replica`.
         /// </summary>
         public readonly string IntegrationType;
         /// <summary>
