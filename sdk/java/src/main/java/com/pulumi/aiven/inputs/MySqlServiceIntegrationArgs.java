@@ -15,14 +15,14 @@ public final class MySqlServiceIntegrationArgs extends com.pulumi.resources.Reso
     public static final MySqlServiceIntegrationArgs Empty = new MySqlServiceIntegrationArgs();
 
     /**
-     * Type of the service integration. The only supported value at the moment is `read_replica`
+     * Type of the service integration. The possible value is `read_replica`.
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * @return Type of the service integration. The possible value is `read_replica`.
      * 
      */
     public Output<String> integrationType() {
@@ -70,7 +70,7 @@ public final class MySqlServiceIntegrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param integrationType Type of the service integration. The only supported value at the moment is `read_replica`
+         * @param integrationType Type of the service integration. The possible value is `read_replica`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class MySqlServiceIntegrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param integrationType Type of the service integration. The only supported value at the moment is `read_replica`
+         * @param integrationType Type of the service integration. The possible value is `read_replica`.
          * 
          * @return builder
          * 

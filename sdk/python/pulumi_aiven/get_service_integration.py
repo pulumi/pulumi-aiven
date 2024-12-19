@@ -27,7 +27,7 @@ class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
     """
-    def __init__(__self__, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_opensearch_logs_user_configs=None, flink_external_postgresql_user_configs=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, project=None, prometheus_user_configs=None, source_endpoint_id=None, source_service_name=None):
+    def __init__(__self__, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, destination_service_project=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_opensearch_logs_user_configs=None, flink_external_postgresql_user_configs=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, project=None, prometheus_user_configs=None, source_endpoint_id=None, source_service_name=None, source_service_project=None):
         if clickhouse_kafka_user_configs and not isinstance(clickhouse_kafka_user_configs, list):
             raise TypeError("Expected argument 'clickhouse_kafka_user_configs' to be a list")
         pulumi.set(__self__, "clickhouse_kafka_user_configs", clickhouse_kafka_user_configs)
@@ -43,6 +43,9 @@ class GetServiceIntegrationResult:
         if destination_service_name and not isinstance(destination_service_name, str):
             raise TypeError("Expected argument 'destination_service_name' to be a str")
         pulumi.set(__self__, "destination_service_name", destination_service_name)
+        if destination_service_project and not isinstance(destination_service_project, str):
+            raise TypeError("Expected argument 'destination_service_project' to be a str")
+        pulumi.set(__self__, "destination_service_project", destination_service_project)
         if external_aws_cloudwatch_logs_user_configs and not isinstance(external_aws_cloudwatch_logs_user_configs, list):
             raise TypeError("Expected argument 'external_aws_cloudwatch_logs_user_configs' to be a list")
         pulumi.set(__self__, "external_aws_cloudwatch_logs_user_configs", external_aws_cloudwatch_logs_user_configs)
@@ -94,6 +97,9 @@ class GetServiceIntegrationResult:
         if source_service_name and not isinstance(source_service_name, str):
             raise TypeError("Expected argument 'source_service_name' to be a str")
         pulumi.set(__self__, "source_service_name", source_service_name)
+        if source_service_project and not isinstance(source_service_project, str):
+            raise TypeError("Expected argument 'source_service_project' to be a str")
+        pulumi.set(__self__, "source_service_project", source_service_project)
 
     @property
     @pulumi.getter(name="clickhouseKafkaUserConfigs")
@@ -134,6 +140,14 @@ class GetServiceIntegrationResult:
         Destination service for the integration.
         """
         return pulumi.get(self, "destination_service_name")
+
+    @property
+    @pulumi.getter(name="destinationServiceProject")
+    def destination_service_project(self) -> str:
+        """
+        Destination service project name
+        """
+        return pulumi.get(self, "destination_service_project")
 
     @property
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfigs")
@@ -271,6 +285,14 @@ class GetServiceIntegrationResult:
         """
         return pulumi.get(self, "source_service_name")
 
+    @property
+    @pulumi.getter(name="sourceServiceProject")
+    def source_service_project(self) -> str:
+        """
+        Source service project name
+        """
+        return pulumi.get(self, "source_service_project")
+
 
 class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
     # pylint: disable=using-constant-test
@@ -283,6 +305,7 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             datadog_user_configs=self.datadog_user_configs,
             destination_endpoint_id=self.destination_endpoint_id,
             destination_service_name=self.destination_service_name,
+            destination_service_project=self.destination_service_project,
             external_aws_cloudwatch_logs_user_configs=self.external_aws_cloudwatch_logs_user_configs,
             external_aws_cloudwatch_metrics_user_configs=self.external_aws_cloudwatch_metrics_user_configs,
             external_elasticsearch_logs_user_configs=self.external_elasticsearch_logs_user_configs,
@@ -299,7 +322,8 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             project=self.project,
             prometheus_user_configs=self.prometheus_user_configs,
             source_endpoint_id=self.source_endpoint_id,
-            source_service_name=self.source_service_name)
+            source_service_name=self.source_service_name,
+            source_service_project=self.source_service_project)
 
 
 def get_service_integration(destination_service_name: Optional[str] = None,
@@ -342,6 +366,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
         datadog_user_configs=pulumi.get(__ret__, 'datadog_user_configs'),
         destination_endpoint_id=pulumi.get(__ret__, 'destination_endpoint_id'),
         destination_service_name=pulumi.get(__ret__, 'destination_service_name'),
+        destination_service_project=pulumi.get(__ret__, 'destination_service_project'),
         external_aws_cloudwatch_logs_user_configs=pulumi.get(__ret__, 'external_aws_cloudwatch_logs_user_configs'),
         external_aws_cloudwatch_metrics_user_configs=pulumi.get(__ret__, 'external_aws_cloudwatch_metrics_user_configs'),
         external_elasticsearch_logs_user_configs=pulumi.get(__ret__, 'external_elasticsearch_logs_user_configs'),
@@ -358,7 +383,8 @@ def get_service_integration(destination_service_name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         prometheus_user_configs=pulumi.get(__ret__, 'prometheus_user_configs'),
         source_endpoint_id=pulumi.get(__ret__, 'source_endpoint_id'),
-        source_service_name=pulumi.get(__ret__, 'source_service_name'))
+        source_service_name=pulumi.get(__ret__, 'source_service_name'),
+        source_service_project=pulumi.get(__ret__, 'source_service_project'))
 def get_service_integration_output(destination_service_name: Optional[pulumi.Input[str]] = None,
                                    integration_type: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[str]] = None,
@@ -398,6 +424,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
         datadog_user_configs=pulumi.get(__response__, 'datadog_user_configs'),
         destination_endpoint_id=pulumi.get(__response__, 'destination_endpoint_id'),
         destination_service_name=pulumi.get(__response__, 'destination_service_name'),
+        destination_service_project=pulumi.get(__response__, 'destination_service_project'),
         external_aws_cloudwatch_logs_user_configs=pulumi.get(__response__, 'external_aws_cloudwatch_logs_user_configs'),
         external_aws_cloudwatch_metrics_user_configs=pulumi.get(__response__, 'external_aws_cloudwatch_metrics_user_configs'),
         external_elasticsearch_logs_user_configs=pulumi.get(__response__, 'external_elasticsearch_logs_user_configs'),
@@ -414,4 +441,5 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
         project=pulumi.get(__response__, 'project'),
         prometheus_user_configs=pulumi.get(__response__, 'prometheus_user_configs'),
         source_endpoint_id=pulumi.get(__response__, 'source_endpoint_id'),
-        source_service_name=pulumi.get(__response__, 'source_service_name')))
+        source_service_name=pulumi.get(__response__, 'source_service_name'),
+        source_service_project=pulumi.get(__response__, 'source_service_project')))

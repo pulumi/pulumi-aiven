@@ -256,7 +256,7 @@ class GetClickhouseResult:
     @pulumi.getter(name="serviceIntegrations")
     def service_integrations(self) -> Sequence['outputs.GetClickhouseServiceIntegrationResult']:
         """
-        Integrations with other services. Service integrations are only applied at service creation.
+        Service integrations to specify when creating a service. Not applied after initial service creation
         """
         return pulumi.get(self, "service_integrations")
 

@@ -10,6 +10,9 @@ from .account_authentication import *
 from .account_team import *
 from .account_team_member import *
 from .account_team_project import *
+from .alloydbomni import *
+from .alloydbomni_database import *
+from .alloydbomni_user import *
 from .aws_privatelink import *
 from .aws_vpc_peering_connection import *
 from .azure_privatelink import *
@@ -37,6 +40,9 @@ from .get_account_authentication import *
 from .get_account_team import *
 from .get_account_team_member import *
 from .get_account_team_project import *
+from .get_alloydbomni import *
+from .get_alloydbomni_database import *
+from .get_alloydbomni_user import *
 from .get_aws_privatelink import *
 from .get_aws_vpc_peering_connection import *
 from .get_azure_privatelink import *
@@ -206,6 +212,30 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/accountTeamProject:AccountTeamProject": "AccountTeamProject"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/alloydbomni",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/alloydbomni:Alloydbomni": "Alloydbomni"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/alloydbomniDatabase",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/alloydbomniDatabase:AlloydbomniDatabase": "AlloydbomniDatabase"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/alloydbomniUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/alloydbomniUser:AlloydbomniUser": "AlloydbomniUser"
   }
  },
  {

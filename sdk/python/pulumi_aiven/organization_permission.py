@@ -169,7 +169,7 @@ class OrganizationPermission(pulumi.CustomResource):
                  resource_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
+        Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level. Unit-level permissions aren't shown in the Aiven Console.
 
         ## Example Usage
 
@@ -177,7 +177,8 @@ class OrganizationPermission(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_permissions = aiven.OrganizationPermission("example_permissions",
+        # Grant access to a specific project
+        example_project_permissions = aiven.OrganizationPermission("example_project_permissions",
             organization_id=main["id"],
             resource_id=example_project["id"],
             resource_type="project",
@@ -193,10 +194,34 @@ class OrganizationPermission(pulumi.CustomResource):
                 {
                     "permissions": [
                         "project:integrations:write",
-                        "project:networking:read",
                         "developer",
                     ],
                     "principal_id": example_group["groupId"],
+                    "principal_type": "user_group",
+                },
+            ])
+        # Organization-level permissions
+        example_org_permissions = aiven.OrganizationPermission("example_org_permissions",
+            organization_id=main["id"],
+            resource_id=main["id"],
+            resource_type="organization",
+            permissions=[
+                {
+                    "permissions": [
+                        "organization:app_users:write",
+                        "project:audit_logs:read",
+                    ],
+                    "principal_id": "u123a456b7890c",
+                    "principal_type": "user",
+                },
+                {
+                    "permissions": [
+                        "organization:users:write",
+                        "organization:groups:write",
+                        "organization:domains:write",
+                        "organization:idps:write",
+                    ],
+                    "principal_id": example_group_aiven_organization_user_group["groupId"],
                     "principal_type": "user_group",
                 },
             ])
@@ -222,7 +247,7 @@ class OrganizationPermission(pulumi.CustomResource):
                  args: OrganizationPermissionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
+        Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level. Unit-level permissions aren't shown in the Aiven Console.
 
         ## Example Usage
 
@@ -230,7 +255,8 @@ class OrganizationPermission(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_permissions = aiven.OrganizationPermission("example_permissions",
+        # Grant access to a specific project
+        example_project_permissions = aiven.OrganizationPermission("example_project_permissions",
             organization_id=main["id"],
             resource_id=example_project["id"],
             resource_type="project",
@@ -246,10 +272,34 @@ class OrganizationPermission(pulumi.CustomResource):
                 {
                     "permissions": [
                         "project:integrations:write",
-                        "project:networking:read",
                         "developer",
                     ],
                     "principal_id": example_group["groupId"],
+                    "principal_type": "user_group",
+                },
+            ])
+        # Organization-level permissions
+        example_org_permissions = aiven.OrganizationPermission("example_org_permissions",
+            organization_id=main["id"],
+            resource_id=main["id"],
+            resource_type="organization",
+            permissions=[
+                {
+                    "permissions": [
+                        "organization:app_users:write",
+                        "project:audit_logs:read",
+                    ],
+                    "principal_id": "u123a456b7890c",
+                    "principal_type": "user",
+                },
+                {
+                    "permissions": [
+                        "organization:users:write",
+                        "organization:groups:write",
+                        "organization:domains:write",
+                        "organization:idps:write",
+                    ],
+                    "principal_id": example_group_aiven_organization_user_group["groupId"],
                     "principal_type": "user_group",
                 },
             ])

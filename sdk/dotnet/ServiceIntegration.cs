@@ -99,6 +99,12 @@ namespace Pulumi.Aiven
         public Output<string?> DestinationServiceName { get; private set; } = null!;
 
         /// <summary>
+        /// Destination service project name
+        /// </summary>
+        [Output("destinationServiceProject")]
+        public Output<string> DestinationServiceProject { get; private set; } = null!;
+
+        /// <summary>
         /// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         [Output("externalAwsCloudwatchLogsUserConfig")]
@@ -192,7 +198,13 @@ namespace Pulumi.Aiven
         /// Source service for the integration (if any)
         /// </summary>
         [Output("sourceServiceName")]
-        public Output<string?> SourceServiceName { get; private set; } = null!;
+        public Output<string> SourceServiceName { get; private set; } = null!;
+
+        /// <summary>
+        /// Source service project name
+        /// </summary>
+        [Output("sourceServiceProject")]
+        public Output<string> SourceServiceProject { get; private set; } = null!;
 
 
         /// <summary>
@@ -269,6 +281,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("destinationServiceName")]
         public Input<string>? DestinationServiceName { get; set; }
+
+        /// <summary>
+        /// Destination service project name
+        /// </summary>
+        [Input("destinationServiceProject")]
+        public Input<string>? DestinationServiceProject { get; set; }
 
         /// <summary>
         /// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -360,6 +378,12 @@ namespace Pulumi.Aiven
         [Input("sourceServiceName")]
         public Input<string>? SourceServiceName { get; set; }
 
+        /// <summary>
+        /// Source service project name
+        /// </summary>
+        [Input("sourceServiceProject")]
+        public Input<string>? SourceServiceProject { get; set; }
+
         public ServiceIntegrationArgs()
         {
         }
@@ -397,6 +421,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("destinationServiceName")]
         public Input<string>? DestinationServiceName { get; set; }
+
+        /// <summary>
+        /// Destination service project name
+        /// </summary>
+        [Input("destinationServiceProject")]
+        public Input<string>? DestinationServiceProject { get; set; }
 
         /// <summary>
         /// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -493,6 +523,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("sourceServiceName")]
         public Input<string>? SourceServiceName { get; set; }
+
+        /// <summary>
+        /// Source service project name
+        /// </summary>
+        [Input("sourceServiceProject")]
+        public Input<string>? SourceServiceProject { get; set; }
 
         public ServiceIntegrationState()
         {

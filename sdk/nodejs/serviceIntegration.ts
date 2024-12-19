@@ -95,6 +95,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly destinationServiceName!: pulumi.Output<string | undefined>;
     /**
+     * Destination service project name
+     */
+    public readonly destinationServiceProject!: pulumi.Output<string>;
+    /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     public readonly externalAwsCloudwatchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig | undefined>;
@@ -157,7 +161,11 @@ export class ServiceIntegration extends pulumi.CustomResource {
     /**
      * Source service for the integration (if any)
      */
-    public readonly sourceServiceName!: pulumi.Output<string | undefined>;
+    public readonly sourceServiceName!: pulumi.Output<string>;
+    /**
+     * Source service project name
+     */
+    public readonly sourceServiceProject!: pulumi.Output<string>;
 
     /**
      * Create a ServiceIntegration resource with the given unique name, arguments, and options.
@@ -177,6 +185,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
+            resourceInputs["destinationServiceProject"] = state ? state.destinationServiceProject : undefined;
             resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
             resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
@@ -193,6 +202,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
             resourceInputs["sourceEndpointId"] = state ? state.sourceEndpointId : undefined;
             resourceInputs["sourceServiceName"] = state ? state.sourceServiceName : undefined;
+            resourceInputs["sourceServiceProject"] = state ? state.sourceServiceProject : undefined;
         } else {
             const args = argsOrState as ServiceIntegrationArgs | undefined;
             if ((!args || args.integrationType === undefined) && !opts.urn) {
@@ -206,6 +216,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
+            resourceInputs["destinationServiceProject"] = args ? args.destinationServiceProject : undefined;
             resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
             resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
@@ -221,6 +232,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
             resourceInputs["sourceEndpointId"] = args ? args.sourceEndpointId : undefined;
             resourceInputs["sourceServiceName"] = args ? args.sourceServiceName : undefined;
+            resourceInputs["sourceServiceProject"] = args ? args.sourceServiceProject : undefined;
             resourceInputs["integrationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -252,6 +264,10 @@ export interface ServiceIntegrationState {
      * Destination service for the integration.
      */
     destinationServiceName?: pulumi.Input<string>;
+    /**
+     * Destination service project name
+     */
+    destinationServiceProject?: pulumi.Input<string>;
     /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
@@ -316,6 +332,10 @@ export interface ServiceIntegrationState {
      * Source service for the integration (if any)
      */
     sourceServiceName?: pulumi.Input<string>;
+    /**
+     * Source service project name
+     */
+    sourceServiceProject?: pulumi.Input<string>;
 }
 
 /**
@@ -342,6 +362,10 @@ export interface ServiceIntegrationArgs {
      * Destination service for the integration.
      */
     destinationServiceName?: pulumi.Input<string>;
+    /**
+     * Destination service project name
+     */
+    destinationServiceProject?: pulumi.Input<string>;
     /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
@@ -402,4 +426,8 @@ export interface ServiceIntegrationArgs {
      * Source service for the integration (if any)
      */
     sourceServiceName?: pulumi.Input<string>;
+    /**
+     * Source service project name
+     */
+    sourceServiceProject?: pulumi.Input<string>;
 }

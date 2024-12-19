@@ -14,6 +14,12 @@ import com.pulumi.aiven.inputs.GetAccountTeamMemberPlainArgs;
 import com.pulumi.aiven.inputs.GetAccountTeamPlainArgs;
 import com.pulumi.aiven.inputs.GetAccountTeamProjectArgs;
 import com.pulumi.aiven.inputs.GetAccountTeamProjectPlainArgs;
+import com.pulumi.aiven.inputs.GetAlloydbomniArgs;
+import com.pulumi.aiven.inputs.GetAlloydbomniDatabaseArgs;
+import com.pulumi.aiven.inputs.GetAlloydbomniDatabasePlainArgs;
+import com.pulumi.aiven.inputs.GetAlloydbomniPlainArgs;
+import com.pulumi.aiven.inputs.GetAlloydbomniUserArgs;
+import com.pulumi.aiven.inputs.GetAlloydbomniUserPlainArgs;
 import com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;
 import com.pulumi.aiven.inputs.GetAwsPrivatelinkPlainArgs;
 import com.pulumi.aiven.inputs.GetAwsVpcPeeringConnectionArgs;
@@ -151,6 +157,9 @@ import com.pulumi.aiven.outputs.GetAccountResult;
 import com.pulumi.aiven.outputs.GetAccountTeamMemberResult;
 import com.pulumi.aiven.outputs.GetAccountTeamProjectResult;
 import com.pulumi.aiven.outputs.GetAccountTeamResult;
+import com.pulumi.aiven.outputs.GetAlloydbomniDatabaseResult;
+import com.pulumi.aiven.outputs.GetAlloydbomniResult;
+import com.pulumi.aiven.outputs.GetAlloydbomniUserResult;
 import com.pulumi.aiven.outputs.GetAwsPrivatelinkResult;
 import com.pulumi.aiven.outputs.GetAwsVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetAzurePrivatelinkResult;
@@ -574,6 +583,156 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetAccountTeamProjectResult> getAccountTeamProjectPlain(GetAccountTeamProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAccountTeamProject:getAccountTeamProject", TypeShape.of(GetAccountTeamProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args) {
+        return getAlloydbomni(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAlloydbomniResult> getAlloydbomniPlain(GetAlloydbomniPlainArgs args) {
+        return getAlloydbomniPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAlloydbomniResult> getAlloydbomniPlain(GetAlloydbomniPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a database in an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args) {
+        return getAlloydbomniDatabase(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about a database in an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAlloydbomniDatabaseResult> getAlloydbomniDatabasePlain(GetAlloydbomniDatabasePlainArgs args) {
+        return getAlloydbomniDatabasePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about a database in an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a database in an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a database in an Aiven for AlloyDB Omni service.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAlloydbomniDatabaseResult> getAlloydbomniDatabasePlain(GetAlloydbomniDatabasePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args) {
+        return getAlloydbomniUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAlloydbomniUserResult> getAlloydbomniUserPlain(GetAlloydbomniUserPlainArgs args) {
+        return getAlloydbomniUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven for AlloyDB Omni service user.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAlloydbomniUserResult> getAlloydbomniUserPlain(GetAlloydbomniUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an AWS PrivateLink connection for an Aiven service.

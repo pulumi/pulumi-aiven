@@ -30,15 +30,15 @@ class KafkaNativeAclArgs:
                  host: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a KafkaNativeAcl resource.
-        :param pulumi.Input[str] operation: The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] permission_type: The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] principal: Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] permission_type: Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] principal: Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] resource_name: The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] resource_type: The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] resource_name: The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] resource_type: The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] host: The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "operation", operation)
         pulumi.set(__self__, "pattern_type", pattern_type)
@@ -55,7 +55,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter
     def operation(self) -> pulumi.Input[str]:
         """
-        The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "operation")
 
@@ -79,7 +79,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter(name="permissionType")
     def permission_type(self) -> pulumi.Input[str]:
         """
-        The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission_type")
 
@@ -91,7 +91,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter
     def principal(self) -> pulumi.Input[str]:
         """
-        Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "principal")
 
@@ -115,7 +115,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> pulumi.Input[str]:
         """
-        The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+        The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_name")
 
@@ -127,7 +127,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[str]:
         """
-        The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_type")
 
@@ -151,7 +151,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "host")
 
@@ -174,14 +174,14 @@ class _KafkaNativeAclState:
                  service_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KafkaNativeAcl resources.
-        :param pulumi.Input[str] host: The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] operation: The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] permission_type: The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] principal: Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] permission_type: Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] principal: Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] resource_name: The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] resource_type: The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] resource_name: The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] resource_type: The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         if host is not None:
@@ -207,7 +207,7 @@ class _KafkaNativeAclState:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "host")
 
@@ -219,7 +219,7 @@ class _KafkaNativeAclState:
     @pulumi.getter
     def operation(self) -> Optional[pulumi.Input[str]]:
         """
-        The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "operation")
 
@@ -243,7 +243,7 @@ class _KafkaNativeAclState:
     @pulumi.getter(name="permissionType")
     def permission_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission_type")
 
@@ -255,7 +255,7 @@ class _KafkaNativeAclState:
     @pulumi.getter
     def principal(self) -> Optional[pulumi.Input[str]]:
         """
-        Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "principal")
 
@@ -279,7 +279,7 @@ class _KafkaNativeAclState:
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+        The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_name")
 
@@ -291,7 +291,7 @@ class _KafkaNativeAclState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_type")
 
@@ -328,18 +328,45 @@ class KafkaNativeAcl(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages native acls in [kafka service](https://aiven.io/docs/products/kafka/concepts/acl).
+        Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups,
+        clusters, and Schema Registry.
+
+        Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_acl = aiven.KafkaNativeAcl("example_acl",
+            project=example_project["project"],
+            service_name=example_kafka["serviceName"],
+            resource_type="Topic",
+            resource_name_="example-topic",
+            principal="User:example-user",
+            operation="Read",
+            pattern_type="LITERAL",
+            permission_type="ALLOW",
+            host="198.51.100.0")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example_acl PROJECT/SERVICE_NAME/ID
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] host: The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] operation: The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] permission_type: The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] principal: Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] permission_type: Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] principal: Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] resource_name_: The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] resource_type: The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] resource_name_: The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] resource_type: The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
@@ -349,7 +376,34 @@ class KafkaNativeAcl(pulumi.CustomResource):
                  args: KafkaNativeAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages native acls in [kafka service](https://aiven.io/docs/products/kafka/concepts/acl).
+        Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups,
+        clusters, and Schema Registry.
+
+        Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_acl = aiven.KafkaNativeAcl("example_acl",
+            project=example_project["project"],
+            service_name=example_kafka["serviceName"],
+            resource_type="Topic",
+            resource_name_="example-topic",
+            principal="User:example-user",
+            operation="Read",
+            pattern_type="LITERAL",
+            permission_type="ALLOW",
+            host="198.51.100.0")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example_acl PROJECT/SERVICE_NAME/ID
+        ```
 
         :param str resource_name: The name of the resource.
         :param KafkaNativeAclArgs args: The arguments to use to populate this resource's properties.
@@ -435,14 +489,14 @@ class KafkaNativeAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] host: The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] operation: The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] permission_type: The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] principal: Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] permission_type: Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] principal: Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] resource_name_: The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] resource_type: The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] resource_name_: The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] resource_type: The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -464,7 +518,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[Optional[str]]:
         """
-        The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "host")
 
@@ -472,7 +526,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter
     def operation(self) -> pulumi.Output[str]:
         """
-        The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "operation")
 
@@ -488,7 +542,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter(name="permissionType")
     def permission_type(self) -> pulumi.Output[str]:
         """
-        The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission_type")
 
@@ -496,7 +550,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter
     def principal(self) -> pulumi.Output[str]:
         """
-        Principal is in type:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "principal")
 
@@ -512,7 +566,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> pulumi.Output[str]:
         """
-        The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+        The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_name")
 
@@ -520,7 +574,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[str]:
         """
-        The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_type")
 

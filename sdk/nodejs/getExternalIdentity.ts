@@ -25,7 +25,7 @@ export function getExternalIdentity(args: GetExternalIdentityArgs, opts?: pulumi
  */
 export interface GetExternalIdentityArgs {
     /**
-     * The name of the external service. The possible values are `github`.
+     * The name of the external service. The possible value is `github`.
      */
     externalServiceName: string;
     /**
@@ -47,7 +47,7 @@ export interface GetExternalIdentityArgs {
  */
 export interface GetExternalIdentityResult {
     /**
-     * The name of the external service. The possible values are `github`.
+     * The name of the external service. The possible value is `github`.
      */
     readonly externalServiceName: string;
     /**
@@ -88,7 +88,7 @@ export function getExternalIdentityOutput(args: GetExternalIdentityOutputArgs, o
  */
 export interface GetExternalIdentityOutputArgs {
     /**
-     * The name of the external service. The possible values are `github`.
+     * The name of the external service. The possible value is `github`.
      */
     externalServiceName: pulumi.Input<string>;
     /**

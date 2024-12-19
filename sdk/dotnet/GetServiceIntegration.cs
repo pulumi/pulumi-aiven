@@ -183,6 +183,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string DestinationServiceName;
         /// <summary>
+        /// Destination service project name
+        /// </summary>
+        public readonly string DestinationServiceProject;
+        /// <summary>
         /// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult> ExternalAwsCloudwatchLogsUserConfigs;
@@ -250,6 +254,10 @@ namespace Pulumi.Aiven
         /// Source service for the integration (if any)
         /// </summary>
         public readonly string SourceServiceName;
+        /// <summary>
+        /// Source service project name
+        /// </summary>
+        public readonly string SourceServiceProject;
 
         [OutputConstructor]
         private GetServiceIntegrationResult(
@@ -262,6 +270,8 @@ namespace Pulumi.Aiven
             string destinationEndpointId,
 
             string destinationServiceName,
+
+            string destinationServiceProject,
 
             ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult> externalAwsCloudwatchLogsUserConfigs,
 
@@ -295,13 +305,16 @@ namespace Pulumi.Aiven
 
             string sourceEndpointId,
 
-            string sourceServiceName)
+            string sourceServiceName,
+
+            string sourceServiceProject)
         {
             ClickhouseKafkaUserConfigs = clickhouseKafkaUserConfigs;
             ClickhousePostgresqlUserConfigs = clickhousePostgresqlUserConfigs;
             DatadogUserConfigs = datadogUserConfigs;
             DestinationEndpointId = destinationEndpointId;
             DestinationServiceName = destinationServiceName;
+            DestinationServiceProject = destinationServiceProject;
             ExternalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             ExternalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             ExternalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
@@ -319,6 +332,7 @@ namespace Pulumi.Aiven
             PrometheusUserConfigs = prometheusUserConfigs;
             SourceEndpointId = sourceEndpointId;
             SourceServiceName = sourceServiceName;
+            SourceServiceProject = sourceServiceProject;
         }
     }
 }

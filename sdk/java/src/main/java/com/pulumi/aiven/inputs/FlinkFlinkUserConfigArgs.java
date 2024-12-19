@@ -45,14 +45,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enum: `1.16`, `1.19`, and newer. Flink major version.
+     * Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
      * 
      */
     @Import(name="flinkVersion")
     private @Nullable Output<String> flinkVersion;
 
     /**
-     * @return Enum: `1.16`, `1.19`, and newer. Flink major version.
+     * @return Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
      * 
      */
     public Optional<Output<String>> flinkVersion() {
@@ -282,7 +282,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param flinkVersion Enum: `1.16`, `1.19`, and newer. Flink major version.
+         * @param flinkVersion Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param flinkVersion Enum: `1.16`, `1.19`, and newer. Flink major version.
+         * @param flinkVersion Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
          * 
          * @return builder
          * 

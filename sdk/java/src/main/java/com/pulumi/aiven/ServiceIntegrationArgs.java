@@ -106,6 +106,21 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Destination service project name
+     * 
+     */
+    @Import(name="destinationServiceProject")
+    private @Nullable Output<String> destinationServiceProject;
+
+    /**
+     * @return Destination service project name
+     * 
+     */
+    public Optional<Output<String>> destinationServiceProject() {
+        return Optional.ofNullable(this.destinationServiceProject);
+    }
+
+    /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
@@ -330,6 +345,21 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.sourceServiceName);
     }
 
+    /**
+     * Source service project name
+     * 
+     */
+    @Import(name="sourceServiceProject")
+    private @Nullable Output<String> sourceServiceProject;
+
+    /**
+     * @return Source service project name
+     * 
+     */
+    public Optional<Output<String>> sourceServiceProject() {
+        return Optional.ofNullable(this.sourceServiceProject);
+    }
+
     private ServiceIntegrationArgs() {}
 
     private ServiceIntegrationArgs(ServiceIntegrationArgs $) {
@@ -338,6 +368,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         this.datadogUserConfig = $.datadogUserConfig;
         this.destinationEndpointId = $.destinationEndpointId;
         this.destinationServiceName = $.destinationServiceName;
+        this.destinationServiceProject = $.destinationServiceProject;
         this.externalAwsCloudwatchLogsUserConfig = $.externalAwsCloudwatchLogsUserConfig;
         this.externalAwsCloudwatchMetricsUserConfig = $.externalAwsCloudwatchMetricsUserConfig;
         this.externalElasticsearchLogsUserConfig = $.externalElasticsearchLogsUserConfig;
@@ -353,6 +384,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         this.prometheusUserConfig = $.prometheusUserConfig;
         this.sourceEndpointId = $.sourceEndpointId;
         this.sourceServiceName = $.sourceServiceName;
+        this.sourceServiceProject = $.sourceServiceProject;
     }
 
     public static Builder builder() {
@@ -476,6 +508,27 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
          */
         public Builder destinationServiceName(String destinationServiceName) {
             return destinationServiceName(Output.of(destinationServiceName));
+        }
+
+        /**
+         * @param destinationServiceProject Destination service project name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationServiceProject(@Nullable Output<String> destinationServiceProject) {
+            $.destinationServiceProject = destinationServiceProject;
+            return this;
+        }
+
+        /**
+         * @param destinationServiceProject Destination service project name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationServiceProject(String destinationServiceProject) {
+            return destinationServiceProject(Output.of(destinationServiceProject));
         }
 
         /**
@@ -791,6 +844,27 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
          */
         public Builder sourceServiceName(String sourceServiceName) {
             return sourceServiceName(Output.of(sourceServiceName));
+        }
+
+        /**
+         * @param sourceServiceProject Source service project name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceServiceProject(@Nullable Output<String> sourceServiceProject) {
+            $.sourceServiceProject = sourceServiceProject;
+            return this;
+        }
+
+        /**
+         * @param sourceServiceProject Source service project name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceServiceProject(String sourceServiceProject) {
+            return sourceServiceProject(Output.of(sourceServiceProject));
         }
 
         public ServiceIntegrationArgs build() {

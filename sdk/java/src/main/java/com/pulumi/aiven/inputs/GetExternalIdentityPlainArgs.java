@@ -14,14 +14,14 @@ public final class GetExternalIdentityPlainArgs extends com.pulumi.resources.Inv
     public static final GetExternalIdentityPlainArgs Empty = new GetExternalIdentityPlainArgs();
 
     /**
-     * The name of the external service. The possible values are `github`.
+     * The name of the external service. The possible value is `github`.
      * 
      */
     @Import(name="externalServiceName", required=true)
     private String externalServiceName;
 
     /**
-     * @return The name of the external service. The possible values are `github`.
+     * @return The name of the external service. The possible value is `github`.
      * 
      */
     public String externalServiceName() {
@@ -101,7 +101,7 @@ public final class GetExternalIdentityPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param externalServiceName The name of the external service. The possible values are `github`.
+         * @param externalServiceName The name of the external service. The possible value is `github`.
          * 
          * @return builder
          * 

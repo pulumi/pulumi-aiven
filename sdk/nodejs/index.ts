@@ -30,6 +30,21 @@ export type AccountTeamProject = import("./accountTeamProject").AccountTeamProje
 export const AccountTeamProject: typeof import("./accountTeamProject").AccountTeamProject = null as any;
 utilities.lazyLoad(exports, ["AccountTeamProject"], () => require("./accountTeamProject"));
 
+export { AlloydbomniArgs, AlloydbomniState } from "./alloydbomni";
+export type Alloydbomni = import("./alloydbomni").Alloydbomni;
+export const Alloydbomni: typeof import("./alloydbomni").Alloydbomni = null as any;
+utilities.lazyLoad(exports, ["Alloydbomni"], () => require("./alloydbomni"));
+
+export { AlloydbomniDatabaseArgs, AlloydbomniDatabaseState } from "./alloydbomniDatabase";
+export type AlloydbomniDatabase = import("./alloydbomniDatabase").AlloydbomniDatabase;
+export const AlloydbomniDatabase: typeof import("./alloydbomniDatabase").AlloydbomniDatabase = null as any;
+utilities.lazyLoad(exports, ["AlloydbomniDatabase"], () => require("./alloydbomniDatabase"));
+
+export { AlloydbomniUserArgs, AlloydbomniUserState } from "./alloydbomniUser";
+export type AlloydbomniUser = import("./alloydbomniUser").AlloydbomniUser;
+export const AlloydbomniUser: typeof import("./alloydbomniUser").AlloydbomniUser = null as any;
+utilities.lazyLoad(exports, ["AlloydbomniUser"], () => require("./alloydbomniUser"));
+
 export { AwsPrivatelinkArgs, AwsPrivatelinkState } from "./awsPrivatelink";
 export type AwsPrivatelink = import("./awsPrivatelink").AwsPrivatelink;
 export const AwsPrivatelink: typeof import("./awsPrivatelink").AwsPrivatelink = null as any;
@@ -164,6 +179,21 @@ export { GetAccountTeamProjectArgs, GetAccountTeamProjectResult, GetAccountTeamP
 export const getAccountTeamProject: typeof import("./getAccountTeamProject").getAccountTeamProject = null as any;
 export const getAccountTeamProjectOutput: typeof import("./getAccountTeamProject").getAccountTeamProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountTeamProject","getAccountTeamProjectOutput"], () => require("./getAccountTeamProject"));
+
+export { GetAlloydbomniArgs, GetAlloydbomniResult, GetAlloydbomniOutputArgs } from "./getAlloydbomni";
+export const getAlloydbomni: typeof import("./getAlloydbomni").getAlloydbomni = null as any;
+export const getAlloydbomniOutput: typeof import("./getAlloydbomni").getAlloydbomniOutput = null as any;
+utilities.lazyLoad(exports, ["getAlloydbomni","getAlloydbomniOutput"], () => require("./getAlloydbomni"));
+
+export { GetAlloydbomniDatabaseArgs, GetAlloydbomniDatabaseResult, GetAlloydbomniDatabaseOutputArgs } from "./getAlloydbomniDatabase";
+export const getAlloydbomniDatabase: typeof import("./getAlloydbomniDatabase").getAlloydbomniDatabase = null as any;
+export const getAlloydbomniDatabaseOutput: typeof import("./getAlloydbomniDatabase").getAlloydbomniDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getAlloydbomniDatabase","getAlloydbomniDatabaseOutput"], () => require("./getAlloydbomniDatabase"));
+
+export { GetAlloydbomniUserArgs, GetAlloydbomniUserResult, GetAlloydbomniUserOutputArgs } from "./getAlloydbomniUser";
+export const getAlloydbomniUser: typeof import("./getAlloydbomniUser").getAlloydbomniUser = null as any;
+export const getAlloydbomniUserOutput: typeof import("./getAlloydbomniUser").getAlloydbomniUserOutput = null as any;
+utilities.lazyLoad(exports, ["getAlloydbomniUser","getAlloydbomniUserOutput"], () => require("./getAlloydbomniUser"));
 
 export { GetAwsPrivatelinkArgs, GetAwsPrivatelinkResult, GetAwsPrivatelinkOutputArgs } from "./getAwsPrivatelink";
 export const getAwsPrivatelink: typeof import("./getAwsPrivatelink").getAwsPrivatelink = null as any;
@@ -779,6 +809,12 @@ const _module = {
                 return new AccountTeamMember(name, <any>undefined, { urn })
             case "aiven:index/accountTeamProject:AccountTeamProject":
                 return new AccountTeamProject(name, <any>undefined, { urn })
+            case "aiven:index/alloydbomni:Alloydbomni":
+                return new Alloydbomni(name, <any>undefined, { urn })
+            case "aiven:index/alloydbomniDatabase:AlloydbomniDatabase":
+                return new AlloydbomniDatabase(name, <any>undefined, { urn })
+            case "aiven:index/alloydbomniUser:AlloydbomniUser":
+                return new AlloydbomniUser(name, <any>undefined, { urn })
             case "aiven:index/awsPrivatelink:AwsPrivatelink":
                 return new AwsPrivatelink(name, <any>undefined, { urn })
             case "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection":
@@ -935,6 +971,9 @@ pulumi.runtime.registerResourceModule("aiven", "index/accountAuthentication", _m
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeam", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamMember", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamProject", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/alloydbomni", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/alloydbomniDatabase", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/alloydbomniUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/awsPrivatelink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/awsVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelink", _module)

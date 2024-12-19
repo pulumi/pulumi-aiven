@@ -116,7 +116,7 @@ export interface GetClickhouseResult {
      */
     readonly serviceHost: string;
     /**
-     * Integrations with other services. Service integrations are only applied at service creation.
+     * Service integrations to specify when creating a service. Not applied after initial service creation
      */
     readonly serviceIntegrations: outputs.GetClickhouseServiceIntegration[];
     /**

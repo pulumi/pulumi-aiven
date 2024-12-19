@@ -106,6 +106,10 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"api_token": {Secret: tfbridge.True()},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
+			"aiven_alloydbomni": {
+				Fields: map[string]*tfbridge.SchemaInfo{"alloydbomni": {CSharpName: "AlloydbomniServer"}},
+			},
+
 			"aiven_clickhouse": {
 				Fields: map[string]*tfbridge.SchemaInfo{"clickhouse": {CSharpName: "ClickhouseServer"}},
 			},

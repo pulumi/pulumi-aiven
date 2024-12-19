@@ -86,6 +86,8 @@ type ServiceIntegration struct {
 	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
 	// Destination service for the integration.
 	DestinationServiceName pulumi.StringPtrOutput `pulumi:"destinationServiceName"`
+	// Destination service project name
+	DestinationServiceProject pulumi.StringOutput `pulumi:"destinationServiceProject"`
 	// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -117,7 +119,9 @@ type ServiceIntegration struct {
 	// Source endpoint for the integration.
 	SourceEndpointId pulumi.StringPtrOutput `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
-	SourceServiceName pulumi.StringPtrOutput `pulumi:"sourceServiceName"`
+	SourceServiceName pulumi.StringOutput `pulumi:"sourceServiceName"`
+	// Source service project name
+	SourceServiceProject pulumi.StringOutput `pulumi:"sourceServiceProject"`
 }
 
 // NewServiceIntegration registers a new resource with the given unique name, arguments, and options.
@@ -166,6 +170,8 @@ type serviceIntegrationState struct {
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration.
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// Destination service project name
+	DestinationServiceProject *string `pulumi:"destinationServiceProject"`
 	// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -198,6 +204,8 @@ type serviceIntegrationState struct {
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName *string `pulumi:"sourceServiceName"`
+	// Source service project name
+	SourceServiceProject *string `pulumi:"sourceServiceProject"`
 }
 
 type ServiceIntegrationState struct {
@@ -211,6 +219,8 @@ type ServiceIntegrationState struct {
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration.
 	DestinationServiceName pulumi.StringPtrInput
+	// Destination service project name
+	DestinationServiceProject pulumi.StringPtrInput
 	// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput
 	// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -243,6 +253,8 @@ type ServiceIntegrationState struct {
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrInput
+	// Source service project name
+	SourceServiceProject pulumi.StringPtrInput
 }
 
 func (ServiceIntegrationState) ElementType() reflect.Type {
@@ -260,6 +272,8 @@ type serviceIntegrationArgs struct {
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration.
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// Destination service project name
+	DestinationServiceProject *string `pulumi:"destinationServiceProject"`
 	// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -290,6 +304,8 @@ type serviceIntegrationArgs struct {
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName *string `pulumi:"sourceServiceName"`
+	// Source service project name
+	SourceServiceProject *string `pulumi:"sourceServiceProject"`
 }
 
 // The set of arguments for constructing a ServiceIntegration resource.
@@ -304,6 +320,8 @@ type ServiceIntegrationArgs struct {
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration.
 	DestinationServiceName pulumi.StringPtrInput
+	// Destination service project name
+	DestinationServiceProject pulumi.StringPtrInput
 	// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput
 	// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -334,6 +352,8 @@ type ServiceIntegrationArgs struct {
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringPtrInput
+	// Source service project name
+	SourceServiceProject pulumi.StringPtrInput
 }
 
 func (ServiceIntegrationArgs) ElementType() reflect.Type {
@@ -452,6 +472,11 @@ func (o ServiceIntegrationOutput) DestinationServiceName() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringPtrOutput { return v.DestinationServiceName }).(pulumi.StringPtrOutput)
 }
 
+// Destination service project name
+func (o ServiceIntegrationOutput) DestinationServiceProject() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.DestinationServiceProject }).(pulumi.StringOutput)
+}
+
 // ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 func (o ServiceIntegrationOutput) ExternalAwsCloudwatchLogsUserConfig() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
@@ -546,8 +571,13 @@ func (o ServiceIntegrationOutput) SourceEndpointId() pulumi.StringPtrOutput {
 }
 
 // Source service for the integration (if any)
-func (o ServiceIntegrationOutput) SourceServiceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringPtrOutput { return v.SourceServiceName }).(pulumi.StringPtrOutput)
+func (o ServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+// Source service project name
+func (o ServiceIntegrationOutput) SourceServiceProject() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.SourceServiceProject }).(pulumi.StringOutput)
 }
 
 type ServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
