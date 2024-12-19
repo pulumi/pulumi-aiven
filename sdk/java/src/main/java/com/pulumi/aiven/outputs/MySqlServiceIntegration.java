@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class MySqlServiceIntegration {
     /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * @return Type of the service integration. The possible value is `read_replica`.
      * 
      */
     private String integrationType;
@@ -23,7 +23,7 @@ public final class MySqlServiceIntegration {
 
     private MySqlServiceIntegration() {}
     /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * @return Type of the service integration. The possible value is `read_replica`.
      * 
      */
     public String integrationType() {

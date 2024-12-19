@@ -31,6 +31,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountTeamMember{}
 	case "aiven:index/accountTeamProject:AccountTeamProject":
 		r = &AccountTeamProject{}
+	case "aiven:index/alloydbomni:Alloydbomni":
+		r = &Alloydbomni{}
+	case "aiven:index/alloydbomniDatabase:AlloydbomniDatabase":
+		r = &AlloydbomniDatabase{}
+	case "aiven:index/alloydbomniUser:AlloydbomniUser":
+		r = &AlloydbomniUser{}
 	case "aiven:index/awsPrivatelink:AwsPrivatelink":
 		r = &AwsPrivatelink{}
 	case "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection":
@@ -231,6 +237,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/accountTeamProject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/alloydbomni",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/alloydbomniDatabase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/alloydbomniUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

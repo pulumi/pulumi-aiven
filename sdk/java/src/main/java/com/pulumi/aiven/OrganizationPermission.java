@@ -16,7 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
+ * Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level. Unit-level permissions aren&#39;t shown in the Aiven Console.
  * 
  * ## Example Usage
  * 
@@ -44,7 +44,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePermissions = new OrganizationPermission("examplePermissions", OrganizationPermissionArgs.builder()
+ *         // Grant access to a specific project
+ *         var exampleProjectPermissions = new OrganizationPermission("exampleProjectPermissions", OrganizationPermissionArgs.builder()
  *             .organizationId(main.id())
  *             .resourceId(exampleProject.id())
  *             .resourceType("project")
@@ -59,9 +60,32 @@ import javax.annotation.Nullable;
  *                 OrganizationPermissionPermissionArgs.builder()
  *                     .permissions(                    
  *                         "project:integrations:write",
- *                         "project:networking:read",
  *                         "developer")
  *                     .principalId(exampleGroup.groupId())
+ *                     .principalType("user_group")
+ *                     .build())
+ *             .build());
+ * 
+ *         // Organization-level permissions
+ *         var exampleOrgPermissions = new OrganizationPermission("exampleOrgPermissions", OrganizationPermissionArgs.builder()
+ *             .organizationId(main.id())
+ *             .resourceId(main.id())
+ *             .resourceType("organization")
+ *             .permissions(            
+ *                 OrganizationPermissionPermissionArgs.builder()
+ *                     .permissions(                    
+ *                         "organization:app_users:write",
+ *                         "project:audit_logs:read")
+ *                     .principalId("u123a456b7890c")
+ *                     .principalType("user")
+ *                     .build(),
+ *                 OrganizationPermissionPermissionArgs.builder()
+ *                     .permissions(                    
+ *                         "organization:users:write",
+ *                         "organization:groups:write",
+ *                         "organization:domains:write",
+ *                         "organization:idps:write")
+ *                     .principalId(exampleGroupAivenOrganizationUserGroup.groupId())
  *                     .principalType("user_group")
  *                     .build())
  *             .build());

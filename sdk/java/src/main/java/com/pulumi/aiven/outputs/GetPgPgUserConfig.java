@@ -29,11 +29,7 @@ public final class GetPgPgUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
@@ -114,7 +110,7 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable Boolean pgStatMonitorEnable;
     /**
-     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
+     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
      * 
      */
     private @Nullable String pgVersion;
@@ -207,11 +203,7 @@ public final class GetPgPgUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -322,7 +314,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.pgStatMonitorEnable);
     }
     /**
-     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
+     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, and newer. PostgreSQL major version.
      * 
      */
     public Optional<String> pgVersion() {

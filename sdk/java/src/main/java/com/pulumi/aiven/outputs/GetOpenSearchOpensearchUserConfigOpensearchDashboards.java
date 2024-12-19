@@ -23,6 +23,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
      */
     private @Nullable Integer maxOldSpaceSize;
     /**
+     * @return Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+     * 
+     */
+    private @Nullable Boolean multipleDataSourceEnabled;
+    /**
      * @return Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      * 
      */
@@ -44,6 +49,13 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
         return Optional.ofNullable(this.maxOldSpaceSize);
     }
     /**
+     * @return Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+     * 
+     */
+    public Optional<Boolean> multipleDataSourceEnabled() {
+        return Optional.ofNullable(this.multipleDataSourceEnabled);
+    }
+    /**
      * @return Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      * 
      */
@@ -62,12 +74,14 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable Integer maxOldSpaceSize;
+        private @Nullable Boolean multipleDataSourceEnabled;
         private @Nullable Integer opensearchRequestTimeout;
         public Builder() {}
         public Builder(GetOpenSearchOpensearchUserConfigOpensearchDashboards defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.maxOldSpaceSize = defaults.maxOldSpaceSize;
+    	      this.multipleDataSourceEnabled = defaults.multipleDataSourceEnabled;
     	      this.opensearchRequestTimeout = defaults.opensearchRequestTimeout;
         }
 
@@ -84,6 +98,12 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
             return this;
         }
         @CustomType.Setter
+        public Builder multipleDataSourceEnabled(@Nullable Boolean multipleDataSourceEnabled) {
+
+            this.multipleDataSourceEnabled = multipleDataSourceEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder opensearchRequestTimeout(@Nullable Integer opensearchRequestTimeout) {
 
             this.opensearchRequestTimeout = opensearchRequestTimeout;
@@ -93,6 +113,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
             final var _resultValue = new GetOpenSearchOpensearchUserConfigOpensearchDashboards();
             _resultValue.enabled = enabled;
             _resultValue.maxOldSpaceSize = maxOldSpaceSize;
+            _resultValue.multipleDataSourceEnabled = multipleDataSourceEnabled;
             _resultValue.opensearchRequestTimeout = opensearchRequestTimeout;
             return _resultValue;
         }

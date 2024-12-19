@@ -559,6 +559,21 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * 
+     */
+    @Import(name="passwordEncryption")
+    private @Nullable Output<String> passwordEncryption;
+
+    /**
+     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * 
+     */
+    public Optional<Output<String>> passwordEncryption() {
+        return Optional.ofNullable(this.passwordEncryption);
+    }
+
+    /**
      * Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
      * 
      */
@@ -792,6 +807,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         this.maxStandbyStreamingDelay = $.maxStandbyStreamingDelay;
         this.maxWalSenders = $.maxWalSenders;
         this.maxWorkerProcesses = $.maxWorkerProcesses;
+        this.passwordEncryption = $.passwordEncryption;
         this.pgPartmanBgwDotInterval = $.pgPartmanBgwDotInterval;
         this.pgPartmanBgwDotRole = $.pgPartmanBgwDotRole;
         this.pgStatMonitorDotPgsmEnableQueryPlan = $.pgStatMonitorDotPgsmEnableQueryPlan;
@@ -1579,6 +1595,27 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder maxWorkerProcesses(Integer maxWorkerProcesses) {
             return maxWorkerProcesses(Output.of(maxWorkerProcesses));
+        }
+
+        /**
+         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordEncryption(@Nullable Output<String> passwordEncryption) {
+            $.passwordEncryption = passwordEncryption;
+            return this;
+        }
+
+        /**
+         * @param passwordEncryption Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordEncryption(String passwordEncryption) {
+            return passwordEncryption(Output.of(passwordEncryption));
         }
 
         /**

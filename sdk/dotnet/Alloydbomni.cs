@@ -78,7 +78,7 @@ namespace Pulumi.Aiven
         /// Values provided by the AlloyDB Omni server.
         /// </summary>
         [Output("alloydbomni")]
-        public Output<Outputs.AlloydbomniAlloydbomni> Alloydbomni { get; private set; } = null!;
+        public Output<Outputs.AlloydbomniAlloydbomni> AlloydbomniServer { get; private set; } = null!;
 
         /// <summary>
         /// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -307,7 +307,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Values provided by the AlloyDB Omni server.
         /// </summary>
-        public Input<Inputs.AlloydbomniAlloydbomniArgs>? Alloydbomni
+        public Input<Inputs.AlloydbomniAlloydbomniArgs>? AlloydbomniServer
         {
             get => _alloydbomni;
             set
@@ -461,7 +461,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Values provided by the AlloyDB Omni server.
         /// </summary>
-        public Input<Inputs.AlloydbomniAlloydbomniGetArgs>? Alloydbomni
+        public Input<Inputs.AlloydbomniAlloydbomniGetArgs>? AlloydbomniServer
         {
             get => _alloydbomni;
             set

@@ -93,7 +93,7 @@ type LookupClickhouseResult struct {
 	ProjectVpcId string `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost string `pulumi:"serviceHost"`
-	// Integrations with other services. Service integrations are only applied at service creation.
+	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []GetClickhouseServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -240,7 +240,7 @@ func (o LookupClickhouseResultOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) string { return v.ServiceHost }).(pulumi.StringOutput)
 }
 
-// Integrations with other services. Service integrations are only applied at service creation.
+// Service integrations to specify when creating a service. Not applied after initial service creation
 func (o LookupClickhouseResultOutput) ServiceIntegrations() GetClickhouseServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) []GetClickhouseServiceIntegration { return v.ServiceIntegrations }).(GetClickhouseServiceIntegrationArrayOutput)
 }

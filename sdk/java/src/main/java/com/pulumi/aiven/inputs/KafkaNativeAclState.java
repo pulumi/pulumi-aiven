@@ -16,14 +16,14 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
     public static final KafkaNativeAclState Empty = new KafkaNativeAclState();
 
     /**
-     * The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> host() {
@@ -31,14 +31,14 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+     * The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="operation")
     private @Nullable Output<String> operation;
 
     /**
-     * @return The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+     * @return The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> operation() {
@@ -61,14 +61,14 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+     * Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="permissionType")
     private @Nullable Output<String> permissionType;
 
     /**
-     * @return The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+     * @return Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> permissionType() {
@@ -76,14 +76,14 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Principal is in type:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="principal")
     private @Nullable Output<String> principal;
 
     /**
-     * @return Principal is in type:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> principal() {
@@ -106,14 +106,14 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceName")
     private @Nullable Output<String> resourceName;
 
     /**
-     * @return The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> resourceName() {
@@ -121,14 +121,14 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * @return The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -183,7 +183,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param host The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param host The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param host The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param host The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param operation The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+         * @param operation The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param operation The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+         * @param operation The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param permissionType The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+         * @param permissionType Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param permissionType The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+         * @param permissionType Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param principal Principal is in type:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param principal Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param principal Principal is in type:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param principal Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceName The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param resourceName The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceName The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param resourceName The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceType The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+         * @param resourceType The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class KafkaNativeAclState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceType The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+         * @param resourceType The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -195,6 +195,11 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable Integer maxWorkerProcesses;
     /**
+     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * 
+     */
+    private @Nullable String passwordEncryption;
+    /**
      * @return Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
      * 
      */
@@ -514,6 +519,13 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.maxWorkerProcesses);
     }
     /**
+     * @return Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords. Default: `md5`.
+     * 
+     */
+    public Optional<String> passwordEncryption() {
+        return Optional.ofNullable(this.passwordEncryption);
+    }
+    /**
      * @return Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
      * 
      */
@@ -650,6 +662,7 @@ public final class PgPgUserConfigPg {
         private @Nullable Integer maxStandbyStreamingDelay;
         private @Nullable Integer maxWalSenders;
         private @Nullable Integer maxWorkerProcesses;
+        private @Nullable String passwordEncryption;
         private @Nullable Integer pgPartmanBgwDotInterval;
         private @Nullable String pgPartmanBgwDotRole;
         private @Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan;
@@ -702,6 +715,7 @@ public final class PgPgUserConfigPg {
     	      this.maxStandbyStreamingDelay = defaults.maxStandbyStreamingDelay;
     	      this.maxWalSenders = defaults.maxWalSenders;
     	      this.maxWorkerProcesses = defaults.maxWorkerProcesses;
+    	      this.passwordEncryption = defaults.passwordEncryption;
     	      this.pgPartmanBgwDotInterval = defaults.pgPartmanBgwDotInterval;
     	      this.pgPartmanBgwDotRole = defaults.pgPartmanBgwDotRole;
     	      this.pgStatMonitorDotPgsmEnableQueryPlan = defaults.pgStatMonitorDotPgsmEnableQueryPlan;
@@ -934,6 +948,12 @@ public final class PgPgUserConfigPg {
             return this;
         }
         @CustomType.Setter
+        public Builder passwordEncryption(@Nullable String passwordEncryption) {
+
+            this.passwordEncryption = passwordEncryption;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgPartmanBgwDotInterval(@Nullable Integer pgPartmanBgwDotInterval) {
 
             this.pgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
@@ -1049,6 +1069,7 @@ public final class PgPgUserConfigPg {
             _resultValue.maxStandbyStreamingDelay = maxStandbyStreamingDelay;
             _resultValue.maxWalSenders = maxWalSenders;
             _resultValue.maxWorkerProcesses = maxWorkerProcesses;
+            _resultValue.passwordEncryption = passwordEncryption;
             _resultValue.pgPartmanBgwDotInterval = pgPartmanBgwDotInterval;
             _resultValue.pgPartmanBgwDotRole = pgPartmanBgwDotRole;
             _resultValue.pgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;

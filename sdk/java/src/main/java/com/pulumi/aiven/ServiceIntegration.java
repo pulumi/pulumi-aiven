@@ -171,6 +171,20 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.destinationServiceName);
     }
     /**
+     * Destination service project name
+     * 
+     */
+    @Export(name="destinationServiceProject", refs={String.class}, tree="[0]")
+    private Output<String> destinationServiceProject;
+
+    /**
+     * @return Destination service project name
+     * 
+     */
+    public Output<String> destinationServiceProject() {
+        return this.destinationServiceProject;
+    }
+    /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
@@ -385,14 +399,28 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sourceServiceName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sourceServiceName;
+    private Output<String> sourceServiceName;
 
     /**
      * @return Source service for the integration (if any)
      * 
      */
-    public Output<Optional<String>> sourceServiceName() {
-        return Codegen.optional(this.sourceServiceName);
+    public Output<String> sourceServiceName() {
+        return this.sourceServiceName;
+    }
+    /**
+     * Source service project name
+     * 
+     */
+    @Export(name="sourceServiceProject", refs={String.class}, tree="[0]")
+    private Output<String> sourceServiceProject;
+
+    /**
+     * @return Source service project name
+     * 
+     */
+    public Output<String> sourceServiceProject() {
+        return this.sourceServiceProject;
     }
 
     /**

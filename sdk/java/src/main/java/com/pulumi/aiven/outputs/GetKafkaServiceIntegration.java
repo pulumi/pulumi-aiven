@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaServiceIntegration {
     /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * @return Type of the service integration
      * 
      */
     private String integrationType;
@@ -23,7 +23,7 @@ public final class GetKafkaServiceIntegration {
 
     private GetKafkaServiceIntegration() {}
     /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * @return Type of the service integration
      * 
      */
     public String integrationType() {

@@ -105,7 +105,7 @@ public final class GetClickhouseResult {
      */
     private String serviceHost;
     /**
-     * @return Integrations with other services. Service integrations are only applied at service creation.
+     * @return Service integrations to specify when creating a service. Not applied after initial service creation
      * 
      */
     private List<GetClickhouseServiceIntegration> serviceIntegrations;
@@ -286,7 +286,7 @@ public final class GetClickhouseResult {
         return this.serviceHost;
     }
     /**
-     * @return Integrations with other services. Service integrations are only applied at service creation.
+     * @return Service integrations to specify when creating a service. Not applied after initial service creation
      * 
      */
     public List<GetClickhouseServiceIntegration> serviceIntegrations() {

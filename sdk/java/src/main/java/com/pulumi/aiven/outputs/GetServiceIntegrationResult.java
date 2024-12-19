@@ -51,6 +51,11 @@ public final class GetServiceIntegrationResult {
      */
     private String destinationServiceName;
     /**
+     * @return Destination service project name
+     * 
+     */
+    private String destinationServiceProject;
+    /**
      * @return ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
@@ -135,6 +140,11 @@ public final class GetServiceIntegrationResult {
      * 
      */
     private String sourceServiceName;
+    /**
+     * @return Source service project name
+     * 
+     */
+    private String sourceServiceProject;
 
     private GetServiceIntegrationResult() {}
     /**
@@ -171,6 +181,13 @@ public final class GetServiceIntegrationResult {
      */
     public String destinationServiceName() {
         return this.destinationServiceName;
+    }
+    /**
+     * @return Destination service project name
+     * 
+     */
+    public String destinationServiceProject() {
+        return this.destinationServiceProject;
     }
     /**
      * @return ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -291,6 +308,13 @@ public final class GetServiceIntegrationResult {
     public String sourceServiceName() {
         return this.sourceServiceName;
     }
+    /**
+     * @return Source service project name
+     * 
+     */
+    public String sourceServiceProject() {
+        return this.sourceServiceProject;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -306,6 +330,7 @@ public final class GetServiceIntegrationResult {
         private List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs;
         private String destinationEndpointId;
         private String destinationServiceName;
+        private String destinationServiceProject;
         private List<GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
         private List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
         private List<GetServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
@@ -323,6 +348,7 @@ public final class GetServiceIntegrationResult {
         private List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs;
         private String sourceEndpointId;
         private String sourceServiceName;
+        private String sourceServiceProject;
         public Builder() {}
         public Builder(GetServiceIntegrationResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -331,6 +357,7 @@ public final class GetServiceIntegrationResult {
     	      this.datadogUserConfigs = defaults.datadogUserConfigs;
     	      this.destinationEndpointId = defaults.destinationEndpointId;
     	      this.destinationServiceName = defaults.destinationServiceName;
+    	      this.destinationServiceProject = defaults.destinationServiceProject;
     	      this.externalAwsCloudwatchLogsUserConfigs = defaults.externalAwsCloudwatchLogsUserConfigs;
     	      this.externalAwsCloudwatchMetricsUserConfigs = defaults.externalAwsCloudwatchMetricsUserConfigs;
     	      this.externalElasticsearchLogsUserConfigs = defaults.externalElasticsearchLogsUserConfigs;
@@ -348,6 +375,7 @@ public final class GetServiceIntegrationResult {
     	      this.prometheusUserConfigs = defaults.prometheusUserConfigs;
     	      this.sourceEndpointId = defaults.sourceEndpointId;
     	      this.sourceServiceName = defaults.sourceServiceName;
+    	      this.sourceServiceProject = defaults.sourceServiceProject;
         }
 
         @CustomType.Setter
@@ -397,6 +425,14 @@ public final class GetServiceIntegrationResult {
               throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "destinationServiceName");
             }
             this.destinationServiceName = destinationServiceName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder destinationServiceProject(String destinationServiceProject) {
+            if (destinationServiceProject == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "destinationServiceProject");
+            }
+            this.destinationServiceProject = destinationServiceProject;
             return this;
         }
         @CustomType.Setter
@@ -568,6 +604,14 @@ public final class GetServiceIntegrationResult {
             this.sourceServiceName = sourceServiceName;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceServiceProject(String sourceServiceProject) {
+            if (sourceServiceProject == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "sourceServiceProject");
+            }
+            this.sourceServiceProject = sourceServiceProject;
+            return this;
+        }
         public GetServiceIntegrationResult build() {
             final var _resultValue = new GetServiceIntegrationResult();
             _resultValue.clickhouseKafkaUserConfigs = clickhouseKafkaUserConfigs;
@@ -575,6 +619,7 @@ public final class GetServiceIntegrationResult {
             _resultValue.datadogUserConfigs = datadogUserConfigs;
             _resultValue.destinationEndpointId = destinationEndpointId;
             _resultValue.destinationServiceName = destinationServiceName;
+            _resultValue.destinationServiceProject = destinationServiceProject;
             _resultValue.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             _resultValue.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             _resultValue.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
@@ -592,6 +637,7 @@ public final class GetServiceIntegrationResult {
             _resultValue.prometheusUserConfigs = prometheusUserConfigs;
             _resultValue.sourceEndpointId = sourceEndpointId;
             _resultValue.sourceServiceName = sourceServiceName;
+            _resultValue.sourceServiceProject = sourceServiceProject;
             return _resultValue;
         }
     }

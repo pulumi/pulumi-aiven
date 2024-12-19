@@ -15,14 +15,14 @@ public final class ClickhouseServiceIntegrationArgs extends com.pulumi.resources
     public static final ClickhouseServiceIntegrationArgs Empty = new ClickhouseServiceIntegrationArgs();
 
     /**
-     * Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
+     * Type of the service integration
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
+     * @return Type of the service integration
      * 
      */
     public Output<String> integrationType() {
@@ -30,14 +30,14 @@ public final class ClickhouseServiceIntegrationArgs extends com.pulumi.resources
     }
 
     /**
-     * Name of the source service.
+     * Name of the source service
      * 
      */
     @Import(name="sourceServiceName", required=true)
     private Output<String> sourceServiceName;
 
     /**
-     * @return Name of the source service.
+     * @return Name of the source service
      * 
      */
     public Output<String> sourceServiceName() {
@@ -70,7 +70,7 @@ public final class ClickhouseServiceIntegrationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param integrationType Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
+         * @param integrationType Type of the service integration
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ClickhouseServiceIntegrationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param integrationType Type of the service integration. Supported integrations are `clickhouse_kafka` and `clickhouse_postgresql`.
+         * @param integrationType Type of the service integration
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ClickhouseServiceIntegrationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sourceServiceName Name of the source service.
+         * @param sourceServiceName Name of the source service
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ClickhouseServiceIntegrationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sourceServiceName Name of the source service.
+         * @param sourceServiceName Name of the source service
          * 
          * @return builder
          * 

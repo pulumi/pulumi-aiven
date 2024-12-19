@@ -75,6 +75,8 @@ type LookupServiceIntegrationResult struct {
 	DestinationEndpointId string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration.
 	DestinationServiceName string `pulumi:"destinationServiceName"`
+	// Destination service project name
+	DestinationServiceProject string `pulumi:"destinationServiceProject"`
 	// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsCloudwatchLogsUserConfigs []GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfigs"`
 	// ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -109,6 +111,8 @@ type LookupServiceIntegrationResult struct {
 	SourceEndpointId string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName string `pulumi:"sourceServiceName"`
+	// Source service project name
+	SourceServiceProject string `pulumi:"sourceServiceProject"`
 }
 
 func LookupServiceIntegrationOutput(ctx *pulumi.Context, args LookupServiceIntegrationOutputArgs, opts ...pulumi.InvokeOption) LookupServiceIntegrationResultOutput {
@@ -180,6 +184,11 @@ func (o LookupServiceIntegrationResultOutput) DestinationEndpointId() pulumi.Str
 // Destination service for the integration.
 func (o LookupServiceIntegrationResultOutput) DestinationServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.DestinationServiceName }).(pulumi.StringOutput)
+}
+
+// Destination service project name
+func (o LookupServiceIntegrationResultOutput) DestinationServiceProject() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.DestinationServiceProject }).(pulumi.StringOutput)
 }
 
 // ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -285,6 +294,11 @@ func (o LookupServiceIntegrationResultOutput) SourceEndpointId() pulumi.StringOu
 // Source service for the integration (if any)
 func (o LookupServiceIntegrationResultOutput) SourceServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+// Source service project name
+func (o LookupServiceIntegrationResultOutput) SourceServiceProject() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.SourceServiceProject }).(pulumi.StringOutput)
 }
 
 func init() {

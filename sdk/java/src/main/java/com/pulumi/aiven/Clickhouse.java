@@ -308,18 +308,18 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
         return this.serviceHost;
     }
     /**
-     * Integrations with other services. Service integrations are only applied at service creation.
+     * Service integrations to specify when creating a service. Not applied after initial service creation
      * 
      */
     @Export(name="serviceIntegrations", refs={List.class,ClickhouseServiceIntegration.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ClickhouseServiceIntegration>> serviceIntegrations;
+    private Output<List<ClickhouseServiceIntegration>> serviceIntegrations;
 
     /**
-     * @return Integrations with other services. Service integrations are only applied at service creation.
+     * @return Service integrations to specify when creating a service. Not applied after initial service creation
      * 
      */
-    public Output<Optional<List<ClickhouseServiceIntegration>>> serviceIntegrations() {
-        return Codegen.optional(this.serviceIntegrations);
+    public Output<List<ClickhouseServiceIntegration>> serviceIntegrations() {
+        return this.serviceIntegrations;
     }
     /**
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.

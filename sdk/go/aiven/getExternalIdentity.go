@@ -27,7 +27,7 @@ func GetExternalIdentity(ctx *pulumi.Context, args *GetExternalIdentityArgs, opt
 
 // A collection of arguments for invoking getExternalIdentity.
 type GetExternalIdentityArgs struct {
-	// The name of the external service. The possible values are `github`.
+	// The name of the external service. The possible value is `github`.
 	ExternalServiceName string `pulumi:"externalServiceName"`
 	// The user's ID on the external service.
 	ExternalUserId string `pulumi:"externalUserId"`
@@ -39,7 +39,7 @@ type GetExternalIdentityArgs struct {
 
 // A collection of values returned by getExternalIdentity.
 type GetExternalIdentityResult struct {
-	// The name of the external service. The possible values are `github`.
+	// The name of the external service. The possible value is `github`.
 	ExternalServiceName string `pulumi:"externalServiceName"`
 	// The user's ID on the external service.
 	ExternalUserId string `pulumi:"externalUserId"`
@@ -62,7 +62,7 @@ func GetExternalIdentityOutput(ctx *pulumi.Context, args GetExternalIdentityOutp
 
 // A collection of arguments for invoking getExternalIdentity.
 type GetExternalIdentityOutputArgs struct {
-	// The name of the external service. The possible values are `github`.
+	// The name of the external service. The possible value is `github`.
 	ExternalServiceName pulumi.StringInput `pulumi:"externalServiceName"`
 	// The user's ID on the external service.
 	ExternalUserId pulumi.StringInput `pulumi:"externalUserId"`
@@ -91,7 +91,7 @@ func (o GetExternalIdentityResultOutput) ToGetExternalIdentityResultOutputWithCo
 	return o
 }
 
-// The name of the external service. The possible values are `github`.
+// The name of the external service. The possible value is `github`.
 func (o GetExternalIdentityResultOutput) ExternalServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalIdentityResult) string { return v.ExternalServiceName }).(pulumi.StringOutput)
 }

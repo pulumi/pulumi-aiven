@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource.
+// Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level. Unit-level permissions aren't shown in the Aiven Console.
 //
 // ## Example Usage
 //
@@ -28,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationPermission(ctx, "example_permissions", &aiven.OrganizationPermissionArgs{
+//			// Grant access to a specific project
+//			_, err := aiven.NewOrganizationPermission(ctx, "example_project_permissions", &aiven.OrganizationPermissionArgs{
 //				OrganizationId: pulumi.Any(main.Id),
 //				ResourceId:     pulumi.Any(exampleProject.Id),
 //				ResourceType:   pulumi.String("project"),
@@ -44,10 +45,38 @@ import (
 //					&aiven.OrganizationPermissionPermissionArgs{
 //						Permissions: pulumi.StringArray{
 //							pulumi.String("project:integrations:write"),
-//							pulumi.String("project:networking:read"),
 //							pulumi.String("developer"),
 //						},
 //						PrincipalId:   pulumi.Any(exampleGroup.GroupId),
+//						PrincipalType: pulumi.String("user_group"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Organization-level permissions
+//			_, err = aiven.NewOrganizationPermission(ctx, "example_org_permissions", &aiven.OrganizationPermissionArgs{
+//				OrganizationId: pulumi.Any(main.Id),
+//				ResourceId:     pulumi.Any(main.Id),
+//				ResourceType:   pulumi.String("organization"),
+//				Permissions: aiven.OrganizationPermissionPermissionArray{
+//					&aiven.OrganizationPermissionPermissionArgs{
+//						Permissions: pulumi.StringArray{
+//							pulumi.String("organization:app_users:write"),
+//							pulumi.String("project:audit_logs:read"),
+//						},
+//						PrincipalId:   pulumi.String("u123a456b7890c"),
+//						PrincipalType: pulumi.String("user"),
+//					},
+//					&aiven.OrganizationPermissionPermissionArgs{
+//						Permissions: pulumi.StringArray{
+//							pulumi.String("organization:users:write"),
+//							pulumi.String("organization:groups:write"),
+//							pulumi.String("organization:domains:write"),
+//							pulumi.String("organization:idps:write"),
+//						},
+//						PrincipalId:   pulumi.Any(exampleGroupAivenOrganizationUserGroup.GroupId),
 //						PrincipalType: pulumi.String("user_group"),
 //					},
 //				},

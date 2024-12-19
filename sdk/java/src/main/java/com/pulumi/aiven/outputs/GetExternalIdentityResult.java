@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetExternalIdentityResult {
     /**
-     * @return The name of the external service. The possible values are `github`.
+     * @return The name of the external service. The possible value is `github`.
      * 
      */
     private String externalServiceName;
@@ -38,7 +38,7 @@ public final class GetExternalIdentityResult {
 
     private GetExternalIdentityResult() {}
     /**
-     * @return The name of the external service. The possible values are `github`.
+     * @return The name of the external service. The possible value is `github`.
      * 
      */
     public String externalServiceName() {

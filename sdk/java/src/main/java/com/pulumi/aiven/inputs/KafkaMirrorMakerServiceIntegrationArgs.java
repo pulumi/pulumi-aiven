@@ -15,14 +15,14 @@ public final class KafkaMirrorMakerServiceIntegrationArgs extends com.pulumi.res
     public static final KafkaMirrorMakerServiceIntegrationArgs Empty = new KafkaMirrorMakerServiceIntegrationArgs();
 
     /**
-     * Type of the service integration. The only supported value at the moment is `read_replica`
+     * Type of the service integration
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * @return Type of the service integration
      * 
      */
     public Output<String> integrationType() {
@@ -70,7 +70,7 @@ public final class KafkaMirrorMakerServiceIntegrationArgs extends com.pulumi.res
         }
 
         /**
-         * @param integrationType Type of the service integration. The only supported value at the moment is `read_replica`
+         * @param integrationType Type of the service integration
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class KafkaMirrorMakerServiceIntegrationArgs extends com.pulumi.res
         }
 
         /**
-         * @param integrationType Type of the service integration. The only supported value at the moment is `read_replica`
+         * @param integrationType Type of the service integration
          * 
          * @return builder
          * 

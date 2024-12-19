@@ -15,14 +15,14 @@ public final class GetExternalIdentityArgs extends com.pulumi.resources.InvokeAr
     public static final GetExternalIdentityArgs Empty = new GetExternalIdentityArgs();
 
     /**
-     * The name of the external service. The possible values are `github`.
+     * The name of the external service. The possible value is `github`.
      * 
      */
     @Import(name="externalServiceName", required=true)
     private Output<String> externalServiceName;
 
     /**
-     * @return The name of the external service. The possible values are `github`.
+     * @return The name of the external service. The possible value is `github`.
      * 
      */
     public Output<String> externalServiceName() {
@@ -102,7 +102,7 @@ public final class GetExternalIdentityArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param externalServiceName The name of the external service. The possible values are `github`.
+         * @param externalServiceName The name of the external service. The possible value is `github`.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class GetExternalIdentityArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param externalServiceName The name of the external service. The possible values are `github`.
+         * @param externalServiceName The name of the external service. The possible value is `github`.
          * 
          * @return builder
          * 

@@ -47,6 +47,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
     }
 
     /**
+     * Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+     * 
+     */
+    @Import(name="multipleDataSourceEnabled")
+    private @Nullable Output<Boolean> multipleDataSourceEnabled;
+
+    /**
+     * @return Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> multipleDataSourceEnabled() {
+        return Optional.ofNullable(this.multipleDataSourceEnabled);
+    }
+
+    /**
      * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      * 
      */
@@ -66,6 +81,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
     private OpenSearchOpensearchUserConfigOpensearchDashboardsArgs(OpenSearchOpensearchUserConfigOpensearchDashboardsArgs $) {
         this.enabled = $.enabled;
         this.maxOldSpaceSize = $.maxOldSpaceSize;
+        this.multipleDataSourceEnabled = $.multipleDataSourceEnabled;
         this.opensearchRequestTimeout = $.opensearchRequestTimeout;
     }
 
@@ -127,6 +143,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
          */
         public Builder maxOldSpaceSize(Integer maxOldSpaceSize) {
             return maxOldSpaceSize(Output.of(maxOldSpaceSize));
+        }
+
+        /**
+         * @param multipleDataSourceEnabled Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multipleDataSourceEnabled(@Nullable Output<Boolean> multipleDataSourceEnabled) {
+            $.multipleDataSourceEnabled = multipleDataSourceEnabled;
+            return this;
+        }
+
+        /**
+         * @param multipleDataSourceEnabled Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multipleDataSourceEnabled(Boolean multipleDataSourceEnabled) {
+            return multipleDataSourceEnabled(Output.of(multipleDataSourceEnabled));
         }
 
         /**

@@ -15,34 +15,86 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages native acls in [kafka service](https://aiven.io/docs/products/kafka/concepts/acl).
+ * Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups,
+ * clusters, and Schema Registry.
+ * 
+ * Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.KafkaNativeAcl;
+ * import com.pulumi.aiven.KafkaNativeAclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleAcl = new KafkaNativeAcl("exampleAcl", KafkaNativeAclArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleKafka.serviceName())
+ *             .resourceType("Topic")
+ *             .resourceName("example-topic")
+ *             .principal("User:example-user")
+ *             .operation("Read")
+ *             .patternType("LITERAL")
+ *             .permissionType("ALLOW")
+ *             .host("198.51.100.0")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example_acl PROJECT/SERVICE_NAME/ID
+ * ```
  * 
  */
 @ResourceType(type="aiven:index/kafkaNativeAcl:KafkaNativeAcl")
 public class KafkaNativeAcl extends com.pulumi.resources.CustomResource {
     /**
-     * The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     /**
-     * @return The host or `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> host() {
         return Codegen.optional(this.host);
     }
     /**
-     * The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+     * The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="operation", refs={String.class}, tree="[0]")
     private Output<String> operation;
 
     /**
-     * @return The operation. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+     * @return The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> operation() {
@@ -63,28 +115,28 @@ public class KafkaNativeAcl extends com.pulumi.resources.CustomResource {
         return this.patternType;
     }
     /**
-     * The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+     * Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="permissionType", refs={String.class}, tree="[0]")
     private Output<String> permissionType;
 
     /**
-     * @return The permission type. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+     * @return Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> permissionType() {
         return this.permissionType;
     }
     /**
-     * Principal is in type:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="principal", refs={String.class}, tree="[0]")
     private Output<String> principal;
 
     /**
-     * @return Principal is in type:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> principal() {
@@ -105,28 +157,28 @@ public class KafkaNativeAcl extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="resourceName", refs={String.class}, tree="[0]")
     private Output<String> resourceName;
 
     /**
-     * @return The kafka resource name. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceName() {
         return this.resourceName;
     }
     /**
-     * The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return The kafka resource type. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * @return The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceType() {

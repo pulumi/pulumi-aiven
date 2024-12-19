@@ -89,7 +89,7 @@ type Clickhouse struct {
 	ProjectVpcId pulumi.StringOutput `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
-	// Integrations with other services. Service integrations are only applied at service creation.
+	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations ClickhouseServiceIntegrationArrayOutput `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -199,7 +199,7 @@ type clickhouseState struct {
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost *string `pulumi:"serviceHost"`
-	// Integrations with other services. Service integrations are only applied at service creation.
+	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []ClickhouseServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName *string `pulumi:"serviceName"`
@@ -262,7 +262,7 @@ type ClickhouseState struct {
 	ProjectVpcId pulumi.StringPtrInput
 	// The hostname of the service.
 	ServiceHost pulumi.StringPtrInput
-	// Integrations with other services. Service integrations are only applied at service creation.
+	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations ClickhouseServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringPtrInput
@@ -315,7 +315,7 @@ type clickhouseArgs struct {
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
-	// Integrations with other services. Service integrations are only applied at service creation.
+	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []ClickhouseServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -353,7 +353,7 @@ type ClickhouseArgs struct {
 	Project pulumi.StringInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
-	// Integrations with other services. Service integrations are only applied at service creation.
+	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations ClickhouseServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
@@ -538,7 +538,7 @@ func (o ClickhouseOutput) ServiceHost() pulumi.StringOutput {
 	return o.ApplyT(func(v *Clickhouse) pulumi.StringOutput { return v.ServiceHost }).(pulumi.StringOutput)
 }
 
-// Integrations with other services. Service integrations are only applied at service creation.
+// Service integrations to specify when creating a service. Not applied after initial service creation
 func (o ClickhouseOutput) ServiceIntegrations() ClickhouseServiceIntegrationArrayOutput {
 	return o.ApplyT(func(v *Clickhouse) ClickhouseServiceIntegrationArrayOutput { return v.ServiceIntegrations }).(ClickhouseServiceIntegrationArrayOutput)
 }

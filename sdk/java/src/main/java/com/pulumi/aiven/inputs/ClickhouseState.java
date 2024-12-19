@@ -281,14 +281,14 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Integrations with other services. Service integrations are only applied at service creation.
+     * Service integrations to specify when creating a service. Not applied after initial service creation
      * 
      */
     @Import(name="serviceIntegrations")
     private @Nullable Output<List<ClickhouseServiceIntegrationArgs>> serviceIntegrations;
 
     /**
-     * @return Integrations with other services. Service integrations are only applied at service creation.
+     * @return Service integrations to specify when creating a service. Not applied after initial service creation
      * 
      */
     public Optional<Output<List<ClickhouseServiceIntegrationArgs>>> serviceIntegrations() {
@@ -874,7 +874,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceIntegrations Integrations with other services. Service integrations are only applied at service creation.
+         * @param serviceIntegrations Service integrations to specify when creating a service. Not applied after initial service creation
          * 
          * @return builder
          * 
@@ -885,7 +885,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceIntegrations Integrations with other services. Service integrations are only applied at service creation.
+         * @param serviceIntegrations Service integrations to specify when creating a service. Not applied after initial service creation
          * 
          * @return builder
          * 
@@ -895,7 +895,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceIntegrations Integrations with other services. Service integrations are only applied at service creation.
+         * @param serviceIntegrations Service integrations to specify when creating a service. Not applied after initial service creation
          * 
          * @return builder
          * 
