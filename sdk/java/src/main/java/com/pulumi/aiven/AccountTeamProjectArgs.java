@@ -62,14 +62,14 @@ public final class AccountTeamProjectArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
+     * The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:projects:write`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
      * 
      */
     @Import(name="teamType")
     private @Nullable Output<String> teamType;
 
     /**
-     * @return The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
+     * @return The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:projects:write`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
      * 
      */
     public Optional<Output<String>> teamType() {
@@ -167,7 +167,7 @@ public final class AccountTeamProjectArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param teamType The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
+         * @param teamType The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:projects:write`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AccountTeamProjectArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param teamType The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
+         * @param teamType The Account team project type. The possible values are `admin`, `operator`, `developer`, `read_only`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:projects:write`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
          * 
          * @return builder
          * 

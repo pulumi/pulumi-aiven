@@ -30,6 +30,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ClusterMaxShardsPerNode;
         /// <summary>
+        /// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+        /// </summary>
+        public readonly bool? ClusterRoutingAllocationBalancePreferPrimary;
+        /// <summary>
         /// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         /// </summary>
         public readonly int? ClusterRoutingAllocationNodeConcurrentRecoveries;
@@ -151,6 +155,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? SearchMaxBuckets;
         /// <summary>
+        /// Segment Replication Backpressure Settings
+        /// </summary>
+        public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchSegrep? Segrep;
+        /// <summary>
         /// Shard indexing back pressure settings
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure? ShardIndexingPressure;
@@ -208,6 +216,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners? authFailureListeners,
 
             int? clusterMaxShardsPerNode,
+
+            bool? clusterRoutingAllocationBalancePreferPrimary,
 
             int? clusterRoutingAllocationNodeConcurrentRecoveries,
 
@@ -271,6 +281,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? searchMaxBuckets,
 
+            Outputs.OpenSearchOpensearchUserConfigOpensearchSegrep? segrep,
+
             Outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure? shardIndexingPressure,
 
             int? threadPoolAnalyzeQueueSize,
@@ -299,6 +311,7 @@ namespace Pulumi.Aiven.Outputs
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
             AuthFailureListeners = authFailureListeners;
             ClusterMaxShardsPerNode = clusterMaxShardsPerNode;
+            ClusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
             ClusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             EmailSenderName = emailSenderName;
             EmailSenderPassword = emailSenderPassword;
@@ -330,6 +343,7 @@ namespace Pulumi.Aiven.Outputs
             SearchBackpressure = searchBackpressure;
             SearchInsightsTopQueries = searchInsightsTopQueries;
             SearchMaxBuckets = searchMaxBuckets;
+            Segrep = segrep;
             ShardIndexingPressure = shardIndexingPressure;
             ThreadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;
             ThreadPoolAnalyzeSize = threadPoolAnalyzeSize;

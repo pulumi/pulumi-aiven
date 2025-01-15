@@ -13,6 +13,367 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetOpenSearchOpensearchUserConfig struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// Azure migration settings
+	AzureMigration *GetOpenSearchOpensearchUserConfigAzureMigration `pulumi:"azureMigration"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	CustomDomain *string `pulumi:"customDomain"`
+	// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
+	DisableReplicationFactorAdjustment *bool `pulumi:"disableReplicationFactorAdjustment"`
+	// Google Cloud Storage migration settings
+	GcsMigration *GetOpenSearchOpensearchUserConfigGcsMigration `pulumi:"gcsMigration"`
+	// Index patterns
+	IndexPatterns []GetOpenSearchOpensearchUserConfigIndexPattern `pulumi:"indexPatterns"`
+	// Index rollup settings
+	IndexRollup *GetOpenSearchOpensearchUserConfigIndexRollup `pulumi:"indexRollup"`
+	// Template settings for all new indexes
+	IndexTemplate *GetOpenSearchOpensearchUserConfigIndexTemplate `pulumi:"indexTemplate"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects []GetOpenSearchOpensearchUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+	KeepIndexRefreshInterval *bool `pulumi:"keepIndexRefreshInterval"`
+	// Use indexPatterns instead. Default: `0`.
+	MaxIndexCount *int `pulumi:"maxIndexCount"`
+	// OpenSearch OpenID Connect Configuration
+	Openid *GetOpenSearchOpensearchUserConfigOpenid `pulumi:"openid"`
+	// OpenSearch settings
+	Opensearch *GetOpenSearchOpensearchUserConfigOpensearch `pulumi:"opensearch"`
+	// OpenSearch Dashboards settings
+	OpensearchDashboards *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
+	// Enum: `1`, `2`, and newer. OpenSearch major version.
+	OpensearchVersion *string `pulumi:"opensearchVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetOpenSearchOpensearchUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *GetOpenSearchOpensearchUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetOpenSearchOpensearchUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// AWS S3 / AWS S3 compatible migration settings
+	S3Migration *GetOpenSearchOpensearchUserConfigS3Migration `pulumi:"s3Migration"`
+	// OpenSearch SAML configuration
+	Saml *GetOpenSearchOpensearchUserConfigSaml `pulumi:"saml"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
+}
+
+// GetOpenSearchOpensearchUserConfigInput is an input type that accepts GetOpenSearchOpensearchUserConfigArgs and GetOpenSearchOpensearchUserConfigOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigArgs{...}
+type GetOpenSearchOpensearchUserConfigInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOutput() GetOpenSearchOpensearchUserConfigOutput
+	ToGetOpenSearchOpensearchUserConfigOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOutput
+}
+
+type GetOpenSearchOpensearchUserConfigArgs struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// Azure migration settings
+	AzureMigration GetOpenSearchOpensearchUserConfigAzureMigrationPtrInput `pulumi:"azureMigration"`
+	// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+	CustomDomain pulumi.StringPtrInput `pulumi:"customDomain"`
+	// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
+	DisableReplicationFactorAdjustment pulumi.BoolPtrInput `pulumi:"disableReplicationFactorAdjustment"`
+	// Google Cloud Storage migration settings
+	GcsMigration GetOpenSearchOpensearchUserConfigGcsMigrationPtrInput `pulumi:"gcsMigration"`
+	// Index patterns
+	IndexPatterns GetOpenSearchOpensearchUserConfigIndexPatternArrayInput `pulumi:"indexPatterns"`
+	// Index rollup settings
+	IndexRollup GetOpenSearchOpensearchUserConfigIndexRollupPtrInput `pulumi:"indexRollup"`
+	// Template settings for all new indexes
+	IndexTemplate GetOpenSearchOpensearchUserConfigIndexTemplatePtrInput `pulumi:"indexTemplate"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects GetOpenSearchOpensearchUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+	KeepIndexRefreshInterval pulumi.BoolPtrInput `pulumi:"keepIndexRefreshInterval"`
+	// Use indexPatterns instead. Default: `0`.
+	MaxIndexCount pulumi.IntPtrInput `pulumi:"maxIndexCount"`
+	// OpenSearch OpenID Connect Configuration
+	Openid GetOpenSearchOpensearchUserConfigOpenidPtrInput `pulumi:"openid"`
+	// OpenSearch settings
+	Opensearch GetOpenSearchOpensearchUserConfigOpensearchPtrInput `pulumi:"opensearch"`
+	// OpenSearch Dashboards settings
+	OpensearchDashboards GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
+	// Enum: `1`, `2`, and newer. OpenSearch major version.
+	OpensearchVersion pulumi.StringPtrInput `pulumi:"opensearchVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetOpenSearchOpensearchUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// AWS S3 / AWS S3 compatible migration settings
+	S3Migration GetOpenSearchOpensearchUserConfigS3MigrationPtrInput `pulumi:"s3Migration"`
+	// OpenSearch SAML configuration
+	Saml GetOpenSearchOpensearchUserConfigSamlPtrInput `pulumi:"saml"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+}
+
+func (GetOpenSearchOpensearchUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfig)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigArgs) ToGetOpenSearchOpensearchUserConfigOutput() GetOpenSearchOpensearchUserConfigOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigArgs) ToGetOpenSearchOpensearchUserConfigOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOutput)
+}
+
+// GetOpenSearchOpensearchUserConfigArrayInput is an input type that accepts GetOpenSearchOpensearchUserConfigArray and GetOpenSearchOpensearchUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigArrayInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigArray{ GetOpenSearchOpensearchUserConfigArgs{...} }
+type GetOpenSearchOpensearchUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigArrayOutput() GetOpenSearchOpensearchUserConfigArrayOutput
+	ToGetOpenSearchOpensearchUserConfigArrayOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigArrayOutput
+}
+
+type GetOpenSearchOpensearchUserConfigArray []GetOpenSearchOpensearchUserConfigInput
+
+func (GetOpenSearchOpensearchUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchOpensearchUserConfig)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigArray) ToGetOpenSearchOpensearchUserConfigArrayOutput() GetOpenSearchOpensearchUserConfigArrayOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigArray) ToGetOpenSearchOpensearchUserConfigArrayOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigArrayOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfig)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOutput) ToGetOpenSearchOpensearchUserConfigOutput() GetOpenSearchOpensearchUserConfigOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOutput) ToGetOpenSearchOpensearchUserConfigOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOutput {
+	return o
+}
+
+// Additional Cloud Regions for Backup Replication.
+func (o GetOpenSearchOpensearchUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// Azure migration settings
+func (o GetOpenSearchOpensearchUserConfigOutput) AzureMigration() GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigAzureMigration {
+		return v.AzureMigration
+	}).(GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput)
+}
+
+// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
+func (o GetOpenSearchOpensearchUserConfigOutput) CustomDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.CustomDomain }).(pulumi.StringPtrOutput)
+}
+
+// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
+func (o GetOpenSearchOpensearchUserConfigOutput) DisableReplicationFactorAdjustment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *bool { return v.DisableReplicationFactorAdjustment }).(pulumi.BoolPtrOutput)
+}
+
+// Google Cloud Storage migration settings
+func (o GetOpenSearchOpensearchUserConfigOutput) GcsMigration() GetOpenSearchOpensearchUserConfigGcsMigrationPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigGcsMigration {
+		return v.GcsMigration
+	}).(GetOpenSearchOpensearchUserConfigGcsMigrationPtrOutput)
+}
+
+// Index patterns
+func (o GetOpenSearchOpensearchUserConfigOutput) IndexPatterns() GetOpenSearchOpensearchUserConfigIndexPatternArrayOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) []GetOpenSearchOpensearchUserConfigIndexPattern {
+		return v.IndexPatterns
+	}).(GetOpenSearchOpensearchUserConfigIndexPatternArrayOutput)
+}
+
+// Index rollup settings
+func (o GetOpenSearchOpensearchUserConfigOutput) IndexRollup() GetOpenSearchOpensearchUserConfigIndexRollupPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigIndexRollup {
+		return v.IndexRollup
+	}).(GetOpenSearchOpensearchUserConfigIndexRollupPtrOutput)
+}
+
+// Template settings for all new indexes
+func (o GetOpenSearchOpensearchUserConfigOutput) IndexTemplate() GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigIndexTemplate {
+		return v.IndexTemplate
+	}).(GetOpenSearchOpensearchUserConfigIndexTemplatePtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+func (o GetOpenSearchOpensearchUserConfigOutput) IpFilterObjects() GetOpenSearchOpensearchUserConfigIpFilterObjectArrayOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) []GetOpenSearchOpensearchUserConfigIpFilterObject {
+		return v.IpFilterObjects
+	}).(GetOpenSearchOpensearchUserConfigIpFilterObjectArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+func (o GetOpenSearchOpensearchUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+//
+// Deprecated: Deprecated. Use `ipFilterString` instead.
+func (o GetOpenSearchOpensearchUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+func (o GetOpenSearchOpensearchUserConfigOutput) KeepIndexRefreshInterval() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *bool { return v.KeepIndexRefreshInterval }).(pulumi.BoolPtrOutput)
+}
+
+// Use indexPatterns instead. Default: `0`.
+func (o GetOpenSearchOpensearchUserConfigOutput) MaxIndexCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *int { return v.MaxIndexCount }).(pulumi.IntPtrOutput)
+}
+
+// OpenSearch OpenID Connect Configuration
+func (o GetOpenSearchOpensearchUserConfigOutput) Openid() GetOpenSearchOpensearchUserConfigOpenidPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigOpenid { return v.Openid }).(GetOpenSearchOpensearchUserConfigOpenidPtrOutput)
+}
+
+// OpenSearch settings
+func (o GetOpenSearchOpensearchUserConfigOutput) Opensearch() GetOpenSearchOpensearchUserConfigOpensearchPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigOpensearch {
+		return v.Opensearch
+	}).(GetOpenSearchOpensearchUserConfigOpensearchPtrOutput)
+}
+
+// OpenSearch Dashboards settings
+func (o GetOpenSearchOpensearchUserConfigOutput) OpensearchDashboards() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigOpensearchDashboards {
+		return v.OpensearchDashboards
+	}).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
+}
+
+// Enum: `1`, `2`, and newer. OpenSearch major version.
+func (o GetOpenSearchOpensearchUserConfigOutput) OpensearchVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.OpensearchVersion }).(pulumi.StringPtrOutput)
+}
+
+// Allow access to selected service ports from private networks
+func (o GetOpenSearchOpensearchUserConfigOutput) PrivateAccess() GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigPrivateAccess {
+		return v.PrivateAccess
+	}).(GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink
+func (o GetOpenSearchOpensearchUserConfigOutput) PrivatelinkAccess() GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
+		return v.PrivatelinkAccess
+	}).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+func (o GetOpenSearchOpensearchUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet
+func (o GetOpenSearchOpensearchUserConfigOutput) PublicAccess() GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigPublicAccess {
+		return v.PublicAccess
+	}).(GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput)
+}
+
+// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+func (o GetOpenSearchOpensearchUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
+}
+
+// AWS S3 / AWS S3 compatible migration settings
+func (o GetOpenSearchOpensearchUserConfigOutput) S3Migration() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigS3Migration {
+		return v.S3Migration
+	}).(GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput)
+}
+
+// OpenSearch SAML configuration
+func (o GetOpenSearchOpensearchUserConfigOutput) Saml() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *GetOpenSearchOpensearchUserConfigSaml { return v.Saml }).(GetOpenSearchOpensearchUserConfigSamlPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o GetOpenSearchOpensearchUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+func (o GetOpenSearchOpensearchUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o GetOpenSearchOpensearchUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchOpensearchUserConfig)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigArrayOutput) ToGetOpenSearchOpensearchUserConfigArrayOutput() GetOpenSearchOpensearchUserConfigArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigArrayOutput) ToGetOpenSearchOpensearchUserConfigArrayOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigArrayOutput) Index(i pulumi.IntInput) GetOpenSearchOpensearchUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchOpensearchUserConfig {
+		return vs[0].([]GetOpenSearchOpensearchUserConfig)[vs[1].(int)]
+	}).(GetOpenSearchOpensearchUserConfigOutput)
+}
+
 type GetOpenSearchOpensearchUserConfigAzureMigration struct {
 	// Account name.
 	Account string `pulumi:"account"`
@@ -1612,6 +1973,8 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	AuthFailureListeners *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners `pulumi:"authFailureListeners"`
 	// Controls the number of shards allowed in the cluster per data node. Example: `1000`.
 	ClusterMaxShardsPerNode *int `pulumi:"clusterMaxShardsPerNode"`
+	// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+	ClusterRoutingAllocationBalancePreferPrimary *bool `pulumi:"clusterRoutingAllocationBalancePreferPrimary"`
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
 	ClusterRoutingAllocationNodeConcurrentRecoveries *int `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
 	// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
@@ -1673,6 +2036,8 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	SearchInsightsTopQueries *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries `pulumi:"searchInsightsTopQueries"`
 	// Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
 	SearchMaxBuckets *int `pulumi:"searchMaxBuckets"`
+	// Segment Replication Backpressure Settings
+	Segrep *GetOpenSearchOpensearchUserConfigOpensearchSegrep `pulumi:"segrep"`
 	// Shard indexing back pressure settings
 	ShardIndexingPressure *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure `pulumi:"shardIndexingPressure"`
 	// Size for the thread pool queue. See documentation for exact details.
@@ -1719,6 +2084,8 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	AuthFailureListeners GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrInput `pulumi:"authFailureListeners"`
 	// Controls the number of shards allowed in the cluster per data node. Example: `1000`.
 	ClusterMaxShardsPerNode pulumi.IntPtrInput `pulumi:"clusterMaxShardsPerNode"`
+	// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+	ClusterRoutingAllocationBalancePreferPrimary pulumi.BoolPtrInput `pulumi:"clusterRoutingAllocationBalancePreferPrimary"`
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
 	ClusterRoutingAllocationNodeConcurrentRecoveries pulumi.IntPtrInput `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
 	// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
@@ -1780,6 +2147,8 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	SearchInsightsTopQueries GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrInput `pulumi:"searchInsightsTopQueries"`
 	// Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
 	SearchMaxBuckets pulumi.IntPtrInput `pulumi:"searchMaxBuckets"`
+	// Segment Replication Backpressure Settings
+	Segrep GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput `pulumi:"segrep"`
 	// Shard indexing back pressure settings
 	ShardIndexingPressure GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrInput `pulumi:"shardIndexingPressure"`
 	// Size for the thread pool queue. See documentation for exact details.
@@ -1903,6 +2272,13 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) AuthFailureListeners(
 // Controls the number of shards allowed in the cluster per data node. Example: `1000`.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterMaxShardsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.ClusterMaxShardsPerNode }).(pulumi.IntPtrOutput)
+}
+
+// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterRoutingAllocationBalancePreferPrimary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		return v.ClusterRoutingAllocationBalancePreferPrimary
+	}).(pulumi.BoolPtrOutput)
 }
 
 // How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
@@ -2069,6 +2445,13 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) SearchMaxBuckets() pu
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.SearchMaxBuckets }).(pulumi.IntPtrOutput)
 }
 
+// Segment Replication Backpressure Settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) Segrep() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchSegrep {
+		return v.Segrep
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput)
+}
+
 // Shard indexing back pressure settings
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ShardIndexingPressure() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
@@ -2193,6 +2576,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterMaxShardsPe
 		}
 		return v.ClusterMaxShardsPerNode
 	}).(pulumi.IntPtrOutput)
+}
+
+// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterRoutingAllocationBalancePreferPrimary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterRoutingAllocationBalancePreferPrimary
+	}).(pulumi.BoolPtrOutput)
 }
 
 // How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
@@ -2502,6 +2895,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) SearchMaxBuckets()
 		}
 		return v.SearchMaxBuckets
 	}).(pulumi.IntPtrOutput)
+}
+
+// Segment Replication Backpressure Settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) Segrep() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchSegrep {
+		if v == nil {
+			return nil
+		}
+		return v.Segrep
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput)
 }
 
 // Shard indexing back pressure settings
@@ -5197,6 +5600,200 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemor
 			return nil
 		}
 		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSegrep struct {
+	// The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+	PressureCheckpointLimit *int `pulumi:"pressureCheckpointLimit"`
+	// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+	PressureEnabled *bool `pulumi:"pressureEnabled"`
+	// The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+	PressureReplicaStaleLimit *float64 `pulumi:"pressureReplicaStaleLimit"`
+	// The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+	PressureTimeLimit *string `pulumi:"pressureTimeLimit"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSegrepInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs and GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSegrepInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs struct {
+	// The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+	PressureCheckpointLimit pulumi.IntPtrInput `pulumi:"pressureCheckpointLimit"`
+	// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+	PressureEnabled pulumi.BoolPtrInput `pulumi:"pressureEnabled"`
+	// The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+	PressureReplicaStaleLimit pulumi.Float64PtrInput `pulumi:"pressureReplicaStaleLimit"`
+	// The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+	PressureTimeLimit pulumi.StringPtrInput `pulumi:"pressureTimeLimit"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSegrep)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs, GetOpenSearchOpensearchUserConfigOpensearchSegrepPtr and GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSegrepPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSegrep)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSegrep)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *GetOpenSearchOpensearchUserConfigOpensearchSegrep {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput)
+}
+
+// The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) PressureCheckpointLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *int { return v.PressureCheckpointLimit }).(pulumi.IntPtrOutput)
+}
+
+// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) PressureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *bool { return v.PressureEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) PressureReplicaStaleLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *float64 { return v.PressureReplicaStaleLimit }).(pulumi.Float64PtrOutput)
+}
+
+// The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) PressureTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *string { return v.PressureTimeLimit }).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSegrep)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) GetOpenSearchOpensearchUserConfigOpensearchSegrep {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSegrep
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput)
+}
+
+// The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) PressureCheckpointLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PressureCheckpointLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) PressureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PressureEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) PressureReplicaStaleLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PressureReplicaStaleLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) PressureTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PressureTimeLimit
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25105,6 +25702,8 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigArrayInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigAzureMigrationInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigAzureMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigAzureMigrationPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigAzureMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigGcsMigrationInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigGcsMigrationArgs{})
@@ -25145,6 +25744,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSegrepInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs{})
@@ -25381,6 +25982,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigAzureMigrationOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigGcsMigrationOutput{})
@@ -25421,6 +26024,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput{})
