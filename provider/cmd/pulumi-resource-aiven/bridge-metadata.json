@@ -897,6 +897,10 @@
                 "current": "aiven:index/kafkaNativeAcl:KafkaNativeAcl",
                 "majorVersion": 6
             },
+            "aiven_kafka_quota": {
+                "current": "aiven:index/kafkaQuota:KafkaQuota",
+                "majorVersion": 6
+            },
             "aiven_kafka_schema": {
                 "current": "aiven:index/kafkaSchema:KafkaSchema",
                 "majorVersion": 6
@@ -1290,6 +1294,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "segrep": {
+                                                "maxItemsOne": true
                                             },
                                             "shard_indexing_pressure": {
                                                 "maxItemsOne": true,
@@ -3383,6 +3390,9 @@
                                                     }
                                                 }
                                             },
+                                            "segrep": {
+                                                "maxItemsOne": true
+                                            },
                                             "shard_indexing_pressure": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -4198,6 +4208,7 @@
             "aiven:index/kafkaConnector:KafkaConnector": 0,
             "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker": 0,
             "aiven:index/kafkaNativeAcl:KafkaNativeAcl": 0,
+            "aiven:index/kafkaQuota:KafkaQuota": 0,
             "aiven:index/kafkaSchema:KafkaSchema": 0,
             "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration": 0,
             "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": 0,
