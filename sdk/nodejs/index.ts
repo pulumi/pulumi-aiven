@@ -575,6 +575,11 @@ export type KafkaNativeAcl = import("./kafkaNativeAcl").KafkaNativeAcl;
 export const KafkaNativeAcl: typeof import("./kafkaNativeAcl").KafkaNativeAcl = null as any;
 utilities.lazyLoad(exports, ["KafkaNativeAcl"], () => require("./kafkaNativeAcl"));
 
+export { KafkaQuotaArgs, KafkaQuotaState } from "./kafkaQuota";
+export type KafkaQuota = import("./kafkaQuota").KafkaQuota;
+export const KafkaQuota: typeof import("./kafkaQuota").KafkaQuota = null as any;
+utilities.lazyLoad(exports, ["KafkaQuota"], () => require("./kafkaQuota"));
+
 export { KafkaSchemaArgs, KafkaSchemaState } from "./kafkaSchema";
 export type KafkaSchema = import("./kafkaSchema").KafkaSchema;
 export const KafkaSchema: typeof import("./kafkaSchema").KafkaSchema = null as any;
@@ -879,6 +884,8 @@ const _module = {
                 return new KafkaMirrorMaker(name, <any>undefined, { urn })
             case "aiven:index/kafkaNativeAcl:KafkaNativeAcl":
                 return new KafkaNativeAcl(name, <any>undefined, { urn })
+            case "aiven:index/kafkaQuota:KafkaQuota":
+                return new KafkaQuota(name, <any>undefined, { urn })
             case "aiven:index/kafkaSchema:KafkaSchema":
                 return new KafkaSchema(name, <any>undefined, { urn })
             case "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration":
@@ -1006,6 +1013,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnect", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnector", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaMirrorMaker", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaNativeAcl", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/kafkaQuota", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchema", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchemaConfiguration", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchemaRegistryAcl", _module)

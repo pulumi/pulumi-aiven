@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchSegrep;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -38,6 +39,11 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      * 
      */
     private @Nullable Integer clusterMaxShardsPerNode;
+    /**
+     * @return When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean clusterRoutingAllocationBalancePreferPrimary;
     /**
      * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
      * 
@@ -190,6 +196,11 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer searchMaxBuckets;
     /**
+     * @return Segment Replication Backpressure Settings
+     * 
+     */
+    private @Nullable OpenSearchOpensearchUserConfigOpensearchSegrep segrep;
+    /**
      * @return Shard indexing back pressure settings
      * 
      */
@@ -278,6 +289,13 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     public Optional<Integer> clusterMaxShardsPerNode() {
         return Optional.ofNullable(this.clusterMaxShardsPerNode);
+    }
+    /**
+     * @return When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> clusterRoutingAllocationBalancePreferPrimary() {
+        return Optional.ofNullable(this.clusterRoutingAllocationBalancePreferPrimary);
     }
     /**
      * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
@@ -493,6 +511,13 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.searchMaxBuckets);
     }
     /**
+     * @return Segment Replication Backpressure Settings
+     * 
+     */
+    public Optional<OpenSearchOpensearchUserConfigOpensearchSegrep> segrep() {
+        return Optional.ofNullable(this.segrep);
+    }
+    /**
      * @return Shard indexing back pressure settings
      * 
      */
@@ -590,6 +615,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Boolean actionDestructiveRequiresName;
         private @Nullable OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners authFailureListeners;
         private @Nullable Integer clusterMaxShardsPerNode;
+        private @Nullable Boolean clusterRoutingAllocationBalancePreferPrimary;
         private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
         private @Nullable String emailSenderName;
         private @Nullable String emailSenderPassword;
@@ -621,6 +647,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         private @Nullable OpenSearchOpensearchUserConfigOpensearchSearchBackpressure searchBackpressure;
         private @Nullable OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries searchInsightsTopQueries;
         private @Nullable Integer searchMaxBuckets;
+        private @Nullable OpenSearchOpensearchUserConfigOpensearchSegrep segrep;
         private @Nullable OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure shardIndexingPressure;
         private @Nullable Integer threadPoolAnalyzeQueueSize;
         private @Nullable Integer threadPoolAnalyzeSize;
@@ -640,6 +667,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     	      this.actionDestructiveRequiresName = defaults.actionDestructiveRequiresName;
     	      this.authFailureListeners = defaults.authFailureListeners;
     	      this.clusterMaxShardsPerNode = defaults.clusterMaxShardsPerNode;
+    	      this.clusterRoutingAllocationBalancePreferPrimary = defaults.clusterRoutingAllocationBalancePreferPrimary;
     	      this.clusterRoutingAllocationNodeConcurrentRecoveries = defaults.clusterRoutingAllocationNodeConcurrentRecoveries;
     	      this.emailSenderName = defaults.emailSenderName;
     	      this.emailSenderPassword = defaults.emailSenderPassword;
@@ -671,6 +699,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     	      this.searchBackpressure = defaults.searchBackpressure;
     	      this.searchInsightsTopQueries = defaults.searchInsightsTopQueries;
     	      this.searchMaxBuckets = defaults.searchMaxBuckets;
+    	      this.segrep = defaults.segrep;
     	      this.shardIndexingPressure = defaults.shardIndexingPressure;
     	      this.threadPoolAnalyzeQueueSize = defaults.threadPoolAnalyzeQueueSize;
     	      this.threadPoolAnalyzeSize = defaults.threadPoolAnalyzeSize;
@@ -707,6 +736,12 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         public Builder clusterMaxShardsPerNode(@Nullable Integer clusterMaxShardsPerNode) {
 
             this.clusterMaxShardsPerNode = clusterMaxShardsPerNode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clusterRoutingAllocationBalancePreferPrimary(@Nullable Boolean clusterRoutingAllocationBalancePreferPrimary) {
+
+            this.clusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
             return this;
         }
         @CustomType.Setter
@@ -899,6 +934,12 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder segrep(@Nullable OpenSearchOpensearchUserConfigOpensearchSegrep segrep) {
+
+            this.segrep = segrep;
+            return this;
+        }
+        @CustomType.Setter
         public Builder shardIndexingPressure(@Nullable OpenSearchOpensearchUserConfigOpensearchShardIndexingPressure shardIndexingPressure) {
 
             this.shardIndexingPressure = shardIndexingPressure;
@@ -976,6 +1017,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             _resultValue.actionDestructiveRequiresName = actionDestructiveRequiresName;
             _resultValue.authFailureListeners = authFailureListeners;
             _resultValue.clusterMaxShardsPerNode = clusterMaxShardsPerNode;
+            _resultValue.clusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
             _resultValue.clusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             _resultValue.emailSenderName = emailSenderName;
             _resultValue.emailSenderPassword = emailSenderPassword;
@@ -1007,6 +1049,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             _resultValue.searchBackpressure = searchBackpressure;
             _resultValue.searchInsightsTopQueries = searchInsightsTopQueries;
             _resultValue.searchMaxBuckets = searchMaxBuckets;
+            _resultValue.segrep = segrep;
             _resultValue.shardIndexingPressure = shardIndexingPressure;
             _resultValue.threadPoolAnalyzeQueueSize = threadPoolAnalyzeQueueSize;
             _resultValue.threadPoolAnalyzeSize = threadPoolAnalyzeSize;

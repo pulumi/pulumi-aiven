@@ -119,6 +119,7 @@ from .kafka_connect import *
 from .kafka_connector import *
 from .kafka_mirror_maker import *
 from .kafka_native_acl import *
+from .kafka_quota import *
 from .kafka_schema import *
 from .kafka_schema_configuration import *
 from .kafka_schema_registry_acl import *
@@ -492,6 +493,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/kafkaNativeAcl:KafkaNativeAcl": "KafkaNativeAcl"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/kafkaQuota",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/kafkaQuota:KafkaQuota": "KafkaQuota"
   }
  },
  {

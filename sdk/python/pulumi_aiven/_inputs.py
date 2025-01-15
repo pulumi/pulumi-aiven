@@ -407,6 +407,8 @@ __all__ = [
     'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs',
     'OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchSegrepArgs',
+    'OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs',
     'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs',
@@ -23691,6 +23693,10 @@ if not MYPY:
         """
         Controls the number of shards allowed in the cluster per data node. Example: `1000`.
         """
+        cluster_routing_allocation_balance_prefer_primary: NotRequired[pulumi.Input[bool]]
+        """
+        When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+        """
         cluster_routing_allocation_node_concurrent_recoveries: NotRequired[pulumi.Input[int]]
         """
         How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
@@ -23812,6 +23818,10 @@ if not MYPY:
         """
         Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
         """
+        segrep: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict']]
+        """
+        Segment Replication Backpressure Settings
+        """
         shard_indexing_pressure: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict']]
         """
         Shard indexing back pressure settings
@@ -23870,6 +23880,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  action_destructive_requires_name: Optional[pulumi.Input[bool]] = None,
                  auth_failure_listeners: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs']] = None,
                  cluster_max_shards_per_node: Optional[pulumi.Input[int]] = None,
+                 cluster_routing_allocation_balance_prefer_primary: Optional[pulumi.Input[bool]] = None,
                  cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[int]] = None,
                  email_sender_name: Optional[pulumi.Input[str]] = None,
                  email_sender_password: Optional[pulumi.Input[str]] = None,
@@ -23901,6 +23912,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  search_backpressure: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs']] = None,
                  search_insights_top_queries: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs']] = None,
                  search_max_buckets: Optional[pulumi.Input[int]] = None,
+                 segrep: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSegrepArgs']] = None,
                  shard_indexing_pressure: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs']] = None,
                  thread_pool_analyze_queue_size: Optional[pulumi.Input[int]] = None,
                  thread_pool_analyze_size: Optional[pulumi.Input[int]] = None,
@@ -23918,6 +23930,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[bool] action_destructive_requires_name: Require explicit index names when deleting.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs'] auth_failure_listeners: Opensearch Security Plugin Settings
         :param pulumi.Input[int] cluster_max_shards_per_node: Controls the number of shards allowed in the cluster per data node. Example: `1000`.
+        :param pulumi.Input[bool] cluster_routing_allocation_balance_prefer_primary: When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
         :param pulumi.Input[int] cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         :param pulumi.Input[str] email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         :param pulumi.Input[str] email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
@@ -23948,6 +23961,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[str] script_max_compilations_rate: Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs'] search_backpressure: Search Backpressure Settings
         :param pulumi.Input[int] search_max_buckets: Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSegrepArgs'] segrep: Segment Replication Backpressure Settings
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs'] shard_indexing_pressure: Shard indexing back pressure settings
         :param pulumi.Input[int] thread_pool_analyze_queue_size: Size for the thread pool queue. See documentation for exact details.
         :param pulumi.Input[int] thread_pool_analyze_size: Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
@@ -23969,6 +23983,8 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "auth_failure_listeners", auth_failure_listeners)
         if cluster_max_shards_per_node is not None:
             pulumi.set(__self__, "cluster_max_shards_per_node", cluster_max_shards_per_node)
+        if cluster_routing_allocation_balance_prefer_primary is not None:
+            pulumi.set(__self__, "cluster_routing_allocation_balance_prefer_primary", cluster_routing_allocation_balance_prefer_primary)
         if cluster_routing_allocation_node_concurrent_recoveries is not None:
             pulumi.set(__self__, "cluster_routing_allocation_node_concurrent_recoveries", cluster_routing_allocation_node_concurrent_recoveries)
         if email_sender_name is not None:
@@ -24031,6 +24047,8 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "search_insights_top_queries", search_insights_top_queries)
         if search_max_buckets is not None:
             pulumi.set(__self__, "search_max_buckets", search_max_buckets)
+        if segrep is not None:
+            pulumi.set(__self__, "segrep", segrep)
         if shard_indexing_pressure is not None:
             pulumi.set(__self__, "shard_indexing_pressure", shard_indexing_pressure)
         if thread_pool_analyze_queue_size is not None:
@@ -24103,6 +24121,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @cluster_max_shards_per_node.setter
     def cluster_max_shards_per_node(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cluster_max_shards_per_node", value)
+
+    @property
+    @pulumi.getter(name="clusterRoutingAllocationBalancePreferPrimary")
+    def cluster_routing_allocation_balance_prefer_primary(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+        """
+        return pulumi.get(self, "cluster_routing_allocation_balance_prefer_primary")
+
+    @cluster_routing_allocation_balance_prefer_primary.setter
+    def cluster_routing_allocation_balance_prefer_primary(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cluster_routing_allocation_balance_prefer_primary", value)
 
     @property
     @pulumi.getter(name="clusterRoutingAllocationNodeConcurrentRecoveries")
@@ -24472,6 +24502,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @search_max_buckets.setter
     def search_max_buckets(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "search_max_buckets", value)
+
+    @property
+    @pulumi.getter
+    def segrep(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSegrepArgs']]:
+        """
+        Segment Replication Backpressure Settings
+        """
+        return pulumi.get(self, "segrep")
+
+    @segrep.setter
+    def segrep(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchSegrepArgs']]):
+        pulumi.set(self, "segrep", value)
 
     @property
     @pulumi.getter(name="shardIndexingPressure")
@@ -25876,6 +25918,98 @@ class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs
 
 
 if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict(TypedDict):
+        pressure_checkpoint_limit: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+        """
+        pressure_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+        """
+        pressure_replica_stale_limit: NotRequired[pulumi.Input[float]]
+        """
+        The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+        """
+        pressure_time_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchSegrepArgs:
+    def __init__(__self__, *,
+                 pressure_checkpoint_limit: Optional[pulumi.Input[int]] = None,
+                 pressure_enabled: Optional[pulumi.Input[bool]] = None,
+                 pressure_replica_stale_limit: Optional[pulumi.Input[float]] = None,
+                 pressure_time_limit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] pressure_checkpoint_limit: The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+        :param pulumi.Input[bool] pressure_enabled: Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+        :param pulumi.Input[float] pressure_replica_stale_limit: The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+        :param pulumi.Input[str] pressure_time_limit: The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+        """
+        if pressure_checkpoint_limit is not None:
+            pulumi.set(__self__, "pressure_checkpoint_limit", pressure_checkpoint_limit)
+        if pressure_enabled is not None:
+            pulumi.set(__self__, "pressure_enabled", pressure_enabled)
+        if pressure_replica_stale_limit is not None:
+            pulumi.set(__self__, "pressure_replica_stale_limit", pressure_replica_stale_limit)
+        if pressure_time_limit is not None:
+            pulumi.set(__self__, "pressure_time_limit", pressure_time_limit)
+
+    @property
+    @pulumi.getter(name="pressureCheckpointLimit")
+    def pressure_checkpoint_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+        """
+        return pulumi.get(self, "pressure_checkpoint_limit")
+
+    @pressure_checkpoint_limit.setter
+    def pressure_checkpoint_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pressure_checkpoint_limit", value)
+
+    @property
+    @pulumi.getter(name="pressureEnabled")
+    def pressure_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+        """
+        return pulumi.get(self, "pressure_enabled")
+
+    @pressure_enabled.setter
+    def pressure_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pressure_enabled", value)
+
+    @property
+    @pulumi.getter(name="pressureReplicaStaleLimit")
+    def pressure_replica_stale_limit(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+        """
+        return pulumi.get(self, "pressure_replica_stale_limit")
+
+    @pressure_replica_stale_limit.setter
+    def pressure_replica_stale_limit(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "pressure_replica_stale_limit", value)
+
+    @property
+    @pulumi.getter(name="pressureTimeLimit")
+    def pressure_time_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+        """
+        return pulumi.get(self, "pressure_time_limit")
+
+    @pressure_time_limit.setter
+    def pressure_time_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pressure_time_limit", value)
+
+
+if not MYPY:
     class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         """
@@ -27058,7 +27192,7 @@ if not MYPY:
     class OrganizationPermissionPermissionArgsDict(TypedDict):
         permissions: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         principal_id: pulumi.Input[str]
         """
@@ -27088,7 +27222,7 @@ class OrganizationPermissionPermissionArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         :param pulumi.Input[str] principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param pulumi.Input[str] principal_type: The type of principal. The possible values are `user` and `user_group`.
         :param pulumi.Input[str] create_time: Time created.
@@ -27106,7 +27240,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 

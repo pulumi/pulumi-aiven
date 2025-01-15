@@ -130,6 +130,7 @@
         "kafkaConnector.ts",
         "kafkaMirrorMaker.ts",
         "kafkaNativeAcl.ts",
+        "kafkaQuota.ts",
         "kafkaSchema.ts",
         "kafkaSchemaConfiguration.ts",
         "kafkaSchemaRegistryAcl.ts",

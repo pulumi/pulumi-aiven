@@ -37,6 +37,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ClusterMaxShardsPerNode { get; set; }
 
         /// <summary>
+        /// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+        /// </summary>
+        [Input("clusterRoutingAllocationBalancePreferPrimary")]
+        public Input<bool>? ClusterRoutingAllocationBalancePreferPrimary { get; set; }
+
+        /// <summary>
         /// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         /// </summary>
         [Input("clusterRoutingAllocationNodeConcurrentRecoveries")]
@@ -234,6 +240,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("searchMaxBuckets")]
         public Input<int>? SearchMaxBuckets { get; set; }
+
+        /// <summary>
+        /// Segment Replication Backpressure Settings
+        /// </summary>
+        [Input("segrep")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchSegrepArgs>? Segrep { get; set; }
 
         /// <summary>
         /// Shard indexing back pressure settings

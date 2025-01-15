@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSegrepArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -80,6 +81,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
      */
     public Optional<Output<Integer>> clusterMaxShardsPerNode() {
         return Optional.ofNullable(this.clusterMaxShardsPerNode);
+    }
+
+    /**
+     * When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * 
+     */
+    @Import(name="clusterRoutingAllocationBalancePreferPrimary")
+    private @Nullable Output<Boolean> clusterRoutingAllocationBalancePreferPrimary;
+
+    /**
+     * @return When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> clusterRoutingAllocationBalancePreferPrimary() {
+        return Optional.ofNullable(this.clusterRoutingAllocationBalancePreferPrimary);
     }
 
     /**
@@ -540,6 +556,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Segment Replication Backpressure Settings
+     * 
+     */
+    @Import(name="segrep")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchSegrepArgs> segrep;
+
+    /**
+     * @return Segment Replication Backpressure Settings
+     * 
+     */
+    public Optional<Output<OpenSearchOpensearchUserConfigOpensearchSegrepArgs>> segrep() {
+        return Optional.ofNullable(this.segrep);
+    }
+
+    /**
      * Shard indexing back pressure settings
      * 
      */
@@ -726,6 +757,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.actionDestructiveRequiresName = $.actionDestructiveRequiresName;
         this.authFailureListeners = $.authFailureListeners;
         this.clusterMaxShardsPerNode = $.clusterMaxShardsPerNode;
+        this.clusterRoutingAllocationBalancePreferPrimary = $.clusterRoutingAllocationBalancePreferPrimary;
         this.clusterRoutingAllocationNodeConcurrentRecoveries = $.clusterRoutingAllocationNodeConcurrentRecoveries;
         this.emailSenderName = $.emailSenderName;
         this.emailSenderPassword = $.emailSenderPassword;
@@ -757,6 +789,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.searchBackpressure = $.searchBackpressure;
         this.searchInsightsTopQueries = $.searchInsightsTopQueries;
         this.searchMaxBuckets = $.searchMaxBuckets;
+        this.segrep = $.segrep;
         this.shardIndexingPressure = $.shardIndexingPressure;
         this.threadPoolAnalyzeQueueSize = $.threadPoolAnalyzeQueueSize;
         this.threadPoolAnalyzeSize = $.threadPoolAnalyzeSize;
@@ -871,6 +904,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder clusterMaxShardsPerNode(Integer clusterMaxShardsPerNode) {
             return clusterMaxShardsPerNode(Output.of(clusterMaxShardsPerNode));
+        }
+
+        /**
+         * @param clusterRoutingAllocationBalancePreferPrimary When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterRoutingAllocationBalancePreferPrimary(@Nullable Output<Boolean> clusterRoutingAllocationBalancePreferPrimary) {
+            $.clusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
+            return this;
+        }
+
+        /**
+         * @param clusterRoutingAllocationBalancePreferPrimary When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterRoutingAllocationBalancePreferPrimary(Boolean clusterRoutingAllocationBalancePreferPrimary) {
+            return clusterRoutingAllocationBalancePreferPrimary(Output.of(clusterRoutingAllocationBalancePreferPrimary));
         }
 
         /**
@@ -1520,6 +1574,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder searchMaxBuckets(Integer searchMaxBuckets) {
             return searchMaxBuckets(Output.of(searchMaxBuckets));
+        }
+
+        /**
+         * @param segrep Segment Replication Backpressure Settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segrep(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchSegrepArgs> segrep) {
+            $.segrep = segrep;
+            return this;
+        }
+
+        /**
+         * @param segrep Segment Replication Backpressure Settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segrep(OpenSearchOpensearchUserConfigOpensearchSegrepArgs segrep) {
+            return segrep(Output.of(segrep));
         }
 
         /**
