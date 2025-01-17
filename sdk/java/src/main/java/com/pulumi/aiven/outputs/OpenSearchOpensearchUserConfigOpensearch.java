@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
+import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfigOpensearchSegrep;
@@ -49,6 +50,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      * 
      */
     private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
+    private @Nullable OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog clusterSearchRequestSlowlog;
     /**
      * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      * 
@@ -64,6 +66,11 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      * 
      */
     private @Nullable String emailSenderUsername;
+    /**
+     * @return Enable remote-backed storage.
+     * 
+     */
+    private @Nullable Boolean enableRemoteBackedStorage;
     /**
      * @return Enable/Disable security audit.
      * 
@@ -304,6 +311,9 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     public Optional<Integer> clusterRoutingAllocationNodeConcurrentRecoveries() {
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
     }
+    public Optional<OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog> clusterSearchRequestSlowlog() {
+        return Optional.ofNullable(this.clusterSearchRequestSlowlog);
+    }
     /**
      * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      * 
@@ -324,6 +334,13 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     public Optional<String> emailSenderUsername() {
         return Optional.ofNullable(this.emailSenderUsername);
+    }
+    /**
+     * @return Enable remote-backed storage.
+     * 
+     */
+    public Optional<Boolean> enableRemoteBackedStorage() {
+        return Optional.ofNullable(this.enableRemoteBackedStorage);
     }
     /**
      * @return Enable/Disable security audit.
@@ -617,9 +634,11 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Integer clusterMaxShardsPerNode;
         private @Nullable Boolean clusterRoutingAllocationBalancePreferPrimary;
         private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
+        private @Nullable OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog clusterSearchRequestSlowlog;
         private @Nullable String emailSenderName;
         private @Nullable String emailSenderPassword;
         private @Nullable String emailSenderUsername;
+        private @Nullable Boolean enableRemoteBackedStorage;
         private @Nullable Boolean enableSecurityAudit;
         private @Nullable Integer httpMaxContentLength;
         private @Nullable Integer httpMaxHeaderSize;
@@ -669,9 +688,11 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
     	      this.clusterMaxShardsPerNode = defaults.clusterMaxShardsPerNode;
     	      this.clusterRoutingAllocationBalancePreferPrimary = defaults.clusterRoutingAllocationBalancePreferPrimary;
     	      this.clusterRoutingAllocationNodeConcurrentRecoveries = defaults.clusterRoutingAllocationNodeConcurrentRecoveries;
+    	      this.clusterSearchRequestSlowlog = defaults.clusterSearchRequestSlowlog;
     	      this.emailSenderName = defaults.emailSenderName;
     	      this.emailSenderPassword = defaults.emailSenderPassword;
     	      this.emailSenderUsername = defaults.emailSenderUsername;
+    	      this.enableRemoteBackedStorage = defaults.enableRemoteBackedStorage;
     	      this.enableSecurityAudit = defaults.enableSecurityAudit;
     	      this.httpMaxContentLength = defaults.httpMaxContentLength;
     	      this.httpMaxHeaderSize = defaults.httpMaxHeaderSize;
@@ -751,6 +772,12 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder clusterSearchRequestSlowlog(@Nullable OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog clusterSearchRequestSlowlog) {
+
+            this.clusterSearchRequestSlowlog = clusterSearchRequestSlowlog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder emailSenderName(@Nullable String emailSenderName) {
 
             this.emailSenderName = emailSenderName;
@@ -766,6 +793,12 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         public Builder emailSenderUsername(@Nullable String emailSenderUsername) {
 
             this.emailSenderUsername = emailSenderUsername;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableRemoteBackedStorage(@Nullable Boolean enableRemoteBackedStorage) {
+
+            this.enableRemoteBackedStorage = enableRemoteBackedStorage;
             return this;
         }
         @CustomType.Setter
@@ -1019,9 +1052,11 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
             _resultValue.clusterMaxShardsPerNode = clusterMaxShardsPerNode;
             _resultValue.clusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
             _resultValue.clusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
+            _resultValue.clusterSearchRequestSlowlog = clusterSearchRequestSlowlog;
             _resultValue.emailSenderName = emailSenderName;
             _resultValue.emailSenderPassword = emailSenderPassword;
             _resultValue.emailSenderUsername = emailSenderUsername;
+            _resultValue.enableRemoteBackedStorage = enableRemoteBackedStorage;
             _resultValue.enableSecurityAudit = enableSecurityAudit;
             _resultValue.httpMaxContentLength = httpMaxContentLength;
             _resultValue.httpMaxHeaderSize = httpMaxHeaderSize;

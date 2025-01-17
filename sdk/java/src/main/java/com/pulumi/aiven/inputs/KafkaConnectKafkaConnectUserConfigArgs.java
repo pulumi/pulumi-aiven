@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs;
+import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPluginVersionArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPublicAccessArgs;
@@ -115,6 +116,21 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     }
 
     /**
+     * The plugin selected by the user
+     * 
+     */
+    @Import(name="pluginVersions")
+    private @Nullable Output<List<KafkaConnectKafkaConnectUserConfigPluginVersionArgs>> pluginVersions;
+
+    /**
+     * @return The plugin selected by the user
+     * 
+     */
+    public Optional<Output<List<KafkaConnectKafkaConnectUserConfigPluginVersionArgs>>> pluginVersions() {
+        return Optional.ofNullable(this.pluginVersions);
+    }
+
+    /**
      * Allow access to selected service ports from private networks
      * 
      */
@@ -204,6 +220,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.kafkaConnect = $.kafkaConnect;
+        this.pluginVersions = $.pluginVersions;
         this.privateAccess = $.privateAccess;
         this.privatelinkAccess = $.privatelinkAccess;
         this.publicAccess = $.publicAccess;
@@ -383,6 +400,37 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          */
         public Builder kafkaConnect(KafkaConnectKafkaConnectUserConfigKafkaConnectArgs kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
+        }
+
+        /**
+         * @param pluginVersions The plugin selected by the user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pluginVersions(@Nullable Output<List<KafkaConnectKafkaConnectUserConfigPluginVersionArgs>> pluginVersions) {
+            $.pluginVersions = pluginVersions;
+            return this;
+        }
+
+        /**
+         * @param pluginVersions The plugin selected by the user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pluginVersions(List<KafkaConnectKafkaConnectUserConfigPluginVersionArgs> pluginVersions) {
+            return pluginVersions(Output.of(pluginVersions));
+        }
+
+        /**
+         * @param pluginVersions The plugin selected by the user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pluginVersions(KafkaConnectKafkaConnectUserConfigPluginVersionArgs... pluginVersions) {
+            return pluginVersions(List.of(pluginVersions));
         }
 
         /**

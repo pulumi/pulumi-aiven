@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         /// <summary>
+        /// Enable to upload Custom JARs for Flink applications.
+        /// </summary>
+        [Input("customCode")]
+        public Input<bool>? CustomCode { get; set; }
+
+        /// <summary>
         /// Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
         /// </summary>
         [Input("flinkVersion")]

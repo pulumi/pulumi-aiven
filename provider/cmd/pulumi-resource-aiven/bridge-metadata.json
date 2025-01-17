@@ -802,6 +802,9 @@
                                 "kafka_connect": {
                                     "maxItemsOne": true
                                 },
+                                "plugin_versions": {
+                                    "maxItemsOne": false
+                                },
                                 "private_access": {
                                     "maxItemsOne": true
                                 },
@@ -1255,6 +1258,16 @@
                                                             "maxItemsOne": true
                                                         },
                                                         "ip_rate_limiting": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "cluster_search_request_slowlog": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "threshold": {
                                                             "maxItemsOne": true
                                                         }
                                                     }
@@ -1863,6 +1876,9 @@
                         "maxItemsOne": true
                     },
                     "external_aws_s3_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_azure_blob_storage_user_config": {
                         "maxItemsOne": true
                     },
                     "external_clickhouse_user_config": {
@@ -2905,6 +2921,9 @@
                                 "kafka_connect": {
                                     "maxItemsOne": true
                                 },
+                                "plugin_versions": {
+                                    "maxItemsOne": false
+                                },
                                 "private_access": {
                                     "maxItemsOne": true
                                 },
@@ -3350,6 +3369,16 @@
                                                             "maxItemsOne": true
                                                         },
                                                         "ip_rate_limiting": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "cluster_search_request_slowlog": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "threshold": {
                                                             "maxItemsOne": true
                                                         }
                                                     }
@@ -3945,6 +3974,9 @@
                         "maxItemsOne": false
                     },
                     "external_aws_s3_user_config": {
+                        "maxItemsOne": false
+                    },
+                    "external_azure_blob_storage_user_config": {
                         "maxItemsOne": false
                     },
                     "external_clickhouse_user_config": {

@@ -80,6 +80,10 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly externalAwsS3UserConfigs: outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfig[];
     /**
+     * ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    readonly externalAzureBlobStorageUserConfigs: outputs.GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig[];
+    /**
      * ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly externalClickhouseUserConfigs: outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfig[];

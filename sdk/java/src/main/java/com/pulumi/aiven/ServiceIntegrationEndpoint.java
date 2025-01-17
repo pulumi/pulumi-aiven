@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.ServiceIntegrationEndpointDatadogUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAwsS3UserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalClickhouseUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery;
@@ -212,6 +213,20 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<ServiceIntegrationEndpointExternalAwsS3UserConfig>> externalAwsS3UserConfig() {
         return Codegen.optional(this.externalAwsS3UserConfig);
+    }
+    /**
+     * ExternalAzureBlobStorage user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Export(name="externalAzureBlobStorageUserConfig", refs={ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig> externalAzureBlobStorageUserConfig;
+
+    /**
+     * @return ExternalAzureBlobStorage user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig>> externalAzureBlobStorageUserConfig() {
+        return Codegen.optional(this.externalAzureBlobStorageUserConfig);
     }
     /**
      * ExternalClickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later

@@ -88,6 +88,8 @@ type ServiceIntegrationEndpoint struct {
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsS3UserConfig ServiceIntegrationEndpointExternalAwsS3UserConfigPtrOutput `pulumi:"externalAwsS3UserConfig"`
+	// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ExternalAzureBlobStorageUserConfig ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigPtrOutput `pulumi:"externalAzureBlobStorageUserConfig"`
 	// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalClickhouseUserConfig ServiceIntegrationEndpointExternalClickhouseUserConfigPtrOutput `pulumi:"externalClickhouseUserConfig"`
 	// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -173,6 +175,8 @@ type serviceIntegrationEndpointState struct {
 	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsS3UserConfig *ServiceIntegrationEndpointExternalAwsS3UserConfig `pulumi:"externalAwsS3UserConfig"`
+	// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ExternalAzureBlobStorageUserConfig *ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig `pulumi:"externalAzureBlobStorageUserConfig"`
 	// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalClickhouseUserConfig *ServiceIntegrationEndpointExternalClickhouseUserConfig `pulumi:"externalClickhouseUserConfig"`
 	// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -220,6 +224,8 @@ type ServiceIntegrationEndpointState struct {
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput
 	// ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsS3UserConfig ServiceIntegrationEndpointExternalAwsS3UserConfigPtrInput
+	// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ExternalAzureBlobStorageUserConfig ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigPtrInput
 	// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalClickhouseUserConfig ServiceIntegrationEndpointExternalClickhouseUserConfigPtrInput
 	// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -269,6 +275,8 @@ type serviceIntegrationEndpointArgs struct {
 	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsS3UserConfig *ServiceIntegrationEndpointExternalAwsS3UserConfig `pulumi:"externalAwsS3UserConfig"`
+	// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ExternalAzureBlobStorageUserConfig *ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig `pulumi:"externalAzureBlobStorageUserConfig"`
 	// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalClickhouseUserConfig *ServiceIntegrationEndpointExternalClickhouseUserConfig `pulumi:"externalClickhouseUserConfig"`
 	// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -315,6 +323,8 @@ type ServiceIntegrationEndpointArgs struct {
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput
 	// ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsS3UserConfig ServiceIntegrationEndpointExternalAwsS3UserConfigPtrInput
+	// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ExternalAzureBlobStorageUserConfig ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigPtrInput
 	// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalClickhouseUserConfig ServiceIntegrationEndpointExternalClickhouseUserConfigPtrInput
 	// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -480,6 +490,13 @@ func (o ServiceIntegrationEndpointOutput) ExternalAwsS3UserConfig() ServiceInteg
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalAwsS3UserConfigPtrOutput {
 		return v.ExternalAwsS3UserConfig
 	}).(ServiceIntegrationEndpointExternalAwsS3UserConfigPtrOutput)
+}
+
+// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+func (o ServiceIntegrationEndpointOutput) ExternalAzureBlobStorageUserConfig() ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigPtrOutput {
+		return v.ExternalAzureBlobStorageUserConfig
+	}).(ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigPtrOutput)
 }
 
 // ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

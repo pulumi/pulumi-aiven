@@ -106,6 +106,10 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly externalAwsS3UserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAwsS3UserConfig | undefined>;
     /**
+     * ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    public readonly externalAzureBlobStorageUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig | undefined>;
+    /**
      * ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     public readonly externalClickhouseUserConfig!: pulumi.Output<outputs.ServiceIntegrationEndpointExternalClickhouseUserConfig | undefined>;
@@ -183,6 +187,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
             resourceInputs["externalAwsS3UserConfig"] = state ? state.externalAwsS3UserConfig : undefined;
+            resourceInputs["externalAzureBlobStorageUserConfig"] = state ? state.externalAzureBlobStorageUserConfig : undefined;
             resourceInputs["externalClickhouseUserConfig"] = state ? state.externalClickhouseUserConfig : undefined;
             resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
             resourceInputs["externalGoogleCloudBigquery"] = state ? state.externalGoogleCloudBigquery : undefined;
@@ -215,6 +220,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
             resourceInputs["externalAwsS3UserConfig"] = args ? args.externalAwsS3UserConfig : undefined;
+            resourceInputs["externalAzureBlobStorageUserConfig"] = args ? args.externalAzureBlobStorageUserConfig : undefined;
             resourceInputs["externalClickhouseUserConfig"] = args ? args.externalClickhouseUserConfig : undefined;
             resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
             resourceInputs["externalGoogleCloudBigquery"] = args ? args.externalGoogleCloudBigquery : undefined;
@@ -272,6 +278,10 @@ export interface ServiceIntegrationEndpointState {
      * ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     externalAwsS3UserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsS3UserConfig>;
+    /**
+     * ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    externalAzureBlobStorageUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig>;
     /**
      * ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
@@ -362,6 +372,10 @@ export interface ServiceIntegrationEndpointArgs {
      * ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     externalAwsS3UserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsS3UserConfig>;
+    /**
+     * ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    externalAzureBlobStorageUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig>;
     /**
      * ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */

@@ -1792,6 +1792,11 @@
                     "description": "Additional Cloud Regions for Backup Replication.\n",
                     "deprecationMessage": "This property is deprecated."
                 },
+                "customCode": {
+                    "type": "boolean",
+                    "description": "Enable to upload Custom JARs for Flink applications.\n",
+                    "willReplaceOnChanges": true
+                },
                 "flinkVersion": {
                     "type": "string",
                     "description": "Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.\n",
@@ -2066,6 +2071,10 @@
                 "dashboardPreviewsEnabled": {
                     "type": "boolean",
                     "description": "Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.\n"
+                },
+                "dashboardScenesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.\n"
                 },
                 "dashboardsMinRefreshInterval": {
                     "type": "string",
@@ -3059,6 +3068,13 @@
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigKafkaConnect:KafkaConnectKafkaConnectUserConfigKafkaConnect",
                     "description": "Kafka Connect configuration values\n"
                 },
+                "pluginVersions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigPluginVersion:KafkaConnectKafkaConnectUserConfigPluginVersion"
+                    },
+                    "description": "The plugin selected by the user\n"
+                },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigPrivateAccess:KafkaConnectKafkaConnectUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks\n"
@@ -3172,6 +3188,23 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/KafkaConnectKafkaConnectUserConfigPluginVersion:KafkaConnectKafkaConnectUserConfigPluginVersion": {
+            "properties": {
+                "pluginName": {
+                    "type": "string",
+                    "description": "The name of the plugin. Example: `debezium-connector`.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The version of the plugin. Example: `2.5.0`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "pluginName",
+                "version"
+            ]
         },
         "aiven:index/KafkaConnectKafkaConnectUserConfigPrivateAccess:KafkaConnectKafkaConnectUserConfigPrivateAccess": {
             "properties": {
@@ -6217,6 +6250,9 @@
                     "type": "integer",
                     "description": "How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.\n"
                 },
+                "clusterSearchRequestSlowlog": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog:OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog"
+                },
                 "emailSenderName": {
                     "type": "string",
                     "description": "Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.\n"
@@ -6229,6 +6265,10 @@
                 "emailSenderUsername": {
                     "type": "string",
                     "description": "Sender username for Opensearch alerts. Example: `jane@example.com`.\n"
+                },
+                "enableRemoteBackedStorage": {
+                    "type": "boolean",
+                    "description": "Enable remote-backed storage.\n"
                 },
                 "enableSecurityAudit": {
                     "type": "boolean",
@@ -6465,6 +6505,39 @@
                 "type": {
                     "type": "string",
                     "description": "Enum: `ip`. The type of rate limiting.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog:OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog": {
+            "properties": {
+                "level": {
+                    "type": "string",
+                    "description": "Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.\n"
+                },
+                "threshold": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold:OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold:OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold": {
+            "properties": {
+                "debug": {
+                    "type": "string",
+                    "description": "Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.\n"
+                },
+                "info": {
+                    "type": "string",
+                    "description": "Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.\n"
+                },
+                "trace": {
+                    "type": "string",
+                    "description": "Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.\n"
+                },
+                "warn": {
+                    "type": "string",
+                    "description": "Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.\n"
                 }
             },
             "type": "object"
@@ -8785,6 +8858,28 @@
                 "accessKeyId",
                 "secretAccessKey",
                 "url"
+            ]
+        },
+        "aiven:index/ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig:ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig": {
+            "properties": {
+                "blobPath": {
+                    "type": "string",
+                    "description": "Blob path. Example: `path/to/blob/file.csv`.\n"
+                },
+                "connectionString": {
+                    "type": "string",
+                    "description": "Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.\n",
+                    "secret": true
+                },
+                "container": {
+                    "type": "string",
+                    "description": "Container. Example: `container-dev`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionString",
+                "container"
             ]
         },
         "aiven:index/ServiceIntegrationEndpointExternalClickhouseUserConfig:ServiceIntegrationEndpointExternalClickhouseUserConfig": {
@@ -12332,6 +12427,10 @@
                     "description": "Additional Cloud Regions for Backup Replication.\n",
                     "deprecationMessage": "This property is deprecated."
                 },
+                "customCode": {
+                    "type": "boolean",
+                    "description": "Enable to upload Custom JARs for Flink applications.\n"
+                },
                 "flinkVersion": {
                     "type": "string",
                     "description": "Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.\n"
@@ -12627,6 +12726,10 @@
                 "dashboardPreviewsEnabled": {
                     "type": "boolean",
                     "description": "Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.\n"
+                },
+                "dashboardScenesEnabled": {
+                    "type": "boolean",
+                    "description": "Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.\n"
                 },
                 "dashboardsMinRefreshInterval": {
                     "type": "string",
@@ -13695,6 +13798,13 @@
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigKafkaConnect:getKafkaConnectKafkaConnectUserConfigKafkaConnect",
                     "description": "Kafka Connect configuration values\n"
                 },
+                "pluginVersions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigPluginVersion:getKafkaConnectKafkaConnectUserConfigPluginVersion"
+                    },
+                    "description": "The plugin selected by the user\n"
+                },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigPrivateAccess:getKafkaConnectKafkaConnectUserConfigPrivateAccess",
                     "description": "Allow access to selected service ports from private networks\n"
@@ -13813,6 +13923,28 @@
                 }
             },
             "type": "object"
+        },
+        "aiven:index/getKafkaConnectKafkaConnectUserConfigPluginVersion:getKafkaConnectKafkaConnectUserConfigPluginVersion": {
+            "properties": {
+                "pluginName": {
+                    "type": "string",
+                    "description": "The name of the plugin. Example: `debezium-connector`.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The version of the plugin. Example: `2.5.0`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "pluginName",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "aiven:index/getKafkaConnectKafkaConnectUserConfigPrivateAccess:getKafkaConnectKafkaConnectUserConfigPrivateAccess": {
             "properties": {
@@ -17066,6 +17198,9 @@
                     "type": "integer",
                     "description": "How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.\n"
                 },
+                "clusterSearchRequestSlowlog": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog:getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog"
+                },
                 "emailSenderName": {
                     "type": "string",
                     "description": "Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.\n"
@@ -17078,6 +17213,10 @@
                 "emailSenderUsername": {
                     "type": "string",
                     "description": "Sender username for Opensearch alerts. Example: `jane@example.com`.\n"
+                },
+                "enableRemoteBackedStorage": {
+                    "type": "boolean",
+                    "description": "Enable remote-backed storage.\n"
                 },
                 "enableSecurityAudit": {
                     "type": "boolean",
@@ -17314,6 +17453,39 @@
                 "type": {
                     "type": "string",
                     "description": "Enum: `ip`. The type of rate limiting.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog:getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog": {
+            "properties": {
+                "level": {
+                    "type": "string",
+                    "description": "Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.\n"
+                },
+                "threshold": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold:getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold:getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold": {
+            "properties": {
+                "debug": {
+                    "type": "string",
+                    "description": "Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.\n"
+                },
+                "info": {
+                    "type": "string",
+                    "description": "Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.\n"
+                },
+                "trace": {
+                    "type": "string",
+                    "description": "Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.\n"
+                },
+                "warn": {
+                    "type": "string",
+                    "description": "Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.\n"
                 }
             },
             "type": "object"
@@ -19760,6 +19932,33 @@
                 "accessKeyId",
                 "secretAccessKey",
                 "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getServiceIntegrationEndpointExternalAzureBlobStorageUserConfig:getServiceIntegrationEndpointExternalAzureBlobStorageUserConfig": {
+            "properties": {
+                "blobPath": {
+                    "type": "string",
+                    "description": "Blob path. Example: `path/to/blob/file.csv`.\n"
+                },
+                "connectionString": {
+                    "type": "string",
+                    "description": "Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.\n",
+                    "secret": true
+                },
+                "container": {
+                    "type": "string",
+                    "description": "Container. Example: `container-dev`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionString",
+                "container"
             ],
             "language": {
                 "nodejs": {
@@ -32610,7 +32809,7 @@
             }
         },
         "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": {
-            "description": "Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups). You can add organization users and application users to groups.\n\nGroups are given access to projects using the `aiven.OrganizationGroupProject` resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst example = new aiven.OrganizationUserGroup(\"example\", {\n    description: \"Example group of users.\",\n    organizationId: main.id,\n    name: \"Example group\",\n});\nconst projectAdmin = new aiven.OrganizationUserGroupMember(\"project_admin\", {\n    groupId: example.groupId,\n    organizationId: main.id,\n    userId: \"u123a456b7890c\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample = aiven.OrganizationUserGroup(\"example\",\n    description=\"Example group of users.\",\n    organization_id=main[\"id\"],\n    name=\"Example group\")\nproject_admin = aiven.OrganizationUserGroupMember(\"project_admin\",\n    group_id=example.group_id,\n    organization_id=main[\"id\"],\n    user_id=\"u123a456b7890c\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Aiven.OrganizationUserGroup(\"example\", new()\n    {\n        Description = \"Example group of users.\",\n        OrganizationId = main.Id,\n        Name = \"Example group\",\n    });\n\n    var projectAdmin = new Aiven.OrganizationUserGroupMember(\"project_admin\", new()\n    {\n        GroupId = example.GroupId,\n        OrganizationId = main.Id,\n        UserId = \"u123a456b7890c\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := aiven.NewOrganizationUserGroup(ctx, \"example\", \u0026aiven.OrganizationUserGroupArgs{\n\t\t\tDescription:    pulumi.String(\"Example group of users.\"),\n\t\t\tOrganizationId: pulumi.Any(main.Id),\n\t\t\tName:           pulumi.String(\"Example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewOrganizationUserGroupMember(ctx, \"project_admin\", \u0026aiven.OrganizationUserGroupMemberArgs{\n\t\t\tGroupId:        example.GroupId,\n\t\t\tOrganizationId: pulumi.Any(main.Id),\n\t\t\tUserId:         pulumi.String(\"u123a456b7890c\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationUserGroup;\nimport com.pulumi.aiven.OrganizationUserGroupArgs;\nimport com.pulumi.aiven.OrganizationUserGroupMember;\nimport com.pulumi.aiven.OrganizationUserGroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OrganizationUserGroup(\"example\", OrganizationUserGroupArgs.builder()\n            .description(\"Example group of users.\")\n            .organizationId(main.id())\n            .name(\"Example group\")\n            .build());\n\n        var projectAdmin = new OrganizationUserGroupMember(\"projectAdmin\", OrganizationUserGroupMemberArgs.builder()\n            .groupId(example.groupId())\n            .organizationId(main.id())\n            .userId(\"u123a456b7890c\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: aiven:OrganizationUserGroup\n    properties:\n      description: Example group of users.\n      organizationId: ${main.id}\n      name: Example group\n  projectAdmin:\n    type: aiven:OrganizationUserGroupMember\n    name: project_admin\n    properties:\n      groupId: ${example.groupId}\n      organizationId: ${main.id}\n      userId: u123a456b7890c\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember project_admin ORGANIZATION_ID/USER_GROUP_ID/USER_ID\n```\n\n",
+            "description": "Adds and manages users in a user group. You can add organization users and application users to groups.\nOrganization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource.\n\nGroups are granted roles and permissions using the `aiven.OrganizationPermission` resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst example = new aiven.OrganizationUserGroup(\"example\", {\n    description: \"Example group of users.\",\n    organizationId: main.id,\n    name: \"Example group\",\n});\nconst projectAdmin = new aiven.OrganizationUserGroupMember(\"project_admin\", {\n    groupId: example.groupId,\n    organizationId: main.id,\n    userId: \"u123a456b7890c\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample = aiven.OrganizationUserGroup(\"example\",\n    description=\"Example group of users.\",\n    organization_id=main[\"id\"],\n    name=\"Example group\")\nproject_admin = aiven.OrganizationUserGroupMember(\"project_admin\",\n    group_id=example.group_id,\n    organization_id=main[\"id\"],\n    user_id=\"u123a456b7890c\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Aiven.OrganizationUserGroup(\"example\", new()\n    {\n        Description = \"Example group of users.\",\n        OrganizationId = main.Id,\n        Name = \"Example group\",\n    });\n\n    var projectAdmin = new Aiven.OrganizationUserGroupMember(\"project_admin\", new()\n    {\n        GroupId = example.GroupId,\n        OrganizationId = main.Id,\n        UserId = \"u123a456b7890c\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := aiven.NewOrganizationUserGroup(ctx, \"example\", \u0026aiven.OrganizationUserGroupArgs{\n\t\t\tDescription:    pulumi.String(\"Example group of users.\"),\n\t\t\tOrganizationId: pulumi.Any(main.Id),\n\t\t\tName:           pulumi.String(\"Example group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewOrganizationUserGroupMember(ctx, \"project_admin\", \u0026aiven.OrganizationUserGroupMemberArgs{\n\t\t\tGroupId:        example.GroupId,\n\t\t\tOrganizationId: pulumi.Any(main.Id),\n\t\t\tUserId:         pulumi.String(\"u123a456b7890c\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationUserGroup;\nimport com.pulumi.aiven.OrganizationUserGroupArgs;\nimport com.pulumi.aiven.OrganizationUserGroupMember;\nimport com.pulumi.aiven.OrganizationUserGroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OrganizationUserGroup(\"example\", OrganizationUserGroupArgs.builder()\n            .description(\"Example group of users.\")\n            .organizationId(main.id())\n            .name(\"Example group\")\n            .build());\n\n        var projectAdmin = new OrganizationUserGroupMember(\"projectAdmin\", OrganizationUserGroupMemberArgs.builder()\n            .groupId(example.groupId())\n            .organizationId(main.id())\n            .userId(\"u123a456b7890c\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: aiven:OrganizationUserGroup\n    properties:\n      description: Example group of users.\n      organizationId: ${main.id}\n      name: Example group\n  projectAdmin:\n    type: aiven:OrganizationUserGroupMember\n    name: project_admin\n    properties:\n      groupId: ${example.groupId}\n      organizationId: ${main.id}\n      userId: u123a456b7890c\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/organizationUserGroupMember:OrganizationUserGroupMember project_admin ORGANIZATION_ID/USER_GROUP_ID/USER_ID\n```\n\n",
             "properties": {
                 "groupId": {
                     "type": "string",
@@ -34681,6 +34880,10 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsS3UserConfig:ServiceIntegrationEndpointExternalAwsS3UserConfig",
                     "description": "ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
                 },
+                "externalAzureBlobStorageUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig:ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig",
+                    "description": "ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                },
                 "externalClickhouseUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalClickhouseUserConfig:ServiceIntegrationEndpointExternalClickhouseUserConfig",
                     "description": "ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
@@ -34774,6 +34977,10 @@
                 "externalAwsS3UserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsS3UserConfig:ServiceIntegrationEndpointExternalAwsS3UserConfig",
                     "description": "ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                },
+                "externalAzureBlobStorageUserConfig": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig:ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig",
+                    "description": "ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
                 },
                 "externalClickhouseUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalClickhouseUserConfig:ServiceIntegrationEndpointExternalClickhouseUserConfig",
@@ -34877,6 +35084,10 @@
                     "externalAwsS3UserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsS3UserConfig:ServiceIntegrationEndpointExternalAwsS3UserConfig",
                         "description": "ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
+                    },
+                    "externalAzureBlobStorageUserConfig": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig:ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig",
+                        "description": "ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n"
                     },
                     "externalClickhouseUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalClickhouseUserConfig:ServiceIntegrationEndpointExternalClickhouseUserConfig",
@@ -43551,6 +43762,13 @@
                         },
                         "type": "array"
                     },
+                    "externalAzureBlobStorageUserConfigs": {
+                        "description": "ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalAzureBlobStorageUserConfig:getServiceIntegrationEndpointExternalAzureBlobStorageUserConfig"
+                        },
+                        "type": "array"
+                    },
                     "externalClickhouseUserConfigs": {
                         "description": "ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later\n",
                         "items": {
@@ -43660,6 +43878,7 @@
                     "externalAwsCloudwatchLogsUserConfigs",
                     "externalAwsCloudwatchMetricsUserConfigs",
                     "externalAwsS3UserConfigs",
+                    "externalAzureBlobStorageUserConfigs",
                     "externalClickhouseUserConfigs",
                     "externalElasticsearchLogsUserConfigs",
                     "externalGoogleCloudBigqueries",

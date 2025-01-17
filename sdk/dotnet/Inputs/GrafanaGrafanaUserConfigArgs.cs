@@ -103,6 +103,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? DashboardPreviewsEnabled { get; set; }
 
         /// <summary>
+        /// Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+        /// </summary>
+        [Input("dashboardScenesEnabled")]
+        public Input<bool>? DashboardScenesEnabled { get; set; }
+
+        /// <summary>
         /// Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
         /// </summary>
         [Input("dashboardsMinRefreshInterval")]

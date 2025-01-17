@@ -37,6 +37,7 @@ namespace Pulumi.Aiven.Outputs
         /// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         /// </summary>
         public readonly int? ClusterRoutingAllocationNodeConcurrentRecoveries;
+        public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog? ClusterSearchRequestSlowlog;
         /// <summary>
         /// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         /// </summary>
@@ -49,6 +50,10 @@ namespace Pulumi.Aiven.Outputs
         /// Sender username for Opensearch alerts. Example: `jane@example.com`.
         /// </summary>
         public readonly string? EmailSenderUsername;
+        /// <summary>
+        /// Enable remote-backed storage.
+        /// </summary>
+        public readonly bool? EnableRemoteBackedStorage;
         /// <summary>
         /// Enable/Disable security audit.
         /// </summary>
@@ -221,11 +226,15 @@ namespace Pulumi.Aiven.Outputs
 
             int? clusterRoutingAllocationNodeConcurrentRecoveries,
 
+            Outputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog? clusterSearchRequestSlowlog,
+
             string? emailSenderName,
 
             string? emailSenderPassword,
 
             string? emailSenderUsername,
+
+            bool? enableRemoteBackedStorage,
 
             bool? enableSecurityAudit,
 
@@ -313,9 +322,11 @@ namespace Pulumi.Aiven.Outputs
             ClusterMaxShardsPerNode = clusterMaxShardsPerNode;
             ClusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
             ClusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
+            ClusterSearchRequestSlowlog = clusterSearchRequestSlowlog;
             EmailSenderName = emailSenderName;
             EmailSenderPassword = emailSenderPassword;
             EmailSenderUsername = emailSenderUsername;
+            EnableRemoteBackedStorage = enableRemoteBackedStorage;
             EnableSecurityAudit = enableSecurityAudit;
             HttpMaxContentLength = httpMaxContentLength;
             HttpMaxHeaderSize = httpMaxHeaderSize;
