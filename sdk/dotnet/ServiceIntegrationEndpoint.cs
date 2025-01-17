@@ -114,6 +114,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationEndpointExternalAwsS3UserConfig?> ExternalAwsS3UserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Output("externalAzureBlobStorageUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig?> ExternalAzureBlobStorageUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         [Output("externalClickhouseUserConfig")]
@@ -286,6 +292,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsS3UserConfigArgs>? ExternalAwsS3UserConfig { get; set; }
 
         /// <summary>
+        /// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("externalAzureBlobStorageUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs>? ExternalAzureBlobStorageUserConfig { get; set; }
+
+        /// <summary>
         /// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         [Input("externalClickhouseUserConfig")]
@@ -430,6 +442,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalAwsS3UserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalAwsS3UserConfigGetArgs>? ExternalAwsS3UserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("externalAzureBlobStorageUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigGetArgs>? ExternalAzureBlobStorageUserConfig { get; set; }
 
         /// <summary>
         /// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

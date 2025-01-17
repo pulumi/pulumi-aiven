@@ -1321,6 +1321,10 @@ export interface FlinkFlinkUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
+     * Enable to upload Custom JARs for Flink applications.
+     */
+    customCode?: pulumi.Input<boolean>;
+    /**
      * Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
      */
     flinkVersion?: pulumi.Input<string>;
@@ -1529,6 +1533,10 @@ export interface GrafanaGrafanaUserConfig {
      * Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
      */
     dashboardPreviewsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+     */
+    dashboardScenesEnabled?: pulumi.Input<boolean>;
     /**
      * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      */
@@ -2279,6 +2287,10 @@ export interface KafkaConnectKafkaConnectUserConfig {
      */
     kafkaConnect?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigKafkaConnect>;
     /**
+     * The plugin selected by the user
+     */
+    pluginVersions?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPluginVersion>[]>;
+    /**
      * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPrivateAccess>;
@@ -2377,6 +2389,17 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      * The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
      */
     sessionTimeoutMs?: pulumi.Input<number>;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigPluginVersion {
+    /**
+     * The name of the plugin. Example: `debezium-connector`.
+     */
+    pluginName: pulumi.Input<string>;
+    /**
+     * The version of the plugin. Example: `2.5.0`.
+     */
+    version: pulumi.Input<string>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
@@ -4801,6 +4824,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number>;
+    clusterSearchRequestSlowlog?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog>;
     /**
      * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      */
@@ -4813,6 +4837,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Sender username for Opensearch alerts. Example: `jane@example.com`.
      */
     emailSenderUsername?: pulumi.Input<string>;
+    /**
+     * Enable remote-backed storage.
+     */
+    enableRemoteBackedStorage?: pulumi.Input<boolean>;
     /**
      * Enable/Disable security audit.
      */
@@ -5036,6 +5064,33 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      * Enum: `ip`. The type of rate limiting.
      */
     type?: pulumi.Input<string>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
+    /**
+     * Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+     */
+    level?: pulumi.Input<string>;
+    threshold?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
+    /**
+     * Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    debug?: pulumi.Input<string>;
+    /**
+     * Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    info?: pulumi.Input<string>;
+    /**
+     * Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    trace?: pulumi.Input<string>;
+    /**
+     * Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    warn?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
@@ -6925,6 +6980,21 @@ export interface ServiceIntegrationEndpointExternalAwsS3UserConfig {
      * S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
      */
     url: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig {
+    /**
+     * Blob path. Example: `path/to/blob/file.csv`.
+     */
+    blobPath?: pulumi.Input<string>;
+    /**
+     * Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+     */
+    connectionString: pulumi.Input<string>;
+    /**
+     * Container. Example: `container-dev`.
+     */
+    container: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalClickhouseUserConfig {

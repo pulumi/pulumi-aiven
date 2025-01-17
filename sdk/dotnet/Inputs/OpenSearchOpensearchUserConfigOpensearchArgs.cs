@@ -48,6 +48,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("clusterRoutingAllocationNodeConcurrentRecoveries")]
         public Input<int>? ClusterRoutingAllocationNodeConcurrentRecoveries { get; set; }
 
+        [Input("clusterSearchRequestSlowlog")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs>? ClusterSearchRequestSlowlog { get; set; }
+
         /// <summary>
         /// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         /// </summary>
@@ -75,6 +78,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("emailSenderUsername")]
         public Input<string>? EmailSenderUsername { get; set; }
+
+        /// <summary>
+        /// Enable remote-backed storage.
+        /// </summary>
+        [Input("enableRemoteBackedStorage")]
+        public Input<bool>? EnableRemoteBackedStorage { get; set; }
 
         /// <summary>
         /// Enable/Disable security audit.

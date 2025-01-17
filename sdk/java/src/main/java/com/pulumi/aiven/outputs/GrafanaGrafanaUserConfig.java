@@ -102,6 +102,11 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean dashboardPreviewsEnabled;
     /**
+     * @return Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+     * 
+     */
+    private @Nullable Boolean dashboardScenesEnabled;
+    /**
      * @return Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      * 
      */
@@ -353,6 +358,13 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.dashboardPreviewsEnabled);
     }
     /**
+     * @return Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+     * 
+     */
+    public Optional<Boolean> dashboardScenesEnabled() {
+        return Optional.ofNullable(this.dashboardScenesEnabled);
+    }
+    /**
      * @return Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      * 
      */
@@ -577,6 +589,7 @@ public final class GrafanaGrafanaUserConfig {
         private @Nullable String cookieSamesite;
         private @Nullable String customDomain;
         private @Nullable Boolean dashboardPreviewsEnabled;
+        private @Nullable Boolean dashboardScenesEnabled;
         private @Nullable String dashboardsMinRefreshInterval;
         private @Nullable Integer dashboardsVersionsToKeep;
         private @Nullable Boolean dataproxySendUserHeader;
@@ -623,6 +636,7 @@ public final class GrafanaGrafanaUserConfig {
     	      this.cookieSamesite = defaults.cookieSamesite;
     	      this.customDomain = defaults.customDomain;
     	      this.dashboardPreviewsEnabled = defaults.dashboardPreviewsEnabled;
+    	      this.dashboardScenesEnabled = defaults.dashboardScenesEnabled;
     	      this.dashboardsMinRefreshInterval = defaults.dashboardsMinRefreshInterval;
     	      this.dashboardsVersionsToKeep = defaults.dashboardsVersionsToKeep;
     	      this.dataproxySendUserHeader = defaults.dataproxySendUserHeader;
@@ -741,6 +755,12 @@ public final class GrafanaGrafanaUserConfig {
         public Builder dashboardPreviewsEnabled(@Nullable Boolean dashboardPreviewsEnabled) {
 
             this.dashboardPreviewsEnabled = dashboardPreviewsEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dashboardScenesEnabled(@Nullable Boolean dashboardScenesEnabled) {
+
+            this.dashboardScenesEnabled = dashboardScenesEnabled;
             return this;
         }
         @CustomType.Setter
@@ -937,6 +957,7 @@ public final class GrafanaGrafanaUserConfig {
             _resultValue.cookieSamesite = cookieSamesite;
             _resultValue.customDomain = customDomain;
             _resultValue.dashboardPreviewsEnabled = dashboardPreviewsEnabled;
+            _resultValue.dashboardScenesEnabled = dashboardScenesEnabled;
             _resultValue.dashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             _resultValue.dashboardsVersionsToKeep = dashboardsVersionsToKeep;
             _resultValue.dataproxySendUserHeader = dataproxySendUserHeader;

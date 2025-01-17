@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
+        /// Enable to upload Custom JARs for Flink applications.
+        /// </summary>
+        public readonly bool? CustomCode;
+        /// <summary>
         /// Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
         /// </summary>
         public readonly string? FlinkVersion;
@@ -66,6 +70,8 @@ namespace Pulumi.Aiven.Outputs
         private FlinkFlinkUserConfig(
             string? additionalBackupRegions,
 
+            bool? customCode,
+
             string? flinkVersion,
 
             ImmutableArray<Outputs.FlinkFlinkUserConfigIpFilterObject> ipFilterObjects,
@@ -89,6 +95,7 @@ namespace Pulumi.Aiven.Outputs
             bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
+            CustomCode = customCode;
             FlinkVersion = flinkVersion;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;

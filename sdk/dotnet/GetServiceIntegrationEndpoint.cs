@@ -165,6 +165,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfigResult> ExternalAwsS3UserConfigs;
         /// <summary>
+        /// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigResult> ExternalAzureBlobStorageUserConfigs;
+        /// <summary>
         /// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfigResult> ExternalClickhouseUserConfigs;
@@ -243,6 +247,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfigResult> externalAwsS3UserConfigs,
 
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigResult> externalAzureBlobStorageUserConfigs,
+
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfigResult> externalClickhouseUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult> externalElasticsearchLogsUserConfigs,
@@ -281,6 +287,7 @@ namespace Pulumi.Aiven
             ExternalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             ExternalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             ExternalAwsS3UserConfigs = externalAwsS3UserConfigs;
+            ExternalAzureBlobStorageUserConfigs = externalAzureBlobStorageUserConfigs;
             ExternalClickhouseUserConfigs = externalClickhouseUserConfigs;
             ExternalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
             ExternalGoogleCloudBigqueries = externalGoogleCloudBigqueries;

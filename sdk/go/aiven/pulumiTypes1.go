@@ -13,6 +13,614 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMySqlServiceIntegration struct {
+	// Type of the service integration. The possible value is `readReplica`.
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetMySqlServiceIntegrationInput is an input type that accepts GetMySqlServiceIntegrationArgs and GetMySqlServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetMySqlServiceIntegrationInput` via:
+//
+//	GetMySqlServiceIntegrationArgs{...}
+type GetMySqlServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetMySqlServiceIntegrationOutput() GetMySqlServiceIntegrationOutput
+	ToGetMySqlServiceIntegrationOutputWithContext(context.Context) GetMySqlServiceIntegrationOutput
+}
+
+type GetMySqlServiceIntegrationArgs struct {
+	// Type of the service integration. The possible value is `readReplica`.
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetMySqlServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlServiceIntegration)(nil)).Elem()
+}
+
+func (i GetMySqlServiceIntegrationArgs) ToGetMySqlServiceIntegrationOutput() GetMySqlServiceIntegrationOutput {
+	return i.ToGetMySqlServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetMySqlServiceIntegrationArgs) ToGetMySqlServiceIntegrationOutputWithContext(ctx context.Context) GetMySqlServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlServiceIntegrationOutput)
+}
+
+// GetMySqlServiceIntegrationArrayInput is an input type that accepts GetMySqlServiceIntegrationArray and GetMySqlServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetMySqlServiceIntegrationArrayInput` via:
+//
+//	GetMySqlServiceIntegrationArray{ GetMySqlServiceIntegrationArgs{...} }
+type GetMySqlServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetMySqlServiceIntegrationArrayOutput() GetMySqlServiceIntegrationArrayOutput
+	ToGetMySqlServiceIntegrationArrayOutputWithContext(context.Context) GetMySqlServiceIntegrationArrayOutput
+}
+
+type GetMySqlServiceIntegrationArray []GetMySqlServiceIntegrationInput
+
+func (GetMySqlServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlServiceIntegration)(nil)).Elem()
+}
+
+func (i GetMySqlServiceIntegrationArray) ToGetMySqlServiceIntegrationArrayOutput() GetMySqlServiceIntegrationArrayOutput {
+	return i.ToGetMySqlServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetMySqlServiceIntegrationArray) ToGetMySqlServiceIntegrationArrayOutputWithContext(ctx context.Context) GetMySqlServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlServiceIntegrationArrayOutput)
+}
+
+type GetMySqlServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlServiceIntegration)(nil)).Elem()
+}
+
+func (o GetMySqlServiceIntegrationOutput) ToGetMySqlServiceIntegrationOutput() GetMySqlServiceIntegrationOutput {
+	return o
+}
+
+func (o GetMySqlServiceIntegrationOutput) ToGetMySqlServiceIntegrationOutputWithContext(ctx context.Context) GetMySqlServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration. The possible value is `readReplica`.
+func (o GetMySqlServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetMySqlServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetMySqlServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlServiceIntegration)(nil)).Elem()
+}
+
+func (o GetMySqlServiceIntegrationArrayOutput) ToGetMySqlServiceIntegrationArrayOutput() GetMySqlServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetMySqlServiceIntegrationArrayOutput) ToGetMySqlServiceIntegrationArrayOutputWithContext(ctx context.Context) GetMySqlServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetMySqlServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetMySqlServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMySqlServiceIntegration {
+		return vs[0].([]GetMySqlServiceIntegration)[vs[1].(int)]
+	}).(GetMySqlServiceIntegrationOutput)
+}
+
+type GetMySqlTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetMySqlTagInput is an input type that accepts GetMySqlTagArgs and GetMySqlTagOutput values.
+// You can construct a concrete instance of `GetMySqlTagInput` via:
+//
+//	GetMySqlTagArgs{...}
+type GetMySqlTagInput interface {
+	pulumi.Input
+
+	ToGetMySqlTagOutput() GetMySqlTagOutput
+	ToGetMySqlTagOutputWithContext(context.Context) GetMySqlTagOutput
+}
+
+type GetMySqlTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetMySqlTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlTag)(nil)).Elem()
+}
+
+func (i GetMySqlTagArgs) ToGetMySqlTagOutput() GetMySqlTagOutput {
+	return i.ToGetMySqlTagOutputWithContext(context.Background())
+}
+
+func (i GetMySqlTagArgs) ToGetMySqlTagOutputWithContext(ctx context.Context) GetMySqlTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlTagOutput)
+}
+
+// GetMySqlTagArrayInput is an input type that accepts GetMySqlTagArray and GetMySqlTagArrayOutput values.
+// You can construct a concrete instance of `GetMySqlTagArrayInput` via:
+//
+//	GetMySqlTagArray{ GetMySqlTagArgs{...} }
+type GetMySqlTagArrayInput interface {
+	pulumi.Input
+
+	ToGetMySqlTagArrayOutput() GetMySqlTagArrayOutput
+	ToGetMySqlTagArrayOutputWithContext(context.Context) GetMySqlTagArrayOutput
+}
+
+type GetMySqlTagArray []GetMySqlTagInput
+
+func (GetMySqlTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlTag)(nil)).Elem()
+}
+
+func (i GetMySqlTagArray) ToGetMySqlTagArrayOutput() GetMySqlTagArrayOutput {
+	return i.ToGetMySqlTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetMySqlTagArray) ToGetMySqlTagArrayOutputWithContext(ctx context.Context) GetMySqlTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlTagArrayOutput)
+}
+
+type GetMySqlTagOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlTag)(nil)).Elem()
+}
+
+func (o GetMySqlTagOutput) ToGetMySqlTagOutput() GetMySqlTagOutput {
+	return o
+}
+
+func (o GetMySqlTagOutput) ToGetMySqlTagOutputWithContext(ctx context.Context) GetMySqlTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetMySqlTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetMySqlTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetMySqlTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlTag)(nil)).Elem()
+}
+
+func (o GetMySqlTagArrayOutput) ToGetMySqlTagArrayOutput() GetMySqlTagArrayOutput {
+	return o
+}
+
+func (o GetMySqlTagArrayOutput) ToGetMySqlTagArrayOutputWithContext(ctx context.Context) GetMySqlTagArrayOutput {
+	return o
+}
+
+func (o GetMySqlTagArrayOutput) Index(i pulumi.IntInput) GetMySqlTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMySqlTag {
+		return vs[0].([]GetMySqlTag)[vs[1].(int)]
+	}).(GetMySqlTagOutput)
+}
+
+type GetMySqlTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetMySqlTechEmailInput is an input type that accepts GetMySqlTechEmailArgs and GetMySqlTechEmailOutput values.
+// You can construct a concrete instance of `GetMySqlTechEmailInput` via:
+//
+//	GetMySqlTechEmailArgs{...}
+type GetMySqlTechEmailInput interface {
+	pulumi.Input
+
+	ToGetMySqlTechEmailOutput() GetMySqlTechEmailOutput
+	ToGetMySqlTechEmailOutputWithContext(context.Context) GetMySqlTechEmailOutput
+}
+
+type GetMySqlTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetMySqlTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlTechEmail)(nil)).Elem()
+}
+
+func (i GetMySqlTechEmailArgs) ToGetMySqlTechEmailOutput() GetMySqlTechEmailOutput {
+	return i.ToGetMySqlTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetMySqlTechEmailArgs) ToGetMySqlTechEmailOutputWithContext(ctx context.Context) GetMySqlTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlTechEmailOutput)
+}
+
+// GetMySqlTechEmailArrayInput is an input type that accepts GetMySqlTechEmailArray and GetMySqlTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetMySqlTechEmailArrayInput` via:
+//
+//	GetMySqlTechEmailArray{ GetMySqlTechEmailArgs{...} }
+type GetMySqlTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetMySqlTechEmailArrayOutput() GetMySqlTechEmailArrayOutput
+	ToGetMySqlTechEmailArrayOutputWithContext(context.Context) GetMySqlTechEmailArrayOutput
+}
+
+type GetMySqlTechEmailArray []GetMySqlTechEmailInput
+
+func (GetMySqlTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlTechEmail)(nil)).Elem()
+}
+
+func (i GetMySqlTechEmailArray) ToGetMySqlTechEmailArrayOutput() GetMySqlTechEmailArrayOutput {
+	return i.ToGetMySqlTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetMySqlTechEmailArray) ToGetMySqlTechEmailArrayOutputWithContext(ctx context.Context) GetMySqlTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlTechEmailArrayOutput)
+}
+
+type GetMySqlTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlTechEmail)(nil)).Elem()
+}
+
+func (o GetMySqlTechEmailOutput) ToGetMySqlTechEmailOutput() GetMySqlTechEmailOutput {
+	return o
+}
+
+func (o GetMySqlTechEmailOutput) ToGetMySqlTechEmailOutputWithContext(ctx context.Context) GetMySqlTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetMySqlTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetMySqlTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlTechEmail)(nil)).Elem()
+}
+
+func (o GetMySqlTechEmailArrayOutput) ToGetMySqlTechEmailArrayOutput() GetMySqlTechEmailArrayOutput {
+	return o
+}
+
+func (o GetMySqlTechEmailArrayOutput) ToGetMySqlTechEmailArrayOutputWithContext(ctx context.Context) GetMySqlTechEmailArrayOutput {
+	return o
+}
+
+func (o GetMySqlTechEmailArrayOutput) Index(i pulumi.IntInput) GetMySqlTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMySqlTechEmail {
+		return vs[0].([]GetMySqlTechEmail)[vs[1].(int)]
+	}).(GetMySqlTechEmailOutput)
+}
+
+type GetOpenSearchComponent struct {
+	// Service component name
+	Component string `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host string `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port int `pulumi:"port"`
+	// Network access route
+	Route string `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl bool `pulumi:"ssl"`
+	// DNS usage name
+	Usage string `pulumi:"usage"`
+}
+
+// GetOpenSearchComponentInput is an input type that accepts GetOpenSearchComponentArgs and GetOpenSearchComponentOutput values.
+// You can construct a concrete instance of `GetOpenSearchComponentInput` via:
+//
+//	GetOpenSearchComponentArgs{...}
+type GetOpenSearchComponentInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchComponentOutput() GetOpenSearchComponentOutput
+	ToGetOpenSearchComponentOutputWithContext(context.Context) GetOpenSearchComponentOutput
+}
+
+type GetOpenSearchComponentArgs struct {
+	// Service component name
+	Component pulumi.StringInput `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri pulumi.StringInput `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host pulumi.StringInput `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Port number for connecting to the service component
+	Port pulumi.IntInput `pulumi:"port"`
+	// Network access route
+	Route pulumi.StringInput `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl pulumi.BoolInput `pulumi:"ssl"`
+	// DNS usage name
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetOpenSearchComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchComponent)(nil)).Elem()
+}
+
+func (i GetOpenSearchComponentArgs) ToGetOpenSearchComponentOutput() GetOpenSearchComponentOutput {
+	return i.ToGetOpenSearchComponentOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchComponentArgs) ToGetOpenSearchComponentOutputWithContext(ctx context.Context) GetOpenSearchComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchComponentOutput)
+}
+
+// GetOpenSearchComponentArrayInput is an input type that accepts GetOpenSearchComponentArray and GetOpenSearchComponentArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchComponentArrayInput` via:
+//
+//	GetOpenSearchComponentArray{ GetOpenSearchComponentArgs{...} }
+type GetOpenSearchComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchComponentArrayOutput() GetOpenSearchComponentArrayOutput
+	ToGetOpenSearchComponentArrayOutputWithContext(context.Context) GetOpenSearchComponentArrayOutput
+}
+
+type GetOpenSearchComponentArray []GetOpenSearchComponentInput
+
+func (GetOpenSearchComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchComponent)(nil)).Elem()
+}
+
+func (i GetOpenSearchComponentArray) ToGetOpenSearchComponentArrayOutput() GetOpenSearchComponentArrayOutput {
+	return i.ToGetOpenSearchComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchComponentArray) ToGetOpenSearchComponentArrayOutputWithContext(ctx context.Context) GetOpenSearchComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchComponentArrayOutput)
+}
+
+type GetOpenSearchComponentOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchComponent)(nil)).Elem()
+}
+
+func (o GetOpenSearchComponentOutput) ToGetOpenSearchComponentOutput() GetOpenSearchComponentOutput {
+	return o
+}
+
+func (o GetOpenSearchComponentOutput) ToGetOpenSearchComponentOutputWithContext(ctx context.Context) GetOpenSearchComponentOutput {
+	return o
+}
+
+// Service component name
+func (o GetOpenSearchComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+// Connection info for connecting to the service component. This is a combination of host and port.
+func (o GetOpenSearchComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// Host name for connecting to the service component
+func (o GetOpenSearchComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Kafka authentication method. This is a value specific to the 'kafka' service component
+func (o GetOpenSearchComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Port number for connecting to the service component
+func (o GetOpenSearchComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Network access route
+func (o GetOpenSearchComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+func (o GetOpenSearchComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+// DNS usage name
+func (o GetOpenSearchComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchComponent)(nil)).Elem()
+}
+
+func (o GetOpenSearchComponentArrayOutput) ToGetOpenSearchComponentArrayOutput() GetOpenSearchComponentArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchComponentArrayOutput) ToGetOpenSearchComponentArrayOutputWithContext(ctx context.Context) GetOpenSearchComponentArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchComponentArrayOutput) Index(i pulumi.IntInput) GetOpenSearchComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchComponent {
+		return vs[0].([]GetOpenSearchComponent)[vs[1].(int)]
+	}).(GetOpenSearchComponentOutput)
+}
+
+type GetOpenSearchOpensearch struct {
+	// URI for Kibana dashboard frontend
+	//
+	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
+	KibanaUri string `pulumi:"kibanaUri"`
+	// URI for OpenSearch dashboard frontend
+	OpensearchDashboardsUri string `pulumi:"opensearchDashboardsUri"`
+	// OpenSearch password
+	Password string `pulumi:"password"`
+	// OpenSearch server URIs.
+	Uris []string `pulumi:"uris"`
+	// OpenSearch username
+	Username string `pulumi:"username"`
+}
+
+// GetOpenSearchOpensearchInput is an input type that accepts GetOpenSearchOpensearchArgs and GetOpenSearchOpensearchOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchInput` via:
+//
+//	GetOpenSearchOpensearchArgs{...}
+type GetOpenSearchOpensearchInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchOutput() GetOpenSearchOpensearchOutput
+	ToGetOpenSearchOpensearchOutputWithContext(context.Context) GetOpenSearchOpensearchOutput
+}
+
+type GetOpenSearchOpensearchArgs struct {
+	// URI for Kibana dashboard frontend
+	//
+	// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
+	KibanaUri pulumi.StringInput `pulumi:"kibanaUri"`
+	// URI for OpenSearch dashboard frontend
+	OpensearchDashboardsUri pulumi.StringInput `pulumi:"opensearchDashboardsUri"`
+	// OpenSearch password
+	Password pulumi.StringInput `pulumi:"password"`
+	// OpenSearch server URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+	// OpenSearch username
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetOpenSearchOpensearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearch)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchArgs) ToGetOpenSearchOpensearchOutput() GetOpenSearchOpensearchOutput {
+	return i.ToGetOpenSearchOpensearchOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchArgs) ToGetOpenSearchOpensearchOutputWithContext(ctx context.Context) GetOpenSearchOpensearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchOutput)
+}
+
+// GetOpenSearchOpensearchArrayInput is an input type that accepts GetOpenSearchOpensearchArray and GetOpenSearchOpensearchArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchArrayInput` via:
+//
+//	GetOpenSearchOpensearchArray{ GetOpenSearchOpensearchArgs{...} }
+type GetOpenSearchOpensearchArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchArrayOutput() GetOpenSearchOpensearchArrayOutput
+	ToGetOpenSearchOpensearchArrayOutputWithContext(context.Context) GetOpenSearchOpensearchArrayOutput
+}
+
+type GetOpenSearchOpensearchArray []GetOpenSearchOpensearchInput
+
+func (GetOpenSearchOpensearchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchOpensearch)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchArray) ToGetOpenSearchOpensearchArrayOutput() GetOpenSearchOpensearchArrayOutput {
+	return i.ToGetOpenSearchOpensearchArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchArray) ToGetOpenSearchOpensearchArrayOutputWithContext(ctx context.Context) GetOpenSearchOpensearchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchArrayOutput)
+}
+
+type GetOpenSearchOpensearchOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearch)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchOutput) ToGetOpenSearchOpensearchOutput() GetOpenSearchOpensearchOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchOutput) ToGetOpenSearchOpensearchOutputWithContext(ctx context.Context) GetOpenSearchOpensearchOutput {
+	return o
+}
+
+// URI for Kibana dashboard frontend
+//
+// Deprecated: This field was added by mistake and has never worked. It will be removed in future versions.
+func (o GetOpenSearchOpensearchOutput) KibanaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearch) string { return v.KibanaUri }).(pulumi.StringOutput)
+}
+
+// URI for OpenSearch dashboard frontend
+func (o GetOpenSearchOpensearchOutput) OpensearchDashboardsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearch) string { return v.OpensearchDashboardsUri }).(pulumi.StringOutput)
+}
+
+// OpenSearch password
+func (o GetOpenSearchOpensearchOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearch) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// OpenSearch server URIs.
+func (o GetOpenSearchOpensearchOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearch) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+// OpenSearch username
+func (o GetOpenSearchOpensearchOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearch) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchOpensearchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchOpensearch)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchArrayOutput) ToGetOpenSearchOpensearchArrayOutput() GetOpenSearchOpensearchArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchArrayOutput) ToGetOpenSearchOpensearchArrayOutputWithContext(ctx context.Context) GetOpenSearchOpensearchArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchArrayOutput) Index(i pulumi.IntInput) GetOpenSearchOpensearchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchOpensearch {
+		return vs[0].([]GetOpenSearchOpensearch)[vs[1].(int)]
+	}).(GetOpenSearchOpensearchOutput)
+}
+
 type GetOpenSearchOpensearchUserConfig struct {
 	// Additional Cloud Regions for Backup Replication.
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
@@ -1976,13 +2584,16 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
 	ClusterRoutingAllocationBalancePreferPrimary *bool `pulumi:"clusterRoutingAllocationBalancePreferPrimary"`
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
-	ClusterRoutingAllocationNodeConcurrentRecoveries *int `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	ClusterRoutingAllocationNodeConcurrentRecoveries *int                                                                    `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	ClusterSearchRequestSlowlog                      *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog `pulumi:"clusterSearchRequestSlowlog"`
 	// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
 	EmailSenderName *string `pulumi:"emailSenderName"`
 	// Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
 	EmailSenderPassword *string `pulumi:"emailSenderPassword"`
 	// Sender username for Opensearch alerts. Example: `jane@example.com`.
 	EmailSenderUsername *string `pulumi:"emailSenderUsername"`
+	// Enable remote-backed storage.
+	EnableRemoteBackedStorage *bool `pulumi:"enableRemoteBackedStorage"`
 	// Enable/Disable security audit.
 	EnableSecurityAudit *bool `pulumi:"enableSecurityAudit"`
 	// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
@@ -2087,13 +2698,16 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	// When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
 	ClusterRoutingAllocationBalancePreferPrimary pulumi.BoolPtrInput `pulumi:"clusterRoutingAllocationBalancePreferPrimary"`
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
-	ClusterRoutingAllocationNodeConcurrentRecoveries pulumi.IntPtrInput `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	ClusterRoutingAllocationNodeConcurrentRecoveries pulumi.IntPtrInput                                                             `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
+	ClusterSearchRequestSlowlog                      GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrInput `pulumi:"clusterSearchRequestSlowlog"`
 	// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
 	EmailSenderName pulumi.StringPtrInput `pulumi:"emailSenderName"`
 	// Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
 	EmailSenderPassword pulumi.StringPtrInput `pulumi:"emailSenderPassword"`
 	// Sender username for Opensearch alerts. Example: `jane@example.com`.
 	EmailSenderUsername pulumi.StringPtrInput `pulumi:"emailSenderUsername"`
+	// Enable remote-backed storage.
+	EnableRemoteBackedStorage pulumi.BoolPtrInput `pulumi:"enableRemoteBackedStorage"`
 	// Enable/Disable security audit.
 	EnableSecurityAudit pulumi.BoolPtrInput `pulumi:"enableSecurityAudit"`
 	// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
@@ -2288,6 +2902,12 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterRoutingAllocat
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterSearchRequestSlowlog() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
+		return v.ClusterSearchRequestSlowlog
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput)
+}
+
 // Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderName }).(pulumi.StringPtrOutput)
@@ -2301,6 +2921,11 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderPassword()
 // Sender username for Opensearch alerts. Example: `jane@example.com`.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EmailSenderUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *string { return v.EmailSenderUsername }).(pulumi.StringPtrOutput)
+}
+
+// Enable remote-backed storage.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) EnableRemoteBackedStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.EnableRemoteBackedStorage }).(pulumi.BoolPtrOutput)
 }
 
 // Enable/Disable security audit.
@@ -2598,6 +3223,15 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterRoutingAllo
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterSearchRequestSlowlog() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterSearchRequestSlowlog
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput)
+}
+
 // Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *string {
@@ -2626,6 +3260,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EmailSenderUsernam
 		}
 		return v.EmailSenderUsername
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enable remote-backed storage.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) EnableRemoteBackedStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRemoteBackedStorage
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Enable/Disable security audit.
@@ -3689,6 +4333,362 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLim
 			return nil
 		}
 		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog struct {
+	// Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+	Level     *string                                                                          `pulumi:"level"`
+	Threshold *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold `pulumi:"threshold"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs and GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs struct {
+	// Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+	Level     pulumi.StringPtrInput                                                                   `pulumi:"level"`
+	Threshold GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput `pulumi:"threshold"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput).ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs, GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtr and GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrType GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtr(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog) *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput)
+}
+
+// Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput) Threshold() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog) *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
+		return v.Threshold
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput)
+}
+
+// Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput) Threshold() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog) *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold struct {
+	// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Debug *string `pulumi:"debug"`
+	// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Info *string `pulumi:"info"`
+	// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Trace *string `pulumi:"trace"`
+	// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Warn *string `pulumi:"warn"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs and GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs struct {
+	// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Debug pulumi.StringPtrInput `pulumi:"debug"`
+	// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Info pulumi.StringPtrInput `pulumi:"info"`
+	// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Trace pulumi.StringPtrInput `pulumi:"trace"`
+	// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Warn pulumi.StringPtrInput `pulumi:"warn"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput).ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs, GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtr and GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtr(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput)
+}
+
+// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Debug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		return v.Debug
+	}).(pulumi.StringPtrOutput)
+}
+
+// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Info() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		return v.Info
+	}).(pulumi.StringPtrOutput)
+}
+
+// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Trace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		return v.Trace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Warn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		return v.Warn
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput)
+}
+
+// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Debug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Debug
+	}).(pulumi.StringPtrOutput)
+}
+
+// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Info() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Info
+	}).(pulumi.StringPtrOutput)
+}
+
+// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Trace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Trace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Warn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Warn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17123,6 +18123,123 @@ func (o GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput) Index(i
 	}).(GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput)
 }
 
+type GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig struct {
+	// Blob path. Example: `path/to/blob/file.csv`.
+	BlobPath *string `pulumi:"blobPath"`
+	// Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+	ConnectionString string `pulumi:"connectionString"`
+	// Container. Example: `container-dev`.
+	Container string `pulumi:"container"`
+}
+
+// GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigInput is an input type that accepts GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs and GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs{...}
+type GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput() GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput
+	ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs struct {
+	// Blob path. Example: `path/to/blob/file.csv`.
+	BlobPath pulumi.StringPtrInput `pulumi:"blobPath"`
+	// Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// Container. Example: `container-dev`.
+	Container pulumi.StringInput `pulumi:"container"`
+}
+
+func (GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs) ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput() GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs) ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArray and GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArray{ GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs{...} }
+type GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput() GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArray []GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigInput
+
+func (GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArray) ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput() GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArray) ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput) ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput() GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput) ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput {
+	return o
+}
+
+// Blob path. Example: `path/to/blob/file.csv`.
+func (o GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput) BlobPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig) *string { return v.BlobPath }).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+func (o GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig) string {
+		return v.ConnectionString
+	}).(pulumi.StringOutput)
+}
+
+// Container. Example: `container-dev`.
+func (o GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput) Container() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig) string { return v.Container }).(pulumi.StringOutput)
+}
+
+type GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput() GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput) ToGetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput)
+}
+
 type GetServiceIntegrationEndpointExternalClickhouseUserConfig struct {
 	// Hostname or IP address of the server. Example: `my.server.com`.
 	Host string `pulumi:"host"`
@@ -25702,6 +26819,16 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlServiceIntegrationInput)(nil)).Elem(), GetMySqlServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlServiceIntegrationArrayInput)(nil)).Elem(), GetMySqlServiceIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlTagInput)(nil)).Elem(), GetMySqlTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlTagArrayInput)(nil)).Elem(), GetMySqlTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlTechEmailInput)(nil)).Elem(), GetMySqlTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlTechEmailArrayInput)(nil)).Elem(), GetMySqlTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchComponentInput)(nil)).Elem(), GetOpenSearchComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchComponentArrayInput)(nil)).Elem(), GetOpenSearchComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchInput)(nil)).Elem(), GetOpenSearchOpensearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchArrayInput)(nil)).Elem(), GetOpenSearchOpensearchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigArrayInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigAzureMigrationInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigAzureMigrationArgs{})
@@ -25726,6 +26853,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
@@ -25870,6 +27001,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsS3UserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsS3UserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAwsS3UserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalClickhouseUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalClickhouseUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalClickhouseUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs{})
@@ -25982,6 +27115,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetMySqlServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetMySqlServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetMySqlTagOutput{})
+	pulumi.RegisterOutputType(GetMySqlTagArrayOutput{})
+	pulumi.RegisterOutputType(GetMySqlTechEmailOutput{})
+	pulumi.RegisterOutputType(GetMySqlTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchComponentOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigAzureMigrationOutput{})
@@ -26006,6 +27149,10 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput{})
@@ -26150,6 +27297,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsS3UserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalClickhouseUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalClickhouseUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigOutput{})

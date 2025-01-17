@@ -29,6 +29,7 @@ class ServiceIntegrationEndpointArgs:
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
                  external_aws_s3_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs']] = None,
+                 external_azure_blob_storage_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs']] = None,
                  external_clickhouse_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs']] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] = None,
                  external_google_cloud_bigquery: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']] = None,
@@ -52,6 +53,7 @@ class ServiceIntegrationEndpointArgs:
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs'] external_aws_s3_user_config: ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs'] external_azure_blob_storage_user_config: ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs'] external_clickhouse_user_config: ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs'] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -79,6 +81,8 @@ class ServiceIntegrationEndpointArgs:
             pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
         if external_aws_s3_user_config is not None:
             pulumi.set(__self__, "external_aws_s3_user_config", external_aws_s3_user_config)
+        if external_azure_blob_storage_user_config is not None:
+            pulumi.set(__self__, "external_azure_blob_storage_user_config", external_azure_blob_storage_user_config)
         if external_clickhouse_user_config is not None:
             pulumi.set(__self__, "external_clickhouse_user_config", external_clickhouse_user_config)
         if external_elasticsearch_logs_user_config is not None:
@@ -201,6 +205,18 @@ class ServiceIntegrationEndpointArgs:
     @external_aws_s3_user_config.setter
     def external_aws_s3_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs']]):
         pulumi.set(self, "external_aws_s3_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalAzureBlobStorageUserConfig")
+    def external_azure_blob_storage_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs']]:
+        """
+        ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "external_azure_blob_storage_user_config")
+
+    @external_azure_blob_storage_user_config.setter
+    def external_azure_blob_storage_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs']]):
+        pulumi.set(self, "external_azure_blob_storage_user_config", value)
 
     @property
     @pulumi.getter(name="externalClickhouseUserConfig")
@@ -370,6 +386,7 @@ class _ServiceIntegrationEndpointState:
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
                  external_aws_s3_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs']] = None,
+                 external_azure_blob_storage_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs']] = None,
                  external_clickhouse_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs']] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] = None,
                  external_google_cloud_bigquery: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']] = None,
@@ -394,6 +411,7 @@ class _ServiceIntegrationEndpointState:
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs'] external_aws_s3_user_config: ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs'] external_azure_blob_storage_user_config: ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs'] external_clickhouse_user_config: ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs'] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -425,6 +443,8 @@ class _ServiceIntegrationEndpointState:
             pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
         if external_aws_s3_user_config is not None:
             pulumi.set(__self__, "external_aws_s3_user_config", external_aws_s3_user_config)
+        if external_azure_blob_storage_user_config is not None:
+            pulumi.set(__self__, "external_azure_blob_storage_user_config", external_azure_blob_storage_user_config)
         if external_clickhouse_user_config is not None:
             pulumi.set(__self__, "external_clickhouse_user_config", external_clickhouse_user_config)
         if external_elasticsearch_logs_user_config is not None:
@@ -549,6 +569,18 @@ class _ServiceIntegrationEndpointState:
     @external_aws_s3_user_config.setter
     def external_aws_s3_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs']]):
         pulumi.set(self, "external_aws_s3_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalAzureBlobStorageUserConfig")
+    def external_azure_blob_storage_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs']]:
+        """
+        ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "external_azure_blob_storage_user_config")
+
+    @external_azure_blob_storage_user_config.setter
+    def external_azure_blob_storage_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs']]):
+        pulumi.set(self, "external_azure_blob_storage_user_config", value)
 
     @property
     @pulumi.getter(name="externalClickhouseUserConfig")
@@ -731,6 +763,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
                  external_aws_s3_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs', 'ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict']]] = None,
+                 external_azure_blob_storage_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs', 'ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict']]] = None,
                  external_clickhouse_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs', 'ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict']]] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']]] = None,
                  external_google_cloud_bigquery: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']]] = None,
@@ -792,6 +825,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs', 'ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict']] external_aws_s3_user_config: ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs', 'ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict']] external_azure_blob_storage_user_config: ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs', 'ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict']] external_clickhouse_user_config: ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -872,6 +906,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
                  external_aws_s3_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs', 'ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict']]] = None,
+                 external_azure_blob_storage_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs', 'ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict']]] = None,
                  external_clickhouse_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs', 'ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict']]] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']]] = None,
                  external_google_cloud_bigquery: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']]] = None,
@@ -906,6 +941,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             __props__.__dict__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
             __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
             __props__.__dict__["external_aws_s3_user_config"] = external_aws_s3_user_config
+            __props__.__dict__["external_azure_blob_storage_user_config"] = external_azure_blob_storage_user_config
             __props__.__dict__["external_clickhouse_user_config"] = external_clickhouse_user_config
             __props__.__dict__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
             __props__.__dict__["external_google_cloud_bigquery"] = external_google_cloud_bigquery
@@ -941,6 +977,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
             external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
             external_aws_s3_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs', 'ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict']]] = None,
+            external_azure_blob_storage_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs', 'ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict']]] = None,
             external_clickhouse_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs', 'ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict']]] = None,
             external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']]] = None,
             external_google_cloud_bigquery: Optional[pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']]] = None,
@@ -970,6 +1007,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs', 'ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict']] external_aws_s3_user_config: ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs', 'ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict']] external_azure_blob_storage_user_config: ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs', 'ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict']] external_clickhouse_user_config: ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict']] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -997,6 +1035,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         __props__.__dict__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
         __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
         __props__.__dict__["external_aws_s3_user_config"] = external_aws_s3_user_config
+        __props__.__dict__["external_azure_blob_storage_user_config"] = external_azure_blob_storage_user_config
         __props__.__dict__["external_clickhouse_user_config"] = external_clickhouse_user_config
         __props__.__dict__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
         __props__.__dict__["external_google_cloud_bigquery"] = external_google_cloud_bigquery
@@ -1076,6 +1115,14 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_s3_user_config")
+
+    @property
+    @pulumi.getter(name="externalAzureBlobStorageUserConfig")
+    def external_azure_blob_storage_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig']]:
+        """
+        ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "external_azure_blob_storage_user_config")
 
     @property
     @pulumi.getter(name="externalClickhouseUserConfig")

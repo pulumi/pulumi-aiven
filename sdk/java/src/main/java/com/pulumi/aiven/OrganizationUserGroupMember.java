@@ -16,9 +16,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups). You can add organization users and application users to groups.
+ * Adds and manages users in a user group. You can add organization users and application users to groups.
+ * Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource.
  * 
- * Groups are given access to projects using the `aiven.OrganizationGroupProject` resource.
+ * Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
  * 
  * ## Example Usage
  * 

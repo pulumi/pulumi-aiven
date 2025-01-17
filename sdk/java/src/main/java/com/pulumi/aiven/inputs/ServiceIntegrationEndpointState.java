@@ -8,6 +8,7 @@ import com.pulumi.aiven.inputs.ServiceIntegrationEndpointDatadogUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsS3UserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalClickhouseUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs;
@@ -152,6 +153,21 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
      */
     public Optional<Output<ServiceIntegrationEndpointExternalAwsS3UserConfigArgs>> externalAwsS3UserConfig() {
         return Optional.ofNullable(this.externalAwsS3UserConfig);
+    }
+
+    /**
+     * ExternalAzureBlobStorage user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Import(name="externalAzureBlobStorageUserConfig")
+    private @Nullable Output<ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs> externalAzureBlobStorageUserConfig;
+
+    /**
+     * @return ExternalAzureBlobStorage user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Optional<Output<ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs>> externalAzureBlobStorageUserConfig() {
+        return Optional.ofNullable(this.externalAzureBlobStorageUserConfig);
     }
 
     /**
@@ -375,6 +391,7 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
         this.externalAwsCloudwatchLogsUserConfig = $.externalAwsCloudwatchLogsUserConfig;
         this.externalAwsCloudwatchMetricsUserConfig = $.externalAwsCloudwatchMetricsUserConfig;
         this.externalAwsS3UserConfig = $.externalAwsS3UserConfig;
+        this.externalAzureBlobStorageUserConfig = $.externalAzureBlobStorageUserConfig;
         this.externalClickhouseUserConfig = $.externalClickhouseUserConfig;
         this.externalElasticsearchLogsUserConfig = $.externalElasticsearchLogsUserConfig;
         this.externalGoogleCloudBigquery = $.externalGoogleCloudBigquery;
@@ -575,6 +592,27 @@ public final class ServiceIntegrationEndpointState extends com.pulumi.resources.
          */
         public Builder externalAwsS3UserConfig(ServiceIntegrationEndpointExternalAwsS3UserConfigArgs externalAwsS3UserConfig) {
             return externalAwsS3UserConfig(Output.of(externalAwsS3UserConfig));
+        }
+
+        /**
+         * @param externalAzureBlobStorageUserConfig ExternalAzureBlobStorage user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAzureBlobStorageUserConfig(@Nullable Output<ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs> externalAzureBlobStorageUserConfig) {
+            $.externalAzureBlobStorageUserConfig = externalAzureBlobStorageUserConfig;
+            return this;
+        }
+
+        /**
+         * @param externalAzureBlobStorageUserConfig ExternalAzureBlobStorage user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAzureBlobStorageUserConfig(ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs externalAzureBlobStorageUserConfig) {
+            return externalAzureBlobStorageUserConfig(Output.of(externalAzureBlobStorageUserConfig));
         }
 
         /**

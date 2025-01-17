@@ -45,6 +45,21 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Enable to upload Custom JARs for Flink applications.
+     * 
+     */
+    @Import(name="customCode")
+    private @Nullable Output<Boolean> customCode;
+
+    /**
+     * @return Enable to upload Custom JARs for Flink applications.
+     * 
+     */
+    public Optional<Output<Boolean>> customCode() {
+        return Optional.ofNullable(this.customCode);
+    }
+
+    /**
      * Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
      * 
      */
@@ -221,6 +236,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
 
     private FlinkFlinkUserConfigArgs(FlinkFlinkUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
+        this.customCode = $.customCode;
         this.flinkVersion = $.flinkVersion;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
@@ -279,6 +295,27 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param customCode Enable to upload Custom JARs for Flink applications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCode(@Nullable Output<Boolean> customCode) {
+            $.customCode = customCode;
+            return this;
+        }
+
+        /**
+         * @param customCode Enable to upload Custom JARs for Flink applications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCode(Boolean customCode) {
+            return customCode(Output.of(customCode));
         }
 
         /**

@@ -74,6 +74,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? DashboardPreviewsEnabled;
         /// <summary>
+        /// Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+        /// </summary>
+        public readonly bool? DashboardScenesEnabled;
+        /// <summary>
         /// Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
         /// </summary>
         public readonly string? DashboardsMinRefreshInterval;
@@ -218,6 +222,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? dashboardPreviewsEnabled,
 
+            bool? dashboardScenesEnabled,
+
             string? dashboardsMinRefreshInterval,
 
             int? dashboardsVersionsToKeep,
@@ -289,6 +295,7 @@ namespace Pulumi.Aiven.Outputs
             CookieSamesite = cookieSamesite;
             CustomDomain = customDomain;
             DashboardPreviewsEnabled = dashboardPreviewsEnabled;
+            DashboardScenesEnabled = dashboardScenesEnabled;
             DashboardsMinRefreshInterval = dashboardsMinRefreshInterval;
             DashboardsVersionsToKeep = dashboardsVersionsToKeep;
             DataproxySendUserHeader = dataproxySendUserHeader;

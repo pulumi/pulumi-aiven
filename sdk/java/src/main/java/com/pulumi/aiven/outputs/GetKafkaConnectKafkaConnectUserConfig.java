@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
+import com.pulumi.aiven.outputs.GetKafkaConnectKafkaConnectUserConfigPluginVersion;
 import com.pulumi.aiven.outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
@@ -52,6 +53,11 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
      * 
      */
     private @Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
+    /**
+     * @return The plugin selected by the user
+     * 
+     */
+    private @Nullable List<GetKafkaConnectKafkaConnectUserConfigPluginVersion> pluginVersions;
     /**
      * @return Allow access to selected service ports from private networks
      * 
@@ -124,6 +130,13 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         return Optional.ofNullable(this.kafkaConnect);
     }
     /**
+     * @return The plugin selected by the user
+     * 
+     */
+    public List<GetKafkaConnectKafkaConnectUserConfigPluginVersion> pluginVersions() {
+        return this.pluginVersions == null ? List.of() : this.pluginVersions;
+    }
+    /**
      * @return Allow access to selected service ports from private networks
      * 
      */
@@ -176,6 +189,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
+        private @Nullable List<GetKafkaConnectKafkaConnectUserConfigPluginVersion> pluginVersions;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable GetKafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
@@ -190,6 +204,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.kafkaConnect = defaults.kafkaConnect;
+    	      this.pluginVersions = defaults.pluginVersions;
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
@@ -238,6 +253,15 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pluginVersions(@Nullable List<GetKafkaConnectKafkaConnectUserConfigPluginVersion> pluginVersions) {
+
+            this.pluginVersions = pluginVersions;
+            return this;
+        }
+        public Builder pluginVersions(GetKafkaConnectKafkaConnectUserConfigPluginVersion... pluginVersions) {
+            return pluginVersions(List.of(pluginVersions));
+        }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable GetKafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess) {
 
             this.privateAccess = privateAccess;
@@ -283,6 +307,7 @@ public final class GetKafkaConnectKafkaConnectUserConfig {
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
             _resultValue.kafkaConnect = kafkaConnect;
+            _resultValue.pluginVersions = pluginVersions;
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;

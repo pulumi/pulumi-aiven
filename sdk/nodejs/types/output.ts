@@ -1321,6 +1321,10 @@ export interface FlinkFlinkUserConfig {
      */
     additionalBackupRegions?: string;
     /**
+     * Enable to upload Custom JARs for Flink applications.
+     */
+    customCode?: boolean;
+    /**
      * Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
      */
     flinkVersion?: string;
@@ -2900,6 +2904,10 @@ export interface GetFlinkFlinkUserConfig {
      */
     additionalBackupRegions?: string;
     /**
+     * Enable to upload Custom JARs for Flink applications.
+     */
+    customCode?: boolean;
+    /**
      * Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
      */
     flinkVersion?: string;
@@ -3108,6 +3116,10 @@ export interface GetGrafanaGrafanaUserConfig {
      * Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
      */
     dashboardPreviewsEnabled?: boolean;
+    /**
+     * Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+     */
+    dashboardScenesEnabled?: boolean;
     /**
      * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      */
@@ -3858,6 +3870,10 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      */
     kafkaConnect?: outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
     /**
+     * The plugin selected by the user
+     */
+    pluginVersions?: outputs.GetKafkaConnectKafkaConnectUserConfigPluginVersion[];
+    /**
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
@@ -3956,6 +3972,17 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      * The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
      */
     sessionTimeoutMs?: number;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigPluginVersion {
+    /**
+     * The name of the plugin. Example: `debezium-connector`.
+     */
+    pluginName: string;
+    /**
+     * The version of the plugin. Example: `2.5.0`.
+     */
+    version: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigPrivateAccess {
@@ -6380,6 +6407,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      * How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: number;
+    clusterSearchRequestSlowlog?: outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog;
     /**
      * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      */
@@ -6392,6 +6420,10 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      * Sender username for Opensearch alerts. Example: `jane@example.com`.
      */
     emailSenderUsername?: string;
+    /**
+     * Enable remote-backed storage.
+     */
+    enableRemoteBackedStorage?: boolean;
     /**
      * Enable/Disable security audit.
      */
@@ -6615,6 +6647,33 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
      * Enum: `ip`. The type of rate limiting.
      */
     type?: string;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
+    /**
+     * Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+     */
+    level?: string;
+    threshold?: outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold;
+}
+
+export interface GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
+    /**
+     * Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    debug?: string;
+    /**
+     * Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    info?: string;
+    /**
+     * Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    trace?: string;
+    /**
+     * Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    warn?: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchDashboards {
@@ -8493,6 +8552,21 @@ export interface GetServiceIntegrationEndpointExternalAwsS3UserConfig {
     url: string;
 }
 
+export interface GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig {
+    /**
+     * Blob path. Example: `path/to/blob/file.csv`.
+     */
+    blobPath?: string;
+    /**
+     * Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+     */
+    connectionString: string;
+    /**
+     * Container. Example: `container-dev`.
+     */
+    container: string;
+}
+
 export interface GetServiceIntegrationEndpointExternalClickhouseUserConfig {
     /**
      * Hostname or IP address of the server. Example: `my.server.com`.
@@ -9786,6 +9860,10 @@ export interface GrafanaGrafanaUserConfig {
      */
     dashboardPreviewsEnabled?: boolean;
     /**
+     * Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+     */
+    dashboardScenesEnabled?: boolean;
+    /**
      * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      */
     dashboardsMinRefreshInterval?: string;
@@ -10535,6 +10613,10 @@ export interface KafkaConnectKafkaConnectUserConfig {
      */
     kafkaConnect?: outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
     /**
+     * The plugin selected by the user
+     */
+    pluginVersions?: outputs.KafkaConnectKafkaConnectUserConfigPluginVersion[];
+    /**
      * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
@@ -10633,6 +10715,17 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      * The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
      */
     sessionTimeoutMs?: number;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigPluginVersion {
+    /**
+     * The name of the plugin. Example: `debezium-connector`.
+     */
+    pluginName: string;
+    /**
+     * The version of the plugin. Example: `2.5.0`.
+     */
+    version: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigPrivateAccess {
@@ -13057,6 +13150,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: number;
+    clusterSearchRequestSlowlog?: outputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog;
     /**
      * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      */
@@ -13069,6 +13163,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Sender username for Opensearch alerts. Example: `jane@example.com`.
      */
     emailSenderUsername?: string;
+    /**
+     * Enable remote-backed storage.
+     */
+    enableRemoteBackedStorage?: boolean;
     /**
      * Enable/Disable security audit.
      */
@@ -13292,6 +13390,33 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      * Enum: `ip`. The type of rate limiting.
      */
     type?: string;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
+    /**
+     * Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+     */
+    level?: string;
+    threshold?: outputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
+    /**
+     * Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    debug?: string;
+    /**
+     * Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    info?: string;
+    /**
+     * Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    trace?: string;
+    /**
+     * Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+     */
+    warn?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
@@ -15181,6 +15306,21 @@ export interface ServiceIntegrationEndpointExternalAwsS3UserConfig {
      * S3-compatible bucket URL. Example: `https://mybucket.s3-myregion.amazonaws.com/mydataset/`.
      */
     url: string;
+}
+
+export interface ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig {
+    /**
+     * Blob path. Example: `path/to/blob/file.csv`.
+     */
+    blobPath?: string;
+    /**
+     * Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+     */
+    connectionString: string;
+    /**
+     * Container. Example: `container-dev`.
+     */
+    container: string;
 }
 
 export interface ServiceIntegrationEndpointExternalClickhouseUserConfig {

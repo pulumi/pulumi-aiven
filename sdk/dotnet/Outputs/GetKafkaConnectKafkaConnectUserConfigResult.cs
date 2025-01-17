@@ -34,6 +34,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult? KafkaConnect;
         /// <summary>
+        /// The plugin selected by the user
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetKafkaConnectKafkaConnectUserConfigPluginVersionResult> PluginVersions;
+        /// <summary>
         /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult? PrivateAccess;
@@ -67,6 +71,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult? kafkaConnect,
 
+            ImmutableArray<Outputs.GetKafkaConnectKafkaConnectUserConfigPluginVersionResult> pluginVersions,
+
             Outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult? privateAccess,
 
             Outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult? privatelinkAccess,
@@ -84,6 +90,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             KafkaConnect = kafkaConnect;
+            PluginVersions = pluginVersions;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;

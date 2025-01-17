@@ -256,6 +256,21 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+     * 
+     */
+    @Import(name="dashboardScenesEnabled")
+    private @Nullable Output<Boolean> dashboardScenesEnabled;
+
+    /**
+     * @return Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+     * 
+     */
+    public Optional<Output<Boolean>> dashboardScenesEnabled() {
+        return Optional.ofNullable(this.dashboardScenesEnabled);
+    }
+
+    /**
      * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      * 
      */
@@ -701,6 +716,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         this.cookieSamesite = $.cookieSamesite;
         this.customDomain = $.customDomain;
         this.dashboardPreviewsEnabled = $.dashboardPreviewsEnabled;
+        this.dashboardScenesEnabled = $.dashboardScenesEnabled;
         this.dashboardsMinRefreshInterval = $.dashboardsMinRefreshInterval;
         this.dashboardsVersionsToKeep = $.dashboardsVersionsToKeep;
         this.dataproxySendUserHeader = $.dataproxySendUserHeader;
@@ -1062,6 +1078,27 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          */
         public Builder dashboardPreviewsEnabled(Boolean dashboardPreviewsEnabled) {
             return dashboardPreviewsEnabled(Output.of(dashboardPreviewsEnabled));
+        }
+
+        /**
+         * @param dashboardScenesEnabled Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dashboardScenesEnabled(@Nullable Output<Boolean> dashboardScenesEnabled) {
+            $.dashboardScenesEnabled = dashboardScenesEnabled;
+            return this;
+        }
+
+        /**
+         * @param dashboardScenesEnabled Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dashboardScenesEnabled(Boolean dashboardScenesEnabled) {
+            return dashboardScenesEnabled(Output.of(dashboardScenesEnabled));
         }
 
         /**

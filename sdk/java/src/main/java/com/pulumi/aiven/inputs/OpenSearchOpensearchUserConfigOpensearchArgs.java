@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSegrepArgs;
@@ -113,6 +114,13 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
     }
 
+    @Import(name="clusterSearchRequestSlowlog")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs> clusterSearchRequestSlowlog;
+
+    public Optional<Output<OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs>> clusterSearchRequestSlowlog() {
+        return Optional.ofNullable(this.clusterSearchRequestSlowlog);
+    }
+
     /**
      * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      * 
@@ -156,6 +164,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
      */
     public Optional<Output<String>> emailSenderUsername() {
         return Optional.ofNullable(this.emailSenderUsername);
+    }
+
+    /**
+     * Enable remote-backed storage.
+     * 
+     */
+    @Import(name="enableRemoteBackedStorage")
+    private @Nullable Output<Boolean> enableRemoteBackedStorage;
+
+    /**
+     * @return Enable remote-backed storage.
+     * 
+     */
+    public Optional<Output<Boolean>> enableRemoteBackedStorage() {
+        return Optional.ofNullable(this.enableRemoteBackedStorage);
     }
 
     /**
@@ -759,9 +782,11 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.clusterMaxShardsPerNode = $.clusterMaxShardsPerNode;
         this.clusterRoutingAllocationBalancePreferPrimary = $.clusterRoutingAllocationBalancePreferPrimary;
         this.clusterRoutingAllocationNodeConcurrentRecoveries = $.clusterRoutingAllocationNodeConcurrentRecoveries;
+        this.clusterSearchRequestSlowlog = $.clusterSearchRequestSlowlog;
         this.emailSenderName = $.emailSenderName;
         this.emailSenderPassword = $.emailSenderPassword;
         this.emailSenderUsername = $.emailSenderUsername;
+        this.enableRemoteBackedStorage = $.enableRemoteBackedStorage;
         this.enableSecurityAudit = $.enableSecurityAudit;
         this.httpMaxContentLength = $.httpMaxContentLength;
         this.httpMaxHeaderSize = $.httpMaxHeaderSize;
@@ -948,6 +973,15 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
             return clusterRoutingAllocationNodeConcurrentRecoveries(Output.of(clusterRoutingAllocationNodeConcurrentRecoveries));
         }
 
+        public Builder clusterSearchRequestSlowlog(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs> clusterSearchRequestSlowlog) {
+            $.clusterSearchRequestSlowlog = clusterSearchRequestSlowlog;
+            return this;
+        }
+
+        public Builder clusterSearchRequestSlowlog(OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs clusterSearchRequestSlowlog) {
+            return clusterSearchRequestSlowlog(Output.of(clusterSearchRequestSlowlog));
+        }
+
         /**
          * @param emailSenderName Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
          * 
@@ -1009,6 +1043,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder emailSenderUsername(String emailSenderUsername) {
             return emailSenderUsername(Output.of(emailSenderUsername));
+        }
+
+        /**
+         * @param enableRemoteBackedStorage Enable remote-backed storage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableRemoteBackedStorage(@Nullable Output<Boolean> enableRemoteBackedStorage) {
+            $.enableRemoteBackedStorage = enableRemoteBackedStorage;
+            return this;
+        }
+
+        /**
+         * @param enableRemoteBackedStorage Enable remote-backed storage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableRemoteBackedStorage(Boolean enableRemoteBackedStorage) {
+            return enableRemoteBackedStorage(Output.of(enableRemoteBackedStorage));
         }
 
         /**

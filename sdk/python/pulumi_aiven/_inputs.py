@@ -201,6 +201,8 @@ __all__ = [
     'KafkaConnectKafkaConnectUserConfigIpFilterObjectArgsDict',
     'KafkaConnectKafkaConnectUserConfigKafkaConnectArgs',
     'KafkaConnectKafkaConnectUserConfigKafkaConnectArgsDict',
+    'KafkaConnectKafkaConnectUserConfigPluginVersionArgs',
+    'KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict',
     'KafkaConnectKafkaConnectUserConfigPrivateAccessArgs',
     'KafkaConnectKafkaConnectUserConfigPrivateAccessArgsDict',
     'KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs',
@@ -389,6 +391,10 @@ __all__ = [
     'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs',
     'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs',
+    'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs',
+    'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs',
     'OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs',
@@ -537,6 +543,8 @@ __all__ = [
     'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict',
     'ServiceIntegrationEndpointExternalAwsS3UserConfigArgs',
     'ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict',
+    'ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs',
+    'ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict',
     'ServiceIntegrationEndpointExternalClickhouseUserConfigArgs',
     'ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict',
     'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs',
@@ -6978,6 +6986,10 @@ if not MYPY:
         """
         Additional Cloud Regions for Backup Replication.
         """
+        custom_code: NotRequired[pulumi.Input[bool]]
+        """
+        Enable to upload Custom JARs for Flink applications.
+        """
         flink_version: NotRequired[pulumi.Input[str]]
         """
         Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
@@ -7029,6 +7041,7 @@ elif False:
 class FlinkFlinkUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
+                 custom_code: Optional[pulumi.Input[bool]] = None,
                  flink_version: Optional[pulumi.Input[str]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -7042,6 +7055,7 @@ class FlinkFlinkUserConfigArgs:
                  static_ips: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input[bool] custom_code: Enable to upload Custom JARs for Flink applications.
         :param pulumi.Input[str] flink_version: Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -7059,6 +7073,8 @@ class FlinkFlinkUserConfigArgs:
             pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
+        if custom_code is not None:
+            pulumi.set(__self__, "custom_code", custom_code)
         if flink_version is not None:
             pulumi.set(__self__, "flink_version", flink_version)
         if ip_filter_objects is not None:
@@ -7097,6 +7113,18 @@ class FlinkFlinkUserConfigArgs:
     @additional_backup_regions.setter
     def additional_backup_regions(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "additional_backup_regions", value)
+
+    @property
+    @pulumi.getter(name="customCode")
+    def custom_code(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable to upload Custom JARs for Flink applications.
+        """
+        return pulumi.get(self, "custom_code")
+
+    @custom_code.setter
+    def custom_code(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "custom_code", value)
 
     @property
     @pulumi.getter(name="flinkVersion")
@@ -7764,6 +7792,10 @@ if not MYPY:
         """
         Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
         """
+        dashboard_scenes_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+        """
         dashboards_min_refresh_interval: NotRequired[pulumi.Input[str]]
         """
         Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
@@ -7897,6 +7929,7 @@ class GrafanaGrafanaUserConfigArgs:
                  cookie_samesite: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[str]] = None,
                  dashboard_previews_enabled: Optional[pulumi.Input[bool]] = None,
+                 dashboard_scenes_enabled: Optional[pulumi.Input[bool]] = None,
                  dashboards_min_refresh_interval: Optional[pulumi.Input[str]] = None,
                  dashboards_versions_to_keep: Optional[pulumi.Input[int]] = None,
                  dataproxy_send_user_header: Optional[pulumi.Input[bool]] = None,
@@ -7941,6 +7974,7 @@ class GrafanaGrafanaUserConfigArgs:
         :param pulumi.Input[str] cookie_samesite: Enum: `lax`, `none`, `strict`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
         :param pulumi.Input[str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
         :param pulumi.Input[bool] dashboard_previews_enabled: Enable browsing of dashboards in grid (pictures) mode. This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+        :param pulumi.Input[bool] dashboard_scenes_enabled: Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
         :param pulumi.Input[str] dashboards_min_refresh_interval: Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
         :param pulumi.Input[int] dashboards_versions_to_keep: Dashboard versions to keep per dashboard. Example: `20`.
         :param pulumi.Input[bool] dataproxy_send_user_header: Send `X-Grafana-User` header to data source.
@@ -8000,6 +8034,8 @@ class GrafanaGrafanaUserConfigArgs:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if dashboard_previews_enabled is not None:
             pulumi.set(__self__, "dashboard_previews_enabled", dashboard_previews_enabled)
+        if dashboard_scenes_enabled is not None:
+            pulumi.set(__self__, "dashboard_scenes_enabled", dashboard_scenes_enabled)
         if dashboards_min_refresh_interval is not None:
             pulumi.set(__self__, "dashboards_min_refresh_interval", dashboards_min_refresh_interval)
         if dashboards_versions_to_keep is not None:
@@ -8239,6 +8275,18 @@ class GrafanaGrafanaUserConfigArgs:
     @dashboard_previews_enabled.setter
     def dashboard_previews_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dashboard_previews_enabled", value)
+
+    @property
+    @pulumi.getter(name="dashboardScenesEnabled")
+    def dashboard_scenes_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable use of the Grafana Scenes Library as the dashboard engine. i.e. the `dashboardScene` feature flag. Upstream blog post at https://grafana.com/blog/2024/10/31/grafana-dashboards-are-now-powered-by-scenes-big-changes-same-ui/.
+        """
+        return pulumi.get(self, "dashboard_scenes_enabled")
+
+    @dashboard_scenes_enabled.setter
+    def dashboard_scenes_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dashboard_scenes_enabled", value)
 
     @property
     @pulumi.getter(name="dashboardsMinRefreshInterval")
@@ -11508,6 +11556,10 @@ if not MYPY:
         """
         Kafka Connect configuration values
         """
+        plugin_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict']]]]
+        """
+        The plugin selected by the user
+        """
         private_access: NotRequired[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivateAccessArgsDict']]
         """
         Allow access to selected service ports from private networks
@@ -11540,6 +11592,7 @@ class KafkaConnectKafkaConnectUserConfigArgs:
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kafka_connect: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigKafkaConnectArgs']] = None,
+                 plugin_versions: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigPluginVersionArgs']]]] = None,
                  private_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivateAccessArgs']] = None,
                  privatelink_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs']] = None,
                  public_access: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgs']] = None,
@@ -11552,6 +11605,7 @@ class KafkaConnectKafkaConnectUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input['KafkaConnectKafkaConnectUserConfigKafkaConnectArgs'] kafka_connect: Kafka Connect configuration values
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigPluginVersionArgs']]] plugin_versions: The plugin selected by the user
         :param pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input['KafkaConnectKafkaConnectUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
@@ -11574,6 +11628,8 @@ class KafkaConnectKafkaConnectUserConfigArgs:
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_connect is not None:
             pulumi.set(__self__, "kafka_connect", kafka_connect)
+        if plugin_versions is not None:
+            pulumi.set(__self__, "plugin_versions", plugin_versions)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
         if privatelink_access is not None:
@@ -11648,6 +11704,18 @@ class KafkaConnectKafkaConnectUserConfigArgs:
     @kafka_connect.setter
     def kafka_connect(self, value: Optional[pulumi.Input['KafkaConnectKafkaConnectUserConfigKafkaConnectArgs']]):
         pulumi.set(self, "kafka_connect", value)
+
+    @property
+    @pulumi.getter(name="pluginVersions")
+    def plugin_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigPluginVersionArgs']]]]:
+        """
+        The plugin selected by the user
+        """
+        return pulumi.get(self, "plugin_versions")
+
+    @plugin_versions.setter
+    def plugin_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigPluginVersionArgs']]]]):
+        pulumi.set(self, "plugin_versions", value)
 
     @property
     @pulumi.getter(name="privateAccess")
@@ -12100,6 +12168,56 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
     @session_timeout_ms.setter
     def session_timeout_ms(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "session_timeout_ms", value)
+
+
+if not MYPY:
+    class KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict(TypedDict):
+        plugin_name: pulumi.Input[str]
+        """
+        The name of the plugin. Example: `debezium-connector`.
+        """
+        version: pulumi.Input[str]
+        """
+        The version of the plugin. Example: `2.5.0`.
+        """
+elif False:
+    KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KafkaConnectKafkaConnectUserConfigPluginVersionArgs:
+    def __init__(__self__, *,
+                 plugin_name: pulumi.Input[str],
+                 version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] plugin_name: The name of the plugin. Example: `debezium-connector`.
+        :param pulumi.Input[str] version: The version of the plugin. Example: `2.5.0`.
+        """
+        pulumi.set(__self__, "plugin_name", plugin_name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="pluginName")
+    def plugin_name(self) -> pulumi.Input[str]:
+        """
+        The name of the plugin. Example: `debezium-connector`.
+        """
+        return pulumi.get(self, "plugin_name")
+
+    @plugin_name.setter
+    def plugin_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plugin_name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        The version of the plugin. Example: `2.5.0`.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
 
 
 if not MYPY:
@@ -23701,6 +23819,7 @@ if not MYPY:
         """
         How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         """
+        cluster_search_request_slowlog: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict']]
         email_sender_name: NotRequired[pulumi.Input[str]]
         """
         Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
@@ -23712,6 +23831,10 @@ if not MYPY:
         email_sender_username: NotRequired[pulumi.Input[str]]
         """
         Sender username for Opensearch alerts. Example: `jane@example.com`.
+        """
+        enable_remote_backed_storage: NotRequired[pulumi.Input[bool]]
+        """
+        Enable remote-backed storage.
         """
         enable_security_audit: NotRequired[pulumi.Input[bool]]
         """
@@ -23882,9 +24005,11 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  cluster_max_shards_per_node: Optional[pulumi.Input[int]] = None,
                  cluster_routing_allocation_balance_prefer_primary: Optional[pulumi.Input[bool]] = None,
                  cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[int]] = None,
+                 cluster_search_request_slowlog: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs']] = None,
                  email_sender_name: Optional[pulumi.Input[str]] = None,
                  email_sender_password: Optional[pulumi.Input[str]] = None,
                  email_sender_username: Optional[pulumi.Input[str]] = None,
+                 enable_remote_backed_storage: Optional[pulumi.Input[bool]] = None,
                  enable_security_audit: Optional[pulumi.Input[bool]] = None,
                  http_max_content_length: Optional[pulumi.Input[int]] = None,
                  http_max_header_size: Optional[pulumi.Input[int]] = None,
@@ -23935,6 +24060,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[str] email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         :param pulumi.Input[str] email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param pulumi.Input[str] email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
+        :param pulumi.Input[bool] enable_remote_backed_storage: Enable remote-backed storage.
         :param pulumi.Input[bool] enable_security_audit: Enable/Disable security audit.
         :param pulumi.Input[int] http_max_content_length: Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         :param pulumi.Input[int] http_max_header_size: The max size of allowed headers, in bytes. Example: `8192`.
@@ -23987,12 +24113,16 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "cluster_routing_allocation_balance_prefer_primary", cluster_routing_allocation_balance_prefer_primary)
         if cluster_routing_allocation_node_concurrent_recoveries is not None:
             pulumi.set(__self__, "cluster_routing_allocation_node_concurrent_recoveries", cluster_routing_allocation_node_concurrent_recoveries)
+        if cluster_search_request_slowlog is not None:
+            pulumi.set(__self__, "cluster_search_request_slowlog", cluster_search_request_slowlog)
         if email_sender_name is not None:
             pulumi.set(__self__, "email_sender_name", email_sender_name)
         if email_sender_password is not None:
             pulumi.set(__self__, "email_sender_password", email_sender_password)
         if email_sender_username is not None:
             pulumi.set(__self__, "email_sender_username", email_sender_username)
+        if enable_remote_backed_storage is not None:
+            pulumi.set(__self__, "enable_remote_backed_storage", enable_remote_backed_storage)
         if enable_security_audit is not None:
             pulumi.set(__self__, "enable_security_audit", enable_security_audit)
         if http_max_content_length is not None:
@@ -24147,6 +24277,15 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         pulumi.set(self, "cluster_routing_allocation_node_concurrent_recoveries", value)
 
     @property
+    @pulumi.getter(name="clusterSearchRequestSlowlog")
+    def cluster_search_request_slowlog(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs']]:
+        return pulumi.get(self, "cluster_search_request_slowlog")
+
+    @cluster_search_request_slowlog.setter
+    def cluster_search_request_slowlog(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs']]):
+        pulumi.set(self, "cluster_search_request_slowlog", value)
+
+    @property
     @pulumi.getter(name="emailSenderName")
     def email_sender_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -24181,6 +24320,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @email_sender_username.setter
     def email_sender_username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email_sender_username", value)
+
+    @property
+    @pulumi.getter(name="enableRemoteBackedStorage")
+    def enable_remote_backed_storage(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable remote-backed storage.
+        """
+        return pulumi.get(self, "enable_remote_backed_storage")
+
+    @enable_remote_backed_storage.setter
+    def enable_remote_backed_storage(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_remote_backed_storage", value)
 
     @property
     @pulumi.getter(name="enableSecurityAudit")
@@ -24987,6 +25138,143 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict(TypedDict):
+        level: NotRequired[pulumi.Input[str]]
+        """
+        Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+        """
+        threshold: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict']]
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs:
+    def __init__(__self__, *,
+                 level: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs']] = None):
+        """
+        :param pulumi.Input[str] level: Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+        """
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs']]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs']]):
+        pulumi.set(self, "threshold", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict(TypedDict):
+        debug: NotRequired[pulumi.Input[str]]
+        """
+        Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        """
+        info: NotRequired[pulumi.Input[str]]
+        """
+        Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        """
+        trace: NotRequired[pulumi.Input[str]]
+        """
+        Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        """
+        warn: NotRequired[pulumi.Input[str]]
+        """
+        Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs:
+    def __init__(__self__, *,
+                 debug: Optional[pulumi.Input[str]] = None,
+                 info: Optional[pulumi.Input[str]] = None,
+                 trace: Optional[pulumi.Input[str]] = None,
+                 warn: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] debug: Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        :param pulumi.Input[str] info: Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        :param pulumi.Input[str] trace: Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        :param pulumi.Input[str] warn: Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        """
+        if debug is not None:
+            pulumi.set(__self__, "debug", debug)
+        if info is not None:
+            pulumi.set(__self__, "info", info)
+        if trace is not None:
+            pulumi.set(__self__, "trace", trace)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+
+    @property
+    @pulumi.getter
+    def debug(self) -> Optional[pulumi.Input[str]]:
+        """
+        Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        """
+        return pulumi.get(self, "debug")
+
+    @debug.setter
+    def debug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "debug", value)
+
+    @property
+    @pulumi.getter
+    def info(self) -> Optional[pulumi.Input[str]]:
+        """
+        Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        """
+        return pulumi.get(self, "info")
+
+    @info.setter
+    def info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "info", value)
+
+    @property
+    @pulumi.getter
+    def trace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        """
+        return pulumi.get(self, "trace")
+
+    @trace.setter
+    def trace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trace", value)
+
+    @property
+    @pulumi.getter
+    def warn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+        """
+        return pulumi.get(self, "warn")
+
+    @warn.setter
+    def warn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warn", value)
 
 
 if not MYPY:
@@ -33977,6 +34265,76 @@ class ServiceIntegrationEndpointExternalAwsS3UserConfigArgs:
     @url.setter
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict(TypedDict):
+        connection_string: pulumi.Input[str]
+        """
+        Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+        """
+        container: pulumi.Input[str]
+        """
+        Container. Example: `container-dev`.
+        """
+        blob_path: NotRequired[pulumi.Input[str]]
+        """
+        Blob path. Example: `path/to/blob/file.csv`.
+        """
+elif False:
+    ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs:
+    def __init__(__self__, *,
+                 connection_string: pulumi.Input[str],
+                 container: pulumi.Input[str],
+                 blob_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] connection_string: Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+        :param pulumi.Input[str] container: Container. Example: `container-dev`.
+        :param pulumi.Input[str] blob_path: Blob path. Example: `path/to/blob/file.csv`.
+        """
+        pulumi.set(__self__, "connection_string", connection_string)
+        pulumi.set(__self__, "container", container)
+        if blob_path is not None:
+            pulumi.set(__self__, "blob_path", blob_path)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> pulumi.Input[str]:
+        """
+        Azure Blob Storage connection string. Example: `AccountName=IDENT;AccountKey=SECRET`.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter
+    def container(self) -> pulumi.Input[str]:
+        """
+        Container. Example: `container-dev`.
+        """
+        return pulumi.get(self, "container")
+
+    @container.setter
+    def container(self, value: pulumi.Input[str]):
+        pulumi.set(self, "container", value)
+
+    @property
+    @pulumi.getter(name="blobPath")
+    def blob_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Blob path. Example: `path/to/blob/file.csv`.
+        """
+        return pulumi.get(self, "blob_path")
+
+    @blob_path.setter
+    def blob_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blob_path", value)
 
 
 if not MYPY:

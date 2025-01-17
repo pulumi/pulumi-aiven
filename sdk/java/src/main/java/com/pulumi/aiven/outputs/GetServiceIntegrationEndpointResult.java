@@ -8,6 +8,7 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointDatadogUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAwsS3UserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalClickhouseUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigquery;
@@ -70,6 +71,11 @@ public final class GetServiceIntegrationEndpointResult {
      * 
      */
     private List<GetServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfigs;
+    /**
+     * @return ExternalAzureBlobStorage user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    private List<GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig> externalAzureBlobStorageUserConfigs;
     /**
      * @return ExternalClickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
@@ -204,6 +210,13 @@ public final class GetServiceIntegrationEndpointResult {
         return this.externalAwsS3UserConfigs;
     }
     /**
+     * @return ExternalAzureBlobStorage user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public List<GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig> externalAzureBlobStorageUserConfigs() {
+        return this.externalAzureBlobStorageUserConfigs;
+    }
+    /**
      * @return ExternalClickhouse user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
      */
@@ -326,6 +339,7 @@ public final class GetServiceIntegrationEndpointResult {
         private List<GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalAwsS3UserConfig> externalAwsS3UserConfigs;
+        private List<GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig> externalAzureBlobStorageUserConfigs;
         private List<GetServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfigs;
         private List<GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalGoogleCloudBigquery> externalGoogleCloudBigqueries;
@@ -352,6 +366,7 @@ public final class GetServiceIntegrationEndpointResult {
     	      this.externalAwsCloudwatchLogsUserConfigs = defaults.externalAwsCloudwatchLogsUserConfigs;
     	      this.externalAwsCloudwatchMetricsUserConfigs = defaults.externalAwsCloudwatchMetricsUserConfigs;
     	      this.externalAwsS3UserConfigs = defaults.externalAwsS3UserConfigs;
+    	      this.externalAzureBlobStorageUserConfigs = defaults.externalAzureBlobStorageUserConfigs;
     	      this.externalClickhouseUserConfigs = defaults.externalClickhouseUserConfigs;
     	      this.externalElasticsearchLogsUserConfigs = defaults.externalElasticsearchLogsUserConfigs;
     	      this.externalGoogleCloudBigqueries = defaults.externalGoogleCloudBigqueries;
@@ -447,6 +462,17 @@ public final class GetServiceIntegrationEndpointResult {
         }
         public Builder externalAwsS3UserConfigs(GetServiceIntegrationEndpointExternalAwsS3UserConfig... externalAwsS3UserConfigs) {
             return externalAwsS3UserConfigs(List.of(externalAwsS3UserConfigs));
+        }
+        @CustomType.Setter
+        public Builder externalAzureBlobStorageUserConfigs(List<GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig> externalAzureBlobStorageUserConfigs) {
+            if (externalAzureBlobStorageUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalAzureBlobStorageUserConfigs");
+            }
+            this.externalAzureBlobStorageUserConfigs = externalAzureBlobStorageUserConfigs;
+            return this;
+        }
+        public Builder externalAzureBlobStorageUserConfigs(GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig... externalAzureBlobStorageUserConfigs) {
+            return externalAzureBlobStorageUserConfigs(List.of(externalAzureBlobStorageUserConfigs));
         }
         @CustomType.Setter
         public Builder externalClickhouseUserConfigs(List<GetServiceIntegrationEndpointExternalClickhouseUserConfig> externalClickhouseUserConfigs) {
@@ -617,6 +643,7 @@ public final class GetServiceIntegrationEndpointResult {
             _resultValue.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             _resultValue.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
             _resultValue.externalAwsS3UserConfigs = externalAwsS3UserConfigs;
+            _resultValue.externalAzureBlobStorageUserConfigs = externalAzureBlobStorageUserConfigs;
             _resultValue.externalClickhouseUserConfigs = externalClickhouseUserConfigs;
             _resultValue.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
             _resultValue.externalGoogleCloudBigqueries = externalGoogleCloudBigqueries;

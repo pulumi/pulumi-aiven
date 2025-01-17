@@ -75,6 +75,8 @@ type LookupServiceIntegrationEndpointResult struct {
 	ExternalAwsCloudwatchMetricsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfigs"`
 	// ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsS3UserConfigs []GetServiceIntegrationEndpointExternalAwsS3UserConfig `pulumi:"externalAwsS3UserConfigs"`
+	// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	ExternalAzureBlobStorageUserConfigs []GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig `pulumi:"externalAzureBlobStorageUserConfigs"`
 	// ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalClickhouseUserConfigs []GetServiceIntegrationEndpointExternalClickhouseUserConfig `pulumi:"externalClickhouseUserConfigs"`
 	// ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -191,6 +193,13 @@ func (o LookupServiceIntegrationEndpointResultOutput) ExternalAwsS3UserConfigs()
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalAwsS3UserConfig {
 		return v.ExternalAwsS3UserConfigs
 	}).(GetServiceIntegrationEndpointExternalAwsS3UserConfigArrayOutput)
+}
+
+// ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+func (o LookupServiceIntegrationEndpointResultOutput) ExternalAzureBlobStorageUserConfigs() GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfig {
+		return v.ExternalAzureBlobStorageUserConfigs
+	}).(GetServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArrayOutput)
 }
 
 // ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

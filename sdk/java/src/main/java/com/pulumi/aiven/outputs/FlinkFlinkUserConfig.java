@@ -27,6 +27,11 @@ public final class FlinkFlinkUserConfig {
     @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
+     * @return Enable to upload Custom JARs for Flink applications.
+     * 
+     */
+    private @Nullable Boolean customCode;
+    /**
      * @return Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
      * 
      */
@@ -97,6 +102,13 @@ public final class FlinkFlinkUserConfig {
     @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return Enable to upload Custom JARs for Flink applications.
+     * 
+     */
+    public Optional<Boolean> customCode() {
+        return Optional.ofNullable(this.customCode);
     }
     /**
      * @return Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
@@ -190,6 +202,7 @@ public final class FlinkFlinkUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
+        private @Nullable Boolean customCode;
         private @Nullable String flinkVersion;
         private @Nullable List<FlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -205,6 +218,7 @@ public final class FlinkFlinkUserConfig {
         public Builder(FlinkFlinkUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.customCode = defaults.customCode;
     	      this.flinkVersion = defaults.flinkVersion;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -222,6 +236,12 @@ public final class FlinkFlinkUserConfig {
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
 
             this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customCode(@Nullable Boolean customCode) {
+
+            this.customCode = customCode;
             return this;
         }
         @CustomType.Setter
@@ -302,6 +322,7 @@ public final class FlinkFlinkUserConfig {
         public FlinkFlinkUserConfig build() {
             final var _resultValue = new FlinkFlinkUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.customCode = customCode;
             _resultValue.flinkVersion = flinkVersion;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;

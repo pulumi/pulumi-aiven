@@ -61,6 +61,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("kafkaConnect")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs>? KafkaConnect { get; set; }
 
+        [Input("pluginVersions")]
+        private InputList<Inputs.KafkaConnectKafkaConnectUserConfigPluginVersionGetArgs>? _pluginVersions;
+
+        /// <summary>
+        /// The plugin selected by the user
+        /// </summary>
+        public InputList<Inputs.KafkaConnectKafkaConnectUserConfigPluginVersionGetArgs> PluginVersions
+        {
+            get => _pluginVersions ?? (_pluginVersions = new InputList<Inputs.KafkaConnectKafkaConnectUserConfigPluginVersionGetArgs>());
+            set => _pluginVersions = value;
+        }
+
         /// <summary>
         /// Allow access to selected service ports from private networks
         /// </summary>
