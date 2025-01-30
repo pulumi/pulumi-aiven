@@ -69,6 +69,21 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+     * 
+     */
+    @Import(name="frequentSnapshots")
+    private @Nullable Output<Boolean> frequentSnapshots;
+
+    /**
+     * @return When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> frequentSnapshots() {
+        return Optional.ofNullable(this.frequentSnapshots);
+    }
+
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -427,6 +442,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.backupHour = $.backupHour;
         this.backupMinute = $.backupMinute;
+        this.frequentSnapshots = $.frequentSnapshots;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
@@ -531,6 +547,27 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder backupMinute(Integer backupMinute) {
             return backupMinute(Output.of(backupMinute));
+        }
+
+        /**
+         * @param frequentSnapshots When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder frequentSnapshots(@Nullable Output<Boolean> frequentSnapshots) {
+            $.frequentSnapshots = frequentSnapshots;
+            return this;
+        }
+
+        /**
+         * @param frequentSnapshots When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder frequentSnapshots(Boolean frequentSnapshots) {
+            return frequentSnapshots(Output.of(frequentSnapshots));
         }
 
         /**

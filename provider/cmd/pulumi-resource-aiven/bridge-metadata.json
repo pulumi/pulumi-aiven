@@ -454,6 +454,50 @@
                     }
                 }
             },
+            "aiven_flink_jar_application": {
+                "current": "aiven:index/flinkJarApplication:FlinkJarApplication",
+                "majorVersion": 6,
+                "fields": {
+                    "application_versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "file_info": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "current_deployment": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "program_args": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aiven_flink_jar_application_deployment": {
+                "current": "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment",
+                "majorVersion": 6,
+                "fields": {
+                    "program_args": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aiven_flink_jar_application_version": {
+                "current": "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion",
+                "majorVersion": 6,
+                "fields": {
+                    "file_info": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_gcp_privatelink": {
                 "current": "aiven:index/gcpPrivatelink:GcpPrivatelink",
                 "majorVersion": 6
@@ -4227,6 +4271,9 @@
             "aiven:index/flinkApplication:FlinkApplication": 0,
             "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": 0,
             "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": 0,
+            "aiven:index/flinkJarApplication:FlinkJarApplication": 0,
+            "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment": 0,
+            "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion": 0,
             "aiven:index/gcpPrivatelink:GcpPrivatelink": 0,
             "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": 0,
             "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": 0,

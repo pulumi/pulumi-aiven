@@ -21,7 +21,7 @@ public final class GetOpenSearchAclRuleResult {
      */
     private String index;
     /**
-     * @return The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * @return The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     private String permission;
@@ -57,7 +57,7 @@ public final class GetOpenSearchAclRuleResult {
         return this.index;
     }
     /**
-     * @return The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * @return The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     public String permission() {

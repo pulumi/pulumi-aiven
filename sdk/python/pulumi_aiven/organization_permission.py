@@ -30,7 +30,7 @@ class OrganizationPermissionArgs:
         :param pulumi.Input[str] organization_id: Organization ID.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Permissions to grant to principals.
         :param pulumi.Input[str] resource_id: Resource ID.
-        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        :param pulumi.Input[str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "permissions", permissions)
@@ -77,7 +77,7 @@ class OrganizationPermissionArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[str]:
         """
-        Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        Resource type. The possible values are `organization`, `organization_unit` and `project`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -98,7 +98,7 @@ class _OrganizationPermissionState:
         :param pulumi.Input[str] organization_id: Organization ID.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationPermissionPermissionArgs']]] permissions: Permissions to grant to principals.
         :param pulumi.Input[str] resource_id: Resource ID.
-        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        :param pulumi.Input[str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`.
         """
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
@@ -149,7 +149,7 @@ class _OrganizationPermissionState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        Resource type. The possible values are `organization`, `organization_unit` and `project`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -238,7 +238,7 @@ class OrganizationPermission(pulumi.CustomResource):
         :param pulumi.Input[str] organization_id: Organization ID.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Permissions to grant to principals.
         :param pulumi.Input[str] resource_id: Resource ID.
-        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        :param pulumi.Input[str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`.
         """
         ...
     @overload
@@ -375,7 +375,7 @@ class OrganizationPermission(pulumi.CustomResource):
         :param pulumi.Input[str] organization_id: Organization ID.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationPermissionPermissionArgs', 'OrganizationPermissionPermissionArgsDict']]]] permissions: Permissions to grant to principals.
         :param pulumi.Input[str] resource_id: Resource ID.
-        :param pulumi.Input[str] resource_type: Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        :param pulumi.Input[str] resource_type: Resource type. The possible values are `organization`, `organization_unit` and `project`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -415,7 +415,7 @@ class OrganizationPermission(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[str]:
         """
-        Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        Resource type. The possible values are `organization`, `organization_unit` and `project`.
         """
         return pulumi.get(self, "resource_type")
 

@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetPgServiceIntegrationResult
     {
         /// <summary>
-        /// Type of the service integration. The possible value is `read_replica`.
+        /// Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
         /// </summary>
         public readonly string IntegrationType;
         /// <summary>

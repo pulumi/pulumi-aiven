@@ -140,6 +140,21 @@ export type FlinkApplicationVersion = import("./flinkApplicationVersion").FlinkA
 export const FlinkApplicationVersion: typeof import("./flinkApplicationVersion").FlinkApplicationVersion = null as any;
 utilities.lazyLoad(exports, ["FlinkApplicationVersion"], () => require("./flinkApplicationVersion"));
 
+export { FlinkJarApplicationArgs, FlinkJarApplicationState } from "./flinkJarApplication";
+export type FlinkJarApplication = import("./flinkJarApplication").FlinkJarApplication;
+export const FlinkJarApplication: typeof import("./flinkJarApplication").FlinkJarApplication = null as any;
+utilities.lazyLoad(exports, ["FlinkJarApplication"], () => require("./flinkJarApplication"));
+
+export { FlinkJarApplicationDeploymentArgs, FlinkJarApplicationDeploymentState } from "./flinkJarApplicationDeployment";
+export type FlinkJarApplicationDeployment = import("./flinkJarApplicationDeployment").FlinkJarApplicationDeployment;
+export const FlinkJarApplicationDeployment: typeof import("./flinkJarApplicationDeployment").FlinkJarApplicationDeployment = null as any;
+utilities.lazyLoad(exports, ["FlinkJarApplicationDeployment"], () => require("./flinkJarApplicationDeployment"));
+
+export { FlinkJarApplicationVersionArgs, FlinkJarApplicationVersionState } from "./flinkJarApplicationVersion";
+export type FlinkJarApplicationVersion = import("./flinkJarApplicationVersion").FlinkJarApplicationVersion;
+export const FlinkJarApplicationVersion: typeof import("./flinkJarApplicationVersion").FlinkJarApplicationVersion = null as any;
+utilities.lazyLoad(exports, ["FlinkJarApplicationVersion"], () => require("./flinkJarApplicationVersion"));
+
 export { GcpPrivatelinkArgs, GcpPrivatelinkState } from "./gcpPrivatelink";
 export type GcpPrivatelink = import("./gcpPrivatelink").GcpPrivatelink;
 export const GcpPrivatelink: typeof import("./gcpPrivatelink").GcpPrivatelink = null as any;
@@ -858,6 +873,12 @@ const _module = {
                 return new FlinkApplicationDeployment(name, <any>undefined, { urn })
             case "aiven:index/flinkApplicationVersion:FlinkApplicationVersion":
                 return new FlinkApplicationVersion(name, <any>undefined, { urn })
+            case "aiven:index/flinkJarApplication:FlinkJarApplication":
+                return new FlinkJarApplication(name, <any>undefined, { urn })
+            case "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment":
+                return new FlinkJarApplicationDeployment(name, <any>undefined, { urn })
+            case "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion":
+                return new FlinkJarApplicationVersion(name, <any>undefined, { urn })
             case "aiven:index/gcpPrivatelink:GcpPrivatelink":
                 return new GcpPrivatelink(name, <any>undefined, { urn })
             case "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval":
@@ -1000,6 +1021,9 @@ pulumi.runtime.registerResourceModule("aiven", "index/flink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplication", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationDeployment", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationVersion", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/flinkJarApplication", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/flinkJarApplicationDeployment", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/flinkJarApplicationVersion", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpPrivatelink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpPrivatelinkConnectionApproval", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpVpcPeeringConnection", _module)

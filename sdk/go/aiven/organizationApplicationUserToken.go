@@ -79,7 +79,7 @@ type OrganizationApplicationUserToken struct {
 	LastUserAgent pulumi.StringOutput `pulumi:"lastUserAgent"`
 	// User agent of the last request made with this token in human-readable format.
 	LastUserAgentHumanReadable pulumi.StringOutput `pulumi:"lastUserAgentHumanReadable"`
-	// The number of hours after which a token expires. Default session duration is 10 hours.
+	// The number of hours after which a token expires. If not set, it never expires.
 	MaxAgeSeconds pulumi.IntPtrOutput `pulumi:"maxAgeSeconds"`
 	// The ID of the organization the application user belongs to.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
@@ -153,7 +153,7 @@ type organizationApplicationUserTokenState struct {
 	LastUserAgent *string `pulumi:"lastUserAgent"`
 	// User agent of the last request made with this token in human-readable format.
 	LastUserAgentHumanReadable *string `pulumi:"lastUserAgentHumanReadable"`
-	// The number of hours after which a token expires. Default session duration is 10 hours.
+	// The number of hours after which a token expires. If not set, it never expires.
 	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
 	// The ID of the organization the application user belongs to.
 	OrganizationId *string `pulumi:"organizationId"`
@@ -188,7 +188,7 @@ type OrganizationApplicationUserTokenState struct {
 	LastUserAgent pulumi.StringPtrInput
 	// User agent of the last request made with this token in human-readable format.
 	LastUserAgentHumanReadable pulumi.StringPtrInput
-	// The number of hours after which a token expires. Default session duration is 10 hours.
+	// The number of hours after which a token expires. If not set, it never expires.
 	MaxAgeSeconds pulumi.IntPtrInput
 	// The ID of the organization the application user belongs to.
 	OrganizationId pulumi.StringPtrInput
@@ -209,7 +209,7 @@ type organizationApplicationUserTokenArgs struct {
 	Description *string `pulumi:"description"`
 	// Extends the token session duration when the token is used. Only applicable if a value is set for `maxAgeSeconds`.
 	ExtendWhenUsed *bool `pulumi:"extendWhenUsed"`
-	// The number of hours after which a token expires. Default session duration is 10 hours.
+	// The number of hours after which a token expires. If not set, it never expires.
 	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
 	// The ID of the organization the application user belongs to.
 	OrganizationId string `pulumi:"organizationId"`
@@ -225,7 +225,7 @@ type OrganizationApplicationUserTokenArgs struct {
 	Description pulumi.StringPtrInput
 	// Extends the token session duration when the token is used. Only applicable if a value is set for `maxAgeSeconds`.
 	ExtendWhenUsed pulumi.BoolPtrInput
-	// The number of hours after which a token expires. Default session duration is 10 hours.
+	// The number of hours after which a token expires. If not set, it never expires.
 	MaxAgeSeconds pulumi.IntPtrInput
 	// The ID of the organization the application user belongs to.
 	OrganizationId pulumi.StringInput
@@ -377,7 +377,7 @@ func (o OrganizationApplicationUserTokenOutput) LastUserAgentHumanReadable() pul
 	return o.ApplyT(func(v *OrganizationApplicationUserToken) pulumi.StringOutput { return v.LastUserAgentHumanReadable }).(pulumi.StringOutput)
 }
 
-// The number of hours after which a token expires. Default session duration is 10 hours.
+// The number of hours after which a token expires. If not set, it never expires.
 func (o OrganizationApplicationUserTokenOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrganizationApplicationUserToken) pulumi.IntPtrOutput { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }

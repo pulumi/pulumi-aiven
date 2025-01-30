@@ -62,7 +62,7 @@ type GetServiceComponentArgs struct {
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
 	// Project name
 	Project string `pulumi:"project"`
-	// Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+	// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
 	Route *string `pulumi:"route"`
 	// Service name
 	ServiceName *string `pulumi:"serviceName"`
@@ -86,7 +86,7 @@ type GetServiceComponentResult struct {
 	Port int `pulumi:"port"`
 	// Project name
 	Project string `pulumi:"project"`
-	// Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+	// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
 	Route *string `pulumi:"route"`
 	// Service name
 	ServiceName *string `pulumi:"serviceName"`
@@ -113,7 +113,7 @@ type GetServiceComponentOutputArgs struct {
 	KafkaAuthenticationMethod pulumi.StringPtrInput `pulumi:"kafkaAuthenticationMethod"`
 	// Project name
 	Project pulumi.StringInput `pulumi:"project"`
-	// Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+	// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
 	Route pulumi.StringPtrInput `pulumi:"route"`
 	// Service name
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
@@ -172,7 +172,7 @@ func (o GetServiceComponentResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
 func (o GetServiceComponentResultOutput) Route() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.Route }).(pulumi.StringPtrOutput)
 }

@@ -20,14 +20,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     public static final MirrorMakerReplicationFlowArgs Empty = new MirrorMakerReplicationFlowArgs();
 
     /**
-     * List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
      * 
      */
     @Import(name="configPropertiesExcludes")
     private @Nullable Output<List<String>> configPropertiesExcludes;
 
     /**
-     * @return List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * @return List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
      * 
      */
     public Optional<Output<List<String>>> configPropertiesExcludes() {
@@ -35,14 +35,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
     @Import(name="emitBackwardHeartbeatsEnabled")
     private @Nullable Output<Boolean> emitBackwardHeartbeatsEnabled;
 
     /**
-     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * @return Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
     public Optional<Output<Boolean>> emitBackwardHeartbeatsEnabled() {
@@ -50,14 +50,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Whether to emit heartbeats to the target cluster. The default value is `false`.
+     * Enables emitting heartbeats to the target cluster. The default value is `false`.
      * 
      */
     @Import(name="emitHeartbeatsEnabled")
     private @Nullable Output<Boolean> emitHeartbeatsEnabled;
 
     /**
-     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
+     * @return Enables emitting heartbeats to the target cluster. The default value is `false`.
      * 
      */
     public Optional<Output<Boolean>> emitHeartbeatsEnabled() {
@@ -65,14 +65,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Enable of disable replication flows for a service.
+     * Enables replication flow for a service.
      * 
      */
     @Import(name="enable", required=true)
     private Output<Boolean> enable;
 
     /**
-     * @return Enable of disable replication flows for a service.
+     * @return Enables replication flow for a service.
      * 
      */
     public Output<Boolean> enable() {
@@ -80,14 +80,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      * 
      */
     @Import(name="exactlyOnceDeliveryEnabled")
     private @Nullable Output<Boolean> exactlyOnceDeliveryEnabled;
 
     /**
-     * @return Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * @return Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      * 
      */
     public Optional<Output<Boolean>> exactlyOnceDeliveryEnabled() {
@@ -230,14 +230,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * List of topics and/or regular expressions to replicate
+     * The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     @Import(name="topics")
     private @Nullable Output<List<String>> topics;
 
     /**
-     * @return List of topics and/or regular expressions to replicate
+     * @return The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     public Optional<Output<List<String>>> topics() {
@@ -245,14 +245,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
-     * List of topics and/or regular expressions to not replicate.
+     * The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     @Import(name="topicsBlacklists")
     private @Nullable Output<List<String>> topicsBlacklists;
 
     /**
-     * @return List of topics and/or regular expressions to not replicate.
+     * @return The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     public Optional<Output<List<String>>> topicsBlacklists() {
@@ -299,7 +299,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param configPropertiesExcludes List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+         * @param configPropertiesExcludes List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param configPropertiesExcludes List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+         * @param configPropertiesExcludes List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param configPropertiesExcludes List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+         * @param configPropertiesExcludes List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param emitBackwardHeartbeatsEnabled Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+         * @param emitBackwardHeartbeatsEnabled Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param emitBackwardHeartbeatsEnabled Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+         * @param emitBackwardHeartbeatsEnabled Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param emitHeartbeatsEnabled Whether to emit heartbeats to the target cluster. The default value is `false`.
+         * @param emitHeartbeatsEnabled Enables emitting heartbeats to the target cluster. The default value is `false`.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param emitHeartbeatsEnabled Whether to emit heartbeats to the target cluster. The default value is `false`.
+         * @param emitHeartbeatsEnabled Enables emitting heartbeats to the target cluster. The default value is `false`.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enable Enable of disable replication flows for a service.
+         * @param enable Enables replication flow for a service.
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enable Enable of disable replication flows for a service.
+         * @param enable Enables replication flow for a service.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param exactlyOnceDeliveryEnabled Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+         * @param exactlyOnceDeliveryEnabled Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param exactlyOnceDeliveryEnabled Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+         * @param exactlyOnceDeliveryEnabled Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param topics List of topics and/or regular expressions to replicate
+         * @param topics The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param topics List of topics and/or regular expressions to replicate
+         * @param topics The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param topics List of topics and/or regular expressions to replicate
+         * @param topics The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param topicsBlacklists List of topics and/or regular expressions to not replicate.
+         * @param topicsBlacklists The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
          * 
          * @return builder
          * 
@@ -645,7 +645,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param topicsBlacklists List of topics and/or regular expressions to not replicate.
+         * @param topicsBlacklists The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
          * 
          * @return builder
          * 
@@ -655,7 +655,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param topicsBlacklists List of topics and/or regular expressions to not replicate.
+         * @param topicsBlacklists The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
          * 
          * @return builder
          * 

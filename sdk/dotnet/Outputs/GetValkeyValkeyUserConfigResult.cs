@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
+        /// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+        /// </summary>
+        public readonly bool? FrequentSnapshots;
+        /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.GetValkeyValkeyUserConfigIpFilterObjectResult> IpFilterObjects;
@@ -126,6 +130,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? backupMinute,
 
+            bool? frequentSnapshots,
+
             ImmutableArray<Outputs.GetValkeyValkeyUserConfigIpFilterObjectResult> ipFilterObjects,
 
             ImmutableArray<string> ipFilterStrings,
@@ -175,6 +181,7 @@ namespace Pulumi.Aiven.Outputs
             AdditionalBackupRegions = additionalBackupRegions;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
+            FrequentSnapshots = frequentSnapshots;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;

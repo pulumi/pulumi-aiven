@@ -75,6 +75,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FlinkApplicationDeployment{}
 	case "aiven:index/flinkApplicationVersion:FlinkApplicationVersion":
 		r = &FlinkApplicationVersion{}
+	case "aiven:index/flinkJarApplication:FlinkJarApplication":
+		r = &FlinkJarApplication{}
+	case "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment":
+		r = &FlinkJarApplicationDeployment{}
+	case "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion":
+		r = &FlinkJarApplicationVersion{}
 	case "aiven:index/gcpPrivatelink:GcpPrivatelink":
 		r = &GcpPrivatelink{}
 	case "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval":
@@ -349,6 +355,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/flinkApplicationVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/flinkJarApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/flinkJarApplicationDeployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/flinkJarApplicationVersion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

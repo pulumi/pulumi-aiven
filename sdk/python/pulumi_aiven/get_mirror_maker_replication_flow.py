@@ -83,7 +83,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="configPropertiesExcludes")
     def config_properties_excludes(self) -> Sequence[str]:
         """
-        List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\\\.replication\\\\.throttled\\\\.replicas", "leader\\\\.replication\\\\.throttled\\\\.replicas", "message\\\\.timestamp\\\\.difference\\\\.max\\\\.ms",  "message\\\\.timestamp\\\\.type"]
+        List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\\\.replication\\\\.throttled\\\\.replicas", "leader\\\\.replication\\\\.throttled\\\\.replicas", "message\\\\.timestamp\\\\.difference\\\\.max\\\\.ms",  "message\\\\.timestamp\\\\.type"]
         """
         return pulumi.get(self, "config_properties_excludes")
 
@@ -91,7 +91,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
     def emit_backward_heartbeats_enabled(self) -> bool:
         """
-        Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_backward_heartbeats_enabled")
 
@@ -99,7 +99,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> bool:
         """
-        Whether to emit heartbeats to the target cluster. The default value is `false`.
+        Enables emitting heartbeats to the target cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
@@ -107,7 +107,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter
     def enable(self) -> bool:
         """
-        Enable of disable replication flows for a service.
+        Enables replication flow for a service.
         """
         return pulumi.get(self, "enable")
 
@@ -115,7 +115,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="exactlyOnceDeliveryEnabled")
     def exactly_once_delivery_enabled(self) -> bool:
         """
-        Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
         """
         return pulumi.get(self, "exactly_once_delivery_enabled")
 
@@ -203,7 +203,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter
     def topics(self) -> Sequence[str]:
         """
-        List of topics and/or regular expressions to replicate
+        The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         """
         return pulumi.get(self, "topics")
 
@@ -211,7 +211,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="topicsBlacklists")
     def topics_blacklists(self) -> Sequence[str]:
         """
-        List of topics and/or regular expressions to not replicate.
+        The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         """
         return pulumi.get(self, "topics_blacklists")
 
@@ -247,7 +247,7 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
                                       target_cluster: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMirrorMakerReplicationFlowResult:
     """
-    The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+    Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
 
     ## Example Usage
 
@@ -255,8 +255,8 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    f1 = aiven.get_mirror_maker_replication_flow(project=kafka_mm_project1["project"],
-        service_name=mm["serviceName"],
+    example_replication_flow = aiven.get_mirror_maker_replication_flow(project=example_project["project"],
+        service_name=example_kafka["serviceName"],
         source_cluster=source["serviceName"],
         target_cluster=target["serviceName"])
     ```
@@ -299,7 +299,7 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
                                              target_cluster: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMirrorMakerReplicationFlowResult]:
     """
-    The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+    Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
 
     ## Example Usage
 
@@ -307,8 +307,8 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
     import pulumi
     import pulumi_aiven as aiven
 
-    f1 = aiven.get_mirror_maker_replication_flow(project=kafka_mm_project1["project"],
-        service_name=mm["serviceName"],
+    example_replication_flow = aiven.get_mirror_maker_replication_flow(project=example_project["project"],
+        service_name=example_kafka["serviceName"],
         source_cluster=source["serviceName"],
         target_cluster=target["serviceName"])
     ```

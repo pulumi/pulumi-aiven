@@ -114,7 +114,7 @@ namespace Pulumi.Aiven
         public Output<string> LastUserAgentHumanReadable { get; private set; } = null!;
 
         /// <summary>
-        /// The number of hours after which a token expires. Default session duration is 10 hours.
+        /// The number of hours after which a token expires. If not set, it never expires.
         /// </summary>
         [Output("maxAgeSeconds")]
         public Output<int?> MaxAgeSeconds { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.Aiven
         public Input<bool>? ExtendWhenUsed { get; set; }
 
         /// <summary>
-        /// The number of hours after which a token expires. Default session duration is 10 hours.
+        /// The number of hours after which a token expires. If not set, it never expires.
         /// </summary>
         [Input("maxAgeSeconds")]
         public Input<int>? MaxAgeSeconds { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.Aiven
         public Input<string>? LastUserAgentHumanReadable { get; set; }
 
         /// <summary>
-        /// The number of hours after which a token expires. Default session duration is 10 hours.
+        /// The number of hours after which a token expires. If not set, it never expires.
         /// </summary>
         [Input("maxAgeSeconds")]
         public Input<int>? MaxAgeSeconds { get; set; }

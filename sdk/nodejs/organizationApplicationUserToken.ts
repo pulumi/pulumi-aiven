@@ -103,7 +103,7 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastUserAgentHumanReadable!: pulumi.Output<string>;
     /**
-     * The number of hours after which a token expires. Default session duration is 10 hours.
+     * The number of hours after which a token expires. If not set, it never expires.
      */
     public readonly maxAgeSeconds!: pulumi.Output<number | undefined>;
     /**
@@ -233,7 +233,7 @@ export interface OrganizationApplicationUserTokenState {
      */
     lastUserAgentHumanReadable?: pulumi.Input<string>;
     /**
-     * The number of hours after which a token expires. Default session duration is 10 hours.
+     * The number of hours after which a token expires. If not set, it never expires.
      */
     maxAgeSeconds?: pulumi.Input<number>;
     /**
@@ -267,7 +267,7 @@ export interface OrganizationApplicationUserTokenArgs {
      */
     extendWhenUsed?: pulumi.Input<boolean>;
     /**
-     * The number of hours after which a token expires. Default session duration is 10 hours.
+     * The number of hours after which a token expires. If not set, it never expires.
      */
     maxAgeSeconds?: pulumi.Input<number>;
     /**

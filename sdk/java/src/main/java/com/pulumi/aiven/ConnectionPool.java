@@ -98,14 +98,14 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
         return this.databaseName;
     }
     /**
-     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
     @Export(name="poolMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> poolMode;
 
     /**
-     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
     public Output<Optional<String>> poolMode() {

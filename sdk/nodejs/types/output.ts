@@ -1401,6 +1401,134 @@ export interface FlinkFlinkUserConfigPublicAccess {
     flink?: boolean;
 }
 
+export interface FlinkJarApplicationApplicationVersion {
+    /**
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
+     */
+    createdAt: string;
+    /**
+     * The creator of this entity.
+     */
+    createdBy: string;
+    /**
+     * Flink JarApplicationVersion FileInfo.
+     */
+    fileInfos: outputs.FlinkJarApplicationApplicationVersionFileInfo[];
+    /**
+     * ApplicationVersion ID.
+     */
+    id: string;
+    /**
+     * Version number.
+     */
+    version: number;
+}
+
+export interface FlinkJarApplicationApplicationVersionFileInfo {
+    /**
+     * sha256 of the file if known.
+     */
+    fileSha256: string;
+    /**
+     * The size of the file in bytes.
+     */
+    fileSize: number;
+    /**
+     * Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+     */
+    fileStatus: string;
+    /**
+     * The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+     */
+    url: string;
+    /**
+     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     */
+    verifyErrorCode: number;
+    /**
+     * In the case fileStatus is FAILED, may contain details about the failure.
+     */
+    verifyErrorMessage: string;
+}
+
+export interface FlinkJarApplicationCurrentDeployment {
+    /**
+     * The creation timestamp of this entity in ISO 8601 format, always in UTC.
+     */
+    createdAt: string;
+    /**
+     * The creator of this entity.
+     */
+    createdBy: string;
+    /**
+     * The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter.
+     */
+    entryClass: string;
+    /**
+     * Error message describing what caused deployment to fail.
+     */
+    errorMsg: string;
+    /**
+     * Deployment ID.
+     */
+    id: string;
+    /**
+     * Job ID.
+     */
+    jobId: string;
+    /**
+     * Job savepoint.
+     */
+    lastSavepoint: string;
+    /**
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+     */
+    parallelism: number;
+    /**
+     * Arguments to pass during Flink job submission through the programArgsList parameter.
+     */
+    programArgs: string[];
+    /**
+     * Job savepoint.
+     */
+    startingSavepoint: string;
+    /**
+     * Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
+     */
+    status: string;
+    /**
+     * ApplicationVersion ID.
+     */
+    versionId: string;
+}
+
+export interface FlinkJarApplicationVersionFileInfo {
+    /**
+     * sha256 of the file if known.
+     */
+    fileSha256: string;
+    /**
+     * The size of the file in bytes.
+     */
+    fileSize: number;
+    /**
+     * Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
+     */
+    fileStatus: string;
+    /**
+     * The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+     */
+    url: string;
+    /**
+     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     */
+    verifyErrorCode: number;
+    /**
+     * In the case fileStatus is FAILED, may contain details about the failure.
+     */
+    verifyErrorMessage: string;
+}
+
 export interface FlinkServiceIntegration {
     /**
      * Type of the service integration
@@ -4977,11 +5105,11 @@ export interface GetKafkaTechEmail {
 
 export interface GetKafkaTopicConfig {
     /**
-     * cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
+     * cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
      */
     cleanupPolicy?: string;
     /**
-     * compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
+     * compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
      */
     compressionType?: string;
     /**
@@ -5025,7 +5153,7 @@ export interface GetKafkaTopicConfig {
      */
     messageDownconversionEnable?: boolean;
     /**
-     * message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
      */
     messageFormatVersion?: string;
     /**
@@ -7924,7 +8052,7 @@ export interface GetPgPgUserConfigTimescaledb {
 
 export interface GetPgServiceIntegration {
     /**
-     * Type of the service integration. The possible value is `readReplica`.
+     * Type of the service integration. The possible values are `readReplica` and `disasterRecovery`.
      */
     integrationType: string;
     /**
@@ -8214,7 +8342,7 @@ export interface GetRedisRedisUserConfigPublicAccess {
 
 export interface GetRedisServiceIntegration {
     /**
-     * Type of the service integration
+     * Type of the service integration. The possible value is `readReplica`.
      */
     integrationType: string;
     /**
@@ -9518,7 +9646,7 @@ export interface GetValkeyComponent {
 
 export interface GetValkeyServiceIntegration {
     /**
-     * Type of the service integration
+     * Type of the service integration. The possible value is `readReplica`.
      */
     integrationType: string;
     /**
@@ -9577,6 +9705,10 @@ export interface GetValkeyValkeyUserConfig {
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
+    /**
+     * When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
+     */
+    frequentSnapshots?: boolean;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -11720,11 +11852,11 @@ export interface KafkaTechEmail {
 
 export interface KafkaTopicConfig {
     /**
-     * cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
+     * cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
      */
     cleanupPolicy?: string;
     /**
-     * compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
+     * compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
      */
     compressionType?: string;
     /**
@@ -11768,7 +11900,7 @@ export interface KafkaTopicConfig {
      */
     messageDownconversionEnable?: boolean;
     /**
-     * message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
      */
     messageFormatVersion?: string;
     /**
@@ -13888,7 +14020,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime: string;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: string[];
     /**
@@ -14680,7 +14812,7 @@ export interface PgPgUserConfigTimescaledb {
 
 export interface PgServiceIntegration {
     /**
-     * Type of the service integration. The possible value is `readReplica`.
+     * Type of the service integration. The possible values are `readReplica` and `disasterRecovery`.
      */
     integrationType: string;
     /**
@@ -14970,7 +15102,7 @@ export interface RedisRedisUserConfigPublicAccess {
 
 export interface RedisServiceIntegration {
     /**
-     * Type of the service integration
+     * Type of the service integration. The possible value is `readReplica`.
      */
     integrationType: string;
     /**
@@ -16274,7 +16406,7 @@ export interface ValkeyComponent {
 
 export interface ValkeyServiceIntegration {
     /**
-     * Type of the service integration
+     * Type of the service integration. The possible value is `readReplica`.
      */
     integrationType: string;
     /**
@@ -16333,6 +16465,10 @@ export interface ValkeyValkeyUserConfig {
      * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      */
     backupMinute?: number;
+    /**
+     * When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
+     */
+    frequentSnapshots?: boolean;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */

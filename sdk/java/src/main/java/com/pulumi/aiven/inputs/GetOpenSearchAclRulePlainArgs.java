@@ -29,14 +29,14 @@ public final class GetOpenSearchAclRulePlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     @Import(name="permission", required=true)
     private String permission;
 
     /**
-     * @return The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * @return The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     public String permission() {
@@ -128,7 +128,7 @@ public final class GetOpenSearchAclRulePlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param permission The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+         * @param permission The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
          * 
          * @return builder
          * 

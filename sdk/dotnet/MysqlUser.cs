@@ -55,7 +55,7 @@ namespace Pulumi.Aiven
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        /// Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         /// </summary>
         [Output("authentication")]
         public Output<string?> Authentication { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.Aiven
     public sealed class MysqlUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        /// Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         /// </summary>
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        /// Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         /// </summary>
         [Input("authentication")]
         public Input<string>? Authentication { get; set; }

@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
+ * Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
  * 
  * ## Example Usage
  * 
@@ -45,9 +45,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var f1 = new MirrorMakerReplicationFlow("f1", MirrorMakerReplicationFlowArgs.builder()
- *             .project(kafka_mm_project1.project())
- *             .serviceName(mm.serviceName())
+ *         var exampleReplicationFlow = new MirrorMakerReplicationFlow("exampleReplicationFlow", MirrorMakerReplicationFlowArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleKafka.serviceName())
  *             .sourceCluster(source.serviceName())
  *             .targetCluster(target.serviceName())
  *             .enable(true)
@@ -74,77 +74,77 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow f1 project/service_name/source_cluster/target_cluster
+ * $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow example_replication_flow PROJECT/SERVICE_NAME/SOURCE_CLUSTER/TARGET_CLUSTER
  * ```
  * 
  */
 @ResourceType(type="aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow")
 public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResource {
     /**
-     * List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
      * 
      */
     @Export(name="configPropertiesExcludes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> configPropertiesExcludes;
 
     /**
-     * @return List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * @return List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
      * 
      */
     public Output<Optional<List<String>>> configPropertiesExcludes() {
         return Codegen.optional(this.configPropertiesExcludes);
     }
     /**
-     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
     @Export(name="emitBackwardHeartbeatsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> emitBackwardHeartbeatsEnabled;
 
     /**
-     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * @return Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
     public Output<Optional<Boolean>> emitBackwardHeartbeatsEnabled() {
         return Codegen.optional(this.emitBackwardHeartbeatsEnabled);
     }
     /**
-     * Whether to emit heartbeats to the target cluster. The default value is `false`.
+     * Enables emitting heartbeats to the target cluster. The default value is `false`.
      * 
      */
     @Export(name="emitHeartbeatsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> emitHeartbeatsEnabled;
 
     /**
-     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
+     * @return Enables emitting heartbeats to the target cluster. The default value is `false`.
      * 
      */
     public Output<Optional<Boolean>> emitHeartbeatsEnabled() {
         return Codegen.optional(this.emitHeartbeatsEnabled);
     }
     /**
-     * Enable of disable replication flows for a service.
+     * Enables replication flow for a service.
      * 
      */
     @Export(name="enable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enable;
 
     /**
-     * @return Enable of disable replication flows for a service.
+     * @return Enables replication flow for a service.
      * 
      */
     public Output<Boolean> enable() {
         return this.enable;
     }
     /**
-     * Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      * 
      */
     @Export(name="exactlyOnceDeliveryEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> exactlyOnceDeliveryEnabled;
 
     /**
-     * @return Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * @return Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      * 
      */
     public Output<Optional<Boolean>> exactlyOnceDeliveryEnabled() {
@@ -277,28 +277,28 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
         return this.targetCluster;
     }
     /**
-     * List of topics and/or regular expressions to replicate
+     * The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     @Export(name="topics", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> topics;
 
     /**
-     * @return List of topics and/or regular expressions to replicate
+     * @return The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     public Output<Optional<List<String>>> topics() {
         return Codegen.optional(this.topics);
     }
     /**
-     * List of topics and/or regular expressions to not replicate.
+     * The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     @Export(name="topicsBlacklists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> topicsBlacklists;
 
     /**
-     * @return List of topics and/or regular expressions to not replicate.
+     * @return The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     public Output<Optional<List<String>>> topicsBlacklists() {

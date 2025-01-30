@@ -233,7 +233,7 @@ class FlinkApplication(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_NAME
+        $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -266,7 +266,7 @@ class FlinkApplication(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_NAME
+        $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
         ```
 
         :param str resource_name: The name of the resource.

@@ -85,7 +85,7 @@ export class AccountTeamProject extends pulumi.CustomResource {
      */
     public readonly teamId!: pulumi.Output<string>;
     /**
-     * The Account team project type. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:projects:write`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
+     * The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     public readonly teamType!: pulumi.Output<string | undefined>;
 
@@ -141,7 +141,7 @@ export interface AccountTeamProjectState {
      */
     teamId?: pulumi.Input<string>;
     /**
-     * The Account team project type. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:projects:write`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
+     * The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     teamType?: pulumi.Input<string>;
 }
@@ -163,7 +163,7 @@ export interface AccountTeamProjectArgs {
      */
     teamId: pulumi.Input<string>;
     /**
-     * The Account team project type. The possible values are `admin`, `operator`, `developer`, `readOnly`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `service:configuration:write`, `service:logs:read`, `project:services:read`, `project:services:write`, `project:audit_logs:read`, `service:data:write`, `service:secrets:read`, `service:users:write`, `role:services:maintenance`, `role:services:recover`, `organization:audit_logs:read`, `organization:projects:write`, `organization:users:write`, `organization:app_users:write`, `organization:groups:write`, `organization:idps:write`, `organization:domains:write` and `role:organization:admin`.
+     * The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     teamType?: pulumi.Input<string>;
 }

@@ -104,7 +104,7 @@ type OrganizationPermission struct {
 	Permissions OrganizationPermissionPermissionArrayOutput `pulumi:"permissions"`
 	// Resource ID.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
+	// Resource type. The possible values are `organization`, `organizationUnit` and `project`.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 }
 
@@ -156,7 +156,7 @@ type organizationPermissionState struct {
 	Permissions []OrganizationPermissionPermission `pulumi:"permissions"`
 	// Resource ID.
 	ResourceId *string `pulumi:"resourceId"`
-	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
+	// Resource type. The possible values are `organization`, `organizationUnit` and `project`.
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -167,7 +167,7 @@ type OrganizationPermissionState struct {
 	Permissions OrganizationPermissionPermissionArrayInput
 	// Resource ID.
 	ResourceId pulumi.StringPtrInput
-	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
+	// Resource type. The possible values are `organization`, `organizationUnit` and `project`.
 	ResourceType pulumi.StringPtrInput
 }
 
@@ -182,7 +182,7 @@ type organizationPermissionArgs struct {
 	Permissions []OrganizationPermissionPermission `pulumi:"permissions"`
 	// Resource ID.
 	ResourceId string `pulumi:"resourceId"`
-	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
+	// Resource type. The possible values are `organization`, `organizationUnit` and `project`.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -194,7 +194,7 @@ type OrganizationPermissionArgs struct {
 	Permissions OrganizationPermissionPermissionArrayInput
 	// Resource ID.
 	ResourceId pulumi.StringInput
-	// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
+	// Resource type. The possible values are `organization`, `organizationUnit` and `project`.
 	ResourceType pulumi.StringInput
 }
 
@@ -300,7 +300,7 @@ func (o OrganizationPermissionOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationPermission) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Resource type. The possible values are `project`, `organization` and `organizationUnit`.
+// Resource type. The possible values are `organization`, `organizationUnit` and `project`.
 func (o OrganizationPermissionOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationPermission) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }

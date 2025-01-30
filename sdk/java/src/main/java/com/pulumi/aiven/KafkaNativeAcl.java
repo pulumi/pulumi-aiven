@@ -171,14 +171,14 @@ public class KafkaNativeAcl extends com.pulumi.resources.CustomResource {
         return this.resourceName;
     }
     /**
-     * The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * @return The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceType() {

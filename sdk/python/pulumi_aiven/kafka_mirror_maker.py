@@ -737,7 +737,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
+        Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) service.
 
         ## Example Usage
 
@@ -745,11 +745,11 @@ class KafkaMirrorMaker(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mm1 = aiven.KafkaMirrorMaker("mm1",
-            project=pr1["project"],
+        example_mirrormaker = aiven.KafkaMirrorMaker("example_mirrormaker",
+            project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
-            service_name="my-mm1",
+            service_name="example-mirrormaker-service",
             kafka_mirrormaker_user_config={
                 "ip_filters": ["0.0.0.0/0"],
                 "kafka_mirrormaker": {
@@ -763,7 +763,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker mm1 project/service_name
+        $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker example_mirrormaker PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -791,7 +791,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
                  args: KafkaMirrorMakerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
+        Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) service.
 
         ## Example Usage
 
@@ -799,11 +799,11 @@ class KafkaMirrorMaker(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mm1 = aiven.KafkaMirrorMaker("mm1",
-            project=pr1["project"],
+        example_mirrormaker = aiven.KafkaMirrorMaker("example_mirrormaker",
+            project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
-            service_name="my-mm1",
+            service_name="example-mirrormaker-service",
             kafka_mirrormaker_user_config={
                 "ip_filters": ["0.0.0.0/0"],
                 "kafka_mirrormaker": {
@@ -817,7 +817,7 @@ class KafkaMirrorMaker(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker mm1 project/service_name
+        $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker example_mirrormaker PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.

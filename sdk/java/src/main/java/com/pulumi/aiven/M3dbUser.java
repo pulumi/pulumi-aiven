@@ -15,7 +15,13 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven for M3DB service user.
+ * Creates and manages an Aiven for M3 service user.
+ * 
+ * &gt; **End of life notice**
+ * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+ * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+ * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+ * before the end of life date.
  * 
  * ## Example Usage
  * 

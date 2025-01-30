@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ValkeyServiceIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of the service integration
+        /// Type of the service integration. The possible value is `read_replica`.
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;

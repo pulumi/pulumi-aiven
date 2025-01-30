@@ -148,14 +148,14 @@ public class OrganizationPermission extends com.pulumi.resources.CustomResource 
         return this.resourceId;
     }
     /**
-     * Resource type. The possible values are `project`, `organization` and `organization_unit`.
+     * Resource type. The possible values are `organization`, `organization_unit` and `project`.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return Resource type. The possible values are `project`, `organization` and `organization_unit`.
+     * @return Resource type. The possible values are `organization`, `organization_unit` and `project`.
      * 
      */
     public Output<String> resourceType() {

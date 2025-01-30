@@ -353,7 +353,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -428,7 +428,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment main PROJECT/SERVICE_NAME/APPLICATION_ID/DEPLOYMENT_ID
         ```
 
         :param str resource_name: The name of the resource.

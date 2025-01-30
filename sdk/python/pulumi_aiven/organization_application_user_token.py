@@ -31,7 +31,7 @@ class OrganizationApplicationUserTokenArgs:
         :param pulumi.Input[str] user_id: The ID of the application user the token is created for.
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
-        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
+        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. If not set, it never expires.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         """
         pulumi.set(__self__, "organization_id", organization_id)
@@ -97,7 +97,7 @@ class OrganizationApplicationUserTokenArgs:
     @pulumi.getter(name="maxAgeSeconds")
     def max_age_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of hours after which a token expires. Default session duration is 10 hours.
+        The number of hours after which a token expires. If not set, it never expires.
         """
         return pulumi.get(self, "max_age_seconds")
 
@@ -150,7 +150,7 @@ class _OrganizationApplicationUserTokenState:
         :param pulumi.Input[str] last_used_time: Timestamp when the access token was last used.
         :param pulumi.Input[str] last_user_agent: User agent of the last request made with this token.
         :param pulumi.Input[str] last_user_agent_human_readable: User agent of the last request made with this token in human-readable format.
-        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
+        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. If not set, it never expires.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         :param pulumi.Input[str] token_prefix: Prefix of the token.
@@ -325,7 +325,7 @@ class _OrganizationApplicationUserTokenState:
     @pulumi.getter(name="maxAgeSeconds")
     def max_age_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of hours after which a token expires. Default session duration is 10 hours.
+        The number of hours after which a token expires. If not set, it never expires.
         """
         return pulumi.get(self, "max_age_seconds")
 
@@ -422,7 +422,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
-        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
+        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. If not set, it never expires.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         :param pulumi.Input[str] user_id: The ID of the application user the token is created for.
@@ -553,7 +553,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.Input[str] last_used_time: Timestamp when the access token was last used.
         :param pulumi.Input[str] last_user_agent: User agent of the last request made with this token.
         :param pulumi.Input[str] last_user_agent_human_readable: User agent of the last request made with this token in human-readable format.
-        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
+        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. If not set, it never expires.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         :param pulumi.Input[str] token_prefix: Prefix of the token.
@@ -673,7 +673,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
     @pulumi.getter(name="maxAgeSeconds")
     def max_age_seconds(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of hours after which a token expires. Default session duration is 10 hours.
+        The number of hours after which a token expires. If not set, it never expires.
         """
         return pulumi.get(self, "max_age_seconds")
 

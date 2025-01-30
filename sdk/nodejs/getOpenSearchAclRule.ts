@@ -41,7 +41,7 @@ export interface GetOpenSearchAclRuleArgs {
      */
     index: string;
     /**
-     * The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
     permission: string;
     /**
@@ -71,7 +71,7 @@ export interface GetOpenSearchAclRuleResult {
      */
     readonly index: string;
     /**
-     * The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
     readonly permission: string;
     /**
@@ -124,7 +124,7 @@ export interface GetOpenSearchAclRuleOutputArgs {
      */
     index: pulumi.Input<string>;
     /**
-     * The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
     permission: pulumi.Input<string>;
     /**

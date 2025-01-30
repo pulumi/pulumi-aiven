@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
+ * Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) service.
  *
  * ## Example Usage
  *
@@ -15,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mm1 = new aiven.KafkaMirrorMaker("mm1", {
- *     project: pr1.project,
+ * const exampleMirrormaker = new aiven.KafkaMirrorMaker("example_mirrormaker", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-4",
- *     serviceName: "my-mm1",
+ *     serviceName: "example-mirrormaker-service",
  *     kafkaMirrormakerUserConfig: {
  *         ipFilters: ["0.0.0.0/0"],
  *         kafkaMirrormaker: {
@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker mm1 project/service_name
+ * $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker example_mirrormaker PROJECT/SERVICE_NAME
  * ```
  */
 export class KafkaMirrorMaker extends pulumi.CustomResource {

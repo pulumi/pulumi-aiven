@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetMirrorMakerReplicationFlow
     {
         /// <summary>
-        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+        /// Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
+        ///     var exampleReplicationFlow = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
-        ///         Project = kafka_mm_project1.Project,
-        ///         ServiceName = mm.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
         ///         SourceCluster = source.ServiceName,
         ///         TargetCluster = target.ServiceName,
         ///     });
@@ -39,7 +39,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+        /// Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
         /// 
         /// ## Example Usage
         /// 
@@ -51,10 +51,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
+        ///     var exampleReplicationFlow = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
-        ///         Project = kafka_mm_project1.Project,
-        ///         ServiceName = mm.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
         ///         SourceCluster = source.ServiceName,
         ///         TargetCluster = target.ServiceName,
         ///     });
@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+        /// Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
         /// 
         /// ## Example Usage
         /// 
@@ -78,10 +78,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
+        ///     var exampleReplicationFlow = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
-        ///         Project = kafka_mm_project1.Project,
-        ///         ServiceName = mm.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
         ///         SourceCluster = source.ServiceName,
         ///         TargetCluster = target.ServiceName,
         ///     });
@@ -163,23 +163,23 @@ namespace Pulumi.Aiven
     public sealed class GetMirrorMakerReplicationFlowResult
     {
         /// <summary>
-        /// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+        /// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
         /// </summary>
         public readonly ImmutableArray<string> ConfigPropertiesExcludes;
         /// <summary>
-        /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         /// </summary>
         public readonly bool EmitBackwardHeartbeatsEnabled;
         /// <summary>
-        /// Whether to emit heartbeats to the target cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the target cluster. The default value is `false`.
         /// </summary>
         public readonly bool EmitHeartbeatsEnabled;
         /// <summary>
-        /// Enable of disable replication flows for a service.
+        /// Enables replication flow for a service.
         /// </summary>
         public readonly bool Enable;
         /// <summary>
-        /// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        /// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
         /// </summary>
         public readonly bool ExactlyOnceDeliveryEnabled;
         /// <summary>
@@ -223,11 +223,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string TargetCluster;
         /// <summary>
-        /// List of topics and/or regular expressions to replicate
+        /// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         /// </summary>
         public readonly ImmutableArray<string> Topics;
         /// <summary>
-        /// List of topics and/or regular expressions to not replicate.
+        /// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         /// </summary>
         public readonly ImmutableArray<string> TopicsBlacklists;
 

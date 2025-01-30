@@ -27,7 +27,7 @@ class OpenSearchAclRuleArgs:
         """
         The set of arguments for constructing a OpenSearchAclRule resource.
         :param pulumi.Input[str] index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] permission: The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] permission: The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -54,7 +54,7 @@ class OpenSearchAclRuleArgs:
     @pulumi.getter
     def permission(self) -> pulumi.Input[str]:
         """
-        The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -110,7 +110,7 @@ class _OpenSearchAclRuleState:
         """
         Input properties used for looking up and filtering OpenSearchAclRule resources.
         :param pulumi.Input[str] index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] permission: The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] permission: The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -142,7 +142,7 @@ class _OpenSearchAclRuleState:
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[str]]:
         """
-        The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -269,7 +269,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] permission: The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] permission: The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -415,7 +415,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] permission: The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        :param pulumi.Input[str] permission: The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -443,7 +443,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
     @pulumi.getter
     def permission(self) -> pulumi.Output[str]:
         """
-        The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 

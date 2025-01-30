@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.
+    /// Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
     /// 
     /// ## Example Usage
     /// 
@@ -22,10 +22,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var f1 = new Aiven.MirrorMakerReplicationFlow("f1", new()
+    ///     var exampleReplicationFlow = new Aiven.MirrorMakerReplicationFlow("example_replication_flow", new()
     ///     {
-    ///         Project = kafka_mm_project1.Project,
-    ///         ServiceName = mm.ServiceName,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
     ///         SourceCluster = source.ServiceName,
     ///         TargetCluster = target.ServiceName,
     ///         Enable = true,
@@ -56,38 +56,38 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow f1 project/service_name/source_cluster/target_cluster
+    /// $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow example_replication_flow PROJECT/SERVICE_NAME/SOURCE_CLUSTER/TARGET_CLUSTER
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow")]
     public partial class MirrorMakerReplicationFlow : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+        /// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
         /// </summary>
         [Output("configPropertiesExcludes")]
         public Output<ImmutableArray<string>> ConfigPropertiesExcludes { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         /// </summary>
         [Output("emitBackwardHeartbeatsEnabled")]
         public Output<bool?> EmitBackwardHeartbeatsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to emit heartbeats to the target cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the target cluster. The default value is `false`.
         /// </summary>
         [Output("emitHeartbeatsEnabled")]
         public Output<bool?> EmitHeartbeatsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Enable of disable replication flows for a service.
+        /// Enables replication flow for a service.
         /// </summary>
         [Output("enable")]
         public Output<bool> Enable { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        /// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
         /// </summary>
         [Output("exactlyOnceDeliveryEnabled")]
         public Output<bool?> ExactlyOnceDeliveryEnabled { get; private set; } = null!;
@@ -147,13 +147,13 @@ namespace Pulumi.Aiven
         public Output<string> TargetCluster { get; private set; } = null!;
 
         /// <summary>
-        /// List of topics and/or regular expressions to replicate
+        /// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         /// </summary>
         [Output("topics")]
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
 
         /// <summary>
-        /// List of topics and/or regular expressions to not replicate.
+        /// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         /// </summary>
         [Output("topicsBlacklists")]
         public Output<ImmutableArray<string>> TopicsBlacklists { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _configPropertiesExcludes;
 
         /// <summary>
-        /// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+        /// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
         /// </summary>
         public InputList<string> ConfigPropertiesExcludes
         {
@@ -217,25 +217,25 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         /// </summary>
         [Input("emitBackwardHeartbeatsEnabled")]
         public Input<bool>? EmitBackwardHeartbeatsEnabled { get; set; }
 
         /// <summary>
-        /// Whether to emit heartbeats to the target cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the target cluster. The default value is `false`.
         /// </summary>
         [Input("emitHeartbeatsEnabled")]
         public Input<bool>? EmitHeartbeatsEnabled { get; set; }
 
         /// <summary>
-        /// Enable of disable replication flows for a service.
+        /// Enables replication flow for a service.
         /// </summary>
         [Input("enable", required: true)]
         public Input<bool> Enable { get; set; } = null!;
 
         /// <summary>
-        /// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        /// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
         /// </summary>
         [Input("exactlyOnceDeliveryEnabled")]
         public Input<bool>? ExactlyOnceDeliveryEnabled { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topics;
 
         /// <summary>
-        /// List of topics and/or regular expressions to replicate
+        /// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         /// </summary>
         public InputList<string> Topics
         {
@@ -310,7 +310,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topicsBlacklists;
 
         /// <summary>
-        /// List of topics and/or regular expressions to not replicate.
+        /// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         /// </summary>
         public InputList<string> TopicsBlacklists
         {
@@ -330,7 +330,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _configPropertiesExcludes;
 
         /// <summary>
-        /// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+        /// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
         /// </summary>
         public InputList<string> ConfigPropertiesExcludes
         {
@@ -339,25 +339,25 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         /// </summary>
         [Input("emitBackwardHeartbeatsEnabled")]
         public Input<bool>? EmitBackwardHeartbeatsEnabled { get; set; }
 
         /// <summary>
-        /// Whether to emit heartbeats to the target cluster. The default value is `false`.
+        /// Enables emitting heartbeats to the target cluster. The default value is `false`.
         /// </summary>
         [Input("emitHeartbeatsEnabled")]
         public Input<bool>? EmitHeartbeatsEnabled { get; set; }
 
         /// <summary>
-        /// Enable of disable replication flows for a service.
+        /// Enables replication flow for a service.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+        /// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
         /// </summary>
         [Input("exactlyOnceDeliveryEnabled")]
         public Input<bool>? ExactlyOnceDeliveryEnabled { get; set; }
@@ -420,7 +420,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topics;
 
         /// <summary>
-        /// List of topics and/or regular expressions to replicate
+        /// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         /// </summary>
         public InputList<string> Topics
         {
@@ -432,7 +432,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _topicsBlacklists;
 
         /// <summary>
-        /// List of topics and/or regular expressions to not replicate.
+        /// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         /// </summary>
         public InputList<string> TopicsBlacklists
         {

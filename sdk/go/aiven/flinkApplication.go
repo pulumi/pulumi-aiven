@@ -45,7 +45,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_NAME
+// $ pulumi import aiven:index/flinkApplication:FlinkApplication example_app PROJECT/SERVICE_NAME/APPLICATION_ID
 // ```
 type FlinkApplication struct {
 	pulumi.CustomResourceState

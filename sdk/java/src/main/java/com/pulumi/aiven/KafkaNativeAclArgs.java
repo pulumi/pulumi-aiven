@@ -122,14 +122,14 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
     /**
-     * @return The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * @return The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceType() {
@@ -331,7 +331,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceType The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+         * @param resourceType The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceType The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+         * @param resourceType The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

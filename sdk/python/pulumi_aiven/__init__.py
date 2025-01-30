@@ -32,6 +32,9 @@ from .flink import *
 from .flink_application import *
 from .flink_application_deployment import *
 from .flink_application_version import *
+from .flink_jar_application import *
+from .flink_jar_application_deployment import *
+from .flink_jar_application_version import *
 from .gcp_privatelink import *
 from .gcp_privatelink_connection_approval import *
 from .gcp_vpc_peering_connection import *
@@ -389,6 +392,30 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": "FlinkApplicationVersion"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/flinkJarApplication",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/flinkJarApplication:FlinkJarApplication": "FlinkJarApplication"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/flinkJarApplicationDeployment",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment": "FlinkJarApplicationDeployment"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/flinkJarApplicationVersion",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion": "FlinkJarApplicationVersion"
   }
  },
  {

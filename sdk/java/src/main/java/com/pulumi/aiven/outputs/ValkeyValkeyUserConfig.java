@@ -35,6 +35,11 @@ public final class ValkeyValkeyUserConfig {
      */
     private @Nullable Integer backupMinute;
     /**
+     * @return When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+     * 
+     */
+    private @Nullable Boolean frequentSnapshots;
+    /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -175,6 +180,13 @@ public final class ValkeyValkeyUserConfig {
      */
     public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
+    }
+    /**
+     * @return When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+     * 
+     */
+    public Optional<Boolean> frequentSnapshots() {
+        return Optional.ofNullable(this.frequentSnapshots);
     }
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -354,6 +366,7 @@ public final class ValkeyValkeyUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable Integer backupHour;
         private @Nullable Integer backupMinute;
+        private @Nullable Boolean frequentSnapshots;
         private @Nullable List<ValkeyValkeyUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
@@ -383,6 +396,7 @@ public final class ValkeyValkeyUserConfig {
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.backupHour = defaults.backupHour;
     	      this.backupMinute = defaults.backupMinute;
+    	      this.frequentSnapshots = defaults.frequentSnapshots;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
@@ -424,6 +438,12 @@ public final class ValkeyValkeyUserConfig {
         public Builder backupMinute(@Nullable Integer backupMinute) {
 
             this.backupMinute = backupMinute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder frequentSnapshots(@Nullable Boolean frequentSnapshots) {
+
+            this.frequentSnapshots = frequentSnapshots;
             return this;
         }
         @CustomType.Setter
@@ -578,6 +598,7 @@ public final class ValkeyValkeyUserConfig {
             _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.backupHour = backupHour;
             _resultValue.backupMinute = backupMinute;
+            _resultValue.frequentSnapshots = frequentSnapshots;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;

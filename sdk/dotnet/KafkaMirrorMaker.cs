@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
+    /// Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) service.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mm1 = new Aiven.KafkaMirrorMaker("mm1", new()
+    ///     var exampleMirrormaker = new Aiven.KafkaMirrorMaker("example_mirrormaker", new()
     ///     {
-    ///         Project = pr1.Project,
+    ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
-    ///         ServiceName = "my-mm1",
+    ///         ServiceName = "example-mirrormaker-service",
     ///         KafkaMirrormakerUserConfig = new Aiven.Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs
     ///         {
     ///             IpFilters = new[]
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker mm1 project/service_name
+    /// $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker example_mirrormaker PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaMirrorMaker:KafkaMirrorMaker")]

@@ -117,7 +117,7 @@ namespace Pulumi.Aiven
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        /// Resource type. The possible values are `organization`, `organization_unit` and `project`.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Aiven
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        /// Resource type. The possible values are `organization`, `organization_unit` and `project`.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.Aiven
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Resource type. The possible values are `project`, `organization` and `organization_unit`.
+        /// Resource type. The possible values are `organization`, `organization_unit` and `project`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

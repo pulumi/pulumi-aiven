@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+// Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupMirrorMakerReplicationFlow(ctx, &aiven.LookupMirrorMakerReplicationFlowArgs{
-//				Project:       kafka_mm_project1.Project,
-//				ServiceName:   mm.ServiceName,
+//				Project:       exampleProject.Project,
+//				ServiceName:   exampleKafka.ServiceName,
 //				SourceCluster: source.ServiceName,
 //				TargetCluster: target.ServiceName,
 //			}, nil)
@@ -65,15 +65,15 @@ type LookupMirrorMakerReplicationFlowArgs struct {
 
 // A collection of values returned by getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowResult struct {
-	// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
 	ConfigPropertiesExcludes []string `pulumi:"configPropertiesExcludes"`
-	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled bool `pulumi:"emitBackwardHeartbeatsEnabled"`
-	// Whether to emit heartbeats to the target cluster. The default value is `false`.
+	// Enables emitting heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled bool `pulumi:"emitHeartbeatsEnabled"`
-	// Enable of disable replication flows for a service.
+	// Enables replication flow for a service.
 	Enable bool `pulumi:"enable"`
-	// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled bool `pulumi:"exactlyOnceDeliveryEnabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -95,9 +95,9 @@ type LookupMirrorMakerReplicationFlowResult struct {
 	SyncGroupOffsetsIntervalSeconds int `pulumi:"syncGroupOffsetsIntervalSeconds"`
 	// Target cluster alias. Maximum length: `128`.
 	TargetCluster string `pulumi:"targetCluster"`
-	// List of topics and/or regular expressions to replicate
+	// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	Topics []string `pulumi:"topics"`
-	// List of topics and/or regular expressions to not replicate.
+	// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	TopicsBlacklists []string `pulumi:"topicsBlacklists"`
 }
 
@@ -141,27 +141,27 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) ToLookupMirrorMakerReplica
 	return o
 }
 
-// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
 func (o LookupMirrorMakerReplicationFlowResultOutput) ConfigPropertiesExcludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) []string { return v.ConfigPropertiesExcludes }).(pulumi.StringArrayOutput)
 }
 
-// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 func (o LookupMirrorMakerReplicationFlowResultOutput) EmitBackwardHeartbeatsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.EmitBackwardHeartbeatsEnabled }).(pulumi.BoolOutput)
 }
 
-// Whether to emit heartbeats to the target cluster. The default value is `false`.
+// Enables emitting heartbeats to the target cluster. The default value is `false`.
 func (o LookupMirrorMakerReplicationFlowResultOutput) EmitHeartbeatsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.EmitHeartbeatsEnabled }).(pulumi.BoolOutput)
 }
 
-// Enable of disable replication flows for a service.
+// Enables replication flow for a service.
 func (o LookupMirrorMakerReplicationFlowResultOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
 func (o LookupMirrorMakerReplicationFlowResultOutput) ExactlyOnceDeliveryEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.ExactlyOnceDeliveryEnabled }).(pulumi.BoolOutput)
 }
@@ -216,12 +216,12 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) TargetCluster() pulumi.Str
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.TargetCluster }).(pulumi.StringOutput)
 }
 
-// List of topics and/or regular expressions to replicate
+// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 func (o LookupMirrorMakerReplicationFlowResultOutput) Topics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) []string { return v.Topics }).(pulumi.StringArrayOutput)
 }
 
-// List of topics and/or regular expressions to not replicate.
+// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 func (o LookupMirrorMakerReplicationFlowResultOutput) TopicsBlacklists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) []string { return v.TopicsBlacklists }).(pulumi.StringArrayOutput)
 }

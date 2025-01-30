@@ -93,7 +93,7 @@ namespace Pulumi.Aiven
         public Output<string> ResourceName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        /// The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Aiven
         public Input<string> ResourceName { get; set; } = null!;
 
         /// <summary>
-        /// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        /// The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.Aiven
         public Input<string>? ResourceName { get; set; }
 
         /// <summary>
-        /// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+        /// The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

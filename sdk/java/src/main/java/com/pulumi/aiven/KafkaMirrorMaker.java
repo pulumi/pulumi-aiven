@@ -23,7 +23,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Kafka MirrorMaker resource allows the creation and management of Aiven Kafka MirrorMaker 2 services.
+ * Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) service.
  * 
  * ## Example Usage
  * 
@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mm1 = new KafkaMirrorMaker("mm1", KafkaMirrorMakerArgs.builder()
- *             .project(pr1.project())
+ *         var exampleMirrormaker = new KafkaMirrorMaker("exampleMirrormaker", KafkaMirrorMakerArgs.builder()
+ *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
- *             .serviceName("my-mm1")
+ *             .serviceName("example-mirrormaker-service")
  *             .kafkaMirrormakerUserConfig(KafkaMirrorMakerKafkaMirrormakerUserConfigArgs.builder()
  *                 .ipFilters("0.0.0.0/0")
  *                 .kafkaMirrormaker(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs.builder()
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker mm1 project/service_name
+ * $ pulumi import aiven:index/kafkaMirrorMaker:KafkaMirrorMaker example_mirrormaker PROJECT/SERVICE_NAME
  * ```
  * 
  */
