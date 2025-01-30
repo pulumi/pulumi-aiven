@@ -66,7 +66,7 @@ class GetOpenSearchAclRuleResult:
     @pulumi.getter
     def permission(self) -> str:
         """
-        The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+        The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
@@ -132,7 +132,7 @@ def get_open_search_acl_rule(index: Optional[str] = None,
 
 
     :param str index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
-    :param str permission: The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+    :param str permission: The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -176,7 +176,7 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
 
 
     :param str index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
-    :param str permission: The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+    :param str permission: The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

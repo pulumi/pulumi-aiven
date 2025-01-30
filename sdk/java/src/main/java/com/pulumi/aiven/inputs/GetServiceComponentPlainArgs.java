@@ -62,14 +62,14 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+     * Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
      * 
      */
     @Import(name="route")
     private @Nullable String route;
 
     /**
-     * @return Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+     * @return Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
      * 
      */
     public Optional<String> route() {
@@ -185,7 +185,7 @@ public final class GetServiceComponentPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param route Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+         * @param route Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
          * 
          * @return builder
          * 

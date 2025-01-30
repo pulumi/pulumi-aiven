@@ -378,7 +378,7 @@ def get_kafka_mirror_maker(project: Optional[str] = None,
                            service_name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaMirrorMakerResult:
     """
-    The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+    Gets information about an Aiven for Apache Kafka® MirrorMaker 2 service.
 
     ## Example Usage
 
@@ -386,8 +386,8 @@ def get_kafka_mirror_maker(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mm1 = aiven.get_kafka_mirror_maker(project=pr1["project"],
-        service_name="my-mm1")
+    example_mirrormaker = aiven.get_kafka_mirror_maker(project=example_project["project"],
+        service_name="example-mirrormaker-service")
     ```
 
 
@@ -433,7 +433,7 @@ def get_kafka_mirror_maker_output(project: Optional[pulumi.Input[str]] = None,
                                   service_name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaMirrorMakerResult]:
     """
-    The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+    Gets information about an Aiven for Apache Kafka® MirrorMaker 2 service.
 
     ## Example Usage
 
@@ -441,8 +441,8 @@ def get_kafka_mirror_maker_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mm1 = aiven.get_kafka_mirror_maker(project=pr1["project"],
-        service_name="my-mm1")
+    example_mirrormaker = aiven.get_kafka_mirror_maker(project=example_project["project"],
+        service_name="example-mirrormaker-service")
     ```
 
 

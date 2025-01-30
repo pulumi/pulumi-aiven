@@ -109,7 +109,7 @@ export class OpenSearchAclRule extends pulumi.CustomResource {
      */
     public readonly index!: pulumi.Output<string>;
     /**
-     * The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
     public readonly permission!: pulumi.Output<string>;
     /**
@@ -180,7 +180,7 @@ export interface OpenSearchAclRuleState {
      */
     index?: pulumi.Input<string>;
     /**
-     * The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
     permission?: pulumi.Input<string>;
     /**
@@ -206,7 +206,7 @@ export interface OpenSearchAclRuleArgs {
      */
     index: pulumi.Input<string>;
     /**
-     * The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
     permission: pulumi.Input<string>;
     /**

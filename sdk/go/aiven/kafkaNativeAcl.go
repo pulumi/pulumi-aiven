@@ -73,7 +73,7 @@ type KafkaNativeAcl struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
 	ResourceName pulumi.StringOutput `pulumi:"resourceName"`
-	// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+	// The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -147,7 +147,7 @@ type kafkaNativeAclState struct {
 	Project *string `pulumi:"project"`
 	// The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
 	ResourceName *string `pulumi:"resourceName"`
-	// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+	// The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
 	ResourceType *string `pulumi:"resourceType"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
@@ -168,7 +168,7 @@ type KafkaNativeAclState struct {
 	Project pulumi.StringPtrInput
 	// The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
 	ResourceName pulumi.StringPtrInput
-	// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+	// The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
 	ResourceType pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
@@ -193,7 +193,7 @@ type kafkaNativeAclArgs struct {
 	Project string `pulumi:"project"`
 	// The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
 	ResourceName string `pulumi:"resourceName"`
-	// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+	// The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
 	ResourceType string `pulumi:"resourceType"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
@@ -215,7 +215,7 @@ type KafkaNativeAclArgs struct {
 	Project pulumi.StringInput
 	// The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
 	ResourceName pulumi.StringInput
-	// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+	// The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
 	ResourceType pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
@@ -343,7 +343,7 @@ func (o KafkaNativeAclOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaNativeAcl) pulumi.StringOutput { return v.ResourceName }).(pulumi.StringOutput)
 }
 
-// The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+// The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
 func (o KafkaNativeAclOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaNativeAcl) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }

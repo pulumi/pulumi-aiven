@@ -45,14 +45,14 @@ public class OpenSearchAclRule extends com.pulumi.resources.CustomResource {
         return this.index;
     }
     /**
-     * The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
-     * @return The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+     * @return The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      * 
      */
     public Output<String> permission() {

@@ -29,7 +29,7 @@ class MysqlUserArgs:
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] username: The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] authentication: Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        :param pulumi.Input[str] authentication: Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         :param pulumi.Input[str] password: The password of the MySQL User ( not applicable for all services ).
         """
         pulumi.set(__self__, "project", project)
@@ -80,7 +80,7 @@ class MysqlUserArgs:
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         """
         return pulumi.get(self, "authentication")
 
@@ -116,7 +116,7 @@ class _MysqlUserState:
         Input properties used for looking up and filtering MysqlUser resources.
         :param pulumi.Input[str] access_cert: Access certificate for the user
         :param pulumi.Input[str] access_key: Access certificate key for the user
-        :param pulumi.Input[str] authentication: Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        :param pulumi.Input[str] authentication: Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         :param pulumi.Input[str] password: The password of the MySQL User ( not applicable for all services ).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -168,7 +168,7 @@ class _MysqlUserState:
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         """
         return pulumi.get(self, "authentication")
 
@@ -272,7 +272,7 @@ class MysqlUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authentication: Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        :param pulumi.Input[str] authentication: Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         :param pulumi.Input[str] password: The password of the MySQL User ( not applicable for all services ).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -378,7 +378,7 @@ class MysqlUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_cert: Access certificate for the user
         :param pulumi.Input[str] access_key: Access certificate key for the user
-        :param pulumi.Input[str] authentication: Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        :param pulumi.Input[str] authentication: Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         :param pulumi.Input[str] password: The password of the MySQL User ( not applicable for all services ).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -419,7 +419,7 @@ class MysqlUser(pulumi.CustomResource):
     @pulumi.getter
     def authentication(self) -> pulumi.Output[Optional[str]]:
         """
-        Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+        Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
         """
         return pulumi.get(self, "authentication")
 

@@ -5920,7 +5920,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaConnector:getKafkaConnector", TypeShape.of(GetKafkaConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+     * Gets information about an Aiven for Apache Kafka® MirrorMaker 2 service.
      * 
      * ## Example Usage
      * 
@@ -5947,9 +5947,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-mm1")
+     *         final var exampleMirrormaker = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mirrormaker-service")
      *             .build());
      * 
      *     }
@@ -5963,7 +5963,7 @@ public final class AivenFunctions {
         return getKafkaMirrorMaker(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+     * Gets information about an Aiven for Apache Kafka® MirrorMaker 2 service.
      * 
      * ## Example Usage
      * 
@@ -5990,9 +5990,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-mm1")
+     *         final var exampleMirrormaker = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mirrormaker-service")
      *             .build());
      * 
      *     }
@@ -6006,7 +6006,7 @@ public final class AivenFunctions {
         return getKafkaMirrorMakerPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+     * Gets information about an Aiven for Apache Kafka® MirrorMaker 2 service.
      * 
      * ## Example Usage
      * 
@@ -6033,9 +6033,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-mm1")
+     *         final var exampleMirrormaker = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mirrormaker-service")
      *             .build());
      * 
      *     }
@@ -6049,7 +6049,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", TypeShape.of(GetKafkaMirrorMakerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+     * Gets information about an Aiven for Apache Kafka® MirrorMaker 2 service.
      * 
      * ## Example Usage
      * 
@@ -6076,9 +6076,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-mm1")
+     *         final var exampleMirrormaker = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mirrormaker-service")
      *             .build());
      * 
      *     }
@@ -6092,7 +6092,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", TypeShape.of(GetKafkaMirrorMakerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+     * Gets information about an Aiven for Apache Kafka® MirrorMaker 2 service.
      * 
      * ## Example Usage
      * 
@@ -6119,9 +6119,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName("my-mm1")
+     *         final var exampleMirrormaker = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mirrormaker-service")
      *             .build());
      * 
      *     }
@@ -7695,7 +7695,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+     * Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
      * 
      * ## Example Usage
      * 
@@ -7722,9 +7722,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(kafka_mm_project1.project())
-     *             .serviceName(mm.serviceName())
+     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .sourceCluster(source.serviceName())
      *             .targetCluster(target.serviceName())
      *             .build());
@@ -7740,7 +7740,7 @@ public final class AivenFunctions {
         return getMirrorMakerReplicationFlow(args, InvokeOptions.Empty);
     }
     /**
-     * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+     * Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
      * 
      * ## Example Usage
      * 
@@ -7767,9 +7767,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(kafka_mm_project1.project())
-     *             .serviceName(mm.serviceName())
+     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .sourceCluster(source.serviceName())
      *             .targetCluster(target.serviceName())
      *             .build());
@@ -7785,7 +7785,7 @@ public final class AivenFunctions {
         return getMirrorMakerReplicationFlowPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+     * Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
      * 
      * ## Example Usage
      * 
@@ -7812,9 +7812,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(kafka_mm_project1.project())
-     *             .serviceName(mm.serviceName())
+     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .sourceCluster(source.serviceName())
      *             .targetCluster(target.serviceName())
      *             .build());
@@ -7830,7 +7830,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", TypeShape.of(GetMirrorMakerReplicationFlowResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+     * Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
      * 
      * ## Example Usage
      * 
@@ -7857,9 +7857,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(kafka_mm_project1.project())
-     *             .serviceName(mm.serviceName())
+     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .sourceCluster(source.serviceName())
      *             .targetCluster(target.serviceName())
      *             .build());
@@ -7875,7 +7875,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", TypeShape.of(GetMirrorMakerReplicationFlowResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+     * Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
      * 
      * ## Example Usage
      * 
@@ -7902,9 +7902,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(kafka_mm_project1.project())
-     *             .serviceName(mm.serviceName())
+     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .sourceCluster(source.serviceName())
      *             .targetCluster(target.serviceName())
      *             .build());

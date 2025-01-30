@@ -66,7 +66,7 @@ type LookupMysqlUserResult struct {
 	AccessCert string `pulumi:"accessCert"`
 	// Access certificate key for the user
 	AccessKey string `pulumi:"accessKey"`
-	// Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
+	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
 	Authentication string `pulumi:"authentication"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -130,7 +130,7 @@ func (o LookupMysqlUserResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
+// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
 func (o LookupMysqlUserResultOutput) Authentication() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.Authentication }).(pulumi.StringOutput)
 }

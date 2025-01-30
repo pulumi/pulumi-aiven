@@ -83,7 +83,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> str:
         """
-        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 

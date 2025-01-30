@@ -54,7 +54,7 @@ export interface GetServiceComponentArgs {
      */
     project: string;
     /**
-     * Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+     * Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
      */
     route?: string;
     /**
@@ -100,7 +100,7 @@ export interface GetServiceComponentResult {
      */
     readonly project: string;
     /**
-     * Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+     * Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
      */
     readonly route?: string;
     /**
@@ -166,7 +166,7 @@ export interface GetServiceComponentOutputArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+     * Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
      */
     route?: pulumi.Input<string>;
     /**

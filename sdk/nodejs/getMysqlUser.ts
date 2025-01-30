@@ -60,7 +60,7 @@ export interface GetMysqlUserResult {
      */
     readonly accessKey: string;
     /**
-     * Authentication details. The possible values are `null`, `cachingSha2Password` and `mysqlNativePassword`.
+     * Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
      */
     readonly authentication: string;
     /**

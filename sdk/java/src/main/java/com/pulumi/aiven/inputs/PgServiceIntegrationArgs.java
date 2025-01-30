@@ -15,14 +15,14 @@ public final class PgServiceIntegrationArgs extends com.pulumi.resources.Resourc
     public static final PgServiceIntegrationArgs Empty = new PgServiceIntegrationArgs();
 
     /**
-     * Type of the service integration. The possible value is `read_replica`.
+     * Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. The possible value is `read_replica`.
+     * @return Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
      * 
      */
     public Output<String> integrationType() {
@@ -70,7 +70,7 @@ public final class PgServiceIntegrationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param integrationType Type of the service integration. The possible value is `read_replica`.
+         * @param integrationType Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class PgServiceIntegrationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param integrationType Type of the service integration. The possible value is `read_replica`.
+         * @param integrationType Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
          * 
          * @return builder
          * 

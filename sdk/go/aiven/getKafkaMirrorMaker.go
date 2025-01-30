@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
+// Gets information about an Aiven for Apache Kafka® MirrorMaker 2 service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupKafkaMirrorMaker(ctx, &aiven.LookupKafkaMirrorMakerArgs{
-//				Project:     pr1.Project,
-//				ServiceName: "my-mm1",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-mirrormaker-service",
 //			}, nil)
 //			if err != nil {
 //				return err

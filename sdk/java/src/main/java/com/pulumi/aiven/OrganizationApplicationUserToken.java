@@ -228,14 +228,14 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
         return this.lastUserAgentHumanReadable;
     }
     /**
-     * The number of hours after which a token expires. Default session duration is 10 hours.
+     * The number of hours after which a token expires. If not set, it never expires.
      * 
      */
     @Export(name="maxAgeSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxAgeSeconds;
 
     /**
-     * @return The number of hours after which a token expires. Default session duration is 10 hours.
+     * @return The number of hours after which a token expires. If not set, it never expires.
      * 
      */
     public Output<Optional<Integer>> maxAgeSeconds() {

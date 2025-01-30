@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+ * Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
  *
  * ## Example Usage
  *
@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const f1 = aiven.getMirrorMakerReplicationFlow({
- *     project: kafka_mm_project1.project,
- *     serviceName: mm.serviceName,
+ * const exampleReplicationFlow = aiven.getMirrorMakerReplicationFlow({
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
  *     sourceCluster: source.serviceName,
  *     targetCluster: target.serviceName,
  * });
@@ -58,23 +58,23 @@ export interface GetMirrorMakerReplicationFlowArgs {
  */
 export interface GetMirrorMakerReplicationFlowResult {
     /**
-     * List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+     * List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
      */
     readonly configPropertiesExcludes: string[];
     /**
-     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      */
     readonly emitBackwardHeartbeatsEnabled: boolean;
     /**
-     * Whether to emit heartbeats to the target cluster. The default value is `false`.
+     * Enables emitting heartbeats to the target cluster. The default value is `false`.
      */
     readonly emitHeartbeatsEnabled: boolean;
     /**
-     * Enable of disable replication flows for a service.
+     * Enables replication flow for a service.
      */
     readonly enable: boolean;
     /**
-     * Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      */
     readonly exactlyOnceDeliveryEnabled: boolean;
     /**
@@ -118,16 +118,16 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly targetCluster: string;
     /**
-     * List of topics and/or regular expressions to replicate
+     * The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      */
     readonly topics: string[];
     /**
-     * List of topics and/or regular expressions to not replicate.
+     * The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      */
     readonly topicsBlacklists: string[];
 }
 /**
- * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
+ * Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
  *
  * ## Example Usage
  *
@@ -135,9 +135,9 @@ export interface GetMirrorMakerReplicationFlowResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const f1 = aiven.getMirrorMakerReplicationFlow({
- *     project: kafka_mm_project1.project,
- *     serviceName: mm.serviceName,
+ * const exampleReplicationFlow = aiven.getMirrorMakerReplicationFlow({
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
  *     sourceCluster: source.serviceName,
  *     targetCluster: target.serviceName,
  * });

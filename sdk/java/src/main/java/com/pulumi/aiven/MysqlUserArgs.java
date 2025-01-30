@@ -17,14 +17,14 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
     public static final MysqlUserArgs Empty = new MysqlUserArgs();
 
     /**
-     * Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+     * Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
      * 
      */
     @Import(name="authentication")
     private @Nullable Output<String> authentication;
 
     /**
-     * @return Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+     * @return Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
      * 
      */
     public Optional<Output<String>> authentication() {
@@ -120,7 +120,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authentication Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+         * @param authentication Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authentication Authentication details. The possible values are `null`, `caching_sha2_password` and `mysql_native_password`.
+         * @param authentication Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
          * 
          * @return builder
          * 

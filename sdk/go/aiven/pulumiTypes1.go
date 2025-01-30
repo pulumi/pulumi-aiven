@@ -13,6 +13,1238 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMySqlMysqlUserConfigMysql struct {
+	// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
+	ConnectTimeout *int `pulumi:"connectTimeout"`
+	// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
+	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
+	// The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
+	GroupConcatMaxLen *int `pulumi:"groupConcatMaxLen"`
+	// The time, in seconds, before cached statistics expire. Example: `86400`.
+	InformationSchemaStatsExpiry *int `pulumi:"informationSchemaStatsExpiry"`
+	// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
+	InnodbChangeBufferMaxSize *int `pulumi:"innodbChangeBufferMaxSize"`
+	// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
+	InnodbFlushNeighbors *int `pulumi:"innodbFlushNeighbors"`
+	// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
+	InnodbFtMinTokenSize *int `pulumi:"innodbFtMinTokenSize"`
+	// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
+	InnodbFtServerStopwordTable *string `pulumi:"innodbFtServerStopwordTable"`
+	// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
+	InnodbLockWaitTimeout *int `pulumi:"innodbLockWaitTimeout"`
+	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+	InnodbLogBufferSize *int `pulumi:"innodbLogBufferSize"`
+	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+	InnodbOnlineAlterLogMaxSize *int `pulumi:"innodbOnlineAlterLogMaxSize"`
+	// When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+	InnodbPrintAllDeadlocks *bool `pulumi:"innodbPrintAllDeadlocks"`
+	// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+	InnodbReadIoThreads *int `pulumi:"innodbReadIoThreads"`
+	// When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+	InnodbRollbackOnTimeout *bool `pulumi:"innodbRollbackOnTimeout"`
+	// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
+	InnodbThreadConcurrency *int `pulumi:"innodbThreadConcurrency"`
+	// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+	InnodbWriteIoThreads *int `pulumi:"innodbWriteIoThreads"`
+	// The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
+	InteractiveTimeout *int `pulumi:"interactiveTimeout"`
+	// Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
+	InternalTmpMemStorageEngine *string `pulumi:"internalTmpMemStorageEngine"`
+	// Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slowQueryLog is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
+	LogOutput *string `pulumi:"logOutput"`
+	// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10.0`.
+	LongQueryTime *float64 `pulumi:"longQueryTime"`
+	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+	MaxAllowedPacket *int `pulumi:"maxAllowedPacket"`
+	// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+	MaxHeapTableSize *int `pulumi:"maxHeapTableSize"`
+	// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
+	NetBufferLength *int `pulumi:"netBufferLength"`
+	// The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
+	NetReadTimeout *int `pulumi:"netReadTimeout"`
+	// The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
+	NetWriteTimeout *int `pulumi:"netWriteTimeout"`
+	// Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
+	SlowQueryLog *bool `pulumi:"slowQueryLog"`
+	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+	SortBufferSize *int `pulumi:"sortBufferSize"`
+	// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
+	SqlMode *string `pulumi:"sqlMode"`
+	// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+	SqlRequirePrimaryKey *bool `pulumi:"sqlRequirePrimaryKey"`
+	// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+	TmpTableSize *int `pulumi:"tmpTableSize"`
+	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+	WaitTimeout *int `pulumi:"waitTimeout"`
+}
+
+// GetMySqlMysqlUserConfigMysqlInput is an input type that accepts GetMySqlMysqlUserConfigMysqlArgs and GetMySqlMysqlUserConfigMysqlOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigMysqlInput` via:
+//
+//	GetMySqlMysqlUserConfigMysqlArgs{...}
+type GetMySqlMysqlUserConfigMysqlInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigMysqlOutput() GetMySqlMysqlUserConfigMysqlOutput
+	ToGetMySqlMysqlUserConfigMysqlOutputWithContext(context.Context) GetMySqlMysqlUserConfigMysqlOutput
+}
+
+type GetMySqlMysqlUserConfigMysqlArgs struct {
+	// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
+	ConnectTimeout pulumi.IntPtrInput `pulumi:"connectTimeout"`
+	// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
+	DefaultTimeZone pulumi.StringPtrInput `pulumi:"defaultTimeZone"`
+	// The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
+	GroupConcatMaxLen pulumi.IntPtrInput `pulumi:"groupConcatMaxLen"`
+	// The time, in seconds, before cached statistics expire. Example: `86400`.
+	InformationSchemaStatsExpiry pulumi.IntPtrInput `pulumi:"informationSchemaStatsExpiry"`
+	// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
+	InnodbChangeBufferMaxSize pulumi.IntPtrInput `pulumi:"innodbChangeBufferMaxSize"`
+	// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
+	InnodbFlushNeighbors pulumi.IntPtrInput `pulumi:"innodbFlushNeighbors"`
+	// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
+	InnodbFtMinTokenSize pulumi.IntPtrInput `pulumi:"innodbFtMinTokenSize"`
+	// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
+	InnodbFtServerStopwordTable pulumi.StringPtrInput `pulumi:"innodbFtServerStopwordTable"`
+	// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
+	InnodbLockWaitTimeout pulumi.IntPtrInput `pulumi:"innodbLockWaitTimeout"`
+	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+	InnodbLogBufferSize pulumi.IntPtrInput `pulumi:"innodbLogBufferSize"`
+	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+	InnodbOnlineAlterLogMaxSize pulumi.IntPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
+	// When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+	InnodbPrintAllDeadlocks pulumi.BoolPtrInput `pulumi:"innodbPrintAllDeadlocks"`
+	// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+	InnodbReadIoThreads pulumi.IntPtrInput `pulumi:"innodbReadIoThreads"`
+	// When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+	InnodbRollbackOnTimeout pulumi.BoolPtrInput `pulumi:"innodbRollbackOnTimeout"`
+	// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
+	InnodbThreadConcurrency pulumi.IntPtrInput `pulumi:"innodbThreadConcurrency"`
+	// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+	InnodbWriteIoThreads pulumi.IntPtrInput `pulumi:"innodbWriteIoThreads"`
+	// The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
+	InteractiveTimeout pulumi.IntPtrInput `pulumi:"interactiveTimeout"`
+	// Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
+	InternalTmpMemStorageEngine pulumi.StringPtrInput `pulumi:"internalTmpMemStorageEngine"`
+	// Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slowQueryLog is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
+	LogOutput pulumi.StringPtrInput `pulumi:"logOutput"`
+	// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10.0`.
+	LongQueryTime pulumi.Float64PtrInput `pulumi:"longQueryTime"`
+	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+	MaxAllowedPacket pulumi.IntPtrInput `pulumi:"maxAllowedPacket"`
+	// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+	MaxHeapTableSize pulumi.IntPtrInput `pulumi:"maxHeapTableSize"`
+	// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
+	NetBufferLength pulumi.IntPtrInput `pulumi:"netBufferLength"`
+	// The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
+	NetReadTimeout pulumi.IntPtrInput `pulumi:"netReadTimeout"`
+	// The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
+	NetWriteTimeout pulumi.IntPtrInput `pulumi:"netWriteTimeout"`
+	// Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
+	SlowQueryLog pulumi.BoolPtrInput `pulumi:"slowQueryLog"`
+	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+	SortBufferSize pulumi.IntPtrInput `pulumi:"sortBufferSize"`
+	// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
+	SqlMode pulumi.StringPtrInput `pulumi:"sqlMode"`
+	// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+	SqlRequirePrimaryKey pulumi.BoolPtrInput `pulumi:"sqlRequirePrimaryKey"`
+	// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+	TmpTableSize pulumi.IntPtrInput `pulumi:"tmpTableSize"`
+	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+	WaitTimeout pulumi.IntPtrInput `pulumi:"waitTimeout"`
+}
+
+func (GetMySqlMysqlUserConfigMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigMysql)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigMysqlArgs) ToGetMySqlMysqlUserConfigMysqlOutput() GetMySqlMysqlUserConfigMysqlOutput {
+	return i.ToGetMySqlMysqlUserConfigMysqlOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigMysqlArgs) ToGetMySqlMysqlUserConfigMysqlOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigMysqlOutput)
+}
+
+func (i GetMySqlMysqlUserConfigMysqlArgs) ToGetMySqlMysqlUserConfigMysqlPtrOutput() GetMySqlMysqlUserConfigMysqlPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigMysqlArgs) ToGetMySqlMysqlUserConfigMysqlPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigMysqlOutput).ToGetMySqlMysqlUserConfigMysqlPtrOutputWithContext(ctx)
+}
+
+// GetMySqlMysqlUserConfigMysqlPtrInput is an input type that accepts GetMySqlMysqlUserConfigMysqlArgs, GetMySqlMysqlUserConfigMysqlPtr and GetMySqlMysqlUserConfigMysqlPtrOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigMysqlPtrInput` via:
+//
+//	        GetMySqlMysqlUserConfigMysqlArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetMySqlMysqlUserConfigMysqlPtrInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigMysqlPtrOutput() GetMySqlMysqlUserConfigMysqlPtrOutput
+	ToGetMySqlMysqlUserConfigMysqlPtrOutputWithContext(context.Context) GetMySqlMysqlUserConfigMysqlPtrOutput
+}
+
+type getMySqlMysqlUserConfigMysqlPtrType GetMySqlMysqlUserConfigMysqlArgs
+
+func GetMySqlMysqlUserConfigMysqlPtr(v *GetMySqlMysqlUserConfigMysqlArgs) GetMySqlMysqlUserConfigMysqlPtrInput {
+	return (*getMySqlMysqlUserConfigMysqlPtrType)(v)
+}
+
+func (*getMySqlMysqlUserConfigMysqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigMysql)(nil)).Elem()
+}
+
+func (i *getMySqlMysqlUserConfigMysqlPtrType) ToGetMySqlMysqlUserConfigMysqlPtrOutput() GetMySqlMysqlUserConfigMysqlPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i *getMySqlMysqlUserConfigMysqlPtrType) ToGetMySqlMysqlUserConfigMysqlPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigMysqlPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigMysqlOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigMysql)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigMysqlOutput) ToGetMySqlMysqlUserConfigMysqlOutput() GetMySqlMysqlUserConfigMysqlOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMysqlOutput) ToGetMySqlMysqlUserConfigMysqlOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMysqlOutput) ToGetMySqlMysqlUserConfigMysqlPtrOutput() GetMySqlMysqlUserConfigMysqlPtrOutput {
+	return o.ToGetMySqlMysqlUserConfigMysqlPtrOutputWithContext(context.Background())
+}
+
+func (o GetMySqlMysqlUserConfigMysqlOutput) ToGetMySqlMysqlUserConfigMysqlPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMySqlMysqlUserConfigMysql) *GetMySqlMysqlUserConfigMysql {
+		return &v
+	}).(GetMySqlMysqlUserConfigMysqlPtrOutput)
+}
+
+// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) ConnectTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.ConnectTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) DefaultTimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
+}
+
+// The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) GroupConcatMaxLen() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.GroupConcatMaxLen }).(pulumi.IntPtrOutput)
+}
+
+// The time, in seconds, before cached statistics expire. Example: `86400`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InformationSchemaStatsExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InformationSchemaStatsExpiry }).(pulumi.IntPtrOutput)
+}
+
+// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbChangeBufferMaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbChangeBufferMaxSize }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbFlushNeighbors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbFlushNeighbors }).(pulumi.IntPtrOutput)
+}
+
+// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbFtMinTokenSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbFtMinTokenSize }).(pulumi.IntPtrOutput)
+}
+
+// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InnodbFtServerStopwordTable }).(pulumi.StringPtrOutput)
+}
+
+// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbLockWaitTimeout }).(pulumi.IntPtrOutput)
+}
+
+// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbLogBufferSize }).(pulumi.IntPtrOutput)
+}
+
+// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbOnlineAlterLogMaxSize }).(pulumi.IntPtrOutput)
+}
+
+// When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbPrintAllDeadlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *bool { return v.InnodbPrintAllDeadlocks }).(pulumi.BoolPtrOutput)
+}
+
+// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbReadIoThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbReadIoThreads }).(pulumi.IntPtrOutput)
+}
+
+// When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbRollbackOnTimeout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *bool { return v.InnodbRollbackOnTimeout }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbThreadConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbThreadConcurrency }).(pulumi.IntPtrOutput)
+}
+
+// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbWriteIoThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbWriteIoThreads }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InteractiveTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InteractiveTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InternalTmpMemStorageEngine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.InternalTmpMemStorageEngine }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slowQueryLog is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
+func (o GetMySqlMysqlUserConfigMysqlOutput) LogOutput() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.LogOutput }).(pulumi.StringPtrOutput)
+}
+
+// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10.0`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) LongQueryTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *float64 { return v.LongQueryTime }).(pulumi.Float64PtrOutput)
+}
+
+// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.MaxAllowedPacket }).(pulumi.IntPtrOutput)
+}
+
+// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) MaxHeapTableSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.MaxHeapTableSize }).(pulumi.IntPtrOutput)
+}
+
+// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) NetBufferLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.NetBufferLength }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) NetReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.NetReadTimeout }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) NetWriteTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.NetWriteTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
+func (o GetMySqlMysqlUserConfigMysqlOutput) SlowQueryLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *bool { return v.SlowQueryLog }).(pulumi.BoolPtrOutput)
+}
+
+// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) SortBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.SortBufferSize }).(pulumi.IntPtrOutput)
+}
+
+// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) SqlMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *string { return v.SqlMode }).(pulumi.StringPtrOutput)
+}
+
+// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+func (o GetMySqlMysqlUserConfigMysqlOutput) SqlRequirePrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *bool { return v.SqlRequirePrimaryKey }).(pulumi.BoolPtrOutput)
+}
+
+// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) TmpTableSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.TmpTableSize }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) WaitTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.WaitTimeout }).(pulumi.IntPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigMysqlPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigMysqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigMysql)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) ToGetMySqlMysqlUserConfigMysqlPtrOutput() GetMySqlMysqlUserConfigMysqlPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) ToGetMySqlMysqlUserConfigMysqlPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMysqlPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) Elem() GetMySqlMysqlUserConfigMysqlOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) GetMySqlMysqlUserConfigMysql {
+		if v != nil {
+			return *v
+		}
+		var ret GetMySqlMysqlUserConfigMysql
+		return ret
+	}).(GetMySqlMysqlUserConfigMysqlOutput)
+}
+
+// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) ConnectTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) DefaultTimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) GroupConcatMaxLen() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConcatMaxLen
+	}).(pulumi.IntPtrOutput)
+}
+
+// The time, in seconds, before cached statistics expire. Example: `86400`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InformationSchemaStatsExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InformationSchemaStatsExpiry
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbChangeBufferMaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbChangeBufferMaxSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbFlushNeighbors() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbFlushNeighbors
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbFtMinTokenSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbFtMinTokenSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbFtServerStopwordTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbFtServerStopwordTable
+	}).(pulumi.StringPtrOutput)
+}
+
+// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbLockWaitTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbLogBufferSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbOnlineAlterLogMaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbOnlineAlterLogMaxSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbPrintAllDeadlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbPrintAllDeadlocks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbReadIoThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbReadIoThreads
+	}).(pulumi.IntPtrOutput)
+}
+
+// When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbRollbackOnTimeout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbRollbackOnTimeout
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbThreadConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbThreadConcurrency
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbWriteIoThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbWriteIoThreads
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InteractiveTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InteractiveTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `MEMORY`, `TempTable`. The storage engine for in-memory internal temporary tables.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InternalTmpMemStorageEngine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalTmpMemStorageEngine
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slowQueryLog is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow_log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow_log table, choose TABLE. To silence slow logs, choose NONE.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) LogOutput() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogOutput
+	}).(pulumi.StringPtrOutput)
+}
+
+// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10.0`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) LongQueryTime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LongQueryTime
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAllowedPacket
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Example: `16777216`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxHeapTableSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxHeapTableSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) NetBufferLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NetBufferLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) NetReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NetReadTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) NetWriteTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NetWriteTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SlowQueryLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SlowQueryLog
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SortBufferSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SortBufferSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SqlMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SqlRequirePrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SqlRequirePrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Example: `16777216`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TmpTableSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WaitTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigPrivateAccess struct {
+	// Allow clients to connect to mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Mysql *bool `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Mysqlx *bool `pulumi:"mysqlx"`
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus *bool `pulumi:"prometheus"`
+}
+
+// GetMySqlMysqlUserConfigPrivateAccessInput is an input type that accepts GetMySqlMysqlUserConfigPrivateAccessArgs and GetMySqlMysqlUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigPrivateAccessInput` via:
+//
+//	GetMySqlMysqlUserConfigPrivateAccessArgs{...}
+type GetMySqlMysqlUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigPrivateAccessOutput() GetMySqlMysqlUserConfigPrivateAccessOutput
+	ToGetMySqlMysqlUserConfigPrivateAccessOutputWithContext(context.Context) GetMySqlMysqlUserConfigPrivateAccessOutput
+}
+
+type GetMySqlMysqlUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Mysql pulumi.BoolPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Mysqlx pulumi.BoolPtrInput `pulumi:"mysqlx"`
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetMySqlMysqlUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigPrivateAccessArgs) ToGetMySqlMysqlUserConfigPrivateAccessOutput() GetMySqlMysqlUserConfigPrivateAccessOutput {
+	return i.ToGetMySqlMysqlUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigPrivateAccessArgs) ToGetMySqlMysqlUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigPrivateAccessOutput)
+}
+
+func (i GetMySqlMysqlUserConfigPrivateAccessArgs) ToGetMySqlMysqlUserConfigPrivateAccessPtrOutput() GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigPrivateAccessArgs) ToGetMySqlMysqlUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigPrivateAccessOutput).ToGetMySqlMysqlUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// GetMySqlMysqlUserConfigPrivateAccessPtrInput is an input type that accepts GetMySqlMysqlUserConfigPrivateAccessArgs, GetMySqlMysqlUserConfigPrivateAccessPtr and GetMySqlMysqlUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigPrivateAccessPtrInput` via:
+//
+//	        GetMySqlMysqlUserConfigPrivateAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetMySqlMysqlUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigPrivateAccessPtrOutput() GetMySqlMysqlUserConfigPrivateAccessPtrOutput
+	ToGetMySqlMysqlUserConfigPrivateAccessPtrOutputWithContext(context.Context) GetMySqlMysqlUserConfigPrivateAccessPtrOutput
+}
+
+type getMySqlMysqlUserConfigPrivateAccessPtrType GetMySqlMysqlUserConfigPrivateAccessArgs
+
+func GetMySqlMysqlUserConfigPrivateAccessPtr(v *GetMySqlMysqlUserConfigPrivateAccessArgs) GetMySqlMysqlUserConfigPrivateAccessPtrInput {
+	return (*getMySqlMysqlUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*getMySqlMysqlUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *getMySqlMysqlUserConfigPrivateAccessPtrType) ToGetMySqlMysqlUserConfigPrivateAccessPtrOutput() GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getMySqlMysqlUserConfigPrivateAccessPtrType) ToGetMySqlMysqlUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigPrivateAccessPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigPrivateAccessOutput) ToGetMySqlMysqlUserConfigPrivateAccessOutput() GetMySqlMysqlUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPrivateAccessOutput) ToGetMySqlMysqlUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPrivateAccessOutput) ToGetMySqlMysqlUserConfigPrivateAccessPtrOutput() GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
+	return o.ToGetMySqlMysqlUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetMySqlMysqlUserConfigPrivateAccessOutput) ToGetMySqlMysqlUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMySqlMysqlUserConfigPrivateAccess) *GetMySqlMysqlUserConfigPrivateAccess {
+		return &v
+	}).(GetMySqlMysqlUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow clients to connect to mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Mysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivateAccess) *bool { return v.Mysql }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to mysqlx with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Mysqlx() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivateAccess) *bool { return v.Mysqlx }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetMySqlMysqlUserConfigPrivateAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivateAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) ToGetMySqlMysqlUserConfigPrivateAccessPtrOutput() GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) ToGetMySqlMysqlUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Elem() GetMySqlMysqlUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) GetMySqlMysqlUserConfigPrivateAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetMySqlMysqlUserConfigPrivateAccess
+		return ret
+	}).(GetMySqlMysqlUserConfigPrivateAccessOutput)
+}
+
+// Allow clients to connect to mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Mysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Mysql
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to mysqlx with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Mysqlx() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetMySqlMysqlUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigPrivatelinkAccess struct {
+	// Enable mysql.
+	Mysql *bool `pulumi:"mysql"`
+	// Enable mysqlx.
+	Mysqlx *bool `pulumi:"mysqlx"`
+	// Enable prometheus.
+	Prometheus *bool `pulumi:"prometheus"`
+}
+
+// GetMySqlMysqlUserConfigPrivatelinkAccessInput is an input type that accepts GetMySqlMysqlUserConfigPrivatelinkAccessArgs and GetMySqlMysqlUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigPrivatelinkAccessInput` via:
+//
+//	GetMySqlMysqlUserConfigPrivatelinkAccessArgs{...}
+type GetMySqlMysqlUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigPrivatelinkAccessOutput() GetMySqlMysqlUserConfigPrivatelinkAccessOutput
+	ToGetMySqlMysqlUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetMySqlMysqlUserConfigPrivatelinkAccessOutput
+}
+
+type GetMySqlMysqlUserConfigPrivatelinkAccessArgs struct {
+	// Enable mysql.
+	Mysql pulumi.BoolPtrInput `pulumi:"mysql"`
+	// Enable mysqlx.
+	Mysqlx pulumi.BoolPtrInput `pulumi:"mysqlx"`
+	// Enable prometheus.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetMySqlMysqlUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigPrivatelinkAccessArgs) ToGetMySqlMysqlUserConfigPrivatelinkAccessOutput() GetMySqlMysqlUserConfigPrivatelinkAccessOutput {
+	return i.ToGetMySqlMysqlUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigPrivatelinkAccessArgs) ToGetMySqlMysqlUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetMySqlMysqlUserConfigPrivatelinkAccessArgs) ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput() GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigPrivatelinkAccessArgs) ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigPrivatelinkAccessOutput).ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetMySqlMysqlUserConfigPrivatelinkAccessArgs, GetMySqlMysqlUserConfigPrivatelinkAccessPtr and GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput` via:
+//
+//	        GetMySqlMysqlUserConfigPrivatelinkAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput() GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput
+	ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getMySqlMysqlUserConfigPrivatelinkAccessPtrType GetMySqlMysqlUserConfigPrivatelinkAccessArgs
+
+func GetMySqlMysqlUserConfigPrivatelinkAccessPtr(v *GetMySqlMysqlUserConfigPrivatelinkAccessArgs) GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput {
+	return (*getMySqlMysqlUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getMySqlMysqlUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getMySqlMysqlUserConfigPrivatelinkAccessPtrType) ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput() GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getMySqlMysqlUserConfigPrivatelinkAccessPtrType) ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) ToGetMySqlMysqlUserConfigPrivatelinkAccessOutput() GetMySqlMysqlUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) ToGetMySqlMysqlUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput() GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMySqlMysqlUserConfigPrivatelinkAccess) *GetMySqlMysqlUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Enable mysql.
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) Mysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivatelinkAccess) *bool { return v.Mysql }).(pulumi.BoolPtrOutput)
+}
+
+// Enable mysqlx.
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) Mysqlx() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivatelinkAccess) *bool { return v.Mysqlx }).(pulumi.BoolPtrOutput)
+}
+
+// Enable prometheus.
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPrivatelinkAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput() GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) ToGetMySqlMysqlUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Elem() GetMySqlMysqlUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivatelinkAccess) GetMySqlMysqlUserConfigPrivatelinkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetMySqlMysqlUserConfigPrivatelinkAccess
+		return ret
+	}).(GetMySqlMysqlUserConfigPrivatelinkAccessOutput)
+}
+
+// Enable mysql.
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Mysql
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable mysqlx.
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Mysqlx() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable prometheus.
+func (o GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigPublicAccess struct {
+	// Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+	Mysql *bool `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+	Mysqlx *bool `pulumi:"mysqlx"`
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *bool `pulumi:"prometheus"`
+}
+
+// GetMySqlMysqlUserConfigPublicAccessInput is an input type that accepts GetMySqlMysqlUserConfigPublicAccessArgs and GetMySqlMysqlUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigPublicAccessInput` via:
+//
+//	GetMySqlMysqlUserConfigPublicAccessArgs{...}
+type GetMySqlMysqlUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigPublicAccessOutput() GetMySqlMysqlUserConfigPublicAccessOutput
+	ToGetMySqlMysqlUserConfigPublicAccessOutputWithContext(context.Context) GetMySqlMysqlUserConfigPublicAccessOutput
+}
+
+type GetMySqlMysqlUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+	Mysql pulumi.BoolPtrInput `pulumi:"mysql"`
+	// Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+	Mysqlx pulumi.BoolPtrInput `pulumi:"mysqlx"`
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetMySqlMysqlUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigPublicAccessArgs) ToGetMySqlMysqlUserConfigPublicAccessOutput() GetMySqlMysqlUserConfigPublicAccessOutput {
+	return i.ToGetMySqlMysqlUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigPublicAccessArgs) ToGetMySqlMysqlUserConfigPublicAccessOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigPublicAccessOutput)
+}
+
+func (i GetMySqlMysqlUserConfigPublicAccessArgs) ToGetMySqlMysqlUserConfigPublicAccessPtrOutput() GetMySqlMysqlUserConfigPublicAccessPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigPublicAccessArgs) ToGetMySqlMysqlUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigPublicAccessOutput).ToGetMySqlMysqlUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetMySqlMysqlUserConfigPublicAccessPtrInput is an input type that accepts GetMySqlMysqlUserConfigPublicAccessArgs, GetMySqlMysqlUserConfigPublicAccessPtr and GetMySqlMysqlUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigPublicAccessPtrInput` via:
+//
+//	        GetMySqlMysqlUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetMySqlMysqlUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigPublicAccessPtrOutput() GetMySqlMysqlUserConfigPublicAccessPtrOutput
+	ToGetMySqlMysqlUserConfigPublicAccessPtrOutputWithContext(context.Context) GetMySqlMysqlUserConfigPublicAccessPtrOutput
+}
+
+type getMySqlMysqlUserConfigPublicAccessPtrType GetMySqlMysqlUserConfigPublicAccessArgs
+
+func GetMySqlMysqlUserConfigPublicAccessPtr(v *GetMySqlMysqlUserConfigPublicAccessArgs) GetMySqlMysqlUserConfigPublicAccessPtrInput {
+	return (*getMySqlMysqlUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getMySqlMysqlUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getMySqlMysqlUserConfigPublicAccessPtrType) ToGetMySqlMysqlUserConfigPublicAccessPtrOutput() GetMySqlMysqlUserConfigPublicAccessPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getMySqlMysqlUserConfigPublicAccessPtrType) ToGetMySqlMysqlUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigPublicAccessPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigPublicAccessOutput) ToGetMySqlMysqlUserConfigPublicAccessOutput() GetMySqlMysqlUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPublicAccessOutput) ToGetMySqlMysqlUserConfigPublicAccessOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPublicAccessOutput) ToGetMySqlMysqlUserConfigPublicAccessPtrOutput() GetMySqlMysqlUserConfigPublicAccessPtrOutput {
+	return o.ToGetMySqlMysqlUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetMySqlMysqlUserConfigPublicAccessOutput) ToGetMySqlMysqlUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMySqlMysqlUserConfigPublicAccess) *GetMySqlMysqlUserConfigPublicAccess {
+		return &v
+	}).(GetMySqlMysqlUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetMySqlMysqlUserConfigPublicAccessOutput) Mysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPublicAccess) *bool { return v.Mysql }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetMySqlMysqlUserConfigPublicAccessOutput) Mysqlx() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPublicAccess) *bool { return v.Mysqlx }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetMySqlMysqlUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) ToGetMySqlMysqlUserConfigPublicAccessPtrOutput() GetMySqlMysqlUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) ToGetMySqlMysqlUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Elem() GetMySqlMysqlUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) GetMySqlMysqlUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetMySqlMysqlUserConfigPublicAccess
+		return ret
+	}).(GetMySqlMysqlUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Mysql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Mysql
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Mysqlx() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Mysqlx
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetMySqlMysqlUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetMySqlServiceIntegration struct {
 	// Type of the service integration. The possible value is `readReplica`.
 	IntegrationType string `pulumi:"integrationType"`
@@ -13705,7 +14937,7 @@ func (o GetPgPgUserConfigTimescaledbPtrOutput) MaxBackgroundWorkers() pulumi.Int
 }
 
 type GetPgServiceIntegration struct {
-	// Type of the service integration. The possible value is `readReplica`.
+	// Type of the service integration. The possible values are `readReplica` and `disasterRecovery`.
 	IntegrationType string `pulumi:"integrationType"`
 	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
@@ -13723,7 +14955,7 @@ type GetPgServiceIntegrationInput interface {
 }
 
 type GetPgServiceIntegrationArgs struct {
-	// Type of the service integration. The possible value is `readReplica`.
+	// Type of the service integration. The possible values are `readReplica` and `disasterRecovery`.
 	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
 	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
@@ -13780,7 +15012,7 @@ func (o GetPgServiceIntegrationOutput) ToGetPgServiceIntegrationOutputWithContex
 	return o
 }
 
-// Type of the service integration. The possible value is `readReplica`.
+// Type of the service integration. The possible values are `readReplica` and `disasterRecovery`.
 func (o GetPgServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
@@ -15604,7 +16836,7 @@ func (o GetRedisRedisUserConfigPublicAccessPtrOutput) Redis() pulumi.BoolPtrOutp
 }
 
 type GetRedisServiceIntegration struct {
-	// Type of the service integration
+	// Type of the service integration. The possible value is `readReplica`.
 	IntegrationType string `pulumi:"integrationType"`
 	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
@@ -15622,7 +16854,7 @@ type GetRedisServiceIntegrationInput interface {
 }
 
 type GetRedisServiceIntegrationArgs struct {
-	// Type of the service integration
+	// Type of the service integration. The possible value is `readReplica`.
 	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
 	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
@@ -15679,7 +16911,7 @@ func (o GetRedisServiceIntegrationOutput) ToGetRedisServiceIntegrationOutputWith
 	return o
 }
 
-// Type of the service integration
+// Type of the service integration. The possible value is `readReplica`.
 func (o GetRedisServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRedisServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
@@ -25193,7 +26425,7 @@ func (o GetValkeyComponentArrayOutput) Index(i pulumi.IntInput) GetValkeyCompone
 }
 
 type GetValkeyServiceIntegration struct {
-	// Type of the service integration
+	// Type of the service integration. The possible value is `readReplica`.
 	IntegrationType string `pulumi:"integrationType"`
 	// Name of the source service
 	SourceServiceName string `pulumi:"sourceServiceName"`
@@ -25211,7 +26443,7 @@ type GetValkeyServiceIntegrationInput interface {
 }
 
 type GetValkeyServiceIntegrationArgs struct {
-	// Type of the service integration
+	// Type of the service integration. The possible value is `readReplica`.
 	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
 	// Name of the source service
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
@@ -25268,7 +26500,7 @@ func (o GetValkeyServiceIntegrationOutput) ToGetValkeyServiceIntegrationOutputWi
 	return o
 }
 
-// Type of the service integration
+// Type of the service integration. The possible value is `readReplica`.
 func (o GetValkeyServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetValkeyServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
 }
@@ -25632,6 +26864,8 @@ type GetValkeyValkeyUserConfig struct {
 	BackupHour *int `pulumi:"backupHour"`
 	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 	BackupMinute *int `pulumi:"backupMinute"`
+	// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
+	FrequentSnapshots *bool `pulumi:"frequentSnapshots"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilterObjects []GetValkeyValkeyUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -25700,6 +26934,8 @@ type GetValkeyValkeyUserConfigArgs struct {
 	BackupHour pulumi.IntPtrInput `pulumi:"backupHour"`
 	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
+	// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
+	FrequentSnapshots pulumi.BoolPtrInput `pulumi:"frequentSnapshots"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
 	IpFilterObjects GetValkeyValkeyUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -25814,6 +27050,11 @@ func (o GetValkeyValkeyUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
 // The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 func (o GetValkeyValkeyUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+}
+
+// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
+func (o GetValkeyValkeyUserConfigOutput) FrequentSnapshots() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *bool { return v.FrequentSnapshots }).(pulumi.BoolPtrOutput)
 }
 
 // Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -26819,6 +28060,14 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlInput)(nil)).Elem(), GetMySqlMysqlUserConfigMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPrivateAccessInput)(nil)).Elem(), GetMySqlMysqlUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPrivateAccessPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPrivatelinkAccessInput)(nil)).Elem(), GetMySqlMysqlUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPublicAccessInput)(nil)).Elem(), GetMySqlMysqlUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPublicAccessPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlServiceIntegrationInput)(nil)).Elem(), GetMySqlServiceIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlServiceIntegrationArrayInput)(nil)).Elem(), GetMySqlServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlTagInput)(nil)).Elem(), GetMySqlTagArgs{})
@@ -27115,6 +28364,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMysqlOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMysqlPtrOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPublicAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetMySqlServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(GetMySqlServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlTagOutput{})

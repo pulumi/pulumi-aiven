@@ -14,27 +14,27 @@ import java.util.Objects;
 @CustomType
 public final class GetMirrorMakerReplicationFlowResult {
     /**
-     * @return List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * @return List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
      * 
      */
     private List<String> configPropertiesExcludes;
     /**
-     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * @return Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
     private Boolean emitBackwardHeartbeatsEnabled;
     /**
-     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
+     * @return Enables emitting heartbeats to the target cluster. The default value is `false`.
      * 
      */
     private Boolean emitHeartbeatsEnabled;
     /**
-     * @return Enable of disable replication flows for a service.
+     * @return Enables replication flow for a service.
      * 
      */
     private Boolean enable;
     /**
-     * @return Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * @return Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      * 
      */
     private Boolean exactlyOnceDeliveryEnabled;
@@ -89,47 +89,47 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     private String targetCluster;
     /**
-     * @return List of topics and/or regular expressions to replicate
+     * @return The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     private List<String> topics;
     /**
-     * @return List of topics and/or regular expressions to not replicate.
+     * @return The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     private List<String> topicsBlacklists;
 
     private GetMirrorMakerReplicationFlowResult() {}
     /**
-     * @return List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * @return List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
      * 
      */
     public List<String> configPropertiesExcludes() {
         return this.configPropertiesExcludes;
     }
     /**
-     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * @return Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
     public Boolean emitBackwardHeartbeatsEnabled() {
         return this.emitBackwardHeartbeatsEnabled;
     }
     /**
-     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
+     * @return Enables emitting heartbeats to the target cluster. The default value is `false`.
      * 
      */
     public Boolean emitHeartbeatsEnabled() {
         return this.emitHeartbeatsEnabled;
     }
     /**
-     * @return Enable of disable replication flows for a service.
+     * @return Enables replication flow for a service.
      * 
      */
     public Boolean enable() {
         return this.enable;
     }
     /**
-     * @return Whether to enable exactly-once message delivery. We recommend you set this to `enabled` for new replications. The default value is `false`.
+     * @return Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
      * 
      */
     public Boolean exactlyOnceDeliveryEnabled() {
@@ -206,14 +206,14 @@ public final class GetMirrorMakerReplicationFlowResult {
         return this.targetCluster;
     }
     /**
-     * @return List of topics and/or regular expressions to replicate
+     * @return The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     public List<String> topics() {
         return this.topics;
     }
     /**
-     * @return List of topics and/or regular expressions to not replicate.
+     * @return The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     public List<String> topicsBlacklists() {

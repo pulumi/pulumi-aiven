@@ -92,7 +92,7 @@ export class KafkaNativeAcl extends pulumi.CustomResource {
      */
     public readonly resourceName!: pulumi.Output<string>;
     /**
-     * The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      */
     public readonly resourceType!: pulumi.Output<string>;
     /**
@@ -196,7 +196,7 @@ export interface KafkaNativeAclState {
      */
     resourceName?: pulumi.Input<string>;
     /**
-     * The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -238,7 +238,7 @@ export interface KafkaNativeAclArgs {
      */
     resourceName: pulumi.Input<string>;
     /**
-     * The type of Kafka resource. The possible values are `Topic`, `Group`, `Cluster`, `TransactionalId`, `DelegationToken` and `User`. Changing this property forces recreation of the resource.
+     * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      */
     resourceType: pulumi.Input<string>;
     /**

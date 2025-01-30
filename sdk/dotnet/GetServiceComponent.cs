@@ -124,7 +124,7 @@ namespace Pulumi.Aiven
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+        /// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
         /// </summary>
         [Input("route")]
         public string? Route { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+        /// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
         /// </summary>
         [Input("route")]
         public Input<string>? Route { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+        /// Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
         /// </summary>
         public readonly string? Route;
         /// <summary>

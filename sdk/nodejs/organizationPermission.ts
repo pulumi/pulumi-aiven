@@ -114,7 +114,7 @@ export class OrganizationPermission extends pulumi.CustomResource {
      */
     public readonly resourceId!: pulumi.Output<string>;
     /**
-     * Resource type. The possible values are `project`, `organization` and `organizationUnit`.
+     * Resource type. The possible values are `organization`, `organizationUnit` and `project`.
      */
     public readonly resourceType!: pulumi.Output<string>;
 
@@ -176,7 +176,7 @@ export interface OrganizationPermissionState {
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * Resource type. The possible values are `project`, `organization` and `organizationUnit`.
+     * Resource type. The possible values are `organization`, `organizationUnit` and `project`.
      */
     resourceType?: pulumi.Input<string>;
 }
@@ -198,7 +198,7 @@ export interface OrganizationPermissionArgs {
      */
     resourceId: pulumi.Input<string>;
     /**
-     * Resource type. The possible values are `project`, `organization` and `organizationUnit`.
+     * Resource type. The possible values are `organization`, `organizationUnit` and `project`.
      */
     resourceType: pulumi.Input<string>;
 }

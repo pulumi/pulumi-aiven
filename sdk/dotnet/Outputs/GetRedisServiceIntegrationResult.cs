@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetRedisServiceIntegrationResult
     {
         /// <summary>
-        /// Type of the service integration
+        /// Type of the service integration. The possible value is `read_replica`.
         /// </summary>
         public readonly string IntegrationType;
         /// <summary>

@@ -127,6 +127,14 @@ __all__ = [
     'FlinkFlinkUserConfigPrivatelinkAccessArgsDict',
     'FlinkFlinkUserConfigPublicAccessArgs',
     'FlinkFlinkUserConfigPublicAccessArgsDict',
+    'FlinkJarApplicationApplicationVersionArgs',
+    'FlinkJarApplicationApplicationVersionArgsDict',
+    'FlinkJarApplicationApplicationVersionFileInfoArgs',
+    'FlinkJarApplicationApplicationVersionFileInfoArgsDict',
+    'FlinkJarApplicationCurrentDeploymentArgs',
+    'FlinkJarApplicationCurrentDeploymentArgsDict',
+    'FlinkJarApplicationVersionFileInfoArgs',
+    'FlinkJarApplicationVersionFileInfoArgsDict',
     'FlinkServiceIntegrationArgs',
     'FlinkServiceIntegrationArgsDict',
     'FlinkTagArgs',
@@ -7393,6 +7401,634 @@ class FlinkFlinkUserConfigPublicAccessArgs:
     @flink.setter
     def flink(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "flink", value)
+
+
+if not MYPY:
+    class FlinkJarApplicationApplicationVersionArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        """
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        The creator of this entity.
+        """
+        file_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionFileInfoArgsDict']]]]
+        """
+        Flink JarApplicationVersion FileInfo.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        ApplicationVersion ID.
+        """
+        version: NotRequired[pulumi.Input[int]]
+        """
+        Version number.
+        """
+elif False:
+    FlinkJarApplicationApplicationVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FlinkJarApplicationApplicationVersionArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 file_infos: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionFileInfoArgs']]]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        :param pulumi.Input[str] created_by: The creator of this entity.
+        :param pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionFileInfoArgs']]] file_infos: Flink JarApplicationVersion FileInfo.
+        :param pulumi.Input[str] id: ApplicationVersion ID.
+        :param pulumi.Input[int] version: Version number.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if file_infos is not None:
+            pulumi.set(__self__, "file_infos", file_infos)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creator of this entity.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="fileInfos")
+    def file_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionFileInfoArgs']]]]:
+        """
+        Flink JarApplicationVersion FileInfo.
+        """
+        return pulumi.get(self, "file_infos")
+
+    @file_infos.setter
+    def file_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionFileInfoArgs']]]]):
+        pulumi.set(self, "file_infos", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ApplicationVersion ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[int]]:
+        """
+        Version number.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class FlinkJarApplicationApplicationVersionFileInfoArgsDict(TypedDict):
+        file_sha256: NotRequired[pulumi.Input[str]]
+        """
+        sha256 of the file if known.
+        """
+        file_size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the file in bytes.
+        """
+        file_status: NotRequired[pulumi.Input[str]]
+        """
+        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        """
+        verify_error_code: NotRequired[pulumi.Input[int]]
+        """
+        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        """
+        verify_error_message: NotRequired[pulumi.Input[str]]
+        """
+        In the case file_status is FAILED, may contain details about the failure.
+        """
+elif False:
+    FlinkJarApplicationApplicationVersionFileInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FlinkJarApplicationApplicationVersionFileInfoArgs:
+    def __init__(__self__, *,
+                 file_sha256: Optional[pulumi.Input[str]] = None,
+                 file_size: Optional[pulumi.Input[int]] = None,
+                 file_status: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 verify_error_code: Optional[pulumi.Input[int]] = None,
+                 verify_error_message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] file_sha256: sha256 of the file if known.
+        :param pulumi.Input[int] file_size: The size of the file in bytes.
+        :param pulumi.Input[str] file_status: Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+        :param pulumi.Input[str] url: The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        :param pulumi.Input[int] verify_error_code: In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        :param pulumi.Input[str] verify_error_message: In the case file_status is FAILED, may contain details about the failure.
+        """
+        if file_sha256 is not None:
+            pulumi.set(__self__, "file_sha256", file_sha256)
+        if file_size is not None:
+            pulumi.set(__self__, "file_size", file_size)
+        if file_status is not None:
+            pulumi.set(__self__, "file_status", file_status)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if verify_error_code is not None:
+            pulumi.set(__self__, "verify_error_code", verify_error_code)
+        if verify_error_message is not None:
+            pulumi.set(__self__, "verify_error_message", verify_error_message)
+
+    @property
+    @pulumi.getter(name="fileSha256")
+    def file_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        sha256 of the file if known.
+        """
+        return pulumi.get(self, "file_sha256")
+
+    @file_sha256.setter
+    def file_sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_sha256", value)
+
+    @property
+    @pulumi.getter(name="fileSize")
+    def file_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the file in bytes.
+        """
+        return pulumi.get(self, "file_size")
+
+    @file_size.setter
+    def file_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "file_size", value)
+
+    @property
+    @pulumi.getter(name="fileStatus")
+    def file_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+        """
+        return pulumi.get(self, "file_status")
+
+    @file_status.setter
+    def file_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_status", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="verifyErrorCode")
+    def verify_error_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        """
+        return pulumi.get(self, "verify_error_code")
+
+    @verify_error_code.setter
+    def verify_error_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "verify_error_code", value)
+
+    @property
+    @pulumi.getter(name="verifyErrorMessage")
+    def verify_error_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        In the case file_status is FAILED, may contain details about the failure.
+        """
+        return pulumi.get(self, "verify_error_message")
+
+    @verify_error_message.setter
+    def verify_error_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "verify_error_message", value)
+
+
+if not MYPY:
+    class FlinkJarApplicationCurrentDeploymentArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        """
+        created_by: NotRequired[pulumi.Input[str]]
+        """
+        The creator of this entity.
+        """
+        entry_class: NotRequired[pulumi.Input[str]]
+        """
+        The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter.
+        """
+        error_msg: NotRequired[pulumi.Input[str]]
+        """
+        Error message describing what caused deployment to fail.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Deployment ID.
+        """
+        job_id: NotRequired[pulumi.Input[str]]
+        """
+        Job ID.
+        """
+        last_savepoint: NotRequired[pulumi.Input[str]]
+        """
+        Job savepoint.
+        """
+        parallelism: NotRequired[pulumi.Input[int]]
+        """
+        Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+        """
+        program_args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments to pass during Flink job submission through the programArgsList parameter.
+        """
+        starting_savepoint: NotRequired[pulumi.Input[str]]
+        """
+        Job savepoint.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
+        """
+        version_id: NotRequired[pulumi.Input[str]]
+        """
+        ApplicationVersion ID.
+        """
+elif False:
+    FlinkJarApplicationCurrentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FlinkJarApplicationCurrentDeploymentArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 entry_class: Optional[pulumi.Input[str]] = None,
+                 error_msg: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 last_savepoint: Optional[pulumi.Input[str]] = None,
+                 parallelism: Optional[pulumi.Input[int]] = None,
+                 program_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 starting_savepoint: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        :param pulumi.Input[str] created_by: The creator of this entity.
+        :param pulumi.Input[str] entry_class: The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter.
+        :param pulumi.Input[str] error_msg: Error message describing what caused deployment to fail.
+        :param pulumi.Input[str] id: Deployment ID.
+        :param pulumi.Input[str] job_id: Job ID.
+        :param pulumi.Input[str] last_savepoint: Job savepoint.
+        :param pulumi.Input[int] parallelism: Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] program_args: Arguments to pass during Flink job submission through the programArgsList parameter.
+        :param pulumi.Input[str] starting_savepoint: Job savepoint.
+        :param pulumi.Input[str] status: Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
+        :param pulumi.Input[str] version_id: ApplicationVersion ID.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if entry_class is not None:
+            pulumi.set(__self__, "entry_class", entry_class)
+        if error_msg is not None:
+            pulumi.set(__self__, "error_msg", error_msg)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if last_savepoint is not None:
+            pulumi.set(__self__, "last_savepoint", last_savepoint)
+        if parallelism is not None:
+            pulumi.set(__self__, "parallelism", parallelism)
+        if program_args is not None:
+            pulumi.set(__self__, "program_args", program_args)
+        if starting_savepoint is not None:
+            pulumi.set(__self__, "starting_savepoint", starting_savepoint)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creator of this entity.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="entryClass")
+    def entry_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter.
+        """
+        return pulumi.get(self, "entry_class")
+
+    @entry_class.setter
+    def entry_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entry_class", value)
+
+    @property
+    @pulumi.getter(name="errorMsg")
+    def error_msg(self) -> Optional[pulumi.Input[str]]:
+        """
+        Error message describing what caused deployment to fail.
+        """
+        return pulumi.get(self, "error_msg")
+
+    @error_msg.setter
+    def error_msg(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_msg", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deployment ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Job ID.
+        """
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter(name="lastSavepoint")
+    def last_savepoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Job savepoint.
+        """
+        return pulumi.get(self, "last_savepoint")
+
+    @last_savepoint.setter
+    def last_savepoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_savepoint", value)
+
+    @property
+    @pulumi.getter
+    def parallelism(self) -> Optional[pulumi.Input[int]]:
+        """
+        Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+        """
+        return pulumi.get(self, "parallelism")
+
+    @parallelism.setter
+    def parallelism(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "parallelism", value)
+
+    @property
+    @pulumi.getter(name="programArgs")
+    def program_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Arguments to pass during Flink job submission through the programArgsList parameter.
+        """
+        return pulumi.get(self, "program_args")
+
+    @program_args.setter
+    def program_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "program_args", value)
+
+    @property
+    @pulumi.getter(name="startingSavepoint")
+    def starting_savepoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Job savepoint.
+        """
+        return pulumi.get(self, "starting_savepoint")
+
+    @starting_savepoint.setter
+    def starting_savepoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "starting_savepoint", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ApplicationVersion ID.
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_id", value)
+
+
+if not MYPY:
+    class FlinkJarApplicationVersionFileInfoArgsDict(TypedDict):
+        file_sha256: NotRequired[pulumi.Input[str]]
+        """
+        sha256 of the file if known.
+        """
+        file_size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the file in bytes.
+        """
+        file_status: NotRequired[pulumi.Input[str]]
+        """
+        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        """
+        verify_error_code: NotRequired[pulumi.Input[int]]
+        """
+        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        """
+        verify_error_message: NotRequired[pulumi.Input[str]]
+        """
+        In the case file_status is FAILED, may contain details about the failure.
+        """
+elif False:
+    FlinkJarApplicationVersionFileInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FlinkJarApplicationVersionFileInfoArgs:
+    def __init__(__self__, *,
+                 file_sha256: Optional[pulumi.Input[str]] = None,
+                 file_size: Optional[pulumi.Input[int]] = None,
+                 file_status: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 verify_error_code: Optional[pulumi.Input[int]] = None,
+                 verify_error_message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] file_sha256: sha256 of the file if known.
+        :param pulumi.Input[int] file_size: The size of the file in bytes.
+        :param pulumi.Input[str] file_status: Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
+        :param pulumi.Input[str] url: The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        :param pulumi.Input[int] verify_error_code: In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        :param pulumi.Input[str] verify_error_message: In the case file_status is FAILED, may contain details about the failure.
+        """
+        if file_sha256 is not None:
+            pulumi.set(__self__, "file_sha256", file_sha256)
+        if file_size is not None:
+            pulumi.set(__self__, "file_size", file_size)
+        if file_status is not None:
+            pulumi.set(__self__, "file_status", file_status)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if verify_error_code is not None:
+            pulumi.set(__self__, "verify_error_code", verify_error_code)
+        if verify_error_message is not None:
+            pulumi.set(__self__, "verify_error_message", verify_error_message)
+
+    @property
+    @pulumi.getter(name="fileSha256")
+    def file_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        sha256 of the file if known.
+        """
+        return pulumi.get(self, "file_sha256")
+
+    @file_sha256.setter
+    def file_sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_sha256", value)
+
+    @property
+    @pulumi.getter(name="fileSize")
+    def file_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the file in bytes.
+        """
+        return pulumi.get(self, "file_size")
+
+    @file_size.setter
+    def file_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "file_size", value)
+
+    @property
+    @pulumi.getter(name="fileStatus")
+    def file_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
+        """
+        return pulumi.get(self, "file_status")
+
+    @file_status.setter
+    def file_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_status", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="verifyErrorCode")
+    def verify_error_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        """
+        return pulumi.get(self, "verify_error_code")
+
+    @verify_error_code.setter
+    def verify_error_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "verify_error_code", value)
+
+    @property
+    @pulumi.getter(name="verifyErrorMessage")
+    def verify_error_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        In the case file_status is FAILED, may contain details about the failure.
+        """
+        return pulumi.get(self, "verify_error_message")
+
+    @verify_error_message.setter
+    def verify_error_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "verify_error_message", value)
 
 
 if not MYPY:
@@ -17002,11 +17638,11 @@ if not MYPY:
     class KafkaTopicConfigArgsDict(TypedDict):
         cleanup_policy: NotRequired[pulumi.Input[str]]
         """
-        cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
+        cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
         """
         compression_type: NotRequired[pulumi.Input[str]]
         """
-        compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
+        compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         """
         delete_retention_ms: NotRequired[pulumi.Input[str]]
         """
@@ -17050,7 +17686,7 @@ if not MYPY:
         """
         message_format_version: NotRequired[pulumi.Input[str]]
         """
-        message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         """
         message_timestamp_difference_max_ms: NotRequired[pulumi.Input[str]]
         """
@@ -17142,8 +17778,8 @@ class KafkaTopicConfigArgs:
                  segment_ms: Optional[pulumi.Input[str]] = None,
                  unclean_leader_election_enable: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] cleanup_policy: cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
-        :param pulumi.Input[str] compression_type: compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
+        :param pulumi.Input[str] cleanup_policy: cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+        :param pulumi.Input[str] compression_type: compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         :param pulumi.Input[str] delete_retention_ms: delete.retention.ms value
         :param pulumi.Input[str] file_delete_delay_ms: file.delete.delay.ms value
         :param pulumi.Input[str] flush_messages: flush.messages value
@@ -17154,7 +17790,7 @@ class KafkaTopicConfigArgs:
         :param pulumi.Input[str] max_compaction_lag_ms: max.compaction.lag.ms value
         :param pulumi.Input[str] max_message_bytes: max.message.bytes value
         :param pulumi.Input[bool] message_downconversion_enable: message.downconversion.enable value
-        :param pulumi.Input[str] message_format_version: message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        :param pulumi.Input[str] message_format_version: message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         :param pulumi.Input[str] message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
         :param pulumi.Input[str] message_timestamp_type: message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
         :param pulumi.Input[float] min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
@@ -17232,7 +17868,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
+        cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -17244,7 +17880,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[pulumi.Input[str]]:
         """
-        compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
+        compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         """
         return pulumi.get(self, "compression_type")
 
@@ -17376,7 +18012,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[pulumi.Input[str]]:
         """
-        message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -27480,7 +28116,7 @@ if not MYPY:
     class OrganizationPermissionPermissionArgsDict(TypedDict):
         permissions: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         principal_id: pulumi.Input[str]
         """
@@ -27510,7 +28146,7 @@ class OrganizationPermissionPermissionArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         :param pulumi.Input[str] principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param pulumi.Input[str] principal_type: The type of principal. The possible values are `user` and `user_group`.
         :param pulumi.Input[str] create_time: Time created.
@@ -27528,7 +28164,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -31262,7 +31898,7 @@ if not MYPY:
     class PgServiceIntegrationArgsDict(TypedDict):
         integration_type: pulumi.Input[str]
         """
-        Type of the service integration. The possible value is `read_replica`.
+        Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
         """
         source_service_name: pulumi.Input[str]
         """
@@ -31277,7 +31913,7 @@ class PgServiceIntegrationArgs:
                  integration_type: pulumi.Input[str],
                  source_service_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] integration_type: Type of the service integration. The possible value is `read_replica`.
+        :param pulumi.Input[str] integration_type: Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
         :param pulumi.Input[str] source_service_name: Name of the source service
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -31287,7 +31923,7 @@ class PgServiceIntegrationArgs:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Input[str]:
         """
-        Type of the service integration. The possible value is `read_replica`.
+        Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -32660,7 +33296,7 @@ if not MYPY:
     class RedisServiceIntegrationArgsDict(TypedDict):
         integration_type: pulumi.Input[str]
         """
-        Type of the service integration
+        Type of the service integration. The possible value is `read_replica`.
         """
         source_service_name: pulumi.Input[str]
         """
@@ -32675,7 +33311,7 @@ class RedisServiceIntegrationArgs:
                  integration_type: pulumi.Input[str],
                  source_service_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[str] integration_type: Type of the service integration. The possible value is `read_replica`.
         :param pulumi.Input[str] source_service_name: Name of the source service
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -32685,7 +33321,7 @@ class RedisServiceIntegrationArgs:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Input[str]:
         """
-        Type of the service integration
+        Type of the service integration. The possible value is `read_replica`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -38827,7 +39463,7 @@ if not MYPY:
     class ValkeyServiceIntegrationArgsDict(TypedDict):
         integration_type: pulumi.Input[str]
         """
-        Type of the service integration
+        Type of the service integration. The possible value is `read_replica`.
         """
         source_service_name: pulumi.Input[str]
         """
@@ -38842,7 +39478,7 @@ class ValkeyServiceIntegrationArgs:
                  integration_type: pulumi.Input[str],
                  source_service_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] integration_type: Type of the service integration
+        :param pulumi.Input[str] integration_type: Type of the service integration. The possible value is `read_replica`.
         :param pulumi.Input[str] source_service_name: Name of the source service
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -38852,7 +39488,7 @@ class ValkeyServiceIntegrationArgs:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Input[str]:
         """
-        Type of the service integration
+        Type of the service integration. The possible value is `read_replica`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -39060,6 +39696,10 @@ if not MYPY:
         """
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
+        frequent_snapshots: NotRequired[pulumi.Input[bool]]
+        """
+        When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+        """
         ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgsDict']]]]
         """
         Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -39161,6 +39801,7 @@ class ValkeyValkeyUserConfigArgs:
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  backup_hour: Optional[pulumi.Input[int]] = None,
                  backup_minute: Optional[pulumi.Input[int]] = None,
+                 frequent_snapshots: Optional[pulumi.Input[bool]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -39188,6 +39829,7 @@ class ValkeyValkeyUserConfigArgs:
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param pulumi.Input[int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param pulumi.Input[bool] frequent_snapshots: When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
         :param pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -39218,6 +39860,8 @@ class ValkeyValkeyUserConfigArgs:
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if frequent_snapshots is not None:
+            pulumi.set(__self__, "frequent_snapshots", frequent_snapshots)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -39303,6 +39947,18 @@ class ValkeyValkeyUserConfigArgs:
     @backup_minute.setter
     def backup_minute(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "backup_minute", value)
+
+    @property
+    @pulumi.getter(name="frequentSnapshots")
+    def frequent_snapshots(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+        """
+        return pulumi.get(self, "frequent_snapshots")
+
+    @frequent_snapshots.setter
+    def frequent_snapshots(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "frequent_snapshots", value)
 
     @property
     @pulumi.getter(name="ipFilterObjects")

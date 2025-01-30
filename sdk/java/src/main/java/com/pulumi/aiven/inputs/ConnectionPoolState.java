@@ -47,14 +47,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
     @Import(name="poolMode")
     private @Nullable Output<String> poolMode;
 
     /**
-     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
     public Optional<Output<String>> poolMode() {
@@ -210,7 +210,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolMode The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+         * @param poolMode The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolMode The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `transaction` and `statement`. The default value is `transaction`.
+         * @param poolMode The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
          * 
          * @return builder
          * 

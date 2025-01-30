@@ -110,7 +110,7 @@ class GetServiceComponentResult:
     @pulumi.getter
     def route(self) -> Optional[str]:
         """
-        Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+        Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
         """
         return pulumi.get(self, "route")
 
@@ -187,7 +187,7 @@ def get_service_component(component: Optional[str] = None,
     :param str component: Service component name
     :param str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
     :param str project: Project name
-    :param str route: Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+    :param str route: Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
     :param str service_name: Service name
     :param bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
     :param str usage: DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.
@@ -244,7 +244,7 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
     :param str component: Service component name
     :param str kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
     :param str project: Project name
-    :param str route: Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+    :param str route: Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
     :param str service_name: Service name
     :param bool ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
     :param str usage: DNS usage name. The possible values are `disaster_recovery`, `primary` and `replica`.

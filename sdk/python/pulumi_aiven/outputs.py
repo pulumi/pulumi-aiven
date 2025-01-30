@@ -72,6 +72,10 @@ __all__ = [
     'FlinkFlinkUserConfigIpFilterObject',
     'FlinkFlinkUserConfigPrivatelinkAccess',
     'FlinkFlinkUserConfigPublicAccess',
+    'FlinkJarApplicationApplicationVersion',
+    'FlinkJarApplicationApplicationVersionFileInfo',
+    'FlinkJarApplicationCurrentDeployment',
+    'FlinkJarApplicationVersionFileInfo',
     'FlinkServiceIntegration',
     'FlinkTag',
     'FlinkTechEmail',
@@ -5486,6 +5490,486 @@ class FlinkFlinkUserConfigPublicAccess(dict):
         Allow clients to connect to flink from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "flink")
+
+
+@pulumi.output_type
+class FlinkJarApplicationApplicationVersion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "createdBy":
+            suggest = "created_by"
+        elif key == "fileInfos":
+            suggest = "file_infos"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlinkJarApplicationApplicationVersion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlinkJarApplicationApplicationVersion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlinkJarApplicationApplicationVersion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_at: Optional[str] = None,
+                 created_by: Optional[str] = None,
+                 file_infos: Optional[Sequence['outputs.FlinkJarApplicationApplicationVersionFileInfo']] = None,
+                 id: Optional[str] = None,
+                 version: Optional[int] = None):
+        """
+        :param str created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        :param str created_by: The creator of this entity.
+        :param Sequence['FlinkJarApplicationApplicationVersionFileInfoArgs'] file_infos: Flink JarApplicationVersion FileInfo.
+        :param str id: ApplicationVersion ID.
+        :param int version: Version number.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if file_infos is not None:
+            pulumi.set(__self__, "file_infos", file_infos)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        The creator of this entity.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="fileInfos")
+    def file_infos(self) -> Optional[Sequence['outputs.FlinkJarApplicationApplicationVersionFileInfo']]:
+        """
+        Flink JarApplicationVersion FileInfo.
+        """
+        return pulumi.get(self, "file_infos")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ApplicationVersion ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[int]:
+        """
+        Version number.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class FlinkJarApplicationApplicationVersionFileInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileSha256":
+            suggest = "file_sha256"
+        elif key == "fileSize":
+            suggest = "file_size"
+        elif key == "fileStatus":
+            suggest = "file_status"
+        elif key == "verifyErrorCode":
+            suggest = "verify_error_code"
+        elif key == "verifyErrorMessage":
+            suggest = "verify_error_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlinkJarApplicationApplicationVersionFileInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlinkJarApplicationApplicationVersionFileInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlinkJarApplicationApplicationVersionFileInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_sha256: Optional[str] = None,
+                 file_size: Optional[int] = None,
+                 file_status: Optional[str] = None,
+                 url: Optional[str] = None,
+                 verify_error_code: Optional[int] = None,
+                 verify_error_message: Optional[str] = None):
+        """
+        :param str file_sha256: sha256 of the file if known.
+        :param int file_size: The size of the file in bytes.
+        :param str file_status: Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+        :param str url: The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        :param int verify_error_code: In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        :param str verify_error_message: In the case file_status is FAILED, may contain details about the failure.
+        """
+        if file_sha256 is not None:
+            pulumi.set(__self__, "file_sha256", file_sha256)
+        if file_size is not None:
+            pulumi.set(__self__, "file_size", file_size)
+        if file_status is not None:
+            pulumi.set(__self__, "file_status", file_status)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if verify_error_code is not None:
+            pulumi.set(__self__, "verify_error_code", verify_error_code)
+        if verify_error_message is not None:
+            pulumi.set(__self__, "verify_error_message", verify_error_message)
+
+    @property
+    @pulumi.getter(name="fileSha256")
+    def file_sha256(self) -> Optional[str]:
+        """
+        sha256 of the file if known.
+        """
+        return pulumi.get(self, "file_sha256")
+
+    @property
+    @pulumi.getter(name="fileSize")
+    def file_size(self) -> Optional[int]:
+        """
+        The size of the file in bytes.
+        """
+        return pulumi.get(self, "file_size")
+
+    @property
+    @pulumi.getter(name="fileStatus")
+    def file_status(self) -> Optional[str]:
+        """
+        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+        """
+        return pulumi.get(self, "file_status")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="verifyErrorCode")
+    def verify_error_code(self) -> Optional[int]:
+        """
+        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        """
+        return pulumi.get(self, "verify_error_code")
+
+    @property
+    @pulumi.getter(name="verifyErrorMessage")
+    def verify_error_message(self) -> Optional[str]:
+        """
+        In the case file_status is FAILED, may contain details about the failure.
+        """
+        return pulumi.get(self, "verify_error_message")
+
+
+@pulumi.output_type
+class FlinkJarApplicationCurrentDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "createdBy":
+            suggest = "created_by"
+        elif key == "entryClass":
+            suggest = "entry_class"
+        elif key == "errorMsg":
+            suggest = "error_msg"
+        elif key == "jobId":
+            suggest = "job_id"
+        elif key == "lastSavepoint":
+            suggest = "last_savepoint"
+        elif key == "programArgs":
+            suggest = "program_args"
+        elif key == "startingSavepoint":
+            suggest = "starting_savepoint"
+        elif key == "versionId":
+            suggest = "version_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlinkJarApplicationCurrentDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlinkJarApplicationCurrentDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlinkJarApplicationCurrentDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_at: Optional[str] = None,
+                 created_by: Optional[str] = None,
+                 entry_class: Optional[str] = None,
+                 error_msg: Optional[str] = None,
+                 id: Optional[str] = None,
+                 job_id: Optional[str] = None,
+                 last_savepoint: Optional[str] = None,
+                 parallelism: Optional[int] = None,
+                 program_args: Optional[Sequence[str]] = None,
+                 starting_savepoint: Optional[str] = None,
+                 status: Optional[str] = None,
+                 version_id: Optional[str] = None):
+        """
+        :param str created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        :param str created_by: The creator of this entity.
+        :param str entry_class: The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter.
+        :param str error_msg: Error message describing what caused deployment to fail.
+        :param str id: Deployment ID.
+        :param str job_id: Job ID.
+        :param str last_savepoint: Job savepoint.
+        :param int parallelism: Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+        :param Sequence[str] program_args: Arguments to pass during Flink job submission through the programArgsList parameter.
+        :param str starting_savepoint: Job savepoint.
+        :param str status: Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
+        :param str version_id: ApplicationVersion ID.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if entry_class is not None:
+            pulumi.set(__self__, "entry_class", entry_class)
+        if error_msg is not None:
+            pulumi.set(__self__, "error_msg", error_msg)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if last_savepoint is not None:
+            pulumi.set(__self__, "last_savepoint", last_savepoint)
+        if parallelism is not None:
+            pulumi.set(__self__, "parallelism", parallelism)
+        if program_args is not None:
+            pulumi.set(__self__, "program_args", program_args)
+        if starting_savepoint is not None:
+            pulumi.set(__self__, "starting_savepoint", starting_savepoint)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        """
+        The creation timestamp of this entity in ISO 8601 format, always in UTC.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        The creator of this entity.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="entryClass")
+    def entry_class(self) -> Optional[str]:
+        """
+        The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter.
+        """
+        return pulumi.get(self, "entry_class")
+
+    @property
+    @pulumi.getter(name="errorMsg")
+    def error_msg(self) -> Optional[str]:
+        """
+        Error message describing what caused deployment to fail.
+        """
+        return pulumi.get(self, "error_msg")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Deployment ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[str]:
+        """
+        Job ID.
+        """
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="lastSavepoint")
+    def last_savepoint(self) -> Optional[str]:
+        """
+        Job savepoint.
+        """
+        return pulumi.get(self, "last_savepoint")
+
+    @property
+    @pulumi.getter
+    def parallelism(self) -> Optional[int]:
+        """
+        Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+        """
+        return pulumi.get(self, "parallelism")
+
+    @property
+    @pulumi.getter(name="programArgs")
+    def program_args(self) -> Optional[Sequence[str]]:
+        """
+        Arguments to pass during Flink job submission through the programArgsList parameter.
+        """
+        return pulumi.get(self, "program_args")
+
+    @property
+    @pulumi.getter(name="startingSavepoint")
+    def starting_savepoint(self) -> Optional[str]:
+        """
+        Job savepoint.
+        """
+        return pulumi.get(self, "starting_savepoint")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[str]:
+        """
+        ApplicationVersion ID.
+        """
+        return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class FlinkJarApplicationVersionFileInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileSha256":
+            suggest = "file_sha256"
+        elif key == "fileSize":
+            suggest = "file_size"
+        elif key == "fileStatus":
+            suggest = "file_status"
+        elif key == "verifyErrorCode":
+            suggest = "verify_error_code"
+        elif key == "verifyErrorMessage":
+            suggest = "verify_error_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlinkJarApplicationVersionFileInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlinkJarApplicationVersionFileInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlinkJarApplicationVersionFileInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_sha256: Optional[str] = None,
+                 file_size: Optional[int] = None,
+                 file_status: Optional[str] = None,
+                 url: Optional[str] = None,
+                 verify_error_code: Optional[int] = None,
+                 verify_error_message: Optional[str] = None):
+        """
+        :param str file_sha256: sha256 of the file if known.
+        :param int file_size: The size of the file in bytes.
+        :param str file_status: Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
+        :param str url: The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        :param int verify_error_code: In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        :param str verify_error_message: In the case file_status is FAILED, may contain details about the failure.
+        """
+        if file_sha256 is not None:
+            pulumi.set(__self__, "file_sha256", file_sha256)
+        if file_size is not None:
+            pulumi.set(__self__, "file_size", file_size)
+        if file_status is not None:
+            pulumi.set(__self__, "file_status", file_status)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if verify_error_code is not None:
+            pulumi.set(__self__, "verify_error_code", verify_error_code)
+        if verify_error_message is not None:
+            pulumi.set(__self__, "verify_error_message", verify_error_message)
+
+    @property
+    @pulumi.getter(name="fileSha256")
+    def file_sha256(self) -> Optional[str]:
+        """
+        sha256 of the file if known.
+        """
+        return pulumi.get(self, "file_sha256")
+
+    @property
+    @pulumi.getter(name="fileSize")
+    def file_size(self) -> Optional[int]:
+        """
+        The size of the file in bytes.
+        """
+        return pulumi.get(self, "file_size")
+
+    @property
+    @pulumi.getter(name="fileStatus")
+    def file_status(self) -> Optional[str]:
+        """
+        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
+        """
+        return pulumi.get(self, "file_status")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="verifyErrorCode")
+    def verify_error_code(self) -> Optional[int]:
+        """
+        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        """
+        return pulumi.get(self, "verify_error_code")
+
+    @property
+    @pulumi.getter(name="verifyErrorMessage")
+    def verify_error_message(self) -> Optional[str]:
+        """
+        In the case file_status is FAILED, may contain details about the failure.
+        """
+        return pulumi.get(self, "verify_error_message")
 
 
 @pulumi.output_type
@@ -12670,8 +13154,8 @@ class KafkaTopicConfig(dict):
                  segment_ms: Optional[str] = None,
                  unclean_leader_election_enable: Optional[bool] = None):
         """
-        :param str cleanup_policy: cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
-        :param str compression_type: compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
+        :param str cleanup_policy: cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+        :param str compression_type: compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         :param str delete_retention_ms: delete.retention.ms value
         :param str file_delete_delay_ms: file.delete.delay.ms value
         :param str flush_messages: flush.messages value
@@ -12682,7 +13166,7 @@ class KafkaTopicConfig(dict):
         :param str max_compaction_lag_ms: max.compaction.lag.ms value
         :param str max_message_bytes: max.message.bytes value
         :param bool message_downconversion_enable: message.downconversion.enable value
-        :param str message_format_version: message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        :param str message_format_version: message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         :param str message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
         :param str message_timestamp_type: message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
         :param float min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
@@ -12757,7 +13241,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[str]:
         """
-        cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
+        cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -12765,7 +13249,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[str]:
         """
-        compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
+        compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         """
         return pulumi.get(self, "compression_type")
 
@@ -12853,7 +13337,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[str]:
         """
-        message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -20284,7 +20768,7 @@ class OrganizationPermissionPermission(dict):
                  create_time: Optional[str] = None,
                  update_time: Optional[str] = None):
         """
-        :param Sequence[str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        :param Sequence[str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         :param str principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param str principal_type: The type of principal. The possible values are `user` and `user_group`.
         :param str create_time: Time created.
@@ -20302,7 +20786,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter
     def permissions(self) -> Sequence[str]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -22916,7 +23400,7 @@ class PgServiceIntegration(dict):
                  integration_type: str,
                  source_service_name: str):
         """
-        :param str integration_type: Type of the service integration. The possible value is `read_replica`.
+        :param str integration_type: Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
         :param str source_service_name: Name of the source service
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -22926,7 +23410,7 @@ class PgServiceIntegration(dict):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration. The possible value is `read_replica`.
+        Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -23890,7 +24374,7 @@ class RedisServiceIntegration(dict):
                  integration_type: str,
                  source_service_name: str):
         """
-        :param str integration_type: Type of the service integration
+        :param str integration_type: Type of the service integration. The possible value is `read_replica`.
         :param str source_service_name: Name of the source service
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -23900,7 +24384,7 @@ class RedisServiceIntegration(dict):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration
+        Type of the service integration. The possible value is `read_replica`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -28621,7 +29105,7 @@ class ValkeyServiceIntegration(dict):
                  integration_type: str,
                  source_service_name: str):
         """
-        :param str integration_type: Type of the service integration
+        :param str integration_type: Type of the service integration. The possible value is `read_replica`.
         :param str source_service_name: Name of the source service
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -28631,7 +29115,7 @@ class ValkeyServiceIntegration(dict):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration
+        Type of the service integration. The possible value is `read_replica`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -28776,6 +29260,8 @@ class ValkeyValkeyUserConfig(dict):
             suggest = "backup_hour"
         elif key == "backupMinute":
             suggest = "backup_minute"
+        elif key == "frequentSnapshots":
+            suggest = "frequent_snapshots"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
         elif key == "ipFilterStrings":
@@ -28836,6 +29322,7 @@ class ValkeyValkeyUserConfig(dict):
                  additional_backup_regions: Optional[str] = None,
                  backup_hour: Optional[int] = None,
                  backup_minute: Optional[int] = None,
+                 frequent_snapshots: Optional[bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.ValkeyValkeyUserConfigIpFilterObject']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -28863,6 +29350,7 @@ class ValkeyValkeyUserConfig(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param bool frequent_snapshots: When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
         :param Sequence['ValkeyValkeyUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -28893,6 +29381,8 @@ class ValkeyValkeyUserConfig(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if frequent_snapshots is not None:
+            pulumi.set(__self__, "frequent_snapshots", frequent_snapshots)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -28963,6 +29453,14 @@ class ValkeyValkeyUserConfig(dict):
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
         return pulumi.get(self, "backup_minute")
+
+    @property
+    @pulumi.getter(name="frequentSnapshots")
+    def frequent_snapshots(self) -> Optional[bool]:
+        """
+        When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+        """
+        return pulumi.get(self, "frequent_snapshots")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
@@ -39464,8 +39962,8 @@ class GetKafkaTopicConfigResult(dict):
                  segment_ms: Optional[str] = None,
                  unclean_leader_election_enable: Optional[bool] = None):
         """
-        :param str cleanup_policy: cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
-        :param str compression_type: compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
+        :param str cleanup_policy: cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
+        :param str compression_type: compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         :param str delete_retention_ms: delete.retention.ms value
         :param str file_delete_delay_ms: file.delete.delay.ms value
         :param str flush_messages: flush.messages value
@@ -39476,7 +39974,7 @@ class GetKafkaTopicConfigResult(dict):
         :param str max_compaction_lag_ms: max.compaction.lag.ms value
         :param str max_message_bytes: max.message.bytes value
         :param bool message_downconversion_enable: message.downconversion.enable value
-        :param str message_format_version: message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        :param str message_format_version: message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         :param str message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
         :param str message_timestamp_type: message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
         :param float min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
@@ -39551,7 +40049,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="cleanupPolicy")
     def cleanup_policy(self) -> Optional[str]:
         """
-        cleanup.policy value. The possible values are `delete`, `compact` and `compact,delete`.
+        cleanup.policy value. The possible values are `compact`, `compact,delete` and `delete`.
         """
         return pulumi.get(self, "cleanup_policy")
 
@@ -39559,7 +40057,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[str]:
         """
-        compression.type value. The possible values are `snappy`, `gzip`, `lz4`, `producer`, `uncompressed` and `zstd`.
+        compression.type value. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         """
         return pulumi.get(self, "compression_type")
 
@@ -39647,7 +40145,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[str]:
         """
-        message.format.version value. The possible values are `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -47784,7 +48282,7 @@ class GetPgServiceIntegrationResult(dict):
                  integration_type: str,
                  source_service_name: str):
         """
-        :param str integration_type: Type of the service integration. The possible value is `read_replica`.
+        :param str integration_type: Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
         :param str source_service_name: Name of the source service
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -47794,7 +48292,7 @@ class GetPgServiceIntegrationResult(dict):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration. The possible value is `read_replica`.
+        Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -48603,7 +49101,7 @@ class GetRedisServiceIntegrationResult(dict):
                  integration_type: str,
                  source_service_name: str):
         """
-        :param str integration_type: Type of the service integration
+        :param str integration_type: Type of the service integration. The possible value is `read_replica`.
         :param str source_service_name: Name of the source service
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -48613,7 +49111,7 @@ class GetRedisServiceIntegrationResult(dict):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration
+        Type of the service integration. The possible value is `read_replica`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -52246,7 +52744,7 @@ class GetValkeyServiceIntegrationResult(dict):
                  integration_type: str,
                  source_service_name: str):
         """
-        :param str integration_type: Type of the service integration
+        :param str integration_type: Type of the service integration. The possible value is `read_replica`.
         :param str source_service_name: Name of the source service
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -52256,7 +52754,7 @@ class GetValkeyServiceIntegrationResult(dict):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> str:
         """
-        Type of the service integration
+        Type of the service integration. The possible value is `read_replica`.
         """
         return pulumi.get(self, "integration_type")
 
@@ -52373,6 +52871,7 @@ class GetValkeyValkeyUserConfigResult(dict):
                  additional_backup_regions: Optional[str] = None,
                  backup_hour: Optional[int] = None,
                  backup_minute: Optional[int] = None,
+                 frequent_snapshots: Optional[bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetValkeyValkeyUserConfigIpFilterObjectResult']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
                  ip_filters: Optional[Sequence[str]] = None,
@@ -52400,6 +52899,7 @@ class GetValkeyValkeyUserConfigResult(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param bool frequent_snapshots: When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
         :param Sequence['GetValkeyValkeyUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -52430,6 +52930,8 @@ class GetValkeyValkeyUserConfigResult(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if frequent_snapshots is not None:
+            pulumi.set(__self__, "frequent_snapshots", frequent_snapshots)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -52500,6 +53002,14 @@ class GetValkeyValkeyUserConfigResult(dict):
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
         return pulumi.get(self, "backup_minute")
+
+    @property
+    @pulumi.getter(name="frequentSnapshots")
+    def frequent_snapshots(self) -> Optional[bool]:
+        """
+        When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+        """
+        return pulumi.get(self, "frequent_snapshots")
 
     @property
     @pulumi.getter(name="ipFilterObjects")

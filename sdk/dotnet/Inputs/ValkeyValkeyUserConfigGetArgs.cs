@@ -30,6 +30,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("backupMinute")]
         public Input<int>? BackupMinute { get; set; }
 
+        /// <summary>
+        /// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
+        /// </summary>
+        [Input("frequentSnapshots")]
+        public Input<bool>? FrequentSnapshots { get; set; }
+
         [Input("ipFilterObjects")]
         private InputList<Inputs.ValkeyValkeyUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 

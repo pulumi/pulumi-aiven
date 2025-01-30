@@ -15,14 +15,14 @@ public final class RedisServiceIntegrationArgs extends com.pulumi.resources.Reso
     public static final RedisServiceIntegrationArgs Empty = new RedisServiceIntegrationArgs();
 
     /**
-     * Type of the service integration
+     * Type of the service integration. The possible value is `read_replica`.
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration
+     * @return Type of the service integration. The possible value is `read_replica`.
      * 
      */
     public Output<String> integrationType() {
@@ -70,7 +70,7 @@ public final class RedisServiceIntegrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param integrationType Type of the service integration
+         * @param integrationType Type of the service integration. The possible value is `read_replica`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class RedisServiceIntegrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param integrationType Type of the service integration
+         * @param integrationType Type of the service integration. The possible value is `read_replica`.
          * 
          * @return builder
          * 

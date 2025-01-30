@@ -45,7 +45,7 @@ public final class GetServiceComponentResult {
      */
     private String project;
     /**
-     * @return Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+     * @return Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
      * 
      */
     private @Nullable String route;
@@ -109,7 +109,7 @@ public final class GetServiceComponentResult {
         return this.project;
     }
     /**
-     * @return Network access route. The possible values are `dynamic`, `public`, `private` and `privatelink`.
+     * @return Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
      * 
      */
     public Optional<String> route() {

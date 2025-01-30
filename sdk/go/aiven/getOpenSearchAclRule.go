@@ -55,7 +55,7 @@ func LookupOpenSearchAclRule(ctx *pulumi.Context, args *LookupOpenSearchAclRuleA
 type LookupOpenSearchAclRuleArgs struct {
 	// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
 	Index string `pulumi:"index"`
-	// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+	// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
 	Permission string `pulumi:"permission"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -71,7 +71,7 @@ type LookupOpenSearchAclRuleResult struct {
 	Id string `pulumi:"id"`
 	// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
 	Index string `pulumi:"index"`
-	// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+	// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
 	Permission string `pulumi:"permission"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -94,7 +94,7 @@ func LookupOpenSearchAclRuleOutput(ctx *pulumi.Context, args LookupOpenSearchAcl
 type LookupOpenSearchAclRuleOutputArgs struct {
 	// The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
 	Index pulumi.StringInput `pulumi:"index"`
-	// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+	// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
 	Permission pulumi.StringInput `pulumi:"permission"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -133,7 +133,7 @@ func (o LookupOpenSearchAclRuleResultOutput) Index() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Index }).(pulumi.StringOutput)
 }
 
-// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
+// The permissions for this ACL entry. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
 func (o LookupOpenSearchAclRuleResultOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenSearchAclRuleResult) string { return v.Permission }).(pulumi.StringOutput)
 }

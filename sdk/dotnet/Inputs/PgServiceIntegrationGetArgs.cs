@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgServiceIntegrationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of the service integration. The possible value is `read_replica`.
+        /// Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;

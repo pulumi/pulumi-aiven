@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPgServiceIntegration {
     /**
-     * @return Type of the service integration. The possible value is `read_replica`.
+     * @return Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
      * 
      */
     private String integrationType;
@@ -23,7 +23,7 @@ public final class GetPgServiceIntegration {
 
     private GetPgServiceIntegration() {}
     /**
-     * @return Type of the service integration. The possible value is `read_replica`.
+     * @return Type of the service integration. The possible values are `read_replica` and `disaster_recovery`.
      * 
      */
     public String integrationType() {
