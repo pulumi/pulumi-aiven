@@ -12,9 +12,9 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.35.0 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.102.0
-	github.com/pulumi/pulumi/pkg/v3 v3.147.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.147.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.102.1-0.20250212112210-13ddb90279c4
+	github.com/pulumi/pulumi/pkg/v3 v3.148.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.148.0
 )
 
 require github.com/aiven/terraform-provider-aiven v0.0.0-00010101000000-000000000000
