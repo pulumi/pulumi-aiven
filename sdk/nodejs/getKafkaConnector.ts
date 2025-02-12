@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kafka-os-connector = aiven.getKafkaConnector({
+ * const kafka_os_connector = aiven.getKafkaConnector({
  *     project: exampleProject.project,
  *     serviceName: exampleKafka.serviceName,
  *     connectorName: "kafka-opensearch-connector",
@@ -111,7 +111,7 @@ export interface GetKafkaConnectorResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kafka-os-connector = aiven.getKafkaConnector({
+ * const kafka_os_connector = aiven.getKafkaConnector({
  *     project: exampleProject.project,
  *     serviceName: exampleKafka.serviceName,
  *     connectorName: "kafka-opensearch-connector",
