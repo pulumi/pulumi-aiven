@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os-sec-config = aiven.getOpensearchSecurityPluginConfig({
+ * const os_sec_config = aiven.getOpensearchSecurityPluginConfig({
  *     project: os_project.project,
  *     serviceName: os.serviceName,
  * });
@@ -83,7 +83,7 @@ export interface GetOpensearchSecurityPluginConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os-sec-config = aiven.getOpensearchSecurityPluginConfig({
+ * const os_sec_config = aiven.getOpensearchSecurityPluginConfig({
  *     project: os_project.project,
  *     serviceName: os.serviceName,
  * });

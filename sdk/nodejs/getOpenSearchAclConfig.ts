@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os-acl-config = aiven.getOpenSearchAclConfig({
+ * const os_acl_config = aiven.getOpenSearchAclConfig({
  *     project: os_project.project,
  *     serviceName: os.serviceName,
  * });
@@ -75,7 +75,7 @@ export interface GetOpenSearchAclConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os-acl-config = aiven.getOpenSearchAclConfig({
+ * const os_acl_config = aiven.getOpenSearchAclConfig({
  *     project: os_project.project,
  *     serviceName: os.serviceName,
  * });
