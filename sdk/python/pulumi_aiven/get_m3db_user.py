@@ -116,6 +116,12 @@ def get_m3db_user(project: Optional[str] = None,
     """
     Gets information about an Aiven for M3DB service user.
 
+    !> **End of life notice**
+    **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+    You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
+    To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+    before the end of life date.
+
     ## Example Usage
 
     ```python
@@ -152,6 +158,12 @@ def get_m3db_user_output(project: Optional[pulumi.Input[str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetM3dbUserResult]:
     """
     Gets information about an Aiven for M3DB service user.
+
+    !> **End of life notice**
+    **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+    You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
+    To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+    before the end of life date.
 
     ## Example Usage
 

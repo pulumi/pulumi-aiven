@@ -157,6 +157,10 @@ class ProjectUser(pulumi.CustomResource):
         migrate existing ProjectUser resources
         to the new resource.
 
+        > **This resource is deprecated**.
+
+        Use `OrganizationPermission` instead.
+
         ## Example Usage
 
         ```python
@@ -193,6 +197,10 @@ class ProjectUser(pulumi.CustomResource):
         **This resource is deprecated.** Use `OrganizationPermission` and
         migrate existing ProjectUser resources
         to the new resource.
+
+        > **This resource is deprecated**.
+
+        Use `OrganizationPermission` instead.
 
         ## Example Usage
 

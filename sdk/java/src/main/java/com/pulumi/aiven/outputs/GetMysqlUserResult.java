@@ -11,12 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetMysqlUserResult {
     /**
-     * @return Access certificate for the user
+     * @return Access certificate for the user.
      * 
      */
     private String accessCert;
     /**
-     * @return Access certificate key for the user
+     * @return Access certificate key for the user.
      * 
      */
     private String accessKey;
@@ -31,7 +31,7 @@ public final class GetMysqlUserResult {
      */
     private String id;
     /**
-     * @return The password of the MySQL User ( not applicable for all services ).
+     * @return The password of the MySQL service user.
      * 
      */
     private String password;
@@ -46,26 +46,26 @@ public final class GetMysqlUserResult {
      */
     private String serviceName;
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     private String type;
     /**
-     * @return The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
 
     private GetMysqlUserResult() {}
     /**
-     * @return Access certificate for the user
+     * @return Access certificate for the user.
      * 
      */
     public String accessCert() {
         return this.accessCert;
     }
     /**
-     * @return Access certificate key for the user
+     * @return Access certificate key for the user.
      * 
      */
     public String accessKey() {
@@ -86,7 +86,7 @@ public final class GetMysqlUserResult {
         return this.id;
     }
     /**
-     * @return The password of the MySQL User ( not applicable for all services ).
+     * @return The password of the MySQL service user.
      * 
      */
     public String password() {
@@ -107,14 +107,14 @@ public final class GetMysqlUserResult {
         return this.serviceName;
     }
     /**
-     * @return Type of the user account. Tells whether the user is the primary account or a regular account.
+     * @return User account type, such as primary or regular account.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {

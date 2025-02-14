@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The MySQL resource allows the creation and management of Aiven MySQL services.
+    /// Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) service.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mysql1 = new Aiven.MySql("mysql1", new()
+    ///     var exampleMysql = new Aiven.MySql("example_mysql", new()
     ///     {
-    ///         Project = foo.Project,
+    ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-4",
-    ///         ServiceName = "my-mysql1",
+    ///         ServiceName = "example-mysql",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
     ///         MysqlUserConfig = new Aiven.Inputs.MySqlMysqlUserConfigArgs
@@ -51,7 +51,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/mySql:MySql mysql1 project/service_name
+    /// $ pulumi import aiven:index/mySql:MySql example_mysql PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/mySql:MySql")]
@@ -118,7 +118,7 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// MySQL specific server provided values
+        /// MySQL server-provided values.
         /// </summary>
         [Output("mysql")]
         public Output<Outputs.MySqlMysql> Mysql { get; private set; } = null!;
@@ -311,7 +311,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.MySqlMysqlArgs>? _mysql;
 
         /// <summary>
-        /// MySQL specific server provided values
+        /// MySQL server-provided values.
         /// </summary>
         public Input<Inputs.MySqlMysqlArgs>? Mysql
         {
@@ -485,7 +485,7 @@ namespace Pulumi.Aiven
         private Input<Inputs.MySqlMysqlGetArgs>? _mysql;
 
         /// <summary>
-        /// MySQL specific server provided values
+        /// MySQL server-provided values.
         /// </summary>
         public Input<Inputs.MySqlMysqlGetArgs>? Mysql
         {

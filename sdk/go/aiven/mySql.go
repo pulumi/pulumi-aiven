@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The MySQL resource allows the creation and management of Aiven MySQL services.
+// Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) service.
 //
 // ## Example Usage
 //
@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewMySql(ctx, "mysql1", &aiven.MySqlArgs{
-//				Project:               pulumi.Any(foo.Project),
+//			_, err := aiven.NewMySql(ctx, "example_mysql", &aiven.MySqlArgs{
+//				Project:               pulumi.Any(exampleProject.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("my-mysql1"),
+//				ServiceName:           pulumi.String("example-mysql"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				MysqlUserConfig: &aiven.MySqlMysqlUserConfigArgs{
@@ -58,7 +58,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/mySql:MySql mysql1 project/service_name
+// $ pulumi import aiven:index/mySql:MySql example_mysql PROJECT/SERVICE_NAME
 // ```
 type MySql struct {
 	pulumi.CustomResourceState
@@ -87,7 +87,7 @@ type MySql struct {
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// MySQL specific server provided values
+	// MySQL server-provided values.
 	Mysql MySqlMysqlOutput `pulumi:"mysql"`
 	// Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	MysqlUserConfig MySqlMysqlUserConfigPtrOutput `pulumi:"mysqlUserConfig"`
@@ -197,7 +197,7 @@ type mySqlState struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// MySQL specific server provided values
+	// MySQL server-provided values.
 	Mysql *MySqlMysql `pulumi:"mysql"`
 	// Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	MysqlUserConfig *MySqlMysqlUserConfig `pulumi:"mysqlUserConfig"`
@@ -260,7 +260,7 @@ type MySqlState struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// MySQL specific server provided values
+	// MySQL server-provided values.
 	Mysql MySqlMysqlPtrInput
 	// Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	MysqlUserConfig MySqlMysqlUserConfigPtrInput
@@ -315,7 +315,7 @@ type mySqlArgs struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// MySQL specific server provided values
+	// MySQL server-provided values.
 	Mysql *MySqlMysql `pulumi:"mysql"`
 	// Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	MysqlUserConfig *MySqlMysqlUserConfig `pulumi:"mysqlUserConfig"`
@@ -353,7 +353,7 @@ type MySqlArgs struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// MySQL specific server provided values
+	// MySQL server-provided values.
 	Mysql MySqlMysqlPtrInput
 	// Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	MysqlUserConfig MySqlMysqlUserConfigPtrInput
@@ -518,7 +518,7 @@ func (o MySqlOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringPtrOutput { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
 }
 
-// MySQL specific server provided values
+// MySQL server-provided values.
 func (o MySqlOutput) Mysql() MySqlMysqlOutput {
 	return o.ApplyT(func(v *MySql) MySqlMysqlOutput { return v.Mysql }).(MySqlMysqlOutput)
 }

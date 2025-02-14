@@ -17,14 +17,14 @@ public final class MysqlDatabaseState extends com.pulumi.resources.ResourceArgs 
     public static final MysqlDatabaseState Empty = new MysqlDatabaseState();
 
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="databaseName")
     private @Nullable Output<String> databaseName;
 
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> databaseName() {
@@ -96,7 +96,7 @@ public final class MysqlDatabaseState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
+         * @param databaseName The name of the database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class MysqlDatabaseState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
+         * @param databaseName The name of the database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

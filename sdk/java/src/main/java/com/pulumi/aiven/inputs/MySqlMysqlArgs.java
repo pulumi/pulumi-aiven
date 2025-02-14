@@ -18,14 +18,14 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
     public static final MySqlMysqlArgs Empty = new MySqlMysqlArgs();
 
     /**
-     * MySQL connection parameters
+     * MySQL connection parameters.
      * 
      */
     @Import(name="params")
     private @Nullable Output<List<MySqlMysqlParamArgs>> params;
 
     /**
-     * @return MySQL connection parameters
+     * @return MySQL connection parameters.
      * 
      */
     public Optional<Output<List<MySqlMysqlParamArgs>>> params() {
@@ -33,14 +33,14 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MySQL replica URI for services with a replica
+     * MySQL replica URI for services with a replica.
      * 
      */
     @Import(name="replicaUri")
     private @Nullable Output<String> replicaUri;
 
     /**
-     * @return MySQL replica URI for services with a replica
+     * @return MySQL replica URI for services with a replica.
      * 
      */
     public Optional<Output<String>> replicaUri() {
@@ -48,14 +48,14 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MySQL standby connection URIs
+     * MySQL standby connection URIs.
      * 
      */
     @Import(name="standbyUris")
     private @Nullable Output<List<String>> standbyUris;
 
     /**
-     * @return MySQL standby connection URIs
+     * @return MySQL standby connection URIs.
      * 
      */
     public Optional<Output<List<String>>> standbyUris() {
@@ -63,14 +63,14 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MySQL syncing connection URIs
+     * MySQL syncing connection URIs.
      * 
      */
     @Import(name="syncingUris")
     private @Nullable Output<List<String>> syncingUris;
 
     /**
-     * @return MySQL syncing connection URIs
+     * @return MySQL syncing connection URIs.
      * 
      */
     public Optional<Output<List<String>>> syncingUris() {
@@ -78,14 +78,14 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MySQL master connection URIs
+     * MySQL connection URIs.
      * 
      */
     @Import(name="uris")
     private @Nullable Output<List<String>> uris;
 
     /**
-     * @return MySQL master connection URIs
+     * @return MySQL connection URIs.
      * 
      */
     public Optional<Output<List<String>>> uris() {
@@ -121,7 +121,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param params MySQL connection parameters
+         * @param params MySQL connection parameters.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param params MySQL connection parameters
+         * @param params MySQL connection parameters.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param params MySQL connection parameters
+         * @param params MySQL connection parameters.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaUri MySQL replica URI for services with a replica
+         * @param replicaUri MySQL replica URI for services with a replica.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaUri MySQL replica URI for services with a replica
+         * @param replicaUri MySQL replica URI for services with a replica.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param standbyUris MySQL standby connection URIs
+         * @param standbyUris MySQL standby connection URIs.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param standbyUris MySQL standby connection URIs
+         * @param standbyUris MySQL standby connection URIs.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param standbyUris MySQL standby connection URIs
+         * @param standbyUris MySQL standby connection URIs.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncingUris MySQL syncing connection URIs
+         * @param syncingUris MySQL syncing connection URIs.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncingUris MySQL syncing connection URIs
+         * @param syncingUris MySQL syncing connection URIs.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncingUris MySQL syncing connection URIs
+         * @param syncingUris MySQL syncing connection URIs.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uris MySQL master connection URIs
+         * @param uris MySQL connection URIs.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uris MySQL master connection URIs
+         * @param uris MySQL connection URIs.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class MySqlMysqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uris MySQL master connection URIs
+         * @param uris MySQL connection URIs.
          * 
          * @return builder
          * 

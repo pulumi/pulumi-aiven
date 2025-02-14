@@ -216,7 +216,7 @@ class GetMySqlResult:
     @pulumi.getter
     def mysqls(self) -> Sequence['outputs.GetMySqlMysqlResult']:
         """
-        MySQL specific server provided values
+        MySQL server-provided values.
         """
         return pulumi.get(self, "mysqls")
 
@@ -390,7 +390,7 @@ def get_my_sql(project: Optional[str] = None,
                service_name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMySqlResult:
     """
-    The MySQL data source provides information about the existing Aiven MySQL service.
+    Gets information about an Aiven for MySQL® service.
 
     ## Example Usage
 
@@ -398,8 +398,8 @@ def get_my_sql(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mysql1 = aiven.get_my_sql(project=foo["project"],
-        service_name="my-mysql1")
+    example_mysql = aiven.get_my_sql(project=example_project["project"],
+        service_name="example-mysql")
     ```
 
 
@@ -446,7 +446,7 @@ def get_my_sql_output(project: Optional[pulumi.Input[str]] = None,
                       service_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMySqlResult]:
     """
-    The MySQL data source provides information about the existing Aiven MySQL service.
+    Gets information about an Aiven for MySQL® service.
 
     ## Example Usage
 
@@ -454,8 +454,8 @@ def get_my_sql_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mysql1 = aiven.get_my_sql(project=foo["project"],
-        service_name="my-mysql1")
+    example_mysql = aiven.get_my_sql(project=example_project["project"],
+        service_name="example-mysql")
     ```
 
 

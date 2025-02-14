@@ -5748,50 +5748,50 @@ export interface GetMySqlComponent {
 
 export interface GetMySqlMysql {
     /**
-     * MySQL connection parameters
+     * MySQL connection parameters.
      */
     params: outputs.GetMySqlMysqlParam[];
     /**
-     * MySQL replica URI for services with a replica
+     * MySQL replica URI for services with a replica.
      */
     replicaUri: string;
     /**
-     * MySQL standby connection URIs
+     * MySQL standby connection URIs.
      */
     standbyUris: string[];
     /**
-     * MySQL syncing connection URIs
+     * MySQL syncing connection URIs.
      */
     syncingUris: string[];
     /**
-     * MySQL master connection URIs
+     * MySQL connection URIs.
      */
     uris: string[];
 }
 
 export interface GetMySqlMysqlParam {
     /**
-     * Primary MySQL database name
+     * Thr name of the primary MySQL database.
      */
     databaseName: string;
     /**
-     * MySQL host IP or name
+     * MySQL host IP or name.
      */
     host: string;
     /**
-     * MySQL admin user password
+     * The password for the admin service user.
      */
     password: string;
     /**
-     * MySQL port
+     * MySQL port.
      */
     port: number;
     /**
-     * MySQL sslmode setting (currently always "require")
+     * MySQL SSL mode setting. Always set to "require".
      */
     sslmode: string;
     /**
-     * MySQL admin user name
+     * The username for the admin service user.
      */
     user: string;
 }
@@ -6715,6 +6715,8 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
     internalAuthenticationBackendLimiting?: outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting;
     /**
      * IP address rate limiting settings
+     *
+     * @deprecated This property is deprecated.
      */
     ipRateLimiting?: outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting;
 }
@@ -12495,50 +12497,50 @@ export interface MySqlComponent {
 
 export interface MySqlMysql {
     /**
-     * MySQL connection parameters
+     * MySQL connection parameters.
      */
     params: outputs.MySqlMysqlParam[];
     /**
-     * MySQL replica URI for services with a replica
+     * MySQL replica URI for services with a replica.
      */
     replicaUri: string;
     /**
-     * MySQL standby connection URIs
+     * MySQL standby connection URIs.
      */
     standbyUris: string[];
     /**
-     * MySQL syncing connection URIs
+     * MySQL syncing connection URIs.
      */
     syncingUris: string[];
     /**
-     * MySQL master connection URIs
+     * MySQL connection URIs.
      */
     uris: string[];
 }
 
 export interface MySqlMysqlParam {
     /**
-     * Primary MySQL database name
+     * Thr name of the primary MySQL database.
      */
     databaseName: string;
     /**
-     * MySQL host IP or name
+     * MySQL host IP or name.
      */
     host: string;
     /**
-     * MySQL admin user password
+     * The password for the admin service user.
      */
     password: string;
     /**
-     * MySQL port
+     * MySQL port.
      */
     port: number;
     /**
-     * MySQL sslmode setting (currently always "require")
+     * MySQL SSL mode setting. Always set to "require".
      */
     sslmode: string;
     /**
-     * MySQL admin user name
+     * The username for the admin service user.
      */
     user: string;
 }
@@ -13462,6 +13464,8 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
     internalAuthenticationBackendLimiting?: outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting;
     /**
      * IP address rate limiting settings
+     *
+     * @deprecated This property is deprecated.
      */
     ipRateLimiting?: outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting;
 }

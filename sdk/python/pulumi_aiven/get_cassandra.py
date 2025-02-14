@@ -392,6 +392,13 @@ def get_cassandra(project: Optional[str] = None,
     """
     Gets information about an Aiven for Apache Cassandra® service.
 
+    !> **End of life notice**
+    Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+    From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+    From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+    To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+    before December 31, 2025. For further assistance, contact your account team.
+
     ## Example Usage
 
     ```python
@@ -447,6 +454,13 @@ def get_cassandra_output(project: Optional[pulumi.Input[str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCassandraResult]:
     """
     Gets information about an Aiven for Apache Cassandra® service.
+
+    !> **End of life notice**
+    Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+    From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+    From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+    To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+    before December 31, 2025. For further assistance, contact your account team.
 
     ## Example Usage
 

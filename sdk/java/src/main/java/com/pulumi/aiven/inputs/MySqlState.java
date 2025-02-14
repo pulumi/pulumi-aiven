@@ -191,14 +191,14 @@ public final class MySqlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MySQL specific server provided values
+     * MySQL server-provided values.
      * 
      */
     @Import(name="mysql")
     private @Nullable Output<MySqlMysqlArgs> mysql;
 
     /**
-     * @return MySQL specific server provided values
+     * @return MySQL server-provided values.
      * 
      */
     public Optional<Output<MySqlMysqlArgs>> mysql() {
@@ -748,7 +748,7 @@ public final class MySqlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mysql MySQL specific server provided values
+         * @param mysql MySQL server-provided values.
          * 
          * @return builder
          * 
@@ -759,7 +759,7 @@ public final class MySqlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mysql MySQL specific server provided values
+         * @param mysql MySQL server-provided values.
          * 
          * @return builder
          * 

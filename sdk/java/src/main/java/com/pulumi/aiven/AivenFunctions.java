@@ -237,6 +237,10 @@ public final class AivenFunctions {
     /**
      * The Account data source provides information about the existing Aiven Account.
      * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -278,6 +282,10 @@ public final class AivenFunctions {
     }
     /**
      * The Account data source provides information about the existing Aiven Account.
+     * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
      * 
      * ## Example Usage
      * 
@@ -321,6 +329,10 @@ public final class AivenFunctions {
     /**
      * The Account data source provides information about the existing Aiven Account.
      * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -362,6 +374,10 @@ public final class AivenFunctions {
     }
     /**
      * The Account data source provides information about the existing Aiven Account.
+     * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
      * 
      * ## Example Usage
      * 
@@ -405,6 +421,10 @@ public final class AivenFunctions {
     /**
      * The Account data source provides information about the existing Aiven Account.
      * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -447,12 +467,20 @@ public final class AivenFunctions {
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
      * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource is deprecated
+     * 
      */
     public static Output<GetAccountAuthenticationResult> getAccountAuthentication(GetAccountAuthenticationArgs args) {
         return getAccountAuthentication(args, InvokeOptions.Empty);
     }
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
+     * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource is deprecated
      * 
      */
     public static CompletableFuture<GetAccountAuthenticationResult> getAccountAuthenticationPlain(GetAccountAuthenticationPlainArgs args) {
@@ -461,12 +489,20 @@ public final class AivenFunctions {
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
      * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource is deprecated
+     * 
      */
     public static Output<GetAccountAuthenticationResult> getAccountAuthentication(GetAccountAuthenticationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAccountAuthentication:getAccountAuthentication", TypeShape.of(GetAccountAuthenticationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
+     * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource is deprecated
      * 
      */
     public static Output<GetAccountAuthenticationResult> getAccountAuthentication(GetAccountAuthenticationArgs args, InvokeOutputOptions options) {
@@ -475,12 +511,27 @@ public final class AivenFunctions {
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
      * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * This resource is deprecated
+     * 
      */
     public static CompletableFuture<GetAccountAuthenticationResult> getAccountAuthenticationPlain(GetAccountAuthenticationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAccountAuthentication:getAccountAuthentication", TypeShape.of(GetAccountAuthenticationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Account Team data source provides information about the existing Account Team.
+     * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
      * 
      */
     public static Output<GetAccountTeamResult> getAccountTeam(GetAccountTeamArgs args) {
@@ -489,12 +540,34 @@ public final class AivenFunctions {
     /**
      * The Account Team data source provides information about the existing Account Team.
      * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
+     * 
      */
     public static CompletableFuture<GetAccountTeamResult> getAccountTeamPlain(GetAccountTeamPlainArgs args) {
         return getAccountTeamPlain(args, InvokeOptions.Empty);
     }
     /**
      * The Account Team data source provides information about the existing Account Team.
+     * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
      * 
      */
     public static Output<GetAccountTeamResult> getAccountTeam(GetAccountTeamArgs args, InvokeOptions options) {
@@ -503,12 +576,34 @@ public final class AivenFunctions {
     /**
      * The Account Team data source provides information about the existing Account Team.
      * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
+     * 
      */
     public static Output<GetAccountTeamResult> getAccountTeam(GetAccountTeamArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAccountTeam:getAccountTeam", TypeShape.of(GetAccountTeamResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Account Team data source provides information about the existing Account Team.
+     * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
      * 
      */
     public static CompletableFuture<GetAccountTeamResult> getAccountTeamPlain(GetAccountTeamPlainArgs args, InvokeOptions options) {
@@ -517,12 +612,34 @@ public final class AivenFunctions {
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
      * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
+     * 
      */
     public static Output<GetAccountTeamMemberResult> getAccountTeamMember(GetAccountTeamMemberArgs args) {
         return getAccountTeamMember(args, InvokeOptions.Empty);
     }
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
+     * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
      * 
      */
     public static CompletableFuture<GetAccountTeamMemberResult> getAccountTeamMemberPlain(GetAccountTeamMemberPlainArgs args) {
@@ -531,12 +648,34 @@ public final class AivenFunctions {
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
      * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
+     * 
      */
     public static Output<GetAccountTeamMemberResult> getAccountTeamMember(GetAccountTeamMemberArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAccountTeamMember:getAccountTeamMember", TypeShape.of(GetAccountTeamMemberResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
+     * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
      * 
      */
     public static Output<GetAccountTeamMemberResult> getAccountTeamMember(GetAccountTeamMemberArgs args, InvokeOutputOptions options) {
@@ -545,12 +684,34 @@ public final class AivenFunctions {
     /**
      * The Account Team Member data source provides information about the existing Aiven Account Team Member.
      * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
+     * 
      */
     public static CompletableFuture<GetAccountTeamMemberResult> getAccountTeamMemberPlain(GetAccountTeamMemberPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAccountTeamMember:getAccountTeamMember", TypeShape.of(GetAccountTeamMemberResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
+     * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
      * 
      */
     public static Output<GetAccountTeamProjectResult> getAccountTeamProject(GetAccountTeamProjectArgs args) {
@@ -559,12 +720,34 @@ public final class AivenFunctions {
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
      * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
+     * 
      */
     public static CompletableFuture<GetAccountTeamProjectResult> getAccountTeamProjectPlain(GetAccountTeamProjectPlainArgs args) {
         return getAccountTeamProjectPlain(args, InvokeOptions.Empty);
     }
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
+     * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
      * 
      */
     public static Output<GetAccountTeamProjectResult> getAccountTeamProject(GetAccountTeamProjectArgs args, InvokeOptions options) {
@@ -573,12 +756,34 @@ public final class AivenFunctions {
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
      * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
+     * 
      */
     public static Output<GetAccountTeamProjectResult> getAccountTeamProject(GetAccountTeamProjectArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAccountTeamProject:getAccountTeamProject", TypeShape.of(GetAccountTeamProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Account Team Project data source provides information about the existing Account Team Project.
+     * 
+     * !&gt; **Teams have been deprecated and are being migrated to groups**
+     * **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+     * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
+     * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+     * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+     * migration guide for more information on the changes and migrating to groups.
+     * 
+     * &gt; **Important**
+     * You can&#39;t delete the Account Owners team. **Deleting all other teams in your organization will disable the teams feature.**
+     * You won&#39;t be able to create new teams or access your Account Owners team.
      * 
      */
     public static CompletableFuture<GetAccountTeamProjectResult> getAccountTeamProjectPlain(GetAccountTeamProjectPlainArgs args, InvokeOptions options) {
@@ -1877,6 +2082,13 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1923,6 +2135,13 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
      * 
      * ## Example Usage
      * 
@@ -1971,6 +2190,13 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2017,6 +2243,13 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
      * 
      * ## Example Usage
      * 
@@ -2065,6 +2298,13 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2112,6 +2352,13 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2154,6 +2401,13 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
      * 
      * ## Example Usage
      * 
@@ -2198,6 +2452,13 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2240,6 +2501,13 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
      * 
      * ## Example Usage
      * 
@@ -2284,6 +2552,13 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Apache Cassandra® service.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2326,6 +2601,13 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for Apache Cassandra® service user.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
      * 
      * ## Example Usage
      * 
@@ -2371,6 +2653,13 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Apache Cassandra® service user.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2414,6 +2703,13 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for Apache Cassandra® service user.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
      * 
      * ## Example Usage
      * 
@@ -2459,6 +2755,13 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for Apache Cassandra® service user.
      * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2502,6 +2805,13 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for Apache Cassandra® service user.
+     * 
+     * !&gt; **End of life notice**
+     * Aiven for Apache Cassandra® is entering its [end-of-life cycle](https://aiven.io/docs/platform/reference/end-of-life).
+     * From **November 30, 2025**, it will not be possible to start a new Cassandra service, but existing services will continue to operate until end of life.
+     * From **December 31, 2025**, all active Aiven for Apache Cassandra services are powered off and deleted, making data from these services inaccessible.
+     * To ensure uninterrupted service, complete your migration out of Aiven for Apache Cassandra
+     * before December 31, 2025. For further assistance, contact your account team.
      * 
      * ## Example Usage
      * 
@@ -7262,6 +7572,12 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for M3DB service.
      * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7304,6 +7620,12 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for M3DB service.
+     * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
      * 
      * ## Example Usage
      * 
@@ -7348,6 +7670,12 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for M3DB service.
      * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7390,6 +7718,12 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for M3DB service.
+     * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
      * 
      * ## Example Usage
      * 
@@ -7434,6 +7768,12 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for M3DB service.
      * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7476,6 +7816,12 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for M3DB service user.
+     * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
      * 
      * ## Example Usage
      * 
@@ -7521,6 +7867,12 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for M3DB service user.
      * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7564,6 +7916,12 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for M3DB service user.
+     * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
      * 
      * ## Example Usage
      * 
@@ -7609,6 +7967,12 @@ public final class AivenFunctions {
     /**
      * Gets information about an Aiven for M3DB service user.
      * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7652,6 +8016,12 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an Aiven for M3DB service user.
+     * 
+     * !&gt; **End of life notice**
+     * **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
+     * You cannot create M3DB services in Aiven projects that didn&#39;t have M3DB services before.
+     * To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
+     * before the end of life date.
      * 
      * ## Example Usage
      * 
@@ -7920,7 +8290,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", TypeShape.of(GetMirrorMakerReplicationFlowResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MySQL data source provides information about the existing Aiven MySQL service.
+     * Gets information about an Aiven for MySQL® service.
      * 
      * ## Example Usage
      * 
@@ -7947,9 +8317,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-mysql1")
+     *         final var exampleMysql = AivenFunctions.getMySql(GetMySqlArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mysql")
      *             .build());
      * 
      *     }
@@ -7963,7 +8333,7 @@ public final class AivenFunctions {
         return getMySql(args, InvokeOptions.Empty);
     }
     /**
-     * The MySQL data source provides information about the existing Aiven MySQL service.
+     * Gets information about an Aiven for MySQL® service.
      * 
      * ## Example Usage
      * 
@@ -7990,9 +8360,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-mysql1")
+     *         final var exampleMysql = AivenFunctions.getMySql(GetMySqlArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mysql")
      *             .build());
      * 
      *     }
@@ -8006,7 +8376,7 @@ public final class AivenFunctions {
         return getMySqlPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The MySQL data source provides information about the existing Aiven MySQL service.
+     * Gets information about an Aiven for MySQL® service.
      * 
      * ## Example Usage
      * 
@@ -8033,9 +8403,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-mysql1")
+     *         final var exampleMysql = AivenFunctions.getMySql(GetMySqlArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mysql")
      *             .build());
      * 
      *     }
@@ -8049,7 +8419,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getMySql:getMySql", TypeShape.of(GetMySqlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MySQL data source provides information about the existing Aiven MySQL service.
+     * Gets information about an Aiven for MySQL® service.
      * 
      * ## Example Usage
      * 
@@ -8076,9 +8446,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-mysql1")
+     *         final var exampleMysql = AivenFunctions.getMySql(GetMySqlArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mysql")
      *             .build());
      * 
      *     }
@@ -8092,7 +8462,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getMySql:getMySql", TypeShape.of(GetMySqlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MySQL data source provides information about the existing Aiven MySQL service.
+     * Gets information about an Aiven for MySQL® service.
      * 
      * ## Example Usage
      * 
@@ -8119,9 +8489,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
-     *             .project(foo.project())
-     *             .serviceName("my-mysql1")
+     *         final var exampleMysql = AivenFunctions.getMySql(GetMySqlArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName("example-mysql")
      *             .build());
      * 
      *     }
@@ -8135,7 +8505,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getMySql:getMySql", TypeShape.of(GetMySqlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MySQL Database data source provides information about the existing Aiven MySQL Database.
+     * Gets information about an Aiven for MySQL® database.
      * 
      * ## Example Usage
      * 
@@ -8162,10 +8532,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mymysql.serviceName())
-     *             .databaseName("<DATABASE_NAME>")
+     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleMysql.serviceName())
+     *             .databaseName("example-database")
      *             .build());
      * 
      *     }
@@ -8179,7 +8549,7 @@ public final class AivenFunctions {
         return getMysqlDatabase(args, InvokeOptions.Empty);
     }
     /**
-     * The MySQL Database data source provides information about the existing Aiven MySQL Database.
+     * Gets information about an Aiven for MySQL® database.
      * 
      * ## Example Usage
      * 
@@ -8206,10 +8576,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mymysql.serviceName())
-     *             .databaseName("<DATABASE_NAME>")
+     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleMysql.serviceName())
+     *             .databaseName("example-database")
      *             .build());
      * 
      *     }
@@ -8223,7 +8593,7 @@ public final class AivenFunctions {
         return getMysqlDatabasePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The MySQL Database data source provides information about the existing Aiven MySQL Database.
+     * Gets information about an Aiven for MySQL® database.
      * 
      * ## Example Usage
      * 
@@ -8250,10 +8620,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mymysql.serviceName())
-     *             .databaseName("<DATABASE_NAME>")
+     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleMysql.serviceName())
+     *             .databaseName("example-database")
      *             .build());
      * 
      *     }
@@ -8267,7 +8637,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getMysqlDatabase:getMysqlDatabase", TypeShape.of(GetMysqlDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MySQL Database data source provides information about the existing Aiven MySQL Database.
+     * Gets information about an Aiven for MySQL® database.
      * 
      * ## Example Usage
      * 
@@ -8294,10 +8664,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mymysql.serviceName())
-     *             .databaseName("<DATABASE_NAME>")
+     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleMysql.serviceName())
+     *             .databaseName("example-database")
      *             .build());
      * 
      *     }
@@ -8311,7 +8681,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getMysqlDatabase:getMysqlDatabase", TypeShape.of(GetMysqlDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MySQL Database data source provides information about the existing Aiven MySQL Database.
+     * Gets information about an Aiven for MySQL® database.
      * 
      * ## Example Usage
      * 
@@ -8338,10 +8708,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(mymysql.serviceName())
-     *             .databaseName("<DATABASE_NAME>")
+     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleMysql.serviceName())
+     *             .databaseName("example-database")
      *             .build());
      * 
      *     }
@@ -8355,7 +8725,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getMysqlDatabase:getMysqlDatabase", TypeShape.of(GetMysqlDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MySQL User data source provides information about the existing Aiven MySQL User.
+     * Gets information about an Aiven for MySQL® service user.
      * 
      * ## Example Usage
      * 
@@ -8382,10 +8752,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .serviceName(exampleMysql.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-mysql-user")
      *             .build());
      * 
      *     }
@@ -8399,7 +8769,7 @@ public final class AivenFunctions {
         return getMysqlUser(args, InvokeOptions.Empty);
     }
     /**
-     * The MySQL User data source provides information about the existing Aiven MySQL User.
+     * Gets information about an Aiven for MySQL® service user.
      * 
      * ## Example Usage
      * 
@@ -8426,10 +8796,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .serviceName(exampleMysql.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-mysql-user")
      *             .build());
      * 
      *     }
@@ -8443,7 +8813,7 @@ public final class AivenFunctions {
         return getMysqlUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The MySQL User data source provides information about the existing Aiven MySQL User.
+     * Gets information about an Aiven for MySQL® service user.
      * 
      * ## Example Usage
      * 
@@ -8470,10 +8840,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .serviceName(exampleMysql.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-mysql-user")
      *             .build());
      * 
      *     }
@@ -8487,7 +8857,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getMysqlUser:getMysqlUser", TypeShape.of(GetMysqlUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MySQL User data source provides information about the existing Aiven MySQL User.
+     * Gets information about an Aiven for MySQL® service user.
      * 
      * ## Example Usage
      * 
@@ -8514,10 +8884,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .serviceName(exampleMysql.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-mysql-user")
      *             .build());
      * 
      *     }
@@ -8531,7 +8901,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getMysqlUser:getMysqlUser", TypeShape.of(GetMysqlUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The MySQL User data source provides information about the existing Aiven MySQL User.
+     * Gets information about an Aiven for MySQL® service user.
      * 
      * ## Example Usage
      * 
@@ -8558,10 +8928,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName("my-service")
-     *             .project("my-project")
-     *             .username("user1")
+     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .serviceName(exampleMysql.serviceName())
+     *             .project(exampleProject.project())
+     *             .username("example-mysql-user")
      *             .build());
      * 
      *     }
@@ -10173,38 +10543,18 @@ public final class AivenFunctions {
     public static CompletableFuture<GetOrganizationApplicationUserResult> getOrganizationApplicationUserPlain(GetOrganizationApplicationUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", TypeShape.of(GetOrganizationApplicationUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The Organization User data source provides information about the existing Aiven Organization User.
-     * 
-     */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args) {
         return getOrganizationUser(args, InvokeOptions.Empty);
     }
-    /**
-     * The Organization User data source provides information about the existing Aiven Organization User.
-     * 
-     */
     public static CompletableFuture<GetOrganizationUserResult> getOrganizationUserPlain(GetOrganizationUserPlainArgs args) {
         return getOrganizationUserPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * The Organization User data source provides information about the existing Aiven Organization User.
-     * 
-     */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The Organization User data source provides information about the existing Aiven Organization User.
-     * 
-     */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The Organization User data source provides information about the existing Aiven Organization User.
-     * 
-     */
     public static CompletableFuture<GetOrganizationUserResult> getOrganizationUserPlain(GetOrganizationUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }
@@ -11576,6 +11926,10 @@ public final class AivenFunctions {
     /**
      * The Project User data source provides information about the existing Aiven Project User.
      * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * Use `aiven.OrganizationPermission` instead.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -11618,6 +11972,10 @@ public final class AivenFunctions {
     }
     /**
      * The Project User data source provides information about the existing Aiven Project User.
+     * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * Use `aiven.OrganizationPermission` instead.
      * 
      * ## Example Usage
      * 
@@ -11662,6 +12020,10 @@ public final class AivenFunctions {
     /**
      * The Project User data source provides information about the existing Aiven Project User.
      * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * Use `aiven.OrganizationPermission` instead.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -11705,6 +12067,10 @@ public final class AivenFunctions {
     /**
      * The Project User data source provides information about the existing Aiven Project User.
      * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * Use `aiven.OrganizationPermission` instead.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -11747,6 +12113,10 @@ public final class AivenFunctions {
     }
     /**
      * The Project User data source provides information about the existing Aiven Project User.
+     * 
+     * &gt; **This resource is deprecated**.
+     * 
+     * Use `aiven.OrganizationPermission` instead.
      * 
      * ## Example Usage
      * 
@@ -12092,6 +12462,14 @@ public final class AivenFunctions {
     /**
      * The Redis data source provides information about the existing Aiven Redis service.
      * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -12134,6 +12512,14 @@ public final class AivenFunctions {
     }
     /**
      * The Redis data source provides information about the existing Aiven Redis service.
+     * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
      * 
      * ## Example Usage
      * 
@@ -12178,6 +12564,14 @@ public final class AivenFunctions {
     /**
      * The Redis data source provides information about the existing Aiven Redis service.
      * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -12220,6 +12614,14 @@ public final class AivenFunctions {
     }
     /**
      * The Redis data source provides information about the existing Aiven Redis service.
+     * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
      * 
      * ## Example Usage
      * 
@@ -12264,6 +12666,14 @@ public final class AivenFunctions {
     /**
      * The Redis data source provides information about the existing Aiven Redis service.
      * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -12306,6 +12716,14 @@ public final class AivenFunctions {
     }
     /**
      * The Redis User data source provides information about the existing Aiven Redis User.
+     * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
      * 
      * ## Example Usage
      * 
@@ -12351,6 +12769,14 @@ public final class AivenFunctions {
     /**
      * The Redis User data source provides information about the existing Aiven Redis User.
      * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -12394,6 +12820,14 @@ public final class AivenFunctions {
     }
     /**
      * The Redis User data source provides information about the existing Aiven Redis User.
+     * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
      * 
      * ## Example Usage
      * 
@@ -12439,6 +12873,14 @@ public final class AivenFunctions {
     /**
      * The Redis User data source provides information about the existing Aiven Redis User.
      * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -12482,6 +12924,14 @@ public final class AivenFunctions {
     }
     /**
      * The Redis User data source provides information about the existing Aiven Redis User.
+     * 
+     * !&gt; **End of life notice**
+     * In March 2024, a new licensing model was announced for Redis® that impacts the Aiven for Caching offering (formerly Aiven for Redis®).
+     * Aiven for Caching is entering its end-of-life cycle to comply with Redis&#39;s copyright and license agreements.
+     * From **February 15th, 2025**, it will not be possible to start a new Aiven for Caching service, but existing services up until version 7.2 will still be available until end of life.
+     * From **March 31st, 2025**, Aiven for Caching will no longer be available and all existing services will be migrated to Aiven for Valkey™.
+     * You can [upgrade to Valkey for free](https://aiven.io/docs/products/caching/howto/upgrade-aiven-for-caching-to-valkey) before then
+     * and update your existing `aiven.Redis` resources.
      * 
      * ## Example Usage
      * 

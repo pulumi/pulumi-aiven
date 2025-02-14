@@ -32,14 +32,14 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the MySQL User ( not applicable for all services ).
+     * The password of the MySQL service user.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the MySQL User ( not applicable for all services ).
+     * @return The password of the MySQL service user.
      * 
      */
     public Optional<Output<String>> password() {
@@ -77,14 +77,14 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
@@ -141,7 +141,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the MySQL User ( not applicable for all services ).
+         * @param password The password of the MySQL service user.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the MySQL User ( not applicable for all services ).
+         * @param password The password of the MySQL service user.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

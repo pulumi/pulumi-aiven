@@ -152,11 +152,9 @@ class AccountTeam(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        **This resource is deprecated.** Use `OrganizationUserGroup` instead.
-
         Creates and manages a team.
 
-        > **Teams have been deprecated and are being migrated to groups**
+        !> **Teams have been deprecated and are being migrated to groups**
         **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
         The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
         **From 4 November 2024** you won't be able to create new teams or update existing ones. Existing teams will be migrated to groups after
@@ -196,11 +194,9 @@ class AccountTeam(pulumi.CustomResource):
                  args: AccountTeamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        **This resource is deprecated.** Use `OrganizationUserGroup` instead.
-
         Creates and manages a team.
 
-        > **Teams have been deprecated and are being migrated to groups**
+        !> **Teams have been deprecated and are being migrated to groups**
         **On 30 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
         The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on existing permissions.
         **From 4 November 2024** you won't be able to create new teams or update existing ones. Existing teams will be migrated to groups after

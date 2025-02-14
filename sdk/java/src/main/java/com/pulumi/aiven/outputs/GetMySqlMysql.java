@@ -13,62 +13,62 @@ import java.util.Objects;
 @CustomType
 public final class GetMySqlMysql {
     /**
-     * @return MySQL connection parameters
+     * @return MySQL connection parameters.
      * 
      */
     private List<GetMySqlMysqlParam> params;
     /**
-     * @return MySQL replica URI for services with a replica
+     * @return MySQL replica URI for services with a replica.
      * 
      */
     private String replicaUri;
     /**
-     * @return MySQL standby connection URIs
+     * @return MySQL standby connection URIs.
      * 
      */
     private List<String> standbyUris;
     /**
-     * @return MySQL syncing connection URIs
+     * @return MySQL syncing connection URIs.
      * 
      */
     private List<String> syncingUris;
     /**
-     * @return MySQL master connection URIs
+     * @return MySQL connection URIs.
      * 
      */
     private List<String> uris;
 
     private GetMySqlMysql() {}
     /**
-     * @return MySQL connection parameters
+     * @return MySQL connection parameters.
      * 
      */
     public List<GetMySqlMysqlParam> params() {
         return this.params;
     }
     /**
-     * @return MySQL replica URI for services with a replica
+     * @return MySQL replica URI for services with a replica.
      * 
      */
     public String replicaUri() {
         return this.replicaUri;
     }
     /**
-     * @return MySQL standby connection URIs
+     * @return MySQL standby connection URIs.
      * 
      */
     public List<String> standbyUris() {
         return this.standbyUris;
     }
     /**
-     * @return MySQL syncing connection URIs
+     * @return MySQL syncing connection URIs.
      * 
      */
     public List<String> syncingUris() {
         return this.syncingUris;
     }
     /**
-     * @return MySQL master connection URIs
+     * @return MySQL connection URIs.
      * 
      */
     public List<String> uris() {

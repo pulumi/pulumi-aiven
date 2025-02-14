@@ -7,6 +7,10 @@ import * as utilities from "./utilities";
 /**
  * The Project User data source provides information about the existing Aiven Project User.
  *
+ * > **This resource is deprecated**.
+ *
+ * Use `aiven.OrganizationPermission` instead.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -68,6 +72,10 @@ export interface GetProjectUserResult {
 }
 /**
  * The Project User data source provides information about the existing Aiven Project User.
+ *
+ * > **This resource is deprecated**.
+ *
+ * Use `aiven.OrganizationPermission` instead.
  *
  * ## Example Usage
  *

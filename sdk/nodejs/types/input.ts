@@ -4165,50 +4165,50 @@ export interface MySqlComponent {
 
 export interface MySqlMysql {
     /**
-     * MySQL connection parameters
+     * MySQL connection parameters.
      */
     params?: pulumi.Input<pulumi.Input<inputs.MySqlMysqlParam>[]>;
     /**
-     * MySQL replica URI for services with a replica
+     * MySQL replica URI for services with a replica.
      */
     replicaUri?: pulumi.Input<string>;
     /**
-     * MySQL standby connection URIs
+     * MySQL standby connection URIs.
      */
     standbyUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * MySQL syncing connection URIs
+     * MySQL syncing connection URIs.
      */
     syncingUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * MySQL master connection URIs
+     * MySQL connection URIs.
      */
     uris?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface MySqlMysqlParam {
     /**
-     * Primary MySQL database name
+     * Thr name of the primary MySQL database.
      */
     databaseName?: pulumi.Input<string>;
     /**
-     * MySQL host IP or name
+     * MySQL host IP or name.
      */
     host?: pulumi.Input<string>;
     /**
-     * MySQL admin user password
+     * The password for the admin service user.
      */
     password?: pulumi.Input<string>;
     /**
-     * MySQL port
+     * MySQL port.
      */
     port?: pulumi.Input<number>;
     /**
-     * MySQL sslmode setting (currently always "require")
+     * MySQL SSL mode setting. Always set to "require".
      */
     sslmode?: pulumi.Input<string>;
     /**
-     * MySQL admin user name
+     * The username for the admin service user.
      */
     user?: pulumi.Input<string>;
 }
@@ -5132,6 +5132,8 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
     internalAuthenticationBackendLimiting?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting>;
     /**
      * IP address rate limiting settings
+     *
+     * @deprecated This property is deprecated.
      */
     ipRateLimiting?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting>;
 }

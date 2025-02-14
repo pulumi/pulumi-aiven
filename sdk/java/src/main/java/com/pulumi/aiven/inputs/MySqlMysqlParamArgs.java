@@ -17,14 +17,14 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
     public static final MySqlMysqlParamArgs Empty = new MySqlMysqlParamArgs();
 
     /**
-     * Primary MySQL database name
+     * Thr name of the primary MySQL database.
      * 
      */
     @Import(name="databaseName")
     private @Nullable Output<String> databaseName;
 
     /**
-     * @return Primary MySQL database name
+     * @return Thr name of the primary MySQL database.
      * 
      */
     public Optional<Output<String>> databaseName() {
@@ -32,14 +32,14 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * MySQL host IP or name
+     * MySQL host IP or name.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return MySQL host IP or name
+     * @return MySQL host IP or name.
      * 
      */
     public Optional<Output<String>> host() {
@@ -47,14 +47,14 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * MySQL admin user password
+     * The password for the admin service user.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return MySQL admin user password
+     * @return The password for the admin service user.
      * 
      */
     public Optional<Output<String>> password() {
@@ -62,14 +62,14 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * MySQL port
+     * MySQL port.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return MySQL port
+     * @return MySQL port.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -77,14 +77,14 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * MySQL sslmode setting (currently always &#34;require&#34;)
+     * MySQL SSL mode setting. Always set to &#34;require&#34;.
      * 
      */
     @Import(name="sslmode")
     private @Nullable Output<String> sslmode;
 
     /**
-     * @return MySQL sslmode setting (currently always &#34;require&#34;)
+     * @return MySQL SSL mode setting. Always set to &#34;require&#34;.
      * 
      */
     public Optional<Output<String>> sslmode() {
@@ -92,14 +92,14 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * MySQL admin user name
+     * The username for the admin service user.
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return MySQL admin user name
+     * @return The username for the admin service user.
      * 
      */
     public Optional<Output<String>> user() {
@@ -136,7 +136,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param databaseName Primary MySQL database name
+         * @param databaseName Thr name of the primary MySQL database.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param databaseName Primary MySQL database name
+         * @param databaseName Thr name of the primary MySQL database.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param host MySQL host IP or name
+         * @param host MySQL host IP or name.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param host MySQL host IP or name
+         * @param host MySQL host IP or name.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password MySQL admin user password
+         * @param password The password for the admin service user.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password MySQL admin user password
+         * @param password The password for the admin service user.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param port MySQL port
+         * @param port MySQL port.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param port MySQL port
+         * @param port MySQL port.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sslmode MySQL sslmode setting (currently always &#34;require&#34;)
+         * @param sslmode MySQL SSL mode setting. Always set to &#34;require&#34;.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sslmode MySQL sslmode setting (currently always &#34;require&#34;)
+         * @param sslmode MySQL SSL mode setting. Always set to &#34;require&#34;.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param user MySQL admin user name
+         * @param user The username for the admin service user.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class MySqlMysqlParamArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param user MySQL admin user name
+         * @param user The username for the admin service user.
          * 
          * @return builder
          * 

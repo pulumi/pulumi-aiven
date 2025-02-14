@@ -28,9 +28,9 @@ class MysqlUserArgs:
         The set of arguments for constructing a MysqlUser resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] authentication: Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
-        :param pulumi.Input[str] password: The password of the MySQL User ( not applicable for all services ).
+        :param pulumi.Input[str] password: The password of the MySQL service user.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -68,7 +68,7 @@ class MysqlUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
-        The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -92,7 +92,7 @@ class MysqlUserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the MySQL User ( not applicable for all services ).
+        The password of the MySQL service user.
         """
         return pulumi.get(self, "password")
 
@@ -114,14 +114,14 @@ class _MysqlUserState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MysqlUser resources.
-        :param pulumi.Input[str] access_cert: Access certificate for the user
-        :param pulumi.Input[str] access_key: Access certificate key for the user
+        :param pulumi.Input[str] access_cert: Access certificate for the user.
+        :param pulumi.Input[str] access_key: Access certificate key for the user.
         :param pulumi.Input[str] authentication: Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
-        :param pulumi.Input[str] password: The password of the MySQL User ( not applicable for all services ).
+        :param pulumi.Input[str] password: The password of the MySQL service user.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] type: User account type, such as primary or regular account.
+        :param pulumi.Input[str] username: The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         if access_cert is not None:
             pulumi.set(__self__, "access_cert", access_cert)
@@ -144,7 +144,7 @@ class _MysqlUserState:
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        Access certificate for the user
+        Access certificate for the user.
         """
         return pulumi.get(self, "access_cert")
 
@@ -156,7 +156,7 @@ class _MysqlUserState:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Access certificate key for the user
+        Access certificate key for the user.
         """
         return pulumi.get(self, "access_key")
 
@@ -180,7 +180,7 @@ class _MysqlUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the MySQL User ( not applicable for all services ).
+        The password of the MySQL service user.
         """
         return pulumi.get(self, "password")
 
@@ -216,7 +216,7 @@ class _MysqlUserState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -228,7 +228,7 @@ class _MysqlUserState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -249,7 +249,7 @@ class MysqlUser(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The MySQL User resource allows the creation and management of Aiven MySQL Users.
+        Creates and manages an Aiven for MySQL® service user.
 
         ## Example Usage
 
@@ -257,11 +257,11 @@ class MysqlUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.MysqlUser("foo",
-            service_name=bar["serviceName"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
+        example_mysql_user = aiven.MysqlUser("example_mysql_user",
+            service_name=example_mysql["serviceName"],
+            project=example_project["project"],
+            username="example-mysql-user",
+            password=service_user_pw)
         ```
 
         ## Import
@@ -273,10 +273,10 @@ class MysqlUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication: Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
-        :param pulumi.Input[str] password: The password of the MySQL User ( not applicable for all services ).
+        :param pulumi.Input[str] password: The password of the MySQL service user.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] username: The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] username: The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -285,7 +285,7 @@ class MysqlUser(pulumi.CustomResource):
                  args: MysqlUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The MySQL User resource allows the creation and management of Aiven MySQL Users.
+        Creates and manages an Aiven for MySQL® service user.
 
         ## Example Usage
 
@@ -293,11 +293,11 @@ class MysqlUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.MysqlUser("foo",
-            service_name=bar["serviceName"],
-            project="my-project",
-            username="user-1",
-            password="Test$1234")
+        example_mysql_user = aiven.MysqlUser("example_mysql_user",
+            service_name=example_mysql["serviceName"],
+            project=example_project["project"],
+            username="example-mysql-user",
+            password=service_user_pw)
         ```
 
         ## Import
@@ -376,14 +376,14 @@ class MysqlUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_cert: Access certificate for the user
-        :param pulumi.Input[str] access_key: Access certificate key for the user
+        :param pulumi.Input[str] access_cert: Access certificate for the user.
+        :param pulumi.Input[str] access_key: Access certificate key for the user.
         :param pulumi.Input[str] authentication: Authentication details. The possible values are `caching_sha2_password`, `mysql_native_password` and `null`.
-        :param pulumi.Input[str] password: The password of the MySQL User ( not applicable for all services ).
+        :param pulumi.Input[str] password: The password of the MySQL service user.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] type: Type of the user account. Tells whether the user is the primary account or a regular account.
-        :param pulumi.Input[str] username: The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] type: User account type, such as primary or regular account.
+        :param pulumi.Input[str] username: The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -403,7 +403,7 @@ class MysqlUser(pulumi.CustomResource):
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> pulumi.Output[str]:
         """
-        Access certificate for the user
+        Access certificate for the user.
         """
         return pulumi.get(self, "access_cert")
 
@@ -411,7 +411,7 @@ class MysqlUser(pulumi.CustomResource):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[str]:
         """
-        Access certificate key for the user
+        Access certificate key for the user.
         """
         return pulumi.get(self, "access_key")
 
@@ -427,7 +427,7 @@ class MysqlUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        The password of the MySQL User ( not applicable for all services ).
+        The password of the MySQL service user.
         """
         return pulumi.get(self, "password")
 
@@ -451,7 +451,7 @@ class MysqlUser(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -459,7 +459,7 @@ class MysqlUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
         """
-        The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

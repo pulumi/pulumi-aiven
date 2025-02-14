@@ -11,21 +11,12 @@ namespace Pulumi.Aiven
 {
     public static class GetOrganizationUser
     {
-        /// <summary>
-        /// The Organization User data source provides information about the existing Aiven Organization User.
-        /// </summary>
         public static Task<GetOrganizationUserResult> InvokeAsync(GetOrganizationUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationUserResult>("aiven:index/getOrganizationUser:getOrganizationUser", args ?? new GetOrganizationUserArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// The Organization User data source provides information about the existing Aiven Organization User.
-        /// </summary>
         public static Output<GetOrganizationUserResult> Invoke(GetOrganizationUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserResult>("aiven:index/getOrganizationUser:getOrganizationUser", args ?? new GetOrganizationUserInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// The Organization User data source provides information about the existing Aiven Organization User.
-        /// </summary>
         public static Output<GetOrganizationUserResult> Invoke(GetOrganizationUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserResult>("aiven:index/getOrganizationUser:getOrganizationUser", args ?? new GetOrganizationUserInvokeArgs(), options.WithDefaults());
     }

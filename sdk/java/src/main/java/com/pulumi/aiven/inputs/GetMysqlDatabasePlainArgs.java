@@ -14,14 +14,14 @@ public final class GetMysqlDatabasePlainArgs extends com.pulumi.resources.Invoke
     public static final GetMysqlDatabasePlainArgs Empty = new GetMysqlDatabasePlainArgs();
 
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="databaseName", required=true)
     private String databaseName;
 
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     public String databaseName() {
@@ -85,7 +85,7 @@ public final class GetMysqlDatabasePlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
+         * @param databaseName The name of the database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

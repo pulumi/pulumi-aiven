@@ -15323,11 +15323,11 @@ class MySqlMysql(dict):
                  syncing_uris: Optional[Sequence[str]] = None,
                  uris: Optional[Sequence[str]] = None):
         """
-        :param Sequence['MySqlMysqlParamArgs'] params: MySQL connection parameters
-        :param str replica_uri: MySQL replica URI for services with a replica
-        :param Sequence[str] standby_uris: MySQL standby connection URIs
-        :param Sequence[str] syncing_uris: MySQL syncing connection URIs
-        :param Sequence[str] uris: MySQL master connection URIs
+        :param Sequence['MySqlMysqlParamArgs'] params: MySQL connection parameters.
+        :param str replica_uri: MySQL replica URI for services with a replica.
+        :param Sequence[str] standby_uris: MySQL standby connection URIs.
+        :param Sequence[str] syncing_uris: MySQL syncing connection URIs.
+        :param Sequence[str] uris: MySQL connection URIs.
         """
         if params is not None:
             pulumi.set(__self__, "params", params)
@@ -15344,7 +15344,7 @@ class MySqlMysql(dict):
     @pulumi.getter
     def params(self) -> Optional[Sequence['outputs.MySqlMysqlParam']]:
         """
-        MySQL connection parameters
+        MySQL connection parameters.
         """
         return pulumi.get(self, "params")
 
@@ -15352,7 +15352,7 @@ class MySqlMysql(dict):
     @pulumi.getter(name="replicaUri")
     def replica_uri(self) -> Optional[str]:
         """
-        MySQL replica URI for services with a replica
+        MySQL replica URI for services with a replica.
         """
         return pulumi.get(self, "replica_uri")
 
@@ -15360,7 +15360,7 @@ class MySqlMysql(dict):
     @pulumi.getter(name="standbyUris")
     def standby_uris(self) -> Optional[Sequence[str]]:
         """
-        MySQL standby connection URIs
+        MySQL standby connection URIs.
         """
         return pulumi.get(self, "standby_uris")
 
@@ -15368,7 +15368,7 @@ class MySqlMysql(dict):
     @pulumi.getter(name="syncingUris")
     def syncing_uris(self) -> Optional[Sequence[str]]:
         """
-        MySQL syncing connection URIs
+        MySQL syncing connection URIs.
         """
         return pulumi.get(self, "syncing_uris")
 
@@ -15376,7 +15376,7 @@ class MySqlMysql(dict):
     @pulumi.getter
     def uris(self) -> Optional[Sequence[str]]:
         """
-        MySQL master connection URIs
+        MySQL connection URIs.
         """
         return pulumi.get(self, "uris")
 
@@ -15408,12 +15408,12 @@ class MySqlMysqlParam(dict):
                  sslmode: Optional[str] = None,
                  user: Optional[str] = None):
         """
-        :param str database_name: Primary MySQL database name
-        :param str host: MySQL host IP or name
-        :param str password: MySQL admin user password
-        :param int port: MySQL port
-        :param str sslmode: MySQL sslmode setting (currently always "require")
-        :param str user: MySQL admin user name
+        :param str database_name: Thr name of the primary MySQL database.
+        :param str host: MySQL host IP or name.
+        :param str password: The password for the admin service user.
+        :param int port: MySQL port.
+        :param str sslmode: MySQL SSL mode setting. Always set to "require".
+        :param str user: The username for the admin service user.
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -15432,7 +15432,7 @@ class MySqlMysqlParam(dict):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[str]:
         """
-        Primary MySQL database name
+        Thr name of the primary MySQL database.
         """
         return pulumi.get(self, "database_name")
 
@@ -15440,7 +15440,7 @@ class MySqlMysqlParam(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        MySQL host IP or name
+        MySQL host IP or name.
         """
         return pulumi.get(self, "host")
 
@@ -15448,7 +15448,7 @@ class MySqlMysqlParam(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        MySQL admin user password
+        The password for the admin service user.
         """
         return pulumi.get(self, "password")
 
@@ -15456,7 +15456,7 @@ class MySqlMysqlParam(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        MySQL port
+        MySQL port.
         """
         return pulumi.get(self, "port")
 
@@ -15464,7 +15464,7 @@ class MySqlMysqlParam(dict):
     @pulumi.getter
     def sslmode(self) -> Optional[str]:
         """
-        MySQL sslmode setting (currently always "require")
+        MySQL SSL mode setting. Always set to "require".
         """
         return pulumi.get(self, "sslmode")
 
@@ -15472,7 +15472,7 @@ class MySqlMysqlParam(dict):
     @pulumi.getter
     def user(self) -> Optional[str]:
         """
-        MySQL admin user name
+        The username for the admin service user.
         """
         return pulumi.get(self, "user")
 
@@ -18723,6 +18723,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners(dict):
 
     @property
     @pulumi.getter(name="ipRateLimiting")
+    @_utilities.deprecated("""This property is deprecated.""")
     def ip_rate_limiting(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting']:
         """
         IP address rate limiting settings
@@ -41739,11 +41740,11 @@ class GetMySqlMysqlResult(dict):
                  syncing_uris: Sequence[str],
                  uris: Sequence[str]):
         """
-        :param Sequence['GetMySqlMysqlParamArgs'] params: MySQL connection parameters
-        :param str replica_uri: MySQL replica URI for services with a replica
-        :param Sequence[str] standby_uris: MySQL standby connection URIs
-        :param Sequence[str] syncing_uris: MySQL syncing connection URIs
-        :param Sequence[str] uris: MySQL master connection URIs
+        :param Sequence['GetMySqlMysqlParamArgs'] params: MySQL connection parameters.
+        :param str replica_uri: MySQL replica URI for services with a replica.
+        :param Sequence[str] standby_uris: MySQL standby connection URIs.
+        :param Sequence[str] syncing_uris: MySQL syncing connection URIs.
+        :param Sequence[str] uris: MySQL connection URIs.
         """
         pulumi.set(__self__, "params", params)
         pulumi.set(__self__, "replica_uri", replica_uri)
@@ -41755,7 +41756,7 @@ class GetMySqlMysqlResult(dict):
     @pulumi.getter
     def params(self) -> Sequence['outputs.GetMySqlMysqlParamResult']:
         """
-        MySQL connection parameters
+        MySQL connection parameters.
         """
         return pulumi.get(self, "params")
 
@@ -41763,7 +41764,7 @@ class GetMySqlMysqlResult(dict):
     @pulumi.getter(name="replicaUri")
     def replica_uri(self) -> str:
         """
-        MySQL replica URI for services with a replica
+        MySQL replica URI for services with a replica.
         """
         return pulumi.get(self, "replica_uri")
 
@@ -41771,7 +41772,7 @@ class GetMySqlMysqlResult(dict):
     @pulumi.getter(name="standbyUris")
     def standby_uris(self) -> Sequence[str]:
         """
-        MySQL standby connection URIs
+        MySQL standby connection URIs.
         """
         return pulumi.get(self, "standby_uris")
 
@@ -41779,7 +41780,7 @@ class GetMySqlMysqlResult(dict):
     @pulumi.getter(name="syncingUris")
     def syncing_uris(self) -> Sequence[str]:
         """
-        MySQL syncing connection URIs
+        MySQL syncing connection URIs.
         """
         return pulumi.get(self, "syncing_uris")
 
@@ -41787,7 +41788,7 @@ class GetMySqlMysqlResult(dict):
     @pulumi.getter
     def uris(self) -> Sequence[str]:
         """
-        MySQL master connection URIs
+        MySQL connection URIs.
         """
         return pulumi.get(self, "uris")
 
@@ -41802,12 +41803,12 @@ class GetMySqlMysqlParamResult(dict):
                  sslmode: str,
                  user: str):
         """
-        :param str database_name: Primary MySQL database name
-        :param str host: MySQL host IP or name
-        :param str password: MySQL admin user password
-        :param int port: MySQL port
-        :param str sslmode: MySQL sslmode setting (currently always "require")
-        :param str user: MySQL admin user name
+        :param str database_name: Thr name of the primary MySQL database.
+        :param str host: MySQL host IP or name.
+        :param str password: The password for the admin service user.
+        :param int port: MySQL port.
+        :param str sslmode: MySQL SSL mode setting. Always set to "require".
+        :param str user: The username for the admin service user.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "host", host)
@@ -41820,7 +41821,7 @@ class GetMySqlMysqlParamResult(dict):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
         """
-        Primary MySQL database name
+        Thr name of the primary MySQL database.
         """
         return pulumi.get(self, "database_name")
 
@@ -41828,7 +41829,7 @@ class GetMySqlMysqlParamResult(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        MySQL host IP or name
+        MySQL host IP or name.
         """
         return pulumi.get(self, "host")
 
@@ -41836,7 +41837,7 @@ class GetMySqlMysqlParamResult(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        MySQL admin user password
+        The password for the admin service user.
         """
         return pulumi.get(self, "password")
 
@@ -41844,7 +41845,7 @@ class GetMySqlMysqlParamResult(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        MySQL port
+        MySQL port.
         """
         return pulumi.get(self, "port")
 
@@ -41852,7 +41853,7 @@ class GetMySqlMysqlParamResult(dict):
     @pulumi.getter
     def sslmode(self) -> str:
         """
-        MySQL sslmode setting (currently always "require")
+        MySQL SSL mode setting. Always set to "require".
         """
         return pulumi.get(self, "sslmode")
 
@@ -41860,7 +41861,7 @@ class GetMySqlMysqlParamResult(dict):
     @pulumi.getter
     def user(self) -> str:
         """
-        MySQL admin user name
+        The username for the admin service user.
         """
         return pulumi.get(self, "user")
 
@@ -44545,6 +44546,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersResult(dict
 
     @property
     @pulumi.getter(name="ipRateLimiting")
+    @_utilities.deprecated("""This property is deprecated.""")
     def ip_rate_limiting(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingResult']:
         """
         IP address rate limiting settings

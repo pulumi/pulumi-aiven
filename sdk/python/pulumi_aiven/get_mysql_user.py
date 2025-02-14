@@ -59,7 +59,7 @@ class GetMysqlUserResult:
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> str:
         """
-        Access certificate for the user
+        Access certificate for the user.
         """
         return pulumi.get(self, "access_cert")
 
@@ -67,7 +67,7 @@ class GetMysqlUserResult:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> str:
         """
-        Access certificate key for the user
+        Access certificate key for the user.
         """
         return pulumi.get(self, "access_key")
 
@@ -91,7 +91,7 @@ class GetMysqlUserResult:
     @pulumi.getter
     def password(self) -> str:
         """
-        The password of the MySQL User ( not applicable for all services ).
+        The password of the MySQL service user.
         """
         return pulumi.get(self, "password")
 
@@ -115,7 +115,7 @@ class GetMysqlUserResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the user account. Tells whether the user is the primary account or a regular account.
+        User account type, such as primary or regular account.
         """
         return pulumi.get(self, "type")
 
@@ -123,7 +123,7 @@ class GetMysqlUserResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -150,7 +150,7 @@ def get_mysql_user(project: Optional[str] = None,
                    username: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMysqlUserResult:
     """
-    The MySQL User data source provides information about the existing Aiven MySQL User.
+    Gets information about an Aiven for MySQL® service user.
 
     ## Example Usage
 
@@ -158,15 +158,15 @@ def get_mysql_user(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_mysql_user(service_name="my-service",
-        project="my-project",
-        username="user1")
+    example_mysql_user = aiven.get_mysql_user(service_name=example_mysql["serviceName"],
+        project=example_project["project"],
+        username="example-mysql-user")
     ```
 
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -190,7 +190,7 @@ def get_mysql_user_output(project: Optional[pulumi.Input[str]] = None,
                           username: Optional[pulumi.Input[str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMysqlUserResult]:
     """
-    The MySQL User data source provides information about the existing Aiven MySQL User.
+    Gets information about an Aiven for MySQL® service user.
 
     ## Example Usage
 
@@ -198,15 +198,15 @@ def get_mysql_user_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_mysql_user(service_name="my-service",
-        project="my-project",
-        username="user1")
+    example_mysql_user = aiven.get_mysql_user(service_name=example_mysql["serviceName"],
+        project=example_project["project"],
+        username="example-mysql-user")
     ```
 
 
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str username: The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project

@@ -18,14 +18,14 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
     public static final MysqlDatabaseArgs Empty = new MysqlDatabaseArgs();
 
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="databaseName", required=true)
     private Output<String> databaseName;
 
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> databaseName() {
@@ -97,7 +97,7 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
+         * @param databaseName The name of the database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class MysqlDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
+         * @param databaseName The name of the database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

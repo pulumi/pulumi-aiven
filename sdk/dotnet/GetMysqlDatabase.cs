@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetMysqlDatabase
     {
         /// <summary>
-        /// The MySQL Database data source provides information about the existing Aiven MySQL Database.
+        /// Gets information about an Aiven for MySQL® database.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydatabase = Aiven.GetMysqlDatabase.Invoke(new()
+        ///     var exampleDatabase = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = mymysql.ServiceName,
-        ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleMysql.ServiceName,
+        ///         DatabaseName = "example-database",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMysqlDatabaseResult>("aiven:index/getMysqlDatabase:getMysqlDatabase", args ?? new GetMysqlDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The MySQL Database data source provides information about the existing Aiven MySQL Database.
+        /// Gets information about an Aiven for MySQL® database.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydatabase = Aiven.GetMysqlDatabase.Invoke(new()
+        ///     var exampleDatabase = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = mymysql.ServiceName,
-        ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleMysql.ServiceName,
+        ///         DatabaseName = "example-database",
         ///     });
         /// 
         /// });
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetMysqlDatabaseResult>("aiven:index/getMysqlDatabase:getMysqlDatabase", args ?? new GetMysqlDatabaseInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The MySQL Database data source provides information about the existing Aiven MySQL Database.
+        /// Gets information about an Aiven for MySQL® database.
         /// 
         /// ## Example Usage
         /// 
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mydatabase = Aiven.GetMysqlDatabase.Invoke(new()
+        ///     var exampleDatabase = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = mymysql.ServiceName,
-        ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleMysql.ServiceName,
+        ///         DatabaseName = "example-database",
         ///     });
         /// 
         /// });
@@ -94,7 +94,7 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlDatabaseArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
+        /// The name of the database. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("databaseName", required: true)]
         public string DatabaseName { get; set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
+        /// The name of the database. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlDatabaseResult
     {
         /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
+        /// The name of the database. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string DatabaseName;
         /// <summary>

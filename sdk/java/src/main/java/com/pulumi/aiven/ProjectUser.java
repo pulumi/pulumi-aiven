@@ -21,6 +21,10 @@ import javax.annotation.Nullable;
  * migrate existing aiven.ProjectUser resources
  * to the new resource.
  * 
+ * &gt; **This resource is deprecated**.
+ * 
+ * Use `aiven.OrganizationPermission` instead.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

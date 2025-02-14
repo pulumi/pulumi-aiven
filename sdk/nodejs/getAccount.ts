@@ -7,6 +7,10 @@ import * as utilities from "./utilities";
 /**
  * The Account data source provides information about the existing Aiven Account.
  *
+ * > **This resource is deprecated**.
+ *
+ * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -78,6 +82,10 @@ export interface GetAccountResult {
 }
 /**
  * The Account data source provides information about the existing Aiven Account.
+ *
+ * > **This resource is deprecated**.
+ *
+ * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
  *
  * ## Example Usage
  *

@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetMysqlUser
     {
         /// <summary>
-        /// The MySQL User data source provides information about the existing Aiven MySQL User.
+        /// Gets information about an Aiven for MySQL® service user.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetMysqlUser.Invoke(new()
+        ///     var exampleMysqlUser = Aiven.GetMysqlUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = exampleMysql.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-mysql-user",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The MySQL User data source provides information about the existing Aiven MySQL User.
+        /// Gets information about an Aiven for MySQL® service user.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetMysqlUser.Invoke(new()
+        ///     var exampleMysqlUser = Aiven.GetMysqlUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = exampleMysql.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-mysql-user",
         ///     });
         /// 
         /// });
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetMysqlUserResult>("aiven:index/getMysqlUser:getMysqlUser", args ?? new GetMysqlUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The MySQL User data source provides information about the existing Aiven MySQL User.
+        /// Gets information about an Aiven for MySQL® service user.
         /// 
         /// ## Example Usage
         /// 
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Aiven.GetMysqlUser.Invoke(new()
+        ///     var exampleMysqlUser = Aiven.GetMysqlUser.Invoke(new()
         ///     {
-        ///         ServiceName = "my-service",
-        ///         Project = "my-project",
-        ///         Username = "user1",
+        ///         ServiceName = exampleMysql.ServiceName,
+        ///         Project = exampleProject.Project,
+        ///         Username = "example-mysql-user",
         ///     });
         /// 
         /// });
@@ -106,7 +106,7 @@ namespace Pulumi.Aiven
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -148,11 +148,11 @@ namespace Pulumi.Aiven
     public sealed class GetMysqlUserResult
     {
         /// <summary>
-        /// Access certificate for the user
+        /// Access certificate for the user.
         /// </summary>
         public readonly string AccessCert;
         /// <summary>
-        /// Access certificate key for the user
+        /// Access certificate key for the user.
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
@@ -164,7 +164,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the MySQL User ( not applicable for all services ).
+        /// The password of the MySQL service user.
         /// </summary>
         public readonly string Password;
         /// <summary>
@@ -176,11 +176,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Username;
 
