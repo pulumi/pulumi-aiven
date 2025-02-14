@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The MySQL User resource allows the creation and management of Aiven MySQL Users.
+// Creates and manages an Aiven for MySQL® service user.
 //
 // ## Example Usage
 //
@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewMysqlUser(ctx, "foo", &aiven.MysqlUserArgs{
-//				ServiceName: pulumi.Any(bar.ServiceName),
-//				Project:     pulumi.String("my-project"),
-//				Username:    pulumi.String("user-1"),
-//				Password:    pulumi.String("Test$1234"),
+//			_, err := aiven.NewMysqlUser(ctx, "example_mysql_user", &aiven.MysqlUserArgs{
+//				ServiceName: pulumi.Any(exampleMysql.ServiceName),
+//				Project:     pulumi.Any(exampleProject.Project),
+//				Username:    pulumi.String("example-mysql-user"),
+//				Password:    pulumi.Any(serviceUserPw),
 //			})
 //			if err != nil {
 //				return err
@@ -51,21 +51,21 @@ import (
 type MysqlUser struct {
 	pulumi.CustomResourceState
 
-	// Access certificate for the user
+	// Access certificate for the user.
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
-	// Access certificate key for the user
+	// Access certificate key for the user.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
 	Authentication pulumi.StringPtrOutput `pulumi:"authentication"`
-	// The password of the MySQL User ( not applicable for all services ).
+	// The password of the MySQL service user.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -117,40 +117,40 @@ func GetMysqlUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MysqlUser resources.
 type mysqlUserState struct {
-	// Access certificate for the user
+	// Access certificate for the user.
 	AccessCert *string `pulumi:"accessCert"`
-	// Access certificate key for the user
+	// Access certificate key for the user.
 	AccessKey *string `pulumi:"accessKey"`
 	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
 	Authentication *string `pulumi:"authentication"`
-	// The password of the MySQL User ( not applicable for all services ).
+	// The password of the MySQL service user.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type *string `pulumi:"type"`
-	// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type MysqlUserState struct {
-	// Access certificate for the user
+	// Access certificate for the user.
 	AccessCert pulumi.StringPtrInput
-	// Access certificate key for the user
+	// Access certificate key for the user.
 	AccessKey pulumi.StringPtrInput
 	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
 	Authentication pulumi.StringPtrInput
-	// The password of the MySQL User ( not applicable for all services ).
+	// The password of the MySQL service user.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Type of the user account. Tells whether the user is the primary account or a regular account.
+	// User account type, such as primary or regular account.
 	Type pulumi.StringPtrInput
-	// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -161,13 +161,13 @@ func (MysqlUserState) ElementType() reflect.Type {
 type mysqlUserArgs struct {
 	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
 	Authentication *string `pulumi:"authentication"`
-	// The password of the MySQL User ( not applicable for all services ).
+	// The password of the MySQL service user.
 	Password *string `pulumi:"password"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
@@ -175,13 +175,13 @@ type mysqlUserArgs struct {
 type MysqlUserArgs struct {
 	// Authentication details. The possible values are `cachingSha2Password`, `mysqlNativePassword` and `null`.
 	Authentication pulumi.StringPtrInput
-	// The password of the MySQL User ( not applicable for all services ).
+	// The password of the MySQL service user.
 	Password pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -272,12 +272,12 @@ func (o MysqlUserOutput) ToMysqlUserOutputWithContext(ctx context.Context) Mysql
 	return o
 }
 
-// Access certificate for the user
+// Access certificate for the user.
 func (o MysqlUserOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user
+// Access certificate key for the user.
 func (o MysqlUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
@@ -287,7 +287,7 @@ func (o MysqlUserOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringPtrOutput { return v.Authentication }).(pulumi.StringPtrOutput)
 }
 
-// The password of the MySQL User ( not applicable for all services ).
+// The password of the MySQL service user.
 func (o MysqlUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -302,12 +302,12 @@ func (o MysqlUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Type of the user account. Tells whether the user is the primary account or a regular account.
+// User account type, such as primary or regular account.
 func (o MysqlUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o MysqlUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

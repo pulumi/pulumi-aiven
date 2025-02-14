@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
+ * Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
  *
  * ## Example Usage
  *
@@ -13,17 +13,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mydatabase = new aiven.MysqlDatabase("mydatabase", {
- *     project: myproject.project,
- *     serviceName: mymysql.serviceName,
- *     databaseName: "<DATABASE_NAME>",
+ * const exampleMysqlDatabase = new aiven.MysqlDatabase("example_mysql_database", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleMysql.serviceName,
+ *     databaseName: "example-database",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+ * $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
  * ```
  */
 export class MysqlDatabase extends pulumi.CustomResource {
@@ -55,7 +55,7 @@ export class MysqlDatabase extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      */
     public readonly databaseName!: pulumi.Output<string>;
     /**
@@ -111,7 +111,7 @@ export class MysqlDatabase extends pulumi.CustomResource {
  */
 export interface MysqlDatabaseState {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      */
     databaseName?: pulumi.Input<string>;
     /**
@@ -130,7 +130,7 @@ export interface MysqlDatabaseState {
  */
 export interface MysqlDatabaseArgs {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      */
     databaseName: pulumi.Input<string>;
     /**

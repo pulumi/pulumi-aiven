@@ -12,74 +12,74 @@ import java.util.Objects;
 @CustomType
 public final class GetMySqlMysqlParam {
     /**
-     * @return Primary MySQL database name
+     * @return Thr name of the primary MySQL database.
      * 
      */
     private String databaseName;
     /**
-     * @return MySQL host IP or name
+     * @return MySQL host IP or name.
      * 
      */
     private String host;
     /**
-     * @return MySQL admin user password
+     * @return The password for the admin service user.
      * 
      */
     private String password;
     /**
-     * @return MySQL port
+     * @return MySQL port.
      * 
      */
     private Integer port;
     /**
-     * @return MySQL sslmode setting (currently always &#34;require&#34;)
+     * @return MySQL SSL mode setting. Always set to &#34;require&#34;.
      * 
      */
     private String sslmode;
     /**
-     * @return MySQL admin user name
+     * @return The username for the admin service user.
      * 
      */
     private String user;
 
     private GetMySqlMysqlParam() {}
     /**
-     * @return Primary MySQL database name
+     * @return Thr name of the primary MySQL database.
      * 
      */
     public String databaseName() {
         return this.databaseName;
     }
     /**
-     * @return MySQL host IP or name
+     * @return MySQL host IP or name.
      * 
      */
     public String host() {
         return this.host;
     }
     /**
-     * @return MySQL admin user password
+     * @return The password for the admin service user.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return MySQL port
+     * @return MySQL port.
      * 
      */
     public Integer port() {
         return this.port;
     }
     /**
-     * @return MySQL sslmode setting (currently always &#34;require&#34;)
+     * @return MySQL SSL mode setting. Always set to &#34;require&#34;.
      * 
      */
     public String sslmode() {
         return this.sslmode;
     }
     /**
-     * @return MySQL admin user name
+     * @return The username for the admin service user.
      * 
      */
     public String user() {

@@ -13,6 +13,10 @@ import (
 
 // The Project User data source provides information about the existing Aiven Project User.
 //
+// > **This resource is deprecated**.
+//
+// Use `OrganizationPermission` instead.
+//
 // ## Example Usage
 //
 // ```go

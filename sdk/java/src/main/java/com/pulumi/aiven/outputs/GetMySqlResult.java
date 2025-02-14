@@ -80,7 +80,7 @@ public final class GetMySqlResult {
      */
     private List<GetMySqlMysqlUserConfig> mysqlUserConfigs;
     /**
-     * @return MySQL specific server provided values
+     * @return MySQL server-provided values.
      * 
      */
     private List<GetMySqlMysql> mysqls;
@@ -251,7 +251,7 @@ public final class GetMySqlResult {
         return this.mysqlUserConfigs;
     }
     /**
-     * @return MySQL specific server provided values
+     * @return MySQL server-provided values.
      * 
      */
     public List<GetMySqlMysql> mysqls() {

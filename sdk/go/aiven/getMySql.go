@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The MySQL data source provides information about the existing Aiven MySQL service.
+// Gets information about an Aiven for MySQL® service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupMySql(ctx, &aiven.LookupMySqlArgs{
-//				Project:     foo.Project,
-//				ServiceName: "my-mysql1",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-mysql",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ type LookupMySqlResult struct {
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Mysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	MysqlUserConfigs []GetMySqlMysqlUserConfig `pulumi:"mysqlUserConfigs"`
-	// MySQL specific server provided values
+	// MySQL server-provided values.
 	Mysqls []GetMySqlMysql `pulumi:"mysqls"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
@@ -215,7 +215,7 @@ func (o LookupMySqlResultOutput) MysqlUserConfigs() GetMySqlMysqlUserConfigArray
 	return o.ApplyT(func(v LookupMySqlResult) []GetMySqlMysqlUserConfig { return v.MysqlUserConfigs }).(GetMySqlMysqlUserConfigArrayOutput)
 }
 
-// MySQL specific server provided values
+// MySQL server-provided values.
 func (o LookupMySqlResultOutput) Mysqls() GetMySqlMysqlArrayOutput {
 	return o.ApplyT(func(v LookupMySqlResult) []GetMySqlMysql { return v.Mysqls }).(GetMySqlMysqlArrayOutput)
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
+    /// Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
     /// 
     /// ## Example Usage
     /// 
@@ -22,11 +22,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mydatabase = new Aiven.MysqlDatabase("mydatabase", new()
+    ///     var exampleMysqlDatabase = new Aiven.MysqlDatabase("example_mysql_database", new()
     ///     {
-    ///         Project = myproject.Project,
-    ///         ServiceName = mymysql.ServiceName,
-    ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleMysql.ServiceName,
+    ///         DatabaseName = "example-database",
     ///     });
     /// 
     /// });
@@ -35,14 +35,14 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+    /// $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/mysqlDatabase:MysqlDatabase")]
     public partial class MysqlDatabase : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
+        /// The name of the database. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("databaseName")]
         public Output<string> DatabaseName { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.Aiven
     public sealed class MysqlDatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
+        /// The name of the database. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Aiven
     public sealed class MysqlDatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the service database. Changing this property forces recreation of the resource.
+        /// The name of the database. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }

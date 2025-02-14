@@ -4906,6 +4906,8 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ThreadPoolWriteSiz
 type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners struct {
 	InternalAuthenticationBackendLimiting *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting `pulumi:"internalAuthenticationBackendLimiting"`
 	// IP address rate limiting settings
+	//
+	// Deprecated: This property is deprecated.
 	IpRateLimiting *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting `pulumi:"ipRateLimiting"`
 }
 
@@ -4923,6 +4925,8 @@ type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInput interf
 type GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs struct {
 	InternalAuthenticationBackendLimiting GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingPtrInput `pulumi:"internalAuthenticationBackendLimiting"`
 	// IP address rate limiting settings
+	//
+	// Deprecated: This property is deprecated.
 	IpRateLimiting GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrInput `pulumi:"ipRateLimiting"`
 }
 
@@ -5010,6 +5014,8 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) I
 }
 
 // IP address rate limiting settings
+//
+// Deprecated: This property is deprecated.
 func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersOutput) IpRateLimiting() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
 		return v.IpRateLimiting
@@ -5050,6 +5056,8 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput
 }
 
 // IP address rate limiting settings
+//
+// Deprecated: This property is deprecated.
 func (o GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersPtrOutput) IpRateLimiting() GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners) *GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
 		if v == nil {

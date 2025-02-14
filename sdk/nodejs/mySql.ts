@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The MySQL resource allows the creation and management of Aiven MySQL services.
+ * Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) service.
  *
  * ## Example Usage
  *
@@ -15,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mysql1 = new aiven.MySql("mysql1", {
- *     project: foo.project,
+ * const exampleMysql = new aiven.MySql("example_mysql", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "business-4",
- *     serviceName: "my-mysql1",
+ *     serviceName: "example-mysql",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     mysqlUserConfig: {
@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/mySql:MySql mysql1 project/service_name
+ * $ pulumi import aiven:index/mySql:MySql example_mysql PROJECT/SERVICE_NAME
  * ```
  */
 export class MySql extends pulumi.CustomResource {
@@ -114,7 +114,7 @@ export class MySql extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * MySQL specific server provided values
+     * MySQL server-provided values.
      */
     public readonly mysql!: pulumi.Output<outputs.MySqlMysql>;
     /**
@@ -323,7 +323,7 @@ export interface MySqlState {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * MySQL specific server provided values
+     * MySQL server-provided values.
      */
     mysql?: pulumi.Input<inputs.MySqlMysql>;
     /**
@@ -423,7 +423,7 @@ export interface MySqlArgs {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * MySQL specific server provided values
+     * MySQL server-provided values.
      */
     mysql?: pulumi.Input<inputs.MySqlMysql>;
     /**

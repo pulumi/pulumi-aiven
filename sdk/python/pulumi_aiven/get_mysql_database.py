@@ -47,7 +47,7 @@ class GetMysqlDatabaseResult:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
         """
-        The name of the service database. Changing this property forces recreation of the resource.
+        The name of the database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -99,7 +99,7 @@ def get_mysql_database(database_name: Optional[str] = None,
                        service_name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMysqlDatabaseResult:
     """
-    The MySQL Database data source provides information about the existing Aiven MySQL Database.
+    Gets information about an Aiven for MySQL® database.
 
     ## Example Usage
 
@@ -107,13 +107,13 @@ def get_mysql_database(database_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mydatabase = aiven.get_mysql_database(project=myproject["project"],
-        service_name=mymysql["serviceName"],
-        database_name="<DATABASE_NAME>")
+    example_database = aiven.get_mysql_database(project=example_project["project"],
+        service_name=example_mysql["serviceName"],
+        database_name="example-database")
     ```
 
 
-    :param str database_name: The name of the service database. Changing this property forces recreation of the resource.
+    :param str database_name: The name of the database. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
@@ -135,7 +135,7 @@ def get_mysql_database_output(database_name: Optional[pulumi.Input[str]] = None,
                               service_name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMysqlDatabaseResult]:
     """
-    The MySQL Database data source provides information about the existing Aiven MySQL Database.
+    Gets information about an Aiven for MySQL® database.
 
     ## Example Usage
 
@@ -143,13 +143,13 @@ def get_mysql_database_output(database_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mydatabase = aiven.get_mysql_database(project=myproject["project"],
-        service_name=mymysql["serviceName"],
-        database_name="<DATABASE_NAME>")
+    example_database = aiven.get_mysql_database(project=example_project["project"],
+        service_name=example_mysql["serviceName"],
+        database_name="example-database")
     ```
 
 
-    :param str database_name: The name of the service database. Changing this property forces recreation of the resource.
+    :param str database_name: The name of the database. Changing this property forces recreation of the resource.
     :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """

@@ -11,6 +11,10 @@ import * as utilities from "./utilities";
  * migrate existing aiven.ProjectUser resources
  * to the new resource.
  *
+ * > **This resource is deprecated**.
+ *
+ * Use `aiven.OrganizationPermission` instead.
+ *
  * ## Example Usage
  *
  * ```typescript

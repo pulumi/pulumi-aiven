@@ -18,6 +18,10 @@ import (
 // migrate existing ProjectUser resources
 // to the new resource.
 //
+// > **This resource is deprecated**.
+//
+// Use `OrganizationPermission` instead.
+//
 // ## Example Usage
 //
 // ```go

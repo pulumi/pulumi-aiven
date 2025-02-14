@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
+// Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
 //
 // ## Example Usage
 //
@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewMysqlDatabase(ctx, "mydatabase", &aiven.MysqlDatabaseArgs{
-//				Project:      pulumi.Any(myproject.Project),
-//				ServiceName:  pulumi.Any(mymysql.ServiceName),
-//				DatabaseName: pulumi.String("<DATABASE_NAME>"),
+//			_, err := aiven.NewMysqlDatabase(ctx, "example_mysql_database", &aiven.MysqlDatabaseArgs{
+//				Project:      pulumi.Any(exampleProject.Project),
+//				ServiceName:  pulumi.Any(exampleMysql.ServiceName),
+//				DatabaseName: pulumi.String("example-database"),
 //			})
 //			if err != nil {
 //				return err
@@ -45,12 +45,12 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+// $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
 // ```
 type MysqlDatabase struct {
 	pulumi.CustomResourceState
 
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// The name of the database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -98,7 +98,7 @@ func GetMysqlDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MysqlDatabase resources.
 type mysqlDatabaseState struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// The name of the database. Changing this property forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
@@ -108,7 +108,7 @@ type mysqlDatabaseState struct {
 }
 
 type MysqlDatabaseState struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// The name of the database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
@@ -122,7 +122,7 @@ func (MysqlDatabaseState) ElementType() reflect.Type {
 }
 
 type mysqlDatabaseArgs struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// The name of the database. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -133,7 +133,7 @@ type mysqlDatabaseArgs struct {
 
 // The set of arguments for constructing a MysqlDatabase resource.
 type MysqlDatabaseArgs struct {
-	// The name of the service database. Changing this property forces recreation of the resource.
+	// The name of the database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
@@ -229,7 +229,7 @@ func (o MysqlDatabaseOutput) ToMysqlDatabaseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The name of the service database. Changing this property forces recreation of the resource.
+// The name of the database. Changing this property forces recreation of the resource.
 func (o MysqlDatabaseOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }

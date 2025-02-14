@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The MySQL data source provides information about the existing Aiven MySQL service.
+ * Gets information about an Aiven for MySQL® service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mysql1 = aiven.getMySql({
- *     project: foo.project,
- *     serviceName: "my-mysql1",
+ * const exampleMysql = aiven.getMySql({
+ *     project: exampleProject.project,
+ *     serviceName: "example-mysql",
  * });
  * ```
  */
@@ -96,7 +96,7 @@ export interface GetMySqlResult {
      */
     readonly mysqlUserConfigs: outputs.GetMySqlMysqlUserConfig[];
     /**
-     * MySQL specific server provided values
+     * MySQL server-provided values.
      */
     readonly mysqls: outputs.GetMySqlMysql[];
     /**
@@ -165,7 +165,7 @@ export interface GetMySqlResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The MySQL data source provides information about the existing Aiven MySQL service.
+ * Gets information about an Aiven for MySQL® service.
  *
  * ## Example Usage
  *
@@ -173,9 +173,9 @@ export interface GetMySqlResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mysql1 = aiven.getMySql({
- *     project: foo.project,
- *     serviceName: "my-mysql1",
+ * const exampleMysql = aiven.getMySql({
+ *     project: exampleProject.project,
+ *     serviceName: "example-mysql",
  * });
  * ```
  */

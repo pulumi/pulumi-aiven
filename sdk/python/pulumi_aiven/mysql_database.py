@@ -25,7 +25,7 @@ class MysqlDatabaseArgs:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a MysqlDatabase resource.
-        :param pulumi.Input[str] database_name: The name of the service database. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] database_name: The name of the database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -39,7 +39,7 @@ class MysqlDatabaseArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[str]:
         """
-        The name of the service database. Changing this property forces recreation of the resource.
+        The name of the database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -90,7 +90,7 @@ class _MysqlDatabaseState:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering MysqlDatabase resources.
-        :param pulumi.Input[str] database_name: The name of the service database. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] database_name: The name of the database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -107,7 +107,7 @@ class _MysqlDatabaseState:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the service database. Changing this property forces recreation of the resource.
+        The name of the database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -160,7 +160,7 @@ class MysqlDatabase(pulumi.CustomResource):
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
+        Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
 
         ## Example Usage
 
@@ -168,21 +168,21 @@ class MysqlDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mydatabase = aiven.MysqlDatabase("mydatabase",
-            project=myproject["project"],
-            service_name=mymysql["serviceName"],
-            database_name="<DATABASE_NAME>")
+        example_mysql_database = aiven.MysqlDatabase("example_mysql_database",
+            project=example_project["project"],
+            service_name=example_mysql["serviceName"],
+            database_name="example-database")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: The name of the service database. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] database_name: The name of the database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -193,7 +193,7 @@ class MysqlDatabase(pulumi.CustomResource):
                  args: MysqlDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
+        Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
 
         ## Example Usage
 
@@ -201,16 +201,16 @@ class MysqlDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mydatabase = aiven.MysqlDatabase("mydatabase",
-            project=myproject["project"],
-            service_name=mymysql["serviceName"],
-            database_name="<DATABASE_NAME>")
+        example_mysql_database = aiven.MysqlDatabase("example_mysql_database",
+            project=example_project["project"],
+            service_name=example_mysql["serviceName"],
+            database_name="example-database")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -272,7 +272,7 @@ class MysqlDatabase(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: The name of the service database. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] database_name: The name of the database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -290,7 +290,7 @@ class MysqlDatabase(pulumi.CustomResource):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[str]:
         """
-        The name of the service database. Changing this property forces recreation of the resource.
+        The name of the database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 

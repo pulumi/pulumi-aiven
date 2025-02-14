@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The Organization User data source provides information about the existing Aiven Organization User.
- */
 export function getOrganizationUser(args: GetOrganizationUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationUser:getOrganizationUser", {
@@ -59,9 +56,6 @@ export interface GetOrganizationUserResult {
      */
     readonly userId?: string;
 }
-/**
- * The Organization User data source provides information about the existing Aiven Organization User.
- */
 export function getOrganizationUserOutput(args: GetOrganizationUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationUser:getOrganizationUser", {

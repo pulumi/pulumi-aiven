@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The MySQL User resource allows the creation and management of Aiven MySQL Users.
+    /// Creates and manages an Aiven for MySQL® service user.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Aiven.MysqlUser("foo", new()
+    ///     var exampleMysqlUser = new Aiven.MysqlUser("example_mysql_user", new()
     ///     {
-    ///         ServiceName = bar.ServiceName,
-    ///         Project = "my-project",
-    ///         Username = "user-1",
-    ///         Password = "Test$1234",
+    ///         ServiceName = exampleMysql.ServiceName,
+    ///         Project = exampleProject.Project,
+    ///         Username = "example-mysql-user",
+    ///         Password = serviceUserPw,
     ///     });
     /// 
     /// });
@@ -43,13 +43,13 @@ namespace Pulumi.Aiven
     public partial class MysqlUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access certificate for the user
+        /// Access certificate for the user.
         /// </summary>
         [Output("accessCert")]
         public Output<string> AccessCert { get; private set; } = null!;
 
         /// <summary>
-        /// Access certificate key for the user
+        /// Access certificate key for the user.
         /// </summary>
         [Output("accessKey")]
         public Output<string> AccessKey { get; private set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.Aiven
         public Output<string?> Authentication { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the MySQL User ( not applicable for all services ).
+        /// The password of the MySQL service user.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -79,13 +79,13 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the MySQL User ( not applicable for all services ).
+        /// The password of the MySQL service user.
         /// </summary>
         public Input<string>? Password
         {
@@ -177,7 +177,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessCert;
 
         /// <summary>
-        /// Access certificate for the user
+        /// Access certificate for the user.
         /// </summary>
         public Input<string>? AccessCert
         {
@@ -210,7 +210,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// Access certificate key for the user
+        /// Access certificate key for the user.
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -232,7 +232,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the MySQL User ( not applicable for all services ).
+        /// The password of the MySQL service user.
         /// </summary>
         public Input<string>? Password
         {
@@ -257,13 +257,13 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Type of the user account. Tells whether the user is the primary account or a regular account.
+        /// User account type, such as primary or regular account.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

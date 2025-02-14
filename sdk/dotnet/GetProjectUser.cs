@@ -14,6 +14,10 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Project User data source provides information about the existing Aiven Project User.
         /// 
+        /// &gt; **This resource is deprecated**.
+        /// 
+        /// Use `aiven.OrganizationPermission` instead.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,6 +43,10 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Project User data source provides information about the existing Aiven Project User.
         /// 
+        /// &gt; **This resource is deprecated**.
+        /// 
+        /// Use `aiven.OrganizationPermission` instead.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -63,6 +71,10 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// The Project User data source provides information about the existing Aiven Project User.
+        /// 
+        /// &gt; **This resource is deprecated**.
+        /// 
+        /// Use `aiven.OrganizationPermission` instead.
         /// 
         /// ## Example Usage
         /// 

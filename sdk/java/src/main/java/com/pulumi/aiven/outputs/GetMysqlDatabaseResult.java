@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetMysqlDatabaseResult {
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     private String databaseName;
@@ -35,7 +35,7 @@ public final class GetMysqlDatabaseResult {
 
     private GetMysqlDatabaseResult() {}
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     public String databaseName() {

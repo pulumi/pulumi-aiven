@@ -16,7 +16,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
     /**
      * @return IP address rate limiting settings
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting ipRateLimiting;
 
     private GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners() {}
@@ -26,7 +30,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
     /**
      * @return IP address rate limiting settings
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting> ipRateLimiting() {
         return Optional.ofNullable(this.ipRateLimiting);
     }

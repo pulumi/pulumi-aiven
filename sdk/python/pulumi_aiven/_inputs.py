@@ -20722,23 +20722,23 @@ if not MYPY:
     class MySqlMysqlArgsDict(TypedDict):
         params: NotRequired[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlParamArgsDict']]]]
         """
-        MySQL connection parameters
+        MySQL connection parameters.
         """
         replica_uri: NotRequired[pulumi.Input[str]]
         """
-        MySQL replica URI for services with a replica
+        MySQL replica URI for services with a replica.
         """
         standby_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        MySQL standby connection URIs
+        MySQL standby connection URIs.
         """
         syncing_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        MySQL syncing connection URIs
+        MySQL syncing connection URIs.
         """
         uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        MySQL master connection URIs
+        MySQL connection URIs.
         """
 elif False:
     MySqlMysqlArgsDict: TypeAlias = Mapping[str, Any]
@@ -20752,11 +20752,11 @@ class MySqlMysqlArgs:
                  syncing_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['MySqlMysqlParamArgs']]] params: MySQL connection parameters
-        :param pulumi.Input[str] replica_uri: MySQL replica URI for services with a replica
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uris: MySQL standby connection URIs
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] syncing_uris: MySQL syncing connection URIs
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: MySQL master connection URIs
+        :param pulumi.Input[Sequence[pulumi.Input['MySqlMysqlParamArgs']]] params: MySQL connection parameters.
+        :param pulumi.Input[str] replica_uri: MySQL replica URI for services with a replica.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uris: MySQL standby connection URIs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] syncing_uris: MySQL syncing connection URIs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: MySQL connection URIs.
         """
         if params is not None:
             pulumi.set(__self__, "params", params)
@@ -20773,7 +20773,7 @@ class MySqlMysqlArgs:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MySqlMysqlParamArgs']]]]:
         """
-        MySQL connection parameters
+        MySQL connection parameters.
         """
         return pulumi.get(self, "params")
 
@@ -20785,7 +20785,7 @@ class MySqlMysqlArgs:
     @pulumi.getter(name="replicaUri")
     def replica_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        MySQL replica URI for services with a replica
+        MySQL replica URI for services with a replica.
         """
         return pulumi.get(self, "replica_uri")
 
@@ -20797,7 +20797,7 @@ class MySqlMysqlArgs:
     @pulumi.getter(name="standbyUris")
     def standby_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        MySQL standby connection URIs
+        MySQL standby connection URIs.
         """
         return pulumi.get(self, "standby_uris")
 
@@ -20809,7 +20809,7 @@ class MySqlMysqlArgs:
     @pulumi.getter(name="syncingUris")
     def syncing_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        MySQL syncing connection URIs
+        MySQL syncing connection URIs.
         """
         return pulumi.get(self, "syncing_uris")
 
@@ -20821,7 +20821,7 @@ class MySqlMysqlArgs:
     @pulumi.getter
     def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        MySQL master connection URIs
+        MySQL connection URIs.
         """
         return pulumi.get(self, "uris")
 
@@ -20834,27 +20834,27 @@ if not MYPY:
     class MySqlMysqlParamArgsDict(TypedDict):
         database_name: NotRequired[pulumi.Input[str]]
         """
-        Primary MySQL database name
+        Thr name of the primary MySQL database.
         """
         host: NotRequired[pulumi.Input[str]]
         """
-        MySQL host IP or name
+        MySQL host IP or name.
         """
         password: NotRequired[pulumi.Input[str]]
         """
-        MySQL admin user password
+        The password for the admin service user.
         """
         port: NotRequired[pulumi.Input[int]]
         """
-        MySQL port
+        MySQL port.
         """
         sslmode: NotRequired[pulumi.Input[str]]
         """
-        MySQL sslmode setting (currently always "require")
+        MySQL SSL mode setting. Always set to "require".
         """
         user: NotRequired[pulumi.Input[str]]
         """
-        MySQL admin user name
+        The username for the admin service user.
         """
 elif False:
     MySqlMysqlParamArgsDict: TypeAlias = Mapping[str, Any]
@@ -20869,12 +20869,12 @@ class MySqlMysqlParamArgs:
                  sslmode: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database_name: Primary MySQL database name
-        :param pulumi.Input[str] host: MySQL host IP or name
-        :param pulumi.Input[str] password: MySQL admin user password
-        :param pulumi.Input[int] port: MySQL port
-        :param pulumi.Input[str] sslmode: MySQL sslmode setting (currently always "require")
-        :param pulumi.Input[str] user: MySQL admin user name
+        :param pulumi.Input[str] database_name: Thr name of the primary MySQL database.
+        :param pulumi.Input[str] host: MySQL host IP or name.
+        :param pulumi.Input[str] password: The password for the admin service user.
+        :param pulumi.Input[int] port: MySQL port.
+        :param pulumi.Input[str] sslmode: MySQL SSL mode setting. Always set to "require".
+        :param pulumi.Input[str] user: The username for the admin service user.
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -20893,7 +20893,7 @@ class MySqlMysqlParamArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Primary MySQL database name
+        Thr name of the primary MySQL database.
         """
         return pulumi.get(self, "database_name")
 
@@ -20905,7 +20905,7 @@ class MySqlMysqlParamArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        MySQL host IP or name
+        MySQL host IP or name.
         """
         return pulumi.get(self, "host")
 
@@ -20917,7 +20917,7 @@ class MySqlMysqlParamArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        MySQL admin user password
+        The password for the admin service user.
         """
         return pulumi.get(self, "password")
 
@@ -20929,7 +20929,7 @@ class MySqlMysqlParamArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        MySQL port
+        MySQL port.
         """
         return pulumi.get(self, "port")
 
@@ -20941,7 +20941,7 @@ class MySqlMysqlParamArgs:
     @pulumi.getter
     def sslmode(self) -> Optional[pulumi.Input[str]]:
         """
-        MySQL sslmode setting (currently always "require")
+        MySQL SSL mode setting. Always set to "require".
         """
         return pulumi.get(self, "sslmode")
 
@@ -20953,7 +20953,7 @@ class MySqlMysqlParamArgs:
     @pulumi.getter
     def user(self) -> Optional[pulumi.Input[str]]:
         """
-        MySQL admin user name
+        The username for the admin service user.
         """
         return pulumi.get(self, "user")
 
@@ -25468,6 +25468,9 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs:
         if internal_authentication_backend_limiting is not None:
             pulumi.set(__self__, "internal_authentication_backend_limiting", internal_authentication_backend_limiting)
         if ip_rate_limiting is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""ip_rate_limiting is deprecated: This property is deprecated.""")
+        if ip_rate_limiting is not None:
             pulumi.set(__self__, "ip_rate_limiting", ip_rate_limiting)
 
     @property
@@ -25481,6 +25484,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs:
 
     @property
     @pulumi.getter(name="ipRateLimiting")
+    @_utilities.deprecated("""This property is deprecated.""")
     def ip_rate_limiting(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs']]:
         """
         IP address rate limiting settings

@@ -272,6 +272,10 @@ def get_account_authentication(account_id: Optional[str] = None,
     """
     The Account Authentication data source provides information about the existing Aiven Account Authentication.
 
+    > **This resource is deprecated**.
+
+    This resource is deprecated
+
 
     :param str account_id: The unique id of the account.
     :param str name: The name of the account authentication.
@@ -307,6 +311,10 @@ def get_account_authentication_output(account_id: Optional[pulumi.Input[str]] = 
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAuthenticationResult]:
     """
     The Account Authentication data source provides information about the existing Aiven Account Authentication.
+
+    > **This resource is deprecated**.
+
+    This resource is deprecated
 
 
     :param str account_id: The unique id of the account.

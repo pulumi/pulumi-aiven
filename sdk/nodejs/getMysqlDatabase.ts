@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The MySQL Database data source provides information about the existing Aiven MySQL Database.
+ * Gets information about an Aiven for MySQL® database.
  *
  * ## Example Usage
  *
@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mydatabase = aiven.getMysqlDatabase({
- *     project: myproject.project,
- *     serviceName: mymysql.serviceName,
- *     databaseName: "<DATABASE_NAME>",
+ * const exampleDatabase = aiven.getMysqlDatabase({
+ *     project: exampleProject.project,
+ *     serviceName: exampleMysql.serviceName,
+ *     databaseName: "example-database",
  * });
  * ```
  */
@@ -34,7 +34,7 @@ export function getMysqlDatabase(args: GetMysqlDatabaseArgs, opts?: pulumi.Invok
  */
 export interface GetMysqlDatabaseArgs {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      */
     databaseName: string;
     /**
@@ -52,7 +52,7 @@ export interface GetMysqlDatabaseArgs {
  */
 export interface GetMysqlDatabaseResult {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      */
     readonly databaseName: string;
     /**
@@ -70,7 +70,7 @@ export interface GetMysqlDatabaseResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The MySQL Database data source provides information about the existing Aiven MySQL Database.
+ * Gets information about an Aiven for MySQL® database.
  *
  * ## Example Usage
  *
@@ -78,10 +78,10 @@ export interface GetMysqlDatabaseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mydatabase = aiven.getMysqlDatabase({
- *     project: myproject.project,
- *     serviceName: mymysql.serviceName,
- *     databaseName: "<DATABASE_NAME>",
+ * const exampleDatabase = aiven.getMysqlDatabase({
+ *     project: exampleProject.project,
+ *     serviceName: exampleMysql.serviceName,
+ *     databaseName: "example-database",
  * });
  * ```
  */
@@ -99,7 +99,7 @@ export function getMysqlDatabaseOutput(args: GetMysqlDatabaseOutputArgs, opts?: 
  */
 export interface GetMysqlDatabaseOutputArgs {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      */
     databaseName: pulumi.Input<string>;
     /**

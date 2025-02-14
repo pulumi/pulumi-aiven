@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.MySqlMysqlParamGetArgs>? _params;
 
         /// <summary>
-        /// MySQL connection parameters
+        /// MySQL connection parameters.
         /// </summary>
         public InputList<Inputs.MySqlMysqlParamGetArgs> Params
         {
@@ -32,7 +32,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _replicaUri;
 
         /// <summary>
-        /// MySQL replica URI for services with a replica
+        /// MySQL replica URI for services with a replica.
         /// </summary>
         public Input<string>? ReplicaUri
         {
@@ -48,7 +48,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _standbyUris;
 
         /// <summary>
-        /// MySQL standby connection URIs
+        /// MySQL standby connection URIs.
         /// </summary>
         public InputList<string> StandbyUris
         {
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _syncingUris;
 
         /// <summary>
-        /// MySQL syncing connection URIs
+        /// MySQL syncing connection URIs.
         /// </summary>
         public InputList<string> SyncingUris
         {
@@ -80,7 +80,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<string>? _uris;
 
         /// <summary>
-        /// MySQL master connection URIs
+        /// MySQL connection URIs.
         /// </summary>
         public InputList<string> Uris
         {

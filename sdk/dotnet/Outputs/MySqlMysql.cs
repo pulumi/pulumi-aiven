@@ -14,23 +14,23 @@ namespace Pulumi.Aiven.Outputs
     public sealed class MySqlMysql
     {
         /// <summary>
-        /// MySQL connection parameters
+        /// MySQL connection parameters.
         /// </summary>
         public readonly ImmutableArray<Outputs.MySqlMysqlParam> Params;
         /// <summary>
-        /// MySQL replica URI for services with a replica
+        /// MySQL replica URI for services with a replica.
         /// </summary>
         public readonly string? ReplicaUri;
         /// <summary>
-        /// MySQL standby connection URIs
+        /// MySQL standby connection URIs.
         /// </summary>
         public readonly ImmutableArray<string> StandbyUris;
         /// <summary>
-        /// MySQL syncing connection URIs
+        /// MySQL syncing connection URIs.
         /// </summary>
         public readonly ImmutableArray<string> SyncingUris;
         /// <summary>
-        /// MySQL master connection URIs
+        /// MySQL connection URIs.
         /// </summary>
         public readonly ImmutableArray<string> Uris;
 

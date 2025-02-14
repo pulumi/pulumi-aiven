@@ -14,27 +14,27 @@ namespace Pulumi.Aiven.Outputs
     public sealed class MySqlMysqlParam
     {
         /// <summary>
-        /// Primary MySQL database name
+        /// Thr name of the primary MySQL database.
         /// </summary>
         public readonly string? DatabaseName;
         /// <summary>
-        /// MySQL host IP or name
+        /// MySQL host IP or name.
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// MySQL admin user password
+        /// The password for the admin service user.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// MySQL port
+        /// MySQL port.
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// MySQL sslmode setting (currently always "require")
+        /// MySQL SSL mode setting. Always set to "require".
         /// </summary>
         public readonly string? Sslmode;
         /// <summary>
-        /// MySQL admin user name
+        /// The username for the admin service user.
         /// </summary>
         public readonly string? User;
 

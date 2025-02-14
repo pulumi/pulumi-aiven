@@ -24,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The MySQL resource allows the creation and management of Aiven MySQL services.
+ * Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) service.
  * 
  * ## Example Usage
  * 
@@ -54,11 +54,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mysql1 = new MySql("mysql1", MySqlArgs.builder()
- *             .project(foo.project())
+ *         var exampleMysql = new MySql("exampleMysql", MySqlArgs.builder()
+ *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")
- *             .serviceName("my-mysql1")
+ *             .serviceName("example-mysql")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .mysqlUserConfig(MySqlMysqlUserConfigArgs.builder()
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/mySql:MySql mysql1 project/service_name
+ * $ pulumi import aiven:index/mySql:MySql example_mysql PROJECT/SERVICE_NAME
  * ```
  * 
  */
@@ -237,14 +237,14 @@ public class MySql extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowTime);
     }
     /**
-     * MySQL specific server provided values
+     * MySQL server-provided values.
      * 
      */
     @Export(name="mysql", refs={MySqlMysql.class}, tree="[0]")
     private Output<MySqlMysql> mysql;
 
     /**
-     * @return MySQL specific server provided values
+     * @return MySQL server-provided values.
      * 
      */
     public Output<MySqlMysql> mysql() {

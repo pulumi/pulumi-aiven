@@ -102,8 +102,7 @@ def get_organization_user(organization_id: Optional[str] = None,
                           user_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationUserResult:
     """
-    The Organization User data source provides information about the existing Aiven Organization User.
-
+    Use this data source to access information about an existing resource.
 
     :param str organization_id: The unique organization ID.
     :param str user_email: This is a user email address
@@ -127,8 +126,7 @@ def get_organization_user_output(organization_id: Optional[pulumi.Input[str]] = 
                                  user_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserResult]:
     """
-    The Organization User data source provides information about the existing Aiven Organization User.
-
+    Use this data source to access information about an existing resource.
 
     :param str organization_id: The unique organization ID.
     :param str user_email: This is a user email address

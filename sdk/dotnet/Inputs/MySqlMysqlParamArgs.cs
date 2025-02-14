@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _databaseName;
 
         /// <summary>
-        /// Primary MySQL database name
+        /// Thr name of the primary MySQL database.
         /// </summary>
         public Input<string>? DatabaseName
         {
@@ -32,7 +32,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _host;
 
         /// <summary>
-        /// MySQL host IP or name
+        /// MySQL host IP or name.
         /// </summary>
         public Input<string>? Host
         {
@@ -48,7 +48,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// MySQL admin user password
+        /// The password for the admin service user.
         /// </summary>
         public Input<string>? Password
         {
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<int>? _port;
 
         /// <summary>
-        /// MySQL port
+        /// MySQL port.
         /// </summary>
         public Input<int>? Port
         {
@@ -80,7 +80,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _sslmode;
 
         /// <summary>
-        /// MySQL sslmode setting (currently always "require")
+        /// MySQL SSL mode setting. Always set to "require".
         /// </summary>
         public Input<string>? Sslmode
         {
@@ -96,7 +96,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _user;
 
         /// <summary>
-        /// MySQL admin user name
+        /// The username for the admin service user.
         /// </summary>
         public Input<string>? User
         {

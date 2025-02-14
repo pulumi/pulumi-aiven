@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetMySql
     {
         /// <summary>
-        /// The MySQL data source provides information about the existing Aiven MySQL service.
+        /// Gets information about an Aiven for MySQL® service.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql1 = Aiven.GetMySql.Invoke(new()
+        ///     var exampleMysql = Aiven.GetMySql.Invoke(new()
         ///     {
-        ///         Project = foo.Project,
-        ///         ServiceName = "my-mysql1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-mysql",
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The MySQL data source provides information about the existing Aiven MySQL service.
+        /// Gets information about an Aiven for MySQL® service.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql1 = Aiven.GetMySql.Invoke(new()
+        ///     var exampleMysql = Aiven.GetMySql.Invoke(new()
         ///     {
-        ///         Project = foo.Project,
-        ///         ServiceName = "my-mysql1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-mysql",
         ///     });
         /// 
         /// });
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetMySqlResult>("aiven:index/getMySql:getMySql", args ?? new GetMySqlInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The MySQL data source provides information about the existing Aiven MySQL service.
+        /// Gets information about an Aiven for MySQL® service.
         /// 
         /// ## Example Usage
         /// 
@@ -74,10 +74,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql1 = Aiven.GetMySql.Invoke(new()
+        ///     var exampleMysql = Aiven.GetMySql.Invoke(new()
         ///     {
-        ///         Project = foo.Project,
-        ///         ServiceName = "my-mysql1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-mysql",
         ///     });
         /// 
         /// });
@@ -181,7 +181,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMySqlMysqlUserConfigResult> MysqlUserConfigs;
         /// <summary>
-        /// MySQL specific server provided values
+        /// MySQL server-provided values.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMySqlMysqlResult> Mysqls;
         /// <summary>

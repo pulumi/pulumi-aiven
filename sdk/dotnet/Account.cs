@@ -12,7 +12,9 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages an Aiven account.
     /// 
-    /// **This resource is deprecated.** Use `aiven.Organization` instead.
+    /// &gt; **This resource is deprecated**.
+    /// 
+    /// This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
     /// 
     /// ## Example Usage
     /// 

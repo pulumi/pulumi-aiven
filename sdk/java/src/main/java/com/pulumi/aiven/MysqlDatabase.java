@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The MySQL Database resource allows the creation and management of Aiven MySQL Databases.
+ * Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database.
  * 
  * ## Example Usage
  * 
@@ -43,10 +43,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mydatabase = new MysqlDatabase("mydatabase", MysqlDatabaseArgs.builder()
- *             .project(myproject.project())
- *             .serviceName(mymysql.serviceName())
- *             .databaseName("<DATABASE_NAME>")
+ *         var exampleMysqlDatabase = new MysqlDatabase("exampleMysqlDatabase", MysqlDatabaseArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleMysql.serviceName())
+ *             .databaseName("example-database")
  *             .build());
  * 
  *     }
@@ -58,21 +58,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase PROJECT/SERVICE_NAME/DATABASE_NAME
+ * $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase example_database PROJECT/SERVICE_NAME/DATABASE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/mysqlDatabase:MysqlDatabase")
 public class MysqlDatabase extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the service database. Changing this property forces recreation of the resource.
+     * The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
-     * @return The name of the service database. Changing this property forces recreation of the resource.
+     * @return The name of the database. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> databaseName() {

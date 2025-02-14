@@ -13,74 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MySqlMysqlParam {
     /**
-     * @return Primary MySQL database name
+     * @return Thr name of the primary MySQL database.
      * 
      */
     private @Nullable String databaseName;
     /**
-     * @return MySQL host IP or name
+     * @return MySQL host IP or name.
      * 
      */
     private @Nullable String host;
     /**
-     * @return MySQL admin user password
+     * @return The password for the admin service user.
      * 
      */
     private @Nullable String password;
     /**
-     * @return MySQL port
+     * @return MySQL port.
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return MySQL sslmode setting (currently always &#34;require&#34;)
+     * @return MySQL SSL mode setting. Always set to &#34;require&#34;.
      * 
      */
     private @Nullable String sslmode;
     /**
-     * @return MySQL admin user name
+     * @return The username for the admin service user.
      * 
      */
     private @Nullable String user;
 
     private MySqlMysqlParam() {}
     /**
-     * @return Primary MySQL database name
+     * @return Thr name of the primary MySQL database.
      * 
      */
     public Optional<String> databaseName() {
         return Optional.ofNullable(this.databaseName);
     }
     /**
-     * @return MySQL host IP or name
+     * @return MySQL host IP or name.
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return MySQL admin user password
+     * @return The password for the admin service user.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return MySQL port
+     * @return MySQL port.
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return MySQL sslmode setting (currently always &#34;require&#34;)
+     * @return MySQL SSL mode setting. Always set to &#34;require&#34;.
      * 
      */
     public Optional<String> sslmode() {
         return Optional.ofNullable(this.sslmode);
     }
     /**
-     * @return MySQL admin user name
+     * @return The username for the admin service user.
      * 
      */
     public Optional<String> user() {

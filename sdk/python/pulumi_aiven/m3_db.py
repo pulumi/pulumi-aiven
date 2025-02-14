@@ -772,7 +772,7 @@ class M3Db(pulumi.CustomResource):
         """
         Creates and manages an [Aiven for M3](https://aiven.io/docs/products/m3db) service.
 
-        > **End of life notice**
+        !> **End of life notice**
         **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
         You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
         To avoid interruptions to your service, migrate to Aiven for Thanos Metrics
@@ -834,7 +834,7 @@ class M3Db(pulumi.CustomResource):
         """
         Creates and manages an [Aiven for M3](https://aiven.io/docs/products/m3db) service.
 
-        > **End of life notice**
+        !> **End of life notice**
         **After 30 April 2025** all running Aiven for M3 services will be powered off and deleted, making data from these services inaccessible.
         You cannot create M3DB services in Aiven projects that didn't have M3DB services before.
         To avoid interruptions to your service, migrate to Aiven for Thanos Metrics

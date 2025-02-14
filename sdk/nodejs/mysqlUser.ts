@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The MySQL User resource allows the creation and management of Aiven MySQL Users.
+ * Creates and manages an Aiven for MySQL® service user.
  *
  * ## Example Usage
  *
@@ -13,11 +13,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = new aiven.MysqlUser("foo", {
- *     serviceName: bar.serviceName,
- *     project: "my-project",
- *     username: "user-1",
- *     password: "Test$1234",
+ * const exampleMysqlUser = new aiven.MysqlUser("example_mysql_user", {
+ *     serviceName: exampleMysql.serviceName,
+ *     project: exampleProject.project,
+ *     username: "example-mysql-user",
+ *     password: serviceUserPw,
  * });
  * ```
  *
@@ -56,11 +56,11 @@ export class MysqlUser extends pulumi.CustomResource {
     }
 
     /**
-     * Access certificate for the user
+     * Access certificate for the user.
      */
     public /*out*/ readonly accessCert!: pulumi.Output<string>;
     /**
-     * Access certificate key for the user
+     * Access certificate key for the user.
      */
     public /*out*/ readonly accessKey!: pulumi.Output<string>;
     /**
@@ -68,7 +68,7 @@ export class MysqlUser extends pulumi.CustomResource {
      */
     public readonly authentication!: pulumi.Output<string | undefined>;
     /**
-     * The password of the MySQL User ( not applicable for all services ).
+     * The password of the MySQL service user.
      */
     public readonly password!: pulumi.Output<string>;
     /**
@@ -80,11 +80,11 @@ export class MysqlUser extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -141,11 +141,11 @@ export class MysqlUser extends pulumi.CustomResource {
  */
 export interface MysqlUserState {
     /**
-     * Access certificate for the user
+     * Access certificate for the user.
      */
     accessCert?: pulumi.Input<string>;
     /**
-     * Access certificate key for the user
+     * Access certificate key for the user.
      */
     accessKey?: pulumi.Input<string>;
     /**
@@ -153,7 +153,7 @@ export interface MysqlUserState {
      */
     authentication?: pulumi.Input<string>;
     /**
-     * The password of the MySQL User ( not applicable for all services ).
+     * The password of the MySQL service user.
      */
     password?: pulumi.Input<string>;
     /**
@@ -165,11 +165,11 @@ export interface MysqlUserState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Type of the user account. Tells whether the user is the primary account or a regular account.
+     * User account type, such as primary or regular account.
      */
     type?: pulumi.Input<string>;
     /**
-     * The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -183,7 +183,7 @@ export interface MysqlUserArgs {
      */
     authentication?: pulumi.Input<string>;
     /**
-     * The password of the MySQL User ( not applicable for all services ).
+     * The password of the MySQL service user.
      */
     password?: pulumi.Input<string>;
     /**
@@ -195,7 +195,7 @@ export interface MysqlUserArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the MySQL User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the MySQL service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }
