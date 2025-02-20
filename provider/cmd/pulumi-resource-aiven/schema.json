@@ -7303,6 +7303,23 @@
                 }
             }
         },
+        "aiven:index/OrganizationProjectTag:OrganizationProjectTag": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Project tag key.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Project tag value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ]
+        },
         "aiven:index/OrganizationTimeouts:OrganizationTimeouts": {
             "properties": {
                 "create": {
@@ -18216,6 +18233,28 @@
                 }
             }
         },
+        "aiven:index/getOrganizationProjectTag:getOrganizationProjectTag": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Project tag key.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Project tag value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getOrganizationUserListUser:getOrganizationUserListUser": {
             "properties": {
                 "isSuperAdmin": {
@@ -21792,7 +21831,7 @@
     },
     "resources": {
         "aiven:index/account:Account": {
-            "description": "Creates and manages an Aiven account.\n\n\u003e **This resource is deprecated**.\n\nThis resource will be removed in v5.0.0. Use `aiven.Organization` instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst account1 = new aiven.Account(\"account1\", {name: \"\u003cACCOUNT_NAME\u003e\"});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\naccount1 = aiven.Account(\"account1\", name=\"\u003cACCOUNT_NAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var account1 = new Aiven.Account(\"account1\", new()\n    {\n        Name = \"\u003cACCOUNT_NAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewAccount(ctx, \"account1\", \u0026aiven.AccountArgs{\n\t\t\tName: pulumi.String(\"\u003cACCOUNT_NAME\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Account;\nimport com.pulumi.aiven.AccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var account1 = new Account(\"account1\", AccountArgs.builder()\n            .name(\"\u003cACCOUNT_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  account1:\n    type: aiven:Account\n    properties:\n      name: \u003cACCOUNT_NAME\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/account:Account account1 account_id\n```\n\n",
+            "description": "Creates and manages an Aiven account.\n\n\u003e **This resource is deprecated**\nThis resource will be removed in v5.0.0. Use `aiven.Organization` instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst account1 = new aiven.Account(\"account1\", {name: \"\u003cACCOUNT_NAME\u003e\"});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\naccount1 = aiven.Account(\"account1\", name=\"\u003cACCOUNT_NAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var account1 = new Aiven.Account(\"account1\", new()\n    {\n        Name = \"\u003cACCOUNT_NAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewAccount(ctx, \"account1\", \u0026aiven.AccountArgs{\n\t\t\tName: pulumi.String(\"\u003cACCOUNT_NAME\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Account;\nimport com.pulumi.aiven.AccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var account1 = new Account(\"account1\", AccountArgs.builder()\n            .name(\"\u003cACCOUNT_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  account1:\n    type: aiven:Account\n    properties:\n      name: \u003cACCOUNT_NAME\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/account:Account account1 account_id\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -21897,7 +21936,7 @@
             }
         },
         "aiven:index/accountAuthentication:AccountAuthentication": {
-            "description": "Creates and manages an authentication method.\n\n\u003e **This resource is deprecated**.\n\nTo set up an identity provider as an authentication method for your organization,\n[use the Aiven Console](https://aiven.io/docs/platform/howto/saml/add-identity-providers).\nIt guides you through the steps and explains the settings.\n\n## Import\n\n```sh\n$ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo ACCOUNT_ID/AUTHENTICATION_ID\n```\n\n",
+            "description": "Creates and manages an authentication method.\n\n\u003e **This resource is deprecated**\nTo set up an identity provider as an authentication method for your organization,\n[use the Aiven Console](https://aiven.io/docs/platform/howto/saml/add-identity-providers).\nIt guides you through the steps and explains the settings.\n\n## Import\n\n```sh\n$ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo ACCOUNT_ID/AUTHENTICATION_ID\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -33334,6 +33373,124 @@
                 "type": "object"
             }
         },
+        "aiven:index/organizationProject:OrganizationProject": {
+            "description": "Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst foo = new aiven.OrganizationProject(\"foo\", {\n    projectId: \"example-project\",\n    organizationId: fooAivenOrganization.id,\n    billingGroupId: fooAivenBillingGroup.id,\n    tags: [{\n        key: \"key_1\",\n        value: \"value_1\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nfoo = aiven.OrganizationProject(\"foo\",\n    project_id=\"example-project\",\n    organization_id=foo_aiven_organization[\"id\"],\n    billing_group_id=foo_aiven_billing_group[\"id\"],\n    tags=[{\n        \"key\": \"key_1\",\n        \"value\": \"value_1\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new Aiven.OrganizationProject(\"foo\", new()\n    {\n        ProjectId = \"example-project\",\n        OrganizationId = fooAivenOrganization.Id,\n        BillingGroupId = fooAivenBillingGroup.Id,\n        Tags = new[]\n        {\n            new Aiven.Inputs.OrganizationProjectTagArgs\n            {\n                Key = \"key_1\",\n                Value = \"value_1\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOrganizationProject(ctx, \"foo\", \u0026aiven.OrganizationProjectArgs{\n\t\t\tProjectId:      pulumi.String(\"example-project\"),\n\t\t\tOrganizationId: pulumi.Any(fooAivenOrganization.Id),\n\t\t\tBillingGroupId: pulumi.Any(fooAivenBillingGroup.Id),\n\t\t\tTags: aiven.OrganizationProjectTagArray{\n\t\t\t\t\u0026aiven.OrganizationProjectTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"key_1\"),\n\t\t\t\t\tValue: pulumi.String(\"value_1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationProject;\nimport com.pulumi.aiven.OrganizationProjectArgs;\nimport com.pulumi.aiven.inputs.OrganizationProjectTagArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new OrganizationProject(\"foo\", OrganizationProjectArgs.builder()\n            .projectId(\"example-project\")\n            .organizationId(fooAivenOrganization.id())\n            .billingGroupId(fooAivenBillingGroup.id())\n            .tags(OrganizationProjectTagArgs.builder()\n                .key(\"key_1\")\n                .value(\"value_1\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: aiven:OrganizationProject\n    properties:\n      projectId: example-project\n      organizationId: ${fooAivenOrganization.id}\n      billingGroupId: ${fooAivenBillingGroup.id}\n      tags:\n        - key: key_1\n          value: value_1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/organizationProject:OrganizationProject main ORGANIZATION_ID/PROJECT_ID\n```\n\n",
+            "properties": {
+                "billingGroupId": {
+                    "type": "string",
+                    "description": "Billing group ID to assign to the project.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "ID of an organization. Changing this property forces recreation of the resource.\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier for the project that also serves as the project name.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/OrganizationProjectTag:OrganizationProjectTag"
+                    },
+                    "description": "Tags are key-value pairs that allow you to categorize projects.\n"
+                },
+                "technicalEmails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.\n"
+                }
+            },
+            "required": [
+                "billingGroupId",
+                "organizationId",
+                "parentId",
+                "projectId"
+            ],
+            "inputProperties": {
+                "billingGroupId": {
+                    "type": "string",
+                    "description": "Billing group ID to assign to the project.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "ID of an organization. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier for the project that also serves as the project name.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/OrganizationProjectTag:OrganizationProjectTag"
+                    },
+                    "description": "Tags are key-value pairs that allow you to categorize projects.\n"
+                },
+                "technicalEmails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.\n"
+                }
+            },
+            "requiredInputs": [
+                "billingGroupId",
+                "organizationId",
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrganizationProject resources.\n",
+                "properties": {
+                    "billingGroupId": {
+                        "type": "string",
+                        "description": "Billing group ID to assign to the project.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "ID of an organization. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier for the project that also serves as the project name.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/OrganizationProjectTag:OrganizationProjectTag"
+                        },
+                        "description": "Tags are key-value pairs that allow you to categorize projects.\n"
+                    },
+                    "technicalEmails": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aiven:index/organizationUser:OrganizationUser": {
             "properties": {
                 "accepted": {
@@ -34505,7 +34662,7 @@
             }
         },
         "aiven:index/projectUser:ProjectUser": {
-            "description": "Creates and manages an Aiven project member.\n\n**This resource is deprecated.** Use `aiven.OrganizationPermission` and\nmigrate existing aiven.ProjectUser resources \nto the new resource.\n\t\t\n\n\u003e **This resource is deprecated**.\n\nUse `aiven.OrganizationPermission` instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst mytestuser = new aiven.ProjectUser(\"mytestuser\", {\n    project: myproject.project,\n    email: \"john.doe@example.com\",\n    memberType: \"admin\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmytestuser = aiven.ProjectUser(\"mytestuser\",\n    project=myproject[\"project\"],\n    email=\"john.doe@example.com\",\n    member_type=\"admin\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mytestuser = new Aiven.ProjectUser(\"mytestuser\", new()\n    {\n        Project = myproject.Project,\n        Email = \"john.doe@example.com\",\n        MemberType = \"admin\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewProjectUser(ctx, \"mytestuser\", \u0026aiven.ProjectUserArgs{\n\t\t\tProject:    pulumi.Any(myproject.Project),\n\t\t\tEmail:      pulumi.String(\"john.doe@example.com\"),\n\t\t\tMemberType: pulumi.String(\"admin\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.ProjectUser;\nimport com.pulumi.aiven.ProjectUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mytestuser = new ProjectUser(\"mytestuser\", ProjectUserArgs.builder()\n            .project(myproject.project())\n            .email(\"john.doe@example.com\")\n            .memberType(\"admin\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mytestuser:\n    type: aiven:ProjectUser\n    properties:\n      project: ${myproject.project}\n      email: john.doe@example.com\n      memberType: admin\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/projectUser:ProjectUser mytestuser PROJECT/EMAIL\n```\n\n",
+            "description": "Creates and manages an Aiven project member.\n\n\u003e **This resource is deprecated**\nUse `aiven.OrganizationPermission` instead and\nmigrate existing `aiven.ProjectUser` resources \nto the new resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst mytestuser = new aiven.ProjectUser(\"mytestuser\", {\n    project: myproject.project,\n    email: \"john.doe@example.com\",\n    memberType: \"admin\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmytestuser = aiven.ProjectUser(\"mytestuser\",\n    project=myproject[\"project\"],\n    email=\"john.doe@example.com\",\n    member_type=\"admin\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mytestuser = new Aiven.ProjectUser(\"mytestuser\", new()\n    {\n        Project = myproject.Project,\n        Email = \"john.doe@example.com\",\n        MemberType = \"admin\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewProjectUser(ctx, \"mytestuser\", \u0026aiven.ProjectUserArgs{\n\t\t\tProject:    pulumi.Any(myproject.Project),\n\t\t\tEmail:      pulumi.String(\"john.doe@example.com\"),\n\t\t\tMemberType: pulumi.String(\"admin\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.ProjectUser;\nimport com.pulumi.aiven.ProjectUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mytestuser = new ProjectUser(\"mytestuser\", ProjectUserArgs.builder()\n            .project(myproject.project())\n            .email(\"john.doe@example.com\")\n            .memberType(\"admin\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mytestuser:\n    type: aiven:ProjectUser\n    properties:\n      project: ${myproject.project}\n      email: john.doe@example.com\n      memberType: admin\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/projectUser:ProjectUser mytestuser PROJECT/EMAIL\n```\n\n",
             "properties": {
                 "accepted": {
                     "type": "boolean",
@@ -37058,7 +37215,7 @@
     },
     "functions": {
         "aiven:index/getAccount:getAccount": {
-            "description": "The Account data source provides information about the existing Aiven Account.\n\n\u003e **This resource is deprecated**.\n\nThis resource will be removed in v5.0.0. Use `aiven.Organization` instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst account1 = aiven.getAccount({\n    name: \"\u003cACCOUNT_NAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\naccount1 = aiven.get_account(name=\"\u003cACCOUNT_NAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var account1 = Aiven.GetAccount.Invoke(new()\n    {\n        Name = \"\u003cACCOUNT_NAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupAccount(ctx, \u0026aiven.LookupAccountArgs{\n\t\t\tName: \"\u003cACCOUNT_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var account1 = AivenFunctions.getAccount(GetAccountArgs.builder()\n            .name(\"\u003cACCOUNT_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  account1:\n    fn::invoke:\n      function: aiven:getAccount\n      arguments:\n        name: \u003cACCOUNT_NAME\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The Account data source provides information about the existing Aiven Account.\n\n\u003e **This resource is deprecated**\nThis resource will be removed in v5.0.0. Use `aiven.Organization` instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst account1 = aiven.getAccount({\n    name: \"\u003cACCOUNT_NAME\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\naccount1 = aiven.get_account(name=\"\u003cACCOUNT_NAME\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var account1 = Aiven.GetAccount.Invoke(new()\n    {\n        Name = \"\u003cACCOUNT_NAME\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupAccount(ctx, \u0026aiven.LookupAccountArgs{\n\t\t\tName: \"\u003cACCOUNT_NAME\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var account1 = AivenFunctions.getAccount(GetAccountArgs.builder()\n            .name(\"\u003cACCOUNT_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  account1:\n    fn::invoke:\n      function: aiven:getAccount\n      arguments:\n        name: \u003cACCOUNT_NAME\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getAccount.\n",
                 "properties": {
@@ -37127,7 +37284,7 @@
             }
         },
         "aiven:index/getAccountAuthentication:getAccountAuthentication": {
-            "description": "The Account Authentication data source provides information about the existing Aiven Account Authentication.\n\n\u003e **This resource is deprecated**.\n\nThis resource is deprecated\n\n",
+            "description": "The Account Authentication data source provides information about the existing Aiven Account Authentication.\n\n\u003e **This resource is deprecated**\nThis resource is deprecated\n\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getAccountAuthentication.\n",
                 "properties": {
@@ -43024,6 +43181,76 @@
                 "type": "object"
             }
         },
+        "aiven:index/getOrganizationProject:getOrganizationProject": {
+            "description": "Gets information about an Aiven project. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst example = aiven.getOrganizationProject({\n    projectId: foo.projectId,\n    organizationId: foo.organizationId,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample = aiven.get_organization_project(project_id=foo[\"projectId\"],\n    organization_id=foo[\"organizationId\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Aiven.GetOrganizationProject.Invoke(new()\n    {\n        ProjectId = foo.ProjectId,\n        OrganizationId = foo.OrganizationId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOrganizationProject(ctx, \u0026aiven.LookupOrganizationProjectArgs{\n\t\t\tProjectId:      foo.ProjectId,\n\t\t\tOrganizationId: foo.OrganizationId,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOrganizationProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()\n            .projectId(foo.projectId())\n            .organizationId(foo.organizationId())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: aiven:getOrganizationProject\n      arguments:\n        projectId: ${foo.projectId}\n        organizationId: ${foo.organizationId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganizationProject.\n",
+                "properties": {
+                    "organizationId": {
+                        "type": "string",
+                        "description": "ID of an organization. Changing this property forces recreation of the resource.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier for the project that also serves as the project name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "organizationId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganizationProject.\n",
+                "properties": {
+                    "billingGroupId": {
+                        "description": "Billing group ID to assign to the project.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "ID of an organization. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "parentId": {
+                        "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Unique identifier for the project that also serves as the project name.\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "Tags are key-value pairs that allow you to categorize projects.\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getOrganizationProjectTag:getOrganizationProjectTag"
+                        },
+                        "type": "array"
+                    },
+                    "technicalEmails": {
+                        "description": "The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "billingGroupId",
+                    "organizationId",
+                    "parentId",
+                    "projectId",
+                    "tags",
+                    "technicalEmails",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "aiven:index/getOrganizationUser:getOrganizationUser": {
             "inputs": {
                 "description": "A collection of arguments for invoking getOrganizationUser.\n",
@@ -43692,7 +43919,7 @@
             }
         },
         "aiven:index/getProjectUser:getProjectUser": {
-            "description": "The Project User data source provides information about the existing Aiven Project User.\n\n\u003e **This resource is deprecated**.\n\nUse `aiven.OrganizationPermission` instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst mytestuser = aiven.getProjectUser({\n    project: myproject.project,\n    email: \"john.doe@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmytestuser = aiven.get_project_user(project=myproject[\"project\"],\n    email=\"john.doe@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mytestuser = Aiven.GetProjectUser.Invoke(new()\n    {\n        Project = myproject.Project,\n        Email = \"john.doe@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupProjectUser(ctx, \u0026aiven.LookupProjectUserArgs{\n\t\t\tProject: myproject.Project,\n\t\t\tEmail:   \"john.doe@example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetProjectUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()\n            .project(myproject.project())\n            .email(\"john.doe@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  mytestuser:\n    fn::invoke:\n      function: aiven:getProjectUser\n      arguments:\n        project: ${myproject.project}\n        email: john.doe@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The Project User data source provides information about the existing Aiven Project User.\n\n\u003e **This resource is deprecated**\nUse `aiven.OrganizationPermission` instead and\nmigrate existing `aiven.ProjectUser` resources \nto the new resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst mytestuser = aiven.getProjectUser({\n    project: myproject.project,\n    email: \"john.doe@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmytestuser = aiven.get_project_user(project=myproject[\"project\"],\n    email=\"john.doe@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mytestuser = Aiven.GetProjectUser.Invoke(new()\n    {\n        Project = myproject.Project,\n        Email = \"john.doe@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupProjectUser(ctx, \u0026aiven.LookupProjectUserArgs{\n\t\t\tProject: myproject.Project,\n\t\t\tEmail:   \"john.doe@example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetProjectUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()\n            .project(myproject.project())\n            .email(\"john.doe@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  mytestuser:\n    fn::invoke:\n      function: aiven:getProjectUser\n      arguments:\n        project: ${myproject.project}\n        email: john.doe@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getProjectUser.\n",
                 "properties": {
