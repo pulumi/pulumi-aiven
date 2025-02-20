@@ -272,8 +272,7 @@ def get_account_authentication(account_id: Optional[str] = None,
     """
     The Account Authentication data source provides information about the existing Aiven Account Authentication.
 
-    > **This resource is deprecated**.
-
+    > **This resource is deprecated**
     This resource is deprecated
 
 
@@ -312,8 +311,7 @@ def get_account_authentication_output(account_id: Optional[pulumi.Input[str]] = 
     """
     The Account Authentication data source provides information about the existing Aiven Account Authentication.
 
-    > **This resource is deprecated**.
-
+    > **This resource is deprecated**
     This resource is deprecated
 
 

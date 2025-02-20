@@ -9,8 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The Account Authentication data source provides information about the existing Aiven Account Authentication.
  *
- * > **This resource is deprecated**.
- *
+ * > **This resource is deprecated**
  * This resource is deprecated
  */
 export function getAccountAuthentication(args: GetAccountAuthenticationArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAuthenticationResult> {
@@ -119,8 +118,7 @@ export interface GetAccountAuthenticationResult {
 /**
  * The Account Authentication data source provides information about the existing Aiven Account Authentication.
  *
- * > **This resource is deprecated**.
- *
+ * > **This resource is deprecated**
  * This resource is deprecated
  */
 export function getAccountAuthenticationOutput(args: GetAccountAuthenticationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountAuthenticationResult> {

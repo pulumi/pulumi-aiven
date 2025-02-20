@@ -550,8 +550,7 @@ class AccountAuthentication(pulumi.CustomResource):
         """
         Creates and manages an authentication method.
 
-        > **This resource is deprecated**.
-
+        > **This resource is deprecated**
         To set up an identity provider as an authentication method for your organization,
         [use the Aiven Console](https://aiven.io/docs/platform/howto/saml/add-identity-providers).
         It guides you through the steps and explains the settings.
@@ -587,8 +586,7 @@ class AccountAuthentication(pulumi.CustomResource):
         """
         Creates and manages an authentication method.
 
-        > **This resource is deprecated**.
-
+        > **This resource is deprecated**
         To set up an identity provider as an authentication method for your organization,
         [use the Aiven Console](https://aiven.io/docs/platform/howto/saml/add-identity-providers).
         It guides you through the steps and explains the settings.

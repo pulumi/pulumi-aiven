@@ -18,8 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an Aiven account.
  * 
- * &gt; **This resource is deprecated**.
- * 
+ * &gt; **This resource is deprecated**
  * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
  * 
  * ## Example Usage

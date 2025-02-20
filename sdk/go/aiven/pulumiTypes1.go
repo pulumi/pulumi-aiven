@@ -13,6 +13,295 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMySqlMysqlUserConfigMigration struct {
+	// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+	Dbname *string `pulumi:"dbname"`
+	// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+	Host string `pulumi:"host"`
+	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+	IgnoreDbs *string `pulumi:"ignoreDbs"`
+	// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+	IgnoreRoles *string `pulumi:"ignoreRoles"`
+	// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+	Method *string `pulumi:"method"`
+	// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+	Password *string `pulumi:"password"`
+	// Port number of the server where to migrate data from. Example: `1234`.
+	Port int `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL. Default: `true`.
+	Ssl *bool `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from. Example: `myname`.
+	Username *string `pulumi:"username"`
+}
+
+// GetMySqlMysqlUserConfigMigrationInput is an input type that accepts GetMySqlMysqlUserConfigMigrationArgs and GetMySqlMysqlUserConfigMigrationOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigMigrationInput` via:
+//
+//	GetMySqlMysqlUserConfigMigrationArgs{...}
+type GetMySqlMysqlUserConfigMigrationInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigMigrationOutput() GetMySqlMysqlUserConfigMigrationOutput
+	ToGetMySqlMysqlUserConfigMigrationOutputWithContext(context.Context) GetMySqlMysqlUserConfigMigrationOutput
+}
+
+type GetMySqlMysqlUserConfigMigrationArgs struct {
+	// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+	Dbname pulumi.StringPtrInput `pulumi:"dbname"`
+	// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+	IgnoreDbs pulumi.StringPtrInput `pulumi:"ignoreDbs"`
+	// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+	IgnoreRoles pulumi.StringPtrInput `pulumi:"ignoreRoles"`
+	// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Port number of the server where to migrate data from. Example: `1234`.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The server where to migrate data from is secured with SSL. Default: `true`.
+	Ssl pulumi.BoolPtrInput `pulumi:"ssl"`
+	// User name for authentication with the server where to migrate data from. Example: `myname`.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetMySqlMysqlUserConfigMigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigMigration)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigMigrationArgs) ToGetMySqlMysqlUserConfigMigrationOutput() GetMySqlMysqlUserConfigMigrationOutput {
+	return i.ToGetMySqlMysqlUserConfigMigrationOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigMigrationArgs) ToGetMySqlMysqlUserConfigMigrationOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigMigrationOutput)
+}
+
+func (i GetMySqlMysqlUserConfigMigrationArgs) ToGetMySqlMysqlUserConfigMigrationPtrOutput() GetMySqlMysqlUserConfigMigrationPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigMigrationArgs) ToGetMySqlMysqlUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigMigrationOutput).ToGetMySqlMysqlUserConfigMigrationPtrOutputWithContext(ctx)
+}
+
+// GetMySqlMysqlUserConfigMigrationPtrInput is an input type that accepts GetMySqlMysqlUserConfigMigrationArgs, GetMySqlMysqlUserConfigMigrationPtr and GetMySqlMysqlUserConfigMigrationPtrOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigMigrationPtrInput` via:
+//
+//	        GetMySqlMysqlUserConfigMigrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetMySqlMysqlUserConfigMigrationPtrInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigMigrationPtrOutput() GetMySqlMysqlUserConfigMigrationPtrOutput
+	ToGetMySqlMysqlUserConfigMigrationPtrOutputWithContext(context.Context) GetMySqlMysqlUserConfigMigrationPtrOutput
+}
+
+type getMySqlMysqlUserConfigMigrationPtrType GetMySqlMysqlUserConfigMigrationArgs
+
+func GetMySqlMysqlUserConfigMigrationPtr(v *GetMySqlMysqlUserConfigMigrationArgs) GetMySqlMysqlUserConfigMigrationPtrInput {
+	return (*getMySqlMysqlUserConfigMigrationPtrType)(v)
+}
+
+func (*getMySqlMysqlUserConfigMigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigMigration)(nil)).Elem()
+}
+
+func (i *getMySqlMysqlUserConfigMigrationPtrType) ToGetMySqlMysqlUserConfigMigrationPtrOutput() GetMySqlMysqlUserConfigMigrationPtrOutput {
+	return i.ToGetMySqlMysqlUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *getMySqlMysqlUserConfigMigrationPtrType) ToGetMySqlMysqlUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigMigrationPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigMigrationOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigMigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigMigrationOutput) ToGetMySqlMysqlUserConfigMigrationOutput() GetMySqlMysqlUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMigrationOutput) ToGetMySqlMysqlUserConfigMigrationOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMigrationOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMigrationOutput) ToGetMySqlMysqlUserConfigMigrationPtrOutput() GetMySqlMysqlUserConfigMigrationPtrOutput {
+	return o.ToGetMySqlMysqlUserConfigMigrationPtrOutputWithContext(context.Background())
+}
+
+func (o GetMySqlMysqlUserConfigMigrationOutput) ToGetMySqlMysqlUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMigrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMySqlMysqlUserConfigMigration) *GetMySqlMysqlUserConfigMigration {
+		return &v
+	}).(GetMySqlMysqlUserConfigMigrationPtrOutput)
+}
+
+// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+func (o GetMySqlMysqlUserConfigMigrationOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) *string { return v.Dbname }).(pulumi.StringPtrOutput)
+}
+
+// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+func (o GetMySqlMysqlUserConfigMigrationOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+func (o GetMySqlMysqlUserConfigMigrationOutput) IgnoreDbs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) *string { return v.IgnoreDbs }).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+func (o GetMySqlMysqlUserConfigMigrationOutput) IgnoreRoles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) *string { return v.IgnoreRoles }).(pulumi.StringPtrOutput)
+}
+
+// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+func (o GetMySqlMysqlUserConfigMigrationOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+func (o GetMySqlMysqlUserConfigMigrationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Port number of the server where to migrate data from. Example: `1234`.
+func (o GetMySqlMysqlUserConfigMigrationOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The server where to migrate data from is secured with SSL. Default: `true`.
+func (o GetMySqlMysqlUserConfigMigrationOutput) Ssl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) *bool { return v.Ssl }).(pulumi.BoolPtrOutput)
+}
+
+// User name for authentication with the server where to migrate data from. Example: `myname`.
+func (o GetMySqlMysqlUserConfigMigrationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMigration) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigMigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigMigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMySqlMysqlUserConfigMigration)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) ToGetMySqlMysqlUserConfigMigrationPtrOutput() GetMySqlMysqlUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) ToGetMySqlMysqlUserConfigMigrationPtrOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigMigrationPtrOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) Elem() GetMySqlMysqlUserConfigMigrationOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) GetMySqlMysqlUserConfigMigration {
+		if v != nil {
+			return *v
+		}
+		var ret GetMySqlMysqlUserConfigMigration
+		return ret
+	}).(GetMySqlMysqlUserConfigMigrationOutput)
+}
+
+// Database name for bootstrapping the initial connection. Example: `defaultdb`.
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) Dbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dbname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) IgnoreDbs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreDbs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) IgnoreRoles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreRoles
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port number of the server where to migrate data from. Example: `1234`.
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The server where to migrate data from is secured with SSL. Default: `true`.
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) Ssl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// User name for authentication with the server where to migrate data from. Example: `myname`.
+func (o GetMySqlMysqlUserConfigMigrationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetMySqlMysqlUserConfigMysql struct {
 	// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
 	ConnectTimeout *int `pulumi:"connectTimeout"`
@@ -10390,6 +10679,112 @@ func (o GetOpenSearchTechEmailArrayOutput) Index(i pulumi.IntInput) GetOpenSearc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchTechEmail {
 		return vs[0].([]GetOpenSearchTechEmail)[vs[1].(int)]
 	}).(GetOpenSearchTechEmailOutput)
+}
+
+type GetOrganizationProjectTag struct {
+	// Project tag key.
+	Key string `pulumi:"key"`
+	// Project tag value.
+	Value string `pulumi:"value"`
+}
+
+// GetOrganizationProjectTagInput is an input type that accepts GetOrganizationProjectTagArgs and GetOrganizationProjectTagOutput values.
+// You can construct a concrete instance of `GetOrganizationProjectTagInput` via:
+//
+//	GetOrganizationProjectTagArgs{...}
+type GetOrganizationProjectTagInput interface {
+	pulumi.Input
+
+	ToGetOrganizationProjectTagOutput() GetOrganizationProjectTagOutput
+	ToGetOrganizationProjectTagOutputWithContext(context.Context) GetOrganizationProjectTagOutput
+}
+
+type GetOrganizationProjectTagArgs struct {
+	// Project tag key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Project tag value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetOrganizationProjectTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationProjectTag)(nil)).Elem()
+}
+
+func (i GetOrganizationProjectTagArgs) ToGetOrganizationProjectTagOutput() GetOrganizationProjectTagOutput {
+	return i.ToGetOrganizationProjectTagOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationProjectTagArgs) ToGetOrganizationProjectTagOutputWithContext(ctx context.Context) GetOrganizationProjectTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTagOutput)
+}
+
+// GetOrganizationProjectTagArrayInput is an input type that accepts GetOrganizationProjectTagArray and GetOrganizationProjectTagArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationProjectTagArrayInput` via:
+//
+//	GetOrganizationProjectTagArray{ GetOrganizationProjectTagArgs{...} }
+type GetOrganizationProjectTagArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationProjectTagArrayOutput() GetOrganizationProjectTagArrayOutput
+	ToGetOrganizationProjectTagArrayOutputWithContext(context.Context) GetOrganizationProjectTagArrayOutput
+}
+
+type GetOrganizationProjectTagArray []GetOrganizationProjectTagInput
+
+func (GetOrganizationProjectTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationProjectTag)(nil)).Elem()
+}
+
+func (i GetOrganizationProjectTagArray) ToGetOrganizationProjectTagArrayOutput() GetOrganizationProjectTagArrayOutput {
+	return i.ToGetOrganizationProjectTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationProjectTagArray) ToGetOrganizationProjectTagArrayOutputWithContext(ctx context.Context) GetOrganizationProjectTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTagArrayOutput)
+}
+
+type GetOrganizationProjectTagOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationProjectTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationProjectTag)(nil)).Elem()
+}
+
+func (o GetOrganizationProjectTagOutput) ToGetOrganizationProjectTagOutput() GetOrganizationProjectTagOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTagOutput) ToGetOrganizationProjectTagOutputWithContext(ctx context.Context) GetOrganizationProjectTagOutput {
+	return o
+}
+
+// Project tag key.
+func (o GetOrganizationProjectTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationProjectTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Project tag value.
+func (o GetOrganizationProjectTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationProjectTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetOrganizationProjectTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationProjectTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationProjectTag)(nil)).Elem()
+}
+
+func (o GetOrganizationProjectTagArrayOutput) ToGetOrganizationProjectTagArrayOutput() GetOrganizationProjectTagArrayOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTagArrayOutput) ToGetOrganizationProjectTagArrayOutputWithContext(ctx context.Context) GetOrganizationProjectTagArrayOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTagArrayOutput) Index(i pulumi.IntInput) GetOrganizationProjectTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationProjectTag {
+		return vs[0].([]GetOrganizationProjectTag)[vs[1].(int)]
+	}).(GetOrganizationProjectTagOutput)
 }
 
 type GetOrganizationUserListUser struct {
@@ -28068,6 +28463,8 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMigrationInput)(nil)).Elem(), GetMySqlMysqlUserConfigMigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMigrationPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlInput)(nil)).Elem(), GetMySqlMysqlUserConfigMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigPrivateAccessInput)(nil)).Elem(), GetMySqlMysqlUserConfigPrivateAccessArgs{})
@@ -28160,6 +28557,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTagArrayInput)(nil)).Elem(), GetOpenSearchTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailInput)(nil)).Elem(), GetOpenSearchTechEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailArrayInput)(nil)).Elem(), GetOpenSearchTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagInput)(nil)).Elem(), GetOrganizationProjectTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagArrayInput)(nil)).Elem(), GetOrganizationProjectTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserInput)(nil)).Elem(), GetOrganizationUserListUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserArrayInput)(nil)).Elem(), GetOrganizationUserListUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserUserInfoInput)(nil)).Elem(), GetOrganizationUserListUserUserInfoArgs{})
@@ -28372,6 +28771,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMigrationOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMigrationPtrOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMysqlOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMysqlPtrOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigPrivateAccessOutput{})
@@ -28464,6 +28865,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchTagArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchTechEmailOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationProjectTagOutput{})
+	pulumi.RegisterOutputType(GetOrganizationProjectTagArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserUserInfoOutput{})

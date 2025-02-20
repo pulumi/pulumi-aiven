@@ -14,8 +14,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Account data source provides information about the existing Aiven Account.
         /// 
-        /// &gt; **This resource is deprecated**.
-        /// 
+        /// &gt; **This resource is deprecated**
         /// This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
         /// 
         /// ## Example Usage
@@ -42,8 +41,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Account data source provides information about the existing Aiven Account.
         /// 
-        /// &gt; **This resource is deprecated**.
-        /// 
+        /// &gt; **This resource is deprecated**
         /// This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
         /// 
         /// ## Example Usage
@@ -70,8 +68,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Account data source provides information about the existing Aiven Account.
         /// 
-        /// &gt; **This resource is deprecated**.
-        /// 
+        /// &gt; **This resource is deprecated**
         /// This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
         /// 
         /// ## Example Usage

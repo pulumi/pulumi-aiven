@@ -14,8 +14,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Account Authentication data source provides information about the existing Aiven Account Authentication.
         /// 
-        /// &gt; **This resource is deprecated**.
-        /// 
+        /// &gt; **This resource is deprecated**
         /// This resource is deprecated
         /// </summary>
         public static Task<GetAccountAuthenticationResult> InvokeAsync(GetAccountAuthenticationArgs args, InvokeOptions? options = null)
@@ -24,8 +23,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Account Authentication data source provides information about the existing Aiven Account Authentication.
         /// 
-        /// &gt; **This resource is deprecated**.
-        /// 
+        /// &gt; **This resource is deprecated**
         /// This resource is deprecated
         /// </summary>
         public static Output<GetAccountAuthenticationResult> Invoke(GetAccountAuthenticationInvokeArgs args, InvokeOptions? options = null)
@@ -34,8 +32,7 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Account Authentication data source provides information about the existing Aiven Account Authentication.
         /// 
-        /// &gt; **This resource is deprecated**.
-        /// 
+        /// &gt; **This resource is deprecated**
         /// This resource is deprecated
         /// </summary>
         public static Output<GetAccountAuthenticationResult> Invoke(GetAccountAuthenticationInvokeArgs args, InvokeOutputOptions options)

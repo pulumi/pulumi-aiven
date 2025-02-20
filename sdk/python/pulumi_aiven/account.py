@@ -223,8 +223,7 @@ class Account(pulumi.CustomResource):
         """
         Creates and manages an Aiven account.
 
-        > **This resource is deprecated**.
-
+        > **This resource is deprecated**
         This resource will be removed in v5.0.0. Use `Organization` instead.
 
         ## Example Usage
@@ -256,8 +255,7 @@ class Account(pulumi.CustomResource):
         """
         Creates and manages an Aiven account.
 
-        > **This resource is deprecated**.
-
+        > **This resource is deprecated**
         This resource will be removed in v5.0.0. Use `Organization` instead.
 
         ## Example Usage

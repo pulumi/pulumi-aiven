@@ -93,6 +93,7 @@ from .get_opensearch_security_plugin_config import *
 from .get_opensearch_user import *
 from .get_organization import *
 from .get_organization_application_user import *
+from .get_organization_project import *
 from .get_organization_user import *
 from .get_organization_user_group import *
 from .get_organization_user_list import *
@@ -145,6 +146,7 @@ from .organization_application_user import *
 from .organization_application_user_token import *
 from .organization_group_project import *
 from .organization_permission import *
+from .organization_project import *
 from .organization_user import *
 from .organization_user_group import *
 from .organization_user_group_member import *
@@ -704,6 +706,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/organizationPermission:OrganizationPermission": "OrganizationPermission"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/organizationProject",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationProject:OrganizationProject": "OrganizationProject"
   }
  },
  {

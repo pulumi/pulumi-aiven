@@ -235,6 +235,7 @@ __all__ = [
     'OpenSearchTechEmail',
     'OrganizationGroupProjectTimeouts',
     'OrganizationPermissionPermission',
+    'OrganizationProjectTag',
     'OrganizationTimeouts',
     'OrganizationUserGroupMemberTimeouts',
     'PgComponent',
@@ -562,6 +563,7 @@ __all__ = [
     'GetOpenSearchServiceIntegrationResult',
     'GetOpenSearchTagResult',
     'GetOpenSearchTechEmailResult',
+    'GetOrganizationProjectTagResult',
     'GetOrganizationUserListUserResult',
     'GetOrganizationUserListUserUserInfoResult',
     'GetPgComponentResult',
@@ -20822,6 +20824,35 @@ class OrganizationPermissionPermission(dict):
         Time updated.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class OrganizationProjectTag(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Project tag key.
+        :param str value: Project tag value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Project tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Project tag value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -46061,6 +46092,35 @@ class GetOpenSearchTechEmailResult(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetOrganizationProjectTagResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Project tag key.
+        :param str value: Project tag value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Project tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Project tag value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

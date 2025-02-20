@@ -14,13 +14,10 @@ import (
 
 // Creates and manages an Aiven project member.
 //
-// **This resource is deprecated.** Use `OrganizationPermission` and
-// migrate existing ProjectUser resources
+// > **This resource is deprecated**
+// Use `OrganizationPermission` instead and
+// migrate existing `ProjectUser` resources
 // to the new resource.
-//
-// > **This resource is deprecated**.
-//
-// Use `OrganizationPermission` instead.
 //
 // ## Example Usage
 //

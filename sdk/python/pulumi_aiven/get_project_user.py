@@ -103,9 +103,10 @@ def get_project_user(email: Optional[str] = None,
     """
     The Project User data source provides information about the existing Aiven Project User.
 
-    > **This resource is deprecated**.
-
-    Use `OrganizationPermission` instead.
+    > **This resource is deprecated**
+    Use `OrganizationPermission` instead and
+    migrate existing `ProjectUser` resources
+    to the new resource.
 
     ## Example Usage
 
@@ -139,9 +140,10 @@ def get_project_user_output(email: Optional[pulumi.Input[str]] = None,
     """
     The Project User data source provides information about the existing Aiven Project User.
 
-    > **This resource is deprecated**.
-
-    Use `OrganizationPermission` instead.
+    > **This resource is deprecated**
+    Use `OrganizationPermission` instead and
+    migrate existing `ProjectUser` resources
+    to the new resource.
 
     ## Example Usage
 

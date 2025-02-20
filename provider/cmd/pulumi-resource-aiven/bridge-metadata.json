@@ -1469,6 +1469,18 @@
                     }
                 }
             },
+            "aiven_organization_project": {
+                "current": "aiven:index/organizationProject:OrganizationProject",
+                "majorVersion": 6,
+                "fields": {
+                    "tag": {
+                        "maxItemsOne": false
+                    },
+                    "technical_emails": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_organization_user": {
                 "current": "aiven:index/organizationUser:OrganizationUser",
                 "majorVersion": 6
@@ -3551,6 +3563,18 @@
                 "current": "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser",
                 "majorVersion": 6
             },
+            "aiven_organization_project": {
+                "current": "aiven:index/getOrganizationProject:getOrganizationProject",
+                "majorVersion": 6,
+                "fields": {
+                    "tag": {
+                        "maxItemsOne": false
+                    },
+                    "technical_emails": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_organization_user": {
                 "current": "aiven:index/getOrganizationUser:getOrganizationUser",
                 "majorVersion": 6
@@ -4310,6 +4334,7 @@
             "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken": 0,
             "aiven:index/organizationGroupProject:OrganizationGroupProject": 1,
             "aiven:index/organizationPermission:OrganizationPermission": 0,
+            "aiven:index/organizationProject:OrganizationProject": 0,
             "aiven:index/organizationUser:OrganizationUser": 0,
             "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
             "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": 1,
@@ -4386,6 +4411,7 @@
             "aiven:index/getOpensearchUser:getOpensearchUser": 0,
             "aiven:index/getOrganization:getOrganization": 1,
             "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": 0,
+            "aiven:index/getOrganizationProject:getOrganizationProject": 0,
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
             "aiven:index/getOrganizationUserList:getOrganizationUserList": 0,

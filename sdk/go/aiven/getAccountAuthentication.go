@@ -13,8 +13,7 @@ import (
 
 // The Account Authentication data source provides information about the existing Aiven Account Authentication.
 //
-// > **This resource is deprecated**.
-//
+// > **This resource is deprecated**
 // This resource is deprecated
 func LookupAccountAuthentication(ctx *pulumi.Context, args *LookupAccountAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupAccountAuthenticationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
