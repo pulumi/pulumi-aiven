@@ -5709,6 +5709,17 @@ export interface OrganizationPermissionPermission {
     updateTime?: pulumi.Input<string>;
 }
 
+export interface OrganizationProjectTag {
+    /**
+     * Project tag key.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Project tag value.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface OrganizationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).

@@ -7,13 +7,10 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages an Aiven project member.
  *
- * **This resource is deprecated.** Use `aiven.OrganizationPermission` and
- * migrate existing aiven.ProjectUser resources
+ * > **This resource is deprecated**
+ * Use `aiven.OrganizationPermission` instead and
+ * migrate existing `aiven.ProjectUser` resources
  * to the new resource.
- *
- * > **This resource is deprecated**.
- *
- * Use `aiven.OrganizationPermission` instead.
  *
  * ## Example Usage
  *

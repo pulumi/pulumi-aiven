@@ -114,6 +114,8 @@ import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
 import com.pulumi.aiven.inputs.GetOrganizationApplicationUserPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationArgs;
 import com.pulumi.aiven.inputs.GetOrganizationPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
+import com.pulumi.aiven.inputs.GetOrganizationProjectPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserGroupPlainArgs;
@@ -206,6 +208,7 @@ import com.pulumi.aiven.outputs.GetOpenSearchResult;
 import com.pulumi.aiven.outputs.GetOpensearchSecurityPluginConfigResult;
 import com.pulumi.aiven.outputs.GetOpensearchUserResult;
 import com.pulumi.aiven.outputs.GetOrganizationApplicationUserResult;
+import com.pulumi.aiven.outputs.GetOrganizationProjectResult;
 import com.pulumi.aiven.outputs.GetOrganizationResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserListResult;
@@ -237,8 +240,7 @@ public final class AivenFunctions {
     /**
      * The Account data source provides information about the existing Aiven Account.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
      * 
      * ## Example Usage
@@ -283,8 +285,7 @@ public final class AivenFunctions {
     /**
      * The Account data source provides information about the existing Aiven Account.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
      * 
      * ## Example Usage
@@ -329,8 +330,7 @@ public final class AivenFunctions {
     /**
      * The Account data source provides information about the existing Aiven Account.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
      * 
      * ## Example Usage
@@ -375,8 +375,7 @@ public final class AivenFunctions {
     /**
      * The Account data source provides information about the existing Aiven Account.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
      * 
      * ## Example Usage
@@ -421,8 +420,7 @@ public final class AivenFunctions {
     /**
      * The Account data source provides information about the existing Aiven Account.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource will be removed in v5.0.0. Use `aiven.Organization` instead.
      * 
      * ## Example Usage
@@ -467,8 +465,7 @@ public final class AivenFunctions {
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource is deprecated
      * 
      */
@@ -478,8 +475,7 @@ public final class AivenFunctions {
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource is deprecated
      * 
      */
@@ -489,8 +485,7 @@ public final class AivenFunctions {
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource is deprecated
      * 
      */
@@ -500,8 +495,7 @@ public final class AivenFunctions {
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource is deprecated
      * 
      */
@@ -511,8 +505,7 @@ public final class AivenFunctions {
     /**
      * The Account Authentication data source provides information about the existing Aiven Account Authentication.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
+     * &gt; **This resource is deprecated**
      * This resource is deprecated
      * 
      */
@@ -10543,6 +10536,236 @@ public final class AivenFunctions {
     public static CompletableFuture<GetOrganizationApplicationUserResult> getOrganizationApplicationUserPlain(GetOrganizationApplicationUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", TypeShape.of(GetOrganizationApplicationUserResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Gets information about an Aiven project.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
+     *             .projectId(foo.projectId())
+     *             .organizationId(foo.organizationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrganizationProjectResult> getOrganizationProject(GetOrganizationProjectArgs args) {
+        return getOrganizationProject(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven project.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
+     *             .projectId(foo.projectId())
+     *             .organizationId(foo.organizationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetOrganizationProjectResult> getOrganizationProjectPlain(GetOrganizationProjectPlainArgs args) {
+        return getOrganizationProjectPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an Aiven project.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
+     *             .projectId(foo.projectId())
+     *             .organizationId(foo.organizationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrganizationProjectResult> getOrganizationProject(GetOrganizationProjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationProject:getOrganizationProject", TypeShape.of(GetOrganizationProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven project.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
+     *             .projectId(foo.projectId())
+     *             .organizationId(foo.organizationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrganizationProjectResult> getOrganizationProject(GetOrganizationProjectArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationProject:getOrganizationProject", TypeShape.of(GetOrganizationProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an Aiven project.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
+     *             .projectId(foo.projectId())
+     *             .organizationId(foo.organizationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetOrganizationProjectResult> getOrganizationProjectPlain(GetOrganizationProjectPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationProject:getOrganizationProject", TypeShape.of(GetOrganizationProjectResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args) {
         return getOrganizationUser(args, InvokeOptions.Empty);
     }
@@ -11926,9 +12149,10 @@ public final class AivenFunctions {
     /**
      * The Project User data source provides information about the existing Aiven Project User.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
-     * Use `aiven.OrganizationPermission` instead.
+     * &gt; **This resource is deprecated**
+     * Use `aiven.OrganizationPermission` instead and
+     * migrate existing `aiven.ProjectUser` resources
+     * to the new resource.
      * 
      * ## Example Usage
      * 
@@ -11973,9 +12197,10 @@ public final class AivenFunctions {
     /**
      * The Project User data source provides information about the existing Aiven Project User.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
-     * Use `aiven.OrganizationPermission` instead.
+     * &gt; **This resource is deprecated**
+     * Use `aiven.OrganizationPermission` instead and
+     * migrate existing `aiven.ProjectUser` resources
+     * to the new resource.
      * 
      * ## Example Usage
      * 
@@ -12020,9 +12245,10 @@ public final class AivenFunctions {
     /**
      * The Project User data source provides information about the existing Aiven Project User.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
-     * Use `aiven.OrganizationPermission` instead.
+     * &gt; **This resource is deprecated**
+     * Use `aiven.OrganizationPermission` instead and
+     * migrate existing `aiven.ProjectUser` resources
+     * to the new resource.
      * 
      * ## Example Usage
      * 
@@ -12067,9 +12293,10 @@ public final class AivenFunctions {
     /**
      * The Project User data source provides information about the existing Aiven Project User.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
-     * Use `aiven.OrganizationPermission` instead.
+     * &gt; **This resource is deprecated**
+     * Use `aiven.OrganizationPermission` instead and
+     * migrate existing `aiven.ProjectUser` resources
+     * to the new resource.
      * 
      * ## Example Usage
      * 
@@ -12114,9 +12341,10 @@ public final class AivenFunctions {
     /**
      * The Project User data source provides information about the existing Aiven Project User.
      * 
-     * &gt; **This resource is deprecated**.
-     * 
-     * Use `aiven.OrganizationPermission` instead.
+     * &gt; **This resource is deprecated**
+     * Use `aiven.OrganizationPermission` instead and
+     * migrate existing `aiven.ProjectUser` resources
+     * to the new resource.
      * 
      * ## Example Usage
      * 

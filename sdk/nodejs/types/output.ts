@@ -7250,6 +7250,17 @@ export interface GetOpenSearchTechEmail {
     email: string;
 }
 
+export interface GetOrganizationProjectTag {
+    /**
+     * Project tag key.
+     */
+    key: string;
+    /**
+     * Project tag value.
+     */
+    value: string;
+}
+
 export interface GetOrganizationUserListUser {
     /**
      * Super admin state of the organization user
@@ -14039,6 +14050,17 @@ export interface OrganizationPermissionPermission {
      * Time updated.
      */
     updateTime: string;
+}
+
+export interface OrganizationProjectTag {
+    /**
+     * Project tag key.
+     */
+    key: string;
+    /**
+     * Project tag value.
+     */
+    value: string;
 }
 
 export interface OrganizationTimeouts {

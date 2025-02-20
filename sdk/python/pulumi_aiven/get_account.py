@@ -150,8 +150,7 @@ def get_account(name: Optional[str] = None,
     """
     The Account data source provides information about the existing Aiven Account.
 
-    > **This resource is deprecated**.
-
+    > **This resource is deprecated**
     This resource will be removed in v5.0.0. Use `Organization` instead.
 
     ## Example Usage
@@ -186,8 +185,7 @@ def get_account_output(name: Optional[pulumi.Input[str]] = None,
     """
     The Account data source provides information about the existing Aiven Account.
 
-    > **This resource is deprecated**.
-
+    > **This resource is deprecated**
     This resource will be removed in v5.0.0. Use `Organization` instead.
 
     ## Example Usage

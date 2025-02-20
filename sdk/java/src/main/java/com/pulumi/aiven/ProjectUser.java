@@ -17,13 +17,10 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an Aiven project member.
  * 
- * **This resource is deprecated.** Use `aiven.OrganizationPermission` and
- * migrate existing aiven.ProjectUser resources
+ * &gt; **This resource is deprecated**
+ * Use `aiven.OrganizationPermission` instead and
+ * migrate existing `aiven.ProjectUser` resources
  * to the new resource.
- * 
- * &gt; **This resource is deprecated**.
- * 
- * Use `aiven.OrganizationPermission` instead.
  * 
  * ## Example Usage
  * 

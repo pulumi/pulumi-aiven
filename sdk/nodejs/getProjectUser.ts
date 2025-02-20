@@ -7,9 +7,10 @@ import * as utilities from "./utilities";
 /**
  * The Project User data source provides information about the existing Aiven Project User.
  *
- * > **This resource is deprecated**.
- *
- * Use `aiven.OrganizationPermission` instead.
+ * > **This resource is deprecated**
+ * Use `aiven.OrganizationPermission` instead and
+ * migrate existing `aiven.ProjectUser` resources
+ * to the new resource.
  *
  * ## Example Usage
  *
@@ -73,9 +74,10 @@ export interface GetProjectUserResult {
 /**
  * The Project User data source provides information about the existing Aiven Project User.
  *
- * > **This resource is deprecated**.
- *
- * Use `aiven.OrganizationPermission` instead.
+ * > **This resource is deprecated**
+ * Use `aiven.OrganizationPermission` instead and
+ * migrate existing `aiven.ProjectUser` resources
+ * to the new resource.
  *
  * ## Example Usage
  *

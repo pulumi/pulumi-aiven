@@ -453,6 +453,8 @@ __all__ = [
     'OrganizationGroupProjectTimeoutsArgsDict',
     'OrganizationPermissionPermissionArgs',
     'OrganizationPermissionPermissionArgsDict',
+    'OrganizationProjectTagArgs',
+    'OrganizationProjectTagArgsDict',
     'OrganizationTimeoutsArgs',
     'OrganizationTimeoutsArgsDict',
     'OrganizationUserGroupMemberTimeoutsArgs',
@@ -28223,6 +28225,56 @@ class OrganizationPermissionPermissionArgs:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
+
+
+if not MYPY:
+    class OrganizationProjectTagArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Project tag key.
+        """
+        value: pulumi.Input[str]
+        """
+        Project tag value.
+        """
+elif False:
+    OrganizationProjectTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrganizationProjectTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: Project tag key.
+        :param pulumi.Input[str] value: Project tag value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Project tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Project tag value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
