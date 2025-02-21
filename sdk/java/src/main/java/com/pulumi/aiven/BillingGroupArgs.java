@@ -190,14 +190,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Import(name="parentId")
     private @Nullable Output<String> parentId;
 
     /**
-     * @return Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Optional<Output<String>> parentId() {
@@ -547,7 +547,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentId Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentId Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 

@@ -63,7 +63,7 @@ type OrganizationProject struct {
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
 	// Unique identifier for the project that also serves as the project name.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -116,7 +116,7 @@ type organizationProjectState struct {
 	BillingGroupId *string `pulumi:"billingGroupId"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
 	// Unique identifier for the project that also serves as the project name.
 	ProjectId *string `pulumi:"projectId"`
@@ -131,7 +131,7 @@ type OrganizationProjectState struct {
 	BillingGroupId pulumi.StringPtrInput
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
 	// Unique identifier for the project that also serves as the project name.
 	ProjectId pulumi.StringPtrInput
@@ -150,7 +150,7 @@ type organizationProjectArgs struct {
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
 	// Unique identifier for the project that also serves as the project name.
 	ProjectId string `pulumi:"projectId"`
@@ -166,7 +166,7 @@ type OrganizationProjectArgs struct {
 	BillingGroupId pulumi.StringInput
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
 	// Unique identifier for the project that also serves as the project name.
 	ProjectId pulumi.StringInput
@@ -273,7 +273,7 @@ func (o OrganizationProjectOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 func (o OrganizationProjectOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }

@@ -106,7 +106,7 @@ export class BillingGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly parentId!: pulumi.Output<string | undefined>;
     /**
@@ -224,7 +224,7 @@ export interface BillingGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**
@@ -292,7 +292,7 @@ export interface BillingGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**

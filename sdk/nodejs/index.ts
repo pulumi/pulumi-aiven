@@ -45,6 +45,11 @@ export type AlloydbomniUser = import("./alloydbomniUser").AlloydbomniUser;
 export const AlloydbomniUser: typeof import("./alloydbomniUser").AlloydbomniUser = null as any;
 utilities.lazyLoad(exports, ["AlloydbomniUser"], () => require("./alloydbomniUser"));
 
+export { AwsOrgVpcPeeringConnectionArgs, AwsOrgVpcPeeringConnectionState } from "./awsOrgVpcPeeringConnection";
+export type AwsOrgVpcPeeringConnection = import("./awsOrgVpcPeeringConnection").AwsOrgVpcPeeringConnection;
+export const AwsOrgVpcPeeringConnection: typeof import("./awsOrgVpcPeeringConnection").AwsOrgVpcPeeringConnection = null as any;
+utilities.lazyLoad(exports, ["AwsOrgVpcPeeringConnection"], () => require("./awsOrgVpcPeeringConnection"));
+
 export { AwsPrivatelinkArgs, AwsPrivatelinkState } from "./awsPrivatelink";
 export type AwsPrivatelink = import("./awsPrivatelink").AwsPrivatelink;
 export const AwsPrivatelink: typeof import("./awsPrivatelink").AwsPrivatelink = null as any;
@@ -54,6 +59,11 @@ export { AwsVpcPeeringConnectionArgs, AwsVpcPeeringConnectionState } from "./aws
 export type AwsVpcPeeringConnection = import("./awsVpcPeeringConnection").AwsVpcPeeringConnection;
 export const AwsVpcPeeringConnection: typeof import("./awsVpcPeeringConnection").AwsVpcPeeringConnection = null as any;
 utilities.lazyLoad(exports, ["AwsVpcPeeringConnection"], () => require("./awsVpcPeeringConnection"));
+
+export { AzureOrgVpcPeeringConnectionArgs, AzureOrgVpcPeeringConnectionState } from "./azureOrgVpcPeeringConnection";
+export type AzureOrgVpcPeeringConnection = import("./azureOrgVpcPeeringConnection").AzureOrgVpcPeeringConnection;
+export const AzureOrgVpcPeeringConnection: typeof import("./azureOrgVpcPeeringConnection").AzureOrgVpcPeeringConnection = null as any;
+utilities.lazyLoad(exports, ["AzureOrgVpcPeeringConnection"], () => require("./azureOrgVpcPeeringConnection"));
 
 export { AzurePrivatelinkArgs, AzurePrivatelinkState } from "./azurePrivatelink";
 export type AzurePrivatelink = import("./azurePrivatelink").AzurePrivatelink;
@@ -155,6 +165,11 @@ export type FlinkJarApplicationVersion = import("./flinkJarApplicationVersion").
 export const FlinkJarApplicationVersion: typeof import("./flinkJarApplicationVersion").FlinkJarApplicationVersion = null as any;
 utilities.lazyLoad(exports, ["FlinkJarApplicationVersion"], () => require("./flinkJarApplicationVersion"));
 
+export { GcpOrgVpcPeeringConnectionArgs, GcpOrgVpcPeeringConnectionState } from "./gcpOrgVpcPeeringConnection";
+export type GcpOrgVpcPeeringConnection = import("./gcpOrgVpcPeeringConnection").GcpOrgVpcPeeringConnection;
+export const GcpOrgVpcPeeringConnection: typeof import("./gcpOrgVpcPeeringConnection").GcpOrgVpcPeeringConnection = null as any;
+utilities.lazyLoad(exports, ["GcpOrgVpcPeeringConnection"], () => require("./gcpOrgVpcPeeringConnection"));
+
 export { GcpPrivatelinkArgs, GcpPrivatelinkState } from "./gcpPrivatelink";
 export type GcpPrivatelink = import("./gcpPrivatelink").GcpPrivatelink;
 export const GcpPrivatelink: typeof import("./gcpPrivatelink").GcpPrivatelink = null as any;
@@ -210,6 +225,11 @@ export const getAlloydbomniUser: typeof import("./getAlloydbomniUser").getAlloyd
 export const getAlloydbomniUserOutput: typeof import("./getAlloydbomniUser").getAlloydbomniUserOutput = null as any;
 utilities.lazyLoad(exports, ["getAlloydbomniUser","getAlloydbomniUserOutput"], () => require("./getAlloydbomniUser"));
 
+export { GetAwsOrgVpcPeeringConnectionArgs, GetAwsOrgVpcPeeringConnectionResult, GetAwsOrgVpcPeeringConnectionOutputArgs } from "./getAwsOrgVpcPeeringConnection";
+export const getAwsOrgVpcPeeringConnection: typeof import("./getAwsOrgVpcPeeringConnection").getAwsOrgVpcPeeringConnection = null as any;
+export const getAwsOrgVpcPeeringConnectionOutput: typeof import("./getAwsOrgVpcPeeringConnection").getAwsOrgVpcPeeringConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsOrgVpcPeeringConnection","getAwsOrgVpcPeeringConnectionOutput"], () => require("./getAwsOrgVpcPeeringConnection"));
+
 export { GetAwsPrivatelinkArgs, GetAwsPrivatelinkResult, GetAwsPrivatelinkOutputArgs } from "./getAwsPrivatelink";
 export const getAwsPrivatelink: typeof import("./getAwsPrivatelink").getAwsPrivatelink = null as any;
 export const getAwsPrivatelinkOutput: typeof import("./getAwsPrivatelink").getAwsPrivatelinkOutput = null as any;
@@ -219,6 +239,11 @@ export { GetAwsVpcPeeringConnectionArgs, GetAwsVpcPeeringConnectionResult, GetAw
 export const getAwsVpcPeeringConnection: typeof import("./getAwsVpcPeeringConnection").getAwsVpcPeeringConnection = null as any;
 export const getAwsVpcPeeringConnectionOutput: typeof import("./getAwsVpcPeeringConnection").getAwsVpcPeeringConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getAwsVpcPeeringConnection","getAwsVpcPeeringConnectionOutput"], () => require("./getAwsVpcPeeringConnection"));
+
+export { GetAzureOrgVpcPeeringConnectionArgs, GetAzureOrgVpcPeeringConnectionResult, GetAzureOrgVpcPeeringConnectionOutputArgs } from "./getAzureOrgVpcPeeringConnection";
+export const getAzureOrgVpcPeeringConnection: typeof import("./getAzureOrgVpcPeeringConnection").getAzureOrgVpcPeeringConnection = null as any;
+export const getAzureOrgVpcPeeringConnectionOutput: typeof import("./getAzureOrgVpcPeeringConnection").getAzureOrgVpcPeeringConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getAzureOrgVpcPeeringConnection","getAzureOrgVpcPeeringConnectionOutput"], () => require("./getAzureOrgVpcPeeringConnection"));
 
 export { GetAzurePrivatelinkArgs, GetAzurePrivatelinkResult, GetAzurePrivatelinkOutputArgs } from "./getAzurePrivatelink";
 export const getAzurePrivatelink: typeof import("./getAzurePrivatelink").getAzurePrivatelink = null as any;
@@ -294,6 +319,11 @@ export { GetFlinkApplicationVersionArgs, GetFlinkApplicationVersionResult, GetFl
 export const getFlinkApplicationVersion: typeof import("./getFlinkApplicationVersion").getFlinkApplicationVersion = null as any;
 export const getFlinkApplicationVersionOutput: typeof import("./getFlinkApplicationVersion").getFlinkApplicationVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getFlinkApplicationVersion","getFlinkApplicationVersionOutput"], () => require("./getFlinkApplicationVersion"));
+
+export { GetGcpOrgVpcPeeringConnectionArgs, GetGcpOrgVpcPeeringConnectionResult, GetGcpOrgVpcPeeringConnectionOutputArgs } from "./getGcpOrgVpcPeeringConnection";
+export const getGcpOrgVpcPeeringConnection: typeof import("./getGcpOrgVpcPeeringConnection").getGcpOrgVpcPeeringConnection = null as any;
+export const getGcpOrgVpcPeeringConnectionOutput: typeof import("./getGcpOrgVpcPeeringConnection").getGcpOrgVpcPeeringConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getGcpOrgVpcPeeringConnection","getGcpOrgVpcPeeringConnectionOutput"], () => require("./getGcpOrgVpcPeeringConnection"));
 
 export { GetGcpPrivatelinkArgs, GetGcpPrivatelinkResult, GetGcpPrivatelinkOutputArgs } from "./getGcpPrivatelink";
 export const getGcpPrivatelink: typeof import("./getGcpPrivatelink").getGcpPrivatelink = null as any;
@@ -464,6 +494,11 @@ export { GetOrganizationUserListArgs, GetOrganizationUserListResult, GetOrganiza
 export const getOrganizationUserList: typeof import("./getOrganizationUserList").getOrganizationUserList = null as any;
 export const getOrganizationUserListOutput: typeof import("./getOrganizationUserList").getOrganizationUserListOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganizationUserList","getOrganizationUserListOutput"], () => require("./getOrganizationUserList"));
+
+export { GetOrganizationVpcArgs, GetOrganizationVpcResult, GetOrganizationVpcOutputArgs } from "./getOrganizationVpc";
+export const getOrganizationVpc: typeof import("./getOrganizationVpc").getOrganizationVpc = null as any;
+export const getOrganizationVpcOutput: typeof import("./getOrganizationVpc").getOrganizationVpcOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationVpc","getOrganizationVpcOutput"], () => require("./getOrganizationVpc"));
 
 export { GetOrganizationalUnitArgs, GetOrganizationalUnitResult, GetOrganizationalUnitOutputArgs } from "./getOrganizationalUnit";
 export const getOrganizationalUnit: typeof import("./getOrganizationalUnit").getOrganizationalUnit = null as any;
@@ -730,6 +765,11 @@ export type OrganizationUserGroupMember = import("./organizationUserGroupMember"
 export const OrganizationUserGroupMember: typeof import("./organizationUserGroupMember").OrganizationUserGroupMember = null as any;
 utilities.lazyLoad(exports, ["OrganizationUserGroupMember"], () => require("./organizationUserGroupMember"));
 
+export { OrganizationVpcArgs, OrganizationVpcState } from "./organizationVpc";
+export type OrganizationVpc = import("./organizationVpc").OrganizationVpc;
+export const OrganizationVpc: typeof import("./organizationVpc").OrganizationVpc = null as any;
+utilities.lazyLoad(exports, ["OrganizationVpc"], () => require("./organizationVpc"));
+
 export { OrganizationalUnitArgs, OrganizationalUnitState } from "./organizationalUnit";
 export type OrganizationalUnit = import("./organizationalUnit").OrganizationalUnit;
 export const OrganizationalUnit: typeof import("./organizationalUnit").OrganizationalUnit = null as any;
@@ -845,10 +885,14 @@ const _module = {
                 return new AlloydbomniDatabase(name, <any>undefined, { urn })
             case "aiven:index/alloydbomniUser:AlloydbomniUser":
                 return new AlloydbomniUser(name, <any>undefined, { urn })
+            case "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection":
+                return new AwsOrgVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/awsPrivatelink:AwsPrivatelink":
                 return new AwsPrivatelink(name, <any>undefined, { urn })
             case "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection":
                 return new AwsVpcPeeringConnection(name, <any>undefined, { urn })
+            case "aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection":
+                return new AzureOrgVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/azurePrivatelink:AzurePrivatelink":
                 return new AzurePrivatelink(name, <any>undefined, { urn })
             case "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval":
@@ -889,6 +933,8 @@ const _module = {
                 return new FlinkJarApplicationDeployment(name, <any>undefined, { urn })
             case "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion":
                 return new FlinkJarApplicationVersion(name, <any>undefined, { urn })
+            case "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection":
+                return new GcpOrgVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/gcpPrivatelink:GcpPrivatelink":
                 return new GcpPrivatelink(name, <any>undefined, { urn })
             case "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval":
@@ -969,6 +1015,8 @@ const _module = {
                 return new OrganizationUserGroup(name, <any>undefined, { urn })
             case "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember":
                 return new OrganizationUserGroupMember(name, <any>undefined, { urn })
+            case "aiven:index/organizationVpc:OrganizationVpc":
+                return new OrganizationVpc(name, <any>undefined, { urn })
             case "aiven:index/organizationalUnit:OrganizationalUnit":
                 return new OrganizationalUnit(name, <any>undefined, { urn })
             case "aiven:index/pg:Pg":
@@ -1014,8 +1062,10 @@ pulumi.runtime.registerResourceModule("aiven", "index/accountTeamProject", _modu
 pulumi.runtime.registerResourceModule("aiven", "index/alloydbomni", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/alloydbomniDatabase", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/alloydbomniUser", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/awsOrgVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/awsPrivatelink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/awsVpcPeeringConnection", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/azureOrgVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelinkConnectionApproval", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/azureVpcPeeringConnection", _module)
@@ -1036,6 +1086,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationVersion", 
 pulumi.runtime.registerResourceModule("aiven", "index/flinkJarApplication", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkJarApplicationDeployment", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkJarApplicationVersion", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/gcpOrgVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpPrivatelink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpPrivatelinkConnectionApproval", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/gcpVpcPeeringConnection", _module)
@@ -1076,6 +1127,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/organizationProject", _mod
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUserGroup", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUserGroupMember", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/organizationVpc", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationalUnit", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/pg", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/pgDatabase", _module)

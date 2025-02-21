@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Aiven
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
@@ -203,7 +203,7 @@ namespace Pulumi.Aiven
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }

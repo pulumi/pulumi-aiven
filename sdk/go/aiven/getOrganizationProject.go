@@ -68,7 +68,7 @@ type LookupOrganizationProjectResult struct {
 	Id string `pulumi:"id"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId string `pulumi:"parentId"`
 	// Unique identifier for the project that also serves as the project name.
 	ProjectId string `pulumi:"projectId"`
@@ -129,7 +129,7 @@ func (o LookupOrganizationProjectResultOutput) OrganizationId() pulumi.StringOut
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupOrganizationProjectResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.ParentId }).(pulumi.StringOutput)
 }

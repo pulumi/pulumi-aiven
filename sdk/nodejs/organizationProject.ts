@@ -72,7 +72,7 @@ export class OrganizationProject extends pulumi.CustomResource {
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly parentId!: pulumi.Output<string>;
     /**
@@ -143,7 +143,7 @@ export interface OrganizationProjectState {
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**
@@ -173,7 +173,7 @@ export interface OrganizationProjectArgs {
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**

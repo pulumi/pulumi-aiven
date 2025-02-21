@@ -47,7 +47,7 @@ class BillingGroupArgs:
         :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         :param pulumi.Input[str] country_code: Two-letter country code.
         :param pulumi.Input[str] name: Name of the billing group.
-        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] state: Address state.
         :param pulumi.Input[str] vat_id: The VAT identification number for your company.
         :param pulumi.Input[str] zip_code: Zip or postal code.
@@ -223,7 +223,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
@@ -299,7 +299,7 @@ class _BillingGroupState:
         :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         :param pulumi.Input[str] country_code: Two-letter country code.
         :param pulumi.Input[str] name: Name of the billing group.
-        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] state: Address state.
         :param pulumi.Input[str] vat_id: The VAT identification number for your company.
         :param pulumi.Input[str] zip_code: Zip or postal code.
@@ -475,7 +475,7 @@ class _BillingGroupState:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
@@ -579,7 +579,7 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         :param pulumi.Input[str] country_code: Two-letter country code.
         :param pulumi.Input[str] name: Name of the billing group.
-        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] state: Address state.
         :param pulumi.Input[str] vat_id: The VAT identification number for your company.
         :param pulumi.Input[str] zip_code: Zip or postal code.
@@ -712,7 +712,7 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         :param pulumi.Input[str] country_code: Two-letter country code.
         :param pulumi.Input[str] name: Name of the billing group.
-        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] state: Address state.
         :param pulumi.Input[str] vat_id: The VAT identification number for your company.
         :param pulumi.Input[str] zip_code: Zip or postal code.
@@ -831,7 +831,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 

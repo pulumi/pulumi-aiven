@@ -186,14 +186,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.estimatedBalance;
     }
     /**
-     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentId;
 
     /**
-     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> parentId() {

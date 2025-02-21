@@ -37,10 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlloydbomniDatabase{}
 	case "aiven:index/alloydbomniUser:AlloydbomniUser":
 		r = &AlloydbomniUser{}
+	case "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection":
+		r = &AwsOrgVpcPeeringConnection{}
 	case "aiven:index/awsPrivatelink:AwsPrivatelink":
 		r = &AwsPrivatelink{}
 	case "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection":
 		r = &AwsVpcPeeringConnection{}
+	case "aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection":
+		r = &AzureOrgVpcPeeringConnection{}
 	case "aiven:index/azurePrivatelink:AzurePrivatelink":
 		r = &AzurePrivatelink{}
 	case "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval":
@@ -81,6 +85,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FlinkJarApplicationDeployment{}
 	case "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion":
 		r = &FlinkJarApplicationVersion{}
+	case "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection":
+		r = &GcpOrgVpcPeeringConnection{}
 	case "aiven:index/gcpPrivatelink:GcpPrivatelink":
 		r = &GcpPrivatelink{}
 	case "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval":
@@ -161,6 +167,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationUserGroup{}
 	case "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember":
 		r = &OrganizationUserGroupMember{}
+	case "aiven:index/organizationVpc:OrganizationVpc":
+		r = &OrganizationVpc{}
 	case "aiven:index/organizationalUnit:OrganizationalUnit":
 		r = &OrganizationalUnit{}
 	case "aiven:index/pg:Pg":
@@ -266,12 +274,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/awsOrgVpcPeeringConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/awsPrivatelink",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/awsVpcPeeringConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/azureOrgVpcPeeringConnection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -372,6 +390,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/flinkJarApplicationVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/gcpOrgVpcPeeringConnection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -572,6 +595,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/organizationUserGroupMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/organizationVpc",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

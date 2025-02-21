@@ -116,7 +116,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string ParentId;
         /// <summary>

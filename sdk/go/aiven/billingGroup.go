@@ -81,7 +81,7 @@ type BillingGroup struct {
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
 	// Name of the billing group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
 	// Address state.
 	State pulumi.StringPtrOutput `pulumi:"state"`
@@ -145,7 +145,7 @@ type billingGroupState struct {
 	CountryCode *string `pulumi:"countryCode"`
 	// Name of the billing group.
 	Name *string `pulumi:"name"`
-	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
 	// Address state.
 	State *string `pulumi:"state"`
@@ -180,7 +180,7 @@ type BillingGroupState struct {
 	CountryCode pulumi.StringPtrInput
 	// Name of the billing group.
 	Name pulumi.StringPtrInput
-	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
 	// Address state.
 	State pulumi.StringPtrInput
@@ -219,7 +219,7 @@ type billingGroupArgs struct {
 	CountryCode *string `pulumi:"countryCode"`
 	// Name of the billing group.
 	Name *string `pulumi:"name"`
-	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
 	// Address state.
 	State *string `pulumi:"state"`
@@ -255,7 +255,7 @@ type BillingGroupArgs struct {
 	CountryCode pulumi.StringPtrInput
 	// Name of the billing group.
 	Name pulumi.StringPtrInput
-	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
 	// Address state.
 	State pulumi.StringPtrInput
@@ -409,7 +409,7 @@ func (o BillingGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
 func (o BillingGroupOutput) ParentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
 }
