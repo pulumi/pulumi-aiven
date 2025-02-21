@@ -23022,6 +23022,130 @@
                 "type": "object"
             }
         },
+        "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection": {
+            "description": "Creates and manages an AWS VPC peering connection with an Aiven Organization VPC. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleVpc = new aiven.OrganizationVpc(\"example_vpc\", {\n    organizationId: example.id,\n    cloudName: \"aws-eu-central-1\",\n    networkCidr: \"10.0.0.0/24\",\n});\nconst examplePeering = new aiven.AwsOrgVpcPeeringConnection(\"example_peering\", {\n    organizationId: exampleVpc.organizationId,\n    organizationVpcId: exampleVpc.organizationVpcId,\n    awsAccountId: awsId,\n    awsVpcId: \"vpc-1a2b3c4d5e6f7g8h9\",\n    awsVpcRegion: \"aws-us-east-2\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_vpc = aiven.OrganizationVpc(\"example_vpc\",\n    organization_id=example[\"id\"],\n    cloud_name=\"aws-eu-central-1\",\n    network_cidr=\"10.0.0.0/24\")\nexample_peering = aiven.AwsOrgVpcPeeringConnection(\"example_peering\",\n    organization_id=example_vpc.organization_id,\n    organization_vpc_id=example_vpc.organization_vpc_id,\n    aws_account_id=aws_id,\n    aws_vpc_id=\"vpc-1a2b3c4d5e6f7g8h9\",\n    aws_vpc_region=\"aws-us-east-2\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleVpc = new Aiven.OrganizationVpc(\"example_vpc\", new()\n    {\n        OrganizationId = example.Id,\n        CloudName = \"aws-eu-central-1\",\n        NetworkCidr = \"10.0.0.0/24\",\n    });\n\n    var examplePeering = new Aiven.AwsOrgVpcPeeringConnection(\"example_peering\", new()\n    {\n        OrganizationId = exampleVpc.OrganizationId,\n        OrganizationVpcId = exampleVpc.OrganizationVpcId,\n        AwsAccountId = awsId,\n        AwsVpcId = \"vpc-1a2b3c4d5e6f7g8h9\",\n        AwsVpcRegion = \"aws-us-east-2\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleVpc, err := aiven.NewOrganizationVpc(ctx, \"example_vpc\", \u0026aiven.OrganizationVpcArgs{\n\t\t\tOrganizationId: pulumi.Any(example.Id),\n\t\t\tCloudName:      pulumi.String(\"aws-eu-central-1\"),\n\t\t\tNetworkCidr:    pulumi.String(\"10.0.0.0/24\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewAwsOrgVpcPeeringConnection(ctx, \"example_peering\", \u0026aiven.AwsOrgVpcPeeringConnectionArgs{\n\t\t\tOrganizationId:    exampleVpc.OrganizationId,\n\t\t\tOrganizationVpcId: exampleVpc.OrganizationVpcId,\n\t\t\tAwsAccountId:      pulumi.Any(awsId),\n\t\t\tAwsVpcId:          pulumi.String(\"vpc-1a2b3c4d5e6f7g8h9\"),\n\t\t\tAwsVpcRegion:      pulumi.String(\"aws-us-east-2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationVpc;\nimport com.pulumi.aiven.OrganizationVpcArgs;\nimport com.pulumi.aiven.AwsOrgVpcPeeringConnection;\nimport com.pulumi.aiven.AwsOrgVpcPeeringConnectionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleVpc = new OrganizationVpc(\"exampleVpc\", OrganizationVpcArgs.builder()\n            .organizationId(example.id())\n            .cloudName(\"aws-eu-central-1\")\n            .networkCidr(\"10.0.0.0/24\")\n            .build());\n\n        var examplePeering = new AwsOrgVpcPeeringConnection(\"examplePeering\", AwsOrgVpcPeeringConnectionArgs.builder()\n            .organizationId(exampleVpc.organizationId())\n            .organizationVpcId(exampleVpc.organizationVpcId())\n            .awsAccountId(awsId)\n            .awsVpcId(\"vpc-1a2b3c4d5e6f7g8h9\")\n            .awsVpcRegion(\"aws-us-east-2\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleVpc:\n    type: aiven:OrganizationVpc\n    name: example_vpc\n    properties:\n      organizationId: ${example.id}\n      cloudName: aws-eu-central-1\n      networkCidr: 10.0.0.0/24\n  examplePeering:\n    type: aiven:AwsOrgVpcPeeringConnection\n    name: example_peering\n    properties:\n      organizationId: ${exampleVpc.organizationId}\n      organizationVpcId: ${exampleVpc.organizationVpcId}\n      awsAccountId: ${awsId}\n      awsVpcId: vpc-1a2b3c4d5e6f7g8h9\n      awsVpcRegion: aws-us-east-2\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_REGION\n```\n\n",
+            "properties": {
+                "awsAccountId": {
+                    "type": "string",
+                    "description": "AWS account ID. Changing this property forces recreation of the resource.\n"
+                },
+                "awsVpcId": {
+                    "type": "string",
+                    "description": "AWS VPC ID. Changing this property forces recreation of the resource.\n"
+                },
+                "awsVpcPeeringConnectionId": {
+                    "type": "string",
+                    "description": "The ID of the AWS VPC peering connection.\n"
+                },
+                "awsVpcRegion": {
+                    "type": "string",
+                    "description": "The AWS region of the peered VPC. For example, `eu-central-1`.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "Identifier of the organization.\n"
+                },
+                "organizationVpcId": {
+                    "type": "string",
+                    "description": "Identifier of the organization VPC.\n"
+                },
+                "peeringConnectionId": {
+                    "type": "string",
+                    "description": "The ID of the peering connection.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.\n"
+                }
+            },
+            "required": [
+                "awsAccountId",
+                "awsVpcId",
+                "awsVpcPeeringConnectionId",
+                "awsVpcRegion",
+                "organizationId",
+                "organizationVpcId",
+                "peeringConnectionId",
+                "state"
+            ],
+            "inputProperties": {
+                "awsAccountId": {
+                    "type": "string",
+                    "description": "AWS account ID. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "awsVpcId": {
+                    "type": "string",
+                    "description": "AWS VPC ID. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "awsVpcRegion": {
+                    "type": "string",
+                    "description": "The AWS region of the peered VPC. For example, `eu-central-1`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "Identifier of the organization.\n",
+                    "willReplaceOnChanges": true
+                },
+                "organizationVpcId": {
+                    "type": "string",
+                    "description": "Identifier of the organization VPC.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "awsAccountId",
+                "awsVpcId",
+                "awsVpcRegion",
+                "organizationId",
+                "organizationVpcId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AwsOrgVpcPeeringConnection resources.\n",
+                "properties": {
+                    "awsAccountId": {
+                        "type": "string",
+                        "description": "AWS account ID. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "awsVpcId": {
+                        "type": "string",
+                        "description": "AWS VPC ID. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "awsVpcPeeringConnectionId": {
+                        "type": "string",
+                        "description": "The ID of the AWS VPC peering connection.\n"
+                    },
+                    "awsVpcRegion": {
+                        "type": "string",
+                        "description": "The AWS region of the peered VPC. For example, `eu-central-1`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "Identifier of the organization.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationVpcId": {
+                        "type": "string",
+                        "description": "Identifier of the organization VPC.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "peeringConnectionId": {
+                        "type": "string",
+                        "description": "The ID of the peering connection.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aiven:index/awsPrivatelink:AwsPrivatelink": {
             "description": "Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = new aiven.AwsPrivatelink(\"main\", {\n    project: exampleProject.project,\n    serviceName: exampleKafka.serviceName,\n    principals: [\"arn:aws:iam::012345678901:user/mwf\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.AwsPrivatelink(\"main\",\n    project=example_project[\"project\"],\n    service_name=example_kafka[\"serviceName\"],\n    principals=[\"arn:aws:iam::012345678901:user/mwf\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Aiven.AwsPrivatelink(\"main\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleKafka.ServiceName,\n        Principals = new[]\n        {\n            \"arn:aws:iam::012345678901:user/mwf\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewAwsPrivatelink(ctx, \"main\", \u0026aiven.AwsPrivatelinkArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tServiceName: pulumi.Any(exampleKafka.ServiceName),\n\t\t\tPrincipals: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"arn:aws:iam::012345678901:user/mwf\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AwsPrivatelink;\nimport com.pulumi.aiven.AwsPrivatelinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new AwsPrivatelink(\"main\", AwsPrivatelinkArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleKafka.serviceName())\n            .principals(\"arn:aws:iam::012345678901:user/mwf\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: aiven:AwsPrivatelink\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleKafka.serviceName}\n      principals:\n        - arn:aws:iam::012345678901:user/mwf\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME\n```\n\n",
             "properties": {
@@ -23220,6 +23344,153 @@
                     "vpcId": {
                         "type": "string",
                         "description": "The ID of the Aiven VPC. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection": {
+            "description": "Creates and manages an Azure VPC peering connection with an Aiven VPC. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleVpc = new aiven.OrganizationVpc(\"example_vpc\", {\n    organizationId: example.id,\n    cloudName: \"azure-germany-westcentral\",\n    networkCidr: \"10.0.0.0/24\",\n});\nconst examplePeering = new aiven.AzureOrgVpcPeeringConnection(\"example_peering\", {\n    organizationId: exampleVpc.organizationId,\n    organizationVpcId: exampleVpc.organizationVpcId,\n    azureSubscriptionId: \"12345678-1234-1234-1234-123456789012\",\n    vnetName: \"my-vnet\",\n    peerResourceGroup: \"my-resource-group\",\n    peerAzureAppId: \"87654321-4321-4321-4321-210987654321\",\n    peerAzureTenantId: \"11111111-2222-3333-4444-555555555555\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_vpc = aiven.OrganizationVpc(\"example_vpc\",\n    organization_id=example[\"id\"],\n    cloud_name=\"azure-germany-westcentral\",\n    network_cidr=\"10.0.0.0/24\")\nexample_peering = aiven.AzureOrgVpcPeeringConnection(\"example_peering\",\n    organization_id=example_vpc.organization_id,\n    organization_vpc_id=example_vpc.organization_vpc_id,\n    azure_subscription_id=\"12345678-1234-1234-1234-123456789012\",\n    vnet_name=\"my-vnet\",\n    peer_resource_group=\"my-resource-group\",\n    peer_azure_app_id=\"87654321-4321-4321-4321-210987654321\",\n    peer_azure_tenant_id=\"11111111-2222-3333-4444-555555555555\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleVpc = new Aiven.OrganizationVpc(\"example_vpc\", new()\n    {\n        OrganizationId = example.Id,\n        CloudName = \"azure-germany-westcentral\",\n        NetworkCidr = \"10.0.0.0/24\",\n    });\n\n    var examplePeering = new Aiven.AzureOrgVpcPeeringConnection(\"example_peering\", new()\n    {\n        OrganizationId = exampleVpc.OrganizationId,\n        OrganizationVpcId = exampleVpc.OrganizationVpcId,\n        AzureSubscriptionId = \"12345678-1234-1234-1234-123456789012\",\n        VnetName = \"my-vnet\",\n        PeerResourceGroup = \"my-resource-group\",\n        PeerAzureAppId = \"87654321-4321-4321-4321-210987654321\",\n        PeerAzureTenantId = \"11111111-2222-3333-4444-555555555555\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleVpc, err := aiven.NewOrganizationVpc(ctx, \"example_vpc\", \u0026aiven.OrganizationVpcArgs{\n\t\t\tOrganizationId: pulumi.Any(example.Id),\n\t\t\tCloudName:      pulumi.String(\"azure-germany-westcentral\"),\n\t\t\tNetworkCidr:    pulumi.String(\"10.0.0.0/24\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewAzureOrgVpcPeeringConnection(ctx, \"example_peering\", \u0026aiven.AzureOrgVpcPeeringConnectionArgs{\n\t\t\tOrganizationId:      exampleVpc.OrganizationId,\n\t\t\tOrganizationVpcId:   exampleVpc.OrganizationVpcId,\n\t\t\tAzureSubscriptionId: pulumi.String(\"12345678-1234-1234-1234-123456789012\"),\n\t\t\tVnetName:            pulumi.String(\"my-vnet\"),\n\t\t\tPeerResourceGroup:   pulumi.String(\"my-resource-group\"),\n\t\t\tPeerAzureAppId:      pulumi.String(\"87654321-4321-4321-4321-210987654321\"),\n\t\t\tPeerAzureTenantId:   pulumi.String(\"11111111-2222-3333-4444-555555555555\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationVpc;\nimport com.pulumi.aiven.OrganizationVpcArgs;\nimport com.pulumi.aiven.AzureOrgVpcPeeringConnection;\nimport com.pulumi.aiven.AzureOrgVpcPeeringConnectionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleVpc = new OrganizationVpc(\"exampleVpc\", OrganizationVpcArgs.builder()\n            .organizationId(example.id())\n            .cloudName(\"azure-germany-westcentral\")\n            .networkCidr(\"10.0.0.0/24\")\n            .build());\n\n        var examplePeering = new AzureOrgVpcPeeringConnection(\"examplePeering\", AzureOrgVpcPeeringConnectionArgs.builder()\n            .organizationId(exampleVpc.organizationId())\n            .organizationVpcId(exampleVpc.organizationVpcId())\n            .azureSubscriptionId(\"12345678-1234-1234-1234-123456789012\")\n            .vnetName(\"my-vnet\")\n            .peerResourceGroup(\"my-resource-group\")\n            .peerAzureAppId(\"87654321-4321-4321-4321-210987654321\")\n            .peerAzureTenantId(\"11111111-2222-3333-4444-555555555555\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleVpc:\n    type: aiven:OrganizationVpc\n    name: example_vpc\n    properties:\n      organizationId: ${example.id}\n      cloudName: azure-germany-westcentral\n      networkCidr: 10.0.0.0/24\n  examplePeering:\n    type: aiven:AzureOrgVpcPeeringConnection\n    name: example_peering\n    properties:\n      organizationId: ${exampleVpc.organizationId}\n      organizationVpcId: ${exampleVpc.organizationVpcId}\n      azureSubscriptionId: 12345678-1234-1234-1234-123456789012\n      vnetName: my-vnet\n      peerResourceGroup: my-resource-group\n      peerAzureAppId: 87654321-4321-4321-4321-210987654321\n      peerAzureTenantId: 11111111-2222-3333-4444-555555555555\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME/RESOURCE_GROUP\n```\n\n",
+            "properties": {
+                "azureSubscriptionId": {
+                    "type": "string",
+                    "description": "The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "Identifier of the organization.\n"
+                },
+                "organizationVpcId": {
+                    "type": "string",
+                    "description": "Identifier of the organization VPC.\n"
+                },
+                "peerAzureAppId": {
+                    "type": "string",
+                    "description": "The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.\n"
+                },
+                "peerAzureTenantId": {
+                    "type": "string",
+                    "description": "The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.\n"
+                },
+                "peerResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.\n"
+                },
+                "peeringConnectionId": {
+                    "type": "string",
+                    "description": "The ID of the cloud provider for the peering connection.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the peering connection\n"
+                },
+                "vnetName": {
+                    "type": "string",
+                    "description": "The name of the Azure VNet. Changing this property forces recreation of the resource.\n"
+                }
+            },
+            "required": [
+                "azureSubscriptionId",
+                "organizationId",
+                "organizationVpcId",
+                "peerAzureAppId",
+                "peerAzureTenantId",
+                "peerResourceGroup",
+                "peeringConnectionId",
+                "state",
+                "vnetName"
+            ],
+            "inputProperties": {
+                "azureSubscriptionId": {
+                    "type": "string",
+                    "description": "The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "Identifier of the organization.\n",
+                    "willReplaceOnChanges": true
+                },
+                "organizationVpcId": {
+                    "type": "string",
+                    "description": "Identifier of the organization VPC.\n",
+                    "willReplaceOnChanges": true
+                },
+                "peerAzureAppId": {
+                    "type": "string",
+                    "description": "The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "peerAzureTenantId": {
+                    "type": "string",
+                    "description": "The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "peerResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "vnetName": {
+                    "type": "string",
+                    "description": "The name of the Azure VNet. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "azureSubscriptionId",
+                "organizationId",
+                "organizationVpcId",
+                "peerAzureAppId",
+                "peerAzureTenantId",
+                "peerResourceGroup",
+                "vnetName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AzureOrgVpcPeeringConnection resources.\n",
+                "properties": {
+                    "azureSubscriptionId": {
+                        "type": "string",
+                        "description": "The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "Identifier of the organization.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationVpcId": {
+                        "type": "string",
+                        "description": "Identifier of the organization VPC.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "peerAzureAppId": {
+                        "type": "string",
+                        "description": "The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "peerAzureTenantId": {
+                        "type": "string",
+                        "description": "The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "peerResourceGroup": {
+                        "type": "string",
+                        "description": "The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "peeringConnectionId": {
+                        "type": "string",
+                        "description": "The ID of the cloud provider for the peering connection.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the peering connection\n"
+                    },
+                    "vnetName": {
+                        "type": "string",
+                        "description": "The name of the Azure VNet. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -23615,7 +23886,7 @@
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "state": {
                     "type": "string",
@@ -23687,7 +23958,7 @@
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "state": {
                     "type": "string",
@@ -23758,7 +24029,7 @@
                     },
                     "parentId": {
                         "type": "string",
-                        "description": "Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                        "description": "Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "state": {
                         "type": "string",
@@ -26927,6 +27198,105 @@
                     "version": {
                         "type": "integer",
                         "description": "Version number.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection": {
+            "description": "Creates and manages a Google Cloud VPC peering connection. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleVpc = new aiven.OrganizationVpc(\"example_vpc\", {\n    organizationId: exampleAivenOrganization.id,\n    cloudName: \"google-europe-west10\",\n    networkCidr: \"10.0.0.0/24\",\n});\nconst example = new aiven.GcpOrgVpcPeeringConnection(\"example\", {\n    organizationId: exampleVpc.organizationId,\n    organizationVpcId: exampleVpc.organizationVpcId,\n    gcpProjectId: \"my-gcp-project-123\",\n    peerVpc: \"my-vpc-network\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_vpc = aiven.OrganizationVpc(\"example_vpc\",\n    organization_id=example_aiven_organization[\"id\"],\n    cloud_name=\"google-europe-west10\",\n    network_cidr=\"10.0.0.0/24\")\nexample = aiven.GcpOrgVpcPeeringConnection(\"example\",\n    organization_id=example_vpc.organization_id,\n    organization_vpc_id=example_vpc.organization_vpc_id,\n    gcp_project_id=\"my-gcp-project-123\",\n    peer_vpc=\"my-vpc-network\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleVpc = new Aiven.OrganizationVpc(\"example_vpc\", new()\n    {\n        OrganizationId = exampleAivenOrganization.Id,\n        CloudName = \"google-europe-west10\",\n        NetworkCidr = \"10.0.0.0/24\",\n    });\n\n    var example = new Aiven.GcpOrgVpcPeeringConnection(\"example\", new()\n    {\n        OrganizationId = exampleVpc.OrganizationId,\n        OrganizationVpcId = exampleVpc.OrganizationVpcId,\n        GcpProjectId = \"my-gcp-project-123\",\n        PeerVpc = \"my-vpc-network\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleVpc, err := aiven.NewOrganizationVpc(ctx, \"example_vpc\", \u0026aiven.OrganizationVpcArgs{\n\t\t\tOrganizationId: pulumi.Any(exampleAivenOrganization.Id),\n\t\t\tCloudName:      pulumi.String(\"google-europe-west10\"),\n\t\t\tNetworkCidr:    pulumi.String(\"10.0.0.0/24\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewGcpOrgVpcPeeringConnection(ctx, \"example\", \u0026aiven.GcpOrgVpcPeeringConnectionArgs{\n\t\t\tOrganizationId:    exampleVpc.OrganizationId,\n\t\t\tOrganizationVpcId: exampleVpc.OrganizationVpcId,\n\t\t\tGcpProjectId:      pulumi.String(\"my-gcp-project-123\"),\n\t\t\tPeerVpc:           pulumi.String(\"my-vpc-network\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationVpc;\nimport com.pulumi.aiven.OrganizationVpcArgs;\nimport com.pulumi.aiven.GcpOrgVpcPeeringConnection;\nimport com.pulumi.aiven.GcpOrgVpcPeeringConnectionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleVpc = new OrganizationVpc(\"exampleVpc\", OrganizationVpcArgs.builder()\n            .organizationId(exampleAivenOrganization.id())\n            .cloudName(\"google-europe-west10\")\n            .networkCidr(\"10.0.0.0/24\")\n            .build());\n\n        var example = new GcpOrgVpcPeeringConnection(\"example\", GcpOrgVpcPeeringConnectionArgs.builder()\n            .organizationId(exampleVpc.organizationId())\n            .organizationVpcId(exampleVpc.organizationVpcId())\n            .gcpProjectId(\"my-gcp-project-123\")\n            .peerVpc(\"my-vpc-network\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleVpc:\n    type: aiven:OrganizationVpc\n    name: example_vpc\n    properties:\n      organizationId: ${exampleAivenOrganization.id}\n      cloudName: google-europe-west10\n      networkCidr: 10.0.0.0/24\n  example:\n    type: aiven:GcpOrgVpcPeeringConnection\n    properties:\n      organizationId: ${exampleVpc.organizationId}\n      organizationVpcId: ${exampleVpc.organizationVpcId}\n      gcpProjectId: my-gcp-project-123\n      peerVpc: my-vpc-network\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/GCP_PROJECT_ID/VPC_NAME\n```\n\n",
+            "properties": {
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "Google Cloud project ID. Changing this property forces recreation of the resource.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "Identifier of the organization.\n"
+                },
+                "organizationVpcId": {
+                    "type": "string",
+                    "description": "Identifier of the organization VPC.\n"
+                },
+                "peerVpc": {
+                    "type": "string",
+                    "description": "Google Cloud VPC network name. Changing this property forces recreation of the resource.\n"
+                },
+                "selfLink": {
+                    "type": "string",
+                    "description": "Computed Google Cloud network peering link.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the peering connection.\n"
+                }
+            },
+            "required": [
+                "gcpProjectId",
+                "organizationId",
+                "organizationVpcId",
+                "peerVpc",
+                "selfLink",
+                "state"
+            ],
+            "inputProperties": {
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "Google Cloud project ID. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "Identifier of the organization.\n",
+                    "willReplaceOnChanges": true
+                },
+                "organizationVpcId": {
+                    "type": "string",
+                    "description": "Identifier of the organization VPC.\n",
+                    "willReplaceOnChanges": true
+                },
+                "peerVpc": {
+                    "type": "string",
+                    "description": "Google Cloud VPC network name. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "gcpProjectId",
+                "organizationId",
+                "organizationVpcId",
+                "peerVpc"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GcpOrgVpcPeeringConnection resources.\n",
+                "properties": {
+                    "gcpProjectId": {
+                        "type": "string",
+                        "description": "Google Cloud project ID. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "Identifier of the organization.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationVpcId": {
+                        "type": "string",
+                        "description": "Identifier of the organization VPC.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "peerVpc": {
+                        "type": "string",
+                        "description": "Google Cloud VPC network name. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "selfLink": {
+                        "type": "string",
+                        "description": "Computed Google Cloud network peering link.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the peering connection.\n"
                     }
                 },
                 "type": "object"
@@ -33386,7 +33756,7 @@
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -33425,7 +33795,7 @@
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -33466,7 +33836,7 @@
                     },
                     "parentId": {
                         "type": "string",
-                        "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                        "description": "Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -33740,6 +34110,107 @@
                     "userId": {
                         "type": "string",
                         "description": "The ID of the organization user or application user.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/organizationVpc:OrganizationVpc": {
+            "description": "Creates and manages a VPC for an Aiven organization. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst exampleVpc = new aiven.OrganizationVpc(\"example_vpc\", {\n    organizationId: example.id,\n    cloudName: \"aws-eu-central-1\",\n    networkCidr: \"10.0.0.0/24\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nexample_vpc = aiven.OrganizationVpc(\"example_vpc\",\n    organization_id=example[\"id\"],\n    cloud_name=\"aws-eu-central-1\",\n    network_cidr=\"10.0.0.0/24\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleVpc = new Aiven.OrganizationVpc(\"example_vpc\", new()\n    {\n        OrganizationId = example.Id,\n        CloudName = \"aws-eu-central-1\",\n        NetworkCidr = \"10.0.0.0/24\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOrganizationVpc(ctx, \"example_vpc\", \u0026aiven.OrganizationVpcArgs{\n\t\t\tOrganizationId: pulumi.Any(example.Id),\n\t\t\tCloudName:      pulumi.String(\"aws-eu-central-1\"),\n\t\t\tNetworkCidr:    pulumi.String(\"10.0.0.0/24\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationVpc;\nimport com.pulumi.aiven.OrganizationVpcArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleVpc = new OrganizationVpc(\"exampleVpc\", OrganizationVpcArgs.builder()\n            .organizationId(example.id())\n            .cloudName(\"aws-eu-central-1\")\n            .networkCidr(\"10.0.0.0/24\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleVpc:\n    type: aiven:OrganizationVpc\n    name: example_vpc\n    properties:\n      organizationId: ${example.id}\n      cloudName: aws-eu-central-1\n      networkCidr: 10.0.0.0/24\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/organizationVpc:OrganizationVpc example ORGANIZATION_ID/ORGANIZATION_VPC_ID\n```\n\n",
+            "properties": {
+                "cloudName": {
+                    "type": "string",
+                    "description": "The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.\n"
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "Time of creation of the VPC.\n"
+                },
+                "networkCidr": {
+                    "type": "string",
+                    "description": "Network address range used by the VPC. For example, `192.168.0.0/24`.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The ID of the organization.\n"
+                },
+                "organizationVpcId": {
+                    "type": "string",
+                    "description": "The ID of the Aiven Organization VPC.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.\n"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "Time of the last update of the VPC.\n"
+                }
+            },
+            "required": [
+                "cloudName",
+                "createTime",
+                "networkCidr",
+                "organizationId",
+                "organizationVpcId",
+                "state",
+                "updateTime"
+            ],
+            "inputProperties": {
+                "cloudName": {
+                    "type": "string",
+                    "description": "The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "networkCidr": {
+                    "type": "string",
+                    "description": "Network address range used by the VPC. For example, `192.168.0.0/24`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The ID of the organization.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "cloudName",
+                "networkCidr",
+                "organizationId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrganizationVpc resources.\n",
+                "properties": {
+                    "cloudName": {
+                        "type": "string",
+                        "description": "The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time of creation of the VPC.\n"
+                    },
+                    "networkCidr": {
+                        "type": "string",
+                        "description": "Network address range used by the VPC. For example, `192.168.0.0/24`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The ID of the organization.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationVpcId": {
+                        "type": "string",
+                        "description": "The ID of the Aiven Organization VPC.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.\n"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "Time of the last update of the VPC.\n"
                     }
                 },
                 "type": "object"
@@ -34481,7 +34952,7 @@
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "paymentMethod": {
                     "type": "string",
@@ -34549,7 +35020,7 @@
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "project": {
                     "type": "string",
@@ -34623,7 +35094,7 @@
                     },
                     "parentId": {
                         "type": "string",
-                        "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                        "description": "Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "paymentMethod": {
                         "type": "string",
@@ -37947,6 +38418,95 @@
                 "type": "object"
             }
         },
+        "aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection": {
+            "description": "Gets information about an AWS VPC peering connection. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAwsOrgVpcPeeringConnection.\n",
+                "properties": {
+                    "awsAccountId": {
+                        "type": "string",
+                        "description": "AWS account ID. Changing this property forces recreation of the resource.\n"
+                    },
+                    "awsVpcId": {
+                        "type": "string",
+                        "description": "AWS VPC ID. Changing this property forces recreation of the resource.\n"
+                    },
+                    "awsVpcRegion": {
+                        "type": "string",
+                        "description": "The AWS region of the peered VPC. For example, `eu-central-1`.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "Identifier of the organization.\n"
+                    },
+                    "organizationVpcId": {
+                        "type": "string",
+                        "description": "Identifier of the organization VPC.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "awsAccountId",
+                    "awsVpcId",
+                    "awsVpcRegion",
+                    "organizationId",
+                    "organizationVpcId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAwsOrgVpcPeeringConnection.\n",
+                "properties": {
+                    "awsAccountId": {
+                        "description": "AWS account ID. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "awsVpcId": {
+                        "description": "AWS VPC ID. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "awsVpcPeeringConnectionId": {
+                        "description": "The ID of the AWS VPC peering connection.\n",
+                        "type": "string"
+                    },
+                    "awsVpcRegion": {
+                        "description": "The AWS region of the peered VPC. For example, `eu-central-1`.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "Identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "organizationVpcId": {
+                        "description": "Identifier of the organization VPC.\n",
+                        "type": "string"
+                    },
+                    "peeringConnectionId": {
+                        "description": "The ID of the peering connection.\n",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "awsAccountId",
+                    "awsVpcId",
+                    "awsVpcPeeringConnectionId",
+                    "awsVpcRegion",
+                    "organizationId",
+                    "organizationVpcId",
+                    "peeringConnectionId",
+                    "state",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "aiven:index/getAwsPrivatelink:getAwsPrivatelink": {
             "description": "Gets information about an AWS PrivateLink connection for an Aiven service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = aiven.getAwsPrivatelink({\n    project: exampleProject.project,\n    serviceName: exampleKafka.serviceName,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.get_aws_privatelink(project=example_project[\"project\"],\n    service_name=example_kafka[\"serviceName\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = Aiven.GetAwsPrivatelink.Invoke(new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleKafka.ServiceName,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupAwsPrivatelink(ctx, \u0026aiven.LookupAwsPrivatelinkArgs{\n\t\t\tProject:     exampleProject.Project,\n\t\t\tServiceName: exampleKafka.ServiceName,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleKafka.serviceName())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  main:\n    fn::invoke:\n      function: aiven:getAwsPrivatelink\n      arguments:\n        project: ${exampleProject.project}\n        serviceName: ${exampleKafka.serviceName}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -38086,6 +38646,100 @@
                     "state",
                     "stateInfo",
                     "vpcId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection": {
+            "description": "Gets information about about an Azure VPC peering connection. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAzureOrgVpcPeeringConnection.\n",
+                "properties": {
+                    "azureSubscriptionId": {
+                        "type": "string",
+                        "description": "The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "Identifier of the organization.\n"
+                    },
+                    "organizationVpcId": {
+                        "type": "string",
+                        "description": "Identifier of the organization VPC.\n"
+                    },
+                    "peerResourceGroup": {
+                        "type": "string",
+                        "description": "The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.\n"
+                    },
+                    "vnetName": {
+                        "type": "string",
+                        "description": "The name of the Azure VNet. Changing this property forces recreation of the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "azureSubscriptionId",
+                    "organizationId",
+                    "organizationVpcId",
+                    "peerResourceGroup",
+                    "vnetName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAzureOrgVpcPeeringConnection.\n",
+                "properties": {
+                    "azureSubscriptionId": {
+                        "description": "The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "Identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "organizationVpcId": {
+                        "description": "Identifier of the organization VPC.\n",
+                        "type": "string"
+                    },
+                    "peerAzureAppId": {
+                        "description": "The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "peerAzureTenantId": {
+                        "description": "The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "peerResourceGroup": {
+                        "description": "The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "peeringConnectionId": {
+                        "description": "The ID of the cloud provider for the peering connection.\n",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "State of the peering connection\n",
+                        "type": "string"
+                    },
+                    "vnetName": {
+                        "description": "The name of the Azure VNet. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "azureSubscriptionId",
+                    "organizationId",
+                    "organizationVpcId",
+                    "peerAzureAppId",
+                    "peerAzureTenantId",
+                    "peerResourceGroup",
+                    "peeringConnectionId",
+                    "state",
+                    "vnetName",
                     "id"
                 ],
                 "type": "object"
@@ -38342,7 +38996,7 @@
                         "type": "string"
                     },
                     "parentId": {
-                        "description": "Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n",
+                        "description": "Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.\n",
                         "type": "string"
                     },
                     "state": {
@@ -39910,6 +40564,80 @@
                     "sources",
                     "statement",
                     "version",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection": {
+            "description": "The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGcpOrgVpcPeeringConnection.\n",
+                "properties": {
+                    "gcpProjectId": {
+                        "type": "string",
+                        "description": "Google Cloud project ID. Changing this property forces recreation of the resource.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "Identifier of the organization.\n"
+                    },
+                    "organizationVpcId": {
+                        "type": "string",
+                        "description": "Identifier of the organization VPC.\n"
+                    },
+                    "peerVpc": {
+                        "type": "string",
+                        "description": "Google Cloud VPC network name. Changing this property forces recreation of the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "gcpProjectId",
+                    "organizationId",
+                    "organizationVpcId",
+                    "peerVpc"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGcpOrgVpcPeeringConnection.\n",
+                "properties": {
+                    "gcpProjectId": {
+                        "description": "Google Cloud project ID. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "Identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "organizationVpcId": {
+                        "description": "Identifier of the organization VPC.\n",
+                        "type": "string"
+                    },
+                    "peerVpc": {
+                        "description": "Google Cloud VPC network name. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "selfLink": {
+                        "description": "Computed Google Cloud network peering link.\n",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "State of the peering connection.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "gcpProjectId",
+                    "organizationId",
+                    "organizationVpcId",
+                    "peerVpc",
+                    "selfLink",
+                    "state",
                     "id"
                 ],
                 "type": "object"
@@ -43217,7 +43945,7 @@
                         "type": "string"
                     },
                     "parentId": {
-                        "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n",
+                        "description": "Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.\n",
                         "type": "string"
                     },
                     "projectId": {
@@ -43406,6 +44134,75 @@
                 },
                 "required": [
                     "users"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getOrganizationVpc:getOrganizationVpc": {
+            "description": "Gets information about an existing VPC in an Aiven organization. \n\n**This resource is in the beta stage and may change without notice.** Set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganizationVpc.\n",
+                "properties": {
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The ID of the organization.\n"
+                    },
+                    "organizationVpcId": {
+                        "type": "string",
+                        "description": "The ID of the Aiven Organization VPC.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "organizationId",
+                    "organizationVpcId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganizationVpc.\n",
+                "properties": {
+                    "cloudName": {
+                        "description": "The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.\n",
+                        "type": "string"
+                    },
+                    "createTime": {
+                        "description": "Time of creation of the VPC.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "networkCidr": {
+                        "description": "Network address range used by the VPC. For example, `192.168.0.0/24`.\n",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "The ID of the organization.\n",
+                        "type": "string"
+                    },
+                    "organizationVpcId": {
+                        "description": "The ID of the Aiven Organization VPC.\n",
+                        "type": "string"
+                    },
+                    "state": {
+                        "description": "State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.\n",
+                        "type": "string"
+                    },
+                    "updateTime": {
+                        "description": "Time of the last update of the VPC.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "cloudName",
+                    "createTime",
+                    "networkCidr",
+                    "organizationId",
+                    "organizationVpcId",
+                    "state",
+                    "updateTime",
+                    "id"
                 ],
                 "type": "object"
             }
@@ -43868,7 +44665,7 @@
                         "type": "string"
                     },
                     "parentId": {
-                        "description": "Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n",
+                        "description": "Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.\n",
                         "type": "string"
                     },
                     "paymentMethod": {
