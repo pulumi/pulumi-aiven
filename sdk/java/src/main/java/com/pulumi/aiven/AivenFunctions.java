@@ -20,10 +20,14 @@ import com.pulumi.aiven.inputs.GetAlloydbomniDatabasePlainArgs;
 import com.pulumi.aiven.inputs.GetAlloydbomniPlainArgs;
 import com.pulumi.aiven.inputs.GetAlloydbomniUserArgs;
 import com.pulumi.aiven.inputs.GetAlloydbomniUserPlainArgs;
+import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionArgs;
+import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionPlainArgs;
 import com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;
 import com.pulumi.aiven.inputs.GetAwsPrivatelinkPlainArgs;
 import com.pulumi.aiven.inputs.GetAwsVpcPeeringConnectionArgs;
 import com.pulumi.aiven.inputs.GetAwsVpcPeeringConnectionPlainArgs;
+import com.pulumi.aiven.inputs.GetAzureOrgVpcPeeringConnectionArgs;
+import com.pulumi.aiven.inputs.GetAzureOrgVpcPeeringConnectionPlainArgs;
 import com.pulumi.aiven.inputs.GetAzurePrivatelinkArgs;
 import com.pulumi.aiven.inputs.GetAzurePrivatelinkPlainArgs;
 import com.pulumi.aiven.inputs.GetAzureVpcPeeringConnectionArgs;
@@ -54,6 +58,8 @@ import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
 import com.pulumi.aiven.inputs.GetFlinkApplicationVersionPlainArgs;
 import com.pulumi.aiven.inputs.GetFlinkArgs;
 import com.pulumi.aiven.inputs.GetFlinkPlainArgs;
+import com.pulumi.aiven.inputs.GetGcpOrgVpcPeeringConnectionArgs;
+import com.pulumi.aiven.inputs.GetGcpOrgVpcPeeringConnectionPlainArgs;
 import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
 import com.pulumi.aiven.inputs.GetGcpPrivatelinkPlainArgs;
 import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
@@ -122,6 +128,8 @@ import com.pulumi.aiven.inputs.GetOrganizationUserGroupPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserListPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationVpcArgs;
+import com.pulumi.aiven.inputs.GetOrganizationVpcPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
 import com.pulumi.aiven.inputs.GetOrganizationalUnitPlainArgs;
 import com.pulumi.aiven.inputs.GetPgArgs;
@@ -162,8 +170,10 @@ import com.pulumi.aiven.outputs.GetAccountTeamResult;
 import com.pulumi.aiven.outputs.GetAlloydbomniDatabaseResult;
 import com.pulumi.aiven.outputs.GetAlloydbomniResult;
 import com.pulumi.aiven.outputs.GetAlloydbomniUserResult;
+import com.pulumi.aiven.outputs.GetAwsOrgVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetAwsPrivatelinkResult;
 import com.pulumi.aiven.outputs.GetAwsVpcPeeringConnectionResult;
+import com.pulumi.aiven.outputs.GetAzureOrgVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetAzurePrivatelinkResult;
 import com.pulumi.aiven.outputs.GetAzureVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetBillingGroupResult;
@@ -179,6 +189,7 @@ import com.pulumi.aiven.outputs.GetExternalIdentityResult;
 import com.pulumi.aiven.outputs.GetFlinkApplicationResult;
 import com.pulumi.aiven.outputs.GetFlinkApplicationVersionResult;
 import com.pulumi.aiven.outputs.GetFlinkResult;
+import com.pulumi.aiven.outputs.GetGcpOrgVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetGcpPrivatelinkResult;
 import com.pulumi.aiven.outputs.GetGcpVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetGrafanaResult;
@@ -213,6 +224,7 @@ import com.pulumi.aiven.outputs.GetOrganizationResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserListResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserResult;
+import com.pulumi.aiven.outputs.GetOrganizationVpcResult;
 import com.pulumi.aiven.outputs.GetOrganizationalUnitResult;
 import com.pulumi.aiven.outputs.GetPgDatabaseResult;
 import com.pulumi.aiven.outputs.GetPgResult;
@@ -933,6 +945,56 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Gets information about an AWS VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs args) {
+        return getAwsOrgVpcPeeringConnection(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an AWS VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnectionPlain(GetAwsOrgVpcPeeringConnectionPlainArgs args) {
+        return getAwsOrgVpcPeeringConnectionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an AWS VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", TypeShape.of(GetAwsOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an AWS VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", TypeShape.of(GetAwsOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an AWS VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnectionPlain(GetAwsOrgVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", TypeShape.of(GetAwsOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Gets information about an AWS PrivateLink connection for an Aiven service.
      * 
      * ## Example Usage
@@ -1411,6 +1473,56 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetAwsVpcPeeringConnectionResult> getAwsVpcPeeringConnectionPlain(GetAwsVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", TypeShape.of(GetAwsVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about about an Azure VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs args) {
+        return getAzureOrgVpcPeeringConnection(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about about an Azure VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnectionPlain(GetAzureOrgVpcPeeringConnectionPlainArgs args) {
+        return getAzureOrgVpcPeeringConnectionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about about an Azure VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection", TypeShape.of(GetAzureOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about about an Azure VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection", TypeShape.of(GetAzureOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about about an Azure VPC peering connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnectionPlain(GetAzureOrgVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection", TypeShape.of(GetAzureOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an Azure Private Link connection for an Aiven service.
@@ -4646,6 +4758,56 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetFlinkApplicationVersionResult> getFlinkApplicationVersionPlain(GetFlinkApplicationVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", TypeShape.of(GetFlinkApplicationVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs args) {
+        return getGcpOrgVpcPeeringConnection(args, InvokeOptions.Empty);
+    }
+    /**
+     * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnectionPlain(GetGcpOrgVpcPeeringConnectionPlainArgs args) {
+        return getGcpOrgVpcPeeringConnectionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection", TypeShape.of(GetGcpOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection", TypeShape.of(GetGcpOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnectionPlain(GetGcpOrgVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection", TypeShape.of(GetGcpOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about a Google Private Service Connect connection for an Aiven service.
@@ -11065,6 +11227,56 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetOrganizationUserListResult> getOrganizationUserListPlain(GetOrganizationUserListPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUserList:getOrganizationUserList", TypeShape.of(GetOrganizationUserListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an existing VPC in an Aiven organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationVpcResult> getOrganizationVpc(GetOrganizationVpcArgs args) {
+        return getOrganizationVpc(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an existing VPC in an Aiven organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationVpcResult> getOrganizationVpcPlain(GetOrganizationVpcPlainArgs args) {
+        return getOrganizationVpcPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an existing VPC in an Aiven organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationVpcResult> getOrganizationVpc(GetOrganizationVpcArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationVpc:getOrganizationVpc", TypeShape.of(GetOrganizationVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an existing VPC in an Aiven organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static Output<GetOrganizationVpcResult> getOrganizationVpc(GetOrganizationVpcArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationVpc:getOrganizationVpc", TypeShape.of(GetOrganizationVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an existing VPC in an Aiven organization.
+     * 
+     * **This resource is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationVpcResult> getOrganizationVpcPlain(GetOrganizationVpcPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationVpc:getOrganizationVpc", TypeShape.of(GetOrganizationVpcResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an organizational unit.

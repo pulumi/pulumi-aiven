@@ -118,6 +118,10 @@
                 "current": "aiven:index/alloydbomniUser:AlloydbomniUser",
                 "majorVersion": 6
             },
+            "aiven_aws_org_vpc_peering_connection": {
+                "current": "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection",
+                "majorVersion": 6
+            },
             "aiven_aws_privatelink": {
                 "current": "aiven:index/awsPrivatelink:AwsPrivatelink",
                 "majorVersion": 6,
@@ -129,6 +133,10 @@
             },
             "aiven_aws_vpc_peering_connection": {
                 "current": "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection",
+                "majorVersion": 6
+            },
+            "aiven_azure_org_vpc_peering_connection": {
+                "current": "aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection",
                 "majorVersion": 6
             },
             "aiven_azure_privatelink": {
@@ -497,6 +505,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "aiven_gcp_org_vpc_peering_connection": {
+                "current": "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection",
+                "majorVersion": 6
             },
             "aiven_gcp_privatelink": {
                 "current": "aiven:index/gcpPrivatelink:GcpPrivatelink",
@@ -1493,6 +1505,10 @@
                 "current": "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember",
                 "majorVersion": 6
             },
+            "aiven_organization_vpc": {
+                "current": "aiven:index/organizationVpc:OrganizationVpc",
+                "majorVersion": 6
+            },
             "aiven_organizational_unit": {
                 "current": "aiven:index/organizationalUnit:OrganizationalUnit",
                 "majorVersion": 6
@@ -2258,6 +2274,10 @@
                 "current": "aiven:index/getAlloydbomniUser:getAlloydbomniUser",
                 "majorVersion": 6
             },
+            "aiven_aws_org_vpc_peering_connection": {
+                "current": "aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection",
+                "majorVersion": 6
+            },
             "aiven_aws_privatelink": {
                 "current": "aiven:index/getAwsPrivatelink:getAwsPrivatelink",
                 "majorVersion": 6,
@@ -2269,6 +2289,10 @@
             },
             "aiven_aws_vpc_peering_connection": {
                 "current": "aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection",
+                "majorVersion": 6
+            },
+            "aiven_azure_org_vpc_peering_connection": {
+                "current": "aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection",
                 "majorVersion": 6
             },
             "aiven_azure_privatelink": {
@@ -2632,6 +2656,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "aiven_gcp_org_vpc_peering_connection": {
+                "current": "aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection",
+                "majorVersion": 6
             },
             "aiven_gcp_privatelink": {
                 "current": "aiven:index/getGcpPrivatelink:getGcpPrivatelink",
@@ -3599,6 +3627,10 @@
                     }
                 }
             },
+            "aiven_organization_vpc": {
+                "current": "aiven:index/getOrganizationVpc:getOrganizationVpc",
+                "majorVersion": 6
+            },
             "aiven_organizational_unit": {
                 "current": "aiven:index/getOrganizationalUnit:getOrganizationalUnit",
                 "majorVersion": 6
@@ -4276,8 +4308,10 @@
             "aiven:index/alloydbomni:Alloydbomni": 0,
             "aiven:index/alloydbomniDatabase:AlloydbomniDatabase": 0,
             "aiven:index/alloydbomniUser:AlloydbomniUser": 0,
+            "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection": 0,
             "aiven:index/awsPrivatelink:AwsPrivatelink": 0,
             "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection": 0,
+            "aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection": 0,
             "aiven:index/azurePrivatelink:AzurePrivatelink": 0,
             "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval": 0,
             "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection": 0,
@@ -4298,6 +4332,7 @@
             "aiven:index/flinkJarApplication:FlinkJarApplication": 0,
             "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment": 0,
             "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion": 0,
+            "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection": 0,
             "aiven:index/gcpPrivatelink:GcpPrivatelink": 0,
             "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": 0,
             "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": 0,
@@ -4338,6 +4373,7 @@
             "aiven:index/organizationUser:OrganizationUser": 0,
             "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
             "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": 1,
+            "aiven:index/organizationVpc:OrganizationVpc": 0,
             "aiven:index/organizationalUnit:OrganizationalUnit": 0,
             "aiven:index/pg:Pg": 0,
             "aiven:index/pgDatabase:PgDatabase": 0,
@@ -4364,8 +4400,10 @@
             "aiven:index/getAlloydbomni:getAlloydbomni": 0,
             "aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase": 0,
             "aiven:index/getAlloydbomniUser:getAlloydbomniUser": 0,
+            "aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection": 0,
             "aiven:index/getAwsPrivatelink:getAwsPrivatelink": 0,
             "aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection": 0,
+            "aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection": 0,
             "aiven:index/getAzurePrivatelink:getAzurePrivatelink": 0,
             "aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection": 0,
             "aiven:index/getBillingGroup:getBillingGroup": 0,
@@ -4381,6 +4419,7 @@
             "aiven:index/getFlink:getFlink": 0,
             "aiven:index/getFlinkApplication:getFlinkApplication": 0,
             "aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion": 0,
+            "aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection": 0,
             "aiven:index/getGcpPrivatelink:getGcpPrivatelink": 0,
             "aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection": 0,
             "aiven:index/getGrafana:getGrafana": 0,
@@ -4415,6 +4454,7 @@
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
             "aiven:index/getOrganizationUserList:getOrganizationUserList": 0,
+            "aiven:index/getOrganizationVpc:getOrganizationVpc": 0,
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 0,
             "aiven:index/getPg:getPg": 0,
             "aiven:index/getPgDatabase:getPgDatabase": 0,

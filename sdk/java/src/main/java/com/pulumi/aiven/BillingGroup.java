@@ -231,14 +231,14 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentId;
 
     /**
-     * @return Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> parentId() {

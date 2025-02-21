@@ -81,7 +81,7 @@ export interface GetBillingGroupResult {
      */
     readonly name: string;
     /**
-     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly parentId: string;
     /**

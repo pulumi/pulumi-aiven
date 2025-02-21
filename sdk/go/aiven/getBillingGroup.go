@@ -56,7 +56,7 @@ type LookupBillingGroupResult struct {
 	Id string `pulumi:"id"`
 	// Name of the billing group.
 	Name string `pulumi:"name"`
-	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId string `pulumi:"parentId"`
 	// Address state.
 	State string `pulumi:"state"`
@@ -165,7 +165,7 @@ func (o LookupBillingGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupBillingGroupResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.ParentId }).(pulumi.StringOutput)
 }

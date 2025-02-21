@@ -187,7 +187,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> str:
         """
-        Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 

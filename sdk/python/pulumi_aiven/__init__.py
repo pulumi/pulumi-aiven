@@ -13,8 +13,10 @@ from .account_team_project import *
 from .alloydbomni import *
 from .alloydbomni_database import *
 from .alloydbomni_user import *
+from .aws_org_vpc_peering_connection import *
 from .aws_privatelink import *
 from .aws_vpc_peering_connection import *
+from .azure_org_vpc_peering_connection import *
 from .azure_privatelink import *
 from .azure_privatelink_connection_approval import *
 from .azure_vpc_peering_connection import *
@@ -35,6 +37,7 @@ from .flink_application_version import *
 from .flink_jar_application import *
 from .flink_jar_application_deployment import *
 from .flink_jar_application_version import *
+from .gcp_org_vpc_peering_connection import *
 from .gcp_privatelink import *
 from .gcp_privatelink_connection_approval import *
 from .gcp_vpc_peering_connection import *
@@ -46,8 +49,10 @@ from .get_account_team_project import *
 from .get_alloydbomni import *
 from .get_alloydbomni_database import *
 from .get_alloydbomni_user import *
+from .get_aws_org_vpc_peering_connection import *
 from .get_aws_privatelink import *
 from .get_aws_vpc_peering_connection import *
+from .get_azure_org_vpc_peering_connection import *
 from .get_azure_privatelink import *
 from .get_azure_vpc_peering_connection import *
 from .get_billing_group import *
@@ -63,6 +68,7 @@ from .get_external_identity import *
 from .get_flink import *
 from .get_flink_application import *
 from .get_flink_application_version import *
+from .get_gcp_org_vpc_peering_connection import *
 from .get_gcp_privatelink import *
 from .get_gcp_vpc_peering_connection import *
 from .get_grafana import *
@@ -97,6 +103,7 @@ from .get_organization_project import *
 from .get_organization_user import *
 from .get_organization_user_group import *
 from .get_organization_user_list import *
+from .get_organization_vpc import *
 from .get_organizational_unit import *
 from .get_pg import *
 from .get_pg_database import *
@@ -150,6 +157,7 @@ from .organization_project import *
 from .organization_user import *
 from .organization_user_group import *
 from .organization_user_group_member import *
+from .organization_vpc import *
 from .organizational_unit import *
 from .pg import *
 from .pg_database import *
@@ -246,6 +254,14 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/awsOrgVpcPeeringConnection",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection": "AwsOrgVpcPeeringConnection"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/awsPrivatelink",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -258,6 +274,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection": "AwsVpcPeeringConnection"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/azureOrgVpcPeeringConnection",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection": "AzureOrgVpcPeeringConnection"
   }
  },
  {
@@ -418,6 +442,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion": "FlinkJarApplicationVersion"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/gcpOrgVpcPeeringConnection",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection": "GcpOrgVpcPeeringConnection"
   }
  },
  {
@@ -738,6 +770,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": "OrganizationUserGroupMember"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/organizationVpc",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationVpc:OrganizationVpc": "OrganizationVpc"
   }
  },
  {

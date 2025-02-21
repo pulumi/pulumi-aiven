@@ -77,7 +77,7 @@ public final class GetBillingGroupResult {
      */
     private String name;
     /**
-     * @return Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String parentId;
@@ -190,7 +190,7 @@ public final class GetBillingGroupResult {
         return this.name;
     }
     /**
-     * @return Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String parentId() {

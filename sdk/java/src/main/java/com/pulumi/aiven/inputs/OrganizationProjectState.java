@@ -48,14 +48,14 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Import(name="parentId")
     private @Nullable Output<String> parentId;
 
     /**
-     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Optional<Output<String>> parentId() {
@@ -179,7 +179,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parentId Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parentId Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 

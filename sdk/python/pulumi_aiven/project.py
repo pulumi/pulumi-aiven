@@ -39,7 +39,7 @@ class ProjectArgs:
         :param pulumi.Input[str] billing_group: The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] copy_from_project: The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] default_cloud: Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
-        :param pulumi.Input[str] parent_id: Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         :param pulumi.Input[bool] use_source_project_billing_group: Use the same billing group that is used in source project.
@@ -151,7 +151,7 @@ class ProjectArgs:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
@@ -224,7 +224,7 @@ class _ProjectState:
         :param pulumi.Input[str] copy_from_project: The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] default_cloud: Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
         :param pulumi.Input[str] estimated_balance: The monthly running estimate for this project for the current billing period.
-        :param pulumi.Input[str] parent_id: Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] payment_method: The payment type used for this project. For example,`card`.
         :param pulumi.Input[str] project: The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
@@ -371,7 +371,7 @@ class _ProjectState:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
@@ -484,7 +484,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] billing_group: The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] copy_from_project: The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] default_cloud: Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
-        :param pulumi.Input[str] parent_id: Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] project: The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
@@ -607,7 +607,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] copy_from_project: The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] default_cloud: Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
         :param pulumi.Input[str] estimated_balance: The monthly running estimate for this project for the current billing period.
-        :param pulumi.Input[str] parent_id: Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[str] payment_method: The payment type used for this project. For example,`card`.
         :param pulumi.Input[str] project: The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize projects.
@@ -704,7 +704,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
