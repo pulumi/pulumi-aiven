@@ -12,6 +12,32 @@ import (
 )
 
 // Gets information about a billing group.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupBillingGroup(ctx, &aiven.LookupBillingGroupArgs{
+//				BillingGroupId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupBillingGroup(ctx *pulumi.Context, args *LookupBillingGroupArgs, opts ...pulumi.InvokeOption) (*LookupBillingGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingGroupResult
@@ -24,7 +50,7 @@ func LookupBillingGroup(ctx *pulumi.Context, args *LookupBillingGroupArgs, opts 
 
 // A collection of arguments for invoking getBillingGroup.
 type LookupBillingGroupArgs struct {
-	// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+	// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
 	BillingGroupId string `pulumi:"billingGroupId"`
 }
 
@@ -40,7 +66,7 @@ type LookupBillingGroupResult struct {
 	BillingEmails []string `pulumi:"billingEmails"`
 	// Additional information to include on your invoice (for example, a reference number).
 	BillingExtraText string `pulumi:"billingExtraText"`
-	// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+	// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// Credit card ID.
 	CardId string `pulumi:"cardId"`
@@ -77,7 +103,7 @@ func LookupBillingGroupOutput(ctx *pulumi.Context, args LookupBillingGroupOutput
 
 // A collection of arguments for invoking getBillingGroup.
 type LookupBillingGroupOutputArgs struct {
-	// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+	// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
 	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
 }
 
@@ -125,7 +151,7 @@ func (o LookupBillingGroupResultOutput) BillingExtraText() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.BillingExtraText }).(pulumi.StringOutput)
 }
 
-// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
 func (o LookupBillingGroupResultOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.BillingGroupId }).(pulumi.StringOutput)
 }

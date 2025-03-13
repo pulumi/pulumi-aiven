@@ -90,6 +90,12 @@ namespace Pulumi.Aiven
         public Output<string> FullToken { get; private set; } = null!;
 
         /// <summary>
+        /// List of allowed IP ranges.
+        /// </summary>
+        [Output("ipAllowlists")]
+        public Output<ImmutableArray<string>> IpAllowlists { get; private set; } = null!;
+
+        /// <summary>
         /// IP address of the last request made with this token.
         /// </summary>
         [Output("lastIp")]
@@ -205,6 +211,18 @@ namespace Pulumi.Aiven
         [Input("extendWhenUsed")]
         public Input<bool>? ExtendWhenUsed { get; set; }
 
+        [Input("ipAllowlists")]
+        private InputList<string>? _ipAllowlists;
+
+        /// <summary>
+        /// List of allowed IP ranges.
+        /// </summary>
+        public InputList<string> IpAllowlists
+        {
+            get => _ipAllowlists ?? (_ipAllowlists = new InputList<string>());
+            set => _ipAllowlists = value;
+        }
+
         /// <summary>
         /// The number of hours after which a token expires. If not set, it never expires.
         /// </summary>
@@ -293,6 +311,18 @@ namespace Pulumi.Aiven
                 var emptySecret = Output.CreateSecret(0);
                 _fullToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
+        }
+
+        [Input("ipAllowlists")]
+        private InputList<string>? _ipAllowlists;
+
+        /// <summary>
+        /// List of allowed IP ranges.
+        /// </summary>
+        public InputList<string> IpAllowlists
+        {
+            get => _ipAllowlists ?? (_ipAllowlists = new InputList<string>());
+            set => _ipAllowlists = value;
         }
 
         /// <summary>

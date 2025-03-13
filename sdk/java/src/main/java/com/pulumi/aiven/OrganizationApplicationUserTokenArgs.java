@@ -50,6 +50,21 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
     }
 
     /**
+     * List of allowed IP ranges.
+     * 
+     */
+    @Import(name="ipAllowlists")
+    private @Nullable Output<List<String>> ipAllowlists;
+
+    /**
+     * @return List of allowed IP ranges.
+     * 
+     */
+    public Optional<Output<List<String>>> ipAllowlists() {
+        return Optional.ofNullable(this.ipAllowlists);
+    }
+
+    /**
      * The number of hours after which a token expires. If not set, it never expires.
      * 
      */
@@ -114,6 +129,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
     private OrganizationApplicationUserTokenArgs(OrganizationApplicationUserTokenArgs $) {
         this.description = $.description;
         this.extendWhenUsed = $.extendWhenUsed;
+        this.ipAllowlists = $.ipAllowlists;
         this.maxAgeSeconds = $.maxAgeSeconds;
         this.organizationId = $.organizationId;
         this.scopes = $.scopes;
@@ -178,6 +194,37 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
          */
         public Builder extendWhenUsed(Boolean extendWhenUsed) {
             return extendWhenUsed(Output.of(extendWhenUsed));
+        }
+
+        /**
+         * @param ipAllowlists List of allowed IP ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllowlists(@Nullable Output<List<String>> ipAllowlists) {
+            $.ipAllowlists = ipAllowlists;
+            return this;
+        }
+
+        /**
+         * @param ipAllowlists List of allowed IP ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllowlists(List<String> ipAllowlists) {
+            return ipAllowlists(Output.of(ipAllowlists));
+        }
+
+        /**
+         * @param ipAllowlists List of allowed IP ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllowlists(String... ipAllowlists) {
+            return ipAllowlists(List.of(ipAllowlists));
         }
 
         /**

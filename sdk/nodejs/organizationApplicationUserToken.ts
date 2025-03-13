@@ -87,6 +87,10 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly fullToken!: pulumi.Output<string>;
     /**
+     * List of allowed IP ranges.
+     */
+    public readonly ipAllowlists!: pulumi.Output<string[] | undefined>;
+    /**
      * IP address of the last request made with this token.
      */
     public /*out*/ readonly lastIp!: pulumi.Output<string>;
@@ -143,6 +147,7 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
             resourceInputs["expiryTime"] = state ? state.expiryTime : undefined;
             resourceInputs["extendWhenUsed"] = state ? state.extendWhenUsed : undefined;
             resourceInputs["fullToken"] = state ? state.fullToken : undefined;
+            resourceInputs["ipAllowlists"] = state ? state.ipAllowlists : undefined;
             resourceInputs["lastIp"] = state ? state.lastIp : undefined;
             resourceInputs["lastUsedTime"] = state ? state.lastUsedTime : undefined;
             resourceInputs["lastUserAgent"] = state ? state.lastUserAgent : undefined;
@@ -162,6 +167,7 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["extendWhenUsed"] = args ? args.extendWhenUsed : undefined;
+            resourceInputs["ipAllowlists"] = args ? args.ipAllowlists : undefined;
             resourceInputs["maxAgeSeconds"] = args ? args.maxAgeSeconds : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
@@ -217,6 +223,10 @@ export interface OrganizationApplicationUserTokenState {
      */
     fullToken?: pulumi.Input<string>;
     /**
+     * List of allowed IP ranges.
+     */
+    ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * IP address of the last request made with this token.
      */
     lastIp?: pulumi.Input<string>;
@@ -266,6 +276,10 @@ export interface OrganizationApplicationUserTokenArgs {
      * Extends the token session duration when the token is used. Only applicable if a value is set for `maxAgeSeconds`.
      */
     extendWhenUsed?: pulumi.Input<boolean>;
+    /**
+     * List of allowed IP ranges.
+     */
+    ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of hours after which a token expires. If not set, it never expires.
      */

@@ -3149,6 +3149,10 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     consumerEnableAutoCommit?: pulumi.Input<boolean>;
     /**
+     * Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+     */
+    consumerIdleDisconnectTimeout?: pulumi.Input<number>;
+    /**
      * Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
      */
     consumerRequestMaxBytes?: pulumi.Input<number>;
@@ -4760,6 +4764,10 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      */
     key?: pulumi.Input<string>;
     /**
+     * Whether the repository is read-only. Default: `false`.
+     */
+    readonly?: pulumi.Input<boolean>;
+    /**
      * If true, restore the cluster state. Defaults to false.
      */
     restoreGlobalState?: pulumi.Input<boolean>;
@@ -4802,6 +4810,10 @@ export interface OpenSearchOpensearchUserConfigGcsMigration {
      * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
      */
     indices: pulumi.Input<string>;
+    /**
+     * Whether the repository is read-only. Default: `false`.
+     */
+    readonly?: pulumi.Input<boolean>;
     /**
      * If true, restore the cluster state. Defaults to false.
      */
@@ -4953,6 +4965,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number>;
     clusterSearchRequestSlowlog?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog>;
+    /**
+     * Watermark settings
+     */
+    diskWatermarks?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchDiskWatermarks>;
     /**
      * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      */
@@ -5240,6 +5256,21 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
      * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: pulumi.Input<number>;
+}
+
+export interface OpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
+    /**
+     * The flood stage watermark for disk usage. Example: `95`.
+     */
+    floodStage: pulumi.Input<number>;
+    /**
+     * The high watermark for disk usage. Example: `90`.
+     */
+    high: pulumi.Input<number>;
+    /**
+     * The low watermark for disk usage. Example: `85`.
+     */
+    low: pulumi.Input<number>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
@@ -5583,6 +5614,10 @@ export interface OpenSearchOpensearchUserConfigS3Migration {
      */
     indices: pulumi.Input<string>;
     /**
+     * Whether the repository is read-only. Default: `false`.
+     */
+    readonly?: pulumi.Input<boolean>;
+    /**
      * S3 region.
      */
     region: pulumi.Input<string>;
@@ -5692,7 +5727,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -8149,6 +8184,10 @@ export interface ValkeyValkeyUserConfig {
      */
     backupMinute?: pulumi.Input<number>;
     /**
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     */
+    enableIpv6?: pulumi.Input<boolean>;
+    /**
      * When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
      */
     frequentSnapshots?: pulumi.Input<boolean>;
@@ -8206,6 +8245,10 @@ export interface ValkeyValkeyUserConfig {
      * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
      */
     valkeyAclChannelsDefault?: pulumi.Input<string>;
+    /**
+     * Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+     */
+    valkeyActiveExpireEffort?: pulumi.Input<number>;
     /**
      * Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
      */

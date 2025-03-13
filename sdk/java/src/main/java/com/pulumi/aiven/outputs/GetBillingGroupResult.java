@@ -37,7 +37,7 @@ public final class GetBillingGroupResult {
      */
     private String billingExtraText;
     /**
-     * @return The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * @return The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String billingGroupId;
@@ -134,7 +134,7 @@ public final class GetBillingGroupResult {
         return this.billingExtraText;
     }
     /**
-     * @return The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * @return The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String billingGroupId() {

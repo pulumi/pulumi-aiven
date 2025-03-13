@@ -32,14 +32,14 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
     }
 
     /**
-     * Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+     * Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
     @Import(name="isSuperAdmin")
     private @Nullable Output<Boolean> isSuperAdmin;
 
     /**
-     * @return Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+     * @return Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
     public Optional<Output<Boolean>> isSuperAdmin() {
@@ -141,7 +141,7 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
         }
 
         /**
-         * @param isSuperAdmin Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+         * @param isSuperAdmin Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
         }
 
         /**
-         * @param isSuperAdmin Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+         * @param isSuperAdmin Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
          * 
          * @return builder
          * 

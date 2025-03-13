@@ -35,6 +35,11 @@ public final class ValkeyValkeyUserConfig {
      */
     private @Nullable Integer backupMinute;
     /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    private @Nullable Boolean enableIpv6;
+    /**
      * @return When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
      * 
      */
@@ -109,6 +114,11 @@ public final class ValkeyValkeyUserConfig {
      */
     private @Nullable String valkeyAclChannelsDefault;
     /**
+     * @return Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+     * 
+     */
+    private @Nullable Integer valkeyActiveExpireEffort;
+    /**
      * @return Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
      * 
      */
@@ -180,6 +190,13 @@ public final class ValkeyValkeyUserConfig {
      */
     public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
+    }
+    /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    public Optional<Boolean> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
     }
     /**
      * @return When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
@@ -284,6 +301,13 @@ public final class ValkeyValkeyUserConfig {
         return Optional.ofNullable(this.valkeyAclChannelsDefault);
     }
     /**
+     * @return Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+     * 
+     */
+    public Optional<Integer> valkeyActiveExpireEffort() {
+        return Optional.ofNullable(this.valkeyActiveExpireEffort);
+    }
+    /**
      * @return Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
      * 
      */
@@ -366,6 +390,7 @@ public final class ValkeyValkeyUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable Integer backupHour;
         private @Nullable Integer backupMinute;
+        private @Nullable Boolean enableIpv6;
         private @Nullable Boolean frequentSnapshots;
         private @Nullable List<ValkeyValkeyUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -380,6 +405,7 @@ public final class ValkeyValkeyUserConfig {
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
         private @Nullable String valkeyAclChannelsDefault;
+        private @Nullable Integer valkeyActiveExpireEffort;
         private @Nullable Integer valkeyIoThreads;
         private @Nullable Integer valkeyLfuDecayTime;
         private @Nullable Integer valkeyLfuLogFactor;
@@ -396,6 +422,7 @@ public final class ValkeyValkeyUserConfig {
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.backupHour = defaults.backupHour;
     	      this.backupMinute = defaults.backupMinute;
+    	      this.enableIpv6 = defaults.enableIpv6;
     	      this.frequentSnapshots = defaults.frequentSnapshots;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -410,6 +437,7 @@ public final class ValkeyValkeyUserConfig {
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
     	      this.valkeyAclChannelsDefault = defaults.valkeyAclChannelsDefault;
+    	      this.valkeyActiveExpireEffort = defaults.valkeyActiveExpireEffort;
     	      this.valkeyIoThreads = defaults.valkeyIoThreads;
     	      this.valkeyLfuDecayTime = defaults.valkeyLfuDecayTime;
     	      this.valkeyLfuLogFactor = defaults.valkeyLfuLogFactor;
@@ -438,6 +466,12 @@ public final class ValkeyValkeyUserConfig {
         public Builder backupMinute(@Nullable Integer backupMinute) {
 
             this.backupMinute = backupMinute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableIpv6(@Nullable Boolean enableIpv6) {
+
+            this.enableIpv6 = enableIpv6;
             return this;
         }
         @CustomType.Setter
@@ -534,6 +568,12 @@ public final class ValkeyValkeyUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder valkeyActiveExpireEffort(@Nullable Integer valkeyActiveExpireEffort) {
+
+            this.valkeyActiveExpireEffort = valkeyActiveExpireEffort;
+            return this;
+        }
+        @CustomType.Setter
         public Builder valkeyIoThreads(@Nullable Integer valkeyIoThreads) {
 
             this.valkeyIoThreads = valkeyIoThreads;
@@ -598,6 +638,7 @@ public final class ValkeyValkeyUserConfig {
             _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.backupHour = backupHour;
             _resultValue.backupMinute = backupMinute;
+            _resultValue.enableIpv6 = enableIpv6;
             _resultValue.frequentSnapshots = frequentSnapshots;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
@@ -612,6 +653,7 @@ public final class ValkeyValkeyUserConfig {
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.staticIps = staticIps;
             _resultValue.valkeyAclChannelsDefault = valkeyAclChannelsDefault;
+            _resultValue.valkeyActiveExpireEffort = valkeyActiveExpireEffort;
             _resultValue.valkeyIoThreads = valkeyIoThreads;
             _resultValue.valkeyLfuDecayTime = valkeyLfuDecayTime;
             _resultValue.valkeyLfuLogFactor = valkeyLfuLogFactor;

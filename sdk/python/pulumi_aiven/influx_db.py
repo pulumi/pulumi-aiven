@@ -52,12 +52,12 @@ class InfluxDbArgs:
         :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
                service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
                service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-               created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-               provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-               are documented on each Cloud provider's own support articles, like [here for
-               Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-               AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
+               `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
+               per project and service. Changing this value [migrates the service to another cloud provider or
+               region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
+               includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
+               may have a brief interruption during DNS propagation.
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
         :param pulumi.Input['InfluxDbInfluxdbUserConfigArgs'] influxdb_user_config: Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
@@ -173,12 +173,12 @@ class InfluxDbArgs:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-        created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-        provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-        are documented on each Cloud provider's own support articles, like [here for
-        Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-        AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
+        `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
+        per project and service. Changing this value [migrates the service to another cloud provider or
+        region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
+        includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
+        may have a brief interruption during DNS propagation.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -365,12 +365,12 @@ class _InfluxDbState:
         :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
                service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
                service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-               created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-               provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-               are documented on each Cloud provider's own support articles, like [here for
-               Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-               AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
+               `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
+               per project and service. Changing this value [migrates the service to another cloud provider or
+               region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
+               includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
+               may have a brief interruption during DNS propagation.
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbComponentArgs']]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
@@ -497,12 +497,12 @@ class _InfluxDbState:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-        created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-        provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-        are documented on each Cloud provider's own support articles, like [here for
-        Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-        AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
+        `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
+        per project and service. Changing this value [migrates the service to another cloud provider or
+        region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
+        includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
+        may have a brief interruption during DNS propagation.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -872,12 +872,12 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
                service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
                service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-               created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-               provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-               are documented on each Cloud provider's own support articles, like [here for
-               Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-               AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
+               `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
+               per project and service. Changing this value [migrates the service to another cloud provider or
+               region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
+               includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
+               may have a brief interruption during DNS propagation.
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
         :param pulumi.Input[Union['InfluxDbInfluxdbUserConfigArgs', 'InfluxDbInfluxdbUserConfigArgsDict']] influxdb_user_config: Influxdb user configurable settings. **Warning:** There's no way to reset advanced configuration options to default.
@@ -1041,12 +1041,12 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
                service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
                service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-               created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-               provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-               are documented on each Cloud provider's own support articles, like [here for
-               Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-               AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
+               `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
+               per project and service. Changing this value [migrates the service to another cloud provider or
+               region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
+               includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
+               may have a brief interruption during DNS propagation.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbComponentArgs', 'InfluxDbComponentArgsDict']]]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
@@ -1140,12 +1140,12 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-        created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-        provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-        are documented on each Cloud provider's own support articles, like [here for
-        Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-        AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
+        `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
+        per project and service. Changing this value [migrates the service to another cloud provider or
+        region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and
+        includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases
+        may have a brief interruption during DNS propagation.
         """
         return pulumi.get(self, "cloud_name")
 

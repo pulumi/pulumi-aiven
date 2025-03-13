@@ -19,6 +19,11 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Boolean consumerEnableAutoCommit;
     /**
+     * @return Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+     * 
+     */
+    private @Nullable Integer consumerIdleDisconnectTimeout;
+    /**
      * @return Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
      * 
      */
@@ -71,6 +76,13 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
      */
     public Optional<Boolean> consumerEnableAutoCommit() {
         return Optional.ofNullable(this.consumerEnableAutoCommit);
+    }
+    /**
+     * @return Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+     * 
+     */
+    public Optional<Integer> consumerIdleDisconnectTimeout() {
+        return Optional.ofNullable(this.consumerIdleDisconnectTimeout);
     }
     /**
      * @return Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
@@ -146,6 +158,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean consumerEnableAutoCommit;
+        private @Nullable Integer consumerIdleDisconnectTimeout;
         private @Nullable Integer consumerRequestMaxBytes;
         private @Nullable Integer consumerRequestTimeoutMs;
         private @Nullable String nameStrategy;
@@ -159,6 +172,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
         public Builder(GetKafkaKafkaUserConfigKafkaRestConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerEnableAutoCommit = defaults.consumerEnableAutoCommit;
+    	      this.consumerIdleDisconnectTimeout = defaults.consumerIdleDisconnectTimeout;
     	      this.consumerRequestMaxBytes = defaults.consumerRequestMaxBytes;
     	      this.consumerRequestTimeoutMs = defaults.consumerRequestTimeoutMs;
     	      this.nameStrategy = defaults.nameStrategy;
@@ -174,6 +188,12 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
         public Builder consumerEnableAutoCommit(@Nullable Boolean consumerEnableAutoCommit) {
 
             this.consumerEnableAutoCommit = consumerEnableAutoCommit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder consumerIdleDisconnectTimeout(@Nullable Integer consumerIdleDisconnectTimeout) {
+
+            this.consumerIdleDisconnectTimeout = consumerIdleDisconnectTimeout;
             return this;
         }
         @CustomType.Setter
@@ -233,6 +253,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
         public GetKafkaKafkaUserConfigKafkaRestConfig build() {
             final var _resultValue = new GetKafkaKafkaUserConfigKafkaRestConfig();
             _resultValue.consumerEnableAutoCommit = consumerEnableAutoCommit;
+            _resultValue.consumerIdleDisconnectTimeout = consumerIdleDisconnectTimeout;
             _resultValue.consumerRequestMaxBytes = consumerRequestMaxBytes;
             _resultValue.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
             _resultValue.nameStrategy = nameStrategy;

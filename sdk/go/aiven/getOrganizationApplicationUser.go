@@ -63,7 +63,7 @@ type LookupOrganizationApplicationUserResult struct {
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+	// Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
 	IsSuperAdmin bool `pulumi:"isSuperAdmin"`
 	// Name of the application user.
 	Name string `pulumi:"name"`
@@ -119,7 +119,7 @@ func (o LookupOrganizationApplicationUserResultOutput) Id() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupOrganizationApplicationUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+// Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
 func (o LookupOrganizationApplicationUserResultOutput) IsSuperAdmin() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupOrganizationApplicationUserResult) bool { return v.IsSuperAdmin }).(pulumi.BoolOutput)
 }

@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs;
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchSegrepArgs;
@@ -119,6 +120,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
 
     public Optional<Output<OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs>> clusterSearchRequestSlowlog() {
         return Optional.ofNullable(this.clusterSearchRequestSlowlog);
+    }
+
+    /**
+     * Watermark settings
+     * 
+     */
+    @Import(name="diskWatermarks")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs> diskWatermarks;
+
+    /**
+     * @return Watermark settings
+     * 
+     */
+    public Optional<Output<OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs>> diskWatermarks() {
+        return Optional.ofNullable(this.diskWatermarks);
     }
 
     /**
@@ -783,6 +799,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.clusterRoutingAllocationBalancePreferPrimary = $.clusterRoutingAllocationBalancePreferPrimary;
         this.clusterRoutingAllocationNodeConcurrentRecoveries = $.clusterRoutingAllocationNodeConcurrentRecoveries;
         this.clusterSearchRequestSlowlog = $.clusterSearchRequestSlowlog;
+        this.diskWatermarks = $.diskWatermarks;
         this.emailSenderName = $.emailSenderName;
         this.emailSenderPassword = $.emailSenderPassword;
         this.emailSenderUsername = $.emailSenderUsername;
@@ -980,6 +997,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
 
         public Builder clusterSearchRequestSlowlog(OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs clusterSearchRequestSlowlog) {
             return clusterSearchRequestSlowlog(Output.of(clusterSearchRequestSlowlog));
+        }
+
+        /**
+         * @param diskWatermarks Watermark settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskWatermarks(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs> diskWatermarks) {
+            $.diskWatermarks = diskWatermarks;
+            return this;
+        }
+
+        /**
+         * @param diskWatermarks Watermark settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskWatermarks(OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs diskWatermarks) {
+            return diskWatermarks(Output.of(diskWatermarks));
         }
 
         /**

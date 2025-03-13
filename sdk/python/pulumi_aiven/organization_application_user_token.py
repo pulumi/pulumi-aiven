@@ -23,6 +23,7 @@ class OrganizationApplicationUserTokenArgs:
                  user_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  extend_when_used: Optional[pulumi.Input[bool]] = None,
+                 ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age_seconds: Optional[pulumi.Input[int]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -31,6 +32,7 @@ class OrganizationApplicationUserTokenArgs:
         :param pulumi.Input[str] user_id: The ID of the application user the token is created for.
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_allowlists: List of allowed IP ranges.
         :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. If not set, it never expires.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
         """
@@ -40,6 +42,8 @@ class OrganizationApplicationUserTokenArgs:
             pulumi.set(__self__, "description", description)
         if extend_when_used is not None:
             pulumi.set(__self__, "extend_when_used", extend_when_used)
+        if ip_allowlists is not None:
+            pulumi.set(__self__, "ip_allowlists", ip_allowlists)
         if max_age_seconds is not None:
             pulumi.set(__self__, "max_age_seconds", max_age_seconds)
         if scopes is not None:
@@ -94,6 +98,18 @@ class OrganizationApplicationUserTokenArgs:
         pulumi.set(self, "extend_when_used", value)
 
     @property
+    @pulumi.getter(name="ipAllowlists")
+    def ip_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of allowed IP ranges.
+        """
+        return pulumi.get(self, "ip_allowlists")
+
+    @ip_allowlists.setter
+    def ip_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_allowlists", value)
+
+    @property
     @pulumi.getter(name="maxAgeSeconds")
     def max_age_seconds(self) -> Optional[pulumi.Input[int]]:
         """
@@ -128,6 +144,7 @@ class _OrganizationApplicationUserTokenState:
                  expiry_time: Optional[pulumi.Input[str]] = None,
                  extend_when_used: Optional[pulumi.Input[bool]] = None,
                  full_token: Optional[pulumi.Input[str]] = None,
+                 ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  last_ip: Optional[pulumi.Input[str]] = None,
                  last_used_time: Optional[pulumi.Input[str]] = None,
                  last_user_agent: Optional[pulumi.Input[str]] = None,
@@ -146,6 +163,7 @@ class _OrganizationApplicationUserTokenState:
         :param pulumi.Input[str] expiry_time: Timestamp when the access token will expire unless extended.
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
         :param pulumi.Input[str] full_token: Full token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_allowlists: List of allowed IP ranges.
         :param pulumi.Input[str] last_ip: IP address of the last request made with this token.
         :param pulumi.Input[str] last_used_time: Timestamp when the access token was last used.
         :param pulumi.Input[str] last_user_agent: User agent of the last request made with this token.
@@ -170,6 +188,8 @@ class _OrganizationApplicationUserTokenState:
             pulumi.set(__self__, "extend_when_used", extend_when_used)
         if full_token is not None:
             pulumi.set(__self__, "full_token", full_token)
+        if ip_allowlists is not None:
+            pulumi.set(__self__, "ip_allowlists", ip_allowlists)
         if last_ip is not None:
             pulumi.set(__self__, "last_ip", last_ip)
         if last_used_time is not None:
@@ -272,6 +292,18 @@ class _OrganizationApplicationUserTokenState:
     @full_token.setter
     def full_token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "full_token", value)
+
+    @property
+    @pulumi.getter(name="ipAllowlists")
+    def ip_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of allowed IP ranges.
+        """
+        return pulumi.get(self, "ip_allowlists")
+
+    @ip_allowlists.setter
+    def ip_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_allowlists", value)
 
     @property
     @pulumi.getter(name="lastIp")
@@ -389,6 +421,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  extend_when_used: Optional[pulumi.Input[bool]] = None,
+                 ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age_seconds: Optional[pulumi.Input[int]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -422,6 +455,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_allowlists: List of allowed IP ranges.
         :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. If not set, it never expires.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Limits access to specific resources by granting read or write privileges to them. For example: `billing:read`. Available scopes are: `authentication`, `billing`, `payments` for [payment methods](https://aiven.io/docs/platform/howto/list-billing), `privatelink`, `projects`, `services`, `static_ips`, and `user`.
@@ -474,6 +508,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  extend_when_used: Optional[pulumi.Input[bool]] = None,
+                 ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age_seconds: Optional[pulumi.Input[int]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -489,6 +524,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["extend_when_used"] = extend_when_used
+            __props__.__dict__["ip_allowlists"] = ip_allowlists
             __props__.__dict__["max_age_seconds"] = max_age_seconds
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
@@ -526,6 +562,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
             expiry_time: Optional[pulumi.Input[str]] = None,
             extend_when_used: Optional[pulumi.Input[bool]] = None,
             full_token: Optional[pulumi.Input[str]] = None,
+            ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             last_ip: Optional[pulumi.Input[str]] = None,
             last_used_time: Optional[pulumi.Input[str]] = None,
             last_user_agent: Optional[pulumi.Input[str]] = None,
@@ -549,6 +586,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.Input[str] expiry_time: Timestamp when the access token will expire unless extended.
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
         :param pulumi.Input[str] full_token: Full token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_allowlists: List of allowed IP ranges.
         :param pulumi.Input[str] last_ip: IP address of the last request made with this token.
         :param pulumi.Input[str] last_used_time: Timestamp when the access token was last used.
         :param pulumi.Input[str] last_user_agent: User agent of the last request made with this token.
@@ -570,6 +608,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         __props__.__dict__["expiry_time"] = expiry_time
         __props__.__dict__["extend_when_used"] = extend_when_used
         __props__.__dict__["full_token"] = full_token
+        __props__.__dict__["ip_allowlists"] = ip_allowlists
         __props__.__dict__["last_ip"] = last_ip
         __props__.__dict__["last_used_time"] = last_used_time
         __props__.__dict__["last_user_agent"] = last_user_agent
@@ -636,6 +675,14 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         Full token.
         """
         return pulumi.get(self, "full_token")
+
+    @property
+    @pulumi.getter(name="ipAllowlists")
+    def ip_allowlists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of allowed IP ranges.
+        """
+        return pulumi.get(self, "ip_allowlists")
 
     @property
     @pulumi.getter(name="lastIp")

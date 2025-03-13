@@ -39,6 +39,10 @@ namespace Pulumi.Aiven.Outputs
         public readonly int? ClusterRoutingAllocationNodeConcurrentRecoveries;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogResult? ClusterSearchRequestSlowlog;
         /// <summary>
+        /// Watermark settings
+        /// </summary>
+        public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksResult? DiskWatermarks;
+        /// <summary>
         /// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         /// </summary>
         public readonly string? EmailSenderName;
@@ -228,6 +232,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogResult? clusterSearchRequestSlowlog,
 
+            Outputs.GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksResult? diskWatermarks,
+
             string? emailSenderName,
 
             string? emailSenderPassword,
@@ -323,6 +329,7 @@ namespace Pulumi.Aiven.Outputs
             ClusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
             ClusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             ClusterSearchRequestSlowlog = clusterSearchRequestSlowlog;
+            DiskWatermarks = diskWatermarks;
             EmailSenderName = emailSenderName;
             EmailSenderPassword = emailSenderPassword;
             EmailSenderUsername = emailSenderUsername;

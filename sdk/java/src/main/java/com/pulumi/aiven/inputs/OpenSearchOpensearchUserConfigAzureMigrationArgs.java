@@ -153,6 +153,21 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
     }
 
     /**
+     * Whether the repository is read-only. Default: `false`.
+     * 
+     */
+    @Import(name="readonly")
+    private @Nullable Output<Boolean> readonly;
+
+    /**
+     * @return Whether the repository is read-only. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> readonly() {
+        return Optional.ofNullable(this.readonly);
+    }
+
+    /**
      * If true, restore the cluster state. Defaults to false.
      * 
      */
@@ -209,6 +224,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
         this.includeAliases = $.includeAliases;
         this.indices = $.indices;
         this.key = $.key;
+        this.readonly = $.readonly;
         this.restoreGlobalState = $.restoreGlobalState;
         this.sasToken = $.sasToken;
         this.snapshotName = $.snapshotName;
@@ -419,6 +435,27 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
          */
         public Builder key(String key) {
             return key(Output.of(key));
+        }
+
+        /**
+         * @param readonly Whether the repository is read-only. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readonly(@Nullable Output<Boolean> readonly) {
+            $.readonly = readonly;
+            return this;
+        }
+
+        /**
+         * @param readonly Whether the repository is read-only. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readonly(Boolean readonly) {
+            return readonly(Output.of(readonly));
         }
 
         /**

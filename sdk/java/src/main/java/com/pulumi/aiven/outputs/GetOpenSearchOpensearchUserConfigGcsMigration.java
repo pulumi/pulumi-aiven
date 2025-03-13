@@ -49,6 +49,11 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
      */
     private String indices;
     /**
+     * @return Whether the repository is read-only. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean readonly;
+    /**
      * @return If true, restore the cluster state. Defaults to false.
      * 
      */
@@ -110,6 +115,13 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
         return this.indices;
     }
     /**
+     * @return Whether the repository is read-only. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> readonly() {
+        return Optional.ofNullable(this.readonly);
+    }
+    /**
      * @return If true, restore the cluster state. Defaults to false.
      * 
      */
@@ -140,6 +152,7 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
         private String credentials;
         private @Nullable Boolean includeAliases;
         private String indices;
+        private @Nullable Boolean readonly;
         private @Nullable Boolean restoreGlobalState;
         private String snapshotName;
         public Builder() {}
@@ -152,6 +165,7 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
     	      this.credentials = defaults.credentials;
     	      this.includeAliases = defaults.includeAliases;
     	      this.indices = defaults.indices;
+    	      this.readonly = defaults.readonly;
     	      this.restoreGlobalState = defaults.restoreGlobalState;
     	      this.snapshotName = defaults.snapshotName;
         }
@@ -207,6 +221,12 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
             return this;
         }
         @CustomType.Setter
+        public Builder readonly(@Nullable Boolean readonly) {
+
+            this.readonly = readonly;
+            return this;
+        }
+        @CustomType.Setter
         public Builder restoreGlobalState(@Nullable Boolean restoreGlobalState) {
 
             this.restoreGlobalState = restoreGlobalState;
@@ -229,6 +249,7 @@ public final class GetOpenSearchOpensearchUserConfigGcsMigration {
             _resultValue.credentials = credentials;
             _resultValue.includeAliases = includeAliases;
             _resultValue.indices = indices;
+            _resultValue.readonly = readonly;
             _resultValue.restoreGlobalState = restoreGlobalState;
             _resultValue.snapshotName = snapshotName;
             return _resultValue;

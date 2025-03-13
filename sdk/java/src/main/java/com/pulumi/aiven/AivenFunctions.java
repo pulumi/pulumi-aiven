@@ -2003,7 +2003,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name("example-billing-group")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -2045,7 +2045,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name("example-billing-group")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -2087,7 +2087,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name("example-billing-group")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -2129,7 +2129,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name("example-billing-group")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -2171,7 +2171,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name("example-billing-group")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -12364,7 +12364,7 @@ public final class AivenFunctions {
      * &gt; **This resource is deprecated**
      * Use `aiven.OrganizationPermission` instead and
      * migrate existing `aiven.ProjectUser` resources
-     * to the new resource.
+     * to the new resource. **Do not use the `aiven.ProjectUser` and `aiven.OrganizationPermission` resources together**.
      * 
      * ## Example Usage
      * 
@@ -12412,7 +12412,7 @@ public final class AivenFunctions {
      * &gt; **This resource is deprecated**
      * Use `aiven.OrganizationPermission` instead and
      * migrate existing `aiven.ProjectUser` resources
-     * to the new resource.
+     * to the new resource. **Do not use the `aiven.ProjectUser` and `aiven.OrganizationPermission` resources together**.
      * 
      * ## Example Usage
      * 
@@ -12460,7 +12460,7 @@ public final class AivenFunctions {
      * &gt; **This resource is deprecated**
      * Use `aiven.OrganizationPermission` instead and
      * migrate existing `aiven.ProjectUser` resources
-     * to the new resource.
+     * to the new resource. **Do not use the `aiven.ProjectUser` and `aiven.OrganizationPermission` resources together**.
      * 
      * ## Example Usage
      * 
@@ -12508,7 +12508,7 @@ public final class AivenFunctions {
      * &gt; **This resource is deprecated**
      * Use `aiven.OrganizationPermission` instead and
      * migrate existing `aiven.ProjectUser` resources
-     * to the new resource.
+     * to the new resource. **Do not use the `aiven.ProjectUser` and `aiven.OrganizationPermission` resources together**.
      * 
      * ## Example Usage
      * 
@@ -12556,7 +12556,7 @@ public final class AivenFunctions {
      * &gt; **This resource is deprecated**
      * Use `aiven.OrganizationPermission` instead and
      * migrate existing `aiven.ProjectUser` resources
-     * to the new resource.
+     * to the new resource. **Do not use the `aiven.ProjectUser` and `aiven.OrganizationPermission` resources together**.
      * 
      * ## Example Usage
      * 

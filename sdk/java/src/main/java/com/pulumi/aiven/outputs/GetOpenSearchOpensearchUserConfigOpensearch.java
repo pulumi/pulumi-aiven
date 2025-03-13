@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog;
+import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries;
 import com.pulumi.aiven.outputs.GetOpenSearchOpensearchUserConfigOpensearchSegrep;
@@ -51,6 +52,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog clusterSearchRequestSlowlog;
+    /**
+     * @return Watermark settings
+     * 
+     */
+    private @Nullable GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks diskWatermarks;
     /**
      * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      * 
@@ -313,6 +319,13 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     }
     public Optional<GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog> clusterSearchRequestSlowlog() {
         return Optional.ofNullable(this.clusterSearchRequestSlowlog);
+    }
+    /**
+     * @return Watermark settings
+     * 
+     */
+    public Optional<GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks> diskWatermarks() {
+        return Optional.ofNullable(this.diskWatermarks);
     }
     /**
      * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
@@ -635,6 +648,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Boolean clusterRoutingAllocationBalancePreferPrimary;
         private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
         private @Nullable GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog clusterSearchRequestSlowlog;
+        private @Nullable GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks diskWatermarks;
         private @Nullable String emailSenderName;
         private @Nullable String emailSenderPassword;
         private @Nullable String emailSenderUsername;
@@ -689,6 +703,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     	      this.clusterRoutingAllocationBalancePreferPrimary = defaults.clusterRoutingAllocationBalancePreferPrimary;
     	      this.clusterRoutingAllocationNodeConcurrentRecoveries = defaults.clusterRoutingAllocationNodeConcurrentRecoveries;
     	      this.clusterSearchRequestSlowlog = defaults.clusterSearchRequestSlowlog;
+    	      this.diskWatermarks = defaults.diskWatermarks;
     	      this.emailSenderName = defaults.emailSenderName;
     	      this.emailSenderPassword = defaults.emailSenderPassword;
     	      this.emailSenderUsername = defaults.emailSenderUsername;
@@ -775,6 +790,12 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         public Builder clusterSearchRequestSlowlog(@Nullable GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog clusterSearchRequestSlowlog) {
 
             this.clusterSearchRequestSlowlog = clusterSearchRequestSlowlog;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskWatermarks(@Nullable GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks diskWatermarks) {
+
+            this.diskWatermarks = diskWatermarks;
             return this;
         }
         @CustomType.Setter
@@ -1053,6 +1074,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             _resultValue.clusterRoutingAllocationBalancePreferPrimary = clusterRoutingAllocationBalancePreferPrimary;
             _resultValue.clusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             _resultValue.clusterSearchRequestSlowlog = clusterSearchRequestSlowlog;
+            _resultValue.diskWatermarks = diskWatermarks;
             _resultValue.emailSenderName = emailSenderName;
             _resultValue.emailSenderPassword = emailSenderPassword;
             _resultValue.emailSenderUsername = emailSenderUsername;
