@@ -6,11 +6,10 @@ import * as utilities from "./utilities";
 
 /**
  * Creates and manages an organization application user. [Application users](https://aiven.io/docs/platform/concepts/application-users) can be used for
- * programmatic access to the platform.
+ * programmatic access to the platform using a token created with the `aiven.OrganizationApplicationUserToken` resource.
  *
- * You give application users access to projects by adding them as members of a group using `aiven.OrganizationUserGroupMember`
- * and assigning the group to a project with `aiven.OrganizationGroupProject`. You can give an application user access to all
- * resources in your organization by setting `isSuperAdmin = true` .
+ * You give application users access to projects using the `aiven.OrganizationPermission` resource. You can also add application users to
+ * groups with access to projects using `aiven.OrganizationUserGroupMember`.
  *
  * ## Example Usage
  *
@@ -63,7 +62,7 @@ export class OrganizationApplicationUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly email!: pulumi.Output<string>;
     /**
-     * Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+     * Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      */
     public readonly isSuperAdmin!: pulumi.Output<boolean | undefined>;
     /**
@@ -122,7 +121,7 @@ export interface OrganizationApplicationUserState {
      */
     email?: pulumi.Input<string>;
     /**
-     * Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+     * Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      */
     isSuperAdmin?: pulumi.Input<boolean>;
     /**
@@ -144,7 +143,7 @@ export interface OrganizationApplicationUserState {
  */
 export interface OrganizationApplicationUserArgs {
     /**
-     * Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+     * Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      */
     isSuperAdmin?: pulumi.Input<boolean>;
     /**

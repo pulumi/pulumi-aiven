@@ -46,6 +46,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Indices;
         /// <summary>
+        /// Whether the repository is read-only. Default: `false`.
+        /// </summary>
+        public readonly bool? Readonly;
+        /// <summary>
         /// S3 region.
         /// </summary>
         public readonly string Region;
@@ -84,6 +88,8 @@ namespace Pulumi.Aiven.Outputs
 
             string indices,
 
+            bool? @readonly,
+
             string region,
 
             bool? restoreGlobalState,
@@ -102,6 +108,7 @@ namespace Pulumi.Aiven.Outputs
             Endpoint = endpoint;
             IncludeAliases = includeAliases;
             Indices = indices;
+            Readonly = @readonly;
             Region = region;
             RestoreGlobalState = restoreGlobalState;
             SecretKey = secretKey;

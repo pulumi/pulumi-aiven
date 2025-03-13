@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ConsumerEnableAutoCommit;
         /// <summary>
+        /// Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+        /// </summary>
+        public readonly int? ConsumerIdleDisconnectTimeout;
+        /// <summary>
         /// Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
         /// </summary>
         public readonly int? ConsumerRequestMaxBytes;
@@ -58,6 +62,8 @@ namespace Pulumi.Aiven.Outputs
         private KafkaKafkaUserConfigKafkaRestConfig(
             bool? consumerEnableAutoCommit,
 
+            int? consumerIdleDisconnectTimeout,
+
             int? consumerRequestMaxBytes,
 
             int? consumerRequestTimeoutMs,
@@ -77,6 +83,7 @@ namespace Pulumi.Aiven.Outputs
             int? simpleconsumerPoolSizeMax)
         {
             ConsumerEnableAutoCommit = consumerEnableAutoCommit;
+            ConsumerIdleDisconnectTimeout = consumerIdleDisconnectTimeout;
             ConsumerRequestMaxBytes = consumerRequestMaxBytes;
             ConsumerRequestTimeoutMs = consumerRequestTimeoutMs;
             NameStrategy = nameStrategy;

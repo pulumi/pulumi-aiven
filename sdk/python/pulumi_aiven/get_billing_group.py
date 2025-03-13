@@ -123,7 +123,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> str:
         """
-        The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -246,8 +246,17 @@ def get_billing_group(billing_group_id: Optional[str] = None,
     """
     Gets information about a billing group.
 
+    ## Example Usage
 
-    :param str billing_group_id: The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example_billing_group = aiven.get_billing_group(billing_group_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+    ```
+
+
+    :param str billing_group_id: The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
     """
     __args__ = dict()
     __args__['billingGroupId'] = billing_group_id
@@ -277,8 +286,17 @@ def get_billing_group_output(billing_group_id: Optional[pulumi.Input[str]] = Non
     """
     Gets information about a billing group.
 
+    ## Example Usage
 
-    :param str billing_group_id: The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example_billing_group = aiven.get_billing_group(billing_group_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+    ```
+
+
+    :param str billing_group_id: The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
     """
     __args__ = dict()
     __args__['billingGroupId'] = billing_group_id

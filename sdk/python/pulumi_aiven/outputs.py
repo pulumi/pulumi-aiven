@@ -211,6 +211,7 @@ __all__ = [
     'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog',
     'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold',
     'OpenSearchOpensearchUserConfigOpensearchDashboards',
+    'OpenSearchOpensearchUserConfigOpensearchDiskWatermarks',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressure',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask',
@@ -541,6 +542,7 @@ __all__ = [
     'GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogResult',
     'GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdResult',
     'GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult',
+    'GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksResult',
     'GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureResult',
     'GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressResult',
     'GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskResult',
@@ -11719,6 +11721,8 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         suggest = None
         if key == "consumerEnableAutoCommit":
             suggest = "consumer_enable_auto_commit"
+        elif key == "consumerIdleDisconnectTimeout":
+            suggest = "consumer_idle_disconnect_timeout"
         elif key == "consumerRequestMaxBytes":
             suggest = "consumer_request_max_bytes"
         elif key == "consumerRequestTimeoutMs":
@@ -11751,6 +11755,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
 
     def __init__(__self__, *,
                  consumer_enable_auto_commit: Optional[bool] = None,
+                 consumer_idle_disconnect_timeout: Optional[int] = None,
                  consumer_request_max_bytes: Optional[int] = None,
                  consumer_request_timeout_ms: Optional[int] = None,
                  name_strategy: Optional[str] = None,
@@ -11762,6 +11767,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
                  simpleconsumer_pool_size_max: Optional[int] = None):
         """
         :param bool consumer_enable_auto_commit: If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
+        :param int consumer_idle_disconnect_timeout: Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
         :param int consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
         :param int consumer_request_timeout_ms: Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
         :param str name_strategy: Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
@@ -11774,6 +11780,8 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         """
         if consumer_enable_auto_commit is not None:
             pulumi.set(__self__, "consumer_enable_auto_commit", consumer_enable_auto_commit)
+        if consumer_idle_disconnect_timeout is not None:
+            pulumi.set(__self__, "consumer_idle_disconnect_timeout", consumer_idle_disconnect_timeout)
         if consumer_request_max_bytes is not None:
             pulumi.set(__self__, "consumer_request_max_bytes", consumer_request_max_bytes)
         if consumer_request_timeout_ms is not None:
@@ -11800,6 +11808,14 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
         """
         return pulumi.get(self, "consumer_enable_auto_commit")
+
+    @property
+    @pulumi.getter(name="consumerIdleDisconnectTimeout")
+    def consumer_idle_disconnect_timeout(self) -> Optional[int]:
+        """
+        Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+        """
+        return pulumi.get(self, "consumer_idle_disconnect_timeout")
 
     @property
     @pulumi.getter(name="consumerRequestMaxBytes")
@@ -17266,6 +17282,7 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
                  endpoint_suffix: Optional[str] = None,
                  include_aliases: Optional[bool] = None,
                  key: Optional[str] = None,
+                 readonly: Optional[bool] = None,
                  restore_global_state: Optional[bool] = None,
                  sas_token: Optional[str] = None):
         """
@@ -17279,6 +17296,7 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
         :param str endpoint_suffix: Defines the DNS suffix for Azure Storage endpoints.
         :param bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
         :param str key: Azure account secret key. One of key or sas_token should be specified.
+        :param bool readonly: Whether the repository is read-only. Default: `false`.
         :param bool restore_global_state: If true, restore the cluster state. Defaults to false.
         :param str sas_token: A shared access signatures (SAS) token. One of key or sas_token should be specified.
         """
@@ -17297,6 +17315,8 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
             pulumi.set(__self__, "include_aliases", include_aliases)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if readonly is not None:
+            pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
             pulumi.set(__self__, "restore_global_state", restore_global_state)
         if sas_token is not None:
@@ -17383,6 +17403,14 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
         return pulumi.get(self, "key")
 
     @property
+    @pulumi.getter
+    def readonly(self) -> Optional[bool]:
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
+        return pulumi.get(self, "readonly")
+
+    @property
     @pulumi.getter(name="restoreGlobalState")
     def restore_global_state(self) -> Optional[bool]:
         """
@@ -17435,6 +17463,7 @@ class OpenSearchOpensearchUserConfigGcsMigration(dict):
                  chunk_size: Optional[str] = None,
                  compress: Optional[bool] = None,
                  include_aliases: Optional[bool] = None,
+                 readonly: Optional[bool] = None,
                  restore_global_state: Optional[bool] = None):
         """
         :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
@@ -17445,6 +17474,7 @@ class OpenSearchOpensearchUserConfigGcsMigration(dict):
         :param str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
         :param bool compress: When set to true metadata files are stored in compressed format.
         :param bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param bool readonly: Whether the repository is read-only. Default: `false`.
         :param bool restore_global_state: If true, restore the cluster state. Defaults to false.
         """
         pulumi.set(__self__, "base_path", base_path)
@@ -17458,6 +17488,8 @@ class OpenSearchOpensearchUserConfigGcsMigration(dict):
             pulumi.set(__self__, "compress", compress)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if readonly is not None:
+            pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
             pulumi.set(__self__, "restore_global_state", restore_global_state)
 
@@ -17524,6 +17556,14 @@ class OpenSearchOpensearchUserConfigGcsMigration(dict):
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
         return pulumi.get(self, "include_aliases")
+
+    @property
+    @pulumi.getter
+    def readonly(self) -> Optional[bool]:
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
+        return pulumi.get(self, "readonly")
 
     @property
     @pulumi.getter(name="restoreGlobalState")
@@ -17979,6 +18019,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             suggest = "cluster_routing_allocation_node_concurrent_recoveries"
         elif key == "clusterSearchRequestSlowlog":
             suggest = "cluster_search_request_slowlog"
+        elif key == "diskWatermarks":
+            suggest = "disk_watermarks"
         elif key == "emailSenderName":
             suggest = "email_sender_name"
         elif key == "emailSenderPassword":
@@ -18085,6 +18127,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
                  cluster_routing_allocation_balance_prefer_primary: Optional[bool] = None,
                  cluster_routing_allocation_node_concurrent_recoveries: Optional[int] = None,
                  cluster_search_request_slowlog: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog'] = None,
+                 disk_watermarks: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchDiskWatermarks'] = None,
                  email_sender_name: Optional[str] = None,
                  email_sender_password: Optional[str] = None,
                  email_sender_username: Optional[str] = None,
@@ -18136,6 +18179,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         :param int cluster_max_shards_per_node: Controls the number of shards allowed in the cluster per data node. Example: `1000`.
         :param bool cluster_routing_allocation_balance_prefer_primary: When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
         :param int cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
+        :param 'OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs' disk_watermarks: Watermark settings
         :param str email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         :param str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param str email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
@@ -18194,6 +18238,8 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             pulumi.set(__self__, "cluster_routing_allocation_node_concurrent_recoveries", cluster_routing_allocation_node_concurrent_recoveries)
         if cluster_search_request_slowlog is not None:
             pulumi.set(__self__, "cluster_search_request_slowlog", cluster_search_request_slowlog)
+        if disk_watermarks is not None:
+            pulumi.set(__self__, "disk_watermarks", disk_watermarks)
         if email_sender_name is not None:
             pulumi.set(__self__, "email_sender_name", email_sender_name)
         if email_sender_password is not None:
@@ -18335,6 +18381,14 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="clusterSearchRequestSlowlog")
     def cluster_search_request_slowlog(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog']:
         return pulumi.get(self, "cluster_search_request_slowlog")
+
+    @property
+    @pulumi.getter(name="diskWatermarks")
+    def disk_watermarks(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchDiskWatermarks']:
+        """
+        Watermark settings
+        """
+        return pulumi.get(self, "disk_watermarks")
 
     @property
     @pulumi.getter(name="emailSenderName")
@@ -19111,6 +19165,63 @@ class OpenSearchOpensearchUserConfigOpensearchDashboards(dict):
         Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
         """
         return pulumi.get(self, "opensearch_request_timeout")
+
+
+@pulumi.output_type
+class OpenSearchOpensearchUserConfigOpensearchDiskWatermarks(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "floodStage":
+            suggest = "flood_stage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenSearchOpensearchUserConfigOpensearchDiskWatermarks. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenSearchOpensearchUserConfigOpensearchDiskWatermarks.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenSearchOpensearchUserConfigOpensearchDiskWatermarks.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 flood_stage: int,
+                 high: int,
+                 low: int):
+        """
+        :param int flood_stage: The flood stage watermark for disk usage. Example: `95`.
+        :param int high: The high watermark for disk usage. Example: `90`.
+        :param int low: The low watermark for disk usage. Example: `85`.
+        """
+        pulumi.set(__self__, "flood_stage", flood_stage)
+        pulumi.set(__self__, "high", high)
+        pulumi.set(__self__, "low", low)
+
+    @property
+    @pulumi.getter(name="floodStage")
+    def flood_stage(self) -> int:
+        """
+        The flood stage watermark for disk usage. Example: `95`.
+        """
+        return pulumi.get(self, "flood_stage")
+
+    @property
+    @pulumi.getter
+    def high(self) -> int:
+        """
+        The high watermark for disk usage. Example: `90`.
+        """
+        return pulumi.get(self, "high")
+
+    @property
+    @pulumi.getter
+    def low(self) -> int:
+        """
+        The low watermark for disk usage. Example: `85`.
+        """
+        return pulumi.get(self, "low")
 
 
 @pulumi.output_type
@@ -20327,6 +20438,7 @@ class OpenSearchOpensearchUserConfigS3Migration(dict):
                  compress: Optional[bool] = None,
                  endpoint: Optional[str] = None,
                  include_aliases: Optional[bool] = None,
+                 readonly: Optional[bool] = None,
                  restore_global_state: Optional[bool] = None,
                  server_side_encryption: Optional[bool] = None):
         """
@@ -20341,6 +20453,7 @@ class OpenSearchOpensearchUserConfigS3Migration(dict):
         :param bool compress: When set to true metadata files are stored in compressed format.
         :param str endpoint: The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
         :param bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param bool readonly: Whether the repository is read-only. Default: `false`.
         :param bool restore_global_state: If true, restore the cluster state. Defaults to false.
         :param bool server_side_encryption: When set to true files are encrypted on server side.
         """
@@ -20359,6 +20472,8 @@ class OpenSearchOpensearchUserConfigS3Migration(dict):
             pulumi.set(__self__, "endpoint", endpoint)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if readonly is not None:
+            pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
             pulumi.set(__self__, "restore_global_state", restore_global_state)
         if server_side_encryption is not None:
@@ -20451,6 +20566,14 @@ class OpenSearchOpensearchUserConfigS3Migration(dict):
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
         return pulumi.get(self, "include_aliases")
+
+    @property
+    @pulumi.getter
+    def readonly(self) -> Optional[bool]:
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
+        return pulumi.get(self, "readonly")
 
     @property
     @pulumi.getter(name="restoreGlobalState")
@@ -20771,7 +20894,7 @@ class OrganizationPermissionPermission(dict):
                  create_time: Optional[str] = None,
                  update_time: Optional[str] = None):
         """
-        :param Sequence[str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        :param Sequence[str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         :param str principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param str principal_type: The type of principal. The possible values are `user` and `user_group`.
         :param str create_time: Time created.
@@ -20789,7 +20912,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter
     def permissions(self) -> Sequence[str]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -29292,6 +29415,8 @@ class ValkeyValkeyUserConfig(dict):
             suggest = "backup_hour"
         elif key == "backupMinute":
             suggest = "backup_minute"
+        elif key == "enableIpv6":
+            suggest = "enable_ipv6"
         elif key == "frequentSnapshots":
             suggest = "frequent_snapshots"
         elif key == "ipFilterObjects":
@@ -29318,6 +29443,8 @@ class ValkeyValkeyUserConfig(dict):
             suggest = "static_ips"
         elif key == "valkeyAclChannelsDefault":
             suggest = "valkey_acl_channels_default"
+        elif key == "valkeyActiveExpireEffort":
+            suggest = "valkey_active_expire_effort"
         elif key == "valkeyIoThreads":
             suggest = "valkey_io_threads"
         elif key == "valkeyLfuDecayTime":
@@ -29354,6 +29481,7 @@ class ValkeyValkeyUserConfig(dict):
                  additional_backup_regions: Optional[str] = None,
                  backup_hour: Optional[int] = None,
                  backup_minute: Optional[int] = None,
+                 enable_ipv6: Optional[bool] = None,
                  frequent_snapshots: Optional[bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.ValkeyValkeyUserConfigIpFilterObject']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
@@ -29368,6 +29496,7 @@ class ValkeyValkeyUserConfig(dict):
                  service_to_fork_from: Optional[str] = None,
                  static_ips: Optional[bool] = None,
                  valkey_acl_channels_default: Optional[str] = None,
+                 valkey_active_expire_effort: Optional[int] = None,
                  valkey_io_threads: Optional[int] = None,
                  valkey_lfu_decay_time: Optional[int] = None,
                  valkey_lfu_log_factor: Optional[int] = None,
@@ -29382,6 +29511,7 @@ class ValkeyValkeyUserConfig(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param bool frequent_snapshots: When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
         :param Sequence['ValkeyValkeyUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -29396,6 +29526,7 @@ class ValkeyValkeyUserConfig(dict):
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         :param bool static_ips: Use static public IP addresses.
         :param str valkey_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+        :param int valkey_active_expire_effort: Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
         :param int valkey_io_threads: Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
         :param int valkey_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. Default: `1`.
         :param int valkey_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
@@ -29413,6 +29544,8 @@ class ValkeyValkeyUserConfig(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if frequent_snapshots is not None:
             pulumi.set(__self__, "frequent_snapshots", frequent_snapshots)
         if ip_filter_objects is not None:
@@ -29441,6 +29574,8 @@ class ValkeyValkeyUserConfig(dict):
             pulumi.set(__self__, "static_ips", static_ips)
         if valkey_acl_channels_default is not None:
             pulumi.set(__self__, "valkey_acl_channels_default", valkey_acl_channels_default)
+        if valkey_active_expire_effort is not None:
+            pulumi.set(__self__, "valkey_active_expire_effort", valkey_active_expire_effort)
         if valkey_io_threads is not None:
             pulumi.set(__self__, "valkey_io_threads", valkey_io_threads)
         if valkey_lfu_decay_time is not None:
@@ -29485,6 +29620,14 @@ class ValkeyValkeyUserConfig(dict):
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
         return pulumi.get(self, "backup_minute")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[bool]:
+        """
+        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        """
+        return pulumi.get(self, "enable_ipv6")
 
     @property
     @pulumi.getter(name="frequentSnapshots")
@@ -29598,6 +29741,14 @@ class ValkeyValkeyUserConfig(dict):
         Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
         """
         return pulumi.get(self, "valkey_acl_channels_default")
+
+    @property
+    @pulumi.getter(name="valkeyActiveExpireEffort")
+    def valkey_active_expire_effort(self) -> Optional[int]:
+        """
+        Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+        """
+        return pulumi.get(self, "valkey_active_expire_effort")
 
     @property
     @pulumi.getter(name="valkeyIoThreads")
@@ -38913,6 +39064,7 @@ class GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult(dict):
 class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     def __init__(__self__, *,
                  consumer_enable_auto_commit: Optional[bool] = None,
+                 consumer_idle_disconnect_timeout: Optional[int] = None,
                  consumer_request_max_bytes: Optional[int] = None,
                  consumer_request_timeout_ms: Optional[int] = None,
                  name_strategy: Optional[str] = None,
@@ -38924,6 +39076,7 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
                  simpleconsumer_pool_size_max: Optional[int] = None):
         """
         :param bool consumer_enable_auto_commit: If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
+        :param int consumer_idle_disconnect_timeout: Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
         :param int consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
         :param int consumer_request_timeout_ms: Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
         :param str name_strategy: Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
@@ -38936,6 +39089,8 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
         """
         if consumer_enable_auto_commit is not None:
             pulumi.set(__self__, "consumer_enable_auto_commit", consumer_enable_auto_commit)
+        if consumer_idle_disconnect_timeout is not None:
+            pulumi.set(__self__, "consumer_idle_disconnect_timeout", consumer_idle_disconnect_timeout)
         if consumer_request_max_bytes is not None:
             pulumi.set(__self__, "consumer_request_max_bytes", consumer_request_max_bytes)
         if consumer_request_timeout_ms is not None:
@@ -38962,6 +39117,14 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
         If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
         """
         return pulumi.get(self, "consumer_enable_auto_commit")
+
+    @property
+    @pulumi.getter(name="consumerIdleDisconnectTimeout")
+    def consumer_idle_disconnect_timeout(self) -> Optional[int]:
+        """
+        Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+        """
+        return pulumi.get(self, "consumer_idle_disconnect_timeout")
 
     @property
     @pulumi.getter(name="consumerRequestMaxBytes")
@@ -43375,6 +43538,7 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
                  endpoint_suffix: Optional[str] = None,
                  include_aliases: Optional[bool] = None,
                  key: Optional[str] = None,
+                 readonly: Optional[bool] = None,
                  restore_global_state: Optional[bool] = None,
                  sas_token: Optional[str] = None):
         """
@@ -43388,6 +43552,7 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
         :param str endpoint_suffix: Defines the DNS suffix for Azure Storage endpoints.
         :param bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
         :param str key: Azure account secret key. One of key or sas_token should be specified.
+        :param bool readonly: Whether the repository is read-only. Default: `false`.
         :param bool restore_global_state: If true, restore the cluster state. Defaults to false.
         :param str sas_token: A shared access signatures (SAS) token. One of key or sas_token should be specified.
         """
@@ -43406,6 +43571,8 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
             pulumi.set(__self__, "include_aliases", include_aliases)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if readonly is not None:
+            pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
             pulumi.set(__self__, "restore_global_state", restore_global_state)
         if sas_token is not None:
@@ -43492,6 +43659,14 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
         return pulumi.get(self, "key")
 
     @property
+    @pulumi.getter
+    def readonly(self) -> Optional[bool]:
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
+        return pulumi.get(self, "readonly")
+
+    @property
     @pulumi.getter(name="restoreGlobalState")
     def restore_global_state(self) -> Optional[bool]:
         """
@@ -43519,6 +43694,7 @@ class GetOpenSearchOpensearchUserConfigGcsMigrationResult(dict):
                  chunk_size: Optional[str] = None,
                  compress: Optional[bool] = None,
                  include_aliases: Optional[bool] = None,
+                 readonly: Optional[bool] = None,
                  restore_global_state: Optional[bool] = None):
         """
         :param str base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
@@ -43529,6 +43705,7 @@ class GetOpenSearchOpensearchUserConfigGcsMigrationResult(dict):
         :param str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
         :param bool compress: When set to true metadata files are stored in compressed format.
         :param bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param bool readonly: Whether the repository is read-only. Default: `false`.
         :param bool restore_global_state: If true, restore the cluster state. Defaults to false.
         """
         pulumi.set(__self__, "base_path", base_path)
@@ -43542,6 +43719,8 @@ class GetOpenSearchOpensearchUserConfigGcsMigrationResult(dict):
             pulumi.set(__self__, "compress", compress)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if readonly is not None:
+            pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
             pulumi.set(__self__, "restore_global_state", restore_global_state)
 
@@ -43608,6 +43787,14 @@ class GetOpenSearchOpensearchUserConfigGcsMigrationResult(dict):
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
         return pulumi.get(self, "include_aliases")
+
+    @property
+    @pulumi.getter
+    def readonly(self) -> Optional[bool]:
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
+        return pulumi.get(self, "readonly")
 
     @property
     @pulumi.getter(name="restoreGlobalState")
@@ -43956,6 +44143,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
                  cluster_routing_allocation_balance_prefer_primary: Optional[bool] = None,
                  cluster_routing_allocation_node_concurrent_recoveries: Optional[int] = None,
                  cluster_search_request_slowlog: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogResult'] = None,
+                 disk_watermarks: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksResult'] = None,
                  email_sender_name: Optional[str] = None,
                  email_sender_password: Optional[str] = None,
                  email_sender_username: Optional[str] = None,
@@ -44007,6 +44195,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         :param int cluster_max_shards_per_node: Controls the number of shards allowed in the cluster per data node. Example: `1000`.
         :param bool cluster_routing_allocation_balance_prefer_primary: When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
         :param int cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
+        :param 'GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs' disk_watermarks: Watermark settings
         :param str email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         :param str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param str email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
@@ -44065,6 +44254,8 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
             pulumi.set(__self__, "cluster_routing_allocation_node_concurrent_recoveries", cluster_routing_allocation_node_concurrent_recoveries)
         if cluster_search_request_slowlog is not None:
             pulumi.set(__self__, "cluster_search_request_slowlog", cluster_search_request_slowlog)
+        if disk_watermarks is not None:
+            pulumi.set(__self__, "disk_watermarks", disk_watermarks)
         if email_sender_name is not None:
             pulumi.set(__self__, "email_sender_name", email_sender_name)
         if email_sender_password is not None:
@@ -44206,6 +44397,14 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="clusterSearchRequestSlowlog")
     def cluster_search_request_slowlog(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogResult']:
         return pulumi.get(self, "cluster_search_request_slowlog")
+
+    @property
+    @pulumi.getter(name="diskWatermarks")
+    def disk_watermarks(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksResult']:
+        """
+        Watermark settings
+        """
+        return pulumi.get(self, "disk_watermarks")
 
     @property
     @pulumi.getter(name="emailSenderName")
@@ -44890,6 +45089,46 @@ class GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult(dict):
         Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
         """
         return pulumi.get(self, "opensearch_request_timeout")
+
+
+@pulumi.output_type
+class GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksResult(dict):
+    def __init__(__self__, *,
+                 flood_stage: int,
+                 high: int,
+                 low: int):
+        """
+        :param int flood_stage: The flood stage watermark for disk usage. Example: `95`.
+        :param int high: The high watermark for disk usage. Example: `90`.
+        :param int low: The low watermark for disk usage. Example: `85`.
+        """
+        pulumi.set(__self__, "flood_stage", flood_stage)
+        pulumi.set(__self__, "high", high)
+        pulumi.set(__self__, "low", low)
+
+    @property
+    @pulumi.getter(name="floodStage")
+    def flood_stage(self) -> int:
+        """
+        The flood stage watermark for disk usage. Example: `95`.
+        """
+        return pulumi.get(self, "flood_stage")
+
+    @property
+    @pulumi.getter
+    def high(self) -> int:
+        """
+        The high watermark for disk usage. Example: `90`.
+        """
+        return pulumi.get(self, "high")
+
+    @property
+    @pulumi.getter
+    def low(self) -> int:
+        """
+        The low watermark for disk usage. Example: `85`.
+        """
+        return pulumi.get(self, "low")
 
 
 @pulumi.output_type
@@ -45783,6 +46022,7 @@ class GetOpenSearchOpensearchUserConfigS3MigrationResult(dict):
                  compress: Optional[bool] = None,
                  endpoint: Optional[str] = None,
                  include_aliases: Optional[bool] = None,
+                 readonly: Optional[bool] = None,
                  restore_global_state: Optional[bool] = None,
                  server_side_encryption: Optional[bool] = None):
         """
@@ -45797,6 +46037,7 @@ class GetOpenSearchOpensearchUserConfigS3MigrationResult(dict):
         :param bool compress: When set to true metadata files are stored in compressed format.
         :param str endpoint: The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
         :param bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param bool readonly: Whether the repository is read-only. Default: `false`.
         :param bool restore_global_state: If true, restore the cluster state. Defaults to false.
         :param bool server_side_encryption: When set to true files are encrypted on server side.
         """
@@ -45815,6 +46056,8 @@ class GetOpenSearchOpensearchUserConfigS3MigrationResult(dict):
             pulumi.set(__self__, "endpoint", endpoint)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if readonly is not None:
+            pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
             pulumi.set(__self__, "restore_global_state", restore_global_state)
         if server_side_encryption is not None:
@@ -45907,6 +46150,14 @@ class GetOpenSearchOpensearchUserConfigS3MigrationResult(dict):
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
         return pulumi.get(self, "include_aliases")
+
+    @property
+    @pulumi.getter
+    def readonly(self) -> Optional[bool]:
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
+        return pulumi.get(self, "readonly")
 
     @property
     @pulumi.getter(name="restoreGlobalState")
@@ -52933,6 +53184,7 @@ class GetValkeyValkeyUserConfigResult(dict):
                  additional_backup_regions: Optional[str] = None,
                  backup_hour: Optional[int] = None,
                  backup_minute: Optional[int] = None,
+                 enable_ipv6: Optional[bool] = None,
                  frequent_snapshots: Optional[bool] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetValkeyValkeyUserConfigIpFilterObjectResult']] = None,
                  ip_filter_strings: Optional[Sequence[str]] = None,
@@ -52947,6 +53199,7 @@ class GetValkeyValkeyUserConfigResult(dict):
                  service_to_fork_from: Optional[str] = None,
                  static_ips: Optional[bool] = None,
                  valkey_acl_channels_default: Optional[str] = None,
+                 valkey_active_expire_effort: Optional[int] = None,
                  valkey_io_threads: Optional[int] = None,
                  valkey_lfu_decay_time: Optional[int] = None,
                  valkey_lfu_log_factor: Optional[int] = None,
@@ -52961,6 +53214,7 @@ class GetValkeyValkeyUserConfigResult(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param bool frequent_snapshots: When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
         :param Sequence['GetValkeyValkeyUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -52975,6 +53229,7 @@ class GetValkeyValkeyUserConfigResult(dict):
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         :param bool static_ips: Use static public IP addresses.
         :param str valkey_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+        :param int valkey_active_expire_effort: Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
         :param int valkey_io_threads: Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
         :param int valkey_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. Default: `1`.
         :param int valkey_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
@@ -52992,6 +53247,8 @@ class GetValkeyValkeyUserConfigResult(dict):
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if frequent_snapshots is not None:
             pulumi.set(__self__, "frequent_snapshots", frequent_snapshots)
         if ip_filter_objects is not None:
@@ -53020,6 +53277,8 @@ class GetValkeyValkeyUserConfigResult(dict):
             pulumi.set(__self__, "static_ips", static_ips)
         if valkey_acl_channels_default is not None:
             pulumi.set(__self__, "valkey_acl_channels_default", valkey_acl_channels_default)
+        if valkey_active_expire_effort is not None:
+            pulumi.set(__self__, "valkey_active_expire_effort", valkey_active_expire_effort)
         if valkey_io_threads is not None:
             pulumi.set(__self__, "valkey_io_threads", valkey_io_threads)
         if valkey_lfu_decay_time is not None:
@@ -53064,6 +53323,14 @@ class GetValkeyValkeyUserConfigResult(dict):
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
         return pulumi.get(self, "backup_minute")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[bool]:
+        """
+        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        """
+        return pulumi.get(self, "enable_ipv6")
 
     @property
     @pulumi.getter(name="frequentSnapshots")
@@ -53177,6 +53444,14 @@ class GetValkeyValkeyUserConfigResult(dict):
         Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
         """
         return pulumi.get(self, "valkey_acl_channels_default")
+
+    @property
+    @pulumi.getter(name="valkeyActiveExpireEffort")
+    def valkey_active_expire_effort(self) -> Optional[int]:
+        """
+        Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+        """
+        return pulumi.get(self, "valkey_active_expire_effort")
 
     @property
     @pulumi.getter(name="valkeyIoThreads")

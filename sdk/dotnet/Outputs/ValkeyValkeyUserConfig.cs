@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
+        /// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        /// </summary>
+        public readonly bool? EnableIpv6;
+        /// <summary>
         /// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
         /// </summary>
         public readonly bool? FrequentSnapshots;
@@ -82,6 +86,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ValkeyAclChannelsDefault;
         /// <summary>
+        /// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+        /// </summary>
+        public readonly int? ValkeyActiveExpireEffort;
+        /// <summary>
         /// Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
         /// </summary>
         public readonly int? ValkeyIoThreads;
@@ -130,6 +138,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? backupMinute,
 
+            bool? enableIpv6,
+
             bool? frequentSnapshots,
 
             ImmutableArray<Outputs.ValkeyValkeyUserConfigIpFilterObject> ipFilterObjects,
@@ -158,6 +168,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? valkeyAclChannelsDefault,
 
+            int? valkeyActiveExpireEffort,
+
             int? valkeyIoThreads,
 
             int? valkeyLfuDecayTime,
@@ -181,6 +193,7 @@ namespace Pulumi.Aiven.Outputs
             AdditionalBackupRegions = additionalBackupRegions;
             BackupHour = backupHour;
             BackupMinute = backupMinute;
+            EnableIpv6 = enableIpv6;
             FrequentSnapshots = frequentSnapshots;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
@@ -195,6 +208,7 @@ namespace Pulumi.Aiven.Outputs
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
             ValkeyAclChannelsDefault = valkeyAclChannelsDefault;
+            ValkeyActiveExpireEffort = valkeyActiveExpireEffort;
             ValkeyIoThreads = valkeyIoThreads;
             ValkeyLfuDecayTime = valkeyLfuDecayTime;
             ValkeyLfuLogFactor = valkeyLfuLogFactor;

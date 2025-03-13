@@ -405,6 +405,8 @@ __all__ = [
     'OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs',
     'OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict',
+    'OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs',
+    'OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict',
     'OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs',
@@ -15849,6 +15851,10 @@ if not MYPY:
         """
         If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
         """
+        consumer_idle_disconnect_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+        """
         consumer_request_max_bytes: NotRequired[pulumi.Input[int]]
         """
         Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
@@ -15892,6 +15898,7 @@ elif False:
 class KafkaKafkaUserConfigKafkaRestConfigArgs:
     def __init__(__self__, *,
                  consumer_enable_auto_commit: Optional[pulumi.Input[bool]] = None,
+                 consumer_idle_disconnect_timeout: Optional[pulumi.Input[int]] = None,
                  consumer_request_max_bytes: Optional[pulumi.Input[int]] = None,
                  consumer_request_timeout_ms: Optional[pulumi.Input[int]] = None,
                  name_strategy: Optional[pulumi.Input[str]] = None,
@@ -15903,6 +15910,7 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
                  simpleconsumer_pool_size_max: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] consumer_enable_auto_commit: If true the consumer's offset will be periodically committed to Kafka in the background. Default: `true`.
+        :param pulumi.Input[int] consumer_idle_disconnect_timeout: Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
         :param pulumi.Input[int] consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
         :param pulumi.Input[int] consumer_request_timeout_ms: Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. Default: `1000`.
         :param pulumi.Input[str] name_strategy: Enum: `record_name`, `topic_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. Default: `topic_name`.
@@ -15915,6 +15923,8 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
         """
         if consumer_enable_auto_commit is not None:
             pulumi.set(__self__, "consumer_enable_auto_commit", consumer_enable_auto_commit)
+        if consumer_idle_disconnect_timeout is not None:
+            pulumi.set(__self__, "consumer_idle_disconnect_timeout", consumer_idle_disconnect_timeout)
         if consumer_request_max_bytes is not None:
             pulumi.set(__self__, "consumer_request_max_bytes", consumer_request_max_bytes)
         if consumer_request_timeout_ms is not None:
@@ -15945,6 +15955,18 @@ class KafkaKafkaUserConfigKafkaRestConfigArgs:
     @consumer_enable_auto_commit.setter
     def consumer_enable_auto_commit(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "consumer_enable_auto_commit", value)
+
+    @property
+    @pulumi.getter(name="consumerIdleDisconnectTimeout")
+    def consumer_idle_disconnect_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+        """
+        return pulumi.get(self, "consumer_idle_disconnect_timeout")
+
+    @consumer_idle_disconnect_timeout.setter
+    def consumer_idle_disconnect_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "consumer_idle_disconnect_timeout", value)
 
     @property
     @pulumi.getter(name="consumerRequestMaxBytes")
@@ -23486,6 +23508,10 @@ if not MYPY:
         """
         Azure account secret key. One of key or sas_token should be specified.
         """
+        readonly: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
         restore_global_state: NotRequired[pulumi.Input[bool]]
         """
         If true, restore the cluster state. Defaults to false.
@@ -23510,6 +23536,7 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
                  endpoint_suffix: Optional[pulumi.Input[str]] = None,
                  include_aliases: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 readonly: Optional[pulumi.Input[bool]] = None,
                  restore_global_state: Optional[pulumi.Input[bool]] = None,
                  sas_token: Optional[pulumi.Input[str]] = None):
         """
@@ -23523,6 +23550,7 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
         :param pulumi.Input[str] endpoint_suffix: Defines the DNS suffix for Azure Storage endpoints.
         :param pulumi.Input[bool] include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
         :param pulumi.Input[str] key: Azure account secret key. One of key or sas_token should be specified.
+        :param pulumi.Input[bool] readonly: Whether the repository is read-only. Default: `false`.
         :param pulumi.Input[bool] restore_global_state: If true, restore the cluster state. Defaults to false.
         :param pulumi.Input[str] sas_token: A shared access signatures (SAS) token. One of key or sas_token should be specified.
         """
@@ -23541,6 +23569,8 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
             pulumi.set(__self__, "include_aliases", include_aliases)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if readonly is not None:
+            pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
             pulumi.set(__self__, "restore_global_state", restore_global_state)
         if sas_token is not None:
@@ -23667,6 +23697,18 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
         pulumi.set(self, "key", value)
 
     @property
+    @pulumi.getter
+    def readonly(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
+        return pulumi.get(self, "readonly")
+
+    @readonly.setter
+    def readonly(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "readonly", value)
+
+    @property
     @pulumi.getter(name="restoreGlobalState")
     def restore_global_state(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -23725,6 +23767,10 @@ if not MYPY:
         """
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
+        readonly: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
         restore_global_state: NotRequired[pulumi.Input[bool]]
         """
         If true, restore the cluster state. Defaults to false.
@@ -23743,6 +23789,7 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
                  chunk_size: Optional[pulumi.Input[str]] = None,
                  compress: Optional[pulumi.Input[bool]] = None,
                  include_aliases: Optional[pulumi.Input[bool]] = None,
+                 readonly: Optional[pulumi.Input[bool]] = None,
                  restore_global_state: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] base_path: The path to the repository data within its container. The value of this setting should not start or end with a /.
@@ -23753,6 +23800,7 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
         :param pulumi.Input[str] chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
         :param pulumi.Input[bool] compress: When set to true metadata files are stored in compressed format.
         :param pulumi.Input[bool] include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param pulumi.Input[bool] readonly: Whether the repository is read-only. Default: `false`.
         :param pulumi.Input[bool] restore_global_state: If true, restore the cluster state. Defaults to false.
         """
         pulumi.set(__self__, "base_path", base_path)
@@ -23766,6 +23814,8 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
             pulumi.set(__self__, "compress", compress)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if readonly is not None:
+            pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
             pulumi.set(__self__, "restore_global_state", restore_global_state)
 
@@ -23864,6 +23914,18 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
     @include_aliases.setter
     def include_aliases(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "include_aliases", value)
+
+    @property
+    @pulumi.getter
+    def readonly(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
+        return pulumi.get(self, "readonly")
+
+    @readonly.setter
+    def readonly(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "readonly", value)
 
     @property
     @pulumi.getter(name="restoreGlobalState")
@@ -24458,6 +24520,10 @@ if not MYPY:
         How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
         """
         cluster_search_request_slowlog: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict']]
+        disk_watermarks: NotRequired[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict']]
+        """
+        Watermark settings
+        """
         email_sender_name: NotRequired[pulumi.Input[str]]
         """
         Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
@@ -24644,6 +24710,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  cluster_routing_allocation_balance_prefer_primary: Optional[pulumi.Input[bool]] = None,
                  cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[int]] = None,
                  cluster_search_request_slowlog: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs']] = None,
+                 disk_watermarks: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs']] = None,
                  email_sender_name: Optional[pulumi.Input[str]] = None,
                  email_sender_password: Optional[pulumi.Input[str]] = None,
                  email_sender_username: Optional[pulumi.Input[str]] = None,
@@ -24695,6 +24762,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[int] cluster_max_shards_per_node: Controls the number of shards allowed in the cluster per data node. Example: `1000`.
         :param pulumi.Input[bool] cluster_routing_allocation_balance_prefer_primary: When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false. Default: `false`.
         :param pulumi.Input[int] cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
+        :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs'] disk_watermarks: Watermark settings
         :param pulumi.Input[str] email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         :param pulumi.Input[str] email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         :param pulumi.Input[str] email_sender_username: Sender username for Opensearch alerts. Example: `jane@example.com`.
@@ -24753,6 +24821,8 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "cluster_routing_allocation_node_concurrent_recoveries", cluster_routing_allocation_node_concurrent_recoveries)
         if cluster_search_request_slowlog is not None:
             pulumi.set(__self__, "cluster_search_request_slowlog", cluster_search_request_slowlog)
+        if disk_watermarks is not None:
+            pulumi.set(__self__, "disk_watermarks", disk_watermarks)
         if email_sender_name is not None:
             pulumi.set(__self__, "email_sender_name", email_sender_name)
         if email_sender_password is not None:
@@ -24922,6 +24992,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @cluster_search_request_slowlog.setter
     def cluster_search_request_slowlog(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs']]):
         pulumi.set(self, "cluster_search_request_slowlog", value)
+
+    @property
+    @pulumi.getter(name="diskWatermarks")
+    def disk_watermarks(self) -> Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs']]:
+        """
+        Watermark settings
+        """
+        return pulumi.get(self, "disk_watermarks")
+
+    @disk_watermarks.setter
+    def disk_watermarks(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs']]):
+        pulumi.set(self, "disk_watermarks", value)
 
     @property
     @pulumi.getter(name="emailSenderName")
@@ -26009,6 +26091,75 @@ class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs:
     @opensearch_request_timeout.setter
     def opensearch_request_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "opensearch_request_timeout", value)
+
+
+if not MYPY:
+    class OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict(TypedDict):
+        flood_stage: pulumi.Input[int]
+        """
+        The flood stage watermark for disk usage. Example: `95`.
+        """
+        high: pulumi.Input[int]
+        """
+        The high watermark for disk usage. Example: `90`.
+        """
+        low: pulumi.Input[int]
+        """
+        The low watermark for disk usage. Example: `85`.
+        """
+elif False:
+    OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs:
+    def __init__(__self__, *,
+                 flood_stage: pulumi.Input[int],
+                 high: pulumi.Input[int],
+                 low: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] flood_stage: The flood stage watermark for disk usage. Example: `95`.
+        :param pulumi.Input[int] high: The high watermark for disk usage. Example: `90`.
+        :param pulumi.Input[int] low: The low watermark for disk usage. Example: `85`.
+        """
+        pulumi.set(__self__, "flood_stage", flood_stage)
+        pulumi.set(__self__, "high", high)
+        pulumi.set(__self__, "low", low)
+
+    @property
+    @pulumi.getter(name="floodStage")
+    def flood_stage(self) -> pulumi.Input[int]:
+        """
+        The flood stage watermark for disk usage. Example: `95`.
+        """
+        return pulumi.get(self, "flood_stage")
+
+    @flood_stage.setter
+    def flood_stage(self, value: pulumi.Input[int]):
+        pulumi.set(self, "flood_stage", value)
+
+    @property
+    @pulumi.getter
+    def high(self) -> pulumi.Input[int]:
+        """
+        The high watermark for disk usage. Example: `90`.
+        """
+        return pulumi.get(self, "high")
+
+    @high.setter
+    def high(self, value: pulumi.Input[int]):
+        pulumi.set(self, "high", value)
+
+    @property
+    @pulumi.getter
+    def low(self) -> pulumi.Input[int]:
+        """
+        The low watermark for disk usage. Example: `85`.
+        """
+        return pulumi.get(self, "low")
+
+    @low.setter
+    def low(self, value: pulumi.Input[int]):
+        pulumi.set(self, "low", value)
 
 
 if not MYPY:
@@ -27519,6 +27670,10 @@ if not MYPY:
         """
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
+        readonly: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
         restore_global_state: NotRequired[pulumi.Input[bool]]
         """
         If true, restore the cluster state. Defaults to false.
@@ -27544,6 +27699,7 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
                  compress: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  include_aliases: Optional[pulumi.Input[bool]] = None,
+                 readonly: Optional[pulumi.Input[bool]] = None,
                  restore_global_state: Optional[pulumi.Input[bool]] = None,
                  server_side_encryption: Optional[pulumi.Input[bool]] = None):
         """
@@ -27558,6 +27714,7 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
         :param pulumi.Input[bool] compress: When set to true metadata files are stored in compressed format.
         :param pulumi.Input[str] endpoint: The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
         :param pulumi.Input[bool] include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param pulumi.Input[bool] readonly: Whether the repository is read-only. Default: `false`.
         :param pulumi.Input[bool] restore_global_state: If true, restore the cluster state. Defaults to false.
         :param pulumi.Input[bool] server_side_encryption: When set to true files are encrypted on server side.
         """
@@ -27576,6 +27733,8 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
             pulumi.set(__self__, "endpoint", endpoint)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if readonly is not None:
+            pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
             pulumi.set(__self__, "restore_global_state", restore_global_state)
         if server_side_encryption is not None:
@@ -27712,6 +27871,18 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
     @include_aliases.setter
     def include_aliases(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "include_aliases", value)
+
+    @property
+    @pulumi.getter
+    def readonly(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the repository is read-only. Default: `false`.
+        """
+        return pulumi.get(self, "readonly")
+
+    @readonly.setter
+    def readonly(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "readonly", value)
 
     @property
     @pulumi.getter(name="restoreGlobalState")
@@ -28122,7 +28293,7 @@ if not MYPY:
     class OrganizationPermissionPermissionArgsDict(TypedDict):
         permissions: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         principal_id: pulumi.Input[str]
         """
@@ -28152,7 +28323,7 @@ class OrganizationPermissionPermissionArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         :param pulumi.Input[str] principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param pulumi.Input[str] principal_type: The type of principal. The possible values are `user` and `user_group`.
         :param pulumi.Input[str] create_time: Time created.
@@ -28170,7 +28341,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:idps:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -39752,6 +39923,10 @@ if not MYPY:
         """
         The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         """
+        enable_ipv6: NotRequired[pulumi.Input[bool]]
+        """
+        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        """
         frequent_snapshots: NotRequired[pulumi.Input[bool]]
         """
         When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
@@ -39808,6 +39983,10 @@ if not MYPY:
         """
         Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
         """
+        valkey_active_expire_effort: NotRequired[pulumi.Input[int]]
+        """
+        Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+        """
         valkey_io_threads: NotRequired[pulumi.Input[int]]
         """
         Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
@@ -39857,6 +40036,7 @@ class ValkeyValkeyUserConfigArgs:
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
                  backup_hour: Optional[pulumi.Input[int]] = None,
                  backup_minute: Optional[pulumi.Input[int]] = None,
+                 enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  frequent_snapshots: Optional[pulumi.Input[bool]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -39871,6 +40051,7 @@ class ValkeyValkeyUserConfigArgs:
                  service_to_fork_from: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[bool]] = None,
                  valkey_acl_channels_default: Optional[pulumi.Input[str]] = None,
+                 valkey_active_expire_effort: Optional[pulumi.Input[int]] = None,
                  valkey_io_threads: Optional[pulumi.Input[int]] = None,
                  valkey_lfu_decay_time: Optional[pulumi.Input[int]] = None,
                  valkey_lfu_log_factor: Optional[pulumi.Input[int]] = None,
@@ -39885,6 +40066,7 @@ class ValkeyValkeyUserConfigArgs:
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param pulumi.Input[int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        :param pulumi.Input[bool] enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param pulumi.Input[bool] frequent_snapshots: When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
         :param pulumi.Input[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -39899,6 +40081,7 @@ class ValkeyValkeyUserConfigArgs:
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         :param pulumi.Input[str] valkey_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+        :param pulumi.Input[int] valkey_active_expire_effort: Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
         :param pulumi.Input[int] valkey_io_threads: Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
         :param pulumi.Input[int] valkey_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. Default: `1`.
         :param pulumi.Input[int] valkey_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
@@ -39916,6 +40099,8 @@ class ValkeyValkeyUserConfigArgs:
             pulumi.set(__self__, "backup_hour", backup_hour)
         if backup_minute is not None:
             pulumi.set(__self__, "backup_minute", backup_minute)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if frequent_snapshots is not None:
             pulumi.set(__self__, "frequent_snapshots", frequent_snapshots)
         if ip_filter_objects is not None:
@@ -39947,6 +40132,8 @@ class ValkeyValkeyUserConfigArgs:
             pulumi.set(__self__, "static_ips", static_ips)
         if valkey_acl_channels_default is not None:
             pulumi.set(__self__, "valkey_acl_channels_default", valkey_acl_channels_default)
+        if valkey_active_expire_effort is not None:
+            pulumi.set(__self__, "valkey_active_expire_effort", valkey_active_expire_effort)
         if valkey_io_threads is not None:
             pulumi.set(__self__, "valkey_io_threads", valkey_io_threads)
         if valkey_lfu_decay_time is not None:
@@ -40003,6 +40190,18 @@ class ValkeyValkeyUserConfigArgs:
     @backup_minute.setter
     def backup_minute(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "backup_minute", value)
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+        """
+        return pulumi.get(self, "enable_ipv6")
+
+    @enable_ipv6.setter
+    def enable_ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ipv6", value)
 
     @property
     @pulumi.getter(name="frequentSnapshots")
@@ -40172,6 +40371,18 @@ class ValkeyValkeyUserConfigArgs:
     @valkey_acl_channels_default.setter
     def valkey_acl_channels_default(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "valkey_acl_channels_default", value)
+
+    @property
+    @pulumi.getter(name="valkeyActiveExpireEffort")
+    def valkey_active_expire_effort(self) -> Optional[pulumi.Input[int]]:
+        """
+        Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+        """
+        return pulumi.get(self, "valkey_active_expire_effort")
+
+    @valkey_active_expire_effort.setter
+    def valkey_active_expire_effort(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "valkey_active_expire_effort", value)
 
     @property
     @pulumi.getter(name="valkeyIoThreads")

@@ -69,6 +69,21 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    @Import(name="enableIpv6")
+    private @Nullable Output<Boolean> enableIpv6;
+
+    /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    public Optional<Output<Boolean>> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
+    }
+
+    /**
      * When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
      * 
      */
@@ -287,6 +302,21 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+     * 
+     */
+    @Import(name="valkeyActiveExpireEffort")
+    private @Nullable Output<Integer> valkeyActiveExpireEffort;
+
+    /**
+     * @return Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+     * 
+     */
+    public Optional<Output<Integer>> valkeyActiveExpireEffort() {
+        return Optional.ofNullable(this.valkeyActiveExpireEffort);
+    }
+
+    /**
      * Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
      * 
      */
@@ -442,6 +472,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.backupHour = $.backupHour;
         this.backupMinute = $.backupMinute;
+        this.enableIpv6 = $.enableIpv6;
         this.frequentSnapshots = $.frequentSnapshots;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
@@ -456,6 +487,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.staticIps = $.staticIps;
         this.valkeyAclChannelsDefault = $.valkeyAclChannelsDefault;
+        this.valkeyActiveExpireEffort = $.valkeyActiveExpireEffort;
         this.valkeyIoThreads = $.valkeyIoThreads;
         this.valkeyLfuDecayTime = $.valkeyLfuDecayTime;
         this.valkeyLfuLogFactor = $.valkeyLfuLogFactor;
@@ -547,6 +579,27 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder backupMinute(Integer backupMinute) {
             return backupMinute(Output.of(backupMinute));
+        }
+
+        /**
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
+            $.enableIpv6 = enableIpv6;
+            return this;
+        }
+
+        /**
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(Boolean enableIpv6) {
+            return enableIpv6(Output.of(enableIpv6));
         }
 
         /**
@@ -883,6 +936,27 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder valkeyAclChannelsDefault(String valkeyAclChannelsDefault) {
             return valkeyAclChannelsDefault(Output.of(valkeyAclChannelsDefault));
+        }
+
+        /**
+         * @param valkeyActiveExpireEffort Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyActiveExpireEffort(@Nullable Output<Integer> valkeyActiveExpireEffort) {
+            $.valkeyActiveExpireEffort = valkeyActiveExpireEffort;
+            return this;
+        }
+
+        /**
+         * @param valkeyActiveExpireEffort Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyActiveExpireEffort(Integer valkeyActiveExpireEffort) {
+            return valkeyActiveExpireEffort(Output.of(valkeyActiveExpireEffort));
         }
 
         /**

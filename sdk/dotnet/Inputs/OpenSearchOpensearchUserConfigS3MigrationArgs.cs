@@ -61,6 +61,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Indices { get; set; } = null!;
 
         /// <summary>
+        /// Whether the repository is read-only. Default: `false`.
+        /// </summary>
+        [Input("readonly")]
+        public Input<bool>? Readonly { get; set; }
+
+        /// <summary>
         /// S3 region.
         /// </summary>
         [Input("region", required: true)]

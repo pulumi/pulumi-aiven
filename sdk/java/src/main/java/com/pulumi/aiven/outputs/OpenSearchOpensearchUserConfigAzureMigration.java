@@ -59,6 +59,11 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
      */
     private @Nullable String key;
     /**
+     * @return Whether the repository is read-only. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean readonly;
+    /**
      * @return If true, restore the cluster state. Defaults to false.
      * 
      */
@@ -139,6 +144,13 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
         return Optional.ofNullable(this.key);
     }
     /**
+     * @return Whether the repository is read-only. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> readonly() {
+        return Optional.ofNullable(this.readonly);
+    }
+    /**
      * @return If true, restore the cluster state. Defaults to false.
      * 
      */
@@ -178,6 +190,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
         private @Nullable Boolean includeAliases;
         private String indices;
         private @Nullable String key;
+        private @Nullable Boolean readonly;
         private @Nullable Boolean restoreGlobalState;
         private @Nullable String sasToken;
         private String snapshotName;
@@ -193,6 +206,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
     	      this.includeAliases = defaults.includeAliases;
     	      this.indices = defaults.indices;
     	      this.key = defaults.key;
+    	      this.readonly = defaults.readonly;
     	      this.restoreGlobalState = defaults.restoreGlobalState;
     	      this.sasToken = defaults.sasToken;
     	      this.snapshotName = defaults.snapshotName;
@@ -261,6 +275,12 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
             return this;
         }
         @CustomType.Setter
+        public Builder readonly(@Nullable Boolean readonly) {
+
+            this.readonly = readonly;
+            return this;
+        }
+        @CustomType.Setter
         public Builder restoreGlobalState(@Nullable Boolean restoreGlobalState) {
 
             this.restoreGlobalState = restoreGlobalState;
@@ -291,6 +311,7 @@ public final class OpenSearchOpensearchUserConfigAzureMigration {
             _resultValue.includeAliases = includeAliases;
             _resultValue.indices = indices;
             _resultValue.key = key;
+            _resultValue.readonly = readonly;
             _resultValue.restoreGlobalState = restoreGlobalState;
             _resultValue.sasToken = sasToken;
             _resultValue.snapshotName = snapshotName;

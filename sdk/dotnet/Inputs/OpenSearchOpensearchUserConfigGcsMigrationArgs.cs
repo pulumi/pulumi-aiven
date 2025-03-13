@@ -65,6 +65,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Indices { get; set; } = null!;
 
         /// <summary>
+        /// Whether the repository is read-only. Default: `false`.
+        /// </summary>
+        [Input("readonly")]
+        public Input<bool>? Readonly { get; set; }
+
+        /// <summary>
         /// If true, restore the cluster state. Defaults to false.
         /// </summary>
         [Input("restoreGlobalState")]

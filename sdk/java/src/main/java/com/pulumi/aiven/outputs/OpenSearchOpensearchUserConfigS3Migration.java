@@ -54,6 +54,11 @@ public final class OpenSearchOpensearchUserConfigS3Migration {
      */
     private String indices;
     /**
+     * @return Whether the repository is read-only. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean readonly;
+    /**
      * @return S3 region.
      * 
      */
@@ -137,6 +142,13 @@ public final class OpenSearchOpensearchUserConfigS3Migration {
         return this.indices;
     }
     /**
+     * @return Whether the repository is read-only. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> readonly() {
+        return Optional.ofNullable(this.readonly);
+    }
+    /**
      * @return S3 region.
      * 
      */
@@ -189,6 +201,7 @@ public final class OpenSearchOpensearchUserConfigS3Migration {
         private @Nullable String endpoint;
         private @Nullable Boolean includeAliases;
         private String indices;
+        private @Nullable Boolean readonly;
         private String region;
         private @Nullable Boolean restoreGlobalState;
         private String secretKey;
@@ -205,6 +218,7 @@ public final class OpenSearchOpensearchUserConfigS3Migration {
     	      this.endpoint = defaults.endpoint;
     	      this.includeAliases = defaults.includeAliases;
     	      this.indices = defaults.indices;
+    	      this.readonly = defaults.readonly;
     	      this.region = defaults.region;
     	      this.restoreGlobalState = defaults.restoreGlobalState;
     	      this.secretKey = defaults.secretKey;
@@ -269,6 +283,12 @@ public final class OpenSearchOpensearchUserConfigS3Migration {
             return this;
         }
         @CustomType.Setter
+        public Builder readonly(@Nullable Boolean readonly) {
+
+            this.readonly = readonly;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigS3Migration", "region");
@@ -314,6 +334,7 @@ public final class OpenSearchOpensearchUserConfigS3Migration {
             _resultValue.endpoint = endpoint;
             _resultValue.includeAliases = includeAliases;
             _resultValue.indices = indices;
+            _resultValue.readonly = readonly;
             _resultValue.region = region;
             _resultValue.restoreGlobalState = restoreGlobalState;
             _resultValue.secretKey = secretKey;

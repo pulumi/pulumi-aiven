@@ -71,6 +71,8 @@ type OrganizationApplicationUserToken struct {
 	ExtendWhenUsed pulumi.BoolPtrOutput `pulumi:"extendWhenUsed"`
 	// Full token.
 	FullToken pulumi.StringOutput `pulumi:"fullToken"`
+	// List of allowed IP ranges.
+	IpAllowlists pulumi.StringArrayOutput `pulumi:"ipAllowlists"`
 	// IP address of the last request made with this token.
 	LastIp pulumi.StringOutput `pulumi:"lastIp"`
 	// Timestamp when the access token was last used.
@@ -145,6 +147,8 @@ type organizationApplicationUserTokenState struct {
 	ExtendWhenUsed *bool `pulumi:"extendWhenUsed"`
 	// Full token.
 	FullToken *string `pulumi:"fullToken"`
+	// List of allowed IP ranges.
+	IpAllowlists []string `pulumi:"ipAllowlists"`
 	// IP address of the last request made with this token.
 	LastIp *string `pulumi:"lastIp"`
 	// Timestamp when the access token was last used.
@@ -180,6 +184,8 @@ type OrganizationApplicationUserTokenState struct {
 	ExtendWhenUsed pulumi.BoolPtrInput
 	// Full token.
 	FullToken pulumi.StringPtrInput
+	// List of allowed IP ranges.
+	IpAllowlists pulumi.StringArrayInput
 	// IP address of the last request made with this token.
 	LastIp pulumi.StringPtrInput
 	// Timestamp when the access token was last used.
@@ -209,6 +215,8 @@ type organizationApplicationUserTokenArgs struct {
 	Description *string `pulumi:"description"`
 	// Extends the token session duration when the token is used. Only applicable if a value is set for `maxAgeSeconds`.
 	ExtendWhenUsed *bool `pulumi:"extendWhenUsed"`
+	// List of allowed IP ranges.
+	IpAllowlists []string `pulumi:"ipAllowlists"`
 	// The number of hours after which a token expires. If not set, it never expires.
 	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
 	// The ID of the organization the application user belongs to.
@@ -225,6 +233,8 @@ type OrganizationApplicationUserTokenArgs struct {
 	Description pulumi.StringPtrInput
 	// Extends the token session duration when the token is used. Only applicable if a value is set for `maxAgeSeconds`.
 	ExtendWhenUsed pulumi.BoolPtrInput
+	// List of allowed IP ranges.
+	IpAllowlists pulumi.StringArrayInput
 	// The number of hours after which a token expires. If not set, it never expires.
 	MaxAgeSeconds pulumi.IntPtrInput
 	// The ID of the organization the application user belongs to.
@@ -355,6 +365,11 @@ func (o OrganizationApplicationUserTokenOutput) ExtendWhenUsed() pulumi.BoolPtrO
 // Full token.
 func (o OrganizationApplicationUserTokenOutput) FullToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationApplicationUserToken) pulumi.StringOutput { return v.FullToken }).(pulumi.StringOutput)
+}
+
+// List of allowed IP ranges.
+func (o OrganizationApplicationUserTokenOutput) IpAllowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrganizationApplicationUserToken) pulumi.StringArrayOutput { return v.IpAllowlists }).(pulumi.StringArrayOutput)
 }
 
 // IP address of the last request made with this token.

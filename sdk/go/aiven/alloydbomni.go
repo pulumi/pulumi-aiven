@@ -78,7 +78,7 @@ type Alloydbomni struct {
 	Alloydbomni AlloydbomniAlloydbomniOutput `pulumi:"alloydbomni"`
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	AlloydbomniUserConfig AlloydbomniAlloydbomniUserConfigPtrOutput `pulumi:"alloydbomniUserConfig"`
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components AlloydbomniComponentArrayOutput `pulumi:"components"`
@@ -194,7 +194,7 @@ type alloydbomniState struct {
 	Alloydbomni *AlloydbomniAlloydbomni `pulumi:"alloydbomni"`
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	AlloydbomniUserConfig *AlloydbomniAlloydbomniUserConfig `pulumi:"alloydbomniUserConfig"`
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []AlloydbomniComponent `pulumi:"components"`
@@ -259,7 +259,7 @@ type AlloydbomniState struct {
 	Alloydbomni AlloydbomniAlloydbomniPtrInput
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	AlloydbomniUserConfig AlloydbomniAlloydbomniUserConfigPtrInput
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components AlloydbomniComponentArrayInput
@@ -328,7 +328,7 @@ type alloydbomniArgs struct {
 	Alloydbomni *AlloydbomniAlloydbomni `pulumi:"alloydbomni"`
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	AlloydbomniUserConfig *AlloydbomniAlloydbomniUserConfig `pulumi:"alloydbomniUserConfig"`
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
@@ -368,7 +368,7 @@ type AlloydbomniArgs struct {
 	Alloydbomni AlloydbomniAlloydbomniPtrInput
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	AlloydbomniUserConfig AlloydbomniAlloydbomniUserConfigPtrInput
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
@@ -502,7 +502,7 @@ func (o AlloydbomniOutput) AlloydbomniUserConfig() AlloydbomniAlloydbomniUserCon
 	return o.ApplyT(func(v *Alloydbomni) AlloydbomniAlloydbomniUserConfigPtrOutput { return v.AlloydbomniUserConfig }).(AlloydbomniAlloydbomniUserConfigPtrOutput)
 }
 
-// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 func (o AlloydbomniOutput) CloudName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alloydbomni) pulumi.StringPtrOutput { return v.CloudName }).(pulumi.StringPtrOutput)
 }

@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? ConsumerEnableAutoCommit { get; set; }
 
         /// <summary>
+        /// Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+        /// </summary>
+        [Input("consumerIdleDisconnectTimeout")]
+        public Input<int>? ConsumerIdleDisconnectTimeout { get; set; }
+
+        /// <summary>
         /// Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
         /// </summary>
         [Input("consumerRequestMaxBytes")]

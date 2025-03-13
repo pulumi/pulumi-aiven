@@ -33,6 +33,21 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
+     * Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+     * 
+     */
+    @Import(name="consumerIdleDisconnectTimeout")
+    private @Nullable Output<Integer> consumerIdleDisconnectTimeout;
+
+    /**
+     * @return Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+     * 
+     */
+    public Optional<Output<Integer>> consumerIdleDisconnectTimeout() {
+        return Optional.ofNullable(this.consumerIdleDisconnectTimeout);
+    }
+
+    /**
      * Maximum number of bytes in unencoded message keys and values by a single request. Default: `67108864`.
      * 
      */
@@ -171,6 +186,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
 
     private KafkaKafkaUserConfigKafkaRestConfigArgs(KafkaKafkaUserConfigKafkaRestConfigArgs $) {
         this.consumerEnableAutoCommit = $.consumerEnableAutoCommit;
+        this.consumerIdleDisconnectTimeout = $.consumerIdleDisconnectTimeout;
         this.consumerRequestMaxBytes = $.consumerRequestMaxBytes;
         this.consumerRequestTimeoutMs = $.consumerRequestTimeoutMs;
         this.nameStrategy = $.nameStrategy;
@@ -219,6 +235,27 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
          */
         public Builder consumerEnableAutoCommit(Boolean consumerEnableAutoCommit) {
             return consumerEnableAutoCommit(Output.of(consumerEnableAutoCommit));
+        }
+
+        /**
+         * @param consumerIdleDisconnectTimeout Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerIdleDisconnectTimeout(@Nullable Output<Integer> consumerIdleDisconnectTimeout) {
+            $.consumerIdleDisconnectTimeout = consumerIdleDisconnectTimeout;
+            return this;
+        }
+
+        /**
+         * @param consumerIdleDisconnectTimeout Specifies the maximum duration (in seconds) a client can remain idle before it is deleted. If a consumer is inactive, it will exit the consumer group, and its state will be discarded. A value of 0 (default) indicates that the consumer will not be disconnected automatically due to inactivity. Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerIdleDisconnectTimeout(Integer consumerIdleDisconnectTimeout) {
+            return consumerIdleDisconnectTimeout(Output.of(consumerIdleDisconnectTimeout));
         }
 
         /**

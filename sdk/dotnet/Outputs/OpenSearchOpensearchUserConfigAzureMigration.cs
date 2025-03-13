@@ -50,6 +50,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Key;
         /// <summary>
+        /// Whether the repository is read-only. Default: `false`.
+        /// </summary>
+        public readonly bool? Readonly;
+        /// <summary>
         /// If true, restore the cluster state. Defaults to false.
         /// </summary>
         public readonly bool? RestoreGlobalState;
@@ -82,6 +86,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? key,
 
+            bool? @readonly,
+
             bool? restoreGlobalState,
 
             string? sasToken,
@@ -97,6 +103,7 @@ namespace Pulumi.Aiven.Outputs
             IncludeAliases = includeAliases;
             Indices = indices;
             Key = key;
+            Readonly = @readonly;
             RestoreGlobalState = restoreGlobalState;
             SasToken = sasToken;
             SnapshotName = snapshotName;

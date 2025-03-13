@@ -172,6 +172,20 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
         return this.fullToken;
     }
     /**
+     * List of allowed IP ranges.
+     * 
+     */
+    @Export(name="ipAllowlists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> ipAllowlists;
+
+    /**
+     * @return List of allowed IP ranges.
+     * 
+     */
+    public Output<Optional<List<String>>> ipAllowlists() {
+        return Codegen.optional(this.ipAllowlists);
+    }
+    /**
      * IP address of the last request made with this token.
      * 
      */

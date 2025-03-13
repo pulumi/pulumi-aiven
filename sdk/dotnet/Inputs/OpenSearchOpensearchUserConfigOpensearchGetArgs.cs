@@ -52,6 +52,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogGetArgs>? ClusterSearchRequestSlowlog { get; set; }
 
         /// <summary>
+        /// Watermark settings
+        /// </summary>
+        [Input("diskWatermarks")]
+        public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchDiskWatermarksGetArgs>? DiskWatermarks { get; set; }
+
+        /// <summary>
         /// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         /// </summary>
         [Input("emailSenderName")]

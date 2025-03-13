@@ -66,7 +66,7 @@ class GetOrganizationApplicationUserResult:
     @pulumi.getter(name="isSuperAdmin")
     def is_super_admin(self) -> bool:
         """
-        Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+        Makes the application user a super admin. The super admin role has completely unrestricted access to all organization resources and settings. This role should be limited to as few users as possible. For daily administrative tasks, assign users the organization admin role instead using the `OrganizationPermission` resource.
         """
         return pulumi.get(self, "is_super_admin")
 

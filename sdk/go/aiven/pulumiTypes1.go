@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMySqlMysqlUserConfigIpFilterObject struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description *string `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network string `pulumi:"network"`
+}
+
+// GetMySqlMysqlUserConfigIpFilterObjectInput is an input type that accepts GetMySqlMysqlUserConfigIpFilterObjectArgs and GetMySqlMysqlUserConfigIpFilterObjectOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigIpFilterObjectInput` via:
+//
+//	GetMySqlMysqlUserConfigIpFilterObjectArgs{...}
+type GetMySqlMysqlUserConfigIpFilterObjectInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigIpFilterObjectOutput() GetMySqlMysqlUserConfigIpFilterObjectOutput
+	ToGetMySqlMysqlUserConfigIpFilterObjectOutputWithContext(context.Context) GetMySqlMysqlUserConfigIpFilterObjectOutput
+}
+
+type GetMySqlMysqlUserConfigIpFilterObjectArgs struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetMySqlMysqlUserConfigIpFilterObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigIpFilterObjectArgs) ToGetMySqlMysqlUserConfigIpFilterObjectOutput() GetMySqlMysqlUserConfigIpFilterObjectOutput {
+	return i.ToGetMySqlMysqlUserConfigIpFilterObjectOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigIpFilterObjectArgs) ToGetMySqlMysqlUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigIpFilterObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigIpFilterObjectOutput)
+}
+
+// GetMySqlMysqlUserConfigIpFilterObjectArrayInput is an input type that accepts GetMySqlMysqlUserConfigIpFilterObjectArray and GetMySqlMysqlUserConfigIpFilterObjectArrayOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigIpFilterObjectArrayInput` via:
+//
+//	GetMySqlMysqlUserConfigIpFilterObjectArray{ GetMySqlMysqlUserConfigIpFilterObjectArgs{...} }
+type GetMySqlMysqlUserConfigIpFilterObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigIpFilterObjectArrayOutput() GetMySqlMysqlUserConfigIpFilterObjectArrayOutput
+	ToGetMySqlMysqlUserConfigIpFilterObjectArrayOutputWithContext(context.Context) GetMySqlMysqlUserConfigIpFilterObjectArrayOutput
+}
+
+type GetMySqlMysqlUserConfigIpFilterObjectArray []GetMySqlMysqlUserConfigIpFilterObjectInput
+
+func (GetMySqlMysqlUserConfigIpFilterObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlMysqlUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigIpFilterObjectArray) ToGetMySqlMysqlUserConfigIpFilterObjectArrayOutput() GetMySqlMysqlUserConfigIpFilterObjectArrayOutput {
+	return i.ToGetMySqlMysqlUserConfigIpFilterObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigIpFilterObjectArray) ToGetMySqlMysqlUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigIpFilterObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigIpFilterObjectArrayOutput)
+}
+
+type GetMySqlMysqlUserConfigIpFilterObjectOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigIpFilterObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigIpFilterObjectOutput) ToGetMySqlMysqlUserConfigIpFilterObjectOutput() GetMySqlMysqlUserConfigIpFilterObjectOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigIpFilterObjectOutput) ToGetMySqlMysqlUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigIpFilterObjectOutput {
+	return o
+}
+
+// Description for IP filter list entry. Example: `Production service IP range`.
+func (o GetMySqlMysqlUserConfigIpFilterObjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigIpFilterObject) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// CIDR address block. Example: `10.20.0.0/16`.
+func (o GetMySqlMysqlUserConfigIpFilterObjectOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigIpFilterObject) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetMySqlMysqlUserConfigIpFilterObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigIpFilterObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlMysqlUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigIpFilterObjectArrayOutput) ToGetMySqlMysqlUserConfigIpFilterObjectArrayOutput() GetMySqlMysqlUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigIpFilterObjectArrayOutput) ToGetMySqlMysqlUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigIpFilterObjectArrayOutput) Index(i pulumi.IntInput) GetMySqlMysqlUserConfigIpFilterObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMySqlMysqlUserConfigIpFilterObject {
+		return vs[0].([]GetMySqlMysqlUserConfigIpFilterObject)[vs[1].(int)]
+	}).(GetMySqlMysqlUserConfigIpFilterObjectOutput)
+}
+
 type GetMySqlMysqlUserConfigMigration struct {
 	// Database name for bootstrapping the initial connection. Example: `defaultdb`.
 	Dbname *string `pulumi:"dbname"`
@@ -2522,6 +2628,8 @@ type GetOpenSearchOpensearchUserConfigAzureMigration struct {
 	Indices string `pulumi:"indices"`
 	// Azure account secret key. One of key or sasToken should be specified.
 	Key *string `pulumi:"key"`
+	// Whether the repository is read-only. Default: `false`.
+	Readonly *bool `pulumi:"readonly"`
 	// If true, restore the cluster state. Defaults to false.
 	RestoreGlobalState *bool `pulumi:"restoreGlobalState"`
 	// A shared access signatures (SAS) token. One of key or sasToken should be specified.
@@ -2560,6 +2668,8 @@ type GetOpenSearchOpensearchUserConfigAzureMigrationArgs struct {
 	Indices pulumi.StringInput `pulumi:"indices"`
 	// Azure account secret key. One of key or sasToken should be specified.
 	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Whether the repository is read-only. Default: `false`.
+	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 	// If true, restore the cluster state. Defaults to false.
 	RestoreGlobalState pulumi.BoolPtrInput `pulumi:"restoreGlobalState"`
 	// A shared access signatures (SAS) token. One of key or sasToken should be specified.
@@ -2688,6 +2798,11 @@ func (o GetOpenSearchOpensearchUserConfigAzureMigrationOutput) Indices() pulumi.
 // Azure account secret key. One of key or sasToken should be specified.
 func (o GetOpenSearchOpensearchUserConfigAzureMigrationOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigAzureMigration) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Whether the repository is read-only. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigAzureMigrationOutput) Readonly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigAzureMigration) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
 }
 
 // If true, restore the cluster state. Defaults to false.
@@ -2819,6 +2934,16 @@ func (o GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput) Key() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the repository is read-only. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput) Readonly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigAzureMigration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Readonly
+	}).(pulumi.BoolPtrOutput)
+}
+
 // If true, restore the cluster state. Defaults to false.
 func (o GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput) RestoreGlobalState() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigAzureMigration) *bool {
@@ -2864,6 +2989,8 @@ type GetOpenSearchOpensearchUserConfigGcsMigration struct {
 	IncludeAliases *bool `pulumi:"includeAliases"`
 	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
 	Indices string `pulumi:"indices"`
+	// Whether the repository is read-only. Default: `false`.
+	Readonly *bool `pulumi:"readonly"`
 	// If true, restore the cluster state. Defaults to false.
 	RestoreGlobalState *bool `pulumi:"restoreGlobalState"`
 	// The snapshot name to restore from.
@@ -2896,6 +3023,8 @@ type GetOpenSearchOpensearchUserConfigGcsMigrationArgs struct {
 	IncludeAliases pulumi.BoolPtrInput `pulumi:"includeAliases"`
 	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
 	Indices pulumi.StringInput `pulumi:"indices"`
+	// Whether the repository is read-only. Default: `false`.
+	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 	// If true, restore the cluster state. Defaults to false.
 	RestoreGlobalState pulumi.BoolPtrInput `pulumi:"restoreGlobalState"`
 	// The snapshot name to restore from.
@@ -3014,6 +3143,11 @@ func (o GetOpenSearchOpensearchUserConfigGcsMigrationOutput) Indices() pulumi.St
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigGcsMigration) string { return v.Indices }).(pulumi.StringOutput)
 }
 
+// Whether the repository is read-only. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigGcsMigrationOutput) Readonly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigGcsMigration) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
+}
+
 // If true, restore the cluster state. Defaults to false.
 func (o GetOpenSearchOpensearchUserConfigGcsMigrationOutput) RestoreGlobalState() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigGcsMigration) *bool { return v.RestoreGlobalState }).(pulumi.BoolPtrOutput)
@@ -3116,6 +3250,16 @@ func (o GetOpenSearchOpensearchUserConfigGcsMigrationPtrOutput) Indices() pulumi
 		}
 		return &v.Indices
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the repository is read-only. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigGcsMigrationPtrOutput) Readonly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigGcsMigration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Readonly
+	}).(pulumi.BoolPtrOutput)
 }
 
 // If true, restore the cluster state. Defaults to false.
@@ -4107,6 +4251,8 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
 	ClusterRoutingAllocationNodeConcurrentRecoveries *int                                                                    `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
 	ClusterSearchRequestSlowlog                      *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog `pulumi:"clusterSearchRequestSlowlog"`
+	// Watermark settings
+	DiskWatermarks *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks `pulumi:"diskWatermarks"`
 	// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
 	EmailSenderName *string `pulumi:"emailSenderName"`
 	// Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
@@ -4221,6 +4367,8 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
 	ClusterRoutingAllocationNodeConcurrentRecoveries pulumi.IntPtrInput                                                             `pulumi:"clusterRoutingAllocationNodeConcurrentRecoveries"`
 	ClusterSearchRequestSlowlog                      GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrInput `pulumi:"clusterSearchRequestSlowlog"`
+	// Watermark settings
+	DiskWatermarks GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput `pulumi:"diskWatermarks"`
 	// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
 	EmailSenderName pulumi.StringPtrInput `pulumi:"emailSenderName"`
 	// Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
@@ -4427,6 +4575,13 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) ClusterSearchRequestS
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlog {
 		return v.ClusterSearchRequestSlowlog
 	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput)
+}
+
+// Watermark settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) DiskWatermarks() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
+		return v.DiskWatermarks
+	}).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput)
 }
 
 // Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
@@ -4751,6 +4906,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) ClusterSearchReque
 		}
 		return v.ClusterSearchRequestSlowlog
 	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput)
+}
+
+// Watermark settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) DiskWatermarks() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
+		if v == nil {
+			return nil
+		}
+		return v.DiskWatermarks
+	}).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput)
 }
 
 // Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
@@ -6414,6 +6579,181 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) Opensear
 			return nil
 		}
 		return v.OpensearchRequestTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks struct {
+	// The flood stage watermark for disk usage. Example: `95`.
+	FloodStage int `pulumi:"floodStage"`
+	// The high watermark for disk usage. Example: `90`.
+	High int `pulumi:"high"`
+	// The low watermark for disk usage. Example: `85`.
+	Low int `pulumi:"low"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs and GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs struct {
+	// The flood stage watermark for disk usage. Example: `95`.
+	FloodStage pulumi.IntInput `pulumi:"floodStage"`
+	// The high watermark for disk usage. Example: `90`.
+	High pulumi.IntInput `pulumi:"high"`
+	// The low watermark for disk usage. Example: `85`.
+	Low pulumi.IntInput `pulumi:"low"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput).ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs, GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtr and GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtr(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput)
+}
+
+// The flood stage watermark for disk usage. Example: `95`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) FloodStage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) int { return v.FloodStage }).(pulumi.IntOutput)
+}
+
+// The high watermark for disk usage. Example: `90`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) High() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) int { return v.High }).(pulumi.IntOutput)
+}
+
+// The low watermark for disk usage. Example: `85`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) Low() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) int { return v.Low }).(pulumi.IntOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput)
+}
+
+// The flood stage watermark for disk usage. Example: `95`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) FloodStage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.FloodStage
+	}).(pulumi.IntPtrOutput)
+}
+
+// The high watermark for disk usage. Example: `90`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) High() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.High
+	}).(pulumi.IntPtrOutput)
+}
+
+// The low watermark for disk usage. Example: `85`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) Low() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Low
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -9761,6 +10101,8 @@ type GetOpenSearchOpensearchUserConfigS3Migration struct {
 	IncludeAliases *bool `pulumi:"includeAliases"`
 	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
 	Indices string `pulumi:"indices"`
+	// Whether the repository is read-only. Default: `false`.
+	Readonly *bool `pulumi:"readonly"`
 	// S3 region.
 	Region string `pulumi:"region"`
 	// If true, restore the cluster state. Defaults to false.
@@ -9801,6 +10143,8 @@ type GetOpenSearchOpensearchUserConfigS3MigrationArgs struct {
 	IncludeAliases pulumi.BoolPtrInput `pulumi:"includeAliases"`
 	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
 	Indices pulumi.StringInput `pulumi:"indices"`
+	// Whether the repository is read-only. Default: `false`.
+	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 	// S3 region.
 	Region pulumi.StringInput `pulumi:"region"`
 	// If true, restore the cluster state. Defaults to false.
@@ -9930,6 +10274,11 @@ func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Indices() pulumi.Str
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.Indices }).(pulumi.StringOutput)
 }
 
+// Whether the repository is read-only. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Readonly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
+}
+
 // S3 region.
 func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.Region }).(pulumi.StringOutput)
@@ -10057,6 +10406,16 @@ func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Indices() pulumi.
 		}
 		return &v.Indices
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the repository is read-only. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Readonly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Readonly
+	}).(pulumi.BoolPtrOutput)
 }
 
 // S3 region.
@@ -27267,6 +27626,8 @@ type GetValkeyValkeyUserConfig struct {
 	BackupHour *int `pulumi:"backupHour"`
 	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 	BackupMinute *int `pulumi:"backupMinute"`
+	// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
 	FrequentSnapshots *bool `pulumi:"frequentSnapshots"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -27297,6 +27658,8 @@ type GetValkeyValkeyUserConfig struct {
 	StaticIps *bool `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
 	ValkeyAclChannelsDefault *string `pulumi:"valkeyAclChannelsDefault"`
+	// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+	ValkeyActiveExpireEffort *int `pulumi:"valkeyActiveExpireEffort"`
 	// Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
 	ValkeyIoThreads *int `pulumi:"valkeyIoThreads"`
 	// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
@@ -27337,6 +27700,8 @@ type GetValkeyValkeyUserConfigArgs struct {
 	BackupHour pulumi.IntPtrInput `pulumi:"backupHour"`
 	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
 	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
+	// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+	EnableIpv6 pulumi.BoolPtrInput `pulumi:"enableIpv6"`
 	// When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
 	FrequentSnapshots pulumi.BoolPtrInput `pulumi:"frequentSnapshots"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -27367,6 +27732,8 @@ type GetValkeyValkeyUserConfigArgs struct {
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
 	ValkeyAclChannelsDefault pulumi.StringPtrInput `pulumi:"valkeyAclChannelsDefault"`
+	// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+	ValkeyActiveExpireEffort pulumi.IntPtrInput `pulumi:"valkeyActiveExpireEffort"`
 	// Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
 	ValkeyIoThreads pulumi.IntPtrInput `pulumi:"valkeyIoThreads"`
 	// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
@@ -27455,6 +27822,11 @@ func (o GetValkeyValkeyUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
 }
 
+// Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+func (o GetValkeyValkeyUserConfigOutput) EnableIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *bool { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
+}
+
 // When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkeyPersistence` is set to `off`. Default: `true`.
 func (o GetValkeyValkeyUserConfigOutput) FrequentSnapshots() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *bool { return v.FrequentSnapshots }).(pulumi.BoolPtrOutput)
@@ -27527,6 +27899,11 @@ func (o GetValkeyValkeyUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 // Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
 func (o GetValkeyValkeyUserConfigOutput) ValkeyAclChannelsDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ValkeyAclChannelsDefault }).(pulumi.StringPtrOutput)
+}
+
+// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyActiveExpireEffort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyActiveExpireEffort }).(pulumi.IntPtrOutput)
 }
 
 // Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
@@ -28463,6 +28840,8 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigIpFilterObjectInput)(nil)).Elem(), GetMySqlMysqlUserConfigIpFilterObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetMySqlMysqlUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMigrationInput)(nil)).Elem(), GetMySqlMysqlUserConfigMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMigrationPtrInput)(nil)).Elem(), GetMySqlMysqlUserConfigMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMysqlInput)(nil)).Elem(), GetMySqlMysqlUserConfigMysqlArgs{})
@@ -28513,6 +28892,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{})
@@ -28771,6 +29152,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigIpFilterObjectOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMigrationOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMigrationPtrOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMysqlOutput{})
@@ -28821,6 +29204,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput{})

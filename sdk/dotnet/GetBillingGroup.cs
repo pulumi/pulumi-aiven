@@ -13,18 +13,72 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// Gets information about a billing group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleBillingGroup = Aiven.GetBillingGroup.Invoke(new()
+        ///     {
+        ///         BillingGroupId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetBillingGroupResult> InvokeAsync(GetBillingGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a billing group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleBillingGroup = Aiven.GetBillingGroup.Invoke(new()
+        ///     {
+        ///         BillingGroupId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetBillingGroupResult> Invoke(GetBillingGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a billing group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleBillingGroup = Aiven.GetBillingGroup.Invoke(new()
+        ///     {
+        ///         BillingGroupId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetBillingGroupResult> Invoke(GetBillingGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupInvokeArgs(), options.WithDefaults());
@@ -34,7 +88,7 @@ namespace Pulumi.Aiven
     public sealed class GetBillingGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        /// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("billingGroupId", required: true)]
         public string BillingGroupId { get; set; } = null!;
@@ -48,7 +102,7 @@ namespace Pulumi.Aiven
     public sealed class GetBillingGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        /// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("billingGroupId", required: true)]
         public Input<string> BillingGroupId { get; set; } = null!;
@@ -84,7 +138,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string BillingExtraText;
         /// <summary>
-        /// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        /// The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string BillingGroupId;
         /// <summary>

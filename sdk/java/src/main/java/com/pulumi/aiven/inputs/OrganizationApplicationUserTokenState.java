@@ -124,6 +124,21 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
     }
 
     /**
+     * List of allowed IP ranges.
+     * 
+     */
+    @Import(name="ipAllowlists")
+    private @Nullable Output<List<String>> ipAllowlists;
+
+    /**
+     * @return List of allowed IP ranges.
+     * 
+     */
+    public Optional<Output<List<String>>> ipAllowlists() {
+        return Optional.ofNullable(this.ipAllowlists);
+    }
+
+    /**
      * IP address of the last request made with this token.
      * 
      */
@@ -268,6 +283,7 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
         this.expiryTime = $.expiryTime;
         this.extendWhenUsed = $.extendWhenUsed;
         this.fullToken = $.fullToken;
+        this.ipAllowlists = $.ipAllowlists;
         this.lastIp = $.lastIp;
         this.lastUsedTime = $.lastUsedTime;
         this.lastUserAgent = $.lastUserAgent;
@@ -442,6 +458,37 @@ public final class OrganizationApplicationUserTokenState extends com.pulumi.reso
          */
         public Builder fullToken(String fullToken) {
             return fullToken(Output.of(fullToken));
+        }
+
+        /**
+         * @param ipAllowlists List of allowed IP ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllowlists(@Nullable Output<List<String>> ipAllowlists) {
+            $.ipAllowlists = ipAllowlists;
+            return this;
+        }
+
+        /**
+         * @param ipAllowlists List of allowed IP ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllowlists(List<String> ipAllowlists) {
+            return ipAllowlists(Output.of(ipAllowlists));
+        }
+
+        /**
+         * @param ipAllowlists List of allowed IP ranges.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllowlists(String... ipAllowlists) {
+            return ipAllowlists(List.of(ipAllowlists));
         }
 
         /**

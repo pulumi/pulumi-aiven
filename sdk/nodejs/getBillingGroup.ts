@@ -6,6 +6,17 @@ import * as utilities from "./utilities";
 
 /**
  * Gets information about a billing group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleBillingGroup = aiven.getBillingGroup({
+ *     billingGroupId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ * });
+ * ```
  */
 export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -19,7 +30,7 @@ export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeO
  */
 export interface GetBillingGroupArgs {
     /**
-     * The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroupId: string;
 }
@@ -49,7 +60,7 @@ export interface GetBillingGroupResult {
      */
     readonly billingExtraText: string;
     /**
-     * The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
      */
     readonly billingGroupId: string;
     /**
@@ -99,6 +110,17 @@ export interface GetBillingGroupResult {
 }
 /**
  * Gets information about a billing group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleBillingGroup = aiven.getBillingGroup({
+ *     billingGroupId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ * });
+ * ```
  */
 export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBillingGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -112,7 +134,7 @@ export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pu
  */
 export interface GetBillingGroupOutputArgs {
     /**
-     * The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroupId: pulumi.Input<string>;
 }
