@@ -1329,6 +1329,9 @@
                                                     }
                                                 }
                                             },
+                                            "disk_watermarks": {
+                                                "maxItemsOne": true
+                                            },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
                                             },
@@ -1456,6 +1459,9 @@
                 "current": "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken",
                 "majorVersion": 6,
                 "fields": {
+                    "ip_allowlist": {
+                        "maxItemsOne": false
+                    },
                     "scopes": {
                         "maxItemsOne": false
                     }
@@ -3467,6 +3473,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "disk_watermarks": {
+                                                "maxItemsOne": true
                                             },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
