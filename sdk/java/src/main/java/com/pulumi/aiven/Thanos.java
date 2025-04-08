@@ -60,9 +60,9 @@ import javax.annotation.Nullable;
  *             .serviceName("example-thanos-service")
  *             .thanosUserConfig(ThanosThanosUserConfigArgs.builder()
  *                 .compactor(ThanosThanosUserConfigCompactorArgs.builder()
- *                     .retentionDays("30")
+ *                     .retentionDays(30)
  *                     .build())
- *                 .objectStorageUsageAlertThresholdGb("10")
+ *                 .objectStorageUsageAlertThresholdGb(10)
  *                 .build())
  *             .build());
  * 

@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .opensearchUserConfig(OpenSearchOpensearchUserConfigArgs.builder()
- *                 .opensearchVersion(1)
+ *                 .opensearchVersion("1")
  *                 .opensearchDashboards(OpenSearchOpensearchUserConfigOpensearchDashboardsArgs.builder()
  *                     .enabled(true)
  *                     .opensearchRequestTimeout(30000)
