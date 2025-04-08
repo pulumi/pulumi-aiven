@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .clientId("example_client")
  *             .consumerByteRate(1000)
  *             .producerByteRate(1000)
- *             .requestPercentage(50)
+ *             .requestPercentage(50.0)
  *             .build());
  * 
  *     }

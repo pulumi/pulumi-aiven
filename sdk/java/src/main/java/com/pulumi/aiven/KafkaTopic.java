@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .replication(3)
  *             .terminationProtection(true)
  *             .config(KafkaTopicConfigArgs.builder()
- *                 .flushMs(10)
+ *                 .flushMs("10")
  *                 .cleanupPolicy("compact,delete")
  *                 .build())
  *             .ownerUserGroupId(example.groupId())
