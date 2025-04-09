@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .flinkUserConfig(FlinkFlinkUserConfigArgs.builder()
- *                 .flinkVersion(1.19)
+ *                 .flinkVersion("1.19")
  *                 .build())
  *             .build());
  * 

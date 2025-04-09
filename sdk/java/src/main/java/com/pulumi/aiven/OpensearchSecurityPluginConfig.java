@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bar = new OpenSearch("bar", OpenSearchArgs.builder()
- *             .project(foo.applyValue(getProjectResult -> getProjectResult.project()))
+ *             .project(foo.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
  *             .serviceName("example_service_name")
@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * 
  *         var fooOpensearchUser = new OpensearchUser("fooOpensearchUser", OpensearchUserArgs.builder()
  *             .serviceName(bar.serviceName())
- *             .project(foo.applyValue(getProjectResult -> getProjectResult.project()))
+ *             .project(foo.project())
  *             .username("user-example")
  *             .build());
  * 
  *         var fooOpensearchSecurityPluginConfig = new OpensearchSecurityPluginConfig("fooOpensearchSecurityPluginConfig", OpensearchSecurityPluginConfigArgs.builder()
- *             .project(foo.applyValue(getProjectResult -> getProjectResult.project()))
+ *             .project(foo.project())
  *             .serviceName(bar.serviceName())
  *             .adminPassword("ThisIsATest123^=^")
  *             .build());

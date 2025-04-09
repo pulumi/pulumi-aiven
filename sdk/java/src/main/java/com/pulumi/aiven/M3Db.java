@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .m3dbUserConfig(M3DbM3dbUserConfigArgs.builder()
- *                 .m3dbVersion(1.1)
+ *                 .m3dbVersion("1.1")
  *                 .namespaces(M3DbM3dbUserConfigNamespaceArgs.builder()
  *                     .name("example-namespace")
  *                     .type("unaggregated")
