@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .mysqlUserConfig(MySqlMysqlUserConfigArgs.builder()
- *                 .mysqlVersion(8)
+ *                 .mysqlVersion("8")
  *                 .mysql(MySqlMysqlUserConfigMysqlArgs.builder()
  *                     .sqlMode("ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE")
  *                     .sqlRequirePrimaryKey(true)

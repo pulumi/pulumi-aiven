@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .m3aggregatorUserConfig(M3AggregatorM3aggregatorUserConfigArgs.builder()
- *                 .m3aggregatorVersion(0.15)
+ *                 .m3aggregatorVersion("0.15")
  *                 .build())
  *             .build());
  * 
