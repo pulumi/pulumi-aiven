@@ -12,33 +12,6 @@ import (
 )
 
 // Gets information about an application user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupOrganizationApplicationUser(ctx, &aiven.LookupOrganizationApplicationUserArgs{
-//				OrganizationId: main.Id,
-//				UserId:         "u123a456b7890c",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupOrganizationApplicationUser(ctx *pulumi.Context, args *LookupOrganizationApplicationUserArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationApplicationUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationApplicationUserResult

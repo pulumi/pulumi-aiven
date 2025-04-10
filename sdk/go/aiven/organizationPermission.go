@@ -38,7 +38,7 @@ import (
 //			// Grant access to a specific project
 //			_, err := aiven.NewOrganizationPermission(ctx, "example_project_permissions", &aiven.OrganizationPermissionArgs{
 //				OrganizationId: pulumi.Any(main.Id),
-//				ResourceId:     pulumi.Any(exampleProject.Id),
+//				ResourceId:     pulumi.Any(exampleProject.Project),
 //				ResourceType:   pulumi.String("project"),
 //				Permissions: aiven.OrganizationPermissionPermissionArray{
 //					&aiven.OrganizationPermissionPermissionArgs{

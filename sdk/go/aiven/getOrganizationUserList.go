@@ -11,10 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List of users of the organization.
+// Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetOrganizationUserList(ctx, &aiven.GetOrganizationUserListArgs{
+//				Name: pulumi.StringRef("Example organization"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOrganizationUserList(ctx *pulumi.Context, args *GetOrganizationUserListArgs, opts ...pulumi.InvokeOption) (*GetOrganizationUserListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationUserListResult
@@ -27,19 +50,19 @@ func GetOrganizationUserList(ctx *pulumi.Context, args *GetOrganizationUserListA
 
 // A collection of arguments for invoking getOrganizationUserList.
 type GetOrganizationUserListArgs struct {
-	// Organization id. Example: `org12345678`.
+	// The ID of the organization.
 	Id *string `pulumi:"id"`
-	// Organization name. Example: `aiven`.
+	// The name of the organization.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getOrganizationUserList.
 type GetOrganizationUserListResult struct {
-	// Organization id. Example: `org12345678`.
+	// The ID of the organization.
 	Id *string `pulumi:"id"`
-	// Organization name. Example: `aiven`.
+	// The name of the organization.
 	Name *string `pulumi:"name"`
-	// List of users of the organization
+	// List of the users, their profile information, and other data.
 	Users []GetOrganizationUserListUser `pulumi:"users"`
 }
 
@@ -54,9 +77,9 @@ func GetOrganizationUserListOutput(ctx *pulumi.Context, args GetOrganizationUser
 
 // A collection of arguments for invoking getOrganizationUserList.
 type GetOrganizationUserListOutputArgs struct {
-	// Organization id. Example: `org12345678`.
+	// The ID of the organization.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Organization name. Example: `aiven`.
+	// The name of the organization.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -79,17 +102,17 @@ func (o GetOrganizationUserListResultOutput) ToGetOrganizationUserListResultOutp
 	return o
 }
 
-// Organization id. Example: `org12345678`.
+// The ID of the organization.
 func (o GetOrganizationUserListResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOrganizationUserListResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Organization name. Example: `aiven`.
+// The name of the organization.
 func (o GetOrganizationUserListResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOrganizationUserListResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// List of users of the organization
+// List of the users, their profile information, and other data.
 func (o GetOrganizationUserListResultOutput) Users() GetOrganizationUserListUserArrayOutput {
 	return o.ApplyT(func(v GetOrganizationUserListResult) []GetOrganizationUserListUser { return v.Users }).(GetOrganizationUserListUserArrayOutput)
 }

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const exampleIntegration = aiven.getServiceIntegration({
  *     project: exampleProject.project,
- *     destinationServiceName: exampleM3db.serviceName,
+ *     destinationServiceName: exampleThanos.serviceName,
  *     integrationType: "metrics",
  *     sourceServiceName: exampleKafka.serviceName,
  * });
@@ -167,7 +167,7 @@ export interface GetServiceIntegrationResult {
  *
  * const exampleIntegration = aiven.getServiceIntegration({
  *     project: exampleProject.project,
- *     destinationServiceName: exampleM3db.serviceName,
+ *     destinationServiceName: exampleThanos.serviceName,
  *     integrationType: "metrics",
  *     sourceServiceName: exampleKafka.serviceName,
  * });

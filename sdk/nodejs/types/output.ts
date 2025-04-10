@@ -560,6 +560,10 @@ export interface AlloydbomniComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -748,6 +752,10 @@ export interface CassandraComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -808,6 +816,14 @@ export interface ClickhouseClickhouseUserConfig {
      * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: number;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: number;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -942,6 +958,10 @@ export interface ClickhouseComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -1035,6 +1055,10 @@ export interface DragonflyComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -1288,6 +1312,10 @@ export interface FlinkComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -2113,6 +2141,10 @@ export interface GetAlloydbomniComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -2300,6 +2332,10 @@ export interface GetCassandaComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -2489,6 +2525,10 @@ export interface GetCassandraComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -2549,6 +2589,14 @@ export interface GetClickhouseClickhouseUserConfig {
      * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: number;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: number;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -2683,6 +2731,10 @@ export interface GetClickhouseComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -2746,6 +2798,10 @@ export interface GetDragonflyComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -3000,6 +3056,10 @@ export interface GetFlinkComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -3158,6 +3218,10 @@ export interface GetGrafanaComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -3695,6 +3759,10 @@ export interface GetInfluxDbComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -3920,6 +3988,10 @@ export interface GetKafkaComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -3954,6 +4026,10 @@ export interface GetKafkaConnectComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -4341,7 +4417,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.GetKafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -4927,6 +5003,10 @@ export interface GetKafkaMirrorMakerComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -5157,7 +5237,7 @@ export interface GetKafkaTopicConfig {
      */
     messageDownconversionEnable?: boolean;
     /**
-     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
      */
     messageFormatVersion?: string;
     /**
@@ -5248,6 +5328,10 @@ export interface GetM3AggregatorComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -5371,6 +5455,10 @@ export interface GetM3DbComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -5732,6 +5820,10 @@ export interface GetMySqlComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -6154,6 +6246,10 @@ export interface GetOpenSearchComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -6347,7 +6443,7 @@ export interface GetOpenSearchOpensearchUserConfigAzureMigration {
      */
     key?: string;
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      */
     readonly?: boolean;
     /**
@@ -6394,7 +6490,7 @@ export interface GetOpenSearchOpensearchUserConfigGcsMigration {
      */
     indices: string;
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      */
     readonly?: boolean;
     /**
@@ -7197,7 +7293,7 @@ export interface GetOpenSearchOpensearchUserConfigS3Migration {
      */
     indices: string;
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      */
     readonly?: boolean;
     /**
@@ -7285,6 +7381,57 @@ export interface GetOpenSearchTechEmail {
     email: string;
 }
 
+export interface GetOrganizationBillingGroupListBillingGroup {
+    /**
+     * ID of the billing address.
+     */
+    billingAddressId: string;
+    /**
+     * List of billing contact emails.
+     */
+    billingContactEmails: string[];
+    /**
+     * Billing currency.
+     */
+    billingCurrency: string;
+    /**
+     * List of billing emails.
+     */
+    billingEmails: string[];
+    /**
+     * ID of the billing group.
+     */
+    billingGroupId: string;
+    /**
+     * Name of the billing group.
+     */
+    billingGroupName: string;
+    /**
+     * Custom invoice text.
+     */
+    customInvoiceText: string;
+    /**
+     * Resource ID, a composite of organization*id and billing*group_id.
+     */
+    id: string;
+    /**
+     * ID of the organization.
+     */
+    organizationId: string;
+    /**
+     * ID of the payment method.
+     */
+    paymentMethodId: string;
+    /**
+     * ID of the shipping address.
+     */
+    shippingAddressId: string;
+    /**
+     * VAT ID.
+     */
+    vatId: string;
+}
+
 export interface GetOrganizationProjectTag {
     /**
      * Project tag key.
@@ -7298,19 +7445,19 @@ export interface GetOrganizationProjectTag {
 
 export interface GetOrganizationUserListUser {
     /**
-     * Super admin state of the organization user
+     * Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
      */
     isSuperAdmin: boolean;
     /**
-     * Join time
+     * Date and time when the user joined the organization.
      */
     joinTime: string;
     /**
-     * Last activity time
+     * Last activity time.
      */
     lastActivityTime: string;
     /**
-     * User ID
+     * User ID.
      */
     userId: string;
     userInfos: outputs.GetOrganizationUserListUserUserInfo[];
@@ -7326,7 +7473,7 @@ export interface GetOrganizationUserListUserUserInfo {
      */
     country: string;
     /**
-     * Creation time
+     * Date and time when the user was created.
      */
     createTime: string;
     /**
@@ -7334,23 +7481,23 @@ export interface GetOrganizationUserListUserUserInfo {
      */
     department: string;
     /**
-     * Is Application User
+     * Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
      */
     isApplicationUser: boolean;
     /**
-     * Job Title
+     * Job title
      */
     jobTitle: string;
     /**
-     * Managed By Scim
+     * Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
      */
     managedByScim: boolean;
     /**
-     * Managing Organization ID
+     * The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
      */
     managingOrganizationId: string;
     /**
-     * Real Name
+     * Full name of the user.
      */
     realName: string;
     /**
@@ -7358,7 +7505,7 @@ export interface GetOrganizationUserListUserUserInfo {
      */
     state: string;
     /**
-     * User Email
+     * Email address.
      */
     userEmail: string;
 }
@@ -7380,6 +7527,10 @@ export interface GetPgComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -8155,6 +8306,10 @@ export interface GetRedisComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -9412,6 +9567,10 @@ export interface GetThanosComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -9674,6 +9833,10 @@ export interface GetValkeyComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -9961,6 +10124,10 @@ export interface GrafanaComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -10498,6 +10665,10 @@ export interface InfluxDbComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -10723,6 +10894,10 @@ export interface KafkaComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -10757,6 +10932,10 @@ export interface KafkaConnectComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -11144,7 +11323,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.KafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -11730,6 +11909,10 @@ export interface KafkaMirrorMakerComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -11960,7 +12143,7 @@ export interface KafkaTopicConfig {
      */
     messageDownconversionEnable?: boolean;
     /**
-     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
      */
     messageFormatVersion?: string;
     /**
@@ -12051,6 +12234,10 @@ export interface M3AggregatorComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -12174,6 +12361,10 @@ export interface M3DbComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -12535,6 +12726,10 @@ export interface MySqlComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -12957,6 +13152,10 @@ export interface OpenSearchComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -13150,7 +13349,7 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      */
     key?: string;
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      */
     readonly?: boolean;
     /**
@@ -13197,7 +13396,7 @@ export interface OpenSearchOpensearchUserConfigGcsMigration {
      */
     indices: string;
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      */
     readonly?: boolean;
     /**
@@ -14000,7 +14199,7 @@ export interface OpenSearchOpensearchUserConfigS3Migration {
      */
     indices: string;
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      */
     readonly?: boolean;
     /**
@@ -14086,6 +14285,44 @@ export interface OpenSearchTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface OrganizationAddressTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface OrganizationBillingGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface OrganizationGroupProjectTimeouts {
@@ -14196,6 +14433,10 @@ export interface PgComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -14971,6 +15212,10 @@ export interface RedisComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */
@@ -16228,6 +16473,10 @@ export interface ThanosComponent {
      */
     kafkaAuthenticationMethod: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     port: number;
@@ -16490,6 +16739,10 @@ export interface ValkeyComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod: string;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa: string;
     /**
      * Port number for connecting to the service component
      */

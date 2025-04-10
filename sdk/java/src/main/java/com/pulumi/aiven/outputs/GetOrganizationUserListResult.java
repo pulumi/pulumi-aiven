@@ -15,38 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOrganizationUserListResult {
     /**
-     * @return Organization id. Example: `org12345678`.
+     * @return The ID of the organization.
      * 
      */
     private @Nullable String id;
     /**
-     * @return Organization name. Example: `aiven`.
+     * @return The name of the organization.
      * 
      */
     private @Nullable String name;
     /**
-     * @return List of users of the organization
+     * @return List of the users, their profile information, and other data.
      * 
      */
     private List<GetOrganizationUserListUser> users;
 
     private GetOrganizationUserListResult() {}
     /**
-     * @return Organization id. Example: `org12345678`.
+     * @return The ID of the organization.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Organization name. Example: `aiven`.
+     * @return The name of the organization.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return List of users of the organization
+     * @return List of the users, their profile information, and other data.
      * 
      */
     public List<GetOrganizationUserListUser> users() {

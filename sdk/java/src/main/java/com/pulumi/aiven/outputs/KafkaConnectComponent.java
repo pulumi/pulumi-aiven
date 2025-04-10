@@ -34,6 +34,11 @@ public final class KafkaConnectComponent {
      */
     private @Nullable String kafkaAuthenticationMethod;
     /**
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * 
+     */
+    private @Nullable String kafkaSslCa;
+    /**
      * @return Port number for connecting to the service component
      * 
      */
@@ -84,6 +89,13 @@ public final class KafkaConnectComponent {
         return Optional.ofNullable(this.kafkaAuthenticationMethod);
     }
     /**
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * 
+     */
+    public Optional<String> kafkaSslCa() {
+        return Optional.ofNullable(this.kafkaSslCa);
+    }
+    /**
      * @return Port number for connecting to the service component
      * 
      */
@@ -125,6 +137,7 @@ public final class KafkaConnectComponent {
         private @Nullable String connectionUri;
         private @Nullable String host;
         private @Nullable String kafkaAuthenticationMethod;
+        private @Nullable String kafkaSslCa;
         private @Nullable Integer port;
         private @Nullable String route;
         private @Nullable Boolean ssl;
@@ -136,6 +149,7 @@ public final class KafkaConnectComponent {
     	      this.connectionUri = defaults.connectionUri;
     	      this.host = defaults.host;
     	      this.kafkaAuthenticationMethod = defaults.kafkaAuthenticationMethod;
+    	      this.kafkaSslCa = defaults.kafkaSslCa;
     	      this.port = defaults.port;
     	      this.route = defaults.route;
     	      this.ssl = defaults.ssl;
@@ -164,6 +178,12 @@ public final class KafkaConnectComponent {
         public Builder kafkaAuthenticationMethod(@Nullable String kafkaAuthenticationMethod) {
 
             this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaSslCa(@Nullable String kafkaSslCa) {
+
+            this.kafkaSslCa = kafkaSslCa;
             return this;
         }
         @CustomType.Setter
@@ -196,6 +216,7 @@ public final class KafkaConnectComponent {
             _resultValue.connectionUri = connectionUri;
             _resultValue.host = host;
             _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            _resultValue.kafkaSslCa = kafkaSslCa;
             _resultValue.port = port;
             _resultValue.route = route;
             _resultValue.ssl = ssl;

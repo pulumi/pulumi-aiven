@@ -99,7 +99,10 @@ from .get_open_search_acl_rule import *
 from .get_opensearch_security_plugin_config import *
 from .get_opensearch_user import *
 from .get_organization import *
+from .get_organization_address import *
 from .get_organization_application_user import *
+from .get_organization_billing_group import *
+from .get_organization_billing_group_list import *
 from .get_organization_project import *
 from .get_organization_user import *
 from .get_organization_user_group import *
@@ -150,8 +153,10 @@ from .open_search_acl_rule import *
 from .opensearch_security_plugin_config import *
 from .opensearch_user import *
 from .organization import *
+from .organization_address import *
 from .organization_application_user import *
 from .organization_application_user_token import *
+from .organization_billing_group import *
 from .organization_group_project import *
 from .organization_permission import *
 from .organization_project import *
@@ -711,6 +716,14 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/organizationAddress",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationAddress:OrganizationAddress": "OrganizationAddress"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/organizationApplicationUser",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -723,6 +736,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken": "OrganizationApplicationUserToken"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/organizationBillingGroup",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationBillingGroup:OrganizationBillingGroup": "OrganizationBillingGroup"
   }
  },
  {

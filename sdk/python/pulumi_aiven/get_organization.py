@@ -54,7 +54,7 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[builtins.str]:
+    def id(self) -> builtins.str:
         """
         ID of the organization.
         """
@@ -62,7 +62,7 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[builtins.str]:
+    def name(self) -> builtins.str:
         """
         Name of the organization.
         """

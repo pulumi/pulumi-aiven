@@ -13,6 +13,422 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMySqlMysqlParam struct {
+	// Thr name of the primary MySQL database.
+	DatabaseName string `pulumi:"databaseName"`
+	// MySQL host IP or name.
+	Host string `pulumi:"host"`
+	// The password for the admin service user.
+	Password string `pulumi:"password"`
+	// MySQL port.
+	Port int `pulumi:"port"`
+	// MySQL SSL mode setting. Always set to "require".
+	Sslmode string `pulumi:"sslmode"`
+	// The username for the admin service user.
+	User string `pulumi:"user"`
+}
+
+// GetMySqlMysqlParamInput is an input type that accepts GetMySqlMysqlParamArgs and GetMySqlMysqlParamOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlParamInput` via:
+//
+//	GetMySqlMysqlParamArgs{...}
+type GetMySqlMysqlParamInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlParamOutput() GetMySqlMysqlParamOutput
+	ToGetMySqlMysqlParamOutputWithContext(context.Context) GetMySqlMysqlParamOutput
+}
+
+type GetMySqlMysqlParamArgs struct {
+	// Thr name of the primary MySQL database.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// MySQL host IP or name.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The password for the admin service user.
+	Password pulumi.StringInput `pulumi:"password"`
+	// MySQL port.
+	Port pulumi.IntInput `pulumi:"port"`
+	// MySQL SSL mode setting. Always set to "require".
+	Sslmode pulumi.StringInput `pulumi:"sslmode"`
+	// The username for the admin service user.
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (GetMySqlMysqlParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlParam)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlParamArgs) ToGetMySqlMysqlParamOutput() GetMySqlMysqlParamOutput {
+	return i.ToGetMySqlMysqlParamOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlParamArgs) ToGetMySqlMysqlParamOutputWithContext(ctx context.Context) GetMySqlMysqlParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlParamOutput)
+}
+
+// GetMySqlMysqlParamArrayInput is an input type that accepts GetMySqlMysqlParamArray and GetMySqlMysqlParamArrayOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlParamArrayInput` via:
+//
+//	GetMySqlMysqlParamArray{ GetMySqlMysqlParamArgs{...} }
+type GetMySqlMysqlParamArrayInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlParamArrayOutput() GetMySqlMysqlParamArrayOutput
+	ToGetMySqlMysqlParamArrayOutputWithContext(context.Context) GetMySqlMysqlParamArrayOutput
+}
+
+type GetMySqlMysqlParamArray []GetMySqlMysqlParamInput
+
+func (GetMySqlMysqlParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlMysqlParam)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlParamArray) ToGetMySqlMysqlParamArrayOutput() GetMySqlMysqlParamArrayOutput {
+	return i.ToGetMySqlMysqlParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlParamArray) ToGetMySqlMysqlParamArrayOutputWithContext(ctx context.Context) GetMySqlMysqlParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlParamArrayOutput)
+}
+
+type GetMySqlMysqlParamOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlParam)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlParamOutput) ToGetMySqlMysqlParamOutput() GetMySqlMysqlParamOutput {
+	return o
+}
+
+func (o GetMySqlMysqlParamOutput) ToGetMySqlMysqlParamOutputWithContext(ctx context.Context) GetMySqlMysqlParamOutput {
+	return o
+}
+
+// Thr name of the primary MySQL database.
+func (o GetMySqlMysqlParamOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlMysqlParam) string { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+// MySQL host IP or name.
+func (o GetMySqlMysqlParamOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlMysqlParam) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The password for the admin service user.
+func (o GetMySqlMysqlParamOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlMysqlParam) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// MySQL port.
+func (o GetMySqlMysqlParamOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMySqlMysqlParam) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// MySQL SSL mode setting. Always set to "require".
+func (o GetMySqlMysqlParamOutput) Sslmode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlMysqlParam) string { return v.Sslmode }).(pulumi.StringOutput)
+}
+
+// The username for the admin service user.
+func (o GetMySqlMysqlParamOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMySqlMysqlParam) string { return v.User }).(pulumi.StringOutput)
+}
+
+type GetMySqlMysqlParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlMysqlParam)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlParamArrayOutput) ToGetMySqlMysqlParamArrayOutput() GetMySqlMysqlParamArrayOutput {
+	return o
+}
+
+func (o GetMySqlMysqlParamArrayOutput) ToGetMySqlMysqlParamArrayOutputWithContext(ctx context.Context) GetMySqlMysqlParamArrayOutput {
+	return o
+}
+
+func (o GetMySqlMysqlParamArrayOutput) Index(i pulumi.IntInput) GetMySqlMysqlParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMySqlMysqlParam {
+		return vs[0].([]GetMySqlMysqlParam)[vs[1].(int)]
+	}).(GetMySqlMysqlParamOutput)
+}
+
+type GetMySqlMysqlUserConfig struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+	AdminPassword *string `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+	AdminUsername *string `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+	BackupHour *int `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+	BackupMinute *int `pulumi:"backupMinute"`
+	// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+	BinlogRetentionPeriod *int `pulumi:"binlogRetentionPeriod"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects []GetMySqlMysqlUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration *GetMySqlMysqlUserConfigMigration `pulumi:"migration"`
+	// mysql.conf configuration values
+	Mysql *GetMySqlMysqlUserConfigMysql `pulumi:"mysql"`
+	// Enum: `8`, and newer. MySQL major version.
+	MysqlVersion *string `pulumi:"mysqlVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess *GetMySqlMysqlUserConfigPrivateAccess `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess *GetMySqlMysqlUserConfigPrivatelinkAccess `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom *string `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess *GetMySqlMysqlUserConfigPublicAccess `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
+	RecoveryTargetTime *string `pulumi:"recoveryTargetTime"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
+}
+
+// GetMySqlMysqlUserConfigInput is an input type that accepts GetMySqlMysqlUserConfigArgs and GetMySqlMysqlUserConfigOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigInput` via:
+//
+//	GetMySqlMysqlUserConfigArgs{...}
+type GetMySqlMysqlUserConfigInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigOutput() GetMySqlMysqlUserConfigOutput
+	ToGetMySqlMysqlUserConfigOutputWithContext(context.Context) GetMySqlMysqlUserConfigOutput
+}
+
+type GetMySqlMysqlUserConfigArgs struct {
+	// Additional Cloud Regions for Backup Replication.
+	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+	BackupHour pulumi.IntPtrInput `pulumi:"backupHour"`
+	// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
+	// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+	BinlogRetentionPeriod pulumi.IntPtrInput `pulumi:"binlogRetentionPeriod"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects GetMySqlMysqlUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Migrate data from existing server
+	Migration GetMySqlMysqlUserConfigMigrationPtrInput `pulumi:"migration"`
+	// mysql.conf configuration values
+	Mysql GetMySqlMysqlUserConfigMysqlPtrInput `pulumi:"mysql"`
+	// Enum: `8`, and newer. MySQL major version.
+	MysqlVersion pulumi.StringPtrInput `pulumi:"mysqlVersion"`
+	// Allow access to selected service ports from private networks
+	PrivateAccess GetMySqlMysqlUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
+	// Allow access to selected service components through Privatelink
+	PrivatelinkAccess GetMySqlMysqlUserConfigPrivatelinkAccessPtrInput `pulumi:"privatelinkAccess"`
+	// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+	ProjectToForkFrom pulumi.StringPtrInput `pulumi:"projectToForkFrom"`
+	// Allow access to selected service ports from the public Internet
+	PublicAccess GetMySqlMysqlUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
+	// Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
+	RecoveryTargetTime pulumi.StringPtrInput `pulumi:"recoveryTargetTime"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+}
+
+func (GetMySqlMysqlUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfig)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigArgs) ToGetMySqlMysqlUserConfigOutput() GetMySqlMysqlUserConfigOutput {
+	return i.ToGetMySqlMysqlUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigArgs) ToGetMySqlMysqlUserConfigOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigOutput)
+}
+
+// GetMySqlMysqlUserConfigArrayInput is an input type that accepts GetMySqlMysqlUserConfigArray and GetMySqlMysqlUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetMySqlMysqlUserConfigArrayInput` via:
+//
+//	GetMySqlMysqlUserConfigArray{ GetMySqlMysqlUserConfigArgs{...} }
+type GetMySqlMysqlUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMySqlMysqlUserConfigArrayOutput() GetMySqlMysqlUserConfigArrayOutput
+	ToGetMySqlMysqlUserConfigArrayOutputWithContext(context.Context) GetMySqlMysqlUserConfigArrayOutput
+}
+
+type GetMySqlMysqlUserConfigArray []GetMySqlMysqlUserConfigInput
+
+func (GetMySqlMysqlUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlMysqlUserConfig)(nil)).Elem()
+}
+
+func (i GetMySqlMysqlUserConfigArray) ToGetMySqlMysqlUserConfigArrayOutput() GetMySqlMysqlUserConfigArrayOutput {
+	return i.ToGetMySqlMysqlUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMySqlMysqlUserConfigArray) ToGetMySqlMysqlUserConfigArrayOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMySqlMysqlUserConfigArrayOutput)
+}
+
+type GetMySqlMysqlUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMySqlMysqlUserConfig)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigOutput) ToGetMySqlMysqlUserConfigOutput() GetMySqlMysqlUserConfigOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigOutput) ToGetMySqlMysqlUserConfigOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigOutput {
+	return o
+}
+
+// Additional Cloud Regions for Backup Replication.
+func (o GetMySqlMysqlUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+func (o GetMySqlMysqlUserConfigOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+}
+
+// Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
+func (o GetMySqlMysqlUserConfigOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+}
+
+// The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+func (o GetMySqlMysqlUserConfigOutput) BackupHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *int { return v.BackupHour }).(pulumi.IntPtrOutput)
+}
+
+// The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+func (o GetMySqlMysqlUserConfigOutput) BackupMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *int { return v.BackupMinute }).(pulumi.IntPtrOutput)
+}
+
+// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+func (o GetMySqlMysqlUserConfigOutput) BinlogRetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *int { return v.BinlogRetentionPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+func (o GetMySqlMysqlUserConfigOutput) IpFilterObjects() GetMySqlMysqlUserConfigIpFilterObjectArrayOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) []GetMySqlMysqlUserConfigIpFilterObject { return v.IpFilterObjects }).(GetMySqlMysqlUserConfigIpFilterObjectArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+func (o GetMySqlMysqlUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+//
+// Deprecated: Deprecated. Use `ipFilterString` instead.
+func (o GetMySqlMysqlUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// Migrate data from existing server
+func (o GetMySqlMysqlUserConfigOutput) Migration() GetMySqlMysqlUserConfigMigrationPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigMigration { return v.Migration }).(GetMySqlMysqlUserConfigMigrationPtrOutput)
+}
+
+// mysql.conf configuration values
+func (o GetMySqlMysqlUserConfigOutput) Mysql() GetMySqlMysqlUserConfigMysqlPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigMysql { return v.Mysql }).(GetMySqlMysqlUserConfigMysqlPtrOutput)
+}
+
+// Enum: `8`, and newer. MySQL major version.
+func (o GetMySqlMysqlUserConfigOutput) MysqlVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.MysqlVersion }).(pulumi.StringPtrOutput)
+}
+
+// Allow access to selected service ports from private networks
+func (o GetMySqlMysqlUserConfigOutput) PrivateAccess() GetMySqlMysqlUserConfigPrivateAccessPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigPrivateAccess { return v.PrivateAccess }).(GetMySqlMysqlUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow access to selected service components through Privatelink
+func (o GetMySqlMysqlUserConfigOutput) PrivatelinkAccess() GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigPrivatelinkAccess { return v.PrivatelinkAccess }).(GetMySqlMysqlUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
+func (o GetMySqlMysqlUserConfigOutput) ProjectToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.ProjectToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Allow access to selected service ports from the public Internet
+func (o GetMySqlMysqlUserConfigOutput) PublicAccess() GetMySqlMysqlUserConfigPublicAccessPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *GetMySqlMysqlUserConfigPublicAccess { return v.PublicAccess }).(GetMySqlMysqlUserConfigPublicAccessPtrOutput)
+}
+
+// Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
+func (o GetMySqlMysqlUserConfigOutput) RecoveryTargetTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.RecoveryTargetTime }).(pulumi.StringPtrOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o GetMySqlMysqlUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+func (o GetMySqlMysqlUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o GetMySqlMysqlUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+type GetMySqlMysqlUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMySqlMysqlUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMySqlMysqlUserConfig)(nil)).Elem()
+}
+
+func (o GetMySqlMysqlUserConfigArrayOutput) ToGetMySqlMysqlUserConfigArrayOutput() GetMySqlMysqlUserConfigArrayOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigArrayOutput) ToGetMySqlMysqlUserConfigArrayOutputWithContext(ctx context.Context) GetMySqlMysqlUserConfigArrayOutput {
+	return o
+}
+
+func (o GetMySqlMysqlUserConfigArrayOutput) Index(i pulumi.IntInput) GetMySqlMysqlUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMySqlMysqlUserConfig {
+		return vs[0].([]GetMySqlMysqlUserConfig)[vs[1].(int)]
+	}).(GetMySqlMysqlUserConfigOutput)
+}
+
 type GetMySqlMysqlUserConfigIpFilterObject struct {
 	// Description for IP filter list entry. Example: `Production service IP range`.
 	Description *string `pulumi:"description"`
@@ -1958,6 +2374,8 @@ type GetOpenSearchComponent struct {
 	Host string `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
 	// Network access route
@@ -1988,6 +2406,8 @@ type GetOpenSearchComponentArgs struct {
 	Host pulumi.StringInput `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
 	// Network access route
@@ -2067,6 +2487,11 @@ func (o GetOpenSearchComponentOutput) Host() pulumi.StringOutput {
 // Kafka authentication method. This is a value specific to the 'kafka' service component
 func (o GetOpenSearchComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetOpenSearchComponentOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchComponent) string { return v.KafkaSslCa }).(pulumi.StringOutput)
 }
 
 // Port number for connecting to the service component
@@ -2628,7 +3053,7 @@ type GetOpenSearchOpensearchUserConfigAzureMigration struct {
 	Indices string `pulumi:"indices"`
 	// Azure account secret key. One of key or sasToken should be specified.
 	Key *string `pulumi:"key"`
-	// Whether the repository is read-only. Default: `false`.
+	// Whether the repository is read-only. Default: `true`.
 	Readonly *bool `pulumi:"readonly"`
 	// If true, restore the cluster state. Defaults to false.
 	RestoreGlobalState *bool `pulumi:"restoreGlobalState"`
@@ -2668,7 +3093,7 @@ type GetOpenSearchOpensearchUserConfigAzureMigrationArgs struct {
 	Indices pulumi.StringInput `pulumi:"indices"`
 	// Azure account secret key. One of key or sasToken should be specified.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Whether the repository is read-only. Default: `false`.
+	// Whether the repository is read-only. Default: `true`.
 	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 	// If true, restore the cluster state. Defaults to false.
 	RestoreGlobalState pulumi.BoolPtrInput `pulumi:"restoreGlobalState"`
@@ -2800,7 +3225,7 @@ func (o GetOpenSearchOpensearchUserConfigAzureMigrationOutput) Key() pulumi.Stri
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigAzureMigration) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Whether the repository is read-only. Default: `false`.
+// Whether the repository is read-only. Default: `true`.
 func (o GetOpenSearchOpensearchUserConfigAzureMigrationOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigAzureMigration) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
 }
@@ -2934,7 +3359,7 @@ func (o GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput) Key() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether the repository is read-only. Default: `false`.
+// Whether the repository is read-only. Default: `true`.
 func (o GetOpenSearchOpensearchUserConfigAzureMigrationPtrOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigAzureMigration) *bool {
 		if v == nil {
@@ -2989,7 +3414,7 @@ type GetOpenSearchOpensearchUserConfigGcsMigration struct {
 	IncludeAliases *bool `pulumi:"includeAliases"`
 	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
 	Indices string `pulumi:"indices"`
-	// Whether the repository is read-only. Default: `false`.
+	// Whether the repository is read-only. Default: `true`.
 	Readonly *bool `pulumi:"readonly"`
 	// If true, restore the cluster state. Defaults to false.
 	RestoreGlobalState *bool `pulumi:"restoreGlobalState"`
@@ -3023,7 +3448,7 @@ type GetOpenSearchOpensearchUserConfigGcsMigrationArgs struct {
 	IncludeAliases pulumi.BoolPtrInput `pulumi:"includeAliases"`
 	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
 	Indices pulumi.StringInput `pulumi:"indices"`
-	// Whether the repository is read-only. Default: `false`.
+	// Whether the repository is read-only. Default: `true`.
 	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 	// If true, restore the cluster state. Defaults to false.
 	RestoreGlobalState pulumi.BoolPtrInput `pulumi:"restoreGlobalState"`
@@ -3143,7 +3568,7 @@ func (o GetOpenSearchOpensearchUserConfigGcsMigrationOutput) Indices() pulumi.St
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigGcsMigration) string { return v.Indices }).(pulumi.StringOutput)
 }
 
-// Whether the repository is read-only. Default: `false`.
+// Whether the repository is read-only. Default: `true`.
 func (o GetOpenSearchOpensearchUserConfigGcsMigrationOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigGcsMigration) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
 }
@@ -3252,7 +3677,7 @@ func (o GetOpenSearchOpensearchUserConfigGcsMigrationPtrOutput) Indices() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether the repository is read-only. Default: `false`.
+// Whether the repository is read-only. Default: `true`.
 func (o GetOpenSearchOpensearchUserConfigGcsMigrationPtrOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigGcsMigration) *bool {
 		if v == nil {
@@ -10101,7 +10526,7 @@ type GetOpenSearchOpensearchUserConfigS3Migration struct {
 	IncludeAliases *bool `pulumi:"includeAliases"`
 	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
 	Indices string `pulumi:"indices"`
-	// Whether the repository is read-only. Default: `false`.
+	// Whether the repository is read-only. Default: `true`.
 	Readonly *bool `pulumi:"readonly"`
 	// S3 region.
 	Region string `pulumi:"region"`
@@ -10143,7 +10568,7 @@ type GetOpenSearchOpensearchUserConfigS3MigrationArgs struct {
 	IncludeAliases pulumi.BoolPtrInput `pulumi:"includeAliases"`
 	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
 	Indices pulumi.StringInput `pulumi:"indices"`
-	// Whether the repository is read-only. Default: `false`.
+	// Whether the repository is read-only. Default: `true`.
 	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 	// S3 region.
 	Region pulumi.StringInput `pulumi:"region"`
@@ -10274,7 +10699,7 @@ func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Indices() pulumi.Str
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.Indices }).(pulumi.StringOutput)
 }
 
-// Whether the repository is read-only. Default: `false`.
+// Whether the repository is read-only. Default: `true`.
 func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
 }
@@ -10408,7 +10833,7 @@ func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Indices() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether the repository is read-only. Default: `false`.
+// Whether the repository is read-only. Default: `true`.
 func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
 		if v == nil {
@@ -11040,6 +11465,202 @@ func (o GetOpenSearchTechEmailArrayOutput) Index(i pulumi.IntInput) GetOpenSearc
 	}).(GetOpenSearchTechEmailOutput)
 }
 
+type GetOrganizationBillingGroupListBillingGroup struct {
+	// ID of the billing address.
+	BillingAddressId string `pulumi:"billingAddressId"`
+	// List of billing contact emails.
+	BillingContactEmails []string `pulumi:"billingContactEmails"`
+	// Billing currency.
+	BillingCurrency string `pulumi:"billingCurrency"`
+	// List of billing emails.
+	BillingEmails []string `pulumi:"billingEmails"`
+	// ID of the billing group.
+	BillingGroupId string `pulumi:"billingGroupId"`
+	// Name of the billing group.
+	BillingGroupName string `pulumi:"billingGroupName"`
+	// Custom invoice text.
+	CustomInvoiceText string `pulumi:"customInvoiceText"`
+	// Resource ID, a composite of organization*id and billing*group_id.
+	Id string `pulumi:"id"`
+	// ID of the organization.
+	OrganizationId string `pulumi:"organizationId"`
+	// ID of the payment method.
+	PaymentMethodId string `pulumi:"paymentMethodId"`
+	// ID of the shipping address.
+	ShippingAddressId string `pulumi:"shippingAddressId"`
+	// VAT ID.
+	VatId string `pulumi:"vatId"`
+}
+
+// GetOrganizationBillingGroupListBillingGroupInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupArgs and GetOrganizationBillingGroupListBillingGroupOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupArgs{...}
+type GetOrganizationBillingGroupListBillingGroupInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupOutput() GetOrganizationBillingGroupListBillingGroupOutput
+	ToGetOrganizationBillingGroupListBillingGroupOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupArgs struct {
+	// ID of the billing address.
+	BillingAddressId pulumi.StringInput `pulumi:"billingAddressId"`
+	// List of billing contact emails.
+	BillingContactEmails pulumi.StringArrayInput `pulumi:"billingContactEmails"`
+	// Billing currency.
+	BillingCurrency pulumi.StringInput `pulumi:"billingCurrency"`
+	// List of billing emails.
+	BillingEmails pulumi.StringArrayInput `pulumi:"billingEmails"`
+	// ID of the billing group.
+	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
+	// Name of the billing group.
+	BillingGroupName pulumi.StringInput `pulumi:"billingGroupName"`
+	// Custom invoice text.
+	CustomInvoiceText pulumi.StringInput `pulumi:"customInvoiceText"`
+	// Resource ID, a composite of organization*id and billing*group_id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of the organization.
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// ID of the payment method.
+	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
+	// ID of the shipping address.
+	ShippingAddressId pulumi.StringInput `pulumi:"shippingAddressId"`
+	// VAT ID.
+	VatId pulumi.StringInput `pulumi:"vatId"`
+}
+
+func (GetOrganizationBillingGroupListBillingGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroup)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupArgs) ToGetOrganizationBillingGroupListBillingGroupOutput() GetOrganizationBillingGroupListBillingGroupOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupArgs) ToGetOrganizationBillingGroupListBillingGroupOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupOutput)
+}
+
+// GetOrganizationBillingGroupListBillingGroupArrayInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupArray and GetOrganizationBillingGroupListBillingGroupArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupArrayInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupArray{ GetOrganizationBillingGroupListBillingGroupArgs{...} }
+type GetOrganizationBillingGroupListBillingGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupArrayOutput() GetOrganizationBillingGroupListBillingGroupArrayOutput
+	ToGetOrganizationBillingGroupListBillingGroupArrayOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupArrayOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupArray []GetOrganizationBillingGroupListBillingGroupInput
+
+func (GetOrganizationBillingGroupListBillingGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroup)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupArray) ToGetOrganizationBillingGroupListBillingGroupArrayOutput() GetOrganizationBillingGroupListBillingGroupArrayOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupArray) ToGetOrganizationBillingGroupListBillingGroupArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupArrayOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroup)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupOutput) ToGetOrganizationBillingGroupListBillingGroupOutput() GetOrganizationBillingGroupListBillingGroupOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupOutput) ToGetOrganizationBillingGroupListBillingGroupOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupOutput {
+	return o
+}
+
+// ID of the billing address.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingAddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingAddressId }).(pulumi.StringOutput)
+}
+
+// List of billing contact emails.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingContactEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []string { return v.BillingContactEmails }).(pulumi.StringArrayOutput)
+}
+
+// Billing currency.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingCurrency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingCurrency }).(pulumi.StringOutput)
+}
+
+// List of billing emails.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
+}
+
+// ID of the billing group.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingGroupId }).(pulumi.StringOutput)
+}
+
+// Name of the billing group.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingGroupName }).(pulumi.StringOutput)
+}
+
+// Custom invoice text.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) CustomInvoiceText() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.CustomInvoiceText }).(pulumi.StringOutput)
+}
+
+// Resource ID, a composite of organization*id and billing*group_id.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the organization.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// ID of the payment method.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) PaymentMethodId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.PaymentMethodId }).(pulumi.StringOutput)
+}
+
+// ID of the shipping address.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) ShippingAddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.ShippingAddressId }).(pulumi.StringOutput)
+}
+
+// VAT ID.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) VatId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.VatId }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroup)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupArrayOutput) ToGetOrganizationBillingGroupListBillingGroupArrayOutput() GetOrganizationBillingGroupListBillingGroupArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupArrayOutput) ToGetOrganizationBillingGroupListBillingGroupArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupListBillingGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroup {
+		return vs[0].([]GetOrganizationBillingGroupListBillingGroup)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupListBillingGroupOutput)
+}
+
 type GetOrganizationProjectTag struct {
 	// Project tag key.
 	Key string `pulumi:"key"`
@@ -11147,13 +11768,13 @@ func (o GetOrganizationProjectTagArrayOutput) Index(i pulumi.IntInput) GetOrgani
 }
 
 type GetOrganizationUserListUser struct {
-	// Super admin state of the organization user
+	// Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
 	IsSuperAdmin bool `pulumi:"isSuperAdmin"`
-	// Join time
+	// Date and time when the user joined the organization.
 	JoinTime string `pulumi:"joinTime"`
-	// Last activity time
+	// Last activity time.
 	LastActivityTime string `pulumi:"lastActivityTime"`
-	// User ID
+	// User ID.
 	UserId    string                                `pulumi:"userId"`
 	UserInfos []GetOrganizationUserListUserUserInfo `pulumi:"userInfos"`
 }
@@ -11170,13 +11791,13 @@ type GetOrganizationUserListUserInput interface {
 }
 
 type GetOrganizationUserListUserArgs struct {
-	// Super admin state of the organization user
+	// Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
 	IsSuperAdmin pulumi.BoolInput `pulumi:"isSuperAdmin"`
-	// Join time
+	// Date and time when the user joined the organization.
 	JoinTime pulumi.StringInput `pulumi:"joinTime"`
-	// Last activity time
+	// Last activity time.
 	LastActivityTime pulumi.StringInput `pulumi:"lastActivityTime"`
-	// User ID
+	// User ID.
 	UserId    pulumi.StringInput                            `pulumi:"userId"`
 	UserInfos GetOrganizationUserListUserUserInfoArrayInput `pulumi:"userInfos"`
 }
@@ -11232,22 +11853,22 @@ func (o GetOrganizationUserListUserOutput) ToGetOrganizationUserListUserOutputWi
 	return o
 }
 
-// Super admin state of the organization user
+// Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
 func (o GetOrganizationUserListUserOutput) IsSuperAdmin() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUser) bool { return v.IsSuperAdmin }).(pulumi.BoolOutput)
 }
 
-// Join time
+// Date and time when the user joined the organization.
 func (o GetOrganizationUserListUserOutput) JoinTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUser) string { return v.JoinTime }).(pulumi.StringOutput)
 }
 
-// Last activity time
+// Last activity time.
 func (o GetOrganizationUserListUserOutput) LastActivityTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUser) string { return v.LastActivityTime }).(pulumi.StringOutput)
 }
 
-// User ID
+// User ID.
 func (o GetOrganizationUserListUserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUser) string { return v.UserId }).(pulumi.StringOutput)
 }
@@ -11281,23 +11902,23 @@ type GetOrganizationUserListUserUserInfo struct {
 	City string `pulumi:"city"`
 	// Country
 	Country string `pulumi:"country"`
-	// Creation time
+	// Date and time when the user was created.
 	CreateTime string `pulumi:"createTime"`
 	// Department
 	Department string `pulumi:"department"`
-	// Is Application User
+	// Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
 	IsApplicationUser bool `pulumi:"isApplicationUser"`
-	// Job Title
+	// Job title
 	JobTitle string `pulumi:"jobTitle"`
-	// Managed By Scim
+	// Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
 	ManagedByScim bool `pulumi:"managedByScim"`
-	// Managing Organization ID
+	// The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
 	ManagingOrganizationId string `pulumi:"managingOrganizationId"`
-	// Real Name
+	// Full name of the user.
 	RealName string `pulumi:"realName"`
 	// State
 	State string `pulumi:"state"`
-	// User Email
+	// Email address.
 	UserEmail string `pulumi:"userEmail"`
 }
 
@@ -11317,23 +11938,23 @@ type GetOrganizationUserListUserUserInfoArgs struct {
 	City pulumi.StringInput `pulumi:"city"`
 	// Country
 	Country pulumi.StringInput `pulumi:"country"`
-	// Creation time
+	// Date and time when the user was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Department
 	Department pulumi.StringInput `pulumi:"department"`
-	// Is Application User
+	// Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
 	IsApplicationUser pulumi.BoolInput `pulumi:"isApplicationUser"`
-	// Job Title
+	// Job title
 	JobTitle pulumi.StringInput `pulumi:"jobTitle"`
-	// Managed By Scim
+	// Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
 	ManagedByScim pulumi.BoolInput `pulumi:"managedByScim"`
-	// Managing Organization ID
+	// The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
 	ManagingOrganizationId pulumi.StringInput `pulumi:"managingOrganizationId"`
-	// Real Name
+	// Full name of the user.
 	RealName pulumi.StringInput `pulumi:"realName"`
 	// State
 	State pulumi.StringInput `pulumi:"state"`
-	// User Email
+	// Email address.
 	UserEmail pulumi.StringInput `pulumi:"userEmail"`
 }
 
@@ -11398,7 +12019,7 @@ func (o GetOrganizationUserListUserUserInfoOutput) Country() pulumi.StringOutput
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.Country }).(pulumi.StringOutput)
 }
 
-// Creation time
+// Date and time when the user was created.
 func (o GetOrganizationUserListUserUserInfoOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -11408,27 +12029,27 @@ func (o GetOrganizationUserListUserUserInfoOutput) Department() pulumi.StringOut
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.Department }).(pulumi.StringOutput)
 }
 
-// Is Application User
+// Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
 func (o GetOrganizationUserListUserUserInfoOutput) IsApplicationUser() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) bool { return v.IsApplicationUser }).(pulumi.BoolOutput)
 }
 
-// Job Title
+// Job title
 func (o GetOrganizationUserListUserUserInfoOutput) JobTitle() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.JobTitle }).(pulumi.StringOutput)
 }
 
-// Managed By Scim
+// Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
 func (o GetOrganizationUserListUserUserInfoOutput) ManagedByScim() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) bool { return v.ManagedByScim }).(pulumi.BoolOutput)
 }
 
-// Managing Organization ID
+// The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
 func (o GetOrganizationUserListUserUserInfoOutput) ManagingOrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.ManagingOrganizationId }).(pulumi.StringOutput)
 }
 
-// Real Name
+// Full name of the user.
 func (o GetOrganizationUserListUserUserInfoOutput) RealName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.RealName }).(pulumi.StringOutput)
 }
@@ -11438,7 +12059,7 @@ func (o GetOrganizationUserListUserUserInfoOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.State }).(pulumi.StringOutput)
 }
 
-// User Email
+// Email address.
 func (o GetOrganizationUserListUserUserInfoOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationUserListUserUserInfo) string { return v.UserEmail }).(pulumi.StringOutput)
 }
@@ -11472,6 +12093,8 @@ type GetPgComponent struct {
 	Host string `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
 	// Network access route
@@ -11502,6 +12125,8 @@ type GetPgComponentArgs struct {
 	Host pulumi.StringInput `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
 	// Network access route
@@ -11581,6 +12206,11 @@ func (o GetPgComponentOutput) Host() pulumi.StringOutput {
 // Kafka authentication method. This is a value specific to the 'kafka' service component
 func (o GetPgComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPgComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetPgComponentOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgComponent) string { return v.KafkaSslCa }).(pulumi.StringOutput)
 }
 
 // Port number for connecting to the service component
@@ -16122,6 +16752,8 @@ type GetRedisComponent struct {
 	Host string `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
 	// Network access route
@@ -16152,6 +16784,8 @@ type GetRedisComponentArgs struct {
 	Host pulumi.StringInput `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
 	// Network access route
@@ -16231,6 +16865,11 @@ func (o GetRedisComponentOutput) Host() pulumi.StringOutput {
 // Kafka authentication method. This is a value specific to the 'kafka' service component
 func (o GetRedisComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRedisComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetRedisComponentOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRedisComponent) string { return v.KafkaSslCa }).(pulumi.StringOutput)
 }
 
 // Port number for connecting to the service component
@@ -25012,6 +25651,8 @@ type GetThanosComponent struct {
 	Host string `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
 	// Network access route
@@ -25042,6 +25683,8 @@ type GetThanosComponentArgs struct {
 	Host pulumi.StringInput `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
 	// Network access route
@@ -25121,6 +25764,11 @@ func (o GetThanosComponentOutput) Host() pulumi.StringOutput {
 // Kafka authentication method. This is a value specific to the 'kafka' service component
 func (o GetThanosComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetThanosComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetThanosComponentOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetThanosComponent) string { return v.KafkaSslCa }).(pulumi.StringOutput)
 }
 
 // Port number for connecting to the service component
@@ -27035,6 +27683,8 @@ type GetValkeyComponent struct {
 	Host string `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
 	// Network access route
@@ -27065,6 +27715,8 @@ type GetValkeyComponentArgs struct {
 	Host pulumi.StringInput `pulumi:"host"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component
 	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port pulumi.IntInput `pulumi:"port"`
 	// Network access route
@@ -27144,6 +27796,11 @@ func (o GetValkeyComponentOutput) Host() pulumi.StringOutput {
 // Kafka authentication method. This is a value specific to the 'kafka' service component
 func (o GetValkeyComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetValkeyComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetValkeyComponentOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyComponent) string { return v.KafkaSslCa }).(pulumi.StringOutput)
 }
 
 // Port number for connecting to the service component
@@ -28840,6 +29497,10 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlParamInput)(nil)).Elem(), GetMySqlMysqlParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlParamArrayInput)(nil)).Elem(), GetMySqlMysqlParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigInput)(nil)).Elem(), GetMySqlMysqlUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigArrayInput)(nil)).Elem(), GetMySqlMysqlUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigIpFilterObjectInput)(nil)).Elem(), GetMySqlMysqlUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetMySqlMysqlUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMySqlMysqlUserConfigMigrationInput)(nil)).Elem(), GetMySqlMysqlUserConfigMigrationArgs{})
@@ -28938,6 +29599,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTagArrayInput)(nil)).Elem(), GetOpenSearchTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailInput)(nil)).Elem(), GetOpenSearchTechEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailArrayInput)(nil)).Elem(), GetOpenSearchTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagInput)(nil)).Elem(), GetOrganizationProjectTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagArrayInput)(nil)).Elem(), GetOrganizationProjectTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserInput)(nil)).Elem(), GetOrganizationUserListUserArgs{})
@@ -29152,6 +29815,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetMySqlMysqlParamOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlParamArrayOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigOutput{})
+	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetMySqlMysqlUserConfigMigrationOutput{})
@@ -29250,6 +29917,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchTagArrayOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchTechEmailOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationProjectTagOutput{})
 	pulumi.RegisterOutputType(GetOrganizationProjectTagArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserOutput{})

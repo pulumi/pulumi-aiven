@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Whether the repository is read-only. Default: `false`.
+        /// Whether the repository is read-only. Default: `true`.
         /// </summary>
         public readonly bool? Readonly;
         /// <summary>

@@ -43,7 +43,7 @@ class GetOrganizationUserListResult:
     @pulumi.getter
     def id(self) -> Optional[builtins.str]:
         """
-        Organization id. Example: `org12345678`.
+        The ID of the organization.
         """
         return pulumi.get(self, "id")
 
@@ -51,7 +51,7 @@ class GetOrganizationUserListResult:
     @pulumi.getter
     def name(self) -> Optional[builtins.str]:
         """
-        Organization name. Example: `aiven`.
+        The name of the organization.
         """
         return pulumi.get(self, "name")
 
@@ -59,7 +59,7 @@ class GetOrganizationUserListResult:
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetOrganizationUserListUserResult']:
         """
-        List of users of the organization
+        List of the users, their profile information, and other data.
         """
         return pulumi.get(self, "users")
 
@@ -79,14 +79,20 @@ def get_organization_user_list(id: Optional[builtins.str] = None,
                                name: Optional[builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationUserListResult:
     """
-    List of users of the organization.
+    Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    users = aiven.get_organization_user_list(name="Example organization")
+    ```
 
 
-    :param builtins.str id: Organization id. Example: `org12345678`.
-    :param builtins.str name: Organization name. Example: `aiven`.
+    :param builtins.str id: The ID of the organization.
+    :param builtins.str name: The name of the organization.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -102,14 +108,20 @@ def get_organization_user_list_output(id: Optional[pulumi.Input[Optional[builtin
                                       name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserListResult]:
     """
-    List of users of the organization.
+    Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    users = aiven.get_organization_user_list(name="Example organization")
+    ```
 
 
-    :param builtins.str id: Organization id. Example: `org12345678`.
-    :param builtins.str name: Organization name. Example: `aiven`.
+    :param builtins.str id: The ID of the organization.
+    :param builtins.str name: The name of the organization.
     """
     __args__ = dict()
     __args__['id'] = id

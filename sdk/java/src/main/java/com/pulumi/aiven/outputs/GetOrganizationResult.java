@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationResult {
@@ -21,12 +19,12 @@ public final class GetOrganizationResult {
      * @return ID of the organization.
      * 
      */
-    private @Nullable String id;
+    private String id;
     /**
      * @return Name of the organization.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return Tenant ID of the organization.
      * 
@@ -50,15 +48,15 @@ public final class GetOrganizationResult {
      * @return ID of the organization.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
     /**
      * @return Name of the organization.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return Tenant ID of the organization.
@@ -85,8 +83,8 @@ public final class GetOrganizationResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private @Nullable String id;
-        private @Nullable String name;
+        private String id;
+        private String name;
         private String tenantId;
         private String updateTime;
         public Builder() {}
@@ -108,14 +106,18 @@ public final class GetOrganizationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "id");
+            }
             this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "name");
+            }
             this.name = name;
             return this;
         }

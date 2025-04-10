@@ -116,9 +116,15 @@ import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
 import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigPlainArgs;
 import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
 import com.pulumi.aiven.inputs.GetOpensearchUserPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationAddressArgs;
+import com.pulumi.aiven.inputs.GetOrganizationAddressPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
 import com.pulumi.aiven.inputs.GetOrganizationApplicationUserPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationArgs;
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupArgs;
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListArgs;
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationBillingGroupPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
 import com.pulumi.aiven.inputs.GetOrganizationProjectPlainArgs;
@@ -218,7 +224,10 @@ import com.pulumi.aiven.outputs.GetOpenSearchAclRuleResult;
 import com.pulumi.aiven.outputs.GetOpenSearchResult;
 import com.pulumi.aiven.outputs.GetOpensearchSecurityPluginConfigResult;
 import com.pulumi.aiven.outputs.GetOpensearchUserResult;
+import com.pulumi.aiven.outputs.GetOrganizationAddressResult;
 import com.pulumi.aiven.outputs.GetOrganizationApplicationUserResult;
+import com.pulumi.aiven.outputs.GetOrganizationBillingGroupListResult;
+import com.pulumi.aiven.outputs.GetOrganizationBillingGroupResult;
 import com.pulumi.aiven.outputs.GetOrganizationProjectResult;
 import com.pulumi.aiven.outputs.GetOrganizationResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupResult;
@@ -10484,43 +10493,42 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Gets information about an organization address.
+     * 
+     */
+    public static Output<GetOrganizationAddressResult> getOrganizationAddress(GetOrganizationAddressArgs args) {
+        return getOrganizationAddress(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an organization address.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationAddressResult> getOrganizationAddressPlain(GetOrganizationAddressPlainArgs args) {
+        return getOrganizationAddressPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an organization address.
+     * 
+     */
+    public static Output<GetOrganizationAddressResult> getOrganizationAddress(GetOrganizationAddressArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationAddress:getOrganizationAddress", TypeShape.of(GetOrganizationAddressResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an organization address.
+     * 
+     */
+    public static Output<GetOrganizationAddressResult> getOrganizationAddress(GetOrganizationAddressArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationAddress:getOrganizationAddress", TypeShape.of(GetOrganizationAddressResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an organization address.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationAddressResult> getOrganizationAddressPlain(GetOrganizationAddressPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationAddress:getOrganizationAddress", TypeShape.of(GetOrganizationAddressResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Gets information about an application user.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
-     *             .organizationId(main.id())
-     *             .userId("u123a456b7890c")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationApplicationUserResult> getOrganizationApplicationUser(GetOrganizationApplicationUserArgs args) {
@@ -10529,84 +10537,12 @@ public final class AivenFunctions {
     /**
      * Gets information about an application user.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
-     *             .organizationId(main.id())
-     *             .userId("u123a456b7890c")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetOrganizationApplicationUserResult> getOrganizationApplicationUserPlain(GetOrganizationApplicationUserPlainArgs args) {
         return getOrganizationApplicationUserPlain(args, InvokeOptions.Empty);
     }
     /**
      * Gets information about an application user.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
-     *             .organizationId(main.id())
-     *             .userId("u123a456b7890c")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationApplicationUserResult> getOrganizationApplicationUser(GetOrganizationApplicationUserArgs args, InvokeOptions options) {
@@ -10615,42 +10551,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an application user.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
-     *             .organizationId(main.id())
-     *             .userId("u123a456b7890c")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetOrganizationApplicationUserResult> getOrganizationApplicationUser(GetOrganizationApplicationUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", TypeShape.of(GetOrganizationApplicationUserResult.class), args, Utilities.withVersion(options));
@@ -10658,45 +10558,79 @@ public final class AivenFunctions {
     /**
      * Gets information about an application user.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
-     *             .organizationId(main.id())
-     *             .userId("u123a456b7890c")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static CompletableFuture<GetOrganizationApplicationUserResult> getOrganizationApplicationUserPlain(GetOrganizationApplicationUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", TypeShape.of(GetOrganizationApplicationUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a billing group.
+     * 
+     */
+    public static Output<GetOrganizationBillingGroupResult> getOrganizationBillingGroup(GetOrganizationBillingGroupArgs args) {
+        return getOrganizationBillingGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about a billing group.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationBillingGroupResult> getOrganizationBillingGroupPlain(GetOrganizationBillingGroupPlainArgs args) {
+        return getOrganizationBillingGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about a billing group.
+     * 
+     */
+    public static Output<GetOrganizationBillingGroupResult> getOrganizationBillingGroup(GetOrganizationBillingGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", TypeShape.of(GetOrganizationBillingGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a billing group.
+     * 
+     */
+    public static Output<GetOrganizationBillingGroupResult> getOrganizationBillingGroup(GetOrganizationBillingGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", TypeShape.of(GetOrganizationBillingGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a billing group.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationBillingGroupResult> getOrganizationBillingGroupPlain(GetOrganizationBillingGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", TypeShape.of(GetOrganizationBillingGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists billing groups for an organization.
+     * 
+     */
+    public static Output<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs args) {
+        return getOrganizationBillingGroupList(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists billing groups for an organization.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupListPlain(GetOrganizationBillingGroupListPlainArgs args) {
+        return getOrganizationBillingGroupListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists billing groups for an organization.
+     * 
+     */
+    public static Output<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", TypeShape.of(GetOrganizationBillingGroupListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists billing groups for an organization.
+     * 
+     */
+    public static Output<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", TypeShape.of(GetOrganizationBillingGroupListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists billing groups for an organization.
+     * 
+     */
+    public static CompletableFuture<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupListPlain(GetOrganizationBillingGroupListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", TypeShape.of(GetOrganizationBillingGroupListResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an Aiven project.
@@ -11159,70 +11093,294 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", TypeShape.of(GetOrganizationUserGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * List of users of the organization.
+     * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .name("Example organization")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationUserListResult> getOrganizationUserList() {
         return getOrganizationUserList(GetOrganizationUserListArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * List of users of the organization.
+     * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .name("Example organization")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationUserListResult> getOrganizationUserListPlain() {
         return getOrganizationUserListPlain(GetOrganizationUserListPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * List of users of the organization.
+     * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .name("Example organization")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationUserListResult> getOrganizationUserList(GetOrganizationUserListArgs args) {
         return getOrganizationUserList(args, InvokeOptions.Empty);
     }
     /**
-     * List of users of the organization.
+     * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .name("Example organization")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationUserListResult> getOrganizationUserListPlain(GetOrganizationUserListPlainArgs args) {
         return getOrganizationUserListPlain(args, InvokeOptions.Empty);
     }
     /**
-     * List of users of the organization.
+     * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .name("Example organization")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationUserListResult> getOrganizationUserList(GetOrganizationUserListArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUserList:getOrganizationUserList", TypeShape.of(GetOrganizationUserListResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * List of users of the organization.
+     * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .name("Example organization")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationUserListResult> getOrganizationUserList(GetOrganizationUserListArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUserList:getOrganizationUserList", TypeShape.of(GetOrganizationUserListResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * List of users of the organization.
+     * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .name("Example organization")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationUserListResult> getOrganizationUserListPlain(GetOrganizationUserListPlainArgs args, InvokeOptions options) {
@@ -13529,7 +13687,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
      *             .project(exampleProject.project())
-     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .destinationServiceName(exampleThanos.serviceName())
      *             .integrationType("metrics")
      *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
@@ -13574,7 +13732,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
      *             .project(exampleProject.project())
-     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .destinationServiceName(exampleThanos.serviceName())
      *             .integrationType("metrics")
      *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
@@ -13619,7 +13777,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
      *             .project(exampleProject.project())
-     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .destinationServiceName(exampleThanos.serviceName())
      *             .integrationType("metrics")
      *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
@@ -13664,7 +13822,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
      *             .project(exampleProject.project())
-     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .destinationServiceName(exampleThanos.serviceName())
      *             .integrationType("metrics")
      *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
@@ -13709,7 +13867,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
      *             .project(exampleProject.project())
-     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .destinationServiceName(exampleThanos.serviceName())
      *             .integrationType("metrics")
      *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());

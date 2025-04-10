@@ -136,11 +136,11 @@ namespace Pulumi.Aiven
         /// <summary>
         /// ID of the organization.
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
         /// <summary>
         /// Name of the organization.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Tenant ID of the organization.
         /// </summary>
@@ -154,9 +154,9 @@ namespace Pulumi.Aiven
         private GetOrganizationResult(
             string createTime,
 
-            string? id,
+            string id,
 
-            string? name,
+            string name,
 
             string tenantId,
 

@@ -68,6 +68,10 @@ export class OrganizationProject extends pulumi.CustomResource {
      */
     public readonly billingGroupId!: pulumi.Output<string>;
     /**
+     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     */
+    public /*out*/ readonly caCert!: pulumi.Output<string>;
+    /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
     public readonly organizationId!: pulumi.Output<string>;
@@ -102,6 +106,7 @@ export class OrganizationProject extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OrganizationProjectState | undefined;
             resourceInputs["billingGroupId"] = state ? state.billingGroupId : undefined;
+            resourceInputs["caCert"] = state ? state.caCert : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
             resourceInputs["parentId"] = state ? state.parentId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -115,6 +120,9 @@ export class OrganizationProject extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
+            if ((!args || args.parentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'parentId'");
+            }
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
@@ -124,8 +132,11 @@ export class OrganizationProject extends pulumi.CustomResource {
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["technicalEmails"] = args ? args.technicalEmails : undefined;
+            resourceInputs["caCert"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["caCert"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(OrganizationProject.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -138,6 +149,10 @@ export interface OrganizationProjectState {
      * Billing group ID to assign to the project.
      */
     billingGroupId?: pulumi.Input<string>;
+    /**
+     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     */
+    caCert?: pulumi.Input<string>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
@@ -175,7 +190,7 @@ export interface OrganizationProjectArgs {
     /**
      * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
-    parentId?: pulumi.Input<string>;
+    parentId: pulumi.Input<string>;
     /**
      * Unique identifier for the project that also serves as the project name.
      */

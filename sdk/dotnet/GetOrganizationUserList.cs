@@ -12,28 +12,73 @@ namespace Pulumi.Aiven
     public static class GetOrganizationUserList
     {
         /// <summary>
-        /// List of users of the organization. 
+        /// Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var users = Aiven.GetOrganizationUserList.Invoke(new()
+        ///     {
+        ///         Name = "Example organization",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetOrganizationUserListResult> InvokeAsync(GetOrganizationUserListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationUserListResult>("aiven:index/getOrganizationUserList:getOrganizationUserList", args ?? new GetOrganizationUserListArgs(), options.WithDefaults());
 
         /// <summary>
-        /// List of users of the organization. 
+        /// Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var users = Aiven.GetOrganizationUserList.Invoke(new()
+        ///     {
+        ///         Name = "Example organization",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationUserListResult> Invoke(GetOrganizationUserListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserListResult>("aiven:index/getOrganizationUserList:getOrganizationUserList", args ?? new GetOrganizationUserListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// List of users of the organization. 
+        /// Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var users = Aiven.GetOrganizationUserList.Invoke(new()
+        ///     {
+        ///         Name = "Example organization",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationUserListResult> Invoke(GetOrganizationUserListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserListResult>("aiven:index/getOrganizationUserList:getOrganizationUserList", args ?? new GetOrganizationUserListInvokeArgs(), options.WithDefaults());
@@ -43,13 +88,13 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Organization id. Example: `org12345678`.
+        /// The ID of the organization.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Organization name. Example: `aiven`.
+        /// The name of the organization.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -63,13 +108,13 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserListInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Organization id. Example: `org12345678`.
+        /// The ID of the organization.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Organization name. Example: `aiven`.
+        /// The name of the organization.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -85,15 +130,15 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserListResult
     {
         /// <summary>
-        /// Organization id. Example: `org12345678`.
+        /// The ID of the organization.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Organization name. Example: `aiven`.
+        /// The name of the organization.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// List of users of the organization
+        /// List of the users, their profile information, and other data.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationUserListUserResult> Users;
 

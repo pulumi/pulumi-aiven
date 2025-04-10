@@ -52,15 +52,15 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
      * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    @Import(name="parentId")
-    private @Nullable Output<String> parentId;
+    @Import(name="parentId", required=true)
+    private Output<String> parentId;
 
     /**
      * @return Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
-    public Optional<Output<String>> parentId() {
-        return Optional.ofNullable(this.parentId);
+    public Output<String> parentId() {
+        return this.parentId;
     }
 
     /**
@@ -185,7 +185,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder parentId(@Nullable Output<String> parentId) {
+        public Builder parentId(Output<String> parentId) {
             $.parentId = parentId;
             return this;
         }
@@ -289,6 +289,9 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
             }
             if ($.organizationId == null) {
                 throw new MissingRequiredPropertyException("OrganizationProjectArgs", "organizationId");
+            }
+            if ($.parentId == null) {
+                throw new MissingRequiredPropertyException("OrganizationProjectArgs", "parentId");
             }
             if ($.projectId == null) {
                 throw new MissingRequiredPropertyException("OrganizationProjectArgs", "projectId");

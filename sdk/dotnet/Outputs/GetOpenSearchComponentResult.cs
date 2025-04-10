@@ -30,6 +30,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string KafkaAuthenticationMethod;
         /// <summary>
+        /// Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        /// </summary>
+        public readonly string KafkaSslCa;
+        /// <summary>
         /// Port number for connecting to the service component
         /// </summary>
         public readonly int Port;
@@ -56,6 +60,8 @@ namespace Pulumi.Aiven.Outputs
 
             string kafkaAuthenticationMethod,
 
+            string kafkaSslCa,
+
             int port,
 
             string route,
@@ -68,6 +74,7 @@ namespace Pulumi.Aiven.Outputs
             ConnectionUri = connectionUri;
             Host = host;
             KafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            KafkaSslCa = kafkaSslCa;
             Port = port;
             Route = route;
             Ssl = ssl;

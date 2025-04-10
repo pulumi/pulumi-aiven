@@ -188,7 +188,7 @@ class OrganizationPermission(pulumi.CustomResource):
         # Grant access to a specific project
         example_project_permissions = aiven.OrganizationPermission("example_project_permissions",
             organization_id=main["id"],
-            resource_id=example_project["id"],
+            resource_id=example_project["project"],
             resource_type="project",
             permissions=[
                 {
@@ -273,7 +273,7 @@ class OrganizationPermission(pulumi.CustomResource):
         # Grant access to a specific project
         example_project_permissions = aiven.OrganizationPermission("example_project_permissions",
             organization_id=main["id"],
-            resource_id=example_project["id"],
+            resource_id=example_project["project"],
             resource_type="project",
             permissions=[
                 {

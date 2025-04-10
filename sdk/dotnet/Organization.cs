@@ -33,7 +33,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
+    /// $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organization:Organization")]

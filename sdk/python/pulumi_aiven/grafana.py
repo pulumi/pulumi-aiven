@@ -42,7 +42,7 @@ class GrafanaArgs:
         The set of arguments for constructing a Grafana resource.
         :param pulumi.Input[builtins.str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         :param pulumi.Input[builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input['GrafanaGrafanaArgs'] grafana: Values provided by the Grafana server.
@@ -119,7 +119,7 @@ class GrafanaArgs:
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -318,7 +318,7 @@ class _GrafanaState:
                  termination_protection: Optional[pulumi.Input[builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Grafana resources.
-        :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         :param pulumi.Input[Sequence[pulumi.Input['GrafanaComponentArgs']]] components: Service component information objects
         :param pulumi.Input[builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -341,7 +341,6 @@ class _GrafanaState:
         :param pulumi.Input[builtins.str] service_type: Aiven internal service type code
         :param pulumi.Input[builtins.str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[builtins.str] service_username: Username used for connecting to the service, if applicable
-        :param pulumi.Input[builtins.str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['GrafanaTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input['GrafanaTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
@@ -414,7 +413,7 @@ class _GrafanaState:
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -691,9 +690,6 @@ class _GrafanaState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -803,7 +799,7 @@ class Grafana(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         :param pulumi.Input[builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[Union['GrafanaGrafanaArgs', 'GrafanaGrafanaArgsDict']] grafana: Values provided by the Grafana server.
@@ -975,7 +971,7 @@ class Grafana(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GrafanaComponentArgs', 'GrafanaComponentArgsDict']]]] components: Service component information objects
         :param pulumi.Input[builtins.str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -998,7 +994,6 @@ class Grafana(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] service_type: Aiven internal service type code
         :param pulumi.Input[builtins.str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[builtins.str] service_username: Username used for connecting to the service, if applicable
-        :param pulumi.Input[builtins.str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[Union['GrafanaTagArgs', 'GrafanaTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GrafanaTechEmailArgs', 'GrafanaTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
@@ -1042,7 +1037,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> pulumi.Output[builtins.str]:
         """
-        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -1227,9 +1222,6 @@ class Grafana(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[builtins.str]:
-        """
-        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        """
         return pulumi.get(self, "state")
 
     @property

@@ -15,14 +15,14 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
     public static final GetOrganizationUserListPlainArgs Empty = new GetOrganizationUserListPlainArgs();
 
     /**
-     * Organization id. Example: `org12345678`.
+     * The ID of the organization.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return Organization id. Example: `org12345678`.
+     * @return The ID of the organization.
      * 
      */
     public Optional<String> id() {
@@ -30,14 +30,14 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * Organization name. Example: `aiven`.
+     * The name of the organization.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return Organization name. Example: `aiven`.
+     * @return The name of the organization.
      * 
      */
     public Optional<String> name() {
@@ -70,7 +70,7 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param id Organization id. Example: `org12345678`.
+         * @param id The ID of the organization.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetOrganizationUserListPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Organization name. Example: `aiven`.
+         * @param name The name of the organization.
          * 
          * @return builder
          * 

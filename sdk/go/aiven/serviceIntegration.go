@@ -26,12 +26,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Integrate Kafka and M3DB services for metrics
+//			// Integrate Kafka and Thanos services for metrics
 //			_, err := aiven.NewServiceIntegration(ctx, "example_integration", &aiven.ServiceIntegrationArgs{
 //				Project:                pulumi.Any(exampleProject.Project),
 //				IntegrationType:        pulumi.String("metrics"),
 //				SourceServiceName:      pulumi.Any(exampleKafka.ServiceName),
-//				DestinationServiceName: pulumi.Any(exampleM3db.ServiceName),
+//				DestinationServiceName: pulumi.Any(exampleThanos.ServiceName),
 //			})
 //			if err != nil {
 //				return err

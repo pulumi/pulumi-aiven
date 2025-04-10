@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         ///     var exampleIntegration = Aiven.GetServiceIntegration.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
-        ///         DestinationServiceName = exampleM3db.ServiceName,
+        ///         DestinationServiceName = exampleThanos.ServiceName,
         ///         IntegrationType = "metrics",
         ///         SourceServiceName = exampleKafka.ServiceName,
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         ///     var exampleIntegration = Aiven.GetServiceIntegration.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
-        ///         DestinationServiceName = exampleM3db.ServiceName,
+        ///         DestinationServiceName = exampleThanos.ServiceName,
         ///         IntegrationType = "metrics",
         ///         SourceServiceName = exampleKafka.ServiceName,
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Aiven
         ///     var exampleIntegration = Aiven.GetServiceIntegration.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
-        ///         DestinationServiceName = exampleM3db.ServiceName,
+        ///         DestinationServiceName = exampleThanos.ServiceName,
         ///         IntegrationType = "metrics",
         ///         SourceServiceName = exampleKafka.ServiceName,
         ///     });

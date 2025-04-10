@@ -788,12 +788,12 @@ class ServiceIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        # Integrate Kafka and M3DB services for metrics
+        # Integrate Kafka and Thanos services for metrics
         example_integration = aiven.ServiceIntegration("example_integration",
             project=example_project["project"],
             integration_type="metrics",
             source_service_name=example_kafka["serviceName"],
-            destination_service_name=example_m3db["serviceName"])
+            destination_service_name=example_thanos["serviceName"])
         # Use disk autoscaler with a PostgreSQL service
         autoscaler_endpoint = aiven.ServiceIntegrationEndpoint("autoscaler_endpoint",
             project=example_project["project"],
@@ -856,12 +856,12 @@ class ServiceIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        # Integrate Kafka and M3DB services for metrics
+        # Integrate Kafka and Thanos services for metrics
         example_integration = aiven.ServiceIntegration("example_integration",
             project=example_project["project"],
             integration_type="metrics",
             source_service_name=example_kafka["serviceName"],
-            destination_service_name=example_m3db["serviceName"])
+            destination_service_name=example_thanos["serviceName"])
         # Use disk autoscaler with a PostgreSQL service
         autoscaler_endpoint = aiven.ServiceIntegrationEndpoint("autoscaler_endpoint",
             project=example_project["project"],

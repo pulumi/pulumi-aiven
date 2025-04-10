@@ -88,6 +88,20 @@ public class OrganizationProject extends com.pulumi.resources.CustomResource {
         return this.billingGroupId;
     }
     /**
+     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * 
+     */
+    @Export(name="caCert", refs={String.class}, tree="[0]")
+    private Output<String> caCert;
+
+    /**
+     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * 
+     */
+    public Output<String> caCert() {
+        return this.caCert;
+    }
+    /**
      * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
@@ -197,6 +211,9 @@ public class OrganizationProject extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "caCert"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -33,6 +33,11 @@ public final class GetPgComponent {
      */
     private String kafkaAuthenticationMethod;
     /**
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * 
+     */
+    private String kafkaSslCa;
+    /**
      * @return Port number for connecting to the service component
      * 
      */
@@ -83,6 +88,13 @@ public final class GetPgComponent {
         return this.kafkaAuthenticationMethod;
     }
     /**
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * 
+     */
+    public String kafkaSslCa() {
+        return this.kafkaSslCa;
+    }
+    /**
      * @return Port number for connecting to the service component
      * 
      */
@@ -124,6 +136,7 @@ public final class GetPgComponent {
         private String connectionUri;
         private String host;
         private String kafkaAuthenticationMethod;
+        private String kafkaSslCa;
         private Integer port;
         private String route;
         private Boolean ssl;
@@ -135,6 +148,7 @@ public final class GetPgComponent {
     	      this.connectionUri = defaults.connectionUri;
     	      this.host = defaults.host;
     	      this.kafkaAuthenticationMethod = defaults.kafkaAuthenticationMethod;
+    	      this.kafkaSslCa = defaults.kafkaSslCa;
     	      this.port = defaults.port;
     	      this.route = defaults.route;
     	      this.ssl = defaults.ssl;
@@ -171,6 +185,14 @@ public final class GetPgComponent {
               throw new MissingRequiredPropertyException("GetPgComponent", "kafkaAuthenticationMethod");
             }
             this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaSslCa(String kafkaSslCa) {
+            if (kafkaSslCa == null) {
+              throw new MissingRequiredPropertyException("GetPgComponent", "kafkaSslCa");
+            }
+            this.kafkaSslCa = kafkaSslCa;
             return this;
         }
         @CustomType.Setter
@@ -211,6 +233,7 @@ public final class GetPgComponent {
             _resultValue.connectionUri = connectionUri;
             _resultValue.host = host;
             _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            _resultValue.kafkaSslCa = kafkaSslCa;
             _resultValue.port = port;
             _resultValue.route = route;
             _resultValue.ssl = ssl;

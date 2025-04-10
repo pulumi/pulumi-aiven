@@ -13,75 +13,18 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// Gets information about an application user.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var tfUser = Aiven.GetOrganizationApplicationUser.Invoke(new()
-        ///     {
-        ///         OrganizationId = main.Id,
-        ///         UserId = "u123a456b7890c",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetOrganizationApplicationUserResult> InvokeAsync(GetOrganizationApplicationUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationApplicationUserResult>("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", args ?? new GetOrganizationApplicationUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about an application user.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var tfUser = Aiven.GetOrganizationApplicationUser.Invoke(new()
-        ///     {
-        ///         OrganizationId = main.Id,
-        ///         UserId = "u123a456b7890c",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetOrganizationApplicationUserResult> Invoke(GetOrganizationApplicationUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationApplicationUserResult>("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", args ?? new GetOrganizationApplicationUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about an application user.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aiven = Pulumi.Aiven;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var tfUser = Aiven.GetOrganizationApplicationUser.Invoke(new()
-        ///     {
-        ///         OrganizationId = main.Id,
-        ///         UserId = "u123a456b7890c",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetOrganizationApplicationUserResult> Invoke(GetOrganizationApplicationUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationApplicationUserResult>("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", args ?? new GetOrganizationApplicationUserInvokeArgs(), options.WithDefaults());

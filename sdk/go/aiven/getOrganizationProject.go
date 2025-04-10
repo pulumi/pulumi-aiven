@@ -64,6 +64,8 @@ type LookupOrganizationProjectArgs struct {
 type LookupOrganizationProjectResult struct {
 	// Billing group ID to assign to the project.
 	BillingGroupId string `pulumi:"billingGroupId"`
+	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+	CaCert string `pulumi:"caCert"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// ID of an organization. Changing this property forces recreation of the resource.
@@ -117,6 +119,11 @@ func (o LookupOrganizationProjectResultOutput) ToLookupOrganizationProjectResult
 // Billing group ID to assign to the project.
 func (o LookupOrganizationProjectResultOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.BillingGroupId }).(pulumi.StringOutput)
+}
+
+// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+func (o LookupOrganizationProjectResultOutput) CaCert() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationProjectResult) string { return v.CaCert }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

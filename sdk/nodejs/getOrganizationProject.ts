@@ -55,6 +55,10 @@ export interface GetOrganizationProjectResult {
      */
     readonly billingGroupId: string;
     /**
+     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     */
+    readonly caCert: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

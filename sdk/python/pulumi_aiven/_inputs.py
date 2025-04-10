@@ -452,6 +452,10 @@ __all__ = [
     'OpenSearchTagArgsDict',
     'OpenSearchTechEmailArgs',
     'OpenSearchTechEmailArgsDict',
+    'OrganizationAddressTimeoutsArgs',
+    'OrganizationAddressTimeoutsArgsDict',
+    'OrganizationBillingGroupTimeoutsArgs',
+    'OrganizationBillingGroupTimeoutsArgsDict',
     'OrganizationGroupProjectTimeoutsArgs',
     'OrganizationGroupProjectTimeoutsArgsDict',
     'OrganizationPermissionPermissionArgs',
@@ -3331,6 +3335,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -3357,6 +3365,7 @@ class AlloydbomniComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -3366,6 +3375,7 @@ class AlloydbomniComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -3379,6 +3389,8 @@ class AlloydbomniComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -3435,6 +3447,18 @@ class AlloydbomniComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -4229,6 +4253,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -4255,6 +4283,7 @@ class CassandraComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -4264,6 +4293,7 @@ class CassandraComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -4277,6 +4307,8 @@ class CassandraComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -4333,6 +4365,18 @@ class CassandraComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -4552,6 +4596,14 @@ if not MYPY:
         """
         Additional Cloud Regions for Backup Replication.
         """
+        backup_hour: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        """
+        backup_minute: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        """
         ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgsDict']]]]
         """
         Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -4603,6 +4655,8 @@ elif False:
 class ClickhouseClickhouseUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[builtins.str]] = None,
+                 backup_hour: Optional[pulumi.Input[builtins.int]] = None,
+                 backup_minute: Optional[pulumi.Input[builtins.int]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -4616,6 +4670,8 @@ class ClickhouseClickhouseUserConfigArgs:
                  static_ips: Optional[pulumi.Input[builtins.bool]] = None):
         """
         :param pulumi.Input[builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input[builtins.int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        :param pulumi.Input[builtins.int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -4633,6 +4689,10 @@ class ClickhouseClickhouseUserConfigArgs:
             pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
+        if backup_hour is not None:
+            pulumi.set(__self__, "backup_hour", backup_hour)
+        if backup_minute is not None:
+            pulumi.set(__self__, "backup_minute", backup_minute)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -4671,6 +4731,30 @@ class ClickhouseClickhouseUserConfigArgs:
     @additional_backup_regions.setter
     def additional_backup_regions(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "additional_backup_regions", value)
+
+    @property
+    @pulumi.getter(name="backupHour")
+    def backup_hour(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+        """
+        return pulumi.get(self, "backup_hour")
+
+    @backup_hour.setter
+    def backup_hour(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "backup_hour", value)
+
+    @property
+    @pulumi.getter(name="backupMinute")
+    def backup_minute(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+        """
+        return pulumi.get(self, "backup_minute")
+
+    @backup_minute.setter
+    def backup_minute(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "backup_minute", value)
 
     @property
     @pulumi.getter(name="ipFilterObjects")
@@ -5151,6 +5235,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -5177,6 +5265,7 @@ class ClickhouseComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -5186,6 +5275,7 @@ class ClickhouseComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -5199,6 +5289,8 @@ class ClickhouseComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -5255,6 +5347,18 @@ class ClickhouseComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -5597,6 +5701,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -5623,6 +5731,7 @@ class DragonflyComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -5632,6 +5741,7 @@ class DragonflyComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -5645,6 +5755,8 @@ class DragonflyComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -5701,6 +5813,18 @@ class DragonflyComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -6807,6 +6931,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -6833,6 +6961,7 @@ class FlinkComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -6842,6 +6971,7 @@ class FlinkComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -6855,6 +6985,8 @@ class FlinkComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -6911,6 +7043,18 @@ class FlinkComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -8185,6 +8329,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -8211,6 +8359,7 @@ class GrafanaComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -8220,6 +8369,7 @@ class GrafanaComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -8233,6 +8383,8 @@ class GrafanaComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -8289,6 +8441,18 @@ class GrafanaComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -10775,6 +10939,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -10801,6 +10969,7 @@ class InfluxDbComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -10810,6 +10979,7 @@ class InfluxDbComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -10823,6 +10993,8 @@ class InfluxDbComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -10879,6 +11051,18 @@ class InfluxDbComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -11849,6 +12033,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -11875,6 +12063,7 @@ class KafkaComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -11884,6 +12073,7 @@ class KafkaComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -11897,6 +12087,8 @@ class KafkaComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -11953,6 +12145,18 @@ class KafkaComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -12021,6 +12225,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -12047,6 +12255,7 @@ class KafkaConnectComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -12056,6 +12265,7 @@ class KafkaConnectComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -12069,6 +12279,8 @@ class KafkaConnectComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -12125,6 +12337,18 @@ class KafkaConnectComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -13688,7 +13912,7 @@ if not MYPY:
         """
         kafka_version: NotRequired[pulumi.Input[builtins.str]]
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
         """
         letsencrypt_sasl_privatelink: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -13779,7 +14003,7 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input[builtins.bool] kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs'] kafka_rest_config: Kafka REST configuration
         :param pulumi.Input['KafkaKafkaUserConfigKafkaSaslMechanismsArgs'] kafka_sasl_mechanisms: Kafka SASL mechanisms
-        :param pulumi.Input[builtins.str] kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, and newer. Kafka major version.
+        :param pulumi.Input[builtins.str] kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
         :param pulumi.Input[builtins.bool] letsencrypt_sasl_privatelink: Use Letsencrypt CA for Kafka SASL via Privatelink.
         :param pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
@@ -14047,7 +14271,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -16740,6 +16964,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -16766,6 +16994,7 @@ class KafkaMirrorMakerComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -16775,6 +17004,7 @@ class KafkaMirrorMakerComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -16788,6 +17018,8 @@ class KafkaMirrorMakerComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -16844,6 +17076,18 @@ class KafkaMirrorMakerComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -17711,7 +17955,7 @@ if not MYPY:
         """
         message_format_version: NotRequired[pulumi.Input[builtins.str]]
         """
-        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
         """
         message_timestamp_difference_max_ms: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -17815,7 +18059,7 @@ class KafkaTopicConfigArgs:
         :param pulumi.Input[builtins.str] max_compaction_lag_ms: max.compaction.lag.ms value
         :param pulumi.Input[builtins.str] max_message_bytes: max.message.bytes value
         :param pulumi.Input[builtins.bool] message_downconversion_enable: message.downconversion.enable value
-        :param pulumi.Input[builtins.str] message_format_version: message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        :param pulumi.Input[builtins.str] message_format_version: message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
         :param pulumi.Input[builtins.str] message_timestamp_difference_max_ms: message.timestamp.difference.max.ms value
         :param pulumi.Input[builtins.str] message_timestamp_type: message.timestamp.type value. The possible values are `CreateTime` and `LogAppendTime`.
         :param pulumi.Input[builtins.float] min_cleanable_dirty_ratio: min.cleanable.dirty.ratio value
@@ -18037,7 +18281,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+        message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -18284,6 +18528,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -18310,6 +18558,7 @@ class M3AggregatorComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -18319,6 +18568,7 @@ class M3AggregatorComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -18332,6 +18582,8 @@ class M3AggregatorComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -18388,6 +18640,18 @@ class M3AggregatorComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -18866,6 +19130,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -18892,6 +19160,7 @@ class M3DbComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -18901,6 +19170,7 @@ class M3DbComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -18914,6 +19184,8 @@ class M3DbComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -18970,6 +19242,18 @@ class M3DbComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -20589,6 +20873,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -20615,6 +20903,7 @@ class MySqlComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -20624,6 +20913,7 @@ class MySqlComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -20637,6 +20927,8 @@ class MySqlComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -20693,6 +20985,18 @@ class MySqlComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -22641,6 +22945,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -22667,6 +22975,7 @@ class OpenSearchComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -22676,6 +22985,7 @@ class OpenSearchComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -22689,6 +22999,8 @@ class OpenSearchComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -22745,6 +23057,18 @@ class OpenSearchComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -23511,7 +23835,7 @@ if not MYPY:
         """
         readonly: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Whether the repository is read-only. Default: `false`.
+        Whether the repository is read-only. Default: `true`.
         """
         restore_global_state: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -23551,7 +23875,7 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
         :param pulumi.Input[builtins.str] endpoint_suffix: Defines the DNS suffix for Azure Storage endpoints.
         :param pulumi.Input[builtins.bool] include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
         :param pulumi.Input[builtins.str] key: Azure account secret key. One of key or sas_token should be specified.
-        :param pulumi.Input[builtins.bool] readonly: Whether the repository is read-only. Default: `false`.
+        :param pulumi.Input[builtins.bool] readonly: Whether the repository is read-only. Default: `true`.
         :param pulumi.Input[builtins.bool] restore_global_state: If true, restore the cluster state. Defaults to false.
         :param pulumi.Input[builtins.str] sas_token: A shared access signatures (SAS) token. One of key or sas_token should be specified.
         """
@@ -23701,7 +24025,7 @@ class OpenSearchOpensearchUserConfigAzureMigrationArgs:
     @pulumi.getter
     def readonly(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether the repository is read-only. Default: `false`.
+        Whether the repository is read-only. Default: `true`.
         """
         return pulumi.get(self, "readonly")
 
@@ -23770,7 +24094,7 @@ if not MYPY:
         """
         readonly: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Whether the repository is read-only. Default: `false`.
+        Whether the repository is read-only. Default: `true`.
         """
         restore_global_state: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -23801,7 +24125,7 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
         :param pulumi.Input[builtins.str] chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
         :param pulumi.Input[builtins.bool] compress: When set to true metadata files are stored in compressed format.
         :param pulumi.Input[builtins.bool] include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
-        :param pulumi.Input[builtins.bool] readonly: Whether the repository is read-only. Default: `false`.
+        :param pulumi.Input[builtins.bool] readonly: Whether the repository is read-only. Default: `true`.
         :param pulumi.Input[builtins.bool] restore_global_state: If true, restore the cluster state. Defaults to false.
         """
         pulumi.set(__self__, "base_path", base_path)
@@ -23920,7 +24244,7 @@ class OpenSearchOpensearchUserConfigGcsMigrationArgs:
     @pulumi.getter
     def readonly(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether the repository is read-only. Default: `false`.
+        Whether the repository is read-only. Default: `true`.
         """
         return pulumi.get(self, "readonly")
 
@@ -27673,7 +27997,7 @@ if not MYPY:
         """
         readonly: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Whether the repository is read-only. Default: `false`.
+        Whether the repository is read-only. Default: `true`.
         """
         restore_global_state: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -27715,7 +28039,7 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
         :param pulumi.Input[builtins.bool] compress: When set to true metadata files are stored in compressed format.
         :param pulumi.Input[builtins.str] endpoint: The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
         :param pulumi.Input[builtins.bool] include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
-        :param pulumi.Input[builtins.bool] readonly: Whether the repository is read-only. Default: `false`.
+        :param pulumi.Input[builtins.bool] readonly: Whether the repository is read-only. Default: `true`.
         :param pulumi.Input[builtins.bool] restore_global_state: If true, restore the cluster state. Defaults to false.
         :param pulumi.Input[builtins.bool] server_side_encryption: When set to true files are encrypted on server side.
         """
@@ -27877,7 +28201,7 @@ class OpenSearchOpensearchUserConfigS3MigrationArgs:
     @pulumi.getter
     def readonly(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether the repository is read-only. Default: `false`.
+        Whether the repository is read-only. Default: `true`.
         """
         return pulumi.get(self, "readonly")
 
@@ -28196,6 +28520,190 @@ class OpenSearchTechEmailArgs:
     @email.setter
     def email(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "email", value)
+
+
+if not MYPY:
+    class OrganizationAddressTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    OrganizationAddressTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrganizationAddressTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[builtins.str]] = None,
+                 delete: Optional[pulumi.Input[builtins.str]] = None,
+                 read: Optional[pulumi.Input[builtins.str]] = None,
+                 update: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class OrganizationBillingGroupTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    OrganizationBillingGroupTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrganizationBillingGroupTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[builtins.str]] = None,
+                 delete: Optional[pulumi.Input[builtins.str]] = None,
+                 read: Optional[pulumi.Input[builtins.str]] = None,
+                 update: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 if not MYPY:
@@ -28651,6 +29159,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -28677,6 +29189,7 @@ class PgComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -28686,6 +29199,7 @@ class PgComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -28699,6 +29213,8 @@ class PgComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -28755,6 +29271,18 @@ class PgComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -32321,6 +32849,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -32347,6 +32879,7 @@ class RedisComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -32356,6 +32889,7 @@ class RedisComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -32369,6 +32903,8 @@ class RedisComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -32425,6 +32961,18 @@ class RedisComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -38275,6 +38823,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -38301,6 +38853,7 @@ class ThanosComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -38310,6 +38863,7 @@ class ThanosComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -38323,6 +38877,8 @@ class ThanosComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -38379,6 +38935,18 @@ class ThanosComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter
@@ -39533,6 +40101,10 @@ if not MYPY:
         """
         Kafka authentication method. This is a value specific to the 'kafka' service component
         """
+        kafka_ssl_ca: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
         port: NotRequired[pulumi.Input[builtins.int]]
         """
         Port number for connecting to the service component
@@ -39559,6 +40131,7 @@ class ValkeyComponentArgs:
                  connection_uri: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  kafka_authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 kafka_ssl_ca: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.bool]] = None,
@@ -39568,6 +40141,7 @@ class ValkeyComponentArgs:
         :param pulumi.Input[builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
         :param pulumi.Input[builtins.str] host: Host name for connecting to the service component
         :param pulumi.Input[builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
+        :param pulumi.Input[builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
         :param pulumi.Input[builtins.int] port: Port number for connecting to the service component
         :param pulumi.Input[builtins.str] route: Network access route
         :param pulumi.Input[builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
@@ -39581,6 +40155,8 @@ class ValkeyComponentArgs:
             pulumi.set(__self__, "host", host)
         if kafka_authentication_method is not None:
             pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca is not None:
+            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if route is not None:
@@ -39637,6 +40213,18 @@ class ValkeyComponentArgs:
     @kafka_authentication_method.setter
     def kafka_authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kafka_authentication_method", value)
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
+
+    @kafka_ssl_ca.setter
+    def kafka_ssl_ca(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kafka_ssl_ca", value)
 
     @property
     @pulumi.getter

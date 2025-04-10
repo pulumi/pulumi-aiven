@@ -61,6 +61,8 @@ type OrganizationProject struct {
 
 	// Billing group ID to assign to the project.
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
+	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+	CaCert pulumi.StringOutput `pulumi:"caCert"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
@@ -86,9 +88,16 @@ func NewOrganizationProject(ctx *pulumi.Context,
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
+	if args.ParentId == nil {
+		return nil, errors.New("invalid value for required argument 'ParentId'")
+	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"caCert",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OrganizationProject
 	err := ctx.RegisterResource("aiven:index/organizationProject:OrganizationProject", name, args, &resource, opts...)
@@ -114,6 +123,8 @@ func GetOrganizationProject(ctx *pulumi.Context,
 type organizationProjectState struct {
 	// Billing group ID to assign to the project.
 	BillingGroupId *string `pulumi:"billingGroupId"`
+	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+	CaCert *string `pulumi:"caCert"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
@@ -129,6 +140,8 @@ type organizationProjectState struct {
 type OrganizationProjectState struct {
 	// Billing group ID to assign to the project.
 	BillingGroupId pulumi.StringPtrInput
+	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+	CaCert pulumi.StringPtrInput
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
@@ -151,7 +164,7 @@ type organizationProjectArgs struct {
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-	ParentId *string `pulumi:"parentId"`
+	ParentId string `pulumi:"parentId"`
 	// Unique identifier for the project that also serves as the project name.
 	ProjectId string `pulumi:"projectId"`
 	// Tags are key-value pairs that allow you to categorize projects.
@@ -167,7 +180,7 @@ type OrganizationProjectArgs struct {
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-	ParentId pulumi.StringPtrInput
+	ParentId pulumi.StringInput
 	// Unique identifier for the project that also serves as the project name.
 	ProjectId pulumi.StringInput
 	// Tags are key-value pairs that allow you to categorize projects.
@@ -266,6 +279,11 @@ func (o OrganizationProjectOutput) ToOrganizationProjectOutputWithContext(ctx co
 // Billing group ID to assign to the project.
 func (o OrganizationProjectOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.BillingGroupId }).(pulumi.StringOutput)
+}
+
+// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+func (o OrganizationProjectOutput) CaCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.CaCert }).(pulumi.StringOutput)
 }
 
 // ID of an organization. Changing this property forces recreation of the resource.

@@ -33,6 +33,21 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * 
+     */
+    @Import(name="caCert")
+    private @Nullable Output<String> caCert;
+
+    /**
+     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * 
+     */
+    public Optional<Output<String>> caCert() {
+        return Optional.ofNullable(this.caCert);
+    }
+
+    /**
      * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
@@ -111,6 +126,7 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
 
     private OrganizationProjectState(OrganizationProjectState $) {
         this.billingGroupId = $.billingGroupId;
+        this.caCert = $.caCert;
         this.organizationId = $.organizationId;
         this.parentId = $.parentId;
         this.projectId = $.projectId;
@@ -155,6 +171,27 @@ public final class OrganizationProjectState extends com.pulumi.resources.Resourc
          */
         public Builder billingGroupId(String billingGroupId) {
             return billingGroupId(Output.of(billingGroupId));
+        }
+
+        /**
+         * @param caCert The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCert(@Nullable Output<String> caCert) {
+            $.caCert = caCert;
+            return this;
+        }
+
+        /**
+         * @param caCert The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCert(String caCert) {
+            return caCert(Output.of(caCert));
         }
 
         /**

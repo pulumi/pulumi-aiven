@@ -59,6 +59,12 @@ namespace Pulumi.Aiven
         public Output<string> BillingGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        /// </summary>
+        [Output("caCert")]
+        public Output<string> CaCert { get; private set; } = null!;
+
+        /// <summary>
         /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
@@ -111,6 +117,10 @@ namespace Pulumi.Aiven
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "caCert",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -149,8 +159,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
-        [Input("parentId")]
-        public Input<string>? ParentId { get; set; }
+        [Input("parentId", required: true)]
+        public Input<string> ParentId { get; set; } = null!;
 
         /// <summary>
         /// Unique identifier for the project that also serves as the project name.
@@ -195,6 +205,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("billingGroupId")]
         public Input<string>? BillingGroupId { get; set; }
+
+        [Input("caCert")]
+        private Input<string>? _caCert;
+
+        /// <summary>
+        /// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        /// </summary>
+        public Input<string>? CaCert
+        {
+            get => _caCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _caCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// ID of an organization. Changing this property forces recreation of the resource.

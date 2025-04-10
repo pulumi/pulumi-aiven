@@ -25,14 +25,14 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
     public static final M3DbState Empty = new M3DbState();
 
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     @Import(name="additionalDiskSpace")
     private @Nullable Output<String> additionalDiskSpace;
 
     /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     public Optional<Output<String>> additionalDiskSpace() {
@@ -385,17 +385,9 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.serviceUsername);
     }
 
-    /**
-     * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-     * 
-     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
-    /**
-     * @return Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-     * 
-     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -512,7 +504,7 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
          * 
          * @return builder
          * 
@@ -523,7 +515,7 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+         * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
          * 
          * @return builder
          * 
@@ -1030,23 +1022,11 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
             return serviceUsername(Output.of(serviceUsername));
         }
 
-        /**
-         * @param state Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-         * 
-         * @return builder
-         * 
-         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
-        /**
-         * @param state Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-         * 
-         * @return builder
-         * 
-         */
         public Builder state(String state) {
             return state(Output.of(state));
         }

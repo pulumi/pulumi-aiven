@@ -52,7 +52,9 @@ class InfluxDbArgs:
                service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
                service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-               service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+               service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+               integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+               causing any changes.
         :param pulumi.Input[builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
                `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
                per project and service. Changing this value [migrates the service to another cloud provider or
@@ -162,7 +164,9 @@ class InfluxDbArgs:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
         service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-        service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+        integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+        causing any changes.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -365,7 +369,9 @@ class _InfluxDbState:
         Input properties used for looking up and filtering InfluxDb resources.
         :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
                service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-               service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+               service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+               integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+               causing any changes.
         :param pulumi.Input[builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
                `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
                per project and service. Changing this value [migrates the service to another cloud provider or
@@ -407,7 +413,6 @@ class _InfluxDbState:
         :param pulumi.Input[builtins.str] service_type: Aiven internal service type code
         :param pulumi.Input[builtins.str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[builtins.str] service_username: Username used for connecting to the service, if applicable
-        :param pulumi.Input[builtins.str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
@@ -486,7 +491,9 @@ class _InfluxDbState:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
         service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-        service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+        integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+        causing any changes.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -782,9 +789,6 @@ class _InfluxDbState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -872,7 +876,9 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
                service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-               service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+               service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+               integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+               causing any changes.
         :param pulumi.Input[builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
                `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
                per project and service. Changing this value [migrates the service to another cloud provider or
@@ -1041,7 +1047,9 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
                service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-               service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+               service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+               integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+               causing any changes.
         :param pulumi.Input[builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example:
                `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ
                per project and service. Changing this value [migrates the service to another cloud provider or
@@ -1083,7 +1091,6 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] service_type: Aiven internal service type code
         :param pulumi.Input[builtins.str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[builtins.str] service_username: Username used for connecting to the service, if applicable
-        :param pulumi.Input[builtins.str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[Union['InfluxDbTagArgs', 'InfluxDbTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
@@ -1133,7 +1140,9 @@ class InfluxDb(pulumi.CustomResource):
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
         service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-        service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+        integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+        causing any changes.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -1337,9 +1346,6 @@ class InfluxDb(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[builtins.str]:
-        """
-        Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        """
         return pulumi.get(self, "state")
 
     @property

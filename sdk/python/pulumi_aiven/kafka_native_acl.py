@@ -517,7 +517,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> pulumi.Output[Optional[builtins.str]]:
+    def host(self) -> pulumi.Output[builtins.str]:
         """
         The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         """

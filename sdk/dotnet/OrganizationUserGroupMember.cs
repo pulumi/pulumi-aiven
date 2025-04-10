@@ -15,33 +15,6 @@ namespace Pulumi.Aiven
     /// 
     /// Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aiven = Pulumi.Aiven;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Aiven.OrganizationUserGroup("example", new()
-    ///     {
-    ///         Description = "Example group of users.",
-    ///         OrganizationId = main.Id,
-    ///         Name = "Example group",
-    ///     });
-    /// 
-    ///     var projectAdmin = new Aiven.OrganizationUserGroupMember("project_admin", new()
-    ///     {
-    ///         GroupId = example.GroupId,
-    ///         OrganizationId = main.Id,
-    ///         UserId = "u123a456b7890c",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

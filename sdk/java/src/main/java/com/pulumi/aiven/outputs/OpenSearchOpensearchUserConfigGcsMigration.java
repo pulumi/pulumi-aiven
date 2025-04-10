@@ -49,7 +49,7 @@ public final class OpenSearchOpensearchUserConfigGcsMigration {
      */
     private String indices;
     /**
-     * @return Whether the repository is read-only. Default: `false`.
+     * @return Whether the repository is read-only. Default: `true`.
      * 
      */
     private @Nullable Boolean readonly;
@@ -115,7 +115,7 @@ public final class OpenSearchOpensearchUserConfigGcsMigration {
         return this.indices;
     }
     /**
-     * @return Whether the repository is read-only. Default: `false`.
+     * @return Whether the repository is read-only. Default: `true`.
      * 
      */
     public Optional<Boolean> readonly() {

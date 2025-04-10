@@ -162,7 +162,7 @@ class Organization(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
+        $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
         ```
 
         :param str resource_name: The name of the resource.
@@ -190,7 +190,7 @@ class Organization(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
+        $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
         ```
 
         :param str resource_name: The name of the resource.

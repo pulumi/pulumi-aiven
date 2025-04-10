@@ -95,7 +95,7 @@ import (
 type KafkaConnect struct {
 	pulumi.CustomResourceState
 
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace pulumi.StringOutput `pulumi:"additionalDiskSpace"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
@@ -143,8 +143,7 @@ type KafkaConnect struct {
 	ServiceUri pulumi.StringOutput `pulumi:"serviceUri"`
 	// Username used for connecting to the service, if applicable
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
-	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-	State pulumi.StringOutput `pulumi:"state"`
+	State           pulumi.StringOutput `pulumi:"state"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
@@ -199,7 +198,7 @@ func GetKafkaConnect(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaConnect resources.
 type kafkaConnectState struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
@@ -247,8 +246,7 @@ type kafkaConnectState struct {
 	ServiceUri *string `pulumi:"serviceUri"`
 	// Username used for connecting to the service, if applicable
 	ServiceUsername *string `pulumi:"serviceUsername"`
-	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-	State *string `pulumi:"state"`
+	State           *string `pulumi:"state"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
@@ -260,7 +258,7 @@ type kafkaConnectState struct {
 }
 
 type KafkaConnectState struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
@@ -308,8 +306,7 @@ type KafkaConnectState struct {
 	ServiceUri pulumi.StringPtrInput
 	// Username used for connecting to the service, if applicable
 	ServiceUsername pulumi.StringPtrInput
-	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-	State pulumi.StringPtrInput
+	State           pulumi.StringPtrInput
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
@@ -325,7 +322,7 @@ func (KafkaConnectState) ElementType() reflect.Type {
 }
 
 type kafkaConnectArgs struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
@@ -361,7 +358,7 @@ type kafkaConnectArgs struct {
 
 // The set of arguments for constructing a KafkaConnect resource.
 type KafkaConnectArgs struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
@@ -482,7 +479,7 @@ func (o KafkaConnectOutput) ToKafkaConnectOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 func (o KafkaConnectOutput) AdditionalDiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringOutput { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
@@ -596,7 +593,6 @@ func (o KafkaConnectOutput) ServiceUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringOutput { return v.ServiceUsername }).(pulumi.StringOutput)
 }
 
-// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 func (o KafkaConnectOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

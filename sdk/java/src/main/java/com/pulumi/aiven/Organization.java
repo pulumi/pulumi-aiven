@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
+ * $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
  * ```
  * 
  */

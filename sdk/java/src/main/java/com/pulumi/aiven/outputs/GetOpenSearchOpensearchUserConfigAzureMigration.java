@@ -59,7 +59,7 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
      */
     private @Nullable String key;
     /**
-     * @return Whether the repository is read-only. Default: `false`.
+     * @return Whether the repository is read-only. Default: `true`.
      * 
      */
     private @Nullable Boolean readonly;
@@ -144,7 +144,7 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Whether the repository is read-only. Default: `false`.
+     * @return Whether the repository is read-only. Default: `true`.
      * 
      */
     public Optional<Boolean> readonly() {

@@ -28,10 +28,13 @@ class GetOrganizationProjectResult:
     """
     A collection of values returned by getOrganizationProject.
     """
-    def __init__(__self__, billing_group_id=None, id=None, organization_id=None, parent_id=None, project_id=None, tags=None, technical_emails=None):
+    def __init__(__self__, billing_group_id=None, ca_cert=None, id=None, organization_id=None, parent_id=None, project_id=None, tags=None, technical_emails=None):
         if billing_group_id and not isinstance(billing_group_id, str):
             raise TypeError("Expected argument 'billing_group_id' to be a str")
         pulumi.set(__self__, "billing_group_id", billing_group_id)
+        if ca_cert and not isinstance(ca_cert, str):
+            raise TypeError("Expected argument 'ca_cert' to be a str")
+        pulumi.set(__self__, "ca_cert", ca_cert)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -58,6 +61,14 @@ class GetOrganizationProjectResult:
         Billing group ID to assign to the project.
         """
         return pulumi.get(self, "billing_group_id")
+
+    @property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> builtins.str:
+        """
+        The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        """
+        return pulumi.get(self, "ca_cert")
 
     @property
     @pulumi.getter
@@ -115,6 +126,7 @@ class AwaitableGetOrganizationProjectResult(GetOrganizationProjectResult):
             yield self
         return GetOrganizationProjectResult(
             billing_group_id=self.billing_group_id,
+            ca_cert=self.ca_cert,
             id=self.id,
             organization_id=self.organization_id,
             parent_id=self.parent_id,
@@ -154,6 +166,7 @@ def get_organization_project(organization_id: Optional[builtins.str] = None,
 
     return AwaitableGetOrganizationProjectResult(
         billing_group_id=pulumi.get(__ret__, 'billing_group_id'),
+        ca_cert=pulumi.get(__ret__, 'ca_cert'),
         id=pulumi.get(__ret__, 'id'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
         parent_id=pulumi.get(__ret__, 'parent_id'),
@@ -190,6 +203,7 @@ def get_organization_project_output(organization_id: Optional[pulumi.Input[built
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationProject:getOrganizationProject', __args__, opts=opts, typ=GetOrganizationProjectResult)
     return __ret__.apply(lambda __response__: GetOrganizationProjectResult(
         billing_group_id=pulumi.get(__response__, 'billing_group_id'),
+        ca_cert=pulumi.get(__response__, 'ca_cert'),
         id=pulumi.get(__response__, 'id'),
         organization_id=pulumi.get(__response__, 'organization_id'),
         parent_id=pulumi.get(__response__, 'parent_id'),

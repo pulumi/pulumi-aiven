@@ -24,24 +24,23 @@ class OrganizationProjectArgs:
     def __init__(__self__, *,
                  billing_group_id: pulumi.Input[builtins.str],
                  organization_id: pulumi.Input[builtins.str],
+                 parent_id: pulumi.Input[builtins.str],
                  project_id: pulumi.Input[builtins.str],
-                 parent_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]] = None,
                  technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a OrganizationProject resource.
         :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project.
         :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[builtins.str] project_id: Unique identifier for the project that also serves as the project name.
         :param pulumi.Input[builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[builtins.str] project_id: Unique identifier for the project that also serves as the project name.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
         pulumi.set(__self__, "billing_group_id", billing_group_id)
         pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "parent_id", parent_id)
         pulumi.set(__self__, "project_id", project_id)
-        if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if technical_emails is not None:
@@ -72,6 +71,18 @@ class OrganizationProjectArgs:
         pulumi.set(self, "organization_id", value)
 
     @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "parent_id", value)
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[builtins.str]:
         """
@@ -82,18 +93,6 @@ class OrganizationProjectArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        """
-        return pulumi.get(self, "parent_id")
-
-    @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "parent_id", value)
 
     @property
     @pulumi.getter
@@ -124,6 +123,7 @@ class OrganizationProjectArgs:
 class _OrganizationProjectState:
     def __init__(__self__, *,
                  billing_group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 ca_cert: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
                  parent_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -132,6 +132,7 @@ class _OrganizationProjectState:
         """
         Input properties used for looking up and filtering OrganizationProject resources.
         :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project.
+        :param pulumi.Input[builtins.str] ca_cert: The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
         :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[builtins.str] project_id: Unique identifier for the project that also serves as the project name.
@@ -140,6 +141,8 @@ class _OrganizationProjectState:
         """
         if billing_group_id is not None:
             pulumi.set(__self__, "billing_group_id", billing_group_id)
+        if ca_cert is not None:
+            pulumi.set(__self__, "ca_cert", ca_cert)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
         if parent_id is not None:
@@ -162,6 +165,18 @@ class _OrganizationProjectState:
     @billing_group_id.setter
     def billing_group_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "billing_group_id", value)
+
+    @property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        """
+        return pulumi.get(self, "ca_cert")
+
+    @ca_cert.setter
+    def ca_cert(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ca_cert", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -343,12 +358,17 @@ class OrganizationProject(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            if parent_id is None and not opts.urn:
+                raise TypeError("Missing required property 'parent_id'")
             __props__.__dict__["parent_id"] = parent_id
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["technical_emails"] = technical_emails
+            __props__.__dict__["ca_cert"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["caCert"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(OrganizationProject, __self__).__init__(
             'aiven:index/organizationProject:OrganizationProject',
             resource_name,
@@ -360,6 +380,7 @@ class OrganizationProject(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_group_id: Optional[pulumi.Input[builtins.str]] = None,
+            ca_cert: Optional[pulumi.Input[builtins.str]] = None,
             organization_id: Optional[pulumi.Input[builtins.str]] = None,
             parent_id: Optional[pulumi.Input[builtins.str]] = None,
             project_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -373,6 +394,7 @@ class OrganizationProject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] billing_group_id: Billing group ID to assign to the project.
+        :param pulumi.Input[builtins.str] ca_cert: The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
         :param pulumi.Input[builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[builtins.str] project_id: Unique identifier for the project that also serves as the project name.
@@ -384,6 +406,7 @@ class OrganizationProject(pulumi.CustomResource):
         __props__ = _OrganizationProjectState.__new__(_OrganizationProjectState)
 
         __props__.__dict__["billing_group_id"] = billing_group_id
+        __props__.__dict__["ca_cert"] = ca_cert
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["project_id"] = project_id
@@ -398,6 +421,14 @@ class OrganizationProject(pulumi.CustomResource):
         Billing group ID to assign to the project.
         """
         return pulumi.get(self, "billing_group_id")
+
+    @property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> pulumi.Output[builtins.str]:
+        """
+        The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        """
+        return pulumi.get(self, "ca_cert")
 
     @property
     @pulumi.getter(name="organizationId")
