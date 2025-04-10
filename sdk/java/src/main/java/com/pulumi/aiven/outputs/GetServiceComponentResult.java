@@ -35,6 +35,11 @@ public final class GetServiceComponentResult {
      */
     private @Nullable String kafkaAuthenticationMethod;
     /**
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * 
+     */
+    private String kafkaSslCa;
+    /**
      * @return Port number for connecting to the service component
      * 
      */
@@ -95,6 +100,13 @@ public final class GetServiceComponentResult {
         return Optional.ofNullable(this.kafkaAuthenticationMethod);
     }
     /**
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * 
+     */
+    public String kafkaSslCa() {
+        return this.kafkaSslCa;
+    }
+    /**
      * @return Port number for connecting to the service component
      * 
      */
@@ -150,6 +162,7 @@ public final class GetServiceComponentResult {
         private String host;
         private String id;
         private @Nullable String kafkaAuthenticationMethod;
+        private String kafkaSslCa;
         private Integer port;
         private String project;
         private @Nullable String route;
@@ -163,6 +176,7 @@ public final class GetServiceComponentResult {
     	      this.host = defaults.host;
     	      this.id = defaults.id;
     	      this.kafkaAuthenticationMethod = defaults.kafkaAuthenticationMethod;
+    	      this.kafkaSslCa = defaults.kafkaSslCa;
     	      this.port = defaults.port;
     	      this.project = defaults.project;
     	      this.route = defaults.route;
@@ -199,6 +213,14 @@ public final class GetServiceComponentResult {
         public Builder kafkaAuthenticationMethod(@Nullable String kafkaAuthenticationMethod) {
 
             this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaSslCa(String kafkaSslCa) {
+            if (kafkaSslCa == null) {
+              throw new MissingRequiredPropertyException("GetServiceComponentResult", "kafkaSslCa");
+            }
+            this.kafkaSslCa = kafkaSslCa;
             return this;
         }
         @CustomType.Setter
@@ -247,6 +269,7 @@ public final class GetServiceComponentResult {
             _resultValue.host = host;
             _resultValue.id = id;
             _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
+            _resultValue.kafkaSslCa = kafkaSslCa;
             _resultValue.port = port;
             _resultValue.project = project;
             _resultValue.route = route;

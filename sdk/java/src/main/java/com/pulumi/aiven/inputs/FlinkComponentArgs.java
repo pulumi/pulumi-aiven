@@ -78,6 +78,21 @@ public final class FlinkComponentArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * 
+     */
+    @Import(name="kafkaSslCa")
+    private @Nullable Output<String> kafkaSslCa;
+
+    /**
+     * @return Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+     * 
+     */
+    public Optional<Output<String>> kafkaSslCa() {
+        return Optional.ofNullable(this.kafkaSslCa);
+    }
+
+    /**
      * Port number for connecting to the service component
      * 
      */
@@ -144,6 +159,7 @@ public final class FlinkComponentArgs extends com.pulumi.resources.ResourceArgs 
         this.connectionUri = $.connectionUri;
         this.host = $.host;
         this.kafkaAuthenticationMethod = $.kafkaAuthenticationMethod;
+        this.kafkaSslCa = $.kafkaSslCa;
         this.port = $.port;
         this.route = $.route;
         this.ssl = $.ssl;
@@ -250,6 +266,27 @@ public final class FlinkComponentArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder kafkaAuthenticationMethod(String kafkaAuthenticationMethod) {
             return kafkaAuthenticationMethod(Output.of(kafkaAuthenticationMethod));
+        }
+
+        /**
+         * @param kafkaSslCa Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaSslCa(@Nullable Output<String> kafkaSslCa) {
+            $.kafkaSslCa = kafkaSslCa;
+            return this;
+        }
+
+        /**
+         * @param kafkaSslCa Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaSslCa(String kafkaSslCa) {
+            return kafkaSslCa(Output.of(kafkaSslCa));
         }
 
         /**

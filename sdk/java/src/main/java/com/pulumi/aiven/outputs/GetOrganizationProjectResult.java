@@ -18,6 +18,11 @@ public final class GetOrganizationProjectResult {
      */
     private String billingGroupId;
     /**
+     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * 
+     */
+    private String caCert;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -55,6 +60,13 @@ public final class GetOrganizationProjectResult {
      */
     public String billingGroupId() {
         return this.billingGroupId;
+    }
+    /**
+     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+     * 
+     */
+    public String caCert() {
+        return this.caCert;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -109,6 +121,7 @@ public final class GetOrganizationProjectResult {
     @CustomType.Builder
     public static final class Builder {
         private String billingGroupId;
+        private String caCert;
         private String id;
         private String organizationId;
         private String parentId;
@@ -119,6 +132,7 @@ public final class GetOrganizationProjectResult {
         public Builder(GetOrganizationProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.billingGroupId = defaults.billingGroupId;
+    	      this.caCert = defaults.caCert;
     	      this.id = defaults.id;
     	      this.organizationId = defaults.organizationId;
     	      this.parentId = defaults.parentId;
@@ -133,6 +147,14 @@ public final class GetOrganizationProjectResult {
               throw new MissingRequiredPropertyException("GetOrganizationProjectResult", "billingGroupId");
             }
             this.billingGroupId = billingGroupId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder caCert(String caCert) {
+            if (caCert == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationProjectResult", "caCert");
+            }
+            this.caCert = caCert;
             return this;
         }
         @CustomType.Setter
@@ -192,6 +214,7 @@ public final class GetOrganizationProjectResult {
         public GetOrganizationProjectResult build() {
             final var _resultValue = new GetOrganizationProjectResult();
             _resultValue.billingGroupId = billingGroupId;
+            _resultValue.caCert = caCert;
             _resultValue.id = id;
             _resultValue.organizationId = organizationId;
             _resultValue.parentId = parentId;

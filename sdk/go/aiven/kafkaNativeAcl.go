@@ -60,7 +60,7 @@ type KafkaNativeAcl struct {
 	pulumi.CustomResourceState
 
 	// The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
-	Host pulumi.StringPtrOutput `pulumi:"host"`
+	Host pulumi.StringOutput `pulumi:"host"`
 	// The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
 	Operation pulumi.StringOutput `pulumi:"operation"`
 	// Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
@@ -309,8 +309,8 @@ func (o KafkaNativeAclOutput) ToKafkaNativeAclOutputWithContext(ctx context.Cont
 }
 
 // The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
-func (o KafkaNativeAclOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KafkaNativeAcl) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
+func (o KafkaNativeAclOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaNativeAcl) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
 // The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.

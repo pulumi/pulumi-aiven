@@ -342,7 +342,7 @@ def get_service_integration(destination_service_name: Optional[builtins.str] = N
     import pulumi_aiven as aiven
 
     example_integration = aiven.get_service_integration(project=example_project["project"],
-        destination_service_name=example_m3db["serviceName"],
+        destination_service_name=example_thanos["serviceName"],
         integration_type="metrics",
         source_service_name=example_kafka["serviceName"])
     ```
@@ -401,7 +401,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
     import pulumi_aiven as aiven
 
     example_integration = aiven.get_service_integration(project=example_project["project"],
-        destination_service_name=example_m3db["serviceName"],
+        destination_service_name=example_thanos["serviceName"],
         integration_type="metrics",
         source_service_name=example_kafka["serviceName"])
     ```

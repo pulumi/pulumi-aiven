@@ -560,6 +560,10 @@ export interface AlloydbomniComponent {
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
+    /**
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
@@ -748,6 +752,10 @@ export interface CassandraComponent {
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
+    /**
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
@@ -808,6 +816,14 @@ export interface ClickhouseClickhouseUserConfig {
      * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     */
+    backupHour?: pulumi.Input<number>;
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     */
+    backupMinute?: pulumi.Input<number>;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -942,6 +958,10 @@ export interface ClickhouseComponent {
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
+    /**
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
@@ -1035,6 +1055,10 @@ export interface DragonflyComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */
@@ -1288,6 +1312,10 @@ export interface FlinkComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */
@@ -1575,6 +1603,10 @@ export interface GrafanaComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */
@@ -2112,6 +2144,10 @@ export interface InfluxDbComponent {
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
+    /**
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
@@ -2337,6 +2373,10 @@ export interface KafkaComponent {
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
+    /**
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
@@ -2371,6 +2411,10 @@ export interface KafkaConnectComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */
@@ -2758,7 +2802,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaSaslMechanisms>;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, and newer. Kafka major version.
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
@@ -3344,6 +3388,10 @@ export interface KafkaMirrorMakerComponent {
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
+    /**
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
@@ -3574,7 +3622,7 @@ export interface KafkaTopicConfig {
      */
     messageDownconversionEnable?: pulumi.Input<boolean>;
     /**
-     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0` and `3.9-IV1`.
+     * message.format.version value. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.1` and `4.1-IV0`.
      */
     messageFormatVersion?: pulumi.Input<string>;
     /**
@@ -3665,6 +3713,10 @@ export interface M3AggregatorComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */
@@ -3788,6 +3840,10 @@ export interface M3DbComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */
@@ -4149,6 +4205,10 @@ export interface MySqlComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */
@@ -4571,6 +4631,10 @@ export interface OpenSearchComponent {
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
+    /**
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
@@ -4764,7 +4828,7 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      */
     key?: pulumi.Input<string>;
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      */
     readonly?: pulumi.Input<boolean>;
     /**
@@ -4811,7 +4875,7 @@ export interface OpenSearchOpensearchUserConfigGcsMigration {
      */
     indices: pulumi.Input<string>;
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      */
     readonly?: pulumi.Input<boolean>;
     /**
@@ -5614,7 +5678,7 @@ export interface OpenSearchOpensearchUserConfigS3Migration {
      */
     indices: pulumi.Input<string>;
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      */
     readonly?: pulumi.Input<boolean>;
     /**
@@ -5700,6 +5764,44 @@ export interface OpenSearchTechEmail {
      * An email address to contact for technical issues
      */
     email: pulumi.Input<string>;
+}
+
+export interface OrganizationAddressTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OrganizationBillingGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface OrganizationGroupProjectTimeouts {
@@ -5810,6 +5912,10 @@ export interface PgComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */
@@ -6585,6 +6691,10 @@ export interface RedisComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */
@@ -7842,6 +7952,10 @@ export interface ThanosComponent {
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
+    /**
      * Port number for connecting to the service component
      */
     port?: pulumi.Input<number>;
@@ -8104,6 +8218,10 @@ export interface ValkeyComponent {
      * Kafka authentication method. This is a value specific to the 'kafka' service component
      */
     kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    kafkaSslCa?: pulumi.Input<string>;
     /**
      * Port number for connecting to the service component
      */

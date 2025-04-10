@@ -82,6 +82,8 @@ type GetServiceComponentResult struct {
 	Id string `pulumi:"id"`
 	// Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
 	KafkaAuthenticationMethod *string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
 	// Port number for connecting to the service component
 	Port int `pulumi:"port"`
 	// Project name
@@ -160,6 +162,11 @@ func (o GetServiceComponentResultOutput) Id() pulumi.StringOutput {
 // Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
 func (o GetServiceComponentResultOutput) KafkaAuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceComponentResult) *string { return v.KafkaAuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetServiceComponentResultOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceComponentResult) string { return v.KafkaSslCa }).(pulumi.StringOutput)
 }
 
 // Port number for connecting to the service component

@@ -54,7 +54,7 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
      */
     private String indices;
     /**
-     * @return Whether the repository is read-only. Default: `false`.
+     * @return Whether the repository is read-only. Default: `true`.
      * 
      */
     private @Nullable Boolean readonly;
@@ -142,7 +142,7 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
         return this.indices;
     }
     /**
-     * @return Whether the repository is read-only. Default: `false`.
+     * @return Whether the repository is read-only. Default: `true`.
      * 
      */
     public Optional<Boolean> readonly() {

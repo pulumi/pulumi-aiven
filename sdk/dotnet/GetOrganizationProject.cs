@@ -146,6 +146,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string BillingGroupId;
         /// <summary>
+        /// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
+        /// </summary>
+        public readonly string CaCert;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -174,6 +178,8 @@ namespace Pulumi.Aiven
         private GetOrganizationProjectResult(
             string billingGroupId,
 
+            string caCert,
+
             string id,
 
             string organizationId,
@@ -187,6 +193,7 @@ namespace Pulumi.Aiven
             ImmutableArray<string> technicalEmails)
         {
             BillingGroupId = billingGroupId;
+            CaCert = caCert;
             Id = id;
             OrganizationId = organizationId;
             ParentId = parentId;

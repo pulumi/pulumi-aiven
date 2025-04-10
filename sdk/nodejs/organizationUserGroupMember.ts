@@ -12,24 +12,6 @@ import * as utilities from "./utilities";
  *
  * Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const example = new aiven.OrganizationUserGroup("example", {
- *     description: "Example group of users.",
- *     organizationId: main.id,
- *     name: "Example group",
- * });
- * const projectAdmin = new aiven.OrganizationUserGroupMember("project_admin", {
- *     groupId: example.groupId,
- *     organizationId: main.id,
- *     userId: "u123a456b7890c",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

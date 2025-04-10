@@ -20,13 +20,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Integrate Kafka and M3DB services for metrics
+    ///     // Integrate Kafka and Thanos services for metrics
     ///     var exampleIntegration = new Aiven.ServiceIntegration("example_integration", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         IntegrationType = "metrics",
     ///         SourceServiceName = exampleKafka.ServiceName,
-    ///         DestinationServiceName = exampleM3db.ServiceName,
+    ///         DestinationServiceName = exampleThanos.ServiceName,
     ///     });
     /// 
     ///     // Use disk autoscaler with a PostgreSQL service

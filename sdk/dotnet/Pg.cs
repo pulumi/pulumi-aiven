@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     public partial class Pg : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         /// </summary>
         [Output("additionalDiskSpace")]
         public Output<string> AdditionalDiskSpace { get; private set; } = null!;
@@ -159,9 +159,6 @@ namespace Pulumi.Aiven
         [Output("serviceUsername")]
         public Output<string> ServiceUsername { get; private set; } = null!;
 
-        /// <summary>
-        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
@@ -242,7 +239,7 @@ namespace Pulumi.Aiven
     public sealed class PgArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
@@ -380,7 +377,7 @@ namespace Pulumi.Aiven
     public sealed class PgState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+        /// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
@@ -559,9 +556,6 @@ namespace Pulumi.Aiven
         [Input("serviceUsername")]
         public Input<string>? ServiceUsername { get; set; }
 
-        /// <summary>
-        /// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

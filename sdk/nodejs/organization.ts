@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
+ * $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID # (e.g. a1234567890 or org123456)
  * ```
  */
 export class Organization extends pulumi.CustomResource {

@@ -1451,6 +1451,15 @@
                 "current": "aiven:index/organization:Organization",
                 "majorVersion": 6
             },
+            "aiven_organization_address": {
+                "current": "aiven:index/organizationAddress:OrganizationAddress",
+                "majorVersion": 6,
+                "fields": {
+                    "address_lines": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_organization_application_user": {
                 "current": "aiven:index/organizationApplicationUser:OrganizationApplicationUser",
                 "majorVersion": 6
@@ -1463,6 +1472,18 @@
                         "maxItemsOne": false
                     },
                     "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aiven_organization_billing_group": {
+                "current": "aiven:index/organizationBillingGroup:OrganizationBillingGroup",
+                "majorVersion": 6,
+                "fields": {
+                    "billing_contact_emails": {
+                        "maxItemsOne": false
+                    },
+                    "billing_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -3596,9 +3617,49 @@
                 "current": "aiven:index/getOrganization:getOrganization",
                 "majorVersion": 6
             },
+            "aiven_organization_address": {
+                "current": "aiven:index/getOrganizationAddress:getOrganizationAddress",
+                "majorVersion": 6,
+                "fields": {
+                    "address_lines": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_organization_application_user": {
                 "current": "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser",
                 "majorVersion": 6
+            },
+            "aiven_organization_billing_group": {
+                "current": "aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup",
+                "majorVersion": 6,
+                "fields": {
+                    "billing_contact_emails": {
+                        "maxItemsOne": false
+                    },
+                    "billing_emails": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aiven_organization_billing_group_list": {
+                "current": "aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList",
+                "majorVersion": 6,
+                "fields": {
+                    "billing_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "billing_contact_emails": {
+                                    "maxItemsOne": false
+                                },
+                                "billing_emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "aiven_organization_project": {
                 "current": "aiven:index/getOrganizationProject:getOrganizationProject",
@@ -4374,8 +4435,10 @@
             "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig": 0,
             "aiven:index/opensearchUser:OpensearchUser": 0,
             "aiven:index/organization:Organization": 1,
+            "aiven:index/organizationAddress:OrganizationAddress": 1,
             "aiven:index/organizationApplicationUser:OrganizationApplicationUser": 0,
             "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken": 0,
+            "aiven:index/organizationBillingGroup:OrganizationBillingGroup": 1,
             "aiven:index/organizationGroupProject:OrganizationGroupProject": 1,
             "aiven:index/organizationPermission:OrganizationPermission": 0,
             "aiven:index/organizationProject:OrganizationProject": 0,
@@ -4458,7 +4521,10 @@
             "aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig": 0,
             "aiven:index/getOpensearchUser:getOpensearchUser": 0,
             "aiven:index/getOrganization:getOrganization": 1,
+            "aiven:index/getOrganizationAddress:getOrganizationAddress": 1,
             "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": 0,
+            "aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup": 1,
+            "aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList": 1,
             "aiven:index/getOrganizationProject:getOrganizationProject": 0,
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,

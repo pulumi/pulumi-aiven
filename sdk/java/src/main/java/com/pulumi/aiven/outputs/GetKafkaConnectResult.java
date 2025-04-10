@@ -19,7 +19,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaConnectResult {
     /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     private String additionalDiskSpace;
@@ -133,10 +133,6 @@ public final class GetKafkaConnectResult {
      * 
      */
     private String serviceUsername;
-    /**
-     * @return Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-     * 
-     */
     private String state;
     /**
      * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
@@ -161,7 +157,7 @@ public final class GetKafkaConnectResult {
 
     private GetKafkaConnectResult() {}
     /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     public String additionalDiskSpace() {
@@ -321,10 +317,6 @@ public final class GetKafkaConnectResult {
     public String serviceUsername() {
         return this.serviceUsername;
     }
-    /**
-     * @return Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-     * 
-     */
     public String state() {
         return this.state;
     }

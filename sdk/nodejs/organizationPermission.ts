@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * // Grant access to a specific project
  * const exampleProjectPermissions = new aiven.OrganizationPermission("example_project_permissions", {
  *     organizationId: main.id,
- *     resourceId: exampleProject.id,
+ *     resourceId: exampleProject.project,
  *     resourceType: "project",
  *     permissions: [
  *         {

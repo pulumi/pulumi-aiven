@@ -27,7 +27,7 @@ class GetServiceComponentResult:
     """
     A collection of values returned by getServiceComponent.
     """
-    def __init__(__self__, component=None, host=None, id=None, kafka_authentication_method=None, port=None, project=None, route=None, service_name=None, ssl=None, usage=None):
+    def __init__(__self__, component=None, host=None, id=None, kafka_authentication_method=None, kafka_ssl_ca=None, port=None, project=None, route=None, service_name=None, ssl=None, usage=None):
         if component and not isinstance(component, str):
             raise TypeError("Expected argument 'component' to be a str")
         pulumi.set(__self__, "component", component)
@@ -40,6 +40,9 @@ class GetServiceComponentResult:
         if kafka_authentication_method and not isinstance(kafka_authentication_method, str):
             raise TypeError("Expected argument 'kafka_authentication_method' to be a str")
         pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
+        if kafka_ssl_ca and not isinstance(kafka_ssl_ca, str):
+            raise TypeError("Expected argument 'kafka_ssl_ca' to be a str")
+        pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
@@ -90,6 +93,14 @@ class GetServiceComponentResult:
         Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
         """
         return pulumi.get(self, "kafka_authentication_method")
+
+    @property
+    @pulumi.getter(name="kafkaSslCa")
+    def kafka_ssl_ca(self) -> builtins.str:
+        """
+        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        """
+        return pulumi.get(self, "kafka_ssl_ca")
 
     @property
     @pulumi.getter
@@ -150,6 +161,7 @@ class AwaitableGetServiceComponentResult(GetServiceComponentResult):
             host=self.host,
             id=self.id,
             kafka_authentication_method=self.kafka_authentication_method,
+            kafka_ssl_ca=self.kafka_ssl_ca,
             port=self.port,
             project=self.project,
             route=self.route,
@@ -209,6 +221,7 @@ def get_service_component(component: Optional[builtins.str] = None,
         host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),
         kafka_authentication_method=pulumi.get(__ret__, 'kafka_authentication_method'),
+        kafka_ssl_ca=pulumi.get(__ret__, 'kafka_ssl_ca'),
         port=pulumi.get(__ret__, 'port'),
         project=pulumi.get(__ret__, 'project'),
         route=pulumi.get(__ret__, 'route'),
@@ -265,6 +278,7 @@ def get_service_component_output(component: Optional[pulumi.Input[builtins.str]]
         host=pulumi.get(__response__, 'host'),
         id=pulumi.get(__response__, 'id'),
         kafka_authentication_method=pulumi.get(__response__, 'kafka_authentication_method'),
+        kafka_ssl_ca=pulumi.get(__response__, 'kafka_ssl_ca'),
         port=pulumi.get(__response__, 'port'),
         project=pulumi.get(__response__, 'project'),
         route=pulumi.get(__response__, 'route'),

@@ -68,7 +68,7 @@ type GetCassandaArgs struct {
 
 // A collection of values returned by getCassanda.
 type GetCassandaResult struct {
-	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	CassandraUserConfigs []GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfigs"`
@@ -116,8 +116,7 @@ type GetCassandaResult struct {
 	ServiceUri string `pulumi:"serviceUri"`
 	// Username used for connecting to the service, if applicable
 	ServiceUsername string `pulumi:"serviceUsername"`
-	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-	State string `pulumi:"state"`
+	State           string `pulumi:"state"`
 	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
@@ -164,7 +163,7 @@ func (o GetCassandaResultOutput) ToGetCassandaResultOutputWithContext(ctx contex
 	return o
 }
 
-// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 func (o GetCassandaResultOutput) AdditionalDiskSpace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.AdditionalDiskSpace }).(pulumi.StringOutput)
 }
@@ -284,7 +283,6 @@ func (o GetCassandaResultOutput) ServiceUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.ServiceUsername }).(pulumi.StringOutput)
 }
 
-// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 func (o GetCassandaResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.State }).(pulumi.StringOutput)
 }

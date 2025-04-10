@@ -61,9 +61,9 @@ type LookupOrganizationResult struct {
 	// Timestamp of the creation of the organization.
 	CreateTime string `pulumi:"createTime"`
 	// ID of the organization.
-	Id *string `pulumi:"id"`
+	Id string `pulumi:"id"`
 	// Name of the organization.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// Tenant ID of the organization.
 	TenantId string `pulumi:"tenantId"`
 	// Timestamp of the last update of the organization.
@@ -112,13 +112,13 @@ func (o LookupOrganizationResultOutput) CreateTime() pulumi.StringOutput {
 }
 
 // ID of the organization.
-func (o LookupOrganizationResultOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o LookupOrganizationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the organization.
-func (o LookupOrganizationResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LookupOrganizationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Tenant ID of the organization.

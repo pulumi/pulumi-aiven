@@ -37,6 +37,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? KafkaAuthenticationMethod { get; set; }
 
         /// <summary>
+        /// Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
+        /// </summary>
+        [Input("kafkaSslCa")]
+        public Input<string>? KafkaSslCa { get; set; }
+
+        /// <summary>
         /// Port number for connecting to the service component
         /// </summary>
         [Input("port")]

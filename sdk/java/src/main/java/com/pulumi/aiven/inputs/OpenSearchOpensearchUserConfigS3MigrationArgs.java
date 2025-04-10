@@ -138,14 +138,14 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
     }
 
     /**
-     * Whether the repository is read-only. Default: `false`.
+     * Whether the repository is read-only. Default: `true`.
      * 
      */
     @Import(name="readonly")
     private @Nullable Output<Boolean> readonly;
 
     /**
-     * @return Whether the repository is read-only. Default: `false`.
+     * @return Whether the repository is read-only. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> readonly() {
@@ -433,7 +433,7 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
         }
 
         /**
-         * @param readonly Whether the repository is read-only. Default: `false`.
+         * @param readonly Whether the repository is read-only. Default: `true`.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class OpenSearchOpensearchUserConfigS3MigrationArgs extends com.pul
         }
 
         /**
-         * @param readonly Whether the repository is read-only. Default: `false`.
+         * @param readonly Whether the repository is read-only. Default: `true`.
          * 
          * @return builder
          * 

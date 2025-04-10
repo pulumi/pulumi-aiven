@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Country;
         /// <summary>
-        /// Creation time
+        /// Date and time when the user was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -30,23 +30,23 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Department;
         /// <summary>
-        /// Is Application User
+        /// Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
         /// </summary>
         public readonly bool IsApplicationUser;
         /// <summary>
-        /// Job Title
+        /// Job title
         /// </summary>
         public readonly string JobTitle;
         /// <summary>
-        /// Managed By Scim
+        /// Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
         /// </summary>
         public readonly bool ManagedByScim;
         /// <summary>
-        /// Managing Organization ID
+        /// The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
         /// </summary>
         public readonly string ManagingOrganizationId;
         /// <summary>
-        /// Real Name
+        /// Full name of the user.
         /// </summary>
         public readonly string RealName;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// User Email
+        /// Email address.
         /// </summary>
         public readonly string UserEmail;
 

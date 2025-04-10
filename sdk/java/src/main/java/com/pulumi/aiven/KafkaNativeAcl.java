@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -77,14 +76,14 @@ public class KafkaNativeAcl extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="host", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> host;
+    private Output<String> host;
 
     /**
      * @return The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<Optional<String>> host() {
-        return Codegen.optional(this.host);
+    public Output<String> host() {
+        return this.host;
     }
     /**
      * The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.

@@ -52,11 +52,11 @@ export interface GetOrganizationResult {
     /**
      * ID of the organization.
      */
-    readonly id?: string;
+    readonly id: string;
     /**
      * Name of the organization.
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * Tenant ID of the organization.
      */

@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupServiceIntegration(ctx, &aiven.LookupServiceIntegrationArgs{
 //				Project:                exampleProject.Project,
-//				DestinationServiceName: exampleM3db.ServiceName,
+//				DestinationServiceName: exampleThanos.ServiceName,
 //				IntegrationType:        "metrics",
 //				SourceServiceName:      exampleKafka.ServiceName,
 //			}, nil)

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         // Grant access to a specific project
  *         var exampleProjectPermissions = new OrganizationPermission("exampleProjectPermissions", OrganizationPermissionArgs.builder()
  *             .organizationId(main.id())
- *             .resourceId(exampleProject.id())
+ *             .resourceId(exampleProject.project())
  *             .resourceType("project")
  *             .permissions(            
  *                 OrganizationPermissionPermissionArgs.builder()

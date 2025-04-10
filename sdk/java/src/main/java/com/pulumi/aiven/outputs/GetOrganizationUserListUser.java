@@ -14,22 +14,22 @@ import java.util.Objects;
 @CustomType
 public final class GetOrganizationUserListUser {
     /**
-     * @return Super admin state of the organization user
+     * @return Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
      * 
      */
     private Boolean isSuperAdmin;
     /**
-     * @return Join time
+     * @return Date and time when the user joined the organization.
      * 
      */
     private String joinTime;
     /**
-     * @return Last activity time
+     * @return Last activity time.
      * 
      */
     private String lastActivityTime;
     /**
-     * @return User ID
+     * @return User ID.
      * 
      */
     private String userId;
@@ -37,28 +37,28 @@ public final class GetOrganizationUserListUser {
 
     private GetOrganizationUserListUser() {}
     /**
-     * @return Super admin state of the organization user
+     * @return Indicates whether the user is a [super admin](https://aiven.io/docs/platform/concepts/permissions).
      * 
      */
     public Boolean isSuperAdmin() {
         return this.isSuperAdmin;
     }
     /**
-     * @return Join time
+     * @return Date and time when the user joined the organization.
      * 
      */
     public String joinTime() {
         return this.joinTime;
     }
     /**
-     * @return Last activity time
+     * @return Last activity time.
      * 
      */
     public String lastActivityTime() {
         return this.lastActivityTime;
     }
     /**
-     * @return User ID
+     * @return User ID.
      * 
      */
     public String userId() {

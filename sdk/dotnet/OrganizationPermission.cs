@@ -33,7 +33,7 @@ namespace Pulumi.Aiven
     ///     var exampleProjectPermissions = new Aiven.OrganizationPermission("example_project_permissions", new()
     ///     {
     ///         OrganizationId = main.Id,
-    ///         ResourceId = exampleProject.Id,
+    ///         ResourceId = exampleProject.Project,
     ///         ResourceType = "project",
     ///         Permissions = new[]
     ///         {

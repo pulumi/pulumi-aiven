@@ -77,7 +77,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Whether the repository is read-only. Default: `false`.
+        /// Whether the repository is read-only. Default: `true`.
         /// </summary>
         [Input("readonly")]
         public Input<bool>? Readonly { get; set; }

@@ -26,7 +26,9 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
      * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-     * service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+     * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+     * causing any changes.
      * 
      */
     @Import(name="additionalDiskSpace")
@@ -35,7 +37,9 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
      * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-     * service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+     * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+     * causing any changes.
      * 
      */
     public Optional<Output<String>> additionalDiskSpace() {
@@ -359,7 +363,9 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
          * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-         * service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+         * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+         * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+         * causing any changes.
          * 
          * @return builder
          * 
@@ -372,7 +378,9 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param additionalDiskSpace Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to scale your
          * service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the
-         * service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+         * service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler
+         * integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without
+         * causing any changes.
          * 
          * @return builder
          * 

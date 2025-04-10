@@ -13,12 +13,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * // Integrate Kafka and M3DB services for metrics
+ * // Integrate Kafka and Thanos services for metrics
  * const exampleIntegration = new aiven.ServiceIntegration("example_integration", {
  *     project: exampleProject.project,
  *     integrationType: "metrics",
  *     sourceServiceName: exampleKafka.serviceName,
- *     destinationServiceName: exampleM3db.serviceName,
+ *     destinationServiceName: exampleThanos.serviceName,
  * });
  * // Use disk autoscaler with a PostgreSQL service
  * const autoscalerEndpoint = new aiven.ServiceIntegrationEndpoint("autoscaler_endpoint", {

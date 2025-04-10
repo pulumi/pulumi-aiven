@@ -173,8 +173,8 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         Creates and manages an organization application user. [Application users](https://aiven.io/docs/platform/concepts/application-users) can be used for
         programmatic access to the platform using a token created with the `OrganizationApplicationUserToken` resource.
 
-        You give application users access to projects using the `OrganizationPermission` resource. You can also add application users to
-        groups with access to projects using `OrganizationUserGroupMember`.
+        You give application users access to your organization, projects, and services using the `OrganizationPermission` resource. You can also add application users to
+        groups using the `OrganizationUserGroupMember` resource.
 
         ## Example Usage
 
@@ -209,8 +209,8 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         Creates and manages an organization application user. [Application users](https://aiven.io/docs/platform/concepts/application-users) can be used for
         programmatic access to the platform using a token created with the `OrganizationApplicationUserToken` resource.
 
-        You give application users access to projects using the `OrganizationPermission` resource. You can also add application users to
-        groups with access to projects using `OrganizationUserGroupMember`.
+        You give application users access to your organization, projects, and services using the `OrganizationPermission` resource. You can also add application users to
+        groups using the `OrganizationUserGroupMember` resource.
 
         ## Example Usage
 

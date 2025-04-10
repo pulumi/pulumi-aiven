@@ -77,7 +77,7 @@ export class Alloydbomni extends pulumi.CustomResource {
     }
 
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      */
     public readonly additionalDiskSpace!: pulumi.Output<string>;
     /**
@@ -176,9 +176,6 @@ export class Alloydbomni extends pulumi.CustomResource {
      * Username used for connecting to the service, if applicable
      */
     public /*out*/ readonly serviceUsername!: pulumi.Output<string>;
-    /**
-     * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-     */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -292,7 +289,7 @@ export class Alloydbomni extends pulumi.CustomResource {
  */
 export interface AlloydbomniState {
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**
@@ -391,9 +388,6 @@ export interface AlloydbomniState {
      * Username used for connecting to the service, if applicable
      */
     serviceUsername?: pulumi.Input<string>;
-    /**
-     * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-     */
     state?: pulumi.Input<string>;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -418,7 +412,7 @@ export interface AlloydbomniState {
  */
 export interface AlloydbomniArgs {
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**

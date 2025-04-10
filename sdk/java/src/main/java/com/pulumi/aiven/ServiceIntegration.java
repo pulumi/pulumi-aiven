@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Integrate Kafka and M3DB services for metrics
+ *         // Integrate Kafka and Thanos services for metrics
  *         var exampleIntegration = new ServiceIntegration("exampleIntegration", ServiceIntegrationArgs.builder()
  *             .project(exampleProject.project())
  *             .integrationType("metrics")
  *             .sourceServiceName(exampleKafka.serviceName())
- *             .destinationServiceName(exampleM3db.serviceName())
+ *             .destinationServiceName(exampleThanos.serviceName())
  *             .build());
  * 
  *         // Use disk autoscaler with a PostgreSQL service

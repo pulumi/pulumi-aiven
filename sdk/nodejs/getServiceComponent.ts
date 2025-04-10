@@ -92,6 +92,10 @@ export interface GetServiceComponentResult {
      */
     readonly kafkaAuthenticationMethod?: string;
     /**
+     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+     */
+    readonly kafkaSslCa: string;
+    /**
      * Port number for connecting to the service component
      */
     readonly port: number;

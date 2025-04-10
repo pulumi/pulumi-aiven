@@ -6,18 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Gets information about an application user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const tfUser = aiven.getOrganizationApplicationUser({
- *     organizationId: main.id,
- *     userId: "u123a456b7890c",
- * });
- * ```
  */
 export function getOrganizationApplicationUser(args: GetOrganizationApplicationUserArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationApplicationUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -72,18 +60,6 @@ export interface GetOrganizationApplicationUserResult {
 }
 /**
  * Gets information about an application user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aiven from "@pulumi/aiven";
- *
- * const tfUser = aiven.getOrganizationApplicationUser({
- *     organizationId: main.id,
- *     userId: "u123a456b7890c",
- * });
- * ```
  */
 export function getOrganizationApplicationUserOutput(args: GetOrganizationApplicationUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationApplicationUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

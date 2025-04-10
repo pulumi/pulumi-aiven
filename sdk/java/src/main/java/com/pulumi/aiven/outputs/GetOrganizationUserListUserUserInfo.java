@@ -22,7 +22,7 @@ public final class GetOrganizationUserListUserUserInfo {
      */
     private String country;
     /**
-     * @return Creation time
+     * @return Date and time when the user was created.
      * 
      */
     private String createTime;
@@ -32,27 +32,27 @@ public final class GetOrganizationUserListUserUserInfo {
      */
     private String department;
     /**
-     * @return Is Application User
+     * @return Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
      * 
      */
     private Boolean isApplicationUser;
     /**
-     * @return Job Title
+     * @return Job title
      * 
      */
     private String jobTitle;
     /**
-     * @return Managed By Scim
+     * @return Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
      * 
      */
     private Boolean managedByScim;
     /**
-     * @return Managing Organization ID
+     * @return The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
      * 
      */
     private String managingOrganizationId;
     /**
-     * @return Real Name
+     * @return Full name of the user.
      * 
      */
     private String realName;
@@ -62,7 +62,7 @@ public final class GetOrganizationUserListUserUserInfo {
      */
     private String state;
     /**
-     * @return User Email
+     * @return Email address.
      * 
      */
     private String userEmail;
@@ -83,7 +83,7 @@ public final class GetOrganizationUserListUserUserInfo {
         return this.country;
     }
     /**
-     * @return Creation time
+     * @return Date and time when the user was created.
      * 
      */
     public String createTime() {
@@ -97,35 +97,35 @@ public final class GetOrganizationUserListUserUserInfo {
         return this.department;
     }
     /**
-     * @return Is Application User
+     * @return Inidicates whether the user is an [application user](https://aiven.io/docs/platform/concepts/application-users).
      * 
      */
     public Boolean isApplicationUser() {
         return this.isApplicationUser;
     }
     /**
-     * @return Job Title
+     * @return Job title
      * 
      */
     public String jobTitle() {
         return this.jobTitle;
     }
     /**
-     * @return Managed By Scim
+     * @return Indicates whether the user is managed by [System for Cross-domain Identity Management (SCIM)](https://aiven.io/docs/platform/howto/list-identity-providers).
      * 
      */
     public Boolean managedByScim() {
         return this.managedByScim;
     }
     /**
-     * @return Managing Organization ID
+     * @return The ID of the organization that [manages the user](https://aiven.io/docs/platform/concepts/managed-users).
      * 
      */
     public String managingOrganizationId() {
         return this.managingOrganizationId;
     }
     /**
-     * @return Real Name
+     * @return Full name of the user.
      * 
      */
     public String realName() {
@@ -139,7 +139,7 @@ public final class GetOrganizationUserListUserUserInfo {
         return this.state;
     }
     /**
-     * @return User Email
+     * @return Email address.
      * 
      */
     public String userEmail() {

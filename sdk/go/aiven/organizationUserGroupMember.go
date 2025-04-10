@@ -17,42 +17,6 @@ import (
 //
 // Groups are granted roles and permissions using the `OrganizationPermission` resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := aiven.NewOrganizationUserGroup(ctx, "example", &aiven.OrganizationUserGroupArgs{
-//				Description:    pulumi.String("Example group of users."),
-//				OrganizationId: pulumi.Any(main.Id),
-//				Name:           pulumi.String("Example group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewOrganizationUserGroupMember(ctx, "project_admin", &aiven.OrganizationUserGroupMemberArgs{
-//				GroupId:        example.GroupId,
-//				OrganizationId: pulumi.Any(main.Id),
-//				UserId:         pulumi.String("u123a456b7890c"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

@@ -116,16 +116,6 @@ def get_organization_application_user(organization_id: Optional[builtins.str] = 
     """
     Gets information about an application user.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    tf_user = aiven.get_organization_application_user(organization_id=main["id"],
-        user_id="u123a456b7890c")
-    ```
-
 
     :param builtins.str organization_id: The ID of the organization the application user belongs to.
     :param builtins.str user_id: The ID of the application user.
@@ -148,16 +138,6 @@ def get_organization_application_user_output(organization_id: Optional[pulumi.In
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationApplicationUserResult]:
     """
     Gets information about an application user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aiven as aiven
-
-    tf_user = aiven.get_organization_application_user(organization_id=main["id"],
-        user_id="u123a456b7890c")
-    ```
 
 
     :param builtins.str organization_id: The ID of the organization the application user belongs to.

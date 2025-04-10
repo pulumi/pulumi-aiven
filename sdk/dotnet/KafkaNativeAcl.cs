@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("host")]
-        public Output<string?> Host { get; private set; } = null!;
+        public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
         /// The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.

@@ -7,10 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * List of users of the organization.
+ * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const users = aiven.getOrganizationUserList({
+ *     name: "Example organization",
+ * });
+ * ```
  */
 export function getOrganizationUserList(args?: GetOrganizationUserListArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationUserListResult> {
     args = args || {};
@@ -26,11 +34,11 @@ export function getOrganizationUserList(args?: GetOrganizationUserListArgs, opts
  */
 export interface GetOrganizationUserListArgs {
     /**
-     * Organization id. Example: `org12345678`.
+     * The ID of the organization.
      */
     id?: string;
     /**
-     * Organization name. Example: `aiven`.
+     * The name of the organization.
      */
     name?: string;
 }
@@ -40,23 +48,31 @@ export interface GetOrganizationUserListArgs {
  */
 export interface GetOrganizationUserListResult {
     /**
-     * Organization id. Example: `org12345678`.
+     * The ID of the organization.
      */
     readonly id?: string;
     /**
-     * Organization name. Example: `aiven`.
+     * The name of the organization.
      */
     readonly name?: string;
     /**
-     * List of users of the organization
+     * List of the users, their profile information, and other data.
      */
     readonly users: outputs.GetOrganizationUserListUser[];
 }
 /**
- * List of users of the organization.
+ * Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const users = aiven.getOrganizationUserList({
+ *     name: "Example organization",
+ * });
+ * ```
  */
 export function getOrganizationUserListOutput(args?: GetOrganizationUserListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationUserListResult> {
     args = args || {};
@@ -72,11 +88,11 @@ export function getOrganizationUserListOutput(args?: GetOrganizationUserListOutp
  */
 export interface GetOrganizationUserListOutputArgs {
     /**
-     * Organization id. Example: `org12345678`.
+     * The ID of the organization.
      */
     id?: pulumi.Input<string>;
     /**
-     * Organization name. Example: `aiven`.
+     * The name of the organization.
      */
     name?: pulumi.Input<string>;
 }

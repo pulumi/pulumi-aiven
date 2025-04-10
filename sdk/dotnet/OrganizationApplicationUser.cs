@@ -13,8 +13,8 @@ namespace Pulumi.Aiven
     /// Creates and manages an organization application user. [Application users](https://aiven.io/docs/platform/concepts/application-users) can be used for
     /// programmatic access to the platform using a token created with the `aiven.OrganizationApplicationUserToken` resource.
     /// 
-    /// You give application users access to projects using the `aiven.OrganizationPermission` resource. You can also add application users to
-    /// groups with access to projects using `aiven.OrganizationUserGroupMember`.
+    /// You give application users access to your organization, projects, and services using the `aiven.OrganizationPermission` resource. You can also add application users to
+    /// groups using the `aiven.OrganizationUserGroupMember` resource.
     /// 
     /// ## Example Usage
     /// 

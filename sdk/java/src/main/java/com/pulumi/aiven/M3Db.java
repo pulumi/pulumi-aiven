@@ -90,14 +90,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/m3Db:M3Db")
 public class M3Db extends com.pulumi.resources.CustomResource {
     /**
-     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     @Export(name="additionalDiskSpace", refs={String.class}, tree="[0]")
     private Output<String> additionalDiskSpace;
 
     /**
-     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart and there might be a short downtime for services with no HA capabilities.
+     * @return Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30  GiB to scale your service. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      * 
      */
     public Output<String> additionalDiskSpace() {
@@ -419,17 +419,9 @@ public class M3Db extends com.pulumi.resources.CustomResource {
     public Output<String> serviceUsername() {
         return this.serviceUsername;
     }
-    /**
-     * Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-     * 
-     */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
-    /**
-     * @return Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-     * 
-     */
     public Output<String> state() {
         return this.state;
     }

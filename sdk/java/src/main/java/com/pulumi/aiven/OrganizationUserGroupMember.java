@@ -21,51 +21,6 @@ import javax.annotation.Nullable;
  * 
  * Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.OrganizationUserGroup;
- * import com.pulumi.aiven.OrganizationUserGroupArgs;
- * import com.pulumi.aiven.OrganizationUserGroupMember;
- * import com.pulumi.aiven.OrganizationUserGroupMemberArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()
- *             .description("Example group of users.")
- *             .organizationId(main.id())
- *             .name("Example group")
- *             .build());
- * 
- *         var projectAdmin = new OrganizationUserGroupMember("projectAdmin", OrganizationUserGroupMemberArgs.builder()
- *             .groupId(example.groupId())
- *             .organizationId(main.id())
- *             .userId("u123a456b7890c")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ```sh

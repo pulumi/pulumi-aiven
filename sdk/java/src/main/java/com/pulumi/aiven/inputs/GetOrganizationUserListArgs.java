@@ -16,14 +16,14 @@ public final class GetOrganizationUserListArgs extends com.pulumi.resources.Invo
     public static final GetOrganizationUserListArgs Empty = new GetOrganizationUserListArgs();
 
     /**
-     * Organization id. Example: `org12345678`.
+     * The ID of the organization.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Organization id. Example: `org12345678`.
+     * @return The ID of the organization.
      * 
      */
     public Optional<Output<String>> id() {
@@ -31,14 +31,14 @@ public final class GetOrganizationUserListArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Organization name. Example: `aiven`.
+     * The name of the organization.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Organization name. Example: `aiven`.
+     * @return The name of the organization.
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,7 +71,7 @@ public final class GetOrganizationUserListArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param id Organization id. Example: `org12345678`.
+         * @param id The ID of the organization.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetOrganizationUserListArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param id Organization id. Example: `org12345678`.
+         * @param id The ID of the organization.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class GetOrganizationUserListArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param name Organization name. Example: `aiven`.
+         * @param name The name of the organization.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetOrganizationUserListArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param name Organization name. Example: `aiven`.
+         * @param name The name of the organization.
          * 
          * @return builder
          * 
