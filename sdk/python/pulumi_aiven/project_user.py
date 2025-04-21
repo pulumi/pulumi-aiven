@@ -143,6 +143,9 @@ class _ProjectUserState:
 
 
 class ProjectUser(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/projectUser:ProjectUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

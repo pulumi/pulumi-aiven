@@ -238,6 +238,9 @@ class _TransitGatewayVpcAttachmentState:
 
 
 class TransitGatewayVpcAttachment(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

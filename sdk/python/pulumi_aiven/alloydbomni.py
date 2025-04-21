@@ -777,6 +777,9 @@ class _AlloydbomniState:
 
 
 class Alloydbomni(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/alloydbomni:Alloydbomni"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

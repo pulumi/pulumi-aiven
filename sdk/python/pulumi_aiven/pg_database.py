@@ -215,6 +215,9 @@ class _PgDatabaseState:
 
 
 class PgDatabase(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/pgDatabase:PgDatabase"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

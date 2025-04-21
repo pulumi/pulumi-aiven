@@ -242,6 +242,9 @@ class _FlinkJarApplicationState:
 
 
 class FlinkJarApplication(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/flinkJarApplication:FlinkJarApplication"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

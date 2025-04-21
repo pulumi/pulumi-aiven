@@ -176,6 +176,9 @@ class _OrganizationUserGroupState:
 
 
 class OrganizationUserGroup(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/organizationUserGroup:OrganizationUserGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -127,6 +127,9 @@ class _ClickhouseRoleState:
 
 
 class ClickhouseRole(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/clickhouseRole:ClickhouseRole"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
