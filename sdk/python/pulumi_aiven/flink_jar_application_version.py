@@ -256,6 +256,9 @@ class _FlinkJarApplicationVersionState:
 
 
 class FlinkJarApplicationVersion(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

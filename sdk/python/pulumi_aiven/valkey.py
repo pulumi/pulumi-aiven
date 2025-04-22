@@ -745,6 +745,9 @@ class _ValkeyState:
 
 
 class Valkey(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/valkey:Valkey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

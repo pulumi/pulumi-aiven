@@ -191,6 +191,9 @@ class _AlloydbomniDatabaseState:
 
 
 class AlloydbomniDatabase(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/alloydbomniDatabase:AlloydbomniDatabase"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

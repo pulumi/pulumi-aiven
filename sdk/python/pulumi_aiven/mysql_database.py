@@ -151,6 +151,9 @@ class _MysqlDatabaseState:
 
 
 class MysqlDatabase(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/mysqlDatabase:MysqlDatabase"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

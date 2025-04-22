@@ -160,6 +160,9 @@ class _OrganizationPermissionState:
 
 
 class OrganizationPermission(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/organizationPermission:OrganizationPermission"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

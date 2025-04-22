@@ -745,6 +745,9 @@ class _RedisState:
 
 
 class Redis(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/redis:Redis"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

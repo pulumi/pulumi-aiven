@@ -746,6 +746,9 @@ class _PgState:
 
 
 class Pg(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/pg:Pg"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

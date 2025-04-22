@@ -153,6 +153,9 @@ class _OrganizationGroupProjectState:
 
 
 class OrganizationGroupProject(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/organizationGroupProject:OrganizationGroupProject"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

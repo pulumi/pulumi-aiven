@@ -159,6 +159,9 @@ class _AwsPrivatelinkState:
 
 
 class AwsPrivatelink(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/awsPrivatelink:AwsPrivatelink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

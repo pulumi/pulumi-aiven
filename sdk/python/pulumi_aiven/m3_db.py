@@ -745,6 +745,9 @@ class _M3DbState:
 
 
 class M3Db(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/m3Db:M3Db"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
