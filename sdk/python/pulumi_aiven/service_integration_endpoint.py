@@ -753,6 +753,9 @@ class _ServiceIntegrationEndpointState:
 
 
 class ServiceIntegrationEndpoint(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

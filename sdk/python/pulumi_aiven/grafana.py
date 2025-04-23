@@ -746,6 +746,9 @@ class _GrafanaState:
 
 
 class Grafana(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/grafana:Grafana"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

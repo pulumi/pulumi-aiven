@@ -191,6 +191,9 @@ class _AzurePrivatelinkState:
 
 
 class AzurePrivatelink(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/azurePrivatelink:AzurePrivatelink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -745,6 +745,9 @@ class _FlinkState:
 
 
 class Flink(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/flink:Flink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

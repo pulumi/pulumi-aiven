@@ -145,6 +145,9 @@ class _OrganizationalUnitState:
 
 
 class OrganizationalUnit(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/organizationalUnit:OrganizationalUnit"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

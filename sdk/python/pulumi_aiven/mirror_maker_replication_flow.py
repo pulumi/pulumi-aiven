@@ -539,6 +539,9 @@ class _MirrorMakerReplicationFlowState:
 
 
 class MirrorMakerReplicationFlow(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

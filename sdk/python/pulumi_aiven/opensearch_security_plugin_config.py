@@ -175,6 +175,9 @@ class _OpensearchSecurityPluginConfigState:
 
 
 class OpensearchSecurityPluginConfig(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
