@@ -713,6 +713,9 @@ class _KafkaMirrorMakerState:
 
 
 class KafkaMirrorMaker(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

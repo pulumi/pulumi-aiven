@@ -328,6 +328,9 @@ class _OrganizationAddressState:
 
 
 class OrganizationAddress(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/organizationAddress:OrganizationAddress"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

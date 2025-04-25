@@ -206,6 +206,9 @@ class _AwsVpcPeeringConnectionState:
 
 
 class AwsVpcPeeringConnection(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

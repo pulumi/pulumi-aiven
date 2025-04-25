@@ -745,6 +745,9 @@ class _M3AggregatorState:
 
 
 class M3Aggregator(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/m3Aggregator:M3Aggregator"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -219,6 +219,9 @@ class _InfluxdbUserState:
 
 
 class InfluxdbUser(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/influxdbUser:InfluxdbUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

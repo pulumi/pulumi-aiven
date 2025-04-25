@@ -239,6 +239,9 @@ class _AlloydbomniUserState:
 
 
 class AlloydbomniUser(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/alloydbomniUser:AlloydbomniUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

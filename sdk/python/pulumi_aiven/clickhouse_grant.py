@@ -226,6 +226,9 @@ class _ClickhouseGrantState:
 
 
 class ClickhouseGrant(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/clickhouseGrant:ClickhouseGrant"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

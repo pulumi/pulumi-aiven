@@ -208,6 +208,9 @@ class _FlinkApplicationState:
 
 
 class FlinkApplication(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/flinkApplication:FlinkApplication"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

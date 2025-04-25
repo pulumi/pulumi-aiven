@@ -207,6 +207,9 @@ class _KafkaUserState:
 
 
 class KafkaUser(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/kafkaUser:KafkaUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

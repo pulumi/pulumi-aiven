@@ -161,6 +161,9 @@ class _OrganizationApplicationUserState:
 
 
 class OrganizationApplicationUser(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/organizationApplicationUser:OrganizationApplicationUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

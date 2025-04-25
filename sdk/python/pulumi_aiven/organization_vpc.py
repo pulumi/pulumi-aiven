@@ -191,6 +191,9 @@ class _OrganizationVpcState:
 
 
 class OrganizationVpc(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/organizationVpc:OrganizationVpc"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
