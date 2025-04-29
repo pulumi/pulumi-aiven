@@ -175,6 +175,9 @@ class _ClickhouseUserState:
 
 
 class ClickhouseUser(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/clickhouseUser:ClickhouseUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

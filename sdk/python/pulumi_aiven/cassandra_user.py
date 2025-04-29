@@ -207,6 +207,9 @@ class _CassandraUserState:
 
 
 class CassandraUser(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/cassandraUser:CassandraUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

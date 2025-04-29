@@ -175,6 +175,9 @@ class _GcpPrivatelinkConnectionApprovalState:
 
 
 class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

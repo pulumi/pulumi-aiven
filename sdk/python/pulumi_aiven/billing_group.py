@@ -522,6 +522,9 @@ class _BillingGroupState:
 
 
 class BillingGroup(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/billingGroup:BillingGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

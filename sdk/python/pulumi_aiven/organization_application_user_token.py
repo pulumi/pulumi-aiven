@@ -416,6 +416,9 @@ class _OrganizationApplicationUserTokenState:
 
 
 class OrganizationApplicationUserToken(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

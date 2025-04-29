@@ -713,6 +713,9 @@ class _KafkaConnectState:
 
 
 class KafkaConnect(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/kafkaConnect:KafkaConnect"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

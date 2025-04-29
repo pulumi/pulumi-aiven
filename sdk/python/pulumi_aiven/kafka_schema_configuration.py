@@ -128,6 +128,9 @@ class _KafkaSchemaConfigurationState:
 
 
 class KafkaSchemaConfiguration(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

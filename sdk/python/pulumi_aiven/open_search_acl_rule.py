@@ -189,6 +189,9 @@ class _OpenSearchAclRuleState:
 
 
 class OpenSearchAclRule(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/openSearchAclRule:OpenSearchAclRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

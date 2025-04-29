@@ -160,6 +160,9 @@ class _OpenSearchAclConfigState:
 
 
 class OpenSearchAclConfig(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/openSearchAclConfig:OpenSearchAclConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
