@@ -745,6 +745,9 @@ class _DragonflyState:
 
 
 class Dragonfly(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/dragonfly:Dragonfly"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

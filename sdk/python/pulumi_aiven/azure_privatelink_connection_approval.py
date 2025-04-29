@@ -160,6 +160,9 @@ class _AzurePrivatelinkConnectionApprovalState:
 
 
 class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

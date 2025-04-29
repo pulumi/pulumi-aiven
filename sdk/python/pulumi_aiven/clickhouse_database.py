@@ -152,6 +152,9 @@ class _ClickhouseDatabaseState:
 
 
 class ClickhouseDatabase(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/clickhouseDatabase:ClickhouseDatabase"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

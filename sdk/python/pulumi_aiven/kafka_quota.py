@@ -312,6 +312,9 @@ class _KafkaQuotaState:
 
 
 class KafkaQuota(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/kafkaQuota:KafkaQuota"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

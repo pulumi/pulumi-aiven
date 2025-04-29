@@ -160,6 +160,9 @@ class _StaticIpState:
 
 
 class StaticIp(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/staticIp:StaticIp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

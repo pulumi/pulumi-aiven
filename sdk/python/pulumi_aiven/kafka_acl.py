@@ -205,6 +205,9 @@ class _KafkaAclState:
 
 
 class KafkaAcl(pulumi.CustomResource):
+
+    pulumi_type = "aiven:index/kafkaAcl:KafkaAcl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
