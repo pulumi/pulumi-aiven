@@ -22253,6 +22253,9 @@
                 "description": "Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.\n",
                 "secret": true
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:aiven/terraformConfig"
         }
     },
     "resources": {
@@ -47182,6 +47185,35 @@
                     "valkeyAclCommands",
                     "valkeyAclKeys",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:aiven/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:aiven"
+                    }
+                },
+                "type": "pulumi:providers:aiven/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }

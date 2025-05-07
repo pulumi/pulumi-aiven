@@ -12,9 +12,9 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.1 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.107.0
-	github.com/pulumi/pulumi/pkg/v3 v3.163.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.163.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.107.1-0.20250507172149-72d59646c734
+	github.com/pulumi/pulumi/pkg/v3 v3.166.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.166.0
 )
 
 require github.com/aiven/terraform-provider-aiven v0.0.0-00010101000000-000000000000
@@ -152,7 +152,7 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.13.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
-	github.com/pulumi/pulumi-java/pkg v1.8.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v1.10.1-0.20250501085720-de3b4406576e // indirect
 	github.com/pulumi/pulumi-yaml v1.15.1 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
