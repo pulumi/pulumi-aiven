@@ -388,10 +388,8 @@ class _OrganizationBillingGroupState:
         pulumi.set(self, "vat_id", value)
 
 
+@pulumi.type_token("aiven:index/organizationBillingGroup:OrganizationBillingGroup")
 class OrganizationBillingGroup(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organizationBillingGroup:OrganizationBillingGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

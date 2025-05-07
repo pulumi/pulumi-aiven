@@ -175,10 +175,8 @@ class _OrganizationUserGroupState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("aiven:index/organizationUserGroup:OrganizationUserGroup")
 class OrganizationUserGroup(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organizationUserGroup:OrganizationUserGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

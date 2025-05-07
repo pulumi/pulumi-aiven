@@ -158,10 +158,8 @@ class _AwsPrivatelinkState:
         pulumi.set(self, "service_name", value)
 
 
+@pulumi.type_token("aiven:index/awsPrivatelink:AwsPrivatelink")
 class AwsPrivatelink(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/awsPrivatelink:AwsPrivatelink"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -744,10 +744,8 @@ class _OpenSearchState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/openSearch:OpenSearch")
 class OpenSearch(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/openSearch:OpenSearch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

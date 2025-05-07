@@ -744,10 +744,8 @@ class _ClickhouseState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/clickhouse:Clickhouse")
 class Clickhouse(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/clickhouse:Clickhouse"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

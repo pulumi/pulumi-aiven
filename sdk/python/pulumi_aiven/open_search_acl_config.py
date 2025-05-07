@@ -159,10 +159,8 @@ class _OpenSearchAclConfigState:
         pulumi.set(self, "service_name", value)
 
 
+@pulumi.type_token("aiven:index/openSearchAclConfig:OpenSearchAclConfig")
 class OpenSearchAclConfig(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/openSearchAclConfig:OpenSearchAclConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

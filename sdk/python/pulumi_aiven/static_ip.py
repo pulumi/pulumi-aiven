@@ -159,10 +159,8 @@ class _StaticIpState:
         pulumi.set(self, "static_ip_address_id", value)
 
 
+@pulumi.type_token("aiven:index/staticIp:StaticIp")
 class StaticIp(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/staticIp:StaticIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -237,10 +237,8 @@ class _KafkaSchemaState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("aiven:index/kafkaSchema:KafkaSchema")
 class KafkaSchema(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/kafkaSchema:KafkaSchema"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

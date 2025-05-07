@@ -745,10 +745,8 @@ class _PgState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/pg:Pg")
 class Pg(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/pg:Pg"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -744,10 +744,8 @@ class _M3AggregatorState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/m3Aggregator:M3Aggregator")
 class M3Aggregator(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/m3Aggregator:M3Aggregator"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -188,10 +188,8 @@ class _OpenSearchAclRuleState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/openSearchAclRule:OpenSearchAclRule")
 class OpenSearchAclRule(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/openSearchAclRule:OpenSearchAclRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

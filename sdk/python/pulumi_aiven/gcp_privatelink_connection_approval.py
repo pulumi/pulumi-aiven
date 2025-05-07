@@ -174,10 +174,8 @@ class _GcpPrivatelinkConnectionApprovalState:
         pulumi.set(self, "user_ip_address", value)
 
 
+@pulumi.type_token("aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval")
 class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

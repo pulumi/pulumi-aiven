@@ -313,10 +313,8 @@ class _KafkaNativeAclState:
         pulumi.set(self, "service_name", value)
 
 
+@pulumi.type_token("aiven:index/kafkaNativeAcl:KafkaNativeAcl")
 class KafkaNativeAcl(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/kafkaNativeAcl:KafkaNativeAcl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

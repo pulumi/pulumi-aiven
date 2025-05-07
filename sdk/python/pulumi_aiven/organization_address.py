@@ -327,10 +327,8 @@ class _OrganizationAddressState:
         pulumi.set(self, "zip_code", value)
 
 
+@pulumi.type_token("aiven:index/organizationAddress:OrganizationAddress")
 class OrganizationAddress(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organizationAddress:OrganizationAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -204,10 +204,8 @@ class _KafkaSchemaRegistryAclState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl")
 class KafkaSchemaRegistryAcl(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

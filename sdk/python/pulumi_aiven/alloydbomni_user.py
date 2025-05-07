@@ -238,10 +238,8 @@ class _AlloydbomniUserState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/alloydbomniUser:AlloydbomniUser")
 class AlloydbomniUser(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/alloydbomniUser:AlloydbomniUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

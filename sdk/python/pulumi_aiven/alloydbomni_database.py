@@ -190,10 +190,8 @@ class _AlloydbomniDatabaseState:
         pulumi.set(self, "service_name", value)
 
 
+@pulumi.type_token("aiven:index/alloydbomniDatabase:AlloydbomniDatabase")
 class AlloydbomniDatabase(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/alloydbomniDatabase:AlloydbomniDatabase"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -744,10 +744,8 @@ class _RedisState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/redis:Redis")
 class Redis(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/redis:Redis"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

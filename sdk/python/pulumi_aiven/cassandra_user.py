@@ -206,10 +206,8 @@ class _CassandraUserState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/cassandraUser:CassandraUser")
 class CassandraUser(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/cassandraUser:CassandraUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -538,10 +538,8 @@ class _MirrorMakerReplicationFlowState:
         pulumi.set(self, "topics_blacklists", value)
 
 
+@pulumi.type_token("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow")
 class MirrorMakerReplicationFlow(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

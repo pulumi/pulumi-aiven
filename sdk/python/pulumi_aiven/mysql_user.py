@@ -238,10 +238,8 @@ class _MysqlUserState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/mysqlUser:MysqlUser")
 class MysqlUser(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/mysqlUser:MysqlUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -142,10 +142,8 @@ class _ProjectVpcState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("aiven:index/projectVpc:ProjectVpc")
 class ProjectVpc(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/projectVpc:ProjectVpc"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
