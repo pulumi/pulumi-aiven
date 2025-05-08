@@ -776,10 +776,8 @@ class _AlloydbomniState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/alloydbomni:Alloydbomni")
 class Alloydbomni(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/alloydbomni:Alloydbomni"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

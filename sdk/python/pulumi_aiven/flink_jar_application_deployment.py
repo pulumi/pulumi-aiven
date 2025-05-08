@@ -429,10 +429,8 @@ class _FlinkJarApplicationDeploymentState:
         pulumi.set(self, "version_id", value)
 
 
+@pulumi.type_token("aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment")
 class FlinkJarApplicationDeployment(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -159,10 +159,8 @@ class _AccountTeamProjectState:
         pulumi.set(self, "team_type", value)
 
 
+@pulumi.type_token("aiven:index/accountTeamProject:AccountTeamProject")
 class AccountTeamProject(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/accountTeamProject:AccountTeamProject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

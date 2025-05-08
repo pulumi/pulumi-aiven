@@ -744,10 +744,8 @@ class _CassandraState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/cassandra:Cassandra")
 class Cassandra(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/cassandra:Cassandra"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

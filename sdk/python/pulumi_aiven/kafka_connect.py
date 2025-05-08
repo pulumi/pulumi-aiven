@@ -712,10 +712,8 @@ class _KafkaConnectState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/kafkaConnect:KafkaConnect")
 class KafkaConnect(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/kafkaConnect:KafkaConnect"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -342,10 +342,8 @@ class _KafkaTopicState:
         pulumi.set(self, "topic_name", value)
 
 
+@pulumi.type_token("aiven:index/kafkaTopic:KafkaTopic")
 class KafkaTopic(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/kafkaTopic:KafkaTopic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

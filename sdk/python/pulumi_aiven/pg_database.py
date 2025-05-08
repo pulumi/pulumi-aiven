@@ -214,10 +214,8 @@ class _PgDatabaseState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/pgDatabase:PgDatabase")
 class PgDatabase(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/pgDatabase:PgDatabase"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

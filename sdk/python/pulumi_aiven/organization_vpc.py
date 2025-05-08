@@ -190,10 +190,8 @@ class _OrganizationVpcState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("aiven:index/organizationVpc:OrganizationVpc")
 class OrganizationVpc(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organizationVpc:OrganizationVpc"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

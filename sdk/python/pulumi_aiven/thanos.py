@@ -744,10 +744,8 @@ class _ThanosState:
         pulumi.set(self, "thanos_user_config", value)
 
 
+@pulumi.type_token("aiven:index/thanos:Thanos")
 class Thanos(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/thanos:Thanos"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

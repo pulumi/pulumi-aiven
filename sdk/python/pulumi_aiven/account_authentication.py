@@ -529,10 +529,8 @@ class _AccountAuthenticationState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("aiven:index/accountAuthentication:AccountAuthentication")
 class AccountAuthentication(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/accountAuthentication:AccountAuthentication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

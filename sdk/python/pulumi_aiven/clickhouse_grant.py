@@ -225,10 +225,8 @@ class _ClickhouseGrantState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("aiven:index/clickhouseGrant:ClickhouseGrant")
 class ClickhouseGrant(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/clickhouseGrant:ClickhouseGrant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

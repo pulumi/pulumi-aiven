@@ -213,10 +213,8 @@ class _AccountState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("aiven:index/account:Account")
 class Account(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/account:Account"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -744,10 +744,8 @@ class _DragonflyState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/dragonfly:Dragonfly")
 class Dragonfly(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/dragonfly:Dragonfly"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

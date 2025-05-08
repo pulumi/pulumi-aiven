@@ -143,10 +143,8 @@ class _GcpPrivatelinkState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("aiven:index/gcpPrivatelink:GcpPrivatelink")
 class GcpPrivatelink(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/gcpPrivatelink:GcpPrivatelink"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

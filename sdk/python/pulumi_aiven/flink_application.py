@@ -207,10 +207,8 @@ class _FlinkApplicationState:
         pulumi.set(self, "updated_by", value)
 
 
+@pulumi.type_token("aiven:index/flinkApplication:FlinkApplication")
 class FlinkApplication(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/flinkApplication:FlinkApplication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -830,10 +830,8 @@ export type ProjectVpc = import("./projectVpc").ProjectVpc;
 export const ProjectVpc: typeof import("./projectVpc").ProjectVpc = null as any;
 utilities.lazyLoad(exports, ["ProjectVpc"], () => require("./projectVpc"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { RedisArgs, RedisState } from "./redis";
 export type Redis = import("./redis").Redis;

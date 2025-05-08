@@ -311,10 +311,8 @@ class _KafkaQuotaState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("aiven:index/kafkaQuota:KafkaQuota")
 class KafkaQuota(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/kafkaQuota:KafkaQuota"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

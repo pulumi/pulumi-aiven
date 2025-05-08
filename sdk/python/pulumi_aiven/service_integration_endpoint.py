@@ -752,10 +752,8 @@ class _ServiceIntegrationEndpointState:
         pulumi.set(self, "rsyslog_user_config", value)
 
 
+@pulumi.type_token("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint")
 class ServiceIntegrationEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

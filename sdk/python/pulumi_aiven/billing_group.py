@@ -521,10 +521,8 @@ class _BillingGroupState:
         pulumi.set(self, "zip_code", value)
 
 
+@pulumi.type_token("aiven:index/billingGroup:BillingGroup")
 class BillingGroup(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/billingGroup:BillingGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
