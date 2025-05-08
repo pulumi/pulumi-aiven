@@ -48,6 +48,15 @@ export class Provider extends pulumi.ProviderResource {
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<Provider.TerraformConfigResult> {
+        return pulumi.runtime.call("pulumi:providers:aiven/terraformConfig", {
+            "__self__": this,
+        }, this);
+    }
 }
 
 /**
@@ -58,4 +67,14 @@ export interface ProviderArgs {
      * Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
      */
     apiToken?: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }

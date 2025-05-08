@@ -239,10 +239,8 @@ class _OrganizationProjectState:
         pulumi.set(self, "technical_emails", value)
 
 
+@pulumi.type_token("aiven:index/organizationProject:OrganizationProject")
 class OrganizationProject(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organizationProject:OrganizationProject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

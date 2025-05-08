@@ -415,10 +415,8 @@ class _OrganizationApplicationUserTokenState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken")
 class OrganizationApplicationUserToken(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

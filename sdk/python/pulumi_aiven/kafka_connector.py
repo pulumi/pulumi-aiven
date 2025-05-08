@@ -271,10 +271,8 @@ class _KafkaConnectorState:
         pulumi.set(self, "tasks", value)
 
 
+@pulumi.type_token("aiven:index/kafkaConnector:KafkaConnector")
 class KafkaConnector(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/kafkaConnector:KafkaConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

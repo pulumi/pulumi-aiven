@@ -152,10 +152,8 @@ class _OrganizationGroupProjectState:
         pulumi.set(self, "timeouts", value)
 
 
+@pulumi.type_token("aiven:index/organizationGroupProject:OrganizationGroupProject")
 class OrganizationGroupProject(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organizationGroupProject:OrganizationGroupProject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

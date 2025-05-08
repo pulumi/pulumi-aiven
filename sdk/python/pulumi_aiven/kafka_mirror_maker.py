@@ -712,10 +712,8 @@ class _KafkaMirrorMakerState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/kafkaMirrorMaker:KafkaMirrorMaker")
 class KafkaMirrorMaker(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

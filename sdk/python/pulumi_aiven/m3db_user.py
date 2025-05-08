@@ -174,10 +174,8 @@ class _M3dbUserState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/m3dbUser:M3dbUser")
 class M3dbUser(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/m3dbUser:M3dbUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

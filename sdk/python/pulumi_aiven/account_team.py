@@ -144,10 +144,8 @@ class _AccountTeamState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("aiven:index/accountTeam:AccountTeam")
 class AccountTeam(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/accountTeam:AccountTeam"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

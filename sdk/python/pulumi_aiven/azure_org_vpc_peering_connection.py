@@ -282,10 +282,8 @@ class _AzureOrgVpcPeeringConnectionState:
         pulumi.set(self, "vnet_name", value)
 
 
+@pulumi.type_token("aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection")
 class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

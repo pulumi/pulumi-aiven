@@ -367,10 +367,8 @@ class _FlinkApplicationVersionState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("aiven:index/flinkApplicationVersion:FlinkApplicationVersion")
 class FlinkApplicationVersion(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/flinkApplicationVersion:FlinkApplicationVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

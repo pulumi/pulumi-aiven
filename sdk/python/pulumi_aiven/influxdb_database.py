@@ -158,10 +158,8 @@ class _InfluxdbDatabaseState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/influxdbDatabase:InfluxdbDatabase")
 class InfluxdbDatabase(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/influxdbDatabase:InfluxdbDatabase"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

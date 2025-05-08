@@ -753,10 +753,8 @@ class _ServiceIntegrationState:
         pulumi.set(self, "source_service_project", value)
 
 
+@pulumi.type_token("aiven:index/serviceIntegration:ServiceIntegration")
 class ServiceIntegration(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/serviceIntegration:ServiceIntegration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

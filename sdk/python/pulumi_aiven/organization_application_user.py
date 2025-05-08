@@ -160,10 +160,8 @@ class _OrganizationApplicationUserState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("aiven:index/organizationApplicationUser:OrganizationApplicationUser")
 class OrganizationApplicationUser(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organizationApplicationUser:OrganizationApplicationUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

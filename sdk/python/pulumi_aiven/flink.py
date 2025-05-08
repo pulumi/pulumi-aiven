@@ -744,10 +744,8 @@ class _FlinkState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/flink:Flink")
 class Flink(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/flink:Flink"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -238,10 +238,8 @@ class _PgUserState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/pgUser:PgUser")
 class PgUser(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/pgUser:PgUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

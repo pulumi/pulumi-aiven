@@ -267,10 +267,8 @@ class _AzureVpcPeeringConnectionState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection")
 class AzureVpcPeeringConnection(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

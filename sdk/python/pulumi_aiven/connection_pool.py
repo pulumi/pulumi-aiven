@@ -269,10 +269,8 @@ class _ConnectionPoolState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/connectionPool:ConnectionPool")
 class ConnectionPool(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/connectionPool:ConnectionPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

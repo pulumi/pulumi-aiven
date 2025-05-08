@@ -302,10 +302,8 @@ class _RedisUserState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/redisUser:RedisUser")
 class RedisUser(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/redisUser:RedisUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

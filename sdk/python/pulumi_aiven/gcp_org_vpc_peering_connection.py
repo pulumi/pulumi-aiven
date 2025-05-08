@@ -189,10 +189,8 @@ class _GcpOrgVpcPeeringConnectionState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection")
 class GcpOrgVpcPeeringConnection(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

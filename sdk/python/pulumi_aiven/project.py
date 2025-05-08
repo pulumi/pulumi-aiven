@@ -442,10 +442,8 @@ class _ProjectState:
         pulumi.set(self, "use_source_project_billing_group", value)
 
 
+@pulumi.type_token("aiven:index/project:Project")
 class Project(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/project:Project"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

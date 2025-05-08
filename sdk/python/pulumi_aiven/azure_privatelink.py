@@ -190,10 +190,8 @@ class _AzurePrivatelinkState:
         pulumi.set(self, "user_subscription_ids", value)
 
 
+@pulumi.type_token("aiven:index/azurePrivatelink:AzurePrivatelink")
 class AzurePrivatelink(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/azurePrivatelink:AzurePrivatelink"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

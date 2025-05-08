@@ -126,10 +126,8 @@ class _ClickhouseRoleState:
         pulumi.set(self, "service_name", value)
 
 
+@pulumi.type_token("aiven:index/clickhouseRole:ClickhouseRole")
 class ClickhouseRole(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/clickhouseRole:ClickhouseRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

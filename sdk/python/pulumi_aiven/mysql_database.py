@@ -150,10 +150,8 @@ class _MysqlDatabaseState:
         pulumi.set(self, "termination_protection", value)
 
 
+@pulumi.type_token("aiven:index/mysqlDatabase:MysqlDatabase")
 class MysqlDatabase(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/mysqlDatabase:MysqlDatabase"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

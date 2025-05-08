@@ -174,10 +174,8 @@ class _ClickhouseUserState:
         pulumi.set(self, "uuid", value)
 
 
+@pulumi.type_token("aiven:index/clickhouseUser:ClickhouseUser")
 class ClickhouseUser(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/clickhouseUser:ClickhouseUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

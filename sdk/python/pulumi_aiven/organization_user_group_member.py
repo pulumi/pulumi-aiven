@@ -168,10 +168,8 @@ class _OrganizationUserGroupMemberState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("aiven:index/organizationUserGroupMember:OrganizationUserGroupMember")
 class OrganizationUserGroupMember(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

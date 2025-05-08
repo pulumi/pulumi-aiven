@@ -174,10 +174,8 @@ class _OpensearchUserState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("aiven:index/opensearchUser:OpensearchUser")
 class OpensearchUser(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/opensearchUser:OpensearchUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

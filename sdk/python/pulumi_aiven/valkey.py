@@ -744,10 +744,8 @@ class _ValkeyState:
         pulumi.set(self, "valkey_user_config", value)
 
 
+@pulumi.type_token("aiven:index/valkey:Valkey")
 class Valkey(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/valkey:Valkey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

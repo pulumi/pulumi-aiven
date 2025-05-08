@@ -139,10 +139,8 @@ class _OrganizationState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("aiven:index/organization:Organization")
 class Organization(pulumi.CustomResource):
-
-    pulumi_type = "aiven:index/organization:Organization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
